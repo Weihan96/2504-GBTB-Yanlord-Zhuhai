@@ -1,10 +1,11 @@
 import bpy
+import bmesh
 import math
 from mathutils import Vector, Matrix
+from mathutils.kdtree import KDTree
 import ifcopenshell
 from bonsai.bim.ifc import IfcStore
 import ifcopenshell.util.element as elem_util
-
 # =================================================================
 #  常量：龙骨规格 & 几何参数
 # =================================================================
@@ -253,6 +254,60 @@ def add_ifc_array(obj, axis_world: Vector, spacing: float, count: int, context):
 
 
 # =================================================================
+#  通用检查：参考面 mesh 是否合法
+# =================================================================
+
+def validate_reference_mesh(obj):
+    """
+    多面 Mesh 的合法性判断：
+    - 允许垂直（法向 dot ≈ 0）
+    - 允许平行（法向 dot ≈ ±1）
+    - 其他角度一律不允许
+    """
+
+    if obj.type != "MESH":
+        return False, "参考对象必须是 Mesh"
+
+    mesh = obj.data
+
+    if len(mesh.polygons) == 0:
+        return False, "参考 Mesh 没有 polygon"
+
+    # 收集世界空间法向量
+    normals = []
+    for poly in mesh.polygons:
+        n = obj.matrix_world.to_3x3() @ poly.normal
+        n.normalize()
+        normals.append(n)
+
+    # 单面永远合法
+    if len(normals) == 1:
+        return True, ""
+
+    # 多面：允许以下情况：
+    #   dot ≈ 0     → 垂直
+    #   dot ≈ 1/-1  → 平行
+    #   其他情况    → 非法
+    for i in range(len(normals)):
+        for j in range(i + 1, len(normals)):
+            dot = normals[i].dot(normals[j])
+            if abs(dot) < 1e-4:
+                # 垂直 → 合法
+                continue
+            if abs(abs(dot) - 1.0) < 1e-4:
+                # 平行 or 反向平行 → 合法
+                continue
+
+            # 其余角度非法
+            return (
+                False,
+                f"参考 Mesh 中 polygon {i} 与 {j} 的法向夹角非法，dot={dot:.4f}（必须垂直或平行）"
+            )
+
+    return True, ""
+
+
+# =================================================================
 #  创建实例（最终调用逻辑完全一致）
 # =================================================================
 
@@ -302,8 +357,7 @@ def create_stud_instance(context, model, type_obj, start, end, roll_rad):
             unit_len = max(proj) - min(proj)
 
             if unit_len > 1e-6:
-                import math as _math
-                count = int(_math.ceil(target_len / unit_len))
+                count = int(math.ceil(target_len / unit_len))
                 if count > 1:
                     axis_world = target_vec.normalized()
                     spacing = unit_len
@@ -343,6 +397,144 @@ def get_ordered_face_vertices(ref_obj):
     )
 
     return ordered
+
+
+# =================================================================
+#  获取参考面长边和短边方向（局部坐标）
+# =================================================================
+
+def get_long_short_axis_in_local(ref_obj):
+    """
+    根据参考面的局部 bound_box 判断：
+        local_long_axis   —— 长边方向的局部单位向量
+        local_short_axis  —— 短边方向的局部单位向量
+
+    此函数仅负责“轴归类”，不负责 extrusion 起止点。
+    """
+
+    bb = ref_obj.bound_box
+    xs = [co[0] for co in bb]
+    ys = [co[1] for co in bb]
+    zs = [co[2] for co in bb]
+
+    len_x = max(xs) - min(xs)
+    len_y = max(ys) - min(ys)
+    len_z = max(zs) - min(zs)
+
+    lengths = {"x": len_x, "y": len_y, "z": len_z}
+    axes = ["x", "y", "z"]
+
+    # 厚度轴 = 最短的轴
+    thickness_axis = min(axes, key=lambda a: lengths[a])
+
+    # 平面轴 = 其余两个
+    plane_axes = [a for a in axes if a != thickness_axis]
+    a1, a2 = plane_axes
+
+    # 长边 / 短边
+    if lengths[a1] >= lengths[a2]:
+        long_axis = a1
+        short_axis = a2
+    else:
+        long_axis = a2
+        short_axis = a1
+
+    # 映射为向量
+    axis_to_vec = {
+        "x": Vector((1, 0, 0)),
+        "y": Vector((0, 1, 0)),
+        "z": Vector((0, 0, 1)),
+    }
+
+    local_long_axis = axis_to_vec[long_axis]
+    local_short_axis = axis_to_vec[short_axis]
+
+    return local_long_axis, local_short_axis
+
+
+def create_offset_object_from_ref(ref_obj, offset_dist=0.02, epsilon=1e-5):
+    """
+    基于 ref_obj 创建 offset 后的 mesh：
+        1. Solidify
+        2. 删除与 ref_obj 重合顶点（旧壳）
+        3. Flip normals（统一外向）
+        4. 清理孤立面与边
+    """
+    # ---------------------------------------
+    # 1. Duplicate object
+    # ---------------------------------------
+    offset_obj = ref_obj.copy()
+    offset_obj.data = ref_obj.data.copy()
+    ref_obj.users_collection[0].objects.link(offset_obj)
+
+    # ---------------------------------------
+    # 2. Solidify modifier
+    # ---------------------------------------
+    # 修正方向：始终向内偏移
+    actual_thickness = -abs(offset_dist)
+
+    mod = offset_obj.modifiers.new("OffsetTemp", "SOLIDIFY")
+    mod.thickness = actual_thickness
+    mod.offset = 1.0
+    mod.use_even_offset = True
+
+    bpy.context.view_layer.objects.active = offset_obj
+    bpy.ops.object.modifier_apply(modifier=mod.name)
+
+    # ---------------------------------------
+    # 3. Build KDTree from ref_obj verts
+    # ---------------------------------------
+    ref_mesh = ref_obj.data
+    size = len(ref_mesh.vertices)
+    kd = KDTree(size)
+
+    for i, v in enumerate(ref_mesh.vertices):
+        world_co = ref_obj.matrix_world @ v.co
+        kd.insert(world_co, i)
+
+    kd.balance()
+
+    # ---------------------------------------
+    # 4. BMesh: 删除与 ref_obj 重合的顶点（旧壳）
+    # ---------------------------------------
+    bm = bmesh.new()
+    bm.from_mesh(offset_obj.data)
+
+    verts_to_delete = []
+
+    for v in bm.verts:
+        world_v = offset_obj.matrix_world @ v.co
+
+        co, index, dist = kd.find(world_v)
+        if dist < epsilon:
+            verts_to_delete.append(v)
+
+    bmesh.ops.delete(bm, geom=verts_to_delete, context='VERTS')
+
+    # ---------------------------------------
+    # 5. Flip normals（统一翻面）
+    # ---------------------------------------
+    for f in bm.faces:
+        f.normal_flip()
+
+    # ---------------------------------------
+    # 6. 清理孤立面与无效 edge
+    # ---------------------------------------
+    invalid_faces = [f for f in bm.faces if not f.is_valid]
+    if invalid_faces:
+        bmesh.ops.delete(bm, geom=invalid_faces, context='FACES')
+
+    invalid_edges = [e for e in bm.edges if not e.is_valid]
+    if invalid_edges:
+        bmesh.ops.delete(bm, geom=invalid_edges, context='EDGES')
+
+    # ---------------------------------------
+    # 7. 输出结果
+    # ---------------------------------------
+    bm.to_mesh(offset_obj.data)
+    bm.free()
+
+    return offset_obj
 
 
 # =================================================================
@@ -410,82 +602,53 @@ def analyse_reference_panel(ref_obj):
         "z": 0.5 * (min_z + max_z),
     }
 
-    axes = ["x", "y", "z"]
+    local_long_axis_vec, local_short_axis_vec = get_long_short_axis_in_local(ref_obj)
 
-    # 厚度轴
-    thickness_axis = min(axes, key=lambda a: lengths[a])
+    # 反查 axis 名称（保持你原本代码兼容）
+    vec_to_axis = {
+        (1,0,0): "x",
+        (0,1,0): "y",
+        (0,0,1): "z",
+    }
+    long_axis = vec_to_axis[tuple(local_long_axis_vec)]
+    short_axis = vec_to_axis[tuple(local_short_axis_vec)]
+    # =============================================================
 
-    # 平面轴 = 剩下两个
-    plane_axes = [a for a in axes if a != thickness_axis]
-
-    # 长边/短边判断
-    a1, a2 = plane_axes
-    if lengths[a1] >= lengths[a2]:
-        long_axis = a1
-        short_axis = a2
-    else:
-        long_axis = a2
-        short_axis = a1
-
-    # ---------------------------
     # 主龙骨 extrusion start/end（沿长边）
-    # ---------------------------
     coords_start = dict(centers)
     coords_end = dict(centers)
 
-    # 厚度轴取中心（避免偏移）
+    # 厚度轴 = 非长非短的轴
+    thickness_axis = [a for a in ["x","y","z"] if a not in (long_axis, short_axis)][0]
+
     coords_start[thickness_axis] = centers[thickness_axis]
     coords_end[thickness_axis] = centers[thickness_axis]
 
-    # 短边取 MIN（一侧靠齐）
     coords_start[short_axis] = mins[short_axis]
     coords_end[short_axis] = mins[short_axis]
 
-    # 长边 extrusion：min → max
     coords_start[long_axis] = mins[long_axis]
     coords_end[long_axis] = maxs[long_axis]
 
     local_main_start = Vector((coords_start["x"], coords_start["y"], coords_start["z"]))
     local_main_end   = Vector((coords_end["x"],   coords_end["y"],   coords_end["z"]))
 
-    # ---------------------------
     # 副龙骨 extrusion start/end（沿短边）
-    # ---------------------------
     sec_coords_start = dict(centers)
     sec_coords_end   = dict(centers)
 
-    # 厚度轴中心
     sec_coords_start[thickness_axis] = centers[thickness_axis]
     sec_coords_end[thickness_axis]   = centers[thickness_axis]
 
-    # 长边取 MIN（与主龙骨一致）
     sec_coords_start[long_axis] = mins[long_axis]
     sec_coords_end[long_axis]   = mins[long_axis]
 
-    # **短边 extrusion：min → max**
     sec_coords_start[short_axis] = mins[short_axis]
     sec_coords_end[short_axis]   = maxs[short_axis]
 
     local_sec_start = Vector((sec_coords_start["x"], sec_coords_start["y"], sec_coords_start["z"]))
     local_sec_end   = Vector((sec_coords_end["x"],   sec_coords_end["y"],   sec_coords_end["z"]))
 
-    # ---------------------------
-    # 构造方向向量
-    # ---------------------------
-
-    if short_axis == "x":
-        local_short_axis_vec = Vector((1, 0, 0))
-    elif short_axis == "y":
-        local_short_axis_vec = Vector((0, 1, 0))
-    else:
-        local_short_axis_vec = Vector((0, 0, 1))
-
-    if long_axis == "x":
-        local_long_axis_vec = Vector((1, 0, 0))
-    elif long_axis == "y":
-        local_long_axis_vec = Vector((0, 1, 0))
-    else:
-        local_long_axis_vec = Vector((0, 0, 1))
 
     return (
         local_main_start,
@@ -577,6 +740,7 @@ def array_studs_on_reference(
         return
 
     stud_log_append(context, f"🎉 IFC Array 完成，共 {count} 根")
+    return base_obj
 # =================================================================
 #  描边：沿参考面四周生成龙骨（基于 mesh 顶点）
 # =================================================================
@@ -601,6 +765,7 @@ def outline_studs_on_reference(
 
     # 按顺序连接：v1→v2, v2→v3, ..., vn→v1
     count = len(verts)
+    studs = []
     for i in range(count):
         world_start = verts[i]
         world_end   = verts[(i + 1) % count]
@@ -608,17 +773,17 @@ def outline_studs_on_reference(
         local_start = inv_mw @ world_start + local_offset
         local_end   = inv_mw @ world_end   + local_offset
 
-        create_stud_instance(
+        studs.append(create_stud_instance(
             context,
             model,
             type_obj,
             mw @ local_start,
             mw @ local_end,
             roll_rad,
-        )
+        ))
 
     stud_log_append(context, f"✔ 描边龙骨已生成，共 {count} 条")
-
+    return studs
 
 # =================================================================
 #  布局计算：主骨 / 副骨数量 & 偏移 & 挤出长度
@@ -709,6 +874,323 @@ def compute_stud_layout(
 
 
 # =================================================================
+#  在 canonical 面（法向 +Z，XY 为面内轴）上生成所有龙骨
+# =================================================================
+
+def generate_studs_on_canonical_panel(context, model, props, ref_panel):
+    """
+    在 canonical 面（ref_panel）上生成龙骨阵列。
+
+    要求 ref_panel 满足：
+        - 已 canonical 化（法向 = +Z）
+        - local X/Y 为面内两个正交方向
+        - scale 已应用
+        - local 空间中直接可用于几何分析
+
+    生成内容：
+        - 边龙骨 outline
+        - 主龙骨阵列（沿 long axis）
+        - 副龙骨阵列（沿 short axis）
+
+    返回：
+        - 返回所有生成的 stud 对象（local / world 均可）
+        - 这些对象将在 generate_studs_on_mesh 中被外部应用矩阵变换 T
+    """
+    generated_studs = []
+
+    def _append(studs):
+        if isinstance(studs, list):
+            generated_studs.extend(studs)
+        elif studs:
+            generated_studs.append(studs)
+
+    # 1. 主龙骨类型
+    type_obj = find_member_type(model, props.selected_type)
+    if not type_obj:
+        stud_log_set(context, "❌ 未选择主龙骨类型")
+        return generated_studs
+
+    # 2. 分析 canonical 面的几何
+    try:
+        (
+            local_main_start,
+            local_main_end,
+            local_short_axis_vec,
+            short_length,
+            local_sec_start,
+            local_sec_end,
+            local_long_axis_vec,
+            long_length,
+        ) = analyse_reference_panel(ref_panel)
+    except Exception as e:
+        stud_log_set(context, f"❌ 参考面分析失败: {e}")
+        return generated_studs
+
+    # 3. 布局逻辑
+    layout = compute_stud_layout(
+        short_length=short_length,
+        long_length=long_length,
+        spacing=props.spacing,
+        sec_spacing=props.secondary_spacing,
+        local_main_start=local_main_start,
+        local_main_end=local_main_end,
+        local_sec_start=local_sec_start,
+        local_sec_end=local_sec_end,
+    )
+
+    sec_count           = layout["sec_count"]
+    main_count          = layout["main_count"]
+    main_short_offset   = layout["main_short_offset"]
+    main_long_offset    = layout["main_long_offset"]
+    sec_long_offset     = layout["sec_long_offset"]
+    adjusted_sec_start  = layout["adjusted_sec_start"]
+    adjusted_sec_end    = layout["adjusted_sec_end"]
+    adjusted_main_start = layout["adjusted_main_start"]
+    adjusted_main_end   = layout["adjusted_main_end"]
+    sec_len_original    = layout["sec_len_original"]
+    sec_len_new         = layout["sec_len_new"]
+
+    # 日志
+    stud_log_append(context, f"ℹ 副龙骨数量 = {sec_count}")
+    stud_log_append(context, f"ℹ 主龙骨数量 = {main_count}")
+    stud_log_append(context, f"ℹ 副龙骨调整: {sec_len_original:.4f} → {sec_len_new:.4f}")
+
+    # 4. 偏移
+    local_main_offset = (
+        local_short_axis_vec * main_short_offset +
+        local_long_axis_vec * main_long_offset +
+        Vector((props.offset_x, props.offset_y, props.offset_z))
+    )
+
+    local_sec_offset = (
+        local_long_axis_vec * sec_long_offset +
+        Vector((
+            props.secondary_offset_x,
+            props.secondary_offset_y,
+            props.secondary_offset_z,
+        ))
+    )
+
+    # 5. 边龙骨
+    edge_type_obj = find_member_type(model, props.edge_type)
+    if edge_type_obj:
+        edge_offset = Vector((
+            props.edge_offset_x,
+            props.edge_offset_y,
+            props.edge_offset_z,
+        ))
+        studs = outline_studs_on_reference(
+            context, model, edge_type_obj, ref_panel,
+            edge_offset, props.edge_roll_rad
+        )
+        _append(studs)
+
+    # 6. 主龙骨阵列
+    base_main_stud = array_studs_on_reference(
+        context, model, type_obj, ref_panel,
+        adjusted_main_start, adjusted_main_end,
+        local_main_offset,
+        local_short_axis_vec,
+        main_count, props.spacing, props.roll_rad
+    )
+    _append(base_main_stud)
+
+    # 7. 副龙骨阵列
+    secondary_type_obj = find_member_type(model, props.secondary_type)
+    if secondary_type_obj:
+        base_sec_stud = array_studs_on_reference(
+            context, model, secondary_type_obj, ref_panel,
+            adjusted_sec_start, adjusted_sec_end,
+            local_sec_offset,
+            local_long_axis_vec,
+            sec_count, props.secondary_spacing, props.secondary_roll_rad
+        )
+        _append(base_sec_stud)
+
+    # ======================================================
+    # 8. 生成完成后，绕参考面中心 X 轴旋转 180°（翻到另一侧）
+    # ======================================================
+    if generated_studs and ref_panel and ref_panel.type == "MESH":
+        # 计算参考面中心（世界空间）
+        verts = ref_panel.data.vertices
+        if len(verts) > 0:
+            center_world = sum(
+                (ref_panel.matrix_world @ v.co for v in verts),
+                Vector()
+            ) / len(verts)
+
+            # 绕 X 轴旋转 180°
+            R = Matrix.Rotation(math.pi, 4, 'X')
+            T_to_center     = Matrix.Translation(center_world)
+            T_from_center   = Matrix.Translation(-center_world)
+            M_flip = T_to_center @ R @ T_from_center
+
+            for obj in generated_studs:
+                if obj:
+                    obj.matrix_world = M_flip @ obj.matrix_world
+
+    return generated_studs
+
+
+def create_canonical_panel_from_polygon(src_obj, poly):
+    """
+    生成 canonical 面 + canonical→original 的变换矩阵 T。
+
+    返回：
+      panel_canonical   —— 世界坐标下法向 = (0, 0, 1)，几何在 canonical 空间
+      T                 —— canonical → original polygon 的世界变换
+    """
+    # ==========================================================
+    # 1. 提取 polygon 顶点（世界空间）
+    # ==========================================================
+    verts_world = [
+        src_obj.matrix_world @ src_obj.data.vertices[i].co
+        for i in poly.vertices
+    ]
+
+    # polygon 中心
+    C = sum(verts_world, Vector()) / len(verts_world)
+
+    # polygon 法向（世界空间）
+    n = poly.normal.copy()
+    n = (src_obj.matrix_world.to_3x3() @ n).normalized()   # 作为 +Z 方向
+
+    # ==========================================================
+    # 2. 构造 polygon 的局部坐标系 (t, b, n)
+    # ==========================================================
+    # 取最长边方向作为 t（面内某一方向）
+    edges = []
+    for i in range(len(verts_world)):
+        v0 = verts_world[i]
+        v1 = verts_world[(i + 1) % len(verts_world)]
+        edges.append(v1 - v0)
+
+    t = max(edges, key=lambda e: e.length).normalized()  # +X
+    b = n.cross(t).normalized()                          # +Y，与 t、n 右手系
+
+    # ==========================================================
+    # 3. 构造 canonical→original 的世界变换矩阵 T
+    # ==========================================================
+    # canonical:
+    #   +X → t
+    #   +Y → b
+    #   +Z → n
+    #
+    T = Matrix((
+        (t.x,  b.x,  n.x,  C.x),
+        (t.y,  b.y,  n.y,  C.y),
+        (t.z,  b.z,  n.z,  C.z),
+        (0.0,  0.0,  0.0,  1.0),
+    ))
+
+    # ==========================================================
+    # 4. 在 canonical 空间构造 panel_canonical 的几何
+    # ==========================================================
+    mesh = bpy.data.meshes.new(f"{src_obj.name}_canonical_face_{poly.index}")
+    panel_canonical = bpy.data.objects.new(mesh.name, mesh)
+    src_obj.users_collection[0].objects.link(panel_canonical)
+
+    T_inv = T.inverted()
+    verts_canonical = [T_inv @ v for v in verts_world]
+
+    # 顶点顺序可以保持原顺序，此时在 canonical 中法向大致为 (0, 0, 1)
+    face_indices = tuple(range(len(verts_canonical)))
+
+    mesh.from_pydata(
+        [v.to_tuple() for v in verts_canonical],
+        [],
+        [face_indices],
+    )
+    mesh.update()
+
+    # canonical 面保持 world_matrix = Identity：
+    # 此时面在世界坐标下几何已经 canonical 化，
+    # 法向约为 (0, 0, 1)
+    panel_canonical.matrix_world = Matrix.Identity(4)
+
+    return panel_canonical, T
+
+
+# =================================================================
+#  将单面 Object 设置成 IfcVirtualElement
+# =================================================================
+
+def assign_virtual_element(obj):
+    """将 obj 标记为 IfcVirtualElement（需在 OBJECT 模式下调用）"""
+    if not obj:
+        return
+
+    # 设为 active & 选中
+    bpy.ops.object.select_all(action='DESELECT')
+    obj.select_set(True)
+    bpy.context.view_layer.objects.active = obj
+
+    # 先进入 EDIT，全选面，再回到 OBJECT
+    bpy.ops.object.mode_set(mode='EDIT')
+    bpy.ops.mesh.select_all(action='SELECT')
+    bpy.ops.object.mode_set(mode='OBJECT')
+
+    # 指定 IFC 类
+    bpy.ops.bim.assign_class(
+        ifc_class="IfcVirtualElement",
+        predefined_type="",
+        userdefined_type="",
+        props_to_pset=False,
+    )
+
+def parent_objects(parent_obj, children):
+    """将 children 全部 parent 到 parent_obj （Blender + IFC）"""
+    for child in children:
+        if not child:
+            continue
+        child.parent = parent_obj
+
+        # IFC parent-child 关系
+        try:
+            elem_util.assign_parent(child, parent_obj)
+        except:
+            pass
+
+# =================================================================
+#  多面 Mesh：循环生成各面龙骨 + 建立 IfcVirtualElement
+# =================================================================
+
+def generate_studs_on_mesh(context, model, props, ref_obj):
+    """
+    正确顺序：
+      1. create canonical panel
+      2. generate studs in canonical
+      3. apply T to panel
+      4. apply T to studs
+      5. parent studs to panel
+      6. assign IfcVirtualElement
+    """
+
+    all_studs = []
+
+    if ref_obj.mode != "OBJECT":
+        bpy.ops.object.mode_set(mode="OBJECT")
+
+    mesh = ref_obj.data
+
+    for poly in mesh.polygons:
+        panel_canonical, T = create_canonical_panel_from_polygon(ref_obj, poly)
+        studs_local = generate_studs_on_canonical_panel(
+            context, model, props, panel_canonical
+        )
+        parent_objects(panel_canonical, studs_local)
+        assign_virtual_element(panel_canonical)
+
+        # move panel to original position
+        panel_canonical.matrix_world = T
+        all_studs.extend(studs_local)
+
+        stud_log_append(context, f"✔ polygon {poly.index} 完成，生成 {len(studs_local)} 根龙骨")
+
+    return all_studs
+
+
+# =================================================================
 #  UI 属性
 # =================================================================
 
@@ -738,7 +1220,7 @@ class StudDevProps(bpy.types.PropertyGroup):
     )
     offset_z: bpy.props.FloatProperty(
         name="Offset Z",
-        default=0.0,
+        default=0.019,           # 19mm 双层8.5mm石膏板厚度
         description="参考面局部 Z 方向偏移（常用于让位厚度）",
         unit="LENGTH",
     )
@@ -844,7 +1326,7 @@ class StudDevProps(bpy.types.PropertyGroup):
     )
     corner_offset_z: bpy.props.FloatProperty(
         name="Offset Z",
-        default=0.0,
+        default=0.019,
         description="转角龙骨在参考面局部 Z 方向偏移",
         unit="LENGTH",
     )
@@ -897,7 +1379,7 @@ class IFC_OT_ConfirmApplyScale(bpy.types.Operator):
     bl_label = "参考面 Scale ≠ 1，是否 Apply？"
 
     ref_obj_name: bpy.props.StringProperty()
-    original_operator: bpy.props.StringProperty(default="ifc.array_stud_from_ref")
+    original_operator: bpy.props.StringProperty(default="ifc.array_stud_from_multiref")
 
     def execute(self, context):
         obj = bpy.data.objects.get(self.ref_obj_name)
@@ -909,7 +1391,7 @@ class IFC_OT_ConfirmApplyScale(bpy.types.Operator):
             stud_log_append(context, f"✔ 已应用参考面 Scale：{obj.name}")
 
         # 自动继续执行排布（无需再点一次按钮）
-        bpy.ops.ifc.array_stud_from_ref(bypass_scale_check=True)
+        bpy.ops.ifc.array_stud_from_multiref(bypass_scale_check=True)
         return {"FINISHED"}
 
     def invoke(self, context, event):
@@ -922,21 +1404,19 @@ class IFC_OT_ConfirmApplyScale(bpy.types.Operator):
 
 
 # =================================================================
-#  Operator：参考面 → 排布龙骨（阵列）
+#  Operator：测试 offset_obj 生成（不排布龙骨）
 # =================================================================
 
-class IFC_OT_ArrayStud_FromRef(bpy.types.Operator):
-    bl_idname = "ifc.array_stud_from_ref"
-    bl_label = "参考面 → 排布龙骨"
-
-    bypass_scale_check: bpy.props.BoolProperty(default=False)
+class IFC_OT_PolygonOffset(bpy.types.Operator):
+    bl_idname = "ifc.polygon_offset"
+    bl_label  = "测试 Polygon Offset"
 
     def execute(self, context):
         props = context.scene.stud_dev_props
         stud_log_set(context, "")
 
         # ----------------------------------------
-        # 0. 取得参考面对象
+        # 0. 获取参考对象
         # ----------------------------------------
         ref_obj = props.ref_obj or context.active_object
         if not ref_obj or ref_obj.type != "MESH":
@@ -944,8 +1424,62 @@ class IFC_OT_ArrayStud_FromRef(bpy.types.Operator):
             return {"FINISHED"}
 
         # ----------------------------------------
-        # 1. Scale 检查（必须最前）
+        # 1. 创建 offset 副本（缩小一圈）
         # ----------------------------------------
+        offset_value = props.offset_z
+        try:
+            offset_obj = create_offset_object_from_ref(ref_obj, offset_value)
+        except Exception as e:
+            stud_log_set(context, f"❌ 创建 offset_obj 失败：{e}")
+            return {"FINISHED"}
+
+        stud_log_append(context, 
+            f"🎉 已成功基于 {ref_obj.name} 生成 offset 对象：{offset_obj.name}\n"
+            f"   使用偏移量 offset = {offset_value:.4f} m"
+        )
+
+        return {"FINISHED"}
+
+
+
+# =================================================================
+#  Operator：为多面参考面生成龙骨（支持 scale 检查 + offset 预处理）
+# =================================================================
+
+class IFC_OT_ArrayStud_FromMultiRef(bpy.types.Operator):
+    bl_idname = "ifc.array_stud_from_multiref"
+    bl_label  = "为多面参考面生成龙骨"
+
+    bypass_scale_check: bpy.props.BoolProperty(default=False)
+
+    def execute(self, context):
+        props = context.scene.stud_dev_props
+        stud_log_set(context, "")
+
+        model = get_ifc_model()
+        if not model:
+            stud_log_set(context, "❌ 无 IFC 模型")
+            return {"CANCELLED"}
+
+        # ------------------------------
+        # 0. 获取参考对象
+        # ------------------------------
+        ref_obj = props.ref_obj or context.active_object
+        if not ref_obj or ref_obj.type != "MESH":
+            stud_log_set(context, "❌ 请选择一个 Mesh 作为参考面")
+            return {"CANCELLED"}
+
+        # ------------------------------
+        # 0b. 验证参考 mesh（支持多面）
+        # ------------------------------
+        ok, reason = validate_reference_mesh(ref_obj)
+        if not ok:
+            stud_log_set(context, f"❌ 无法作为多面参考面：{reason}")
+            return {"CANCELLED"}
+
+        # ------------------------------
+        # 1. Scale 检查（必须最前）
+        # ------------------------------
         if not self.bypass_scale_check:
             sx, sy, sz = ref_obj.scale
             if (abs(sx - 1.0) > 1e-6) or (abs(sy - 1.0) > 1e-6) or (abs(sz - 1.0) > 1e-6):
@@ -954,151 +1488,30 @@ class IFC_OT_ArrayStud_FromRef(bpy.types.Operator):
                     ref_obj_name=ref_obj.name
                 )
 
-        # ----------------------------------------
-        # 2. IFC 模型检查
-        # ----------------------------------------
-        model = get_ifc_model()
-        if not model:
-            stud_log_set(context, "❌ 无 IFC 模型")
-            return {"FINISHED"}
+        # ------------------------------
+        # 2. 先创建 offset 对象（关键）
+        # ------------------------------
+        offset_dist = props.offset_z  # 默认 19 mm，双层石膏板
+        offset_obj = create_offset_object_from_ref(ref_obj, offset_dist)
 
-        # ----------------------------------------
-        # 3. 主龙骨类型检查
-        # ----------------------------------------
-        type_obj = find_member_type(model, props.selected_type)
-        if not type_obj:
-            stud_log_set(context, "❌ 未选择类型")
-            return {"FINISHED"}
+        if offset_obj is None:
+            stud_log_set(context, "❌ 创建 offset_obj 失败（请检查参考面是否封闭、几何是否异常）")
+            return {"CANCELLED"}
 
-        # ----------------------------------------
-        # 4. 解析参考面
-        # ----------------------------------------
-        try:
-            (
-                local_main_start,
-                local_main_end,
-                local_short_axis_vec,
-                short_length,
-                local_sec_start,
-                local_sec_end,
-                local_long_axis_vec,
-                long_length,
-            ) = analyse_reference_panel(ref_obj)
-        except Exception as e:
-            stud_log_set(context, f"❌ 参考面分析失败: {e}")
-            return {"FINISHED"}
+        stud_log_append(context, f"✔ 创建 offset_obj：{offset_obj.name}")
 
-        # ===================================================================
-        # 5~14. 布局计算：调用独立函数（compute_stud_layout）
-        # ===================================================================
-        layout_info = compute_stud_layout(
-            short_length=short_length,
-            long_length=long_length,
-            spacing=props.spacing,
-            sec_spacing=props.secondary_spacing,
-            local_main_start=local_main_start,
-            local_main_end=local_main_end,
-            local_sec_start=local_sec_start,
-            local_sec_end=local_sec_end,
+        # ------------------------------
+        # 3. 执行多面排布（主龙骨、副龙骨、边龙骨）
+        # ------------------------------
+        studs = generate_studs_on_mesh(
+            context, model, props,
+            offset_obj,
         )
 
-        sec_count = layout_info["sec_count"]
-        main_count = layout_info["main_count"]
-        main_extrude_len = layout_info["main_extrude_len"]
-        main_short_offset = layout_info["main_short_offset"]
-        main_long_offset = layout_info["main_long_offset"]
-        sec_long_offset = layout_info["sec_long_offset"]
-        adjusted_sec_start = layout_info["adjusted_sec_start"]
-        adjusted_sec_end = layout_info["adjusted_sec_end"]
-        adjusted_main_start = layout_info["adjusted_main_start"]
-        adjusted_main_end = layout_info["adjusted_main_end"]
-        sec_len_original = layout_info["sec_len_original"]
-        sec_len_new = layout_info["sec_len_new"]
-
-        stud_log_append(context, f"ℹ 副龙骨数量 = {sec_count}")
-        stud_log_append(context, f"ℹ 主龙骨挤出长度 = {main_extrude_len:.4f}")
-        stud_log_append(context, f"ℹ 主龙骨数量 = {main_count}")
-        stud_log_append(context, f"ℹ 主龙骨短边偏移 = {main_short_offset:.4f}")
-        stud_log_append(context, f"ℹ 主龙骨长边偏移 = {main_long_offset:.4f}")
-        stud_log_append(context, f"ℹ 副龙骨长边偏移 = {sec_long_offset:.4f}")
-        stud_log_append(
-            context,
-            f"✔ 副龙骨调整: 原长度={sec_len_original:.4f} → 新长度={sec_len_new:.4f}"
-        )
-
-        # ===================================================================
-        # 12. 准备偏移（local 坐标）
-        # ===================================================================
-        local_main_offset = (
-            local_short_axis_vec * main_short_offset +
-            local_long_axis_vec * main_long_offset +
-            Vector((props.offset_x, props.offset_y, props.offset_z))
-        )
-
-        local_sec_offset = (
-            local_long_axis_vec * sec_long_offset +
-            Vector((
-                props.secondary_offset_x,
-                props.secondary_offset_y,
-                props.secondary_offset_z,
-            ))
-        )
-
-        # ===================================================================
-        # 15. 边龙骨描边
-        # ===================================================================
-        edge_type_obj = find_member_type(model, props.edge_type)
-        if edge_type_obj:
-            local_edge_offset = Vector((
-                props.edge_offset_x,
-                props.edge_offset_y,
-                props.edge_offset_z,
-            ))
-            outline_studs_on_reference(
-                context,
-                model,
-                edge_type_obj,
-                ref_obj,
-                local_edge_offset,
-                props.edge_roll_rad,
-            )
-
-        # ===================================================================
-        # 16. 主骨排布（正确数量、正确位置）
-        # ===================================================================
-        array_studs_on_reference(
-            context,
-            model,
-            type_obj,
-            ref_obj,
-            adjusted_main_start,
-            adjusted_main_end,
-            local_main_offset,
-            local_short_axis_vec,
-            main_count,          # 由布局计算函数直接给出数量
-            props.spacing,       # 由属性保证必须 > 0
-            props.roll_rad,
-        )
-
-        # ===================================================================
-        # 17. 副骨排布
-        # ===================================================================
-        secondary_type_obj = find_member_type(model, props.secondary_type)
-
-        if secondary_type_obj:
-            array_studs_on_reference(
-                context,
-                model,
-                secondary_type_obj,
-                ref_obj,
-                adjusted_sec_start,
-                adjusted_sec_end,
-                local_sec_offset,
-                local_long_axis_vec,
-                sec_count,              # 由布局计算函数直接给出数量
-                props.secondary_spacing,
-                props.secondary_roll_rad,
-            )
+        if not studs:
+            stud_log_append(context, "⚠ 未生成任何龙骨")
+        else:
+            stud_log_append(context, f"🎉 多面龙骨生成完成，共 {len(studs)} 根")
 
         return {"FINISHED"}
 
@@ -1159,7 +1572,8 @@ class IFC_PT_StudDevPanel(bpy.types.Panel):
         col.prop(props, "spacing")
         col.prop(props, "secondary_spacing")
         col.separator()
-        col.operator("ifc.array_stud_from_ref", text="生成龙骨")
+        col.operator("ifc.polygon_offset", text="测试 Polygon Offset")
+        col.operator("ifc.array_stud_from_multiref", text="生成多面龙骨")
 
         col.separator()
         col.label(text="日志：")
@@ -1173,7 +1587,9 @@ class IFC_PT_StudDevPanel(bpy.types.Panel):
 classes = (
     StudDevProps,
     IFC_PT_StudDevPanel,
-    IFC_OT_ArrayStud_FromRef,
+    IFC_OT_ConfirmApplyScale,
+    IFC_OT_PolygonOffset,
+    IFC_OT_ArrayStud_FromMultiRef
 )
 
 def register():
