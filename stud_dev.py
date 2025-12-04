@@ -312,13 +312,24 @@ def validate_reference_mesh(obj):
 #  Corner 工具：识别阴阳角 + 侧面 + 20mm 偏移
 # =================================================================
 
-def find_corner_edges(offset_obj):
+def find_corner_edges(offset_obj,
+                      include_side_side_corners: bool = False,
+                      side_z_eps: float = 0.01):
     """
     基于 offset_obj 分析所有 polygon，识别：
       - 每个面的世界坐标顶点
       - 每条边是否为转角边（is_corner）
       - 阴角 / 阳角 corner_type = "inner" / "outer"
       - 邻接面的世界法向 neighbor_normal
+
+    参数：
+      include_side_side_corners:
+        False（默认）时：两个“侧面”之间的交线不视为 corner；
+        True 时：保持原逻辑，侧面-侧面交线也算 corner。
+
+      side_z_eps:
+        判断侧面用的阈值，和 classify_side_faces 保持一致：
+          |normal.z| < side_z_eps → 侧面
 
     返回 panels_raw 结构：
         {
@@ -349,6 +360,12 @@ def find_corner_edges(offset_obj):
     for poly in mesh.polygons:
         n_world = (mw.to_3x3() @ poly.normal).normalized()
         poly_normals[poly.index] = n_world
+
+    # 与 classify_side_faces 同一规则：|normal.z| < 0.01 → 侧面
+    is_side = {
+        idx: (abs(n.z) < side_z_eps)
+        for idx, n in poly_normals.items()
+    }
 
     # 边与多边形的关联：key = (min(v1,v2), max(v1,v2))
     edge_map = {}
@@ -393,22 +410,32 @@ def find_corner_edges(offset_obj):
 
                 n_self = poly_normals[poly.index]
                 n_other = poly_normals[other_poly_idx]
-                dot = n_self.dot(n_other)
 
-                # 垂直：认为是转角边
-                if abs(dot) < 1e-3:
-                    is_corner = True
-                    neighbor_normal = n_other
+                # 如果不希望把 “两个侧面之间” 的交线当成 corner，则直接跳过
+                if (
+                    not include_side_side_corners
+                    and is_side.get(poly.index, False)
+                    and is_side.get(other_poly_idx, False)
+                ):
+                    # 保持 is_corner=False, neighbor_normal=None
+                    pass
+                else:
+                    dot = n_self.dot(n_other)
 
-                    e_dir = (v2_world - v1_world)
-                    if e_dir.length > 1e-6:
-                        e_dir.normalize()
-                        cross_n = n_self.cross(n_other)
-                        sign = cross_n.dot(e_dir)
-                        if sign > 0:
-                            corner_type = "outer"
-                        else:
-                            corner_type = "inner"
+                    # 垂直：认为是转角边
+                    if abs(dot) < 1e-3:
+                        is_corner = True
+                        neighbor_normal = n_other
+
+                        e_dir = (v2_world - v1_world)
+                        if e_dir.length > 1e-6:
+                            e_dir.normalize()
+                            cross_n = n_self.cross(n_other)
+                            sign = cross_n.dot(e_dir)
+                            if sign > 0:
+                                corner_type = "outer"
+                            else:
+                                corner_type = "inner"
 
             data["edges"].append({
                 "v1_index": v1_idx,
@@ -1515,27 +1542,6 @@ def generate_studs_on_canonical_panel(
             sec_count, props.secondary_spacing, props.secondary_roll_rad
         )
         _append(base_sec_stud)
-
-    # 8. 生成完成后，将龙骨翻转到另一侧（必须 X180° + Z180°）
-    if generated_studs and ref_panel and ref_panel.type == "MESH":
-        verts = ref_panel.data.vertices
-        if len(verts) > 0:
-            center_world = sum(
-                (ref_panel.matrix_world @ v.co for v in verts),
-                Vector()
-            ) / len(verts)
-
-            Rx = Matrix.Rotation(math.pi, 4, 'X')
-            Rz = Matrix.Rotation(math.pi, 4, 'Z')
-
-            T_to_center   = Matrix.Translation(center_world)
-            T_from_center = Matrix.Translation(-center_world)
-
-            M_flip = T_to_center @ Rz @ Rx @ T_from_center
-
-            for obj in generated_studs:
-                if obj:
-                    obj.matrix_world = M_flip @ obj.matrix_world
 
     return generated_studs
 
