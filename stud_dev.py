@@ -1902,7 +1902,7 @@ class StudDevProps(bpy.types.PropertyGroup):
     )
     offset_z: bpy.props.FloatProperty(
         name="Offset Z",
-        default=0.019,           # 19mm 双层8.5mm石膏板厚度
+        default=0.0,           # 19mm 双层8.5mm石膏板厚度
         description="参考面局部 Z 方向偏移（常用于让位厚度）",
         unit="LENGTH",
     )
@@ -1938,7 +1938,7 @@ class StudDevProps(bpy.types.PropertyGroup):
     )
     secondary_offset_z: bpy.props.FloatProperty(
         name="Offset Z",
-        default=0.0005,
+        default=-0.0005,
         description="副龙骨在参考面局部 Z 方向偏移",
         unit="LENGTH",
     )
@@ -1990,12 +1990,12 @@ class StudDevProps(bpy.types.PropertyGroup):
     # ------------------------------
 
     corner_inner_type: bpy.props.EnumProperty(
-        name="内角龙骨",
+        name="阴角龙骨",
         items=update_stud_type_enum,
     )
 
     corner_outer_type: bpy.props.EnumProperty(
-        name="外角龙骨",
+        name="阳角龙骨",
         items=update_stud_type_enum,
     )
 
@@ -2034,6 +2034,13 @@ class StudDevProps(bpy.types.PropertyGroup):
         name="参考面",
         type=bpy.types.Object,
         description="用于排布龙骨的参考面（Mesh）",
+    )
+
+    offset_dist: bpy.props.FloatProperty(
+        name="Offset Distance",
+        default=0.019,
+        description="Offset Distance",
+        unit="LENGTH",
     )
 
     # 阵列间距 = duplication 平移距离
@@ -2139,19 +2146,19 @@ class IFC_OT_PolygonOffset(bpy.types.Operator):
         # ------------------------------
         # 2. 先创建 offset 对象（关键）
         # ------------------------------
-        offset_value = props.offset_z
+        offset_dist = props.offset_dist
         try:
-            offset_obj = create_offset_object_from_ref(ref_obj, offset_value)
+            offset_obj = create_offset_object_from_ref(ref_obj, offset_dist)
         except Exception as e:
             stud_log_set(context, f"❌ 创建 offset_obj 失败：{e}")
             return {"FINISHED"}
 
         stud_log_append(context, 
             f"🎉 已成功基于 {ref_obj.name} 生成 offset 对象：{offset_obj.name}\n"
-            f"   使用偏移量 offset = {offset_value:.4f} m"
+            f"   使用偏移量 offset = {offset_dist:.4f} m"
         )
         # 3. 生成 panels_raw（可调试）
-        panels_raw = build_corner_panels_data(context, ref_obj, offset_obj, offset_dist=offset_value)
+        panels_raw = build_corner_panels_data(context, ref_obj, offset_obj, offset_dist=offset_dist)
 
         draw_panels_raw_debug(context, panels_raw)
         
@@ -2207,7 +2214,7 @@ class IFC_OT_PolygonOffset(bpy.types.Operator):
                 corner_type = e.get("corner_type")
                 neighbor_normal = e.get("neighbor_normal")
 
-                # dot 用来辅助看内外角（如果存在邻面法向）
+                # dot 用来辅助看阴阳角（如果存在邻面法向）
                 if neighbor_normal is not None:
                     try:
                         dp = ref_normal.dot(neighbor_normal)
@@ -2271,8 +2278,8 @@ class IFC_OT_ArrayStud_FromMultiRef(bpy.types.Operator):
                 )
 
         # 2. 创建 offset_obj
-        offset_value = props.offset_z
-        offset_obj = create_offset_object_from_ref(ref_obj, offset_value)
+        offset_dist = props.offset_dist
+        offset_obj = create_offset_object_from_ref(ref_obj, offset_dist)
         if offset_obj is None:
             stud_log_set(context, "❌ 创建 offset_obj 失败")
             return {"CANCELLED"}
@@ -2280,7 +2287,7 @@ class IFC_OT_ArrayStud_FromMultiRef(bpy.types.Operator):
         stud_log_append(context, f"✔ 创建 offset_obj：{offset_obj.name}")
 
         # 3. 生成 panels_raw（可调试）
-        panels_raw = build_corner_panels_data(context, ref_obj, offset_obj, offset_dist=offset_value)
+        panels_raw = build_corner_panels_data(context, ref_obj, offset_obj, offset_dist=offset_dist)
         stud_log_append(context, "✔ 完成 corner/side 预处理")
 
         # 4. 生成龙骨
@@ -2321,42 +2328,57 @@ class IFC_PT_StudDevPanel(bpy.types.Panel):
         col = layout.column(align=True)
         col.label(text="主龙骨：")
         col.prop(props, "selected_type", text="")
-
         col.separator()
-        col.label(text="主龙骨偏移：")
-        col.prop(props, "offset_x")
-        col.prop(props, "offset_y")
-        col.prop(props, "offset_z")
+        
+        row = col.row(align=True)
+        row.label(text="Offset:")
+        sub = row.row(align=True)
+        sub.prop(props, "offset_x", text="X")
+        sub.prop(props, "offset_y", text="Y")
+        sub.prop(props, "offset_z", text="Z")
         col.prop(props, "roll_rad")
 
         col.separator()
         col.label(text="副龙骨：")
         col.prop(props, "secondary_type", text="")
-        col.prop(props, "secondary_offset_x")
-        col.prop(props, "secondary_offset_y")
-        col.prop(props, "secondary_offset_z")
+        col.separator()
+        row = col.row(align=True)
+        row.label(text="Offset:")
+        sub = row.row(align=True)
+        sub.prop(props, "secondary_offset_x", text="X")
+        sub.prop(props, "secondary_offset_y", text="Y")
+        sub.prop(props, "secondary_offset_z", text="Z")
         col.prop(props, "secondary_roll_rad")
 
         col.separator()
         col.label(text="边龙骨：")
         col.prop(props, "edge_type", text="")
-        col.prop(props, "edge_offset_x")
-        col.prop(props, "edge_offset_y")
-        col.prop(props, "edge_offset_z")
+        col.separator()
+        row = col.row(align=True)
+        row.label(text="Offset:")
+        sub = row.row(align=True)
+        sub.prop(props, "edge_offset_x", text="X")
+        sub.prop(props, "edge_offset_y", text="Y")
+        sub.prop(props, "edge_offset_z", text="Z")
         col.prop(props, "edge_roll_rad")
 
         col.separator()
         col.label(text="转角龙骨：")
-        col.prop(props, "corner_inner_type", text="内角")
-        col.prop(props, "corner_outer_type", text="外角")
-        col.prop(props, "corner_offset_x")
-        col.prop(props, "corner_offset_y")
-        col.prop(props, "corner_offset_z")
+        col.prop(props, "corner_inner_type", text="阴角")
+        col.prop(props, "corner_outer_type", text="阳角")
+        col.separator()
+        row = col.row(align=True)
+        row.label(text="Offset:")
+        sub = row.row(align=True)
+        sub.prop(props, "corner_offset_x", text="X")
+        sub.prop(props, "corner_offset_y", text="Y")
+        sub.prop(props, "corner_offset_z", text="Z")
         col.prop(props, "corner_roll_rad")
 
         col.separator()
         col.label(text="参考面：")
         col.prop(props, "ref_obj", text="")
+        col.prop(props, "offset_dist")
         col.prop(props, "spacing")
         col.prop(props, "secondary_spacing")
         col.separator()
