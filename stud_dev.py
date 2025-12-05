@@ -803,46 +803,6 @@ def create_stud_instance(context, model, type_obj, start, end, roll_rad):
     return obj
 
 
-def build_final_offset_mesh_from_panels_raw(panels_raw, base_name="OffsetFinal"):
-    """
-    基于 panels_raw 构建最终 offset mesh（方案 A：所有 polygon 顶点独立）
-    仅使用 e["v1_final"] 作为 polygon 的顶点顺序来源。
-
-    返回：
-        Object（新创建的 mesh 对象）
-    """
-    # 创建 mesh & object
-    mesh = bpy.data.meshes.new(f"{base_name}_mesh")
-    obj = bpy.data.objects.new(f"{base_name}_obj", mesh)
-    bpy.context.collection.objects.link(obj)
-
-    bm = bmesh.new()
-
-    # 逐 polygon 构建几何
-    for poly_idx, pdata in panels_raw.items():
-        edges = pdata["edges"]
-
-        # 按 edges 顺序得到 polygon 顶点列表
-        verts_world = [e["v1_final"] for e in edges]
-
-        bm_face_verts = []
-        for v in verts_world:
-            bm_face_verts.append(bm.verts.new(v))
-
-        # 创建面
-        try:
-            bm.faces.new(bm_face_verts)
-        except ValueError:
-            # 如果 face 已经存在（理论上不会发生，因为全部独立顶点）
-            pass
-
-    # 输出 mesh
-    bm.to_mesh(mesh)
-    mesh.update()
-
-    return obj
-
-
 # =================================================================
 #  获取参考面顶点（按顺时针排序）
 # =================================================================
@@ -1547,59 +1507,46 @@ def generate_studs_on_canonical_panel(
 
 
 def create_canonical_panel_from_polygon(
-    src_obj,
-    poly,
-    verts_world_override=None,
+    verts_world,
+    face_normal_world,
+    collection,
+    name_prefix="canonical_panel",
     corner_edge_flags=None,
     corner_edge_types=None,
 ):
     """
     生成 canonical 面 + canonical→original 的变换矩阵 T。
-
-    可选：
-      - verts_world_override: 使用外部提供的世界坐标顶点（按 polygon 顶点顺序）
-      - corner_edge_flags/types: 每条边是否为 corner 以及阴/阳角类型
+    仅使用：
+      - verts_world: polygon 顶点世界坐标（按序）
+      - face_normal_world: polygon 法向（世界）
+      - collection: 要放进的 Blender Collection
     """
 
     # ==========================================================
-    # 1. 提取 polygon 顶点（世界空间）
+    # 1. polygon 顶点（世界空间）
     # ==========================================================
-    if verts_world_override is not None:
-        verts_world = list(verts_world_override)
-    else:
-        verts_world = [
-            src_obj.matrix_world @ src_obj.data.vertices[i].co
-            for i in poly.vertices
-        ]
+    verts_world = list(verts_world)
 
-    # polygon 中心
     C = sum(verts_world, Vector()) / len(verts_world)
 
-    # polygon 法向（世界空间）
-    n = poly.normal.copy()
-    n = (src_obj.matrix_world.to_3x3() @ n).normalized()   # 作为 +Z 方向
+    # polygon 法向（已是世界空间）
+    n = face_normal_world.normalized()
 
     # ==========================================================
     # 2. 构造 polygon 的局部坐标系 (t, b, n)
     # ==========================================================
-    # 取最长边方向作为 t（面内某一方向）
     edges_vec = []
     for i in range(len(verts_world)):
         v0 = verts_world[i]
         v1 = verts_world[(i + 1) % len(verts_world)]
         edges_vec.append(v1 - v0)
 
-    t = max(edges_vec, key=lambda e: e.length).normalized()  # +X
-    b = n.cross(t).normalized()                              # +Y，与 t、n 右手系
+    t = max(edges_vec, key=lambda e: e.length).normalized()
+    b = n.cross(t).normalized()
 
     # ==========================================================
     # 3. 构造 canonical→original 的世界变换矩阵 T
     # ==========================================================
-    # canonical:
-    #   +X → t
-    #   +Y → b
-    #   +Z → n
-    #
     T = Matrix((
         (t.x,  b.x,  n.x,  C.x),
         (t.y,  b.y,  n.y,  C.y),
@@ -1608,15 +1555,14 @@ def create_canonical_panel_from_polygon(
     ))
 
     # ==========================================================
-    # 4. 在 canonical 空间构造 panel_canonical 的几何
+    # 4. 在 canonical 空间构造 mesh
     # ==========================================================
-    mesh = bpy.data.meshes.new(f"{src_obj.name}_canonical_face_{poly.index}")
+    mesh = bpy.data.meshes.new(f"{name_prefix}")
     panel_canonical = bpy.data.objects.new(mesh.name, mesh)
-    src_obj.users_collection[0].objects.link(panel_canonical)
+    collection.objects.link(panel_canonical)
 
     T_inv = T.inverted()
     verts_canonical = [T_inv @ v for v in verts_world]
-
     face_indices = tuple(range(len(verts_canonical)))
 
     mesh.from_pydata(
@@ -1626,11 +1572,10 @@ def create_canonical_panel_from_polygon(
     )
     mesh.update()
 
-    # canonical 面保持 world_matrix = Identity：
     panel_canonical.matrix_world = Matrix.Identity(4)
 
     # ==========================================================
-    # 5. Corner 边信息映射到 canonical 边 index
+    # 5. Corner 映射
     # ==========================================================
     corner_edge_indices = set()
     corner_edge_type_map = {}
@@ -1645,7 +1590,6 @@ def create_canonical_panel_from_polygon(
                         corner_edge_type_map[i] = ctype
 
     return panel_canonical, T, corner_edge_indices, corner_edge_type_map
-
 
 # =================================================================
 #  将单面 Object 设置成 IfcVirtualElement
@@ -1692,44 +1636,36 @@ def parent_objects(parent_obj, children):
 #  多面 Mesh：循环生成各面龙骨 + 建立 IfcVirtualElement
 # =================================================================
 
-def generate_studs_on_mesh(context, model, props, ref_obj, panels_raw):
+def generate_studs_on_mesh(context, model, props, panels_raw):
     """
-    ref_obj: 已经 offset 过的 offset_obj
     panels_raw: 外部预先构建好的 corner + side + v*_final 数据
     """
-
     all_studs = []
-    if ref_obj.mode != "OBJECT":
-        bpy.ops.object.mode_set(mode="OBJECT")
+    collection = bpy.context.scene.collection  # 你也可自定义
 
-    mesh = ref_obj.data
+    for poly_idx, pdata in panels_raw.items():
 
-    for poly in mesh.polygons:
-        panel_data = panels_raw.get(poly.index)
-        if not panel_data:
-            continue
+        edges = pdata["edges"]
+        is_side = pdata.get("is_side", False)
+        n_world = pdata["normal_world"]      # panels_raw 已经有 normal_world
 
-        edges_data = panel_data["edges"]
-        is_side    = panel_data.get("is_side", False)
+        verts_world = [e["v1_final"] for e in edges]
+        corner_flags = [e["is_corner"] for e in edges]
+        corner_types = [e["corner_type"] for e in edges]
 
-        # canonical 顶点序列 = v1_final 列表
-        verts_world_override = [e["v1_final"] for e in edges_data]
-
-        corner_flags = [e["is_corner"] for e in edges_data]
-        corner_types = [e["corner_type"] for e in edges_data]
-
-        panel_canonical, T, corner_edge_indices, corner_edge_types = create_canonical_panel_from_polygon(
-            ref_obj,
-            poly,
-            verts_world_override=verts_world_override,
-            corner_edge_flags=corner_flags,
-            corner_edge_types=corner_types,
+        panel_canonical, T, corner_edge_indices, corner_edge_types = (
+            create_canonical_panel_from_polygon(
+                verts_world=verts_world,
+                face_normal_world=n_world,
+                collection=collection,
+                name_prefix=f"panel_{poly_idx}",
+                corner_edge_flags=corner_flags,
+                corner_edge_types=corner_types,
+            )
         )
 
         studs_local = generate_studs_on_canonical_panel(
-            context,
-            model,
-            props,
+            context, model, props,
             panel_canonical,
             is_side_face=is_side,
             corner_edge_indices=corner_edge_indices,
@@ -1741,8 +1677,6 @@ def generate_studs_on_mesh(context, model, props, ref_obj, panels_raw):
 
         panel_canonical.matrix_world = T
         all_studs.extend(studs_local)
-
-        stud_log_append(context, f"✔ polygon {poly.index} 完成，生成 {len(studs_local)} 根龙骨")
 
     return all_studs
 
@@ -2161,11 +2095,6 @@ class IFC_OT_PolygonOffset(bpy.types.Operator):
         panels_raw = build_corner_panels_data(context, ref_obj, offset_obj, offset_dist=offset_dist)
 
         draw_panels_raw_debug(context, panels_raw)
-        
-        final_obj = build_final_offset_mesh_from_panels_raw(panels_raw)
-
-        stud_log_append(context, "✔ 已可视化 final_obj，检查侧面20mm偏移是否正确")
-
 
         # ============================
         # DEBUG：打印 panels_raw 结构
@@ -2291,15 +2220,13 @@ class IFC_OT_ArrayStud_FromMultiRef(bpy.types.Operator):
         stud_log_append(context, "✔ 完成 corner/side 预处理")
 
         # 4. 生成龙骨
-        final_obj = build_final_offset_mesh_from_panels_raw(panels_raw)
         
         studs = generate_studs_on_mesh(
             context, model, props,
-            final_obj,
             panels_raw,
         )
 
-        delete_objects_safely([final_obj, offset_obj])
+        delete_objects_safely(offset_obj)
 
         if not studs:
             stud_log_append(context, "⚠ 未生成任何龙骨")
