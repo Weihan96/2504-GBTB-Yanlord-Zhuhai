@@ -1673,18 +1673,16 @@ def generate_studs_on_mesh(context, model, props, panels_raw):
         )
 
         parent_objects(panel_canonical, studs_local)
-        assign_virtual_element(panel_canonical)
-
         panel_canonical.matrix_world = T
+        clear_parent_and_keep_transformations(studs_local)
+        add_aggregate(panel_canonical, studs_local)
+        delete_objects_safely(panel_canonical)
         all_studs.extend(studs_local)
 
     return all_studs
 
 
-# ============================================================
-#  Utility: 安全删除 Blender 对象（不影响当前选择）
-# ============================================================
-def delete_objects_safely(objs):
+def exec_on_selected_objects(objs, lambda_func, error_msg="操作失败"):
     if not objs:
         return
 
@@ -1705,18 +1703,18 @@ def delete_objects_safely(objs):
     # 取消所有选中
     bpy.ops.object.select_all(action='DESELECT')
 
-    # 选择要删除的对象
+    # 选择要操作的对象
     for o in objs:
         o.select_set(True)
 
-    # 设置 active obj（为 delete 操作所需）
+    # 设置 active obj（为操作所需）
     bpy.context.view_layer.objects.active = objs[0]
 
-    # 删除
+    # 执行操作
     try:
-        bpy.ops.object.delete()
+        lambda_func()
     except Exception as e:
-        print(f"[WARN] 删除对象失败: {e}")
+        print(f"[WARN] {error_msg}: {e}")
 
     # 恢复原选中状态
     bpy.ops.object.select_all(action='DESELECT')
@@ -1724,6 +1722,31 @@ def delete_objects_safely(objs):
         if o and o.name in bpy.data.objects:
             o.select_set(True)
     bpy.context.view_layer.objects.active = prev_active
+
+
+# ============================================================
+#  Utility: 安全删除 Blender 对象（不影响当前选择）
+# ============================================================
+def delete_objects_safely(objs):
+    exec_on_selected_objects(objs, bpy.ops.object.delete,error_msg="删除对象失败")
+
+# ============================================================
+#  Utility: 安全清除 Blender 父级并保留变换（不影响当前选择）
+# ============================================================
+def clear_parent_and_keep_transformations(objs):
+    exec_on_selected_objects(objs, lambda: bpy.ops.object.parent_clear(type='CLEAR_KEEP_TRANSFORM'),"清除父对象失败")
+
+def add_aggregate(panel_canonical, studs_local):
+    # set cursor to panel_canonical
+    exec_on_selected_objects(panel_canonical, lambda: bpy.ops.view3d.snap_cursor_to_selected(),"设置光标到面板失败")
+    panel_name = panel_canonical.name
+    def _lambda():
+        # bpy.data.window_managers["WinMan"]. = "Custom"
+        # bpy.ops.object.select_all(action='DESELECT')
+        bpy.ops.bim.assign_class(obj=panel_name, ifc_class="IfcElementAssembly")
+        bpy.ops.bim.add_aggregate(aggregate_name=panel_name)
+    
+    exec_on_selected_objects(studs_local, _lambda, "添加聚合失败")
 
 
 def draw_panels_raw_debug(context, panels_raw, name_prefix="PDBG"):
