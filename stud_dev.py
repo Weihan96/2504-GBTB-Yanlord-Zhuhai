@@ -14,8 +14,7 @@ import ifcopenshell.util.element as elem_util
 STUD_EDGE_WIDTH = 0.034       # 边骨 34mm
 STUD_MAIN_WIDTH = 0.028       # 主骨宽度 28mm（短边方向）
 STUD_SEC_WIDTH = 0.049        # 副骨 49mm（长度不影响计算，只在扣 1mm 时用）
-STUD_MAIN_EXCESS = 0.100      # 主骨余量 100mm
-STUD_ALIGN_OFFSET = 0.0395    # 原点偏移 39.5mm
+STUD_MAIN_EXTENDED = 0.1
 STUD_SEC_CUT = 0.001          # 副骨两端各扣 0.5mm，总共 1mm
 
 
@@ -1285,14 +1284,14 @@ def compute_stud_layout(
     """
 
     # 计算副骨数量（沿长边）
-    base_len_sec = STUD_SEC_WIDTH + 2 * STUD_MAIN_EXCESS + 2 * STUD_EDGE_WIDTH
+    base_len_sec = 2 * (STUD_EDGE_WIDTH + STUD_MAIN_EXTENDED)
     if long_length <= base_len_sec:
         sec_count = 1
     else:
         sec_count = int((long_length - base_len_sec) // sec_spacing) + 1
 
     # 主骨长度（沿长边 extrusion）
-    main_extrude_len = (sec_count - 1) * sec_spacing + STUD_MAIN_EXCESS * 2 + STUD_MAIN_EXCESS
+    main_extrude_len = (sec_count - 1) * sec_spacing + STUD_MAIN_EXTENDED
 
     # 主龙骨数量（沿短边）
     base_len_main = STUD_MAIN_WIDTH + 2 * STUD_EDGE_WIDTH
@@ -1309,14 +1308,10 @@ def compute_stud_layout(
     ) / 2
 
     # 主骨长边方向偏移
-    main_long_offset = (
-        STUD_EDGE_WIDTH
-        + (long_length - 2 * STUD_EDGE_WIDTH - main_extrude_len) / 2
-        + STUD_ALIGN_OFFSET
-    )
+    main_long_offset = (long_length - (sec_count - 1) * sec_spacing) / 2
 
     # 副骨长边方向偏移
-    sec_long_offset = main_long_offset + STUD_MAIN_EXCESS
+    sec_long_offset = main_long_offset
 
     # 副骨：扣除 1mm
     sec_vec = local_sec_end - local_sec_start
@@ -1330,8 +1325,8 @@ def compute_stud_layout(
 
     # 主骨 extrusion 重设为 main_extrude_len
     main_dir = (local_main_end - local_main_start).normalized()
-    adjusted_main_start = local_main_start
-    adjusted_main_end   = local_main_start + main_dir * main_extrude_len
+    adjusted_main_start = local_main_start - STUD_MAIN_EXTENDED * main_dir
+    adjusted_main_end   = adjusted_main_start + main_extrude_len * main_dir
 
     return {
         "sec_count": sec_count,
@@ -1592,47 +1587,6 @@ def create_canonical_panel_from_polygon(
     return panel_canonical, T, corner_edge_indices, corner_edge_type_map
 
 # =================================================================
-#  将单面 Object 设置成 IfcVirtualElement
-# =================================================================
-
-def assign_virtual_element(obj):
-    """将 obj 标记为 IfcVirtualElement（需在 OBJECT 模式下调用）"""
-    if not obj:
-        return
-
-    # 设为 active & 选中
-    bpy.ops.object.select_all(action='DESELECT')
-    obj.select_set(True)
-    bpy.context.view_layer.objects.active = obj
-
-    # 先进入 EDIT，全选面，再回到 OBJECT
-    bpy.ops.object.mode_set(mode='EDIT')
-    bpy.ops.mesh.select_all(action='SELECT')
-    bpy.ops.object.mode_set(mode='OBJECT')
-
-    # 指定 IFC 类
-    bpy.ops.bim.assign_class(
-        ifc_class="IfcVirtualElement",
-        predefined_type="",
-        userdefined_type="",
-        props_to_pset=False,
-    )
-
-def parent_objects(parent_obj, children):
-    """将 children 全部 parent 到 parent_obj （Blender + IFC）"""
-    for child in children:
-        if not child:
-            continue
-        child.parent = parent_obj
-
-        # IFC parent-child 关系
-        try:
-            elem_util.assign_parent(child, parent_obj)
-        except:
-            pass
-
-
-# =================================================================
 #  多面 Mesh：循环生成各面龙骨 + 建立 IfcVirtualElement
 # =================================================================
 
@@ -1682,6 +1636,20 @@ def generate_studs_on_mesh(context, model, props, panels_raw):
     return all_studs
 
 
+def parent_objects(parent_obj, children):
+    """将 children 全部 parent 到 parent_obj （Blender + IFC）"""
+    for child in children:
+        if not child:
+            continue
+        child.parent = parent_obj
+
+        # IFC parent-child 关系
+        try:
+            elem_util.assign_parent(child, parent_obj)
+        except:
+            pass
+
+
 def exec_on_selected_objects(objs, lambda_func, error_msg="操作失败"):
     if not objs:
         return
@@ -1727,14 +1695,17 @@ def exec_on_selected_objects(objs, lambda_func, error_msg="操作失败"):
 # ============================================================
 #  Utility: 安全删除 Blender 对象（不影响当前选择）
 # ============================================================
+
 def delete_objects_safely(objs):
     exec_on_selected_objects(objs, bpy.ops.object.delete,error_msg="删除对象失败")
 
 # ============================================================
 #  Utility: 安全清除 Blender 父级并保留变换（不影响当前选择）
 # ============================================================
+
 def clear_parent_and_keep_transformations(objs):
     exec_on_selected_objects(objs, lambda: bpy.ops.object.parent_clear(type='CLEAR_KEEP_TRANSFORM'),"清除父对象失败")
+
 
 def add_aggregate(panel_canonical, studs_local):
     # set cursor to panel_canonical
@@ -2191,7 +2162,6 @@ class IFC_OT_PolygonOffset(bpy.types.Operator):
         return {"FINISHED"}
 
 
-
 # =================================================================
 #  Operator：为多面参考面生成龙骨
 # =================================================================
@@ -2257,7 +2227,6 @@ class IFC_OT_ArrayStud_FromMultiRef(bpy.types.Operator):
             stud_log_append(context, f"🎉 多面龙骨生成完成，共 {len(studs)} 根")
 
         return {"FINISHED"}
-
 
 
 # =================================================================
