@@ -307,7 +307,7 @@ def validate_reference_mesh(obj):
     return True, ""
 
 
-def apply_corner_offset(panels_raw, offset_dist=0.02):
+def apply_corner_offset(panels_raw, offset_dist=0.019):
     """
     仅对【侧面 + 阳角】的 corner edge 做 20mm 偏移（沿邻面法向反向）。
 
@@ -340,7 +340,7 @@ def apply_corner_offset(panels_raw, offset_dist=0.02):
 
         # 2️⃣ 对满足条件的 corner edge，将其两个端点的 final 一起偏移
         for e in edges:
-            if not (is_side and e.get("is_corner") and e.get("corner_type") == "outer"):
+            if not ((is_side and e.get("corner_type") == "outer") or e.get("is_butt") == True):
                 continue
             neigh_n = e.get("neighbor_normal")
             if neigh_n is None:
@@ -537,7 +537,7 @@ def build_panels_data(context, ref_obj, offset_obj, offset_dist=0.019, side_z_ep
                         (bb_min.z - aabb_eps) <= q.z <= (bb_max.z + aabb_eps)
                     )
 
-                if not (in_aabb(p1_proj) and in_aabb(p2_proj)):
+                if not (in_aabb(p1_proj) or in_aabb(p2_proj)):
                     continue
 
                 # --- 找到 BUTT INNER CORNER ---
@@ -738,7 +738,7 @@ def get_long_short_axis_in_local(ref_obj):
     return local_long_axis, local_short_axis
 
 
-def create_offset_object_from_ref(ref_obj, offset_dist=0.02, epsilon=1e-5):
+def create_offset_object_from_ref(ref_obj, offset_dist=0.019, epsilon=1e-5):
     """
     基于 ref_obj 创建 offset 后的 mesh：
         1. Solidify
@@ -1621,6 +1621,7 @@ def draw_panels_raw_debug(context, panels_raw, name_prefix="PDBG"):
     C_YELLOW = (1.0, 1.0, 0.0, 1.0)   # side_outer
     C_RED    = (1.0, 0.0, 0.0, 1.0)   # vertical
     C_BLUE   = (0.0, 0.4, 1.0, 1.0)   # inner
+    C_CYAN   = (0.0, 1.0, 1.0, 1.0)   # butt
     C_PURPLE = (0.5, 0.0, 1.0, 1.0)   # side_inner
     C_GRAY   = (0.5, 0.5, 0.5, 1.0)   # non-corner
 
@@ -1657,10 +1658,7 @@ def draw_panels_raw_debug(context, panels_raw, name_prefix="PDBG"):
                 col = C_YELLOW
             elif ctype == "inner":
                 ctag = "IN"
-                col = C_BLUE
-            elif ctype == "butt_inner":
-                ctag = "IN"
-                col = C_BLUE
+                col = C_BLUE if not e.get("is_butt") else C_CYAN
             elif ctype == "side_inner":
                 ctag = "SIDE_IN"
                 col = C_PURPLE
