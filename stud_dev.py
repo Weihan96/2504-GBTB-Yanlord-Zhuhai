@@ -307,331 +307,6 @@ def validate_reference_mesh(obj):
     return True, ""
 
 
-# =================================================================
-#  Corner 工具：识别阴阳角 + 侧面 + 20mm 偏移
-# =================================================================
-
-def find_corner_edges(offset_obj,
-                      include_side_side_corners: bool = False,
-                      side_z_eps: float = 0.01):
-    """
-    基于 offset_obj 分析所有 polygon，识别：
-      - 每个面的世界坐标顶点
-      - 每条边是否为转角边（is_corner）
-      - 阴角 / 阳角 corner_type = "inner" / "outer"
-      - 邻接面的世界法向 neighbor_normal
-
-    参数：
-      include_side_side_corners:
-        False（默认）时：两个“侧面”之间的交线不视为 corner；
-        True 时：保持原逻辑，侧面-侧面交线也算 corner。
-
-      side_z_eps:
-        判断侧面用的阈值，和 classify_side_faces 保持一致：
-          |normal.z| < side_z_eps → 侧面
-
-    返回 panels_raw 结构：
-        {
-          poly_index: {
-            "verts_world": [Vector, ...]   # 按 polygon 顶点顺序
-            "edges": [
-              {
-                "v1_index": int,
-                "v2_index": int,
-                "v1_world": Vector,
-                "v2_world": Vector,
-                "is_corner": bool,
-                "corner_type": "inner"/"outer"/None,
-                "neighbor_normal": Vector or None,
-              },
-              ...
-            ],
-            "normal_world": Vector,
-          },
-          ...
-        }
-    """
-    mesh = offset_obj.data
-    mw = offset_obj.matrix_world
-
-    # 多边形世界法向
-    poly_normals = {}
-    for poly in mesh.polygons:
-        n_world = (mw.to_3x3() @ poly.normal).normalized()
-        poly_normals[poly.index] = n_world
-
-    # 与 classify_side_faces 同一规则：|normal.z| < 0.01 → 侧面
-    is_side = {
-        idx: (abs(n.z) < side_z_eps)
-        for idx, n in poly_normals.items()
-    }
-
-    # 边与多边形的关联：key = (min(v1,v2), max(v1,v2))
-    edge_map = {}
-    for poly in mesh.polygons:
-        verts = poly.vertices
-        n = len(verts)
-        for i in range(n):
-            v1 = verts[i]
-            v2 = verts[(i + 1) % n]
-            key = tuple(sorted((v1, v2)))
-            edge_map.setdefault(key, []).append((poly.index, i))
-
-    panels_raw = {}
-
-    for poly in mesh.polygons:
-        verts = poly.vertices
-        n = len(verts)
-
-        data = {
-            "verts_world": [mw @ mesh.vertices[i].co for i in verts],
-            "edges": [],
-            "normal_world": poly_normals[poly.index],
-        }
-        panels_raw[poly.index] = data
-
-        for i in range(n):
-            v1_idx = verts[i]
-            v2_idx = verts[(i + 1) % n]
-            v1_world = mw @ mesh.vertices[v1_idx].co
-            v2_world = mw @ mesh.vertices[v2_idx].co
-
-            key = tuple(sorted((v1_idx, v2_idx)))
-            attached = edge_map.get(key, [])
-
-            is_corner = False
-            corner_type = None
-            neighbor_normal = None
-
-            if len(attached) == 2:
-                (pA, _), (pB, _) = attached
-                other_poly_idx = pB if pA == poly.index else pA
-
-                n_self = poly_normals[poly.index]
-                n_other = poly_normals[other_poly_idx]
-
-                # 如果不希望把 “两个侧面之间” 的交线当成 corner，则直接跳过
-                if (
-                    not include_side_side_corners
-                    and is_side.get(poly.index, False)
-                    and is_side.get(other_poly_idx, False)
-                ):
-                    # 保持 is_corner=False, neighbor_normal=None
-                    pass
-                else:
-                    dot = n_self.dot(n_other)
-
-                    # 垂直：认为是转角边
-                    if abs(dot) < 1e-3:
-                        is_corner = True
-                        neighbor_normal = n_other
-
-                        e_dir = (v2_world - v1_world)
-                        if e_dir.length > 1e-6:
-                            e_dir.normalize()
-                            cross_n = n_self.cross(n_other)
-                            sign = cross_n.dot(e_dir)
-                            if sign > 0:
-                                corner_type = "outer"
-                            else:
-                                corner_type = "inner"
-
-            data["edges"].append({
-                "v1_index": v1_idx,
-                "v2_index": v2_idx,
-                "v1_world": v1_world,
-                "v2_world": v2_world,
-                "vert_key": key,
-                "is_corner": is_corner,
-                "corner_type": corner_type,
-                "neighbor_normal": neighbor_normal,
-            })
-
-    return panels_raw
-
-
-# ===============================================================
-#  BUTT INNER CORNER：基于 offset_obj（正确偏移后）
-# ===============================================================
-
-def find_butt_inner_corners_final(offset_obj,
-                                  plane_eps=1e-3,
-                                  aabb_eps=1e-3,
-                                  dot_orth_eps=1e-3):
-    """
-    检测 “非侧面 B 的边贴到 侧面 A 的偏移平面（offset_obj）内部”的 butt inner corner。
-
-    返回：
-        butt_map[(polyB_idx, edge_key)] = {
-            "polyA": polyA_idx,         # 侧面
-            "neighbor_normal": normal_of_A,
-            "v1_world": p1_proj,        # 投影后的点
-            "v2_world": p2_proj,
-            "dist": average_plane_dist,
-        }
-    """
-
-    mesh = offset_obj.data
-    mw   = offset_obj.matrix_world
-
-    # --- 构建缓存 ---
-    poly_count = len(mesh.polygons)
-
-    poly_normals = [ (mw.to_3x3() @ poly.normal).normalized()
-                      for poly in mesh.polygons ]
-
-    poly_centers = [
-        sum((mw @ mesh.vertices[i].co for i in poly.vertices), Vector()) / len(poly.vertices)
-        for poly in mesh.polygons
-    ]
-
-    # AABB（用于判断投影是否在面内）
-    poly_aabb_min = []
-    poly_aabb_max = []
-    for poly in mesh.polygons:
-        ws = [mw @ mesh.vertices[i].co for i in poly.vertices]
-        poly_aabb_min.append(Vector((min(p.x for p in ws),
-                                     min(p.y for p in ws),
-                                     min(p.z for p in ws))))
-        poly_aabb_max.append(Vector((max(p.x for p in ws),
-                                     max(p.y for p in ws),
-                                     max(p.z for p in ws))))
-
-    # 侧面判断：法向不接近 Z 方向 → 侧面
-    side_mask = [abs(n.dot(Vector((0,0,1)))) < 0.9 for n in poly_normals]
-
-    side_polys    = [i for i in range(poly_count) if side_mask[i]]
-    nonside_polys = [i for i in range(poly_count) if not side_mask[i]]
-
-    butt_map = {}
-
-    # ==========================================================
-    # 遍历：非侧面 B 的边是否贴在 侧面 A 上
-    # ==========================================================
-    for pb in nonside_polys:
-        polyB = mesh.polygons[pb]
-        vertsB = list(polyB.vertices)
-        nB = poly_normals[pb]
-
-        vcount = len(vertsB)
-
-        for i in range(vcount):
-            v1 = vertsB[i]
-            v2 = vertsB[(i + 1) % vcount]
-
-            p1 = mw @ mesh.vertices[v1].co
-            p2 = mw @ mesh.vertices[v2].co
-
-            edge_key = tuple(sorted((v1, v2)))
-
-            # 遍历所有侧面 A
-            for pa in side_polys:
-                polyA = mesh.polygons[pa]
-                nA = poly_normals[pa]
-                cA = poly_centers[pa]
-
-                # 1. 法向必须有明显夹角（即 A/B 应该接近垂直）
-                if abs(nA.dot(nB)) > dot_orth_eps:
-                    continue
-
-                # 2. 判断 p1/p2 是否靠近 A 的平面
-                d1 = abs((p1 - cA).dot(nA))
-                d2 = abs((p2 - cA).dot(nA))
-
-                if d1 > plane_eps or d2 > plane_eps:
-                    continue
-
-                # 3. 投影到 A 平面
-                p1_proj = p1 - nA * ( (p1 - cA).dot(nA) )
-                p2_proj = p2 - nA * ( (p2 - cA).dot(nA) )
-
-                # 4. 投影点是否落在 A 的 AABB 内
-                bb_min = poly_aabb_min[pa]
-                bb_max = poly_aabb_max[pa]
-
-                def in_aabb(q):
-                    return (
-                        (bb_min.x - aabb_eps) <= q.x <= (bb_max.x + aabb_eps) and
-                        (bb_min.y - aabb_eps) <= q.y <= (bb_max.y + aabb_eps) and
-                        (bb_min.z - aabb_eps) <= q.z <= (bb_max.z + aabb_eps)
-                    )
-
-                if not (in_aabb(p1_proj) and in_aabb(p2_proj)):
-                    continue
-
-                # --- 找到 BUTT INNER CORNER ---
-                butt_map[(pb, i)] = {
-                    "polyA": pa,
-                    "neighbor_normal": nA,
-                    "v1_world": p1_proj,
-                    "v2_world": p2_proj,
-                    "dist": (d1 + d2) * 0.5,
-                }
-                break   # 当前边无需继续找其它 A
-
-    return butt_map
-
-
-# ===============================================================
-#  将新版 butt-corner 信息合并进 panels_raw
-#  （基于 poly_idx + edge_idx）
-# ===============================================================
-
-def merge_butt_inner_corners_into_panels(panels_raw, butt_map):
-    """
-    适配新版 butt_map（key = (poly_idx, edge_idx)）。
-
-    但不能覆盖已有的拓扑 corner（特别是 outer），
-    只对 non-corner 或 inner 类型的边进行补充。
-    """
-
-    for (poly_idx, edge_idx), info in butt_map.items():
-
-        if poly_idx not in panels_raw:
-            continue
-
-        edges = panels_raw[poly_idx].get("edges")
-        if not edges:
-            continue
-
-        if edge_idx < 0 or edge_idx >= len(edges):
-            continue
-
-        edge = edges[edge_idx]
-
-        # ======================================================
-        # 🚫 不能覆盖已有 corner（特别是拓扑 outer）
-        # ======================================================
-        if edge.get("is_corner"):
-            # 已经是 outer → 绝对不能覆盖
-            if edge.get("corner_type") == "outer":
-                continue
-
-            # 已经是 inner，但来自拓扑检测 → 不覆盖
-            # 保留你需要的行为，可以根据需要决定
-            if edge.get("is_butt") is not True:
-                continue
-
-        # ======================================================
-        # ✔ 覆盖 / 添加 butt inner corner 信息
-        # ======================================================
-        edge["is_corner"] = True
-        edge["corner_type"] = "inner"
-        edge["neighbor_normal"] = info.get("neighbor_normal")
-        edge["is_butt"] = True
-
-
-def classify_side_faces(panels_raw):
-    """
-    标记侧面 / 非侧面：
-      - |normal.z| < 阈值 → 视为侧面（墙面等）
-      - 其余视为非侧面（顶棚 / 地面）
-    """
-    for poly_idx, data in panels_raw.items():
-        n_world = data["normal_world"]
-        data["is_side"] = abs(n_world.z) < 0.01
-
-
 def apply_corner_offset(panels_raw, offset_dist=0.02):
     """
     仅对【侧面 + 阳角】的 corner edge 做 20mm 偏移（沿邻面法向反向）。
@@ -684,60 +359,238 @@ def apply_corner_offset(panels_raw, offset_dist=0.02):
             e["v1_final"] = vert_map[k1]["final"].copy()
             e["v2_final"] = vert_map[k2]["final"].copy()
 
-
-# ===============================================================
-#  Corner + 侧面 + 阴角 + 20mm 偏移 一站式封装
-# ===============================================================
-
-def build_corner_panels_data(context, ref_obj, offset_obj, offset_dist=0.019):
-    """
-    一站式封装：
-
-      1. 基于 offset_obj 识别拓扑 corner（原有逻辑）
-      2. 基于 ref_obj 额外识别 butt 阴角（非拓扑、贴合），并合并到 panels_raw
-      3. 标记侧面 is_side
-      4. 仅对【侧面 + 阳角】corner 边做 20mm 偏移（沿邻面法向反向）
-      5. 返回 panels_raw
-
-    最终 panels_raw 结构：
-      {
-        poly_idx: {
-          "normal_world": Vector,
-          "is_side": bool,
-          "edges": [
-            {
-              "v1_world": Vector,
-              "v2_world": Vector,
-              "v1_final": Vector,
-              "v2_final": Vector,
-              "vert_key": (vi, vj),
-              "is_corner": bool,
-              "corner_type": "inner"/"outer"/None,
-              "neighbor_normal": Vector|None,
-              ...
-            },
-            ...
-          ]
-        },
-        ...
-      }
-    """
+def build_panels_data(context, ref_obj, offset_obj, offset_dist=0.019, side_z_eps=0.01, plane_eps=1e-3, aabb_eps=1e-3, dot_orth_eps=1e-3,include_side_side_corners=False):
     # 1. 原有 corner 检测（基于 offset_obj）
-    panels_raw = find_corner_edges(offset_obj)
+    mesh = offset_obj.data
+    mw = offset_obj.matrix_world
+    
+    # --- 构建缓存 ---
+    poly_count = len(mesh.polygons)
+
+    poly_normals = [ (mw.to_3x3() @ poly.normal).normalized()
+                      for poly in mesh.polygons ]
+
+    poly_centers = [
+        sum((mw @ mesh.vertices[i].co for i in poly.vertices), Vector()) / len(poly.vertices)
+        for poly in mesh.polygons
+    ]
+
+    # AABB（用于判断投影是否在面内）
+    poly_aabb_min = []
+    poly_aabb_max = []
+    for poly in mesh.polygons:
+        ws = [mw @ mesh.vertices[i].co for i in poly.vertices]
+        poly_aabb_min.append(Vector((min(p.x for p in ws),
+                                     min(p.y for p in ws),
+                                     min(p.z for p in ws))))
+        poly_aabb_max.append(Vector((max(p.x for p in ws),
+                                     max(p.y for p in ws),
+                                     max(p.z for p in ws))))
+
+    # 侧面判断：法向不接近 Z 方向 → 侧面
+    side_mask = [abs(n.z) < side_z_eps for n in poly_normals]
+
+    side_polys    = [i for i in range(poly_count) if side_mask[i]]
+    nonside_polys = [i for i in range(poly_count) if not side_mask[i]]
+
+    # 边与多边形的关联：key = (min(v1,v2), max(v1,v2))
+    edge_map = {}
+    for poly in mesh.polygons:
+        verts = poly.vertices
+        n = len(verts)
+        for i in range(n):
+            v1 = verts[i]
+            v2 = verts[(i + 1) % n]
+            key = tuple(sorted((v1, v2)))
+            edge_map.setdefault(key, []).append((poly.index, i))
+
+    panels_raw = {}
+
+    for poly in mesh.polygons:
+        data = {
+            "verts_world": [mw @ mesh.vertices[i].co for i in verts],
+            "edges": [],
+            "normal_world": poly_normals[poly.index],
+            "is_side": side_mask[poly.index]
+        }
+        panels_raw[poly.index] = data
+
+        verts = poly.vertices
+        n = len(verts)
+        for i in range(n):
+            v1_idx = verts[i]
+            v2_idx = verts[(i + 1) % n]
+            v1_world = mw @ mesh.vertices[v1_idx].co
+            v2_world = mw @ mesh.vertices[v2_idx].co
+            e_dir = (v2_world - v1_world)
+
+            key = tuple(sorted((v1_idx, v2_idx)))
+            attached = edge_map.get(key, [])
+
+            is_corner = False
+            corner_type = None
+            neighbor_normal = None
+            is_vertical = (e_dir - e_dir.dot(Vector((0,0,1))) * Vector((0,0,1))).length < 1e-3
+
+            if len(attached) == 2:
+                (pA, _), (pB, _) = attached
+                other_poly_idx = pB if pA == poly.index else pA
+
+                n_self = poly_normals[poly.index]
+                n_other = poly_normals[other_poly_idx]
+                dot = n_self.dot(n_other)
+
+                if e_dir.length > 1e-6:
+                    # 垂直：认为是转角边
+                    if abs(dot) < 1e-3:
+                        is_corner = True
+                        neighbor_normal = n_other
+                        
+                        e_dir.normalize()
+                        cross_n = n_self.cross(n_other)
+                        sign = cross_n.dot(e_dir)
+                        
+                        is_side = side_mask[poly.index]
+                        is_side_other = side_mask[other_poly_idx]
+                        
+                        if sign > 0:
+                            if (is_side and is_side_other):
+                                corner_type = "side_outer"
+                            else:
+                                corner_type = "outer"
+                        else:
+                            if (is_side and is_side_other):
+                                corner_type = "side_inner"
+                            else:
+                                corner_type = "inner"
+            elif is_vertical:
+                is_corner = True # 侧面上的 end 边也认为是 corner
+                corner_type = "side_end"
+
+            data["edges"].append({
+                "v1_index": v1_idx,
+                "v2_index": v2_idx,
+                "v1_world": v1_world,
+                "v2_world": v2_world,
+                "vert_key": key,
+                "is_corner": is_corner,
+                "corner_type": corner_type,
+                "neighbor_normal": neighbor_normal,
+            })
+
 
     # 2. 新增：在 ref_obj 上检测“贴在顶面的侧边阴角”
-    butt_map = find_butt_inner_corners_final(offset_obj, offset_dist)
-    merge_butt_inner_corners_into_panels(panels_raw, butt_map)
 
-    # 3. 标记侧面（你原来的函数）
-    classify_side_faces(panels_raw)
+    
+
+    butt_map = {}
+
+    # ==========================================================
+    # 遍历：非侧面 B 的边是否贴在 侧面 A 上
+    # ==========================================================
+    for pb in nonside_polys:
+        polyB = mesh.polygons[pb]
+        vertsB = list(polyB.vertices)
+        nB = poly_normals[pb]
+
+        vcount = len(vertsB)
+
+        for i in range(vcount):
+            v1 = vertsB[i]
+            v2 = vertsB[(i + 1) % vcount]
+
+            p1 = mw @ mesh.vertices[v1].co
+            p2 = mw @ mesh.vertices[v2].co
+
+            edge_key = tuple(sorted((v1, v2)))
+
+            # 遍历所有侧面 A
+            for pa in side_polys:
+                polyA = mesh.polygons[pa]
+                nA = poly_normals[pa]
+                cA = poly_centers[pa]
+
+                # 1. 法向必须有明显夹角（即 A/B 应该接近垂直）
+                if abs(nA.dot(nB)) > dot_orth_eps:
+                    continue
+
+                # 2. 判断 p1/p2 是否靠近 A 的平面
+                offset_cA = cA + nA * offset_dist
+                d1 = abs((p1 - offset_cA).dot(nA))
+                d2 = abs((p2 - offset_cA).dot(nA))
+
+                if d1 > plane_eps or d2 > plane_eps:
+                    continue
+
+                # 3. 投影到 A 平面
+                p1_proj = p1 - nA * ( (p1 - cA).dot(nA) )
+                p2_proj = p2 - nA * ( (p2 - cA).dot(nA) )
+
+                # 4. 投影点是否落在 A 的 AABB 内
+                bb_min = poly_aabb_min[pa]
+                bb_max = poly_aabb_max[pa]
+
+                def in_aabb(q):
+                    return (
+                        (bb_min.x - aabb_eps) <= q.x <= (bb_max.x + aabb_eps) and
+                        (bb_min.y - aabb_eps) <= q.y <= (bb_max.y + aabb_eps) and
+                        (bb_min.z - aabb_eps) <= q.z <= (bb_max.z + aabb_eps)
+                    )
+
+                if not (in_aabb(p1_proj) and in_aabb(p2_proj)):
+                    continue
+
+                # --- 找到 BUTT INNER CORNER ---
+                butt_map[(pb, i)] = {
+                    "polyA": pa,
+                    "neighbor_normal": nA,
+                    "v1_world": p1_proj,
+                    "v2_world": p2_proj,
+                    "dist": (d1 + d2) * 0.5,
+                }
+                break   # 当前边无需继续找其它 A
+
+    for (poly_idx, edge_idx), info in butt_map.items():
+
+        if poly_idx not in panels_raw:
+            continue
+
+        edges = panels_raw[poly_idx].get("edges")
+        if not edges:
+            continue
+
+        if edge_idx < 0 or edge_idx >= len(edges):
+            continue
+
+        edge = edges[edge_idx]
+
+        # ======================================================
+        # 🚫 不能覆盖已有 corner（特别是拓扑 outer）
+        # ======================================================
+        if edge.get("is_corner"):
+            # 已经是 outer → 绝对不能覆盖
+            if edge.get("corner_type") == "outer":
+                continue
+
+            # 已经是 inner，但来自拓扑检测 → 不覆盖
+            # 保留你需要的行为，可以根据需要决定
+            if edge.get("is_butt") is not True:
+                continue
+
+        # ======================================================
+        # ✔ 覆盖 / 添加 butt inner corner 信息
+        # ======================================================
+        edge["is_corner"] = True
+        edge["corner_type"] = "inner"
+        edge["neighbor_normal"] = info.get("neighbor_normal")
+        edge["is_butt"] = True
+
+
 
     # 4. 对 侧面+阳角 corner 边做 20mm 偏移
     apply_corner_offset(panels_raw, offset_dist=offset_dist)
 
     return panels_raw
-
-
 # =================================================================
 #  创建实例（最终调用逻辑完全一致）
 # =================================================================
@@ -1194,6 +1047,9 @@ def outline_studs_on_reference(
     corner_outer_type_obj=None,
     corner_offset=None,
     corner_roll_rad=None,
+    side_end_type_obj=None,
+    side_end_offset=None,
+    side_end_roll_rad=None,
 ):
     """沿参考面边缘生成描边龙骨，支持转角（阴/阳角）判断"""
 
@@ -1211,7 +1067,7 @@ def outline_studs_on_reference(
         # 角信息
         is_corner = corner_edge_indices is not None and edge_idx in corner_edge_indices
         ctype = None
-        if is_corner and corner_edge_types:
+        if corner_edge_types:
             ctype = corner_edge_types.get(edge_idx)
 
         # 决定本条边用什么类型 & 偏移 & roll
@@ -1219,21 +1075,27 @@ def outline_studs_on_reference(
         offset_vec = edge_offset
         roll = edge_roll_rad
 
-        if is_corner:
-            # 侧面上的 corner：不生成转角龙骨，直接跳过
-            if is_side_face:
-                continue
 
-            # 非侧面：按阴角/阳角用不同类型
-            if ctype == "inner" and corner_inner_type_obj:
-                stud_type = corner_inner_type_obj
-            elif ctype == "outer" and corner_outer_type_obj:
-                stud_type = corner_outer_type_obj
-            # 使用 corner offset / roll（如果有）
-            if corner_offset is not None:
-                offset_vec = corner_offset
-            if corner_roll_rad is not None:
-                roll = corner_roll_rad
+        # 使用 corner offset / roll（如果有）
+        if corner_offset is not None:
+            offset_vec = corner_offset
+        if corner_roll_rad is not None:
+            roll = corner_roll_rad
+        
+        # 非侧面：按阴角/阳角用不同类型
+        if ctype == "inner" and corner_inner_type_obj:
+            stud_type = corner_inner_type_obj
+        elif ctype == "outer" and corner_outer_type_obj:
+            stud_type = corner_outer_type_obj
+        elif ctype == "side_inner" and corner_inner_type_obj:
+            stud_type = corner_inner_type_obj
+            roll += math.pi/2
+        elif ctype == "side_outer" and corner_inner_type_obj:
+            stud_type = corner_inner_type_obj
+        elif ctype == "side_end" and side_end_type_obj:
+            stud_type = side_end_type_obj
+            offset_vec = side_end_offset
+            roll = side_end_roll_rad
 
         # 若未设置类型则跳过
         if not stud_type:
@@ -1444,8 +1306,9 @@ def generate_studs_on_canonical_panel(
     edge_type_obj         = find_member_type(model, props.edge_type)
     corner_inner_type_obj = find_member_type(model, props.corner_inner_type)
     corner_outer_type_obj = find_member_type(model, props.corner_outer_type)
-
-    if edge_type_obj:
+    side_end_type_obj = find_member_type(model, props.side_end_type)
+    
+    if edge_type_obj and side_end_type_obj and corner_inner_type_obj and corner_outer_type_obj:
         edge_offset = Vector((
             props.edge_offset_x,
             props.edge_offset_y,
@@ -1456,7 +1319,11 @@ def generate_studs_on_canonical_panel(
             props.corner_offset_y,
             props.corner_offset_z,
         ))
-
+        side_end_offset = Vector((
+            props.side_end_offset_x,
+            props.side_end_offset_y,
+            props.side_end_offset_z,
+        ))
         studs = outline_studs_on_reference(
             context, model,
             edge_type_obj,
@@ -1470,6 +1337,9 @@ def generate_studs_on_canonical_panel(
             corner_outer_type_obj=corner_outer_type_obj,
             corner_offset=corner_offset,
             corner_roll_rad=props.corner_roll_rad,
+            side_end_type_obj=side_end_type_obj,
+            side_end_offset=side_end_offset,
+            side_end_roll_rad=props.side_end_roll_rad,
         )
         _append(studs)
 
@@ -1724,10 +1594,13 @@ def draw_panels_raw_debug(context, panels_raw, name_prefix="PDBG"):
     """
     可视化 panels_raw（只画 final 边）：
       outer 阳角 = 绿
+      side_outer 侧面阳角 = 黄
       inner 阴角 = 蓝
-      non-corner = 黄
+      side_inner 侧面阴角 = 紫
+      vertical 垂直边 = 红
+      non-corner = 灰
     object.name 极简格式：
-      PDBG_p{poly}_e{edge}_{OUT/IN/N}_nn(x,y,z)_F
+      PDBG_p{poly}_e{edge}_{OUT/IN/SIDE_IN/SIDE_OUT/VERT/N}_nn(x,y,z)_F
     """
 
     # 删除旧的 debug 对象
@@ -1745,8 +1618,11 @@ def draw_panels_raw_debug(context, panels_raw, name_prefix="PDBG"):
 
     # Object Color
     C_GREEN  = (0.0, 1.0, 0.0, 1.0)   # outer
+    C_YELLOW = (1.0, 1.0, 0.0, 1.0)   # side_outer
+    C_RED    = (1.0, 0.0, 0.0, 1.0)   # vertical
     C_BLUE   = (0.0, 0.4, 1.0, 1.0)   # inner
-    C_YELLOW = (1.0, 1.0, 0.0, 1.0)   # non-corner
+    C_PURPLE = (0.5, 0.0, 1.0, 1.0)   # side_inner
+    C_GRAY   = (0.5, 0.5, 0.5, 1.0)   # non-corner
 
     def mk(name, p1, p2, col):
         mesh = bpy.data.meshes.new(name+"_M")
@@ -1768,24 +1644,32 @@ def draw_panels_raw_debug(context, panels_raw, name_prefix="PDBG"):
         for ei, e in enumerate(edges):
             v1f = e.get("v1_final")
             v2f = e.get("v2_final")
+            is_vertical = e.get("is_vertical")
             is_corner = e.get("is_corner")
             ctype = e.get("corner_type")
             neigh = e.get("neighbor_normal")
 
-            # 简短 corner 表示
-            if not is_corner:
-                ctag = "N"    # non-corner
+            if ctype == "outer":
+                ctag = "OUT"
+                col = C_GREEN
+            elif ctype == "side_outer":
+                ctag = "SIDE_OUT"
                 col = C_YELLOW
+            elif ctype == "inner":
+                ctag = "IN"
+                col = C_BLUE
+            elif ctype == "butt_inner":
+                ctag = "IN"
+                col = C_BLUE
+            elif ctype == "side_inner":
+                ctag = "SIDE_IN"
+                col = C_PURPLE
+            elif ctype == "side_end":
+                ctag = "SIDE_END"
+                col = C_RED
             else:
-                if ctype == "outer":
-                    ctag = "OUT"
-                    col = C_GREEN
-                elif ctype == "inner":
-                    ctag = "IN"
-                    col = C_BLUE
-                else:
-                    ctag = "N"
-                    col = C_YELLOW
+                ctag = "N"
+                col = C_GRAY
 
             # 简短 neighbor normal
             if neigh is None:
@@ -1927,6 +1811,34 @@ class StudDevProps(bpy.types.PropertyGroup):
         items=update_stud_type_enum,
     )
 
+    side_end_type: bpy.props.EnumProperty(
+        name="侧面收尾龙骨",
+        items=update_stud_type_enum,
+    )
+    side_end_offset_x: bpy.props.FloatProperty(
+        name="Offset X",
+        default=0.0,
+        description="侧面收尾龙骨在参考面局部 X 方向偏移",
+        unit="LENGTH",
+    )
+    side_end_offset_y: bpy.props.FloatProperty(
+        name="Offset Y",
+        default=0.0,
+        description="侧面收尾龙骨在参考面局部 Y 方向偏移",
+        unit="LENGTH",
+    )
+    side_end_offset_z: bpy.props.FloatProperty(
+        name="Offset Z",
+        default=0.0,
+        description="侧面收尾龙骨在参考面局部 Z 方向偏移",
+        unit="LENGTH",
+    )
+    side_end_roll_rad: bpy.props.FloatProperty(
+        name="Roll",
+        default=0.0,
+        description="侧面收尾龙骨绕主轴旋转角度（覆面朝向）",
+        unit="ROTATION",
+    )
     corner_offset_x: bpy.props.FloatProperty(
         name="Offset X",
         default=0.0,
@@ -2086,7 +1998,7 @@ class IFC_OT_PolygonOffset(bpy.types.Operator):
             f"   使用偏移量 offset = {offset_dist:.4f} m"
         )
         # 3. 生成 panels_raw（可调试）
-        panels_raw = build_corner_panels_data(context, ref_obj, offset_obj, offset_dist=offset_dist)
+        panels_raw = build_panels_data(context, ref_obj, offset_obj, offset_dist=offset_dist)
 
         draw_panels_raw_debug(context, panels_raw)
 
@@ -2209,7 +2121,7 @@ class IFC_OT_ArrayStud_FromMultiRef(bpy.types.Operator):
         stud_log_append(context, f"✔ 创建 offset_obj：{offset_obj.name}")
 
         # 3. 生成 panels_raw（可调试）
-        panels_raw = build_corner_panels_data(context, ref_obj, offset_obj, offset_dist=offset_dist)
+        panels_raw = build_panels_data(context, ref_obj, offset_obj, offset_dist=offset_dist)
         stud_log_append(context, "✔ 完成 corner/side 预处理")
 
         # 4. 生成龙骨
@@ -2281,6 +2193,18 @@ class IFC_PT_StudDevPanel(bpy.types.Panel):
         sub.prop(props, "edge_offset_z", text="Z")
         col.prop(props, "edge_roll_rad")
 
+        col.separator()
+        col.label(text="侧面收尾龙骨：")
+        col.prop(props, "side_end_type", text="")
+        col.separator()
+        row = col.row(align=True)
+        row.label(text="Offset:")
+        sub = row.row(align=True)
+        sub.prop(props, "side_end_offset_x", text="X")
+        sub.prop(props, "side_end_offset_y", text="Y")
+        sub.prop(props, "side_end_offset_z", text="Z")
+        col.prop(props, "side_end_roll_rad")
+        
         col.separator()
         col.label(text="转角龙骨：")
         col.prop(props, "corner_inner_type", text="阴角")
