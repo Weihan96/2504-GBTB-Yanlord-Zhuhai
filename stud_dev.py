@@ -19,7 +19,7 @@ STUD_SEC_CUT = 0.001          # 副骨两端各扣 0.5mm，总共 1mm
 
 
 # =================================================================
-#  Log 工具
+#  Debug Functions
 # =================================================================
 
 def stud_log_set(context, s):
@@ -31,41 +31,168 @@ def stud_log_append(context, s):
     context.scene.stud_dev_props.log = f"{log}\n{s}" if log else s
 
 
+def draw_panels_raw_debug(context, panels_raw, name_prefix="PDBG"):
+    """
+    可视化 panels_raw（只画 final 边）：
+      outer 阳角 = 绿
+      side_outer 侧面阳角 = 黄
+      inner 阴角 = 蓝
+      side_inner 侧面阴角 = 紫
+      vertical 垂直边 = 红
+      non-corner = 灰
+    object.name 极简格式：
+      PDBG_p{poly}_e{edge}_{OUT/IN/SIDE_IN/SIDE_OUT/VERT/N}_nn(x,y,z)_F
+    """
+
+    # 删除旧的 debug 对象
+    for obj in list(bpy.data.objects):
+        if obj.name.startswith(name_prefix):
+            bpy.data.objects.remove(obj, do_unlink=True)
+
+    # 创建集合
+    col_name = f"{name_prefix}_COL"
+    if col_name in bpy.data.collections:
+        debug_col = bpy.data.collections[col_name]
+    else:
+        debug_col = bpy.data.collections.new(col_name)
+        context.scene.collection.children.link(debug_col)
+
+    # Object Color
+    C_GREEN  = (0.0, 1.0, 0.0, 1.0)   # outer
+    C_YELLOW = (1.0, 1.0, 0.0, 1.0)   # side_outer
+    C_RED    = (1.0, 0.0, 0.0, 1.0)   # vertical
+    C_BLUE   = (0.0, 0.4, 1.0, 1.0)   # inner
+    C_CYAN   = (0.0, 1.0, 1.0, 1.0)   # butt
+    C_PURPLE = (0.5, 0.0, 1.0, 1.0)   # side_inner
+    C_GRAY   = (0.5, 0.5, 0.5, 1.0)   # non-corner
+
+    def mk(name, p1, p2, col):
+        mesh = bpy.data.meshes.new(name+"_M")
+        obj  = bpy.data.objects.new(name, mesh)
+        mesh.from_pydata([p1, p2], [(0,1)], [])
+        debug_col.objects.link(obj)
+        obj.display_type = 'WIRE'
+        obj.show_in_front = True
+        obj.show_wire = True
+        obj.color = col
+        return obj
+
+    # ------ 遍历每个 polygon ------
+    for poly_idx, pdata in panels_raw.items():
+        edges = pdata.get("edges", [])
+        if not edges:
+            continue
+
+        for ei, e in enumerate(edges):
+            v1f = e.get("v1_final")
+            v2f = e.get("v2_final")
+            is_vertical = e.get("is_vertical")
+            is_corner = e.get("is_corner")
+            ctype = e.get("corner_type")
+            neigh = e.get("neighbor_normal")
+
+            if ctype == "outer":
+                ctag = "OUT"
+                col = C_GREEN
+            elif ctype == "side_outer":
+                ctag = "SIDE_OUT"
+                col = C_YELLOW
+            elif ctype == "inner":
+                ctag = "IN"
+                col = C_BLUE if not e.get("is_butt") else C_CYAN
+            elif ctype == "side_inner":
+                ctag = "SIDE_IN"
+                col = C_PURPLE
+            elif ctype == "side_end":
+                ctag = "SIDE_END"
+                col = C_RED
+            else:
+                ctag = "N"
+                col = C_GRAY
+
+            # 简短 neighbor normal
+            if neigh is None:
+                nn = "None"
+            else:
+                nn = f"{neigh.x:.2f},{neigh.y:.2f},{neigh.z:.2f}"
+
+            # 极简 object 名称
+            name = f"{name_prefix}_p{poly_idx}_e{ei}_{ctag}_nn({nn})_F"
+
+            mk(name, v1f, v2f, col)
+
+    stud_log_append(context, "🎨 Debug：已绘制 final 边（无 world 边）")
+
+
 # =================================================================
-#  获取 IFC
+#  Blender Utility Functions
 # =================================================================
 
-def get_ifc_model():
+def exec_on_selected_objects(objs, lambda_func, error_msg="操作失败"):
+    if not objs:
+        return
+
+    # 支持单个对象传入
+    if not isinstance(objs, (list, tuple, set)):
+        objs = [objs]
+
+    # 过滤掉 None 或已被移除的对象
+    objs = [o for o in objs if o and o.name in bpy.data.objects]
+
+    if not objs:
+        return
+
+    # 记录当前选中对象集合
+    prev_selection = bpy.context.selected_objects.copy()
+    prev_active = bpy.context.view_layer.objects.active
+
+    # 取消所有选中
+    bpy.ops.object.select_all(action='DESELECT')
+
+    # 选择要操作的对象
+    for o in objs:
+        o.select_set(True)
+
+    # 设置 active obj（为操作所需）
+    bpy.context.view_layer.objects.active = objs[0]
+
+    # 执行操作
     try:
-        return IfcStore.get_file()
-    except:
-        return None
+        lambda_func()
+    except Exception as e:
+        print(f"[WARN] {error_msg}: {e}")
+
+    # 恢复原选中状态
+    bpy.ops.object.select_all(action='DESELECT')
+    for o in prev_selection:
+        if o and o.name in bpy.data.objects:
+            o.select_set(True)
+    bpy.context.view_layer.objects.active = prev_active
 
 
-def update_stud_type_enum(self, context):
-    """从 IFC 模型动态加载 IfcMemberType"""
-    model = get_ifc_model()
-    if not model:
-        return [('NONE', 'No IFC Loaded', '')]
-    return [
-        (t.GlobalId, f"{t.Name or '(Unnamed)'} ({t.GlobalId})", "")
-        for t in model.by_type("IfcMemberType")
-    ]
+def parent_objects(parent_obj, children):
+    """将 children 全部 parent 到 parent_obj （Blender + IFC）"""
+    for child in children:
+        if not child:
+            continue
+        child.parent = parent_obj
+
+        # IFC parent-child 关系
+        try:
+            elem_util.assign_parent(child, parent_obj)
+        except:
+            pass
 
 
-def find_member_type(model, guid):
-    if not guid or guid == "NONE":
-        return None
-    for t in model.by_type("IfcMemberType"):
-        if t.GlobalId == guid:
-            return t
-    return None
+def clear_parent_and_keep_transformations(objs):
+    exec_on_selected_objects(objs, lambda: bpy.ops.object.parent_clear(type='CLEAR_KEEP_TRANSFORM'),"清除父对象失败")
 
 
-# =================================================================
+def delete_objects_safely(objs):
+    exec_on_selected_objects(objs, bpy.ops.object.delete,error_msg="删除对象失败")
+
+
 #  Mesh 主轴检测 + 向量对齐
-# =================================================================
-
 def detect_mesh_axis(obj):
     bb = [Vector(c) for c in obj.bound_box]
     xs = [v.x for v in bb]
@@ -96,30 +223,7 @@ def rotation_from_vector_to_vector(a: Vector, b: Vector):
     return Matrix.Rotation(a.angle(b), 3, axis)
 
 
-# =================================================================
-#  判断：是不是 Profile（MaterialProfileSet）
-# =================================================================
-
-def is_profile_based_type(type_obj):
-    """
-    多数真实场景中，IfcMaterialProfileSet 是最可靠的 Profile 类型判定方式
-    """
-    matset = elem_util.get_material(type_obj)
-    if (
-        matset
-        and matset.is_a("IfcMaterialProfileSet")
-        and hasattr(matset, "MaterialProfiles")
-        and len(matset.MaterialProfiles) > 0
-        and matset.MaterialProfiles[0].Profile is not None
-    ):
-        return True
-    return False
-
-
-# =================================================================
 #  姿态矩阵构造（Profile 专用：local Z = extrusion）
-# =================================================================
-
 def calc_profile_transform(start: Vector, end: Vector, roll_rad: float):
     direction = end - start
     length = direction.length
@@ -149,10 +253,7 @@ def calc_profile_transform(start: Vector, end: Vector, roll_rad: float):
     return mat, length
 
 
-# =================================================================
 #  姿态矩阵构造（Mesh 专用：用 mesh 主轴对齐）
-# =================================================================
-
 def calc_mesh_transform(mesh_obj, start: Vector, end: Vector, roll_rad: float):
     target_dir = (end - start).normalized()
     mesh_axis = detect_mesh_axis(mesh_obj)
@@ -166,8 +267,48 @@ def calc_mesh_transform(mesh_obj, start: Vector, end: Vector, roll_rad: float):
 
 
 # =================================================================
-#  ★ 新增：add_ifc_array（含内部私有 find_array_owner）
+#  BonsaiBIM Utility Functions
 # =================================================================
+
+def get_ifc_model():
+    try:
+        return IfcStore.get_file()
+    except:
+        return None
+
+
+def update_stud_type_enum(self, context):
+    """从 IFC 模型动态加载 IfcMemberType"""
+    model = get_ifc_model()
+    if not model:
+        return [('NONE', 'No IFC Loaded', '')]
+    return [
+        (t.GlobalId, f"{t.Name or '(Unnamed)'} ({t.GlobalId})", "")
+        for t in model.by_type("IfcMemberType")
+    ]
+
+
+def find_member_type(model, guid):
+    if not guid or guid == "NONE":
+        return None
+    for t in model.by_type("IfcMemberType"):
+        if t.GlobalId == guid:
+            return t
+    return None
+
+
+def add_aggregate(panel_canonical, studs_local):
+    # set cursor to panel_canonical
+    exec_on_selected_objects(panel_canonical, lambda: bpy.ops.view3d.snap_cursor_to_selected(),"设置光标到面板失败")
+    panel_name = panel_canonical.name
+    def _lambda():
+        # bpy.data.window_managers["WinMan"]. = "Custom"
+        # bpy.ops.object.select_all(action='DESELECT')
+        bpy.ops.bim.assign_class(obj=panel_name, ifc_class="IfcElementAssembly")
+        bpy.ops.bim.add_aggregate(aggregate_name=panel_name)
+    
+    exec_on_selected_objects(studs_local, _lambda, "添加聚合失败")
+
 
 def add_ifc_array(obj, axis_world: Vector, spacing: float, count: int, context):
     """
@@ -240,7 +381,7 @@ def add_ifc_array(obj, axis_world: Vector, spacing: float, count: int, context):
 
     arr.count = count
     arr.use_local_space = False
-    arr.sync_children = True
+    arr.sync_children = False
 
     try:
         bpy.ops.bim.edit_array(item=-1)
@@ -253,10 +394,27 @@ def add_ifc_array(obj, axis_world: Vector, spacing: float, count: int, context):
     )
 
 
+def is_profile_based_type(type_obj):
+    """
+    多数真实场景中，IfcMaterialProfileSet 是最可靠的 Profile 类型判定方式
+    """
+    matset = elem_util.get_material(type_obj)
+    if (
+        matset
+        and matset.is_a("IfcMaterialProfileSet")
+        and hasattr(matset, "MaterialProfiles")
+        and len(matset.MaterialProfiles) > 0
+        and matset.MaterialProfiles[0].Profile is not None
+    ):
+        return True
+    return False
+
+
 # =================================================================
-#  通用检查：参考面 mesh 是否合法
+#  Stud Utility Functions
 # =================================================================
 
+#  通用检查：参考面 mesh 是否合法
 def validate_reference_mesh(obj):
     """
     多面 Mesh 的合法性判断：
@@ -307,6 +465,7 @@ def validate_reference_mesh(obj):
     return True, ""
 
 
+#  创建实例（最终调用逻辑完全一致）
 def apply_corner_offset(panels_raw, offset_dist=0.019):
     """
     仅对【侧面 + 阳角】的 corner edge 做 20mm 偏移（沿邻面法向反向）。
@@ -358,6 +517,7 @@ def apply_corner_offset(panels_raw, offset_dist=0.019):
             k2 = vkey(e["v2_world"])
             e["v1_final"] = vert_map[k1]["final"].copy()
             e["v2_final"] = vert_map[k2]["final"].copy()
+
 
 def build_panels_data(context, ref_obj, offset_obj, offset_dist=0.019, side_z_eps=0.01, plane_eps=1e-3, aabb_eps=1e-3, dot_orth_eps=1e-3,include_side_side_corners=False):
     # 1. 原有 corner 检测（基于 offset_obj）
@@ -591,9 +751,7 @@ def build_panels_data(context, ref_obj, offset_obj, offset_dist=0.019, side_z_ep
     apply_corner_offset(panels_raw, offset_dist=offset_dist)
 
     return panels_raw
-# =================================================================
-#  创建实例（最终调用逻辑完全一致）
-# =================================================================
+
 
 def create_stud_instance(context, model, type_obj, start, end, roll_rad):
     try:
@@ -655,10 +813,7 @@ def create_stud_instance(context, model, type_obj, start, end, roll_rad):
     return obj
 
 
-# =================================================================
 #  获取参考面顶点（按顺时针排序）
-# =================================================================
-
 def get_ordered_face_edges(ref_obj):
     """
     返回单个面的边列表：[(world_v1, world_v2, edge_index), ...]
@@ -685,10 +840,7 @@ def get_ordered_face_edges(ref_obj):
     return edges
 
 
-# =================================================================
 #  获取参考面长边和短边方向（局部坐标）
-# =================================================================
-
 def get_long_short_axis_in_local(ref_obj):
     """
     根据参考面的局部 bound_box 判断：
@@ -1506,186 +1658,9 @@ def generate_studs_on_mesh(context, model, props, panels_raw):
     return all_studs
 
 
-def parent_objects(parent_obj, children):
-    """将 children 全部 parent 到 parent_obj （Blender + IFC）"""
-    for child in children:
-        if not child:
-            continue
-        child.parent = parent_obj
-
-        # IFC parent-child 关系
-        try:
-            elem_util.assign_parent(child, parent_obj)
-        except:
-            pass
-
-
-def exec_on_selected_objects(objs, lambda_func, error_msg="操作失败"):
-    if not objs:
-        return
-
-    # 支持单个对象传入
-    if not isinstance(objs, (list, tuple, set)):
-        objs = [objs]
-
-    # 过滤掉 None 或已被移除的对象
-    objs = [o for o in objs if o and o.name in bpy.data.objects]
-
-    if not objs:
-        return
-
-    # 记录当前选中对象集合
-    prev_selection = bpy.context.selected_objects.copy()
-    prev_active = bpy.context.view_layer.objects.active
-
-    # 取消所有选中
-    bpy.ops.object.select_all(action='DESELECT')
-
-    # 选择要操作的对象
-    for o in objs:
-        o.select_set(True)
-
-    # 设置 active obj（为操作所需）
-    bpy.context.view_layer.objects.active = objs[0]
-
-    # 执行操作
-    try:
-        lambda_func()
-    except Exception as e:
-        print(f"[WARN] {error_msg}: {e}")
-
-    # 恢复原选中状态
-    bpy.ops.object.select_all(action='DESELECT')
-    for o in prev_selection:
-        if o and o.name in bpy.data.objects:
-            o.select_set(True)
-    bpy.context.view_layer.objects.active = prev_active
-
-
-# ============================================================
-#  Utility: 安全删除 Blender 对象（不影响当前选择）
-# ============================================================
-
-def delete_objects_safely(objs):
-    exec_on_selected_objects(objs, bpy.ops.object.delete,error_msg="删除对象失败")
-
-# ============================================================
-#  Utility: 安全清除 Blender 父级并保留变换（不影响当前选择）
-# ============================================================
-
-def clear_parent_and_keep_transformations(objs):
-    exec_on_selected_objects(objs, lambda: bpy.ops.object.parent_clear(type='CLEAR_KEEP_TRANSFORM'),"清除父对象失败")
-
-
-def add_aggregate(panel_canonical, studs_local):
-    # set cursor to panel_canonical
-    exec_on_selected_objects(panel_canonical, lambda: bpy.ops.view3d.snap_cursor_to_selected(),"设置光标到面板失败")
-    panel_name = panel_canonical.name
-    def _lambda():
-        # bpy.data.window_managers["WinMan"]. = "Custom"
-        # bpy.ops.object.select_all(action='DESELECT')
-        bpy.ops.bim.assign_class(obj=panel_name, ifc_class="IfcElementAssembly")
-        bpy.ops.bim.add_aggregate(aggregate_name=panel_name)
-    
-    exec_on_selected_objects(studs_local, _lambda, "添加聚合失败")
-
-
-def draw_panels_raw_debug(context, panels_raw, name_prefix="PDBG"):
-    """
-    可视化 panels_raw（只画 final 边）：
-      outer 阳角 = 绿
-      side_outer 侧面阳角 = 黄
-      inner 阴角 = 蓝
-      side_inner 侧面阴角 = 紫
-      vertical 垂直边 = 红
-      non-corner = 灰
-    object.name 极简格式：
-      PDBG_p{poly}_e{edge}_{OUT/IN/SIDE_IN/SIDE_OUT/VERT/N}_nn(x,y,z)_F
-    """
-
-    # 删除旧的 debug 对象
-    for obj in list(bpy.data.objects):
-        if obj.name.startswith(name_prefix):
-            bpy.data.objects.remove(obj, do_unlink=True)
-
-    # 创建集合
-    col_name = f"{name_prefix}_COL"
-    if col_name in bpy.data.collections:
-        debug_col = bpy.data.collections[col_name]
-    else:
-        debug_col = bpy.data.collections.new(col_name)
-        context.scene.collection.children.link(debug_col)
-
-    # Object Color
-    C_GREEN  = (0.0, 1.0, 0.0, 1.0)   # outer
-    C_YELLOW = (1.0, 1.0, 0.0, 1.0)   # side_outer
-    C_RED    = (1.0, 0.0, 0.0, 1.0)   # vertical
-    C_BLUE   = (0.0, 0.4, 1.0, 1.0)   # inner
-    C_CYAN   = (0.0, 1.0, 1.0, 1.0)   # butt
-    C_PURPLE = (0.5, 0.0, 1.0, 1.0)   # side_inner
-    C_GRAY   = (0.5, 0.5, 0.5, 1.0)   # non-corner
-
-    def mk(name, p1, p2, col):
-        mesh = bpy.data.meshes.new(name+"_M")
-        obj  = bpy.data.objects.new(name, mesh)
-        mesh.from_pydata([p1, p2], [(0,1)], [])
-        debug_col.objects.link(obj)
-        obj.display_type = 'WIRE'
-        obj.show_in_front = True
-        obj.show_wire = True
-        obj.color = col
-        return obj
-
-    # ------ 遍历每个 polygon ------
-    for poly_idx, pdata in panels_raw.items():
-        edges = pdata.get("edges", [])
-        if not edges:
-            continue
-
-        for ei, e in enumerate(edges):
-            v1f = e.get("v1_final")
-            v2f = e.get("v2_final")
-            is_vertical = e.get("is_vertical")
-            is_corner = e.get("is_corner")
-            ctype = e.get("corner_type")
-            neigh = e.get("neighbor_normal")
-
-            if ctype == "outer":
-                ctag = "OUT"
-                col = C_GREEN
-            elif ctype == "side_outer":
-                ctag = "SIDE_OUT"
-                col = C_YELLOW
-            elif ctype == "inner":
-                ctag = "IN"
-                col = C_BLUE if not e.get("is_butt") else C_CYAN
-            elif ctype == "side_inner":
-                ctag = "SIDE_IN"
-                col = C_PURPLE
-            elif ctype == "side_end":
-                ctag = "SIDE_END"
-                col = C_RED
-            else:
-                ctag = "N"
-                col = C_GRAY
-
-            # 简短 neighbor normal
-            if neigh is None:
-                nn = "None"
-            else:
-                nn = f"{neigh.x:.2f},{neigh.y:.2f},{neigh.z:.2f}"
-
-            # 极简 object 名称
-            name = f"{name_prefix}_p{poly_idx}_e{ei}_{ctag}_nn({nn})_F"
-
-            mk(name, v1f, v2f, col)
-
-    stud_log_append(context, "🎨 Debug：已绘制 final 边（无 world 边）")
-
 # =================================================================
 #  UI 属性
 # =================================================================
-
 class StudDevProps(bpy.types.PropertyGroup):
     # ------------------------------
     # 主龙骨选定
