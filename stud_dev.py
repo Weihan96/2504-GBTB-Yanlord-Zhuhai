@@ -5,6 +5,7 @@ from mathutils import Vector, Matrix
 from mathutils.kdtree import KDTree
 import ifcopenshell
 from bonsai.bim.ifc import IfcStore
+import bonsai.tool as tool
 import ifcopenshell.util.element as elem_util
 
 # =================================================================
@@ -128,7 +129,7 @@ def draw_panels_raw_debug(context, panels_raw, name_prefix="PDBG"):
 #  Blender Utility Functions
 # =================================================================
 
-def exec_on_selected_objects(objs, lambda_func, error_msg="操作失败"):
+def exec_on_active_objects(objs, lambda_func, error_msg="操作失败"):
     if not objs:
         return
 
@@ -157,17 +158,20 @@ def exec_on_selected_objects(objs, lambda_func, error_msg="操作失败"):
     bpy.context.view_layer.objects.active = objs[0]
 
     # 执行操作
+    result = None
     try:
-        lambda_func()
+        result = lambda_func()
     except Exception as e:
-        print(f"[WARN] {error_msg}: {e}")
+        raise Exception(f"[ERROR] {error_msg}: {e}")
+    finally:
+        # 恢复原选中状态
+        bpy.ops.object.select_all(action='DESELECT')
+        for o in prev_selection:
+            if o and o.name in bpy.data.objects:
+                o.select_set(True)
+        bpy.context.view_layer.objects.active = prev_active
 
-    # 恢复原选中状态
-    bpy.ops.object.select_all(action='DESELECT')
-    for o in prev_selection:
-        if o and o.name in bpy.data.objects:
-            o.select_set(True)
-    bpy.context.view_layer.objects.active = prev_active
+    return result
 
 
 def parent_objects(parent_obj, children):
@@ -185,11 +189,11 @@ def parent_objects(parent_obj, children):
 
 
 def clear_parent_and_keep_transformations(objs):
-    exec_on_selected_objects(objs, lambda: bpy.ops.object.parent_clear(type='CLEAR_KEEP_TRANSFORM'),"清除父对象失败")
+    exec_on_active_objects(objs, lambda: bpy.ops.object.parent_clear(type='CLEAR_KEEP_TRANSFORM'),"清除父对象失败")
 
 
 def delete_objects_safely(objs):
-    exec_on_selected_objects(objs, bpy.ops.object.delete,error_msg="删除对象失败")
+    exec_on_active_objects(objs, bpy.ops.object.delete,error_msg="删除对象失败")
 
 
 #  Mesh 主轴检测 + 向量对齐
@@ -297,17 +301,39 @@ def find_member_type(model, guid):
     return None
 
 
-def add_aggregate(panel_canonical, studs_local):
-    # set cursor to panel_canonical
-    exec_on_selected_objects(panel_canonical, lambda: bpy.ops.view3d.snap_cursor_to_selected(),"设置光标到面板失败")
-    panel_name = panel_canonical.name
-    def _lambda():
-        # bpy.data.window_managers["WinMan"]. = "Custom"
-        # bpy.ops.object.select_all(action='DESELECT')
-        bpy.ops.bim.assign_class(obj=panel_name, ifc_class="IfcElementAssembly")
-        bpy.ops.bim.add_aggregate(aggregate_name=panel_name)
+def add_aggregate(cursor_obj, objs):
+    # set cursor to cursor_obj
+    exec_on_active_objects(cursor_obj, lambda: bpy.ops.view3d.snap_cursor_to_selected(),"设置光标到面板失败")
     
-    exec_on_selected_objects(studs_local, _lambda, "添加聚合失败")
+    def _lambda():
+        bpy.ops.bim.assign_class(obj=cursor_obj.name, ifc_class="IfcElementAssembly")
+        bpy.ops.bim.add_aggregate(aggregate_name=cursor_obj.name)
+    
+    exec_on_active_objects(objs, _lambda, "添加聚合失败")
+
+# ==============================================
+# 找到最新 IFC Array 控制对象（私有）
+# ==============================================
+def find_array_owner(_obj):
+    
+    if hasattr(_obj, "BIMArrayProperties"):
+        return _obj
+
+    for child in _obj.children:
+        if hasattr(child, "BIMArrayProperties"):
+            return child
+
+    if hasattr(_obj, "BIMObjectProperties"):
+        iid = _obj.BIMObjectProperties.ifc_definition_id
+        for other in bpy.data.objects:
+            if (
+                hasattr(other, "BIMObjectProperties")
+                and other.BIMObjectProperties.ifc_definition_id == iid
+                and hasattr(other, "BIMArrayProperties")
+            ):
+                return other
+
+    return None
 
 
 def add_ifc_array(obj, axis_world: Vector, spacing: float, count: int, context):
@@ -321,33 +347,6 @@ def add_ifc_array(obj, axis_world: Vector, spacing: float, count: int, context):
         return
 
     # ==============================================
-    # 内部函数：找到最新 IFC Array 控制对象（私有）
-    # ==============================================
-    def _find_array_owner(_obj):
-        ao = bpy.context.active_object
-        if ao and hasattr(ao, "BIMArrayProperties"):
-            return ao
-
-        if hasattr(_obj, "BIMArrayProperties"):
-            return _obj
-
-        for child in _obj.children:
-            if hasattr(child, "BIMArrayProperties"):
-                return child
-
-        if hasattr(_obj, "BIMObjectProperties"):
-            iid = _obj.BIMObjectProperties.ifc_definition_id
-            for other in bpy.data.objects:
-                if (
-                    hasattr(other, "BIMObjectProperties")
-                    and other.BIMObjectProperties.ifc_definition_id == iid
-                    and hasattr(other, "BIMArrayProperties")
-                ):
-                    return other
-
-        return None
-
-    # ==============================================
     # 1. 创建 IFC Array
     # ==============================================
     try:
@@ -359,7 +358,7 @@ def add_ifc_array(obj, axis_world: Vector, spacing: float, count: int, context):
     # ==============================================
     # 2. 获取最新 Array 控制对象
     # ==============================================
-    arr_owner = _find_array_owner(obj)
+    arr_owner = find_array_owner(obj)
     if not arr_owner:
         stud_log_append(context, "❌ 找不到 IFC Array 控制对象")
         return
@@ -393,6 +392,51 @@ def add_ifc_array(obj, axis_world: Vector, spacing: float, count: int, context):
         f"✔ IFC Array: spacing={spacing:.4f}, count={count}, axis={axis}"
     )
 
+def rename_active_obj(new_name):
+    obj = bpy.context.active_object
+    bpy.ops.bim.enable_editing_attributes(mass_operation=False)
+    bpy.data.objects[obj.name].BIMAttributeProperties.attributes[1].string_value = new_name
+    bpy.ops.bim.edit_attributes()
+
+
+def apply_geometric_array(obj, count, reassign_class=True):
+    bpy.ops.object.select_all(action='DESELECT')
+    obj.select_set(True)
+    bpy.context.view_layer.objects.active = obj
+    if reassign_class:
+
+        # get material
+        element = tool.Ifc.get_entity(obj)
+        material = elem_util.get_material(element)
+        # assign class
+        bpy.ops.bim.unassign_type()
+        bpy.ops.bim.enable_reassign_class()
+        bpy.context.scene.BIMRootProperties.ifc_predefined_type = 'USERDEFINED'
+        bpy.context.scene.BIMRootProperties.ifc_userdefined_type = "CLICK_STUD"
+        bpy.ops.bim.reassign_class()
+
+        # assign material
+        try:
+            bpy.ops.bim.assign_material_to_selected(material=material.id())
+        except Exception:
+            pass
+    
+    # apply array
+    bpy.ops.object.modifier_add(type='ARRAY')
+    bpy.context.object.modifiers["Array"].count = count
+    bpy.ops.object.modifier_apply(modifier="Array")
+    bpy.ops.object.editmode_toggle()
+    bpy.ops.mesh.select_all(action='SELECT')
+    bpy.ops.mesh.remove_doubles()
+    bpy.ops.mesh.edge_face_add()     # 密封侧面
+    bpy.ops.object.editmode_toggle()
+
+    bpy.ops.bim.update_representation(obj=obj.name, ifc_representation_class="")
+
+    rename_active_obj(f"V38 {count * 100}mm")
+    
+    return bpy.context.active_object
+
 
 def is_profile_based_type(type_obj):
     """
@@ -408,6 +452,178 @@ def is_profile_based_type(type_obj):
     ):
         return True
     return False
+
+
+def assign_virtual_element(obj):
+    """将 obj 标记为 IfcVirtualElement（需在 OBJECT 模式下调用）"""
+    if not obj:
+        return
+
+    # 设为 active & 选中
+    bpy.ops.object.select_all(action='DESELECT')
+    obj.select_set(True)
+    bpy.context.view_layer.objects.active = obj
+
+    # 先进入 EDIT，全选面，再回到 OBJECT
+    bpy.ops.object.mode_set(mode='EDIT')
+    bpy.ops.mesh.select_all(action='SELECT')
+    bpy.ops.object.mode_set(mode='OBJECT')
+
+    # 指定 IFC 类
+    bpy.ops.bim.assign_class(
+        ifc_class="IfcVirtualElement",
+        predefined_type="",
+        userdefined_type="",
+        props_to_pset=False,
+    )
+
+
+def is_part_of_array(obj):
+    """检查对象是否是 Array 的一部分（通过 BBIM_Array 属性判断）
+    
+    参考: https://github.com/IfcOpenShell/IfcOpenShell/blob/8647f9c3574968f369c577597c1ef9a73d898124/src/bonsai/bonsai/bim/module/model/array.py#L193
+    
+    Args:
+        obj: Blender 对象
+        
+    Returns:
+        bool: 如果对象是 Array 的一部分返回 True，否则返回 False
+    """    
+    element = tool.Ifc.get_entity(obj)
+    array_pset = ifcopenshell.util.element.get_pset(element, "BBIM_Array")
+    return array_pset is not None
+
+
+def find_parts_from_obj(context:bpy.types.Context, obj):
+    # 记录当前选中对象集合
+    prev_selection = context.selected_objects.copy()
+    prev_active = context.view_layer.objects.active
+
+    # 取消所有选中
+    bpy.ops.object.select_all(action='DESELECT')
+
+    context.view_layer.objects.active = obj
+    obj.select_set(True)
+
+    obj_element = tool.Ifc.get_entity(obj)
+
+    if obj_element.is_a("IfcElementAssembly"):
+        bpy.ops.bim.select_parts(obj=obj.name)
+
+    elif obj_element.is_a("IfcMember") or obj_element.is_a("IfcVirtualElement"):
+        # for array child - 只有在对象是 array 的一部分时才调用
+        if is_part_of_array(obj):
+            bpy.ops.bim.select_array_parent()
+        # for array parent
+        bpy.ops.bim.select_aggregate(select_parts=True, one_level_deep=False)
+
+    parts = context.selected_objects.copy()
+
+    # 恢复原选中状态
+    bpy.ops.object.select_all(action='DESELECT')
+    for o in prev_selection:
+        if o and o.name in bpy.data.objects:
+            o.select_set(True)
+    context.view_layer.objects.active = prev_active
+    
+    return parts
+
+
+def sync_openings(
+    context: bpy.types.Context,
+    obj_source: bpy.types.Object,
+    obj_target: bpy.types.Object,
+):
+    """将源对象的所有 openings 复制到目标对象
+    
+    参考: https://github.com/IfcOpenShell/IfcOpenShell/blob/b4135194cafd9adf8d6e0bda3ae24d8e143253e0/src/bonsai/bonsai/bim/module/model/opening.py#L527
+    
+    Args:
+        context: Blender context
+        obj_source: 源对象（有 openings 的对象）
+        obj_target: 目标对象（要添加 openings 的对象）
+    
+    Returns:
+        tuple: (success: bool, message: str, count: int) - 成功标志、消息、复制的 opening 数量
+    """        
+    # 记录当前选中状态
+    prev_selection = context.selected_objects.copy()
+    prev_active = context.view_layer.objects.active
+    
+
+    # 重要：先显示源对象的 openings，确保它们都在场景中
+    bpy.ops.object.select_all(action='DESELECT')
+    obj_source.select_set(True)
+    context.view_layer.objects.active = obj_source
+    bpy.ops.bim.show_openings()
+    context.view_layer.update()
+    
+    duplicated_count = 0
+    skipped_count = 0
+    fails = []
+    
+    # 首先清除目标对象的旧 openings
+    target_element = tool.Ifc.get_entity(obj_target)
+    if not target_element:
+        return False, "❌ 无法获取目标对象的 IFC 实体", 0
+    old_openings_relations = tool.Geometry.get_openings(target_element)
+    if old_openings_relations:
+        for rel in old_openings_relations:
+            opening_id = rel.RelatedOpeningElement.id()
+            bpy.ops.bim.remove_opening(opening_id=opening_id)
+
+    # 获取源对象的 openings
+    source_element = tool.Ifc.get_entity(obj_source)
+    if not source_element:
+        return False, "❌ 无法获取源对象的 IFC 实体", 0
+    openings_relations = tool.Geometry.get_openings(source_element)
+    if not openings_relations:
+        return False, "❌ 源对象没有 openings", 0    
+    opening_objs = [tool.Ifc.get_object(rel.RelatedOpeningElement) for rel in openings_relations]
+
+    target_bvh_tree = tool.Geometry.get_bvh_tree(obj_target)
+    for opening_obj in opening_objs:
+        opening_bvh_tree = tool.Geometry.get_bvh_tree(opening_obj)
+        if not opening_bvh_tree.overlap(target_bvh_tree):
+            skipped_count += 1
+            continue
+        
+        bpy.ops.object.select_all(action='DESELECT')
+        opening_obj.select_set(True)
+        context.view_layer.objects.active = opening_obj
+
+        bpy.ops.bim.override_object_duplicate_move()
+        duplicated_opening_obj = context.active_object
+        
+        # 应用变换（特别是 scale，参考 add_opening 函数）
+        bpy.ops.object.transform_apply(location=False, rotation=False, scale=True)
+        
+        # 选中目标元素并设置为 active
+        duplicated_opening_obj.select_set(True)
+        obj_target.select_set(True)
+        context.view_layer.objects.active = obj_target
+        
+        # 使用 bpy.ops.bim.add_opening() 添加 opening
+        try:
+            bpy.ops.bim.add_opening()
+            duplicated_count += 1
+        except Exception as e:
+            # 如果添加失败，删除复制的对象
+            bpy.ops.object.select_all(action='DESELECT')
+            duplicated_opening_obj.select_set(True)
+            bpy.ops.object.delete(use_global=False)
+        
+    # 恢复选中状态
+    bpy.ops.object.select_all(action='DESELECT')
+    for o in prev_selection:
+        if o and o.name in bpy.data.objects:
+            o.select_set(True)
+    context.view_layer.objects.active = prev_active
+
+    if len(fails) > 0:
+        return False, f"❌ 复制 openings 时出错: {fails}", 0
+    else:
+        return True, f"✔ 复制 {duplicated_count} 个 openings 跳过 {skipped_count}个无相交的openings", duplicated_count
 
 
 # =================================================================
@@ -787,7 +1003,7 @@ def create_stud_instance(context, model, type_obj, start, end, roll_rad):
         obj.matrix_world = mat
 
         # ---------------------------------------------------------------
-        # 🔧 新增：自动轴向拼接（使用 add_ifc_array）
+        # 🔧 新增：自动轴向拼接（使用 apply_geometric_array
         # ---------------------------------------------------------------
         target_vec = end - start
         target_len = target_vec.length
@@ -799,15 +1015,11 @@ def create_stud_instance(context, model, type_obj, start, end, roll_rad):
             unit_len = max(proj) - min(proj)
 
             if unit_len > 1e-6:
-                count = int(math.ceil(target_len / unit_len))
+                count = int(math.ceil(target_len / unit_len)) + 1
                 if count > 1:
-                    axis_world = target_vec.normalized()
-                    spacing = unit_len
-                    add_ifc_array(obj, axis_world, spacing, count, context)
-                    stud_log_append(
-                        context,
-                        f"✔ 自动轴向拼接：unit={unit_len:.4f}, target={target_len:.4f}, count={count}"
-                    )
+                    obj = apply_geometric_array(obj, count)
+                    if not obj:
+                        raise Exception("自动轴向拼接失败")
 
     obj.matrix_world = mat
     return obj
@@ -1526,7 +1738,7 @@ def generate_studs_on_canonical_panel(
 def create_canonical_panel_from_polygon(
     verts_world,
     face_normal_world,
-    collection,
+    collection=None,
     name_prefix="canonical_panel",
     corner_edge_flags=None,
     corner_edge_types=None,
@@ -1536,8 +1748,11 @@ def create_canonical_panel_from_polygon(
     仅使用：
       - verts_world: polygon 顶点世界坐标（按序）
       - face_normal_world: polygon 法向（世界）
-      - collection: 要放进的 Blender Collection
+      - collection: 要放进的 Blender Collection（如果为 None，则使用当前活动的 storey/collection）
     """
+    # 如果没有指定 collection，使用当前活动的 storey/collection
+    if collection is None:
+        collection = bpy.context.view_layer.active_layer_collection.collection
 
     # ==========================================================
     # 1. polygon 顶点（世界空间）
@@ -1617,7 +1832,6 @@ def generate_studs_on_mesh(context, model, props, panels_raw):
     panels_raw: 外部预先构建好的 corner + side + v*_final 数据
     """
     all_studs = []
-    collection = bpy.context.scene.collection  # 你也可自定义
 
     for poly_idx, pdata in panels_raw.items():
 
@@ -1633,7 +1847,6 @@ def generate_studs_on_mesh(context, model, props, panels_raw):
             create_canonical_panel_from_polygon(
                 verts_world=verts_world,
                 face_normal_world=n_world,
-                collection=collection,
                 name_prefix=f"panel_{poly_idx}",
                 corner_edge_flags=corner_flags,
                 corner_edge_types=corner_types,
@@ -1651,8 +1864,9 @@ def generate_studs_on_mesh(context, model, props, panels_raw):
         parent_objects(panel_canonical, studs_local)
         panel_canonical.matrix_world = T
         clear_parent_and_keep_transformations(studs_local)
-        add_aggregate(panel_canonical, studs_local)
-        delete_objects_safely(panel_canonical)
+        assign_virtual_element(panel_canonical)
+        add_aggregate(panel_canonical, [panel_canonical, *studs_local])
+        # delete_objects_safely(panel_canonical)
         all_studs.extend(studs_local)
 
     return all_studs
@@ -1911,12 +2125,12 @@ class IFC_OT_ConfirmApplyScale(bpy.types.Operator):
 
 
 # =================================================================
-#  Operator：测试 offset_obj 生成（不排布龙骨）
+#  Operator：显示边分类结果
 # =================================================================
 
 class IFC_OT_PolygonOffset(bpy.types.Operator):
     bl_idname = "ifc.polygon_offset"
-    bl_label  = "测试 Polygon Offset"
+    bl_label  = "显示边分类结果"
     
     bypass_scale_check: bpy.props.BoolProperty(default=False)
 
@@ -2114,6 +2328,92 @@ class IFC_OT_ArrayStud_FromMultiRef(bpy.types.Operator):
         return {"FINISHED"}
 
 
+class IFC_OT_SyncOpeningsFromPanel(bpy.types.Operator):
+    bl_idname = "ifc.sync_openings_from_panel"
+    bl_label = "同步面板 Openings 到龙骨阵列"
+
+    def execute(self, context):
+        obj = context.active_object
+        if not obj:
+            self.report({'WARNING'}, "无 active 对象")
+            return {'CANCELLED'}
+        if not hasattr(obj, "BIMObjectProperties"):
+            self.report({'WARNING'}, "BonsaiBIM 未正确加载")
+            return {'CANCELLED'}
+        if not obj.BIMObjectProperties.ifc_definition_id:
+            self.report({'WARNING'}, "对象不是 IFC 部件")
+            return {'CANCELLED'}
+
+
+        try:
+            parts = find_parts_from_obj(context, obj)
+            
+            if parts:
+                self.report({'INFO'}, f"已选中 IFC 部件: {len(parts)} 个")
+            else:
+                self.report({'INFO'}, "未找到Aggregate Parts")
+            
+            virtual_element = None
+            studs=[]
+            for _part in parts:
+                _part_element = tool.Ifc.get_entity(_part)
+                if _part_element.is_a("IfcElementAssembly"):
+                    continue
+                elif _part_element.is_a("IfcVirtualElement"):
+                    virtual_element = _part
+                elif _part_element.is_a("IfcMember"):
+                    if _part_element.ObjectType == "CLICK_STUD":
+                        continue # Exclude CLICK_STUD studs
+                    else:
+                        studs.append(_part)
+                else:
+                    continue
+            total_count = 0
+            for parent_stud in studs:
+                element = tool.Ifc.get_entity(parent_stud)
+                if element:
+                    array_pset = ifcopenshell.util.element.get_pset(element, "BBIM_Array")
+                    if not array_pset:
+                        array_studs = [parent_stud]
+                    if array_pset:
+                        try:
+                            parent_element = tool.Ifc.get().by_guid(array_pset["Parent"])
+                        except RuntimeError:
+                            self.report({"ERROR"}, f"Objects that don't have an array parent, were deselected.")
+
+                        array_studs = tool.Blender.Modifier.Array.get_all_objects(parent_element)
+                for _stud in array_studs:
+                    ok, message, count = sync_openings(context, virtual_element, _stud)
+                    if not ok:
+                        self.report({'ERROR'}, f"sync_openings 失败: {message}")
+                        return {'CANCELLED'}
+                    else:
+                        total_count += count
+
+            self.report({'INFO'}, f"同步面板 Openings 到龙骨阵列 完成，共修改 {total_count} 个龙骨")
+        except Exception as e:
+            self.report({'ERROR'}, f"同步面板 Openings 到龙骨阵列 失败: {e}")
+            return {'CANCELLED'}
+        finally:
+            bpy.ops.bim.hide_all_openings()
+        return {'FINISHED'}
+
+class IFC_OT_TestNewFeature(bpy.types.Operator):
+    bl_idname = "ifc.new_feature"
+    bl_label = "测试新功能"
+
+    def execute(self, context):
+        obj = context.active_object
+        element = tool.Ifc.get_entity(obj)
+        material = elem_util.get_material(element)
+        if material:
+            self.report({'INFO'}, f"材质: {material} Id: {material.id()}")
+        else:
+            self.report({'ERROR'}, "无法获取对象的材质")
+            return {'CANCELLED'}
+        return {'FINISHED'}
+
+
 # =================================================================
 #  UI
 # =================================================================
@@ -2198,10 +2498,12 @@ class IFC_PT_StudDevPanel(bpy.types.Panel):
         col.prop(props, "spacing")
         col.prop(props, "secondary_spacing")
         col.separator()
-        col.operator("ifc.polygon_offset", text="测试 Polygon Offset")
+        col.operator("ifc.polygon_offset", text="显示边分类结果")
         col.operator("ifc.array_stud_from_multiref", text="生成多面龙骨")
 
         col.separator()
+        col.operator("ifc.sync_openings_from_panel", text="同步面板 Openings 到龙骨阵列")
+        col.operator("ifc.new_feature", text="测试新功能")
         col.label(text="日志：")
         col.prop(props, "log")
 
@@ -2215,6 +2517,8 @@ classes = (
     IFC_PT_StudDevPanel,
     IFC_OT_ConfirmApplyScale,
     IFC_OT_PolygonOffset,
+    IFC_OT_SyncOpeningsFromPanel,
+    IFC_OT_TestNewFeature,
     IFC_OT_ArrayStud_FromMultiRef
 )
 
