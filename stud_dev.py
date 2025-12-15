@@ -1,8 +1,11 @@
+from typing import List
 import bpy
 import bmesh
 import math
+from bpy.types import Object
 from mathutils import Vector, Matrix
 from mathutils.kdtree import KDTree
+from mathutils.geometry import area_tri
 import ifcopenshell
 from bonsai.bim.ifc import IfcStore
 import bonsai.tool as tool
@@ -301,15 +304,28 @@ def find_member_type(model, guid):
     return None
 
 
-def add_aggregate(cursor_obj, objs):
+def add_aggregate(objs:List[bpy.types.Object], aggregate_name:str, *, snap_cursor_obj:bpy.types.Object = None):
     # set cursor to cursor_obj
-    exec_on_active_objects(cursor_obj, lambda: bpy.ops.view3d.snap_cursor_to_selected(),"设置光标到面板失败")
+    if snap_cursor_obj:
+        exec_on_active_objects(snap_cursor_obj, lambda: bpy.ops.view3d.snap_cursor_to_selected(),"设置光标到面板失败")
+    else:
+        exec_on_active_objects(objs, lambda: bpy.ops.view3d.snap_cursor_to_selected(),"设置光标到面板失败")
     
     def _lambda():
-        bpy.ops.bim.assign_class(obj=cursor_obj.name, ifc_class="IfcElementAssembly")
-        bpy.ops.bim.add_aggregate(aggregate_name=cursor_obj.name)
+        bpy.ops.bim.add_aggregate(aggregate_name=aggregate_name)
+        # bpy.ops.bim.assign_class(obj=aggregate_name, ifc_class="IfcElementAssembly")
+        bpy.ops.bim.select_aggregate(select_parts=False, one_level_deep=True)
+
+        return bpy.context.active_object
     
-    exec_on_active_objects(objs, _lambda, "添加聚合失败")
+    return exec_on_active_objects(objs, _lambda, "添加聚合失败")
+
+def get_aggregate_relating_whole(obj):
+    def _lambda():
+        bpy.ops.bim.select_aggregate(select_parts=False, one_level_deep=False)
+        return bpy.context.active_object
+    
+    return exec_on_active_objects(obj, _lambda, "获取聚合对象失败")
 
 # ==============================================
 # 找到最新 IFC Array 控制对象（私有）
@@ -333,7 +349,7 @@ def find_array_owner(_obj):
             ):
                 return other
 
-    return None
+        return None
 
 
 def add_ifc_array(obj, axis_world: Vector, spacing: float, count: int, context):
@@ -494,6 +510,148 @@ def is_part_of_array(obj):
     return array_pset is not None
 
 
+def get_opening_inner_loops(obj, *, area_eps=1e-6):
+    """
+    从 opening boolean 后的对象中，提取所有 opening 的 inner loops
+    （基于 boundary edges，自动排除最外轮廓）
+
+    Returns
+    -------
+    list[list[(Vector, Vector)]]
+        [
+            [ (v1, v2), (v2, v3), ... ],   # 一个 opening
+            ...
+        ]
+    """
+
+    # -------- OBJECT 模式 --------
+    bpy.ops.object.mode_set(mode='OBJECT', toggle=False)
+
+    # 记录当前选中状态
+    prev_selection = bpy.context.selected_objects.copy()
+    prev_active = bpy.context.view_layer.objects.active
+
+    # 显示 openings（你验证过这是必要的）
+    bpy.ops.object.select_all(action='DESELECT')
+    obj.select_set(True)
+    bpy.context.view_layer.objects.active = obj
+    bpy.ops.bim.show_openings()
+    bpy.context.view_layer.update()
+
+    # -------- bmesh --------
+    bm = bmesh.new()
+    bm.from_mesh(obj.data)
+    bm.edges.ensure_lookup_table()
+
+    # 1️⃣ 收集 boundary edges
+    boundary_edges = [e for e in bm.edges if e.is_boundary]
+
+    # 2️⃣ vert -> edges 映射
+    vert_to_edges = {}
+    for e in boundary_edges:
+        for v in e.verts:
+            vert_to_edges.setdefault(v, []).append(e)
+
+    visited = set()
+    loops_edges = []
+
+    # 3️⃣ 串 edge loop
+    for start_edge in boundary_edges:
+        if start_edge in visited:
+            continue
+
+        loop = []
+        visited.add(start_edge)
+
+        v_start = start_edge.verts[0]
+        v_curr = start_edge.verts[1]
+        e_curr = start_edge
+
+        loop.append(start_edge)
+
+        while True:
+            candidates = [
+                e for e in vert_to_edges.get(v_curr, [])
+                if e is not e_curr and e not in visited
+            ]
+            if not candidates:
+                break
+
+            e_next = candidates[0]
+            visited.add(e_next)
+            loop.append(e_next)
+
+            v_next = (
+                e_next.verts[1]
+                if e_next.verts[0] == v_curr
+                else e_next.verts[0]
+            )
+
+            e_curr = e_next
+            v_curr = v_next
+
+            if v_curr == v_start:
+                break
+
+        if len(loop) >= 3:
+            loops_edges.append(loop)
+
+    if not loops_edges:
+        bm.free()
+        return []
+
+    # 4️⃣ 计算每个 loop 的面积（世界坐标）
+    mw = obj.matrix_world
+
+    def loop_area(loop):
+        verts = []
+        for e in loop:
+            for v in e.verts:
+                if not verts or (v.co != verts[-1]):
+                    verts.append(v.co)
+        verts_world = [mw @ v for v in verts]
+        area = 0.0
+        for i in range(1, len(verts_world) - 1):
+            area += area_tri(
+                verts_world[0],
+                verts_world[i],
+                verts_world[i + 1],
+            )
+        return area
+
+    loop_areas = [(loop, loop_area(loop)) for loop in loops_edges]
+
+    # 5️⃣ 找到面积最大的 loop → 外轮廓
+    loop_areas.sort(key=lambda x: x[1], reverse=True)
+    outer_loop, outer_area = loop_areas[0]
+
+    # 6️⃣ 剩下的才是真正的 opening inner loops
+    result = []
+
+    for loop, area in loop_areas[1:]:
+        if area < area_eps:
+            continue
+
+        edges_world = []
+        for e in loop:
+            v1 = mw @ e.verts[0].co
+            v2 = mw @ e.verts[1].co
+            edges_world.append((v1, v2))
+
+        result.append(edges_world)
+
+    bm.free()
+
+    # 恢复选中状态
+    bpy.ops.object.select_all(action='DESELECT')
+    for o in prev_selection:
+        if o and o.name in bpy.data.objects:
+            o.select_set(True)
+    bpy.context.view_layer.objects.active = prev_active
+
+    return result
+
+
 def find_parts_from_obj(context:bpy.types.Context, obj):
     # 记录当前选中对象集合
     prev_selection = context.selected_objects.copy()
@@ -546,6 +704,10 @@ def sync_openings(
     Returns:
         tuple: (success: bool, message: str, count: int) - 成功标志、消息、复制的 opening 数量
     """        
+    
+    # -------- OBJECT 模式 --------
+    bpy.ops.object.mode_set(mode='OBJECT', toggle=False)
+    
     # 记录当前选中状态
     prev_selection = context.selected_objects.copy()
     prev_active = context.view_layer.objects.active
@@ -594,6 +756,8 @@ def sync_openings(
 
         bpy.ops.bim.override_object_duplicate_move()
         duplicated_opening_obj = context.active_object
+
+        # TODO Add 0.5mm
         
         # 应用变换（特别是 scale，参考 add_opening 函数）
         bpy.ops.object.transform_apply(location=False, rotation=False, scale=True)
@@ -1404,8 +1568,6 @@ def outline_studs_on_reference(
     ref_obj,
     edge_offset,
     edge_roll_rad,
-    is_side_face=False,
-    corner_edge_indices=None,
     corner_edge_types=None,
     corner_inner_type_obj=None,
     corner_outer_type_obj=None,
@@ -1425,11 +1587,10 @@ def outline_studs_on_reference(
     mw = ref_obj.matrix_world
     inv_mw = mw.inverted()
 
-    studs = []
+    studs: List[Object] = []
 
     for world_start, world_end, edge_idx in edges:
         # 角信息
-        is_corner = corner_edge_indices is not None and edge_idx in corner_edge_indices
         ctype = None
         if corner_edge_types:
             ctype = corner_edge_types.get(edge_idx)
@@ -1480,7 +1641,8 @@ def outline_studs_on_reference(
             world_end_off,
             roll,
         )
-        studs.append(stud_obj)
+        if stud_obj:
+            studs.append(stud_obj)
 
     stud_log_append(context, f"✔ 描边龙骨已生成，共 {len(studs)} 条")
     return studs
@@ -1580,7 +1742,6 @@ def generate_studs_on_canonical_panel(
     props,
     ref_panel,
     is_side_face=False,
-    corner_edge_indices=None,
     corner_edge_types=None,
 ):
     """
@@ -1588,7 +1749,6 @@ def generate_studs_on_canonical_panel(
 
     新增：
       - is_side_face         ：该面是否为侧面
-      - corner_edge_indices  ：哪些边是 corner
       - corner_edge_types    ：corner 边是 "inner"/"outer"
     """
     generated_studs = []
@@ -1694,8 +1854,6 @@ def generate_studs_on_canonical_panel(
             ref_panel,
             edge_offset,
             props.edge_roll_rad,
-            is_side_face=is_side_face,
-            corner_edge_indices=corner_edge_indices,
             corner_edge_types=corner_edge_types,
             corner_inner_type_obj=corner_inner_type_obj,
             corner_outer_type_obj=corner_outer_type_obj,
@@ -1809,19 +1967,17 @@ def create_canonical_panel_from_polygon(
     # ==========================================================
     # 5. Corner 映射
     # ==========================================================
-    corner_edge_indices = set()
     corner_edge_type_map = {}
 
     if corner_edge_flags is not None:
         for i, is_corner in enumerate(corner_edge_flags):
             if is_corner:
-                corner_edge_indices.add(i)
                 if corner_edge_types and i < len(corner_edge_types):
                     ctype = corner_edge_types[i]
                     if ctype:
                         corner_edge_type_map[i] = ctype
 
-    return panel_canonical, T, corner_edge_indices, corner_edge_type_map
+    return panel_canonical, T, corner_edge_type_map
 
 # =================================================================
 #  多面 Mesh：循环生成各面龙骨 + 建立 IfcVirtualElement
@@ -1843,7 +1999,7 @@ def generate_studs_on_mesh(context, model, props, panels_raw):
         corner_flags = [e["is_corner"] for e in edges]
         corner_types = [e["corner_type"] for e in edges]
 
-        panel_canonical, T, corner_edge_indices, corner_edge_types = (
+        panel_canonical, T, corner_edge_types = (
             create_canonical_panel_from_polygon(
                 verts_world=verts_world,
                 face_normal_world=n_world,
@@ -1857,7 +2013,6 @@ def generate_studs_on_mesh(context, model, props, panels_raw):
             context, model, props,
             panel_canonical,
             is_side_face=is_side,
-            corner_edge_indices=corner_edge_indices,
             corner_edge_types=corner_edge_types,
         )
 
@@ -1865,8 +2020,8 @@ def generate_studs_on_mesh(context, model, props, panels_raw):
         panel_canonical.matrix_world = T
         clear_parent_and_keep_transformations(studs_local)
         assign_virtual_element(panel_canonical)
-        add_aggregate(panel_canonical, [panel_canonical, *studs_local])
-        # delete_objects_safely(panel_canonical)
+        add_aggregate([panel_canonical, *studs_local], panel_canonical.name, snap_cursor_obj=panel_canonical)
+
         all_studs.extend(studs_local)
 
     return all_studs
@@ -2396,24 +2551,290 @@ class IFC_OT_SyncOpeningsFromPanel(bpy.types.Operator):
             return {'CANCELLED'}
         finally:
             bpy.ops.bim.hide_all_openings()
+            bpy.ops.ifc.update_opening_edge_studs()
+
         return {'FINISHED'}
 
-class IFC_OT_TestNewFeature(bpy.types.Operator):
-    bl_idname = "ifc.new_feature"
-    bl_label = "测试新功能"
+class IFC_OT_UpdateOpeningEdgeStuds(bpy.types.Operator):
+    bl_idname = "ifc.update_opening_edge_studs"
+    bl_label = "更新洞口描边龙骨"
 
     def execute(self, context):
         obj = context.active_object
-        element = tool.Ifc.get_entity(obj)
-        material = elem_util.get_material(element)
-        if material:
-            self.report({'INFO'}, f"材质: {material} Id: {material.id()}")
-        else:
-            self.report({'ERROR'}, "无法获取对象的材质")
+        if not obj or obj.type != 'MESH':
+            self.report({'ERROR'}, "请先选择一个已被 opening 开洞的 Mesh 对象")
             return {'CANCELLED'}
+
+        props = context.scene.stud_dev_props
+        stud_log_set(context, "")
+
+        model = get_ifc_model()
+            # 5. 边龙骨（含转角龙骨）
+        edge_type_obj = find_member_type(model, props.edge_type)
+   
+        
+        if not edge_type_obj:
+            self.report({'ERROR'}, "未选择边龙骨类型")
+            return {"CANCELLED"}
+
+        edge_offset = Vector((
+            props.edge_offset_x,
+            props.edge_offset_y,
+            props.edge_offset_z,
+        ))
+        # --------------------------------------------------
+        # 1️⃣ 获取所有 opening inner loops
+        # --------------------------------------------------
+        inner_loops = get_opening_inner_loops(obj)
+        bpy.ops.bim.hide_all_openings()
+        if not inner_loops:
+            self.report({'WARNING'}, "未找到任何 opening 洞口")
+            return {'CANCELLED'}
+
+        studs_all = []
+
+        # --------------------------------------------------
+        # 删除旧的洞口描边龙骨
+        obj_relating_whole = get_aggregate_relating_whole(obj)
+        if not obj_relating_whole:
+            self.report({'WARNING'}, "请先生成龙骨，再生成洞口描边龙骨")
+            bpy.ops.bim.hide_all_openings()
+            return {'CANCELLED'}
+        
+        parts = find_parts_from_obj(context, obj_relating_whole)
+        for part in parts:
+            # 跳过聚合对象本身
+            # 使用 is 进行身份比较，如果失败则使用 IFC ID 比较（更可靠）
+            if part is obj_relating_whole:
+                continue
+            # 如果对象有 IFC 定义，使用 IFC ID 比较（处理对象复制的情况）
+            if (hasattr(part, "BIMObjectProperties") and 
+                hasattr(obj_relating_whole, "BIMObjectProperties") and
+                part.BIMObjectProperties.ifc_definition_id and
+                part.BIMObjectProperties.ifc_definition_id == 
+                obj_relating_whole.BIMObjectProperties.ifc_definition_id):
+                continue
+            
+            part_element = tool.Ifc.get_entity(part)
+            if part_element.is_a("IfcElementAssembly") and part.name.startswith("IfcElementAssembly/OpeningEdges_"):
+                opening_parts = find_parts_from_obj(context, part)
+                old_studs = []
+                for opening_part in opening_parts:
+                    opening_part_element = tool.Ifc.get_entity(opening_part)
+                    if opening_part_element.is_a("IfcMember"):
+                        old_studs.append(opening_part)
+                delete_objects_safely(old_studs)
+                self.report({'INFO'}, f"删除旧的洞口描边龙骨 {part.name} 完成")
+
+        # --------------------------------------------------
+        # 2️⃣ 对每一个洞口 loop 单独描边
+        # --------------------------------------------------
+        obj_normal_world = (obj.matrix_world.to_3x3() @ Vector((0, 0, 1))).normalized()
+        ref_obj_list = []
+        try:
+            for i, loop_edges in enumerate(inner_loops):
+                ref_obj = self._create_ref_obj_from_loop(
+                    context,
+                    loop_edges,
+                    f"__opening_ref_{i}",
+                    obj_normal_world
+                )
+                ref_obj_list.append(ref_obj)
+            
+                studs = outline_studs_on_reference(
+                    context,
+                    model,
+                    edge_type_obj,
+                    ref_obj,
+                    edge_offset,
+                    props.edge_roll_rad + math.pi,
+                )
+                if not studs:
+                    self.report({'WARNING'}, f"未生成任何龙骨 {loop_edges}")
+                    continue
+
+                opening_relating_whole = add_aggregate(studs, f"OpeningEdges_{i}")     
+                
+                bpy.ops.object.select_all(action='DESELECT')
+                opening_relating_whole.select_set(True)
+                bpy.context.view_layer.objects.active = obj_relating_whole
+                bpy.ops.bim.aggregate_assign_object()
+
+                studs_all.extend(studs)
+
+        finally:
+            bpy.ops.bim.hide_all_openings()
+            delete_objects_safely(ref_obj_list)
+
+        self.report({'INFO'}, f"✔ 洞口描边龙骨生成完成，共 {len(studs_all)} 条")
         return {'FINISHED'}
 
+    # --------------------------------------------------
+    # 内部工具：从 loop edges 创建参考对象
+    # --------------------------------------------------
 
+    def _create_ref_obj_from_loop(
+        self,
+        context,
+        loop_edges,
+        name,
+        target_normal_world,
+        *,
+        merge_dist=1e-4,
+    ):
+        """
+        从 opening inner loop 创建参考对象 ref_obj
+
+        Parameters
+        ----------
+        loop_edges : list[(Vector, Vector)]
+            世界坐标边列表（闭合）
+        target_normal_world : Vector
+            原 obj 的世界法线（ref_obj 的法线将与其相反）
+        merge_dist : float
+            remove_doubles 的距离阈值（世界坐标）
+        """
+
+        # --------------------------------------------------
+        # 1️⃣ 还原顶点序列（世界坐标）
+        # --------------------------------------------------
+        # loop_edges 中的边方向可能不一致，需要智能连接
+        # 例如：[(v1,v2), (v2,v3), (v4,v3), (v4,v1)] 其中第三条边是反向的
+        verts_world = []
+        if not loop_edges:
+            raise RuntimeError("❌ opening loop 为空")
+        
+        # 从第一条边开始
+        v_start = loop_edges[0][0]
+        v_next = loop_edges[0][1]
+        verts_world.append(v_start)
+        verts_world.append(v_next)
+        
+        # 处理剩余的边，确保连续连接
+        for i in range(1, len(loop_edges)):
+            v1, v2 = loop_edges[i]
+            last_vert = verts_world[-1]
+            
+            # 检查边的哪一端与当前序列的最后一个顶点匹配
+            dist_v1 = (v1 - last_vert).length
+            dist_v2 = (v2 - last_vert).length
+            
+            if dist_v1 < 1e-6:
+                # v1 匹配，使用 v2（边方向正确）
+                if dist_v2 < 1e-6:
+                    # v2 也匹配，说明是重复边或闭合点，检查是否回到起点
+                    if (v1 - v_start).length < 1e-6:
+                        # 回到起点，闭合完成，不添加
+                        break
+                    else:
+                        # 重复顶点，跳过
+                        continue
+                verts_world.append(v2)
+            elif dist_v2 < 1e-6:
+                # v2 匹配，使用 v1（边是反向的）
+                verts_world.append(v1)
+            else:
+                # 都不匹配，说明 loop 不连续
+                raise RuntimeError(
+                    f"❌ opening loop 不连续：边 {i} ({v1}, {v2}) 无法连接到最后一个顶点 {last_vert}"
+                )
+        
+        # 检查是否闭合：如果第一个和最后一个顶点相同（或非常接近），移除最后一个
+        if len(verts_world) > 1 and (verts_world[-1] - verts_world[0]).length < 1e-6:
+            verts_world.pop()
+
+        if len(verts_world) < 3:
+            raise RuntimeError(f"❌ opening loop 顶点数不足: {len(verts_world)} (来自 {len(loop_edges)} 条边)")
+        
+        # 调试信息
+        stud_log_append(context, f"🔍 {name}: {len(loop_edges)} 条边 → {len(verts_world)} 个顶点")
+
+        # --------------------------------------------------
+        # 2️⃣ 创建 mesh / object
+        # --------------------------------------------------
+        mesh = bpy.data.meshes.new(name)
+        obj = bpy.data.objects.new(name, mesh)
+        context.scene.collection.objects.link(obj)
+
+
+        bm = bmesh.new()
+        bm_verts = [bm.verts.new(v) for v in verts_world]
+        bm.verts.ensure_lookup_table()
+
+        # 边
+        for i in range(len(bm_verts)):
+            try:
+                bm.edges.new((bm_verts[i], bm_verts[(i + 1) % len(bm_verts)]))
+            except ValueError:
+                pass
+
+        # 面
+        try:
+            face = bm.faces.new(bm_verts)
+        except ValueError:
+            bm.free()
+            bpy.data.meshes.remove(mesh)
+            bpy.data.objects.remove(obj)
+            raise RuntimeError("❌ 创建 opening_ref_obj face 失败")
+
+        bm.normal_update()
+        bm.to_mesh(mesh)
+        bm.free()
+
+        obj.matrix_world = Matrix.Identity(4)
+
+        # --------------------------------------------------
+        # 3️⃣ Edit Mode：remove doubles（你建议的方式）
+        # --------------------------------------------------
+        view_layer = context.view_layer
+        prev_active = view_layer.objects.active
+        prev_mode = obj.mode
+
+        bpy.ops.object.select_all(action='DESELECT')
+        obj.select_set(True)
+        view_layer.objects.active = obj
+
+        bpy.ops.object.mode_set(mode='EDIT')
+        bpy.ops.mesh.select_all(action='SELECT')
+        bpy.ops.mesh.remove_doubles(threshold=merge_dist)
+        bpy.ops.object.mode_set(mode='OBJECT')
+
+        # --------------------------------------------------
+        # 4️⃣ 再次检查顶点数量
+        # --------------------------------------------------
+        if len(obj.data.vertices) < 3:
+            bpy.data.meshes.remove(mesh)
+            bpy.data.objects.remove(obj)
+            raise RuntimeError("❌ opening_ref_obj 顶点不足 3（remove_doubles 后）")
+
+        # --------------------------------------------------
+        # 5️⃣ 判断法向，不对就 flip normals
+        # --------------------------------------------------
+        bm = bmesh.new()
+        bm.from_mesh(obj.data)
+        bm.faces.ensure_lookup_table()
+
+        face = bm.faces[0]
+        face_normal_world = face.normal.normalized()
+
+        if face_normal_world.dot(target_normal_world) > 0:
+            bmesh.ops.reverse_faces(bm, faces=[face])
+            bm.normal_update()
+
+        bm.to_mesh(obj.data)
+        bm.free()
+
+        # --------------------------------------------------
+        # 6️⃣ 恢复用户选择 / 模式
+        # --------------------------------------------------
+        view_layer.objects.active = prev_active
+        if prev_active and prev_active.mode != prev_mode:
+            try:
+                bpy.ops.object.mode_set(mode=prev_mode)
+            except RuntimeError:
+                pass
+
+        return obj
 # =================================================================
 #  UI
 # =================================================================
@@ -2503,7 +2924,6 @@ class IFC_PT_StudDevPanel(bpy.types.Panel):
 
         col.separator()
         col.operator("ifc.sync_openings_from_panel", text="同步面板 Openings 到龙骨阵列")
-        col.operator("ifc.new_feature", text="测试新功能")
         col.label(text="日志：")
         col.prop(props, "log")
 
@@ -2518,7 +2938,7 @@ classes = (
     IFC_OT_ConfirmApplyScale,
     IFC_OT_PolygonOffset,
     IFC_OT_SyncOpeningsFromPanel,
-    IFC_OT_TestNewFeature,
+    IFC_OT_UpdateOpeningEdgeStuds,
     IFC_OT_ArrayStud_FromMultiRef
 )
 
