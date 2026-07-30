@@ -2,7 +2,7 @@
 bl_info = {
     "name": "CAD 2D (HLR + Material Boundaries + Fills)",
     "author": "ChatGPT",
-    "version": (0, 1, 5),
+    "version": (0, 1, 6),
     "blender": (4, 0, 0),
     "location": "View3D > Sidebar (N) > CAD2D",
     "description": "Clean CAD-like 2D outline + material seams + per-material fill mesh from Mesh using face-level HLR. Minimal UI; multi-line tooltips.",
@@ -153,11 +153,8 @@ class CAD2D_Settings(PropertyGroup):
         description="Show advanced parameters (usually not needed).",
     )
 
-    triangulate: BoolProperty(
-        name="Triangulate",
-        default=True,
-        description="Triangulate faces for robust polygon projection (recommended).",
-    )
+    # NOTE: triangulate checkbox removed; triangulation is always enabled internally.
+
     per_island: BoolProperty(
         name="Per Island",
         default=True,
@@ -621,7 +618,7 @@ def _build_fill_mesh_object(
     bm = bmesh.new()
     uv_layer = bm.loops.layers.uv.new("UVMap")
 
-    def add_polygon(poly: Polygon, mat_index: int):
+    def add_polygon(poly, mat_index: int):
         loops = []
         ext = _ring_coords_no_close(poly.exterior)
         if len(ext) < 3:
@@ -699,10 +696,10 @@ def generate_cad2d(context, src_obj: bpy.types.Object):
     # Bake world transform into vertices (equivalent to apply transforms on the duplicate, operator-free)
     bm.transform(tmp.matrix_world)
 
-    if st.triangulate:
-        bm.faces.ensure_lookup_table()
-        bmesh.ops.triangulate(bm, faces=bm.faces[:], quad_method="BEAUTY", ngon_method="BEAUTY")
-        bm.faces.ensure_lookup_table()
+    # ALWAYS triangulate (forced True)
+    bm.faces.ensure_lookup_table()
+    bmesh.ops.triangulate(bm, faces=bm.faces[:], quad_method="BEAUTY", ngon_method="BEAUTY")
+    bm.faces.ensure_lookup_table()
 
     # Islands
     if st.per_island:
@@ -883,9 +880,10 @@ class CAD2D_OT_Generate(Operator):
         st = _st(context)
         obj = context.view_layer.objects.active
 
-        _log(context, "INFO", "v0.1.5 Start")
+        _log(context, "INFO", "v0.1.6 Start")
         _log(context, "INFO", f"View={st.view} Detail={st.detail_mode} Smooth={st.mat_smooth_ppm}ppm MinSeg={st.min_seg_len}")
         _log(context, "INFO", f"Fill={st.generate_fills} Z={st.fill_z_offset} UVScale={st.fill_uv_scale}")
+        _log(context, "INFO", "Triangulate=FORCED_TRUE")
 
         if not obj:
             _log(context, "ERROR", "No active object.")
@@ -1017,7 +1015,7 @@ class CAD2D_PT_Panel(Panel):
         if st.show_advanced:
             adv = layout.box()
             adv.label(text="Advanced", icon="TOOL_SETTINGS")
-            adv.prop(st, "triangulate")
+            # triangulate checkbox removed
             adv.prop(st, "per_island")
             adv.prop(st, "simplify_tol")
             adv.prop(st, "snap_decimals")
@@ -1034,8 +1032,8 @@ class CAD2D_PT_Panel(Panel):
         # Logs
         layout.separator()
         layout.label(text="Logs", icon="TEXT")
-        layout.operator("cad2d.clear_logs", icon="X")
         layout.template_list("CAD2D_UL_Logs", "", st, "logs", st, "log_index", rows=6)
+        layout.operator("cad2d.clear_logs", icon="X")
 
 
 # ============================================================
