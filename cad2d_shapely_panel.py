@@ -814,7 +814,7 @@ def generate_cad2d(context, src_obj: bpy.types.Object):
     bpy.data.objects.remove(tmp, do_unlink=True)
 
     # Outputs
-    base = f"CAD_2D_{src_obj.name}_{st.view}"
+    base = f"{src_obj.name}_{st.view}"
     outline_name = f"{base}_OUTLINE"
     detail_name = f"{base}_DETAIL"
     fill_name = f"{base}_FILL"
@@ -931,8 +931,6 @@ class CAD2D_OT_DeleteOutputs(Operator):
 
         def is_out(o: bpy.types.Object):
             if not o:
-                return False
-            if not o.name.startswith("CAD_2D_"):
                 return False
             return o.name.endswith("_OUTLINE") or o.name.endswith("_DETAIL") or o.name.endswith("_FILL")
 
