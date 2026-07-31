@@ -273,6 +273,103 @@ def calc_mesh_transform(mesh_obj, start: Vector, end: Vector, roll_rad: float):
     return mat
 
 
+def expand_opening_object(obj, expand_amount=0.0005):
+    """
+    扩展 opening 对象：在长宽高三个维度上各增加 expand_amount * 2（每边增加 expand_amount）
+
+    Args:
+        obj: Blender 对象（必须是 MESH 类型）
+        expand_amount: 每边扩展的距离（单位：米），默认 0.0005m = 0.5mm
+    """
+    if not obj or not obj.data:
+        return
+
+    import bmesh
+
+    # 确保在 OBJECT 模式
+    if obj.mode != 'OBJECT':
+        bpy.context.view_layer.objects.active = obj
+        bpy.ops.object.mode_set(mode='OBJECT')
+    # # 删除对象ifc类型数据，变成Mesh类型，从而进行缩放操作
+    # bpy.ops.bim.unlink_object()
+
+    # 获取对象的局部边界框
+    bb = [Vector(c) for c in obj.bound_box]
+
+    # 计算边界框的最小和最大点（局部坐标）
+    min_co = Vector((
+        min(v.x for v in bb),
+        min(v.y for v in bb),
+        min(v.z for v in bb)
+    ))
+    max_co = Vector((
+        max(v.x for v in bb),
+        max(v.y for v in bb),
+        max(v.z for v in bb)
+    ))
+
+    # 计算当前尺寸
+    size = max_co - min_co
+
+    # 计算边界框中心（局部坐标）
+    center = (min_co + max_co) / 2
+
+    # 计算扩展比例（每边增加 expand_amount，总长增加 expand_amount * 2）
+    # 如果当前尺寸为 0，则无法扩展
+    scale_factors = []
+    for i in range(3):
+        if size[i] > 1e-6:
+            # 新尺寸 = 原尺寸 + expand_amount * 2
+            new_size = size[i] + expand_amount * 2
+            scale_factor = new_size / size[i]
+        else:
+            # 如果尺寸为 0，直接扩展固定距离
+            scale_factor = 1.0
+        scale_factors.append(scale_factor)
+
+    # 使用 bmesh 修改顶点位置
+    bm = bmesh.new()
+    bm.from_mesh(obj.data)
+    bm.verts.ensure_lookup_table()
+
+    # 对每个顶点进行缩放（以中心为原点）
+    for v in bm.verts:
+        # 相对于中心的偏移
+        offset = v.co - center
+        # 应用缩放
+        offset.x *= scale_factors[0]
+        offset.y *= scale_factors[1]
+        offset.z *= scale_factors[2]
+        # 更新顶点位置
+        v.co = center + offset
+
+    # 如果某个维度尺寸为 0，需要在该维度上扩展
+    for i in range(3):
+        if size[i] <= 1e-6:
+            # 在该维度上扩展 expand_amount * 2
+            axis = [0, 0, 0]
+            axis[i] = 1
+            axis_vec = Vector(axis)
+
+            # 沿该轴方向扩展所有顶点
+            for v in bm.verts:
+                # 检查顶点是否在中心附近（该维度）
+                if abs((v.co - center)[i]) < 1e-6:
+                    # 扩展该顶点（向两个方向各扩展 expand_amount）
+                    v.co[i] += expand_amount
+                else:
+                    # 如果不在中心，根据方向扩展
+                    direction = 1 if (v.co - center)[i] > 0 else -1
+                    v.co[i] += direction * expand_amount
+
+    # 更新 mesh
+    bm.to_mesh(obj.data)
+    bm.free()
+
+    # 更新对象
+    obj.data.update()
+
+
 # =================================================================
 #  BonsaiBIM Utility Functions
 # =================================================================
@@ -310,28 +407,28 @@ def add_aggregate(objs:List[bpy.types.Object], aggregate_name:str, *, snap_curso
         exec_on_active_objects(snap_cursor_obj, lambda: bpy.ops.view3d.snap_cursor_to_selected(),"设置光标到面板失败")
     else:
         exec_on_active_objects(objs, lambda: bpy.ops.view3d.snap_cursor_to_selected(),"设置光标到面板失败")
-    
+
     def _lambda():
         bpy.ops.bim.add_aggregate(aggregate_name=aggregate_name)
         # bpy.ops.bim.assign_class(obj=aggregate_name, ifc_class="IfcElementAssembly")
         bpy.ops.bim.select_aggregate(select_parts=False, one_level_deep=True)
 
         return bpy.context.active_object
-    
+
     return exec_on_active_objects(objs, _lambda, "添加聚合失败")
 
 def get_aggregate_relating_whole(obj):
     def _lambda():
         bpy.ops.bim.select_aggregate(select_parts=False, one_level_deep=False)
         return bpy.context.active_object
-    
+
     return exec_on_active_objects(obj, _lambda, "获取聚合对象失败")
 
 # ==============================================
 # 找到最新 IFC Array 控制对象（私有）
 # ==============================================
 def find_array_owner(_obj):
-    
+
     if hasattr(_obj, "BIMArrayProperties"):
         return _obj
 
@@ -436,7 +533,7 @@ def apply_geometric_array(obj, count, reassign_class=True):
             bpy.ops.bim.assign_material_to_selected(material=material.id())
         except Exception:
             pass
-    
+
     # apply array
     bpy.ops.object.modifier_add(type='ARRAY')
     bpy.context.object.modifiers["Array"].count = count
@@ -450,7 +547,7 @@ def apply_geometric_array(obj, count, reassign_class=True):
     bpy.ops.bim.update_representation(obj=obj.name, ifc_representation_class="")
 
     rename_active_obj(f"V38 {count * 100}mm")
-    
+
     return bpy.context.active_object
 
 
@@ -496,15 +593,15 @@ def assign_virtual_element(obj):
 
 def is_part_of_array(obj):
     """检查对象是否是 Array 的一部分（通过 BBIM_Array 属性判断）
-    
+
     参考: https://github.com/IfcOpenShell/IfcOpenShell/blob/8647f9c3574968f369c577597c1ef9a73d898124/src/bonsai/bonsai/bim/module/model/array.py#L193
-    
+
     Args:
         obj: Blender 对象
-        
+
     Returns:
         bool: 如果对象是 Array 的一部分返回 True，否则返回 False
-    """    
+    """
     element = tool.Ifc.get_entity(obj)
     array_pset = ifcopenshell.util.element.get_pset(element, "BBIM_Array")
     return array_pset is not None
@@ -683,7 +780,7 @@ def find_parts_from_obj(context:bpy.types.Context, obj):
         if o and o.name in bpy.data.objects:
             o.select_set(True)
     context.view_layer.objects.active = prev_active
-    
+
     return parts
 
 
@@ -693,25 +790,25 @@ def sync_openings(
     obj_target: bpy.types.Object,
 ):
     """将源对象的所有 openings 复制到目标对象
-    
+
     参考: https://github.com/IfcOpenShell/IfcOpenShell/blob/b4135194cafd9adf8d6e0bda3ae24d8e143253e0/src/bonsai/bonsai/bim/module/model/opening.py#L527
-    
+
     Args:
         context: Blender context
         obj_source: 源对象（有 openings 的对象）
         obj_target: 目标对象（要添加 openings 的对象）
-    
+
     Returns:
         tuple: (success: bool, message: str, count: int) - 成功标志、消息、复制的 opening 数量
-    """        
-    
+    """
+
     # -------- OBJECT 模式 --------
     bpy.ops.object.mode_set(mode='OBJECT', toggle=False)
-    
+
     # 记录当前选中状态
     prev_selection = context.selected_objects.copy()
     prev_active = context.view_layer.objects.active
-    
+
 
     # 重要：先显示源对象的 openings，确保它们都在场景中
     bpy.ops.object.select_all(action='DESELECT')
@@ -719,11 +816,11 @@ def sync_openings(
     context.view_layer.objects.active = obj_source
     bpy.ops.bim.show_openings()
     context.view_layer.update()
-    
+
     duplicated_count = 0
     skipped_count = 0
     fails = []
-    
+
     # 首先清除目标对象的旧 openings
     target_element = tool.Ifc.get_entity(obj_target)
     if not target_element:
@@ -740,7 +837,7 @@ def sync_openings(
         return False, "❌ 无法获取源对象的 IFC 实体", 0
     openings_relations = tool.Geometry.get_openings(source_element)
     if not openings_relations:
-        return False, "❌ 源对象没有 openings", 0    
+        return False, "❌ 源对象没有 openings", 0
     opening_objs = [tool.Ifc.get_object(rel.RelatedOpeningElement) for rel in openings_relations]
 
     target_bvh_tree = tool.Geometry.get_bvh_tree(obj_target)
@@ -749,7 +846,7 @@ def sync_openings(
         if not opening_bvh_tree.overlap(target_bvh_tree):
             skipped_count += 1
             continue
-        
+
         bpy.ops.object.select_all(action='DESELECT')
         opening_obj.select_set(True)
         context.view_layer.objects.active = opening_obj
@@ -757,17 +854,19 @@ def sync_openings(
         bpy.ops.bim.override_object_duplicate_move()
         duplicated_opening_obj = context.active_object
 
-        # TODO Add 0.5mm
-        
+        # 扩展 opening 对象：长宽高各增加 1mm（每边 0.5mm）
+        expand_opening_object(duplicated_opening_obj, expand_amount=0.005)  # 0.5mm = 0.0005m
+
         # 应用变换（特别是 scale，参考 add_opening 函数）
         bpy.ops.object.transform_apply(location=False, rotation=False, scale=True)
-        
+
         # 选中目标元素并设置为 active
         duplicated_opening_obj.select_set(True)
         obj_target.select_set(True)
         context.view_layer.objects.active = obj_target
-        
+
         # 使用 bpy.ops.bim.add_opening() 添加 opening
+        raise Exception("test")
         try:
             bpy.ops.bim.add_opening()
             duplicated_count += 1
@@ -776,7 +875,7 @@ def sync_openings(
             bpy.ops.object.select_all(action='DESELECT')
             duplicated_opening_obj.select_set(True)
             bpy.ops.object.delete(use_global=False)
-        
+
     # 恢复选中状态
     bpy.ops.object.select_all(action='DESELECT')
     for o in prev_selection:
@@ -903,7 +1002,7 @@ def build_panels_data(context, ref_obj, offset_obj, offset_dist=0.019, side_z_ep
     # 1. 原有 corner 检测（基于 offset_obj）
     mesh = offset_obj.data
     mw = offset_obj.matrix_world
-    
+
     # --- 构建缓存 ---
     poly_count = len(mesh.polygons)
 
@@ -985,14 +1084,14 @@ def build_panels_data(context, ref_obj, offset_obj, offset_dist=0.019, side_z_ep
                     if abs(dot) < 1e-3:
                         is_corner = True
                         neighbor_normal = n_other
-                        
+
                         e_dir.normalize()
                         cross_n = n_self.cross(n_other)
                         sign = cross_n.dot(e_dir)
-                        
+
                         is_side = side_mask[poly.index]
                         is_side_other = side_mask[other_poly_idx]
-                        
+
                         if sign > 0:
                             if (is_side and is_side_other):
                                 corner_type = "side_outer"
@@ -1021,7 +1120,7 @@ def build_panels_data(context, ref_obj, offset_obj, offset_dist=0.019, side_z_ep
 
     # 2. 新增：在 ref_obj 上检测“贴在顶面的侧边阴角”
 
-    
+
 
     butt_map = {}
 
@@ -1606,7 +1705,7 @@ def outline_studs_on_reference(
             offset_vec = corner_offset
         if corner_roll_rad is not None:
             roll = corner_roll_rad
-        
+
         # 非侧面：按阴角/阳角用不同类型
         if ctype == "inner" and corner_inner_type_obj:
             stud_type = corner_inner_type_obj
@@ -1831,7 +1930,7 @@ def generate_studs_on_canonical_panel(
     corner_inner_type_obj = find_member_type(model, props.corner_inner_type)
     corner_outer_type_obj = find_member_type(model, props.corner_outer_type)
     side_end_type_obj = find_member_type(model, props.side_end_type)
-    
+
     if edge_type_obj and side_end_type_obj and corner_inner_type_obj and corner_outer_type_obj:
         edge_offset = Vector((
             props.edge_offset_x,
@@ -2286,7 +2385,7 @@ class IFC_OT_ConfirmApplyScale(bpy.types.Operator):
 class IFC_OT_PolygonOffset(bpy.types.Operator):
     bl_idname = "ifc.polygon_offset"
     bl_label  = "显示边分类结果"
-    
+
     bypass_scale_check: bpy.props.BoolProperty(default=False)
 
     def execute(self, context):
@@ -2335,7 +2434,7 @@ class IFC_OT_PolygonOffset(bpy.types.Operator):
             stud_log_set(context, f"❌ 创建 offset_obj 失败：{e}")
             return {"FINISHED"}
 
-        stud_log_append(context, 
+        stud_log_append(context,
             f"🎉 已成功基于 {ref_obj.name} 生成 offset 对象：{offset_obj.name}\n"
             f"   使用偏移量 offset = {offset_dist:.4f} m"
         )
@@ -2412,7 +2511,7 @@ class IFC_OT_PolygonOffset(bpy.types.Operator):
                     f"      v1_final      = {v1_final}\n"
                     f"      v2_final      = {v2_final}"
                 )
-        
+
         return {"FINISHED"}
 
 
@@ -2467,7 +2566,7 @@ class IFC_OT_ArrayStud_FromMultiRef(bpy.types.Operator):
         stud_log_append(context, "✔ 完成 corner/side 预处理")
 
         # 4. 生成龙骨
-        
+
         studs = generate_studs_on_mesh(
             context, model, props,
             panels_raw,
@@ -2502,12 +2601,12 @@ class IFC_OT_SyncOpeningsFromPanel(bpy.types.Operator):
 
         try:
             parts = find_parts_from_obj(context, obj)
-            
+
             if parts:
                 self.report({'INFO'}, f"已选中 IFC 部件: {len(parts)} 个")
             else:
                 self.report({'INFO'}, "未找到Aggregate Parts")
-            
+
             virtual_element = None
             studs=[]
             for _part in parts:
@@ -2546,12 +2645,12 @@ class IFC_OT_SyncOpeningsFromPanel(bpy.types.Operator):
                         total_count += count
 
             self.report({'INFO'}, f"同步面板 Openings 到龙骨阵列 完成，共修改 {total_count} 个龙骨")
+            bpy.ops.ifc.update_opening_edge_studs()
         except Exception as e:
             self.report({'ERROR'}, f"同步面板 Openings 到龙骨阵列 失败: {e}")
             return {'CANCELLED'}
         finally:
             bpy.ops.bim.hide_all_openings()
-            bpy.ops.ifc.update_opening_edge_studs()
 
         return {'FINISHED'}
 
@@ -2571,8 +2670,8 @@ class IFC_OT_UpdateOpeningEdgeStuds(bpy.types.Operator):
         model = get_ifc_model()
             # 5. 边龙骨（含转角龙骨）
         edge_type_obj = find_member_type(model, props.edge_type)
-   
-        
+
+
         if not edge_type_obj:
             self.report({'ERROR'}, "未选择边龙骨类型")
             return {"CANCELLED"}
@@ -2600,7 +2699,7 @@ class IFC_OT_UpdateOpeningEdgeStuds(bpy.types.Operator):
             self.report({'WARNING'}, "请先生成龙骨，再生成洞口描边龙骨")
             bpy.ops.bim.hide_all_openings()
             return {'CANCELLED'}
-        
+
         parts = find_parts_from_obj(context, obj_relating_whole)
         for part in parts:
             # 跳过聚合对象本身
@@ -2608,13 +2707,13 @@ class IFC_OT_UpdateOpeningEdgeStuds(bpy.types.Operator):
             if part is obj_relating_whole:
                 continue
             # 如果对象有 IFC 定义，使用 IFC ID 比较（处理对象复制的情况）
-            if (hasattr(part, "BIMObjectProperties") and 
+            if (hasattr(part, "BIMObjectProperties") and
                 hasattr(obj_relating_whole, "BIMObjectProperties") and
                 part.BIMObjectProperties.ifc_definition_id and
-                part.BIMObjectProperties.ifc_definition_id == 
+                part.BIMObjectProperties.ifc_definition_id ==
                 obj_relating_whole.BIMObjectProperties.ifc_definition_id):
                 continue
-            
+
             part_element = tool.Ifc.get_entity(part)
             if part_element.is_a("IfcElementAssembly") and part.name.startswith("IfcElementAssembly/OpeningEdges_"):
                 opening_parts = find_parts_from_obj(context, part)
@@ -2640,7 +2739,7 @@ class IFC_OT_UpdateOpeningEdgeStuds(bpy.types.Operator):
                     obj_normal_world
                 )
                 ref_obj_list.append(ref_obj)
-            
+
                 studs = outline_studs_on_reference(
                     context,
                     model,
@@ -2653,8 +2752,8 @@ class IFC_OT_UpdateOpeningEdgeStuds(bpy.types.Operator):
                     self.report({'WARNING'}, f"未生成任何龙骨 {loop_edges}")
                     continue
 
-                opening_relating_whole = add_aggregate(studs, f"OpeningEdges_{i}")     
-                
+                opening_relating_whole = add_aggregate(studs, f"OpeningEdges_{i}")
+
                 bpy.ops.object.select_all(action='DESELECT')
                 opening_relating_whole.select_set(True)
                 bpy.context.view_layer.objects.active = obj_relating_whole
@@ -2703,22 +2802,22 @@ class IFC_OT_UpdateOpeningEdgeStuds(bpy.types.Operator):
         verts_world = []
         if not loop_edges:
             raise RuntimeError("❌ opening loop 为空")
-        
+
         # 从第一条边开始
         v_start = loop_edges[0][0]
         v_next = loop_edges[0][1]
         verts_world.append(v_start)
         verts_world.append(v_next)
-        
+
         # 处理剩余的边，确保连续连接
         for i in range(1, len(loop_edges)):
             v1, v2 = loop_edges[i]
             last_vert = verts_world[-1]
-            
+
             # 检查边的哪一端与当前序列的最后一个顶点匹配
             dist_v1 = (v1 - last_vert).length
             dist_v2 = (v2 - last_vert).length
-            
+
             if dist_v1 < 1e-6:
                 # v1 匹配，使用 v2（边方向正确）
                 if dist_v2 < 1e-6:
@@ -2738,14 +2837,14 @@ class IFC_OT_UpdateOpeningEdgeStuds(bpy.types.Operator):
                 raise RuntimeError(
                     f"❌ opening loop 不连续：边 {i} ({v1}, {v2}) 无法连接到最后一个顶点 {last_vert}"
                 )
-        
+
         # 检查是否闭合：如果第一个和最后一个顶点相同（或非常接近），移除最后一个
         if len(verts_world) > 1 and (verts_world[-1] - verts_world[0]).length < 1e-6:
             verts_world.pop()
 
         if len(verts_world) < 3:
             raise RuntimeError(f"❌ opening loop 顶点数不足: {len(verts_world)} (来自 {len(loop_edges)} 条边)")
-        
+
         # 调试信息
         stud_log_append(context, f"🔍 {name}: {len(loop_edges)} 条边 → {len(verts_world)} 个顶点")
 
@@ -2854,7 +2953,7 @@ class IFC_PT_StudDevPanel(bpy.types.Panel):
         col.label(text="主龙骨：")
         col.prop(props, "selected_type", text="")
         col.separator()
-        
+
         row = col.row(align=True)
         row.label(text="Offset:")
         sub = row.row(align=True)
@@ -2898,7 +2997,7 @@ class IFC_PT_StudDevPanel(bpy.types.Panel):
         sub.prop(props, "side_end_offset_y", text="Y")
         sub.prop(props, "side_end_offset_z", text="Z")
         col.prop(props, "side_end_roll_rad")
-        
+
         col.separator()
         col.label(text="转角龙骨：")
         col.prop(props, "corner_inner_type", text="阴角")
