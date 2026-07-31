@@ -3,7 +3,7 @@
 bl_info = {
     "name": "Outline Mesh (IfcOpenShell-style, with Faces & Materials)",
     "author": "ChatGPT",
-    "version": (0, 1, 7),
+    "version": (0, 1, 8),
     "blender": (4, 0, 0),
     "location": "View3D > Sidebar (N) > Silhouette",
     "category": "Object",
@@ -37,7 +37,10 @@ def _copy_material_slots(src_obj: bpy.types.Object, dst_mesh: bpy.types.Mesh):
 # Core: visible faces -> copy -> flatten
 # ----------------------------
 
-def generate_outline_mesh_with_faces(obj: bpy.types.Object, axis: Axis = "+Z") -> bpy.types.Mesh:
+def generate_outline_mesh_with_faces(
+    obj: bpy.types.Object,
+    axis: Axis = "+Z",
+) -> tuple[bpy.types.Mesh, set[int], set[int]]:
     def get_visible_faces(obj: bpy.types.Object, bm: bmesh.types.BMesh, axis: Axis) -> list[bmesh.types.BMFace]:
         """
         Visible face heuristic (IfcOpenShell-style):
@@ -135,25 +138,28 @@ def generate_outline_mesh_with_faces(obj: bpy.types.Object, axis: Axis = "+Z") -
         bm.free()
         raise RuntimeError("No visible faces found.")
 
-    # keep the outline computation (same as before; currently not used downstream)
     outline_edges = set(get_contour_edges(visible_faces))
     outline_edges.update(get_crease_edges(visible_faces, radians(60)))
-    _ = outline_edges
 
     # --- Copy VISIBLE FACES to bm_new, preserve material_index ---
     bm_new = bmesh.new()
     vert_map: dict[bmesh.types.BMVert, bmesh.types.BMVert] = {}
 
+    # for vertex groups (on the OUTPUT object)
+    visible_bmverts: set[bmesh.types.BMVert] = set()
+    outline_bmverts: set[bmesh.types.BMVert] = set()
+
     max_mi = max(len(obj.material_slots) - 1, 0)
 
     for f in visible_faces:
-        new_face_verts = []
+        new_face_verts: list[bmesh.types.BMVert] = []
         for v in f.verts:
             nv = vert_map.get(v)
             if nv is None:
                 nv = bm_new.verts.new(v.co.copy())
                 vert_map[v] = nv
             new_face_verts.append(nv)
+            visible_bmverts.add(nv)
 
         try:
             nf = bm_new.faces.new(new_face_verts)
@@ -168,16 +174,27 @@ def generate_outline_mesh_with_faces(obj: bpy.types.Object, axis: Axis = "+Z") -
                 mi = max_mi
             nf.material_index = mi
 
-    bm_new.verts.ensure_lookup_table()
+    # Map outline edge verts (source bm) -> bm_new verts
+    for e in outline_edges:
+        for v in e.verts:
+            nv = vert_map.get(v)
+            if nv is not None:
+                outline_bmverts.add(nv)
 
-    # --- Flatten along axis in new bmesh ---
-    for vert in bm_new.verts:
-        if axis in {"+Z", "-Z"}:
-            vert.co.z = 0.0
-        elif axis in {"+Y", "-Y"}:
-            vert.co.y = 0.0
-        else:  # {"+X","-X"}
-            vert.co.x = 0.0
+    bm_new.verts.ensure_lookup_table()
+    bm_new.verts.index_update()
+
+    visible_vert_indices: set[int] = {v.index for v in visible_bmverts}
+    outline_vert_indices: set[int] = {v.index for v in outline_bmverts}
+
+    # # --- Flatten along axis in new bmesh ---
+    # for vert in bm_new.verts:
+    #     if axis in {"+Z", "-Z"}:
+    #         vert.co.z = 0.0
+    #     elif axis in {"+Y", "-Y"}:
+    #         vert.co.y = 0.0
+    #     else:  # {"+X","-X"}
+    #         vert.co.x = 0.0
 
     # CRITICAL FIX: copy materials BEFORE to_mesh
     new_mesh = bpy.data.meshes.new("outline_tmp")
@@ -188,7 +205,7 @@ def generate_outline_mesh_with_faces(obj: bpy.types.Object, axis: Axis = "+Z") -
     bm.free()
 
     new_mesh.update()
-    return new_mesh
+    return new_mesh, visible_vert_indices, outline_vert_indices
 
 
 # ----------------------------
@@ -210,9 +227,7 @@ class OBJECT_OT_generate_outline_mesh(bpy.types.Operator):
 
         tmp = src # TODO add duplicate and apply rotation+scale if needed in the future, currently we just use the original mesh as is for raycasting and vertex positions, so that we can preserve edit mode selection and avoid depsgraph issues with evaluated meshes. This means the operator will work best on objects with no rotation and scale of 1, but it should still produce correct results even if those transforms are present (just not perfectly flattened along the axis).
         try:
-            # ALWAYS apply rotation+scale on a temp copy
-
-            new_mesh = generate_outline_mesh_with_faces(tmp, axis=axis)
+            new_mesh, visible_vidx, outline_vidx = generate_outline_mesh_with_faces(tmp, axis=axis)
 
             suffix = axis.replace("+", "p").replace("-", "m")
             new_obj = bpy.data.objects.new(f"{src.name}_OUTLINE_FACES_{suffix}", new_mesh)
@@ -220,8 +235,22 @@ class OBJECT_OT_generate_outline_mesh(bpy.types.Operator):
             col = src.users_collection[0] if src.users_collection else context.scene.collection
             col.objects.link(new_obj)
 
-            # Use the temp object's matrix_world (after apply rot+scale)
+            # Use the temp object's matrix_world
             new_obj.matrix_world = tmp.matrix_world.copy()
+
+            # ----------------------------
+            # Vertex Groups
+            # ----------------------------
+            VG_VISIBLE = "VG_VISIBLE_FACES"
+            VG_OUTLINE = "VG_OUTLINE_EDGES"
+
+            vg_vis = new_obj.vertex_groups.get(VG_VISIBLE) or new_obj.vertex_groups.new(name=VG_VISIBLE)
+            vg_out = new_obj.vertex_groups.get(VG_OUTLINE) or new_obj.vertex_groups.new(name=VG_OUTLINE)
+
+            if visible_vidx:
+                vg_vis.add(list(visible_vidx), 1.0, "REPLACE")
+            if outline_vidx:
+                vg_out.add(list(outline_vidx), 1.0, "REPLACE")
 
         except Exception as e:
             self.report({"ERROR"}, f"Generate failed: {e}")
