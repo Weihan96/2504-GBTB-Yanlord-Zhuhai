@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ids xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://standards.buildingsmart.org/IDS http://standards.buildingsmart.org/IDS/1.0/ids.xsd" xmlns="http://standards.buildingsmart.org/IDS">
+  <info>
+    <title>仁恒滨海湾 P0 施工定位信息要求</title>
+    <version>0.1.0</version>
+    <description>Space、墙体、门窗和地坪进入 A-103、A-104、A-105 自动出图前必须满足的最低 IFC4 信息要求。</description>
+    <date>2026-08-04</date>
+    <purpose>施工图候选编译与机器验证</purpose>
+    <milestone>P0 candidate</milestone>
+  </info>
+  <specifications>
+    <specification identifier="P0-SPACE-IDENTITY" name="空间必须具有稳定身份和确认语义" ifcVersion="IFC4">
+      <applicability maxOccurs="unbounded">
+        <entity>
+          <name><simpleValue>IFCSPACE</simpleValue></name>
+        </entity>
+      </applicability>
+      <requirements description="房间标注与空间明细表所需字段。">
+        <attribute instructions="网格单元名称必须存在。">
+          <name><simpleValue>Name</simpleValue></name>
+        </attribute>
+        <attribute instructions="必须填写经人审确认的中文房间名称。">
+          <name><simpleValue>LongName</simpleValue></name>
+        </attribute>
+        <attribute instructions="必须明确空间类型；PROVISIONAL_GRID_CELL 不能用于正式发布。">
+          <name><simpleValue>ObjectType</simpleValue></name>
+        </attribute>
+        <attribute>
+          <name><simpleValue>PredefinedType</simpleValue></name>
+        </attribute>
+        <property dataType="IFCLABEL" instructions="正式发布前填写唯一房间编号。">
+          <propertySet><simpleValue>Pset_SpaceCommon</simpleValue></propertySet>
+          <baseName><simpleValue>Reference</simpleValue></baseName>
+        </property>
+        <property dataType="IFCAREAMEASURE" instructions="由确认几何重新计算，不接受手工猜测。">
+          <propertySet><simpleValue>Qto_SpaceBaseQuantities</simpleValue></propertySet>
+          <baseName><simpleValue>GrossFloorArea</simpleValue></baseName>
+        </property>
+      </requirements>
+    </specification>
+    <specification identifier="P0-WALL-IDENTITY" name="墙体必须可用于 A-103 定位和墙体表" ifcVersion="IFC4">
+      <applicability maxOccurs="unbounded">
+        <entity>
+          <name><simpleValue>IFCWALL</simpleValue></name>
+        </entity>
+      </applicability>
+      <requirements>
+        <attribute><name><simpleValue>Name</simpleValue></name></attribute>
+        <attribute instructions="墙体类型编号必须唯一且与墙体表一致。"><name><simpleValue>Tag</simpleValue></name></attribute>
+        <property dataType="IFCLENGTHMEASURE">
+          <propertySet><simpleValue>Qto_WallBaseQuantities</simpleValue></propertySet>
+          <baseName><simpleValue>Length</simpleValue></baseName>
+        </property>
+      </requirements>
+    </specification>
+    <specification identifier="P0-DOOR-LOCATION" name="门必须具备编号、洞口尺寸和类型" ifcVersion="IFC4">
+      <applicability maxOccurs="unbounded">
+        <entity><name><simpleValue>IFCDOOR</simpleValue></name></entity>
+      </applicability>
+      <requirements>
+        <attribute><name><simpleValue>Name</simpleValue></name></attribute>
+        <attribute instructions="门编号必须与 A-104 门表一致。"><name><simpleValue>Tag</simpleValue></name></attribute>
+        <attribute><name><simpleValue>OverallHeight</simpleValue></name></attribute>
+        <attribute><name><simpleValue>OverallWidth</simpleValue></name></attribute>
+        <attribute><name><simpleValue>PredefinedType</simpleValue></name></attribute>
+      </requirements>
+    </specification>
+    <specification identifier="P0-WINDOW-LOCATION" name="窗必须具备编号、洞口尺寸和类型" ifcVersion="IFC4">
+      <applicability maxOccurs="unbounded">
+        <entity><name><simpleValue>IFCWINDOW</simpleValue></name></entity>
+      </applicability>
+      <requirements>
+        <attribute><name><simpleValue>Name</simpleValue></name></attribute>
+        <attribute instructions="窗编号必须与 A-104 窗表一致。"><name><simpleValue>Tag</simpleValue></name></attribute>
+        <attribute><name><simpleValue>OverallHeight</simpleValue></name></attribute>
+        <attribute><name><simpleValue>OverallWidth</simpleValue></name></attribute>
+        <attribute><name><simpleValue>PredefinedType</simpleValue></name></attribute>
+      </requirements>
+    </specification>
+    <specification identifier="P0-FLOOR-COVERING" name="地坪饰面必须具备材料和编号" ifcVersion="IFC4">
+      <applicability maxOccurs="unbounded">
+        <entity>
+          <name><simpleValue>IFCCOVERING</simpleValue></name>
+          <predefinedType><simpleValue>FLOORING</simpleValue></predefinedType>
+        </entity>
+      </applicability>
+      <requirements>
+        <attribute><name><simpleValue>Name</simpleValue></name></attribute>
+        <attribute instructions="地坪材料编号必须与 A-105 图例一致。"><name><simpleValue>Tag</simpleValue></name></attribute>
+        <material instructions="必须关联确认后的完成面材料。" />
+      </requirements>
+    </specification>
+  </specifications>
+</ids>

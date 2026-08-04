@@ -1,0 +1,12 @@
+{
+  "name": "yanlord-zhuhai-ifc-drawing-pipeline",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "pipeline": "bun run pipeline/src/cli.ts",
+    "pipeline:snapshot": "bun run pipeline/src/cli.ts snapshot",
+    "pipeline:check": "bun run pipeline/src/cli.ts check --report-only",
+    "pipeline:gate": "bun run pipeline/src/cli.ts check",
+    "test": "bun test pipeline/tests"
+  }
+}

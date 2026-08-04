@@ -1,0 +1,8 @@
+decision_id,scope,object_guid,current_value,proposed_value,basis,confidence,review_required,status,notes
+SPACE-DELETE-001,space,0EMmlqm7nBa8ZAc7YxtYmk,已从 f216251 基线移除,DELETE,历史 LongName 明确标记为逃生楼梯待删除且当前 IFC 已不存在,1.00,no,implemented,保留记录用于证明删除不是流水线误报
+SPACE-DELETE-002,space,3xVWMElVzD1fYruy6W$$aJ,已从 f216251 基线移除,DELETE,历史 LongName 明确标记为逃生楼梯待删除且当前 IFC 已不存在,1.00,no,implemented,保留记录用于证明删除不是流水线误报
+SPACE-DELETE-003,space,2QMCgSr7fF3OW7tEUdmkQh,已从 f216251 基线移除,DELETE,历史 LongName 明确标记为逃生楼梯待删除且当前 IFC 已不存在,1.00,no,implemented,保留记录用于证明删除不是流水线误报
+SPACE-REL-001,space-relation,2EGrx1BlPAued7yJAAkuEO,IfcRelContainedInSpatialStructure,IfcRelAggregates,当前 26 个 Space 被数量工具归入 no storey 且没有空间聚合关系,0.90,yes,pending,先验证 IFC4 与 Bonsai 下游行为再写入
+DOOR-ROOM-001,door,1To6gRjrf2nBU5GQuuD8FV,未编号,客卫门,项目已确认该 GlobalId 为客卫门且不是主卧门,1.00,no,confirmed,后续编号不得误写为主卧门
+DOOR-ROOM-002,door,3xKBbA2CT9mfby2$MODnzM,主卧门候选,主卧门,模型位置和 900x2000 左开属性仅构成候选,0.60,yes,pending,必须平面定位和人眼确认
+FLOOR-SEM-001,flooring,,70 个 FFL Covering 仅 3 个标为 FLOORING,逐对象确认地坪/踢脚/其他饰面,现有 PredefinedType 和 ObjectType 不足以自动分类,0.20,yes,pending,不得按材料名称猜测

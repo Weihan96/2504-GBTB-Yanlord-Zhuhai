@@ -1,0 +1,63 @@
+{
+  "projectId": "YANLORD-ZHUHAI-2504",
+  "projectName": "仁恒滨海湾",
+  "ifcPath": "2504 GBTB Yanlord Zhuhai.ifc",
+  "ifcSchema": "IFC4",
+  "baselineCounts": {
+    "IFCSPACE": 26,
+    "IFCWALL": 89,
+    "IFCDOOR": 8,
+    "IFCWINDOW": 11,
+    "IFCANNOTATION": 75,
+    "IFCGRID": 1,
+    "IFCGRIDAXIS": 20
+  },
+  "drawings": [
+    {
+      "id": "WALL-PLAN",
+      "path": "drawings/Wall Plan.svg",
+      "role": "formal-baseline",
+      "expectedScale": "1:50"
+    },
+    {
+      "id": "A-103-CANDIDATE",
+      "path": "drawings/Wall Plan-A103-candidate.svg",
+      "role": "candidate-baseline",
+      "expectedScale": "1:50"
+    },
+    {
+      "id": "A-105-BASELINE",
+      "path": "drawings/FFL PLAN.svg",
+      "role": "formal-baseline",
+      "expectedScale": "1:50"
+    },
+    {
+      "id": "WALL-FINISH-BASELINE",
+      "path": "drawings/Wall Finish Plan.svg",
+      "role": "formal-baseline",
+      "expectedScale": "1:50"
+    },
+    {
+      "id": "SANITARY-BASELINE",
+      "path": "drawings/Sanitary Plan.svg",
+      "role": "formal-baseline",
+      "expectedScale": "1:50"
+    },
+    {
+      "id": "FURNITURE-BASELINE",
+      "path": "drawings/Furniture Plan.svg",
+      "role": "formal-baseline",
+      "expectedScale": "1:50"
+    }
+  ],
+  "decisionFiles": [
+    "pipeline/decisions/p0-review.csv"
+  ],
+  "output": {
+    "snapshot": "build/snapshots/ifc-snapshot.json",
+    "qaJson": "build/reports/qa-report.json",
+    "qaMarkdown": "build/reports/qa-report.md",
+    "candidateDirectory": "build/candidates",
+    "releaseDirectory": "releases"
+  }
+}
