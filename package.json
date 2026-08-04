@@ -7,6 +7,8 @@
     "pipeline:snapshot": "bun run pipeline/src/cli.ts snapshot",
     "pipeline:check": "bun run pipeline/src/cli.ts check --report-only",
     "pipeline:gate": "bun run pipeline/src/cli.ts check",
+    "pipeline:coordinate-audit": "python3 pipeline/scripts/coordinate_normalize.py audit --input '2504 GBTB Yanlord Zhuhai.ifc' --origin-tolerance-mm 0.1 --report build/coordinate-normalization/audit.json",
+    "pipeline:coordinate-noise-candidate": "python3 pipeline/scripts/coordinate_normalize.py clean-noise --input '2504 GBTB Yanlord Zhuhai.ifc' --output build/candidates/2504-GBTB-float-noise-clean.ifc --report build/coordinate-normalization/noise-candidate-report.json",
     "test": "bun test pipeline/tests"
   }
 }
