@@ -2,7 +2,22 @@ decision_id,scope,object_guid,current_value,proposed_value,basis,confidence,revi
 SPACE-DELETE-001,space,0EMmlqm7nBa8ZAc7YxtYmk,已从 f216251 基线移除,DELETE,历史 LongName 明确标记为逃生楼梯待删除且当前 IFC 已不存在,1.00,no,implemented,保留记录用于证明删除不是流水线误报
 SPACE-DELETE-002,space,3xVWMElVzD1fYruy6W$$aJ,已从 f216251 基线移除,DELETE,历史 LongName 明确标记为逃生楼梯待删除且当前 IFC 已不存在,1.00,no,implemented,保留记录用于证明删除不是流水线误报
 SPACE-DELETE-003,space,2QMCgSr7fF3OW7tEUdmkQh,已从 f216251 基线移除,DELETE,历史 LongName 明确标记为逃生楼梯待删除且当前 IFC 已不存在,1.00,no,implemented,保留记录用于证明删除不是流水线误报
-SPACE-REL-001,space-relation,2EGrx1BlPAued7yJAAkuEO,IfcRelContainedInSpatialStructure,IfcRelAggregates,当前 26 个 Space 被数量工具归入 no storey 且没有空间聚合关系,0.90,yes,pending,先验证 IFC4 与 Bonsai 下游行为再写入
+SPACE-REL-001,space-relation,2EGrx1BlPAued7yJAAkuEO,IfcRelContainedInSpatialStructure,IfcRelAggregates,当前 22 个 Space 被数量工具归入 no storey 且没有空间聚合关系,0.90,yes,pending,先验证 IFC4 与 Bonsai 下游行为再写入
+SPACE-MERGE-001,space,2Ipk_EVoLERRYRYxRXZV5U,2 个主卧飘窗 IfcSpace,合并为 1 个主卧飘窗 IfcSpace,用户在 Blender 中确认空间边界正确并要求所有同名 IfcSpace 合并；仅消除内部接缝且保留全部外轮廓原顶点坐标,1.00,no,implemented,保留 2Ipk_EVoLERRYRYxRXZV5U；移除 3I9m1TWy579gzT45Ge1kFH
+SPACE-MERGE-002,space,004pVXwHv1W8qavLfulRuQ,2 个次卧飘窗 IfcSpace,合并为 1 个次卧飘窗 IfcSpace,用户在 Blender 中确认空间边界正确并要求所有同名 IfcSpace 合并；仅消除内部接缝且保留全部外轮廓原顶点坐标,1.00,no,implemented,保留 004pVXwHv1W8qavLfulRuQ；移除 0NpBKBwLvApfFOGmJBAUN4
+SPACE-MERGE-003,space,3_0Iqe4h98T8fmNcI7e34S,2 个走廊 IfcSpace,合并为 1 个走廊 IfcSpace,用户在 Blender 中确认空间边界正确并要求所有同名 IfcSpace 合并；仅消除内部接缝且保留全部外轮廓原顶点坐标,1.00,no,implemented,保留 3_0Iqe4h98T8fmNcI7e34S；移除 2DW23WGlbApPZT9oTVsFyI
+SPACE-MERGE-004,space,3AlgzRX3jCvPS420cah9Qn,2 个餐厅飘窗 IfcSpace,合并为 1 个餐厅飘窗 IfcSpace,用户在 Blender 中确认空间边界正确并要求所有同名 IfcSpace 合并；仅消除内部接缝且保留全部外轮廓原顶点坐标,1.00,no,implemented,保留 3AlgzRX3jCvPS420cah9Qn；移除 18AAcyA5DFT99uxiNhYyC9
+SPACE-RESPLIT-001,space,2Ipk_EVoLERRYRYxRXZV5U,合并后的主卧飘窗不是最小 Box,按 Grid 01-02-05/J-K 重划为 2 个 Box,用户检查后要求所有非 Box Space 重新按 Grid 在 XY 切分并沿 Z 拉伸；旧 LongName 暂时继承供重新标记,1.00,no,implemented,保留原 GlobalId 于 01-02/J-K；新增 02-05/J-K
+SPACE-RESPLIT-002,space,004pVXwHv1W8qavLfulRuQ,合并后的次卧飘窗不是最小 Box,按 Grid 02-05-06/Q-R 重划为 2 个 Box,用户检查后要求所有非 Box Space 重新按 Grid 在 XY 切分并沿 Z 拉伸；旧 LongName 暂时继承供重新标记,1.00,no,implemented,保留原 GlobalId 于 02-05/Q-R；新增 05-06/Q-R
+SPACE-RESPLIT-003,space,3_0Iqe4h98T8fmNcI7e34S,合并后的走廊不是最小 Box,按 Grid 05-06-07-08-11-13/M-N-O 重划为 6 个 Box,用户检查后要求所有非 Box Space 重新按 Grid 在 XY 切分并沿 Z 拉伸；Grid M 数值误差 0.00002233 mm 已吸附且未生成薄片,1.00,no,implemented,保留原 GlobalId 于 05-06/N-O；新增其余 5 格
+SPACE-RESPLIT-004,space,3AlgzRX3jCvPS420cah9Qn,合并后的餐厅飘窗不是最小 Box,按 Grid 05-06-07/J-K 重划为 2 个 Box,用户检查后要求所有非 Box Space 重新按 Grid 在 XY 切分并沿 Z 拉伸；旧 LongName 暂时继承供重新标记,1.00,no,implemented,保留原 GlobalId 于 05-06/J-K；新增 06-07/J-K
+SPACE-REMERGE-001,space,2Ipk_EVoLERRYRYxRXZV5U,2 个主卧飘窗 Grid Box,合并为 1 个最小矩形 Box,用户明确要求重新合并主卧飘窗且不要保留多余共线点；共同外包矩形与两格面积差仅为浮点误差,1.00,no,implemented,保留原 GlobalId；底面 4 个唯一角点
+SPACE-REMERGE-002,space,004pVXwHv1W8qavLfulRuQ,2 个次卧飘窗 Grid Box,合并为 1 个最小矩形 Box,用户明确要求重新合并次卧飘窗且不要保留多余共线点,1.00,no,implemented,保留原 GlobalId；底面 4 个唯一角点
+SPACE-REMERGE-003,space,3AlgzRX3jCvPS420cah9Qn,2 个餐厅飘窗 Grid Box,合并为 1 个最小矩形 Box,用户明确要求重新合并餐厅飘窗且不要保留多余共线点,1.00,no,implemented,保留原 GlobalId；底面 4 个唯一角点
+SPACE-REMERGE-004,space,3_0Iqe4h98T8fmNcI7e34S,6 个走廊 Grid Box,合并为 1 个 L 形 Space,用户明确要求保留 L 形状；仅删除内部接缝并清理共线点,1.00,no,implemented,保留原 GlobalId；底面 8 个转角
+SPACE-CORRIDOR-RESPLIT-002,space,3_0Iqe4h98T8fmNcI7e34S,单个 8 角 L 形走廊 Space,按 Grid 05-06-07-08-11-13/M-N-O 拆为 6 个 Box,用户批注明确要求走廊拆回 Gridline；全部边界吸附现有 Grid 且沿 Z 拉伸,1.00,no,implemented,保留原 GlobalId 于 05-06/N-O；新增其余 5 格；最终 27 个 Space 且非 Box 为 0
+SPACE-SEM-MERGE-005,space,3_0Iqe4h98T8fmNcI7e34S,3 个已重新标记的走廊 Grid Box,合并为 1 个 4 角矩形走廊 Space,用户在 Blender 完成重新标记后明确要求合并；并集只消除内部点线面且最终四角均为原外轮廓顶点,1.00,no,implemented,保留原 GlobalId；移除 0JCZGmylfEXOamuGw8YXSQ 和 3ejrmr0yD0KfsQW1VNnx6g；外角位移 0
+SPACE-SEM-MERGE-006,space,36NNomu9TDP9xkhh6D2l8K,4 个已重新标记的玄关 Grid Box,合并为 1 个 4 角矩形玄关 Space,用户在 Blender 完成重新标记后明确要求合并；并集只消除内部点线面且最终四角均为原外轮廓顶点,1.00,no,implemented,保留原玄关 GlobalId；移除 14SJNTmB5DrwBeACVXb4U5、00aY50y593XgaSZ95x7T1H 和 3krAd$h_j4ug3_QKuOVgsG；外角位移 0
 DOOR-ROOM-001,door,1To6gRjrf2nBU5GQuuD8FV,未编号,客卫门,项目已确认该 GlobalId 为客卫门且不是主卧门,1.00,no,confirmed,后续编号不得误写为主卧门
 DOOR-ROOM-002,door,3xKBbA2CT9mfby2$MODnzM,主卧门候选,主卧门,模型位置和 900x2000 左开属性仅构成候选,0.60,yes,pending,必须平面定位和人眼确认
 FLOOR-SEM-001,flooring,,70 个 FFL Covering 仅 3 个标为 FLOORING,逐对象确认地坪/踢脚/其他饰面,现有 PredefinedType 和 ObjectType 不足以自动分类,0.20,yes,pending,不得按材料名称猜测
