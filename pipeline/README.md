@@ -46,9 +46,9 @@ bun test
 - `pipeline:snapshot`：读取 IFC 和现有 SVG，生成源哈希与结构快照。
 - `pipeline:check`：生成 QA JSON/Markdown；允许已知阻塞存在，便于持续盘点。
 - `pipeline:gate`：执行同一套检查；存在阻塞时返回非零退出码，用于发布门。
-- `pipeline:coordinate-audit`：只读统计对象 origin、IFC 长度数值和非整数分布；当前 origin 人审阈值为 `0.1 mm`。
+- `pipeline:coordinate-audit`：只读统计对象 origin、IFC 长度数值和非整数分布；当前 origin 复核阈值为 `0.1 mm`。
 - `pipeline:coordinate-noise-candidate`：只在 `build/candidates/` 生成副本，将距离整数不超过 `0.01 mm` 的 `IfcLengthMeasure` 尾数写为精确整数；不会覆盖源 IFC。
-- 坐标工具不提供“全部原点取整”或“施工几何取整”写入命令；超过人审阈值的 origin 和墙体尺寸必须经过 Blender 审核与受控 IFC 写入批次。
+- 坐标工具不提供“全部原点取整”或“施工几何取整”写入命令；超过复核阈值的 origin 和墙体尺寸必须先确定几何锚点与联动对象，再经过全模型机械差分、关系检查和受控 IFC 写入。Blender 只审核整体位置、拓扑和语义，不负责判断亚毫米对齐。
 - `bun test`：运行解析器和机械检查的单元测试。
 
 生成文件：

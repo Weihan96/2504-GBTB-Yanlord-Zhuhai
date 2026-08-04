@@ -102,6 +102,8 @@
 7. 原点为整数毫米，并位于约定的几何锚点上。
 8. IFC 保存、磁盘哈希、Blender reload/rebuild、对象数量和截图证据齐全。
 
+门窗原点若已机械证明位于宿主洞口门槛/窗台处的底边中点，允许保留该边缘锚点并随洞口整体归整；无需为了改成洞口中心而重写门窗表示。缺少 `IfcRelFillsElement` 的门窗不得假定宿主或锚点，转 A-104 建模/语义确认。
+
 ## 9. 当前停止门
 
-40 面原始橙色墙已完成机械收口：39 面归整，`3hKNxGFpT1NPjsqhFgHhOQ` 因共享曲线 Profile 与两个洞口的刚体修正会放大到 `3.871716 mm`，登记为受控例外。下一步只允许对剩余关键 origin 做父子关系与几何锚点机械分组；复杂曲线采样点不得逐点取整，施工尺寸或语义存在多解时必须停止并请求人审。
+C002 已完成：20 条 GridAxis、22 个 Space、89 面墙及全部 16 个有宿主洞口的门窗关键锚点已机械归整。剩余 3 个红点均为无 `IfcRelFillsElement` 的 IfcDoor：`1TW6$_GfnABRZusYvx0zZG`、`2D5BPoo2XFSvhTdfPenCh7`、`0zjVS5FBbBewgUkk0fdfiv`，转 A-104 建模/语义确认；`3hKNxGFpT1NPjsqhFgHhOQ` 保留共享曲线 Profile 受控例外。没有独立表示或明确重建依据时不得继续自动修改这些例外。
