@@ -2,7 +2,7 @@ decision_id,scope,object_guid,current_value,proposed_value,basis,confidence,revi
 SPACE-DELETE-001,space,0EMmlqm7nBa8ZAc7YxtYmk,已从 f216251 基线移除,DELETE,历史 LongName 明确标记为逃生楼梯待删除且当前 IFC 已不存在,1.00,no,implemented,保留记录用于证明删除不是流水线误报
 SPACE-DELETE-002,space,3xVWMElVzD1fYruy6W$$aJ,已从 f216251 基线移除,DELETE,历史 LongName 明确标记为逃生楼梯待删除且当前 IFC 已不存在,1.00,no,implemented,保留记录用于证明删除不是流水线误报
 SPACE-DELETE-003,space,2QMCgSr7fF3OW7tEUdmkQh,已从 f216251 基线移除,DELETE,历史 LongName 明确标记为逃生楼梯待删除且当前 IFC 已不存在,1.00,no,implemented,保留记录用于证明删除不是流水线误报
-SPACE-REL-001,space-relation,2EGrx1BlPAued7yJAAkuEO,IfcRelContainedInSpatialStructure,IfcRelAggregates,当前 22 个 Space 被数量工具归入 no storey 且没有空间聚合关系,0.90,yes,pending,先验证 IFC4 与 Bonsai 下游行为再写入
+SPACE-REL-001,space-relation,2EGrx1BlPAued7yJAAkuEO,22 个 Space 与 168 个非 Space 共处 FFL 的 IfcRelContainedInSpatialStructure,只从 mixed containment 移除 22 个 Space 并改由 FFL 的 IfcRelAggregates 聚合,只读副本预演已证明原 containment 保留 168 个非 Space 且新 aggregation 唯一包含 22 个 Space,0.99,yes,pending,IfcSpace 在 IFC4 不应作为普通元素留在 spatial containment；确认后才能写入
 SPACE-MERGE-001,space,2Ipk_EVoLERRYRYxRXZV5U,2 个主卧飘窗 IfcSpace,合并为 1 个主卧飘窗 IfcSpace,用户在 Blender 中确认空间边界正确并要求所有同名 IfcSpace 合并；仅消除内部接缝且保留全部外轮廓原顶点坐标,1.00,no,implemented,保留 2Ipk_EVoLERRYRYxRXZV5U；移除 3I9m1TWy579gzT45Ge1kFH
 SPACE-MERGE-002,space,004pVXwHv1W8qavLfulRuQ,2 个次卧飘窗 IfcSpace,合并为 1 个次卧飘窗 IfcSpace,用户在 Blender 中确认空间边界正确并要求所有同名 IfcSpace 合并；仅消除内部接缝且保留全部外轮廓原顶点坐标,1.00,no,implemented,保留 004pVXwHv1W8qavLfulRuQ；移除 0NpBKBwLvApfFOGmJBAUN4
 SPACE-MERGE-003,space,3_0Iqe4h98T8fmNcI7e34S,2 个走廊 IfcSpace,合并为 1 个走廊 IfcSpace,用户在 Blender 中确认空间边界正确并要求所有同名 IfcSpace 合并；仅消除内部接缝且保留全部外轮廓原顶点坐标,1.00,no,implemented,保留 3_0Iqe4h98T8fmNcI7e34S；移除 2DW23WGlbApPZT9oTVsFyI
@@ -18,6 +18,12 @@ SPACE-REMERGE-004,space,3_0Iqe4h98T8fmNcI7e34S,6 个走廊 Grid Box,合并为 1 
 SPACE-CORRIDOR-RESPLIT-002,space,3_0Iqe4h98T8fmNcI7e34S,单个 8 角 L 形走廊 Space,按 Grid 05-06-07-08-11-13/M-N-O 拆为 6 个 Box,用户批注明确要求走廊拆回 Gridline；全部边界吸附现有 Grid 且沿 Z 拉伸,1.00,no,implemented,保留原 GlobalId 于 05-06/N-O；新增其余 5 格；最终 27 个 Space 且非 Box 为 0
 SPACE-SEM-MERGE-005,space,3_0Iqe4h98T8fmNcI7e34S,3 个已重新标记的走廊 Grid Box,合并为 1 个 4 角矩形走廊 Space,用户在 Blender 完成重新标记后明确要求合并；并集只消除内部点线面且最终四角均为原外轮廓顶点,1.00,no,implemented,保留原 GlobalId；移除 0JCZGmylfEXOamuGw8YXSQ 和 3ejrmr0yD0KfsQW1VNnx6g；外角位移 0
 SPACE-SEM-MERGE-006,space,36NNomu9TDP9xkhh6D2l8K,4 个已重新标记的玄关 Grid Box,合并为 1 个 4 角矩形玄关 Space,用户在 Blender 完成重新标记后明确要求合并；并集只消除内部点线面且最终四角均为原外轮廓顶点,1.00,no,implemented,保留原玄关 GlobalId；移除 14SJNTmB5DrwBeACVXb4U5、00aY50y593XgaSZ95x7T1H 和 3krAd$h_j4ug3_QKuOVgsG；外角位移 0
+COORD-001,coordinate,,IFC 中存在大量距离整数小于等于 0.01 mm 的长度尾数,只清理浮点噪声而不做整体平移或对不确定值取整,用户明确要求直接修改当前 IFC；166585 个 IfcLengthMeasure 数值已精确化且几何包围盒最大变化 0.013701 mm,1.00,no,implemented,IFC 已保存并 reload/rebuild；再扫描剩余浮点噪声为 0
+COORD-ORIGIN-002,coordinate,,墙、Space、门窗的 129 个关键 origin 中仍存在 0.01-0.1 mm 分量,只把单轴距离整数不超过 0.1 mm 的原点分量归整,用户明确允许将 99.9 等 0.1 mm 尾差归整；按当前父子关系动态处理并保存重载,1.00,no,implemented,63 个对象的 72 个坐标分量已归整；3 个红点清除；IFC SHA-256 更新为 443ff085af96c39dad59e66ad987b2c2b5e93b7753063387b5408744ff55bedc
+COORD-REVIEW-001,coordinate,,全模型 675 个对象 origin 超过 0.1 mm；墙、Space、门窗中有 126 个关键 origin 标红,先确定施工几何和对象锚点再处理剩余 origin,原点独立于表示几何；将所有对象按 0.5 mm 独立移动可能破坏墙、门洞、门窗和空间关系,1.00,yes,pending,关键红点为 86 Wall、22 Space、8 Door、10 Window；红点只表示 origin 问题
+COORD-WALL-001,wall-geometry,,40 面墙标橙：12 面存在非整数拉伸深度、33 面存在非整数水平包围尺寸、其中 5 面同时存在两类问题,先做只读施工尺寸与几何锚点 dry-run 并在 Blender 分组审核,包围盒投影可能受旋转或组合几何影响；必须联动门洞、门窗和相邻墙且遵守 pipeline/standards/ifc-geometry-normalization.md,1.00,yes,pending,用户确认前不得修改墙体几何；dry-run 分为可直接归整、需联动构件和无法可靠推断三类
+SPACE-AREA-001,space-area,,22 个 Space 的 GrossFloorArea 与 NetFloorArea 均缺失,GrossFloorArea 使用现有 Grid 语义轮廓面积且 NetFloorArea 暂空,22 个 footprint 可复算且合计 113.800063 m²；用户已确认边界但说明尚未 Boolean 贴合室内完成面,0.99,yes,pending,建议只写 GrossFloorArea 并记录 Grid-derived basis；NetFloorArea 等完成面边界或现场复核
+SPACE-REF-001,space-reference,,22 个 Space 的 Pset_SpaceCommon.Reference 均缺失,使用独立稳定房间码 R01-R22 且保留中文 LongName,Reference 应服务房间标注和跨图索引而不与中文名称混用,0.85,yes,pending,需确认从玄关开始的平面编号方向后才生成
 DOOR-ROOM-001,door,1To6gRjrf2nBU5GQuuD8FV,未编号,客卫门,项目已确认该 GlobalId 为客卫门且不是主卧门,1.00,no,confirmed,后续编号不得误写为主卧门
 DOOR-ROOM-002,door,3xKBbA2CT9mfby2$MODnzM,主卧门候选,主卧门,模型位置和 900x2000 左开属性仅构成候选,0.60,yes,pending,必须平面定位和人眼确认
 FLOOR-SEM-001,flooring,,70 个 FFL Covering 仅 3 个标为 FLOORING,逐对象确认地坪/踢脚/其他饰面,现有 PredefinedType 和 ObjectType 不足以自动分类,0.20,yes,pending,不得按材料名称猜测

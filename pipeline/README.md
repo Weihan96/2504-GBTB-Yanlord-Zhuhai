@@ -16,6 +16,7 @@
 | --- | --- | --- |
 | `2504 GBTB Yanlord Zhuhai.ifc` | 已确认几何和语义 | 是 |
 | `pipeline/ids/*.ids` | buildingSMART IDS 机器信息要求 | 是 |
+| `pipeline/standards/*.md` | IDS 无法表达的几何、模度、锚点和验收规则 | 是 |
 | `pipeline/decisions/*.csv` | IDS 无法表达的选择、推断依据和人审状态 | 是 |
 | `pipeline/project.json` | 项目路径、基线和出图登记配置 | 是 |
 | `build/**` | 快照、候选、QA 报告 | 否，可重建 |
