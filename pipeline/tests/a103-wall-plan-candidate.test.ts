@@ -30,22 +30,23 @@ test("A103 world-to-SVG mapping matches the 1:50 Wall Plan camera", () => {
   ]);
 });
 
-test("A103 wall phase grouping never treats material as confirmed status", () => {
+test("A103 wall phase grouping requires confirmed IFC status and load-bearing semantics", () => {
   const result = runPython(`print(json.dumps([
-    module.wall_status_candidate("NEW", ["Unknown"]),
-    module.wall_status_candidate(None, ["Aircrete"]),
-    module.wall_status_candidate(None, ["Concrete"]),
-    module.wall_status_candidate(None, ["WhiteWall"]),
+    module.wall_status_candidate("NEW", None, ["Unknown"]),
+    module.wall_status_candidate("EXISTING", False, ["Aircrete"]),
+    module.wall_status_candidate("EXISTING", True, ["Concrete"]),
+    module.wall_status_candidate(None, None, ["WhiteWall"]),
   ]))`);
   expect(result.exitCode).toBe(0);
   const values = JSON.parse(result.stdout.toString());
   expect(values.map((value: unknown[]) => value[0])).toEqual([
     "CONFIRMED_NEW",
-    "PROPOSED_NEW",
-    "PROPOSED_EXISTING",
-    "UNRESOLVED",
+    "CONFIRMED_EXISTING_NON_LOAD_BEARING",
+    "CONFIRMED_EXISTING_LOAD_BEARING",
+    "INVALID_SEMANTICS",
   ]);
-  expect(values.slice(1).every((value: unknown[]) => value[3] === "yes")).toBe(true);
+  expect(values.slice(0, 3).every((value: unknown[]) => value[3] === "no")).toBe(true);
+  expect(values[3][3]).toBe("yes");
 });
 
 test("A103 dimension chains close mechanically", () => {

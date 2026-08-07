@@ -5,11 +5,11 @@ The formal IFC is never modified.  The script combines the current Bonsai Wall
 Plan SVG with mechanically derived grid chains, confirmed-new-wall dimensions,
 hosted-door opening marks, a wall status register, and machine-readable QA.
 
-Wall construction status candidates are evidence, not IFC truth:
+Wall construction status comes from the confirmed IFC semantics:
 
-* an existing ``Pset_WallCommon.Status=NEW`` remains confirmed;
-* Aircrete and Concrete are grouped for one human review;
-* every other wall remains unresolved.
+* ``Status=NEW`` is shown green;
+* ``Status=EXISTING`` with ``LoadBearing=false`` is shown orange;
+* ``Status=EXISTING`` with ``LoadBearing=true`` is shown blue-gray.
 """
 
 from __future__ import annotations
@@ -41,6 +41,7 @@ CONFIRMED_NEW_GUIDS = {
     "04rs0EDjn2EvxytEQSxWRB",
     "3jha5L04zBjh0$pMl_tHLy",
     "2Ca2tGerPBj8kvUTjlUtDl",
+    "3pAfMJYxPBlwR30CstZ4kK",
 }
 
 
@@ -147,6 +148,7 @@ def material_names(product: ifcopenshell.entity_instance) -> list[str]:
 
 def wall_status_candidate(
     current_status: str | None,
+    current_load_bearing: bool | None,
     materials: Sequence[str],
 ) -> tuple[str, str, float, str]:
     normalized = (current_status or "").upper()
@@ -157,24 +159,24 @@ def wall_status_candidate(
             1.0,
             "no",
         )
-    if "Aircrete" in materials:
+    if normalized == "EXISTING" and current_load_bearing is False and "Aircrete" in materials:
         return (
-            "PROPOSED_NEW",
-            "Aircrete material groups the wall for review; material alone does not prove construction phase",
-            0.85,
-            "yes",
+            "CONFIRMED_EXISTING_NON_LOAD_BEARING",
+            "IFC Pset_WallCommon.Status=EXISTING and LoadBearing=false; user-confirmed orange group",
+            1.0,
+            "no",
         )
-    if "Concrete" in materials:
+    if normalized == "EXISTING" and current_load_bearing is True and "Concrete" in materials:
         return (
-            "PROPOSED_EXISTING",
-            "Concrete material groups the wall for review; material alone does not prove construction phase",
-            0.85,
-            "yes",
+            "CONFIRMED_EXISTING_LOAD_BEARING",
+            "IFC Pset_WallCommon.Status=EXISTING and LoadBearing=true; user-confirmed blue-gray group",
+            1.0,
+            "no",
         )
     return (
-        "UNRESOLVED",
-        "Current IFC material/type evidence does not determine construction phase",
-        0.30,
+        "INVALID_SEMANTICS",
+        "Current IFC status, LoadBearing and material do not match the confirmed A-103 classification",
+        0.0,
         "yes",
     )
 
@@ -183,6 +185,12 @@ def current_wall_status(wall: ifcopenshell.entity_instance) -> str | None:
     psets = ifcopenshell.util.element.get_psets(wall)
     value = psets.get("Pset_WallCommon", {}).get("Status")
     return str(value) if value else None
+
+
+def current_wall_load_bearing(wall: ifcopenshell.entity_instance) -> bool | None:
+    psets = ifcopenshell.util.element.get_psets(wall)
+    value = psets.get("Pset_WallCommon", {}).get("LoadBearing")
+    return bool(value) if value is not None else None
 
 
 def grid_axis_coordinate(axis: ifcopenshell.entity_instance) -> float:
@@ -411,10 +419,9 @@ def render_side_panel(
     text_line("候选版｜比例 1:50｜不写 IFC", "a103-panel-subtitle", 10.0)
     text_line("墙体状态审核图例", "a103-panel-heading", 6.5)
     legend = [
-        ("#19a974", f"绿色 已确认新建 {wall_counts['CONFIRMED_NEW']}"),
-        ("#e68619", f"橙色 候选新建 {wall_counts['PROPOSED_NEW']}"),
-        ("#6d7f96", f"蓝灰 候选现状保留 {wall_counts['PROPOSED_EXISTING']}"),
-        ("#c43a84", f"紫红 未判定 {wall_counts['UNRESOLVED']}"),
+        ("#19a974", f"绿色 新建墙 {wall_counts['CONFIRMED_NEW']}"),
+        ("#e68619", f"橙色 现状非承重墙 {wall_counts['CONFIRMED_EXISTING_NON_LOAD_BEARING']}"),
+        ("#6d7f96", f"蓝灰 现状承重墙 {wall_counts['CONFIRMED_EXISTING_LOAD_BEARING']}"),
     ]
     for color, label in legend:
         lines.append(f'<rect x="408" y="{y - 3.6:.1f}" width="4" height="4" fill="{color}"/>')
@@ -452,9 +459,9 @@ def inject_candidate_svg(svg: str, status_by_guid: dict[str, str], generated: st
   @page { size: 500mm 400mm; margin: 0; }
   html, body { margin:0; width:500mm; height:400mm; overflow:hidden; }
   g.a103-confirmed-new path { fill:#19a974 !important; stroke:#0b6b49 !important; }
-  g.a103-proposed-new path { fill:#e68619 !important; stroke:#9c5008 !important; }
-  g.a103-proposed-existing path { fill:#6d7f96 !important; stroke:#34465d !important; }
-  g.a103-unresolved path { fill:#c43a84 !important; stroke:#7d1750 !important; }
+  g.a103-confirmed-existing-non-load-bearing path { fill:#e68619 !important; stroke:#9c5008 !important; }
+  g.a103-confirmed-existing-load-bearing path { fill:#6d7f96 !important; stroke:#34465d !important; }
+  g.a103-invalid-semantics path { fill:#c43a84 !important; stroke:#7d1750 !important; }
   .a103-dimension,.a103-tick { stroke:#143a52; stroke-width:0.35; fill:none; }
   .a103-dimension-text,.a103-tag-text,.a103-door-text { font-family:Arial,'Noto Sans CJK SC',sans-serif; fill:#102f43; text-anchor:middle; font-size:2.4px; }
   .a103-new-tag { fill:#ffffff; stroke:#087f5b; stroke-width:0.6; }
@@ -488,7 +495,10 @@ def build_inventory(
         wall_type = ifcopenshell.util.element.get_type(wall)
         materials = material_names(wall)
         current_status = current_wall_status(wall)
-        candidate, basis, confidence, review_required = wall_status_candidate(current_status, materials)
+        current_load_bearing = current_wall_load_bearing(wall)
+        candidate, basis, confidence, review_required = wall_status_candidate(
+            current_status, current_load_bearing, materials
+        )
         record = {
             "global_id": wall.GlobalId,
             "name": wall.Name or "",
@@ -498,6 +508,7 @@ def build_inventory(
             "type_predefined_type": wall_type.PredefinedType if wall_type else "",
             "materials": materials,
             "current_status": current_status or "",
+            "current_load_bearing": current_load_bearing,
             "candidate_status": candidate,
             "basis": basis,
             "confidence": confidence,
@@ -552,6 +563,7 @@ def write_wall_register(path: Path, walls: Sequence[dict[str, Any]], source_sha:
         "occurrence_predefined_type",
         "materials",
         "current_status",
+        "current_load_bearing",
         "candidate_status",
         "basis",
         "confidence",
@@ -569,7 +581,7 @@ def write_wall_register(path: Path, walls: Sequence[dict[str, Any]], source_sha:
         "source_ifc_sha256",
     ]
     with path.open("w", encoding="utf-8", newline="") as handle:
-        writer = csv.DictWriter(handle, fieldnames=fieldnames)
+        writer = csv.DictWriter(handle, fieldnames=fieldnames, lineterminator="\n")
         writer.writeheader()
         for record in walls:
             bbox = record["bbox"]
@@ -608,10 +620,9 @@ def main() -> None:
     status_counts = Counter(record["candidate_status"] for record in walls)
     if status_counts != Counter(
         {
-            "CONFIRMED_NEW": 3,
-            "PROPOSED_NEW": 64,
-            "PROPOSED_EXISTING": 20,
-            "UNRESOLVED": 1,
+            "CONFIRMED_NEW": 4,
+            "CONFIRMED_EXISTING_NON_LOAD_BEARING": 64,
+            "CONFIRMED_EXISTING_LOAD_BEARING": 20,
         }
     ):
         raise RuntimeError(f"A-103 wall grouping drifted: {dict(status_counts)}")
@@ -715,18 +726,16 @@ def main() -> None:
         "review_boundary": {
             "mechanically_complete": [
                 "20 GridAxis inventory and both chain closures",
-                "3 confirmed-new wall bounding dimensions",
+                "4 confirmed-new wall bounding dimensions",
                 "5 hosted-door opening relationships and nominal sizes",
                 "generated-label collision check",
                 "current IFC and Wall Plan source hashes",
             ],
             "human_review_required": [
-                "64 Aircrete walls: confirm NEW as one Blender group",
-                "20 Concrete walls: confirm EXISTING as one Blender group",
-                "1 WhiteWall wall: decide construction phase",
-                "kitchen custom pier: confirm 154 mm nominal thickness versus 153.886884 mm model geometry",
+                "A-102 demolition-wall geometry derived from the handover DWG/PDF",
             ],
-            "not_written_to_ifc": True,
+            "generator_writes_ifc": False,
+            "wall_semantics_already_in_ifc": True,
         },
         "pass": qa_pass and len(walls) == 88 and len(hosted_doors) == 5 and len(unhosted_doors) == 3,
     }
