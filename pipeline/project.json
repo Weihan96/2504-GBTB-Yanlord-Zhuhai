@@ -5,10 +5,10 @@
   "ifcSchema": "IFC4",
   "baselineCounts": {
     "IFCSPACE": 22,
-    "IFCWALL": 88,
+    "IFCWALL": 101,
     "IFCDOOR": 8,
     "IFCWINDOW": 11,
-    "IFCANNOTATION": 75,
+    "IFCANNOTATION": 81,
     "IFCGRID": 1,
     "IFCGRIDAXIS": 20
   },
@@ -26,9 +26,27 @@
       "expectedScale": "1:50"
     },
     {
+      "id": "A-102-CANDIDATE",
+      "path": "drawings/Wall Plan-A102-candidate.svg",
+      "role": "candidate-baseline",
+      "expectedScale": "1:50"
+    },
+    {
+      "id": "A-104-CANDIDATE",
+      "path": "drawings/Wall Plan-A104-candidate.svg",
+      "role": "candidate-baseline",
+      "expectedScale": "1:50"
+    },
+    {
       "id": "A-105-BASELINE",
       "path": "drawings/FFL PLAN.svg",
       "role": "formal-baseline",
+      "expectedScale": "1:50"
+    },
+    {
+      "id": "A-105-CANDIDATE",
+      "path": "drawings/FFL PLAN-A105-candidate.svg",
+      "role": "candidate-baseline",
       "expectedScale": "1:50"
     },
     {
