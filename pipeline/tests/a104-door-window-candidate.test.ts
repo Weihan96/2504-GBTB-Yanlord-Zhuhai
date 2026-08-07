@@ -1,0 +1,65 @@
+import { expect, test } from "bun:test";
+import { resolve } from "node:path";
+
+const root = resolve(import.meta.dir, "../..");
+const modulePath = resolve(root, "pipeline/scripts/a104_door_window_candidate.py");
+
+function runPython(body: string) {
+  return Bun.spawnSync(["python3", "-c", `
+import importlib.util, json, pathlib, sys
+sys.path.insert(0, str(pathlib.Path(${JSON.stringify(modulePath)}).parent))
+spec = importlib.util.spec_from_file_location("a104_door_window_candidate", ${JSON.stringify(modulePath)})
+module = importlib.util.module_from_spec(spec)
+sys.modules[spec.name] = module
+spec.loader.exec_module(module)
+${body}
+`], { cwd: root });
+}
+
+test("A104 opening interval audit distinguishes overlap and gap", () => {
+  const result = runPython(`print(json.dumps([
+    module.interval_relationship((0, 1180), (580, 1760)),
+    module.interval_relationship((0, 1465), (1465.05, 2930.05)),
+  ]))`);
+  expect(result.exitCode).toBe(0);
+  const values = JSON.parse(result.stdout.toString());
+  expect(values[0].kind).toBe("OVERLAP");
+  expect(values[0].overlap_mm).toBe(600);
+  expect(values[1].kind).toBe("GAP_OR_TOUCH");
+  expect(values[1].gap_mm).toBeCloseTo(0.05, 6);
+});
+
+test("A104 operation labels remain human-readable without inventing types", () => {
+  const result = runPython(`print(json.dumps([
+    module.format_operation("SINGLE_SWING_LEFT"),
+    module.format_operation("TRIPLE_PANEL_RIGHT"),
+    module.format_operation(""),
+  ], ensure_ascii=False))`);
+  expect(result.exitCode).toBe(0);
+  expect(JSON.parse(result.stdout.toString())).toEqual(["单扇左开", "三扇右分格", "待确认"]);
+});
+
+test("A104 known semantic conflict and unhosted pair require review", () => {
+  const result = runPython(`print(json.dumps([
+    module.review_metadata({"global_id": module.MASTER_BEDROOM_DOOR_CANDIDATE}),
+    module.review_metadata({"global_id": "2D5BPoo2XFSvhTdfPenCh7"}),
+  ], ensure_ascii=False))`);
+  expect(result.exitCode).toBe(0);
+  const values = JSON.parse(result.stdout.toString());
+  expect(values[0].review_group).toBe("A104-R01");
+  expect(values[0].review_required).toBe("yes");
+  expect(values[1].review_group).toBe("A104-R02");
+});
+
+test("A104 candidate identifiers sort deterministically by plan position", () => {
+  const result = runPython(`
+rows = [
+  {"global_id":"B", "bbox":{"centre_mm":[100, 500, 0]}},
+  {"global_id":"A", "bbox":{"centre_mm":[-100, 500, 0]}},
+  {"global_id":"C", "bbox":{"centre_mm":[0, 100, 0]}},
+]
+print(json.dumps([row["global_id"] for row in sorted(rows, key=module.plan_sort_key)]))
+`);
+  expect(result.exitCode).toBe(0);
+  expect(JSON.parse(result.stdout.toString())).toEqual(["A", "B", "C"]);
+});
