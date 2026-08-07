@@ -90,3 +90,14 @@ print(module.add_wall_status_classes(svg, {"WALL-A": "CONFIRMED_NEW"}))
   expect(output.match(/a103-confirmed-new/g)).toHaveLength(2);
   expect(output).not.toContain("a103-confirmed-new a103-confirmed-new");
 });
+
+test("A103 hides A102 demolition walls from the final-built plan", () => {
+  const result = runPython(`
+svg = '<svg><g class="IfcWall cut" ifc:guid="DEMOLISH-A"><path/></g></svg>'
+print(module.add_wall_status_classes(svg, {"DEMOLISH-A": "EXCLUDED_DEMOLISH"}))
+`);
+  expect(result.exitCode).toBe(0);
+  expect(result.stdout.toString()).toContain("a103-excluded-demolish");
+  const source = Bun.file(modulePath).text();
+  return expect(source).resolves.toContain("display:none !important");
+});

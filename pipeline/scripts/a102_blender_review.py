@@ -117,6 +117,7 @@ def prepare_objects() -> tuple[list[bpy.types.Object], dict[str, int]]:
         elif entity.is_a("IfcGridAxis"):
             obj.hide_set(False)
             obj.color = COLORS["grid"]
+            obj.display_type = "SOLID"
             counts["grid"] = counts.get("grid", 0) + 1
         elif entity.is_a("IfcSlab"):
             _, z_max = world_z_bounds(obj)
@@ -146,7 +147,10 @@ def configure_viewport() -> None:
             continue
         space = area.spaces.active
         space.shading.type = "SOLID"
+        space.shading.light = "STUDIO"
         space.shading.color_type = "OBJECT"
+        space.shading.background_type = "VIEWPORT"
+        space.shading.background_color = (0.05, 0.05, 0.05)
         space.shading.show_xray = False
         space.overlay.show_overlays = True
         space.overlay.show_outline_selected = True

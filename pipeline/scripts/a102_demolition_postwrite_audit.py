@@ -31,7 +31,7 @@ def parse_args() -> argparse.Namespace:
     parser.add_argument("--formal", required=True, type=Path)
     parser.add_argument("--candidate", required=True, type=Path)
     parser.add_argument("--register", required=True, type=Path)
-    parser.add_argument("--baseline-git-ref", default="HEAD")
+    parser.add_argument("--baseline-git-ref", default="424dc17")
     parser.add_argument("--report", required=True, type=Path)
     parser.add_argument("--tolerance-mm", type=float, default=0.1)
     return parser.parse_args()

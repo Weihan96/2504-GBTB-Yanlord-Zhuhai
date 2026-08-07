@@ -462,6 +462,7 @@ def inject_candidate_svg(svg: str, status_by_guid: dict[str, str], generated: st
   g.a103-confirmed-existing-non-load-bearing path { fill:#e68619 !important; stroke:#9c5008 !important; }
   g.a103-confirmed-existing-load-bearing path { fill:#6d7f96 !important; stroke:#34465d !important; }
   g.a103-invalid-semantics path { fill:#c43a84 !important; stroke:#7d1750 !important; }
+  g.a103-excluded-demolish { display:none !important; }
   .a103-dimension,.a103-tick { stroke:#143a52; stroke-width:0.35; fill:none; }
   .a103-dimension-text,.a103-tag-text,.a103-door-text { font-family:Arial,'Noto Sans CJK SC',sans-serif; fill:#102f43; text-anchor:middle; font-size:2.4px; }
   .a103-new-tag { fill:#ffffff; stroke:#087f5b; stroke-width:0.6; }
@@ -486,15 +487,19 @@ def inject_candidate_svg(svg: str, status_by_guid: dict[str, str], generated: st
 def build_inventory(
     model: ifcopenshell.file,
     source_svg: str,
-) -> tuple[list[dict[str, Any]], list[dict[str, Any]], list[dict[str, Any]]]:
+) -> tuple[list[dict[str, Any]], list[dict[str, Any]], list[dict[str, Any]], list[str]]:
     settings = geometry_settings()
     walls: list[dict[str, Any]] = []
     wall_guids = [wall.GlobalId for wall in model.by_type("IfcWall")]
     visible = visible_wall_guids(source_svg, wall_guids)
+    demolition_guids: list[str] = []
     for wall in sorted(model.by_type("IfcWall"), key=lambda entity: entity.GlobalId):
+        current_status = current_wall_status(wall)
+        if (current_status or "").upper() == "DEMOLISH":
+            demolition_guids.append(wall.GlobalId)
+            continue
         wall_type = ifcopenshell.util.element.get_type(wall)
         materials = material_names(wall)
-        current_status = current_wall_status(wall)
         current_load_bearing = current_wall_load_bearing(wall)
         candidate, basis, confidence, review_required = wall_status_candidate(
             current_status, current_load_bearing, materials
@@ -549,7 +554,7 @@ def build_inventory(
             hosted_doors.append(record)
         else:
             unhosted_doors.append(record)
-    return walls, hosted_doors, unhosted_doors
+    return walls, hosted_doors, unhosted_doors, demolition_guids
 
 
 def write_wall_register(path: Path, walls: Sequence[dict[str, Any]], source_sha: str) -> None:
@@ -616,7 +621,7 @@ def main() -> None:
     source_svg = args.source_svg.read_text(encoding="utf-8")
     source_sha = sha256(args.input)
     source_svg_sha = sha256(args.source_svg)
-    walls, hosted_doors, unhosted_doors = build_inventory(model, source_svg)
+    walls, hosted_doors, unhosted_doors, demolition_guids = build_inventory(model, source_svg)
     status_counts = Counter(record["candidate_status"] for record in walls)
     if status_counts != Counter(
         {
@@ -665,6 +670,7 @@ def main() -> None:
     )
     generated = grid_markup + wall_markup + door_markup + panel_markup
     status_by_guid = {record["global_id"]: record["candidate_status"] for record in walls}
+    status_by_guid.update({global_id: "EXCLUDED_DEMOLISH" for global_id in demolition_guids})
     candidate_svg = inject_candidate_svg(source_svg, status_by_guid, generated)
     args.output_svg.parent.mkdir(parents=True, exist_ok=True)
     args.output_svg.write_text(candidate_svg, encoding="utf-8")
@@ -697,6 +703,8 @@ def main() -> None:
         },
         "walls": {
             "total": len(walls),
+            "excluded_demolition_count": len(demolition_guids),
+            "excluded_demolition_global_ids": demolition_guids,
             "status_counts": dict(sorted(status_counts.items())),
             "visible_in_wall_plan": visible_count,
             "outside_or_not_intersecting_plan_cut": [
@@ -737,7 +745,7 @@ def main() -> None:
             "generator_writes_ifc": False,
             "wall_semantics_already_in_ifc": True,
         },
-        "pass": qa_pass and len(walls) == 88 and len(hosted_doors) == 5 and len(unhosted_doors) == 3,
+        "pass": qa_pass and len(walls) == 88 and len(demolition_guids) == 13 and len(hosted_doors) == 5 and len(unhosted_doors) == 3,
     }
     args.report.parent.mkdir(parents=True, exist_ok=True)
     args.report.write_text(json.dumps(report, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
