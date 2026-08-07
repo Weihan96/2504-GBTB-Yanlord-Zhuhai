@@ -1,0 +1,33 @@
+group_id,ifc_class,global_id,cardinalize,translation_x_mm,translation_y_mm,translation_z_mm,snap_bbox_axis,snap_bbox_side,snap_bbox_target_mm,copy_shared_profile,profile_coordinate_axis,profile_point_indices,profile_coordinate_targets_mm,profile_snap_increment_mm,extrusion_depth_target_mm,basis,confidence,human_review,status
+C003-G1,IfcWall,0LbcMYbS508RMhWL3dk51Z,true,0,0,0,,,,false,,,,,,清除近正交坐标系尾差并保持整数原点,1.00,no,approved
+C003-G1,IfcWall,0rj$xpoALDGQ3T1Tw9NAOA,true,1,0,0,,,,false,,,,,,X 控制面由 -5051 mm 归到 -5050 mm,1.00,no,approved
+C003-G1,IfcWall,18Qhf59crDCAy$scVOCK92,false,1,0,0,,,,false,,,,,,350 mm 墙体两侧控制面由 -5051/-4701 mm 归到 -5050/-4700 mm,1.00,no,approved
+C003-G1,IfcWall,26z2GfGaTA$RfZRO_HdeCI,true,-1,0,0,,,,false,,,,,,共享 Profile 不改写；刚体归到 X=-4100 mm 锚点,1.00,no,approved
+C003-G1,IfcWall,28l5JUTGT3r8kMzEzzSngn,true,0,0,0,,,,false,,,,,,清除近正交坐标系尾差并保持整数原点,1.00,no,approved
+C003-G1,IfcWall,3q92bI3TT78eG2hJbura4B,true,1,0,0,,,,false,,,,,,X 控制面由 -5051 mm 归到 -5050 mm,1.00,no,approved
+C003-G1,IfcWall,3tvnsnioX7PQZ7u8kENvQd,false,-1,0,0,,,,false,,,,,,共享 Profile 不改写；刚体归到 X=-3100 mm 锚点,1.00,no,approved
+C003-G1,IfcOpeningElement,0yAFCiEoH61ghuTn$I2_yL,false,0,0,0,y,max,3400,false,,,,,,客卫飘窗上部实际切割面归到 Y=3400 mm,1.00,no,approved
+C003-G1,IfcOpeningElement,2mZFb1u1z0KvoiD8O1gWou,false,0,0,0,y,max,3400,false,,,,,,客卫飘窗下部实际切割面归到 Y=3400 mm,1.00,no,approved
+C003-SFAAD94D4,IfcWall,1W_SysTb9CJQGS7TZtcqax,true,0,0,0,,,,false,,,,,,清除近正交坐标系尾差；用户确认相邻墙之间无设计留缝,1.00,yes,approved
+C003-SFAAD94D4,IfcWall,2TMU7718r0mAuJUNlb2SYn,true,0,0,0,,,,false,,,,,,清除近正交坐标系尾差；用户确认相邻墙之间无设计留缝,1.00,yes,approved
+C003-SFAAD94D4,IfcWall,3TV2zkQdH3QRCAFhe47WOL,false,0,0,0,,,,true,x,0;1;2;5;31;32;33;34;60;61;62,,1,,复制共享 Profile 后仅归整直线段控制点；曲线段保持不变；用户确认无设计留缝,1.00,yes,approved
+C003-SFAAD94D4,IfcWall,3gksf1Sxz5TRfXh5l$12xr,false,0,0,0,,,,true,x,0;1;2;5;31;32;33;34;60;61;62,,1,,复制共享 Profile 后仅归整直线段控制点；曲线段保持不变；用户确认无设计留缝,1.00,yes,approved
+C003-SEDF5864F,IfcWall,0qZZv8B9b9SQk3mAPTXSfP,true,0,0,0,,,,false,,,,,,清除近正交坐标系尾差；相邻构造没有设计留缝迹象,1.00,no,approved
+C003-SEDF5864F,IfcWall,1yuWIPQdP3uuPJnZhwUAcx,true,0,0,0,,,,false,,,,,,清除近正交坐标系尾差并保持整数原点,1.00,no,approved
+C003-SEDF5864F,IfcWall,2OyR0O$o90F9hKvgkw30Em,true,0,0,0,,,,false,,,,,,清除近正交坐标系尾差；相邻构造没有设计留缝迹象,1.00,no,approved
+C003-SEDF5864F,IfcOpeningElement,0JhkQgBGr6wOIiYC$qJeuY,false,0,0,0,,,,true,y,0;1;2;3;4,-300.428887557983;-300.428887557983;899.571112442017;899.571112442017;-300.428887557983,,,保持 1200 mm 洞口高度；切割边与相邻墙保留 0.05 mm 布尔安全余量,1.00,no,approved
+C003-SEDF5864F,IfcOpeningElement,1i7BfvJ3H1oQRUjJEGFHti,false,0,0,0,,,,true,y,0;1;2;3;4,-300.428887557983;-300.428887557983;899.571112442017;899.571112442017;-300.428887557983,,,保持 1200 mm 洞口高度；切割边与相邻墙保留 0.05 mm 布尔安全余量,1.00,no,approved
+C003-GAP-CLOSE,IfcWall,26tBNOs75EH9eZKZJlkRH3,true,0,-3,0,,,,false,,,,,,左回墙整体向南 3 mm：与窗下墙闭合，同时远端由 3 mm 重叠归到共面接缝,1.00,no,approved
+C003-GAP-CLOSE,IfcWall,2XslZd4419P8dGGPeAflZX,true,0,-3,0,,,,false,,,,,,右回墙与相邻 200 mm 小墙作为同组向南 3 mm：关闭窗下墙端部缝隙且不改变组内接缝,1.00,no,approved
+C003-GAP-CLOSE,IfcWall,3qz3zPw_r7nf0mYn_Jv805,true,0,-3,0,,,,false,,,,,,右侧 200 mm 小墙随右回墙向南 3 mm：避免把原有闭合接缝转移到回墙远端,1.00,no,approved
+C003-PARAM-DEPTH2,IfcCovering,3GCxLYHHnCQuJSD2rkZ_h6,false,0,0,0,,,,false,,,,,2998,踢脚线拉伸深度归到最近整数毫米,1.00,no,approved
+C003-PARAM-DEPTH2,IfcCovering,2roMaBy7v9OvqUBSpWl2Q2,false,0,0,0,,,,false,,,,,2978,踢脚线拉伸深度归到最近整数毫米,1.00,no,approved
+C003-PARAM-DEPTH2,IfcCovering,1z_JY$9a97dxJOZ3gy2OAB,false,0,0,0,,,,false,,,,,2898,踢脚线拉伸深度向裁切侧归到整数毫米；2897 mm 会改变布尔拓扑而 2898 mm 的外形完全不变,1.00,no,approved
+C003-PARAM-DEPTH2,IfcBeam,1u$4fbgXP7VQ1Yhr_1xQgF,false,0,0,0,,,,false,,,,,4150,梁拉伸深度归到最近整数毫米,1.00,no,approved
+C003-PARAM-DEPTH2,IfcCovering,37DESmCqj8qAHVsS$K2iyb,false,0,0,0,,,,false,,,,,1723,踢脚线拉伸深度归到最近整数毫米,1.00,no,approved
+C003-PARAM-DEPTH2,IfcBeam,2kLVkB_bX7GeSBXYrxJJvh,false,0,0,0,,,,false,,,,,3650,梁拉伸深度归到最近整数毫米,1.00,no,approved
+C003-PARAM-DEPTH2,IfcCovering,3Eh7dTLw90qhldpeLi9n6B,false,0,0,0,,,,false,,,,,3300,踢脚线拉伸深度归到最近整数毫米,1.00,no,approved
+C003-PARAM-DEPTH2,IfcCovering,1X0phqKt15XfFggcqnw7$O,false,0,0,0,,,,false,,,,,2800,踢脚线拉伸深度归到最近整数毫米,1.00,no,approved
+C003-PARAM-DEPTH2,IfcCovering,0dvnmKrOzCqhCH4NW1m1Vu,false,0,0,0,,,,false,,,,,2780,踢脚线拉伸深度归到最近整数毫米,1.00,no,approved
+C003-PARAM-DEPTH2,IfcCovering,3f3Nxv_PXFthglBpRUg0hI,false,0,0,0,,,,false,,,,,6500,踢脚线拉伸深度归到最近整数毫米,1.00,no,approved
+C003-PARAM-DEPTH2,IfcCovering,3oxgGk27D4pRhha6_X05df,false,0,0,0,,,,false,,,,,3220,踢脚线拉伸深度归到最近整数毫米,1.00,no,approved

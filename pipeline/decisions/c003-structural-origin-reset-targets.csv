@@ -1,0 +1,11 @@
+expected_class,global_id,target_x_mm,target_y_mm,target_z_mm,anchor_kind,basis,confidence
+IfcBeam,1u$4fbgXP7VQ1Yhr_1xQgF,0,-3700,3000,top-face-grid-intersection,受 Boolean clipping 截短的梁在实际 Body 顶面选择 100 mm Grid 交点；不再使用落在裁剪体外的 Axis 起点,0.99
+IfcBeam,3TgmIjIGn3iQ$9DMvqDWoV,-4900,2600,3000,top-face-grid-intersection,目标点位于现有梁顶面且采用 100 mm Grid；只重设原点以保留两侧楼板接触,0.99
+IfcBeam,06yVJMA5z1fhZE243pPlI8,-5000,100,3000,top-face-grid-intersection,目标点位于现有梁顶面内部且采用 100 mm Grid；只重设原点以保留相邻楼板接触,0.99
+IfcSlab,3ZKyTiBc1ECxQi0UR8K1Ke,-6500,-2200,3000,integer-point-on-physical-axis-edge,现有 RFL Slab 物理轴向边上的 100 mm Grid 点,0.99
+IfcSlab,2vTSinfYHC$8prkGP7LD7X,-100,2400,0,integer-point-on-physical-axis-edge,现有 FFL Slab 物理轴向边上的 100 mm Grid 点,0.99
+IfcSlab,0wbKH$_Qr2_A4hpKs0PLXw,-3200,-3700,0,integer-point-on-physical-axis-edge,现有 FFL Slab 物理轴向边上的 100 mm Grid 点,0.99
+IfcSlab,1fAJA2jj59uhEyVVcR7EM7,1900,4700,-100,integer-point-on-physical-axis-edge,现有 FFL Slab 物理轴向边上的 100 mm Grid 点,0.99
+IfcSlab,1cmuG50mj3cggtIH5tZHic,3300,3200,0,integer-point-on-physical-axis-edge,现有 FFL Slab 物理轴向边上的 100 mm Grid 点,0.99
+IfcSlab,02eX$Z5WrDuuxw1IlnwVss,-3300,3200,0,integer-point-on-physical-axis-edge,现有 FFL Slab 物理轴向边上的 100 mm Grid 点,0.99
+IfcSlab,0G_rbqpMHE28Txkf09jW3_,-3000,-4500,0,integer-point-on-physical-axis-edge,现有 FFL Slab 物理轴向边上的 100 mm Grid 点,0.99
