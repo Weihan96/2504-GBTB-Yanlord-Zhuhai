@@ -3,6 +3,8 @@ import { dirname, resolve } from "node:path";
 import { snapshotIfc } from "./ifc-step";
 import { buildQaReport, renderQaMarkdown, type DecisionSnapshot, type DrawingSnapshot } from "./qa";
 
+export const DECISION_STATUSES = new Set(["pending", "confirmed", "rejected", "implemented", "delegated", "planned"]);
+
 interface DrawingConfig {
   id: string;
   path: string;
@@ -93,7 +95,7 @@ async function inspectDecisionFile(path: string): Promise<DecisionSnapshot> {
     const confidence = Number(record.confidence);
     if (!record.basis) invalid.push({ decisionId, reason: "missing basis" });
     if (!Number.isFinite(confidence) || confidence < 0 || confidence > 1) invalid.push({ decisionId, reason: "confidence must be between 0 and 1" });
-    if (!new Set(["pending", "confirmed", "rejected", "implemented"]).has(record.status)) invalid.push({ decisionId, reason: `unsupported status: ${record.status}` });
+    if (!DECISION_STATUSES.has(record.status)) invalid.push({ decisionId, reason: `unsupported status: ${record.status}` });
     if (record.review_required === "yes" && record.status === "pending") {
       unresolved.push({ decisionId, scope: record.scope, objectGuid: record.object_guid, status: record.status });
     }

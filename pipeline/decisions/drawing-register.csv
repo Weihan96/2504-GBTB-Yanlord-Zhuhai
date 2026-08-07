@@ -1,5 +1,5 @@
 sheet_number,title,source_view,status,publish_target,notes
 A-001,图纸目录、设计说明与图例,,not-started,releases,由流水线汇总图号比例版本和图例
-A-103,新建墙体及施工定位图,Wall Plan,candidate,build/candidates/A-103.svg,当前只有轴网候选尺寸；需补墙体完成面和门洞尺寸
+A-103,新建墙体及施工定位图,Wall Plan,candidate,output/pdf/A-103-wall-plan-candidate.pdf,已生成当前 IFC 的墙体分组、20 轴闭合尺寸链、3 面已确认新墙和 5 个有宿主门洞定位；剩余墙状态待 Blender 集中审核后才写 IFC
 A-104,门窗定位图及门窗表,,not-started,build/candidates/A-104.svg,必须完成人审门房间归属后生成
 A-105,地面完成面及标高图,FFL PLAN,baseline-only,build/candidates/A-105.svg,需补地坪类型材料边界标高坡度和地漏

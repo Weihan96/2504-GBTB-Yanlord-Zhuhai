@@ -1,6 +1,15 @@
 import { expect, test } from "bun:test";
 import { analyzeIfcText } from "../src/ifc-step";
 import { buildQaReport } from "../src/qa";
+import { DECISION_STATUSES } from "../src/cli";
+
+test("delegated is a valid decision status for a scoped downstream handoff", () => {
+  expect(DECISION_STATUSES.has("delegated")).toBe(true);
+});
+
+test("planned is a valid decision status for recorded future work", () => {
+  expect(DECISION_STATUSES.has("planned")).toBe(true);
+});
 
 test("release gate blocks known incomplete IFC data", () => {
   const snapshot = analyzeIfcText(`ISO-10303-21;
