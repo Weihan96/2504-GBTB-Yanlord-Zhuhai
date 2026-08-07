@@ -96,8 +96,28 @@ def expected_wall_semantics(wall: ifcopenshell.entity_instance) -> dict[str, Any
     )
 
 
+def final_built_walls(model: ifcopenshell.file) -> list[ifcopenshell.entity_instance]:
+    """Return only the A-103 final-built wall boundary.
+
+    A-102 demolition walls coexist in the formal IFC after their write.  They
+    are intentionally excluded here so rerunning A-103 cannot overwrite their
+    DEMOLISH status or count them as final-built walls.
+    """
+    return sorted(
+        (
+            wall
+            for wall in model.by_type("IfcWall")
+            if ifcopenshell.util.element.get_psets(wall)
+            .get("Pset_WallCommon", {})
+            .get("Status")
+            != "DEMOLISH"
+        ),
+        key=lambda wall: wall.GlobalId,
+    )
+
+
 def apply_wall_semantics(model: ifcopenshell.file) -> list[dict[str, Any]]:
-    walls = sorted(model.by_type("IfcWall"), key=lambda wall: wall.GlobalId)
+    walls = final_built_walls(model)
     if len(walls) != EXPECTED_WALL_COUNT:
         raise RuntimeError(f"expected {EXPECTED_WALL_COUNT} walls, found {len(walls)}")
     records: list[dict[str, Any]] = []
@@ -204,7 +224,15 @@ def main() -> None:
     candidate_root_ids = {root.GlobalId for root in candidate.by_type("IfcRoot")}
     candidate_statuses = [
         status_record(candidate, wall)
+        for wall in final_built_walls(candidate)
+    ]
+    demolition_statuses = [
+        status_record(candidate, wall)
         for wall in sorted(candidate.by_type("IfcWall"), key=lambda wall: wall.GlobalId)
+        if ifcopenshell.util.element.get_psets(wall)
+        .get("Pset_WallCommon", {})
+        .get("Status")
+        == "DEMOLISH"
     ]
     phase_counts = Counter(record["status"] for record in candidate_statuses)
     load_bearing_existing_counts = Counter(
@@ -241,6 +269,7 @@ def main() -> None:
     ]
     gates = {
         "wall_count": len(candidate_statuses),
+        "demolition_wall_count": len(demolition_statuses),
         "phase_counts": dict(sorted(phase_counts.items())),
         "existing_load_bearing_counts": {
             str(key): value for key, value in sorted(load_bearing_existing_counts.items(), key=lambda item: str(item[0]))
@@ -259,6 +288,7 @@ def main() -> None:
     intended_delta = thickness["maximum_intended_world_shift_mm"]
     passed = (
         gates["wall_count"] == EXPECTED_WALL_COUNT
+        and gates["demolition_wall_count"] in (0, 13)
         and phase_counts == Counter({"EXISTING": 84, "NEW": 4})
         and load_bearing_existing_counts == Counter({False: EXPECTED_AIRCRETE_EXISTING, True: EXPECTED_CONCRETE_EXISTING})
         and abs(gates["kitchen_pier_thickness_mm"] - EXPECTED_KITCHEN_PIER_THICKNESS_MM) <= 1e-6
@@ -290,6 +320,7 @@ def main() -> None:
         "source_kitchen_pier_bbox_mm": source_kitchen_bbox,
         "candidate_kitchen_pier_bbox_mm": kitchen_bbox,
         "wall_statuses": candidate_statuses,
+        "excluded_demolition_wall_statuses": demolition_statuses,
         "geometry_difference": geometry,
         "alignment": alignment,
         "gates": gates,

@@ -19,14 +19,19 @@ ${body}
 test("A103 confirmed wall boundary is 84 existing and 4 new", () => {
   const result = runPython(`
 model = module.ifcopenshell.open("2504 GBTB Yanlord Zhuhai.ifc")
-records = [module.expected_wall_semantics(wall) for wall in model.by_type("IfcWall")]
+walls = module.final_built_walls(model)
+records = [module.expected_wall_semantics(wall) for wall in walls]
 print(json.dumps({
+  "wall_count": len(walls),
+  "demolition_count": len(model.by_type("IfcWall")) - len(walls),
   "phase": collections.Counter(record["status"] for record in records),
   "load": collections.Counter(record["load_bearing"] for record in records if record["status"] == "EXISTING"),
 }))
 `);
   expect(result.exitCode).toBe(0);
   expect(JSON.parse(result.stdout.toString())).toEqual({
+    wall_count: 88,
+    demolition_count: 13,
     phase: { EXISTING: 84, NEW: 4 },
     load: { "false": 64, "true": 20 },
   });
