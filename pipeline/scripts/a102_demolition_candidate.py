@@ -14,6 +14,7 @@ import argparse
 import csv
 import hashlib
 import json
+import uuid
 from datetime import datetime, timezone
 from pathlib import Path
 from typing import Any, Sequence
@@ -23,6 +24,7 @@ EXPECTED_PDF_SHA256 = "84a18d211fe8e6c3e05f56b35027a96799d7c54cd4bc75cd602c72f65
 EXPECTED_DWG_SHA256 = "ba355f6a90732ad07f843d59e8bab5e1da9daffe7aed74889d1d265b2ce22d7e"
 PROTECTED_WALL_GUID = "0hKdvAZkn1TejLgJhK_vDp"
 PROTECTED_OPENING_GUID = "1YxMx6s0r3ZPPohkRKXWbl"
+GUID_NAMESPACE = uuid.UUID("7d5fc9ce-f4c1-4adf-8a34-f7ef0dd9a102")
 
 # Rect indices and page-space bounds are frozen evidence extracted from the
 # hash-guarded PDF.  If pdfplumber is available, they are re-extracted and
@@ -216,6 +218,12 @@ def basis_for(index: int, status: str) -> str:
     return basis
 
 
+def candidate_global_id(candidate_id: str) -> str:
+    import ifcopenshell
+
+    return ifcopenshell.guid.compress(uuid.uuid5(GUID_NAMESPACE, candidate_id).hex)
+
+
 def build_records(
     rects: Sequence[tuple[int, str, float, float, float, float]],
     x_fit: tuple[float, float],
@@ -233,6 +241,7 @@ def build_records(
         records.append(
             {
                 "candidate_id": f"D{index:02d}",
+                "candidate_global_id": candidate_global_id(f"D{index:02d}"),
                 "source_status": source_status,
                 "ifc_status_candidate": "DEMOLISH",
                 "pdf_page": 1,
@@ -271,6 +280,238 @@ def build_records(
     return records
 
 
+def candidate_wall_matrix(record: dict[str, Any]):
+    import numpy
+
+    x0 = float(record["candidate_x_min_mm"]) / 1000.0
+    y0 = float(record["candidate_y_min_mm"]) / 1000.0
+    x1 = float(record["candidate_x_max_mm"]) / 1000.0
+    y1 = float(record["candidate_y_max_mm"]) / 1000.0
+    dx = x1 - x0
+    dy = y1 - y0
+    matrix = numpy.eye(4)
+    if dx >= dy:
+        matrix[0, 3] = x0
+        matrix[1, 3] = y0
+        return matrix, dx, dy
+    matrix[0, 0] = 0.0
+    matrix[0, 1] = -1.0
+    matrix[1, 0] = 1.0
+    matrix[1, 1] = 0.0
+    matrix[0, 3] = x1
+    matrix[1, 3] = y0
+    return matrix, dy, dx
+
+
+def create_candidate_ifc(
+    source_path: Path,
+    output_path: Path,
+    records: Sequence[dict[str, Any]],
+    tolerance_mm: float = 0.1,
+) -> dict[str, Any]:
+    import ifcopenshell
+    import ifcopenshell.api
+    import ifcopenshell.util.element
+    import ifcopenshell.util.representation
+
+    from a103_wall_plan_candidate import geometry_settings, world_bbox_mm
+    from geometry_alignment_audit import geometry_difference_audit
+
+    if source_path.resolve() == output_path.resolve():
+        raise RuntimeError("A-102 candidate must not overwrite the formal IFC")
+    source = ifcopenshell.open(source_path)
+    source_root_ids = {root.GlobalId for root in source.by_type("IfcRoot")}
+    candidate = ifcopenshell.open(source_path)
+    body_context = ifcopenshell.util.representation.get_context(
+        candidate, "Model", "Body", "MODEL_VIEW"
+    )
+    if body_context is None:
+        raise RuntimeError("IFC Body/MODEL_VIEW context is missing")
+    ffl = next((storey for storey in candidate.by_type("IfcBuildingStorey") if storey.Name == "FFL"), None)
+    if ffl is None:
+        raise RuntimeError("FFL storey is missing")
+
+    created = []
+    for record in records:
+        candidate_id = str(record["candidate_id"])
+        length_mm = float(record["nominal_length_mm"])
+        thickness_mm = float(record["nominal_thickness_mm"])
+        height_mm = float(record["candidate_z_max_mm"]) - float(record["candidate_z_min_mm"])
+        source_label = "已经拆除" if record["source_status"] == "ALREADY_REMOVED" else "计划拆除"
+        wall = ifcopenshell.api.run(
+            "root.create_entity",
+            candidate,
+            ifc_class="IfcWall",
+            predefined_type="NOTDEFINED",
+            name=f"A102 {candidate_id} {source_label}候选 {length_mm:.0f}×{thickness_mm:.0f}×{height_mm:.0f} mm",
+        )
+        wall.GlobalId = record["candidate_global_id"]
+        wall.Tag = candidate_id
+        representation = ifcopenshell.api.run(
+            "geometry.add_wall_representation",
+            candidate,
+            context=body_context,
+            length=length_mm / 1000.0,
+            height=height_mm / 1000.0,
+            thickness=thickness_mm / 1000.0,
+        )
+        ifcopenshell.api.run(
+            "geometry.assign_representation", candidate, product=wall, representation=representation
+        )
+        matrix, matrix_length, matrix_thickness = candidate_wall_matrix(record)
+        if abs(matrix_length * 1000.0 - length_mm) > 1e-6 or abs(matrix_thickness * 1000.0 - thickness_mm) > 1e-6:
+            raise RuntimeError(f"A-102 wall matrix dimensions disagree for {candidate_id}")
+        ifcopenshell.api.run(
+            "geometry.edit_object_placement",
+            candidate,
+            product=wall,
+            matrix=matrix,
+            is_si=True,
+            should_transform_children=False,
+        )
+        ifcopenshell.api.run("spatial.assign_container", candidate, products=[wall], relating_structure=ffl)
+        common = ifcopenshell.api.run("pset.add_pset", candidate, product=wall, name="Pset_WallCommon")
+        ifcopenshell.api.run(
+            "pset.edit_pset", candidate, pset=common, properties={"Status": "DEMOLISH"}
+        )
+        quantities = ifcopenshell.api.run(
+            "pset.add_qto", candidate, product=wall, name="Qto_WallBaseQuantities"
+        )
+        ifcopenshell.api.run(
+            "pset.edit_qto",
+            candidate,
+            qto=quantities,
+            properties={
+                "Length": length_mm,
+                "Width": thickness_mm,
+                "Height": height_mm,
+            },
+        )
+        review = ifcopenshell.api.run(
+            "pset.add_pset", candidate, product=wall, name="Pset_A102DemolitionReview"
+        )
+        ifcopenshell.api.run(
+            "pset.edit_pset",
+            candidate,
+            pset=review,
+            properties={
+                "CandidateId": candidate_id,
+                "SourceStatus": str(record["source_status"]),
+                "Confidence": float(record["confidence"]),
+                "ReviewStatus": "PENDING",
+                "FormalIfcWriteAllowed": False,
+                "SourcePdfSha256": str(record["pdf_sha256"]),
+                "SourceDwgSha256": str(record["dwg_sha256"]),
+                "InferenceBasis": str(record["basis"]),
+            },
+        )
+        created.append(wall.GlobalId)
+
+    output_path.parent.mkdir(parents=True, exist_ok=True)
+    candidate.write(output_path)
+    reopened = ifcopenshell.open(output_path)
+    settings = geometry_settings()
+    wall_checks: list[dict[str, Any]] = []
+    for record in records:
+        wall = reopened.by_guid(record["candidate_global_id"])
+        bbox = world_bbox_mm(settings, wall)
+        expected_min = [
+            float(record["candidate_x_min_mm"]),
+            float(record["candidate_y_min_mm"]),
+            float(record["candidate_z_min_mm"]),
+        ]
+        expected_max = [
+            float(record["candidate_x_max_mm"]),
+            float(record["candidate_y_max_mm"]),
+            float(record["candidate_z_max_mm"]),
+        ]
+        bbox_delta = max(
+            abs(actual - expected)
+            for actual, expected in zip(
+                bbox["min_mm"] + bbox["max_mm"], expected_min + expected_max
+            )
+        )
+        psets = ifcopenshell.util.element.get_psets(wall)
+        quantities = psets.get("Qto_WallBaseQuantities", {})
+        wall_checks.append(
+            {
+                "candidate_id": record["candidate_id"],
+                "global_id": wall.GlobalId,
+                "ifc_class": wall.is_a(),
+                "name": wall.Name,
+                "tag": wall.Tag,
+                "bbox_mm": bbox,
+                "maximum_bbox_delta_mm": bbox_delta,
+                "status": psets.get("Pset_WallCommon", {}).get("Status"),
+                "review_status": psets.get("Pset_A102DemolitionReview", {}).get("ReviewStatus"),
+                "quantities_mm": {
+                    "Length": quantities.get("Length"),
+                    "Width": quantities.get("Width"),
+                    "Height": quantities.get("Height"),
+                },
+                "within_tolerance": bbox_delta <= tolerance_mm,
+            }
+        )
+
+    compared_classes = ("IfcWall", "IfcOpeningElement", "IfcDoor", "IfcWindow")
+    original_ids = [
+        product.GlobalId
+        for ifc_class in compared_classes
+        for product in source.by_type(ifc_class)
+        if getattr(product, "GlobalId", None)
+    ]
+    original_geometry = geometry_difference_audit(
+        reopened,
+        source,
+        str(source_path.resolve()),
+        tolerance_mm=tolerance_mm,
+        classes=(),
+        global_ids=original_ids,
+    )
+    reopened_root_ids = {root.GlobalId for root in reopened.by_type("IfcRoot")}
+    status_counts = {
+        status: sum(
+            ifcopenshell.util.element.get_psets(wall).get("Pset_WallCommon", {}).get("Status") == status
+            for wall in reopened.by_type("IfcWall")
+        )
+        for status in ("EXISTING", "NEW", "DEMOLISH")
+    }
+    passed = (
+        len(created) == 13
+        and len(set(created)) == 13
+        and len(reopened.by_type("IfcWall")) == 101
+        and status_counts == {"EXISTING": 84, "NEW": 4, "DEMOLISH": 13}
+        and all(check["ifc_class"] == "IfcWall" for check in wall_checks)
+        and all(check["status"] == "DEMOLISH" for check in wall_checks)
+        and all(check["review_status"] == "PENDING" for check in wall_checks)
+        and all(
+            check["quantities_mm"]
+            == {
+                "Length": float(record["nominal_length_mm"]),
+                "Width": float(record["nominal_thickness_mm"]),
+                "Height": float(record["candidate_z_max_mm"]) - float(record["candidate_z_min_mm"]),
+            }
+            for check, record in zip(wall_checks, records)
+        )
+        and all(check["within_tolerance"] for check in wall_checks)
+        and original_geometry["total"] == len(original_ids)
+        and original_geometry["over_tolerance"] == 0
+        and source_root_ids <= reopened_root_ids
+    )
+    return {
+        "path": str(output_path.resolve()),
+        "sha256": sha256(output_path),
+        "schema": reopened.schema,
+        "wall_count": len(reopened.by_type("IfcWall")),
+        "status_counts": status_counts,
+        "created_global_ids": created,
+        "wall_checks": wall_checks,
+        "original_product_geometry": original_geometry,
+        "source_root_ids_preserved": source_root_ids <= reopened_root_ids,
+        "pass": passed,
+    }
+
+
 def write_register(path: Path, records: Sequence[dict[str, Any]]) -> None:
     path.parent.mkdir(parents=True, exist_ok=True)
     with path.open("w", encoding="utf-8", newline="") as handle:
@@ -284,6 +525,7 @@ def parse_args() -> argparse.Namespace:
     parser.add_argument("--pdf", required=True, type=Path)
     parser.add_argument("--dwg", required=True, type=Path)
     parser.add_argument("--ifc", required=True, type=Path)
+    parser.add_argument("--output-ifc", required=True, type=Path)
     parser.add_argument("--output-register", required=True, type=Path)
     parser.add_argument("--report", required=True, type=Path)
     return parser.parse_args()
@@ -309,6 +551,7 @@ def main() -> None:
     sy, by, y_residuals = linear_fit(Y_ANCHORS)
     records = build_records(rects, (sx, bx), (sy, by), pdf_hash, dwg_hash)
     write_register(args.output_register, records)
+    candidate_ifc = create_candidate_ifc(args.ifc, args.output_ifc, records)
 
     ifc_hash_after = sha256(args.ifc)
     phase_counts = {
@@ -340,6 +583,10 @@ def main() -> None:
         "protected_wall_global_id": PROTECTED_WALL_GUID,
         "protected_opening_global_id": PROTECTED_OPENING_GUID,
         "automatic_ifc_write_allowed": False,
+        "candidate_ifc_pass": candidate_ifc["pass"],
+        "candidate_ifc_wall_count": candidate_ifc["wall_count"],
+        "candidate_ifc_status_counts": candidate_ifc["status_counts"],
+        "candidate_ifc_original_products_over_tolerance": candidate_ifc["original_product_geometry"]["over_tolerance"],
     }
     passed = (
         len(records) == 13
@@ -347,6 +594,7 @@ def main() -> None:
         and gates["maximum_grid_anchor_residual_mm"] <= 0.5
         and gates["candidate_edges_on_50mm_grid"]
         and gates["formal_ifc_unchanged"]
+        and gates["candidate_ifc_pass"]
         and all(record["review_required"] == "yes" for record in records)
     )
     report = {
@@ -356,6 +604,7 @@ def main() -> None:
             "pdf": {"path": str(args.pdf.resolve()), "sha256": pdf_hash, "vector_mode": vector_mode},
             "dwg": {"path": str(args.dwg.resolve()), "sha256": dwg_hash, "use": "handover geometry reference"},
             "ifc": {"path": str(args.ifc.resolve()), "sha256": ifc_hash_before, "use": "protected final-built model"},
+            "candidate_ifc": candidate_ifc,
         },
         "mapping": {
             "paper_x_equals_slope_times_world_x_plus_intercept": {"slope": sx, "intercept": bx},
