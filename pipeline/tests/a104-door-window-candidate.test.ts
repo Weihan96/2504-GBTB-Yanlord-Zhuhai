@@ -63,3 +63,9 @@ print(json.dumps([row["global_id"] for row in sorted(rows, key=module.plan_sort_
   expect(result.exitCode).toBe(0);
   expect(JSON.parse(result.stdout.toString())).toEqual(["A", "B", "C"]);
 });
+
+test("A104 reserves D identifiers for A102 demolition walls", async () => {
+  const source = await Bun.file(modulePath).text();
+  expect(source).toContain('record["candidate_id"] = f"M{index:02d}"');
+  expect(source).toContain("D prefix is reserved by A-102 demolition walls");
+});

@@ -287,7 +287,7 @@ def build_inventory(
     doors = sorted((record for record in products if record["ifc_class"] == "IfcDoor"), key=plan_sort_key)
     windows = sorted((record for record in products if record["ifc_class"] == "IfcWindow"), key=plan_sort_key)
     for index, record in enumerate(doors, start=1):
-        record["candidate_id"] = f"D{index:02d}"
+        record["candidate_id"] = f"M{index:02d}"
     for index, record in enumerate(windows, start=1):
         record["candidate_id"] = f"W{index:02d}"
 
@@ -589,7 +589,7 @@ def main() -> None:
             "wall_plan_svg_sha256": sha256(args.source_svg),
         },
         "tolerance_mm": args.tolerance_mm,
-        "numbering_rule": "plan scan: north-to-south, then west-to-east; candidate only until review",
+        "numbering_rule": "M=door and W=window; plan scan north-to-south, then west-to-east; candidate only until review; D prefix is reserved by A-102 demolition walls",
         "doors": doors,
         "windows": windows,
         "shared_host_opening_relations": pair_relations,
