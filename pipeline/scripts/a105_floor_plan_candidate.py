@@ -157,10 +157,26 @@ def floor_inventory(
             review_question = "1.047% 坡度及箭头所示下坡方向已由用户在 Blender 确认；现有坡面世界几何保持。"
             if plane is None or plane["maximum_fit_residual_mm"] > plane_residual_mm:
                 raise RuntimeError(f"wet tile {product.GlobalId} has no reliable planar top face")
-        elif not material and bbox["dimensions_mm"][2] <= plane_residual_mm:
-            kind = "finish_reference_plane_material_pending"
+        elif product.GlobalId in CONFIRMED_REFERENCE_MATERIALS:
+            expected_material = CONFIRMED_REFERENCE_MATERIALS[product.GlobalId]
+            intent = ifcopenshell.util.element.get_psets(product).get("Pset_A105FinishIntent", {})
+            if material != expected_material:
+                raise RuntimeError(
+                    f"finish reference {product.GlobalId} material drift: {material!r} != {expected_material!r}"
+                )
+            if bbox["dimensions_mm"][2] > plane_residual_mm:
+                raise RuntimeError(f"finish reference {product.GlobalId} is no longer a zero-thickness plane")
+            if (
+                intent.get("GeometryRole") != "FINISH_REFERENCE_PLANE"
+                or intent.get("ConfirmedMaterial") != expected_material
+                or abs(float(intent.get("BuildUpDepthMm", 0.0)) - 50.0) > 1e-9
+                or intent.get("RealLayerGeometryPending") is not True
+                or intent.get("ReviewStatus") != "CONFIRMED"
+            ):
+                raise RuntimeError(f"finish reference {product.GlobalId} intent Pset drift")
+            kind = "finish_reference_plane_confirmed"
             review_group = "A105-R01"
-            review_question = "材料和 50 mm 完成面构造区已确认；当前 IFC 仍只是零厚度 FFL 参考面，真实构造层尚未写入。"
+            review_question = "材料、50 mm 构造区与完成面意图已写入；当前 IFC 仍只是零厚度 FFL 参考面，真实构造层尚未建模。"
         else:
             kind = "unclassified_flooring"
             review_group = "A105-R05"
@@ -328,7 +344,7 @@ def render_overlay(floors: Sequence[dict[str, Any]], source_sha: str) -> tuple[s
         x, y = world_to_svg(bbox["min_mm"][0], bbox["max_mm"][1])
         width = max(0.5, bbox["dimensions_mm"][0] / 50.0)
         height = max(0.5, bbox["dimensions_mm"][1] / 50.0)
-        css = "a105-wet" if record["kind"] == "sloped_wet_tile" else "a105-material-pending"
+        css = "a105-wet" if record["kind"] == "sloped_wet_tile" else "a105-reference"
         pieces.append(
             f'<rect class="a105-floor {css}" data-ifc-guid="{svg_escape(record["global_id"])}" '
             f'x="{x:.3f}" y="{y:.3f}" width="{width:.3f}" height="{height:.3f}"/>'
@@ -368,8 +384,8 @@ def render_overlay(floors: Sequence[dict[str, Any]], source_sha: str) -> tuple[s
     panel = [
         '<g id="a105-side-panel"><rect class="a105-panel" x="402" y="7" width="93" height="386"/>',
         '<text class="a105-title" x="407" y="16">A-105 地坪完成面候选</text>',
-        '<text class="a105-note" x="407" y="23">只读｜未写 IFC｜1:50</text>',
-        f'<text class="a105-text" x="407" y="32">地坪 {len(floors)}：湿区砖 18／材料待定 3</text>',
+        '<text class="a105-note" x="407" y="23">当前正式 IFC 派生｜候选图｜1:50</text>',
+        f'<text class="a105-text" x="407" y="32">地坪 {len(floors)}：湿区砖 18／已确认参考面 3</text>',
         '<text class="a105-text" x="407" y="38">湿区坡度：18/18 = 1.047%；箭头指向下坡</text>',
         '<text class="a105-text" x="407" y="44">地砖分缝 2.0 mm</text>',
         '<text class="a105-text" x="407" y="50">线性地漏留缝 14.6 mm</text>',
@@ -395,7 +411,7 @@ def inject_svg(source: str, generated: str) -> str:
   html,body { margin:0; width:500mm; height:400mm; overflow:hidden; }
   .a105-floor { stroke-width:0.45; }
   .a105-wet { fill:#2b8aaf33; stroke:#0b7285; }
-  .a105-material-pending { fill:#f59f0030; stroke:#e67700; stroke-dasharray:2 1; }
+  .a105-reference { fill:#f59f0030; stroke:#e67700; stroke-dasharray:2 1; }
   .a105-slope-arrow { fill:none; stroke:#9c1c1c; stroke-width:0.65; stroke-linecap:round; stroke-linejoin:round; }
   .a105-label-bg { fill:#fff; stroke:#526777; stroke-width:0.18; }
   .a105-label { font-family:Arial,'Noto Sans CJK SC',sans-serif; fill:#102f43; text-anchor:middle; font-size:2.4px; font-weight:700; }
@@ -429,6 +445,7 @@ def main() -> None:
 
     wet = [record for record in floors if record["kind"] == "sloped_wet_tile"]
     material_pending = [record for record in floors if record["kind"] == "finish_reference_plane_material_pending"]
+    confirmed_references = [record for record in floors if record["kind"] == "finish_reference_plane_confirmed"]
     generated, collision_count, slope_arrow_count = render_overlay(floors, source_sha)
     output = inject_svg(args.source_svg.read_text(encoding="utf-8"), generated)
     args.output_svg.parent.mkdir(parents=True, exist_ok=True)
@@ -461,6 +478,7 @@ def main() -> None:
         "flooring_count": len(floors),
         "wet_tile_count": len(wet),
         "material_pending_count": len(material_pending),
+        "confirmed_reference_count": len(confirmed_references),
         "wet_tile_planar_top_count": sum(record["top_plane"] is not None for record in wet),
         "wet_tile_maximum_plane_residual_mm": maximum_residual,
         "wet_tile_slope_min_percent": min(slopes),
@@ -475,7 +493,8 @@ def main() -> None:
     gates["mechanical_pass"] = (
         gates["flooring_count"] == 21
         and gates["wet_tile_count"] == 18
-        and gates["material_pending_count"] == 3
+        and gates["material_pending_count"] == 0
+        and gates["confirmed_reference_count"] == 3
         and gates["wet_tile_planar_top_count"] == 18
         and gates["wet_tile_slope_arrow_count"] == 18
         and gates["wet_tile_slope_direction_confirmed"]

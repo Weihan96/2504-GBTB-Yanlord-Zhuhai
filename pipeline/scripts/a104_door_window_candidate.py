@@ -45,6 +45,17 @@ BATHROOM_UNHOSTED_PAIR = {
     "2D5BPoo2XFSvhTdfPenCh7",
     "0zjVS5FBbBewgUkk0fdfiv",
 }
+CONFIRMED_NAMES = {
+    "3xKBbA2CT9mfby2$MODnzM": "次卧门",
+    "1TW6$_GfnABRZusYvx0zZG": "主卧门",
+    "2D5BPoo2XFSvhTdfPenCh7": "Rimadesio Sail 格栅门板",
+    "0zjVS5FBbBewgUkk0fdfiv": "Rimadesio Sail 轨道",
+}
+CONFIRMED_GROUPS = {
+    "M05/M06 Rimadesio Sail 门组": BATHROOM_UNHOSTED_PAIR,
+    "W02/W03 次卧飘窗窗组": {"2nisU4bAr9MfEP9b7LwE2g", "0sj5O$jhz2Huyt2vHf63WK"},
+    "W09/W10 餐厅飘窗窗组": {"1KBBoRNWb1Svpz9__rmYKy", "1uQsUUwhT9Y8fHZJQtvJqa"},
+}
 
 
 def parse_args() -> argparse.Namespace:
@@ -201,6 +212,48 @@ def review_metadata(record: dict[str, Any]) -> dict[str, Any]:
 def plan_sort_key(record: dict[str, Any]) -> tuple[float, float, str]:
     center = record["bbox"]["centre_mm"]
     return (-round(float(center[1]), 3), round(float(center[0]), 3), record["global_id"])
+
+
+def formal_semantics_state(
+    model: ifcopenshell.file,
+    records: Sequence[dict[str, Any]],
+) -> dict[str, Any]:
+    tags_pass = len(records) == 19 and all(record["current_tag"] == record["candidate_id"] for record in records)
+    names_pass = all(
+        str(model.by_guid(global_id).Name or "") == expected
+        for global_id, expected in CONFIRMED_NAMES.items()
+    )
+    group_members: dict[str, set[str]] = {}
+    for group in model.by_type("IfcGroup"):
+        if group.Name not in CONFIRMED_GROUPS:
+            continue
+        group_members[str(group.Name)] = {
+            member.GlobalId
+            for relation in (group.IsGroupedBy or ())
+            for member in relation.RelatedObjects
+        }
+    groups_pass = all(group_members.get(name) == members for name, members in CONFIRMED_GROUPS.items())
+    return {
+        "tags_pass": tags_pass,
+        "names_pass": names_pass,
+        "groups_pass": groups_pass,
+        "complete": tags_pass and names_pass and groups_pass,
+    }
+
+
+def close_confirmed_reviews(
+    records: Sequence[dict[str, Any]],
+    pair_relations: Sequence[dict[str, Any]],
+) -> None:
+    for record in records:
+        record["review_group"] = ""
+        record["review_required"] = "no"
+        record["review_question"] = ""
+        record["confidence"] = 1.0
+    for relation in pair_relations:
+        pair = {relation["first_global_id"], relation["second_global_id"]}
+        if pair in CONFIRMED_GROUPS.values():
+            relation["review_required"] = False
 
 
 def build_inventory(
@@ -437,6 +490,7 @@ def render_side_panel(
     windows: Sequence[dict[str, Any]],
     pair_relations: Sequence[dict[str, Any]],
     collision_count: int,
+    formal_semantics: dict[str, Any],
 ) -> str:
     lines = ['<g id="a104-side-panel"><rect class="a104-panel" x="402" y="7" width="93" height="386"/>']
     y = 16.0
@@ -447,14 +501,15 @@ def render_side_panel(
         y += gap
 
     line("A-104 门窗定位图及门窗表", "a104-panel-title", 7.5)
-    line("候选编号｜未写 IFC｜1:50", "a104-panel-note", 7.0)
+    subtitle = "当前正式 IFC 派生｜候选图｜1:50" if formal_semantics["complete"] else "候选编号｜未写 IFC｜1:50"
+    line(subtitle, "a104-panel-note", 7.0)
     line("门表", "a104-panel-heading", 5.5)
     for record in doors:
         size = (
             f"{format_mm(record['nominal_width_mm'])}×{format_mm(record['nominal_height_mm'])}"
             if record["nominal_width_mm"] is not None else "尺寸待定"
         )
-        marker = "※" if record["review_required"] == "yes" else ""
+        marker = "※" if record["review_required"] == "yes" else ("†" if not record["host_wall_global_id"] else "")
         line(f"{record['candidate_id']}{marker}  {size}  {record['operation_label']}", gap=4.4)
     y += 2.0
     line("窗表", "a104-panel-heading", 5.5)
@@ -470,9 +525,14 @@ def render_side_panel(
     line(f"门 8／窗 11；有宿主 {len(hosted)}", gap=4.3)
     line(f"洞口名义宽高 0.1mm：{sum(r['geometry_relation_pass'] for r in hosted)}/{len(hosted)}", gap=4.3)
     line(f"候选编号重复：0；标注碰撞：{collision_count}", gap=4.3)
-    line(f"重叠洞口组：{sum(bool(r['review_required']) for r in pair_relations)}", gap=4.3)
+    overlap_group_count = sum(relation["kind"] == "OVERLAP" for relation in pair_relations)
+    line(f"重叠洞口组：{overlap_group_count}（已登记窗组）", gap=4.3)
     line(f"IFC SHA {source_sha[:12]}…", "a104-panel-note", 5.0)
-    line("※ 仅表示必须在 Blender 确认", "a104-panel-note", 4.5)
+    if formal_semantics["complete"]:
+        line("已确认语义：编号 19／门名 4／门窗组 3", "a104-panel-note", 4.5)
+        line("† 3 樘无 IfcRelFillsElement；关系待深化", "a104-panel-note", 4.5)
+    else:
+        line("※ 仅表示必须在 Blender 确认", "a104-panel-note", 4.5)
     lines.append("</g>")
     return "".join(lines)
 
@@ -521,6 +581,10 @@ def main() -> None:
     if len({record["candidate_id"] for record in [*doors, *windows]}) != 19:
         raise RuntimeError("duplicate A-104 candidate identifier")
 
+    formal_semantics = formal_semantics_state(model, [*doors, *windows])
+    if formal_semantics["complete"]:
+        close_confirmed_reviews([*doors, *windows], pair_relations)
+
     rows = register_rows([*doors, *windows], source_sha)
     write_register(args.review_register, rows)
     occupied: list[Box] = []
@@ -533,7 +597,7 @@ def main() -> None:
     ]
     if collisions:
         raise RuntimeError(f"generated label collisions remain: {collisions}")
-    panel = render_side_panel(source_sha, doors, windows, pair_relations, len(collisions))
+    panel = render_side_panel(source_sha, doors, windows, pair_relations, len(collisions), formal_semantics)
     output_svg = inject_candidate_svg(source_svg, marker_markup + panel)
     args.output_svg.parent.mkdir(parents=True, exist_ok=True)
     args.output_svg.write_text(output_svg, encoding="utf-8")
@@ -567,6 +631,7 @@ def main() -> None:
         "generated_label_collision_count": len(collisions),
         "review_queue_count": len(review_queue),
         "automatic_ifc_write_allowed": False,
+        "formal_semantics_complete": formal_semantics["complete"],
     }
     gates["mechanical_pass"] = (
         gates["ifc_schema_is_ifc4"]
@@ -589,7 +654,8 @@ def main() -> None:
             "wall_plan_svg_sha256": sha256(args.source_svg),
         },
         "tolerance_mm": args.tolerance_mm,
-        "numbering_rule": "M=door and W=window; plan scan north-to-south, then west-to-east; candidate only until review; D prefix is reserved by A-102 demolition walls",
+        "numbering_rule": "M=door and W=window; plan scan north-to-south, then west-to-east; current formal tags are verified when present; D prefix is reserved by A-102 demolition walls",
+        "formal_semantics": formal_semantics,
         "doors": doors,
         "windows": windows,
         "shared_host_opening_relations": pair_relations,

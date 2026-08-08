@@ -45,5 +45,8 @@ test("A105 source keeps every result read-only", async () => {
   expect(source).toContain('"wet_tile_slope_arrow_count"');
   expect(source).toContain('CONFIRMED_REFERENCE_MATERIALS');
   expect(source).toContain('A105-WET-SLOPE-DIRECTION-001');
+  expect(source).toContain('"finish_reference_plane_confirmed"');
+  expect(source).toContain('"confirmed_reference_count"');
+  expect(source).toContain('Pset_A105FinishIntent');
   expect(source).not.toContain("model.write(");
 });

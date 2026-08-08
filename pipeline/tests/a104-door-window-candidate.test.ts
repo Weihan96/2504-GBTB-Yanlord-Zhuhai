@@ -69,3 +69,21 @@ test("A104 reserves D identifiers for A102 demolition walls", async () => {
   expect(source).toContain('record["candidate_id"] = f"M{index:02d}"');
   expect(source).toContain("D prefix is reserved by A-102 demolition walls");
 });
+
+test("A104 closes superseded human reviews when formal tags names and groups exist", () => {
+  const result = runPython(`
+model = module.ifcopenshell.open("2504 GBTB Yanlord Zhuhai.ifc")
+records = [
+  {"global_id": product.GlobalId, "current_tag": str(product.Tag or ""), "candidate_id": str(product.Tag or "")}
+  for product in [*model.by_type("IfcDoor"), *model.by_type("IfcWindow")]
+]
+print(json.dumps(module.formal_semantics_state(model, records), ensure_ascii=False))
+`);
+  expect(result.exitCode).toBe(0);
+  expect(JSON.parse(result.stdout.toString())).toEqual({
+    tags_pass: true,
+    names_pass: true,
+    groups_pass: true,
+    complete: true,
+  });
+});
