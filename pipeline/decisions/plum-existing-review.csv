@@ -1,0 +1,10 @@
+issue_id,scope,object_guid,current_condition,required_action,basis,confidence,review_required,status,stop_condition
+PLUM-EXISTING-001,existing-object-register,,当前 IFC 包含 27 个 IfcSanitaryTerminal、3 个 IfcWasteTerminal、3 个洁具组合件和 16 个可识别排水对象,生成 P-201 需求端点候选与 P-202 既有对象定位登记；不推断连接口或系统,当前 IFC 类别、类型、名称、容器和世界几何,1.00,no,implemented,对象数量或 GlobalId 集合变化时停止并重新审计
+PLUM-DATA-001,distribution-connectivity,,IfcDistributionPort、IfcSystem、IfcDistributionSystem 和端口连接关系均为 0,明确报告数据缺失；在连接口和系统拓扑补齐前不得声称连通性通过,当前 IFC 实体计数,1.00,yes,pending,正式连接关系、管路系统或管径路径定型前停止
+PLUM-P201-001,water-demand-endpoints,27 IfcSanitaryTerminal,当前只有洁具几何和类型；没有给水管实例、冷热水连接口或系统拓扑,只生成 27 个服务需求端点候选并把连接需求标为 unknown,IfcSanitaryTerminal 位置可以登记但不是连接口证据；DN15 PPR 类型没有实例,1.00,yes,delegated,水压、设备接口或冷热水系统未确认时不冻结 P-201 管线
+PLUM-P202-001,drainage-location-register,16 drainage products; 3 IfcWasteTerminal; 3 assemblies,既有排水对象和洁具可定位但连接拓扑未建模,登记现有对象、世界包围盒、类型和容器；中心线只能作为候选证据,对象名称/类型及既有世界几何,1.00,yes,delegated,无端口或厂家粗装尺寸时不得写安装连接锚点
+PLUM-PVC110-001,controlled-bundle,"178mqyyzzFowLcbXcH6prO; 0bfVg4Ys1CevZs$qxhkXTo",正式 IFC 保留 2 个 PVC110 产品且每个产品包含 3 个互不连接的既定立管,只读识别 6 个分支；相对 C003 完成提交 4700894 检查世界几何 0.0 mm,COORD-FLOW-C003-PVC110-BUNDLE 与机械几何差分,1.00,no,implemented,PVC110 产品数、分支数或任一世界顶点变化时硬停止
+PLUM-ANCHOR-001,rough-in-anchor,30 C003 PLUM handoff objects,11 个非 PVC110 管段/管件、13 个洁具、3 个地漏及 3 个组合件尚未具备统一批准的粗装锚点,按厂家粗装点、连接口中心或排水中心线逐项确认；不得从外壳网格猜测,COORD-HANDOFF-C003-PLUM,1.00,yes,delegated,厂家安装尺寸或现场连接基准缺失时不写 ObjectPlacement
+PLUM-SITE-001,water-pressure-and-equipment,,静态/动态水压、水房阀门、前置过滤器/旁通/增压空间未确认,现场测量并确认设备和检修空间,滨海湾深化设计注意事项第 2 条,1.00,yes,pending,现场条件影响供水系统或设备时停止定型
+PLUM-HOTWATER-001,hot-water-system,,厨房至主卫实际管长、管径、保温和缩短等待时间方案未确认,比较现状直供、回水或其他方案并确认设备电源和控制,滨海湾深化设计注意事项第 3 条,1.00,yes,pending,热水系统选择未确认时不冻结 P-201
+PLUM-KITCHEN-DRAIN-001,kitchen-drain-adapter,,厨房台盆排水转接口为已解决做法但接口位置与检修条件尚待施工复核,在 P-202 和橱柜节点保留转接口及可检查更换要求,滨海湾深化设计注意事项第 1 条,1.00,yes,pending,现场无法保留可检查更换条件时停止节点定型
