@@ -32,6 +32,7 @@ def parse_args() -> argparse.Namespace:
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--input", required=True, type=Path)
     parser.add_argument("--register", required=True, type=Path)
+    parser.add_argument("--segments", required=True, type=Path)
     parser.add_argument("--output", required=True, type=Path)
     parser.add_argument("--issues", required=True, type=Path)
     parser.add_argument("--report", required=True, type=Path)
@@ -59,13 +60,27 @@ def read_register(path: Path) -> list[dict[str, str]]:
     counts: dict[str, int] = {}
     for row in rows:
         counts[row["candidate_finish_code"]] = counts.get(row["candidate_finish_code"], 0) + 1
-        if row["space_match_count"] != "1":
-            raise RuntimeError(f"non-unique Space assignment for {row['covering_global_id']}")
-        if row["status"] != "confirmed_candidate" or row["formal_ifc_write_allowed"] != "no":
+        expected_status = "split_candidate_required" if row["candidate_finish_code"] == "MULTI_FINISH_SPLIT_REQUIRED" else "confirmed_candidate"
+        if row["status"] != expected_status or row["formal_ifc_write_allowed"] != "no":
             raise RuntimeError(f"unapproved WFIN row {row['covering_global_id']}")
-    if counts != {"WHITE_WALL": 27, "TADELAKT": 24}:
+    if counts != {"WHITE_WALL": 25, "TADELAKT": 23, "MULTI_FINISH_SPLIT_REQUIRED": 3}:
         raise RuntimeError(f"unexpected WFIN partition {counts}")
     return rows
+
+
+def read_segments(path: Path) -> dict[str, list[dict[str, str]]]:
+    with path.open(encoding="utf-8-sig", newline="") as handle:
+        rows = list(csv.DictReader(handle))
+    counts: dict[str, int] = {}
+    by_covering: dict[str, list[dict[str, str]]] = {}
+    for row in rows:
+        counts[row["candidate_finish_code"]] = counts.get(row["candidate_finish_code"], 0) + 1
+        by_covering.setdefault(row["covering_global_id"], []).append(row)
+        if row["formal_ifc_write_allowed"] != "no":
+            raise RuntimeError(f"segment write boundary missing for {row['segment_id']}")
+    if len(rows) != 54 or counts != {"WHITE_WALL": 28, "TADELAKT": 26} or len(by_covering) != 51:
+        raise RuntimeError(f"unexpected WFIN segment partition: rows={len(rows)}, counts={counts}, objects={len(by_covering)}")
+    return by_covering
 
 
 def world_vertices(settings: ifcopenshell.geom.settings, product: ifcopenshell.entity_instance) -> np.ndarray:
@@ -108,21 +123,21 @@ def write_issues(path: Path) -> None:
     rows = [
         {
             "issue_id": "WFIN-R01",
-            "scope": "missing-cladding-geometry",
-            "object_guid": "3qDKVXWy5FxAT1_mcfnS37",
-            "current_evidence": "主卫干区 Space 已确认属于 Tadelakt 房间范围，但当前没有中心唯一归属该 Space 的 CLADDING",
-            "required_action_or_decision": "依据现有墙、洞口和完成面边界生成主卫干区饰面几何候选，并在 Blender 真深度审核",
-            "basis": "用户已确认两个卫生间均采用 Tadelakt；现有 51 个 CLADDING 不能覆盖主卫干区",
+            "scope": "finish-boundary-and-missing-face-review",
+            "object_guid": "0e0XOb$L18ZBVYJiQJrQ1p; 3bMoS7bIT8wBmjqRvdPunu; 06wFwLoDD6ie5iCTnc_yad; 3jha5L04zBjh0$pMl_tHLy; 04rs0EDjn2EvxytEQSxWRB; 3OVQygdDn17huGOgJJFTOY; 2nUpG$tzj0vR6tg5N9FJJ_; 2Rr8WvEy591Pj6dg4T6RQK",
+            "current_evidence": "3 个既有 CLADDING 跨越大白墙/Tadelakt Space 边界；主卫干区另有 4 面墙的干区侧/返口/低墙顶面没有现成 CLADDING，并存在一条跨区踢脚",
+            "required_action_or_decision": "在 Blender 真深度确认 3 条拆分线及主卫干区缺失饰面面；确认后拆分既有饰面并另建不重合的缺失面候选",
+            "basis": "既有 CLADDING 与 Space 边界机械相交得到 54 个连续分段；完整干区饰面受返口、低墙顶面、无 FillsVoids 的 M05/M06 门口和跨区踢脚影响，不能仅靠 Space Box 唯一推导",
             "confidence": "1.00",
             "review_required": "yes",
-            "status": "modeling_required",
-            "stop_condition": "未完成人眼确认前不得在正式 IFC 新增主卫干区 CLADDING",
+            "status": "split_review_required",
+            "stop_condition": "未完成人眼确认、0.260691 mm 现有接缝处理和拆分/新增候选几何差分通过前，不得整件替换材料或新增重合 CLADDING",
         },
         {
             "issue_id": "WFIN-R02",
             "scope": "tadelakt-system",
             "object_guid": "",
-            "current_evidence": "24 个既有 CLADDING 已按房间范围确认为 Tadelakt 意图；现有材料仍为 WW20/WW20BR",
+            "current_evidence": "54 个候选分段中 26 段为 Tadelakt；现有材料仍为 WW20/WW20BR",
             "required_action_or_decision": "确认产品系统、颜色样板、完成面总厚、基层和湿区防水/收口节点",
             "basis": "参考链接只支持材质方向与湿区适用背景，不能替代本项目施工参数",
             "confidence": "1.00",
@@ -134,7 +149,7 @@ def write_issues(path: Path) -> None:
             "issue_id": "WFIN-R03",
             "scope": "white-wall-system",
             "object_guid": "",
-            "current_evidence": "27 个既有 CLADDING 已确认为大白墙范围，当前材料层为 WW20",
+            "current_evidence": "54 个候选分段中 28 段为大白墙，当前材料层为 WW20/WW20BR",
             "required_action_or_decision": "确认涂料体系、白色样板/光泽、基层处理和完成面总厚",
             "basis": "大白墙房间范围已确认，但产品与施工层次尚未确认",
             "confidence": "1.00",
@@ -165,6 +180,7 @@ def write_issues(path: Path) -> None:
 def main() -> None:
     args = parse_args()
     rows = read_register(args.register)
+    segments_by_covering = read_segments(args.segments)
     model = ifcopenshell.open(args.input)
     if model.schema != "IFC4":
         raise RuntimeError(f"expected IFC4, got {model.schema}")
@@ -176,16 +192,17 @@ def main() -> None:
     source_long_names = {}
     for row in rows:
         covering = model.by_guid(row["covering_global_id"])
-        space = model.by_guid(row["space_global_id"])
         if covering is None or not covering.is_a("IfcCovering"):
             raise RuntimeError(f"missing IfcCovering {row['covering_global_id']}")
-        if space is None or not space.is_a("IfcSpace"):
-            raise RuntimeError(f"missing IfcSpace {row['space_global_id']}")
-        if str(space.LongName or space.Name or "") != row["space_long_name"]:
-            raise RuntimeError(f"Space LongName drift for {space.GlobalId}")
-        reference = ifcopenshell.util.element.get_psets(space).get("Pset_SpaceCommon", {}).get("Reference")
-        if not reference:
-            raise RuntimeError(f"Space Reference missing for {space.GlobalId}")
+        for space_id, space_name in zip(row["space_global_id"].split("; "), row["space_long_name"].split("; ")):
+            space = model.by_guid(space_id)
+            if space is None or not space.is_a("IfcSpace"):
+                raise RuntimeError(f"missing IfcSpace {space_id}")
+            if str(space.LongName or space.Name or "") != space_name:
+                raise RuntimeError(f"Space LongName drift for {space.GlobalId}")
+            reference = ifcopenshell.util.element.get_psets(space).get("Pset_SpaceCommon", {}).get("Reference")
+            if not reference:
+                raise RuntimeError(f"Space Reference missing for {space.GlobalId}")
         if PSET_NAME in ifcopenshell.util.element.get_psets(covering):
             raise RuntimeError(f"formal IFC already contains {PSET_NAME} on {covering.GlobalId}")
         source_geometry[covering.GlobalId] = world_vertices(settings, covering)
@@ -195,8 +212,9 @@ def main() -> None:
     applied = []
     for row in rows:
         covering = model.by_guid(row["covering_global_id"])
-        space = model.by_guid(row["space_global_id"])
-        reference = str(ifcopenshell.util.element.get_psets(space)["Pset_SpaceCommon"]["Reference"])
+        spaces = [model.by_guid(space_id) for space_id in row["space_global_id"].split("; ")]
+        references = [str(ifcopenshell.util.element.get_psets(space)["Pset_SpaceCommon"]["Reference"]) for space in spaces]
+        covering_segments = segments_by_covering[covering.GlobalId]
         pset = ifcopenshell.api.run("pset.add_pset", model, product=covering, name=PSET_NAME)
         pset.GlobalId = deterministic_guid(covering.GlobalId, "PSET")
         relation = next(
@@ -204,7 +222,11 @@ def main() -> None:
             if rel.is_a("IfcRelDefinesByProperties") and rel.RelatingPropertyDefinition == pset
         )
         relation.GlobalId = deterministic_guid(covering.GlobalId, "REL")
-        is_tadelakt = row["candidate_finish_code"] == "TADELAKT"
+        contains_tadelakt = any(segment["candidate_finish_code"] == "TADELAKT" for segment in covering_segments)
+        segment_summary = " | ".join(
+            f'{segment["segment_id"]}:{segment["candidate_finish_code"]}:{segment["start_mm"]}-{segment["end_mm"]}mm'
+            for segment in covering_segments
+        )
         ifcopenshell.api.run(
             "pset.edit_pset",
             model,
@@ -212,16 +234,18 @@ def main() -> None:
             properties={
                 "FinishCode": row["candidate_finish_code"],
                 "FinishName": row["candidate_finish"],
-                "AssignedSpaceReference": reference,
+                "AssignedSpaceReference": "; ".join(references),
                 "AssignedSpaceLongName": row["space_long_name"],
-                "AssignmentBasis": "USER_CONFIRMED_ROOM_SCOPE_AND_UNIQUE_SPACE_BBOX_CENTRE",
-                "ReviewStatus": "CONFIRMED_ROOM_SCOPE",
+                "AssignmentBasis": "USER_CONFIRMED_ROOM_SCOPE_AND_GRID_SPACE_BOUNDARY_SEGMENTS",
+                "CandidateSegmentCount": len(covering_segments),
+                "CandidateSegmentSummary": segment_summary,
+                "ReviewStatus": "SPLIT_REVIEW_REQUIRED" if row["candidate_finish_code"] == "MULTI_FINISH_SPLIT_REQUIRED" else "CONFIRMED_ROOM_SCOPE",
                 "ExistingMaterialAssociationPreserved": True,
                 "ProductSystemPending": True,
                 "ColourSamplePending": True,
                 "TotalThicknessPending": True,
                 "SubstratePending": True,
-                "WaterproofingDetailPending": is_tadelakt,
+                "WaterproofingDetailPending": contains_tadelakt,
                 "FormalIfcWriteAllowed": False,
             },
         )
@@ -229,7 +253,7 @@ def main() -> None:
             {
                 "covering_global_id": covering.GlobalId,
                 "finish_code": row["candidate_finish_code"],
-                "space_reference": reference,
+                "space_reference": "; ".join(references),
                 "space_long_name": row["space_long_name"],
                 "pset_global_id": pset.GlobalId,
                 "relation_global_id": relation.GlobalId,
@@ -282,15 +306,19 @@ def main() -> None:
         },
         "cladding_count": len(rows),
         "intent_pset_count": pset_count,
-        "tadelakt_count": sum(row["candidate_finish_code"] == "TADELAKT" for row in rows),
-        "white_wall_count": sum(row["candidate_finish_code"] == "WHITE_WALL" for row in rows),
+        "single_finish_object_count": sum(row["candidate_finish_code"] != "MULTI_FINISH_SPLIT_REQUIRED" for row in rows),
+        "mixed_finish_object_count": sum(row["candidate_finish_code"] == "MULTI_FINISH_SPLIT_REQUIRED" for row in rows),
+        "finish_segment_count": sum(len(value) for value in segments_by_covering.values()),
+        "tadelakt_segment_count": sum(segment["candidate_finish_code"] == "TADELAKT" for value in segments_by_covering.values() for segment in value),
+        "white_wall_segment_count": sum(segment["candidate_finish_code"] == "WHITE_WALL" for value in segments_by_covering.values() for segment in value),
         "new_root_count": len(expected_new_roots),
         "maximum_world_vertex_change_mm": maximum_change,
         "material_associations_preserved": True,
         "open_issue_count": 4,
         "formal_write_blockers": ["WFIN-R01", "WFIN-R02", "WFIN-R03", "WFIN-R04"],
         "qa": {
-            "partition_complete": True,
+            "segment_partition_complete": True,
+            "mixed_finish_whole_object_assignment_blocked": True,
             "space_references_present": True,
             "root_boundary_exact": True,
             "geometry_within_tolerance": maximum_change <= args.tolerance_mm,
@@ -302,7 +330,7 @@ def main() -> None:
     args.report.parent.mkdir(parents=True, exist_ok=True)
     args.report.write_text(json.dumps(report, ensure_ascii=False, indent=2), encoding="utf-8")
     print(
-        f"WFIN semantics candidate: {len(rows)} intent Psets, 24 Tadelakt, 27 white wall, "
+        f"WFIN semantics candidate: {len(rows)} intent Psets, 54 finish segments, 3 split-required objects, "
         f"geometry max change {maximum_change:.6f} mm, materials preserved, formal IFC unchanged"
     )
 

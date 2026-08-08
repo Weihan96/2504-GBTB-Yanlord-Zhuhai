@@ -7,6 +7,8 @@ const script = resolve(root, "pipeline/scripts/wfin_semantics_candidate.py");
 test("WFIN semantics remain a read-only project intent boundary", async () => {
   const source = await Bun.file(script).text();
   expect(source).toContain('PSET_NAME = "Pset_WallFinishIntent"');
+  expect(source).toContain("MULTI_FINISH_SPLIT_REQUIRED");
+  expect(source).toContain("CandidateSegmentSummary");
   expect(source).toContain('"standard_status": "project-specific design-intent Pset; not a buildingSMART standard Pset"');
   expect(source).toContain('"ExistingMaterialAssociationPreserved": True');
   expect(source).toContain('"FormalIfcWriteAllowed": False');
@@ -21,4 +23,8 @@ test("WFIN open issues preserve the exact C003 handoff boundary", async () => {
   expect(source).toContain('"2ntxn4aYnB0xQOSuraf1r2"');
   expect(source).toContain('"WFIN-R01"');
   expect(source).toContain('"WFIN-R04"');
+  expect(source).toContain('"finish-boundary-and-missing-face-review"');
+  expect(source).toContain("06wFwLoDD6ie5iCTnc_yad");
+  expect(source).toContain("0e0XOb$L18ZBVYJiQJrQ1p");
+  expect(source).toContain("3bMoS7bIT8wBmjqRvdPunu");
 });

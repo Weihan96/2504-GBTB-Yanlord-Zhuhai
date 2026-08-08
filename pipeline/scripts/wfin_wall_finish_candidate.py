@@ -38,6 +38,7 @@ def parse_args() -> argparse.Namespace:
     parser.add_argument("--source-svg", required=True, type=Path)
     parser.add_argument("--output-svg", required=True, type=Path)
     parser.add_argument("--register", required=True, type=Path)
+    parser.add_argument("--segment-register", required=True, type=Path)
     parser.add_argument("--report", required=True, type=Path)
     parser.add_argument("--containment-tolerance-mm", type=float, default=0.5)
     return parser.parse_args()
@@ -92,6 +93,69 @@ def centre_in_space_bbox(centre: list[float], bbox: dict[str, list[float]], tole
     )
 
 
+def finish_segments(
+    covering_bbox: dict[str, list[float]],
+    spaces: list[dict[str, Any]],
+    tolerance: float,
+) -> tuple[str, list[dict[str, Any]]]:
+    """Partition a thin vertical CLADDING along aligned Space boundaries."""
+    minimum = covering_bbox["min_mm"]
+    maximum = covering_bbox["max_mm"]
+    dimensions = covering_bbox["dimensions_mm"]
+    axis = 0 if dimensions[0] >= dimensions[1] else 1
+    perpendicular = 1 - axis
+    centre_perpendicular = covering_bbox["centre_mm"][perpendicular]
+    centre_z = covering_bbox["centre_mm"][2]
+    raw = []
+    for space in spaces:
+        bbox = space["bbox"]
+        if not (
+            bbox["min_mm"][perpendicular] - tolerance
+            <= centre_perpendicular
+            <= bbox["max_mm"][perpendicular] + tolerance
+        ):
+            continue
+        if not bbox["min_mm"][2] - tolerance <= centre_z <= bbox["max_mm"][2] + tolerance:
+            continue
+        start = max(minimum[axis], bbox["min_mm"][axis])
+        end = min(maximum[axis], bbox["max_mm"][axis])
+        if end - start <= tolerance:
+            continue
+        raw.append(
+            {
+                "axis": "X" if axis == 0 else "Y",
+                "constant_mm": centre_perpendicular,
+                "start_mm": start,
+                "end_mm": end,
+                "space_global_ids": [space["global_id"]],
+                "space_long_names": [space["long_name"]],
+                "candidate_finish_code": "TADELAKT" if space["long_name"] in TADELAKT_SPACE_NAMES else "WHITE_WALL",
+                "candidate_finish": "Tadelakt" if space["long_name"] in TADELAKT_SPACE_NAMES else "大白墙",
+            }
+        )
+    raw.sort(key=lambda item: (item["start_mm"], item["end_mm"], item["space_long_names"]))
+    merged: list[dict[str, Any]] = []
+    for item in raw:
+        if merged and item["start_mm"] < merged[-1]["end_mm"] - tolerance:
+            raise RuntimeError("overlapping Space intervals make the CLADDING finish boundary ambiguous")
+        if (
+            merged
+            and item["candidate_finish_code"] == merged[-1]["candidate_finish_code"]
+            and abs(item["start_mm"] - merged[-1]["end_mm"]) <= tolerance
+        ):
+            merged[-1]["end_mm"] = max(merged[-1]["end_mm"], item["end_mm"])
+            merged[-1]["space_global_ids"].extend(item["space_global_ids"])
+            merged[-1]["space_long_names"].extend(item["space_long_names"])
+        else:
+            merged.append(item)
+    covered = sum(item["end_mm"] - item["start_mm"] for item in merged)
+    if not merged or dimensions[axis] - covered > tolerance * 2:
+        raise RuntimeError(
+            f"CLADDING segment coverage drift: length={dimensions[axis]:.3f} mm, covered={covered:.3f} mm"
+        )
+    return ("X" if axis == 0 else "Y"), merged
+
+
 def add_class(svg: str, global_id: str, class_name: str) -> tuple[str, int]:
     pattern = re.compile(
         rf'(<g\b[^>]*\bclass=")([^"]*)("[^>]*\bifc:guid="{re.escape(global_id)}"[^>]*>)'
@@ -106,14 +170,15 @@ def add_class(svg: str, global_id: str, class_name: str) -> tuple[str, int]:
     return pattern.subn(replace, svg)
 
 
-def side_panel(records: list[dict[str, Any]], source_sha: str) -> str:
-    counts = Counter(record["candidate_finish"] for record in records)
-    tadelakt_spaces = sorted({record["space_long_name"] for record in records if record["candidate_finish_code"] == "TADELAKT"})
+def side_panel(records: list[dict[str, Any]], segments: list[dict[str, Any]], source_sha: str) -> str:
+    object_counts = Counter(record["candidate_finish_code"] for record in records)
+    segment_counts = Counter(segment["candidate_finish_code"] for segment in segments)
+    tadelakt_spaces = sorted({name for segment in segments if segment["candidate_finish_code"] == "TADELAKT" for name in segment["space_long_names"]})
     rows = [
         ("IFC 饰面对象", str(len(records))),
-        ("Tadelakt 候选", str(counts["Tadelakt"])),
-        ("大白墙候选", str(counts["大白墙"])),
-        ("唯一房间归属", f'{sum(record["space_match_count"] == 1 for record in records)}/{len(records)}'),
+        ("跨材料边界对象", str(object_counts["MULTI_FINISH_SPLIT_REQUIRED"])),
+        ("Tadelakt 分段", str(segment_counts["TADELAKT"])),
+        ("大白墙分段", str(segment_counts["WHITE_WALL"])),
     ]
     y = 22.0
     parts = [
@@ -143,7 +208,7 @@ def side_panel(records: list[dict[str, Any]], source_sha: str) -> str:
     y += 3.0
     notes = [
         "规则：次卧及其飘窗、两卫干/湿区及飘窗",
-        "主卫干区当前无可归属的 CLADDING 对象",
+        "3 个跨材料边界对象须先拆分，不能整件赋材",
         "待定：品牌系统、颜色、厚度、基层、防水节点",
         "参考链接只作材质方向证据，不作施工参数",
         f"IFC SHA {source_sha[:12]}…",
@@ -178,19 +243,15 @@ def fallback_plan_rect(record: dict[str, Any], class_name: str) -> str:
     )
 
 
-def plan_indicator(record: dict[str, Any], class_name: str) -> str:
-    bbox = record["bbox"]
-    minimum = bbox["min_mm"]
-    maximum = bbox["max_mm"]
-    centre = bbox["centre_mm"]
-    if bbox["dimensions_mm"][0] >= bbox["dimensions_mm"][1]:
-        x1, y1 = (float(minimum[0]) + 10000.0) / 50.0, (10000.0 - float(centre[1])) / 50.0
-        x2, y2 = (float(maximum[0]) + 10000.0) / 50.0, y1
+def plan_indicator(segment: dict[str, Any], class_name: str) -> str:
+    if segment["axis"] == "X":
+        x1, y1 = (float(segment["start_mm"]) + 10000.0) / 50.0, (10000.0 - float(segment["constant_mm"])) / 50.0
+        x2, y2 = (float(segment["end_mm"]) + 10000.0) / 50.0, y1
     else:
-        x1, y1 = (float(centre[0]) + 10000.0) / 50.0, (10000.0 - float(minimum[1])) / 50.0
-        x2, y2 = x1, (10000.0 - float(maximum[1])) / 50.0
+        x1, y1 = (float(segment["constant_mm"]) + 10000.0) / 50.0, (10000.0 - float(segment["start_mm"])) / 50.0
+        x2, y2 = x1, (10000.0 - float(segment["end_mm"])) / 50.0
     return (
-        f'<line class="wfin-indicator {class_name}" data-guid="{html.escape(record["covering_global_id"], quote=True)}" '
+        f'<line class="wfin-indicator {class_name}" data-guid="{html.escape(segment["covering_global_id"], quote=True)}" '
         f'x1="{x1:.6f}" y1="{y1:.6f}" x2="{x2:.6f}" y2="{y2:.6f}"/>'
     )
 
@@ -217,40 +278,50 @@ def main() -> None:
         if effective_predefined_type(covering) != "CLADDING":
             continue
         bbox = shape_bbox(settings, covering)
-        matches = [
+        centre_matches = [
             space
             for space in spaces
             if centre_in_space_bbox(bbox["centre_mm"], space["bbox"], args.containment_tolerance_mm)
         ]
-        if len(matches) != 1:
-            raise RuntimeError(f"{covering.GlobalId} matches {len(matches)} Space bboxes; expected exactly one")
-        space = matches[0]
-        is_tadelakt = space["long_name"] in TADELAKT_SPACE_NAMES
+        if len(centre_matches) != 1:
+            raise RuntimeError(f"{covering.GlobalId} centre matches {len(centre_matches)} Space bboxes; expected exactly one")
+        _, segments = finish_segments(bbox, spaces, args.containment_tolerance_mm)
+        finish_codes = {segment["candidate_finish_code"] for segment in segments}
+        mixed = len(finish_codes) > 1
+        space_ids = [space_id for segment in segments for space_id in segment["space_global_ids"]]
+        space_names = [name for segment in segments for name in segment["space_long_names"]]
+        for segment in segments:
+            segment["covering_global_id"] = covering.GlobalId
         records.append(
             {
                 "covering_global_id": covering.GlobalId,
                 "covering_name": str(covering.Name or ""),
                 "effective_predefined_type": "CLADDING",
                 "current_material": material_name(covering),
-                "space_global_id": space["global_id"],
-                "space_long_name": space["long_name"],
-                "space_match_count": len(matches),
-                "candidate_finish_code": "TADELAKT" if is_tadelakt else "WHITE_WALL",
-                "candidate_finish": "Tadelakt" if is_tadelakt else "大白墙",
-                "basis": "用户确认房间级材料规则；饰面世界包围盒中心唯一落入当前 Space 世界包围盒",
+                "space_global_id": "; ".join(space_ids),
+                "space_long_name": "; ".join(space_names),
+                "space_match_count": len(space_ids),
+                "candidate_finish_code": "MULTI_FINISH_SPLIT_REQUIRED" if mixed else next(iter(finish_codes)),
+                "candidate_finish": "按 Space 边界拆分" if mixed else segments[0]["candidate_finish"],
+                "basis": "用户确认房间级材料规则；薄型垂直饰面沿 Grid Space 边界机械分段",
                 "confidence": 1.0,
-                "review_required": "no",
-                "status": "confirmed_candidate",
+                "review_required": "yes" if mixed else "no",
+                "status": "split_candidate_required" if mixed else "confirmed_candidate",
                 "formal_ifc_write_allowed": "no",
                 "bbox": bbox,
+                "segments": segments,
             }
         )
     records.sort(key=lambda record: (record["space_long_name"], record["covering_global_id"]))
     if len(records) != 51:
         raise RuntimeError(f"expected 51 effective CLADDING objects, got {len(records)}")
     counts = Counter(record["candidate_finish_code"] for record in records)
-    if counts != Counter({"WHITE_WALL": 27, "TADELAKT": 24}):
-        raise RuntimeError(f"unexpected finish counts: {dict(counts)}")
+    all_segments = [segment for record in records for segment in record["segments"]]
+    segment_counts = Counter(segment["candidate_finish_code"] for segment in all_segments)
+    if counts != Counter({"WHITE_WALL": 25, "TADELAKT": 23, "MULTI_FINISH_SPLIT_REQUIRED": 3}):
+        raise RuntimeError(f"unexpected object finish counts: {dict(counts)}")
+    if segment_counts != Counter({"WHITE_WALL": 28, "TADELAKT": 26}) or len(all_segments) != 54:
+        raise RuntimeError(f"unexpected finish segments: count={len(all_segments)}, finishes={dict(segment_counts)}")
 
     args.register.parent.mkdir(parents=True, exist_ok=True)
     with args.register.open("w", encoding="utf-8-sig", newline="") as handle:
@@ -275,6 +346,30 @@ def main() -> None:
         for record in records:
             writer.writerow({key: record[key] for key in fieldnames})
 
+    args.segment_register.parent.mkdir(parents=True, exist_ok=True)
+    segment_fields = [
+        "segment_id", "covering_global_id", "axis", "constant_mm", "start_mm", "end_mm",
+        "space_global_ids", "space_long_names", "candidate_finish_code", "candidate_finish",
+        "review_required", "status", "formal_ifc_write_allowed",
+    ]
+    with args.segment_register.open("w", encoding="utf-8-sig", newline="") as handle:
+        writer = csv.DictWriter(handle, fieldnames=segment_fields, lineterminator="\n")
+        writer.writeheader()
+        for index, segment in enumerate(all_segments, 1):
+            row = dict(segment)
+            row.update(
+                {
+                    "segment_id": f"WFIN-S{index:03d}",
+                    "space_global_ids": "; ".join(segment["space_global_ids"]),
+                    "space_long_names": "; ".join(segment["space_long_names"]),
+                }
+            )
+            source_record = next(record for record in records if record["covering_global_id"] == segment["covering_global_id"])
+            row["review_required"] = source_record["review_required"]
+            row["status"] = "split_candidate" if source_record["review_required"] == "yes" else "confirmed_candidate"
+            row["formal_ifc_write_allowed"] = "no"
+            writer.writerow({key: row[key] for key in segment_fields})
+
     svg = args.source_svg.read_text(encoding="utf-8")
     svg = re.sub(r'width="400(?:\.00003814697266)?mm"', 'width="500mm"', svg, count=1)
     svg = re.sub(r'height="400(?:\.00003814697266)?mm"', 'height="400mm"', svg, count=1)
@@ -287,8 +382,10 @@ svg { display: block; }
 * { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
 .wfin-white-wall path { fill: #dce3e8 !important; stroke: #68727a !important; stroke-width: 0.35 !important; }
 .wfin-tadelakt path { fill: #65b9a9 !important; stroke: #156b60 !important; stroke-width: 0.45 !important; }
+.wfin-split-required path { fill: #f1d4a9 !important; stroke: #c65f00 !important; stroke-width: 0.55 !important; }
 .wfin-white-wall rect { fill: #dce3e8 !important; stroke: #68727a !important; stroke-width: 0.35 !important; }
 .wfin-tadelakt rect { fill: #65b9a9 !important; stroke: #156b60 !important; stroke-width: 0.45 !important; }
+.wfin-split-required rect { fill: #f1d4a9 !important; stroke: #c65f00 !important; stroke-width: 0.55 !important; }
 .wfin-fallback rect { stroke-dasharray: 1.2 0.7; }
 .wfin-indicator { fill: none !important; stroke-width: 1.3 !important; stroke-linecap: butt; opacity: 0.92; }
 .wfin-indicator.wfin-white-wall { stroke: #8e9ba5 !important; }
@@ -300,40 +397,49 @@ svg { display: block; }
     fallback_fragments = []
     indicators = []
     for record in records:
-        class_name = "wfin-tadelakt" if record["candidate_finish_code"] == "TADELAKT" else "wfin-white-wall"
-        indicators.append(plan_indicator(record, class_name))
+        class_name = {
+            "TADELAKT": "wfin-tadelakt",
+            "WHITE_WALL": "wfin-white-wall",
+            "MULTI_FINISH_SPLIT_REQUIRED": "wfin-split-required",
+        }[record["candidate_finish_code"]]
         svg, count = add_class(svg, record["covering_global_id"], class_name)
         if count == 0:
             fallback_fragments.append(fallback_plan_rect(record, class_name))
         else:
             fragment_object_count += 1
         fragment_count += count
+    for segment in all_segments:
+        class_name = "wfin-tadelakt" if segment["candidate_finish_code"] == "TADELAKT" else "wfin-white-wall"
+        indicators.append(plan_indicator(segment, class_name))
     svg = svg.replace(
         "</svg>",
         '<g id="wfin-ifc-fallbacks">' + "".join(fallback_fragments) + "</g>"
         + '<g id="wfin-plan-indicators">' + "".join(indicators) + "</g>"
-        + side_panel(records, source_sha)
+        + side_panel(records, all_segments, source_sha)
         + "</svg>",
         1,
     )
     args.output_svg.parent.mkdir(parents=True, exist_ok=True)
     args.output_svg.write_text(svg, encoding="utf-8")
 
-    main_bath_dry_objects = [record for record in records if record["space_long_name"] == "主卫干区"]
+    main_bath_dry_segments = [segment for segment in all_segments if "主卫干区" in segment["space_long_names"]]
     report = {
         "generated_at": datetime.now(timezone.utc).isoformat(),
         "source": {"path": str(args.input), "sha256": source_sha, "schema": model.schema},
         "source_svg": {"path": str(args.source_svg), "sha256": sha256(args.source_svg)},
         "automatic_ifc_write_allowed": False,
         "cladding_count": len(records),
-        "unique_space_assignment_count": sum(record["space_match_count"] == 1 for record in records),
-        "tadelakt_count": counts["TADELAKT"],
-        "white_wall_count": counts["WHITE_WALL"],
+        "single_finish_object_count": counts["TADELAKT"] + counts["WHITE_WALL"],
+        "mixed_finish_object_count": counts["MULTI_FINISH_SPLIT_REQUIRED"],
+        "finish_segment_count": len(all_segments),
+        "tadelakt_segment_count": segment_counts["TADELAKT"],
+        "white_wall_segment_count": segment_counts["WHITE_WALL"],
         "source_svg_fragment_count": fragment_count,
         "source_svg_object_count": fragment_object_count,
         "fallback_object_count": len(fallback_fragments),
-        "main_bath_dry_cladding_count": len(main_bath_dry_objects),
-        "controlled_gap": "主卫干区当前没有可按中心唯一归属的 CLADDING 对象；不自动新增饰面几何",
+        "main_bath_dry_segment_count": len(main_bath_dry_segments),
+        "mixed_finish_object_ids": [record["covering_global_id"] for record in records if record["candidate_finish_code"] == "MULTI_FINISH_SPLIT_REQUIRED"],
+        "controlled_gap": "3 个既有 CLADDING 跨越大白墙/Tadelakt 空间边界，须按候选分段拆分后才能赋材",
         "unresolved_parameters": ["品牌/产品系统", "颜色/样板", "完成面总厚度", "基层", "湿区防水与收口节点"],
         "references": [
             "https://mp.weixin.qq.com/s/roqN3h93WZ0AER71lJzaUQ",
@@ -343,8 +449,8 @@ svg { display: block; }
         ],
         "qa": {
             "effective_cladding_count_51": len(records) == 51,
-            "every_cladding_has_one_space": all(record["space_match_count"] == 1 for record in records),
-            "finish_partition_complete": counts["TADELAKT"] + counts["WHITE_WALL"] == len(records),
+            "finish_segment_partition_complete": segment_counts["TADELAKT"] + segment_counts["WHITE_WALL"] == len(all_segments),
+            "mixed_finish_objects_blocked_from_whole_object_assignment": counts["MULTI_FINISH_SPLIT_REQUIRED"] == 3,
             "candidate_visual_contains_every_cladding": fragment_object_count + len(fallback_fragments) == len(records),
             "formal_ifc_unchanged": True,
         },
@@ -353,8 +459,9 @@ svg { display: block; }
     args.report.parent.mkdir(parents=True, exist_ok=True)
     args.report.write_text(json.dumps(report, ensure_ascii=False, indent=2), encoding="utf-8")
     print(
-        f"WFIN candidate: {len(records)} CLADDING, {counts['TADELAKT']} Tadelakt, "
-        f"{counts['WHITE_WALL']} white wall, IFC unchanged"
+        f"WFIN candidate: {len(records)} CLADDING, {len(all_segments)} finish segments "
+        f"({segment_counts['TADELAKT']} Tadelakt, {segment_counts['WHITE_WALL']} white wall), "
+        f"3 split-required objects, IFC unchanged"
     )
 
 
