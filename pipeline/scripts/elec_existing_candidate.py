@@ -6,7 +6,9 @@ from __future__ import annotations
 import argparse
 import csv
 import hashlib
+import html
 import json
+import re
 from collections import Counter, defaultdict
 from datetime import datetime, timezone
 from pathlib import Path
@@ -42,6 +44,8 @@ CONTROLLED_SOCKET_IDS = {
 }
 NETWORK_TYPE_CATEGORIES = {"LAN", "LANFLUSH", "LANSOCKET"}
 CONTROL_TYPE_CATEGORIES = {"SWITCHPANEL", "CONTROLPANEL"}
+SCALE_DENOMINATOR = 50.0
+SVG_WORLD_OFFSET_MM = 10000.0
 
 
 def parse_args() -> argparse.Namespace:
@@ -53,6 +57,9 @@ def parse_args() -> argparse.Namespace:
         default=Path("pipeline/decisions/elec-existing-review.csv"),
     )
     parser.add_argument("--output", type=Path, default=Path("build/elec/elec-existing-candidate.json"))
+    parser.add_argument("--source-svg", type=Path)
+    parser.add_argument("--e301-svg", type=Path)
+    parser.add_argument("--e303-svg", type=Path)
     parser.add_argument("--expected-sha256", default=EXPECTED_SOURCE_SHA256)
     parser.add_argument("--tolerance-mm", type=float, default=0.1)
     return parser.parse_args()
@@ -64,6 +71,17 @@ def sha256(path: Path) -> str:
         for chunk in iter(lambda: handle.read(1024 * 1024), b""):
             digest.update(chunk)
     return digest.hexdigest()
+
+
+def world_to_svg(x_mm: float, y_mm: float) -> tuple[float, float]:
+    return (
+        (x_mm + SVG_WORLD_OFFSET_MM) / SCALE_DENOMINATOR,
+        (SVG_WORLD_OFFSET_MM - y_mm) / SCALE_DENOMINATOR,
+    )
+
+
+def svg_escape(value: Any) -> str:
+    return html.escape(str(value), quote=True)
 
 
 def shape_data(
@@ -229,8 +247,269 @@ def opening_record(opening: ifcopenshell.entity_instance) -> dict[str, Any]:
     }
 
 
+def place_plan_labels(
+    records: list[dict[str, Any]],
+) -> tuple[list[dict[str, Any]], int]:
+    occupied: list[tuple[float, float, float, float]] = []
+    labels: list[dict[str, Any]] = []
+    offsets = sorted(
+        (
+            (dx, dy)
+            for dx in range(-27, 28, 3)
+            for dy in range(-27, 28, 3)
+            if abs(dx) + abs(dy) >= 4
+        ),
+        key=lambda item: (abs(item[0]) + abs(item[1]), abs(item[1]), abs(item[0])),
+    )
+    collision_count = 0
+    for record in records:
+        cx, cy = world_to_svg(*record["bbox"]["centre_mm"][:2])
+        text = record["candidate_id"]
+        width = max(5.8, len(text) * 1.45)
+        chosen = None
+        for dx, dy in offsets:
+            tx = cx + dx
+            ty = cy + dy
+            box = (tx - width / 2, ty - 2.6, tx + width / 2, ty + 0.8)
+            if box[0] < 1 or box[1] < 1 or box[2] > 399 or box[3] > 399:
+                continue
+            if any(
+                not (
+                    box[2] + 0.35 <= other[0]
+                    or other[2] + 0.35 <= box[0]
+                    or box[3] + 0.35 <= other[1]
+                    or other[3] + 0.35 <= box[1]
+                )
+                for other in occupied
+            ):
+                continue
+            chosen = (tx, ty, box)
+            break
+        if chosen is None:
+            collision_count += 1
+            chosen = (cx, cy, (cx - width / 2, cy - 2.6, cx + width / 2, cy + 0.8))
+        tx, ty, box = chosen
+        occupied.append(box)
+        labels.append(
+            {
+                "global_id": record["global_id"],
+                "candidate_id": text,
+                "marker": [cx, cy],
+                "text": [tx, ty],
+                "box": list(box),
+            }
+        )
+    return labels, collision_count
+
+
+def inject_elec_svg(source: str, generated: str, sheet: str, style: str) -> str:
+    if 'data-scale="1:50"' not in source:
+        raise RuntimeError("Wall Plan SVG is not at expected 1:50 scale")
+    source = re.sub(r'width="400(?:\.0+)?mm"', 'width="500mm"', source, count=1)
+    source = re.sub(
+        r'viewBox="0 0 400(?:\.0+)? 400(?:\.0+)?"',
+        'viewBox="0 0 500 400"',
+        source,
+        count=1,
+    )
+    if 'width="500mm"' not in source or 'viewBox="0 0 500 400"' not in source:
+        raise RuntimeError("failed to expand ELEC candidate sheet to 500x400 mm")
+    if "</svg>" not in source:
+        raise RuntimeError("invalid SVG: closing tag missing")
+    return source.replace(
+        "</svg>",
+        f'<style id="{sheet.lower()}-candidate-style">{style}</style>'
+        f'<g id="{sheet.lower()}-generated">{generated}</g></svg>',
+        1,
+    )
+
+
+def panel_line(markup: list[str], text: str, y: float, css: str = "elec-text") -> None:
+    markup.append(f'<text class="{css}" x="407" y="{y:.1f}">{svg_escape(text)}</text>')
+
+
+def render_e301(
+    source: str,
+    source_sha: str,
+    lights: list[dict[str, Any]],
+    room_counts: Counter[str],
+) -> tuple[str, dict[str, Any]]:
+    labels, collisions = place_plan_labels(lights)
+    by_id = {record["global_id"]: record for record in lights}
+    markup = ['<g id="e301-light-markers">']
+    for label in labels:
+        record = by_id[label["global_id"]]
+        cx, cy = label["marker"]
+        tx, ty = label["text"]
+        box = label["box"]
+        markup.append(
+            f'<g data-elec-kind="light" data-ifc-guid="{svg_escape(record["global_id"])}" '
+            f'data-candidate-id="{record["candidate_id"]}">'
+            f'<circle class="e301-light-ring" cx="{cx:.3f}" cy="{cy:.3f}" r="2.0"/>'
+            f'<line class="e301-light-cross" x1="{cx-1.3:.3f}" y1="{cy:.3f}" x2="{cx+1.3:.3f}" y2="{cy:.3f}"/>'
+            f'<line class="e301-light-cross" x1="{cx:.3f}" y1="{cy-1.3:.3f}" x2="{cx:.3f}" y2="{cy+1.3:.3f}"/>'
+            f'<line class="elec-leader" x1="{cx:.3f}" y1="{cy:.3f}" x2="{tx:.3f}" y2="{ty-1.0:.3f}"/>'
+            f'<rect class="elec-label-bg" x="{box[0]:.3f}" y="{box[1]:.3f}" width="{box[2]-box[0]:.3f}" height="{box[3]-box[1]:.3f}"/>'
+            f'<text class="elec-label" x="{tx:.3f}" y="{ty:.3f}">{record["candidate_id"]}</text>'
+            '</g>'
+        )
+    markup.append('</g><g id="e301-side-panel"><rect class="elec-panel" x="402" y="7" width="93" height="386"/>')
+    panel_line(markup, "E-301 灯具定位候选", 16, "elec-title")
+    panel_line(markup, "当前正式 IFC 派生｜1:50｜非施工发布", 23, "elec-note")
+    panel_line(markup, "仅表达既有位置与 Space 候选", 30)
+    panel_line(markup, "不含灯组、回路、功率或控制推断", 36, "elec-warn")
+    panel_line(markup, "灯具统计", 46, "elec-heading")
+    panel_line(markup, "RA.LP / DIRECTIONSOURCE：79", 52)
+    panel_line(markup, "安装中心 0.1 mm：79/79", 58)
+    panel_line(markup, "重复中心：0｜标注碰撞：0", 64)
+    panel_line(markup, "Space 几何候选", 75, "elec-heading")
+    y = 81.0
+    for room, count in sorted(room_counts.items(), key=lambda item: (-item[1], item[0])):
+        panel_line(markup, f"{room}：{count}", y)
+        y += 4.5
+    y += 3
+    panel_line(markup, "施工发布停止条件", y, "elec-heading")
+    panel_line(markup, "产品、安装方式、灯组与控制未确认", y + 6, "elec-warn")
+    panel_line(markup, f"IFC SHA {source_sha[:12]}…", 382, "elec-note")
+    markup.append("</g>")
+    style = """
+@page{size:500mm 400mm;margin:0}html,body{margin:0;width:500mm;height:400mm;overflow:hidden}
+.e301-light-ring{fill:#b2f2f2;fill-opacity:.7;stroke:#087f8c;stroke-width:.75}
+.e301-light-cross{stroke:#087f8c;stroke-width:.55;stroke-linecap:round}
+.elec-leader{stroke:#526777;stroke-width:.25}.elec-label-bg{fill:#fff;fill-opacity:.9;stroke:#8fa3b1;stroke-width:.18}
+.elec-label,.elec-title,.elec-heading,.elec-text,.elec-note,.elec-warn{font-family:Arial,'Noto Sans CJK SC',sans-serif;fill:#102f43}
+.elec-label{font-size:2.05px;font-weight:700;text-anchor:middle}.elec-panel{fill:#fbfcfd;stroke:#102f43;stroke-width:.5}
+.elec-title{font-size:4px;font-weight:700}.elec-heading{font-size:3px;font-weight:700}.elec-text{font-size:2.3px}
+.elec-note{font-size:2.15px;fill:#526777}.elec-warn{font-size:2.25px;fill:#c92a2a;font-weight:700}
+"""
+    gates = {
+        "marker_count": len(lights),
+        "label_count": len(labels),
+        "label_collisions": collisions,
+        "candidate_ids_unique": len({record["candidate_id"] for record in lights}) == len(lights),
+        "markers_in_plan_bounds": all(
+            0 <= label["marker"][0] <= 400 and 0 <= label["marker"][1] <= 400
+            for label in labels
+        ),
+    }
+    gates["pass"] = all(
+        [
+            gates["marker_count"] == 79,
+            gates["label_count"] == 79,
+            gates["label_collisions"] == 0,
+            gates["candidate_ids_unique"],
+            gates["markers_in_plan_bounds"],
+        ]
+    )
+    return inject_elec_svg(source, "".join(markup), "E301", style), gates
+
+
+def render_e303(
+    source: str,
+    source_sha: str,
+    sockets: list[dict[str, Any]],
+    equipment: list[dict[str, Any]],
+    proxies: list[dict[str, Any]],
+) -> tuple[str, dict[str, Any]]:
+    records = [*sockets, *equipment, *proxies]
+    labels, collisions = place_plan_labels(records)
+    by_id = {record["global_id"]: record for record in records}
+    socket_ids = {record["global_id"] for record in sockets}
+    equipment_ids = {record["global_id"] for record in equipment}
+    markup = ['<g id="e303-location-markers">']
+    for label in labels:
+        record = by_id[label["global_id"]]
+        cx, cy = label["marker"]
+        tx, ty = label["text"]
+        box = label["box"]
+        if record["global_id"] in socket_ids:
+            kind = "socket-exception" if record["controlled_installation_exception"] else "socket"
+            symbol = (
+                f'<rect class="e303-{kind}" x="{cx-1.7:.3f}" y="{cy-1.7:.3f}" width="3.4" height="3.4" '
+                f'transform="rotate(45 {cx:.3f} {cy:.3f})"/>'
+            )
+        else:
+            kind = "equipment" if record["global_id"] in equipment_ids else "proxy"
+            bbox = record["bbox"]
+            x, y = world_to_svg(bbox["min_mm"][0], bbox["max_mm"][1])
+            width = max(1.2, bbox["dimensions_mm"][0] / SCALE_DENOMINATOR)
+            height = max(1.2, bbox["dimensions_mm"][1] / SCALE_DENOMINATOR)
+            symbol = (
+                f'<rect class="e303-{kind}" x="{x:.3f}" y="{y:.3f}" width="{width:.3f}" height="{height:.3f}"/>'
+            )
+        markup.append(
+            f'<g data-elec-kind="{kind}" data-ifc-guid="{svg_escape(record["global_id"])}" '
+            f'data-candidate-id="{record["candidate_id"]}">{symbol}'
+            f'<line class="elec-leader" x1="{cx:.3f}" y1="{cy:.3f}" x2="{tx:.3f}" y2="{ty-1.0:.3f}"/>'
+            f'<rect class="elec-label-bg" x="{box[0]:.3f}" y="{box[1]:.3f}" width="{box[2]-box[0]:.3f}" height="{box[3]-box[1]:.3f}"/>'
+            f'<text class="elec-label" x="{tx:.3f}" y="{ty:.3f}">{record["candidate_id"]}</text>'
+            '</g>'
+        )
+    markup.append('</g><g id="e303-side-panel"><rect class="elec-panel" x="402" y="7" width="93" height="386"/>')
+    panel_line(markup, "E-303 插座与设备定位候选", 16, "elec-title")
+    panel_line(markup, "当前正式 IFC 派生｜1:50｜非施工发布", 23, "elec-note")
+    panel_line(markup, "仅表达既有点位、轮廓与待确认项", 30)
+    panel_line(markup, "不含回路、功率、防水或接口推断", 36, "elec-warn")
+    panel_line(markup, "既有实例", 47, "elec-heading")
+    panel_line(markup, "插座 11：SOC01×2 / SOC04×6 / SOCF04×3", 53)
+    panel_line(markup, "类型化设备 8：空调 5 / 厨房设备 3", 59)
+    panel_line(markup, "ELEC Proxy 9：身份或锚点待确认", 65)
+    panel_line(markup, "定位 QA", 76, "elec-heading")
+    panel_line(markup, "插座 0.1 mm：7/11｜受控例外 4", 82)
+    panel_line(markup, "设备整数原点：8/8", 88)
+    panel_line(markup, "Proxy 超 0.1 mm：9/9（不移动）", 94)
+    panel_line(markup, "重复中心：0｜标注碰撞：0", 100)
+    controlled_ids = [record["candidate_id"] for record in sockets if record["controlled_installation_exception"]]
+    panel_line(markup, "受控插座例外", 111, "elec-heading")
+    panel_line(markup, " / ".join(controlled_ids), 117, "elec-warn")
+    panel_line(markup, "设备类型", 128, "elec-heading")
+    panel_line(markup, "AC1180×1 / AC700×2 / AC700F×2", 134)
+    panel_line(markup, "HD01 / WD01 / OV01 各 1", 140)
+    panel_line(markup, "施工发布停止条件", 151, "elec-heading")
+    panel_line(markup, "设备参数、专用回路与 Proxy 身份未确认", 157, "elec-warn")
+    panel_line(markup, f"IFC SHA {source_sha[:12]}…", 382, "elec-note")
+    markup.append("</g>")
+    style = """
+@page{size:500mm 400mm;margin:0}html,body{margin:0;width:500mm;height:400mm;overflow:hidden}
+.e303-socket{fill:#d0ebff;stroke:#1864ab;stroke-width:.65}.e303-socket-exception{fill:#ffc9c9;stroke:#c92a2a;stroke-width:.8}
+.e303-equipment{fill:#d0bfff44;stroke:#7048e8;stroke-width:.55}.e303-proxy{fill:#ffd8a844;stroke:#e67700;stroke-width:.65;stroke-dasharray:2 1}
+.elec-leader{stroke:#526777;stroke-width:.25}.elec-label-bg{fill:#fff;fill-opacity:.9;stroke:#8fa3b1;stroke-width:.18}
+.elec-label,.elec-title,.elec-heading,.elec-text,.elec-note,.elec-warn{font-family:Arial,'Noto Sans CJK SC',sans-serif;fill:#102f43}
+.elec-label{font-size:2.05px;font-weight:700;text-anchor:middle}.elec-panel{fill:#fbfcfd;stroke:#102f43;stroke-width:.5}
+.elec-title{font-size:4px;font-weight:700}.elec-heading{font-size:3px;font-weight:700}.elec-text{font-size:2.3px}
+.elec-note{font-size:2.15px;fill:#526777}.elec-warn{font-size:2.25px;fill:#c92a2a;font-weight:700}
+"""
+    gates = {
+        "socket_markers": len(sockets),
+        "typed_equipment_markers": len(equipment),
+        "proxy_markers": len(proxies),
+        "label_count": len(labels),
+        "label_collisions": collisions,
+        "candidate_ids_unique": len({record["candidate_id"] for record in records}) == len(records),
+        "markers_in_plan_bounds": all(
+            0 <= label["marker"][0] <= 400 and 0 <= label["marker"][1] <= 400
+            for label in labels
+        ),
+    }
+    gates["pass"] = all(
+        [
+            gates["socket_markers"] == 11,
+            gates["typed_equipment_markers"] == 8,
+            gates["proxy_markers"] == 9,
+            gates["label_count"] == 28,
+            gates["label_collisions"] == 0,
+            gates["candidate_ids_unique"],
+            gates["markers_in_plan_bounds"],
+        ]
+    )
+    return inject_elec_svg(source, "".join(markup), "E303", style), gates
+
+
 def main() -> int:
     args = parse_args()
+    drawing_paths = [args.source_svg, args.e301_svg, args.e303_svg]
+    if any(drawing_paths) and not all(drawing_paths):
+        raise RuntimeError("--source-svg, --e301-svg, and --e303-svg must be supplied together")
     source_sha = sha256(args.input)
     if source_sha != args.expected_sha256:
         raise RuntimeError(
@@ -413,6 +692,27 @@ def main() -> int:
         "nine ELEC proxy handoff objects have no confirmed installation anchors",
     ]
 
+    drawing_source = None
+    drawing_gates: dict[str, Any] = {}
+    if args.source_svg is not None:
+        source_svg = args.source_svg.read_text(encoding="utf-8")
+        e301_svg, e301_gates = render_e301(source_svg, source_sha, lights, light_room_counts)
+        e303_svg, e303_gates = render_e303(source_svg, source_sha, sockets, equipment, proxies)
+        drawing_gates = {"E-301": e301_gates, "E-303": e303_gates}
+        gates["drawing_candidate_pass"] = e301_gates["pass"] and e303_gates["pass"]
+        gates["candidate_pass"] = gates["candidate_pass"] and gates["drawing_candidate_pass"]
+        if not gates["candidate_pass"]:
+            raise RuntimeError("ELEC drawing candidate gates failed")
+        args.e301_svg.parent.mkdir(parents=True, exist_ok=True)
+        args.e303_svg.parent.mkdir(parents=True, exist_ok=True)
+        args.e301_svg.write_text(e301_svg, encoding="utf-8")
+        args.e303_svg.write_text(e303_svg, encoding="utf-8")
+        drawing_source = {
+            "path": str(args.source_svg.resolve()),
+            "sha256": sha256(args.source_svg),
+            "scale": "1:50",
+        }
+
     report = {
         "generated_at": datetime.now(timezone.utc).isoformat(),
         "mode": "read_only_existing_condition_candidate",
@@ -452,6 +752,8 @@ def main() -> int:
         },
         "type_library": {"used": used_types, "unused": unused_types},
         "review_register": {"path": str(args.review), "records": len(reviews)},
+        "drawing_source": drawing_source,
+        "drawing_gates": drawing_gates,
         "gates": gates,
     }
     if not gates["candidate_pass"]:

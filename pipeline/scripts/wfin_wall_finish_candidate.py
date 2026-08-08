@@ -39,6 +39,7 @@ def parse_args() -> argparse.Namespace:
     parser.add_argument("--output-svg", required=True, type=Path)
     parser.add_argument("--register", required=True, type=Path)
     parser.add_argument("--segment-register", required=True, type=Path)
+    parser.add_argument("--boundary-decisions", required=True, type=Path)
     parser.add_argument("--report", required=True, type=Path)
     parser.add_argument("--containment-tolerance-mm", type=float, default=0.5)
     return parser.parse_args()
@@ -156,6 +157,43 @@ def finish_segments(
     return ("X" if axis == 0 else "Y"), merged
 
 
+def read_boundary_decisions(path: Path) -> dict[str, dict[str, str]]:
+    with path.open(encoding="utf-8-sig", newline="") as handle:
+        rows = list(csv.DictReader(handle))
+    decisions = {row["covering_global_id"]: row for row in rows}
+    expected = {
+        "0e0XOb$L18ZBVYJiQJrQ1p": "FULL_OBJECT_WHITE_WALL",
+        "3bMoS7bIT8wBmjqRvdPunu": "FULL_OBJECT_WHITE_WALL",
+        "06wFwLoDD6ie5iCTnc_yad": "DEFER_TO_FINAL_MATERIAL_REVIEW",
+    }
+    if {global_id: row["decision"] for global_id, row in decisions.items()} != expected:
+        raise RuntimeError("WFIN material-boundary decision boundary drift")
+    return decisions
+
+
+def apply_boundary_decision(
+    covering_bbox: dict[str, list[float]],
+    segments: list[dict[str, Any]],
+    decision: dict[str, str] | None,
+) -> list[dict[str, Any]]:
+    if not decision or decision["decision"] != "FULL_OBJECT_WHITE_WALL":
+        return segments
+    axis = segments[0]["axis"]
+    axis_index = 0 if axis == "X" else 1
+    return [
+        {
+            "axis": axis,
+            "constant_mm": segments[0]["constant_mm"],
+            "start_mm": covering_bbox["min_mm"][axis_index],
+            "end_mm": covering_bbox["max_mm"][axis_index],
+            "space_global_ids": [space_id for segment in segments for space_id in segment["space_global_ids"]],
+            "space_long_names": [name for segment in segments for name in segment["space_long_names"]],
+            "candidate_finish_code": "WHITE_WALL",
+            "candidate_finish": "大白墙",
+        }
+    ]
+
+
 def add_class(svg: str, global_id: str, class_name: str) -> tuple[str, int]:
     pattern = re.compile(
         rf'(<g\b[^>]*\bclass=")([^"]*)("[^>]*\bifc:guid="{re.escape(global_id)}"[^>]*>)'
@@ -208,7 +246,7 @@ def side_panel(records: list[dict[str, Any]], segments: list[dict[str, Any]], so
     y += 3.0
     notes = [
         "规则：次卧及其飘窗、两卫干/湿区及飘窗",
-        "3 个跨材料边界对象须先拆分，不能整件赋材",
+        "当前画面 2 件已确认大白墙；1 件延后判断",
         "待定：品牌系统、颜色、厚度、基层、防水节点",
         "参考链接只作材质方向证据，不作施工参数",
         f"IFC SHA {source_sha[:12]}…",
@@ -260,6 +298,7 @@ def main() -> None:
     args = parse_args()
     source_sha = sha256(args.input)
     model = ifcopenshell.open(args.input)
+    boundary_decisions = read_boundary_decisions(args.boundary_decisions)
     settings = ifcopenshell.geom.settings()
     settings.set(settings.USE_WORLD_COORDS, True)
 
@@ -286,8 +325,11 @@ def main() -> None:
         if len(centre_matches) != 1:
             raise RuntimeError(f"{covering.GlobalId} centre matches {len(centre_matches)} Space bboxes; expected exactly one")
         _, segments = finish_segments(bbox, spaces, args.containment_tolerance_mm)
+        boundary_decision = boundary_decisions.get(covering.GlobalId)
+        segments = apply_boundary_decision(bbox, segments, boundary_decision)
         finish_codes = {segment["candidate_finish_code"] for segment in segments}
         mixed = len(finish_codes) > 1
+        deferred = bool(boundary_decision and boundary_decision["decision"] == "DEFER_TO_FINAL_MATERIAL_REVIEW")
         space_ids = [space_id for segment in segments for space_id in segment["space_global_ids"]]
         space_names = [name for segment in segments for name in segment["space_long_names"]]
         for segment in segments:
@@ -305,8 +347,8 @@ def main() -> None:
                 "candidate_finish": "按 Space 边界拆分" if mixed else segments[0]["candidate_finish"],
                 "basis": "用户确认房间级材料规则；薄型垂直饰面沿 Grid Space 边界机械分段",
                 "confidence": 1.0,
-                "review_required": "yes" if mixed else "no",
-                "status": "split_candidate_required" if mixed else "confirmed_candidate",
+                "review_required": "yes" if deferred else "no",
+                "status": "deferred_material_review" if deferred else "confirmed_candidate",
                 "formal_ifc_write_allowed": "no",
                 "bbox": bbox,
                 "segments": segments,
@@ -318,9 +360,9 @@ def main() -> None:
     counts = Counter(record["candidate_finish_code"] for record in records)
     all_segments = [segment for record in records for segment in record["segments"]]
     segment_counts = Counter(segment["candidate_finish_code"] for segment in all_segments)
-    if counts != Counter({"WHITE_WALL": 25, "TADELAKT": 23, "MULTI_FINISH_SPLIT_REQUIRED": 3}):
+    if counts != Counter({"WHITE_WALL": 27, "TADELAKT": 23, "MULTI_FINISH_SPLIT_REQUIRED": 1}):
         raise RuntimeError(f"unexpected object finish counts: {dict(counts)}")
-    if segment_counts != Counter({"WHITE_WALL": 28, "TADELAKT": 26}) or len(all_segments) != 54:
+    if segment_counts != Counter({"WHITE_WALL": 28, "TADELAKT": 24}) or len(all_segments) != 52:
         raise RuntimeError(f"unexpected finish segments: count={len(all_segments)}, finishes={dict(segment_counts)}")
 
     args.register.parent.mkdir(parents=True, exist_ok=True)
@@ -366,7 +408,7 @@ def main() -> None:
             )
             source_record = next(record for record in records if record["covering_global_id"] == segment["covering_global_id"])
             row["review_required"] = source_record["review_required"]
-            row["status"] = "split_candidate" if source_record["review_required"] == "yes" else "confirmed_candidate"
+            row["status"] = "deferred_material_review" if source_record["review_required"] == "yes" else "confirmed_candidate"
             row["formal_ifc_write_allowed"] = "no"
             writer.writerow({key: row[key] for key in segment_fields})
 
@@ -439,7 +481,7 @@ svg { display: block; }
         "fallback_object_count": len(fallback_fragments),
         "main_bath_dry_segment_count": len(main_bath_dry_segments),
         "mixed_finish_object_ids": [record["covering_global_id"] for record in records if record["candidate_finish_code"] == "MULTI_FINISH_SPLIT_REQUIRED"],
-        "controlled_gap": "3 个既有 CLADDING 跨越大白墙/Tadelakt 空间边界，须按候选分段拆分后才能赋材",
+        "controlled_gap": "当前画面两块橙色饰面已确认整件为大白墙；剩余 1 个跨界对象延后至最终统一选材",
         "unresolved_parameters": ["品牌/产品系统", "颜色/样板", "完成面总厚度", "基层", "湿区防水与收口节点"],
         "references": [
             "https://mp.weixin.qq.com/s/roqN3h93WZ0AER71lJzaUQ",
@@ -450,7 +492,7 @@ svg { display: block; }
         "qa": {
             "effective_cladding_count_51": len(records) == 51,
             "finish_segment_partition_complete": segment_counts["TADELAKT"] + segment_counts["WHITE_WALL"] == len(all_segments),
-            "mixed_finish_objects_blocked_from_whole_object_assignment": counts["MULTI_FINISH_SPLIT_REQUIRED"] == 3,
+            "mixed_finish_objects_blocked_from_whole_object_assignment": counts["MULTI_FINISH_SPLIT_REQUIRED"] == 1,
             "candidate_visual_contains_every_cladding": fragment_object_count + len(fallback_fragments) == len(records),
             "formal_ifc_unchanged": True,
         },
@@ -461,7 +503,7 @@ svg { display: block; }
     print(
         f"WFIN candidate: {len(records)} CLADDING, {len(all_segments)} finish segments "
         f"({segment_counts['TADELAKT']} Tadelakt, {segment_counts['WHITE_WALL']} white wall), "
-        f"3 split-required objects, IFC unchanged"
+        f"1 deferred split-review object, IFC unchanged"
     )
 
 

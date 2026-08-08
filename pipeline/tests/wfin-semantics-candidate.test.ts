@@ -13,6 +13,7 @@ test("WFIN semantics remain a read-only project intent boundary", async () => {
   expect(source).toContain('"ExistingMaterialAssociationPreserved": True');
   expect(source).toContain('"FormalIfcWriteAllowed": False');
   expect(source).toContain('"automatic_formal_ifc_write_allowed": False');
+  expect(source).toContain("DEFERRED_MATERIAL_REVIEW");
   expect(source).not.toContain("save_and_load_ifc(");
 });
 
@@ -27,4 +28,5 @@ test("WFIN open issues preserve the exact C003 handoff boundary", async () => {
   expect(source).toContain("06wFwLoDD6ie5iCTnc_yad");
   expect(source).toContain("0e0XOb$L18ZBVYJiQJrQ1p");
   expect(source).toContain("3bMoS7bIT8wBmjqRvdPunu");
+  expect(source).toContain('"status": "deferred_by_user"');
 });

@@ -5,6 +5,8 @@ const root = resolve(import.meta.dir, "../..");
 const scriptPath = resolve(root, "pipeline/scripts/elec_existing_candidate.py");
 const reviewPath = resolve(root, "pipeline/decisions/elec-existing-review.csv");
 const reportPath = resolve(root, "build/elec/elec-existing-candidate.test.json");
+const e301TestSvg = resolve(root, "build/elec/E301-lighting-location-candidate.test.svg");
+const e303TestSvg = resolve(root, "build/elec/E303-socket-equipment-location-candidate.test.svg");
 
 test("ELEC candidate protects exact socket exceptions and proxy handoffs", async () => {
   const source = await Bun.file(scriptPath).text();
@@ -31,6 +33,8 @@ test("ELEC candidate separates unused type definitions from instances", async ()
   expect(source).toContain('"available_uninstantiated_type_definitions": network_types');
   expect(source).toContain('gates["e302_switch_instances"] == 0');
   expect(source).toContain('gates["e304_network_instances"] == 0');
+  expect(source).toContain("不含灯组、回路、功率或控制推断");
+  expect(source).toContain("不含回路、功率、防水或接口推断");
 });
 
 test(
@@ -46,6 +50,12 @@ test(
         reviewPath,
         "--output",
         reportPath,
+        "--source-svg",
+        resolve(root, "drawings/Wall Plan.svg"),
+        "--e301-svg",
+        e301TestSvg,
+        "--e303-svg",
+        e303TestSvg,
       ],
       { cwd: root, stdout: "pipe", stderr: "pipe" },
     );
@@ -65,6 +75,21 @@ test(
     expect(report.gates.e302_switch_instances).toBe(0);
     expect(report.gates.e304_network_instances).toBe(0);
     expect(report.gates.automatic_ifc_write_allowed).toBe(false);
+    expect(report.gates.drawing_candidate_pass).toBe(true);
+    expect(report.drawing_gates["E-301"].marker_count).toBe(79);
+    expect(report.drawing_gates["E-301"].label_collisions).toBe(0);
+    expect(report.drawing_gates["E-303"].socket_markers).toBe(11);
+    expect(report.drawing_gates["E-303"].typed_equipment_markers).toBe(8);
+    expect(report.drawing_gates["E-303"].proxy_markers).toBe(9);
+    expect(report.drawing_gates["E-303"].label_collisions).toBe(0);
+    const e301 = await Bun.file(e301TestSvg).text();
+    const e303 = await Bun.file(e303TestSvg).text();
+    expect((e301.match(/data-elec-kind="light"/g) ?? []).length).toBe(79);
+    expect((e303.match(/data-elec-kind="socket(?:-exception)?"/g) ?? []).length).toBe(11);
+    expect((e303.match(/data-elec-kind="equipment"/g) ?? []).length).toBe(8);
+    expect((e303.match(/data-elec-kind="proxy"/g) ?? []).length).toBe(9);
+    expect(e301).toContain('width="500mm"');
+    expect(e303).toContain('viewBox="0 0 500 400"');
   },
   30_000,
 );

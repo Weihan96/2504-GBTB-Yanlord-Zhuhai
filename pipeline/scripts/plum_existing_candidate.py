@@ -83,7 +83,7 @@ def origin_mm(product: Any) -> list[float] | None:
     if not product.ObjectPlacement:
         return None
     matrix = ifcopenshell.util.placement.get_local_placement(product.ObjectPlacement)
-    return [float(value * 1000.0) for value in matrix[:3, 3]]
+    return [float(value) for value in matrix[:3, 3]]
 
 
 def descendant_leaves(product: Any) -> list[Any]:

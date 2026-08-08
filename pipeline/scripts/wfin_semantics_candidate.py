@@ -60,10 +60,10 @@ def read_register(path: Path) -> list[dict[str, str]]:
     counts: dict[str, int] = {}
     for row in rows:
         counts[row["candidate_finish_code"]] = counts.get(row["candidate_finish_code"], 0) + 1
-        expected_status = "split_candidate_required" if row["candidate_finish_code"] == "MULTI_FINISH_SPLIT_REQUIRED" else "confirmed_candidate"
+        expected_status = "deferred_material_review" if row["candidate_finish_code"] == "MULTI_FINISH_SPLIT_REQUIRED" else "confirmed_candidate"
         if row["status"] != expected_status or row["formal_ifc_write_allowed"] != "no":
             raise RuntimeError(f"unapproved WFIN row {row['covering_global_id']}")
-    if counts != {"WHITE_WALL": 25, "TADELAKT": 23, "MULTI_FINISH_SPLIT_REQUIRED": 3}:
+    if counts != {"WHITE_WALL": 27, "TADELAKT": 23, "MULTI_FINISH_SPLIT_REQUIRED": 1}:
         raise RuntimeError(f"unexpected WFIN partition {counts}")
     return rows
 
@@ -78,7 +78,7 @@ def read_segments(path: Path) -> dict[str, list[dict[str, str]]]:
         by_covering.setdefault(row["covering_global_id"], []).append(row)
         if row["formal_ifc_write_allowed"] != "no":
             raise RuntimeError(f"segment write boundary missing for {row['segment_id']}")
-    if len(rows) != 54 or counts != {"WHITE_WALL": 28, "TADELAKT": 26} or len(by_covering) != 51:
+    if len(rows) != 52 or counts != {"WHITE_WALL": 28, "TADELAKT": 24} or len(by_covering) != 51:
         raise RuntimeError(f"unexpected WFIN segment partition: rows={len(rows)}, counts={counts}, objects={len(by_covering)}")
     return by_covering
 
@@ -124,20 +124,20 @@ def write_issues(path: Path) -> None:
         {
             "issue_id": "WFIN-R01",
             "scope": "finish-boundary-and-missing-face-review",
-            "object_guid": "0e0XOb$L18ZBVYJiQJrQ1p; 3bMoS7bIT8wBmjqRvdPunu; 06wFwLoDD6ie5iCTnc_yad; 3jha5L04zBjh0$pMl_tHLy; 04rs0EDjn2EvxytEQSxWRB; 3OVQygdDn17huGOgJJFTOY; 2nUpG$tzj0vR6tg5N9FJJ_; 2Rr8WvEy591Pj6dg4T6RQK",
-            "current_evidence": "3 个既有 CLADDING 跨越大白墙/Tadelakt Space 边界；主卫干区另有 4 面墙的干区侧/返口/低墙顶面没有现成 CLADDING，并存在一条跨区踢脚",
-            "required_action_or_decision": "在 Blender 真深度确认 3 条拆分线及主卫干区缺失饰面面；确认后拆分既有饰面并另建不重合的缺失面候选",
-            "basis": "既有 CLADDING 与 Space 边界机械相交得到 54 个连续分段；完整干区饰面受返口、低墙顶面、无 FillsVoids 的 M05/M06 门口和跨区踢脚影响，不能仅靠 Space Box 唯一推导",
+            "object_guid": "06wFwLoDD6ie5iCTnc_yad; 3jha5L04zBjh0$pMl_tHLy; 04rs0EDjn2EvxytEQSxWRB; 3OVQygdDn17huGOgJJFTOY; 2nUpG$tzj0vR6tg5N9FJJ_; 2Rr8WvEy591Pj6dg4T6RQK",
+            "current_evidence": "当前画面中的 0e0XOb$L18ZBVYJiQJrQ1p 与 3bMoS7bIT8wBmjqRvdPunu 已由用户确认为整件大白墙；剩余跨界对象及主卫干区返口/低墙/门垛/踢脚留待统一选材",
+            "required_action_or_decision": "暂停 WFIN 几何和材料判断；最终统一选材时恢复 Blender 真深度审核，再决定剩余分界与缺失饰面",
+            "basis": "用户明确要求当前先往后推进，最后统一选材后再判断；Space 方盒相交不再自动覆盖人审结论",
             "confidence": "1.00",
             "review_required": "yes",
-            "status": "split_review_required",
-            "stop_condition": "未完成人眼确认、0.260691 mm 现有接缝处理和拆分/新增候选几何差分通过前，不得整件替换材料或新增重合 CLADDING",
+            "status": "deferred_by_user",
+            "stop_condition": "统一选材和人审恢复前，不得继续拆分、替换材料或新增 CLADDING",
         },
         {
             "issue_id": "WFIN-R02",
             "scope": "tadelakt-system",
             "object_guid": "",
-            "current_evidence": "54 个候选分段中 26 段为 Tadelakt；现有材料仍为 WW20/WW20BR",
+            "current_evidence": "当前候选分段中 24 段为 Tadelakt 意图；最终产品选择由用户统一延后",
             "required_action_or_decision": "确认产品系统、颜色样板、完成面总厚、基层和湿区防水/收口节点",
             "basis": "参考链接只支持材质方向与湿区适用背景，不能替代本项目施工参数",
             "confidence": "1.00",
@@ -149,7 +149,7 @@ def write_issues(path: Path) -> None:
             "issue_id": "WFIN-R03",
             "scope": "white-wall-system",
             "object_guid": "",
-            "current_evidence": "54 个候选分段中 28 段为大白墙，当前材料层为 WW20/WW20BR",
+            "current_evidence": "当前候选分段中 28 段为大白墙；其中两件跨 Space 对象已由用户确认为整件大白墙，最终产品选择统一延后",
             "required_action_or_decision": "确认涂料体系、白色样板/光泽、基层处理和完成面总厚",
             "basis": "大白墙房间范围已确认，但产品与施工层次尚未确认",
             "confidence": "1.00",
@@ -239,7 +239,7 @@ def main() -> None:
                 "AssignmentBasis": "USER_CONFIRMED_ROOM_SCOPE_AND_GRID_SPACE_BOUNDARY_SEGMENTS",
                 "CandidateSegmentCount": len(covering_segments),
                 "CandidateSegmentSummary": segment_summary,
-                "ReviewStatus": "SPLIT_REVIEW_REQUIRED" if row["candidate_finish_code"] == "MULTI_FINISH_SPLIT_REQUIRED" else "CONFIRMED_ROOM_SCOPE",
+                "ReviewStatus": "DEFERRED_MATERIAL_REVIEW" if row["candidate_finish_code"] == "MULTI_FINISH_SPLIT_REQUIRED" else "CONFIRMED_CURRENT_INTENT",
                 "ExistingMaterialAssociationPreserved": True,
                 "ProductSystemPending": True,
                 "ColourSamplePending": True,
@@ -330,7 +330,7 @@ def main() -> None:
     args.report.parent.mkdir(parents=True, exist_ok=True)
     args.report.write_text(json.dumps(report, ensure_ascii=False, indent=2), encoding="utf-8")
     print(
-        f"WFIN semantics candidate: {len(rows)} intent Psets, 54 finish segments, 3 split-required objects, "
+        f"WFIN semantics candidate: {len(rows)} intent Psets, 52 finish segments, 1 deferred split-review object, "
         f"geometry max change {maximum_change:.6f} mm, materials preserved, formal IFC unchanged"
     )
 

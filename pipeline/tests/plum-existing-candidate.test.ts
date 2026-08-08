@@ -21,6 +21,8 @@ test("P-201 endpoints never become inferred connectors", () => {
   expect(source).toContain('"cold-water connection inference"');
   expect(source).toContain('"hot-water connection inference"');
   expect(source).toContain('"world ObjectPlacement for existing-object registration only; not a connector or rough-in point"');
+  expect(source).toContain('return [float(value) for value in matrix[:3, 3]]');
+  expect(source).not.toContain('value * 1000.0');
 });
 
 test("missing system data is disclosed instead of passed", () => {
@@ -49,4 +51,8 @@ test("PLUM candidate runs against the frozen formal IFC", async () => {
   expect(report.qa.construction_release_pass).toBe(false);
   expect(report.qa.distribution_data.status).toBe("data_missing");
   expect(report.qa.pvc110_world_geometry_unchanged).toBe(true);
+  const p202 = await Bun.file("build/plum/p202-existing-location-register.json").json();
+  expect(
+    Math.max(...p202.objects.flatMap((row: any) => row.object_origin_mm.map(Math.abs))),
+  ).toBeLessThan(20_000);
 }, 30_000);

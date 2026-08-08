@@ -1,0 +1,4 @@
+decision_id,covering_global_id,current_material_intent,decision,basis,confidence,review_required,status,final_product_selection
+WFIN-BOUNDARY-001,0e0XOb$L18ZBVYJiQJrQ1p,WHITE_WALL,FULL_OBJECT_WHITE_WALL,用户确认当前 Blender 画面中的该橙色饰面仍为大白墙；不得仅因 Space 方盒相交自动切换 Tadelakt,1.00,no,confirmed_current_intent,deferred
+WFIN-BOUNDARY-002,3bMoS7bIT8wBmjqRvdPunu,WHITE_WALL,FULL_OBJECT_WHITE_WALL,用户确认当前 Blender 画面中的该橙色饰面仍为大白墙；约 99.9 mm 角部 Space 相交不构成材料切换依据,1.00,no,confirmed_current_intent,deferred
+WFIN-BOUNDARY-003,06wFwLoDD6ie5iCTnc_yad,,DEFER_TO_FINAL_MATERIAL_REVIEW,该对象跨走廊与客卫干区；用户要求最终统一选材时再判断分界,1.00,yes,deferred,required
