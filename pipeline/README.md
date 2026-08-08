@@ -47,6 +47,8 @@ bun run pipeline:coordinate-noise-candidate
 bun run pipeline:direction-noise-candidate
 bun run pipeline:normalization-exit-audit
 bun run pipeline:a105-flooring-delete-candidate
+bun run pipeline:space-reference-candidate
+bun run pipeline:wfin-candidate
 bun test
 ```
 
@@ -64,6 +66,8 @@ bun test
 - `pipeline:normalization-exit-audit`：读取当前 IFC、15 步标准、决策 CSV 及当前哈希的派生审计，输出 15 步 `pass/in_progress/pending/blocked` 状态；过期报告会硬失败。9 类受控例外或非整数设计值必须在 `p0-review.csv` 中保持唯一的 `implemented` 记录；5 个 Direction ID 直接从该 CSV 读取，不再依赖命令行硬编码。剩余原点只有在类别专用报告与对应决策的精确对象集合一致时才能从独立队列扣除；当前支持 19 件活动复杂家具、4 个插座接触保护例外、2 个 PVC110 组合对象，以及满足“单一宿主、无 Filling、直接相对宿主 placement”的 114 个从属 Opening。另有 81 个没有唯一安装锚点的对象，必须由 8 条 `c003-origin-responsibility` 记录无重复、无漏项地精确移交 A104、A105、WFIN、PLUM、ELEC、RCP1、INT1、DET1；移交不是受控例外，也不授权当前 IFC 写入。报告只写入 `build/`，不成为新的 PM 真相源。`pipeline:normalization-exit-gate` 使用同一证据，但在仍有未分配原点、未决 C003 决定、例外/移交登记失配或未提交 IFC 批次时返回非零退出码。
 - `pipeline:a105-flooring-delete-candidate`：只在 `build/candidates/` 生成 A-105 候选；把 18 个本层 `TerrazzoMosaicTile` Covering 写为 `FLOORING`，并按明确的人审动作删除 4 个 `-1020..-1000 mm` 参考副本。每个参考副本各宿主 1 个无填充线性地漏 Opening；删除候选会逐一验证宿主关系、相对 placement 和无填充状态，并把这 4 个附属 Opening 纳入预期删除边界。`pipeline:a105-flooring-keep-candidate` 保留全部参考对象。两个候选均通过 8 个本层地砖宿主的 `IfcOpeningElement` Boolean 切割体把两樘线性地漏可见留口从约 `14.58 mm` 对称调整为 `14.6 mm`，不移动地砖 ObjectPlacement、地漏或留口中心线；同时验证本层 18 个对象的变化不超过 `0.1 mm`、共享 RepresentationMap 保留、非目标产品无超差变化及 Root GlobalId 变化符合动作。
 - `pipeline:a105-candidate`：只读生成 A-105 SVG/PDF、21 个地坪候选登记和 8 樘门的门槛交接登记。18 块 `TerrazzoMosaicTile` 顶面均从世界三角面机械拟合，记录坡度、下坡方向、完成面最高/最低标高和拟合残差；每块湿区砖在 SVG/PDF 中生成一个沿平面负梯度指向下坡的箭头，并由 `wet_tile_slope_arrow_count=18` 验收。3 个零厚度 FFL 参考面明确标为材料与构造厚度待写入候选。命令不写正式 IFC。
+- `pipeline:space-reference-candidate`：只读生成 22 个 Space 的 `R01-R22` 候选登记。`R01` 固定为玄关，其余按 Space 世界包围盒中心相对全体中心的顺时针极角排序；机械门验证编号完整唯一、LongName 保留、正式 IFC 的 Reference 仍为空。命令不写正式 IFC。
+- `pipeline:wfin-candidate`：只读盘点 51 个有效 `CLADDING`，以饰面世界包围盒中心唯一落入 Space 世界包围盒作为房间归属证据。用户确认的房间级规则展开为：次卧及次卧飘窗、主卫干/湿区及飘窗、客卫干区/客卫及飘窗采用 Tadelakt，其余采用大白墙。生成登记表、带材料着色的 500×400 mm SVG/PDF 和 QA；品牌系统、颜色、厚度、基层、防水与收口节点保持待定，不写正式 IFC。主卫干区当前没有既有 `CLADDING` 对象，报告为受控缺项而不自动补几何。
 - `pipeline:a105-floor-build-up-audit`：以可传入的 `--expected-build-up-mm` 与 `--tolerance-mm` 只读核对 F11/F20/F21 的共同完成面、相交楼板 Opening 底面及两块卫生间降板。当前在 `0.1 mm` 容差下证明三个参考面均位于 `Z=0` 且各有 `Z=-50 mm` Opening 证据；客卫 `3ARl_CqPrCWQrA6_$W073W`/`1Ro3zU6lXBjuo7VDM3mTa7` 与主卫 `1UixnpnQb97wuNAGrTmMJd`/`2F667JcWnAm9Hchuxrf8vg` 的 Opening 底面均相对各自 Slab 顶面低 `50.0 mm`。AABB 交叠只作为构造区证据，不被解释为已经建好的真实多层构造。
 - `pipeline:a104-semantics-candidate`：从正式 IFC 只读生成 A-104 语义候选，写入 M01–M08/W01–W11 Tag、4 个已确认门名和 3 个精确双成员 `IfcGroup`；不新增无宿主门关系，不改门窗、Opening 或 ObjectPlacement。候选必须保持 Fills/Voids 关系集合、全部既有 Root GlobalId 和世界几何。
 - `pipeline:a105-semantics-candidate`：从已确认决定和当前哈希的 A-105/50 mm 报告生成语义候选。21 个地坪写 Tag；18 块湿区砖写坡度/下坡方向审核 Pset；3 个零厚度参考面写完成面意图 Pset 与材料关联，并显式保留“真实层几何待深化”；两块卫生间降板写确认 Pset。命令不移动或重构 Covering、Slab、Opening。
