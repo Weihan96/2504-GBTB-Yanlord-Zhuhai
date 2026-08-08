@@ -74,9 +74,6 @@ def main() -> None:
         )
     if len(records) != 22:
         raise RuntimeError(f"expected 22 IfcSpace objects, got {len(records)}")
-    if any(record["current_reference"] for record in records):
-        raise RuntimeError("formal IFC already contains one or more Space References")
-
     plan_centre = np.mean([record["centre_mm"][:2] for record in records], axis=0)
     foyers = [record for record in records if record["long_name"] == "玄关"]
     if len(foyers) != 1:
@@ -95,6 +92,15 @@ def main() -> None:
     records.sort(key=lambda record: (round(record["clockwise_angle_deg"], 9), record["global_id"]))
     for index, record in enumerate(records, 1):
         record["candidate_reference"] = f"R{index:02d}"
+
+    existing_count = sum(bool(record["current_reference"]) for record in records)
+    existing_references_match_candidate = all(
+        record["current_reference"] == record["candidate_reference"] for record in records
+    )
+    if existing_count not in (0, 22):
+        raise RuntimeError(f"formal IFC contains a partial Space Reference set: {existing_count}/22")
+    if existing_count == 22 and not existing_references_match_candidate:
+        raise RuntimeError("formal IFC Space References do not match the confirmed R01-R22 candidate")
 
     if records[0]["long_name"] != "玄关" or records[0]["candidate_reference"] != "R01":
         raise RuntimeError("R01 is not assigned to 玄关")
@@ -137,7 +143,7 @@ def main() -> None:
                     "basis": "用户确认玄关为 R01；按 22 个 Space 世界包围盒中心相对总体中心的顺时针极角排序",
                     "confidence": "1.00",
                     "review_required": "no",
-                    "status": "confirmed_candidate",
+                    "status": "implemented" if existing_count == 22 else "confirmed_candidate",
                     "formal_ifc_write_allowed": "no",
                 }
             )
@@ -150,7 +156,8 @@ def main() -> None:
         "space_count": len(records),
         "unique_reference_count": len(set(references)),
         "r01_long_name": records[0]["long_name"],
-        "formal_ifc_reference_count": 0,
+        "formal_ifc_reference_count": existing_count,
+        "existing_references_match_candidate": existing_count == 0 or existing_references_match_candidate,
         "long_names_preserved": True,
         "records": records,
         "qa": {
@@ -158,11 +165,15 @@ def main() -> None:
             "references_complete_unique": len(set(references)) == 22,
             "foyer_is_r01": records[0]["long_name"] == "玄关",
             "formal_ifc_unchanged": True,
+            "existing_reference_state_valid": existing_count == 0 or existing_references_match_candidate,
         },
     }
     args.report.parent.mkdir(parents=True, exist_ok=True)
     args.report.write_text(json.dumps(report, ensure_ascii=False, indent=2), encoding="utf-8")
-    print(f"Space Reference candidate: {len(records)} spaces, R01={records[0]['long_name']}, IFC unchanged")
+    print(
+        f"Space Reference candidate: {len(records)} spaces, R01={records[0]['long_name']}, "
+        f"formal references {existing_count}/22, IFC unchanged"
+    )
 
 
 if __name__ == "__main__":

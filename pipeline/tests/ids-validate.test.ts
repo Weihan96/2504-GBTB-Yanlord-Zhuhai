@@ -45,3 +45,9 @@ print(json.dumps(module.compact_report(raw)))
   expect(report.specifications[0].requirements[0].failed_global_ids).toEqual(["ABC"]);
   expect(JSON.stringify(report)).not.toContain("STEP");
 });
+
+test("Space Reference follows the IFC4 Pset template data type", async () => {
+  const ids = await Bun.file(resolve(root, "pipeline/ids/p0-construction-information.ids")).text();
+  const reference = ids.match(/<property dataType="([^"]+)"[^>]*>[\s\S]*?<propertySet><simpleValue>Pset_SpaceCommon<\/simpleValue><\/propertySet>[\s\S]*?<baseName><simpleValue>Reference<\/simpleValue><\/baseName>/);
+  expect(reference?.[1]).toBe("IFCIDENTIFIER");
+});

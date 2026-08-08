@@ -28,7 +28,7 @@
         <attribute>
           <name><simpleValue>PredefinedType</simpleValue></name>
         </attribute>
-        <property dataType="IFCLABEL" instructions="正式发布前填写唯一房间编号。">
+        <property dataType="IFCIDENTIFIER" instructions="正式发布前填写唯一房间编号。">
           <propertySet><simpleValue>Pset_SpaceCommon</simpleValue></propertySet>
           <baseName><simpleValue>Reference</simpleValue></baseName>
         </property>
