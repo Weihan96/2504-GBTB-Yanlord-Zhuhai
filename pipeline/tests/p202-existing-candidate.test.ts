@@ -1,6 +1,10 @@
 import { expect, test } from "bun:test";
+import { mkdtempSync } from "node:fs";
+import { tmpdir } from "node:os";
+import { join, resolve } from "node:path";
 
-const script = "pipeline/scripts/p202_existing_candidate.py";
+const root = resolve(import.meta.dir, "../..");
+const script = resolve(root, "pipeline/scripts/p202_existing_candidate.py");
 const source = await Bun.file(script).text();
 
 test("P-202 preserves the observable object inventory", () => {
@@ -26,7 +30,17 @@ test("P-202 protects PVC110 products and six branches", () => {
 });
 
 test("P-202 candidate renders and passes its mechanical gate", async () => {
-  const process = Bun.spawn(["python3", script], {stdout: "pipe", stderr: "pipe"});
+  const temporary = mkdtempSync(join(tmpdir(), "p202-candidate-"));
+  const reportPath = join(temporary, "report.json");
+  const process = Bun.spawn([
+    "python3", script,
+    "--root", root,
+    "--output-svg", join(temporary, "candidate.svg"),
+    "--output-pdf", join(temporary, "candidate.pdf"),
+    "--report", reportPath,
+    "--render-report", join(temporary, "render-report.json"),
+    "--proof-png", join(temporary, "proof.png"),
+  ], {cwd: root, stdout: "pipe", stderr: "pipe"});
   const [exitCode, stdout, stderr] = await Promise.all([
     process.exited,
     new Response(process.stdout).text(),
@@ -35,7 +49,7 @@ test("P-202 candidate renders and passes its mechanical gate", async () => {
   expect(exitCode).toBe(0);
   expect(stderr).not.toContain("Traceback");
   expect(stdout).toContain('"candidate_mechanical_pass": true');
-  const report = await Bun.file("build/plum/p202-candidate-report.json").json();
+  const report = await Bun.file(reportPath).json();
   expect(report.qa.candidate_mechanical_pass).toBe(true);
   expect(report.qa.construction_release_pass).toBe(false);
   expect(report.qa.connectivity_status).toBe("data_missing");
