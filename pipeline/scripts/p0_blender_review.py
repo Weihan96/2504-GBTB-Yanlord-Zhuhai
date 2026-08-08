@@ -13,6 +13,7 @@ from mathutils import Vector
 
 
 LABEL_COLLECTION = "P0_REVIEW_LABELS"
+LEGACY_LABEL_COLLECTIONS = ("A104_REVIEW_LABELS",)
 COLORS = {
     "existing_wall": (0.48, 0.52, 0.57, 1.0),
     "new_wall": (0.58, 0.26, 0.72, 1.0),
@@ -37,13 +38,19 @@ def entity_for(obj: bpy.types.Object):
         return None
 
 
-def remove_labels() -> None:
-    collection = bpy.data.collections.get(LABEL_COLLECTION)
+def remove_label_collection(name: str) -> None:
+    collection = bpy.data.collections.get(name)
     if collection is None:
         return
     for obj in list(collection.objects):
         bpy.data.objects.remove(obj, do_unlink=True)
     bpy.data.collections.remove(collection)
+
+
+def remove_labels() -> None:
+    remove_label_collection(LABEL_COLLECTION)
+    for name in LEGACY_LABEL_COLLECTIONS:
+        remove_label_collection(name)
 
 
 def world_bounds(obj: bpy.types.Object) -> tuple[Vector, Vector]:
