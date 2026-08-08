@@ -16,6 +16,9 @@ test("combined Blender review preserves true depth and clear category colors", a
   expect(source).toContain('bpy.ops.object.mode_set(mode="OBJECT")');
   expect(source).toContain('obj.display_type = "SOLID"');
   expect(source).toContain('add_bbox_outline(collection, obj)');
+  expect(source).toContain('add_slope_arrow(collection, obj, row)');
+  expect(source).toContain('"slope_arrow"');
   expect(source).toContain('LEGACY_LABEL_COLLECTIONS = ("A104_REVIEW_LABELS",)');
+  expect(source).toContain('row["decision_id"].startswith("A104-")');
   expect(source).not.toContain('display_type = "WIRE"');
 });

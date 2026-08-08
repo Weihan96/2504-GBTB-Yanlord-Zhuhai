@@ -22,9 +22,28 @@ print(json.dumps(module.top_plane(vertices,faces)))
   expect(plane.maximum_fit_residual_mm).toBeLessThan(1e-8);
 });
 
+test("A105 slope arrow tip follows the mechanically fitted downhill vector", () => {
+  const script = `
+import importlib.util, json, pathlib, sys
+sys.path.insert(0, str(pathlib.Path(${JSON.stringify(modulePath)}).parent))
+spec=importlib.util.spec_from_file_location("a105", ${JSON.stringify(modulePath)})
+module=importlib.util.module_from_spec(spec); sys.modules[spec.name]=module; spec.loader.exec_module(module)
+record={"bbox":{"centre_mm":[0,0,0],"dimensions_mm":[800,800,20]},"top_plane":{"a_dz_dx":0.0,"b_dz_dy":0.01}}
+print(json.dumps(module.slope_arrow_geometry(record)))
+`;
+  const result = Bun.spawnSync(["python3", "-c", script], { cwd: root });
+  expect(result.exitCode).toBe(0);
+  const arrow = JSON.parse(result.stdout.toString());
+  expect(arrow.end_mm[1]).toBeLessThan(arrow.start_mm[1]);
+  expect(arrow.end_mm[0]).toBeCloseTo(arrow.start_mm[0], 9);
+});
+
 test("A105 source keeps every result read-only", async () => {
   const source = await Bun.file(modulePath).text();
   expect(source).toContain('"automatic_ifc_write_allowed": False');
   expect(source).toContain('"formal_ifc_write_allowed": "no"');
+  expect(source).toContain('"wet_tile_slope_arrow_count"');
+  expect(source).toContain('CONFIRMED_REFERENCE_MATERIALS');
+  expect(source).toContain('A105-WET-SLOPE-DIRECTION-001');
   expect(source).not.toContain("model.write(");
 });

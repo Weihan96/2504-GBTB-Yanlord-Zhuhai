@@ -28,6 +28,7 @@ COLORS = {
     "floor_context": (0.66, 0.68, 0.72, 1.0),
     "sanitary": (0.88, 0.90, 0.93, 1.0),
     "drainage": (0.12, 0.65, 0.78, 1.0),
+    "slope_arrow": (1.00, 1.00, 1.00, 1.0),
 }
 
 
@@ -60,25 +61,31 @@ def world_bounds(obj: bpy.types.Object) -> tuple[Vector, Vector]:
     return minimum, maximum
 
 
-def project_paths() -> tuple[Path, Path, Path]:
+def project_paths() -> tuple[Path, Path, Path, Path]:
     root = Path(str(tool.Ifc.get_path())).resolve().parent
     return (
         root / "pipeline/decisions/a104-door-window-review.csv",
         root / "pipeline/decisions/a105-floor-review.csv",
         root / "build/a105/a105-report.json",
+        root / "pipeline/decisions/p0-review.csv",
     )
 
 
-def load_review_data() -> tuple[dict[str, dict[str, str]], dict[str, dict[str, str]], dict]:
-    a104_path, a105_path, report_path = project_paths()
+def load_review_data() -> tuple[dict[str, dict[str, str]], dict[str, dict[str, str]], dict, set[str]]:
+    a104_path, a105_path, report_path, decisions_path = project_paths()
     with a104_path.open(encoding="utf-8-sig", newline="") as handle:
         a104 = {row["global_id"]: row for row in csv.DictReader(handle)}
     with a105_path.open(encoding="utf-8-sig", newline="") as handle:
         a105 = {row["global_id"]: row for row in csv.DictReader(handle)}
     report = json.loads(report_path.read_text(encoding="utf-8"))
+    confirmed_a104_ids: set[str] = set()
+    with decisions_path.open(encoding="utf-8-sig", newline="") as handle:
+        for row in csv.DictReader(handle):
+            if row["decision_id"].startswith("A104-") and row["status"] == "confirmed":
+                confirmed_a104_ids.update(value.strip() for value in row["object_guid"].split(";") if value.strip())
     if len(a104) != 19 or len(a105) != 21:
         raise RuntimeError(f"review register count drift: A104={len(a104)}, A105={len(a105)}")
-    return a104, a105, report
+    return a104, a105, report, confirmed_a104_ids
 
 
 def switch_to_model_body(global_ids: set[str]) -> int:
@@ -165,18 +172,61 @@ def add_bbox_outline(collection: bpy.types.Collection, obj: bpy.types.Object) ->
     outline.show_in_front = False
 
 
+def add_slope_arrow(collection: bpy.types.Collection, obj: bpy.types.Object, row: dict[str, str]) -> None:
+    plane = json.loads(row["top_plane"])
+    direction = Vector((-float(plane["a_dz_dx"]), -float(plane["b_dz_dy"]), 0.0))
+    if direction.length <= 1e-12:
+        return
+    direction.normalize()
+    minimum, maximum = world_bounds(obj)
+    centre = (minimum + maximum) / 2.0
+    centre.z = (
+        float(plane["a_dz_dx"]) * centre.x * 1000.0
+        + float(plane["b_dz_dy"]) * centre.y * 1000.0
+        + float(plane["c_mm"])
+    ) / 1000.0 + 0.012
+    shortest_side = min(maximum.x - minimum.x, maximum.y - minimum.y)
+    length = min(0.28, max(0.12, shortest_side * 0.42))
+    head_length = min(0.065, length * 0.28)
+    perpendicular = Vector((-direction.y, direction.x, 0.0))
+    start = centre - direction * length / 2.0
+    end = centre + direction * length / 2.0
+    head_base = end - direction * head_length
+    points = (
+        (start, end),
+        (head_base + perpendicular * head_length * 0.55, end),
+        (head_base - perpendicular * head_length * 0.55, end),
+    )
+    curve = bpy.data.curves.new(f"P0_SLOPE_{row['candidate_id']}", "CURVE")
+    curve.dimensions = "3D"
+    curve.bevel_depth = 0.008
+    curve.bevel_resolution = 1
+    for first, second in points:
+        spline = curve.splines.new("POLY")
+        spline.points.add(1)
+        spline.points[0].co = (*first, 1.0)
+        spline.points[1].co = (*second, 1.0)
+    arrow = bpy.data.objects.new(f"P0_SLOPE_{row['candidate_id']}", curve)
+    collection.objects.link(arrow)
+    arrow.color = COLORS["slope_arrow"]
+    arrow.show_in_front = False
+
+
 def configure_objects(
     a104: dict[str, dict[str, str]],
     a105: dict[str, dict[str, str]],
     slab_global_id: str,
+    confirmed_a104_ids: set[str],
 ) -> tuple[
     dict[str, int],
     list[tuple[bpy.types.Object, str, tuple[float, float, float, float], float]],
     list[bpy.types.Object],
+    list[tuple[bpy.types.Object, dict[str, str]]],
 ]:
     counts: dict[str, int] = {}
     labels: list[tuple[bpy.types.Object, str, tuple[float, float, float, float], float]] = []
     outlines: list[bpy.types.Object] = []
+    arrows: list[tuple[bpy.types.Object, dict[str, str]]] = []
     for obj in bpy.context.scene.objects:
         obj.show_in_front = False
         entity = entity_for(obj)
@@ -194,7 +244,7 @@ def configure_objects(
             row = a104.get(entity.GlobalId)
             if row is None:
                 raise RuntimeError(f"door/window missing from A-104 register: {entity.GlobalId}")
-            if row["review_required"] == "yes":
+            if row["review_required"] == "yes" and entity.GlobalId not in confirmed_a104_ids:
                 key = "a104_review"
                 labels.append((obj, f"{row['candidate_id']} {row['review_group']}", COLORS[key], 0.15))
             else:
@@ -214,8 +264,9 @@ def configure_objects(
             if row["kind"] == "sloped_wet_tile":
                 plane = json.loads(row["top_plane"])
                 text = f"{row['candidate_id']} {float(plane['slope_percent']):.3f}% {plane['downhill_direction']}"
+                arrows.append((obj, row))
             else:
-                text = f"{row['candidate_id']} R01 MATERIAL?"
+                text = f"{row['candidate_id']} {row.get('confirmed_material') or 'MATERIAL?'} / 50 mm"
                 outlines.append(obj)
             labels.append((obj, text, COLORS[key], 0.105))
         elif entity.GlobalId == slab_global_id:
@@ -242,7 +293,7 @@ def configure_objects(
             if key == "material_pending":
                 obj.hide_set(True)
             counts[key] = counts.get(key, 0) + 1
-    return counts, labels, outlines
+    return counts, labels, outlines, arrows
 
 
 def configure_viewport() -> None:
@@ -268,18 +319,20 @@ def main() -> None:
     model = tool.Ifc.get()
     if model is None:
         raise RuntimeError("no IFC is loaded")
-    a104, a105, report = load_review_data()
+    a104, a105, report, confirmed_a104_ids = load_review_data()
     slab_global_id = report["delegated_slab"]["global_id"]
     remove_labels()
     if bpy.context.object is not None and bpy.context.object.mode != "OBJECT":
         bpy.ops.object.mode_set(mode="OBJECT")
     bpy.ops.object.select_all(action="DESELECT")
     switched = switch_to_model_body(set(a104) | set(a105) | {slab_global_id})
-    counts, label_rows, outline_rows = configure_objects(a104, a105, slab_global_id)
+    counts, label_rows, outline_rows, arrow_rows = configure_objects(a104, a105, slab_global_id, confirmed_a104_ids)
     collection = bpy.data.collections.new(LABEL_COLLECTION)
     bpy.context.scene.collection.children.link(collection)
     for obj in outline_rows:
         add_bbox_outline(collection, obj)
+    for obj, row in arrow_rows:
+        add_slope_arrow(collection, obj, row)
     for args in label_rows:
         add_label(collection, *args)
     bpy.ops.object.select_all(action="DESELECT")
@@ -288,11 +341,15 @@ def main() -> None:
         {
             "ifc_path": str(tool.Ifc.get_path()),
             "schema": model.schema,
-            "a104_review_objects": sum(row["review_required"] == "yes" for row in a104.values()),
+            "a104_review_objects": sum(
+                row["review_required"] == "yes" and global_id not in confirmed_a104_ids
+                for global_id, row in a104.items()
+            ),
             "a105_floor_objects": len(a105),
             "a105_slab_global_id": slab_global_id,
             "labels": len(label_rows),
             "material_pending_outlines": len(outline_rows),
+            "slope_arrows": len(arrow_rows),
             "switched_to_model_body": switched,
             "context": counts,
             "selected": len(bpy.context.selected_objects),

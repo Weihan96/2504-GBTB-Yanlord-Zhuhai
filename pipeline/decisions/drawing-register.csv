@@ -2,5 +2,5 @@ sheet_number,title,source_view,status,publish_target,notes
 A-001,图纸目录、设计说明与图例,,not-started,releases,由流水线汇总图号比例版本和图例
 A-102,现状与拆除墙定位图,Wall Plan,candidate,output/pdf/A-102-demolition-plan-candidate.pdf,13 面 DEMOLISH IfcWall 已写入正式 IFC；SVG/PDF 含现状/新建/已拆记录/计划拆除图例、D01-D13 近似尺寸表，机械 QA 通过
 A-103,新建墙体及施工定位图,Wall Plan,candidate,output/pdf/A-103-wall-plan-candidate.pdf,已生成当前 IFC 的墙体分组、20 轴闭合尺寸链、4 面已确认新墙和 5 个有宿主门洞定位；84 面 EXISTING 与 4 面 NEW 已写入标准属性
-A-104,门窗定位图及门窗表,Wall Plan,candidate,output/pdf/A-104-door-window-plan-candidate.pdf,19 个候选编号已生成；16/16 有宿主门窗洞口宽高通过 0.1 mm；3 樘无宿主门、主卧门候选矛盾及两组重叠窗洞待 Blender 人审
-A-105,地面完成面及标高图,FFL PLAN,baseline-only,build/candidates/A-105.svg,需补地坪类型材料边界标高坡度和地漏
+A-104,门窗定位图及门窗表,Wall Plan,candidate,output/pdf/A-104-door-window-plan-candidate.pdf,19 个 Tag、4 个门名及 3 个门窗组已进入机械通过的原子 IFC 候选；几何/placement 变化 0.0，待正式写入确认
+A-105,地面完成面及标高图,FFL PLAN,candidate,output/pdf/A-105-floor-finish-candidate.pdf,21 个 Tag、18 个坡向属性、3 个材料/完成面意图及 2 个降板属性已进入同一原子 IFC 候选；几何/placement 变化 0.0，待正式写入确认
