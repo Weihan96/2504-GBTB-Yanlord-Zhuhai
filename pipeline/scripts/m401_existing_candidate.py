@@ -125,16 +125,16 @@ MISSING_INPUTS = [
     {
         "queue_id": "M401-MISS-002",
         "observable_role": "kitchen_gas_alarm_missing",
-        "basis": "No observable alarm or sensor instance/type matches the confirmed kitchen gas-alarm requirement.",
-        "missing_or_unverified": "device selection, mounting location, power/control and required interlock",
-        "stop_condition": "Do not mark the gas alarm coordinated until equipment and authority requirements are confirmed.",
+        "basis": "No observable alarm or sensor instance/type matches the confirmed kitchen gas-alarm requirement. A Xiaomi gas alarm and recessed mount are an aesthetic candidate only; the user states the gas authority may require another model.",
+        "missing_or_unverified": "gas-authority-approved device selection, mounting location, power/control and required interlock",
+        "stop_condition": "Keep the kitchen gas alarm required, but do not lock the candidate 94 mm opening, 120 mm counterbore, 43 mm embed depth or mark it coordinated until the gas authority and final equipment requirements are confirmed.",
     },
     {
         "queue_id": "M401-MISS-003",
         "observable_role": "bedroom_living_fire_sensor_missing",
-        "basis": "No observable fire/smoke detector or sensor instance/type exists in the formal IFC.",
-        "missing_or_unverified": "device type, quantity, location, power/communication and ceiling clearance",
-        "stop_condition": "Do not publish sensor positions or coverage without the fire/safety equipment basis.",
+        "basis": "No observable fire/smoke detector or sensor instance/type exists in the formal IFC. Xiaomi smoke alarms with recessed mounts are accepted as a visual candidate for the master bedroom, guest bedroom and living room.",
+        "missing_or_unverified": "approved device type, final quantity and coverage, exact location, power/communication and ceiling clearance",
+        "stop_condition": "Do not publish final sensor positions or coverage until the fire/safety equipment basis is confirmed; the candidate mount may hide only the base and must leave smoke entry, indicator and downward removal unobstructed.",
     },
     {
         "queue_id": "M401-MISS-004",

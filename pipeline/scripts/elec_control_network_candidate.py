@@ -112,6 +112,86 @@ def network_zones(spaces: list[dict[str, str]]) -> list[dict[str, Any]]:
     return rows
 
 
+def safety_device_zones(spaces: list[dict[str, str]]) -> list[dict[str, Any]]:
+    by_reference = {row["candidate_reference"]: row for row in spaces}
+    definitions = [
+        (
+            "SAFE-GAS-KITCHEN",
+            "R04",
+            "中厨",
+            "combustible_gas_alarm",
+            "Xiaomi gas alarm with recessed mount",
+            "opening_d94_counterbore_d120x2_embed_d43_mm",
+            "gas_authority_model_approval_pending",
+        ),
+        (
+            "SAFE-SMOKE-MASTER",
+            "R09",
+            "主卧",
+            "smoke_alarm",
+            "Xiaomi smoke alarm with recessed mount",
+            "opening_d105_counterbore_d140x2_embed_d30_mm",
+            "fire_safety_device_approval_pending",
+        ),
+        (
+            "SAFE-SMOKE-GUEST",
+            "R14",
+            "次卧",
+            "smoke_alarm",
+            "Xiaomi smoke alarm with recessed mount",
+            "opening_d105_counterbore_d140x2_embed_d30_mm",
+            "fire_safety_device_approval_pending",
+        ),
+        (
+            "SAFE-SMOKE-LIVING",
+            "R20",
+            "客厅",
+            "smoke_alarm",
+            "Xiaomi smoke alarm with recessed mount",
+            "opening_d105_counterbore_d140x2_embed_d30_mm",
+            "fire_safety_device_approval_pending",
+        ),
+    ]
+    rows = []
+    for candidate_id, reference, room_name, role, product, recess, approval in definitions:
+        space = by_reference[reference]
+        row = {
+            "candidate_id": candidate_id,
+            "kind": "life_safety_device_room_coordination_zone",
+            "room_reference": reference,
+            "room_name": room_name,
+            "source_global_ids": [space["space_global_id"]],
+            "position_mm": [
+                float(space["centre_x_mm"]),
+                float(space["centre_y_mm"]),
+                float(space["centre_z_mm"]),
+            ],
+            "device_role": role,
+            "product_candidate": product,
+            "recess_candidate": recess,
+            "approval_status": approval,
+            "position_basis": "confirmed Space bbox centre used only to identify the room-level coordination zone",
+            "coordinate_status": "room_zone_only_final_xy_z_pending",
+            "confidence": 1.0,
+            "review_required": True,
+            "automatic_ifc_write_allowed": False,
+        }
+        if role == "smoke_alarm":
+            row["mechanical_positioning_constraints_mm"] = {
+                "minimum_wall_or_beam_clearance": 500,
+                "minimum_unobstructed_radius": 500,
+                "minimum_supply_air_edge_clearance": 1500,
+                "minimum_perforated_supply_clearance": 500,
+                "minimum_light_clearance": 200,
+            }
+            row["constraint_basis"] = "GB 50116-2013 and DB4403/T 137-2021 10.4.3.3; final product and fire-safety review still govern"
+        else:
+            row["mechanical_positioning_constraints_mm"] = None
+            row["constraint_basis"] = "gas type, authority-approved device and manufacturer installation instructions pending"
+        rows.append(row)
+    return rows
+
+
 def render_svg(source: str, report: dict[str, Any]) -> str:
     source = re.sub(r'width="400(?:\.0+)?mm"', 'width="500mm"', source, count=1)
     source = re.sub(r'viewBox="0 0 400(?:\.0+)? 400(?:\.0+)?"', 'viewBox="0 0 500 400"', source, count=1)
@@ -133,22 +213,33 @@ def render_svg(source: str, report: dict[str, Any]) -> str:
             f'<g data-candidate-id="{candidate_id}"><circle class="{css}" cx="{x:.3f}" cy="{y:.3f}" r="2.2"/>'
             f'<text class="cn-label" x="{x+3.4:.3f}" y="{y+(5 if index % 2 else -3):.3f}">{candidate_id}</text></g>'
         )
+    for index, row in enumerate(report["safety_device_coordination_zones"]):
+        x, y = world_to_svg(row["position_mm"])
+        css = "cn-gas" if row["device_role"] == "combustible_gas_alarm" else "cn-smoke"
+        candidate_id = html.escape(row["candidate_id"])
+        markup.append(
+            f'<g data-candidate-id="{candidate_id}"><circle class="{css}" cx="{x:.3f}" cy="{y:.3f}" r="2.2"/>'
+            f'<text class="cn-label" x="{x+3.4:.3f}" y="{y+(5 if index % 2 else -3):.3f}">{candidate_id}</text></g>'
+        )
     markup.extend([
         '<g><rect class="cn-panel" x="402" y="7" width="93" height="386"/>',
-        '<text class="cn-title" x="407" y="16">E-302/E-304 控制与网络协调区</text>',
+        '<text class="cn-title" x="407" y="16">控制、网络与安全设备协调区</text>',
         '<text class="cn-note" x="407" y="24">只读候选｜非最终安装点｜不写 IFC</text>',
         '<text class="cn-text" x="407" y="39">洋红方块：2 个门口控制面板区</text>',
         '<text class="cn-text" x="407" y="47">蓝点：主卧/次卧 AP 房间区</text>',
         '<text class="cn-text" x="407" y="55">紫点：客厅＋书房共享路由器区</text>',
-        '<text class="cn-text" x="407" y="69">双控：客厅＋书房＋餐厅</text>',
-        '<text class="cn-text" x="407" y="77">控制方式：仅实体有线</text>',
-        '<text class="cn-text" x="407" y="85">开关面板底边：1300 mm AFF</text>',
-        '<text class="cn-warn" x="407" y="102">门中心只标识门口，不是最终墙上点</text>',
-        '<text class="cn-warn" x="407" y="110">房间中心只标识房间，不是设备点</text>',
+        '<text class="cn-text" x="407" y="63">橙点：主卧/次卧/客厅烟感房间区</text>',
+        '<text class="cn-text" x="407" y="71">红点：厨房燃气报警器房间区</text>',
+        '<text class="cn-text" x="407" y="85">双控：客厅＋书房＋餐厅</text>',
+        '<text class="cn-text" x="407" y="93">控制方式：仅实体有线</text>',
+        '<text class="cn-text" x="407" y="101">开关面板底边：1300 mm AFF</text>',
+        '<text class="cn-warn" x="407" y="118">门中心只标识门口，不是最终墙上点</text>',
+        '<text class="cn-warn" x="407" y="126">房间中心只标识房间，不是设备点</text>',
+        '<text class="cn-warn" x="407" y="134">燃气型号待燃气公司确认，不锁定开孔</text>',
         f'<text class="cn-note" x="407" y="382">IFC SHA {report["source_ifc_sha256"][:12]}…</text></g>',
     ])
     style = """
-@page{size:500mm 400mm;margin:0}.cn-control{fill:#d63384;stroke:#6b1742;stroke-width:.7}.cn-ap{fill:#228be6;stroke:#0b477d;stroke-width:.7}.cn-router{fill:#7048e8;stroke:#35206f;stroke-width:.7}.cn-label,.cn-title,.cn-note,.cn-text,.cn-warn{font-family:Arial,'Noto Sans CJK SC',sans-serif;fill:#102f43}.cn-label{font-size:2.2px;font-weight:700;paint-order:stroke;stroke:#fff;stroke-width:.8px}.cn-panel{fill:#fbfcfd;stroke:#102f43;stroke-width:.5}.cn-title{font-size:3.7px;font-weight:700}.cn-note{font-size:2.15px;fill:#526777}.cn-text{font-size:2.3px}.cn-warn{font-size:2.15px;fill:#c92a2a;font-weight:700}
+@page{size:500mm 400mm;margin:0}.cn-control{fill:#d63384;stroke:#6b1742;stroke-width:.7}.cn-ap{fill:#228be6;stroke:#0b477d;stroke-width:.7}.cn-router{fill:#7048e8;stroke:#35206f;stroke-width:.7}.cn-smoke{fill:#f59f00;stroke:#7a4d00;stroke-width:.7}.cn-gas{fill:#e03131;stroke:#751414;stroke-width:.7}.cn-label,.cn-title,.cn-note,.cn-text,.cn-warn{font-family:Arial,'Noto Sans CJK SC',sans-serif;fill:#102f43}.cn-label{font-size:2.2px;font-weight:700;paint-order:stroke;stroke:#fff;stroke-width:.8px}.cn-panel{fill:#fbfcfd;stroke:#102f43;stroke-width:.5}.cn-title{font-size:3.7px;font-weight:700}.cn-note{font-size:2.15px;fill:#526777}.cn-text{font-size:2.3px}.cn-warn{font-size:2.15px;fill:#c92a2a;font-weight:700}
 """
     return source.replace("</svg>", f'<style id="elec-control-network-style">{style}</style><g id="elec-control-network">{"".join(markup)}</g></svg>', 1)
 
@@ -160,8 +251,12 @@ def main() -> int:
         raise RuntimeError(f"formal IFC hash changed: {source_hash}")
     rules = read_csv(args.rules)
     controls = control_zones(read_csv(args.doors))
-    networks = network_zones(read_csv(args.spaces))
+    spaces = read_csv(args.spaces)
+    networks = network_zones(spaces)
+    safety_devices = safety_device_zones(spaces)
     router_zones = [row for row in networks if row["network_role"] == "router_no_AP"]
+    smoke_zones = [row for row in safety_devices if row["device_role"] == "smoke_alarm"]
+    gas_zones = [row for row in safety_devices if row["device_role"] == "combustible_gas_alarm"]
     report = {
         "mode": "read_only_control_network_coordination_candidate",
         "source_ifc_sha256": source_hash,
@@ -172,17 +267,30 @@ def main() -> int:
             "entrance_master_lighting_switches": 1,
             "bedroom_AP_zones": sum(row["network_role"] == "wireless_access_point" for row in networks),
             "living_study_router_zones": len(router_zones),
+            "smoke_alarm_room_zones": len(smoke_zones),
+            "kitchen_gas_alarm_room_zones": len(gas_zones),
             "confirmed_rules": sum(row["status"] == "confirmed" for row in rules),
         },
         "control_coordination_zones": controls,
         "network_coordination_zones": networks,
+        "safety_device_coordination_zones": safety_devices,
         "gates": {
             "two_doorway_zones_present": len(controls) == 2,
             "three_two_way_groups_present": all(row["controlled_groups"] == ["客厅", "书房", "餐厅"] for row in controls),
             "entrance_master_switch_present": sum(row["entrance_master_lighting_switch"] for row in controls) == 1,
             "two_bedroom_AP_zones_present": sum(row["network_role"] == "wireless_access_point" for row in networks) == 2,
             "one_shared_router_no_AP_zone_present": len(router_zones) == 1 and router_zones[0]["room_reference"] == "R20;R22",
-            "all_positions_are_coordination_zones": all("zone_only" in row["coordinate_status"] for row in controls + networks),
+            "three_smoke_room_zones_present": len(smoke_zones) == 3 and {row["room_reference"] for row in smoke_zones} == {"R09", "R14", "R20"},
+            "smoke_positioning_constraints_present": all(row["mechanical_positioning_constraints_mm"] == {
+                "minimum_wall_or_beam_clearance": 500,
+                "minimum_unobstructed_radius": 500,
+                "minimum_supply_air_edge_clearance": 1500,
+                "minimum_perforated_supply_clearance": 500,
+                "minimum_light_clearance": 200,
+            } for row in smoke_zones),
+            "one_kitchen_gas_alarm_zone_present": len(gas_zones) == 1 and gas_zones[0]["room_reference"] == "R04",
+            "gas_alarm_model_authority_pending": len(gas_zones) == 1 and gas_zones[0]["approval_status"] == "gas_authority_model_approval_pending",
+            "all_positions_are_coordination_zones": all("zone_only" in row["coordinate_status"] for row in controls + networks + safety_devices),
             "automatic_ifc_write_allowed": False,
         },
     }
