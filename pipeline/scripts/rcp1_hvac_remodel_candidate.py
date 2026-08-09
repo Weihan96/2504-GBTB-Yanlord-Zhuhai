@@ -17,8 +17,8 @@ import ifcopenshell.geom
 import numpy as np
 from ifcopenshell.util.element import get_psets
 from ifcopenshell.util.placement import get_local_placement
-from shapely.geometry import Point, Polygon
-from shapely.ops import unary_union
+from shapely.geometry import LineString, Point, Polygon
+from shapely.ops import nearest_points, unary_union
 
 
 EXPECTED_IFC_SHA256 = "7521c09991f3d0c7b7d91ca2324fd55ad961d8e32e9e3e9a9777a4cc19b06e81"
@@ -244,6 +244,31 @@ def space_footprints(
     return records
 
 
+def wall_footprints(
+    model: ifcopenshell.file,
+    settings: ifcopenshell.geom.settings,
+) -> list[dict[str, Any]]:
+    records = []
+    for wall in model.by_type("IfcWall"):
+        vertices, faces = world_mesh_mm(settings, wall)
+        polygons = []
+        for face in faces:
+            polygon = Polygon(vertices[face, :2])
+            if polygon.area > 1e-4:
+                polygons.append(polygon)
+        if not polygons:
+            continue
+        records.append(
+            {
+                "global_id": wall.GlobalId,
+                "name": str(wall.Name or ""),
+                "status": str(get_psets(wall).get("Pset_WallCommon", {}).get("Status", "")),
+                "footprint": unary_union(polygons).buffer(0.01),
+            }
+        )
+    return records
+
+
 def spaces_at(point_mm: list[float], spaces: list[dict[str, Any]]) -> list[dict[str, str]]:
     point = Point(point_mm)
     return [
@@ -296,6 +321,55 @@ def service_space_probe(
     }
 
 
+def route_to_space_candidate(
+    source_mm: list[float],
+    direction_xy: list[float],
+    target_space: dict[str, Any],
+    walls: list[dict[str, Any]],
+) -> dict[str, Any]:
+    source = Point(source_mm[:2])
+    source_point, target_point = nearest_points(source, target_space["footprint"])
+    route = LineString([source_point, target_point])
+    vector = np.asarray(
+        [target_point.x - source_point.x, target_point.y - source_point.y], dtype=float
+    )
+    route_length = float(np.linalg.norm(vector))
+    direction = np.asarray(direction_xy, dtype=float)
+    direction /= np.linalg.norm(direction)
+    if route_length <= 1e-9:
+        turn_angle = 0.0
+    else:
+        route_direction = vector / route_length
+        turn_angle = math.degrees(
+            math.acos(float(np.clip(np.dot(direction, route_direction), -1.0, 1.0)))
+        )
+    crossings = []
+    route_envelope = route.buffer(10.0, cap_style=2)
+    for wall in walls:
+        if route_envelope.intersects(wall["footprint"]):
+            crossings.append(
+                {
+                    "global_id": wall["global_id"],
+                    "name": wall["name"],
+                    "status": wall["status"],
+                }
+            )
+    return {
+        "source_point_mm": [source_point.x, source_point.y],
+        "target_point_mm": [target_point.x, target_point.y],
+        "plan_length_mm": route_length,
+        "turn_from_current_airside_degrees": turn_angle,
+        "wall_crossings": crossings,
+        "permanent_wall_crossings": [
+            item for item in crossings if item["status"].upper() not in {"DEMOLISH", "DEMOLISHED"}
+        ],
+        "demolition_wall_crossings": [
+            item for item in crossings if item["status"].upper() in {"DEMOLISH", "DEMOLISHED"}
+        ],
+        "basis": "shortest plan route from equipment centre to target Space footprint; 10 mm wall-envelope audit",
+    }
+
+
 def main() -> int:
     args = parse_args()
     if args.tolerance_mm <= 0:
@@ -338,6 +412,7 @@ def main() -> int:
     model = ifcopenshell.open(args.input)
     settings = geometry_settings()
     spaces = space_footprints(model, settings)
+    walls = wall_footprints(model, settings)
     pipe_components = []
     for global_id in sorted(EXPECTED_PIPE_IDS):
         product = model.by_guid(global_id)
@@ -472,6 +547,22 @@ def main() -> int:
     living_room_service_gap = (
         direct_service_counts.get("R20", 0) == 0 and "R20" not in confirmed_outlet_spaces
     )
+    living_space = next(space for space in spaces if space["reference"] == "R20")
+    formal_a05 = next(
+        item for item in equipment_pairing if item["global_id"] == "1yW7DASIz8qA$2j8z9tdl2"
+    )
+    option_a_route = route_to_space_candidate(
+        formal_a05["bbox"]["centre_mm"],
+        formal_a05["service_space_probe"]["direction_world_xy"],
+        living_space,
+        walls,
+    )
+    option_b_route = route_to_space_candidate(
+        legacy_candidate["predicted_formal_centre_mm"],
+        legacy_service_probe["direction_world_xy"],
+        living_space,
+        walls,
+    )
 
     existing_intersections = [
         relation
@@ -522,6 +613,28 @@ def main() -> int:
             "living_room_R20_has_no_direct_equipment_or_confirmed_outlet_candidate": living_room_service_gap,
             "interpretation": "direct -Y probes are geometry candidates only; ducted service may cross rooms after a turn",
         },
+        "living_room_airside_options": [
+            {
+                "option_id": "RCP1-AIR-OPTION-A",
+                "equipment_candidate": "1yW7DASIz8qA$2j8z9tdl2",
+                "description": "retain formal A05 and extend an aligned air-side route from the study into living room R20",
+                "route": option_a_route,
+                "new_formal_equipment_required": False,
+                "new_living_supply_and_return_design_required": True,
+                "status": "recommended_for_human_review",
+                "basis": "existing formal unit; current local -Y direction already reaches R20; boundary wall D11 is recorded DEMOLISH",
+            },
+            {
+                "option_id": "RCP1-AIR-OPTION-B",
+                "equipment_candidate": "legacy-east-no-global-id",
+                "description": "promote legacy A06 and redirect it from dining-room orientation toward living room R20",
+                "route": option_b_route,
+                "new_formal_equipment_required": True,
+                "new_living_supply_and_return_design_required": True,
+                "status": "alternative_for_human_review",
+                "basis": "shorter plan proximity but current local -Y direction serves R07 and the object has no formal GlobalId",
+            },
+        ],
         "legacy_pipe_components": pipe_components,
         "existing_intersections": existing_intersections,
         "human_review_bundle": [
@@ -555,6 +668,7 @@ def main() -> int:
             "candidate_ready_for_blender_review": True,
             "service_space_probe_ready_for_review": True,
             "living_room_service_resolved": not living_room_service_gap,
+            "living_room_options_mechanically_compared": True,
             "formal_ifc_write_allowed": False,
             "hvac_design_ready": False,
         },
