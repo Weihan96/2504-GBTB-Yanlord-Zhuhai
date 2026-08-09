@@ -34,13 +34,17 @@ test("INT1 handoff classifies the exact 16 proxies without authorizing writes", 
     named_worktop_or_countertop_candidates: 3,
     named_bathroom_pipe_wall_candidates: 1,
     legacy_cad_references: 4,
-    unresolved_joinery_proxies: 8,
+    horizontal_joinery_panel_candidates: 5,
+    vertical_joinery_panel_candidates: 2,
+    full_height_joinery_volume_candidates: 1,
+    unclassified_joinery_proxies: 0,
     shape_error_count: 3,
     integer_geometry_anchor_count: 2,
   });
   expect(report.gates.source_reports_match_formal_ifc).toBe(true);
   expect(report.gates.handoff_set_matches_exactly).toBe(true);
   expect(report.gates.all_objects_classified).toBe(true);
+  expect(report.gates.all_objects_have_geometric_or_named_candidate_role).toBe(true);
   expect(report.gates.all_objects_have_fabrication_identity).toBe(false);
   expect(report.gates.all_geometry_readable_as_solid_mesh).toBe(false);
   expect(report.gates.automatic_ifc_write_allowed).toBe(false);
@@ -48,7 +52,7 @@ test("INT1 handoff classifies the exact 16 proxies without authorizing writes", 
   expect(report.records.every((row: any) => row.review_required === true)).toBe(true);
   expect(report.records.every((row: any) => row.automatic_ifc_write_allowed === false)).toBe(true);
   expect(readFileSync(csv, "utf8").split("\n").filter(Boolean)).toHaveLength(17);
-});
+}, 20_000);
 
 test("INT1 handoff candidate contains no IFC write path", () => {
   const source = readFileSync(resolve(root, "pipeline/scripts/int1_handoff_candidate.py"), "utf8");

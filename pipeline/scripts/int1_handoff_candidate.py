@@ -13,6 +13,7 @@ from pathlib import Path
 from typing import Any
 
 import ifcopenshell
+import ifcopenshell.geom
 import ifcopenshell.util.element
 
 
@@ -28,6 +29,9 @@ CSV_FIELDS = [
     "container",
     "representation_types",
     "candidate_role",
+    "bbox_min_mm",
+    "bbox_max_mm",
+    "dimensions_mm",
     "current_origin_mm",
     "origin_residual_mm",
     "shape_status",
@@ -92,6 +96,27 @@ def representation_types(product: ifcopenshell.entity_instance) -> list[str]:
     })
 
 
+def world_bbox(
+    settings: ifcopenshell.geom.settings,
+    product: ifcopenshell.entity_instance,
+) -> tuple[list[float], list[float], list[float]] | None:
+    try:
+        shape = ifcopenshell.geom.create_shape(settings, product)
+    except RuntimeError:
+        return None
+    values = list(shape.geometry.verts)
+    if not values:
+        return None
+    vertices = [
+        [values[index] * 1000.0, values[index + 1] * 1000.0, values[index + 2] * 1000.0]
+        for index in range(0, len(values), 3)
+    ]
+    minimum = [min(point[axis] for point in vertices) for axis in range(3)]
+    maximum = [max(point[axis] for point in vertices) for axis in range(3)]
+    dimensions = [maximum[axis] - minimum[axis] for axis in range(3)]
+    return tuple([round(value, 6) for value in row] for row in (minimum, maximum, dimensions))  # type: ignore[return-value]
+
+
 def sheet_id(container: str) -> str:
     if container in {"KITCHEN", "VVD"}:
         return "I-501"
@@ -100,7 +125,11 @@ def sheet_id(container: str) -> str:
     return "I-504"
 
 
-def classify(product: ifcopenshell.entity_instance, reps: list[str]) -> tuple[str, str, float, str]:
+def classify(
+    product: ifcopenshell.entity_instance,
+    reps: list[str],
+    dimensions: list[float] | None,
+) -> tuple[str, str, float, str]:
     name = str(product.Name or "")
     object_type = str(getattr(product, "ObjectType", "") or "")
     lowered = name.lower()
@@ -125,6 +154,29 @@ def classify(product: ifcopenshell.entity_instance, reps: list[str]) -> tuple[st
             0.90,
             "legacy_reference_needs_disposition",
         )
+    if dimensions is not None:
+        x_size, y_size, z_size = dimensions
+        if z_size <= 70.0 and x_size >= 300.0 and y_size >= 300.0:
+            return (
+                "horizontal_joinery_panel_candidate",
+                f"world envelope {x_size:.3f}×{y_size:.3f}×{z_size:.3f} mm is a thin horizontal panel at the existing model position; exact countertop, shelf or other role remains unverified",
+                0.80,
+                "geometry_role_candidate_identity_pending",
+            )
+        if min(x_size, y_size) <= 70.0 and z_size >= 300.0:
+            return (
+                "vertical_joinery_panel_candidate",
+                f"world envelope {x_size:.3f}×{y_size:.3f}×{z_size:.3f} mm is a thin vertical panel at the existing model position; exact backing, side panel or finish role remains unverified",
+                0.80,
+                "geometry_role_candidate_identity_pending",
+            )
+        if x_size >= 500.0 and y_size >= 500.0 and z_size >= 1800.0:
+            return (
+                "full_height_joinery_volume_candidate",
+                f"world envelope {x_size:.3f}×{y_size:.3f}×{z_size:.3f} mm is a full-height joinery-sized volume; internal cabinet or enclosure role remains unverified",
+                0.75,
+                "geometry_role_candidate_identity_pending",
+            )
     return (
         "unresolved_joinery_proxy",
         f"generic name {name or '<empty>'} and no assigned IFC type do not prove a cabinet, panel, hardware or worktop role",
@@ -162,6 +214,8 @@ def main() -> int:
 
     source_hash = sha256(args.input)
     model = ifcopenshell.open(args.input)
+    settings = ifcopenshell.geom.settings()
+    settings.set(settings.USE_WORLD_COORDS, True)
     ids = handoff_ids(read_csv(args.p0_review))
     origin_report = read_report(args.origin_review, source_hash, "remaining-origin review")
     anchor_report = read_report(args.anchor_audit, source_hash, "integer-geometry anchor audit")
@@ -178,7 +232,9 @@ def main() -> int:
         origin = origins[global_id]
         anchor = anchors[global_id]
         reps = representation_types(product)
-        role, basis, confidence, status = classify(product, reps)
+        bbox = world_bbox(settings, product) if anchor["shape_status"] == "ok" else None
+        minimum, maximum, dimensions = bbox if bbox is not None else (None, None, None)
+        role, basis, confidence, status = classify(product, reps, dimensions)
         container = container_name(product)
         records.append({
             "global_id": global_id,
@@ -190,6 +246,9 @@ def main() -> int:
             "container": container,
             "representation_types": reps,
             "candidate_role": role,
+            "bbox_min_mm": minimum,
+            "bbox_max_mm": maximum,
+            "dimensions_mm": dimensions,
             "current_origin_mm": origin["current_mm"],
             "origin_residual_mm": origin["max_residual_mm"],
             "shape_status": anchor["shape_status"],
@@ -210,7 +269,10 @@ def main() -> int:
         "named_worktop_or_countertop_candidates": counts["named_worktop_or_countertop_candidate"],
         "named_bathroom_pipe_wall_candidates": counts["named_bathroom_pipe_wall_candidate"],
         "legacy_cad_references": counts["legacy_cad_reference_needs_disposition"],
-        "unresolved_joinery_proxies": counts["unresolved_joinery_proxy"],
+        "horizontal_joinery_panel_candidates": counts["horizontal_joinery_panel_candidate"],
+        "vertical_joinery_panel_candidates": counts["vertical_joinery_panel_candidate"],
+        "full_height_joinery_volume_candidates": counts["full_height_joinery_volume_candidate"],
+        "unclassified_joinery_proxies": counts["unresolved_joinery_proxy"],
         "shape_error_count": sum(record["shape_status"] != "ok" for record in records),
         "integer_geometry_anchor_count": sum(record["integer_geometry_anchor"] is not None for record in records),
     }
@@ -218,7 +280,8 @@ def main() -> int:
         "source_reports_match_formal_ifc": True,
         "handoff_set_matches_exactly": len(records) == EXPECTED_COUNT,
         "all_objects_classified": sum(counts.values()) == EXPECTED_COUNT,
-        "all_objects_have_fabrication_identity": counts["unresolved_joinery_proxy"] == 0,
+        "all_objects_have_geometric_or_named_candidate_role": counts["unresolved_joinery_proxy"] == 0,
+        "all_objects_have_fabrication_identity": False,
         "all_geometry_readable_as_solid_mesh": summary["shape_error_count"] == 0,
         "automatic_ifc_write_allowed": False,
         "fabrication_dimensions_ready": False,
