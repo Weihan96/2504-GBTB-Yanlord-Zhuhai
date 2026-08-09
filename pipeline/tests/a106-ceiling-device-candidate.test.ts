@@ -19,6 +19,8 @@ test("A-106 smoke and AP candidates pass known-geometry gates", () => {
   expect(report.gates.candidate_xy_coordinates_are_integer_mm).toBe(true);
   expect(report.gates.bedroom_pair_separation_pass).toBe(true);
   expect(report.gates.thirteen_demolition_walls_excluded).toBe(true);
+  const smokeCandidates = report.candidates.filter((row: { device_role: string }) => row.device_role === "smoke_alarm");
+  expect(smokeCandidates.every((row: { room_center_offset_mm: number }) => row.room_center_offset_mm <= 522.1)).toBe(true);
   expect(report.candidates.every((row: { nearest_high_level_obstacle_clearance_mm: number | null }) => row.nearest_high_level_obstacle_clearance_mm === null || row.nearest_high_level_obstacle_clearance_mm >= 500)).toBe(true);
   expect(report.gates.all_smoke_supply_air_clearances_verified).toBe(false);
   expect(report.gates.automatic_ifc_write_allowed).toBe(false);

@@ -265,6 +265,7 @@ def compile_report(args: argparse.Namespace) -> dict[str, Any]:
             "space_global_id": room["global_id"],
             "space_bbox_mm": room["bbox_mm"],
             "room_axis_offset_mm": room_axis_offset,
+            "room_center_offset_mm": float(np.linalg.norm(np.asarray(position[:2]) - np.asarray(room["centre_mm"]))),
             "wall_boundary_clearance_mm": wall_clearance,
             "nearest_beam_clearance_mm": beam_clearance,
             "nearest_light_edge_clearance_mm": light_clearance,
@@ -397,11 +398,11 @@ def render_svg(source: str, report: dict[str, Any], output: Path) -> None:
         '<text class="a106-text" x="407" y="47">蓝点：卧室吸顶 AP 候选（2）</text>',
         '<text class="a106-text" x="407" y="55">灰点：正式 IFC 既有灯具（79）</text>',
         '<text class="a106-text" x="407" y="63">淡圈：500 mm 已知几何检查范围</text>',
-        '<text class="a106-text" x="407" y="78">候选：既有灯网交点或重复节距延长点</text>',
+        '<text class="a106-text" x="407" y="78">烟感：居中或中心轴最近安全点</text>',
         '<text class="a106-text" x="407" y="86">烟感：已知障碍物保守取 500 mm</text>',
         '<text class="a106-text" x="407" y="94">13 面 DEMOLISH 墙已排除</text>',
         '<text class="a106-warn" x="407" y="111">风口模型不完整：1500 mm 门未关闭</text>',
-        '<text class="a106-warn" x="407" y="119">燃气报警器不在本图冻结位置</text>',
+        '<text class="a106-warn" x="407" y="119">厨房火灾/燃气探测类型与点位待确认</text>',
         f'<text class="a106-note" x="407" y="382">IFC SHA {report["source_ifc_sha256"][:12]}…</text></g>',
     ])
     style = """
