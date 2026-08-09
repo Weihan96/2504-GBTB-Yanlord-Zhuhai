@@ -125,9 +125,39 @@ def product_record(product: Any) -> dict[str, Any]:
         "predefined_type": getattr(product, "PredefinedType", None),
         "type_global_id": getattr(product_type, "GlobalId", None),
         "type_name": getattr(product_type, "Name", None),
+        "type_predefined_type": getattr(product_type, "PredefinedType", None),
+        "type_element_type": getattr(product_type, "ElementType", None),
         "container": container_record(product),
         "object_origin_mm": origin_mm(product),
         "geometry": geometry_record(product),
+    }
+
+
+def service_demand_classification(product: Any) -> dict[str, Any]:
+    product_type = assigned_type(product)
+    type_name = str(getattr(product_type, "Name", "") or "")
+    element_type = str(getattr(product_type, "ElementType", "") or "")
+    effective_predefined_type = str(
+        getattr(product, "PredefinedType", "")
+        or getattr(product_type, "PredefinedType", "")
+        or "NOTDEFINED"
+    )
+    if type_name == "Geberit 115.770":
+        return {
+            "candidate_role": "flush_actuator_panel",
+            "service_demand_candidate": False,
+            "classification_basis": "confirmed product identity is a flush actuator panel, not a WC seat or water connector",
+        }
+    if element_type == "DRAWER EQUIPMENT":
+        return {
+            "candidate_role": "joinery_drawer_equipment",
+            "service_demand_candidate": False,
+            "classification_basis": "assigned IFC type explicitly identifies drawer equipment",
+        }
+    return {
+        "candidate_role": f"sanitary_service_candidate_{effective_predefined_type.lower()}",
+        "service_demand_candidate": True,
+        "classification_basis": "occurrence/type PredefinedType provides a service category but does not prove connector location or medium",
     }
 
 
@@ -230,7 +260,7 @@ def main() -> None:
         return record_cache[product.GlobalId]
 
     p201 = {
-        "candidate": "P-201 service-demand endpoint register",
+        "candidate": "P-201 sanitary-terminal service-demand classification",
         "source_ifc_sha256": ifc_sha,
         "scope": "observable sanitary product locations only",
         "not_in_scope": [
@@ -240,6 +270,7 @@ def main() -> None:
         "demand_endpoints": [
             {
                 **record(product),
+                **service_demand_classification(product),
                 "connection_requirement": "unknown",
                 "is_ifc_distribution_port": False,
                 "candidate_is_write_authority": False,
@@ -248,6 +279,10 @@ def main() -> None:
         ],
     }
     p202_products = sanitary + waste + assemblies + drainage
+    service_demand_count = sum(
+        service_demand_classification(product)["service_demand_candidate"]
+        for product in sanitary
+    )
     p202 = {
         "candidate": "P-202 existing drainage and sanitary location register",
         "source_ifc_sha256": ifc_sha,
@@ -281,12 +316,13 @@ def main() -> None:
         "pvc110_branch_count": sum(row["mesh_component_count"] for row in pvc110),
         "pvc110_world_geometry_unchanged": all(row["world_geometry_unchanged"] for row in pvc110),
         "review_register_complete": len(review_rows) == len(EXPECTED_REVIEW_IDS),
+        "service_demand_classification_pass": service_demand_count == 24,
     }
     qa["candidate_registry_pass"] = all((
         qa["expected_counts_pass"], qa["unique_candidate_global_ids"],
         missing_connectivity_declared, qa["pvc110_product_count"] == 2,
         qa["pvc110_branch_count"] == 6, qa["pvc110_world_geometry_unchanged"],
-        qa["review_register_complete"],
+        qa["review_register_complete"], qa["service_demand_classification_pass"],
     ))
     qa["construction_release_pass"] = False
 
@@ -299,7 +335,9 @@ def main() -> None:
             "waste_terminal_count": len(waste),
             "sanitary_assembly_count": len(assemblies),
             "recognizable_drainage_product_count": len(drainage),
-            "p201_demand_endpoint_count": len(p201["demand_endpoints"]),
+            "p201_registered_terminal_count": len(p201["demand_endpoints"]),
+            "p201_service_demand_candidate_count": service_demand_count,
+            "p201_non_service_component_count": len(p201["demand_endpoints"]) - service_demand_count,
             "p202_existing_object_count": len(p202["objects"]),
         },
         "pvc110": pvc110,

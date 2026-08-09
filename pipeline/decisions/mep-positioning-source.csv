@@ -1,0 +1,9 @@
+requirement_id,discipline,sheet_id,source_file,source_sha256,source_pages,requirement,basis,confidence,review_required,status,stop_condition
+MEP-SOURCE-001,PLUM+ELEC,P-201/P-202/E-303,珠海-陈总(水电图)2025.12.23.pdf,ec9f67ebe25fd6fe4be5ada495f919d6d92ff5e501f79d33a257eed59e4310a5,1-10,以 2025.12.23 十页厨房及柜体水电图作为当前候选底稿；与 2025.5.29 版相比只有第 6 页图像变化，新版在油烟机插座处增加红圈,两版逐页 90 dpi 渲染哈希比较及第 6 页视觉核对,1.00,yes,candidate,业主否认该版为当前底稿或出现更新图纸时停止并重新比对
+PLUM-SOURCE-B01,PLUM,P-201/P-202,珠海-陈总(水电图)2025.12.23.pdf,ec9f67ebe25fd6fe4be5ada495f919d6d92ff5e501f79d33a257eed59e4310a5,5,B 面保留进水管、直饮水管、生活水管和废水管四类接口,第 5 页 B 面水位图明确文字,1.00,yes,candidate,未与 IFC 现有管线或厂家接口中心匹配前不得写连接关系
+PLUM-SOURCE-C01,PLUM,P-201/P-202,珠海-陈总(水电图)2025.12.23.pdf,ec9f67ebe25fd6fe4be5ada495f919d6d92ff5e501f79d33a257eed59e4310a5,7,C 面保留冷热水给水及水槽加净水器地排,第 7 页 C 面电位/给排水图明确文字,1.00,yes,candidate,完成面定位和检修条件未核对前不得冻结粗装点
+PLUM-SOURCE-D01,PLUM,P-201/P-202,珠海-陈总(水电图)2025.12.23.pdf,ec9f67ebe25fd6fe4be5ada495f919d6d92ff5e501f79d33a257eed59e4310a5,8,D 面保留洗衣机进水管及洗衣机地排；烘干机位置同时保留,第 8 页 D 面电位加给排水图明确文字,1.00,yes,candidate,洗衣机和烘干机最终型号及叠放安装要求未核对前不得冻结接口
+PLUM-SOURCE-PLAN01,PLUM,P-201/P-202,珠海-陈总(水电图)2025.12.23.pdf,ec9f67ebe25fd6fe4be5ada495f919d6d92ff5e501f79d33a257eed59e4310a5,9,吧台地面保留冷热水给水及地排,第 9 页平面预留电源线图明确文字,1.00,yes,candidate,吧台设备和柜体开孔未核对前不得冻结接口
+ELEC-SOURCE-B01,ELEC,E-303,珠海-陈总(水电图)2025.12.23.pdf,ec9f67ebe25fd6fe4be5ada495f919d6d92ff5e501f79d33a257eed59e4310a5,6,B 面保留冰箱插座 2 个、烤箱插座、直饮机插座、油烟机插座、导轨插座、炉灶插座及天花预留电源线,第 6 页 B 面电器电位图明确文字；新版红圈强调油烟机插座,1.00,yes,candidate,插座与设备一一配对及回路功率未核对前不得冻结
+ELEC-SOURCE-C01,ELEC,E-303,珠海-陈总(水电图)2025.12.23.pdf,ec9f67ebe25fd6fe4be5ada495f919d6d92ff5e501f79d33a257eed59e4310a5,7,C 面保留净水器插座 1 个及备用插座 2 个,第 7 页 C 面电位/给排水图明确文字,1.00,yes,candidate,安装高度和柜内检修范围未核对前不得冻结
+ELEC-SOURCE-PLAN01,ELEC,E-303/E-302,珠海-陈总(水电图)2025.12.23.pdf,ec9f67ebe25fd6fe4be5ada495f919d6d92ff5e501f79d33a257eed59e4310a5,9,墙体导轨插座电源线和另一处墙体电源线均标高 H1200；另保留天花电源线、衣柜天花灯带及洗碗机位置,第 9 页平面预留电源线图明确文字,1.00,yes,candidate,不得把设备位置标签自动解释为已确认插座或回路

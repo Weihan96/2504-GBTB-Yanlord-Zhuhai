@@ -41,7 +41,9 @@ test("PLUM candidate runs against the frozen formal IFC", async () => {
   ]);
   expect(stderr).toBe("");
   expect(exitCode).toBe(0);
-  expect(stdout).toContain('"p201_demand_endpoint_count": 27');
+  expect(stdout).toContain('"p201_registered_terminal_count": 27');
+  expect(stdout).toContain('"p201_service_demand_candidate_count": 24');
+  expect(stdout).toContain('"p201_non_service_component_count": 3');
   expect(stdout).toContain('"p202_existing_object_count": 49');
   const report = await Bun.file("build/plum/plum-report.json").json();
   expect(report.source.ifc_sha256).toBe(
@@ -51,6 +53,12 @@ test("PLUM candidate runs against the frozen formal IFC", async () => {
   expect(report.qa.construction_release_pass).toBe(false);
   expect(report.qa.distribution_data.status).toBe("data_missing");
   expect(report.qa.pvc110_world_geometry_unchanged).toBe(true);
+  expect(report.qa.service_demand_classification_pass).toBe(true);
+  const p201 = await Bun.file("build/plum/p201-demand-endpoints.json").json();
+  expect(p201.demand_endpoints.filter((row: any) => row.service_demand_candidate)).toHaveLength(24);
+  expect(
+    p201.demand_endpoints.filter((row: any) => !row.service_demand_candidate).map((row: any) => row.candidate_role).sort(),
+  ).toEqual(["flush_actuator_panel", "flush_actuator_panel", "joinery_drawer_equipment"]);
   const p202 = await Bun.file("build/plum/p202-existing-location-register.json").json();
   expect(
     Math.max(...p202.objects.flatMap((row: any) => row.object_origin_mm.map(Math.abs))),
