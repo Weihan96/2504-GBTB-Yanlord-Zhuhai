@@ -1,0 +1,23 @@
+room_reference,room_name,lighting_control_groups_min,general_power_groups_min,network_data_groups_min,manual_dedicated_power_min,cabinet_light_feed_zones_min,program_basis,confidence,review_required,status,position_status,automatic_ifc_write_allowed,notes
+R01,玄关,1,1,0,0,0,入户空间语义及现有灯具/交付电气参考,0.70,yes,candidate_program,functional_group_only,no,开关与普通用电各至少一组；面板与回路未冻结
+R02,走廊,2,1,1,0,0,多入口交通空间语义、现有灯具及交付开关/线箱参考,0.75,yes,candidate_program,functional_group_only,no,两端控制、检修用电和弱电箱协调候选
+R03,西厨,1,2,0,0,1,厨房空间语义、已建设备/岛台和用户确认柜体照明,0.80,yes,candidate_program,functional_group_only,no,设备专用供电由模型实例另行计数
+R04,中厨,1,2,0,1,1,厨房空间语义、已建设备和已确认燃气报警器需求,0.85,yes,candidate_program,functional_group_only,no,手动专用供电为燃气报警器；位置依设备说明和现场条件
+R05,中厨飘窗,0,1,0,0,0,现有灯具与两个插座实例位于该 Space,0.75,yes,candidate_program,shared_control_with_R04,no,不单独推断开关；当前插座位置已重开复核
+R06,餐厅飘窗,0,1,0,0,0,用户明确要求餐厅飘窗插座,1.00,yes,confirmed_requirement,round1_position_candidate,no,NS-02 已生成；高度与用途待后续反向复核
+R07,餐厅,1,1,1,0,0,餐厅空间语义、现有灯具及交付 AP 参考,0.70,yes,candidate_program,functional_group_only,no,餐桌周边用电和网络仅为功能组候选
+R08,主卧飘窗,0,1,0,0,0,飘窗使用情景和后续反向缺项检查,0.55,yes,candidate_program,position_pending_use_case,no,未确认具体用途时不定位
+R09,主卧,3,2,2,0,1,卧室入口/床两侧控制、TV/AP 交付参考及用户确认床头灯/柜体灯,0.85,yes,candidate_program,bed_and_joinery_coordination,no,已有 BL-01/BL-02；床侧插座、控制和弱电待联动定位
+R10,主卧入口,2,0,0,0,0,过渡空间与两个交付控制面板参考,0.75,yes,candidate_program,control_pairing_pending,no,需与 R09 灯组关系联动
+R11,主卫干区,1,1,0,1,0,台盆/镜柜使用情景、现有灯具与用电参考,0.70,yes,candidate_program,fixture_and_elevation_pending,no,手动专用供电表示镜柜/镜前灯或驱动电源协调组
+R12,主卫湿区,1,1,0,2,1,卫生间语义、暖风面板交付参考、等电位及固定柜体,0.80,yes,candidate_program,wet_area_equipment_pending,no,手动专用供电为暖风/换气与智能马桶协调组；防水区和设备参数未冻结
+R13,主卫湿区飘窗,0,0,0,0,0,飘窗子 Space 不独立推断用电,0.80,yes,candidate_program,shared_with_R12,no,交付点仅作参考
+R14,次卧,3,2,1,0,1,卧室入口/床两侧控制、家具布置及用户确认床头灯/柜体灯,0.80,yes,candidate_program,bed_and_joinery_coordination,no,已有 BL-03/BL-04；床侧插座、控制和弱电待联动定位
+R15,次卧飘窗,0,1,0,0,0,交付普通用电参考及飘窗使用情景,0.60,yes,candidate_program,position_pending_use_case,no,不自动保留交付位置
+R16,客卫干区,1,1,0,1,0,台盆/镜柜使用情景、现有灯具与等电位参考,0.70,yes,candidate_program,fixture_and_elevation_pending,no,手动专用供电表示镜柜/镜前灯或驱动电源协调组
+R17,客卫,1,1,0,2,0,卫生间语义、暖风面板交付参考及卫浴设备使用情景,0.80,yes,candidate_program,wet_area_equipment_pending,no,手动专用供电为暖风/换气与智能马桶协调组；防水区和设备参数未冻结
+R18,客卫飘窗,0,0,0,0,0,飘窗子 Space 不独立推断用电,0.80,yes,candidate_program,shared_with_R17,no,交付点仅作参考
+R19,阳台,1,1,0,1,0,阳台空间语义、现有灯具/开关参考及室外环境,0.70,yes,candidate_program,weatherproofing_pending,no,手动专用供电为阳台设备协调预留；具体设备尚未确认
+R20,客厅,2,3,2,1,2,客厅多场景、TV 参考、沙发/清洁用电及书架/高柜照明,0.75,yes,candidate_program,furniture_and_media_coordination,no,手动专用供电为客厅东侧 A06 空调；设备尚无正式 GlobalId
+R21,书房飘窗,0,1,0,0,0,飘窗使用情景与后续反向缺项检查,0.55,yes,candidate_program,position_pending_use_case,no,未确认具体用途时不定位
+R22,书房,2,2,2,0,0,书房桌面工作场景、现有灯具及交付控制参考,0.70,yes,candidate_program,desk_and_network_coordination,no,工作台用电、有线网络与无线覆盖均需最终家具位置
