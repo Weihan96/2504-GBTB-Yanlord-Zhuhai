@@ -22,6 +22,8 @@ DRIVER_HANDLER_KEY = "rcp1_hvac_constraint_preview_handler"
 DRIVER_STATE_KEY = "rcp1_hvac_constraint_preview_state"
 PREVIEW_RADIUS_M = 0.015
 FILLET_RADIUS_M = 0.12
+SERVICE_EXIT_M = 0.15
+POINT_EPSILON_M = 0.000001
 LEGACY_REVIEW_COLLECTIONS = (
     "RCP1_HVAC_REMODEL_REVIEW",
     "RCP1_PAIR_REVIEW_TEMP",
@@ -133,11 +135,87 @@ def create_anchor(
     anchor["rcp1_anchor_id"] = anchor_id
     anchor["rcp1_anchor_kind"] = anchor_kind
     anchor["rcp1_global_id"] = global_id or ""
+    anchor["rcp1_reference_world_mm"] = json.dumps(location_mm)
     world = Matrix.Translation(Vector(tuple(value / 1000.0 for value in location_mm)))
     parent = ifc_object(global_id)
-    anchor.parent = parent
-    anchor.matrix_world = world
+    if anchor_kind == "equipment" and parent is not None:
+        bounds = [Vector(corner) for corner in parent.bound_box]
+        local_min = Vector(tuple(min(point[index] for point in bounds) for index in range(3)))
+        local_max = Vector(tuple(max(point[index] for point in bounds) for index in range(3)))
+        local_service_point = Vector((
+            local_max.x,
+            (local_min.y + local_max.y) / 2.0,
+            (local_min.z + local_max.z) / 2.0,
+        ))
+        world_axis = (parent.matrix_world.to_3x3() @ Vector((1.0, 0.0, 0.0))).normalized()
+        dominant_index = max(range(3), key=lambda index: abs(world_axis[index]))
+        cardinal_axis = Vector((0.0, 0.0, 0.0))
+        cardinal_axis[dominant_index] = 1.0 if world_axis[dominant_index] >= 0.0 else -1.0
+        anchor.parent = parent
+        anchor.location = local_service_point
+        anchor["rcp1_placement_basis"] = "equipment_local_positive_x_service_face"
+        anchor["rcp1_service_local_mm"] = json.dumps([round(value * 1000.0, 6) for value in local_service_point])
+        anchor["rcp1_service_axis_world"] = json.dumps([int(value) for value in cardinal_axis])
+    else:
+        anchor.parent = parent
+        anchor.matrix_world = world
+        anchor["rcp1_placement_basis"] = "ifc_object_bbox_centre"
     return anchor
+
+
+def append_unique(points: list[Vector], point: Vector) -> None:
+    if not points or (points[-1] - point).length > POINT_EPSILON_M:
+        points.append(point.copy())
+
+
+def axis_order_for_service_anchor(anchor: bpy.types.Object) -> tuple[int, int, int]:
+    axis = Vector(json.loads(anchor.get("rcp1_service_axis_world", "[1, 0, 0]")))
+    parallel = max(range(3), key=lambda index: abs(axis[index]))
+    if parallel == 0:
+        return (1, 0, 2)
+    if parallel == 1:
+        return (0, 1, 2)
+    return (0, 1, 2)
+
+
+def append_orthogonal_leg(points: list[Vector], target: Vector, axis_order: tuple[int, int, int]) -> None:
+    current = points[-1].copy()
+    for axis_index in axis_order:
+        candidate = current.copy()
+        candidate[axis_index] = target[axis_index]
+        append_unique(points, candidate)
+        current = candidate
+
+
+def simplify_orthogonal_points(points: list[Vector]) -> list[Vector]:
+    simplified: list[Vector] = []
+    for point in points:
+        append_unique(simplified, point)
+        while len(simplified) >= 3:
+            first, middle, last = simplified[-3:]
+            incoming = middle - first
+            outgoing = last - middle
+            incoming_axis = max(range(3), key=lambda index: abs(incoming[index]))
+            outgoing_axis = max(range(3), key=lambda index: abs(outgoing[index]))
+            if incoming_axis != outgoing_axis or incoming.dot(outgoing) < 0.0:
+                break
+            simplified.pop(-2)
+    return simplified
+
+
+def orthogonal_world_points(anchors: list[bpy.types.Object]) -> list[Vector]:
+    if not anchors:
+        return []
+    points = [anchors[0].matrix_world.translation.copy()]
+    for index, target_anchor in enumerate(anchors[1:]):
+        if index == 0 and anchors[0].get("rcp1_anchor_kind") == "equipment":
+            service_axis = Vector(json.loads(anchors[0].get("rcp1_service_axis_world", "[1, 0, 0]")))
+            append_unique(points, points[-1] + service_axis * SERVICE_EXIT_M)
+            axis_order = axis_order_for_service_anchor(anchors[0])
+        else:
+            axis_order = (0, 1, 2)
+        append_orthogonal_leg(points, target_anchor.matrix_world.translation, axis_order)
+    return simplify_orthogonal_points(points)
 
 
 def create_curve(
@@ -164,13 +242,14 @@ def create_curve(
 def update_curve(route: bpy.types.Object, anchors: list[bpy.types.Object]) -> None:
     curve = route.data
     curve.splines.clear()
-    if len(anchors) < 2:
+    world_points = orthogonal_world_points(anchors)
+    if len(world_points) < 2:
         return
     spline = curve.splines.new("POLY")
-    spline.points.add(len(anchors) - 1)
+    spline.points.add(len(world_points) - 1)
     inverse = route.matrix_world.inverted_safe()
-    for point, anchor in zip(spline.points, anchors):
-        local = inverse @ anchor.matrix_world.translation
+    for point, world_point in zip(spline.points, world_points):
+        local = inverse @ world_point
         point.co = (*local, 1.0)
 
 
@@ -305,11 +384,22 @@ class RCP1HVAC_OT_export_candidate(bpy.types.Operator):
                     "anchor_kind": anchor.get("rcp1_anchor_kind", "unknown"),
                     "global_id": anchor.get("rcp1_global_id", "") or None,
                     "world_mm": [round(value * 1000.0, 6) for value in anchor.matrix_world.translation],
+                    "placement_basis": anchor.get("rcp1_placement_basis", "unknown"),
+                    "reference_world_mm": json.loads(anchor.get("rcp1_reference_world_mm", "null")),
+                    "service_local_mm": json.loads(anchor.get("rcp1_service_local_mm", "null")),
+                    "service_axis_world": json.loads(anchor.get("rcp1_service_axis_world", "null")),
                 })
+            orthogonal_points = []
+            if route.data.splines:
+                spline = route.data.splines[0]
+                for point in spline.points:
+                    world = route.matrix_world @ Vector(point.co[:3])
+                    orthogonal_points.append([round(value * 1000.0, 6) for value in world])
             routes.append({
                 "route_id": route.get("rcp1_route_id", route.name),
                 "status": "blender_preview_candidate_human_review_required",
                 "anchors": anchors,
+                "orthogonal_points_world_mm": orthogonal_points,
             })
         output = project_root() / "build/rcp1/hvac-route-preview-candidate.json"
         output.parent.mkdir(parents=True, exist_ok=True)
@@ -323,6 +413,8 @@ class RCP1HVAC_OT_export_candidate(bpy.types.Operator):
                 "geometry_nodes": NODE_GROUP_NAME,
                 "preview_radius_m": PREVIEW_RADIUS_M,
                 "fillet_radius_m": FILLET_RADIUS_M,
+                "service_exit_m": SERVICE_EXIT_M,
+                "orthogonal_axis_order": "service-perpendicular, service-parallel, Z; then X, Y, Z",
                 "fabrication_geometry": False,
             },
             "formal_ifc_write_allowed": False,
@@ -341,7 +433,8 @@ class RCP1HVAC_PT_constraint_authoring(bpy.types.Panel):
 
     def draw(self, context):
         layout = self.layout
-        layout.label(text="青色：已确认锚点；橙色：临时弯点")
+        layout.label(text="青色：综合服务路线；橙色：临时弯点")
+        layout.label(text="设备端：局部 +X 厂家接管侧")
         layout.label(text="预览会自动更新；不会自动写 IFC")
         layout.operator("rcp1_hvac.rebuild_preview")
         layout.prop(context.scene, "rcp1_hvac_active_route", text="路线 ID")

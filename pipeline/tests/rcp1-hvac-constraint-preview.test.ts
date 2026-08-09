@@ -10,6 +10,11 @@ test("HVAC authoring preview updates geometry without writing IFC or blend", asy
   expect(source).toContain('NODE_GROUP_NAME = "RCP1_HVAC_CONSTRAINT_GEOMETRY"');
   expect(source).toContain('nodes.new("GeometryNodeFilletCurve")');
   expect(source).toContain('nodes.new("GeometryNodeCurveToMesh")');
+  expect(source).toContain('SERVICE_EXIT_M = 0.15');
+  expect(source).toContain('"equipment_local_positive_x_service_face"');
+  expect(source).toContain("orthogonal_world_points");
+  expect(source).toContain('"orthogonal_points_world_mm"');
+  expect(source).toContain('"fillet_radius_m": FILLET_RADIUS_M');
   expect(source).toContain("automatic_preview_handler");
   expect(source).toContain('bl_idname = "rcp1_hvac.add_bend"');
   expect(source).toContain('bl_idname = "rcp1_hvac.rebuild_preview"');

@@ -18,6 +18,19 @@ def sha256(path: Path) -> str:
     return digest.hexdigest()
 
 
+def cardinal_segment(first: list[float], second: list[float], tolerance_mm: float) -> tuple[bool, list[float]]:
+    delta = [second[index] - first[index] for index in range(3)]
+    changing_axes = sum(abs(value) > tolerance_mm for value in delta)
+    return changing_axes == 1, delta
+
+
+def cardinal_axis(axis: list[float] | None, tolerance_mm: float) -> bool:
+    if axis is None or len(axis) != 3:
+        return False
+    nonzero = [abs(value) > tolerance_mm for value in axis]
+    return sum(nonzero) == 1 and math.isclose(sum(value * value for value in axis), 1.0, abs_tol=tolerance_mm)
+
+
 def main() -> int:
     parser = argparse.ArgumentParser()
     parser.add_argument("--input", type=Path, required=True)
@@ -49,7 +62,10 @@ def main() -> int:
     anchor_checks = []
     route_checks = []
     maximum_anchor_deviation = 0.0
+    maximum_equipment_service_offset = 0.0
     bend_count = 0
+    all_routes_orthogonal = True
+    all_route_anchors_on_path = True
     for route_id, expected in expected_routes.items():
         actual = preview_routes[route_id]
         expected_by_id = {row["anchor_id"]: row for row in expected["waypoints"]}
@@ -73,7 +89,20 @@ def main() -> int:
                 })
                 continue
             expected_row = expected_by_id[row["anchor_id"]]
-            deviation = math.dist(row["world_mm"], expected_row["centre_mm"])
+            placement_basis = row.get("placement_basis", "ifc_object_bbox_centre")
+            is_equipment_service_face = placement_basis == "equipment_local_positive_x_service_face"
+            if is_equipment_service_face:
+                reference_world = row.get("reference_world_mm")
+                if reference_world is None:
+                    raise RuntimeError(f"equipment service anchor lacks IFC reference centre: {route_id}")
+                deviation = math.dist(reference_world, expected_row["centre_mm"])
+                service_offset = math.dist(row["world_mm"], reference_world)
+                maximum_equipment_service_offset = max(maximum_equipment_service_offset, service_offset)
+                service_axis_is_cardinal = cardinal_axis(row.get("service_axis_world"), args.tolerance_mm)
+            else:
+                deviation = math.dist(row["world_mm"], expected_row["centre_mm"])
+                service_offset = None
+                service_axis_is_cardinal = None
             maximum_anchor_deviation = max(maximum_anchor_deviation, deviation)
             anchor_checks.append({
                 "route_id": route_id,
@@ -82,21 +111,59 @@ def main() -> int:
                 "global_id": row["global_id"],
                 "deviation_from_current_ifc_anchor_mm": deviation,
                 "within_tolerance": deviation <= args.tolerance_mm,
+                "placement_basis": placement_basis,
+                "equipment_service_offset_from_reference_mm": service_offset,
+                "service_axis_is_cardinal": service_axis_is_cardinal,
             })
-        segment_lengths = [
-            math.dist(first["world_mm"], second["world_mm"])
-            for first, second in zip(actual["anchors"], actual["anchors"][1:])
-        ]
+        orthogonal_points = actual.get("orthogonal_points_world_mm", [])
+        if len(orthogonal_points) < 2:
+            raise RuntimeError(f"route lacks evaluated orthogonal points: {route_id}")
+        segment_rows = []
+        for first, second in zip(orthogonal_points, orthogonal_points[1:]):
+            is_cardinal, delta = cardinal_segment(first, second, args.tolerance_mm)
+            length = math.dist(first, second)
+            segment_rows.append({
+                "from_world_mm": first,
+                "to_world_mm": second,
+                "delta_mm": delta,
+                "length_mm": length,
+                "axis_aligned": is_cardinal,
+                "nonzero": length > args.tolerance_mm,
+            })
+        route_is_orthogonal = all(row["axis_aligned"] and row["nonzero"] for row in segment_rows)
+        all_routes_orthogonal = all_routes_orthogonal and route_is_orthogonal
+        search_from = 0
+        anchor_point_indices = []
+        for anchor in actual["anchors"]:
+            match = next((
+                index
+                for index in range(search_from, len(orthogonal_points))
+                if math.dist(anchor["world_mm"], orthogonal_points[index]) <= args.tolerance_mm
+            ), None)
+            if match is None:
+                anchor_point_indices.append(None)
+                continue
+            anchor_point_indices.append(match)
+            search_from = match
+        route_anchors_on_path = all(index is not None for index in anchor_point_indices)
+        all_route_anchors_on_path = all_route_anchors_on_path and route_anchors_on_path
         route_checks.append({
             "route_id": route_id,
             "anchor_order": [row["anchor_id"] for row in actual["anchors"]],
-            "segment_lengths_mm": segment_lengths,
-            "total_length_mm": sum(segment_lengths),
+            "orthogonal_points_world_mm": orthogonal_points,
+            "segments": segment_rows,
+            "total_length_mm": sum(row["length_mm"] for row in segment_rows),
+            "all_segments_axis_aligned": route_is_orthogonal,
+            "anchor_point_indices": anchor_point_indices,
+            "all_anchors_on_path_in_order": route_anchors_on_path,
             "status": "constraint_skeleton_not_fabrication_geometry",
         })
 
     fixed_anchor_checks = [row for row in anchor_checks if row["anchor_kind"] != "blender_bend"]
-    fixed_anchors_pass = all(row["within_tolerance"] for row in fixed_anchor_checks)
+    fixed_anchors_pass = all(
+        row["within_tolerance"] and row.get("service_axis_is_cardinal") is not False
+        for row in fixed_anchor_checks
+    )
     output = {
         "mode": "read_only_rcp1_hvac_preview_audit",
         "generated_at": datetime.now(timezone.utc).astimezone().isoformat(timespec="seconds"),
@@ -114,12 +181,21 @@ def main() -> int:
             "fixed_anchor_check_count": len(fixed_anchor_checks),
             "temporary_bend_count": bend_count,
             "maximum_fixed_anchor_deviation_mm": maximum_anchor_deviation,
+            "maximum_equipment_service_offset_from_reference_mm": maximum_equipment_service_offset,
+            "all_routes_orthogonal": all_routes_orthogonal,
+            "all_route_anchors_on_path_in_order": all_route_anchors_on_path,
         },
         "gates": {
             "source_hash_matches": True,
             "route_set_matches": True,
             "fixed_anchor_order_matches": True,
             "fixed_anchors_within_tolerance": fixed_anchors_pass,
+            "equipment_service_axes_cardinal": all(
+                row.get("service_axis_is_cardinal") is not False for row in fixed_anchor_checks
+            ),
+            "all_preview_segments_axis_aligned": all_routes_orthogonal,
+            "all_route_anchors_on_path_in_order": all_route_anchors_on_path,
+            "geometry_nodes_fillet_present": preview.get("preview_parameters", {}).get("fillet_radius_m", 0) > 0,
             "temporary_bends_require_human_review": bend_count > 0,
             "fabrication_geometry_ready": False,
             "formal_ifc_write_allowed": False,
@@ -128,7 +204,7 @@ def main() -> int:
     args.output.parent.mkdir(parents=True, exist_ok=True)
     args.output.write_text(json.dumps(output, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
     print(json.dumps(output["summary"], ensure_ascii=False))
-    return 0 if fixed_anchors_pass else 1
+    return 0 if fixed_anchors_pass and all_routes_orthogonal and all_route_anchors_on_path else 1
 
 
 if __name__ == "__main__":
