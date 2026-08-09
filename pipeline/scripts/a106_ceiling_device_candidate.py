@@ -336,6 +336,14 @@ def compile_report(args: argparse.Namespace) -> dict[str, Any]:
 def render_svg(source: str, report: dict[str, Any], output: Path) -> None:
     source = re.sub(r'width="400(?:\.0+)?mm"', 'width="500mm"', source, count=1)
     source = re.sub(r'viewBox="0 0 400(?:\.0+)? 400(?:\.0+)?"', 'viewBox="0 0 500 400"', source, count=1)
+    source, removed_underlays = re.subn(
+        r'\s*<image\b[^>]*\bxlink:href="Wall Plan-underlay\.png"[^>]*/>\s*',
+        "\n",
+        source,
+        count=1,
+    )
+    if removed_underlays != 1:
+        raise RuntimeError("A-106 source must contain exactly one removable Wall Plan raster underlay")
     if "</svg>" not in source or 'viewBox="0 0 500 400"' not in source:
         raise RuntimeError("could not prepare 500x400 A-106 SVG")
 
@@ -355,7 +363,7 @@ def render_svg(source: str, report: dict[str, Any], output: Path) -> None:
     markup.extend([
         '<g><rect class="a106-panel" x="402" y="7" width="93" height="386"/>',
         '<text class="a106-title" x="407" y="16">A-106 天花设备定位候选</text>',
-        '<text class="a106-note" x="407" y="24">只读候选｜不写 IFC｜非施工发布</text>',
+        '<text class="a106-note" x="407" y="24">纯矢量审核底图｜不写 IFC｜非施工发布</text>',
         '<text class="a106-text" x="407" y="39">橙点：烟感候选（3）</text>',
         '<text class="a106-text" x="407" y="47">蓝点：卧室吸顶 AP 候选（2）</text>',
         '<text class="a106-text" x="407" y="55">灰点：正式 IFC 既有灯具（79）</text>',

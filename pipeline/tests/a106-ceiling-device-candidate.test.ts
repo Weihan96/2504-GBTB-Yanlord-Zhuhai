@@ -21,7 +21,9 @@ test("A-106 smoke and AP candidates pass known-geometry gates", () => {
   expect(report.candidates.every((row: { nearest_high_level_obstacle_clearance_mm: number | null }) => row.nearest_high_level_obstacle_clearance_mm === null || row.nearest_high_level_obstacle_clearance_mm >= 500)).toBe(true);
   expect(report.gates.all_smoke_supply_air_clearances_verified).toBe(false);
   expect(report.gates.automatic_ifc_write_allowed).toBe(false);
-  expect(readFileSync(svg, "utf8")).toContain("a106-ceiling-device-candidate");
+  const renderedSvg = readFileSync(svg, "utf8");
+  expect(renderedSvg).toContain("a106-ceiling-device-candidate");
+  expect(renderedSvg).not.toContain("Wall Plan-underlay.png");
 }, 60_000);
 
 test("A-106 candidate has no formal IFC write path", () => {
