@@ -278,12 +278,18 @@ for index, (decision_id, owner) in enumerate(module.ORIGIN_HANDOFF_DECISIONS.ite
         "proposed_value": f"{owner} 负责后续确认",
     })
 exact = module.approved_origin_handoffs(rows, eligible)
+resolved = [dict(row) for row in rows]
+resolved[-3]["status"] = "implemented"
+resolved[-3]["review_required"] = "no"
+eligible.remove(resolved[-3]["object_guid"])
+resolved_result = module.approved_origin_handoffs(resolved, eligible)
 overlap = [dict(row) for row in rows]
 overlap[1]["object_guid"] = overlap[0]["object_guid"]
 wrong_scope = [dict(row) for row in rows]
 wrong_scope[0]["scope"] = "object-placement"
 print(json.dumps({
     "exact": {key: sorted(value) for key, value in exact.items()},
+    "resolved": {key: sorted(value) for key, value in resolved_result.items()},
     "overlap": module.approved_origin_handoffs(overlap, eligible),
     "wrong_scope": module.approved_origin_handoffs(wrong_scope, eligible),
 }))
@@ -291,6 +297,9 @@ print(json.dumps({
   const parsed = JSON.parse(output);
   expect(Object.keys(parsed.exact).sort()).toEqual(
     ["A104", "A105", "WFIN", "PLUM", "ELEC", "RCP1", "INT1", "DET1"].sort(),
+  );
+  expect(Object.keys(parsed.resolved).sort()).toEqual(
+    ["A104", "A105", "WFIN", "PLUM", "ELEC", "INT1", "DET1"].sort(),
   );
   expect(parsed.overlap).toEqual({});
   expect(parsed.wrong_scope).toEqual({});

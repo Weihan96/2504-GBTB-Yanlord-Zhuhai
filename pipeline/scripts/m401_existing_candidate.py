@@ -19,8 +19,56 @@ import ifcopenshell.util.element
 
 AC_TYPE_NAMES = {"AC1180", "AC700", "AC700F"}
 HVAC_FLOW_NAMES = {"Liquid", "Drain Pipe", "Liquid Living Room", "Gas", "Gas Living Room"}
+HVAC_FLOW_LEGACY_ROLES = {
+    "Liquid": {
+        "role": "legacy_base_refrigerant_liquid_geometry",
+        "basis": "用户确认该对象在旧方案中表达冷媒液管，但紫色几何不是装修后最终管线；旧 lowpoly 与正式 IFC 的 3 个独立分支及组件包围尺寸在 0.0153 mm 内一致.",
+        "missing": "diameter, insulation, system membership, ports, connections, route ownership and installer clearances",
+        "stop": "Treat this as a legacy design base only; redesign the remodel route before claiming a connected or installable system.",
+    },
+    "Liquid Living Room": {
+        "role": "legacy_base_refrigerant_liquid_geometry",
+        "basis": "用户确认该对象在旧方案中表达冷媒液管，但不是装修后最终管线；旧 lowpoly 与正式 IFC 的单一分支组件包围尺寸在 0.001 mm 内一致.",
+        "missing": "diameter, insulation, system membership, ports, connections, route ownership and installer clearances",
+        "stop": "Treat this as a legacy design base only; redesign the remodel route before claiming a connected or installable system.",
+    },
+    "Gas": {
+        "role": "legacy_base_refrigerant_gas_geometry",
+        "basis": "用户确认该对象在旧方案中表达冷媒气管，但紫色几何不是装修后最终管线；旧 lowpoly 与正式 IFC 的 3 个独立分支及组件包围尺寸在 0.0077 mm 内一致.",
+        "missing": "diameter, insulation, system membership, ports, connections, route ownership and installer clearances",
+        "stop": "Treat this as a legacy design base only; redesign the remodel route before claiming a connected or installable system.",
+    },
+    "Gas Living Room": {
+        "role": "legacy_base_refrigerant_gas_geometry",
+        "basis": "用户确认该对象在旧方案中表达冷媒气管，但不是装修后最终管线；旧 lowpoly 与正式 IFC 的单一分支组件包围尺寸在 0.001 mm 内一致.",
+        "missing": "diameter, insulation, system membership, ports, connections, route ownership and installer clearances",
+        "stop": "Treat this as a legacy design base only; redesign the remodel route before claiming a connected or installable system.",
+    },
+    "Drain Pipe": {
+        "role": "legacy_base_condensate_geometry",
+        "basis": "用户确认该对象在旧方案中表达冷凝水管，但紫色几何不是装修后最终管线；旧 lowpoly 与正式 IFC 的 4 个独立分支及组件包围尺寸在 0.0008 mm 内一致.",
+        "missing": "diameter, slope, discharge destination, system membership, ports, connections and access",
+        "stop": "Treat this as a legacy design base only; redesign the remodel route before claiming drainage continuity or an installable route.",
+    },
+}
 CHECK_VALVE_ID = "1faflkXXH6M9cnYPE9Liir"
 DIFFUSER_PROXY_IDS = {"16Ey9Flj9BK9VRun$ozzjH", "3Bv_Kl3jDC5RvaUMdyge1U"}
+DIFFUSER_PROXY_DECISIONS = {
+    "16Ey9Flj9BK9VRun$ozzjH": {
+        "basis": "用户在 Blender 集中审图中确认该 Proxy 是转角空调风口；正式 IFC 仍无 IfcAirTerminal 类型、系统、端口或风量.",
+        "confidence": 1.0,
+        "status": "IDENTITY_CONFIRMED_REMODEL_DESIGN_PENDING",
+        "missing": "supply/return/exhaust role, grille selection, airflow, connection, installation and access",
+        "stop": "Retain the confirmed outlet identity, but do not convert the proxy to a terminal or publish it until the remodel air-side design is complete.",
+    },
+    "3Bv_Kl3jDC5RvaUMdyge1U": {
+        "basis": "用户确认该 Proxy 是旧方案空调出风口，同时明确该方案有缺陷；正式 IFC 仍无 IfcAirTerminal、系统、端口或风量.",
+        "confidence": 1.0,
+        "status": "LEGACY_SCHEME_CONFIRMED_REDESIGN_REQUIRED",
+        "missing": "remodel supply-air design, airflow, grille size, centreline, connection, installation and access",
+        "stop": "Retain only as a legacy design base; do not publish the current proxy as the remodel supply outlet.",
+    },
+}
 CEILING_CONTEXT_IDS = {
     "0w_j3LiLHFX8uK$fI3H5IP",
     "1_eTV3TaD0ewHXs5A2gCk0",
@@ -304,14 +352,15 @@ def main() -> None:
         if product.Name not in HVAC_FLOW_NAMES or product.ObjectType != "HVAC":
             continue
         hvac_flows.append(product)
+        design_role = HVAC_FLOW_LEGACY_ROLES[product.Name]
         records.append(
             instance_record(
                 settings, product, source_hash, "M401-FLOW-001",
-                "untyped_hvac_service_mesh",
-                "IfcFlowSegment ObjectType=HVAC and exact occurrence name are observable; no assigned type or connection semantics exists.",
-                0.6, True, "HUMAN_REVIEW_REQUIRED",
-                "whether Liquid/Gas/Drain names mean refrigerant, condensate or another service; diameter, system, ports, connections and route status",
-                "Do not interpret the mesh as a confirmed duct, pipe service or connected system before design/installer review.",
+                design_role["role"],
+                design_role["basis"],
+                1.0, True, "LEGACY_BASE_CONFIRMED_REMODEL_DESIGN_PENDING",
+                design_role["missing"],
+                design_role["stop"],
             )
         )
 
@@ -329,14 +378,15 @@ def main() -> None:
 
     for global_id in sorted(DIFFUSER_PROXY_IDS):
         product = model.by_guid(global_id)
+        decision = DIFFUSER_PROXY_DECISIONS[global_id]
         records.append(
             instance_record(
                 settings, product, source_hash, "M401-DIFFUSER-001",
                 "named_embedded_ac_diffuser_proxy",
-                "Exact proxy name contains AC Diffuser Embeded; no IfcAirTerminal type or system relation exists.",
-                0.8, True, "HUMAN_REVIEW_REQUIRED",
-                "real terminal versus ceiling opening/placeholder; supply/return/exhaust role, grille selection, airflow, connection and access",
-                "Do not convert the proxy to a terminal or infer airflow/connection until the intended identity is confirmed.",
+                decision["basis"],
+                decision["confidence"], True, decision["status"],
+                decision["missing"],
+                decision["stop"],
             )
         )
 
@@ -365,7 +415,9 @@ def main() -> None:
     expected_counts = Counter(
         {
             "assigned_ac_equipment_instance": 5,
-            "untyped_hvac_service_mesh": 5,
+            "legacy_base_refrigerant_liquid_geometry": 2,
+            "legacy_base_refrigerant_gas_geometry": 2,
+            "legacy_base_condensate_geometry": 1,
             "named_flue_check_valve_proxy": 1,
             "named_embedded_ac_diffuser_proxy": 2,
             "high_level_ceiling_or_led_coordination_context": 15,

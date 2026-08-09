@@ -29,10 +29,12 @@ test("M-401 inventory separates instances, types, context and missing inputs", (
   expect(report.summary.actual_instances).toBe(28);
   expect(report.summary.instance_role_counts).toEqual({
     assigned_ac_equipment_instance: 5,
+    legacy_base_condensate_geometry: 1,
+    legacy_base_refrigerant_gas_geometry: 2,
+    legacy_base_refrigerant_liquid_geometry: 2,
     high_level_ceiling_or_led_coordination_context: 15,
     named_embedded_ac_diffuser_proxy: 2,
     named_flue_check_valve_proxy: 1,
-    untyped_hvac_service_mesh: 5,
   });
   expect(report.summary.type_definitions).toBe(3);
   expect(report.summary.missing_input_blocks).toBe(5);
@@ -63,6 +65,29 @@ test("M-401 inventory separates instances, types, context and missing inputs", (
       (item: { global_id: string }) => item.global_id === globalId,
     );
     expect(diffuser.observable_role).toBe("named_embedded_ac_diffuser_proxy");
+  }
+  const confirmedCornerDiffuser = instances.find(
+    (item: { global_id: string }) => item.global_id === "16Ey9Flj9BK9VRun$ozzjH",
+  );
+  expect(confirmedCornerDiffuser.review_status).toBe(
+    "IDENTITY_CONFIRMED_REMODEL_DESIGN_PENDING",
+  );
+  expect(confirmedCornerDiffuser.confidence).toBe(1);
+  const confirmedLegacyDiffuser = instances.find(
+    (item: { global_id: string }) => item.global_id === "3Bv_Kl3jDC5RvaUMdyge1U",
+  );
+  expect(confirmedLegacyDiffuser.review_status).toBe(
+    "LEGACY_SCHEME_CONFIRMED_REDESIGN_REQUIRED",
+  );
+  expect(confirmedLegacyDiffuser.stop_condition).toContain("legacy design base");
+  const confirmedFlowRoles = instances.filter(
+    (item: { observable_role: string }) => item.observable_role.startsWith("legacy_base_"),
+  );
+  expect(confirmedFlowRoles).toHaveLength(5);
+  for (const flow of confirmedFlowRoles) {
+    expect(flow.review_status).toBe("LEGACY_BASE_CONFIRMED_REMODEL_DESIGN_PENDING");
+    expect(flow.human_review_required).toBe(true);
+    expect(flow.stop_condition).toContain("legacy design base only");
   }
   expect(report.records.filter(
     (item: { review_status: string }) => item.review_status === "BLOCK",

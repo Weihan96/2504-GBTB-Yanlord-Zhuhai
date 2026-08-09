@@ -26,7 +26,7 @@ from flow_segment_centerline_audit import mesh_components
 from geometry_alignment_audit import geometry_settings, world_mesh_mm
 
 
-EXPECTED_IFC_SHA256 = "c7295688003f3f36775a25f6adc2c9878e203c52c980f8e46faed66a3537c4a8"
+EXPECTED_IFC_SHA256 = "7521c09991f3d0c7b7d91ca2324fd55ad961d8e32e9e3e9a9777a4cc19b06e81"
 PVC110_IDS = ("178mqyyzzFowLcbXcH6prO", "0bfVg4Ys1CevZs$qxhkXTo")
 ASSEMBLY_IDS = ("1FICW5lCjEIQPvN1oi4cE2", "0a3r2aWdbFi9OlDGcQ00CE", "1fEFh83259DRb927ZP9yW7")
 DIRECT_DRAIN_IDS = (

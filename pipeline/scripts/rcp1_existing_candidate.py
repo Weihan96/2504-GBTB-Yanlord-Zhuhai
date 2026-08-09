@@ -22,7 +22,7 @@ from shapely.geometry import Polygon
 from shapely.ops import unary_union
 
 
-EXPECTED_SOURCE_SHA256 = "c7295688003f3f36775a25f6adc2c9878e203c52c980f8e46faed66a3537c4a8"
+EXPECTED_SOURCE_SHA256 = "7521c09991f3d0c7b7d91ca2324fd55ad961d8e32e9e3e9a9777a4cc19b06e81"
 PROTECTED_HANDOFF_IDS = {"16Ey9Flj9BK9VRun$ozzjH", "0zWtSQZzjFQg_PORjlssbe"}
 OTHER_HIGH_PROXY_IDS = {"1faflkXXH6M9cnYPE9Liir"}
 EXPECTED_AC_OPENING_IDS = {
@@ -33,6 +33,21 @@ EXPECTED_AC_OPENING_IDS = {
     "3ERXx822H9jOPo6CetKX9r",
     "0DOeKdT3DE9f2LMR_x$G7q",
     "1_EX1UWfL8ShcGm5BI1UPc",
+}
+LEGACY_BASE_PAIR_IDS = {
+    tuple(sorted(pair))
+    for pair in [
+        ("0Ik2RcgGbFOhdYTJPgh5AQ", "0f2ZLauDH8lRnYj6oervDm"),
+        ("0Ik2RcgGbFOhdYTJPgh5AQ", "10Wm8ivdX7dAVfz4cV8l5Q"),
+        ("0f2ZLauDH8lRnYj6oervDm", "10Wm8ivdX7dAVfz4cV8l5Q"),
+        ("0f2ZLauDH8lRnYj6oervDm", "1yW7DASIz8qA$2j8z9tdl2"),
+        ("0hHnbLj0X4jPDz4o3QJo1l", "10Wm8ivdX7dAVfz4cV8l5Q"),
+        ("0hHnbLj0X4jPDz4o3QJo1l", "1QBdVekDnBsOleyo9PM6rT"),
+        ("0hHnbLj0X4jPDz4o3QJo1l", "1hZRB0eOX8OA8rcjke67P0"),
+        ("10Wm8ivdX7dAVfz4cV8l5Q", "1hZRB0eOX8OA8rcjke67P0"),
+        ("10Wm8ivdX7dAVfz4cV8l5Q", "1yW7DASIz8qA$2j8z9tdl2"),
+        ("1QBdVekDnBsOleyo9PM6rT", "1hZRB0eOX8OA8rcjke67P0"),
+    ]
 }
 
 
@@ -257,6 +272,7 @@ def world_mesh_relations(
     tolerance_mm: float,
     search_window_mm: float,
     review_clearance_mm: float,
+    legacy_base_pairs: set[tuple[str, str]],
 ) -> dict[str, Any]:
     if tolerance_mm <= 0:
         raise RuntimeError("coordination tolerance must be positive")
@@ -373,41 +389,37 @@ def world_mesh_relations(
             clearance_kind = "world_aabb_separation_lower_bound"
             lower_bound = True
 
-        is_expected_without_review = rule in {
+        if key in legacy_base_pairs and geometry_state == "intersecting" and rule == "none":
+            rule = "legacy_hvac_base_intersection_pending_redesign"
+
+        is_expected_without_pair_review = rule in {
             "expected_light_ceiling_embedding_candidate",
             "expected_opening_void_host",
+            "ceiling_assembly_candidate",
+            "diffuser_ceiling_embedding_candidate",
+            "flow_ceiling_coordination_candidate",
+            "opening_passage_candidate",
+            "legacy_hvac_base_intersection_pending_redesign",
         }
-        service_categories = {
-            "name_only_air_outlet_proxy",
-            "typed_high_ac_appliance",
-            "named_high_opening",
-            "high_level_flow_segment",
-            "name_only_high_service_proxy",
-        }
-        close_service_pair = (
-            geometry_state == "separated"
-            and not lower_bound
-            and minimum_clearance <= review_clearance_mm + 1e-9
-            and bool({first["category"], second["category"]} & service_categories)
-        )
         review_required = (
-            not is_expected_without_review
-            and (
-                geometry_state in {"intersecting", "contacting"}
-                or close_service_pair
-            )
+            not is_expected_without_pair_review
+            and geometry_state in {"intersecting", "contacting"}
         )
         if review_required:
             if geometry_state == "intersecting" and rule == "none":
                 review_reason = "unresolved world-mesh intersection; installation/system semantics are absent"
             elif geometry_state == "contacting" and rule == "none":
                 review_reason = "world-mesh contact is not covered by an expected-relation rule"
-            elif close_service_pair:
-                review_reason = f"service-related exact clearance is within {review_clearance_mm:g} mm"
             else:
                 review_reason = f"{rule} requires installation and access confirmation"
         else:
-            review_reason = "expected relation or mechanically separated beyond the review threshold"
+            if rule == "legacy_hvac_base_intersection_pending_redesign":
+                review_reason = "the same mesh intersection exists in the hash-verified legacy design base; remodel HVAC route design remains pending"
+            else:
+                review_reason = "expected non-hard relation or mechanically separated pair; thematic system/access review remains"
+        relation_basis = "formal IFC world Body meshes; AABB prefilter followed by IfcOpenShell geom.tree collision/intersection/clearance"
+        if rule == "legacy_hvac_base_intersection_pending_redesign":
+            relation_basis += "; legacy 2504_lowpoly.blend pair state independently reproduced by rcp1_legacy_base_audit.py"
         relation = {
             "pair": list(key),
             "first": {
@@ -432,7 +444,7 @@ def world_mesh_relations(
             "conflict_candidate": review_required and geometry_state == "intersecting" and rule == "none",
             "review_required": "yes" if review_required else "no",
             "review_reason": review_reason,
-            "basis": "formal IFC world Body meshes; AABB prefilter followed by IfcOpenShell geom.tree collision/intersection/clearance",
+            "basis": relation_basis,
             "confidence": 1.0 if exact_tested else 0.95,
         }
         pair_records.append(relation)
@@ -449,11 +461,13 @@ def world_mesh_relations(
         if item["expected_relation_rule"] != "none"
         and item["geometry_state"] in {"intersecting", "contacting"}
     )
+    legacy_pair_records = [item for item in pair_records if tuple(item["pair"]) in legacy_base_pairs]
     return {
         "method": {
             "tolerance_mm": tolerance_mm,
             "search_window_mm": search_window_mm,
             "review_clearance_mm": review_clearance_mm,
+            "pair_review_policy": "only unresolved world-mesh intersection/contact remains in pair-specific review; hash-verified legacy HVAC intersections are retained as redesign inputs rather than construction approvals",
             "aabb_prefilter": True,
             "exact_candidate_method": "IfcOpenShell geom.tree world-shape collision/intersection/clearance",
             "far_pair_method": "world AABB Euclidean separation lower bound",
@@ -470,6 +484,7 @@ def world_mesh_relations(
                 sorted(interacting_rule_counts.items())
             ),
             "unresolved_conflict_candidate_count": sum(item["conflict_candidate"] for item in pair_records),
+            "legacy_base_pair_count": len(legacy_pair_records),
         },
         "expected_non_conflict_pairs": expected_pairs,
         "human_review_pairs": human_review_pairs,
@@ -497,8 +512,16 @@ def world_mesh_relations(
                     "expected_opening_void_host",
                 }
             ),
+            "legacy_base_pairs_preserve_exact_intersection_scope": len(legacy_pair_records) == 10
+            and all(
+                item["geometry_state"] == "intersecting"
+                and item["expected_relation_rule"] == "legacy_hvac_base_intersection_pending_redesign"
+                and item["review_required"] == "no"
+                and not item["conflict_candidate"]
+                for item in legacy_pair_records
+            ),
             "automatic_ifc_write_allowed": False,
-            "construction_conflict_status": "candidate_only_requires_human_and_system_review",
+            "construction_conflict_status": "legacy HVAC base pair review closed; remodel routes, systems, ports and access remain pending",
         },
     }
 
@@ -512,6 +535,12 @@ def main() -> int:
     if model.schema != "IFC4":
         raise RuntimeError(f"unexpected schema {model.schema}")
     reviews = read_review(args.review)
+    legacy_base_rows = [row for row in reviews if row["review_id"] == "RCP1-LEGACY-BASE-001"]
+    if len(legacy_base_rows) != 1:
+        raise RuntimeError("RCP1 legacy design-base decision must exist exactly once")
+    legacy_base_pairs = (
+        LEGACY_BASE_PAIR_IDS if legacy_base_rows[0]["status"] == "implemented" else set()
+    )
     geom = settings()
     spaces = space_footprints(model, geom)
 
@@ -693,14 +722,14 @@ def main() -> int:
             gates["records_with_geometry"] == len(all_records),
             gates["records_with_basis_confidence_review"] == len(all_records),
             set(gates["protected_handoff_ids"]) == PROTECTED_HANDOFF_IDS,
-            gates["protected_handoffs_over_0_1_mm"] == 2,
+            gates["protected_handoffs_over_0_1_mm"] == 0,
             all(value == 0 for value in missing_instances.values()),
             all(value == 0 for value in topology.values()),
         ]
     )
     gates["construction_release_ready"] = False
     gates["release_blocks"] = [
-        "ceiling finish levels, forms, edges, materials, and access requirements are not confirmed",
+        "existing ceiling boundaries and level relationships are confirmed; final materials, build-ups, and access requirements remain open",
         "two Diffuser-named proxies are not typed IfcAirTerminal instances",
         "fire, gas, and warm-air equipment instances are absent",
         "equipment clearances and access zones are not modelled",
@@ -715,6 +744,7 @@ def main() -> int:
         args.tolerance_mm,
         args.search_window_mm,
         args.review_clearance_mm,
+        legacy_base_pairs,
     )
     coordination["generated_at"] = datetime.now(timezone.utc).isoformat()
     coordination["mode"] = "read_only_world_mesh_coordination_candidate"
@@ -746,6 +776,7 @@ def main() -> int:
             coordination["gates"]["review_pairs_have_exact_ids_and_basis"],
             coordination["gates"]["review_pairs_exact_mesh_tested"],
             coordination["gates"]["expected_light_or_host_relations_not_conflicts"],
+            coordination["gates"]["legacy_base_pairs_preserve_exact_intersection_scope"],
             coordination["gates"]["automatic_ifc_write_allowed"] is False,
         ]
     )

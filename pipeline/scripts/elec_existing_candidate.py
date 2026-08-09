@@ -23,7 +23,7 @@ from shapely.geometry import Point, Polygon
 from shapely.ops import unary_union
 
 
-EXPECTED_SOURCE_SHA256 = "c7295688003f3f36775a25f6adc2c9878e203c52c980f8e46faed66a3537c4a8"
+EXPECTED_SOURCE_SHA256 = "7521c09991f3d0c7b7d91ca2324fd55ad961d8e32e9e3e9a9777a4cc19b06e81"
 LIGHT_TYPE_GLOBAL_ID = "26DmeZ15D7ZeHYavba3FdK"
 EXPECTED_PROXY_IDS = {
     "1faflkXXH6M9cnYPE9Liir",

@@ -45,7 +45,7 @@ test("PLUM candidate runs against the frozen formal IFC", async () => {
   expect(stdout).toContain('"p202_existing_object_count": 49');
   const report = await Bun.file("build/plum/plum-report.json").json();
   expect(report.source.ifc_sha256).toBe(
-    "c7295688003f3f36775a25f6adc2c9878e203c52c980f8e46faed66a3537c4a8",
+    "7521c09991f3d0c7b7d91ca2324fd55ad961d8e32e9e3e9a9777a4cc19b06e81",
   );
   expect(report.qa.candidate_registry_pass).toBe(true);
   expect(report.qa.construction_release_pass).toBe(false);

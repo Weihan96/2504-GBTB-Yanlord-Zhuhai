@@ -329,9 +329,9 @@ def approved_origin_handoffs(
 ) -> dict[str, set[str]]:
     """Return exact downstream ownership without treating it as an exception.
 
-    Handoffs close C003 only when every canonical task row exists exactly once,
-    uses the dedicated scope/status, contains no unknown GlobalId and does not
-    overlap another task. The downstream design review remains required.
+    Every canonical responsibility row must exist exactly once. A delegated row
+    must still cover only current over-tolerance origins; an implemented row
+    must cover only objects that have left that queue after downstream QA.
     """
     approved: dict[str, set[str]] = {}
     claimed: set[str] = set()
@@ -341,14 +341,22 @@ def approved_origin_handoffs(
             for row in decisions
             if row["decision_id"] == decision_id
             and row["scope"] == "c003-origin-responsibility"
-            and row["status"] == "delegated"
-            and row["review_required"] == "yes"
             and f"{owner_task} " in f"{row['proposed_value']} "
         ]
         if len(matching) != 1:
             return {}
-        recorded_ids = parse_object_global_ids(matching[0]["object_guid"])
-        if not recorded_ids or not recorded_ids <= eligible_origin_ids:
+        row = matching[0]
+        recorded_ids = parse_object_global_ids(row["object_guid"])
+        if not recorded_ids:
+            return {}
+        if row["status"] == "delegated" and row["review_required"] == "yes":
+            if not recorded_ids <= eligible_origin_ids:
+                return {}
+        elif row["status"] == "implemented" and row["review_required"] == "no":
+            if recorded_ids & eligible_origin_ids:
+                return {}
+            continue
+        else:
             return {}
         if claimed & recorded_ids:
             return {}

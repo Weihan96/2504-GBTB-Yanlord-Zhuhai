@@ -26,6 +26,9 @@ test("RCP1 source protects handoffs and does not write or invent systems", async
   expect(source).toContain('default=0.1');
   expect(source).toContain("expected_light_ceiling_embedding_candidate");
   expect(source).toContain("expected_opening_void_host");
+  expect(source).toContain("LEGACY_BASE_PAIR_IDS");
+  expect(review).toContain("RCP1-LEGACY-BASE-001");
+  expect(review).toContain("2504_lowpoly.blend");
   expect(source).not.toContain("model.write(");
 });
 
@@ -50,7 +53,7 @@ test(
     expect(result.exitCode, result.stderr.toString()).toBe(0);
     const report = JSON.parse(await Bun.file(reportPath).text());
     expect(report.source.sha256).toBe(
-      "c7295688003f3f36775a25f6adc2c9878e203c52c980f8e46faed66a3537c4a8",
+      "7521c09991f3d0c7b7d91ca2324fd55ad961d8e32e9e3e9a9777a4cc19b06e81",
     );
     expect(report.gates.candidate_pass).toBe(true);
     expect(report.gates.construction_release_ready).toBe(false);
@@ -65,7 +68,7 @@ test(
     expect(report.gates.high_flow_segment_count).toBe(5);
     expect(report.gates.other_high_proxy_count).toBe(1);
     expect(report.gates.duplicate_inventory_ids).toEqual([]);
-    expect(report.gates.protected_handoffs_over_0_1_mm).toBe(2);
+    expect(report.gates.protected_handoffs_over_0_1_mm).toBe(0);
     expect(Object.values(report.gates.missing_instances).every((value) => value === 0)).toBe(true);
     expect(Object.values(report.gates.topology).every((value) => value === 0)).toBe(true);
     for (const group of Object.values(report.inventory) as any[][]) {
@@ -90,12 +93,15 @@ test(
       intersecting: 106,
       separated: 6668,
     });
-    expect(coordination.summary.human_review_pair_count).toBe(54);
-    expect(coordination.summary.unresolved_conflict_candidate_count).toBe(10);
+    expect(coordination.summary.human_review_pair_count).toBe(0);
+    expect(coordination.summary.human_review_state_counts).toEqual({});
+    expect(coordination.summary.unresolved_conflict_candidate_count).toBe(0);
+    expect(coordination.summary.legacy_base_pair_count).toBe(10);
     expect(coordination.gates.all_pairs_classified).toBe(true);
     expect(coordination.gates.review_pairs_have_exact_ids_and_basis).toBe(true);
     expect(coordination.gates.review_pairs_exact_mesh_tested).toBe(true);
     expect(coordination.gates.expected_light_or_host_relations_not_conflicts).toBe(true);
+    expect(coordination.gates.legacy_base_pairs_preserve_exact_intersection_scope).toBe(true);
     expect(coordination.gates.automatic_ifc_write_allowed).toBe(false);
     expect(coordination.gates.candidate_pass).toBe(true);
     expect(coordination.pairs.length).toBe(6786);
@@ -107,6 +113,23 @@ test(
       expect(pair.minimum_clearance_candidate_mm).toBeNumber();
       expect(pair.aabb_candidate).toBe(true);
       expect(pair.minimum_clearance_is_lower_bound).toBe(false);
+      expect(pair.geometry_state).toBe("intersecting");
+      expect(pair.expected_relation_rule).toBe("none");
+    }
+    expect(coordination.pairs.filter(
+      (pair: { geometry_state: string; review_required: string }) =>
+        pair.geometry_state === "separated" && pair.review_required === "yes",
+    )).toHaveLength(0);
+    const legacyBasePairs = coordination.pairs.filter(
+      (pair: { expected_relation_rule: string }) =>
+        pair.expected_relation_rule === "legacy_hvac_base_intersection_pending_redesign",
+    );
+    expect(legacyBasePairs).toHaveLength(10);
+    for (const pair of legacyBasePairs) {
+      expect(pair.geometry_state).toBe("intersecting");
+      expect(pair.review_required).toBe("no");
+      expect(pair.conflict_candidate).toBe(false);
+      expect(pair.basis).toContain("rcp1_legacy_base_audit.py");
     }
   },
   90_000,
