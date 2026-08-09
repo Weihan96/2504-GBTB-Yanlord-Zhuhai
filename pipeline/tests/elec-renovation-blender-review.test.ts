@@ -1,0 +1,20 @@
+import { expect, test } from "bun:test";
+import { readFileSync } from "node:fs";
+import { resolve } from "node:path";
+
+const source = readFileSync(resolve(import.meta.dir, "../scripts/elec_renovation_blender_review.py"), "utf8");
+
+test("renovation electrical Blender review uses true depth and separated scopes", () => {
+  expect(source).toContain('ROOT_COLLECTION = "RENOVATION_ELEC_ROUND1"');
+  expect(source).toContain('"01_BEDSIDE_LIGHT_CYAN"');
+  expect(source).toContain('"02_NEW_SOCKET_GREEN"');
+  expect(source).toContain('"03_CABINET_POWER_AMBER"');
+  expect(source).toContain('"04_KITCHEN_SOCKET_RECHECK_RED"');
+  expect(source).toContain("obj.show_in_front = False");
+  expect(source).toContain('space.shading.type = "SOLID"');
+  expect(source).toContain("space.shading.show_xray = False");
+  expect(source).toContain("space.overlay.show_wireframes = False");
+  expect(source).toContain("FURNITURE_YELLOW");
+  expect(source).not.toContain("model.write(");
+  expect(source).not.toContain("bpy.ops.wm.save_as_mainfile");
+});

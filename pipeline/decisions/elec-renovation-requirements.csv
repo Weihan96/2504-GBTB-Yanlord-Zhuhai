@@ -1,0 +1,8 @@
+requirement_id,scope,room_reference,room_name,requirement_kind,minimum_quantity,design_intent,basis,confidence,review_required,status,coordinate_status,automatic_ifc_write_allowed,notes
+ELEC-R1-001,developer_handover,ALL,全屋,old_electrical_reference,40,红色开发商旧点位只作改造前参考不保留为装修后定位,用户确认红色点位统一按旧点位参考处理,1.00,no,confirmed,reference_only,no,不得自动写入或生成回路
+ELEC-R1-002,lighting,R09;R14,主卧;次卧,bedside_wall_light,4,两个卧室床头左右各一个床头灯,用户明确指出现有灯具层漏了四个床头灯,1.00,yes,confirmed_requirement,plan_candidate_height_pending,no,第一轮先按床及床头柜几何推导平面候选；灯具、高度、开关和回路后续复核
+ELEC-R1-003,socket,R03;R04,西厨;中厨,kitchen_socket_recheck,11,现有厨房插座不作最终位置依据须随设备和柜体立面逐点复核,用户确认厨房还有很多插座位置不对,1.00,yes,confirmed_recheck_scope,current_position_not_frozen,no,保留现有 P001-P011 作为设备用途和几何参考；不批量移动 IFC
+ELEC-R1-004,socket,R03,西厨,island_socket,1,岛台至少设置一个便于使用且不破坏检修的插座,用户明确要求岛台需要插座,1.00,yes,confirmed_requirement,end_panel_candidate,no,候选优先使用岛台外侧端板；最终型式、高度、防水和回路后续复核
+ELEC-R1-005,socket,R06,餐厅飘窗,dining_bay_socket,1,餐厅飘窗至少设置一个插座,用户明确要求餐厅飘窗需要插座,1.00,yes,confirmed_requirement,room_side_wall_candidate,no,第一轮按飘窗室内侧中点给出平面候选；使用方式和高度后续复核
+ELEC-R1-006,cabinet_power,R03;R04;R09;R14;R20,厨房;主卧;次卧;客厅,cabinet_lighting_power_feed,1,每组有灯的固定柜体后方预留隐蔽电源线且驱动电源可检修,用户明确柜子有灯且柜体后面要接电源线,1.00,yes,confirmed_requirement,assembly_zone_only,no,第一轮按固定柜体组生成供电协调区；不将区域标记冒充最终出线口
+ELEC-R1-007,qa,ALL,全屋,reverse_requirement_audit,1,本轮定位后从家具设备和使用场景反向复核灯具插座开关弱电和柜内用电缺项,用户要求后续反过来再检查一遍,1.00,no,planned,later_cross_check,no,在厨房设备和柜体立面稳定后执行
