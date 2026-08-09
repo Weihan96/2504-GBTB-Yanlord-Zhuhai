@@ -38,6 +38,7 @@ def parse_args() -> argparse.Namespace:
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--ifc", type=Path, default=root / "2504 GBTB Yanlord Zhuhai.ifc")
     parser.add_argument("--register", type=Path, default=root / "pipeline/decisions/a106-ceiling-device-review.csv")
+    parser.add_argument("--demolition-register", type=Path, default=root / "pipeline/decisions/a102-demolition-review.csv")
     parser.add_argument("--elec-existing", type=Path, default=root / "build/elec/elec-existing-candidate.json")
     parser.add_argument("--rcp1-existing", type=Path, default=root / "build/rcp1/rcp1-existing-candidate.json")
     parser.add_argument("--source-svg", type=Path, default=root / "drawings/Wall Plan.svg")
@@ -121,6 +122,10 @@ def compile_report(args: argparse.Namespace) -> dict[str, Any]:
     rcp1_existing = json.loads(args.rcp1_existing.read_text(encoding="utf-8"))
     if rcp1_existing["source"]["sha256"] != source_hash:
         raise RuntimeError("RCP1 existing report does not match the formal IFC")
+    demolition_rows = read_csv(args.demolition_register)
+    demolition_ids = [row["candidate_global_id"] for row in demolition_rows if row["ifc_status_candidate"] == "DEMOLISH"]
+    if len(demolition_ids) != 13 or len(demolition_ids) != len(set(demolition_ids)):
+        raise RuntimeError("A-106 requires exactly 13 unique DEMOLISH wall IDs")
 
     model = ifcopenshell.open(args.ifc)
     settings = ifcopenshell.geom.settings()
@@ -320,13 +325,15 @@ def compile_report(args: argparse.Namespace) -> dict[str, Any]:
             {"global_id": item["global_id"], "candidate_id": item["candidate_id"], "centre_mm": item["centre_mm"]}
             for item in lights
         ],
+        "excluded_demolition_wall_global_ids": demolition_ids,
         "gates": {
             "five_candidates_present": len(records) == 5,
             "three_smoke_candidates_present": len(smoke) == 3,
             "two_bedroom_AP_candidates_present": len(aps) == 2,
             "known_geometry_pass": all(bool(record["known_geometry_pass"]) for record in records),
-            "candidate_xy_coordinates_are_50mm_modular": all(abs(value / 50.0 - round(value / 50.0)) <= args.tolerance_mm / 50.0 for record in records for value in record["position_mm"][:2]),
+            "candidate_xy_coordinates_are_integer_mm": all(abs(value - round(value)) <= args.tolerance_mm for record in records for value in record["position_mm"][:2]),
             "bedroom_pair_separation_pass": all(check["separation_mm"] >= 700.0 for check in pair_checks),
+            "thirteen_demolition_walls_excluded": len(demolition_ids) == 13,
             "all_smoke_supply_air_clearances_verified": all(record["supply_air_clearance_status"] == "known_modeled_clearance_pass" for record in smoke),
             "automatic_ifc_write_allowed": False,
         },
@@ -344,6 +351,28 @@ def render_svg(source: str, report: dict[str, Any], output: Path) -> None:
     )
     if removed_underlays != 1:
         raise RuntimeError("A-106 source must contain exactly one removable Wall Plan raster underlay")
+    demolition_ids = report["excluded_demolition_wall_global_ids"]
+    hidden_group_counts = {global_id: 0 for global_id in demolition_ids}
+    wall_group_pattern = re.compile(r'<g\b[^>]*\bclass="[^"]*\bIfcWall\b[^"]*"[^>]*>')
+
+    def hide_demolition_group(match: re.Match[str]) -> str:
+        tag = match.group(0)
+        matched_ids = [global_id for global_id in demolition_ids if global_id in tag]
+        if not matched_ids:
+            return tag
+        for global_id in matched_ids:
+            hidden_group_counts[global_id] += 1
+        return re.sub(
+            r'class="([^"]*)"',
+            lambda class_match: f'class="{class_match.group(1)} a106-excluded-demolish"',
+            tag,
+            count=1,
+        )
+
+    source = wall_group_pattern.sub(hide_demolition_group, source)
+    missing_demolition_groups = [global_id for global_id, count in hidden_group_counts.items() if count == 0]
+    if missing_demolition_groups:
+        raise RuntimeError(f"could not exclude DEMOLISH walls from A-106 SVG: {missing_demolition_groups}")
     if "</svg>" not in source or 'viewBox="0 0 500 400"' not in source:
         raise RuntimeError("could not prepare 500x400 A-106 SVG")
 
@@ -368,14 +397,15 @@ def render_svg(source: str, report: dict[str, Any], output: Path) -> None:
         '<text class="a106-text" x="407" y="47">蓝点：卧室吸顶 AP 候选（2）</text>',
         '<text class="a106-text" x="407" y="55">灰点：正式 IFC 既有灯具（79）</text>',
         '<text class="a106-text" x="407" y="63">淡圈：500 mm 已知几何检查范围</text>',
-        '<text class="a106-text" x="407" y="78">候选平面坐标：50 mm 模度</text>',
+        '<text class="a106-text" x="407" y="78">候选：既有灯网交点或重复节距延长点</text>',
         '<text class="a106-text" x="407" y="86">烟感：已知障碍物保守取 500 mm</text>',
-        '<text class="a106-warn" x="407" y="103">风口模型不完整：1500 mm 门未关闭</text>',
-        '<text class="a106-warn" x="407" y="111">燃气报警器不在本图冻结位置</text>',
+        '<text class="a106-text" x="407" y="94">13 面 DEMOLISH 墙已排除</text>',
+        '<text class="a106-warn" x="407" y="111">风口模型不完整：1500 mm 门未关闭</text>',
+        '<text class="a106-warn" x="407" y="119">燃气报警器不在本图冻结位置</text>',
         f'<text class="a106-note" x="407" y="382">IFC SHA {report["source_ifc_sha256"][:12]}…</text></g>',
     ])
     style = """
-@page{size:500mm 400mm;margin:0}.a106-smoke{fill:#f59f00;stroke:#7a4d00;stroke-width:.7}.a106-ap{fill:#228be6;stroke:#0b477d;stroke-width:.7}.a106-light{fill:#868e96;stroke:#343a40;stroke-width:.25}.a106-known-clearance{fill:#f59f00;fill-opacity:.035;stroke:#f59f00;stroke-opacity:.32;stroke-width:.3;stroke-dasharray:1.2 1.2}.a106-label,.a106-title,.a106-note,.a106-text,.a106-warn{font-family:Arial,'Noto Sans CJK SC',sans-serif;fill:#102f43}.a106-label{font-size:2.2px;font-weight:700;paint-order:stroke;stroke:#fff;stroke-width:.8px}.a106-panel{fill:#fbfcfd;stroke:#102f43;stroke-width:.5}.a106-title{font-size:3.7px;font-weight:700}.a106-note{font-size:2.15px;fill:#526777}.a106-text{font-size:2.3px}.a106-warn{font-size:2.15px;fill:#c92a2a;font-weight:700}
+@page{size:500mm 400mm;margin:0}.a106-excluded-demolish{display:none!important}.a106-smoke{fill:#f59f00;stroke:#7a4d00;stroke-width:.7}.a106-ap{fill:#228be6;stroke:#0b477d;stroke-width:.7}.a106-light{fill:#868e96;stroke:#343a40;stroke-width:.25}.a106-known-clearance{fill:#f59f00;fill-opacity:.035;stroke:#f59f00;stroke-opacity:.32;stroke-width:.3;stroke-dasharray:1.2 1.2}.a106-label,.a106-title,.a106-note,.a106-text,.a106-warn{font-family:Arial,'Noto Sans CJK SC',sans-serif;fill:#102f43}.a106-label{font-size:2.2px;font-weight:700;paint-order:stroke;stroke:#fff;stroke-width:.8px}.a106-panel{fill:#fbfcfd;stroke:#102f43;stroke-width:.5}.a106-title{font-size:3.7px;font-weight:700}.a106-note{font-size:2.15px;fill:#526777}.a106-text{font-size:2.3px}.a106-warn{font-size:2.15px;fill:#c92a2a;font-weight:700}
 """
     output.parent.mkdir(parents=True, exist_ok=True)
     output.write_text(source.replace("</svg>", f'<style id="a106-style">{style}</style><g id="a106-ceiling-device-candidate">{"".join(markup)}</g></svg>', 1), encoding="utf-8")

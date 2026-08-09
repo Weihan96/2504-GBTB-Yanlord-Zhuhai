@@ -1,6 +1,6 @@
 candidate_id,room_reference,room_name,device_role,x_mm,y_mm,z_mm,position_basis,confidence,review_required,review_status,formal_ifc_write_allowed
-A106-SMOKE-R09,R09,主卧,smoke_alarm,-5550,-2750,2720,位于主卧左侧灯光分区中心带；优先保证墙梁灯具及高位对象 500 mm 已知净距,0.80,yes,mechanical_candidate,no
-A106-AP-R09,R09,主卧,wireless_access_point,-4500,-3550,2720,与主卧现有灯具中轴 X=-4500 mm 对齐并避开灯具梁及高位对象,0.85,yes,mechanical_candidate,no
-A106-SMOKE-R14,R14,次卧,smoke_alarm,-3300,2400,2720,与次卧房间及天花中轴 X=-3300 mm 对齐并保证 500 mm 已知无障碍净距,0.85,yes,mechanical_candidate,no
-A106-AP-R14,R14,次卧,wireless_access_point,-3250,1450,2720,靠近次卧有效中心并避开低天花空调体量灯具及梁,0.80,yes,mechanical_candidate,no
-A106-SMOKE-R20,R20,客厅,smoke_alarm,2300,2100,2670,位于客厅主要灯光分区中心带；优先保证墙梁灯具及高位对象 500 mm 已知净距,0.75,yes,mechanical_candidate,no
+A106-SMOKE-R09,R09,主卧,smoke_alarm,-5840,-2645,2720,采用主卧既有灯位 X=-5840 与 Y=-2645 两条轴线的空交点；同时满足烟感 500 mm 已知净距,0.90,yes,mechanical_candidate,no
+A106-AP-R09,R09,主卧,wireless_access_point,-4501,-3750,2720,采用主卧既有灯位 X=-4501 与 Y=-3750 两条轴线的空交点并避开灯具梁及高位对象,0.90,yes,mechanical_candidate,no
+A106-SMOKE-R14,R14,次卧,smoke_alarm,-4038,2061,2720,采用次卧既有灯位 X=-4038 与 Y=2061 两条轴线的空交点；同时满足烟感 500 mm 已知净距,0.90,yes,mechanical_candidate,no
+A106-AP-R14,R14,次卧,wireless_access_point,-2774,1520,2720,采用次卧既有灯位 X=-2774 与 Y=1520 两条轴线的空交点并避开低天花空调体量灯具及梁,0.90,yes,mechanical_candidate,no
+A106-SMOKE-R20,R20,客厅,smoke_alarm,2503,2396,2670,既有灯网 X=499/1501 与 Y=896/1396/1896 的重复节距向内延长得到 X=2503 与 Y=2396 交点；现有交点均无法满足烟感 500 mm 净距,0.80,yes,mechanical_candidate,no
