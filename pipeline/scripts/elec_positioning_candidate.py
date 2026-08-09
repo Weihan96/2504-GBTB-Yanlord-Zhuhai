@@ -60,10 +60,16 @@ def point_bbox_distance(point: list[float], bbox: dict[str, list[float]]) -> flo
 
 def proxy_identity(record: dict[str, Any]) -> tuple[str, float, str]:
     name = record["name"]
+    if record["global_id"] in {"1SNXhKeZb7r9Y0MmzcQnc3", "2d2Vw3ZSn0exH1seMBMiVf"}:
+        return (
+            "island_dishwasher",
+            1.00,
+            "user confirmed the two SJ45ZB24MC proxies are two separate island dishwashers; power, water, drainage and service interfaces remain pending",
+        )
     if name == "W570D660H1780":
         return "refrigerator_volume_candidate", 0.90, "two matching equipment volumes align with the two refrigerators and two refrigerator outlets in the source drawing"
     if name == "SJ45ZB24MC":
-        return "dishwasher_model_candidate", 0.75, "model-code-shaped equipment occurs beside the source drawing dishwasher position; exact appliance record remains unverified"
+        return "dishwasher_model_candidate", 0.75, "unconfirmed SJ45ZB24MC proxy; exact appliance identity and interface remain unverified"
     if name == "LECOASE F50":
         return "food_waste_disposer", 0.95, "existing ObjectType is FOOD_WASTE_DISPOSER"
     if name.startswith("Hole W"):

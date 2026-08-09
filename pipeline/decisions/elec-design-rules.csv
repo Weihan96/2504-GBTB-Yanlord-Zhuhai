@@ -1,0 +1,17 @@
+rule_id,rule_kind,locations,controlled_or_served_scope,device_or_datum,value,basis,confidence,review_required,status,automatic_ifc_write_allowed,notes
+ELEC-DES-001,control_method,ALL,ALL,lighting_switch,physical_wired_only,用户明确只使用实体有线开关,1.00,no,confirmed,no,不采用智能调光或场景控制
+ELEC-DES-002,installation_datum,ALL,ordinary_socket,panel_bottom_AFF_mm,300,用户现场量取并明确基准为面板底边至完成地面,1.00,no,confirmed,no,设备专用和湿区例外另行登记
+ELEC-DES-003,installation_datum,ALL,television_point,panel_bottom_AFF_mm,600,用户明确电视点高于普通插座且采用600mm,1.00,no,confirmed,no,最终与电视柜及设备接口复核
+ELEC-DES-004,installation_datum,ALL,physical_switch,panel_bottom_AFF_mm,1300,用户明确开关高度1300mm,1.00,no,confirmed,no,所有门侧面板按完成地面控制
+ELEC-DES-005,network_role,R09,主卧,wireless_access_point,1,用户明确卧室设置AP,1.00,yes,confirmed,no,具体位置电源有线回程散热和检修待定位
+ELEC-DES-006,network_role,R14,次卧,wireless_access_point,1,用户明确卧室设置AP,1.00,yes,confirmed,no,具体位置电源有线回程散热和检修待定位
+ELEC-DES-007,network_role,R20,客厅,router_no_AP,1,用户明确客厅不设AP并使用路由器,1.00,yes,confirmed,no,路由器位置电源数据口散热和检修待定位
+ELEC-DES-008,network_role,R22,书房,router_no_AP,1,用户明确书房不设AP并使用路由器,1.00,yes,confirmed,no,路由器位置电源数据口散热和检修待定位
+ELEC-DES-009,network_topology,R09;R14;R20;R22,AP与路由器,wired_backhaul,required,用户要求卧室AP且客厅书房使用路由器；项目既有弱电要求为有线回程,1.00,yes,confirmed,no,弱电箱和端口拓扑尚待定位
+ELEC-DES-010,two_way_control,R01;R10,客厅照明,physical_wired_two_way,1_pair,用户明确入户门口与主卧门口设置客厅双控,1.00,yes,confirmed,no,每处各有对应实体有线控制键
+ELEC-DES-011,two_way_control,R01;R10,书房照明,physical_wired_two_way,1_pair,用户明确入户门口与主卧门口设置书房双控,1.00,yes,confirmed,no,每处各有对应实体有线控制键
+ELEC-DES-012,two_way_control,R01;R10,餐厅照明,physical_wired_two_way,1_pair,用户明确入户门口与主卧门口设置餐厅双控,1.00,yes,confirmed,no,每处各有对应实体有线控制键
+ELEC-DES-013,master_control,R01,允许离家关闭的照明回路,entrance_master_lighting_switch,1,用户确认入户门口设置总开关且既有项目记录要求持续供电例外,1.00,yes,confirmed,no,不得切断冰箱网络安防和其他持续供电回路
+ELEC-DES-014,equipment_identity,R03,1SNXhKeZb7r9Y0MmzcQnc3,island_dishwasher,1,用户确认两个SJ45ZB24MC对象分别代表两台岛台洗碗机,1.00,yes,confirmed,no,世界几何不改；功率接口给排水支承与检修待深化
+ELEC-DES-015,equipment_identity,R03,2d2Vw3ZSn0exH1seMBMiVf,island_dishwasher,1,用户确认两个SJ45ZB24MC对象分别代表两台岛台洗碗机,1.00,yes,confirmed,no,世界几何不改；功率接口给排水支承与检修待深化
+ELEC-DES-016,review_visibility,ALL,非拆除专项审查,DEMOLISH_walls,hidden,用户提醒普通电气审核必须隐藏拆除墙；项目视图规则已规定拆除墙只服务A-102,1.00,no,confirmed,no,需要拆除审核时才单独开启半透明参考层且保持真深度

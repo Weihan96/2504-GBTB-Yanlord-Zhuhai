@@ -19,6 +19,11 @@ test("ELEC positioning maps kitchen points to source-supported roles without wri
   expect(report.summary.network_instances).toBe(0);
   expect(report.socket_candidates).toHaveLength(11);
   expect(report.proxy_identity_candidates).toHaveLength(9);
+  const dishwashers = report.proxy_identity_candidates.filter(
+    (row: { candidate_role: string }) => row.candidate_role === "island_dishwasher",
+  );
+  expect(dishwashers).toHaveLength(2);
+  expect(dishwashers.every((row: { confidence: number }) => row.confidence === 1)).toBe(true);
   expect(report.gates.all_existing_kitchen_sockets_have_source_role_candidates).toBe(true);
   expect(report.gates.all_proxy_handoffs_have_identity_candidates).toBe(true);
   expect(report.gates.whole_home_socket_positioning_complete).toBe(false);

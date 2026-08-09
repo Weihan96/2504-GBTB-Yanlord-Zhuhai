@@ -25,6 +25,7 @@ POWERED_PROXY_ROLES = {
     "refrigerator_volume_candidate",
     "food_waste_disposer",
     "dishwasher_model_candidate",
+    "island_dishwasher",
     "electric_flue_check_valve",
 }
 
@@ -34,6 +35,7 @@ def parse_args() -> argparse.Namespace:
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--ifc", type=Path, default=root / "2504 GBTB Yanlord Zhuhai.ifc")
     parser.add_argument("--program", type=Path, default=root / "pipeline/decisions/elec-room-program.csv")
+    parser.add_argument("--design-rules", type=Path, default=root / "pipeline/decisions/elec-design-rules.csv")
     parser.add_argument("--delta", type=Path, default=root / "build/mep-positioning/mep-renovation-delta-candidate.json")
     parser.add_argument("--elec-existing", type=Path, default=root / "build/elec/elec-existing-candidate.json")
     parser.add_argument("--elec-positioning", type=Path, default=root / "build/elec/elec-positioning-candidate.json")
@@ -73,6 +75,47 @@ def read_program(path: Path) -> list[dict[str, Any]]:
     if len({row["room_name"] for row in rows}) != 22:
         raise RuntimeError("electrical room names are not unique")
     return rows
+
+
+def read_design_rules(path: Path) -> list[dict[str, Any]]:
+    with path.open(encoding="utf-8-sig", newline="") as handle:
+        rows = list(csv.DictReader(handle))
+    ids = [row["rule_id"] for row in rows]
+    if len(ids) != len(set(ids)):
+        raise RuntimeError("electrical design rule IDs are not unique")
+    for row in rows:
+        row["confidence"] = float(row["confidence"])
+    return rows
+
+
+def compile_design_rule_summary(rules: list[dict[str, Any]]) -> dict[str, Any]:
+    confirmed = [row for row in rules if row["status"] == "confirmed"]
+    datums = {
+        row["controlled_or_served_scope"]: int(row["value"])
+        for row in confirmed
+        if row["rule_kind"] == "installation_datum"
+    }
+    network_roles = Counter(
+        row["device_or_datum"]
+        for row in confirmed
+        if row["rule_kind"] == "network_role"
+    )
+    return {
+        "physical_wired_switch_only": any(
+            row["rule_kind"] == "control_method" and row["value"] == "physical_wired_only"
+            for row in confirmed
+        ),
+        "panel_bottom_AFF_mm": datums,
+        "bedroom_AP_count": network_roles["wireless_access_point"],
+        "living_study_router_count": network_roles["router_no_AP"],
+        "paired_two_way_control_groups": sum(row["rule_kind"] == "two_way_control" for row in confirmed),
+        "entrance_master_lighting_switches": sum(row["rule_kind"] == "master_control" for row in confirmed),
+        "confirmed_island_dishwashers": sum(row["rule_kind"] == "equipment_identity" for row in confirmed),
+        "demolition_walls_hidden_in_general_reviews": any(
+            row["rule_kind"] == "review_visibility" and row["value"] == "hidden"
+            for row in confirmed
+        ),
+    }
 
 
 def centre(bbox: dict[str, list[float]]) -> list[float]:
@@ -272,9 +315,13 @@ def render_svg(report: dict[str, Any]) -> str:
         svg_text(407, 91, "开关 0｜网络 0｜回路/端口 0", "warn"),
         svg_text(407, 105, "设备中心仅表示供电需求", "warn"),
         svg_text(407, 112, "不等于插座、出线口或回路位置", "warn"),
-        svg_text(407, 126, "下一道门：", "small"),
-        svg_text(407, 133, "灯组/场景、设备功率、柜体立面", "cell"),
-        svg_text(407, 140, "防水区、网络拓扑与检修条件", "cell"),
+        svg_text(407, 126, "已确认设计规则：", "small"),
+        svg_text(407, 133, "只用实体有线开关", "cell"),
+        svg_text(407, 140, "卧室2个AP｜客厅/书房2个路由器", "cell"),
+        svg_text(407, 147, "客厅/书房/餐厅：入户↔主卧门双控", "cell"),
+        svg_text(407, 154, "面板底边：插座300｜电视600｜开关1300", "cell"),
+        svg_text(407, 168, "下一道门：设备功率、柜体立面", "small"),
+        svg_text(407, 175, "网络点位、端口拓扑与检修条件", "cell"),
         svg_text(407, 382, f'IFC SHA {report["source_ifc_sha256"][:12]}…', "small"),
         '</svg>',
     ])
@@ -287,6 +334,8 @@ def main() -> int:
     if ifc_hash != EXPECTED_IFC_SHA256:
         raise RuntimeError(f"formal IFC hash changed: {ifc_hash}")
     program = read_program(args.program)
+    design_rules = read_design_rules(args.design_rules)
+    design_rule_summary = compile_design_rule_summary(design_rules)
     delta = read_json(args.delta)
     elec = read_json(args.elec_existing)
     positioning = read_json(args.elec_positioning)
@@ -321,13 +370,30 @@ def main() -> int:
         "mode": "read_only_room_electrical_program_candidate",
         "source_ifc_sha256": ifc_hash,
         "program_path": str(args.program.resolve()),
+        "design_rules_path": str(args.design_rules.resolve()),
         "summary": summary,
+        "design_rule_summary": design_rule_summary,
+        "design_rules": design_rules,
         "rooms": rooms,
         "equipment_power_demands": equipment,
         "gates": {
             "all_22_spaces_programmed": len(rooms) == 22,
             "all_equipment_demands_have_evidence": len(equipment) == 16 and all(row["basis"] for row in equipment),
             "developer_references_are_not_final_design": True,
+            "confirmed_design_rules_are_complete": design_rule_summary == {
+                "physical_wired_switch_only": True,
+                "panel_bottom_AFF_mm": {
+                    "ordinary_socket": 300,
+                    "television_point": 600,
+                    "physical_switch": 1300,
+                },
+                "bedroom_AP_count": 2,
+                "living_study_router_count": 2,
+                "paired_two_way_control_groups": 3,
+                "entrance_master_lighting_switches": 1,
+                "confirmed_island_dishwashers": 2,
+                "demolition_walls_hidden_in_general_reviews": True,
+            },
             "equipment_centres_are_not_socket_positions": all("only" in row["position_status"] or "pending" in row["position_status"] for row in equipment),
             "whole_home_switch_positioning_complete": False,
             "whole_home_network_positioning_complete": False,

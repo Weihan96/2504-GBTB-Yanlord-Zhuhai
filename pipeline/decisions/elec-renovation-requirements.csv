@@ -6,3 +6,9 @@ ELEC-R1-004,socket,R03,西厨,island_socket,1,岛台至少设置一个便于使�
 ELEC-R1-005,socket,R06,餐厅飘窗,dining_bay_socket,1,餐厅飘窗至少设置一个插座,用户明确要求餐厅飘窗需要插座,1.00,yes,confirmed_requirement,room_side_wall_candidate,no,第一轮按飘窗室内侧中点给出平面候选；使用方式和高度后续复核
 ELEC-R1-006,cabinet_power,R03;R04;R09;R14;R20,厨房;主卧;次卧;客厅,cabinet_lighting_power_feed,1,每组有灯的固定柜体后方预留隐蔽电源线且驱动电源可检修,用户明确柜子有灯且柜体后面要接电源线,1.00,yes,confirmed_requirement,assembly_zone_only,no,第一轮按固定柜体组生成供电协调区；不将区域标记冒充最终出线口
 ELEC-R1-007,qa,ALL,全屋,reverse_requirement_audit,1,本轮定位后从家具设备和使用场景反向复核灯具插座开关弱电和柜内用电缺项,用户要求后续反过来再检查一遍,1.00,no,planned,later_cross_check,no,在厨房设备和柜体立面稳定后执行
+ELEC-R1-008,lighting_control,ALL,全屋,physical_wired_switch_only,1,照明控制只使用实体有线开关不采用智能调光或场景控制,用户明确要求只用实体有线开关,1.00,no,confirmed_requirement,design_rule_confirmed,no,双控和总控均须以实体有线方式实现
+ELEC-R1-009,network,R09;R14;R20;R22,主卧;次卧;客厅;书房,bedroom_ap_living_study_router,4,主卧和次卧各设置 AP；客厅和书房不设 AP而使用路由器并保留有线回程,用户明确卧室设置 AP且客厅和书房使用路由器,1.00,yes,confirmed_requirement,room_level_role_confirmed,no,设备具体位置电源散热和端口待平面定位
+ELEC-R1-010,installation_datum,ALL,全屋,panel_bottom_height_aff,3,普通插座面板底边距完成地面300mm；电视点600mm；开关1300mm,用户以现场量取结果明确高度和基准均为面板底边,1.00,no,confirmed_requirement,vertical_datum_confirmed,no,设备专用点湿区点柜内点和家具遮挡点按设备或立面另行确定
+ELEC-R1-011,equipment_power,R03,西厨,two_island_dishwashers,2,岛台内设置两台独立洗碗机并分别落实电源给排水检修与柜体接口,用户确认两个SJ45ZB24MC对象分别代表两台洗碗机,1.00,yes,confirmed_identity,existing_envelopes_only,no,GlobalId 1SNXhKeZb7r9Y0MmzcQnc3与2d2Vw3ZSn0exH1seMBMiVf；现有世界几何不改
+ELEC-R1-012,lighting_control,R01;R10,玄关;主卧入口,paired_two_way_control,3,入户门口与主卧门口分别设置客厅书房餐厅三组实体有线双控,用户本轮明确三组双控范围；旧项目记录仅写走廊和客厅,1.00,yes,confirmed_requirement,doorway_coordination_zone,no,当前最新确认取代旧范围文字；每键标签和门侧精确位置待平面定位
+ELEC-R1-013,lighting_control,R01,玄关,entrance_master_lighting_switch,1,入户门口设置照明总开关且不得切断冰箱网络安防和其他持续供电回路,用户再次确认入户门口设置总开关；项目既有注意事项已记录持续供电例外,1.00,yes,confirmed_requirement,doorway_coordination_zone,no,总控范围只覆盖允许离家关闭的照明回路
