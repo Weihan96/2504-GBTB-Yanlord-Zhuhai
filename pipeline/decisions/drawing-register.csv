@@ -5,12 +5,12 @@ A-102,现状与拆除墙定位图,Wall Plan,candidate,output/pdf/A-102-demolitio
 A-103,新建墙体及施工定位图,Wall Plan,candidate,output/pdf/A-103-wall-plan-candidate.pdf,已生成当前 IFC 的墙体分组、20 轴闭合尺寸链、4 面已确认新墙和 5 个有宿主门洞定位；84 面 EXISTING 与 4 面 NEW 已写入标准属性
 A-104,门窗定位图及门窗表,Wall Plan,candidate,output/pdf/A-104-door-window-plan-candidate.pdf,19 个 Tag、4 个门名及 3 个门窗组已写入正式 IFC；写后语义、关系、placement 和世界几何通过 0.1 mm 机械门
 A-105,地面完成面及标高图,FFL PLAN,candidate,output/pdf/A-105-floor-finish-candidate.pdf,21 个 Tag、18 个坡向属性、3 个材料/完成面意图及 2 个降板属性已写入正式 IFC；写后语义、关系、placement 和世界几何通过 0.1 mm 机械门
-P-201,给水、热水及设备图,,planned,,PLUM：水压、过滤/增压、热水与检修条件待深化
+P-201,给水、热水及设备图,Wall Plan,planned,output/pdf/P-201-developer-handover-reference.pdf,已叠加 26 个开发商交付给排水参考点；它们不是装修后设计或正式连接口，水压、过滤/增压、热水与检修条件仍待深化
 P-202,排水及洁具定位图,Sanitary Plan,candidate,output/pdf/P-202-drainage-sanitary-candidate.pdf,49 个既有对象已只读定位；标记不是连接口或粗装点，Port/System/连接关系缺失使施工发布门继续阻断
 E-301,灯具布置图,Wall Plan,candidate,output/pdf/E-301-lighting-location-candidate.pdf,79 个灯具及标签入图且无碰撞；灯组、回路、功率、产品和安装方式未推断
-E-302,开关及照明控制图,,planned,,ELEC：入户总控、走廊/客厅双控及面板标签待深化
+E-302,开关及照明控制图,Wall Plan,planned,output/pdf/E-302-E-304-developer-handover-reference.pdf,已叠加 11 个开发商交付开关/控制参考点；当前 IFC 仍无开关实例，入户总控、双控和面板标签待设计
 E-303,插座与设备电源图,Wall Plan,candidate,output/pdf/E-303-socket-equipment-location-candidate.pdf,11 个插座、8 个类型化设备和 9 个 Proxy 入图且无碰撞；回路、功率、防水和接口未推断
-E-304,弱电及网络图,,planned,,ELEC：入户网络、桥接/有线回程、电源、散热和检修待深化
+E-304,弱电及网络图,Wall Plan,planned,output/pdf/E-302-E-304-developer-handover-reference.pdf,已叠加 4 个无线 AP 墙插、2 个 TV 和 1 个电视电话箱交付参考；当前 IFC 仍无弱电实例或拓扑
 A-106,综合天花图,,planned,,RCP1 已只读登记 117 个高位对象；正式风口、安全设备、检修口、系统与端口缺失，尚未生成假施工图
 M-401,空调、通风及安全设备协调图,,planned,,已只读登记 28 个实际实例和 3 个 AC 类型；5 个缺项 BLOCK 未关闭，名称不作为介质、系统或连接依据
 I-501,厨房平面、立面及剖面,Furniture Plan,candidate,output/pdf/I-501-kitchen-existing-candidate.pdf,70 个既有对象协调包络入图；厂家安装图、燃气实测和五金运动包络未关闭
