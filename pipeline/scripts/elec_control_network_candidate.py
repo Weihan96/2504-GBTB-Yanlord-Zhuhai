@@ -83,25 +83,28 @@ def control_zones(doors: list[dict[str, str]]) -> list[dict[str, Any]]:
 def network_zones(spaces: list[dict[str, str]]) -> list[dict[str, Any]]:
     by_reference = {row["candidate_reference"]: row for row in spaces}
     definitions = [
-        ("NET-AP-MASTER", "R09", "主卧", "wireless_access_point"),
-        ("NET-AP-GUEST", "R14", "次卧", "wireless_access_point"),
-        ("NET-ROUTER-LIVING", "R20", "客厅", "router_no_AP"),
-        ("NET-ROUTER-STUDY", "R22", "书房", "router_no_AP"),
+        ("NET-AP-MASTER", ["R09"], "主卧", "wireless_access_point"),
+        ("NET-AP-GUEST", ["R14"], "次卧", "wireless_access_point"),
+        ("NET-ROUTER-LIVING-STUDY", ["R20", "R22"], "客厅＋书房开放空间", "router_no_AP"),
     ]
     rows = []
-    for candidate_id, reference, room_name, role in definitions:
-        space = by_reference[reference]
+    for candidate_id, references, room_name, role in definitions:
+        source_spaces = [by_reference[reference] for reference in references]
+        centres = [
+            [float(space["centre_x_mm"]), float(space["centre_y_mm"]), float(space["centre_z_mm"])]
+            for space in source_spaces
+        ]
         rows.append({
             "candidate_id": candidate_id,
             "kind": "network_device_room_coordination_zone",
-            "room_reference": reference,
+            "room_reference": ";".join(references),
             "room_name": room_name,
-            "source_global_ids": [space["space_global_id"]],
-            "position_mm": [float(space["centre_x_mm"]), float(space["centre_y_mm"]), float(space["centre_z_mm"])],
+            "source_global_ids": [space["space_global_id"] for space in source_spaces],
+            "position_mm": [sum(values) / len(values) for values in zip(*centres)],
             "network_role": role,
             "wired_backhaul": True,
-            "position_basis": "confirmed Space bbox centre used only to identify the room-level coordination zone",
-            "coordinate_status": "room_zone_only_final_xy_z_pending",
+            "position_basis": "confirmed Space bbox centre average used only to identify the shared open-space coordination zone" if len(references) > 1 else "confirmed Space bbox centre used only to identify the room-level coordination zone",
+            "coordinate_status": "shared_open_space_zone_only_final_xy_z_pending" if len(references) > 1 else "room_zone_only_final_xy_z_pending",
             "confidence": 1.0,
             "review_required": True,
             "automatic_ifc_write_allowed": False,
@@ -136,7 +139,7 @@ def render_svg(source: str, report: dict[str, Any]) -> str:
         '<text class="cn-note" x="407" y="24">只读候选｜非最终安装点｜不写 IFC</text>',
         '<text class="cn-text" x="407" y="39">洋红方块：2 个门口控制面板区</text>',
         '<text class="cn-text" x="407" y="47">蓝点：主卧/次卧 AP 房间区</text>',
-        '<text class="cn-text" x="407" y="55">紫点：客厅/书房路由器房间区</text>',
+        '<text class="cn-text" x="407" y="55">紫点：客厅＋书房共享路由器区</text>',
         '<text class="cn-text" x="407" y="69">双控：客厅＋书房＋餐厅</text>',
         '<text class="cn-text" x="407" y="77">控制方式：仅实体有线</text>',
         '<text class="cn-text" x="407" y="85">开关面板底边：1300 mm AFF</text>',
@@ -158,6 +161,7 @@ def main() -> int:
     rules = read_csv(args.rules)
     controls = control_zones(read_csv(args.doors))
     networks = network_zones(read_csv(args.spaces))
+    router_zones = [row for row in networks if row["network_role"] == "router_no_AP"]
     report = {
         "mode": "read_only_control_network_coordination_candidate",
         "source_ifc_sha256": source_hash,
@@ -167,7 +171,7 @@ def main() -> int:
             "paired_two_way_control_groups": 3,
             "entrance_master_lighting_switches": 1,
             "bedroom_AP_zones": sum(row["network_role"] == "wireless_access_point" for row in networks),
-            "living_study_router_zones": sum(row["network_role"] == "router_no_AP" for row in networks),
+            "living_study_router_zones": len(router_zones),
             "confirmed_rules": sum(row["status"] == "confirmed" for row in rules),
         },
         "control_coordination_zones": controls,
@@ -177,7 +181,7 @@ def main() -> int:
             "three_two_way_groups_present": all(row["controlled_groups"] == ["客厅", "书房", "餐厅"] for row in controls),
             "entrance_master_switch_present": sum(row["entrance_master_lighting_switch"] for row in controls) == 1,
             "two_bedroom_AP_zones_present": sum(row["network_role"] == "wireless_access_point" for row in networks) == 2,
-            "two_router_no_AP_zones_present": sum(row["network_role"] == "router_no_AP" for row in networks) == 2,
+            "one_shared_router_no_AP_zone_present": len(router_zones) == 1 and router_zones[0]["room_reference"] == "R20;R22",
             "all_positions_are_coordination_zones": all("zone_only" in row["coordinate_status"] for row in controls + networks),
             "automatic_ifc_write_allowed": False,
         },

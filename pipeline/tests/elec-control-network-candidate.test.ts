@@ -16,13 +16,13 @@ test("confirmed control and network roles compile as read-only coordination zone
   expect(report.summary.paired_two_way_control_groups).toBe(3);
   expect(report.summary.entrance_master_lighting_switches).toBe(1);
   expect(report.summary.bedroom_AP_zones).toBe(2);
-  expect(report.summary.living_study_router_zones).toBe(2);
+  expect(report.summary.living_study_router_zones).toBe(1);
   expect(Object.values(report.gates).every((value) => value === true || value === false)).toBe(true);
   expect(report.gates.two_doorway_zones_present).toBe(true);
   expect(report.gates.three_two_way_groups_present).toBe(true);
   expect(report.gates.entrance_master_switch_present).toBe(true);
   expect(report.gates.two_bedroom_AP_zones_present).toBe(true);
-  expect(report.gates.two_router_no_AP_zones_present).toBe(true);
+  expect(report.gates.one_shared_router_no_AP_zone_present).toBe(true);
   expect(report.gates.all_positions_are_coordination_zones).toBe(true);
   expect(report.gates.automatic_ifc_write_allowed).toBe(false);
   expect(readFileSync(svg, "utf8")).toContain("elec-control-network");

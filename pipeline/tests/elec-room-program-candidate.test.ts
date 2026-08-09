@@ -15,7 +15,7 @@ test("all rooms and modelled equipment receive read-only electrical program cove
   expect(report.summary.room_count).toBe(22);
   expect(report.summary.lighting_control_groups_min).toBe(23);
   expect(report.summary.general_power_groups_min).toBe(26);
-  expect(report.summary.network_data_groups_min).toBe(8);
+  expect(report.summary.network_data_groups_min).toBe(7);
   expect(report.summary.manual_dedicated_power_min).toBe(9);
   expect(report.summary.cabinet_light_feed_zones_min).toBe(7);
   expect(report.summary.modelled_equipment_power_demands).toBe(16);
@@ -29,7 +29,7 @@ test("all rooms and modelled equipment receive read-only electrical program cove
       physical_switch: 1300,
     },
     bedroom_AP_count: 2,
-    living_study_router_count: 2,
+    living_study_router_count: 1,
     paired_two_way_control_groups: 3,
     entrance_master_lighting_switches: 1,
     confirmed_island_dishwashers: 2,

@@ -18,6 +18,6 @@ R16,客卫干区,1,1,0,1,0,台盆/镜柜使用情景、现有灯具与等电位�
 R17,客卫,1,1,0,2,0,卫生间语义、暖风面板交付参考及卫浴设备使用情景,0.80,yes,candidate_program,wet_area_equipment_pending,no,手动专用供电为暖风/换气与智能马桶协调组；防水区和设备参数未冻结
 R18,客卫飘窗,0,0,0,0,0,飘窗子 Space 不独立推断用电,0.80,yes,candidate_program,shared_with_R17,no,交付点仅作参考
 R19,阳台,1,1,0,1,0,阳台空间语义、现有灯具/开关参考及室外环境,0.70,yes,candidate_program,weatherproofing_pending,no,手动专用供电为阳台设备协调预留；具体设备尚未确认
-R20,客厅,2,3,2,1,2,客厅照明、TV/媒体、用户确认路由器及书架/高柜照明,0.90,yes,confirmed_room_program,furniture_and_media_coordination,no,弱电两组为路由器加TV/媒体且不设AP；手动专用供电为客厅东侧A06空调
+R20,客厅,2,3,2,1,2,客厅照明、TV/媒体、用户确认客厅书房开放空间共用路由器及书架/高柜照明,0.95,yes,confirmed_room_program,furniture_and_media_coordination,no,弱电两组为客厅书房共享路由器加TV/媒体且不设AP；手动专用供电为客厅东侧A06空调
 R21,书房飘窗,0,1,0,0,0,飘窗使用情景与后续反向缺项检查,0.55,yes,candidate_program,position_pending_use_case,no,未确认具体用途时不定位
-R22,书房,2,2,2,0,0,书房桌面工作场景、现有灯具及用户确认路由器,0.90,yes,confirmed_room_program,desk_and_network_coordination,no,弱电两组为路由器加工作数据且不设AP；具体位置待家具联动
+R22,书房,2,2,1,0,0,书房桌面工作场景、现有灯具及用户确认与客厅共用路由器,0.95,yes,confirmed_room_program,desk_and_network_coordination,no,弱电组仅保留工作数据；共享路由器计入R20且本房间不再生成第二台路由器

@@ -388,7 +388,7 @@ def main() -> int:
                     "physical_switch": 1300,
                 },
                 "bedroom_AP_count": 2,
-                "living_study_router_count": 2,
+                "living_study_router_count": 1,
                 "paired_two_way_control_groups": 3,
                 "entrance_master_lighting_switches": 1,
                 "confirmed_island_dishwashers": 2,
