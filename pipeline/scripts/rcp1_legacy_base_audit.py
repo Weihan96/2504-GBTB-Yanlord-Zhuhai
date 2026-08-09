@@ -285,10 +285,28 @@ def main() -> int:
         translations.append([formal_centre[axis] - legacy_centre[axis] for axis in range(3)])
     translation = [statistics.median(item[axis] for item in translations) for axis in range(3)]
 
-    legacy_candidate_centre = object_centre_mm(LEGACY_EAST_CANDIDATE)
+    legacy_candidate_object = bpy.data.objects[LEGACY_EAST_CANDIDATE]
+    legacy_candidate_mesh = world_mesh_from_blender(legacy_candidate_object)
+    legacy_candidate_bounds = bbox(legacy_candidate_mesh[0])
+    legacy_candidate_centre = legacy_candidate_bounds["centre_mm"]
+    legacy_candidate_matrix = [list(row) for row in legacy_candidate_object.matrix_world]
+    legacy_negative_y = [
+        -float(legacy_candidate_object.matrix_world[0][1]),
+        -float(legacy_candidate_object.matrix_world[1][1]),
+    ]
+    legacy_negative_y_length = math.hypot(*legacy_negative_y)
+    if legacy_negative_y_length <= 1e-12:
+        raise RuntimeError("legacy east AC candidate has no usable local -Y axis")
+    legacy_negative_y = [value / legacy_negative_y_length for value in legacy_negative_y]
     predicted_candidate_centre = [
         legacy_candidate_centre[axis] + translation[axis] for axis in range(3)
     ]
+    predicted_candidate_bounds = {
+        key: [value + translation[axis] for axis, value in enumerate(values)]
+        for key, values in legacy_candidate_bounds.items()
+        if key in {"min_mm", "max_mm", "centre_mm"}
+    }
+    predicted_candidate_bounds["dimensions_mm"] = legacy_candidate_bounds["dimensions_mm"]
     current_candidate_centre = list(args.current_candidate_centre_mm)
     candidate_difference = [
         current_candidate_centre[axis] - predicted_candidate_centre[axis] for axis in range(3)
@@ -324,8 +342,12 @@ def main() -> int:
         "legacy_east_ac_candidate": {
             "legacy_object": LEGACY_EAST_CANDIDATE,
             "legacy_centre_mm": legacy_candidate_centre,
+            "legacy_world_matrix": legacy_candidate_matrix,
+            "legacy_local_negative_y_direction_world_xy": legacy_negative_y,
+            "legacy_bbox": legacy_candidate_bounds,
             "legacy_to_formal_translation_mm": translation,
             "predicted_formal_centre_mm": predicted_candidate_centre,
+            "predicted_formal_bbox": predicted_candidate_bounds,
             "current_blender_candidate_centre_mm": current_candidate_centre,
             "difference_mm": candidate_difference,
             "maximum_axis_difference_mm": max(abs(value) for value in candidate_difference),

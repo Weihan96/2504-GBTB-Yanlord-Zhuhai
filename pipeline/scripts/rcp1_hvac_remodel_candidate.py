@@ -15,6 +15,10 @@ from typing import Any
 import ifcopenshell
 import ifcopenshell.geom
 import numpy as np
+from ifcopenshell.util.element import get_psets
+from ifcopenshell.util.placement import get_local_placement
+from shapely.geometry import Point, Polygon
+from shapely.ops import unary_union
 
 
 EXPECTED_IFC_SHA256 = "7521c09991f3d0c7b7d91ca2324fd55ad961d8e32e9e3e9a9777a4cc19b06e81"
@@ -52,6 +56,7 @@ EXPECTED_REVIEW_IDS = {
     "RCP1-HVAC-PIPE-001",
     "RCP1-HVAC-AIRSIDE-001",
     "RCP1-HVAC-ROUTE-001",
+    "RCP1-HVAC-LIVING-001",
 }
 
 
@@ -214,6 +219,83 @@ def inventory_map(report: dict[str, Any], key: str) -> dict[str, dict[str, Any]]
     return {item["global_id"]: item for item in report["inventory"][key]}
 
 
+def space_footprints(
+    model: ifcopenshell.file,
+    settings: ifcopenshell.geom.settings,
+) -> list[dict[str, Any]]:
+    records = []
+    for space in model.by_type("IfcSpace"):
+        vertices, faces = world_mesh_mm(settings, space)
+        polygons = []
+        for face in faces:
+            polygon = Polygon(vertices[face, :2])
+            if polygon.area > 1e-4:
+                polygons.append(polygon)
+        if not polygons:
+            raise RuntimeError(f"Space has no plan footprint: {space.GlobalId}")
+        records.append(
+            {
+                "global_id": space.GlobalId,
+                "reference": get_psets(space).get("Pset_SpaceCommon", {}).get("Reference", ""),
+                "long_name": str(space.LongName or space.Name or space.GlobalId),
+                "footprint": unary_union(polygons).buffer(0.01),
+            }
+        )
+    return records
+
+
+def spaces_at(point_mm: list[float], spaces: list[dict[str, Any]]) -> list[dict[str, str]]:
+    point = Point(point_mm)
+    return [
+        {
+            "global_id": space["global_id"],
+            "reference": space["reference"],
+            "long_name": space["long_name"],
+        }
+        for space in spaces
+        if space["footprint"].covers(point)
+    ]
+
+
+def service_space_probe(
+    centre_mm: list[float],
+    direction_xy: list[float],
+    spaces: list[dict[str, Any]],
+) -> dict[str, Any]:
+    direction = np.asarray(direction_xy, dtype=float)
+    length = float(np.linalg.norm(direction))
+    if length <= 1e-12:
+        raise RuntimeError("service probe direction has zero length")
+    direction /= length
+    samples = []
+    for distance_mm in (400, 800, 1200, 1800, 2400, 3200):
+        point = np.asarray(centre_mm[:2], dtype=float) + direction * distance_mm
+        samples.append(
+            {
+                "distance_mm": distance_mm,
+                "point_mm": point.tolist(),
+                "spaces": spaces_at(point.tolist(), spaces),
+            }
+        )
+    direct = next((sample["spaces"][0] for sample in samples if sample["spaces"]), None)
+    sequence = []
+    seen = set()
+    for sample in samples:
+        for space in sample["spaces"]:
+            if space["global_id"] not in seen:
+                sequence.append(space)
+                seen.add(space["global_id"])
+    return {
+        "direction_world_xy": direction.tolist(),
+        "samples": samples,
+        "direct_space_candidate": direct,
+        "downstream_space_sequence": sequence,
+        "basis": "equipment local -Y air-side probe; supported by the two confirmed outlet-side relationships",
+        "confidence": 0.90,
+        "human_review_required": True,
+    }
+
+
 def main() -> int:
     args = parse_args()
     if args.tolerance_mm <= 0:
@@ -255,6 +337,7 @@ def main() -> int:
 
     model = ifcopenshell.open(args.input)
     settings = geometry_settings()
+    spaces = space_footprints(model, settings)
     pipe_components = []
     for global_id in sorted(EXPECTED_PIPE_IDS):
         product = model.by_guid(global_id)
@@ -281,6 +364,8 @@ def main() -> int:
     equipment_pairing = []
     for global_id in sorted(EXPECTED_AC_IDS):
         item = ac_inventory[global_id]
+        placement = get_local_placement(model.by_guid(global_id).ObjectPlacement)
+        airside_direction = (-np.asarray(placement[:2, 1], dtype=float)).tolist()
         pipe_relations = sorted(
             (compact_relation(relations, global_id, target) for target in EXPECTED_PIPE_IDS),
             key=relation_rank,
@@ -298,6 +383,9 @@ def main() -> int:
                 "pipe_relations": pipe_relations,
                 "opening_relations": opening_relations,
                 "nearest_opening_candidate": opening_relations[0]["global_id"],
+                "service_space_probe": service_space_probe(
+                    item["bbox"]["centre_mm"], airside_direction, spaces
+                ),
                 "basis": "formal world meshes; proximity ranks a review candidate and does not create a connection",
                 "confidence": 0.85,
                 "human_review_required": True,
@@ -344,6 +432,7 @@ def main() -> int:
                 "global_id": global_id,
                 "name": item["name"],
                 "bbox": item["bbox"],
+                "primary_space_candidate": item["primary_space_candidate"],
                 "nearest_equipment_candidate": equipment_relations[0]["global_id"],
                 "equipment_relations": equipment_relations,
                 "confirmed_identity": (
@@ -357,6 +446,32 @@ def main() -> int:
                 "human_review_required": True,
             }
         )
+
+    legacy_candidate = legacy["legacy_east_ac_candidate"]
+    legacy_service_probe = service_space_probe(
+        legacy_candidate["predicted_formal_centre_mm"],
+        legacy_candidate["legacy_local_negative_y_direction_world_xy"],
+        spaces,
+    )
+    direct_service_counts: dict[str, int] = {}
+    for item in equipment_pairing:
+        direct = item["service_space_probe"]["direct_space_candidate"]
+        if direct:
+            direct_service_counts[direct["reference"]] = direct_service_counts.get(direct["reference"], 0) + 1
+    direct_service_counts_with_legacy = dict(direct_service_counts)
+    legacy_direct = legacy_service_probe["direct_space_candidate"]
+    if legacy_direct:
+        direct_service_counts_with_legacy[legacy_direct["reference"]] = (
+            direct_service_counts_with_legacy.get(legacy_direct["reference"], 0) + 1
+        )
+    confirmed_outlet_spaces = {
+        item["primary_space_candidate"]["reference"]
+        for item in airside_pairing
+        if item["primary_space_candidate"]
+    }
+    living_room_service_gap = (
+        direct_service_counts.get("R20", 0) == 0 and "R20" not in confirmed_outlet_spaces
+    )
 
     existing_intersections = [
         relation
@@ -394,21 +509,31 @@ def main() -> int:
             "decision_rows": len(review),
         },
         "formal_equipment_pairing": equipment_pairing,
-        "legacy_east_ac_candidate": legacy["legacy_east_ac_candidate"],
+        "legacy_east_ac_candidate": {
+            **legacy_candidate,
+            "service_space_probe": legacy_service_probe,
+        },
         "developer_opening_pairing": opening_pairing,
         "airside_pairing": airside_pairing,
+        "service_space_summary": {
+            "formal_direct_service_candidate_counts": direct_service_counts,
+            "counts_with_legacy_east_candidate": direct_service_counts_with_legacy,
+            "confirmed_outlet_space_references": sorted(confirmed_outlet_spaces),
+            "living_room_R20_has_no_direct_equipment_or_confirmed_outlet_candidate": living_room_service_gap,
+            "interpretation": "direct -Y probes are geometry candidates only; ducted service may cross rooms after a turn",
+        },
         "legacy_pipe_components": pipe_components,
         "existing_intersections": existing_intersections,
         "human_review_bundle": [
             {
                 "question_id": "RCP1B-Q01",
-                "question": "最终采用正式 IFC 的 5 台设备，还是加入旧 blend 的东侧第 6 机位？",
-                "required_evidence": "服务房间、回风可达性、检修包络和既有洞口配对",
+                "question": "确认局部 -Y 方向的直接服务候选：A01 主卧、A02 餐厅、A03 次卧、A04 西厨、A05 书房。",
+                "required_evidence": "若任一设备通过风管跨房服务，请指出最终房间和送回风路径",
             },
             {
                 "question_id": "RCP1B-Q02",
-                "question": "逐台确认服务房间及送风、回风形式；转角风口不得仅凭几何自动判定送风或回风。",
-                "required_evidence": "设备能力、房间负荷、风量、风口尺寸和回风路径",
+                "question": "旧版 A06 的直接方向同样进入餐厅；确认它是 A02 的替代、餐厅追加机位，还是通过转向风管服务当前无直接候选的客厅 R20。",
+                "required_evidence": "客厅服务设备、送回风形式、设备能力和检修包络",
             },
             {
                 "question_id": "RCP1B-Q03",
@@ -428,6 +553,8 @@ def main() -> int:
                 for row in review
             ),
             "candidate_ready_for_blender_review": True,
+            "service_space_probe_ready_for_review": True,
+            "living_room_service_resolved": not living_room_service_gap,
             "formal_ifc_write_allowed": False,
             "hvac_design_ready": False,
         },

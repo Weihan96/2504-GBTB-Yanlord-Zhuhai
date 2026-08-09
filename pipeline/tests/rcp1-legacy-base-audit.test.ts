@@ -18,6 +18,8 @@ test("RCP1 legacy audit is read-only and covers the exact legacy base", async ()
     expect(source).toContain(globalId);
   }
   expect(source).toContain("BL|RPIZ-22FSN6QD_curve_.001");
+  expect(source).toContain('"legacy_local_negative_y_direction_world_xy"');
+  expect(source).toContain('"predicted_formal_bbox"');
   expect(source).toContain('"formal_ifc_write_allowed": False');
   expect(source).toContain('"legacy_blend_write_allowed": False');
   expect(source).toContain('"final_remodel_hvac_design_inferred": False');

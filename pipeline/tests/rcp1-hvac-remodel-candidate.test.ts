@@ -49,10 +49,20 @@ test("RCP1 remodel HVAC candidate keeps proximity separate from connection", asy
   expect(report.summary.legacy_pipe_independent_components).toBe(12);
   expect(report.summary.confirmed_outlet_identity_candidates).toBe(2);
   expect(report.formal_equipment_pairing).toHaveLength(5);
+  expect(
+    report.formal_equipment_pairing.every(
+      (item: any) => item.service_space_probe.direct_space_candidate,
+    ),
+  ).toBe(true);
   expect(report.developer_opening_pairing).toHaveLength(7);
   expect(report.airside_pairing).toHaveLength(2);
   expect(report.human_review_bundle).toHaveLength(3);
   expect(report.gates.candidate_ready_for_blender_review).toBe(true);
+  expect(report.gates.service_space_probe_ready_for_review).toBe(true);
+  expect(
+    report.service_space_summary.living_room_R20_has_no_direct_equipment_or_confirmed_outlet_candidate,
+  ).toBe(true);
+  expect(report.gates.living_room_service_resolved).toBe(false);
   expect(report.gates.formal_ifc_write_allowed).toBe(false);
   expect(report.gates.hvac_design_ready).toBe(false);
 }, 30_000);
