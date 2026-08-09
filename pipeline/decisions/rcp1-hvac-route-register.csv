@@ -1,0 +1,7 @@
+route_id,route_kind,equipment_id,equipment_global_id,served_space_reference,served_space_long_name,terminal_anchor_id,status,basis,confidence,review_required,formal_ifc_write_allowed
+RCP1-AIRSIDE-A02,airside_service,A02,1QBdVekDnBsOleyo9PM6rT,R07,餐厅,,user_confirmed,用户确认 A02 与 A06 均服务餐厅；设备位置固定,1.00,no,no
+RCP1-AIRSIDE-A06,airside_service,A06,,R07,餐厅,,user_confirmed,用户确认 A02 与 A06 均服务餐厅；A06 位置由哈希固定的旧 blend 恢复且尚无正式 IFC GlobalId,1.00,no,no
+RCP1-SERVICE-A02,legacy_service_path,A02,1QBdVekDnBsOleyo9PM6rT,,,H03,user_confirmed,用户明确纠正原一对一距离候选为 A02→H03；介质和真实设备端口尚待深化,1.00,no,no
+RCP1-SERVICE-A03,legacy_service_path,A03,06GpMzzWj1XQobAhD35cgU,,,H02,user_confirmed,用户明确确认有序路径 A03→H04→H02；介质和真实设备端口尚待深化,1.00,no,no
+RCP1-CONDENSATE-ENDPOINT,condensate_endpoint,,,,,H07,user_confirmed,用户确认 H07 是冷凝水排放接口位置；现有 IFC 实体仍为 IfcOpeningElement 且不得重分类为排水设备,1.00,no,no
+RCP1-OUTDOOR-ENDPOINT,refrigerant_endpoint,,,,,H01,user_confirmed,用户确认 H01 是室外机接口位置；现有 IFC 实体仍为 IfcOpeningElement 且不得重分类为室外机,1.00,no,no

@@ -1,4 +1,4 @@
-"""Show fixed-equipment/opening pairing evidence in Blender with true depth."""
+"""Show confirmed HVAC constraint paths in Blender with true depth."""
 
 from __future__ import annotations
 
@@ -11,12 +11,11 @@ import bonsai.tool as tool
 from mathutils import Vector
 
 
-COLLECTION_NAME = "RCP1_ROUTE_READINESS_REVIEW"
-PAIR_COLOR = (0.00, 0.82, 1.00, 1.0)
-UNRESOLVED_COLOR = (1.00, 0.08, 0.03, 1.0)
-CHAIN_COLOR = (1.00, 0.38, 0.00, 1.0)
+COLLECTION_NAME = "RCP1_ROUTE_CONSTRAINT_REVIEW"
+CONSTRAINT_COLOR = (0.00, 0.82, 1.00, 1.0)
+OUTDOOR_COLOR = (1.00, 0.16, 0.72, 1.0)
+CONDENSATE_COLOR = (0.08, 0.42, 1.00, 1.0)
 TEXT_COLOR = (1.00, 1.00, 1.00, 1.0)
-REVIEW_Z_M = 3.12
 PAIRING_REVIEW_HIDDEN_PREFIXES = ("RCP1_PIPE_", "RCP1_SERVICE_ARROW_")
 
 
@@ -34,8 +33,8 @@ def load_report() -> dict:
     return json.loads((root / "build/rcp1/route-readiness-candidate.json").read_text(encoding="utf-8"))
 
 
-def point_m(values_mm: list[float], z_m: float = REVIEW_Z_M) -> Vector:
-    return Vector((values_mm[0] / 1000.0, values_mm[1] / 1000.0, z_m))
+def point_m(values_mm: list[float]) -> Vector:
+    return Vector(tuple(value / 1000.0 for value in values_mm))
 
 
 def add_line(
@@ -44,7 +43,7 @@ def add_line(
     start: Vector,
     end: Vector,
     color: tuple[float, float, float, float],
-    bevel_depth: float = 0.038,
+    bevel_depth: float = 0.025,
 ) -> bpy.types.Object:
     curve = bpy.data.curves.new(name, "CURVE")
     curve.dimensions = "3D"
@@ -91,7 +90,7 @@ def add_marker(
 ) -> bpy.types.Object:
     mesh = bpy.data.meshes.new(name)
     bm = bmesh.new()
-    bmesh.ops.create_icosphere(bm, subdivisions=2, radius=0.09)
+    bmesh.ops.create_icosphere(bm, subdivisions=2, radius=0.08)
     bm.to_mesh(mesh)
     bm.free()
     obj = bpy.data.objects.new(name, mesh)
@@ -125,67 +124,58 @@ def configure_viewport() -> None:
 
 def main() -> dict:
     report = load_report()
-    equipment = {item["equipment_id"]: item for item in report["equipment"]}
-    openings = {item["opening_id"]: item for item in report["openings"]}
-    assignment = report["global_equipment_opening_assignment"]
     remove_collection()
     collection = bpy.data.collections.new(COLLECTION_NAME)
     bpy.context.scene.collection.children.link(collection)
-    pair_objects = []
-    for pair in assignment["pairs"]:
-        equipment_point = point_m(equipment[pair["equipment_id"]]["centre_mm"])
-        opening_point = point_m(openings[pair["opening_id"]]["centre_mm"])
-        name = f"RCP1_PAIR_{pair['equipment_id']}_{pair['opening_id']}"
-        pair_objects.append(add_line(collection, name, equipment_point, opening_point, PAIR_COLOR))
-        midpoint = (equipment_point + opening_point) / 2.0 + Vector((0.0, 0.0, 0.06))
-        add_label(
-            collection,
-            f"{name}_LABEL",
-            f"{pair['equipment_id']}–{pair['opening_id']} {pair['clearance_mm']:.0f} mm",
-            midpoint,
-            PAIR_COLOR,
-            0.145,
-        )
+    path_objects = []
+    segment_count = 0
+    for route in report["confirmed_route_graph"]:
+        if not route["segments"]:
+            continue
+        waypoints = {point["anchor_id"]: point for point in route["waypoints"]}
+        for index, segment in enumerate(route["segments"], start=1):
+            start = point_m(waypoints[segment["from_anchor_id"]]["centre_mm"])
+            end = point_m(waypoints[segment["to_anchor_id"]]["centre_mm"])
+            name = f"RCP1_CONSTRAINT_{route['route_id']}_{index:02d}"
+            path_objects.append(add_line(collection, name, start, end, CONSTRAINT_COLOR))
+            add_label(
+                collection,
+                f"{name}_LABEL",
+                f"{segment['from_anchor_id']}→{segment['to_anchor_id']}",
+                (start + end) / 2.0 + Vector((0.0, 0.0, 0.08)),
+                CONSTRAINT_COLOR,
+                0.13,
+            )
+            segment_count += 1
 
-    h01 = point_m(openings["H01"]["centre_mm"])
-    h06 = point_m(openings["H06"]["centre_mm"])
-    add_marker(collection, "RCP1_H01_UNUSED_MARKER", h01, UNRESOLVED_COLOR)
+    opening_by_id = {item["opening_id"]: item for item in report["openings"]}
+    for anchor_id, label, color in (
+        ("H01", "H01 室外机接口位置", OUTDOOR_COLOR),
+        ("H07", "H07 冷凝水排放接口", CONDENSATE_COLOR),
+    ):
+        location = point_m(opening_by_id[anchor_id]["centre_mm"])
+        add_marker(collection, f"RCP1_ENDPOINT_{anchor_id}", location, color)
+        add_label(collection, f"RCP1_ENDPOINT_{anchor_id}_LABEL", label, location + Vector((0.0, 0.0, 0.15)), color)
+
     add_label(
         collection,
-        "RCP1_H01_UNUSED_LABEL",
-        "H01 未配对 / 外部接口链待确认",
-        h01 + Vector((0.0, 0.0, 0.16)),
-        UNRESOLVED_COLOR,
-        0.12,
-    )
-    add_line(collection, "RCP1_CHAIN_H06_H01_CANDIDATE", h06, h01, CHAIN_COLOR, 0.016)
-    add_label(
-        collection,
-        "RCP1_CHAIN_H06_H01_LABEL",
-        "H06→H01？仅穿墙链候选",
-        (h06 + h01) / 2.0 + Vector((0.0, 0.0, 0.06)),
-        CHAIN_COLOR,
-        0.145,
-    )
-    add_label(
-        collection,
-        "RCP1_PAIRING_ONLY_LEGEND",
-        "青线＝设备—既有洞口最可信配对（不是风管/冷媒管）",
-        Vector((0.0, 3.85, REVIEW_Z_M + 0.12)),
+        "RCP1_CONSTRAINT_LEGEND",
+        "青线＝已确认锚点顺序骨架；不是最终风管、冷媒管或厂家接口",
+        Vector((0.0, 3.85, 3.28)),
         TEXT_COLOR,
-        0.19,
+        0.18,
     )
     configure_viewport()
-    for obj in pair_objects:
+    for obj in path_objects:
         obj.select_set(True)
     return {
         "collection": COLLECTION_NAME,
-        "pair_count": len(pair_objects),
-        "pairing_total_clearance_mm": assignment["total_clearance_mm"],
-        "best_to_second_margin_mm": assignment["best_to_second_margin_mm"],
-        "unused_opening": "H01",
-        "h06_to_h01_chain_status": "candidate_only",
-        "review_elevation_m": REVIEW_Z_M,
+        "route_segment_count": segment_count,
+        "confirmed_paths": ["A02→H03", "A03→H04→H02"],
+        "shared_openings_allowed": True,
+        "multihop_routes_allowed": True,
+        "outdoor_interface": "H01",
+        "condensate_discharge_interface": "H07",
         "legacy_pipe_and_service_arrow_context_hidden": True,
         "show_in_front": False,
         "xray": False,

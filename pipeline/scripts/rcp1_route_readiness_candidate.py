@@ -1,10 +1,10 @@
-"""Build read-only RCP1C route-readiness evidence from fixed HVAC positions."""
+"""Build read-only RCP1C route constraints from confirmed HVAC decisions."""
 
 from __future__ import annotations
 
 import argparse
+import csv
 import hashlib
-import itertools
 import json
 import math
 from datetime import datetime, timezone
@@ -33,12 +33,12 @@ OPENINGS = {
 }
 
 DIRECT_SERVICE = {
-    "A01": ("R09", "主卧"),
-    "A02": ("R07", "餐厅"),
-    "A03": ("R14", "次卧"),
-    "A04": ("R03", "西厨"),
-    "A05": ("R22", "书房"),
-    "A06": ("R07", "餐厅"),
+    "A01": ("R09", "主卧", "geometry_probe"),
+    "A02": ("R07", "餐厅", "user_confirmed"),
+    "A03": ("R14", "次卧", "geometry_probe"),
+    "A04": ("R03", "西厨", "geometry_probe"),
+    "A05": ("R22", "书房", "geometry_probe"),
+    "A06": ("R07", "餐厅", "user_confirmed"),
 }
 
 
@@ -48,6 +48,11 @@ def sha256(path: Path) -> str:
         for chunk in iter(lambda: handle.read(1024 * 1024), b""):
             digest.update(chunk)
     return digest.hexdigest()
+
+
+def read_csv(path: Path) -> list[dict[str, str]]:
+    with path.open(newline="", encoding="utf-8-sig") as handle:
+        return list(csv.DictReader(handle))
 
 
 def bbox_clearance_mm(first: dict, second: dict) -> float:
@@ -104,9 +109,7 @@ def equipment_row(candidate_id: str, report: dict, opening_by_id: dict[str, dict
         )
         centre = item["bbox"]["centre_mm"]
         formal_identity_status = "present"
-    first, second = ranked[:2]
-    margin = second["clearance_mm"] - first["clearance_mm"]
-    confidence = 0.95 if margin >= 1000.0 else 0.85 if margin >= 400.0 else 0.60
+    service = DIRECT_SERVICE[candidate_id]
     return {
         "equipment_id": candidate_id,
         "global_id": definition["global_id"],
@@ -114,113 +117,172 @@ def equipment_row(candidate_id: str, report: dict, opening_by_id: dict[str, dict
         "position_status": "confirmed_fixed",
         "formal_identity_status": formal_identity_status,
         "centre_mm": centre,
-        "direct_service_candidate": {
-            "space_reference": DIRECT_SERVICE[candidate_id][0],
-            "space_long_name": DIRECT_SERVICE[candidate_id][1],
-            "status": "geometry_probe_not_final_connection",
+        "direct_service": {
+            "space_reference": service[0],
+            "space_long_name": service[1],
+            "status": service[2],
         },
         "opening_ranking": ranked,
-        "nearest_opening_candidate": first["opening_id"],
-        "nearest_to_second_margin_mm": margin,
-        "nearest_pairing_confidence": confidence,
-        "human_review_required": candidate_id in {"A01", "A02", "A06"},
     }
 
 
-def global_opening_assignment(equipment: list[dict]) -> dict:
-    equipment_ids = [row["equipment_id"] for row in equipment]
-    distance_by_equipment = {
-        row["equipment_id"]: {
-            candidate["opening_id"]: candidate["clearance_mm"]
-            for candidate in row["opening_ranking"]
-        }
-        for row in equipment
+def validate_decisions(route_rows: list[dict[str, str]], waypoint_rows: list[dict[str, str]]) -> None:
+    routes = {row["route_id"]: row for row in route_rows}
+    expected_service = {
+        "RCP1-AIRSIDE-A02": ("A02", "R07"),
+        "RCP1-AIRSIDE-A06": ("A06", "R07"),
     }
-    candidates = []
-    for opening_ids in itertools.permutations(sorted(OPENINGS), len(equipment_ids)):
-        pairs = list(zip(equipment_ids, opening_ids))
-        total = sum(distance_by_equipment[equipment_id][opening_id] for equipment_id, opening_id in pairs)
-        candidates.append((total, pairs))
-    candidates.sort(key=lambda candidate: (candidate[0], candidate[1]))
-    best, second = candidates[:2]
-    pairs = [
-        {
-            "equipment_id": equipment_id,
-            "opening_id": opening_id,
-            "equipment_global_id": EQUIPMENT[equipment_id]["global_id"],
-            "opening_global_id": OPENINGS[opening_id],
-            "clearance_mm": distance_by_equipment[equipment_id][opening_id],
-            "status": "global_minimum_distance_candidate_not_connection",
-        }
-        for equipment_id, opening_id in best[1]
-    ]
+    for route_id, expected in expected_service.items():
+        row = routes.get(route_id)
+        if row is None or (row["equipment_id"], row["served_space_reference"]) != expected:
+            raise RuntimeError(f"confirmed airside service drift: {route_id}")
+    ordered = {}
+    for row in waypoint_rows:
+        ordered.setdefault(row["route_id"], []).append(row)
+    for rows in ordered.values():
+        rows.sort(key=lambda row: int(row["sequence"]))
+    expected_paths = {
+        "RCP1-SERVICE-A02": ["A02", "H03"],
+        "RCP1-SERVICE-A03": ["A03", "H04", "H02"],
+        "RCP1-CONDENSATE-ENDPOINT": ["H07"],
+        "RCP1-OUTDOOR-ENDPOINT": ["H01"],
+    }
+    for route_id, expected in expected_paths.items():
+        actual = [row["anchor_id"] for row in ordered.get(route_id, [])]
+        if actual != expected:
+            raise RuntimeError(f"confirmed waypoint path drift: {route_id}: {actual}")
+    if routes["RCP1-CONDENSATE-ENDPOINT"]["terminal_anchor_id"] != "H07":
+        raise RuntimeError("condensate endpoint must remain H07")
+    if routes["RCP1-OUTDOOR-ENDPOINT"]["terminal_anchor_id"] != "H01":
+        raise RuntimeError("outdoor-unit interface must remain H01")
+
+
+def resolve_waypoint(
+    row: dict[str, str], equipment_by_id: dict[str, dict], opening_by_code: dict[str, dict]
+) -> dict:
+    anchor_id = row["anchor_id"]
+    if row["anchor_kind"] == "equipment":
+        centre = equipment_by_id[anchor_id]["centre_mm"]
+    elif row["anchor_kind"] == "existing_opening":
+        centre = opening_by_code[anchor_id]["centre_mm"]
+    elif row["anchor_kind"] == "blender_bend":
+        centre = [float(row[key]) for key in ("x_mm", "y_mm", "z_mm")]
+    else:
+        raise RuntimeError(f"unsupported route anchor kind: {row['anchor_kind']}")
     return {
-        "method": "exhaustive one-to-one minimum total world-AABB clearance; six equipment positions mapped to six of seven existing openings",
-        "total_clearance_mm": best[0],
-        "second_best_total_clearance_mm": second[0],
-        "best_to_second_margin_mm": second[0] - best[0],
-        "pairs": pairs,
-        "unused_opening_ids": sorted(set(OPENINGS) - {pair["opening_id"] for pair in pairs}),
-        "confidence": 0.90,
-        "human_review_required": True,
+        **row,
+        "sequence": int(row["sequence"]),
+        "centre_mm": centre,
+        "confidence": float(row["confidence"]),
+        "review_required": row["review_required"].lower() == "yes",
     }
+
+
+def route_graph(
+    route_rows: list[dict[str, str]],
+    waypoint_rows: list[dict[str, str]],
+    equipment_by_id: dict[str, dict],
+    opening_by_code: dict[str, dict],
+) -> list[dict]:
+    grouped: dict[str, list[dict[str, str]]] = {}
+    for row in waypoint_rows:
+        grouped.setdefault(row["route_id"], []).append(row)
+    routes = []
+    for route in route_rows:
+        points = [
+            resolve_waypoint(row, equipment_by_id, opening_by_code)
+            for row in sorted(grouped.get(route["route_id"], []), key=lambda row: int(row["sequence"]))
+        ]
+        segments = []
+        for first, second in zip(points, points[1:]):
+            length = math.dist(first["centre_mm"], second["centre_mm"])
+            segments.append({
+                "from_anchor_id": first["anchor_id"],
+                "to_anchor_id": second["anchor_id"],
+                "centre_to_centre_length_mm": length,
+                "status": "constraint_skeleton_not_fabrication_geometry",
+            })
+        routes.append({
+            **route,
+            "confidence": float(route["confidence"]),
+            "review_required": route["review_required"].lower() == "yes",
+            "formal_ifc_write_allowed": route["formal_ifc_write_allowed"].lower() == "yes",
+            "waypoints": points,
+            "segments": segments,
+        })
+    return routes
 
 
 def main() -> int:
     parser = argparse.ArgumentParser()
     parser.add_argument("--input", type=Path, required=True)
     parser.add_argument("--hvac-report", type=Path, required=True)
+    parser.add_argument("--legacy-report", type=Path, required=True)
+    parser.add_argument("--delivery-dwg", type=Path, required=True)
+    parser.add_argument("--routes", type=Path, required=True)
+    parser.add_argument("--waypoints", type=Path, required=True)
     parser.add_argument("--output", type=Path, required=True)
     args = parser.parse_args()
 
     formal_sha = sha256(args.input)
     hvac = json.loads(args.hvac_report.read_text(encoding="utf-8"))
+    legacy = json.loads(args.legacy_report.read_text(encoding="utf-8"))
     if hvac["source"]["ifc_sha256"] != formal_sha:
         raise RuntimeError("HVAC report does not match the formal IFC")
-    model = ifcopenshell.open(args.input)
-    opening_by_id = {
-        item["global_id"]: item for item in hvac["developer_opening_pairing"]
-    }
-    equipment = [
-        equipment_row(candidate_id, hvac, opening_by_id)
-        for candidate_id in sorted(EQUIPMENT)
-    ]
-    row_by_id = {row["equipment_id"]: row for row in equipment}
-    global_assignment = global_opening_assignment(equipment)
+    if legacy["source"]["formal_ifc_sha256"] != formal_sha:
+        raise RuntimeError("legacy blend audit does not match the formal IFC")
+    route_rows = read_csv(args.routes)
+    waypoint_rows = read_csv(args.waypoints)
+    validate_decisions(route_rows, waypoint_rows)
 
-    high_confidence_pairings = [
+    model = ifcopenshell.open(args.input)
+    opening_by_global_id = {item["global_id"]: item for item in hvac["developer_opening_pairing"]}
+    equipment = [equipment_row(candidate_id, hvac, opening_by_global_id) for candidate_id in sorted(EQUIPMENT)]
+    equipment_by_id = {row["equipment_id"]: row for row in equipment}
+    openings = [
         {
-            "equipment_id": equipment_id,
             "opening_id": opening_id,
-            "equipment_global_id": row_by_id[equipment_id]["global_id"],
-            "opening_global_id": OPENINGS[opening_id],
-            "clearance_mm": row_by_id[equipment_id]["opening_ranking"][0]["clearance_mm"],
-            "basis": "nearest opening with at least 400 mm separation from the second-ranked opening",
-            "confidence": row_by_id[equipment_id]["nearest_pairing_confidence"],
-            "human_review_required": False,
+            "global_id": global_id,
+            "ifc_class": "IfcOpeningElement",
+            "name": opening_by_global_id[global_id]["name"],
+            "hosts": opening_by_global_id[global_id]["hosts"],
+            "centre_mm": opening_by_global_id[global_id]["bbox"]["centre_mm"],
         }
-        for equipment_id, opening_id in (("A03", "H04"), ("A04", "H06"), ("A05", "H07"))
+        for opening_id, global_id in OPENINGS.items()
     ]
+    opening_by_code = {row["opening_id"]: row for row in openings}
+    routes = route_graph(route_rows, waypoint_rows, equipment_by_id, opening_by_code)
 
     port_count = len(model.by_type("IfcDistributionPort"))
     system_count = len(model.by_type("IfcSystem"))
     distribution_system_count = len(model.by_type("IfcDistributionSystem"))
-    outdoor_equipment_count = sum(
-        len(model.by_type(ifc_class))
-        for ifc_class in ("IfcCondenser", "IfcCompressor")
-    )
+    outdoor_equipment_count = sum(len(model.by_type(name)) for name in ("IfcCondenser", "IfcCompressor"))
     fixed_diagnostics = hvac["fixed_equipment_airside_diagnostics"]
     a05_diagnostic = next(
         item for item in fixed_diagnostics if item["equipment_candidate"] == EQUIPMENT["A05"]["global_id"]
     )
+    legacy_topology_ok = all(
+        row["formal_component_count"] == row["legacy_component_count"]
+        for row in legacy["pipe_comparisons"]
+    )
+    maximum_legacy_difference = max(
+        row["maximum_component_dimension_difference_mm"]
+        for row in legacy["pipe_comparisons"]
+    )
 
     output = {
-        "mode": "read_only_rcp1_route_readiness_candidate",
+        "mode": "read_only_rcp1_hvac_constraint_graph",
         "generated_at": datetime.now(timezone.utc).astimezone().isoformat(timespec="seconds"),
         "source": {
             "ifc": str(args.input.resolve()),
             "ifc_sha256": formal_sha,
             "hvac_report": str(args.hvac_report.resolve()),
+            "legacy_blend": legacy["source"]["legacy_blend"],
+            "legacy_blend_sha256": legacy["source"]["legacy_blend_sha256"],
+            "delivery_dwg": str(args.delivery_dwg.resolve()),
+            "delivery_dwg_sha256": sha256(args.delivery_dwg),
+            "route_register": str(args.routes.resolve()),
+            "waypoint_register": str(args.waypoints.resolve()),
         },
         "scope": {
             "formal_ifc_write_allowed": False,
@@ -228,51 +290,40 @@ def main() -> int:
             "new_openings_allowed": False,
             "demolition_walls_are_permanent_obstacles": False,
             "legacy_pipe_geometry_is_final_route": False,
+            "blender_preview_is_source_of_truth": False,
         },
         "equipment": equipment,
-        "openings": [
-            {
-                "opening_id": opening_id,
-                "global_id": global_id,
-                "name": opening_by_id[global_id]["name"],
-                "hosts": opening_by_id[global_id]["hosts"],
-                "centre_mm": opening_by_id[global_id]["bbox"]["centre_mm"],
-            }
-            for opening_id, global_id in OPENINGS.items()
-        ],
-        "global_equipment_opening_assignment": global_assignment,
-        "high_confidence_equipment_opening_pairings": high_confidence_pairings,
-        "shared_or_route_opening_evidence": [
-            {
-                "opening_id": "H05",
-                "global_id": OPENINGS["H05"],
-                "fact": "nearest opening for both A01 and A02; existing liquid, gas and drain geometry intersects it",
-                "status": "global assignment gives H05 to A01 and H02 to A02; still not a formal connection",
+        "openings": openings,
+        "confirmed_route_graph": routes,
+        "interface_roles": {
+            "H01": {
+                "role": "outdoor_unit_interface_at_existing_opening",
+                "ifc_entity_remains": "IfcOpeningElement",
+                "status": "user_confirmed_location_semantic_pending",
             },
-            {
-                "equipment_id": "A06",
-                "fact": "H03 is nearest at 343.452 mm and H02 is second at 566.377 mm",
-                "status": "fixed_position_but_formal_identity_and_final_route_missing",
+            "H07": {
+                "role": "condensate_discharge_interface_at_existing_opening",
+                "ifc_entity_remains": "IfcOpeningElement",
+                "status": "user_confirmed_location_semantic_pending",
             },
-            {
-                "opening_id": "H01",
-                "global_id": OPENINGS["H01"],
-                "fact": "unused by the global six-equipment assignment; located beyond H06 from A04",
-                "status": "external_service_chain_candidate_not_confirmed",
-            },
-        ],
+        },
+        "legacy_reference": {
+            "component_topology_matches": legacy_topology_ok,
+            "maximum_component_dimension_difference_mm": maximum_legacy_difference,
+            "role": "post_demolition_approximate_design_base_not_final_route",
+        },
+        "delivery_dwg_reference": {
+            "role": "developer_delivery_hvac_and_existing_opening_reference",
+            "coordinate_copy_allowed": False,
+            "reason": "the drawing documents developer equipment, systems and openings but is not the remodel routing model",
+        },
         "airside_readiness": {
-            "direct_service_candidates": {
-                equipment_id: {
-                    "space_reference": space[0],
-                    "space_long_name": space[1],
-                }
-                for equipment_id, space in DIRECT_SERVICE.items()
-            },
+            "direct_service": {item["equipment_id"]: item["direct_service"] for item in equipment},
+            "a02_and_a06_both_serve_dining": True,
             "living_room_R20_direct_candidate_count": 0,
             "a05_to_R20_demolition_wall_crossings": a05_diagnostic["route"]["demolition_wall_crossings"],
             "a05_to_R20_permanent_wall_crossings": a05_diagnostic["route"]["permanent_wall_crossings"],
-            "status": "service_assignment_and_supply_return_layout_pending",
+            "status": "service_rooms_partly_confirmed_supply_return_geometry_pending",
         },
         "refrigerant_and_condensate_readiness": {
             "distribution_port_count": port_count,
@@ -281,31 +332,32 @@ def main() -> int:
             "outdoor_condenser_or_compressor_count": outdoor_equipment_count,
             "legacy_pipe_products": hvac["summary"]["legacy_pipe_products"],
             "legacy_pipe_independent_components": hvac["summary"]["legacy_pipe_independent_components"],
-            "status": "blocked_by_missing_real_endpoints_and_ports",
+            "status": "constraint_skeleton_started_real_ports_sections_slopes_and_fittings_pending",
+        },
+        "authoring_contract": {
+            "source_of_truth": "IFC plus route and waypoint decision registers",
+            "blender_role": "rebuildable constraint editing and Geometry Nodes preview only",
+            "update_trigger": "explicit rebuild preview or compile candidate command; never an automatic IFC write from depsgraph",
+            "future_ifc_topology": "typed duct/pipe segments and fittings with nested IfcDistributionPort connections",
         },
         "minimum_required_inputs": [
             {
-                "input_id": "RCP1C-I01",
-                "question": "确认全局洞口候选配对，并确认 A04→H06→H01 是否属于同一条向外服务穿墙链。",
-                "why_required": "全局配对显著优于次优组合，但距离和旧管交叠仍不能替代正式连接关系。",
+                "input_id": "RCP1C-I04",
+                "question": "逐台确认真实送回风口、冷媒液/气管口和冷凝水口的厂家坐标与朝向。",
+                "why_required": "当前约束点使用设备包围盒中心，不能冒充厂家接口。",
             },
             {
-                "input_id": "RCP1C-I02",
-                "question": "确认公共区服务分工：A05 是否服务书房＋客厅、A06 是否服务餐厅，并明确 A02/A04 的最终服务范围。",
-                "why_required": "两个卧室机位可由几何直接确定；公共区存在多台固定设备和跨房送风。",
-            },
-            {
-                "input_id": "RCP1C-I03",
-                "question": "一次性提供或确认设备接管侧/接口坐标、液气管外部终点、冷凝水排放点/标高及是否允许冷凝水泵。",
-                "why_required": "正式 IFC 中端口、系统、室外机/立管接口和 HVAC 冷凝水排放端点均为 0。",
+                "input_id": "RCP1C-I05",
+                "question": "确认管径/风管截面、保温外径、弯曲半径、冷凝水坡度、吊架与检修净距。",
+                "why_required": "当前路径只是有序锚点骨架，不是加工或施工几何。",
             },
         ],
         "gates": {
             "source_hash_matches": True,
             "six_fixed_equipment_positions_registered": len(equipment) == 6,
-            "seven_existing_openings_registered": len(opening_by_id) == 7,
-            "three_high_confidence_pairings_ready": len(high_confidence_pairings) == 3,
-            "global_six_equipment_assignment_ready": len(global_assignment["pairs"]) == 6,
+            "seven_existing_openings_registered": len(openings) == 7,
+            "confirmed_shared_and_multihop_graph_ready": True,
+            "legacy_pipe_topology_matches": legacy_topology_ok,
             "demolition_walls_excluded_from_permanent_obstacles": (
                 len(a05_diagnostic["route"]["demolition_wall_crossings"]) >= 1
                 and len(a05_diagnostic["route"]["permanent_wall_crossings"]) == 0
@@ -320,11 +372,10 @@ def main() -> int:
     args.output.write_text(json.dumps(output, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
     print(json.dumps({
         "fixed_equipment": len(equipment),
-        "existing_openings": len(opening_by_id),
-        "high_confidence_pairings": len(high_confidence_pairings),
-        "distribution_ports": port_count,
-        "systems": system_count + distribution_system_count,
-        "outdoor_equipment": outdoor_equipment_count,
+        "existing_openings": len(openings),
+        "confirmed_routes": len(routes),
+        "confirmed_route_segments": sum(len(route["segments"]) for route in routes),
+        "legacy_topology_matches": legacy_topology_ok,
         "required_inputs": len(output["minimum_required_inputs"]),
     }, ensure_ascii=False))
     return 0
