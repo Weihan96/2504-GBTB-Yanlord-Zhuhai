@@ -12,11 +12,24 @@ test("official CAD pins the router to the entry weak-current cabinet without inv
   const run = spawnSync(["python3", script, "--output", output, "--output-svg", svg], { cwd: root });
   expect(run.exitCode).toBe(0);
   const report = JSON.parse(readFileSync(output, "utf8"));
-  expect(report.evidence_register.rows.map((row: { evidence_id: string }) => row.evidence_id)).toEqual([
+  const evidenceIds = report.evidence_register.rows.map((row: { evidence_id: string }) => row.evidence_id);
+  expect(evidenceIds).toEqual([
     "E304-CAD-001",
     "E304-CAD-002",
     "E304-USER-001",
+    "E304-PHOTO-001",
+    "E304-PHOTO-002",
+    "E304-PHOTO-003",
+    "E304-PHOTO-004",
+    "E304-PHOTO-005",
+    "E304-USER-002",
   ]);
+  expect(report.evidence_register.rows.find((row: { evidence_id: string }) => row.evidence_id === "E304-PHOTO-003").source_sha256).toBe(
+    "3d01b1292d7620389e3920cfbd3420a3f0bb1fd77d754a0f59c48ec56dc4d384",
+  );
+  expect(report.evidence_register.rows.find((row: { evidence_id: string }) => row.evidence_id === "E304-PHOTO-005").source_sha256).toBe(
+    "24ef14dd6871b469a74ee167302d894214b0df30cc31eb4029df2a18f4d8a41b",
+  );
   expect(report.text_evidence.map((row: { handle: string }) => row.handle)).toEqual(["2598C0", "224270", "224295"]);
   expect(report.leader_evidence.handle).toBe("224271");
   expect(report.source.coordinate_transform.viewport_handle).toBe("224238");

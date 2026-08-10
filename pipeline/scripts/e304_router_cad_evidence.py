@@ -54,10 +54,11 @@ def sha256(path: Path) -> str:
 
 def read_evidence_register(path: Path) -> list[dict[str, str]]:
     with path.open(encoding="utf-8-sig", newline="") as handle:
-        rows = list(csv.DictReader(handle))
-    expected_ids = {"E304-CAD-001", "E304-CAD-002", "E304-USER-001"}
-    if {row["evidence_id"] for row in rows} != expected_ids or len(rows) != len(expected_ids):
-        raise RuntimeError("E-304 evidence register is incomplete or has duplicate IDs")
+        rows = [row for row in csv.DictReader(handle) if row["sheet_id"] == "E-304"]
+    required_ids = {"E304-CAD-001", "E304-CAD-002", "E304-USER-001"}
+    evidence_ids = [row["evidence_id"] for row in rows]
+    if not required_ids.issubset(evidence_ids) or len(evidence_ids) != len(set(evidence_ids)):
+        raise RuntimeError("E-304 evidence register is missing required evidence or has duplicate IDs")
     required = ("source_kind", "source_document", "source_sha256", "source_locator", "evidence", "proves", "does_not_prove", "status")
     if any(not row[field] for row in rows for field in required):
         raise RuntimeError("E-304 evidence register contains an incomplete evidence row")
