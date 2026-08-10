@@ -62,7 +62,7 @@ test(
     expect(result.exitCode, result.stderr.toString()).toBe(0);
     const report = JSON.parse(await Bun.file(reportPath).text());
     expect(report.source.sha256).toBe(
-      "7521c09991f3d0c7b7d91ca2324fd55ad961d8e32e9e3e9a9777a4cc19b06e81",
+      "6c2fd8da9e9ad7ddbc2b63415a27f1c979e8995b880d8fce210a2dda2ef2aab6",
     );
     expect(report.gates.candidate_pass).toBe(true);
     expect(report.gates.construction_release_ready).toBe(false);
