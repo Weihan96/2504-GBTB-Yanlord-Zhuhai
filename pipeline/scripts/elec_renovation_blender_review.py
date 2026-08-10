@@ -32,7 +32,7 @@ FOCUS_LABELS = {
     "NS-02": ("E303  NS-02  XY / Z=300", (0.18, -0.20)),
     "A106-AP-R09": ("E304  AP-R09  XY / Z=2720", (0.18, 0.18)),
     "A106-AP-R14": ("E304  AP-R14  XY / Z=2720", (0.18, 0.18)),
-    "NET-ROUTER-LIVING-STUDY": ("E304  ROUTER AREA ONLY / Z=TBD", (0.18, 0.18)),
+    "NET-ROUTER-LIVING-STUDY": ("E304  ROUTER @ ENTRY CABINET / Z=TBD", (0.18, 0.18)),
 }
 CONTROL_JAMB_CLEARANCE_M = 0.15
 
@@ -105,6 +105,27 @@ def mark_review_overlay(obj: bpy.types.Object, candidate_id: str) -> None:
     obj["candidate_id"] = candidate_id
     obj["review_overlay_only"] = True
     obj["automatic_ifc_write_allowed"] = False
+
+
+def router_cabinet_review_zone(collection: bpy.types.Collection, record: dict, colour) -> bpy.types.Object:
+    minimum_x, minimum_y, maximum_x, maximum_y = [float(value) / 1000.0 for value in record["cabinet_bbox_ifc_mm"]]
+    review_z = float(record["review_overlay_position_mm"][2]) / 1000.0
+    bpy.ops.mesh.primitive_cube_add(
+        size=1.0,
+        location=((minimum_x + maximum_x) / 2.0, (minimum_y + maximum_y) / 2.0, review_z),
+    )
+    obj = bpy.context.object
+    obj.name = f"PLAN-ZONE::{record['candidate_id']}"
+    obj.dimensions = (maximum_x - minimum_x, maximum_y - minimum_y, 0.025)
+    bpy.ops.object.transform_apply(location=False, rotation=False, scale=True)
+    move_to_collection(obj, collection)
+    obj.color = colour
+    mark_review_overlay(obj, record["candidate_id"])
+    obj["coordinate_status"] = record["coordinate_status"]
+    obj["installation_z_mm"] = "TBD"
+    obj["weak_current_box_bottom_aff_mm"] = record["weak_current_box_bottom_aff_mm"]
+    obj["evidence_note"] = "plan-only cabinet bay; weak-current-box H+350 is not the router installation height"
+    return obj
 
 
 def focus_callout(
@@ -317,10 +338,14 @@ def build_review() -> dict:
             control_options.append(option)
     for row in control_network["network_coordination_zones"]:
         key = "ap" if row["network_role"] == "wireless_access_point" else "router"
-        point_marker(collections[key], row, GROUPS[key][1], 0.085)
+        marker_position = row["position_mm"] if key == "ap" else row["review_overlay_position_mm"]
+        if key == "ap":
+            point_marker(collections[key], row, GROUPS[key][1], 0.085)
+        else:
+            router_cabinet_review_zone(collections[key], row, GROUPS[key][1])
         if row["candidate_id"] in FOCUS_LABELS:
             label, offset = FOCUS_LABELS[row["candidate_id"]]
-            focus_records.append((row["candidate_id"], label, row["position_mm"], GROUPS[key][1], offset))
+            focus_records.append((row["candidate_id"], label, marker_position, GROUPS[key][1], offset))
 
     for candidate_id, label, position_mm, colour, offset in focus_records:
         focus_callout(callout_collection, candidate_id, label, position_mm, colour, offset)
@@ -343,13 +368,14 @@ def build_review() -> dict:
     configure_viewport()
     bpy.context.scene["renovation_elec_round1_legend"] = (
         "cyan=bedside lights; green=new sockets; amber=cabinet power zones; red=kitchen socket recheck; "
-        "magenta=doorway control zones; blue=bedroom AP room zones; violet=living/study router room zones"
+        "magenta=doorway control zones; blue=bedroom AP mechanical positions; violet=entry-cabinet router plan evidence"
     )
     bpy.context.scene["renovation_elec_round1_writes_ifc"] = False
     bpy.context.scene["renovation_elec_current_review"] = (
         "E302 doorway controls show A/B wall-side options at Z=1300; E303 sockets display candidate Z; "
-        "E304 APs display Z=2720 and the living/study router remains an area-only placeholder with Z TBD. "
-        "Callouts are review overlays at Z=3.15 m; source markers retain their true installation depth."
+        "E304 APs display candidate Z=2720; the router is a plan-only entry-cabinet evidence zone with installation Z TBD. "
+        "The weak-current-box H+350 datum is not used as router height. Callouts are review overlays at Z=3.15 m; "
+        "AP source markers retain their true installation depth."
     )
     return {
         "bedside": len(report["bedside_light_candidates"]),

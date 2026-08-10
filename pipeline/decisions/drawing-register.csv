@@ -10,7 +10,7 @@ P-202,排水及洁具定位图,Sanitary Plan,candidate,output/pdf/P-202-drainage
 E-301,灯具布置图,Wall Plan,candidate,output/pdf/E-301-E-303-renovation-round1-candidate.pdf,79 个现有灯具保留为底稿；第一轮已补 4 个床头灯平面候选，灯具、安装高度、开关与回路待后续反向复核
 E-302,开关及照明控制图,Wall Plan,candidate,output/pdf/E-302-E-304-control-network-candidate.pdf,22 个 Space 已建立 23 个最小控制功能组；入户门口与主卧门口的控制区域已获用户认可可继续深化并在 Blender 以门洞两侧 A/B 墙位候选审核；最终墙侧、面板键序与对应灯组仍待关闭；11 个开发商交付开关/控制点只作旧点位参考，当前 IFC 仍无开关实例或正式灯组关系
 E-303,插座与设备电源图,Wall Plan,candidate,output/pdf/E-301-E-303-renovation-round1-candidate.pdf,第一轮新增岛台与餐厅飘窗插座候选各 1 个且大概位置已获用户认可可继续深化；7 个有灯柜体供电协调区和 11 个现有厨房插座仍须设备/柜体立面复核；用途型式防水墙侧及最终安装条件未冻结
-E-304,弱电及网络图,Wall Plan,candidate,output/pdf/E-302-E-304-control-network-candidate.pdf,22 个 Space 已建立 9 个最小弱电/数据功能组；主卧与次卧 AP 当前 XY 候选及客厅书房共享路由器区域已获用户认可可继续深化；AP 候选 Z=2720mm，路由器仍只是区域占位且 Z 未定；当前 IFC 仍无弱电实例端口或拓扑
+E-304,弱电及网络图,Wall Plan,candidate,output/pdf/E-302-E-304-control-network-candidate.pdf,22 个 Space 已建立 9 个最小弱电/数据功能组；主卧与次卧 AP 保留当前 XY/Z=2720mm 机械候选；共享路由器已按用户确认和官方 E-2 CAD 证据移至入户玄关/过道高柜弱电箱右侧柜格的平面位置，路由器 Z、产品、电源数据口、柜内散热检修及最终拓扑仍待关闭；当前 IFC 仍无弱电实例端口或拓扑
 A-106,综合天花图,Wall Plan,candidate,output/pdf/A-106-ceiling-device-candidate.pdf,已生成 3 个烟感、2 个卧室吸顶 AP 与 1 个厨房火灾探测定位点；烟感优先几何中心或中心轴最近安全点，两个 AP 采用房间边缘既有灯网空交点；13 面 DEMOLISH 墙已从审核图排除，6/6 已知几何门通过；A106-FIRE-R04 已于 2026-08-10 完成人眼确认并作为无实体几何的 FIRESENSOR 定位点写入正式 IFC，最终探测类型、产品、供电通信、厨房燃气探测点位和装修后风口禁距仍待关闭
 M-401,空调、通风及安全设备协调图,,planned,,已只读登记 28 个实际实例和 3 个 AC 类型；5 个缺项 BLOCK 未关闭，名称不作为介质、系统或连接依据
 I-501,厨房平面、立面及剖面,Furniture Plan,candidate,output/pdf/I-501-kitchen-existing-candidate.pdf,70 个既有对象协调包络入图；厂家安装图、燃气实测和五金运动包络未关闭

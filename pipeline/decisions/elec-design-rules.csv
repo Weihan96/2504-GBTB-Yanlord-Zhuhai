@@ -5,9 +5,9 @@ ELEC-DES-003,installation_datum,ALL,television_point,panel_bottom_AFF_mm,600,用
 ELEC-DES-004,installation_datum,ALL,physical_switch,panel_bottom_AFF_mm,1300,用户明确开关高度1300mm,1.00,no,confirmed,no,所有门侧面板按完成地面控制
 ELEC-DES-005,network_role,R09,主卧,wireless_access_point,1,用户明确卧室设置AP,1.00,yes,confirmed,no,具体位置电源有线回程散热和检修待定位
 ELEC-DES-006,network_role,R14,次卧,wireless_access_point,1,用户明确卧室设置AP,1.00,yes,confirmed,no,具体位置电源有线回程散热和检修待定位
-ELEC-DES-007,network_role,R20;R22,客厅与书房开放空间,router_no_AP,1,用户确认客厅与书房为开放空间并共用一个路由器,1.00,yes,confirmed,no,共享路由器的精确位置须兼顾覆盖电源数据口散热检修和家具遮挡
+ELEC-DES-007,network_role,R20;R22,客厅与书房开放空间,router_no_AP,1,用户确认客厅与书房为开放空间并共用一个路由器,1.00,yes,confirmed,no,共享路由器已进一步确认放入户玄关/过道高柜弱电箱柜位；产品高度电源数据口散热检修和家具遮挡仍待设备深化
 ELEC-DES-008,network_role,R22,书房独立路由器,router_no_AP,0,用户以客厅书房共用一个路由器取代原各设一个路由器规则,1.00,no,superseded,no,由ELEC-DES-007取代且不得生成第二台路由器
-ELEC-DES-009,network_topology,R09;R14;R20;R22,AP与路由器,wired_backhaul,required,用户要求卧室AP且客厅书房使用路由器；项目既有弱电要求为有线回程,1.00,yes,confirmed,no,弱电箱和端口拓扑尚待定位
+ELEC-DES-009,network_topology,R09;R14;R20;R22,AP与路由器,wired_backhaul,required,用户要求卧室AP且客厅书房使用路由器；项目既有弱电要求为有线回程,1.00,yes,confirmed,no,官方CAD已定位玄关/过道高柜弱电箱柜格；弱电箱至两个卧室AP及各数据端口的星形拓扑和端口数量仍待关闭
 ELEC-DES-010,two_way_control,R01;R10,客厅照明,physical_wired_two_way,1_pair,用户明确入户门口与主卧门口设置客厅双控,1.00,yes,confirmed,no,每处各有对应实体有线控制键
 ELEC-DES-011,two_way_control,R01;R10,书房照明,physical_wired_two_way,1_pair,用户明确入户门口与主卧门口设置书房双控,1.00,yes,confirmed,no,每处各有对应实体有线控制键
 ELEC-DES-012,two_way_control,R01;R10,餐厅照明,physical_wired_two_way,1_pair,用户明确入户门口与主卧门口设置餐厅双控,1.00,yes,confirmed,no,每处各有对应实体有线控制键
@@ -25,4 +25,5 @@ ELEC-DES-023,life_safety_positioning,R09;R14;R20,点型感烟火灾探测器,min
 ELEC-DES-024,life_safety_product_compliance,R04,家用可燃气体探测器,authority_and_product_compliance,required,市场监管总局明确家用探测器须按适用燃气种类选择并满足购买时现行强制标准与认证要求；用户明确燃气公司可能指定型号,1.00,yes,verified_external_requirement,no,燃气种类燃气公司指定型号CCC状态联动切断阀与安装位置未确认前不得下单或锁定预埋件
 ELEC-DES-025,life_safety_requirement,R04,中厨,kitchen_fire_detection,required,用户明确厨房除可燃气体探测外还必须设置火灾探测；消防救援局提示厨房油烟环境使用感烟极易误报并建议采用感温探测,1.00,yes,confirmed_requirement_type_pending,no,按感温优先建立协调需求但不擅自替代消防设计；最终采用感烟感温或复合类型及其数量位置供电通信须由消防设备方确认
 ELEC-DES-026,life_safety_positioning,R04,中厨,A106-FIRE-R04,"XYZ_mm_1800_-4576_2400",候选位于既有四灯阵列中心；距最近灯具边缘662mm且距房间边界最小724mm；用户于2026-08-10完成人眼确认,1.00,no,position_confirmed_type_pending,no,只确认平面位置和现有天花下表面标高；已作为无实体几何的 IfcSensor/FIRESENSOR 定位点写入正式 IFC 并关联 R04；按感温优先协调但最终类型数量产品供电通信和厂家安装条件仍由消防设备方确认
-ELEC-DES-027,review_acceptance,R01;R03;R06;R09;R10;R14;R20;R22,E-302/E-303/E-304 当前审核点,approximate_position,accepted_for_continued_coordination,用户于2026-08-10确认当前门口控制区新增插座卧室AP及客厅书房共享路由器的大概位置没有问题并同意继续推进,1.00,yes,zone_xy_accepted_details_pending,no,门控只关闭门洞区域并继续以A/B墙侧候选审核；AP只关闭当前XY协调原则且候选Z为2720mm；共享路由器仍是区域占位且Z未定；插座用途型式防水墙侧和最终安装条件仍待关闭
+ELEC-DES-027,review_acceptance,R01;R03;R06;R09;R10;R14;R20;R22,E-302/E-303/E-304 当前审核点,approximate_position,accepted_for_continued_coordination,用户于2026-08-10确认当前门口控制区新增插座卧室AP及客厅书房共享路由器的大概位置没有问题并同意继续推进,1.00,yes,partially_superseded_details_pending,no,门控只关闭门洞区域并继续以A/B墙侧候选审核；AP只关闭当前XY协调原则且候选Z为2720mm；共享路由器原房间区域占位已由ELEC-DES-028的玄关高柜平面点取代但Z仍未定；插座用途型式防水墙侧和最终安装条件仍待关闭
+ELEC-DES-028,network_positioning,R01,R20;R22共享路由器,entry_high_cabinet_weak_current_box_bay,"XY_mm_4600.016_-735.369;router_Z_TBD",用户明确路由器放门口柜内；官方01平面系统图DWG哈希ba355f6a…及验证DXF哈希706483de…的TEXT#2598C0/224270/224295、LEADER#224271、VIEWPORT#224238与柜体#22017E/220182共同取证,1.00,yes,position_confirmed_product_z_interfaces_pending,no,弱电箱底边H+350mm只属于箱体安装基准不得扩大为路由器高度；具体层板产品供电数据口散热检修净空及有线回程端口表待网络设备方关闭

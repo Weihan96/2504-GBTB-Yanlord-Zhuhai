@@ -16,7 +16,10 @@ test("renovation electrical Blender review uses true depth and separated scopes"
   expect(source).toContain('REVIEW_LABEL_COLLECTION = "08_CURRENT_REVIEW_CALLOUTS"');
   expect(source).toContain('"NS-01": ("E303  NS-01  XY / Z=650"');
   expect(source).toContain('"A106-AP-R09": ("E304  AP-R09  XY / Z=2720"');
-  expect(source).toContain('"NET-ROUTER-LIVING-STUDY": ("E304  ROUTER AREA ONLY / Z=TBD"');
+  expect(source).toContain('"NET-ROUTER-LIVING-STUDY": ("E304  ROUTER @ ENTRY CABINET / Z=TBD"');
+  expect(source).toContain("def router_cabinet_review_zone(");
+  expect(source).toContain('obj["installation_z_mm"] = "TBD"');
+  expect(source).toContain("weak-current-box H+350 is not the router installation height");
   expect(source).toContain("def control_wall_side_options(");
   expect(source).toContain('option_id = f"{record[\'candidate_id\']}-{suffix}"');
   expect(source).toContain('"coordinate_status"] = "wall_side_option_not_final"');
@@ -24,7 +27,7 @@ test("renovation electrical Blender review uses true depth and separated scopes"
   expect(source).toContain('font_data.align_x = "RIGHT" if offset_x < 0 else "LEFT"');
   expect(source).toContain('horizontal_offset = -0.18 if row["candidate_id"] == "CTRL-ENTRY" else 0.18');
   expect(source).toContain('obj["review_overlay_only"] = True');
-  expect(source).toContain('"E304 APs display Z=2720 and the living/study router remains an area-only placeholder with Z TBD. "');
+  expect(source).toContain('"E304 APs display candidate Z=2720; the router is a plan-only entry-cabinet evidence zone with installation Z TBD. "');
   expect(source).toContain("obj.show_in_front = False");
   expect(source).toContain('space.shading.type = "SOLID"');
   expect(source).toContain("space.shading.show_xray = False");

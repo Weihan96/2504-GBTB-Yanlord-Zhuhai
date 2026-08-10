@@ -26,6 +26,7 @@ test("confirmed control, network, and safety roles compile as read-only coordina
   expect(report.gates.entrance_master_switch_present).toBe(true);
   expect(report.gates.two_bedroom_AP_candidates_present).toBe(true);
   expect(report.gates.one_shared_router_no_AP_zone_present).toBe(true);
+  expect(report.gates.router_entry_cabinet_plan_position_verified).toBe(true);
   expect(report.gates.three_smoke_candidates_present).toBe(true);
   expect(report.gates.smoke_positioning_constraints_present).toBe(true);
   expect(report.gates.one_formal_kitchen_fire_position_present).toBe(true);
@@ -37,6 +38,7 @@ test("confirmed control, network, and safety roles compile as read-only coordina
   const renderedSvg = readFileSync(svg, "utf8");
   expect(renderedSvg).toContain("elec-control-network");
   expect(renderedSvg).toContain("A106-FIRE-R04");
+  expect(renderedSvg).toContain("玄关高柜路由器平面柜位");
   expect(renderedSvg).toContain("Wall Plan-underlay.png");
 }, 30_000);
 

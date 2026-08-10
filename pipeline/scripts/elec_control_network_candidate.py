@@ -31,6 +31,7 @@ def parse_args() -> argparse.Namespace:
     parser.add_argument("--ceiling-devices", type=Path, default=root / "pipeline/decisions/a106-ceiling-device-review.csv")
     parser.add_argument("--doors", type=Path, default=root / "pipeline/decisions/a104-door-window-review.csv")
     parser.add_argument("--spaces", type=Path, default=root / "pipeline/decisions/space-reference-review.csv")
+    parser.add_argument("--router-evidence", type=Path, default=root / "build/elec/e304-router-cad-evidence.json")
     parser.add_argument("--source-svg", type=Path, default=root / "drawings/Wall Plan.svg")
     parser.add_argument("--output", type=Path, default=root / "build/elec/elec-control-network-candidate.json")
     parser.add_argument("--output-svg", type=Path, default=root / "drawings/E302-E304-control-network-candidate.svg")
@@ -119,7 +120,7 @@ def control_zones(doors: list[dict[str, str]]) -> list[dict[str, Any]]:
 
 
 def network_zones(
-    spaces: list[dict[str, str]], ceiling_devices: list[dict[str, str]]
+    spaces: list[dict[str, str]], ceiling_devices: list[dict[str, str]], router_evidence: dict[str, Any]
 ) -> list[dict[str, Any]]:
     by_reference = {row["candidate_reference"]: row for row in spaces}
     by_candidate_id = {row["candidate_id"]: row for row in ceiling_devices}
@@ -145,23 +146,37 @@ def network_zones(
             "review_required": True,
             "automatic_ifc_write_allowed": False,
         })
+    entry = by_reference["R01"]
     living = by_reference["R20"]
     study = by_reference["R22"]
-    centres = [
-        [float(space["centre_x_mm"]), float(space["centre_y_mm"]), float(space["centre_z_mm"])]
-        for space in (living, study)
-    ]
+    router_decision = router_evidence["router_decision"]
+    weak_current_box = router_evidence["weak_current_box"]
+    if router_decision["candidate_id"] != "NET-ROUTER-LIVING-STUDY" or router_decision["installation_z_mm"] is not None:
+        raise RuntimeError("router CAD evidence must retain a confirmed plan position with installation Z pending")
+    plan_position = [float(value) for value in router_decision["plan_position_mm"]]
     rows.append({
         "candidate_id": "NET-ROUTER-LIVING-STUDY",
-        "kind": "network_device_room_coordination_zone",
-        "room_reference": "R20;R22",
-        "room_name": "客厅＋书房开放空间",
-        "source_global_ids": [living["space_global_id"], study["space_global_id"]],
-        "position_mm": [sum(values) / len(values) for values in zip(*centres)],
+        "kind": "network_device_entry_cabinet_plan_position",
+        "room_reference": "R01",
+        "served_room_references": router_decision["served_room_references"],
+        "room_name": "玄关／过道高柜弱电箱柜位（服务客厅＋书房开放空间）",
+        "source_global_ids": [entry["space_global_id"], living["space_global_id"], study["space_global_id"]],
+        "plan_position_mm": plan_position,
+        "installation_z_mm": None,
+        "review_overlay_position_mm": [plan_position[0], plan_position[1], 3150.0],
+        "cabinet_bbox_ifc_mm": weak_current_box["cabinet_bbox_ifc_mm"],
+        "weak_current_box_bottom_aff_mm": weak_current_box["weak_current_box_bottom_aff_mm"],
         "network_role": "router_no_AP",
         "wired_backhaul": True,
-        "position_basis": "confirmed Space bbox centre average used only to identify the shared open-space coordination zone",
-        "coordinate_status": "shared_open_space_zone_only_final_xy_z_pending",
+        "position_basis": "user-confirmed entry-cabinet location; official E-2 weak-current plan LEADER #224271 maps through VIEWPORT #224238 to the right high-cabinet bay",
+        "coordinate_status": "entry_cabinet_plan_xy_confirmed_router_z_product_power_data_thermal_service_pending",
+        "source_evidence": {
+            "official_plan_dwg_sha256": router_evidence["source"]["official_plan_dwg"]["sha256"],
+            "verified_conversion_dxf_sha256": router_evidence["source"]["verified_conversion_dxf"]["sha256"],
+            "text_handles": [row["handle"] for row in router_evidence["text_evidence"]],
+            "leader_handle": router_evidence["leader_evidence"]["handle"],
+            "viewport_handle": router_evidence["source"]["coordinate_transform"]["viewport_handle"],
+        },
         "confidence": 1.0,
         "review_required": True,
         "automatic_ifc_write_allowed": False,
@@ -276,7 +291,8 @@ def render_svg(source: str, report: dict[str, Any]) -> str:
             f'<text class="cn-label" x="{x+3.2:.3f}" y="{y+(-3 if index else 5):.3f}">{candidate_id}</text></g>'
         )
     for index, row in enumerate(report["network_coordination_zones"]):
-        x, y = world_to_svg(row["position_mm"])
+        position = row["plan_position_mm"] if "plan_position_mm" in row else row["position_mm"]
+        x, y = world_to_svg(position)
         css = "cn-ap" if row["network_role"] == "wireless_access_point" else "cn-router"
         candidate_id = html.escape(row["candidate_id"])
         markup.append(
@@ -303,14 +319,14 @@ def render_svg(source: str, report: dict[str, Any]) -> str:
         '<text class="cn-note" x="407" y="24">Bonsai 同批材质底图｜A-106 点位联动｜非施工发布</text>',
         '<text class="cn-text" x="407" y="39">洋红方块：2 个门口控制面板区</text>',
         '<text class="cn-text" x="407" y="47">蓝点：主卧/次卧 AP 机械候选点</text>',
-        '<text class="cn-text" x="407" y="55">紫点：客厅＋书房共享路由器区</text>',
+        '<text class="cn-text" x="407" y="55">紫点：玄关高柜路由器平面柜位</text>',
         '<text class="cn-text" x="407" y="63">橙点：3 个烟感机械候选点</text>',
         '<text class="cn-text" x="407" y="71">深红点：厨房火灾正式 IFC 定位点</text>',
         '<text class="cn-text" x="407" y="79">红点：厨房燃气报警器房间区</text>',
         '<text class="cn-text" x="407" y="93">双控：客厅＋书房＋餐厅｜仅实体有线</text>',
         '<text class="cn-text" x="407" y="101">开关面板底边：1300 mm AFF</text>',
         '<text class="cn-warn" x="407" y="118">门中心只标识门口，墙侧/键序待人审</text>',
-        '<text class="cn-warn" x="407" y="126">共享路由器仍是房间区，最终点待人审</text>',
+        '<text class="cn-warn" x="407" y="126">路由器 Z/产品/散热检修待设备深化</text>',
         '<text class="cn-warn" x="407" y="134">燃气型号待燃气公司确认，不锁定开孔</text>',
         f'<text class="cn-note" x="407" y="382">IFC SHA {report["source_ifc_sha256"][:12]}…</text></g>',
     ])
@@ -329,10 +345,11 @@ def main() -> int:
     controls = control_zones(read_csv(args.doors))
     spaces = read_csv(args.spaces)
     ceiling_devices = read_csv(args.ceiling_devices)
+    router_evidence = json.loads(args.router_evidence.read_text(encoding="utf-8"))
     if len(ceiling_devices) != 6 or len({row["candidate_id"] for row in ceiling_devices}) != 6:
         raise RuntimeError("A-106 ceiling-device register must contain six unique candidates")
     fire_sensor = kitchen_fire_sensor(args.ifc)
-    networks = network_zones(spaces, ceiling_devices)
+    networks = network_zones(spaces, ceiling_devices, router_evidence)
     safety_devices = safety_device_zones(spaces, ceiling_devices, fire_sensor)
     router_zones = [row for row in networks if row["network_role"] == "router_no_AP"]
     ap_candidates = [row for row in networks if row["network_role"] == "wireless_access_point"]
@@ -343,6 +360,7 @@ def main() -> int:
         "mode": "read_only_control_network_coordination_candidate",
         "source_ifc_sha256": source_hash,
         "rules_path": str(args.rules.resolve()),
+        "router_evidence_path": str(args.router_evidence.resolve()),
         "summary": {
             "control_coordination_zones": len(controls),
             "paired_two_way_control_groups": 3,
@@ -363,7 +381,13 @@ def main() -> int:
             "entrance_master_switch_present": sum(row["entrance_master_lighting_switch"] for row in controls) == 1,
             "two_bedroom_AP_candidates_present": len(ap_candidates) == 2
             and {row["candidate_id"] for row in ap_candidates} == {"A106-AP-R09", "A106-AP-R14"},
-            "one_shared_router_no_AP_zone_present": len(router_zones) == 1 and router_zones[0]["room_reference"] == "R20;R22",
+            "one_shared_router_no_AP_zone_present": len(router_zones) == 1
+            and router_zones[0]["room_reference"] == "R01"
+            and router_zones[0]["served_room_references"] == ["R20", "R22"],
+            "router_entry_cabinet_plan_position_verified": len(router_zones) == 1
+            and router_zones[0]["plan_position_mm"] == router_evidence["router_decision"]["plan_position_mm"]
+            and router_zones[0]["installation_z_mm"] is None
+            and router_zones[0]["weak_current_box_bottom_aff_mm"] == 350.0,
             "three_smoke_candidates_present": len(smoke_zones) == 3 and {row["candidate_id"] for row in smoke_zones} == {"A106-SMOKE-R09", "A106-SMOKE-R14", "A106-SMOKE-R20"},
             "smoke_positioning_constraints_present": all(row["mechanical_positioning_constraints_mm"] == {
                 "minimum_wall_or_beam_clearance": 500,
@@ -382,8 +406,8 @@ def main() -> int:
                 for row in ap_candidates + smoke_zones + fire_positions
             ),
             "unconfirmed_positions_remain_coordination_zones": all(
-                "zone_only" in row["coordinate_status"] for row in controls + router_zones + gas_zones
-            ),
+                "zone_only" in row["coordinate_status"] for row in controls + gas_zones
+            ) and all("pending" in row["coordinate_status"] for row in router_zones),
             "automatic_ifc_write_allowed": False,
         },
     }
