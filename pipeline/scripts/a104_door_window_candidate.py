@@ -35,9 +35,10 @@ from a103_wall_plan_candidate import (
 
 
 MASTER_BEDROOM_DOOR_CANDIDATE = "3xKBbA2CT9mfby2$MODnzM"
+MASTER_BEDROOM_DOOR = "1TW6$_GfnABRZusYvx0zZG"
 CONFIRMED_GUEST_BATHROOM_DOOR = "1To6gRjrf2nBU5GQuuD8FV"
 UNHOSTED_DOORS = {
-    "1TW6$_GfnABRZusYvx0zZG",
+    MASTER_BEDROOM_DOOR,
     "2D5BPoo2XFSvhTdfPenCh7",
     "0zjVS5FBbBewgUkk0fdfiv",
 }
@@ -47,7 +48,7 @@ BATHROOM_UNHOSTED_PAIR = {
 }
 CONFIRMED_NAMES = {
     "3xKBbA2CT9mfby2$MODnzM": "次卧门",
-    "1TW6$_GfnABRZusYvx0zZG": "主卧门",
+    MASTER_BEDROOM_DOOR: "主卧门",
     "2D5BPoo2XFSvhTdfPenCh7": "Rimadesio Sail 格栅门板",
     "0zjVS5FBbBewgUkk0fdfiv": "Rimadesio Sail 轨道",
 }
@@ -187,7 +188,7 @@ def review_metadata(record: dict[str, Any]) -> dict[str, Any]:
             "review_question": "该 900×2000 左开门位于次卧—客卫干区之间；确认它的真实房间归属，不能直接写为主卧门。",
             "confidence": 1.0,
         }
-    if global_id == "1TW6$_GfnABRZusYvx0zZG":
+    if global_id == MASTER_BEDROOM_DOOR:
         return {
             "review_group": "A104-R01",
             "review_required": "yes",
@@ -250,6 +251,13 @@ def close_confirmed_reviews(
         record["review_required"] = "no"
         record["review_question"] = ""
         record["confidence"] = 1.0
+    master_door = next(record for record in records if record["global_id"] == MASTER_BEDROOM_DOOR)
+    master_door["review_group"] = "A104-R03"
+    master_door["review_required"] = "yes"
+    master_door["review_question"] = (
+        "M07 主卧门缺少宿主洞口且 OperationType=NOTDEFINED；须依据官方 CAD、门表或现场开门照片确认"
+        "合页侧、开启方向和门后占墙，再关闭 E-302 Master A/B。"
+    )
     for relation in pair_relations:
         pair = {relation["first_global_id"], relation["second_global_id"]}
         if pair in CONFIRMED_GROUPS.values():

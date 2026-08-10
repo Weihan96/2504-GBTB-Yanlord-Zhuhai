@@ -23,10 +23,16 @@ test("renovation electrical Blender review uses true depth and separated scopes"
   expect(source).toContain("def control_wall_side_options(");
   expect(source).toContain('option_id = f"{record[\'candidate_id\']}-{suffix}"');
   expect(source).toContain('"coordinate_status"] = "wall_side_option_not_final"');
+  expect(source).toContain('"CTRL-MASTER": {');
+  expect(source).toContain('"suffix": "A"');
+  expect(source).toContain('review_label = "PREFERRED" if preferred else "ALT"');
+  expect(source).toContain('label = f"E302  {short_name}-{suffix}  {review_label} / A104 CHECK / Z=1300"');
+  expect(source).toContain('marker["review_status"] = option["review_status"]');
   expect(source).toContain('label = f"E302  {short_name}-{suffix}  WALL SIDE / Z=1300"');
   expect(source).toContain('font_data.align_x = "RIGHT" if offset_x < 0 else "LEFT"');
   expect(source).toContain('horizontal_offset = -0.18 if row["candidate_id"] == "CTRL-ENTRY" else 0.18');
   expect(source).toContain('obj["review_overlay_only"] = True');
+  expect(source).toContain('"E302 entry controls retain A/B wall-side options at Z=1300; Master A is preferred pending A-104 door-swing evidence; "');
   expect(source).toContain('"E304 APs display candidate Z=2720; the router is a plan-only entry-cabinet evidence zone with installation Z TBD. "');
   expect(source).toContain("obj.show_in_front = False");
   expect(source).toContain('space.shading.type = "SOLID"');

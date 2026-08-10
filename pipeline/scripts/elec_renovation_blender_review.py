@@ -35,6 +35,12 @@ FOCUS_LABELS = {
     "NET-ROUTER-LIVING-STUDY": ("E304  ROUTER @ ENTRY CABINET / Z=TBD", (0.18, 0.18)),
 }
 CONTROL_JAMB_CLEARANCE_M = 0.15
+CONTROL_WALL_SIDE_PREFERENCES = {
+    "CTRL-MASTER": {
+        "suffix": "A",
+        "basis": "user prefers Master A from the observed door swing; A-104 must verify the unhosted door and undefined OperationType",
+    },
+}
 
 
 def project_root() -> Path:
@@ -326,10 +332,24 @@ def build_review() -> dict:
         zone.name = f"ZONE::{row['candidate_id']}"
         zone["coordinate_status"] = "doorway_zone_only_not_wall_position"
         options = control_wall_side_options(collections["control"], row, GROUPS["control"][1])
+        preference = CONTROL_WALL_SIDE_PREFERENCES.get(row["candidate_id"])
         for index, option in enumerate(options):
             suffix = option["candidate_id"].rsplit("-", 1)[1]
             short_name = "ENTRY" if row["candidate_id"] == "CTRL-ENTRY" else "MASTER"
-            label = f"E302  {short_name}-{suffix}  WALL SIDE / Z=1300"
+            marker = bpy.data.objects.get(option["candidate_id"])
+            if marker is None:
+                raise RuntimeError(f"missing control wall-side marker {option['candidate_id']}")
+            if preference is not None:
+                preferred = suffix == preference["suffix"]
+                option["review_status"] = "preferred_pending_a104" if preferred else "alternate_pending_a104"
+                marker["review_status"] = option["review_status"]
+                marker["preference_basis"] = preference["basis"]
+                review_label = "PREFERRED" if preferred else "ALT"
+                label = f"E302  {short_name}-{suffix}  {review_label} / A104 CHECK / Z=1300"
+            else:
+                option["review_status"] = "pending"
+                marker["review_status"] = "pending"
+                label = f"E302  {short_name}-{suffix}  WALL SIDE / Z=1300"
             horizontal_offset = -0.18 if row["candidate_id"] == "CTRL-ENTRY" else 0.18
             label_offset = (horizontal_offset, -0.12 if index == 0 else 0.12)
             focus_records.append(
@@ -372,7 +392,8 @@ def build_review() -> dict:
     )
     bpy.context.scene["renovation_elec_round1_writes_ifc"] = False
     bpy.context.scene["renovation_elec_current_review"] = (
-        "E302 doorway controls show A/B wall-side options at Z=1300; E303 sockets display candidate Z; "
+        "E302 entry controls retain A/B wall-side options at Z=1300; Master A is preferred pending A-104 door-swing evidence; "
+        "E303 sockets display candidate Z; "
         "E304 APs display candidate Z=2720; the router is a plan-only entry-cabinet evidence zone with installation Z TBD. "
         "The weak-current-box H+350 datum is not used as router height. Callouts are review overlays at Z=3.15 m; "
         "AP source markers retain their true installation depth."
@@ -388,6 +409,9 @@ def build_review() -> dict:
         "focus_callouts": len(focus_records),
         "focus_ids": sorted(candidate_id for candidate_id, _label, _position, _colour, _offset in focus_records),
         "control_wall_side_options": len(control_options),
+        "preferred_control_wall_sides": {
+            candidate_id: preference["suffix"] for candidate_id, preference in CONTROL_WALL_SIDE_PREFERENCES.items()
+        },
         "default_hidden_reference_groups": ["bedside", "cabinet", "recheck"],
         "review_label_z_m": REVIEW_LABEL_Z,
         "show_in_front": False,
