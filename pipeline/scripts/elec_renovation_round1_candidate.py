@@ -13,10 +13,24 @@ from pathlib import Path
 from typing import Any, Callable
 
 from svg_audit_underlay import validate_wall_plan_source
+from sync_owner_inputs import (
+    APPLIANCE_HEADERS,
+    normalized_inputs,
+    read_csv as read_owner_csv,
+    validate_appliances,
+)
 
 EXPECTED_IFC_SHA256 = "6c2fd8da9e9ad7ddbc2b63415a27f1c979e8995b880d8fce210a2dda2ef2aab6"
 SCALE_DENOMINATOR = 50.0
 SVG_WORLD_OFFSET_MM = 10000.0
+CANDIDATE_POWER_RANGES_W = {
+    "火锅电器": [1500, 2200],
+    "搅拌机": [300, 1200],
+    "Sous-vide 棒": [800, 1500],
+    "咖啡机": [1200, 1800],
+    "手冲电热水壶": [1000, 1800],
+    "磨豆机": [150, 400],
+}
 
 
 def parse_args() -> argparse.Namespace:
@@ -42,6 +56,11 @@ def parse_args() -> argparse.Namespace:
         "--int1",
         type=Path,
         default=root / "build/int1/int1-existing-report.json",
+    )
+    parser.add_argument(
+        "--appliances",
+        type=Path,
+        default=root / "pipeline/decisions/appliance-input-register.csv",
     )
     parser.add_argument("--source-svg", type=Path, default=root / "drawings/Wall Plan.svg")
     parser.add_argument(
@@ -161,7 +180,54 @@ def bedside_candidates(int1_records: list[dict[str, Any]]) -> list[dict[str, Any
     return rows
 
 
-def new_socket_candidates(int1_records: list[dict[str, Any]]) -> list[dict[str, Any]]:
+def appliance_socket_context(path: Path) -> dict[str, dict[str, Any]]:
+    rows = read_owner_csv(path, APPLIANCE_HEADERS)
+    errors = validate_appliances(rows, rows)
+    if errors:
+        raise RuntimeError("invalid appliance input register: " + "; ".join(errors))
+    normalized_by_id = {
+        row["appliance_id"]: row
+        for row in normalized_inputs([], rows)["appliances"]
+    }
+    contexts: dict[str, dict[str, Any]] = {}
+    for socket_id in ("NS-01", "NS-02"):
+        selected = [row for row in rows if socket_id in row["use_location_candidate"]]
+        known_load_w = 0.0
+        groups: dict[str, dict[str, Any]] = {}
+        items = []
+        for row in selected:
+            effective = normalized_by_id[row["appliance_id"]]["effective"]
+            if effective["rated_power_w"]:
+                known_load_w += float(effective["rated_power_w"]) * int(effective["quantity"])
+            candidate_range = CANDIDATE_POWER_RANGES_W.get(row["appliance_name"])
+            group = row["simultaneous_group"] or "UNASSIGNED"
+            if candidate_range:
+                bucket = groups.setdefault(group, {"minimum_w": 0, "maximum_w": 0, "appliance_ids": []})
+                bucket["minimum_w"] += candidate_range[0] * int(row["quantity"])
+                bucket["maximum_w"] += candidate_range[1] * int(row["quantity"])
+                bucket["appliance_ids"].append(row["appliance_id"])
+            items.append({
+                "appliance_id": row["appliance_id"],
+                "appliance_name": row["appliance_name"],
+                "status": row["status"],
+                "effective_use_location": effective["use_location_confirmed"],
+                "effective_rated_power_w": effective["rated_power_w"],
+                "candidate_power_range_w": candidate_range,
+                "simultaneous_group": group,
+            })
+        contexts[socket_id] = {
+            "items": items,
+            "known_connected_load_w": known_load_w,
+            "candidate_load_ranges_by_simultaneous_group": groups,
+            "candidate_ranges_are_not_confirmed_loads": True,
+            "socket_form_and_circuit_sizing_ready": False,
+        }
+    return contexts
+
+
+def new_socket_candidates(
+    int1_records: list[dict[str, Any]], appliance_context: dict[str, dict[str, Any]],
+) -> list[dict[str, Any]]:
     island_end = next(
         row
         for row in int1_records
@@ -182,6 +248,7 @@ def new_socket_candidates(int1_records: list[dict[str, Any]]) -> list[dict[str, 
             "review_required": True,
             "height_status": "650 mm AFF review candidate; socket type, splash protection and final elevation pending",
             "automatic_ifc_write_allowed": False,
+            "appliance_context": appliance_context["NS-01"],
         },
         {
             "candidate_id": "NS-02",
@@ -197,6 +264,7 @@ def new_socket_candidates(int1_records: list[dict[str, Any]]) -> list[dict[str, 
             "review_required": True,
             "height_status": "panel bottom 300 mm AFF confirmed general datum; intended appliance and wall-side position remain pending",
             "automatic_ifc_write_allowed": False,
+            "appliance_context": appliance_context["NS-02"],
         },
     ]
 
@@ -389,7 +457,8 @@ def main() -> int:
         raise RuntimeError(f"stale ELEC/INT1 inputs: {source_hashes}")
 
     bedside = bedside_candidates(int1["records"])
-    new_sockets = new_socket_candidates(int1["records"])
+    appliance_context = appliance_socket_context(args.appliances)
+    new_sockets = new_socket_candidates(int1["records"], appliance_context)
     cabinet_zones = cabinet_power_zones(int1["records"])
     socket_rechecks = kitchen_socket_rechecks(existing, positioning)
     requirement_status = {row["requirement_id"]: row["status"] for row in requirements}
@@ -397,10 +466,18 @@ def main() -> int:
         "mode": "read_only_renovation_electrical_round1_candidate",
         "source_ifc_sha256": ifc_hash,
         "requirements_path": str(args.requirements.resolve()),
+        "appliance_inputs": {
+            "path": str(args.appliances.resolve()),
+            "sha256": sha256(args.appliances),
+        },
         "summary": {
             "confirmed_requirements": sum(value.startswith("confirmed") for value in requirement_status.values()),
             "bedside_light_candidates": len(bedside),
             "new_socket_candidates": len(new_sockets),
+            "new_socket_known_connected_load_w": {
+                row["candidate_id"]: row["appliance_context"]["known_connected_load_w"]
+                for row in new_sockets
+            },
             "cabinet_power_zones": len(cabinet_zones),
             "kitchen_socket_rechecks": len(socket_rechecks),
             "developer_red_points_are_reference_only": requirement_status.get("ELEC-R1-001") == "confirmed",
@@ -414,6 +491,15 @@ def main() -> int:
             "four_bedside_lights_present": len(bedside) == 4,
             "island_and_dining_bay_socket_present": {row["candidate_role"] for row in new_sockets}
             == {"island_end_panel_socket", "dining_bay_socket"},
+            "socket_use_lists_compiled_without_fabricated_load": {
+                row["candidate_id"]: len(row["appliance_context"]["items"])
+                for row in new_sockets
+            } == {"NS-01": 3, "NS-02": 3}
+            and all(
+                row["appliance_context"]["known_connected_load_w"] == 0
+                and not row["appliance_context"]["socket_form_and_circuit_sizing_ready"]
+                for row in new_sockets
+            ),
             "illuminated_cabinet_power_is_grouped_not_fabricated": len(cabinet_zones) == 7
             and all(row["coordinate_status"] == "assembly_zone_only" for row in cabinet_zones),
             "all_current_kitchen_sockets_reopened_for_review": len(socket_rechecks) == 11,

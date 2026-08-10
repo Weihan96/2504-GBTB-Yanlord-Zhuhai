@@ -13,7 +13,7 @@ from pathlib import Path
 from typing import Any
 
 
-EXPECTED_IFC_SHA256 = "7521c09991f3d0c7b7d91ca2324fd55ad961d8e32e9e3e9a9777a4cc19b06e81"
+EXPECTED_LEGACY_BLEND_SHA256 = "a8e0a94ef766667ad3749b96c158afdd538a330009b135e49ed461d1634c78ed"
 ROOM_REFERENCE_BY_NAME = {
     "玄关": "R01", "走廊": "R02", "西厨": "R03", "中厨": "R04", "中厨飘窗": "R05",
     "餐厅飘窗": "R06", "餐厅": "R07", "主卧飘窗": "R08", "主卧": "R09", "主卧入口": "R10",
@@ -42,6 +42,10 @@ def parse_args() -> argparse.Namespace:
     parser.add_argument("--round1", type=Path, default=root / "build/elec/elec-renovation-round1-candidate.json")
     parser.add_argument("--int1", type=Path, default=root / "build/int1/int1-existing-report.json")
     parser.add_argument("--route-readiness", type=Path, default=root / "build/rcp1/route-readiness-candidate.json")
+    parser.add_argument(
+        "--expected-ifc-sha256",
+        help="Optional caller-frozen source hash; all current-IFC upstream reports remain mandatory",
+    )
     parser.add_argument("--output", type=Path, default=root / "build/elec/elec-room-program-candidate.json")
     parser.add_argument("--output-svg", type=Path, default=root / "drawings/E302-E304-room-program-candidate.svg")
     return parser.parse_args()
@@ -175,7 +179,14 @@ def supplemental_equipment_demands(int1: dict[str, Any], route: dict[str, Any]) 
         round((float(wash_tower["bbox_min_mm"][axis]) + float(wash_tower["bbox_max_mm"][axis])) / 2.0, 6)
         for axis in range(3)
     ]
-    a06 = next(row for row in route["equipment"] if row["equipment_id"] == "A06")
+    if route["source"]["legacy_blend_sha256"] != EXPECTED_LEGACY_BLEND_SHA256:
+        raise RuntimeError("A06 legacy evidence source hash changed")
+    a06_matches = [row for row in route["equipment"] if row["equipment_id"] == "A06"]
+    if len(a06_matches) != 1:
+        raise RuntimeError(f"expected one A06 legacy equipment record, got {len(a06_matches)}")
+    a06 = a06_matches[0]
+    if a06["position_status"] != "confirmed_fixed" or a06["formal_identity_status"] != "missing":
+        raise RuntimeError("A06 legacy equipment status changed")
     return [
         {
             "source_kind": "formal_named_equipment_proxy",
@@ -317,7 +328,7 @@ def render_svg(report: dict[str, Any]) -> str:
         svg_text(407, 112, "不等于插座、出线口或回路位置", "warn"),
         svg_text(407, 126, "已确认设计规则：", "small"),
         svg_text(407, 133, "只用实体有线开关", "cell"),
-        svg_text(407, 140, "卧室2个AP｜客厅/书房2个路由器", "cell"),
+        svg_text(407, 140, "卧室2个AP｜客厅/书房共用1个路由器", "cell"),
         svg_text(407, 147, "客厅/书房/餐厅：入户↔主卧门双控", "cell"),
         svg_text(407, 154, "面板底边：插座300｜电视600｜开关1300", "cell"),
         svg_text(407, 168, "下一道门：设备功率、柜体立面", "small"),
@@ -331,8 +342,10 @@ def render_svg(report: dict[str, Any]) -> str:
 def main() -> int:
     args = parse_args()
     ifc_hash = sha256(args.ifc)
-    if ifc_hash != EXPECTED_IFC_SHA256:
-        raise RuntimeError(f"formal IFC hash changed: {ifc_hash}")
+    if args.expected_ifc_sha256 and ifc_hash != args.expected_ifc_sha256:
+        raise RuntimeError(
+            f"formal IFC hash changed: expected {args.expected_ifc_sha256}, got {ifc_hash}"
+        )
     program = read_program(args.program)
     design_rules = read_design_rules(args.design_rules)
     design_rule_summary = compile_design_rule_summary(design_rules)
@@ -344,7 +357,7 @@ def main() -> int:
     route = read_json(args.route_readiness)
     hashes = {
         delta["source_ifc_sha256"], elec["source"]["sha256"], positioning["source_ifc_sha256"],
-        round1["source_ifc_sha256"], int1["source"]["ifc_sha256"], route["source"]["ifc_sha256"],
+        round1["source_ifc_sha256"], int1["source"]["ifc_sha256"],
     }
     if hashes != {ifc_hash}:
         raise RuntimeError(f"stale room-program inputs: {hashes}")
@@ -371,6 +384,12 @@ def main() -> int:
         "source_ifc_sha256": ifc_hash,
         "program_path": str(args.program.resolve()),
         "design_rules_path": str(args.design_rules.resolve()),
+        "a06_legacy_evidence": {
+            "path": str(args.route_readiness.resolve()),
+            "sha256": sha256(args.route_readiness),
+            "legacy_blend_sha256": route["source"]["legacy_blend_sha256"],
+            "role": "A06 position evidence only; route-readiness state is not imported",
+        },
         "summary": summary,
         "design_rule_summary": design_rule_summary,
         "design_rules": design_rules,

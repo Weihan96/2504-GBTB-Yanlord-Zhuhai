@@ -30,6 +30,15 @@ test("official CAD pins the router to the entry weak-current cabinet without inv
   expect(report.evidence_register.rows.find((row: { evidence_id: string }) => row.evidence_id === "E304-PHOTO-005").source_sha256).toBe(
     "24ef14dd6871b469a74ee167302d894214b0df30cc31eb4029df2a18f4d8a41b",
   );
+  const photo003 = report.evidence_register.rows.find(
+    (row: { evidence_id: string }) => row.evidence_id === "E304-PHOTO-003",
+  );
+  expect(photo003.proves).toContain("设备和线缆在弱电箱内存在");
+  expect(photo003.does_not_prove).toContain("准确型号角色");
+  expect(photo003.status).toBe("verified_user_photo");
+  expect(photo003.confidence).toBe("1.00");
+  expect(photo003.review_required).toBe("yes");
+  expect(photo003.formal_ifc_write_allowed).toBe("no");
   expect(report.text_evidence.map((row: { handle: string }) => row.handle)).toEqual(["2598C0", "224270", "224295"]);
   expect(report.leader_evidence.handle).toBe("224271");
   expect(report.source.coordinate_transform.viewport_handle).toBe("224238");

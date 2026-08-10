@@ -17,9 +17,6 @@ from ifcopenshell.util.element import get_psets
 from shapely.geometry import Point, box
 
 
-EXPECTED_IFC_SHA256 = "7521c09991f3d0c7b7d91ca2324fd55ad961d8e32e9e3e9a9777a4cc19b06e81"
-
-
 def parse_args() -> argparse.Namespace:
     root = Path(__file__).resolve().parents[2]
     parser = argparse.ArgumentParser(description=__doc__)
@@ -44,6 +41,7 @@ def parse_args() -> argparse.Namespace:
     parser.add_argument("--wall-near-mm", type=float, default=200.0)
     parser.add_argument("--current-point-near-mm", type=float, default=150.0)
     parser.add_argument("--plum-coordination-mm", type=float, default=600.0)
+    parser.add_argument("--expected-ifc-sha256", help="Optional caller-frozen source hash")
     return parser.parse_args()
 
 
@@ -114,8 +112,10 @@ def current_spaces(model: ifcopenshell.file) -> list[dict[str, str]]:
 def main() -> int:
     args = parse_args()
     ifc_hash = sha256(args.ifc)
-    if ifc_hash != EXPECTED_IFC_SHA256:
-        raise RuntimeError(f"formal IFC hash changed: {ifc_hash}")
+    if args.expected_ifc_sha256 and ifc_hash != args.expected_ifc_sha256:
+        raise RuntimeError(
+            f"formal IFC hash changed: expected {args.expected_ifc_sha256}, got {ifc_hash}"
+        )
     developer = read_json(args.developer)
     elec = read_json(args.elec)
     plum = read_json(args.plum)

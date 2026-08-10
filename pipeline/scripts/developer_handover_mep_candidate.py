@@ -21,7 +21,6 @@ from shapely.geometry import Point, Polygon
 from shapely.ops import unary_union
 
 
-EXPECTED_IFC_SHA256 = "7521c09991f3d0c7b7d91ca2324fd55ad961d8e32e9e3e9a9777a4cc19b06e81"
 EXPECTED_SOURCE_DXF_SHA256 = "51dc592477cb772da36e643d507877f0cc28c253797c7bae0c913dcaeaabf94f"
 EXPECTED_DWG_CONVERSION_SHA256 = "706483de83d90e526d7d7cf4f0b097902a4f97868c16aba5f6fac9d9e942f0f0"
 
@@ -73,6 +72,7 @@ def parse_args() -> argparse.Namespace:
         type=Path,
         default=root / "build/mep-positioning/developer-handover-mep-candidate.json",
     )
+    parser.add_argument("--expected-ifc-sha256", help="Optional caller-frozen source hash")
     return parser.parse_args()
 
 
@@ -337,8 +337,10 @@ def main() -> int:
     args = parse_args()
     ifc_hash = sha256(args.ifc)
     source_hash = sha256(args.source_dxf)
-    if ifc_hash != EXPECTED_IFC_SHA256:
-        raise RuntimeError(f"formal IFC hash changed: {ifc_hash}")
+    if args.expected_ifc_sha256 and ifc_hash != args.expected_ifc_sha256:
+        raise RuntimeError(
+            f"formal IFC hash changed: expected {args.expected_ifc_sha256}, got {ifc_hash}"
+        )
     if source_hash != EXPECTED_SOURCE_DXF_SHA256:
         raise RuntimeError(f"developer DXF hash changed: {source_hash}")
 

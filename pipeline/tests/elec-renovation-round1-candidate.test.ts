@@ -44,12 +44,14 @@ test("first-round renovation electrical demands stay read-only and complete", ()
   const report = JSON.parse(readFileSync(output, "utf8"));
   expect(report.summary.bedside_light_candidates).toBe(4);
   expect(report.summary.new_socket_candidates).toBe(2);
+  expect(report.summary.new_socket_known_connected_load_w).toEqual({ "NS-01": 0, "NS-02": 0 });
   expect(report.summary.cabinet_power_zones).toBe(7);
   expect(report.summary.kitchen_socket_rechecks).toBe(11);
   expect(report.summary.label_collision_count).toBe(0);
   expect(report.summary.developer_red_points_are_reference_only).toBe(true);
   expect(report.gates.four_bedside_lights_present).toBe(true);
   expect(report.gates.island_and_dining_bay_socket_present).toBe(true);
+  expect(report.gates.socket_use_lists_compiled_without_fabricated_load).toBe(true);
   expect(report.gates.illuminated_cabinet_power_is_grouped_not_fabricated).toBe(true);
   expect(report.gates.all_current_kitchen_sockets_reopened_for_review).toBe(true);
   expect(report.gates.label_collision_free).toBe(true);
@@ -59,6 +61,15 @@ test("first-round renovation electrical demands stay read-only and complete", ()
   const renderedSvg = readFileSync(svg, "utf8");
   expect(renderedSvg).toContain("elec-renovation-round1");
   expect(renderedSvg).toContain("Wall Plan-underlay.png");
+  const ns01 = report.new_socket_candidates.find((row: { candidate_id: string }) => row.candidate_id === "NS-01");
+  const ns02 = report.new_socket_candidates.find((row: { candidate_id: string }) => row.candidate_id === "NS-02");
+  expect(ns01.appliance_context.items.map((row: { appliance_name: string }) => row.appliance_name)).toEqual([
+    "火锅电器", "搅拌机", "Sous-vide 棒",
+  ]);
+  expect(ns02.appliance_context.items.map((row: { appliance_name: string }) => row.appliance_name)).toEqual([
+    "咖啡机", "手冲电热水壶", "磨豆机",
+  ]);
+  expect(ns01.appliance_context.socket_form_and_circuit_sizing_ready).toBe(false);
 }, 30_000);
 
 test("first-round renovation candidate has no IFC write path", () => {

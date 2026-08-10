@@ -39,3 +39,9 @@ test("MEP source audit contains no IFC write path", () => {
   expect(source).not.toContain("model.write(");
   expect(source).not.toContain("ifcopenshell.api.run");
 });
+
+test("MEP source audit rejects a mismatched caller-frozen hash", () => {
+  const run = spawnSync(["python3", script, "--expected-ifc-sha256", "0".repeat(64)], { cwd: root });
+  expect(run.exitCode).not.toBe(0);
+  expect(run.stderr.toString()).toContain("formal IFC hash changed");
+});

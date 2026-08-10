@@ -62,6 +62,17 @@ def read_evidence_register(path: Path) -> list[dict[str, str]]:
     required = ("source_kind", "source_document", "source_sha256", "source_locator", "evidence", "proves", "does_not_prove", "status")
     if any(not row[field] for row in rows for field in required):
         raise RuntimeError("E-304 evidence register contains an incomplete evidence row")
+    for row in rows:
+        try:
+            confidence = float(row["confidence"])
+        except (TypeError, ValueError):
+            raise RuntimeError(f"{row['evidence_id']}: confidence is not numeric")
+        if not 0 <= confidence <= 1:
+            raise RuntimeError(f"{row['evidence_id']}: confidence is outside 0..1")
+        if row["review_required"] not in {"yes", "no"}:
+            raise RuntimeError(f"{row['evidence_id']}: review_required is not yes/no")
+        if row["formal_ifc_write_allowed"] != "no":
+            raise RuntimeError(f"{row['evidence_id']}: evidence must not authorize IFC writes")
     return rows
 
 

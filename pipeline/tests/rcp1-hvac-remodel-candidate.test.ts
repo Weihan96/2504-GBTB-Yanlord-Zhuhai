@@ -1,11 +1,47 @@
 import { expect, test } from "bun:test";
-import { resolve } from "node:path";
+import { createHash } from "node:crypto";
+import { mkdtemp } from "node:fs/promises";
+import { tmpdir } from "node:os";
+import { join, resolve } from "node:path";
 
 const root = resolve(import.meta.dir, "../..");
 const script = resolve(root, "pipeline/scripts/rcp1_hvac_remodel_candidate.py");
-const output = resolve(root, "build/rcp1/hvac-remodel-candidate.test.json");
+const input = resolve(root, "2504 GBTB Yanlord Zhuhai.ifc");
+
+async function currentIfcHash() {
+  const contents = await Bun.file(input).arrayBuffer();
+  return createHash("sha256").update(new Uint8Array(contents)).digest("hex");
+}
+
+async function currentHashFixtures(staleReport?: "m401" | "legacy") {
+  const directory = await mkdtemp(join(tmpdir(), "rcp1-hvac-remodel-"));
+  const hash = await currentIfcHash();
+  const sources = {
+    rcp1: resolve(root, "build/rcp1/rcp1-existing-candidate.json"),
+    coordination: resolve(root, "build/rcp1/coordination-report.json"),
+    m401: resolve(root, "build/rcp1/m401-existing-report.json"),
+    legacy: resolve(root, "build/rcp1/legacy-base-audit.json"),
+  };
+  const reports: Record<string, string> = {};
+
+  for (const [name, source] of Object.entries(sources)) {
+    const report = await Bun.file(source).json();
+    if (name === "rcp1" || name === "coordination") report.source.sha256 = hash;
+    if (name === "m401") report.source.ifc_sha256 = staleReport === name ? "0".repeat(64) : hash;
+    if (name === "legacy") {
+      report.source.formal_ifc_sha256 = staleReport === name ? "0".repeat(64) : hash;
+    }
+    const destination = join(directory, `${name}.json`);
+    await Bun.write(destination, `${JSON.stringify(report)}\n`);
+    reports[name] = destination;
+  }
+
+  return { directory, hash, reports };
+}
 
 test("RCP1 remodel HVAC candidate keeps proximity separate from connection", async () => {
+  const fixture = await currentHashFixtures();
+  const output = join(fixture.directory, "candidate.json");
   const source = await Bun.file(script).text();
   expect(source).toContain('"formal_ifc_write_allowed": False');
   expect(source).toContain('"proximity_is_connection": False');
@@ -16,15 +52,15 @@ test("RCP1 remodel HVAC candidate keeps proximity separate from connection", asy
       "python3",
       script,
       "--input",
-      resolve(root, "2504 GBTB Yanlord Zhuhai.ifc"),
+      input,
       "--rcp1-report",
-      resolve(root, "build/rcp1/rcp1-existing-candidate.json"),
+      fixture.reports.rcp1,
       "--coordination-report",
-      resolve(root, "build/rcp1/coordination-report.json"),
+      fixture.reports.coordination,
       "--m401-report",
-      resolve(root, "build/rcp1/m401-existing-report.json"),
+      fixture.reports.m401,
       "--legacy-report",
-      resolve(root, "build/rcp1/legacy-base-audit.json"),
+      fixture.reports.legacy,
       "--review",
       resolve(root, "pipeline/decisions/rcp1-hvac-remodel-review.csv"),
       "--output",
@@ -42,6 +78,7 @@ test("RCP1 remodel HVAC candidate keeps proximity separate from connection", asy
   expect(exitCode).toBe(0);
 
   const report = await Bun.file(output).json();
+  expect(report.source.ifc_sha256).toBe(fixture.hash);
   expect(report.summary.formal_ac_candidates).toBe(5);
   expect(report.summary.legacy_east_ac_candidates_without_global_id).toBe(1);
   expect(report.summary.developer_openings).toBe(7);
@@ -84,3 +121,54 @@ test("RCP1 remodel HVAC candidate keeps proximity separate from connection", asy
   expect(report.gates.formal_ifc_write_allowed).toBe(false);
   expect(report.gates.hvac_design_ready).toBe(false);
 }, 30_000);
+
+test("RCP1 remodel HVAC candidate rejects a caller-frozen IFC SHA mismatch", async () => {
+  const process = Bun.spawn(
+    [
+      "python3",
+      script,
+      "--input",
+      input,
+      "--expected-ifc-sha256",
+      "0".repeat(64),
+    ],
+    { cwd: root, stdout: "pipe", stderr: "pipe" },
+  );
+  const [exitCode, stderr] = await Promise.all([
+    process.exited,
+    new Response(process.stderr).text(),
+  ]);
+  expect(exitCode).not.toBe(0);
+  expect(stderr).toContain("formal IFC SHA drift");
+});
+
+test("RCP1 remodel HVAC candidate rejects stale upstream evidence", async () => {
+  const fixture = await currentHashFixtures("legacy");
+  const process = Bun.spawn(
+    [
+      "python3",
+      script,
+      "--input",
+      input,
+      "--rcp1-report",
+      fixture.reports.rcp1,
+      "--coordination-report",
+      fixture.reports.coordination,
+      "--m401-report",
+      fixture.reports.m401,
+      "--legacy-report",
+      fixture.reports.legacy,
+      "--review",
+      resolve(root, "pipeline/decisions/rcp1-hvac-remodel-review.csv"),
+      "--output",
+      join(fixture.directory, "stale-candidate.json"),
+    ],
+    { cwd: root, stdout: "pipe", stderr: "pipe" },
+  );
+  const [exitCode, stderr] = await Promise.all([
+    process.exited,
+    new Response(process.stderr).text(),
+  ]);
+  expect(exitCode).not.toBe(0);
+  expect(stderr).toContain("stale HVAC evidence");
+});

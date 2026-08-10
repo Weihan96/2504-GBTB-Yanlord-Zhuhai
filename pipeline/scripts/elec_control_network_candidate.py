@@ -13,9 +13,11 @@ from pathlib import Path
 from typing import Any
 
 import ifcopenshell
+import ifcopenshell.geom
 import ifcopenshell.util.placement
 
 from svg_audit_underlay import validate_wall_plan_source
+from sync_owner_inputs import DECISION_HEADERS, normalized_inputs, read_csv as read_owner_csv, validate_decisions
 
 EXPECTED_IFC_SHA256 = "6c2fd8da9e9ad7ddbc2b63415a27f1c979e8995b880d8fce210a2dda2ef2aab6"
 KITCHEN_FIRE_SENSOR_GLOBAL_ID = "2fwceKahvBqQXqal2ZcIUF"
@@ -30,6 +32,7 @@ def parse_args() -> argparse.Namespace:
     parser.add_argument("--rules", type=Path, default=root / "pipeline/decisions/elec-design-rules.csv")
     parser.add_argument("--ceiling-devices", type=Path, default=root / "pipeline/decisions/a106-ceiling-device-review.csv")
     parser.add_argument("--doors", type=Path, default=root / "pipeline/decisions/a104-door-window-review.csv")
+    parser.add_argument("--owner-decisions", type=Path, default=root / "pipeline/decisions/owner-input-register.csv")
     parser.add_argument("--spaces", type=Path, default=root / "pipeline/decisions/space-reference-review.csv")
     parser.add_argument("--router-evidence", type=Path, default=root / "build/elec/e304-router-cad-evidence.json")
     parser.add_argument("--source-svg", type=Path, default=root / "drawings/Wall Plan.svg")
@@ -117,6 +120,71 @@ def control_zones(doors: list[dict[str, str]]) -> list[dict[str, Any]]:
             "automatic_ifc_write_allowed": False,
         })
     return rows
+
+
+def effective_owner_decisions(path: Path) -> dict[str, dict[str, str]]:
+    rows = read_owner_csv(path, DECISION_HEADERS)
+    errors = validate_decisions(rows, rows)
+    if errors:
+        raise RuntimeError("invalid owner decision register: " + "; ".join(errors))
+    normalized = normalized_inputs(rows, [])["decisions"]
+    return {row["input_id"]: row for row in normalized}
+
+
+def control_wall_side_options(
+    ifc_path: Path,
+    controls: list[dict[str, Any]],
+    owner_decisions: dict[str, dict[str, str]],
+) -> list[dict[str, Any]]:
+    model = ifcopenshell.open(ifc_path)
+    settings = ifcopenshell.geom.settings()
+    settings.set(settings.USE_WORLD_COORDS, False)
+    result: list[dict[str, Any]] = []
+    decision_ids = {
+        "CTRL-ENTRY": "E302-ENTRY-SIDE",
+        "CTRL-MASTER": "E302-MASTER-SIDE",
+    }
+    for control in controls:
+        door = model.by_guid(control["source_global_ids"][0])
+        shape = ifcopenshell.geom.create_shape(settings, door)
+        vertices = list(shape.geometry.verts)
+        local_x = vertices[0::3]
+        local_width_mm = (max(local_x) - min(local_x)) * 1000.0
+        if not 700.0 <= local_width_mm <= 1200.0:
+            raise RuntimeError(
+                f"unexpected door opening width for {control['candidate_id']}: {local_width_mm:.3f} mm"
+            )
+        placement = ifcopenshell.util.placement.get_local_placement(door.ObjectPlacement)
+        axis_x, axis_y = float(placement[0][0]), float(placement[1][0])
+        axis_length = (axis_x * axis_x + axis_y * axis_y) ** 0.5
+        axis_x, axis_y = axis_x / axis_length, axis_y / axis_length
+        offset_mm = local_width_mm / 2.0 + 150.0
+        decision = owner_decisions[decision_ids[control["candidate_id"]]]
+        candidate_suffix = "A" if " A" in decision["candidate_value"] else None
+        effective_suffix = "A" if " A" in decision["effective_value"] else "B" if " B" in decision["effective_value"] else None
+        for suffix, direction in (("A", -1.0), ("B", 1.0)):
+            preferred = suffix == candidate_suffix
+            if control["candidate_id"] == "CTRL-MASTER":
+                review_status = "preferred_pending_a104" if preferred else "alternate_pending_a104"
+            else:
+                review_status = "candidate_preferred_unconfirmed" if preferred else "alternate_unconfirmed"
+            result.append({
+                "candidate_id": f"{control['candidate_id']}-{suffix}",
+                "source_candidate_id": control["candidate_id"],
+                "kind": "doorway_control_wall_side_option",
+                "room_reference": control["room_reference"],
+                "position_mm": [
+                    round(control["position_mm"][0] + axis_x * offset_mm * direction, 6),
+                    round(control["position_mm"][1] + axis_y * offset_mm * direction, 6),
+                    control["position_mm"][2],
+                ],
+                "jamb_clearance_mm": 150.0,
+                "review_status": review_status,
+                "effective_selection": suffix == effective_suffix,
+                "coordinate_status": "wall_side_option_not_final" if effective_suffix is None else "owner_selected_pending_geometry_evidence",
+                "automatic_ifc_write_allowed": False,
+            })
+    return result
 
 
 def network_zones(
@@ -283,12 +351,13 @@ def render_svg(source: str, report: dict[str, Any]) -> str:
     if "</svg>" not in source or 'viewBox="0 0 500 400"' not in source:
         raise RuntimeError("could not prepare 500x400 control/network SVG")
     markup = []
-    for index, row in enumerate(report["control_coordination_zones"]):
+    for index, row in enumerate(report["control_wall_side_options"]):
         x, y = world_to_svg(row["position_mm"])
         candidate_id = html.escape(row["candidate_id"])
+        status = "PREFERRED" if "preferred" in row["review_status"] else "ALT"
         markup.append(
             f'<g data-candidate-id="{candidate_id}"><rect class="cn-control" x="{x-2.2:.3f}" y="{y-2.2:.3f}" width="4.4" height="4.4"/>'
-            f'<text class="cn-label" x="{x+3.2:.3f}" y="{y+(-3 if index else 5):.3f}">{candidate_id}</text></g>'
+            f'<text class="cn-label" x="{x+3.2:.3f}" y="{y+(-3 if index % 2 else 5):.3f}">{candidate_id} {status}</text></g>'
         )
     for index, row in enumerate(report["network_coordination_zones"]):
         position = row["plan_position_mm"] if "plan_position_mm" in row else row["position_mm"]
@@ -317,7 +386,7 @@ def render_svg(source: str, report: dict[str, Any]) -> str:
         '<g><rect class="cn-panel" x="402" y="7" width="93" height="386"/>',
         '<text class="cn-title" x="407" y="16">控制、网络与安全设备协调区</text>',
         '<text class="cn-note" x="407" y="24">Bonsai 同批材质底图｜A-106 点位联动｜非施工发布</text>',
-        '<text class="cn-text" x="407" y="39">洋红方块：2 个门口控制面板区</text>',
+        '<text class="cn-text" x="407" y="39">洋红方块：4 个门口墙侧 A/B 候选</text>',
         '<text class="cn-text" x="407" y="47">蓝点：主卧/次卧 AP 机械候选点</text>',
         '<text class="cn-text" x="407" y="55">紫点：玄关高柜路由器平面柜位</text>',
         '<text class="cn-text" x="407" y="63">橙点：3 个烟感机械候选点</text>',
@@ -325,7 +394,7 @@ def render_svg(source: str, report: dict[str, Any]) -> str:
         '<text class="cn-text" x="407" y="79">红点：厨房燃气报警器房间区</text>',
         '<text class="cn-text" x="407" y="93">双控：客厅＋书房＋餐厅｜仅实体有线</text>',
         '<text class="cn-text" x="407" y="101">开关面板底边：1300 mm AFF</text>',
-        '<text class="cn-warn" x="407" y="118">门中心只标识门口，墙侧/键序待人审</text>',
+        '<text class="cn-warn" x="407" y="118">Master A 为待 A-104 取证优选；Entry A/B 未关闭</text>',
         '<text class="cn-warn" x="407" y="126">路由器 Z/产品/散热检修待设备深化</text>',
         '<text class="cn-warn" x="407" y="134">燃气型号待燃气公司确认，不锁定开孔</text>',
         f'<text class="cn-note" x="407" y="382">IFC SHA {report["source_ifc_sha256"][:12]}…</text></g>',
@@ -343,6 +412,8 @@ def main() -> int:
         raise RuntimeError(f"formal IFC hash changed: {source_hash}")
     rules = read_csv(args.rules)
     controls = control_zones(read_csv(args.doors))
+    owner_decisions = effective_owner_decisions(args.owner_decisions)
+    control_options = control_wall_side_options(args.ifc, controls, owner_decisions)
     spaces = read_csv(args.spaces)
     ceiling_devices = read_csv(args.ceiling_devices)
     router_evidence = json.loads(args.router_evidence.read_text(encoding="utf-8"))
@@ -360,9 +431,18 @@ def main() -> int:
         "mode": "read_only_control_network_coordination_candidate",
         "source_ifc_sha256": source_hash,
         "rules_path": str(args.rules.resolve()),
+        "owner_decisions": {
+            "path": str(args.owner_decisions.resolve()),
+            "sha256": sha256(args.owner_decisions),
+            "effective": {
+                input_id: owner_decisions[input_id]["effective_value"]
+                for input_id in ("E302-ENTRY-SIDE", "E302-ENTRY-PANEL", "E302-MASTER-SIDE", "E302-MASTER-PANEL")
+            },
+        },
         "router_evidence_path": str(args.router_evidence.resolve()),
         "summary": {
             "control_coordination_zones": len(controls),
+            "control_wall_side_options": len(control_options),
             "paired_two_way_control_groups": 3,
             "entrance_master_lighting_switches": 1,
             "bedroom_AP_candidates": len(ap_candidates),
@@ -373,10 +453,19 @@ def main() -> int:
             "confirmed_rules": sum(row["status"] == "confirmed" for row in rules),
         },
         "control_coordination_zones": controls,
+        "control_wall_side_options": control_options,
         "network_coordination_zones": networks,
         "safety_device_coordination_zones": safety_devices,
         "gates": {
             "two_doorway_zones_present": len(controls) == 2,
+            "four_wall_side_options_present": len(control_options) == 4,
+            "master_a_preferred_pending_a104": next(
+                row for row in control_options if row["candidate_id"] == "CTRL-MASTER-A"
+            )["review_status"] == "preferred_pending_a104",
+            "entry_wall_side_not_auto_closed": all(
+                not row["effective_selection"]
+                for row in control_options if row["source_candidate_id"] == "CTRL-ENTRY"
+            ),
             "three_two_way_groups_present": all(row["controlled_groups"] == ["客厅", "书房", "餐厅"] for row in controls),
             "entrance_master_switch_present": sum(row["entrance_master_lighting_switch"] for row in controls) == 1,
             "two_bedroom_AP_candidates_present": len(ap_candidates) == 2

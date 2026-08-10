@@ -46,8 +46,19 @@ test("all rooms and modelled equipment receive read-only electrical program cove
   expect(report.gates.whole_home_switch_positioning_complete).toBe(false);
   expect(report.gates.whole_home_network_positioning_complete).toBe(false);
   expect(report.gates.automatic_ifc_write_allowed).toBe(false);
-  expect(readFileSync(svg, "utf8")).toContain("E-302/E-304 逐房间用电与弱电功能程序候选");
+  const rendered = readFileSync(svg, "utf8");
+  expect(rendered).toContain("E-302/E-304 逐房间用电与弱电功能程序候选");
+  expect(rendered).toContain("客厅/书房共用1个路由器");
+  expect(rendered).not.toContain("客厅/书房2个路由器");
 }, 30_000);
+
+test("room electrical program rejects a mismatched caller-frozen hash", () => {
+  const run = spawnSync([
+    "python3", script, "--expected-ifc-sha256", "0".repeat(64),
+  ], { cwd: root });
+  expect(run.exitCode).not.toBe(0);
+  expect(run.stderr.toString()).toContain("formal IFC hash changed");
+});
 
 test("room electrical program compiler has no IFC write path", () => {
   const source = readFileSync(script, "utf8");

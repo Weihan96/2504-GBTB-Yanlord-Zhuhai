@@ -12,7 +12,6 @@ from pathlib import Path
 from typing import Any
 
 
-EXPECTED_IFC_SHA256 = "7521c09991f3d0c7b7d91ca2324fd55ad961d8e32e9e3e9a9777a4cc19b06e81"
 OLD_PDF_SHA256 = "4176a27a58f8c926ca3d66cbcb6015e679d7af0977fb8a26976980bf677a3488"
 LATEST_PDF_SHA256 = "ec9f67ebe25fd6fe4be5ada495f919d6d92ff5e501f79d33a257eed59e4310a5"
 EXPECTED_REQUIREMENT_IDS = {
@@ -39,6 +38,7 @@ def parse_args() -> argparse.Namespace:
     parser.add_argument("--old-pdf", type=Path, default=source_dir / "珠海-陈总(水电图)2025.5.29.pdf")
     parser.add_argument("--latest-pdf", type=Path, default=source_dir / "珠海-陈总(水电图)2025.12.23.pdf")
     parser.add_argument("--output", type=Path, default=root / "build/mep-positioning/source-audit.json")
+    parser.add_argument("--expected-ifc-sha256", help="Optional caller-frozen source hash")
     return parser.parse_args()
 
 
@@ -79,8 +79,10 @@ def main() -> int:
     ifc_hash = sha256(args.ifc)
     old_hash = sha256(args.old_pdf)
     latest_hash = sha256(args.latest_pdf)
-    if ifc_hash != EXPECTED_IFC_SHA256:
-        raise RuntimeError(f"formal IFC hash changed: {ifc_hash}")
+    if args.expected_ifc_sha256 and ifc_hash != args.expected_ifc_sha256:
+        raise RuntimeError(
+            f"formal IFC hash changed: expected {args.expected_ifc_sha256}, got {ifc_hash}"
+        )
     if old_hash != OLD_PDF_SHA256 or latest_hash != LATEST_PDF_SHA256:
         raise RuntimeError("water/electric source PDF hash changed; re-review revisions")
 

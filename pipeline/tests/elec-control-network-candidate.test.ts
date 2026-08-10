@@ -13,6 +13,7 @@ test("confirmed control, network, and safety roles compile as read-only coordina
   expect(run.exitCode).toBe(0);
   const report = JSON.parse(readFileSync(output, "utf8"));
   expect(report.summary.control_coordination_zones).toBe(2);
+  expect(report.summary.control_wall_side_options).toBe(4);
   expect(report.summary.paired_two_way_control_groups).toBe(3);
   expect(report.summary.entrance_master_lighting_switches).toBe(1);
   expect(report.summary.bedroom_AP_candidates).toBe(2);
@@ -22,6 +23,9 @@ test("confirmed control, network, and safety roles compile as read-only coordina
   expect(report.summary.kitchen_gas_alarm_room_zones).toBe(1);
   expect(Object.values(report.gates).every((value) => value === true || value === false)).toBe(true);
   expect(report.gates.two_doorway_zones_present).toBe(true);
+  expect(report.gates.four_wall_side_options_present).toBe(true);
+  expect(report.gates.master_a_preferred_pending_a104).toBe(true);
+  expect(report.gates.entry_wall_side_not_auto_closed).toBe(true);
   expect(report.gates.three_two_way_groups_present).toBe(true);
   expect(report.gates.entrance_master_switch_present).toBe(true);
   expect(report.gates.two_bedroom_AP_candidates_present).toBe(true);
@@ -38,6 +42,8 @@ test("confirmed control, network, and safety roles compile as read-only coordina
   const renderedSvg = readFileSync(svg, "utf8");
   expect(renderedSvg).toContain("elec-control-network");
   expect(renderedSvg).toContain("A106-FIRE-R04");
+  expect(renderedSvg).toContain("CTRL-MASTER-A PREFERRED");
+  expect(renderedSvg).toContain("CTRL-ENTRY-B ALT");
   expect(renderedSvg).toContain("玄关高柜路由器平面柜位");
   expect(renderedSvg).toContain("Wall Plan-underlay.png");
 }, 30_000);

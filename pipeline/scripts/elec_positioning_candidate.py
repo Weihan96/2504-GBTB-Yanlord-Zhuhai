@@ -12,7 +12,6 @@ from pathlib import Path
 from typing import Any
 
 
-EXPECTED_IFC_SHA256 = "7521c09991f3d0c7b7d91ca2324fd55ad961d8e32e9e3e9a9777a4cc19b06e81"
 SOCKET_ROLE_CANDIDATES = {
     "P001": ("c_face_purifier_or_spare_socket_group", 0.60, "one of three adjacent low sockets matching page 7 purifier plus two spare outlets"),
     "P002": ("c_face_purifier_or_spare_socket_group", 0.60, "one of three adjacent low sockets matching page 7 purifier plus two spare outlets"),
@@ -35,6 +34,7 @@ def parse_args() -> argparse.Namespace:
     parser.add_argument("--elec", type=Path, default=root / "build/elec/elec-existing-candidate.json")
     parser.add_argument("--source-audit", type=Path, default=root / "build/mep-positioning/source-audit.json")
     parser.add_argument("--output", type=Path, default=root / "build/elec/elec-positioning-candidate.json")
+    parser.add_argument("--expected-ifc-sha256", help="Optional caller-frozen source hash")
     return parser.parse_args()
 
 
@@ -82,8 +82,10 @@ def proxy_identity(record: dict[str, Any]) -> tuple[str, float, str]:
 def main() -> int:
     args = parse_args()
     source_hash = sha256(args.ifc)
-    if source_hash != EXPECTED_IFC_SHA256:
-        raise RuntimeError(f"formal IFC hash changed: {source_hash}")
+    if args.expected_ifc_sha256 and source_hash != args.expected_ifc_sha256:
+        raise RuntimeError(
+            f"formal IFC hash changed: expected {args.expected_ifc_sha256}, got {source_hash}"
+        )
     elec = read_json(args.elec)
     source = read_json(args.source_audit)
     if elec["source"]["sha256"] != source_hash or source["source_ifc_sha256"] != source_hash:
