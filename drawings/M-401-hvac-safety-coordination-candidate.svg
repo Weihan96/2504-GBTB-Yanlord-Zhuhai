@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="1080" viewBox="0 0 1600 1080">
+<style>
+.bg{fill:#f3f6fa}.panel{fill:#fff;stroke:#cbd5e1;stroke-width:2}.card{fill:#eef6ff;stroke:#93c5fd;stroke-width:2}
+.title{font:700 38px -apple-system,"PingFang SC",sans-serif;fill:#0f172a}.subtitle{font:18px -apple-system,"PingFang SC",sans-serif;fill:#475569}
+.kpi{font:700 31px ui-monospace,SFMono-Regular,monospace;fill:#0f4c81}.kpi-label{font:15px -apple-system,"PingFang SC",sans-serif;fill:#475569}
+.section{font:700 24px -apple-system,"PingFang SC",sans-serif;fill:#1e293b}.type{font:700 26px ui-monospace,monospace;fill:#1e3a8a}
+.count{font:700 24px ui-monospace,monospace;fill:#0369a1}.small{font:14px -apple-system,"PingFang SC",sans-serif;fill:#334155}.warn{font:700 15px -apple-system,"PingFang SC",sans-serif;fill:#a16207}
+.route{fill:#f8fafc;stroke:#cbd5e1}.route-id{font:700 15px ui-monospace,monospace;fill:#334155}.route-label{font:700 17px -apple-system,"PingFang SC",sans-serif;fill:#0f4c81}
+.route-note{font:13px -apple-system,"PingFang SC",sans-serif;fill:#a16207}.block{fill:#fff7ed;stroke:#fdba74;stroke-width:2}
+.block-id{font:700 15px ui-monospace,monospace;fill:#9a3412}.block-name{font:16px -apple-system,"PingFang SC",sans-serif;fill:#7c2d12}
+.safety{fill:#ecfdf5;stroke:#6ee7b7;stroke-width:2}.safety-title{font:700 19px -apple-system,"PingFang SC",sans-serif;fill:#065f46}
+.safety-text{font:15px -apple-system,"PingFang SC",sans-serif;fill:#064e3b}.gate{font:700 16px ui-monospace,monospace;fill:#991b1b}
+.footer{font:14px ui-monospace,monospace;fill:#64748b}
+</style>
+<rect class="bg" width="1600" height="1080"/>
+<text class="title" x="55" y="62">M-401 空调、通风及安全设备协调候选</text>
+<text class="subtitle" x="55" y="100">证据化索引 + 路线约束图 · 只读生成 · 旧紫色管线不是装修后最终路线 · 非施工发布</text>
+<rect class="panel" x="55" y="125" width="1490" height="90" rx="14"/>
+<text class="kpi" x="90" y="168">28</text><text class="kpi-label" x="90" y="194">既有实例</text>
+<text class="kpi" x="250" y="168">3 / 5</text><text class="kpi-label" x="250" y="194">AC 类型 / 已分配实例</text>
+<text class="kpi" x="500" y="168">5</text><text class="kpi-label" x="500" y="194">旧冷媒/冷凝几何</text>
+<text class="kpi" x="675" y="168">2 + 1</text><text class="kpi-label" x="675" y="194">风口 Proxy / 止回阀 Proxy</text>
+<text class="kpi" x="970" y="168">6 / 7</text><text class="kpi-label" x="970" y="194">确认约束 / 顺序锚点</text>
+<text class="kpi" x="1240" y="168">5 BLOCK</text><text class="kpi-label" x="1240" y="194">施工发布未关闭</text>
+
+<text class="section" x="70" y="250">当前 IFC 空调类型身份（不是最终选型）</text>
+<rect class="card" x="70" y="268" width="270" height="96" rx="14"/><text class="type" x="92" y="304">AC1180</text><text class="count" x="300" y="304">×1</text><text class="small" x="92" y="330">RPIZ-71FSLN5Q/P 1180x447x192</text><text class="warn" x="92" y="352">型号可查 ≠ 最终设备选型</text><rect class="card" x="370" y="268" width="270" height="96" rx="14"/><text class="type" x="392" y="304">AC700</text><text class="count" x="600" y="304">×2</text><text class="small" x="392" y="330">RPIZ-22FSLN5QD/P 700x447x192</text><text class="warn" x="392" y="352">型号可查 ≠ 最终设备选型</text><rect class="card" x="670" y="268" width="270" height="96" rx="14"/><text class="type" x="692" y="304">AC700F</text><text class="count" x="900" y="304">×2</text><text class="small" x="692" y="330">RPIZ-22FSLN5QDF/P 700x447x192</text><text class="warn" x="692" y="352">型号可查 ≠ 最终设备选型</text>
+
+<rect class="panel" x="55" y="390" width="900" height="475" rx="16"/>
+<text class="section" x="78" y="418">用户确认的服务 / 端点 / 经过顺序约束</text>
+<rect class="route" x="70" y="425" width="860" height="52" rx="9"/><text class="route-id" x="92" y="447">RCP1-AIRSIDE-A02</text><text class="route-label" x="360" y="447">A02 → R07 餐厅（服务对象）</text><text class="route-note" x="92" y="467">用户确认约束 · 非最终管线 · 不写 IFC</text><rect class="route" x="70" y="492" width="860" height="52" rx="9"/><text class="route-id" x="92" y="514">RCP1-AIRSIDE-A06</text><text class="route-label" x="360" y="514">A06 → R07 餐厅（旧 blend 位置）</text><text class="route-note" x="92" y="534">用户确认约束 · 非最终管线 · 不写 IFC</text><rect class="route" x="70" y="559" width="860" height="52" rx="9"/><text class="route-id" x="92" y="581">RCP1-SERVICE-A02</text><text class="route-label" x="360" y="581">A02 → H03</text><text class="route-note" x="92" y="601">用户确认约束 · 非最终管线 · 不写 IFC</text><rect class="route" x="70" y="626" width="860" height="52" rx="9"/><text class="route-id" x="92" y="648">RCP1-SERVICE-A03</text><text class="route-label" x="360" y="648">A03 → H04 → H02</text><text class="route-note" x="92" y="668">用户确认约束 · 非最终管线 · 不写 IFC</text><rect class="route" x="70" y="693" width="860" height="52" rx="9"/><text class="route-id" x="92" y="715">RCP1-CONDENSATE-ENDPOINT</text><text class="route-label" x="360" y="715">H07 = 冷凝水排放接口位置</text><text class="route-note" x="92" y="735">用户确认约束 · 非最终管线 · 不写 IFC</text><rect class="route" x="70" y="760" width="860" height="52" rx="9"/><text class="route-id" x="92" y="782">RCP1-OUTDOOR-ENDPOINT</text><text class="route-label" x="360" y="782">H01 = 室外机接口位置</text><text class="route-note" x="92" y="802">用户确认约束 · 非最终管线 · 不写 IFC</text>
+<text class="warn" x="78" y="838">只表达对象、端点和顺序；不表达介质、管径、保温、坡度、端口连接或施工走向。</text>
+
+<rect class="panel" x="975" y="390" width="570" height="475" rx="16"/>
+<text class="section" x="998" y="418">不得冒充完成的发布阻塞</text>
+<rect class="block" x="995" y="425" width="530" height="70" rx="10"/><text class="block-id" x="1018" y="449">M401-MISS-001 · BLOCK</text><text class="block-name" x="1018" y="475">正式风口 / 系统 / 端口连接</text><rect class="block" x="995" y="507" width="530" height="70" rx="10"/><text class="block-id" x="1018" y="531">M401-MISS-002 · BLOCK</text><text class="block-name" x="1018" y="557">厨房可燃气体报警器</text><rect class="block" x="995" y="589" width="530" height="70" rx="10"/><text class="block-id" x="1018" y="613">M401-MISS-003 · BLOCK</text><text class="block-name" x="1018" y="639">卧室 / 客厅火警与厨房最终产品</text><rect class="block" x="995" y="671" width="530" height="70" rx="10"/><text class="block-id" x="1018" y="695">M401-MISS-004 · BLOCK</text><text class="block-name" x="1018" y="721">卫生间暖风 / 通风设备</text><rect class="block" x="995" y="753" width="530" height="70" rx="10"/><text class="block-id" x="1018" y="777">M401-MISS-005 · BLOCK</text><text class="block-name" x="1018" y="803">风量、管径、坡度、电气、控制与检修</text>
+
+<rect class="safety" x="55" y="890" width="1490" height="125" rx="16"/>
+<text class="safety-title" x="82" y="925">安全设备现状：正式 IFC 仅 1 个 IfcSensor / FIRESENSOR</text>
+<text class="safety-text" x="82" y="955">A106-FIRE-R04 · 中厨 R04 · 位置 [1800.0, -4576.0, 2400.0] mm 已确认；最终感温/感烟/复合类型、产品、供电通信和厂家安装条件仍待确认。</text>
+<text class="gate" x="82" y="987">automatic_ifc_write_allowed=false · construction_release_ready=false · 未建模内容不得由近接、名称或旧几何推断</text>
+<text class="footer" x="55" y="1053">IFC SHA-256 6c2fd8da9e9ad7ddbc2b63415a27f1c979e8995b880d8fce210a2dda2ef2aab6 · 28 instances · 3 AC types · 5 BLOCK · source role counts verified</text>
+</svg>

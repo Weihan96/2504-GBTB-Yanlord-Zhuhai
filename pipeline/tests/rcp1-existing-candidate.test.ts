@@ -58,8 +58,8 @@ test(
     const report = JSON.parse(await Bun.file(reportPath).text());
     expect(report.source.sha256).toBe(currentIfcHash);
     expect(report.source_ifc_sha256).toBe(currentIfcHash);
-    expect(report.legacy_evidence.status).toBe("stale_not_refreshed");
-    expect(report.legacy_evidence.current_formal_ifc).toBe(false);
+    expect(report.legacy_evidence.status).toBe("current_external_audit");
+    expect(report.legacy_evidence.current_formal_ifc).toBe(true);
     expect(report.gates.candidate_pass).toBe(true);
     expect(report.gates.construction_release_ready).toBe(false);
     expect(report.gates.space_count).toBe(22);
@@ -149,4 +149,11 @@ test("RCP1 rejects a caller-frozen IFC hash mismatch before auditing geometry", 
   );
   expect(result.exitCode).not.toBe(0);
   expect(result.stderr.toString()).toContain("formal IFC SHA drift");
+});
+
+test("RCP1 legacy audit uses a caller freeze instead of a historical IFC constant", async () => {
+  const source = await Bun.file(resolve(root, "pipeline/scripts/rcp1_legacy_base_audit.py")).text();
+  expect(source).toContain('"--expected-ifc-sha256"');
+  expect(source).toContain('"caller_frozen_ifc_hash_match"');
+  expect(source).not.toContain("EXPECTED_IFC_SHA256");
 });

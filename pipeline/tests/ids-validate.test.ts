@@ -1,5 +1,8 @@
 import { expect, test } from "bun:test";
-import { resolve } from "node:path";
+import { createHash } from "node:crypto";
+import { mkdtempSync, readFileSync } from "node:fs";
+import { tmpdir } from "node:os";
+import { join, resolve } from "node:path";
 
 const root = resolve(import.meta.dir, "../..");
 const modulePath = resolve(root, "pipeline/scripts/ids_validate.py");
@@ -51,3 +54,21 @@ test("Space Reference follows the IFC4 Pset template data type", async () => {
   const reference = ids.match(/<property dataType="([^"]+)"[^>]*>[\s\S]*?<propertySet><simpleValue>Pset_SpaceCommon<\/simpleValue><\/propertySet>[\s\S]*?<baseName><simpleValue>Reference<\/simpleValue><\/baseName>/);
   expect(reference?.[1]).toBe("IFCIDENTIFIER");
 });
+
+test("IDS report declares the current IFC hash and rejects a stale caller freeze", () => {
+  const ifc = resolve(root, "2504 GBTB Yanlord Zhuhai.ifc");
+  const ids = resolve(root, "pipeline/ids/p0-construction-information.ids");
+  const output = join(mkdtempSync(join(tmpdir(), "ids-current-")), "report.json");
+  const current = createHash("sha256").update(readFileSync(ifc)).digest("hex");
+  const success = Bun.spawnSync(["python3", modulePath, "--input", ifc, "--ids", ids,
+    "--report", output, "--expected-ifc-sha256", current], { cwd: root });
+  expect(success.exitCode).toBe(0);
+  const report = JSON.parse(readFileSync(output, "utf8"));
+  expect(report.source_ifc_sha256).toBe(current);
+  expect(report.source.ifc_sha256).toBe(current);
+  expect(report.source.ids_sha256).toHaveLength(64);
+  const rejected = Bun.spawnSync(["python3", modulePath, "--input", ifc, "--ids", ids,
+    "--report", output, "--expected-ifc-sha256", "0".repeat(64)], { cwd: root });
+  expect(rejected.exitCode).toBe(1);
+  expect(rejected.stderr.toString()).toContain("caller-frozen hash");
+}, 20_000);

@@ -159,3 +159,81 @@ test("canonical professional reports cannot be omitted by the caller", () => {
   expect(output.checks.find((item: any) => item.id === "PROFESSIONAL-REPORT-INVENTORY").status).toBe("pass");
   expect(output.checks.find((item: any) => item.id === "PROFESSIONAL-REPORT-HASHES").status).toBe("fail");
 });
+
+test("construction release rejects an intrinsically failing professional report", () => {
+  const fixture = makeFixture();
+  writeFileSync(
+    fixture.register,
+    "sheet_number,title,status,publish_target,notes\nA-001,Index,candidate,output/A-001.pdf,ready\n",
+  );
+  writeFileSync(
+    fixture.report,
+    JSON.stringify({ source_ifc_sha256: sha256(fixture.ifc), status: false }),
+  );
+  const run = runGate(fixture, "construction-release-candidate");
+  expect(run.exitCode).toBe(1);
+  const output = JSON.parse(run.stdout);
+  const check = output.checks.find((item: any) => item.id === "PROFESSIONAL-REPORT-READINESS");
+  expect(check.status).toBe("fail");
+  expect(check.details.blocked_reports[0].blockers).toEqual(["status=false"]);
+});
+
+test("reviewed candidates disclose explicit construction readiness blockers", () => {
+  const fixture = makeFixture();
+  writeFileSync(
+    fixture.report,
+    JSON.stringify({
+      source_ifc_sha256: sha256(fixture.ifc),
+      gates: { construction_release_ready: false },
+    }),
+  );
+  const run = runGate(fixture, "reviewed-candidate");
+  expect(run.exitCode).toBe(0);
+  const output = JSON.parse(run.stdout);
+  const check = output.checks.find((item: any) => item.id === "PROFESSIONAL-REPORT-READINESS");
+  expect(check.status).toBe("disclosed");
+  expect(check.details.blocked_reports[0].blockers).toEqual([
+    "gates.construction_release_ready=false",
+  ]);
+});
+
+test("construction release recognizes every declared blocker shape used by project reports", () => {
+  const fixture = makeFixture();
+  writeFileSync(
+    fixture.register,
+    "sheet_number,title,status,publish_target,notes\nA-001,Index,candidate,output/A-001.pdf,ready\n",
+  );
+  writeFileSync(
+    fixture.report,
+    JSON.stringify({
+      source_ifc_sha256: sha256(fixture.ifc),
+      summary: { releasable: false },
+      gates: [
+        { id: "QA-01", status: "block" },
+        { fabrication_dimension_ready: false },
+        { whole_home_switch_positioning_complete: false },
+      ],
+      candidates: [{ final_release_pass: false, release_blocker: "manufacturer review pending" }],
+      blockers: [{ issue_id: "INT1-BLOCK-001" }],
+      release_blockers: [{ issue_id: "M401-MISS-001" }],
+      open_release_items: ["confirm service interface"],
+      blocking_input_ids: ["A101-MAIN-BAY-01"],
+    }),
+  );
+  const run = runGate(fixture, "construction-release-candidate");
+  expect(run.exitCode).toBe(1);
+  const output = JSON.parse(run.stdout);
+  const blockers = output.checks.find(
+    (item: any) => item.id === "PROFESSIONAL-REPORT-READINESS",
+  ).details.blocked_reports[0].blockers;
+  expect(blockers).toContain("summary.releasable=false");
+  expect(blockers).toContain("gates[0].status=block");
+  expect(blockers).toContain("gates[1].fabrication_dimension_ready=false");
+  expect(blockers).toContain("gates[2].whole_home_switch_positioning_complete=false");
+  expect(blockers).toContain("candidates[0].final_release_pass=false");
+  expect(blockers).toContain("candidates[0].release_blocker=nonempty");
+  expect(blockers).toContain("blockers=nonempty");
+  expect(blockers).toContain("release_blockers=nonempty");
+  expect(blockers).toContain("open_release_items=nonempty");
+  expect(blockers).toContain("blocking_input_ids=nonempty");
+});

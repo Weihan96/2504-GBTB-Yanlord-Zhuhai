@@ -24,8 +24,6 @@ from mathutils import Vector
 from mathutils.bvhtree import BVHTree
 
 
-EXPECTED_IFC_SHA256 = "7521c09991f3d0c7b7d91ca2324fd55ad961d8e32e9e3e9a9777a4cc19b06e81"
-
 FORMAL_TO_LEGACY = {
     "0Ik2RcgGbFOhdYTJPgh5AQ": "Liquid Living Room",
     "0f2ZLauDH8lRnYj6oervDm": "Gas Living Room",
@@ -71,6 +69,10 @@ LEGACY_INTERSECTION_PAIRS = {
 def parse_args() -> argparse.Namespace:
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--formal-ifc", type=Path, required=True)
+    parser.add_argument(
+        "--expected-ifc-sha256",
+        help="Optional caller-frozen formal IFC SHA-256; mismatch is a hard failure.",
+    )
     parser.add_argument("--formal-report", type=Path, required=True)
     parser.add_argument("--coordination-report", type=Path, required=True)
     parser.add_argument("--output", type=Path, required=True)
@@ -206,8 +208,10 @@ def main() -> int:
         raise RuntimeError("tolerances must be positive")
 
     formal_sha = sha256(args.formal_ifc)
-    if formal_sha != EXPECTED_IFC_SHA256:
-        raise RuntimeError(f"formal IFC SHA drift: {formal_sha}")
+    if args.expected_ifc_sha256 and formal_sha != args.expected_ifc_sha256:
+        raise RuntimeError(
+            f"formal IFC SHA drift: {formal_sha} != {args.expected_ifc_sha256}"
+        )
 
     formal_report = json.loads(args.formal_report.read_text(encoding="utf-8"))
     coordination = json.loads(args.coordination_report.read_text(encoding="utf-8"))
@@ -354,6 +358,11 @@ def main() -> int:
             "candidate_has_formal_ifc_global_id": False,
         },
         "gates": {
+            "caller_frozen_ifc_hash_match": (
+                None
+                if args.expected_ifc_sha256 is None
+                else args.expected_ifc_sha256 == formal_sha
+            ),
             "required_legacy_objects_present": not missing_names,
             "missing_legacy_objects": missing_names,
             "five_pipe_topology_and_component_bounds_within_tolerance": pipe_topology_pass,

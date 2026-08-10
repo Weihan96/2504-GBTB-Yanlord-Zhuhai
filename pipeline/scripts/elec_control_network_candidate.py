@@ -498,6 +498,7 @@ def main() -> int:
                 "zone_only" in row["coordinate_status"] for row in controls + gas_zones
             ) and all("pending" in row["coordinate_status"] for row in router_zones),
             "automatic_ifc_write_allowed": False,
+            "construction_release_ready": False,
         },
     }
     args.output.parent.mkdir(parents=True, exist_ok=True)

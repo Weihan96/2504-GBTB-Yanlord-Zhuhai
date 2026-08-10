@@ -4,11 +4,20 @@
 from __future__ import annotations
 
 import argparse
+import hashlib
 import json
 import sys
 from datetime import datetime, timezone
 from pathlib import Path
 from typing import Any
+
+
+def sha256(path: Path) -> str:
+    digest = hashlib.sha256()
+    with path.open("rb") as handle:
+        for chunk in iter(lambda: handle.read(1024 * 1024), b""):
+            digest.update(chunk)
+    return digest.hexdigest()
 
 
 def add_blender_ifctester_path() -> str | None:
@@ -129,6 +138,7 @@ def parse_args() -> argparse.Namespace:
     parser.add_argument("--ids", required=True, type=Path)
     parser.add_argument("--report", required=True, type=Path)
     parser.add_argument("--markdown", type=Path)
+    parser.add_argument("--expected-ifc-sha256")
     parser.add_argument("--fail-on-failure", action="store_true")
     return parser.parse_args()
 
@@ -139,6 +149,12 @@ def main() -> int:
         raise SystemExit(f"IFC not found: {args.input}")
     if not args.ids.is_file():
         raise SystemExit(f"IDS not found: {args.ids}")
+    ifc_hash = sha256(args.input)
+    if args.expected_ifc_sha256 and args.expected_ifc_sha256 != ifc_hash:
+        raise SystemExit(
+            "formal IFC hash differs from caller-frozen hash: "
+            f"expected {args.expected_ifc_sha256}, found {ifc_hash}"
+        )
 
     add_blender_ifctester_path()
     try:
@@ -161,6 +177,13 @@ def main() -> int:
             "ifc": str(args.input),
             "ids": str(args.ids),
             "ifc_schema": ifc.schema,
+            "source_ifc_sha256": ifc_hash,
+            "source": {
+                "ifc": str(args.input),
+                "ifc_sha256": ifc_hash,
+                "ids": str(args.ids),
+                "ids_sha256": sha256(args.ids),
+            },
         }
     )
 

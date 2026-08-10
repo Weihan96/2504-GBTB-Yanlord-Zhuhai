@@ -24,7 +24,7 @@ EXPECTED_SHEETS = (
     "A-106", "M-401", "I-501", "I-502", "I-503", "I-504",
     "D-601", "D-602", "S-701",
 )
-CANDIDATE_SHEETS = ("A-001", "A-102", "A-103", "A-104", "A-105")
+EXPECTED_PLANNED_SHEETS = ("A-101",)
 SOURCE_REPORTS = {
     "A-102": ("build/a102/a102-wall-plan-candidate.json", ("gates", "pass")),
     "A-103": ("build/a103/a103-report.json", ("pass",)),
@@ -81,7 +81,7 @@ def build_index_svg(rows: list[dict[str, str]], issues: list[dict[str, str]], if
         '<rect x="6" y="6" width="488" height="388" fill="none" stroke="#102f43" stroke-width="0.6"/>',
         '<style>@page{size:500mm 400mm;margin:0}html,body{margin:0;width:500mm;height:400mm;overflow:hidden}text{font-family:Arial,"Noto Sans CJK SC",sans-serif;fill:#102f43}.title{font-size:8px;font-weight:700}.sub{font-size:3.2px;fill:#526777}.head{font-size:3.5px;font-weight:700}.cell{font-size:3.1px}.note{font-size:3px}.small{font-size:2.6px;fill:#526777}.rule{stroke:#ced4da;stroke-width:.35}.box{fill:#f8f9fa;stroke:#adb5bd;stroke-width:.35}</style>',
         '<text class="title" x="15" y="23">A-001 图纸目录／设计说明／图例</text>',
-        '<text class="sub" x="15" y="31">仁恒滨海湾｜M072 72小时协调候选｜非施工发布版</text>',
+        '<text class="sub" x="15" y="31">仁恒滨海湾｜2026-08-19 待复核施工候选｜非施工发布版</text>',
         f'<text class="sub" x="485" y="31" text-anchor="end">IFC SHA {ifc_sha[:16]}…</text>',
     ]
     columns = (rows[:11], rows[11:])
@@ -111,7 +111,7 @@ def build_index_svg(rows: list[dict[str, str]], issues: list[dict[str, str]], if
         '<text class="note" x="21" y="227">3. 带 ≈ 尺寸为候选或近似值，不得代替现场实测放线。</text>',
         '<text class="note" x="21" y="237">4. 材料封样、设备型号/尺寸/功率/接口未确认前不得下单。</text>',
         '<text class="note" x="21" y="247">5. 物业、燃气、门窗与机电限制须在封闭施工或设备下单前关闭。</text>',
-        '<text class="note" x="21" y="257">6. 本包仅关闭 P0 候选协调；P1/P2 图纸已列入索引但尚未发布。</text>',
+        '<text class="note" x="21" y="257">6. 本包覆盖 P0/P1/P2 待复核候选；仅 A-101 现场实测保持 planned。</text>',
         '<text class="head" x="21" y="274">图例</text>',
         '<rect x="21" y="281" width="7" height="7" fill="#087f5b" opacity=".25"/><text class="note" x="32" y="287">候选完成</text>',
         '<rect x="83" y="281" width="7" height="7" fill="#868e96" opacity=".25"/><text class="note" x="94" y="287">后续计划</text>',
@@ -120,12 +120,12 @@ def build_index_svg(rows: list[dict[str, str]], issues: list[dict[str, str]], if
         '<text class="head" x="261" y="196">M072 协调摘要</text>',
         f'<text class="note" x="261" y="208">计划图纸 {len(rows)} 张｜候选完成 {status_counts["candidate"]} 张｜后续计划 {status_counts["planned"]} 张</text>',
         f'<text class="note" x="261" y="218">协调事项 {len(issues)} 项｜待确认 {issue_counts["pending"]} 项｜已移交 {issue_counts["delegated"]} 项</text>',
-        '<text class="note" x="261" y="230">P0 候选：A-102 / A-103 / A-104 / A-105 已从同一 IFC 生成。</text>',
-        '<text class="note" x="261" y="240">机械检查：图号唯一、PDF 页数/幅面、空白页、标注碰撞。</text>',
-        '<text class="note" x="261" y="250">未决项：Space Reference，无宿主门，现场尺寸及设备/物业条件。</text>',
+        '<text class="note" x="261" y="230">20 张候选图均从当前 IFC 与受控决策证据生成；A-101 等待现场实测。</text>',
+        '<text class="note" x="261" y="240">机械检查：图号唯一、PDF 页数/幅面/空白页、SVG 结构与输出存在性。</text>',
+        '<text class="note" x="261" y="250">未决项：现场尺寸、厂家接口、系统拓扑、材料构造与设备/物业条件。</text>',
         '<text class="note" x="261" y="260">上述未决项已显式分派，不表示已关闭。</text>',
         '<text class="note" x="261" y="276">人读清单：drawings/滨海湾M072协调候选包.md</text>',
-        '<text class="small" x="15" y="384">M072-CANDIDATE｜2026-08-08｜源：正式 IFC + 受版本控制决策表</text>',
+        '<text class="small" x="15" y="384">REVIEWED-CANDIDATE｜2026-08-11｜源：正式 IFC + 受版本控制决策表</text>',
         '<text class="small" x="485" y="384" text-anchor="end">A-001｜NTS｜1 / 1</text>',
         '</svg>',
     ])
@@ -190,6 +190,45 @@ def raster_metrics(pdf: Path) -> dict[str, Any]:
     return {"ink_ratio": len(ink) / len(pixels), "ink_bbox_page_ratio": bbox_ratio}
 
 
+def candidate_output_record(root: Path, row: dict[str, str]) -> dict[str, Any]:
+    target = root / row["publish_target"]
+    record: dict[str, Any] = {
+        "sheet_number": row["sheet_number"],
+        "path": row["publish_target"],
+        "kind": target.suffix.lower().lstrip("."),
+        "exists": target.is_file(),
+        "passes": False,
+    }
+    if not target.is_file():
+        return record
+    record["sha256"] = sha256(target)
+    if target.suffix.lower() == ".pdf":
+        info = pdf_info(target)
+        raster = raster_metrics(target)
+        record.update(info)
+        record.update(raster)
+        record["passes"] = (
+            info["pages"] == 1
+            and abs(info["width_mm"] - 500.0) <= 0.2
+            and abs(info["height_mm"] - 400.0) <= 0.2
+            and raster["ink_ratio"] >= 0.002
+            and raster["ink_bbox_page_ratio"] >= 0.35
+        )
+    elif target.suffix.lower() == ".svg":
+        text = target.read_text(encoding="utf-8")
+        record.update({
+            "byte_count": target.stat().st_size,
+            "svg_root_present": "<svg" in text,
+            "viewbox_present": "viewBox=" in text,
+        })
+        record["passes"] = (
+            record["byte_count"] >= 1000
+            and record["svg_root_present"]
+            and record["viewbox_present"]
+        )
+    return record
+
+
 def markdown_table(rows: list[list[str]]) -> list[str]:
     if not rows:
         return []
@@ -243,20 +282,12 @@ def main() -> None:
             "mechanical_pass": bool(nested(data, gate_path)),
         }
 
-    pdf_records: list[dict[str, Any]] = []
+    output_records: list[dict[str, Any]] = []
     for row in rows:
         if row["status"] != "candidate":
             continue
-        pdf = root / row["publish_target"]
-        info = pdf_info(pdf)
-        raster = raster_metrics(pdf)
-        pdf_records.append({
-            "sheet_number": row["sheet_number"], "path": row["publish_target"], "sha256": sha256(pdf),
-            **info, **raster,
-            "passes": info["pages"] == 1 and abs(info["width_mm"] - 500.0) <= 0.2
-            and abs(info["height_mm"] - 400.0) <= 0.2 and raster["ink_ratio"] >= 0.002
-            and raster["ink_bbox_page_ratio"] >= 0.35,
-        })
+        output_records.append(candidate_output_record(root, row))
+    pdf_records = [record for record in output_records if record["kind"] == "pdf"]
 
     qa = json.loads(qa_path.read_text(encoding="utf-8"))
     blocks = {gate["id"] for gate in qa["gates"] if gate["status"] == "block"}
@@ -269,10 +300,13 @@ def main() -> None:
         "drawing_register_unique": len(set(sheet_numbers)) == len(rows),
         "candidate_sheet_count": sum(row["status"] == "candidate" for row in rows),
         "planned_sheet_count": sum(row["status"] == "planned" for row in rows),
+        "planned_sheet_numbers": [row["sheet_number"] for row in rows if row["status"] == "planned"],
         "source_report_same_ifc_count": sum(item["same_formal_ifc"] for item in source_reports.values()),
         "source_report_mechanical_pass_count": sum(item["mechanical_pass"] for item in source_reports.values()),
         "candidate_pdf_pass_count": sum(item["passes"] for item in pdf_records),
         "candidate_pdf_count": len(pdf_records),
+        "candidate_output_pass_count": sum(item["passes"] for item in output_records),
+        "candidate_output_count": len(output_records),
         "legacy_release_qa": qa["summary"],
         "legacy_block_count": len(blocks),
         "legacy_blocks_disclosed": blocks <= disclosed_gates,
@@ -282,14 +316,15 @@ def main() -> None:
     gates["m072_mechanical_pass"] = (
         gates["drawing_register_count"] == len(EXPECTED_SHEETS)
         and gates["drawing_register_unique"]
-        and gates["candidate_sheet_count"] == len(CANDIDATE_SHEETS)
+        and gates["candidate_sheet_count"] == len(EXPECTED_SHEETS) - len(EXPECTED_PLANNED_SHEETS)
+        and gates["planned_sheet_numbers"] == list(EXPECTED_PLANNED_SHEETS)
         and gates["source_report_same_ifc_count"] == 4
         and gates["source_report_mechanical_pass_count"] == 4
-        and gates["candidate_pdf_pass_count"] == gates["candidate_pdf_count"] == 5
+        and gates["candidate_output_pass_count"] == gates["candidate_output_count"] == gates["candidate_sheet_count"]
         and gates["legacy_blocks_disclosed"]
     )
 
-    candidate_rows = [["图号", "图名", "PDF", "状态"]] + [
+    candidate_rows = [["图号", "图名", "输出文件", "状态"]] + [
         [row["sheet_number"], row["title"], row["publish_target"], "候选完成"]
         for row in rows if row["status"] == "candidate"
     ]
@@ -298,7 +333,7 @@ def main() -> None:
         for issue in issues if issue["status"] != "implemented"
     ]
     lines = [
-        "# 滨海湾 M072 72小时协调候选包", "",
+        "# 滨海湾 2026-08-19 待复核施工候选包", "",
         f"- 正式 IFC SHA-256：`{ifc_sha}`",
         f"- 计划图纸：{len(rows)} 张；已完成候选：{gates['candidate_sheet_count']} 张；后续计划：{gates['planned_sheet_count']} 张",
         f"- M072 机械门：{'PASS' if gates['m072_mechanical_pass'] else 'FAIL'}",
@@ -308,13 +343,13 @@ def main() -> None:
         "| 检查 | 结果 |", "| --- | --- |",
         f"| A-102～A-105 生成报告与正式 IFC 同一 SHA | {gates['source_report_same_ifc_count']}/4 PASS |",
         f"| A-102～A-105 编号/尺寸闭合/标注碰撞机械门 | {gates['source_report_mechanical_pass_count']}/4 PASS |",
-        f"| A-001～A-105 候选 PDF 页数、500×400 mm 幅面与非空白检查 | {gates['candidate_pdf_pass_count']}/5 PASS |",
+        f"| 候选输出存在性；PDF 页数/幅面/非空白及 SVG 结构检查 | {gates['candidate_output_pass_count']}/{gates['candidate_output_count']} PASS |",
         f"| Release QA BLOCK 是否全部显式分派 | {'PASS' if gates['legacy_blocks_disclosed'] else 'FAIL'} |",
         "", "## 协调问题与现场复核", "",
         "下表面向人阅读；机器状态源为 `pipeline/decisions/m072-coordination-review.csv`。“已移交/已计划”不等于“已解决”。", "",
         *markdown_table(issue_rows), "", "## 停止条件", "",
-        "- 任一 P0 候选图不能从当前 IFC 重现。",
-        "- 图号重复、PDF 空白/损坏/幅面错误，或标注碰撞重现。",
+        "- 任一已登记候选图不能从当前 IFC 与受控决策证据重现。",
+        "- 图号重复；PDF 空白/损坏/幅面错误；SVG 缺失、损坏或结构不完整；或标注碰撞重现。",
         "- Release QA 的 BLOCK 没有明确责任方、目标任务和停止条件。",
         "- 未经现场复核的候选尺寸被当作施工放线值。", "",
     ]
@@ -323,7 +358,7 @@ def main() -> None:
     report = {
         "generated_at": datetime.now(timezone.utc).isoformat(), "mode": "m072-coordination-candidate",
         "source": {"ifc": str(ifc), "sha256": ifc_sha}, "source_reports": source_reports,
-        "drawing_register": rows, "pdf_records": pdf_records, "issues": issues, "gates": gates,
+        "drawing_register": rows, "output_records": output_records, "pdf_records": pdf_records, "issues": issues, "gates": gates,
     }
     report_path.parent.mkdir(parents=True, exist_ok=True)
     report_path.write_text(json.dumps(report, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")

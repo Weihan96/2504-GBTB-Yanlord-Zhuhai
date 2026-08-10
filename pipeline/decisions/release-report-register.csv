@@ -1,15 +1,20 @@
 report_id,workstream,report_path,required_stage,notes
 QA-CURRENT,QA,build/reports/qa-report.json,reviewed-candidate,当前正式 IFC 机械 QA
+ARCH-A101-INPUT,A-101,build/a101/a101-survey-input.json,reviewed-candidate,现场实测输入状态与待确认清单
 ARCH-A102,A-102,build/a102/a102-wall-plan-candidate.json,reviewed-candidate,拆除平面候选
 ARCH-A103,A-103,build/a103/a103-report.json,reviewed-candidate,墙体尺寸与语义候选
 ARCH-A104,A-104,build/a104/a104-report.json,reviewed-candidate,门窗候选
 ARCH-A105,A-105,build/a105/a105-report.json,reviewed-candidate,地坪候选
 ARCH-A106,A-106,build/elec/a106-ceiling-device-candidate.json,reviewed-candidate,天花设备候选
 PLUM-EXISTING,PLUM,build/plum/plum-report.json,reviewed-candidate,现有给排水登记
+PLUM-P201,P-201,build/plum/p201-water-hotwater-demand-candidate.json,reviewed-candidate,给水与热水需求端点候选
 PLUM-P202,P-202,build/plum/p202-candidate-report.json,reviewed-candidate,排水洁具定位候选
 ELEC-PROGRAM,E-302/E-303/E-304,build/elec/elec-room-program-candidate.json,reviewed-candidate,逐房间功能程序候选
+ELEC-POSITIONING,E-303,build/elec/elec-positioning-candidate.json,reviewed-candidate,插座与设备电源定位候选
+ELEC-CONTROL-NETWORK,E-302/E-304,build/elec/elec-control-network-candidate.json,reviewed-candidate,控制与网络定位候选
 RCP1-EXISTING,RCP1,build/rcp1/rcp1-existing-candidate.json,reviewed-candidate,现有天花与高位设备候选
 M401-EXISTING,M-401,build/rcp1/m401-existing-report.json,reviewed-candidate,空调通风现状登记
+M401-SHEET,M-401,build/rcp1/m401-coordination-sheet-candidate.json,reviewed-candidate,空调通风与安全设备协调候选
 INT1-DRAWINGS,I-501/I-502/I-503/I-504,build/int1/int1-drawing-report.json,reviewed-candidate,固定家具协调候选
 WFIN,WFIN,build/wfin/wfin-report.json,reviewed-candidate,墙面完成面候选
 DET1,D-601/D-602,build/det1/detail-index-candidate.json,reviewed-candidate,变量化节点索引候选

@@ -60,6 +60,12 @@ test("blank A-101 template is a valid pending list and remains construction-not-
   expect(report.stdout_only_by_default).toBe(true);
   expect(report.source_ifc_sha256).toBe(beforeHash);
   expect(report.construction_ready).toBe(false);
+  expect(report.gates).toEqual({
+    source_ifc_hash_current: true,
+    pending_inputs_explicit: true,
+    automatic_ifc_write_allowed: false,
+    construction_release_ready: false,
+  });
   expect(report.summary.status_counts).toEqual({
     confirmed: 0,
     observed: 0,
@@ -89,6 +95,7 @@ test("confirmed survey rows compile normalized JSON and CSV only to explicit pat
   const report = JSON.parse(readFileSync(outputJson, "utf8"));
   expect(report.caller_frozen_ifc_sha256).toBe(frozenHash);
   expect(report.construction_ready).toBe(true);
+  expect(report.gates.construction_release_ready).toBe(true);
   expect(report.summary.blocking_input_ids).toEqual([]);
   expect(report.inputs.every((row: { effective_value: unknown }) => row.effective_value !== null)).toBe(true);
   expect(readFileSync(outputCsv, "utf8")).toContain("effective_value,effective_unit");

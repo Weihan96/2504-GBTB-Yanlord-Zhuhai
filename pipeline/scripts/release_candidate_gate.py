@@ -34,6 +34,24 @@ DIRECT_OUTPUT_KEYS = {
     "publish_target",
     "render_report",
 }
+CONSTRUCTION_FALSE_BLOCKER_KEYS = {
+    "construction_release_ready",
+    "fabrication_dimension_ready",
+    "final_release_pass",
+    "network_positioning_complete",
+    "releasable",
+    "switch_positioning_complete",
+    "whole_home_network_positioning_complete",
+    "whole_home_socket_positioning_complete",
+    "whole_home_switch_positioning_complete",
+}
+CONSTRUCTION_NONEMPTY_BLOCKER_KEYS = {
+    "blockers",
+    "blocking_input_ids",
+    "open_release_items",
+    "release_blocker",
+    "release_blockers",
+}
 
 
 def parse_args() -> argparse.Namespace:
@@ -139,6 +157,28 @@ def extract_declared_outputs(
                     extract_declared_outputs(child, inside_outputs=inside_outputs)
                 )
     return sorted(set(outputs))
+
+
+def construction_release_blockers(value: Any, path: str = "") -> list[str]:
+    """Return explicit construction blockers without interpreting candidate-only flags."""
+    blockers: list[str] = []
+    if isinstance(value, dict):
+        for key, child in value.items():
+            normalized = normalized_key(key)
+            child_path = f"{path}.{key}" if path else key
+            if path == "" and normalized == "status" and child is False:
+                blockers.append(f"{child_path}=false")
+            if normalized in CONSTRUCTION_FALSE_BLOCKER_KEYS and child is False:
+                blockers.append(f"{child_path}=false")
+            if normalized == "status" and isinstance(child, str) and child.lower() == "block":
+                blockers.append(f"{child_path}=block")
+            if normalized in CONSTRUCTION_NONEMPTY_BLOCKER_KEYS and child not in (None, False, "", [], {}):
+                blockers.append(f"{child_path}=nonempty")
+            blockers.extend(construction_release_blockers(child, child_path))
+    elif isinstance(value, list):
+        for index, child in enumerate(value):
+            blockers.extend(construction_release_blockers(child, f"{path}[{index}]"))
+    return sorted(set(blockers))
 
 
 def make_check(
@@ -364,6 +404,7 @@ def evaluate(args: argparse.Namespace) -> tuple[dict[str, Any], int]:
             "ifc_hashes": [],
             "current_ifc_hash": False,
             "declared_outputs": [],
+            "construction_release_blockers": [],
         }
         if not report_path.is_file():
             result["error"] = "report does not exist"
@@ -380,6 +421,7 @@ def evaluate(args: argparse.Namespace) -> tuple[dict[str, Any], int]:
         result["ifc_hashes"] = hashes
         result["current_ifc_hash"] = bool(ifc_hash) and hashes == [ifc_hash]
         result["declared_outputs"] = declared_outputs
+        result["construction_release_blockers"] = construction_release_blockers(payload)
         if not hashes:
             result["error"] = "report does not declare an IFC SHA-256"
         elif not result["current_ifc_hash"]:
@@ -408,6 +450,41 @@ def evaluate(args: argparse.Namespace) -> tuple[dict[str, Any], int]:
             report_status,
             message,
             {"reports": report_results},
+        )
+    )
+
+    intrinsic_blocked_reports = [
+        result
+        for result in report_results
+        if result["construction_release_blockers"]
+    ]
+    if args.stage == "construction-release-candidate":
+        if intrinsic_blocked_reports:
+            message = (
+                f"{len(intrinsic_blocked_reports)} professional report(s) explicitly block construction release"
+            )
+            errors.append(message)
+            readiness_status = "fail"
+        else:
+            message = "no professional report explicitly blocks construction release"
+            readiness_status = "pass"
+    else:
+        message = "report-level construction blockers are disclosed but do not block reviewed candidates"
+        readiness_status = "disclosed" if intrinsic_blocked_reports else "pass"
+    checks.append(
+        make_check(
+            "PROFESSIONAL-REPORT-READINESS",
+            readiness_status,
+            message,
+            {
+                "blocked_reports": [
+                    {
+                        "path": item["path"],
+                        "blockers": item["construction_release_blockers"],
+                    }
+                    for item in intrinsic_blocked_reports
+                ]
+            },
         )
     )
 
@@ -458,6 +535,7 @@ def evaluate(args: argparse.Namespace) -> tuple[dict[str, Any], int]:
             "fresh_report_count": sum(
                 1 for item in report_results if item["current_ifc_hash"]
             ),
+            "construction_blocked_report_count": len(intrinsic_blocked_reports),
             "drawing_output_count": len(register_outputs),
             "existing_drawing_output_count": sum(
                 1 for item in register_outputs if item["exists"]

@@ -312,6 +312,12 @@ def build_report(
         "formal_ifc_write": False,
         "stdout_only_by_default": True,
         "construction_ready": not blockers,
+        "gates": {
+            "source_ifc_hash_current": True,
+            "pending_inputs_explicit": bool(blockers),
+            "automatic_ifc_write_allowed": False,
+            "construction_release_ready": not blockers,
+        },
         "summary": {
             "row_count": len(rows),
             "required_row_count": len(REQUIRED_INPUTS),

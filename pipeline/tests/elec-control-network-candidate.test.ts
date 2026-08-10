@@ -39,6 +39,7 @@ test("confirmed control, network, and safety roles compile as read-only coordina
   expect(report.gates.a106_exact_positions_imported).toBe(true);
   expect(report.gates.unconfirmed_positions_remain_coordination_zones).toBe(true);
   expect(report.gates.automatic_ifc_write_allowed).toBe(false);
+  expect(report.gates.construction_release_ready).toBe(false);
   const renderedSvg = readFileSync(svg, "utf8");
   expect(renderedSvg).toContain("elec-control-network");
   expect(renderedSvg).toContain("A106-FIRE-R04");

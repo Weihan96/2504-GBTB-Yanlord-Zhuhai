@@ -28,6 +28,7 @@ test("ELEC positioning maps kitchen points to source-supported roles without wri
   expect(report.gates.all_proxy_handoffs_have_identity_candidates).toBe(true);
   expect(report.gates.whole_home_socket_positioning_complete).toBe(false);
   expect(report.gates.automatic_ifc_write_allowed).toBe(false);
+  expect(report.gates.construction_release_ready).toBe(false);
 });
 
 test("ELEC positioning script contains no IFC write path", () => {

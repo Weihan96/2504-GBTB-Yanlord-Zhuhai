@@ -162,6 +162,7 @@ def main() -> int:
             "switch_positioning_complete": False,
             "network_positioning_complete": False,
             "automatic_ifc_write_allowed": False,
+            "construction_release_ready": False,
         },
     }
     args.output.parent.mkdir(parents=True, exist_ok=True)
