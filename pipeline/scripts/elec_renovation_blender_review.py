@@ -8,6 +8,9 @@ from pathlib import Path
 
 import bpy
 import ifcopenshell
+from mathutils import Vector
+
+import bonsai.tool as bonsai_tool
 
 
 ROOT_COLLECTION = "RENOVATION_ELEC_ROUND1"
@@ -25,14 +28,13 @@ FURNITURE_YELLOW = (1.0, 0.65, 0.0, 1.0)
 IFC_CONTEXT_GREY = (0.62, 0.62, 0.62, 1.0)
 REVIEW_LABEL_Z = 3.15
 FOCUS_LABELS = {
-    "CTRL-ENTRY": ("E302  CTRL-ENTRY", (0.18, 0.18)),
-    "CTRL-MASTER": ("E302  CTRL-MASTER", (0.18, 0.18)),
-    "NS-01": ("E303  NS-01", (0.18, 0.18)),
-    "NS-02": ("E303  NS-02", (0.18, -0.20)),
-    "A106-AP-R09": ("E304  AP-R09", (0.18, 0.18)),
-    "A106-AP-R14": ("E304  AP-R14", (0.18, 0.18)),
-    "NET-ROUTER-LIVING-STUDY": ("E304  ROUTER-R20/R22", (0.18, 0.18)),
+    "NS-01": ("E303  NS-01  XY / Z=650", (0.18, 0.18)),
+    "NS-02": ("E303  NS-02  XY / Z=300", (0.18, -0.20)),
+    "A106-AP-R09": ("E304  AP-R09  XY / Z=2720", (0.18, 0.18)),
+    "A106-AP-R14": ("E304  AP-R14  XY / Z=2720", (0.18, 0.18)),
+    "NET-ROUTER-LIVING-STUDY": ("E304  ROUTER AREA ONLY / Z=TBD", (0.18, 0.18)),
 }
+CONTROL_JAMB_CLEARANCE_M = 0.15
 
 
 def project_root() -> Path:
@@ -107,12 +109,14 @@ def mark_review_overlay(obj: bpy.types.Object, candidate_id: str) -> None:
 
 def focus_callout(
     collection: bpy.types.Collection,
-    record: dict,
+    candidate_id: str,
+    label: str,
+    position_mm,
     colour,
+    offset,
 ) -> list[bpy.types.Object]:
-    candidate_id = record["candidate_id"]
-    label, (offset_x, offset_y) = FOCUS_LABELS[candidate_id]
-    x, y, _z = (float(value) / 1000.0 for value in record["position_mm"])
+    offset_x, offset_y = offset
+    x, y, _z = (float(value) / 1000.0 for value in position_mm)
     label_x = x + offset_x
     label_y = y + offset_y
 
@@ -143,16 +147,55 @@ def focus_callout(
 
     font_data = bpy.data.curves.new(f"LABEL::{candidate_id}", "FONT")
     font_data.body = label
-    font_data.align_x = "LEFT"
+    font_data.align_x = "RIGHT" if offset_x < 0 else "LEFT"
     font_data.align_y = "CENTER"
     font_data.size = 0.13
     font_data.extrude = 0.003
     text = bpy.data.objects.new(f"LABEL::{candidate_id}", font_data)
-    text.location = (label_x + 0.04, label_y, REVIEW_LABEL_Z + 0.035)
+    text_padding = -0.04 if offset_x < 0 else 0.04
+    text.location = (label_x + text_padding, label_y, REVIEW_LABEL_Z + 0.035)
     collection.objects.link(text)
     text.color = colour
     mark_review_overlay(text, candidate_id)
     return [anchor, leader, text]
+
+
+def control_wall_side_options(
+    collection: bpy.types.Collection,
+    record: dict,
+    colour,
+) -> list[dict]:
+    model = bonsai_tool.Ifc.get()
+    door = model.by_guid(record["source_global_ids"][0])
+    door_object = bonsai_tool.Ifc.get_object(door)
+    if door_object is None:
+        raise RuntimeError(f"door object is not loaded for {record['candidate_id']}")
+    local_width_m = max(corner[0] for corner in door_object.bound_box) - min(
+        corner[0] for corner in door_object.bound_box
+    )
+    if not 0.7 <= local_width_m <= 1.2:
+        raise RuntimeError(f"unexpected door opening width for {record['candidate_id']}: {local_width_m:.3f} m")
+    axis = door_object.matrix_world.to_quaternion() @ Vector((1.0, 0.0, 0.0))
+    axis.z = 0.0
+    axis.normalize()
+    offset_m = local_width_m / 2.0 + CONTROL_JAMB_CLEARANCE_M
+    centre = Vector(tuple(float(value) / 1000.0 for value in record["position_mm"]))
+    options = []
+    for suffix, direction in (("A", -1.0), ("B", 1.0)):
+        position = centre + axis * offset_m * direction
+        option_id = f"{record['candidate_id']}-{suffix}"
+        option_record = {
+            "candidate_id": option_id,
+            "kind": "doorway_control_wall_side_option",
+            "room_reference": record["room_reference"],
+            "position_mm": [position.x * 1000.0, position.y * 1000.0, centre.z * 1000.0],
+        }
+        marker = point_marker(collection, option_record, colour, 0.055)
+        marker["source_candidate_id"] = record["candidate_id"]
+        marker["coordinate_status"] = "wall_side_option_not_final"
+        marker["jamb_clearance_mm"] = CONTROL_JAMB_CLEARANCE_M * 1000.0
+        options.append(option_record)
+    return options
 
 
 def configure_viewport() -> None:
@@ -180,7 +223,7 @@ def configure_viewport() -> None:
             space.overlay.show_relationship_lines = False
             space.region_3d.view_perspective = "ORTHO"
             space.region_3d.view_location = (-1.5, -1.0, 0.8)
-            space.region_3d.view_distance = 17.0
+            space.region_3d.view_distance = 12.5
 
 
 def object_ifc_definition_id(obj: bpy.types.Object) -> int | None:
@@ -244,29 +287,43 @@ def build_review() -> dict:
     callout_collection.hide_render = False
 
     focus_records = []
+    control_options = []
 
     for row in report["bedside_light_candidates"]:
         point_marker(collections["bedside"], row, GROUPS["bedside"][1], 0.075)
     for row in report["new_socket_candidates"]:
         point_marker(collections["socket"], row, GROUPS["socket"][1], 0.075)
         if row["candidate_id"] in FOCUS_LABELS:
-            focus_records.append((row, GROUPS["socket"][1]))
+            label, offset = FOCUS_LABELS[row["candidate_id"]]
+            focus_records.append((row["candidate_id"], label, row["position_mm"], GROUPS["socket"][1], offset))
     for row in report["cabinet_power_zones"]:
         cabinet_marker(collections["cabinet"], row, GROUPS["cabinet"][1])
     for row in report["kitchen_socket_rechecks"]:
         point_marker(collections["recheck"], row, GROUPS["recheck"][1], 0.060)
     for row in control_network["control_coordination_zones"]:
-        point_marker(collections["control"], row, GROUPS["control"][1], 0.085)
-        if row["candidate_id"] in FOCUS_LABELS:
-            focus_records.append((row, GROUPS["control"][1]))
+        zone = point_marker(collections["control"], row, GROUPS["control"][1], 0.085)
+        zone.name = f"ZONE::{row['candidate_id']}"
+        zone["coordinate_status"] = "doorway_zone_only_not_wall_position"
+        options = control_wall_side_options(collections["control"], row, GROUPS["control"][1])
+        for index, option in enumerate(options):
+            suffix = option["candidate_id"].rsplit("-", 1)[1]
+            short_name = "ENTRY" if row["candidate_id"] == "CTRL-ENTRY" else "MASTER"
+            label = f"E302  {short_name}-{suffix}  WALL SIDE / Z=1300"
+            horizontal_offset = -0.18 if row["candidate_id"] == "CTRL-ENTRY" else 0.18
+            label_offset = (horizontal_offset, -0.12 if index == 0 else 0.12)
+            focus_records.append(
+                (option["candidate_id"], label, option["position_mm"], GROUPS["control"][1], label_offset)
+            )
+            control_options.append(option)
     for row in control_network["network_coordination_zones"]:
         key = "ap" if row["network_role"] == "wireless_access_point" else "router"
         point_marker(collections[key], row, GROUPS[key][1], 0.085)
         if row["candidate_id"] in FOCUS_LABELS:
-            focus_records.append((row, GROUPS[key][1]))
+            label, offset = FOCUS_LABELS[row["candidate_id"]]
+            focus_records.append((row["candidate_id"], label, row["position_mm"], GROUPS[key][1], offset))
 
-    for row, colour in focus_records:
-        focus_callout(callout_collection, row, colour)
+    for candidate_id, label, position_mm, colour, offset in focus_records:
+        focus_callout(callout_collection, candidate_id, label, position_mm, colour, offset)
 
     for key in {"bedside", "cabinet", "recheck"}:
         collections[key].hide_viewport = True
@@ -290,7 +347,8 @@ def build_review() -> dict:
     )
     bpy.context.scene["renovation_elec_round1_writes_ifc"] = False
     bpy.context.scene["renovation_elec_current_review"] = (
-        "E302 doorway controls; E303 new sockets; E304 bedroom AP and living/study router. "
+        "E302 doorway controls show A/B wall-side options at Z=1300; E303 sockets display candidate Z; "
+        "E304 APs display Z=2720 and the living/study router remains an area-only placeholder with Z TBD. "
         "Callouts are review overlays at Z=3.15 m; source markers retain their true installation depth."
     )
     return {
@@ -302,7 +360,8 @@ def build_review() -> dict:
         "ap": sum(row["network_role"] == "wireless_access_point" for row in control_network["network_coordination_zones"]),
         "router": sum(row["network_role"] == "router_no_AP" for row in control_network["network_coordination_zones"]),
         "focus_callouts": len(focus_records),
-        "focus_ids": sorted(row["candidate_id"] for row, _colour in focus_records),
+        "focus_ids": sorted(candidate_id for candidate_id, _label, _position, _colour, _offset in focus_records),
+        "control_wall_side_options": len(control_options),
         "default_hidden_reference_groups": ["bedside", "cabinet", "recheck"],
         "review_label_z_m": REVIEW_LABEL_Z,
         "show_in_front": False,
