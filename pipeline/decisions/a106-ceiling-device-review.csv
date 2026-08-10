@@ -4,3 +4,4 @@ A106-AP-R09,R09,主卧,wireless_access_point,-5840,-3979,2720,采用主卧边缘
 A106-SMOKE-R14,R14,次卧,smoke_alarm,-3300,1700,2720,采用次卧几何中心并满足烟感对墙梁灯具及高位对象 500 mm 已知净距,0.95,yes,mechanical_candidate,no
 A106-AP-R14,R14,次卧,wireless_access_point,-4038,2061,2720,采用次卧边缘既有灯位 X=-4038 与 Y=2061 两条轴线的空交点；AP 退到角落并避开灯具梁及高位对象,0.90,yes,mechanical_candidate,no
 A106-SMOKE-R20,R20,客厅,smoke_alarm,2023,1700,2670,客厅几何中心距灯具包络仅 379.295 mm；沿房间中心轴 Y=1700 偏移 123 mm 至最近安全点并满足烟感 500 mm 已知净距,0.95,yes,mechanical_candidate,no
+A106-FIRE-R04,R04,中厨,kitchen_fire_sensor,1800,-4576,2400,位于既有四灯阵列中心；距最近灯具边缘 662 mm、距房间边界最小 724 mm；用户于 2026-08-10 确认点位，仅位置关闭,1.00,no,position_confirmed_type_pending,no

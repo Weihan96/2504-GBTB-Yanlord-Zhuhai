@@ -19,8 +19,9 @@ from shapely.geometry import Point, Polygon, box
 from shapely.ops import unary_union
 
 
-EXPECTED_IFC_SHA256 = "7521c09991f3d0c7b7d91ca2324fd55ad961d8e32e9e3e9a9777a4cc19b06e81"
+EXPECTED_IFC_SHA256 = "6c2fd8da9e9ad7ddbc2b63415a27f1c979e8995b880d8fce210a2dda2ef2aab6"
 SPACE_IDS = {
+    "R04": "2fhEbDfK1EkhJwlPikNm$b",
     "R09": "3gHz6U6BfFXgV6PnRzfOf$",
     "R14": "0WyQ2Z9pX5qgwfdTOZwAkw",
     "R20": "2wgBPVUpv2DvcZCfbe6fdv",
@@ -246,7 +247,7 @@ def compile_report(args: argparse.Namespace) -> dict[str, Any]:
         nearest_obstacle = obstacle_distances[0][1] if obstacle_distances else None
         ceiling_residual = None if ceiling is None else abs(float(ceiling["bbox"]["min_mm"][2]) - position[2])
         room_axis_offset = abs(position[0] - room["centre_mm"][0])
-        required_light_clearance = 500.0 if row["device_role"] == "smoke_alarm" else 200.0
+        required_light_clearance = 500.0 if row["device_role"] in {"smoke_alarm", "kitchen_fire_sensor"} else 200.0
         known_geometry_pass = (
             room["polygon"].covers(point)
             and wall_clearance + args.tolerance_mm >= 500.0
@@ -284,7 +285,13 @@ def compile_report(args: argparse.Namespace) -> dict[str, Any]:
             "ceiling_datum_residual_mm": ceiling_residual,
             "known_geometry_pass": known_geometry_pass,
             "final_release_pass": False,
-            "release_blocker": "confirmed supply/return air layout and fire-safety review pending" if row["device_role"] == "smoke_alarm" else "AP product, PoE route and signal/service review pending",
+            "release_blocker": (
+                "confirmed supply/return air layout and fire-safety review pending"
+                if row["device_role"] == "smoke_alarm"
+                else "final heat/smoke/combined type, product, power, communication and manufacturer installation conditions pending"
+                if row["device_role"] == "kitchen_fire_sensor"
+                else "AP product, PoE route and signal/service review pending"
+            ),
         })
 
     pair_checks = []
@@ -305,6 +312,7 @@ def compile_report(args: argparse.Namespace) -> dict[str, Any]:
 
     smoke = [record for record in records if record["device_role"] == "smoke_alarm"]
     aps = [record for record in records if record["device_role"] == "wireless_access_point"]
+    kitchen_fire = [record for record in records if record["device_role"] == "kitchen_fire_sensor"]
     return {
         "mode": "read_only_a106_ceiling_device_position_candidate",
         "source_ifc_sha256": source_hash,
@@ -313,6 +321,7 @@ def compile_report(args: argparse.Namespace) -> dict[str, Any]:
             "candidate_count": len(records),
             "smoke_alarm_candidates": len(smoke),
             "bedroom_AP_candidates": len(aps),
+            "kitchen_fire_sensor_candidates": len(kitchen_fire),
             "known_geometry_pass_count": sum(bool(record["known_geometry_pass"]) for record in records),
             "final_release_pass_count": sum(bool(record["final_release_pass"]) for record in records),
         },
@@ -328,9 +337,10 @@ def compile_report(args: argparse.Namespace) -> dict[str, Any]:
         ],
         "excluded_demolition_wall_global_ids": demolition_ids,
         "gates": {
-            "five_candidates_present": len(records) == 5,
+            "six_candidates_present": len(records) == 6,
             "three_smoke_candidates_present": len(smoke) == 3,
             "two_bedroom_AP_candidates_present": len(aps) == 2,
+            "one_kitchen_fire_sensor_present": len(kitchen_fire) == 1,
             "known_geometry_pass": all(bool(record["known_geometry_pass"]) for record in records),
             "candidate_xy_coordinates_are_integer_mm": all(abs(value - round(value)) <= args.tolerance_mm for record in records for value in record["position_mm"][:2]),
             "bedroom_pair_separation_pass": all(check["separation_mm"] >= 700.0 for check in pair_checks),
@@ -380,9 +390,15 @@ def render_svg(source: str, report: dict[str, Any], output: Path) -> None:
     markup = []
     for record in report["candidates"]:
         x, y = world_to_svg(record["position_mm"])
-        css = "a106-smoke" if record["device_role"] == "smoke_alarm" else "a106-ap"
+        css = (
+            "a106-smoke"
+            if record["device_role"] == "smoke_alarm"
+            else "a106-fire"
+            if record["device_role"] == "kitchen_fire_sensor"
+            else "a106-ap"
+        )
         label = html.escape(record["candidate_id"])
-        if record["device_role"] == "smoke_alarm":
+        if record["device_role"] in {"smoke_alarm", "kitchen_fire_sensor"}:
             markup.append(f'<circle class="a106-known-clearance" cx="{x:.3f}" cy="{y:.3f}" r="{500 / SCALE_DENOMINATOR:.3f}"/>')
         markup.append(f'<circle class="{css}" cx="{x:.3f}" cy="{y:.3f}" r="2.4"/><text class="a106-label" x="{x+3.5:.3f}" y="{y-3.0:.3f}">{label}</text>')
 
@@ -393,20 +409,21 @@ def render_svg(source: str, report: dict[str, Any], output: Path) -> None:
     markup.extend([
         '<g><rect class="a106-panel" x="402" y="7" width="93" height="386"/>',
         '<text class="a106-title" x="407" y="16">A-106 天花设备定位候选</text>',
-        '<text class="a106-note" x="407" y="24">纯矢量审核底图｜不写 IFC｜非施工发布</text>',
+        '<text class="a106-note" x="407" y="24">纯矢量审核底图｜厨房火灾探测为 IFC 定位点｜非施工发布</text>',
         '<text class="a106-text" x="407" y="39">橙点：烟感候选（3）</text>',
         '<text class="a106-text" x="407" y="47">蓝点：卧室吸顶 AP 候选（2）</text>',
-        '<text class="a106-text" x="407" y="55">灰点：正式 IFC 既有灯具（79）</text>',
-        '<text class="a106-text" x="407" y="63">淡圈：500 mm 已知几何检查范围</text>',
-        '<text class="a106-text" x="407" y="78">烟感：居中或中心轴最近安全点</text>',
-        '<text class="a106-text" x="407" y="86">烟感：已知障碍物保守取 500 mm</text>',
+        '<text class="a106-text" x="407" y="55">红点：厨房火灾探测 IFC 定位点（1）</text>',
+        '<text class="a106-text" x="407" y="63">灰点：正式 IFC 既有灯具（79）</text>',
+        '<text class="a106-text" x="407" y="71">淡圈：500 mm 已知几何检查范围</text>',
+        '<text class="a106-text" x="407" y="86">烟感：居中或中心轴最近安全点</text>',
         '<text class="a106-text" x="407" y="94">13 面 DEMOLISH 墙已排除</text>',
-        '<text class="a106-warn" x="407" y="111">风口模型不完整：1500 mm 门未关闭</text>',
-        '<text class="a106-warn" x="407" y="119">厨房火灾/燃气探测类型与点位待确认</text>',
+        '<text class="a106-warn" x="407" y="111">风口模型不完整：送风禁距门未关闭</text>',
+        '<text class="a106-warn" x="407" y="119">厨房火灾点位已确认；最终类型/产品待确认</text>',
+        '<text class="a106-warn" x="407" y="127">厨房燃气探测点位及型号待确认</text>',
         f'<text class="a106-note" x="407" y="382">IFC SHA {report["source_ifc_sha256"][:12]}…</text></g>',
     ])
     style = """
-@page{size:500mm 400mm;margin:0}.a106-excluded-demolish{display:none!important}.a106-smoke{fill:#f59f00;stroke:#7a4d00;stroke-width:.7}.a106-ap{fill:#228be6;stroke:#0b477d;stroke-width:.7}.a106-light{fill:#868e96;stroke:#343a40;stroke-width:.25}.a106-known-clearance{fill:#f59f00;fill-opacity:.035;stroke:#f59f00;stroke-opacity:.32;stroke-width:.3;stroke-dasharray:1.2 1.2}.a106-label,.a106-title,.a106-note,.a106-text,.a106-warn{font-family:Arial,'Noto Sans CJK SC',sans-serif;fill:#102f43}.a106-label{font-size:2.2px;font-weight:700;paint-order:stroke;stroke:#fff;stroke-width:.8px}.a106-panel{fill:#fbfcfd;stroke:#102f43;stroke-width:.5}.a106-title{font-size:3.7px;font-weight:700}.a106-note{font-size:2.15px;fill:#526777}.a106-text{font-size:2.3px}.a106-warn{font-size:2.15px;fill:#c92a2a;font-weight:700}
+@page{size:500mm 400mm;margin:0}.a106-excluded-demolish{display:none!important}.a106-smoke{fill:#f59f00;stroke:#7a4d00;stroke-width:.7}.a106-fire{fill:#e03131;stroke:#7d1010;stroke-width:.7}.a106-ap{fill:#228be6;stroke:#0b477d;stroke-width:.7}.a106-light{fill:#868e96;stroke:#343a40;stroke-width:.25}.a106-known-clearance{fill:#f59f00;fill-opacity:.035;stroke:#f59f00;stroke-opacity:.32;stroke-width:.3;stroke-dasharray:1.2 1.2}.a106-label,.a106-title,.a106-note,.a106-text,.a106-warn{font-family:Arial,'Noto Sans CJK SC',sans-serif;fill:#102f43}.a106-label{font-size:2.2px;font-weight:700;paint-order:stroke;stroke:#fff;stroke-width:.8px}.a106-panel{fill:#fbfcfd;stroke:#102f43;stroke-width:.5}.a106-title{font-size:3.7px;font-weight:700}.a106-note{font-size:2.15px;fill:#526777}.a106-text{font-size:2.3px}.a106-warn{font-size:2.15px;fill:#c92a2a;font-weight:700}
 """
     output.parent.mkdir(parents=True, exist_ok=True)
     output.write_text(source.replace("</svg>", f'<style id="a106-style">{style}</style><g id="a106-ceiling-device-candidate">{"".join(markup)}</g></svg>', 1), encoding="utf-8")

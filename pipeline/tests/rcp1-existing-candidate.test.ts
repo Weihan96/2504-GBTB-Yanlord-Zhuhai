@@ -53,7 +53,7 @@ test(
     expect(result.exitCode, result.stderr.toString()).toBe(0);
     const report = JSON.parse(await Bun.file(reportPath).text());
     expect(report.source.sha256).toBe(
-      "7521c09991f3d0c7b7d91ca2324fd55ad961d8e32e9e3e9a9777a4cc19b06e81",
+      "6c2fd8da9e9ad7ddbc2b63415a27f1c979e8995b880d8fce210a2dda2ef2aab6",
     );
     expect(report.gates.candidate_pass).toBe(true);
     expect(report.gates.construction_release_ready).toBe(false);
@@ -69,7 +69,8 @@ test(
     expect(report.gates.other_high_proxy_count).toBe(1);
     expect(report.gates.duplicate_inventory_ids).toEqual([]);
     expect(report.gates.protected_handoffs_over_0_1_mm).toBe(0);
-    expect(Object.values(report.gates.missing_instances).every((value) => value === 0)).toBe(true);
+    expect(report.gates.missing_instances.IfcSensor).toBe(1);
+    expect(Object.entries(report.gates.missing_instances).every(([key, value]) => key === "IfcSensor" || value === 0)).toBe(true);
     expect(Object.values(report.gates.topology).every((value) => value === 0)).toBe(true);
     for (const group of Object.values(report.inventory) as any[][]) {
       for (const item of group) {
