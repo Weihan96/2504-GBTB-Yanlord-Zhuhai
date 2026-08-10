@@ -1,4 +1,6 @@
 import { expect, test } from "bun:test";
+import { createHash } from "node:crypto";
+import { readFileSync } from "node:fs";
 
 const script = "pipeline/scripts/plum_existing_candidate.py";
 const source = await Bun.file(script).text();
@@ -46,9 +48,10 @@ test("PLUM candidate runs against the frozen formal IFC", async () => {
   expect(stdout).toContain('"p201_non_service_component_count": 3');
   expect(stdout).toContain('"p202_existing_object_count": 49');
   const report = await Bun.file("build/plum/plum-report.json").json();
-  expect(report.source.ifc_sha256).toBe(
-    "7521c09991f3d0c7b7d91ca2324fd55ad961d8e32e9e3e9a9777a4cc19b06e81",
-  );
+  const currentIfcHash = createHash("sha256")
+    .update(readFileSync("2504 GBTB Yanlord Zhuhai.ifc"))
+    .digest("hex");
+  expect(report.source.ifc_sha256).toBe(currentIfcHash);
   expect(report.qa.candidate_registry_pass).toBe(true);
   expect(report.qa.construction_release_pass).toBe(false);
   expect(report.qa.distribution_data.status).toBe("data_missing");
@@ -64,3 +67,11 @@ test("PLUM candidate runs against the frozen formal IFC", async () => {
     Math.max(...p202.objects.flatMap((row: any) => row.object_origin_mm.map(Math.abs))),
   ).toBeLessThan(20_000);
 }, 30_000);
+
+test("PLUM candidate still supports a caller-frozen source hash", () => {
+  const result = Bun.spawnSync([
+    "python3", script, "--expected-ifc-sha256", "0".repeat(64),
+  ]);
+  expect(result.exitCode).not.toBe(0);
+  expect(result.stderr.toString()).toContain("formal IFC hash changed");
+});

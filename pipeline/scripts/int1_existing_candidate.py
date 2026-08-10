@@ -298,7 +298,7 @@ def encode_csv_value(value: Any) -> Any:
 def write_csv(path: Path, records: list[dict[str, Any]]) -> None:
     path.parent.mkdir(parents=True, exist_ok=True)
     with path.open("w", newline="", encoding="utf-8") as handle:
-        writer = csv.DictWriter(handle, fieldnames=CSV_FIELDS)
+        writer = csv.DictWriter(handle, fieldnames=CSV_FIELDS, lineterminator="\n")
         writer.writeheader()
         for record in records:
             writer.writerow({field: encode_csv_value(record.get(field, "")) for field in CSV_FIELDS})

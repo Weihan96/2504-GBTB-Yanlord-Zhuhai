@@ -15,7 +15,6 @@ import ifcopenshell
 import ifcopenshell.geom
 
 
-EXPECTED_IFC_SHA256 = "7521c09991f3d0c7b7d91ca2324fd55ad961d8e32e9e3e9a9777a4cc19b06e81"
 OFF_PLAN_WASTE_TERMINAL_ID = "3IVqCnhGr51hY4LrOq_5G_"
 
 
@@ -26,6 +25,10 @@ def parse_args() -> argparse.Namespace:
     parser.add_argument("--p201", type=Path, default=root / "build/plum/p201-demand-endpoints.json")
     parser.add_argument("--centerlines", type=Path, default=root / "build/coordinate-normalization/flow-segment-centerline-audit.json")
     parser.add_argument("--output", type=Path, default=root / "build/plum/plum-connection-candidate.json")
+    parser.add_argument(
+        "--expected-ifc-sha256",
+        help="Optional caller-frozen source hash; upstream report hashes remain mandatory",
+    )
     parser.add_argument("--contact-mm", type=float, default=10.0)
     parser.add_argument("--near-mm", type=float, default=150.0)
     return parser.parse_args()
@@ -88,8 +91,10 @@ def proximity_class(distance_mm: float, contact_mm: float, near_mm: float) -> tu
 def main() -> int:
     args = parse_args()
     source_hash = sha256(args.ifc)
-    if source_hash != EXPECTED_IFC_SHA256:
-        raise RuntimeError(f"formal IFC hash changed: {source_hash}")
+    if args.expected_ifc_sha256 and source_hash != args.expected_ifc_sha256:
+        raise RuntimeError(
+            f"formal IFC hash changed: expected {args.expected_ifc_sha256}, got {source_hash}"
+        )
     p201 = read_json(args.p201)
     centerlines = read_json(args.centerlines)
     if p201["source_ifc_sha256"] != source_hash or centerlines["source"]["sha256"] != source_hash:

@@ -29,3 +29,11 @@ test("PLUM proximity script cannot write IFC", () => {
   expect(source).not.toContain("model.write(");
   expect(source).not.toContain("ifcopenshell.api.run");
 });
+
+test("PLUM proximity candidate rejects a mismatched caller-frozen hash", () => {
+  const run = spawnSync([
+    "python3", script, "--expected-ifc-sha256", "0".repeat(64), "--output", output,
+  ], { cwd: root });
+  expect(run.exitCode).not.toBe(0);
+  expect(run.stderr.toString()).toContain("formal IFC hash changed");
+});

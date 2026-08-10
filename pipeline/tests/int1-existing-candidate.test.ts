@@ -86,6 +86,7 @@ test("INT1 candidate preserves role split and blocks unverified fabrication inpu
   }
 
   const csv = readFileSync(decisionCsv, "utf8");
+  expect(csv).not.toContain("\r\n");
   expect((csv.match(/,BLOCK,/g) ?? []).length).toBe(4);
   expect(csv).toContain("existing_world_bbox_not_fabrication_dimension");
 }, 20_000);

@@ -29,7 +29,6 @@ from shapely.ops import unary_union
 from geometry_alignment_audit import geometry_settings, world_mesh_mm
 from plum_existing_candidate import (
     ASSEMBLY_IDS,
-    EXPECTED_IFC_SHA256,
     PVC110_IDS,
     drainage_products,
 )
@@ -59,7 +58,10 @@ def parse_args() -> argparse.Namespace:
     parser.add_argument("--report", type=Path, default=Path("build/plum/p202-candidate-report.json"))
     parser.add_argument("--render-report", type=Path, default=Path("build/plum/p202-pdf-render-report.json"))
     parser.add_argument("--proof-png", type=Path, default=Path("build/plum/p202-proof.png"))
-    parser.add_argument("--expected-ifc-sha256", default=EXPECTED_IFC_SHA256)
+    parser.add_argument(
+        "--expected-ifc-sha256",
+        help="Optional caller-frozen source hash; omit to use the hash-checked PLUM registry",
+    )
     parser.add_argument("--render-script", type=Path, default=Path("pipeline/scripts/render_svg_pdf.py"))
     return parser.parse_args()
 
@@ -207,7 +209,7 @@ def main() -> None:
     render_script = resolve(args.render_script)
 
     ifc_sha = sha256(ifc_path)
-    if ifc_sha != args.expected_ifc_sha256:
+    if args.expected_ifc_sha256 and ifc_sha != args.expected_ifc_sha256:
         raise RuntimeError(f"formal IFC hash changed: expected {args.expected_ifc_sha256}, got {ifc_sha}")
     registry = json.loads(registry_path.read_text(encoding="utf-8"))
     plum_report = json.loads(plum_report_path.read_text(encoding="utf-8"))

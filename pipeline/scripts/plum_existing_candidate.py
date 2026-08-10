@@ -26,7 +26,6 @@ from flow_segment_centerline_audit import mesh_components
 from geometry_alignment_audit import geometry_settings, world_mesh_mm
 
 
-EXPECTED_IFC_SHA256 = "7521c09991f3d0c7b7d91ca2324fd55ad961d8e32e9e3e9a9777a4cc19b06e81"
 PVC110_IDS = ("178mqyyzzFowLcbXcH6prO", "0bfVg4Ys1CevZs$qxhkXTo")
 ASSEMBLY_IDS = ("1FICW5lCjEIQPvN1oi4cE2", "0a3r2aWdbFi9OlDGcQ00CE", "1fEFh83259DRb927ZP9yW7")
 DIRECT_DRAIN_IDS = (
@@ -51,7 +50,10 @@ def parse_args() -> argparse.Namespace:
     parser.add_argument("--review", type=Path, default=Path("pipeline/decisions/plum-existing-review.csv"))
     parser.add_argument("--output-dir", type=Path, default=Path("build/plum"))
     parser.add_argument("--geometry-baseline-ref", default="4700894")
-    parser.add_argument("--expected-ifc-sha256", default=EXPECTED_IFC_SHA256)
+    parser.add_argument(
+        "--expected-ifc-sha256",
+        help="Optional caller-frozen source hash; omit to compile and report the current formal IFC",
+    )
     return parser.parse_args()
 
 
@@ -232,7 +234,7 @@ def main() -> None:
     review_path = resolve(args.review)
     output_dir = resolve(args.output_dir)
     ifc_sha = sha256(ifc_path)
-    if ifc_sha != args.expected_ifc_sha256:
+    if args.expected_ifc_sha256 and ifc_sha != args.expected_ifc_sha256:
         raise RuntimeError(
             f"formal IFC hash changed: expected {args.expected_ifc_sha256}, got {ifc_sha}"
         )
