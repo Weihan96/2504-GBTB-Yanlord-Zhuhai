@@ -11,6 +11,7 @@ import ifcopenshell
 
 
 ROOT_COLLECTION = "RENOVATION_ELEC_ROUND1"
+REVIEW_LABEL_COLLECTION = "08_CURRENT_REVIEW_CALLOUTS"
 GROUPS = {
     "bedside": ("01_BEDSIDE_LIGHT_CYAN", (0.00, 0.84, 0.92, 1.0)),
     "socket": ("02_NEW_SOCKET_GREEN", (0.22, 0.70, 0.30, 1.0)),
@@ -22,6 +23,16 @@ GROUPS = {
 }
 FURNITURE_YELLOW = (1.0, 0.65, 0.0, 1.0)
 IFC_CONTEXT_GREY = (0.62, 0.62, 0.62, 1.0)
+REVIEW_LABEL_Z = 3.15
+FOCUS_LABELS = {
+    "CTRL-ENTRY": ("E302  CTRL-ENTRY", (0.18, 0.18)),
+    "CTRL-MASTER": ("E302  CTRL-MASTER", (0.18, 0.18)),
+    "NS-01": ("E303  NS-01", (0.18, 0.18)),
+    "NS-02": ("E303  NS-02", (0.18, -0.20)),
+    "A106-AP-R09": ("E304  AP-R09", (0.18, 0.18)),
+    "A106-AP-R14": ("E304  AP-R14", (0.18, 0.18)),
+    "NET-ROUTER-LIVING-STUDY": ("E304  ROUTER-R20/R22", (0.18, 0.18)),
+}
 
 
 def project_root() -> Path:
@@ -85,6 +96,63 @@ def cabinet_marker(collection: bpy.types.Collection, record: dict, colour) -> bp
     obj["source_global_ids"] = ";".join(record["source_global_ids"])
     obj["automatic_ifc_write_allowed"] = False
     return obj
+
+
+def mark_review_overlay(obj: bpy.types.Object, candidate_id: str) -> None:
+    obj.show_in_front = False
+    obj["candidate_id"] = candidate_id
+    obj["review_overlay_only"] = True
+    obj["automatic_ifc_write_allowed"] = False
+
+
+def focus_callout(
+    collection: bpy.types.Collection,
+    record: dict,
+    colour,
+) -> list[bpy.types.Object]:
+    candidate_id = record["candidate_id"]
+    label, (offset_x, offset_y) = FOCUS_LABELS[candidate_id]
+    x, y, _z = (float(value) / 1000.0 for value in record["position_mm"])
+    label_x = x + offset_x
+    label_y = y + offset_y
+
+    bpy.ops.mesh.primitive_cylinder_add(
+        vertices=32,
+        radius=0.105,
+        depth=0.025,
+        location=(x, y, REVIEW_LABEL_Z),
+    )
+    anchor = bpy.context.object
+    anchor.name = f"CALLOUT::{candidate_id}"
+    move_to_collection(anchor, collection)
+    anchor.color = colour
+    mark_review_overlay(anchor, candidate_id)
+
+    curve_data = bpy.data.curves.new(f"LEADER::{candidate_id}", "CURVE")
+    curve_data.dimensions = "3D"
+    curve_data.bevel_depth = 0.012
+    curve_data.bevel_resolution = 2
+    spline = curve_data.splines.new("POLY")
+    spline.points.add(1)
+    spline.points[0].co = (x, y, REVIEW_LABEL_Z + 0.02, 1.0)
+    spline.points[1].co = (label_x, label_y, REVIEW_LABEL_Z + 0.02, 1.0)
+    leader = bpy.data.objects.new(f"LEADER::{candidate_id}", curve_data)
+    collection.objects.link(leader)
+    leader.color = colour
+    mark_review_overlay(leader, candidate_id)
+
+    font_data = bpy.data.curves.new(f"LABEL::{candidate_id}", "FONT")
+    font_data.body = label
+    font_data.align_x = "LEFT"
+    font_data.align_y = "CENTER"
+    font_data.size = 0.13
+    font_data.extrude = 0.003
+    text = bpy.data.objects.new(f"LABEL::{candidate_id}", font_data)
+    text.location = (label_x + 0.04, label_y, REVIEW_LABEL_Z + 0.035)
+    collection.objects.link(text)
+    text.color = colour
+    mark_review_overlay(text, candidate_id)
+    return [anchor, leader, text]
 
 
 def configure_viewport() -> None:
@@ -170,20 +238,39 @@ def build_review() -> dict:
         collection.hide_viewport = False
         collection.hide_render = False
         collections[key] = collection
+    callout_collection = ensure_collection(REVIEW_LABEL_COLLECTION, root)
+    clear_collection(callout_collection)
+    callout_collection.hide_viewport = False
+    callout_collection.hide_render = False
+
+    focus_records = []
 
     for row in report["bedside_light_candidates"]:
         point_marker(collections["bedside"], row, GROUPS["bedside"][1], 0.075)
     for row in report["new_socket_candidates"]:
         point_marker(collections["socket"], row, GROUPS["socket"][1], 0.075)
+        if row["candidate_id"] in FOCUS_LABELS:
+            focus_records.append((row, GROUPS["socket"][1]))
     for row in report["cabinet_power_zones"]:
         cabinet_marker(collections["cabinet"], row, GROUPS["cabinet"][1])
     for row in report["kitchen_socket_rechecks"]:
         point_marker(collections["recheck"], row, GROUPS["recheck"][1], 0.060)
     for row in control_network["control_coordination_zones"]:
         point_marker(collections["control"], row, GROUPS["control"][1], 0.085)
+        if row["candidate_id"] in FOCUS_LABELS:
+            focus_records.append((row, GROUPS["control"][1]))
     for row in control_network["network_coordination_zones"]:
         key = "ap" if row["network_role"] == "wireless_access_point" else "router"
         point_marker(collections[key], row, GROUPS[key][1], 0.085)
+        if row["candidate_id"] in FOCUS_LABELS:
+            focus_records.append((row, GROUPS[key][1]))
+
+    for row, colour in focus_records:
+        focus_callout(callout_collection, row, colour)
+
+    for key in {"bedside", "cabinet", "recheck"}:
+        collections[key].hide_viewport = True
+        collections[key].hide_render = True
 
     for name in {"DEVELOPER_HANDOVER_MEP_REFERENCE", "MEP_POSITIONING_REVIEW"}:
         previous = bpy.data.collections.get(name)
@@ -202,6 +289,10 @@ def build_review() -> dict:
         "magenta=doorway control zones; blue=bedroom AP room zones; violet=living/study router room zones"
     )
     bpy.context.scene["renovation_elec_round1_writes_ifc"] = False
+    bpy.context.scene["renovation_elec_current_review"] = (
+        "E302 doorway controls; E303 new sockets; E304 bedroom AP and living/study router. "
+        "Callouts are review overlays at Z=3.15 m; source markers retain their true installation depth."
+    )
     return {
         "bedside": len(report["bedside_light_candidates"]),
         "socket": len(report["new_socket_candidates"]),
@@ -210,6 +301,10 @@ def build_review() -> dict:
         "control": len(control_network["control_coordination_zones"]),
         "ap": sum(row["network_role"] == "wireless_access_point" for row in control_network["network_coordination_zones"]),
         "router": sum(row["network_role"] == "router_no_AP" for row in control_network["network_coordination_zones"]),
+        "focus_callouts": len(focus_records),
+        "focus_ids": sorted(row["candidate_id"] for row, _colour in focus_records),
+        "default_hidden_reference_groups": ["bedside", "cabinet", "recheck"],
+        "review_label_z_m": REVIEW_LABEL_Z,
         "show_in_front": False,
         "solid_view": True,
         "formal_ifc_write": False,

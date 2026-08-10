@@ -13,6 +13,13 @@ test("renovation electrical Blender review uses true depth and separated scopes"
   expect(source).toContain('"05_DOORWAY_CONTROL_MAGENTA"');
   expect(source).toContain('"06_BEDROOM_AP_BLUE"');
   expect(source).toContain('"07_LIVING_STUDY_ROUTER_VIOLET"');
+  expect(source).toContain('REVIEW_LABEL_COLLECTION = "08_CURRENT_REVIEW_CALLOUTS"');
+  expect(source).toContain('"CTRL-ENTRY": ("E302  CTRL-ENTRY"');
+  expect(source).toContain('"NS-01": ("E303  NS-01"');
+  expect(source).toContain('"A106-AP-R09": ("E304  AP-R09"');
+  expect(source).toContain('"NET-ROUTER-LIVING-STUDY": ("E304  ROUTER-R20/R22"');
+  expect(source).toContain('obj["review_overlay_only"] = True');
+  expect(source).toContain('"Callouts are review overlays at Z=3.15 m; source markers retain their true installation depth."');
   expect(source).toContain("obj.show_in_front = False");
   expect(source).toContain('space.shading.type = "SOLID"');
   expect(source).toContain("space.shading.show_xray = False");
