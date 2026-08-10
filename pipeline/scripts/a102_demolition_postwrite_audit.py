@@ -34,6 +34,10 @@ def parse_args() -> argparse.Namespace:
     parser.add_argument("--baseline-git-ref", default="424dc17")
     parser.add_argument("--report", required=True, type=Path)
     parser.add_argument("--tolerance-mm", type=float, default=0.1)
+    parser.add_argument(
+        "--expected-ifc-sha256",
+        help="Optional caller-frozen formal IFC hash",
+    )
     return parser.parse_args()
 
 
@@ -50,6 +54,12 @@ def main() -> None:
     args = parse_args()
     formal_path = args.formal.resolve()
     candidate_path = args.candidate.resolve()
+    formal_sha256 = sha256(formal_path)
+    if args.expected_ifc_sha256 and formal_sha256 != args.expected_ifc_sha256:
+        raise RuntimeError(
+            "formal IFC hash differs from caller-frozen hash: "
+            f"expected {args.expected_ifc_sha256}, found {formal_sha256}"
+        )
     formal = ifcopenshell.open(formal_path)
     candidate = ifcopenshell.open(candidate_path)
     baseline, baseline_source = load_git_ifc(formal_path, args.baseline_git_ref)
@@ -180,7 +190,7 @@ def main() -> None:
         "generated_at": datetime.now(timezone.utc).isoformat(),
         "mode": "read-only-a102-demolition-postwrite-audit",
         "tolerance_mm": args.tolerance_mm,
-        "formal": {"path": str(formal_path), "sha256": sha256(formal_path)},
+        "formal": {"path": str(formal_path), "sha256": formal_sha256},
         "approved_candidate": {
             "path": str(candidate_path),
             "sha256": sha256(candidate_path),

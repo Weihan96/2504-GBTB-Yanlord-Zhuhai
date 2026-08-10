@@ -40,9 +40,22 @@ def parse_args() -> argparse.Namespace:
     parser.add_argument("--floor-register", required=True, type=Path)
     parser.add_argument("--threshold-register", required=True, type=Path)
     parser.add_argument("--report", required=True, type=Path)
+    parser.add_argument(
+        "--expected-ifc-sha256",
+        help="Optional caller-frozen SHA-256 for the formal IFC; defaults to the current file hash.",
+    )
     parser.add_argument("--tolerance-mm", type=float, default=0.1)
     parser.add_argument("--plane-residual-mm", type=float, default=0.001)
     return parser.parse_args()
+
+
+def validate_source_sha(path: Path, expected_sha256: str | None = None) -> str:
+    source_sha = sha256(path)
+    if expected_sha256 and source_sha != expected_sha256:
+        raise RuntimeError(
+            f"formal IFC SHA-256 mismatch: expected {expected_sha256}, found {source_sha}"
+        )
+    return source_sha
 
 
 def svg_escape(value: Any) -> str:
@@ -430,7 +443,7 @@ def inject_svg(source: str, generated: str) -> str:
 
 def main() -> None:
     args = parse_args()
-    source_sha = sha256(args.input)
+    source_sha = validate_source_sha(args.input, args.expected_ifc_sha256)
     model = ifcopenshell.open(args.input)
     if model.schema != "IFC4":
         raise RuntimeError(f"expected IFC4, found {model.schema}")

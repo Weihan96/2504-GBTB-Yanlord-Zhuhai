@@ -22,7 +22,6 @@ from shapely.geometry import Polygon
 from shapely.ops import unary_union
 
 
-EXPECTED_SOURCE_SHA256 = "6c2fd8da9e9ad7ddbc2b63415a27f1c979e8995b880d8fce210a2dda2ef2aab6"
 PROTECTED_HANDOFF_IDS = {"16Ey9Flj9BK9VRun$ozzjH", "0zWtSQZzjFQg_PORjlssbe"}
 OTHER_HIGH_PROXY_IDS = {"1faflkXXH6M9cnYPE9Liir"}
 EXPECTED_AC_OPENING_IDS = {
@@ -65,7 +64,16 @@ def parse_args() -> argparse.Namespace:
         type=Path,
         default=Path("build/rcp1/coordination-report.json"),
     )
-    parser.add_argument("--expected-sha256", default=EXPECTED_SOURCE_SHA256)
+    parser.add_argument(
+        "--expected-ifc-sha256",
+        help="Optional caller-frozen formal IFC SHA-256; defaults to the current input file.",
+    )
+    parser.add_argument(
+        "--legacy-report",
+        type=Path,
+        default=Path("build/rcp1/legacy-base-audit.json"),
+        help="Read-only legacy Blender audit metadata; this generator never refreshes it.",
+    )
     parser.add_argument("--tolerance-mm", type=float, default=0.1)
     parser.add_argument("--search-window-mm", type=float, default=50.0)
     parser.add_argument("--review-clearance-mm", type=float, default=20.0)
@@ -78,6 +86,31 @@ def sha256(path: Path) -> str:
         for chunk in iter(lambda: handle.read(1024 * 1024), b""):
             digest.update(chunk)
     return digest.hexdigest()
+
+
+def legacy_evidence_status(path: Path, formal_ifc_hash: str) -> dict[str, Any]:
+    result: dict[str, Any] = {
+        "path": str(path),
+        "status": "missing_not_refreshed",
+        "current_formal_ifc": False,
+        "observed_formal_hash": "",
+        "legacy_audit_file_hash": "",
+        "note": "Blender legacy audit was not refreshed by this pure-Python candidate generator.",
+    }
+    if not path.is_file():
+        return result
+    result["legacy_audit_file_hash"] = sha256(path)
+    try:
+        payload = json.loads(path.read_text(encoding="utf-8"))
+    except (OSError, UnicodeError, json.JSONDecodeError) as exc:
+        result["status"] = "unreadable_not_refreshed"
+        result["error"] = str(exc)
+        return result
+    observed = str(payload.get("source", {}).get("formal_ifc_sha256", "") or "")
+    result["observed_formal_hash"] = observed
+    result["current_formal_ifc"] = observed == formal_ifc_hash
+    result["status"] = "current_external_audit" if result["current_formal_ifc"] else "stale_not_refreshed"
+    return result
 
 
 def settings() -> ifcopenshell.geom.settings:
@@ -414,12 +447,12 @@ def world_mesh_relations(
                 review_reason = f"{rule} requires installation and access confirmation"
         else:
             if rule == "legacy_hvac_base_intersection_pending_redesign":
-                review_reason = "the same mesh intersection exists in the hash-verified legacy design base; remodel HVAC route design remains pending"
+                review_reason = "the same mesh intersection was reproduced in the prior legacy design-base audit; audit freshness is disclosed separately and remodel HVAC route design remains pending"
             else:
                 review_reason = "expected non-hard relation or mechanically separated pair; thematic system/access review remains"
         relation_basis = "formal IFC world Body meshes; AABB prefilter followed by IfcOpenShell geom.tree collision/intersection/clearance"
         if rule == "legacy_hvac_base_intersection_pending_redesign":
-            relation_basis += "; legacy 2504_lowpoly.blend pair state independently reproduced by rcp1_legacy_base_audit.py"
+            relation_basis += "; legacy 2504_lowpoly.blend pair state was independently reproduced by rcp1_legacy_base_audit.py, whose current-file freshness is disclosed separately"
         relation = {
             "pair": list(key),
             "first": {
@@ -467,7 +500,7 @@ def world_mesh_relations(
             "tolerance_mm": tolerance_mm,
             "search_window_mm": search_window_mm,
             "review_clearance_mm": review_clearance_mm,
-            "pair_review_policy": "only unresolved world-mesh intersection/contact remains in pair-specific review; hash-verified legacy HVAC intersections are retained as redesign inputs rather than construction approvals",
+            "pair_review_policy": "only unresolved world-mesh intersection/contact remains in pair-specific review; prior-audit legacy HVAC intersections are retained as redesign inputs rather than construction approvals, with audit freshness disclosed separately",
             "aabb_prefilter": True,
             "exact_candidate_method": "IfcOpenShell geom.tree world-shape collision/intersection/clearance",
             "far_pair_method": "world AABB Euclidean separation lower bound",
@@ -529,8 +562,9 @@ def world_mesh_relations(
 def main() -> int:
     args = parse_args()
     source_sha = sha256(args.input)
-    if source_sha != args.expected_sha256:
-        raise RuntimeError(f"formal IFC SHA drift: {source_sha} != {args.expected_sha256}")
+    if args.expected_ifc_sha256 and source_sha != args.expected_ifc_sha256:
+        raise RuntimeError(f"formal IFC SHA drift: {source_sha} != {args.expected_ifc_sha256}")
+    legacy_evidence = legacy_evidence_status(args.legacy_report, source_sha)
     model = ifcopenshell.open(args.input)
     if model.schema != "IFC4":
         raise RuntimeError(f"unexpected schema {model.schema}")
@@ -753,6 +787,8 @@ def main() -> int:
         "sha256": source_sha,
         "schema": model.schema,
     }
+    coordination["source_ifc_sha256"] = source_sha
+    coordination["legacy_evidence"] = legacy_evidence
     coordination["inventory_counts"] = {
         "typed_high_equipment": len(typed_high_equipment),
         "named_high_openings": len(named_high_openings),
@@ -792,7 +828,9 @@ def main() -> int:
     report = {
         "generated_at": datetime.now(timezone.utc).isoformat(),
         "mode": "read_only_existing_high_level_candidate",
+        "source_ifc_sha256": source_sha,
         "source": {"path": str(args.input.resolve()), "sha256": source_sha, "schema": model.schema},
+        "legacy_evidence": legacy_evidence,
         "tolerance_mm": args.tolerance_mm,
         "inventory": {
             "ceiling_coverings": ceiling_coverings,

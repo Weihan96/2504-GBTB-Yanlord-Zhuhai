@@ -1,4 +1,5 @@
 import { expect, test } from "bun:test";
+import { spawnSync } from "node:child_process";
 import { resolve } from "node:path";
 
 const root = resolve(import.meta.dir, "../..");
@@ -100,4 +101,22 @@ print(module.add_wall_status_classes(svg, {"DEMOLISH-A": "EXCLUDED_DEMOLISH"}))
   expect(result.stdout.toString()).toContain("a103-excluded-demolish");
   const source = Bun.file(modulePath).text();
   return expect(source).resolves.toContain("display:none !important");
+});
+
+test("A103 plan rejects a mismatched caller-frozen IFC hash", () => {
+  const result = spawnSync(
+    "python3",
+    [
+      "pipeline/scripts/a103_wall_plan_candidate.py",
+      "--input", "2504 GBTB Yanlord Zhuhai.ifc",
+      "--source-svg", "drawings/Wall Plan.svg",
+      "--output-svg", "build/a103/should-not-write.svg",
+      "--wall-register", "build/a103/should-not-write.csv",
+      "--report", "build/a103/should-not-write.json",
+      "--expected-ifc-sha256", "0".repeat(64),
+    ],
+    { cwd: root, encoding: "utf8" },
+  );
+  expect(result.status).not.toBe(0);
+  expect(result.stderr).toContain("differs from caller-frozen hash");
 });

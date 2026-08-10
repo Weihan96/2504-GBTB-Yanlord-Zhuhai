@@ -66,8 +66,21 @@ def parse_args() -> argparse.Namespace:
     parser.add_argument("--output-svg", required=True, type=Path)
     parser.add_argument("--review-register", required=True, type=Path)
     parser.add_argument("--report", required=True, type=Path)
+    parser.add_argument(
+        "--expected-ifc-sha256",
+        help="Optional caller-frozen SHA-256 for the formal IFC; defaults to the current file hash.",
+    )
     parser.add_argument("--tolerance-mm", type=float, default=0.1)
     return parser.parse_args()
+
+
+def validate_source_sha(path: Path, expected_sha256: str | None = None) -> str:
+    source_sha = sha256(path)
+    if expected_sha256 and source_sha != expected_sha256:
+        raise RuntimeError(
+            f"formal IFC SHA-256 mismatch: expected {expected_sha256}, found {source_sha}"
+        )
+    return source_sha
 
 
 def svg_escape(value: Any) -> str:
@@ -255,8 +268,8 @@ def close_confirmed_reviews(
     master_door["review_group"] = "A104-R03"
     master_door["review_required"] = "yes"
     master_door["review_question"] = (
-        "M07 主卧门缺少宿主洞口且 OperationType=NOTDEFINED；须依据官方 CAD、门表或现场开门照片确认"
-        "合页侧、开启方向和门后占墙，再关闭 E-302 Master A/B。"
+        "M07 主卧门缺少宿主洞口且 OperationType=NOTDEFINED；Master A 仅为暂定优选、仍待取证，"
+        "须依据官方 CAD、门表或现场开门照片确认合页侧、开启方向和门后占墙后再关闭 E-302。"
     )
     for relation in pair_relations:
         pair = {relation["first_global_id"], relation["second_global_id"]}
@@ -578,9 +591,9 @@ def inject_candidate_svg(source: str, generated: str) -> str:
 
 def main() -> None:
     args = parse_args()
+    source_sha = validate_source_sha(args.input, args.expected_ifc_sha256)
     model = ifcopenshell.open(args.input)
     source_svg = args.source_svg.read_text(encoding="utf-8")
-    source_sha = sha256(args.input)
     doors, windows, pair_relations = build_inventory(model, args.tolerance_mm)
     if len(doors) != 8 or len(windows) != 11:
         raise RuntimeError(f"expected 8 doors and 11 windows, found {len(doors)} and {len(windows)}")

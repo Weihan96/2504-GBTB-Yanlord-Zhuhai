@@ -132,7 +132,7 @@ MISSING_INPUTS = [
     {
         "queue_id": "M401-MISS-003",
         "observable_role": "bedroom_living_fire_sensor_missing",
-        "basis": "No observable fire/smoke detector or sensor instance/type exists in the formal IFC. Xiaomi smoke alarms with recessed mounts are accepted as a visual candidate for the master bedroom, guest bedroom and living room.",
+        "basis": "The formal IFC contains one kitchen fire-sensor location whose final sensing/product type remains pending; no separate master-bedroom, guest-bedroom or living-room fire/smoke sensor instance is present. Xiaomi smoke alarms with recessed mounts are accepted only as a visual candidate for those three rooms.",
         "missing_or_unverified": "approved device type, final quantity and coverage, exact location, power/communication and ceiling clearance",
         "stop_condition": "Do not publish final sensor positions or coverage until the fire/safety equipment basis is confirmed; the candidate mount may hide only the base and must leave smoke entry, indicator and downward removal unobstructed.",
     },
@@ -159,6 +159,31 @@ def sha256(path: Path) -> str:
         for chunk in iter(lambda: handle.read(1024 * 1024), b""):
             digest.update(chunk)
     return digest.hexdigest()
+
+
+def legacy_evidence_status(path: Path, formal_ifc_hash: str) -> dict[str, Any]:
+    result: dict[str, Any] = {
+        "path": str(path),
+        "status": "missing_not_refreshed",
+        "current_formal_ifc": False,
+        "observed_formal_hash": "",
+        "legacy_audit_file_hash": "",
+        "note": "Blender legacy audit was not refreshed by this pure-Python M-401 inventory.",
+    }
+    if not path.is_file():
+        return result
+    result["legacy_audit_file_hash"] = sha256(path)
+    try:
+        payload = json.loads(path.read_text(encoding="utf-8"))
+    except (OSError, UnicodeError, json.JSONDecodeError) as exc:
+        result["status"] = "unreadable_not_refreshed"
+        result["error"] = str(exc)
+        return result
+    observed = str(payload.get("source", {}).get("formal_ifc_sha256", "") or "")
+    result["observed_formal_hash"] = observed
+    result["current_formal_ifc"] = observed == formal_ifc_hash
+    result["status"] = "current_external_audit" if result["current_formal_ifc"] else "stale_not_refreshed"
+    return result
 
 
 def rounded(values: list[float]) -> list[float]:
@@ -316,6 +341,12 @@ def parse_args() -> argparse.Namespace:
     parser.add_argument("--input", required=True, type=Path)
     parser.add_argument("--decision-csv", required=True, type=Path)
     parser.add_argument("--output-dir", required=True, type=Path)
+    parser.add_argument(
+        "--legacy-report",
+        type=Path,
+        default=Path("build/rcp1/legacy-base-audit.json"),
+        help="Read-only legacy Blender audit metadata; this generator never refreshes it.",
+    )
     return parser.parse_args()
 
 
@@ -323,6 +354,7 @@ def main() -> None:
     args = parse_args()
     source = args.input.resolve()
     source_hash = sha256(source)
+    legacy_evidence = legacy_evidence_status(args.legacy_report, source_hash)
     model = ifcopenshell.open(source)
     settings = ifcopenshell.geom.settings()
     settings.set(settings.USE_WORLD_COORDS, True)
@@ -448,7 +480,9 @@ def main() -> None:
     report = {
         "generated_at": datetime.now(timezone.utc).isoformat(),
         "mode": "read_only_m401_existing_candidate",
+        "source_ifc_sha256": source_hash,
         "source": {"ifc": str(source), "ifc_sha256": source_hash},
+        "legacy_evidence": legacy_evidence,
         "summary": {
             "actual_instances": len(instance_records),
             "instance_role_counts": dict(sorted(counts.items())),

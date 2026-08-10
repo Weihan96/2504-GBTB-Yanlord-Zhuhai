@@ -1,10 +1,13 @@
 import { expect, test } from "bun:test";
+import { createHash } from "node:crypto";
 import { mkdtempSync, readFileSync } from "node:fs";
 import { tmpdir } from "node:os";
 import { join, resolve } from "node:path";
 
 const root = resolve(import.meta.dir, "../..");
 const script = resolve(root, "pipeline/scripts/m401_existing_candidate.py");
+const ifcPath = resolve(root, "2504 GBTB Yanlord Zhuhai.ifc");
+const currentIfcHash = createHash("sha256").update(readFileSync(ifcPath)).digest("hex");
 
 test("M-401 inventory separates instances, types, context and missing inputs", () => {
   const temporary = mkdtempSync(join(tmpdir(), "m401-existing-"));
@@ -13,7 +16,7 @@ test("M-401 inventory separates instances, types, context and missing inputs", (
       "python3",
       script,
       "--input",
-      resolve(root, "2504 GBTB Yanlord Zhuhai.ifc"),
+      ifcPath,
       "--decision-csv",
       join(temporary, "m401-existing-review.csv"),
       "--output-dir",
@@ -26,6 +29,10 @@ test("M-401 inventory separates instances, types, context and missing inputs", (
     readFileSync(join(temporary, "build/m401-existing-report.json"), "utf8"),
   );
   expect(report.mode).toBe("read_only_m401_existing_candidate");
+  expect(report.source_ifc_sha256).toBe(currentIfcHash);
+  expect(report.source.ifc_sha256).toBe(currentIfcHash);
+  expect(report.legacy_evidence.status).toBe("stale_not_refreshed");
+  expect(report.legacy_evidence.current_formal_ifc).toBe(false);
   expect(report.summary.actual_instances).toBe(28);
   expect(report.summary.instance_role_counts).toEqual({
     assigned_ac_equipment_instance: 5,
@@ -41,7 +48,7 @@ test("M-401 inventory separates instances, types, context and missing inputs", (
   expect(report.summary.human_review_queue).toBe(18);
   expect(report.summary.ifc_air_terminal_instances).toBe(0);
   expect(report.summary.ifc_fan_instances).toBe(0);
-  expect(report.summary.ifc_sensor_instances).toBe(0);
+  expect(report.summary.ifc_sensor_instances).toBe(1);
   expect(report.summary.ifc_alarm_instances).toBe(0);
   expect(report.summary.ifc_distribution_ports).toBe(0);
   expect(report.summary.ifc_systems).toBe(0);

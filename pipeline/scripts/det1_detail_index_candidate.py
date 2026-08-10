@@ -221,9 +221,16 @@ def clip(value: str, limit: int = 35) -> str:
     return value if len(value) <= limit else value[: limit - 1] + "…"
 
 
-def render_svg(rows: list[dict[str, str]], ifc_hash: str) -> str:
+def render_svg(rows: list[dict[str, str]], ifc_hash: str, sheet_ids: tuple[str, ...] = ("D-601", "D-602")) -> str:
     panels: list[str] = []
-    for panel_index, sheet_id in enumerate(("D-601", "D-602")):
+    single_sheet = len(sheet_ids) == 1
+    canvas_width = 820 if single_sheet else 1600
+    status_line = (
+        "6 个节点均待复核 · 不写 IFC · 不作施工发布"
+        if single_sheet
+        else "12 个节点均为 candidate_pending_review；automatic_ifc_write_allowed=false；construction_release_ready=false"
+    )
+    for panel_index, sheet_id in enumerate(sheet_ids):
         x = 45 + panel_index * 775
         panel_rows = [row for row in rows if row["sheet_id"] == sheet_id]
         panels.append(f'<rect class="panel" x="{x}" y="155" width="735" height="760" rx="18"/>')
@@ -243,7 +250,7 @@ def render_svg(rows: list[dict[str, str]], ifc_hash: str) -> str:
                 f'<text class="lock" x="{x + 610}" y="{y + 67}">不写 IFC</text>',
             ])
     return f'''<?xml version="1.0" encoding="UTF-8"?>
-<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="1000" viewBox="0 0 1600 1000">
+<svg xmlns="http://www.w3.org/2000/svg" width="{canvas_width}" height="1000" viewBox="0 0 {canvas_width} 1000">
   <style>
     .bg {{ fill:#f3f4f6; }} .panel {{ fill:#ffffff; stroke:#cbd5e1; stroke-width:2; }}
     .title {{ font:700 38px -apple-system,BlinkMacSystemFont,"PingFang SC",sans-serif; fill:#0f172a; }}
@@ -259,17 +266,17 @@ def render_svg(rows: list[dict[str, str]], ifc_hash: str) -> str:
     .lock {{ font:700 14px ui-monospace,SFMono-Regular,monospace; fill:#991b1b; }}
     .footer {{ font:15px ui-monospace,SFMono-Regular,monospace; fill:#64748b; }}
   </style>
-  <rect class="bg" width="1600" height="1000"/>
-  <text class="title" x="45" y="65">DET1 待复核节点索引候选</text>
+  <rect class="bg" width="{canvas_width}" height="1000"/>
+  <text class="title" x="45" y="65">DET1 待复核节点索引候选{(' · ' + sheet_ids[0]) if single_sheet else ''}</text>
   <text class="meta" x="45" y="103">只读索引 · 已确认意图 + 可填变量 · 不构成材料、厂家或施工尺寸确认</text>
-  <text class="meta" x="45" y="132">12 个节点均为 candidate_pending_review；automatic_ifc_write_allowed=false；construction_release_ready=false</text>
+  <text class="meta" x="45" y="132">{status_line}</text>
   {''.join(panels)}
   <text class="footer" x="45" y="963">IFC SHA-256 {ifc_hash}</text>
 </svg>
 '''
 
 
-def render_png(svg_path: Path, png_path: Path, chrome: Path) -> None:
+def render_png(svg_path: Path, png_path: Path, chrome: Path, width: int = 1600) -> None:
     png_path.parent.mkdir(parents=True, exist_ok=True)
     subprocess.run(
         [
@@ -279,7 +286,7 @@ def render_png(svg_path: Path, png_path: Path, chrome: Path) -> None:
             "--hide-scrollbars",
             "--force-device-scale-factor=1",
             f"--screenshot={png_path}",
-            "--window-size=1600,1000",
+            f"--window-size={width},1000",
             svg_path.resolve().as_uri(),
         ],
         check=True,
@@ -299,9 +306,13 @@ def main() -> None:
     parser.add_argument("--expected-ifc-sha256")
     parser.add_argument("--review-csv", type=Path, default=Path("pipeline/decisions/det1-detail-review.csv"))
     parser.add_argument("--output-svg", type=Path, default=Path("drawings/D601-D602-detail-index-candidate.svg"))
+    parser.add_argument("--d601-svg", type=Path, default=Path("drawings/D-601-material-junction-detail-candidate.svg"))
+    parser.add_argument("--d602-svg", type=Path, default=Path("drawings/D-602-waterproof-wet-area-detail-candidate.svg"))
     parser.add_argument("--report", type=Path, default=Path("build/det1/detail-index-candidate.json"))
     parser.add_argument("--open-issues", type=Path, default=Path("build/det1/open-issues.md"))
     parser.add_argument("--proof-png", type=Path, default=Path("build/det1/D601-D602-detail-index-candidate.png"))
+    parser.add_argument("--d601-proof-png", type=Path, default=Path("build/det1/D-601-material-junction-detail-candidate.png"))
+    parser.add_argument("--d602-proof-png", type=Path, default=Path("build/det1/D-602-waterproof-wet-area-detail-candidate.png"))
     parser.add_argument("--chrome", type=Path)
     args = parser.parse_args()
 
@@ -342,13 +353,22 @@ def main() -> None:
     rows = build_nodes(ifc_hash)
     review_csv = resolve(args.review_csv)
     output_svg = resolve(args.output_svg)
+    d601_svg = resolve(args.d601_svg)
+    d602_svg = resolve(args.d602_svg)
     report_path = resolve(args.report)
     open_issues = resolve(args.open_issues)
     proof_png = resolve(args.proof_png)
+    d601_proof_png = resolve(args.d601_proof_png)
+    d602_proof_png = resolve(args.d602_proof_png)
     write_csv(review_csv, rows)
     output_svg.parent.mkdir(parents=True, exist_ok=True)
     output_svg.write_text(render_svg(rows, ifc_hash), encoding="utf-8")
-    render_png(output_svg, proof_png, find_chrome(args.chrome))
+    d601_svg.write_text(render_svg(rows, ifc_hash, ("D-601",)), encoding="utf-8")
+    d602_svg.write_text(render_svg(rows, ifc_hash, ("D-602",)), encoding="utf-8")
+    chrome = find_chrome(args.chrome)
+    render_png(output_svg, proof_png, chrome)
+    render_png(d601_svg, d601_proof_png, chrome, width=820)
+    render_png(d602_svg, d602_proof_png, chrome, width=820)
 
     unresolved_count = sum(
         bool(row[field])
@@ -376,6 +396,10 @@ def main() -> None:
         "review_csv": {"path": str(review_csv), "sha256": sha256(review_csv)},
         "svg": {"path": str(output_svg), "sha256": sha256(output_svg)},
         "proof_png": {"path": str(proof_png), "sha256": sha256(proof_png)},
+        "d601_svg": {"path": str(d601_svg), "sha256": sha256(d601_svg)},
+        "d601_proof_png": {"path": str(d601_proof_png), "sha256": sha256(d601_proof_png)},
+        "d602_svg": {"path": str(d602_svg), "sha256": sha256(d602_svg)},
+        "d602_proof_png": {"path": str(d602_proof_png), "sha256": sha256(d602_proof_png)},
         "open_issues": {"path": str(open_issues), "sha256": sha256(open_issues)},
     }
     report: dict[str, Any] = {
@@ -396,6 +420,9 @@ def main() -> None:
             "unresolved_items_explicit": unresolved_count == len(rows) * 3,
             "svg_nonempty": output_svg.stat().st_size > 0,
             "png_nonempty": proof_png.stat().st_size > 0,
+            "sheet_outputs_nonempty": all(
+                path.stat().st_size > 0 for path in (d601_svg, d601_proof_png, d602_svg, d602_proof_png)
+            ),
             "automatic_ifc_write_allowed": False,
             "construction_release_ready": False,
         },

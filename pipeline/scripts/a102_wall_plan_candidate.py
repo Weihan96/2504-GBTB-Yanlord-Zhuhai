@@ -45,6 +45,10 @@ def parse_args() -> argparse.Namespace:
     parser.add_argument("--output-svg", required=True, type=Path)
     parser.add_argument("--report", required=True, type=Path)
     parser.add_argument("--tolerance-mm", type=float, default=0.1)
+    parser.add_argument(
+        "--expected-ifc-sha256",
+        help="Optional caller-frozen formal IFC hash",
+    )
     return parser.parse_args()
 
 
@@ -251,6 +255,12 @@ def main() -> None:
     args = parse_args()
     formal_path = args.input.resolve()
     source_svg_path = args.source_svg.resolve()
+    formal_sha = sha256(formal_path)
+    if args.expected_ifc_sha256 and formal_sha != args.expected_ifc_sha256:
+        raise RuntimeError(
+            "formal IFC hash differs from caller-frozen hash: "
+            f"expected {args.expected_ifc_sha256}, found {formal_sha}"
+        )
     model = ifcopenshell.open(formal_path)
     source_svg = source_svg_path.read_text(encoding="utf-8")
     with args.review_register.open(newline="", encoding="utf-8") as handle:
@@ -258,7 +268,6 @@ def main() -> None:
     postwrite = json.loads(args.postwrite_report.read_text(encoding="utf-8"))
     if not postwrite["gates"]["pass"]:
         raise RuntimeError("A-102 postwrite geometry gate is not passing")
-    formal_sha = sha256(formal_path)
     if postwrite["formal"]["sha256"] != formal_sha:
         raise RuntimeError("formal IFC changed after the A-102 postwrite audit")
     if len(register) != 13:

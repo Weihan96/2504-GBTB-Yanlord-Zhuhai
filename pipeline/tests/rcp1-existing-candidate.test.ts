@@ -1,4 +1,6 @@
 import { expect, test } from "bun:test";
+import { createHash } from "node:crypto";
+import { readFileSync } from "node:fs";
 import { resolve } from "node:path";
 
 const root = resolve(import.meta.dir, "../..");
@@ -6,6 +8,8 @@ const scriptPath = resolve(root, "pipeline/scripts/rcp1_existing_candidate.py");
 const reviewPath = resolve(root, "pipeline/decisions/rcp1-existing-review.csv");
 const reportPath = resolve(root, "build/rcp1/rcp1-existing-candidate.test.json");
 const coordinationPath = resolve(root, "build/rcp1/coordination-report.test.json");
+const ifcPath = resolve(root, "2504 GBTB Yanlord Zhuhai.ifc");
+const currentIfcHash = createHash("sha256").update(readFileSync(ifcPath)).digest("hex");
 
 test("RCP1 source protects handoffs and does not write or invent systems", async () => {
   const source = await Bun.file(scriptPath).text();
@@ -52,9 +56,10 @@ test(
     );
     expect(result.exitCode, result.stderr.toString()).toBe(0);
     const report = JSON.parse(await Bun.file(reportPath).text());
-    expect(report.source.sha256).toBe(
-      "6c2fd8da9e9ad7ddbc2b63415a27f1c979e8995b880d8fce210a2dda2ef2aab6",
-    );
+    expect(report.source.sha256).toBe(currentIfcHash);
+    expect(report.source_ifc_sha256).toBe(currentIfcHash);
+    expect(report.legacy_evidence.status).toBe("stale_not_refreshed");
+    expect(report.legacy_evidence.current_formal_ifc).toBe(false);
     expect(report.gates.candidate_pass).toBe(true);
     expect(report.gates.construction_release_ready).toBe(false);
     expect(report.gates.space_count).toBe(22);
@@ -84,6 +89,7 @@ test(
     }
     const coordination = JSON.parse(await Bun.file(coordinationPath).text());
     expect(coordination.source.sha256).toBe(report.source.sha256);
+    expect(coordination.source_ifc_sha256).toBe(currentIfcHash);
     expect(coordination.method.tolerance_mm).toBe(0.1);
     expect(coordination.summary.object_count).toBe(117);
     expect(coordination.summary.total_pair_count).toBe(6786);
@@ -135,3 +141,12 @@ test(
   },
   90_000,
 );
+
+test("RCP1 rejects a caller-frozen IFC hash mismatch before auditing geometry", () => {
+  const result = Bun.spawnSync(
+    ["python3", scriptPath, "--input", ifcPath, "--expected-ifc-sha256", "0".repeat(64)],
+    { cwd: root, stdout: "pipe", stderr: "pipe" },
+  );
+  expect(result.exitCode).not.toBe(0);
+  expect(result.stderr.toString()).toContain("formal IFC SHA drift");
+});

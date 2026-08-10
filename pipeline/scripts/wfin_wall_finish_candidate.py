@@ -467,6 +467,7 @@ svg { display: block; }
     main_bath_dry_segments = [segment for segment in all_segments if "主卫干区" in segment["space_long_names"]]
     report = {
         "generated_at": datetime.now(timezone.utc).isoformat(),
+        "source_ifc_sha256": source_sha,
         "source": {"path": str(args.input), "sha256": source_sha, "schema": model.schema},
         "source_svg": {"path": str(args.source_svg), "sha256": sha256(args.source_svg)},
         "automatic_ifc_write_allowed": False,

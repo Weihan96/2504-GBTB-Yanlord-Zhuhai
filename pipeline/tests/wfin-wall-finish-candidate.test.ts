@@ -1,8 +1,12 @@
 import { expect, test } from "bun:test";
+import { createHash } from "node:crypto";
+import { readFileSync } from "node:fs";
 import { resolve } from "node:path";
 
 const root = resolve(import.meta.dir, "../..");
 const script = resolve(root, "pipeline/scripts/wfin_wall_finish_candidate.py");
+const ifcPath = resolve(root, "2504 GBTB Yanlord Zhuhai.ifc");
+const currentIfcHash = createHash("sha256").update(readFileSync(ifcPath)).digest("hex");
 
 test("WFIN generator records the confirmed room rule and stays read-only", async () => {
   const source = await Bun.file(script).text();
@@ -18,7 +22,7 @@ test("WFIN candidate segments CLADDING at mixed finish boundaries", async () => 
   const temp = resolve(root, "build/test-wfin");
   const result = Bun.spawnSync([
     "python3", script,
-    "--input", resolve(root, "2504 GBTB Yanlord Zhuhai.ifc"),
+    "--input", ifcPath,
     "--source-svg", resolve(root, "drawings/Wall Finish Plan.svg"),
     "--output-svg", resolve(temp, "candidate.svg"),
     "--register", resolve(temp, "register.csv"),
@@ -29,6 +33,7 @@ test("WFIN candidate segments CLADDING at mixed finish boundaries", async () => 
   ], { cwd: root });
   expect(result.exitCode).toBe(0);
   const report = await Bun.file(resolve(temp, "report.json")).json();
+  expect(report.source_ifc_sha256).toBe(currentIfcHash);
   expect(report.cladding_count).toBe(51);
   expect(report.single_finish_object_count).toBe(50);
   expect(report.mixed_finish_object_count).toBe(1);

@@ -17,6 +17,6 @@ I-501,厨房平面、立面及剖面,Furniture Plan,candidate,output/pdf/I-501-k
 I-502,卫生间平面、立面及节点,Sanitary Plan,candidate,output/pdf/I-502-bathroom-existing-candidate.pdf,33 个既有对象协调包络入图；洁具粗装图、五金运动包络和节点未关闭
 I-503,入户、家政及固定家具深化图,Furniture Plan,candidate,output/pdf/I-503-entry-laundry-existing-candidate.pdf,1 个 WashTower 协调包络入图；厂家安装与接口条件未关闭
 I-504,其他固定家具立面与剖面,Furniture Plan,candidate,output/pdf/I-504-other-fixed-furniture-existing-candidate.pdf,25 个既有对象协调包络入图；包络不是加工、开孔或粗装尺寸
-D-601,材料与收口节点,Wall Finish Plan,planned,,DET1：阳角、材料交界、门槛/地轨、踢脚和检修收口待深化
-D-602,防水与湿区节点,FFL PLAN,planned,,DET1：防水范围、管根、地漏、门槛、墙地交界与试水待深化
-S-701,材料、设备及五金表,,planned,,WFIN/PLUM/ELEC/INT1：材料、洁具、设备、门窗及五金统一编号待深化
+D-601,材料与收口节点,Wall Finish Plan,candidate,drawings/D-601-material-junction-detail-candidate.svg,DET1 已生成 6 个材料与收口变量节点的待复核候选；材料产品、厂家做法和施工构造 18 个字段全部保持未决，不自动写 IFC
+D-602,防水与湿区节点,FFL PLAN,candidate,drawings/D-602-waterproof-wet-area-detail-candidate.svg,DET1 已生成 6 个防水与湿区变量节点的待复核候选；材料产品、厂家做法和施工构造 18 个字段全部保持未决，不自动写 IFC
+S-701,材料、设备及五金表,,candidate,drawings/S-701-material-equipment-hardware-schedule-candidate.svg,51 条家具产品身份、家电使用/存放、门窗五金、既有暖通类型和墙面材料系统记录已按已确认/候选/未决分栏；不是下单表，厂家安装图、型号规格、功率接口、五金配置和现场条件未关闭

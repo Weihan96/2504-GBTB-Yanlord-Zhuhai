@@ -615,11 +615,20 @@ def main() -> None:
     parser.add_argument("--output-svg", type=Path, required=True)
     parser.add_argument("--wall-register", type=Path, required=True)
     parser.add_argument("--report", type=Path, required=True)
+    parser.add_argument(
+        "--expected-ifc-sha256",
+        help="Optional caller-frozen formal IFC hash",
+    )
     args = parser.parse_args()
 
+    source_sha = sha256(args.input)
+    if args.expected_ifc_sha256 and source_sha != args.expected_ifc_sha256:
+        raise RuntimeError(
+            "formal IFC hash differs from caller-frozen hash: "
+            f"expected {args.expected_ifc_sha256}, found {source_sha}"
+        )
     model = ifcopenshell.open(args.input)
     source_svg = args.source_svg.read_text(encoding="utf-8")
-    source_sha = sha256(args.input)
     source_svg_sha = sha256(args.source_svg)
     walls, hosted_doors, unhosted_doors, demolition_guids = build_inventory(model, source_svg)
     status_counts = Counter(record["candidate_status"] for record in walls)

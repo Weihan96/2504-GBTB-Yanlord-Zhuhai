@@ -1,8 +1,46 @@
 import { expect, test } from "bun:test";
+import { createHash } from "node:crypto";
 import { resolve } from "node:path";
 
 const root = resolve(import.meta.dir, "../..");
 const modulePath = resolve(root, "pipeline/scripts/a105_floor_plan_candidate.py");
+
+function runPython(body: string) {
+  return Bun.spawnSync(["python3", "-c", `
+import importlib.util, json, pathlib, sys
+sys.path.insert(0, str(pathlib.Path(${JSON.stringify(modulePath)}).parent))
+spec = importlib.util.spec_from_file_location("a105_floor_plan_candidate", ${JSON.stringify(modulePath)})
+module = importlib.util.module_from_spec(spec)
+sys.modules[spec.name] = module
+spec.loader.exec_module(module)
+${body}
+`], { cwd: root });
+}
+
+test("A105 uses the current IFC hash by default and rejects a mismatched caller freeze", async () => {
+  const ifcPath = resolve(root, "2504 GBTB Yanlord Zhuhai.ifc");
+  const currentSha = createHash("sha256")
+    .update(new Uint8Array(await Bun.file(ifcPath).arrayBuffer()))
+    .digest("hex");
+  const result = runPython(`
+from pathlib import Path
+values = [
+    module.validate_source_sha(Path(${JSON.stringify(ifcPath)})),
+    module.validate_source_sha(Path(${JSON.stringify(ifcPath)}), ${JSON.stringify(currentSha)}),
+]
+try:
+    module.validate_source_sha(Path(${JSON.stringify(ifcPath)}), "0" * 64)
+except RuntimeError as error:
+    mismatch = str(error)
+else:
+    raise AssertionError("mismatched caller freeze was accepted")
+print(json.dumps({"values": values, "mismatch": mismatch}))
+`);
+  expect(result.exitCode).toBe(0);
+  const value = JSON.parse(result.stdout.toString());
+  expect(value.values).toEqual([currentSha, currentSha]);
+  expect(value.mismatch).toContain("formal IFC SHA-256 mismatch");
+});
 
 test("A105 top-plane fit reports slope and downhill direction", () => {
   const script = `

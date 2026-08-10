@@ -1,4 +1,5 @@
 import { expect, test } from "bun:test";
+import { createHash } from "node:crypto";
 import { resolve } from "node:path";
 
 const root = resolve(import.meta.dir, "../..");
@@ -62,7 +63,33 @@ print(json.dumps(records[0], ensure_ascii=False))
   expect(value.review_group).toBe("A104-R03");
   expect(value.review_required).toBe("yes");
   expect(value.review_question).toContain("OperationType=NOTDEFINED");
-  expect(value.review_question).toContain("Master A/B");
+  expect(value.review_question).toContain("Master A 仅为暂定优选");
+  expect(value.review_question).toContain("仍待取证");
+});
+
+test("A104 uses the current IFC hash by default and rejects a mismatched caller freeze", async () => {
+  const ifcPath = resolve(root, "2504 GBTB Yanlord Zhuhai.ifc");
+  const currentSha = createHash("sha256")
+    .update(new Uint8Array(await Bun.file(ifcPath).arrayBuffer()))
+    .digest("hex");
+  const result = runPython(`
+from pathlib import Path
+values = [
+    module.validate_source_sha(Path(${JSON.stringify(ifcPath)})),
+    module.validate_source_sha(Path(${JSON.stringify(ifcPath)}), ${JSON.stringify(currentSha)}),
+]
+try:
+    module.validate_source_sha(Path(${JSON.stringify(ifcPath)}), "0" * 64)
+except RuntimeError as error:
+    mismatch = str(error)
+else:
+    raise AssertionError("mismatched caller freeze was accepted")
+print(json.dumps({"values": values, "mismatch": mismatch}))
+`);
+  expect(result.exitCode).toBe(0);
+  const value = JSON.parse(result.stdout.toString());
+  expect(value.values).toEqual([currentSha, currentSha]);
+  expect(value.mismatch).toContain("formal IFC SHA-256 mismatch");
 });
 
 test("A104 candidate identifiers sort deterministically by plan position", () => {

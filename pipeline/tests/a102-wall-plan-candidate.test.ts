@@ -1,4 +1,5 @@
 import { expect, test } from "bun:test";
+import { spawnSync } from "node:child_process";
 import { resolve } from "node:path";
 
 const root = resolve(import.meta.dir, "../..");
@@ -42,4 +43,23 @@ test("A102 side panel preserves the approximate-not-survey boundary", async () =
   expect(source).toContain("不是现场测量或施工放线依据");
   expect(source).toContain("CONFIRMED_APPROXIMATE");
   expect(source).toContain('"protected_products_max_world_geometry_change_mm"');
+});
+
+test("A102 plan rejects a mismatched caller-frozen IFC hash", () => {
+  const result = spawnSync(
+    "python3",
+    [
+      "pipeline/scripts/a102_wall_plan_candidate.py",
+      "--input", "2504 GBTB Yanlord Zhuhai.ifc",
+      "--source-svg", "drawings/Wall Plan.svg",
+      "--review-register", "pipeline/decisions/a102-demolition-review.csv",
+      "--postwrite-report", "build/a102/a102-demolition-postwrite.json",
+      "--output-svg", "build/a102/should-not-write.svg",
+      "--report", "build/a102/should-not-write.json",
+      "--expected-ifc-sha256", "0".repeat(64),
+    ],
+    { cwd: root, encoding: "utf8" },
+  );
+  expect(result.status).not.toBe(0);
+  expect(result.stderr).toContain("differs from caller-frozen hash");
 });
