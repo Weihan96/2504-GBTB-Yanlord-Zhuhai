@@ -118,6 +118,8 @@
     "pipeline:covering-semantics-candidate": "python3 pipeline/scripts/covering_semantics_candidate.py",
     "pipeline:space-placement-recovery": "python3 pipeline/scripts/space_placement_recovery_candidate.py",
     "pipeline:coordinate-noise-candidate": "python3 pipeline/scripts/coordinate_normalize.py clean-noise --input '2504 GBTB Yanlord Zhuhai.ifc' --output build/candidates/2504-GBTB-float-noise-clean.ifc --report build/coordinate-normalization/noise-candidate-report.json",
+    "pipeline:owner-inputs": "python3 pipeline/scripts/sync_owner_inputs.py",
+    "pipeline:owner-inputs-apply": "python3 pipeline/scripts/sync_owner_inputs.py --apply",
     "test": "bun test pipeline/tests"
   }
 }

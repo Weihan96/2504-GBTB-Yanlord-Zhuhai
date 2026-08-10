@@ -1,0 +1,19 @@
+appliance_id,appliance_name,category,storage_location_candidate,use_location_candidate,storage_location_confirmed,use_location_confirmed,quantity,rated_power_w,simultaneous_group,water_required,drain_required,gas_required,ventilation_required,model,evidence_reference,status,notes
+APP-001,火锅电器,移动厨电,厨房柜内,西厨岛台 NS-01,,西厨岛台 NS-01,1,,NS01-A,no,no,no,no,,,部分确认,实际使用位置已由用户说明；补型号与铭牌功率
+APP-002,搅拌机,移动厨电,厨房柜内,西厨岛台 NS-01,,西厨岛台 NS-01,1,,NS01-B,no,no,no,no,,,部分确认,与火锅是否同时使用待确认
+APP-003,Sous-vide 棒,移动厨电,厨房柜内,西厨岛台 NS-01,,西厨岛台 NS-01,1,,NS01-B,no,no,no,no,,,部分确认,长时间运行需确认容器和插座位置
+APP-004,咖啡机,咖啡设备,餐边柜,餐边柜 NS-02,,餐边柜 NS-02,1,,NS02-A,model_dependent,model_dependent,no,no,,,部分确认,实际使用位置已由用户说明
+APP-005,手冲电热水壶,咖啡设备,餐边柜,餐边柜 NS-02,,餐边柜 NS-02,1,,NS02-A,no,no,no,no,,,部分确认,按可能与咖啡机同时使用核算
+APP-006,磨豆机,咖啡设备,餐边柜,餐边柜 NS-02,,餐边柜 NS-02,1,,NS02-B,no,no,no,no,,,部分确认,补型号与铭牌功率
+APP-007,冰箱 1,固定厨房电器,西厨,西厨,,西厨,1,,CONTINUOUS,no,no,no,yes,,,待填写,持续供电且不得进入照明总控
+APP-008,冰箱 2,固定厨房电器,西厨,西厨,,西厨,1,,CONTINUOUS,no,no,no,yes,,,待填写,持续供电且不得进入照明总控
+APP-009,岛台洗碗机 1,固定厨房电器,西厨岛台,西厨岛台,,西厨岛台,1,,DISHWASHER-A,yes,yes,no,no,,,待填写,IFC 身份已确认；补产品安装图
+APP-010,岛台洗碗机 2,固定厨房电器,西厨岛台,西厨岛台,,西厨岛台,1,,DISHWASHER-B,yes,yes,no,no,,,待填写,IFC 身份已确认；补产品安装图
+APP-011,烤箱,固定厨房电器,西厨高柜,西厨高柜,,西厨高柜,1,,COOKING-A,no,no,no,model_dependent,,,待填写,补额定功率和散热要求
+APP-012,炉灶,固定厨房电器,中厨,中厨,,中厨,1,,COOKING-B,no,no,model_dependent,yes,,,待填写,确认燃气或电气类型
+APP-013,油烟机,固定厨房电器,中厨,中厨,,中厨,1,,COOKING-B,no,no,no,yes,,,待填写,补功率/排烟接口/止回阀资料
+APP-014,直饮机,水处理设备,西厨,西厨使用点,,西厨使用点,1,,WATER-A,yes,model_dependent,no,no,,,待填写,补产品安装图和排水需求
+APP-015,净水器,水处理设备,西厨柜内,西厨柜内接口区,,西厨柜内接口区,1,,WATER-A,yes,model_dependent,no,no,,,待填写,存放位置与龙头使用点分开记录
+APP-016,垃圾处理器,固定厨房电器,西厨水槽柜,西厨水槽柜,,西厨水槽柜,1,,WATER-A,no,yes,no,no,,,待填写,补功率/开关方式/排水连接要求
+APP-017,LG WashTower,洗衣设备,中厨,中厨,,中厨,1,,LAUNDRY-A,yes,yes,no,yes,,,待填写,正式 IFC 有设备体量；补完整型号与安装图
+APP-018,Huawei 联通智家设备,网络设备,玄关弱电箱,玄关弱电箱,,玄关弱电箱,1,,CONTINUOUS,no,no,no,yes,,,部分确认,实际箱内运行已确认；补底部铭牌与设备功能

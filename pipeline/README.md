@@ -49,11 +49,13 @@ bun run pipeline:normalization-exit-audit
 bun run pipeline:a105-flooring-delete-candidate
 bun run pipeline:space-reference-candidate
 bun run pipeline:wfin-candidate
+bun run pipeline:owner-inputs
 bun test
 ```
 
 - `pipeline:snapshot`：读取 IFC 和现有 SVG，生成源哈希与结构快照。
 - `pipeline:check`：生成 QA JSON/Markdown；允许已知阻塞存在，便于持续盘点。
+- `pipeline:owner-inputs`：读取 `output/forms/滨海湾施工输入清单.xlsx`，校验固定设计输入 ID、状态和值，并生成 dry-run 差异和开放项报告。工作簿把“设计决策”与“家电清单”分开，家电强制区分存放位置和实际使用位置；候选值只有在状态改为“采用候选”时才视为确认。默认不更新源数据；`pipeline:owner-inputs-apply` 只更新两张输入登记和 PM 自动状态块，不写正式 IFC。
 - `pipeline:gate`：执行同一套检查；存在阻塞时返回非零退出码，用于发布门。
 - `pipeline:coordinate-audit`：只读统计对象 origin、IFC 长度数值和非整数分布；当前 origin 复核阈值为 `0.1 mm`。
 - `pipeline:geometry-alignment-audit`：只读提取墙体世界坐标几何，检查近共面边和墙体接缝；默认判定门槛 `0.1 mm`，候选搜索窗口 `1.0 mm`，且墙体必须至少有 `100 mm` 垂直重叠才会比较平面缝隙，避免把上下楼层投影误判为连接。报告会把超差墙对按连通关系归并为 `C003-G*` 人审组，审核人不需要阅读散乱记录。可直接调用脚本并传入 `--tolerance-mm <毫米>`、`--search-window-mm <毫米>`、`--minimum-vertical-overlap-mm <毫米>`。
