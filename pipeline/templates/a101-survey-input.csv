@@ -1,0 +1,7 @@
+input_id,field_type,location,measurement,value,unit,status,measurement_method,observed_by,observed_at,evidence_reference,confirmed_by,confirmed_at,notes
+A101-MAIN-BAY-01,main_bay,全屋主要开间控制线（填写具体轴线或房间）,主要开间净尺寸,,mm,pending,,,,,,,不得以 IFC 或常见值代替现场实测
+A101-MAIN-DEPTH-01,main_depth,全屋主要进深控制线（填写具体轴线或房间）,主要进深净尺寸,,mm,pending,,,,,,,不得以 IFC 或常见值代替现场实测
+A101-CLEAR-HEIGHT-01,clear_height,全屋（填写具体房间及测点）,完成面至顶板或吊顶基准净高,,mm,pending,,,,,,,有高差时复制本行并新增唯一 ID
+A101-BEAM-SOFFIT-01,beam_soffit,梁位（填写房间及梁编号）,完成面至梁底标高,,mm,pending,,,,,,,逐道影响吊顶或柜体的梁复核
+A101-WINDOW-SILL-01,window_sill,窗位（填写房间及窗编号）,完成面至窗台完成面高度,,mm,pending,,,,,,,逐樘影响收口或设备的窗复制本行复核
+A101-PROPERTY-CONDITION-01,immovable_property_condition,全屋及公共界面,不可移动物业条件及限制描述,,n/a,pending,,,,,,,包括结构外立面公共管井窗改限制及物业书面要求
