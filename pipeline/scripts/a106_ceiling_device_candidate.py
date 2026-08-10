@@ -18,7 +18,7 @@ import numpy as np
 from shapely.geometry import Point, Polygon, box
 from shapely.ops import unary_union
 
-from svg_audit_underlay import strip_wall_plan_raster_underlay
+from svg_audit_underlay import validate_wall_plan_source
 
 
 EXPECTED_IFC_SHA256 = "6c2fd8da9e9ad7ddbc2b63415a27f1c979e8995b880d8fce210a2dda2ef2aab6"
@@ -356,7 +356,6 @@ def compile_report(args: argparse.Namespace) -> dict[str, Any]:
 def render_svg(source: str, report: dict[str, Any], output: Path) -> None:
     source = re.sub(r'width="400(?:\.0+)?mm"', 'width="500mm"', source, count=1)
     source = re.sub(r'viewBox="0 0 400(?:\.0+)? 400(?:\.0+)?"', 'viewBox="0 0 500 400"', source, count=1)
-    source = strip_wall_plan_raster_underlay(source, "A-106")
     demolition_ids = report["excluded_demolition_wall_global_ids"]
     hidden_group_counts = {global_id: 0 for global_id in demolition_ids}
     wall_group_pattern = re.compile(r'<g\b[^>]*\bclass="[^"]*\bIfcWall\b[^"]*"[^>]*>')
@@ -404,7 +403,7 @@ def render_svg(source: str, report: dict[str, Any], output: Path) -> None:
     markup.extend([
         '<g><rect class="a106-panel" x="402" y="7" width="93" height="386"/>',
         '<text class="a106-title" x="407" y="16">A-106 天花设备定位候选</text>',
-        '<text class="a106-note" x="407" y="24">纯矢量审核底图｜厨房火灾探测为 IFC 定位点｜非施工发布</text>',
+        '<text class="a106-note" x="407" y="24">Bonsai 同批材质底图｜厨房火灾探测为 IFC 定位点｜非施工发布</text>',
         '<text class="a106-text" x="407" y="39">橙点：烟感候选（3）</text>',
         '<text class="a106-text" x="407" y="47">蓝点：卧室吸顶 AP 候选（2）</text>',
         '<text class="a106-text" x="407" y="55">红点：厨房火灾探测 IFC 定位点（1）</text>',
@@ -429,7 +428,9 @@ def main() -> int:
     report = compile_report(args)
     args.output.parent.mkdir(parents=True, exist_ok=True)
     args.output.write_text(json.dumps(report, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
-    render_svg(args.source_svg.read_text(encoding="utf-8"), report, args.output_svg)
+    source = args.source_svg.read_text(encoding="utf-8")
+    validate_wall_plan_source(source, args.source_svg, args.ifc)
+    render_svg(source, report, args.output_svg)
     print(json.dumps({"summary": report["summary"], "gates": report["gates"]}, ensure_ascii=False))
     return 0
 

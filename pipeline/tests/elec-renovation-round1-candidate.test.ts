@@ -58,7 +58,7 @@ test("first-round renovation electrical demands stay read-only and complete", ()
   expect(report.gates.automatic_ifc_write_allowed).toBe(false);
   const renderedSvg = readFileSync(svg, "utf8");
   expect(renderedSvg).toContain("elec-renovation-round1");
-  expect(renderedSvg).not.toContain("Wall Plan-underlay.png");
+  expect(renderedSvg).toContain("Wall Plan-underlay.png");
 }, 30_000);
 
 test("first-round renovation candidate has no IFC write path", () => {

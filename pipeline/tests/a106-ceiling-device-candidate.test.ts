@@ -29,7 +29,7 @@ test("A-106 ceiling device candidates pass known-geometry gates", () => {
   const renderedSvg = readFileSync(svg, "utf8");
   expect(renderedSvg).toContain("a106-ceiling-device-candidate");
   expect(renderedSvg).toContain("A106-FIRE-R04");
-  expect(renderedSvg).not.toContain("Wall Plan-underlay.png");
+  expect(renderedSvg).toContain("Wall Plan-underlay.png");
   const wallGroupTags = renderedSvg.match(/<g\b[^>]*\bclass="[^"]*\bIfcWall\b[^"]*"[^>]*>/g) ?? [];
   for (const globalId of report.excluded_demolition_wall_global_ids) {
     const demolitionGroupTags = wallGroupTags.filter((tag) => tag.includes(globalId));
