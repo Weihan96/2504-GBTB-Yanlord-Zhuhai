@@ -12,8 +12,9 @@ import re
 from pathlib import Path
 from typing import Any, Callable
 
+from svg_audit_underlay import strip_wall_plan_raster_underlay
 
-EXPECTED_IFC_SHA256 = "7521c09991f3d0c7b7d91ca2324fd55ad961d8e32e9e3e9a9777a4cc19b06e81"
+EXPECTED_IFC_SHA256 = "6c2fd8da9e9ad7ddbc2b63415a27f1c979e8995b880d8fce210a2dda2ef2aab6"
 SCALE_DENOMINATOR = 50.0
 SVG_WORLD_OFFSET_MM = 10000.0
 
@@ -280,6 +281,7 @@ def world_to_svg(position_mm: list[float]) -> tuple[float, float]:
 def inject_svg(source: str, generated: str, style: str) -> str:
     source = re.sub(r'width="400(?:\.0+)?mm"', 'width="500mm"', source, count=1)
     source = re.sub(r'viewBox="0 0 400(?:\.0+)? 400(?:\.0+)?"', 'viewBox="0 0 500 400"', source, count=1)
+    source = strip_wall_plan_raster_underlay(source, "E-301/E-303 renovation round 1")
     if "</svg>" not in source or 'viewBox="0 0 500 400"' not in source:
         raise RuntimeError("could not prepare the 500x400 renovation electrical SVG")
     return source.replace(
@@ -341,7 +343,7 @@ def render_svg(source: str, report: dict[str, Any]) -> str:
     summary = report["summary"]
     markup.append('<g><rect class="r1-panel" x="402" y="7" width="93" height="386"/>')
     markup.append('<text class="r1-title" x="407" y="16">E-301/E-303 装修用电深化第一轮</text>')
-    markup.append('<text class="r1-note" x="407" y="24">只读候选｜非施工发布｜不写 IFC</text>')
+    markup.append('<text class="r1-note" x="407" y="24">纯矢量审核底图｜只读候选｜不写 IFC</text>')
     markup.append(f'<text class="r1-text" x="407" y="37">青色床头灯候选：{summary["bedside_light_candidates"]}</text>')
     markup.append(f'<text class="r1-text" x="407" y="44">绿色新增插座候选：{summary["new_socket_candidates"]}</text>')
     markup.append(f'<text class="r1-text" x="407" y="51">琥珀色柜体供电协调区：{summary["cabinet_power_zones"]}</text>')

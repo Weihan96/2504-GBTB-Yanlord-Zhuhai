@@ -15,6 +15,8 @@ from typing import Any
 import ifcopenshell
 import ifcopenshell.util.placement
 
+from svg_audit_underlay import strip_wall_plan_raster_underlay
+
 EXPECTED_IFC_SHA256 = "6c2fd8da9e9ad7ddbc2b63415a27f1c979e8995b880d8fce210a2dda2ef2aab6"
 KITCHEN_FIRE_SENSOR_GLOBAL_ID = "2fwceKahvBqQXqal2ZcIUF"
 SCALE_DENOMINATOR = 50.0
@@ -263,6 +265,7 @@ def safety_device_zones(
 def render_svg(source: str, report: dict[str, Any]) -> str:
     source = re.sub(r'width="400(?:\.0+)?mm"', 'width="500mm"', source, count=1)
     source = re.sub(r'viewBox="0 0 400(?:\.0+)? 400(?:\.0+)?"', 'viewBox="0 0 500 400"', source, count=1)
+    source = strip_wall_plan_raster_underlay(source, "E-302/E-304")
     if "</svg>" not in source or 'viewBox="0 0 500 400"' not in source:
         raise RuntimeError("could not prepare 500x400 control/network SVG")
     markup = []
@@ -298,7 +301,7 @@ def render_svg(source: str, report: dict[str, Any]) -> str:
     markup.extend([
         '<g><rect class="cn-panel" x="402" y="7" width="93" height="386"/>',
         '<text class="cn-title" x="407" y="16">控制、网络与安全设备协调区</text>',
-        '<text class="cn-note" x="407" y="24">A-106 点位联动｜其余只读候选｜非施工发布</text>',
+        '<text class="cn-note" x="407" y="24">纯矢量审核底图｜A-106 点位联动｜非施工发布</text>',
         '<text class="cn-text" x="407" y="39">洋红方块：2 个门口控制面板区</text>',
         '<text class="cn-text" x="407" y="47">蓝点：主卧/次卧 AP 机械候选点</text>',
         '<text class="cn-text" x="407" y="55">紫点：客厅＋书房共享路由器区</text>',

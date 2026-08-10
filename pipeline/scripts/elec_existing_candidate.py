@@ -22,6 +22,8 @@ from ifcopenshell.util.placement import get_local_placement
 from shapely.geometry import Point, Polygon
 from shapely.ops import unary_union
 
+from svg_audit_underlay import strip_wall_plan_raster_underlay
+
 
 EXPECTED_SOURCE_SHA256 = "6c2fd8da9e9ad7ddbc2b63415a27f1c979e8995b880d8fce210a2dda2ef2aab6"
 LIGHT_TYPE_GLOBAL_ID = "26DmeZ15D7ZeHYavba3FdK"
@@ -312,6 +314,7 @@ def inject_elec_svg(source: str, generated: str, sheet: str, style: str) -> str:
         source,
         count=1,
     )
+    source = strip_wall_plan_raster_underlay(source, sheet)
     if 'width="500mm"' not in source or 'viewBox="0 0 500 400"' not in source:
         raise RuntimeError("failed to expand ELEC candidate sheet to 500x400 mm")
     if "</svg>" not in source:

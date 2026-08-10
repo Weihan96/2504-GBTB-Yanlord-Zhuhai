@@ -90,6 +90,8 @@ test(
     expect((e303.match(/data-elec-kind="proxy"/g) ?? []).length).toBe(9);
     expect(e301).toContain('width="500mm"');
     expect(e303).toContain('viewBox="0 0 500 400"');
+    expect(e301).not.toContain("Wall Plan-underlay.png");
+    expect(e303).not.toContain("Wall Plan-underlay.png");
   },
   30_000,
 );

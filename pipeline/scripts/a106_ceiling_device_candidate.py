@@ -18,6 +18,8 @@ import numpy as np
 from shapely.geometry import Point, Polygon, box
 from shapely.ops import unary_union
 
+from svg_audit_underlay import strip_wall_plan_raster_underlay
+
 
 EXPECTED_IFC_SHA256 = "6c2fd8da9e9ad7ddbc2b63415a27f1c979e8995b880d8fce210a2dda2ef2aab6"
 SPACE_IDS = {
@@ -354,14 +356,7 @@ def compile_report(args: argparse.Namespace) -> dict[str, Any]:
 def render_svg(source: str, report: dict[str, Any], output: Path) -> None:
     source = re.sub(r'width="400(?:\.0+)?mm"', 'width="500mm"', source, count=1)
     source = re.sub(r'viewBox="0 0 400(?:\.0+)? 400(?:\.0+)?"', 'viewBox="0 0 500 400"', source, count=1)
-    source, removed_underlays = re.subn(
-        r'\s*<image\b[^>]*\bxlink:href="Wall Plan-underlay\.png"[^>]*/>\s*',
-        "\n",
-        source,
-        count=1,
-    )
-    if removed_underlays != 1:
-        raise RuntimeError("A-106 source must contain exactly one removable Wall Plan raster underlay")
+    source = strip_wall_plan_raster_underlay(source, "A-106")
     demolition_ids = report["excluded_demolition_wall_global_ids"]
     hidden_group_counts = {global_id: 0 for global_id in demolition_ids}
     wall_group_pattern = re.compile(r'<g\b[^>]*\bclass="[^"]*\bIfcWall\b[^"]*"[^>]*>')
