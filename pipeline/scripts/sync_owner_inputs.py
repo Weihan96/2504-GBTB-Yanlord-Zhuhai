@@ -45,6 +45,13 @@ DECISION_STATUSES = {"待填写", "采用候选", "自定义确认", "需证据"
 APPLIANCE_STATUSES = {"待填写", "部分确认", "已确认", "暂缓", "不适用"}
 PM_START = "<!-- OWNER_INPUTS:START -->"
 PM_END = "<!-- OWNER_INPUTS:END -->"
+DECISION_USER_FIELDS = {"user_value", "status", "evidence_reference", "notes"}
+APPLIANCE_USER_FIELDS = {
+    "storage_location_confirmed", "use_location_confirmed", "quantity",
+    "rated_power_w", "simultaneous_group", "water_required", "drain_required",
+    "gas_required", "ventilation_required", "model", "evidence_reference",
+    "status", "notes",
+}
 
 
 def parse_args() -> argparse.Namespace:
@@ -54,8 +61,8 @@ def parse_args() -> argparse.Namespace:
     parser.add_argument("--decisions", type=Path, default=root / "pipeline/decisions/owner-input-register.csv")
     parser.add_argument("--appliances", type=Path, default=root / "pipeline/decisions/appliance-input-register.csv")
     parser.add_argument("--pm", type=Path, default=root / "drawings/滨海湾装修施工图深化工作管理.md")
-    parser.add_argument("--report", type=Path, default=root / "build/owner-inputs/sync-preview.json")
-    parser.add_argument("--open-items", type=Path, default=root / "build/owner-inputs/open-inputs.md")
+    parser.add_argument("--report", type=Path, help="Optional user-owned JSON preview path")
+    parser.add_argument("--open-items", type=Path, help="Optional user-owned Markdown open-items path")
     parser.add_argument("--apply", action="store_true")
     return parser.parse_args()
 
@@ -170,12 +177,39 @@ def validate_unique(rows: list[dict[str, str]], key: str, label: str) -> list[st
     return errors
 
 
+def validate_protected_fields(
+    rows: list[dict[str, str]],
+    baseline: list[dict[str, str]],
+    key: str,
+    user_fields: set[str],
+    label: str,
+) -> list[str]:
+    baseline_by_id = {row[key]: row for row in baseline}
+    errors: list[str] = []
+    for row in rows:
+        previous = baseline_by_id.get(row[key])
+        if previous is None:
+            continue
+        changed = sorted(
+            field for field in row
+            if field not in user_fields and row[field] != previous.get(field, "")
+        )
+        if changed:
+            errors.append(
+                f"{label} {row[key]}: protected fields changed: {', '.join(changed)}"
+            )
+    return errors
+
+
 def validate_decisions(rows: list[dict[str, str]], baseline: list[dict[str, str]]) -> list[str]:
     errors = validate_unique(rows, "input_id", "decisions")
     expected_ids = {row["input_id"] for row in baseline}
     actual_ids = {row["input_id"] for row in rows}
     if actual_ids != expected_ids:
         errors.append(f"decisions: IDs changed; missing={sorted(expected_ids-actual_ids)} extra={sorted(actual_ids-expected_ids)}")
+    errors.extend(validate_protected_fields(
+        rows, baseline, "input_id", DECISION_USER_FIELDS, "decision",
+    ))
     for row in rows:
         status = row["status"]
         if status not in DECISION_STATUSES:
@@ -187,8 +221,15 @@ def validate_decisions(rows: list[dict[str, str]], baseline: list[dict[str, str]
     return errors
 
 
-def validate_appliances(rows: list[dict[str, str]]) -> list[str]:
+def validate_appliances(rows: list[dict[str, str]], baseline: list[dict[str, str]]) -> list[str]:
     errors = validate_unique(rows, "appliance_id", "appliances")
+    expected_ids = {row["appliance_id"] for row in baseline}
+    actual_ids = {row["appliance_id"] for row in rows}
+    if actual_ids != expected_ids:
+        errors.append(f"appliances: IDs changed; missing={sorted(expected_ids-actual_ids)} extra={sorted(actual_ids-expected_ids)}")
+    errors.extend(validate_protected_fields(
+        rows, baseline, "appliance_id", APPLIANCE_USER_FIELDS, "appliance",
+    ))
     for row in rows:
         if row["status"] not in APPLIANCE_STATUSES:
             errors.append(f"{row['appliance_id']}: invalid status {row['status']!r}")
@@ -210,6 +251,47 @@ def validate_appliances(rows: list[dict[str, str]]) -> list[str]:
                 if not row[field]:
                     errors.append(f"{row['appliance_id']}: confirmed row requires {field}")
     return errors
+
+
+def normalized_inputs(
+    decisions: list[dict[str, str]], appliances: list[dict[str, str]],
+) -> dict[str, Any]:
+    normalized_decisions = []
+    for row in decisions:
+        effective_value = ""
+        if row["status"] == "采用候选":
+            effective_value = row["candidate_value"]
+        elif row["status"] == "自定义确认":
+            effective_value = row["user_value"]
+        normalized_decisions.append({
+            "input_id": row["input_id"],
+            "status": row["status"],
+            "candidate_value": row["candidate_value"],
+            "effective_value": effective_value,
+            "evidence_reference": row["evidence_reference"] if effective_value else "",
+            "sync_target": row["sync_target"],
+        })
+
+    normalized_appliances = []
+    for row in appliances:
+        accepts_partial_fields = row["status"] in {"部分确认", "已确认"}
+        effective = {
+            field: row[field] if accepts_partial_fields else ""
+            for field in (
+                "storage_location_confirmed", "use_location_confirmed", "quantity",
+                "rated_power_w", "simultaneous_group", "water_required",
+                "drain_required", "gas_required", "ventilation_required", "model",
+                "evidence_reference",
+            )
+        }
+        normalized_appliances.append({
+            "appliance_id": row["appliance_id"],
+            "status": row["status"],
+            "candidate_storage_location": row["storage_location_candidate"],
+            "candidate_use_location": row["use_location_candidate"],
+            "effective": effective,
+        })
+    return {"decisions": normalized_decisions, "appliances": normalized_appliances}
 
 
 def diff_rows(old: list[dict[str, str]], new: list[dict[str, str]], key: str) -> list[dict[str, Any]]:
@@ -310,7 +392,9 @@ def main() -> int:
     else:
         raise ValueError("input must be .xlsx or .csv")
 
-    errors = validate_decisions(decisions, baseline_decisions) + validate_appliances(appliances)
+    errors = validate_decisions(decisions, baseline_decisions) + validate_appliances(
+        appliances, baseline_appliances,
+    )
     if errors:
         print("Input validation failed:", file=sys.stderr)
         for error in errors:
@@ -325,11 +409,14 @@ def main() -> int:
         "decision_changes": diff_rows(baseline_decisions, decisions, "input_id"),
         "appliance_changes": diff_rows(baseline_appliances, appliances, "appliance_id"),
         "summary": data,
+        "normalized_inputs": normalized_inputs(decisions, appliances),
     }
-    args.report.parent.mkdir(parents=True, exist_ok=True)
-    args.report.write_text(json.dumps(report, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
-    args.open_items.parent.mkdir(parents=True, exist_ok=True)
-    args.open_items.write_text(open_items_markdown(decisions, appliances, data), encoding="utf-8")
+    if args.report:
+        args.report.parent.mkdir(parents=True, exist_ok=True)
+        args.report.write_text(json.dumps(report, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
+    if args.open_items:
+        args.open_items.parent.mkdir(parents=True, exist_ok=True)
+        args.open_items.write_text(open_items_markdown(decisions, appliances, data), encoding="utf-8")
     if args.apply:
         write_csv(args.decisions, DECISION_HEADERS, decisions)
         write_csv(args.appliances, APPLIANCE_HEADERS, appliances)
