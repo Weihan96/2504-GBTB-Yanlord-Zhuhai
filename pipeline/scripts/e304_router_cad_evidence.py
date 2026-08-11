@@ -8,6 +8,7 @@ import csv
 import hashlib
 import html
 import json
+import re
 from pathlib import Path
 from typing import Any
 
@@ -52,7 +53,35 @@ def sha256(path: Path) -> str:
     return digest.hexdigest()
 
 
-def read_evidence_register(path: Path) -> list[dict[str, str]]:
+def jpeg_dimensions(path: Path) -> list[int]:
+    data = path.read_bytes()
+    if not data.startswith(b"\xff\xd8"):
+        raise RuntimeError(f"site photo is not a JPEG: {path}")
+    index = 2
+    while index + 9 < len(data):
+        if data[index] != 0xFF:
+            index += 1
+            continue
+        while index < len(data) and data[index] == 0xFF:
+            index += 1
+        marker = data[index]
+        index += 1
+        if marker in {0xD8, 0xD9}:
+            continue
+        if index + 2 > len(data):
+            break
+        segment_length = int.from_bytes(data[index:index + 2], "big")
+        if segment_length < 2 or index + segment_length > len(data):
+            break
+        if marker in {0xC0, 0xC1, 0xC2, 0xC3, 0xC5, 0xC6, 0xC7, 0xC9, 0xCA, 0xCB, 0xCD, 0xCE, 0xCF}:
+            height = int.from_bytes(data[index + 3:index + 5], "big")
+            width = int.from_bytes(data[index + 5:index + 7], "big")
+            return [width, height]
+        index += segment_length
+    raise RuntimeError(f"could not read JPEG dimensions: {path}")
+
+
+def read_evidence_register(path: Path, root: Path) -> list[dict[str, Any]]:
     with path.open(encoding="utf-8-sig", newline="") as handle:
         rows = [row for row in csv.DictReader(handle) if row["sheet_id"] == "E-304"]
     required_ids = {"E304-CAD-001", "E304-CAD-002", "E304-USER-001"}
@@ -73,6 +102,23 @@ def read_evidence_register(path: Path) -> list[dict[str, str]]:
             raise RuntimeError(f"{row['evidence_id']}: review_required is not yes/no")
         if row["formal_ifc_write_allowed"] != "no":
             raise RuntimeError(f"{row['evidence_id']}: evidence must not authorize IFC writes")
+        if row["source_kind"] == "user_site_photo":
+            source_path = Path(row["source_document"])
+            source_path = source_path if source_path.is_absolute() else root / source_path
+            if not source_path.is_file():
+                raise RuntimeError(f"{row['evidence_id']}: registered site photo is missing: {source_path}")
+            actual_hash = sha256(source_path)
+            if actual_hash != row["source_sha256"]:
+                raise RuntimeError(f"{row['evidence_id']}: registered site photo hash changed")
+            dimensions = jpeg_dimensions(source_path)
+            note_dimensions = re.search(r"原始(\d+)×(\d+) JPEG", row["notes"])
+            if not note_dimensions or dimensions != [int(note_dimensions.group(1)), int(note_dimensions.group(2))]:
+                raise RuntimeError(f"{row['evidence_id']}: registered site photo dimensions changed")
+            row["verified_file"] = {
+                "path": str(source_path.resolve()),
+                "sha256": actual_hash,
+                "pixel_dimensions": dimensions,
+            }
     return rows
 
 
@@ -272,6 +318,7 @@ def render_svg(report: dict[str, Any], entities: list[dict[str, Any]]) -> str:
 
 def main() -> int:
     args = parse_args()
+    root = Path(__file__).resolve().parents[2]
     source_hashes = {
         "plan_dwg": sha256(args.plan_dwg),
         "plan_dxf": sha256(args.plan_dxf),
@@ -284,7 +331,7 @@ def main() -> int:
     }
     if source_hashes != expected:
         raise RuntimeError(f"official CAD evidence hashes changed: {source_hashes}")
-    evidence_register = read_evidence_register(args.evidence_register)
+    evidence_register = read_evidence_register(args.evidence_register, root)
 
     entities = parse_dxf(args.plan_dxf)
     selected = {handle: entity_by_handle(entities, handle) for handle in (*EXPECTED_TEXT, WEAK_BOX_LEADER_HANDLE, WEAK_PLAN_VIEWPORT_HANDLE, *CABINET_HANDLES)}
@@ -358,7 +405,8 @@ def main() -> int:
             "plan_position_mm": ifc_position,
             "installation_z_mm": None,
             "served_room_references": ["R20", "R22"],
-            "wired_backhaul": True,
+            "wired_backhaul_design_requirement": True,
+            "physical_cable_continuity_confirmed": False,
             "status": "plan_position_confirmed_product_z_power_data_thermal_service_pending",
             "automatic_ifc_write_allowed": False,
         },
@@ -368,6 +416,9 @@ def main() -> int:
             "paper_viewport_transform_verified": True,
             "entry_cabinet_geometry_verified": True,
             "router_z_not_inferred_from_weak_box_datum": True,
+            "all_site_photo_hashes_and_dimensions_match": len([
+                row for row in evidence_register if row["source_kind"] == "user_site_photo"
+            ]) == 5,
             "automatic_ifc_write_allowed": False,
         },
     }

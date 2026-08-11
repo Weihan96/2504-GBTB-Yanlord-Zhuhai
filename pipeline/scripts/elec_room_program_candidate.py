@@ -319,7 +319,7 @@ def render_svg(report: dict[str, Any]) -> str:
         svg_text(407, 34, f'控制最小功能组：{report["summary"]["lighting_control_groups_min"]}', "cell"),
         svg_text(407, 41, f'普通用电最小功能组：{report["summary"]["general_power_groups_min"]}', "cell"),
         svg_text(407, 48, f'弱电/数据最小功能组：{report["summary"]["network_data_groups_min"]}', "cell"),
-        svg_text(407, 55, f'模型设备供电需求：{report["summary"]["modelled_equipment_power_demands"]}', "cell"),
+        svg_text(407, 55, f'设备供电协调需求：{report["summary"]["modelled_equipment_power_demands"]}', "cell"),
         svg_text(407, 62, f'手动补充专用需求：{report["summary"]["manual_dedicated_power_min"]}', "cell"),
         svg_text(407, 69, f'柜体灯供电协调区：{report["summary"]["cabinet_light_feed_zones_min"]}', "cell"),
         svg_text(407, 84, "当前正式 IFC：", "small"),
@@ -395,9 +395,11 @@ def main() -> int:
         "design_rules": design_rules,
         "rooms": rooms,
         "equipment_power_demands": equipment,
+        "equipment_demand_semantics": "placement and interface coordination only; wattage completeness is tracked separately",
         "gates": {
             "all_22_spaces_programmed": len(rooms) == 22,
-            "all_equipment_demands_have_evidence": len(equipment) == 16 and all(row["basis"] for row in equipment),
+            "all_equipment_coordination_demands_have_position_evidence": len(equipment) == 16 and all(row["basis"] for row in equipment),
+            "all_equipment_electrical_loads_have_evidence": False,
             "developer_references_are_not_final_design": True,
             "confirmed_design_rules_are_complete": design_rule_summary == {
                 "physical_wired_switch_only": True,

@@ -1,6 +1,7 @@
 import { expect, test } from "bun:test";
-import { readFileSync } from "node:fs";
-import { resolve } from "node:path";
+import { mkdtempSync, readFileSync, rmSync, writeFileSync } from "node:fs";
+import { tmpdir } from "node:os";
+import { join, resolve } from "node:path";
 import { spawnSync } from "bun";
 
 const root = resolve(import.meta.dir, "../..");
@@ -47,8 +48,35 @@ test("official CAD pins the router to the entry weak-current cabinet without inv
   expect(report.weak_current_box.weak_current_box_bottom_aff_mm).toBe(350);
   expect(report.router_decision.installation_z_mm).toBeNull();
   expect(report.gates.router_z_not_inferred_from_weak_box_datum).toBe(true);
+  expect(report.gates.all_site_photo_hashes_and_dimensions_match).toBe(true);
+  const photos = report.evidence_register.rows.filter((row: { source_kind: string }) => row.source_kind === "user_site_photo");
+  expect(photos).toHaveLength(5);
+  expect(photos.every((row: { verified_file?: { sha256: string; pixel_dimensions: number[] } }) =>
+    Boolean(row.verified_file?.sha256) && row.verified_file!.pixel_dimensions.length === 2)).toBe(true);
   expect(report.gates.automatic_ifc_write_allowed).toBe(false);
   expect(readFileSync(svg, "utf8")).toContain("H+350 是弱电箱底边，不是路由器安装高度");
+}, 20_000);
+
+test("site-photo evidence fails closed when a registered hash drifts", () => {
+  const temp = mkdtempSync(join(tmpdir(), "e304-photo-gate-"));
+  try {
+    const register = resolve(root, "pipeline/decisions/elec-source-evidence.csv");
+    const drifted = readFileSync(register, "utf8").replace(
+      "5f428bf20247e8a131ac4315e1f0c3958ab0e0e2823966f96cd7d80f4e1df938",
+      "0".repeat(64),
+    );
+    const driftedRegister = join(temp, "evidence.csv");
+    writeFileSync(driftedRegister, drifted);
+    const run = spawnSync([
+      "python3", script,
+      "--evidence-register", driftedRegister,
+      "--output", join(temp, "out.json"),
+      "--output-svg", join(temp, "out.svg"),
+    ], { cwd: root });
+    expect(run.exitCode).not.toBe(0);
+  } finally {
+    rmSync(temp, { recursive: true, force: true });
+  }
 }, 20_000);
 
 test("CAD evidence extractor has no IFC write path", () => {

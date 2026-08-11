@@ -8,6 +8,7 @@ import csv
 import hashlib
 import html
 import json
+import math
 import re
 from pathlib import Path
 from typing import Any, Callable
@@ -31,6 +32,9 @@ CANDIDATE_POWER_RANGES_W = {
     "手冲电热水壶": [1000, 1800],
     "磨豆机": [150, 400],
 }
+PLANNING_VOLTAGE_V = 220.0
+SINGLE_SOCKET_CLASS_CURRENT_A = 16.0
+SINGLE_SOCKET_CLASS_CAPACITY_W = PLANNING_VOLTAGE_V * SINGLE_SOCKET_CLASS_CURRENT_A
 
 
 def parse_args() -> argparse.Namespace:
@@ -191,7 +195,12 @@ def appliance_socket_context(path: Path) -> dict[str, dict[str, Any]]:
     }
     contexts: dict[str, dict[str, Any]] = {}
     for socket_id in ("NS-01", "NS-02"):
-        selected = [row for row in rows if socket_id in row["use_location_candidate"]]
+        selected = [
+            row
+            for row in rows
+            if socket_id
+            in normalized_by_id[row["appliance_id"]]["effective"]["use_location_confirmed"]
+        ]
         known_load_w = 0.0
         groups: dict[str, dict[str, Any]] = {}
         items = []
@@ -215,10 +224,49 @@ def appliance_socket_context(path: Path) -> dict[str, dict[str, Any]]:
                 "candidate_power_range_w": candidate_range,
                 "simultaneous_group": group,
             })
+        listed_minimum_w = sum(group["minimum_w"] for group in groups.values())
+        listed_maximum_w = sum(group["maximum_w"] for group in groups.values())
+        if socket_id == "NS-01":
+            hot_pot = CANDIDATE_POWER_RANGES_W["火锅电器"]
+            companions = [
+                CANDIDATE_POWER_RANGES_W["搅拌机"],
+                CANDIDATE_POWER_RANGES_W["Sous-vide 棒"],
+            ]
+            simultaneous_minimum_w = hot_pot[0] + min(row[0] for row in companions)
+            simultaneous_maximum_w = hot_pot[1] + max(row[1] for row in companions)
+            simultaneous_basis = "hot-pot plus either blender or sous-vide, as confirmed by the owner"
+        else:
+            coffee = CANDIDATE_POWER_RANGES_W["咖啡机"]
+            kettle = CANDIDATE_POWER_RANGES_W["手冲电热水壶"]
+            grinder = CANDIDATE_POWER_RANGES_W["磨豆机"]
+            simultaneous_minimum_w = min(coffee[0] + grinder[0], kettle[0])
+            simultaneous_maximum_w = max(coffee[1] + grinder[1], kettle[1])
+            simultaneous_basis = "owner confirmed the espresso machine and hand-pour kettle are not used together; grinder may accompany the espresso machine"
+        connection_positions_candidate = 3
         contexts[socket_id] = {
             "items": items,
             "known_connected_load_w": known_load_w,
             "candidate_load_ranges_by_simultaneous_group": groups,
+            "planning_envelope": {
+                "listed_device_connected_minimum_w": listed_minimum_w,
+                "listed_device_connected_maximum_w": listed_maximum_w,
+                "simultaneous_design_minimum_w": simultaneous_minimum_w,
+                "simultaneous_design_maximum_w": simultaneous_maximum_w,
+                "simultaneous_use_basis": simultaneous_basis,
+                "planning_voltage_v": PLANNING_VOLTAGE_V,
+                "single_socket_class_current_a": SINGLE_SOCKET_CLASS_CURRENT_A,
+                "single_socket_class_capacity_w": SINGLE_SOCKET_CLASS_CAPACITY_W,
+                "minimum_independent_circuit_count_candidate": max(
+                    1,
+                    math.ceil(
+                        simultaneous_maximum_w
+                        / SINGLE_SOCKET_CLASS_CAPACITY_W
+                    ),
+                ),
+                "minimum_connection_positions_candidate": connection_positions_candidate,
+                "calculation_status": "listed_and_simultaneous_planning_envelopes_not_confirmed_product_load",
+                "final_conductor_protection_rcd_pending": True,
+            },
             "candidate_ranges_are_not_confirmed_loads": True,
             "socket_form_and_circuit_sizing_ready": False,
         }
@@ -247,6 +295,8 @@ def new_socket_candidates(
             "confidence": 0.70,
             "review_required": True,
             "height_status": "650 mm AFF review candidate; socket type, splash protection and final elevation pending",
+            "socket_form_candidate": "three concealed covered socket positions, one on each island face below the countertop/table overlap; final product and panel cut-out pending",
+            "circuit_strategy_candidate": "two independent socket circuits; separate the hot-pot load from blender/sous-vide loads",
             "automatic_ifc_write_allowed": False,
             "appliance_context": appliance_context["NS-01"],
         },
@@ -263,6 +313,8 @@ def new_socket_candidates(
             "confidence": 0.75,
             "review_required": True,
             "height_status": "panel bottom 300 mm AFF confirmed general datum; intended appliance and wall-side position remain pending",
+            "socket_form_candidate": "minimal linear track socket or custom concealed flip-up assembly; product, module count and cabinet detail pending",
+            "circuit_strategy_candidate": "one circuit capacity candidate because the owner confirmed the espresso machine and hand-pour kettle are not used together; final model loads still govern",
             "automatic_ifc_write_allowed": False,
             "appliance_context": appliance_context["NS-02"],
         },
@@ -415,9 +467,19 @@ def render_svg(source: str, report: dict[str, Any]) -> str:
     markup.append(f'<text class="r1-text" x="407" y="44">绿色新增插座候选：{summary["new_socket_candidates"]}</text>')
     markup.append(f'<text class="r1-text" x="407" y="51">琥珀色柜体供电协调区：{summary["cabinet_power_zones"]}</text>')
     markup.append(f'<text class="r1-text" x="407" y="58">红色厨房现有插座复核：{summary["kitchen_socket_rechecks"]}</text>')
-    markup.append('<text class="r1-warn" x="407" y="72">柜体标记是供电范围，不是最终出线口</text>')
-    markup.append('<text class="r1-warn" x="407" y="79">开发商红色旧点位已降级为参考</text>')
-    markup.append('<text class="r1-note" x="407" y="92">高度、回路、防水、设备功率和柜体开孔未冻结</text>')
+    ns01 = next(row for row in report["new_socket_candidates"] if row["candidate_id"] == "NS-01")
+    ns02 = next(row for row in report["new_socket_candidates"] if row["candidate_id"] == "NS-02")
+    ns01_plan = ns01["appliance_context"]["planning_envelope"]
+    ns02_plan = ns02["appliance_context"]["planning_envelope"]
+    markup.append('<text class="r1-heading" x="407" y="72">E-303 容量候选｜220V / 16A-class</text>')
+    markup.append(f'<text class="r1-text" x="407" y="81">NS-01 全连接 {ns01_plan["listed_device_connected_minimum_w"] / 1000:.1f}–{ns01_plan["listed_device_connected_maximum_w"] / 1000:.1f}｜同时 {ns01_plan["simultaneous_design_minimum_w"] / 1000:.1f}–{ns01_plan["simultaneous_design_maximum_w"] / 1000:.1f} kW</text>')
+    markup.append(f'<text class="r1-text" x="407" y="88">三面各 1 个隐藏盖板位｜{ns01_plan["minimum_independent_circuit_count_candidate"]} 回路候选</text>')
+    markup.append(f'<text class="r1-text" x="407" y="99">NS-02 同时使用：{ns02_plan["simultaneous_design_minimum_w"] / 1000:.2f}–{ns02_plan["simultaneous_design_maximum_w"] / 1000:.1f} kW</text>')
+    markup.append(f'<text class="r1-text" x="407" y="106">线性轨道或自制翻盖｜{ns02_plan["minimum_independent_circuit_count_candidate"]} 回路候选</text>')
+    markup.append('<text class="r1-warn" x="407" y="120">全连接/同时包络 ≠ 未购设备铭牌功率</text>')
+    markup.append('<text class="r1-warn" x="407" y="127">最终线径、保护、RCD 与产品须电气复核</text>')
+    markup.append('<text class="r1-note" x="407" y="141">柜体标记是供电范围，不是最终出线口</text>')
+    markup.append('<text class="r1-note" x="407" y="148">开发商红色旧点位已降级为参考</text>')
     markup.append(f'<text class="r1-note" x="407" y="382">IFC SHA {report["source_ifc_sha256"][:12]}…</text></g>')
     style = """
 @page{size:500mm 400mm;margin:0}html,body{margin:0;width:500mm;height:400mm;overflow:hidden}
@@ -425,7 +487,7 @@ def render_svg(source: str, report: dict[str, Any]) -> str:
 .r1-cabinet{fill:#ffb000;stroke:#7a4a00;stroke-width:.7}.r1-recheck{fill:#fa2b2b;stroke:#7b0000;stroke-width:.7}
 .r1-label{font-family:Arial,'Noto Sans CJK SC',sans-serif;font-size:2.15px;font-weight:700;fill:#102f43;paint-order:stroke;stroke:#fff;stroke-width:.8px}
 .r1-panel{fill:#fbfcfd;stroke:#102f43;stroke-width:.5}.r1-title,.r1-note,.r1-text,.r1-warn{font-family:Arial,'Noto Sans CJK SC',sans-serif;fill:#102f43}
-.r1-title{font-size:3.7px;font-weight:700}.r1-note{font-size:2.15px;fill:#526777}.r1-text{font-size:2.3px}.r1-warn{font-size:2.15px;fill:#c92a2a;font-weight:700}
+.r1-title{font-size:3.7px;font-weight:700}.r1-heading{font-family:Arial,'Noto Sans CJK SC',sans-serif;font-size:2.45px;font-weight:700;fill:#0f4c81}.r1-note{font-size:2.15px;fill:#526777}.r1-text{font-size:2.3px}.r1-warn{font-size:2.15px;fill:#c92a2a;font-weight:700}
 """
     return inject_svg(source, "".join(markup), style)
 
@@ -478,6 +540,10 @@ def main() -> int:
                 row["candidate_id"]: row["appliance_context"]["known_connected_load_w"]
                 for row in new_sockets
             },
+            "new_socket_planning_envelopes": {
+                row["candidate_id"]: row["appliance_context"]["planning_envelope"]
+                for row in new_sockets
+            },
             "cabinet_power_zones": len(cabinet_zones),
             "kitchen_socket_rechecks": len(socket_rechecks),
             "developer_red_points_are_reference_only": requirement_status.get("ELEC-R1-001") == "confirmed",
@@ -498,6 +564,16 @@ def main() -> int:
             and all(
                 row["appliance_context"]["known_connected_load_w"] == 0
                 and not row["appliance_context"]["socket_form_and_circuit_sizing_ready"]
+                for row in new_sockets
+            ),
+            "circuit_planning_candidates_match_confirmed_use": {
+                row["candidate_id"]: row["appliance_context"]["planning_envelope"]["minimum_independent_circuit_count_candidate"]
+                for row in new_sockets
+            } == {"NS-01": 2, "NS-02": 1}
+            and all(
+                row["appliance_context"]["planning_envelope"]["minimum_connection_positions_candidate"] == 3
+                and row["appliance_context"]["planning_envelope"]["calculation_status"]
+                == "listed_and_simultaneous_planning_envelopes_not_confirmed_product_load"
                 for row in new_sockets
             ),
             "illuminated_cabinet_power_is_grouped_not_fabricated": len(cabinet_zones) == 7

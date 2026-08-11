@@ -39,7 +39,9 @@ test("all rooms and modelled equipment receive read-only electrical program cove
     Array.from({ length: 22 }, (_, index) => `R${String(index + 1).padStart(2, "0")}`),
   );
   expect(report.gates.all_22_spaces_programmed).toBe(true);
-  expect(report.gates.all_equipment_demands_have_evidence).toBe(true);
+  expect(report.gates.all_equipment_coordination_demands_have_position_evidence).toBe(true);
+  expect(report.gates.all_equipment_electrical_loads_have_evidence).toBe(false);
+  expect(report.equipment_demand_semantics).toContain("coordination only");
   expect(report.gates.developer_references_are_not_final_design).toBe(true);
   expect(report.gates.confirmed_design_rules_are_complete).toBe(true);
   expect(report.gates.equipment_centres_are_not_socket_positions).toBe(true);

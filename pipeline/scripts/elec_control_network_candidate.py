@@ -23,6 +23,13 @@ EXPECTED_IFC_SHA256 = "6c2fd8da9e9ad7ddbc2b63415a27f1c979e8995b880d8fce210a2dda2
 KITCHEN_FIRE_SENSOR_GLOBAL_ID = "2fwceKahvBqQXqal2ZcIUF"
 SCALE_DENOMINATOR = 50.0
 SVG_WORLD_OFFSET_MM = 10000.0
+E304_OWNER_INPUT_IDS = (
+    "E304-GATEWAY-IDENTITY",
+    "E304-CABINET-DIMENSIONS",
+    "E304-CABINET-VENTILATION",
+    "E304-CABLE-CONTINUITY",
+    "E304-AP-POWER",
+)
 
 
 def parse_args() -> argparse.Namespace:
@@ -35,6 +42,8 @@ def parse_args() -> argparse.Namespace:
     parser.add_argument("--owner-decisions", type=Path, default=root / "pipeline/decisions/owner-input-register.csv")
     parser.add_argument("--spaces", type=Path, default=root / "pipeline/decisions/space-reference-review.csv")
     parser.add_argument("--router-evidence", type=Path, default=root / "build/elec/e304-router-cad-evidence.json")
+    parser.add_argument("--ceiling-audit", type=Path, default=root / "build/elec/a106-ceiling-device-candidate.json")
+    parser.add_argument("--network-topology", type=Path, default=root / "pipeline/decisions/e304-network-topology.csv")
     parser.add_argument("--source-svg", type=Path, default=root / "drawings/Wall Plan.svg")
     parser.add_argument("--output", type=Path, default=root / "build/elec/elec-control-network-candidate.json")
     parser.add_argument("--output-svg", type=Path, default=root / "drawings/E302-E304-control-network-candidate.svg")
@@ -52,6 +61,25 @@ def sha256(path: Path) -> str:
 def read_csv(path: Path) -> list[dict[str, str]]:
     with path.open(encoding="utf-8-sig", newline="") as handle:
         return list(csv.DictReader(handle))
+
+
+def read_network_topology(path: Path) -> list[dict[str, str]]:
+    rows = read_csv(path)
+    required_fields = {
+        "link_id", "source_node", "target_node", "target_room_reference", "target_role",
+        "wired_link_required", "poe_required", "local_power_required", "poe_standard", "max_endpoint_power_w",
+        "physical_port", "source_evidence_id", "verification_status", "status", "notes",
+    }
+    if not rows or set(rows[0]) != required_fields:
+        raise RuntimeError("E-304 network topology schema changed")
+    ids = [row["link_id"] for row in rows]
+    if len(rows) != 6 or len(ids) != len(set(ids)):
+        raise RuntimeError("E-304 network topology must contain six unique requirement links")
+    if any(row["status"] != "requirement_candidate" for row in rows):
+        raise RuntimeError("E-304 network topology contains a non-candidate link")
+    if any(row["physical_port"] not in {"", "TBD"} for row in rows):
+        raise RuntimeError("E-304 physical ports must remain TBD before field verification")
+    return rows
 
 
 def world_to_svg(position_mm: list[float]) -> tuple[float, float]:
@@ -97,7 +125,7 @@ def control_zones(doors: list[dict[str, str]]) -> list[dict[str, Any]]:
     door_by_id = {row["global_id"]: row for row in doors if row["ifc_class"] == "IfcDoor"}
     definitions = [
         ("CTRL-ENTRY", "2dxcvMre5F6fk90OTXSFJH", "R01", "入户门口", ["客厅", "书房", "餐厅"], True),
-        ("CTRL-MASTER", "1TW6$_GfnABRZusYvx0zZG", "R10", "主卧门口", ["客厅", "书房", "餐厅"], False),
+        ("CTRL-MASTER", "1TW6$_GfnABRZusYvx0zZG", "R10", "主卧入口", [], False),
     ]
     rows = []
     for candidate_id, global_id, reference, location_name, groups, master in definitions:
@@ -128,7 +156,28 @@ def effective_owner_decisions(path: Path) -> dict[str, dict[str, str]]:
     if errors:
         raise RuntimeError("invalid owner decision register: " + "; ".join(errors))
     normalized = normalized_inputs(rows, [])["decisions"]
-    return {row["input_id"]: row for row in normalized}
+    raw_by_id = {row["input_id"]: row for row in rows}
+    return {
+        row["input_id"]: {**row, "user_value": raw_by_id[row["input_id"]]["user_value"]}
+        for row in normalized
+    }
+
+
+def e304_owner_input_gates(owner_decisions: dict[str, dict[str, str]]) -> dict[str, bool]:
+    closed = {
+        input_id: bool(
+            owner_decisions[input_id]["effective_value"]
+            and owner_decisions[input_id]["evidence_reference"]
+        )
+        for input_id in E304_OWNER_INPUT_IDS
+    }
+    return {
+        "gateway_identity_complete": closed["E304-GATEWAY-IDENTITY"],
+        "cabinet_dimensions_complete": closed["E304-CABINET-DIMENSIONS"],
+        "thermal_test_complete": closed["E304-CABINET-VENTILATION"],
+        "cable_continuity_complete": closed["E304-CABLE-CONTINUITY"],
+        "ap_power_method_complete": closed["E304-AP-POWER"],
+    }
 
 
 def control_wall_side_options(
@@ -161,13 +210,29 @@ def control_wall_side_options(
         offset_mm = local_width_mm / 2.0 + 150.0
         decision = owner_decisions[decision_ids[control["candidate_id"]]]
         candidate_suffix = "A" if " A" in decision["candidate_value"] else None
+        user_suffix = "A" if " A" in decision["user_value"] else "B" if " B" in decision["user_value"] else None
         effective_suffix = "A" if " A" in decision["effective_value"] else "B" if " B" in decision["effective_value"] else None
         for suffix, direction in (("A", -1.0), ("B", 1.0)):
             preferred = suffix == candidate_suffix
             if control["candidate_id"] == "CTRL-MASTER":
-                review_status = "preferred_pending_a104" if preferred else "alternate_pending_a104"
+                review_status = "distinct_user_directed_panel_pending_a104"
             else:
-                review_status = "candidate_preferred_unconfirmed" if preferred else "alternate_unconfirmed"
+                review_status = (
+                    "user_input_pending_geometry" if suffix == user_suffix
+                    else "alternate_unconfirmed"
+                )
+            panel_role = (
+                "entry_three_way_pair_and_lighting_master"
+                if control["candidate_id"] == "CTRL-ENTRY"
+                else "master_b_external_three_way_pair"
+                if suffix == "B"
+                else "master_a_internal_bedroom_lighting"
+            )
+            controlled_groups = (
+                ["客厅", "书房", "餐厅"]
+                if panel_role in {"entry_three_way_pair_and_lighting_master", "master_b_external_three_way_pair"}
+                else ["主卧氛围照明", "主卧重点照明"]
+            )
             result.append({
                 "candidate_id": f"{control['candidate_id']}-{suffix}",
                 "source_candidate_id": control["candidate_id"],
@@ -179,7 +244,11 @@ def control_wall_side_options(
                     control["position_mm"][2],
                 ],
                 "jamb_clearance_mm": 150.0,
+                "jamb_clearance_status": "common_coordination_candidate_not_field_measured",
                 "review_status": review_status,
+                "panel_role": panel_role,
+                "controlled_groups": controlled_groups,
+                "panel_required_by_user_direction": control["candidate_id"] == "CTRL-MASTER",
                 "effective_selection": suffix == effective_suffix,
                 "coordinate_status": "wall_side_option_not_final" if effective_suffix is None else "owner_selected_pending_geometry_evidence",
                 "automatic_ifc_write_allowed": False,
@@ -188,17 +257,24 @@ def control_wall_side_options(
 
 
 def network_zones(
-    spaces: list[dict[str, str]], ceiling_devices: list[dict[str, str]], router_evidence: dict[str, Any]
+    spaces: list[dict[str, str]],
+    ceiling_devices: list[dict[str, str]],
+    ceiling_audit: dict[str, Any],
+    router_evidence: dict[str, Any],
+    owner_gates: dict[str, bool],
 ) -> list[dict[str, Any]]:
     by_reference = {row["candidate_reference"]: row for row in spaces}
     by_candidate_id = {row["candidate_id"]: row for row in ceiling_devices}
+    audit_by_candidate_id = {row["candidate_id"]: row for row in ceiling_audit["candidates"]}
     rows = []
     for candidate_id, reference, room_name in (
         ("A106-AP-R09", "R09", "主卧"),
         ("A106-AP-R14", "R14", "次卧"),
     ):
         candidate = by_candidate_id[candidate_id]
+        audit = audit_by_candidate_id[candidate_id]
         space = by_reference[reference]
+        light_margin_mm = float(audit["nearest_light_edge_clearance_mm"]) - float(audit["required_light_clearance_mm"])
         rows.append({
             "candidate_id": candidate_id,
             "kind": "network_device_mechanical_position_candidate",
@@ -207,9 +283,20 @@ def network_zones(
             "source_global_ids": [space["space_global_id"]],
             "position_mm": device_position(candidate),
             "network_role": "wireless_access_point",
-            "wired_backhaul": True,
+            "wired_backhaul_required": True,
+            "wired_backhaul_confirmed": owner_gates["cable_continuity_complete"],
+            "power_method_candidates": ["PoE", "local_power"],
+            "poe_power_method_confirmed": owner_gates["ap_power_method_complete"],
+            "nearest_light_edge_clearance_mm": audit["nearest_light_edge_clearance_mm"],
+            "required_light_clearance_mm": audit["required_light_clearance_mm"],
+            "clearance_margin_mm": round(light_margin_mm, 6),
+            "coordination_reserve_target_mm": 100.0,
             "position_basis": candidate["position_basis"],
-            "coordinate_status": "mechanical_position_candidate_product_power_data_review_pending",
+            "coordinate_status": (
+                "mechanical_position_candidate_low_clearance_reserve_product_power_data_review_pending"
+                if light_margin_mm < 100.0
+                else "mechanical_position_candidate_product_power_data_review_pending"
+            ),
             "confidence": float(candidate["confidence"]),
             "review_required": True,
             "automatic_ifc_write_allowed": False,
@@ -235,7 +322,11 @@ def network_zones(
         "cabinet_bbox_ifc_mm": weak_current_box["cabinet_bbox_ifc_mm"],
         "weak_current_box_bottom_aff_mm": weak_current_box["weak_current_box_bottom_aff_mm"],
         "network_role": "router_no_AP",
-        "wired_backhaul": True,
+        "wired_backhaul_required": True,
+        "wired_backhaul_confirmed": owner_gates["cable_continuity_complete"],
+        "gateway_identity_confirmed": owner_gates["gateway_identity_complete"],
+        "cabinet_dimensions_confirmed": owner_gates["cabinet_dimensions_complete"],
+        "thermal_test_confirmed": owner_gates["thermal_test_complete"],
         "position_basis": "user-confirmed entry-cabinet location; official E-2 weak-current plan LEADER #224271 maps through VIEWPORT #224238 to the right high-cabinet bay",
         "coordinate_status": "entry_cabinet_plan_xy_confirmed_router_z_product_power_data_thermal_service_pending",
         "source_evidence": {
@@ -354,7 +445,14 @@ def render_svg(source: str, report: dict[str, Any]) -> str:
     for index, row in enumerate(report["control_wall_side_options"]):
         x, y = world_to_svg(row["position_mm"])
         candidate_id = html.escape(row["candidate_id"])
-        status = "PREFERRED" if "preferred" in row["review_status"] else "ALT"
+        if row["effective_selection"]:
+            status = "SELECTED"
+        elif row["source_candidate_id"] == "CTRL-MASTER":
+            status = "USER/A104"
+        elif row["review_status"] == "user_input_pending_geometry":
+            status = "USER/PENDING"
+        else:
+            status = "OPTION"
         markup.append(
             f'<g data-candidate-id="{candidate_id}"><rect class="cn-control" x="{x-2.2:.3f}" y="{y-2.2:.3f}" width="4.4" height="4.4"/>'
             f'<text class="cn-label" x="{x+3.2:.3f}" y="{y+(-3 if index % 2 else 5):.3f}">{candidate_id} {status}</text></g>'
@@ -394,9 +492,12 @@ def render_svg(source: str, report: dict[str, Any]) -> str:
         '<text class="cn-text" x="407" y="79">红点：厨房燃气报警器房间区</text>',
         '<text class="cn-text" x="407" y="93">双控：客厅＋书房＋餐厅｜仅实体有线</text>',
         '<text class="cn-text" x="407" y="101">开关面板底边：1300 mm AFF</text>',
-        '<text class="cn-warn" x="407" y="118">Master A 为待 A-104 取证优选；Entry A/B 未关闭</text>',
-        '<text class="cn-warn" x="407" y="126">路由器 Z/产品/散热检修待设备深化</text>',
-        '<text class="cn-warn" x="407" y="134">燃气型号待燃气公司确认，不锁定开孔</text>',
+        '<text class="cn-warn" x="407" y="118">Master A 内控主卧；Master B 外控客书餐，均待 A-104</text>',
+        '<text class="cn-warn" x="407" y="126">150mm 仅为常见协调候选净距，未经完成面实测</text>',
+        '<text class="cn-warn" x="407" y="134">主卧 AP 灯具净距余量仅 1.5mm，不冻结施工点</text>',
+        '<text class="cn-text" x="407" y="148">网络需求：5 个下游端点｜2 个 AP 供电方式待定</text>',
+        '<text class="cn-text" x="407" y="156">交换侧最少 6 口候选（含 1 个路由器上联）</text>',
+        '<text class="cn-warn" x="407" y="170">端口号/PoE 功率/线缆通断/散热均未关闭</text>',
         f'<text class="cn-note" x="407" y="382">IFC SHA {report["source_ifc_sha256"][:12]}…</text></g>',
     ])
     style = """
@@ -413,14 +514,21 @@ def main() -> int:
     rules = read_csv(args.rules)
     controls = control_zones(read_csv(args.doors))
     owner_decisions = effective_owner_decisions(args.owner_decisions)
+    owner_gates = e304_owner_input_gates(owner_decisions)
     control_options = control_wall_side_options(args.ifc, controls, owner_decisions)
+    control_panels = [
+        row for row in control_options
+        if row["candidate_id"] in {"CTRL-ENTRY-A", "CTRL-MASTER-A", "CTRL-MASTER-B"}
+    ]
     spaces = read_csv(args.spaces)
     ceiling_devices = read_csv(args.ceiling_devices)
     router_evidence = json.loads(args.router_evidence.read_text(encoding="utf-8"))
+    ceiling_audit = json.loads(args.ceiling_audit.read_text(encoding="utf-8"))
+    topology = read_network_topology(args.network_topology)
     if len(ceiling_devices) != 6 or len({row["candidate_id"] for row in ceiling_devices}) != 6:
         raise RuntimeError("A-106 ceiling-device register must contain six unique candidates")
     fire_sensor = kitchen_fire_sensor(args.ifc)
-    networks = network_zones(spaces, ceiling_devices, router_evidence)
+    networks = network_zones(spaces, ceiling_devices, ceiling_audit, router_evidence, owner_gates)
     safety_devices = safety_device_zones(spaces, ceiling_devices, fire_sensor)
     router_zones = [row for row in networks if row["network_role"] == "router_no_AP"]
     ap_candidates = [row for row in networks if row["network_role"] == "wireless_access_point"]
@@ -436,13 +544,35 @@ def main() -> int:
             "sha256": sha256(args.owner_decisions),
             "effective": {
                 input_id: owner_decisions[input_id]["effective_value"]
-                for input_id in ("E302-ENTRY-SIDE", "E302-ENTRY-PANEL", "E302-MASTER-SIDE", "E302-MASTER-PANEL")
+                for input_id in (
+                    "E302-ENTRY-SIDE", "E302-ENTRY-PANEL", "E302-MASTER-SIDE", "E302-MASTER-PANEL",
+                    *E304_OWNER_INPUT_IDS,
+                )
             },
+            "submitted": {
+                input_id: owner_decisions[input_id]["user_value"]
+                for input_id in (
+                    "E302-ENTRY-SIDE", "E302-ENTRY-PANEL", "E302-MASTER-SIDE", "E302-MASTER-PANEL",
+                    *E304_OWNER_INPUT_IDS,
+                )
+            },
+            "e304_completion_gates": owner_gates,
         },
         "router_evidence_path": str(args.router_evidence.resolve()),
+        "network_topology": {
+            "path": str(args.network_topology.resolve()),
+            "sha256": sha256(args.network_topology),
+            "links": topology,
+            "minimum_downstream_data_links": 5,
+            "minimum_switch_ports_candidate": 6,
+            "ap_power_method_pending_endpoint_count": 2,
+            "poe_budget_formula": None,
+            "formal_physical_ports_assigned": False,
+        },
         "summary": {
             "control_coordination_zones": len(controls),
             "control_wall_side_options": len(control_options),
+            "control_panel_candidates": len(control_panels),
             "paired_two_way_control_groups": 3,
             "entrance_master_lighting_switches": 1,
             "bedroom_AP_candidates": len(ap_candidates),
@@ -451,22 +581,44 @@ def main() -> int:
             "kitchen_fire_sensor_positions": len(fire_positions),
             "kitchen_gas_alarm_room_zones": len(gas_zones),
             "confirmed_rules": sum(row["status"] == "confirmed" for row in rules),
+            "network_requirement_links": len(topology),
+            "network_downstream_endpoints": sum(row["target_role"] != "router_to_switch_uplink" for row in topology),
+            "network_AP_power_method_pending_endpoints": sum(row["poe_required"] == "TBD" for row in topology),
         },
         "control_coordination_zones": controls,
         "control_wall_side_options": control_options,
+        "control_panel_candidates": control_panels,
         "network_coordination_zones": networks,
         "safety_device_coordination_zones": safety_devices,
         "gates": {
             "two_doorway_zones_present": len(controls) == 2,
             "four_wall_side_options_present": len(control_options) == 4,
-            "master_a_preferred_pending_a104": next(
-                row for row in control_options if row["candidate_id"] == "CTRL-MASTER-A"
-            )["review_status"] == "preferred_pending_a104",
+            "master_a_and_b_distinct_roles_pending_a104": {
+                row["candidate_id"]: row["panel_role"]
+                for row in control_options if row["source_candidate_id"] == "CTRL-MASTER"
+            } == {
+                "CTRL-MASTER-A": "master_a_internal_bedroom_lighting",
+                "CTRL-MASTER-B": "master_b_external_three_way_pair",
+            } and all(
+                row["review_status"] == "distinct_user_directed_panel_pending_a104"
+                for row in control_options if row["source_candidate_id"] == "CTRL-MASTER"
+            ),
             "entry_wall_side_not_auto_closed": all(
                 not row["effective_selection"]
                 for row in control_options if row["source_candidate_id"] == "CTRL-ENTRY"
             ),
-            "three_two_way_groups_present": all(row["controlled_groups"] == ["客厅", "书房", "餐厅"] for row in controls),
+            "entry_candidate_not_mislabeled_selected": next(
+                row for row in control_options if row["candidate_id"] == "CTRL-ENTRY-A"
+            )["effective_selection"] is False,
+            "controlled_fixture_group_mapping_complete": False,
+            "three_two_way_groups_present": all(
+                next(row for row in control_options if row["candidate_id"] == panel_id)["controlled_groups"]
+                == ["客厅", "书房", "餐厅"]
+                for panel_id in ("CTRL-ENTRY-A", "CTRL-MASTER-B")
+            ),
+            "master_a_internal_lighting_separate": next(
+                row for row in control_options if row["candidate_id"] == "CTRL-MASTER-A"
+            )["controlled_groups"] == ["主卧氛围照明", "主卧重点照明"],
             "entrance_master_switch_present": sum(row["entrance_master_lighting_switch"] for row in controls) == 1,
             "two_bedroom_AP_candidates_present": len(ap_candidates) == 2
             and {row["candidate_id"] for row in ap_candidates} == {"A106-AP-R09", "A106-AP-R14"},
@@ -477,6 +629,22 @@ def main() -> int:
             and router_zones[0]["plan_position_mm"] == router_evidence["router_decision"]["plan_position_mm"]
             and router_zones[0]["installation_z_mm"] is None
             and router_zones[0]["weak_current_box_bottom_aff_mm"] == 350.0,
+            "six_network_requirement_links_present": len(topology) == 6,
+            "five_downstream_endpoints_present": sum(
+                row["target_role"] != "router_to_switch_uplink" for row in topology
+            ) == 5,
+            "two_AP_power_methods_pending": sum(
+                row["poe_required"] == "TBD" and row["local_power_required"] == "TBD"
+                for row in topology
+            ) == 2,
+            "physical_ports_remain_unassigned": all(row["physical_port"] in {"", "TBD"} for row in topology),
+            "main_bedroom_AP_clearance_reserve_pass": next(
+                row for row in ap_candidates if row["candidate_id"] == "A106-AP-R09"
+            )["clearance_margin_mm"] >= 100.0,
+            "guest_bedroom_AP_clearance_reserve_pass": next(
+                row for row in ap_candidates if row["candidate_id"] == "A106-AP-R14"
+            )["clearance_margin_mm"] >= 100.0,
+            **owner_gates,
             "three_smoke_candidates_present": len(smoke_zones) == 3 and {row["candidate_id"] for row in smoke_zones} == {"A106-SMOKE-R09", "A106-SMOKE-R14", "A106-SMOKE-R20"},
             "smoke_positioning_constraints_present": all(row["mechanical_positioning_constraints_mm"] == {
                 "minimum_wall_or_beam_clearance": 500,

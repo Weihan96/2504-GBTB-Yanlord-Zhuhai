@@ -43,7 +43,11 @@ test("default dry-run writes only stdout", () => {
 test("owner input sync rejects a custom confirmation without a value", () => {
   const temp = mkdtempSync(join(tmpdir(), "owner-inputs-invalid-"));
   const source = readFileSync(join(root, "pipeline/decisions/owner-input-register.csv"), "utf8");
-  const invalid = source.replace(",待填写,,门口控制应位于真实墙面", ",自定义确认,,门口控制应位于真实墙面");
+  const invalid = source.replace(
+    ",Entry A,,待填写,,门口控制应位于真实墙面",
+    ",,,自定义确认,,门口控制应位于真实墙面",
+  );
+  expect(invalid).not.toBe(source);
   const input = join(temp, "invalid.csv");
   writeFileSync(input, invalid);
   const result = Bun.spawnSync([

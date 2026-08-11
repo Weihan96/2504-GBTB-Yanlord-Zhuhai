@@ -20,7 +20,7 @@ SOCKET_ROLE_CANDIDATES = {
     "P005": ("direct_drinking_machine_socket_candidate", 0.75, "B-face point adjacent to WD01 and within the refrigerator/direct-drinking appliance bank"),
     "P006": ("oven_socket_candidate", 0.70, "B-face point in the oven/direct-drinking appliance bank; individual assignment needs elevation review"),
     "P007": ("refrigerator_socket_candidate", 0.85, "upper B-face point beside the second W570D660H1780 refrigerator volume"),
-    "P008": ("stove_socket_candidate", 0.80, "low B-face point below the cooking zone shown on page 6"),
+    "P008": ("existing_or_spare_service_socket_candidate", 0.80, "low B-face point below the cooking zone; the arrived ER9EPA33MP/01 hob is battery-ignited with 0 W mains load, so this point is not assigned to that product"),
     "P009": ("hood_socket_candidate", 0.95, "high B-face point 215 mm from HD01; latest page 6 explicitly circles the hood outlet"),
     "P010": ("h1200_wall_or_track_power_candidate", 0.65, "one of two adjacent H1173 points matching page 9 H1200 wall/track power intent"),
     "P011": ("h1200_wall_or_track_power_candidate", 0.65, "one of two adjacent H1173 points matching page 9 H1200 wall/track power intent"),
