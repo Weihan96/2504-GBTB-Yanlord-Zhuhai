@@ -32,6 +32,10 @@ APPLIANCE_HEADERS = [
     "drain_required", "gas_required", "ventilation_required", "model",
     "evidence_reference", "status", "notes",
 ]
+CLOSEOUT_HEADERS = [
+    "input_id", "closeout_kind", "responsible_party", "required_evidence",
+    "automatic_close_allowed", "notes",
+]
 DECISION_DISPLAY_HEADERS = [
     "ID", "专业", "优先级", "阻塞无保留发布", "需要你确认", "常见候选（不等于确认）",
     "你的确认值", "单位", "状态", "证据/链接", "现有依据", "同步目标", "备注",
@@ -60,6 +64,7 @@ def parse_args() -> argparse.Namespace:
     parser.add_argument("--input", type=Path, default=root / "output/forms/滨海湾施工输入清单.xlsx")
     parser.add_argument("--decisions", type=Path, default=root / "pipeline/decisions/owner-input-register.csv")
     parser.add_argument("--appliances", type=Path, default=root / "pipeline/decisions/appliance-input-register.csv")
+    parser.add_argument("--closeout-rules", type=Path, default=root / "pipeline/decisions/owner-input-closeout-rules.csv")
     parser.add_argument("--pm", type=Path, default=root / "drawings/滨海湾装修施工图深化工作管理.md")
     parser.add_argument("--report", type=Path, help="Optional user-owned JSON preview path")
     parser.add_argument("--open-items", type=Path, help="Optional user-owned Markdown open-items path")
@@ -257,6 +262,28 @@ def validate_appliances(rows: list[dict[str, str]], baseline: list[dict[str, str
     return errors
 
 
+def validate_closeout_rules(
+    rows: list[dict[str, str]], decisions: list[dict[str, str]],
+) -> list[str]:
+    errors = validate_unique(rows, "input_id", "closeout rules")
+    decision_ids = {row["input_id"] for row in decisions}
+    rule_ids = {row["input_id"] for row in rows}
+    if rule_ids != decision_ids:
+        errors.append(
+            "closeout rules: IDs changed; "
+            f"missing={sorted(decision_ids-rule_ids)} extra={sorted(rule_ids-decision_ids)}"
+        )
+    for row in rows:
+        if row["automatic_close_allowed"] not in {"yes", "no"}:
+            errors.append(
+                f"{row['input_id']}: automatic_close_allowed must be yes or no"
+            )
+        for field in ("closeout_kind", "responsible_party", "required_evidence"):
+            if not row[field]:
+                errors.append(f"{row['input_id']}: closeout rule requires {field}")
+    return errors
+
+
 def normalized_inputs(
     decisions: list[dict[str, str]], appliances: list[dict[str, str]],
 ) -> dict[str, Any]:
@@ -312,8 +339,13 @@ def diff_rows(old: list[dict[str, str]], new: list[dict[str, str]], key: str) ->
     return changes
 
 
-def summary(decisions: list[dict[str, str]], appliances: list[dict[str, str]]) -> dict[str, Any]:
+def summary(
+    decisions: list[dict[str, str]], appliances: list[dict[str, str]],
+    closeout_rules: list[dict[str, str]],
+) -> dict[str, Any]:
     release_open = [row["input_id"] for row in decisions if row["blocks_release"] == "yes" and row["status"] not in {"采用候选", "自定义确认", "不适用"}]
+    closeout_by_id = {row["input_id"]: row for row in closeout_rules}
+    open_closeout = [closeout_by_id[input_id] for input_id in release_open]
     appliance_open = [row["appliance_id"] for row in appliances if row["status"] not in {"已确认", "不适用"}]
     load_by_group: dict[str, float] = {}
     unknown_power: dict[str, list[str]] = {}
@@ -328,6 +360,10 @@ def summary(decisions: list[dict[str, str]], appliances: list[dict[str, str]]) -
         "appliance_status_counts": dict(sorted(Counter(row["status"] for row in appliances).items())),
         "release_blocking_open_count": len(release_open),
         "release_blocking_open_ids": release_open,
+        "open_closeout_kind_counts": dict(sorted(Counter(row["closeout_kind"] for row in open_closeout).items())),
+        "open_responsible_party_counts": dict(sorted(Counter(row["responsible_party"] for row in open_closeout).items())),
+        "automatic_close_open_count": sum(row["automatic_close_allowed"] == "yes" for row in open_closeout),
+        "human_or_external_closeout_open_count": sum(row["automatic_close_allowed"] == "no" for row in open_closeout),
         "appliance_open_count": len(appliance_open),
         "appliance_open_ids": appliance_open,
         "known_connected_load_w_by_simultaneous_group": dict(sorted(load_by_group.items())),
@@ -335,20 +371,31 @@ def summary(decisions: list[dict[str, str]], appliances: list[dict[str, str]]) -
     }
 
 
-def open_items_markdown(decisions: list[dict[str, str]], appliances: list[dict[str, str]], data: dict[str, Any]) -> str:
+def open_items_markdown(
+    decisions: list[dict[str, str]], appliances: list[dict[str, str]],
+    closeout_rules: list[dict[str, str]], data: dict[str, Any],
+) -> str:
+    closeout_by_id = {row["input_id"]: row for row in closeout_rules}
     lines = [
         "# 业主输入开放项", "",
         f"生成时间：{datetime.now().astimezone().isoformat(timespec='seconds')}", "",
         f"- 无保留发布阻塞输入：{data['release_blocking_open_count']} 项",
+        f"- 可由本地脚本自动关闭：{data['automatic_close_open_count']} 项",
+        f"- 必须由人审、现场、厂家或主管方关闭：{data['human_or_external_closeout_open_count']} 项",
         f"- 未完全确认家电：{data['appliance_open_count']} 项",
         "- 候选值只有在状态改为“采用候选”后才视为确认。", "",
         "## 无保留发布阻塞输入", "",
-        "| ID | 专业 | 问题 | 候选 | 状态 | 已填写值 |",
-        "| --- | --- | --- | --- | --- | --- |",
+        "| ID | 专业 | 关闭类型 | 责任方 | 所需证据 | 状态 | 已填写值 |",
+        "| --- | --- | --- | --- | --- | --- | --- |",
     ]
     for row in decisions:
         if row["input_id"] in data["release_blocking_open_ids"]:
-            values = [row["input_id"], row["workstream"], row["question"], row["candidate_value"], row["status"], row["user_value"]]
+            rule = closeout_by_id[row["input_id"]]
+            values = [
+                row["input_id"], row["workstream"], rule["closeout_kind"],
+                rule["responsible_party"], rule["required_evidence"],
+                row["status"], row["user_value"],
+            ]
             lines.append("| " + " | ".join(value.replace("|", "／").replace("\n", " ") for value in values) + " |")
     lines.extend(["", "## 家电信息缺口", "", "| ID | 设备 | 使用点 | 缺少 |", "| --- | --- | --- | --- |"])
     for row in appliances:
@@ -365,6 +412,7 @@ def pm_block(data: dict[str, Any]) -> str:
         PM_START, "### 1.4 用户输入同步状态", "",
         f"- 最近同步：`{timestamp}`",
         f"- 无保留发布阻塞输入仍开放：**{data['release_blocking_open_count']}** 项；不阻止明确披露未决项的待复核候选版。",
+        f"- 其中本地脚本可自动关闭：**{data['automatic_close_open_count']}** 项；须由人审、现场、厂家或主管方关闭：**{data['human_or_external_closeout_open_count']}** 项。",
         f"- 家电条目尚未完全确认：**{data['appliance_open_count']}** 项。",
         "- 候选值不等于确认；只有“采用候选”或“自定义确认”的设计决策才关闭输入项。",
         "- 同步脚本只更新决策登记与本状态块，不直接写正式 IFC。", PM_END,
@@ -388,6 +436,7 @@ def main() -> int:
     args = parse_args()
     baseline_decisions = read_csv(args.decisions, DECISION_HEADERS)
     baseline_appliances = read_csv(args.appliances, APPLIANCE_HEADERS)
+    closeout_rules = read_csv(args.closeout_rules, CLOSEOUT_HEADERS)
     if args.input.suffix.lower() == ".xlsx":
         decisions, appliances = read_xlsx(args.input)
     elif args.input.suffix.lower() == ".csv":
@@ -396,8 +445,10 @@ def main() -> int:
     else:
         raise ValueError("input must be .xlsx or .csv")
 
-    errors = validate_decisions(decisions, baseline_decisions) + validate_appliances(
-        appliances, baseline_appliances,
+    errors = (
+        validate_decisions(decisions, baseline_decisions)
+        + validate_appliances(appliances, baseline_appliances)
+        + validate_closeout_rules(closeout_rules, baseline_decisions)
     )
     if errors:
         print("Input validation failed:", file=sys.stderr)
@@ -405,7 +456,7 @@ def main() -> int:
             print(f"- {error}", file=sys.stderr)
         return 2
 
-    data = summary(decisions, appliances)
+    data = summary(decisions, appliances, closeout_rules)
     report = {
         "mode": "apply" if args.apply else "dry-run",
         "input": str(args.input.resolve()),
@@ -420,7 +471,10 @@ def main() -> int:
         args.report.write_text(json.dumps(report, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
     if args.open_items:
         args.open_items.parent.mkdir(parents=True, exist_ok=True)
-        args.open_items.write_text(open_items_markdown(decisions, appliances, data), encoding="utf-8")
+        args.open_items.write_text(
+            open_items_markdown(decisions, appliances, closeout_rules, data),
+            encoding="utf-8",
+        )
     if args.apply:
         write_csv(args.decisions, DECISION_HEADERS, decisions)
         write_csv(args.appliances, APPLIANCE_HEADERS, appliances)

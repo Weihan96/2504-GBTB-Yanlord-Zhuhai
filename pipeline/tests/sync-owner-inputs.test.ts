@@ -23,6 +23,11 @@ test("owner input sync is dry-run by default and never writes IFC", () => {
   expect(parsed.mode).toBe("dry-run");
   expect(parsed.formal_ifc_write).toBe(false);
   expect(parsed.summary.release_blocking_open_count).toBeGreaterThan(0);
+  expect(parsed.summary.automatic_close_open_count).toBe(0);
+  expect(parsed.summary.human_or_external_closeout_open_count).toBe(
+    parsed.summary.release_blocking_open_count,
+  );
+  expect(readFileSync(openItems, "utf8")).toContain("必须由人审、现场、厂家或主管方关闭");
   const entry = parsed.normalized_inputs.decisions.find(
     (row: { input_id: string }) => row.input_id === "E302-ENTRY-SIDE",
   );
@@ -74,6 +79,27 @@ test("owner input sync rejects workbook-owned candidate changes", () => {
   ], { cwd: root });
   expect(result.exitCode).toBe(2);
   expect(result.stderr.toString()).toContain("protected fields changed: candidate_value");
+});
+
+test("owner input sync rejects incomplete closeout ownership coverage", () => {
+  const temp = mkdtempSync(join(tmpdir(), "owner-inputs-closeout-"));
+  const source = readFileSync(
+    join(root, "pipeline/decisions/owner-input-closeout-rules.csv"),
+    "utf8",
+  );
+  const incomplete = source
+    .split("\n")
+    .filter((line) => !line.startsWith("E304-AP-POWER,"))
+    .join("\n");
+  const closeout = join(temp, "closeout.csv");
+  writeFileSync(closeout, incomplete);
+  const result = Bun.spawnSync([
+    "python3", "pipeline/scripts/sync_owner_inputs.py",
+    "--closeout-rules", closeout,
+  ], { cwd: root });
+  expect(result.exitCode).toBe(2);
+  expect(result.stderr.toString()).toContain("closeout rules: IDs changed");
+  expect(result.stderr.toString()).toContain("E304-AP-POWER");
 });
 
 test("pending appliance fields never become effective design inputs", () => {

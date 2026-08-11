@@ -1,0 +1,22 @@
+input_id,closeout_kind,responsible_party,required_evidence,automatic_close_allowed,notes
+A104-M07-EVIDENCE,site_or_drawing_evidence,建筑设计/现场,项目门表或可定位到 M07 的官方 CAD 或现场开门照片,no,产品通用资料不能替代本项目门扇开启关系
+E302-ENTRY-SIDE,site_or_drawing_evidence,建筑设计/现场,完成面门套柜门与门扇关系尺寸或可定位图纸,no,用户方向已提交但墙侧几何须由项目证据关闭
+E302-ENTRY-PANEL,human_product_selection,业主/电气设计,具体面板 SKU 与 CSA 证书编号及接线负载底盒资料,no,品牌系列认证不能自动覆盖淘宝具体 SKU
+E302-MASTER-SIDE,site_or_drawing_evidence,建筑设计/现场,Master A 与 Master B 各自墙侧门套净距及见光板构造,no,两块面板角色已确认但真实安装面未关闭
+E302-MASTER-PANEL,human_design_selection,业主/照明设计,两块面板最终键序标签与对应灯组清单,no,功能分工已确认但逐键映射仍需人审
+E303-NS01-FORM,product_interface_evidence,家具设计/电气设计,VVD 详图与最终盖板产品安装开孔检修资料,no,三面各一位置已采用但产品接口仍需厂家资料
+E303-NS01-CIRCUIT,product_interface_evidence,电气设计/设备方,移动厨电最终铭牌功率与保护回路计算,no,同时使用规则已采用但线径保护器 RCD 不自动确定
+E303-NS02-FORM,human_product_selection,业主/家具设计,线性轨道或隐藏翻盖最终选型与餐边柜立面,no,两个方向尚未二选一
+E303-NS02-CIRCUIT,product_interface_evidence,电气设计/设备方,咖啡设备最终铭牌功率与保护回路计算,no,不同时使用规则已采用但保护设计仍待设备资料
+E304-GATEWAY-IDENTITY,human_product_selection,业主/网络设计,最终路由网关交换机 AP 型号及角色清单,no,现有 V175 与 K155 不代表装修后最终设备
+E304-CABINET-DIMENSIONS,site_measurement,现场,弱电箱与柜格净宽净高净深及单位照片,no,用户填写值需区分箱体和柜格并修正 525m 单位
+E304-CABINET-VENTILATION,site_test,现场/设备方,柜门关闭连续运行温度记录与测量位置照片,no,手感 30-40℃ 不能代替可复核温升试验
+E304-CABLE-CONTINUITY,site_test,弱电施工,逐根测线仪通断结果与两端标签照片,no,线缆标签只能证明候选去向
+E304-AP-POWER,human_product_selection,网络设计/设备方,最终 AP 型号 PoE 标准或本地电源安装图,no,现有 K155 本地电源不自动决定新 AP 供电
+A106-FIRE-TYPE,authority_product_evidence,消防/设备方,现行有效产品认证厂家说明书及厨房适用性确认,no,正式 IFC 只冻结 FIRESENSOR 点位
+A106-GAS-ALARM,authority_product_evidence,燃气公司/设备方,燃气公司准入型号厂家说明书供电通信及安装净距,no,型号和安装条件必须由燃气主管方关闭
+WFIN-WHITE-SYSTEM,human_material_selection,业主/材料设计,最终厂家体系色号光泽厚度与样板确认,no,暂缓项不得用常见值关闭
+WFIN-TADELAKT,human_material_selection,业主/材料设计,最终厂家完整体系湿区基层防水收口与样板,no,网页意向不能替代施工体系
+RCP1-HVAC-PORTS,product_interface_evidence,空调厂家/机电设计,最终设备型号及送回风冷媒冷凝水接口图,no,无批准厂家接口图时只保留路线候选
+PLUM-ROUGHINS,product_interface_evidence,设备方/给排水设计,逐台最终产品给排水热水电源安装图,no,存放位置不得替代实际使用和粗装接口
+DET1-WATERPROOF,human_material_selection,业主/建筑设计,最终防水厂家体系上翻高度门口节点与样板,no,须与地漏坡向门槛高差一起人审

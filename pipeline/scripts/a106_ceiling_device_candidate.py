@@ -34,6 +34,13 @@ MODELED_SUPPLY_OUTLET_IDS = {
 }
 SCALE_DENOMINATOR = 50.0
 SVG_WORLD_OFFSET_MM = 10000.0
+AP_CLEARANCE_REQUIREMENTS_MM = {
+    "light_edge": 300.0,
+    "wall_boundary": 500.0,
+    "beam": 500.0,
+    "high_level_obstacle": 500.0,
+    "same_room_smoke": 700.0,
+}
 
 
 def parse_args() -> argparse.Namespace:
@@ -106,6 +113,14 @@ def nearest_distance_mm(point: Point, polygons: list[Any]) -> float | None:
     if not polygons:
         return None
     return float(min(point.distance(polygon) for polygon in polygons) * 1000.0)
+
+
+def clearance_margin_mm(clearance_mm: float | None, requirement_mm: float) -> float | None:
+    return None if clearance_mm is None else clearance_mm - requirement_mm
+
+
+def is_integer_mm(position_mm: list[float], tolerance_mm: float) -> bool:
+    return all(abs(value - round(value)) <= tolerance_mm for value in position_mm)
 
 
 def world_to_svg(position_mm: list[float]) -> tuple[float, float]:
@@ -223,8 +238,17 @@ def compile_report(args: argparse.Namespace) -> dict[str, Any]:
             "polygon": box(minimum[0] / 1000.0, minimum[1] / 1000.0, maximum[0] / 1000.0, maximum[1] / 1000.0),
         })
 
+    candidate_rows = read_csv(args.register)
+    smoke_points_by_room: dict[str, list[Point]] = {}
+    for row in candidate_rows:
+        if row["device_role"] != "smoke_alarm":
+            continue
+        smoke_points_by_room.setdefault(row["room_reference"], []).append(
+            Point(float(row["x_mm"]) / 1000.0, float(row["y_mm"]) / 1000.0)
+        )
+
     records = []
-    for row in read_csv(args.register):
+    for row in candidate_rows:
         reference = row["room_reference"]
         room = spaces[reference]
         position = [float(row["x_mm"]), float(row["y_mm"]), float(row["z_mm"])]
@@ -249,19 +273,67 @@ def compile_report(args: argparse.Namespace) -> dict[str, Any]:
         nearest_obstacle = obstacle_distances[0][1] if obstacle_distances else None
         ceiling_residual = None if ceiling is None else abs(float(ceiling["bbox"]["min_mm"][2]) - position[2])
         room_axis_offset = abs(position[0] - room["centre_mm"][0])
-        required_light_clearance = 500.0 if row["device_role"] in {"smoke_alarm", "kitchen_fire_sensor"} else 200.0
+        is_ap = row["device_role"] == "wireless_access_point"
+        required_light_clearance = AP_CLEARANCE_REQUIREMENTS_MM["light_edge"] if is_ap else 500.0
+        same_room_smoke_clearance = nearest_distance_mm(point, smoke_points_by_room.get(reference, [])) if is_ap else None
+        inside_space = room["polygon"].covers(point)
+        on_ceiling = ceiling_residual is not None and ceiling_residual <= args.tolerance_mm
+        integer_xyz_mm = is_integer_mm(position, args.tolerance_mm)
         known_geometry_pass = (
-            room["polygon"].covers(point)
+            inside_space
             and wall_clearance + args.tolerance_mm >= 500.0
             and (beam_clearance is None or beam_clearance + args.tolerance_mm >= 500.0)
             and (light_clearance is None or light_clearance + args.tolerance_mm >= required_light_clearance)
             and (obstacle_clearance is None or obstacle_clearance + args.tolerance_mm >= 500.0)
-            and ceiling_residual is not None
-            and ceiling_residual <= args.tolerance_mm
+            and (not is_ap or same_room_smoke_clearance is not None and same_room_smoke_clearance + args.tolerance_mm >= AP_CLEARANCE_REQUIREMENTS_MM["same_room_smoke"])
+            and on_ceiling
+            and integer_xyz_mm
         )
         supply_status = "known_modeled_clearance_pass" if outlet_clearance is not None and outlet_clearance + args.tolerance_mm >= 1500.0 else (
             "known_modeled_clearance_fail" if outlet_clearance is not None else "unknown_incomplete_supply_air_model"
         )
+        ap_mechanical_assessment = None
+        if is_ap:
+            x_axis_lights = [
+                item["candidate_id"]
+                for item in room_lights
+                if abs(float(item["centre_mm"][0]) - position[0]) <= args.tolerance_mm
+            ]
+            y_axis_lights = [
+                item["candidate_id"]
+                for item in room_lights
+                if abs(float(item["centre_mm"][1]) - position[1]) <= args.tolerance_mm
+            ]
+            ap_mechanical_assessment = {
+                "candidate_reason": row["position_basis"],
+                "light_axis_alignment": {
+                    "x_axis_light_candidate_ids": x_axis_lights,
+                    "y_axis_light_candidate_ids": y_axis_lights,
+                    "matched_axis_count": int(bool(x_axis_lights)) + int(bool(y_axis_lights)),
+                    "rank_basis": "prefer a two-axis existing-light-grid empty intersection before comparing clearance margins",
+                },
+                "required_clearances_mm": AP_CLEARANCE_REQUIREMENTS_MM,
+                "measured_clearances_mm": {
+                    "light_edge": light_clearance,
+                    "wall_boundary": wall_clearance,
+                    "beam": beam_clearance,
+                    "high_level_obstacle": obstacle_clearance,
+                    "same_room_smoke": same_room_smoke_clearance,
+                },
+                "clearance_margins_mm": {
+                    "light_edge": clearance_margin_mm(light_clearance, AP_CLEARANCE_REQUIREMENTS_MM["light_edge"]),
+                    "wall_boundary": clearance_margin_mm(wall_clearance, AP_CLEARANCE_REQUIREMENTS_MM["wall_boundary"]),
+                    "beam": clearance_margin_mm(beam_clearance, AP_CLEARANCE_REQUIREMENTS_MM["beam"]),
+                    "high_level_obstacle": clearance_margin_mm(obstacle_clearance, AP_CLEARANCE_REQUIREMENTS_MM["high_level_obstacle"]),
+                    "same_room_smoke": clearance_margin_mm(same_room_smoke_clearance, AP_CLEARANCE_REQUIREMENTS_MM["same_room_smoke"]),
+                },
+                "placement_checks": {
+                    "inside_space": inside_space,
+                    "on_ceiling": on_ceiling,
+                    "integer_xyz_mm": integer_xyz_mm,
+                },
+                "pass": known_geometry_pass,
+            }
         records.append({
             **row,
             "position_mm": position,
@@ -273,6 +345,7 @@ def compile_report(args: argparse.Namespace) -> dict[str, Any]:
             "nearest_beam_clearance_mm": beam_clearance,
             "nearest_light_edge_clearance_mm": light_clearance,
             "required_light_clearance_mm": required_light_clearance,
+            "nearest_same_room_smoke_clearance_mm": same_room_smoke_clearance,
             "modeled_supply_air_edge_clearance_mm": outlet_clearance,
             "supply_air_clearance_status": supply_status,
             "nearest_high_level_obstacle_clearance_mm": obstacle_clearance,
@@ -285,6 +358,10 @@ def compile_report(args: argparse.Namespace) -> dict[str, Any]:
             "ceiling_context_name": None if ceiling is None else ceiling["name"],
             "ceiling_underside_mm": None if ceiling is None else ceiling["bbox"]["min_mm"][2],
             "ceiling_datum_residual_mm": ceiling_residual,
+            "inside_space": inside_space,
+            "on_ceiling": on_ceiling,
+            "integer_xyz_mm": integer_xyz_mm,
+            "ap_mechanical_assessment": ap_mechanical_assessment,
             "known_geometry_pass": known_geometry_pass,
             "final_release_pass": False,
             "release_blocker": (
@@ -345,6 +422,18 @@ def compile_report(args: argparse.Namespace) -> dict[str, Any]:
             "one_kitchen_fire_sensor_present": len(kitchen_fire) == 1,
             "known_geometry_pass": all(bool(record["known_geometry_pass"]) for record in records),
             "candidate_xy_coordinates_are_integer_mm": all(abs(value - round(value)) <= args.tolerance_mm for record in records for value in record["position_mm"][:2]),
+            "candidate_xyz_coordinates_are_integer_mm": all(bool(record["integer_xyz_mm"]) for record in records),
+            "all_candidates_inside_space": all(bool(record["inside_space"]) for record in records),
+            "all_candidates_on_ceiling": all(bool(record["on_ceiling"]) for record in records),
+            "all_ap_light_edge_clearances_pass": all(record["nearest_light_edge_clearance_mm"] is None or record["nearest_light_edge_clearance_mm"] + args.tolerance_mm >= AP_CLEARANCE_REQUIREMENTS_MM["light_edge"] for record in aps),
+            "all_ap_wall_beam_high_obstacle_clearances_pass": all(
+                record["wall_boundary_clearance_mm"] + args.tolerance_mm >= AP_CLEARANCE_REQUIREMENTS_MM["wall_boundary"]
+                and (record["nearest_beam_clearance_mm"] is None or record["nearest_beam_clearance_mm"] + args.tolerance_mm >= AP_CLEARANCE_REQUIREMENTS_MM["beam"])
+                and (record["nearest_high_level_obstacle_clearance_mm"] is None or record["nearest_high_level_obstacle_clearance_mm"] + args.tolerance_mm >= AP_CLEARANCE_REQUIREMENTS_MM["high_level_obstacle"])
+                for record in aps
+            ),
+            "all_ap_same_room_smoke_clearances_pass": all(record["nearest_same_room_smoke_clearance_mm"] is not None and record["nearest_same_room_smoke_clearance_mm"] + args.tolerance_mm >= AP_CLEARANCE_REQUIREMENTS_MM["same_room_smoke"] for record in aps),
+            "all_ap_mechanical_checks_pass": all(bool(record["ap_mechanical_assessment"]["pass"]) for record in aps),
             "bedroom_pair_separation_pass": all(check["separation_mm"] >= 700.0 for check in pair_checks),
             "thirteen_demolition_walls_excluded": len(demolition_ids) == 13,
             "all_smoke_supply_air_clearances_verified": all(record["supply_air_clearance_status"] == "known_modeled_clearance_pass" for record in smoke),

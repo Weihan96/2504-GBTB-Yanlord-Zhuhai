@@ -16,22 +16,36 @@ from typing import Any, Callable
 from svg_audit_underlay import validate_wall_plan_source
 from sync_owner_inputs import (
     APPLIANCE_HEADERS,
+    DECISION_HEADERS,
     normalized_inputs,
     read_csv as read_owner_csv,
     validate_appliances,
+    validate_decisions,
 )
 
 EXPECTED_IFC_SHA256 = "6c2fd8da9e9ad7ddbc2b63415a27f1c979e8995b880d8fce210a2dda2ef2aab6"
 SCALE_DENOMINATOR = 50.0
 SVG_WORLD_OFFSET_MM = 10000.0
-CANDIDATE_POWER_RANGES_W = {
-    "火锅电器": [1500, 2200],
-    "搅拌机": [300, 1200],
-    "Sous-vide 棒": [800, 1500],
-    "咖啡机": [1200, 1800],
-    "手冲电热水壶": [1000, 1800],
-    "磨豆机": [150, 400],
+CANDIDATE_POWER_RANGES_BY_APPLIANCE_ID_W = {
+    "APP-001": [1500, 2200],
+    "APP-002": [300, 1200],
+    "APP-003": [800, 1500],
+    "APP-004": [1200, 1800],
+    "APP-005": [1000, 1800],
+    "APP-006": [150, 400],
 }
+LOAD_SCENARIO_HEADERS = [
+    "scenario_id",
+    "socket_id",
+    "owner_input_id",
+    "scenario_label",
+    "appliance_ids",
+]
+E303_CIRCUIT_INPUT_BY_SOCKET = {
+    "NS-01": "E303-NS01-CIRCUIT",
+    "NS-02": "E303-NS02-CIRCUIT",
+}
+USE_CONFIRMED_STATUSES = {"采用候选", "自定义确认"}
 PLANNING_VOLTAGE_V = 220.0
 SINGLE_SOCKET_CLASS_CURRENT_A = 16.0
 SINGLE_SOCKET_CLASS_CAPACITY_W = PLANNING_VOLTAGE_V * SINGLE_SOCKET_CLASS_CURRENT_A
@@ -65,6 +79,16 @@ def parse_args() -> argparse.Namespace:
         "--appliances",
         type=Path,
         default=root / "pipeline/decisions/appliance-input-register.csv",
+    )
+    parser.add_argument(
+        "--owner-decisions",
+        type=Path,
+        default=root / "pipeline/decisions/owner-input-register.csv",
+    )
+    parser.add_argument(
+        "--load-scenarios",
+        type=Path,
+        default=root / "pipeline/decisions/e303-load-scenarios.csv",
     )
     parser.add_argument("--source-svg", type=Path, default=root / "drawings/Wall Plan.svg")
     parser.add_argument(
@@ -184,8 +208,52 @@ def bedside_candidates(int1_records: list[dict[str, Any]]) -> list[dict[str, Any
     return rows
 
 
-def appliance_socket_context(path: Path) -> dict[str, dict[str, Any]]:
-    rows = read_owner_csv(path, APPLIANCE_HEADERS)
+def e303_circuit_decisions(path: Path) -> dict[str, dict[str, str]]:
+    rows = read_owner_csv(path, DECISION_HEADERS)
+    errors = validate_decisions(rows, rows)
+    if errors:
+        raise RuntimeError("invalid owner decision register: " + "; ".join(errors))
+    by_id = {row["input_id"]: row for row in rows}
+    missing = sorted(set(E303_CIRCUIT_INPUT_BY_SOCKET.values()) - set(by_id))
+    if missing:
+        raise RuntimeError(f"owner decision register missing E-303 circuit inputs: {missing}")
+    return {
+        input_id: by_id[input_id]
+        for input_id in E303_CIRCUIT_INPUT_BY_SOCKET.values()
+    }
+
+
+def read_load_scenarios(path: Path) -> list[dict[str, Any]]:
+    rows = read_owner_csv(path, LOAD_SCENARIO_HEADERS)
+    scenario_ids = [row["scenario_id"] for row in rows]
+    if not rows or any(not value for value in scenario_ids):
+        raise RuntimeError("E-303 load scenarios require non-blank scenario IDs")
+    if len(scenario_ids) != len(set(scenario_ids)):
+        raise RuntimeError("E-303 load scenario IDs are not unique")
+    scenarios: list[dict[str, Any]] = []
+    for row in rows:
+        appliance_ids = [value.strip() for value in row["appliance_ids"].split(";") if value.strip()]
+        if not row["scenario_label"] or not appliance_ids:
+            raise RuntimeError(f"{row['scenario_id']}: scenario label and appliance IDs are required")
+        if len(appliance_ids) != len(set(appliance_ids)):
+            raise RuntimeError(f"{row['scenario_id']}: duplicate appliance IDs")
+        expected_input_id = E303_CIRCUIT_INPUT_BY_SOCKET.get(row["socket_id"])
+        if expected_input_id is None or row["owner_input_id"] != expected_input_id:
+            raise RuntimeError(
+                f"{row['scenario_id']}: socket and owner-input semantic identity mismatch"
+            )
+        scenarios.append({**row, "appliance_ids": appliance_ids})
+    if {row["socket_id"] for row in scenarios} != set(E303_CIRCUIT_INPUT_BY_SOCKET):
+        raise RuntimeError("E-303 load scenarios must cover NS-01 and NS-02")
+    return scenarios
+
+
+def appliance_socket_context(
+    appliance_path: Path,
+    load_scenario_path: Path,
+    circuit_decisions: dict[str, dict[str, str]],
+) -> dict[str, dict[str, Any]]:
+    rows = read_owner_csv(appliance_path, APPLIANCE_HEADERS)
     errors = validate_appliances(rows, rows)
     if errors:
         raise RuntimeError("invalid appliance input register: " + "; ".join(errors))
@@ -193,6 +261,8 @@ def appliance_socket_context(path: Path) -> dict[str, dict[str, Any]]:
         row["appliance_id"]: row
         for row in normalized_inputs([], rows)["appliances"]
     }
+    appliance_by_id = {row["appliance_id"]: row for row in rows}
+    scenarios = read_load_scenarios(load_scenario_path)
     contexts: dict[str, dict[str, Any]] = {}
     for socket_id in ("NS-01", "NS-02"):
         selected = [
@@ -208,7 +278,7 @@ def appliance_socket_context(path: Path) -> dict[str, dict[str, Any]]:
             effective = normalized_by_id[row["appliance_id"]]["effective"]
             if effective["rated_power_w"]:
                 known_load_w += float(effective["rated_power_w"]) * int(effective["quantity"])
-            candidate_range = CANDIDATE_POWER_RANGES_W.get(row["appliance_name"])
+            candidate_range = CANDIDATE_POWER_RANGES_BY_APPLIANCE_ID_W.get(row["appliance_id"])
             group = row["simultaneous_group"] or "UNASSIGNED"
             if candidate_range:
                 bucket = groups.setdefault(group, {"minimum_w": 0, "maximum_w": 0, "appliance_ids": []})
@@ -226,25 +296,62 @@ def appliance_socket_context(path: Path) -> dict[str, dict[str, Any]]:
             })
         listed_minimum_w = sum(group["minimum_w"] for group in groups.values())
         listed_maximum_w = sum(group["maximum_w"] for group in groups.values())
-        if socket_id == "NS-01":
-            hot_pot = CANDIDATE_POWER_RANGES_W["火锅电器"]
-            companions = [
-                CANDIDATE_POWER_RANGES_W["搅拌机"],
-                CANDIDATE_POWER_RANGES_W["Sous-vide 棒"],
-            ]
-            simultaneous_minimum_w = hot_pot[0] + min(row[0] for row in companions)
-            simultaneous_maximum_w = hot_pot[1] + max(row[1] for row in companions)
-            simultaneous_basis = "hot-pot plus either blender or sous-vide, as confirmed by the owner"
-        else:
-            coffee = CANDIDATE_POWER_RANGES_W["咖啡机"]
-            kettle = CANDIDATE_POWER_RANGES_W["手冲电热水壶"]
-            grinder = CANDIDATE_POWER_RANGES_W["磨豆机"]
-            simultaneous_minimum_w = min(coffee[0] + grinder[0], kettle[0])
-            simultaneous_maximum_w = max(coffee[1] + grinder[1], kettle[1])
-            simultaneous_basis = "owner confirmed the espresso machine and hand-pour kettle are not used together; grinder may accompany the espresso machine"
+        selected_ids = {row["appliance_id"] for row in selected}
+        circuit_input_id = E303_CIRCUIT_INPUT_BY_SOCKET[socket_id]
+        circuit_decision = circuit_decisions[circuit_input_id]
+        if circuit_decision["status"] not in USE_CONFIRMED_STATUSES:
+            raise RuntimeError(
+                f"{circuit_input_id}: explicit load scenarios require 采用候选 or 自定义确认; "
+                f"got {circuit_decision['status']!r}"
+            )
+        socket_scenarios = [row for row in scenarios if row["socket_id"] == socket_id]
+        scenario_loads = []
+        for scenario in socket_scenarios:
+            unknown_ids = sorted(set(scenario["appliance_ids"]) - selected_ids)
+            missing_ranges = sorted(
+                appliance_id
+                for appliance_id in scenario["appliance_ids"]
+                if appliance_id not in CANDIDATE_POWER_RANGES_BY_APPLIANCE_ID_W
+            )
+            if unknown_ids or missing_ranges:
+                raise RuntimeError(
+                    f"{scenario['scenario_id']}: invalid scenario appliances; "
+                    f"not_at_socket={unknown_ids} missing_ranges={missing_ranges}"
+                )
+            minimum_w = sum(
+                CANDIDATE_POWER_RANGES_BY_APPLIANCE_ID_W[appliance_id][0]
+                for appliance_id in scenario["appliance_ids"]
+            )
+            maximum_w = sum(
+                CANDIDATE_POWER_RANGES_BY_APPLIANCE_ID_W[appliance_id][1]
+                for appliance_id in scenario["appliance_ids"]
+            )
+            scenario_loads.append({
+                **scenario,
+                "appliance_names": [
+                    appliance_by_id[appliance_id]["appliance_name"]
+                    for appliance_id in scenario["appliance_ids"]
+                ],
+                "minimum_w": minimum_w,
+                "maximum_w": maximum_w,
+            })
+        if set().union(*(set(row["appliance_ids"]) for row in scenario_loads)) != selected_ids:
+            raise RuntimeError(f"{socket_id}: explicit scenarios do not cover its appliance use list")
+        simultaneous_minimum_w = min(row["minimum_w"] for row in scenario_loads)
+        simultaneous_maximum_w = max(row["maximum_w"] for row in scenario_loads)
+        semantic_gates = {
+            "use_confirmed": True,
+            "planning_envelope_compiled": True,
+            "product_and_circuit_fixed": False,
+        }
         connection_positions_candidate = 3
         contexts[socket_id] = {
             "items": items,
+            "circuit_owner_input": {
+                "input_id": circuit_input_id,
+                "status": circuit_decision["status"],
+            },
+            "explicit_load_scenarios": scenario_loads,
             "known_connected_load_w": known_load_w,
             "candidate_load_ranges_by_simultaneous_group": groups,
             "planning_envelope": {
@@ -252,7 +359,10 @@ def appliance_socket_context(path: Path) -> dict[str, dict[str, Any]]:
                 "listed_device_connected_maximum_w": listed_maximum_w,
                 "simultaneous_design_minimum_w": simultaneous_minimum_w,
                 "simultaneous_design_maximum_w": simultaneous_maximum_w,
-                "simultaneous_use_basis": simultaneous_basis,
+                "simultaneous_use_basis": (
+                    f"explicit scenarios authorized by {circuit_input_id} "
+                    f"status {circuit_decision['status']}"
+                ),
                 "planning_voltage_v": PLANNING_VOLTAGE_V,
                 "single_socket_class_current_a": SINGLE_SOCKET_CLASS_CURRENT_A,
                 "single_socket_class_capacity_w": SINGLE_SOCKET_CLASS_CAPACITY_W,
@@ -267,6 +377,7 @@ def appliance_socket_context(path: Path) -> dict[str, dict[str, Any]]:
                 "calculation_status": "listed_and_simultaneous_planning_envelopes_not_confirmed_product_load",
                 "final_conductor_protection_rcd_pending": True,
             },
+            "semantic_gates": semantic_gates,
             "candidate_ranges_are_not_confirmed_loads": True,
             "socket_form_and_circuit_sizing_ready": False,
         }
@@ -296,7 +407,7 @@ def new_socket_candidates(
             "review_required": True,
             "height_status": "650 mm AFF review candidate; socket type, splash protection and final elevation pending",
             "socket_form_candidate": "three concealed covered socket positions, one on each island face below the countertop/table overlap; final product and panel cut-out pending",
-            "circuit_strategy_candidate": "two independent socket circuits; separate the hot-pot load from blender/sous-vide loads",
+            "circuit_strategy_candidate": "two independent socket circuits from the accepted explicit NS-01 scenarios; separate the hot-pot load from blender/sous-vide loads",
             "automatic_ifc_write_allowed": False,
             "appliance_context": appliance_context["NS-01"],
         },
@@ -314,7 +425,7 @@ def new_socket_candidates(
             "review_required": True,
             "height_status": "panel bottom 300 mm AFF confirmed general datum; intended appliance and wall-side position remain pending",
             "socket_form_candidate": "minimal linear track socket or custom concealed flip-up assembly; product, module count and cabinet detail pending",
-            "circuit_strategy_candidate": "one circuit capacity candidate because the owner confirmed the espresso machine and hand-pour kettle are not used together; final model loads still govern",
+            "circuit_strategy_candidate": "one circuit capacity candidate from the accepted explicit NS-02 scenarios; final model loads still govern",
             "automatic_ifc_write_allowed": False,
             "appliance_context": appliance_context["NS-02"],
         },
@@ -519,7 +630,12 @@ def main() -> int:
         raise RuntimeError(f"stale ELEC/INT1 inputs: {source_hashes}")
 
     bedside = bedside_candidates(int1["records"])
-    appliance_context = appliance_socket_context(args.appliances)
+    circuit_decisions = e303_circuit_decisions(args.owner_decisions)
+    appliance_context = appliance_socket_context(
+        args.appliances,
+        args.load_scenarios,
+        circuit_decisions,
+    )
     new_sockets = new_socket_candidates(int1["records"], appliance_context)
     cabinet_zones = cabinet_power_zones(int1["records"])
     socket_rechecks = kitchen_socket_rechecks(existing, positioning)
@@ -531,6 +647,18 @@ def main() -> int:
         "appliance_inputs": {
             "path": str(args.appliances.resolve()),
             "sha256": sha256(args.appliances),
+        },
+        "owner_inputs": {
+            "path": str(args.owner_decisions.resolve()),
+            "sha256": sha256(args.owner_decisions),
+            "e303_circuit_decisions": {
+                input_id: {"status": row["status"]}
+                for input_id, row in circuit_decisions.items()
+            },
+        },
+        "load_scenarios": {
+            "path": str(args.load_scenarios.resolve()),
+            "sha256": sha256(args.load_scenarios),
         },
         "summary": {
             "confirmed_requirements": sum(value.startswith("confirmed") for value in requirement_status.values()),
@@ -551,6 +679,10 @@ def main() -> int:
         "requirements": requirements,
         "bedside_light_candidates": bedside,
         "new_socket_candidates": new_sockets,
+        "e303_circuit_semantic_gates": {
+            row["candidate_id"]: row["appliance_context"]["semantic_gates"]
+            for row in new_sockets
+        },
         "cabinet_power_zones": cabinet_zones,
         "kitchen_socket_rechecks": socket_rechecks,
         "gates": {
@@ -576,6 +708,15 @@ def main() -> int:
                 == "listed_and_simultaneous_planning_envelopes_not_confirmed_product_load"
                 for row in new_sockets
             ),
+            "use_confirmed": all(
+                row["appliance_context"]["semantic_gates"]["use_confirmed"]
+                for row in new_sockets
+            ),
+            "planning_envelope_compiled": all(
+                row["appliance_context"]["semantic_gates"]["planning_envelope_compiled"]
+                for row in new_sockets
+            ),
+            "product_and_circuit_fixed": False,
             "illuminated_cabinet_power_is_grouped_not_fabricated": len(cabinet_zones) == 7
             and all(row["coordinate_status"] == "assembly_zone_only" for row in cabinet_zones),
             "all_current_kitchen_sockets_reopened_for_review": len(socket_rechecks) == 11,

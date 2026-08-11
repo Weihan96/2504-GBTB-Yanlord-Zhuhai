@@ -30,6 +30,17 @@ E304_OWNER_INPUT_IDS = (
     "E304-CABLE-CONTINUITY",
     "E304-AP-POWER",
 )
+SWITCH_PRODUCT_GATE_NAMES = (
+    "exact_sku_certificate_match",
+    "control_role_closed",
+    "physical_wired_two_way_verified",
+    "neutral_and_wiring_diagram_verified",
+    "rated_load_schedule_verified",
+    "box_and_joinery_interface_verified",
+    "matter_infrastructure_verified",
+    "ecosystem_behavior_acceptance",
+)
+SWITCH_PRODUCT_PANEL_IDS = ("CTRL-ENTRY-A", "CTRL-MASTER-A", "CTRL-MASTER-B")
 
 
 def parse_args() -> argparse.Namespace:
@@ -44,6 +55,11 @@ def parse_args() -> argparse.Namespace:
     parser.add_argument("--router-evidence", type=Path, default=root / "build/elec/e304-router-cad-evidence.json")
     parser.add_argument("--ceiling-audit", type=Path, default=root / "build/elec/a106-ceiling-device-candidate.json")
     parser.add_argument("--network-topology", type=Path, default=root / "pipeline/decisions/e304-network-topology.csv")
+    parser.add_argument(
+        "--switch-product-review",
+        type=Path,
+        default=root / "pipeline/decisions/e302-switch-product-review.csv",
+    )
     parser.add_argument("--source-svg", type=Path, default=root / "drawings/Wall Plan.svg")
     parser.add_argument("--output", type=Path, default=root / "build/elec/elec-control-network-candidate.json")
     parser.add_argument("--output-svg", type=Path, default=root / "drawings/E302-E304-control-network-candidate.svg")
@@ -80,6 +96,80 @@ def read_network_topology(path: Path) -> list[dict[str, str]]:
     if any(row["physical_port"] not in {"", "TBD"} for row in rows):
         raise RuntimeError("E-304 physical ports must remain TBD before field verification")
     return rows
+
+
+def compile_switch_product_review(path: Path) -> dict[str, Any]:
+    rows = read_csv(path)
+    required_fields = {
+        "panel_id", "panel_name", "product_candidate", "product_evidence_scope",
+        "installation_context", "gate", "passed", "failure_reason", "required_evidence",
+    }
+    if not rows or set(rows[0]) != required_fields:
+        raise RuntimeError("E-302 switch product review schema changed")
+    keyed = {(row["panel_id"], row["gate"]): row for row in rows}
+    expected_keys = {
+        (panel_id, gate)
+        for panel_id in SWITCH_PRODUCT_PANEL_IDS
+        for gate in SWITCH_PRODUCT_GATE_NAMES
+    }
+    if len(rows) != len(keyed) or set(keyed) != expected_keys:
+        raise RuntimeError("E-302 switch product review must contain three panels with eight unique gates each")
+    if any(row["passed"].strip().lower() != "false" for row in rows):
+        raise RuntimeError("E-302 switch product release gates must remain false")
+    if any(not row["failure_reason"].strip() or not row["required_evidence"].strip() for row in rows):
+        raise RuntimeError("every E-302 switch product gate requires a failure reason and closeout evidence")
+
+    panels = []
+    release_blockers = []
+    for panel_id in SWITCH_PRODUCT_PANEL_IDS:
+        panel_rows = [keyed[(panel_id, gate)] for gate in SWITCH_PRODUCT_GATE_NAMES]
+        identity_fields = (
+            "panel_name", "product_candidate", "product_evidence_scope", "installation_context",
+        )
+        if any(len({row[field] for row in panel_rows}) != 1 for field in identity_fields):
+            raise RuntimeError(f"E-302 switch product panel identity drift: {panel_id}")
+        blockers = [
+            {
+                "panel_id": panel_id,
+                "panel_name": row["panel_name"],
+                "gate": row["gate"],
+                "failure_reason": row["failure_reason"],
+                "required_evidence": row["required_evidence"],
+            }
+            for row in panel_rows
+        ]
+        release_blockers.extend(blockers)
+        panels.append({
+            "panel_id": panel_id,
+            "panel_name": panel_rows[0]["panel_name"],
+            "product_candidate": panel_rows[0]["product_candidate"],
+            "product_evidence_scope": panel_rows[0]["product_evidence_scope"],
+            "installation_context": panel_rows[0]["installation_context"],
+            "gates": {row["gate"]: False for row in panel_rows},
+            "release_ready": False,
+            "release_blockers": blockers,
+        })
+    return {
+        "path": str(path.resolve()),
+        "sha256": sha256(path),
+        "gate_names": list(SWITCH_PRODUCT_GATE_NAMES),
+        "protocol_position": {
+            "candidate_protocols": {
+                "CTRL-ENTRY-A": "Matter over Thread candidate",
+                "CTRL-MASTER-A": "Matter over Wi-Fi candidate",
+                "CTRL-MASTER-B": "unassigned",
+            },
+            "not_equivalent_to": "KNX",
+            "infrastructure_verified": False,
+        },
+        "product_evidence_limits": {
+            "egg": "CSA-related evidence is product-family-only; the exact Taobao EGG variant is unmatched",
+            "2_5d_neo": "manufacturer parameters exist; no official CSA association is established",
+        },
+        "panels": panels,
+        "release_ready": False,
+        "release_blockers": release_blockers,
+    }
 
 
 def world_to_svg(position_mm: list[float]) -> tuple[float, float]:
@@ -480,6 +570,12 @@ def render_svg(source: str, report: dict[str, Any]) -> str:
             f'<g data-candidate-id="{candidate_id}"><circle class="{css}" cx="{x:.3f}" cy="{y:.3f}" r="2.2"/>'
             f'<text class="cn-label" x="{x+3.4:.3f}" y="{y+(5 if index % 2 else -3):.3f}">{candidate_id}</text></g>'
         )
+    main_bedroom_ap = next(
+        row
+        for row in report["network_coordination_zones"]
+        if row["candidate_id"] == "A106-AP-R09"
+    )
+    main_bedroom_ap_margin = float(main_bedroom_ap["clearance_margin_mm"])
     markup.extend([
         '<g><rect class="cn-panel" x="402" y="7" width="93" height="386"/>',
         '<text class="cn-title" x="407" y="16">控制、网络与安全设备协调区</text>',
@@ -494,10 +590,15 @@ def render_svg(source: str, report: dict[str, Any]) -> str:
         '<text class="cn-text" x="407" y="101">开关面板底边：1300 mm AFF</text>',
         '<text class="cn-warn" x="407" y="118">Master A 内控主卧；Master B 外控客书餐，均待 A-104</text>',
         '<text class="cn-warn" x="407" y="126">150mm 仅为常见协调候选净距，未经完成面实测</text>',
-        '<text class="cn-warn" x="407" y="134">主卧 AP 灯具净距余量仅 1.5mm，不冻结施工点</text>',
+        f'<text class="cn-text" x="407" y="134">主卧 AP 灯具净距余量 {main_bedroom_ap_margin:.1f}mm｜机械候选</text>',
         '<text class="cn-text" x="407" y="148">网络需求：5 个下游端点｜2 个 AP 供电方式待定</text>',
         '<text class="cn-text" x="407" y="156">交换侧最少 6 口候选（含 1 个路由器上联）</text>',
         '<text class="cn-warn" x="407" y="170">端口号/PoE 功率/线缆通断/散热均未关闭</text>',
+        '<text class="cn-warn" x="407" y="186">产品发布门：3 面板 × 8 门＝24 项，全部 BLOCK</text>',
+        '<text class="cn-warn" x="407" y="194">Entry A：EGG 仅族级 CSA；淘宝变体未匹配</text>',
+        '<text class="cn-warn" x="407" y="202">Master A：2.5D Neo 有厂家参数；无官方 CSA 关联</text>',
+        '<text class="cn-warn" x="407" y="210">Master A 见光板：阻燃背盒/固定基层/散热/可检修未闭</text>',
+        '<text class="cn-warn" x="407" y="218">Matter 网络类型按准确 SKU；Matter ≠ KNX</text>',
         f'<text class="cn-note" x="407" y="382">IFC SHA {report["source_ifc_sha256"][:12]}…</text></g>',
     ])
     style = """
@@ -515,6 +616,7 @@ def main() -> int:
     controls = control_zones(read_csv(args.doors))
     owner_decisions = effective_owner_decisions(args.owner_decisions)
     owner_gates = e304_owner_input_gates(owner_decisions)
+    switch_product_review = compile_switch_product_review(args.switch_product_review)
     control_options = control_wall_side_options(args.ifc, controls, owner_decisions)
     control_panels = [
         row for row in control_options
@@ -584,12 +686,19 @@ def main() -> int:
             "network_requirement_links": len(topology),
             "network_downstream_endpoints": sum(row["target_role"] != "router_to_switch_uplink" for row in topology),
             "network_AP_power_method_pending_endpoints": sum(row["poe_required"] == "TBD" for row in topology),
+            "switch_product_review_panels": len(switch_product_review["panels"]),
+            "switch_product_release_gates": sum(
+                len(panel["gates"]) for panel in switch_product_review["panels"]
+            ),
+            "switch_product_release_blockers": len(switch_product_review["release_blockers"]),
         },
         "control_coordination_zones": controls,
         "control_wall_side_options": control_options,
         "control_panel_candidates": control_panels,
         "network_coordination_zones": networks,
         "safety_device_coordination_zones": safety_devices,
+        "switch_product_review": switch_product_review,
+        "release_blockers": switch_product_review["release_blockers"],
         "gates": {
             "two_doorway_zones_present": len(controls) == 2,
             "four_wall_side_options_present": len(control_options) == 4,
@@ -666,6 +775,7 @@ def main() -> int:
                 "zone_only" in row["coordinate_status"] for row in controls + gas_zones
             ) and all("pending" in row["coordinate_status"] for row in router_zones),
             "automatic_ifc_write_allowed": False,
+            "switch_product_release_ready": switch_product_review["release_ready"],
             "construction_release_ready": False,
         },
     }
