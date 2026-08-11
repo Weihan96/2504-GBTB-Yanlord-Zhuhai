@@ -115,7 +115,12 @@ def build_rows(root: Path, ifc_hash: str) -> tuple[list[dict[str, str]], dict[st
             f"S701-{item['appliance_id']}", "家电与移动厨电", item["appliance_id"], item["appliance_name"],
             "；".join(confirmed) or "尚无关闭项", "；".join(candidate) or "无位置候选",
             "、".join(unresolved) or "仍须厂家安装图与现场接口复核", item["evidence_reference"] or "appliance-input-register.csv",
-            "partial_input" if item["status"] == "部分确认" else "input_required", ifc_hash,
+            (
+                "confirmed_input_installation_review_pending"
+                if item["status"] == "已确认"
+                else "partial_input" if item["status"] == "部分确认" else "input_required"
+            ),
+            ifc_hash,
         ))
 
     door_window_rows = read_csv(sources["doors_windows"])

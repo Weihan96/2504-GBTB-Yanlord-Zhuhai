@@ -242,10 +242,14 @@ def validate_appliances(rows: list[dict[str, str]], baseline: list[dict[str, str
             errors.append(f"{row['appliance_id']}: quantity must be a positive integer")
         if row["rated_power_w"]:
             try:
-                if float(row["rated_power_w"]) <= 0:
+                rated_power = float(row["rated_power_w"])
+                if rated_power < 0 or (rated_power == 0 and row["gas_required"] != "yes"):
                     raise ValueError
             except ValueError:
-                errors.append(f"{row['appliance_id']}: rated_power_w must be positive")
+                errors.append(
+                    f"{row['appliance_id']}: rated_power_w must be positive; "
+                    "zero is allowed only for a gas appliance with no mains load"
+                )
         if row["status"] == "已确认":
             for field in ("storage_location_confirmed", "use_location_confirmed", "rated_power_w", "model"):
                 if not row[field]:
