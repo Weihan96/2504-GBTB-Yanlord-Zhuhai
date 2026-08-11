@@ -3,7 +3,12 @@ A104-M07-EVIDENCE,A-104/E-302,P0,yes,请提供主卧门 M07 的官方 CAD/门表
 
 freestanding wardrobe and wall mounted Pivot",用户已确认 Master A 更符合实际开门贴墙关系；当前 IFC 无宿主洞口且 OperationType=NOTDEFINED,A104-R03;E302-MASTER-SIDE,候选侧已优选但施工点位未冻结
 E302-ENTRY-SIDE,E-302,P0,yes,入户控制面板最终采用 Entry A 还是 Entry B,Entry A（靠进入后顺手侧且避开门扇/门套）,Entry A,,待填写,,门口控制应位于真实墙面并满足门扇和柜门操作,E302 entry control,需结合现场开门方向和门套净宽
-E302-ENTRY-PANEL,E-302,P0,yes,入户面板包含哪些键以及采用一块还是分组面板,客厅双控；书房双控；餐厅双控；照明总控，优先一体四位或相邻同高分组,这款怎么样？matter 协议？那是什么？knx吗？可以安卓用吗？苹果手机是可以用倒是,,待填写,【淘宝】假一赔四 https://e.tb.cn/h.87aSpFYZgStgIgK?tk=DBrSTaSu8bF CZ057 「JINK Switch EGG智能墙壁开关场景EGG直连全屋智能家居Thread」,已确认三组双控和入户照明总控均为实体有线控制,E302 entry panel,总控不得切断冰箱/网络/安防等持续供电
+E302-ENTRY-PANEL,E-302,P0,yes,入户面板包含哪些键以及采用一块还是分组面板,客厅双控；书房双控；餐厅双控；照明总控，优先一体四位或相邻同高分组,这款怎么样？matter 协议？那是什么？knx吗？可以安卓用吗？苹果手机是可以用倒是,,待填写,"【淘宝】假一赔四 https://e.tb.cn/h.87aSpFYZgStgIgK?tk=DBrSTaSu8bF CZ057 「JINK Switch EGG智能墙壁开关场景EGG直连全屋智能家居Thread」
+
+CSA JINK 8e: https://csa-iot.org/csa_product/jink-8e-switch-series-6/
+Apple Matter: https://support.apple.com/en-ie/102135
+Google Matter: https://support.google.com/googlehome/answer/12391458?hl=en
+KNX position: https://knx.org/news/knx-and-matter-position-paper",CSA 官方库确认 Longan Link 的 JINK 8e 系列存在 Matter 1.1、Thread + Bluetooth 认证；Apple 和 Google 官方均支持 Matter 多生态控制；KNX 官方将 Matter 视为可结合但不同的体系,E302 entry panel,Matter 不是 KNX；Android 与 Apple 均可通过相应 Matter 平台控制；Thread 设备需 Thread Border Router。淘宝 EGG 具体 SKU 尚未对应到 CSA Family SKU，且负载类型、零火线、面板模数和接线图未核实，不得选定
 E302-MASTER-SIDE,E-302,P0,yes,主卧内 Master A 与主卧入口外 Master B 的真实墙侧分别在哪里,Master A 位于主卧内门后贴墙侧并控制主卧氛围/重点照明；Master B 位于主卧入口外并控制客厅/书房/餐厅三组双控；两处均待 A-104 关闭真实墙侧,"Master A，控制主卧氛围照明和重点照明的按钮，在主卧内，不是控制外部客厅书房餐厅的
 
 PS: 这款也不错，考虑到开关要安装到衣柜的见光板上",,需证据,"【淘宝】假一赔四 https://e.tb.cn/h.87aqXDS1nDac9bu?tk=4YpQTa7crQs CZ005 「JINK Switch 2.5DNeo Matter墙壁开关欧规英规通用苹果玻璃开关」
