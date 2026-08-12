@@ -68,6 +68,22 @@ test("INT1 candidate preserves role split and blocks unverified fabrication inpu
   expect(kitchenProducts.get("APP-011")?.model).toContain("HB754G2B1W");
   expect(kitchenProducts.get("APP-012")?.model).toContain("ER9EPA33MP/01");
   expect(kitchenProducts.get("APP-013")?.model).toContain("LS33R6VB9W/01");
+  for (const equipmentId of ["APP-009", "APP-010"]) {
+    const dishwasher = kitchenProducts.get(equipmentId);
+    expect(dishwasher?.sheet_id).toBe("I-501");
+    expect(dishwasher?.use_location).toBe("西厨岛台");
+    expect(dishwasher?.procurement_status).toBe("candidate");
+    expect(dishwasher?.final_product_confirmed).toBe(false);
+    expect(dishwasher?.project_interface_status).toBe("unlocated");
+    expect(dishwasher?.official_source_ids).toEqual([
+      "APP-DW-INSTALL-001",
+      "APP-DW-SPEC-001",
+    ]);
+    expect(dishwasher.requirements.every((item: any) =>
+      item.status === "confirmed" &&
+      ["official_exact_model", "user_input"].includes(item.value_origin)
+    )).toBe(true);
+  }
   const ovenRequirements = new Map(
     kitchenProducts.get("APP-011").requirements.map((item: any) => [item.parameter_key, item]),
   );

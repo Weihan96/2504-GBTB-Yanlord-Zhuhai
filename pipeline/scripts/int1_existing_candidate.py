@@ -31,6 +31,7 @@ EXPECTED_FURNITURE = 89
 EXPECTED_FIXED = 70
 EXPECTED_LOOSE = 19
 EXPECTED_SHEETS = {"I-501", "I-502", "I-503", "I-504"}
+KITCHEN_PRODUCT_IDS = ("APP-009", "APP-010", "APP-011", "APP-012", "APP-013")
 
 KITCHEN_APPLIANCE_IDS = {
     "0UOnmuAdP1MPy6p3olwiEU",  # WD01 water dispenser
@@ -93,7 +94,10 @@ BLOCKERS = [
     {
         "issue_id": "INT1-BLOCK-001",
         "scope": "equipment_installation_drawings",
-        "condition": "Final equipment installation drawings are missing.",
+        "condition": (
+            "Product installation evidence and project rough-in locations are incomplete; "
+            "available exact-model constraints are listed separately."
+        ),
         "stop_condition": (
             "Do not freeze cabinet openings, dedicated services, ventilation, "
             "heat-clearance or access dimensions from the existing model envelope."
@@ -401,6 +405,52 @@ def requirement_snapshot(row: dict[str, str]) -> dict[str, Any]:
     }
 
 
+def kitchen_product_snapshot(
+    equipment_id: str,
+    equipment_by_id: dict[str, dict[str, str]],
+    requirements_by_id: dict[str, list[dict[str, str]]],
+) -> dict[str, Any]:
+    equipment = equipment_by_id[equipment_id]
+    requirements = [
+        requirement_snapshot(row)
+        for row in requirements_by_id.get(equipment_id, [])
+        if row["status"] == "confirmed"
+        and row["value_origin"] in {"official_exact_model", "user_input"}
+    ]
+    official_source_ids = sorted(
+        {row["source_id"] for row in requirements if row["source_id"]}
+    )
+    return {
+        "equipment_id": equipment_id,
+        "sheet_id": "I-501",
+        "item_name": equipment["item_name"],
+        "manufacturer": equipment["manufacturer"],
+        "model": equipment["model"],
+        "procurement_status": equipment["procurement_status"],
+        "decision_status": equipment["decision_status"],
+        "use_location": (
+            equipment["use_location_confirmed"]
+            or equipment["use_location_candidate"]
+        ),
+        "official_source_ids": official_source_ids,
+        "requirements": requirements,
+        "product_constraints_available": bool(official_source_ids),
+        "project_interface_status": "unlocated",
+        "final_product_confirmed": (
+            equipment["procurement_status"] == "purchased_arrived"
+            and equipment["decision_status"] == "confirmed"
+        ),
+        "release_blockers": [
+            "project rough-in XYZ, valve, drain adaptor, hose path and opening position are unlocated",
+            *(
+                []
+                if equipment["procurement_status"] == "purchased_arrived"
+                else ["final procurement and installed-unit identity are unconfirmed"]
+            ),
+        ],
+    }
+
+
 def main() -> None:
     args = parse_args()
     source_path = args.input.resolve()
@@ -602,19 +652,10 @@ def main() -> None:
         },
         "blockers": BLOCKERS,
         "kitchen_product_installation_requirements": [
-            {
-                "equipment_id": equipment_id,
-                "item_name": equipment_by_id[equipment_id]["item_name"],
-                "manufacturer": equipment_by_id[equipment_id]["manufacturer"],
-                "model": equipment_by_id[equipment_id]["model"],
-                "procurement_status": equipment_by_id[equipment_id]["procurement_status"],
-                "decision_status": equipment_by_id[equipment_id]["decision_status"],
-                "requirements": [
-                    requirement_snapshot(row)
-                    for row in requirements_by_id.get(equipment_id, [])
-                ],
-            }
-            for equipment_id in ("APP-011", "APP-012", "APP-013")
+            kitchen_product_snapshot(
+                equipment_id, equipment_by_id, requirements_by_id
+            )
+            for equipment_id in KITCHEN_PRODUCT_IDS
         ],
         "records": object_records,
     }

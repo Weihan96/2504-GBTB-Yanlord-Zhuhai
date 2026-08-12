@@ -93,6 +93,77 @@ def read_candidate(path: Path) -> tuple[list[dict[str, Any]], list[dict[str, str
     return records, blockers, next(iter(source_hashes))
 
 
+def read_dishwasher_interfaces(path: Path, source_hash: str) -> list[dict[str, Any]]:
+    report = json.loads(path.read_text(encoding="utf-8"))
+    if report.get("source", {}).get("ifc_sha256") != source_hash:
+        raise RuntimeError("INT1 product-interface report does not match the formal IFC")
+    by_id = {
+        row["equipment_id"]: row
+        for row in report.get("kitchen_product_installation_requirements", [])
+    }
+    expected_ids = ["APP-009", "APP-010"]
+    if not all(equipment_id in by_id for equipment_id in expected_ids):
+        raise RuntimeError("INT1 report is missing APP-009/APP-010 interfaces")
+    result = []
+    for equipment_id in expected_ids:
+        row = by_id[equipment_id]
+        requirements = {item["parameter_key"]: item for item in row["requirements"]}
+        required_keys = {
+            "niche_height_min", "niche_height_max", "niche_width_min",
+            "niche_width_max", "niche_depth_min", "water_connection",
+            "drain_connection_od",
+        }
+        if not required_keys.issubset(requirements):
+            raise RuntimeError(f"{equipment_id}: incomplete official interface constraints")
+        for key in required_keys:
+            requirement = requirements[key]
+            if (
+                requirement["status"] != "confirmed"
+                or requirement["value_origin"] != "official_exact_model"
+                or requirement["source_id"] != "APP-DW-INSTALL-001"
+            ):
+                raise RuntimeError(
+                    f"{equipment_id}: {key} is not confirmed exact-model evidence"
+                )
+        if row["sheet_id"] != "I-501" or row["use_location"] != "西厨岛台":
+            raise RuntimeError(f"{equipment_id}: unexpected drawing or use location")
+        if row["project_interface_status"] != "unlocated":
+            raise RuntimeError(f"{equipment_id}: project interface must remain unlocated")
+        if row["procurement_status"] != "candidate" or row["final_product_confirmed"]:
+            raise RuntimeError(f"{equipment_id}: dishwasher must remain an unpurchased candidate")
+        result.append(row)
+    shared_keys = (
+        "niche_height_min", "niche_height_max", "niche_width_min",
+        "niche_width_max", "niche_depth_min",
+    )
+    signatures = {
+        tuple(
+            (
+                next(item for item in row["requirements"] if item["parameter_key"] == key)["value"],
+                next(item for item in row["requirements"] if item["parameter_key"] == key)["unit"],
+            )
+            for key in shared_keys
+        )
+        for row in result
+    }
+    if len(signatures) != 1:
+        raise RuntimeError("APP-009/APP-010 official niche constraints do not match")
+    return result
+
+
+def interface_requirement(interface: dict[str, Any], key: str) -> dict[str, str]:
+    return next(
+        item for item in interface["requirements"] if item["parameter_key"] == key
+    )
+
+
+def display_requirement(interface: dict[str, Any], key: str) -> str:
+    requirement = interface_requirement(interface, key)
+    return " ".join(
+        part for part in (str(requirement["value"]), requirement["unit"]) if part
+    )
+
+
 def plan_rect(record: dict[str, Any]) -> tuple[float, float, float, float]:
     minimum = record["bbox_min_mm"]
     maximum = record["bbox_max_mm"]
@@ -127,6 +198,7 @@ def make_svg(
     blockers: list[dict[str, str]],
     source_hash: str,
     underlay_hash: str,
+    dishwasher_interfaces: list[dict[str, Any]],
 ) -> str:
     spec = SHEETS[sheet_id]
     overlays = []
@@ -160,6 +232,50 @@ def make_svg(
         )
         block_y += 5.0
 
+    interface_lines: list[str] = []
+    if sheet_id == "I-501":
+        interface_lines.append(svg_text(382.0, 286.0, "PRODUCT INTERFACES · NO PROJECT XYZ", "subtitle"))
+        row_y = 293.0
+        for interface in dishwasher_interfaces:
+            model = interface["model"].replace("Siemens ", "")
+            use_location = interface["use_location"]
+            water = display_requirement(interface, "water_connection")
+            drain = display_requirement(interface, "drain_connection_od")
+            interface_lines.append(
+                f'<text x="382" y="{row_y:.3f}" class="interface" '
+                f'data-equipment-id="{escape(interface["equipment_id"])}" '
+                f'data-project-interface-status="unlocated">'
+                f'{escape(interface["equipment_id"])} · {escape(model)} · CANDIDATE / NOT PURCHASED</text>'
+            )
+            interface_lines.append(
+                svg_text(
+                    382.0,
+                    row_y + 4.0,
+                    f"Use: {use_location} · {water} · drain Ø{drain}",
+                    "interface",
+                )
+            )
+            row_y += 10.0
+        shared = dishwasher_interfaces[0]
+        niche_height_min = interface_requirement(shared, "niche_height_min")["value"]
+        niche_height_max = display_requirement(shared, "niche_height_max")
+        niche_width_min = interface_requirement(shared, "niche_width_min")["value"]
+        niche_width_max = display_requirement(shared, "niche_width_max")
+        niche_depth_min = display_requirement(shared, "niche_depth_min")
+        interface_lines.append(
+            svg_text(
+                382.0,
+                row_y + 1.0,
+                f"Niche H{niche_height_min}–{niche_height_max} · "
+                f"W{niche_width_min}–{niche_width_max} · D≥{niche_depth_min} "
+                "(official product constraint)",
+                "interface",
+            )
+        )
+        interface_lines.append(
+            svg_text(382.0, row_y + 5.0, "BLOCK: rough-in XYZ / valves / hose path / opening position", "block")
+        )
+
     legend = []
     legend_y = 373.5
     legend_x = 12.0
@@ -184,6 +300,7 @@ def make_svg(
   .index {{ font-size: 2.75px; }}
   .legend {{ font-size: 2.5px; }}
   .block {{ font-size: 2.65px; font-weight: 700; fill: #b32121; }}
+  .interface {{ font-size: 2.55px; fill: #244f65; }}
 </style>
 <rect width="500" height="400" fill="white"/>
 <rect x="7" y="7" width="366" height="366" fill="#fafafa" stroke="#30363b" stroke-width="0.5"/>
@@ -198,6 +315,7 @@ def make_svg(
 {svg_text(382, 47, "Overlay = world bbox coordination envelope", "meta")}
 {svg_text(382, 51, "NOT fabrication / opening / rough-in dimensions", "block")}
 {''.join(index_lines)}
+{''.join(interface_lines)}
 {''.join(block_lines)}
 {''.join(legend)}
 {svg_text(12, 384, "Exact GlobalId/object index: pipeline/decisions/int1-existing-review.csv", "meta")}
@@ -212,6 +330,7 @@ def parse_args() -> argparse.Namespace:
     parser.add_argument("--drawings-dir", required=True, type=Path)
     parser.add_argument("--pdf-dir", required=True, type=Path)
     parser.add_argument("--build-dir", required=True, type=Path)
+    parser.add_argument("--existing-report", required=True, type=Path)
     parser.add_argument("--render-script", type=Path)
     parser.add_argument("--render-pdfs", action="store_true")
     return parser.parse_args()
@@ -229,6 +348,7 @@ def main() -> None:
         {"I-501": 70, "I-502": 33, "I-503": 1, "I-504": 25}
     ):
         raise RuntimeError("unexpected INT1 sheet object counts")
+    dishwasher_interfaces = read_dishwasher_interfaces(args.existing_report, source_hash)
 
     args.drawings_dir.mkdir(parents=True, exist_ok=True)
     args.pdf_dir.mkdir(parents=True, exist_ok=True)
@@ -241,7 +361,14 @@ def main() -> None:
             raise RuntimeError(f"missing INT1 underlay: {underlay}")
         output_svg = args.drawings_dir / spec["svg"]
         output_svg.write_text(
-            make_svg(sheet_id, sheet_records, blockers, source_hash, sha256(underlay)) + "\n",
+            make_svg(
+                sheet_id,
+                sheet_records,
+                blockers,
+                source_hash,
+                sha256(underlay),
+                dishwasher_interfaces,
+            ) + "\n",
             encoding="utf-8",
         )
         root = ET.parse(output_svg).getroot()
@@ -263,6 +390,9 @@ def main() -> None:
             "grouped_index_count": len(grouped_index(sheet_records)),
             "dimension_status": "existing_world_bbox_not_fabrication_dimension",
             "block_count": len(blockers),
+            "installation_interface_row_count": (
+                len(dishwasher_interfaces) if sheet_id == "I-501" else 0
+            ),
             "mechanical_pass": True,
         }
         if args.render_pdfs:
@@ -305,6 +435,11 @@ def main() -> None:
             "block_count": len(blockers),
             "all_overlays_are_coordination_envelopes": True,
             "pdfs_rendered": args.render_pdfs,
+            "installation_interface_row_count": len(dishwasher_interfaces),
+            "unlocated_interface_count": sum(
+                row["project_interface_status"] == "unlocated"
+                for row in dishwasher_interfaces
+            ),
         },
         "gates": {
             "candidate_generation_pass": all(row["mechanical_pass"] for row in sheet_reports),
