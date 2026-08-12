@@ -135,6 +135,7 @@
     "pipeline:ids-validate": "python3 pipeline/scripts/ids_validate.py --input '2504 GBTB Yanlord Zhuhai.ifc' --ids pipeline/ids/p0-construction-information.ids --report build/ids/p0-report.json --markdown build/ids/p0-report.md",
     "pipeline:ids-audit-read-only": "python3 pipeline/scripts/ids_validate.py --input '2504 GBTB Yanlord Zhuhai.ifc' --ids pipeline/ids/p0-construction-information.ids --stdout-only --fail-on-failure",
     "pipeline:p0-ids-metadata-candidate": "python3 pipeline/scripts/p0_ids_metadata_candidate.py",
+    "pipeline:a103-wall-tag-candidate": "python3 pipeline/scripts/a103_wall_tag_candidate.py",
     "pipeline:covering-semantics-candidate": "python3 pipeline/scripts/covering_semantics_candidate.py",
     "pipeline:space-placement-recovery": "python3 pipeline/scripts/space_placement_recovery_candidate.py",
     "pipeline:coordinate-noise-candidate": "python3 pipeline/scripts/coordinate_normalize.py clean-noise --input '2504 GBTB Yanlord Zhuhai.ifc' --output build/candidates/2504-GBTB-float-noise-clean.ifc --report build/coordinate-normalization/noise-candidate-report.json",
