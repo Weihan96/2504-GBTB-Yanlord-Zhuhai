@@ -19,7 +19,6 @@ import ifcopenshell.util.placement
 from svg_audit_underlay import validate_wall_plan_source
 from sync_owner_inputs import DECISION_HEADERS, normalized_inputs, read_csv as read_owner_csv, validate_decisions
 
-EXPECTED_IFC_SHA256 = "9a4dac0fceaa4d274c604e59f0c73d187b6db7aaece0a028f51d8d036449df1c"
 KITCHEN_FIRE_SENSOR_GLOBAL_ID = "2fwceKahvBqQXqal2ZcIUF"
 SCALE_DENOMINATOR = 50.0
 SVG_WORLD_OFFSET_MM = 10000.0
@@ -47,6 +46,7 @@ def parse_args() -> argparse.Namespace:
     root = Path(__file__).resolve().parents[2]
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--ifc", type=Path, default=root / "2504 GBTB Yanlord Zhuhai.ifc")
+    parser.add_argument("--expected-ifc-sha256", help="Optional caller-frozen formal IFC hash")
     parser.add_argument("--rules", type=Path, default=root / "pipeline/decisions/elec-design-rules.csv")
     parser.add_argument("--ceiling-devices", type=Path, default=root / "pipeline/decisions/a106-ceiling-device-review.csv")
     parser.add_argument("--doors", type=Path, default=root / "pipeline/decisions/a104-door-window-review.csv")
@@ -610,8 +610,10 @@ def render_svg(source: str, report: dict[str, Any]) -> str:
 def main() -> int:
     args = parse_args()
     source_hash = sha256(args.ifc)
-    if source_hash != EXPECTED_IFC_SHA256:
-        raise RuntimeError(f"formal IFC hash changed: {source_hash}")
+    if args.expected_ifc_sha256 and source_hash != args.expected_ifc_sha256:
+        raise RuntimeError(
+            f"formal IFC hash changed: expected {args.expected_ifc_sha256}, got {source_hash}"
+        )
     rules = read_csv(args.rules)
     controls = control_zones(read_csv(args.doors))
     owner_decisions = effective_owner_decisions(args.owner_decisions)

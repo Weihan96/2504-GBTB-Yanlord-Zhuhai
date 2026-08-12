@@ -47,3 +47,15 @@ test("equipment SSOT never writes the formal IFC", () => {
   expect(source).not.toContain("model.write(");
   expect(source).not.toContain("ifc.write(");
 });
+
+test("equipment SSOT can audit an IFC evidence hash refresh without writing", () => {
+  const sourcePath = resolve(root, "pipeline/decisions/source-evidence-register.csv");
+  const before = readFileSync(sourcePath);
+  const run = Bun.spawnSync(["python3", script, "refresh-ifc-source-hashes", "--dry-run"], { cwd: root });
+  expect(run.exitCode, run.stderr.toString()).toBe(0);
+  const report = JSON.parse(run.stdout.toString());
+  expect(report.scoped_ifc_object_count).toBe(162);
+  expect(report.target_source_count).toBeGreaterThan(1);
+  expect(report.dry_run).toBe(true);
+  expect(readFileSync(sourcePath)).toEqual(before);
+});

@@ -25,7 +25,6 @@ from shapely.ops import unary_union
 from svg_audit_underlay import validate_wall_plan_source
 
 
-EXPECTED_SOURCE_SHA256 = "9a4dac0fceaa4d274c604e59f0c73d187b6db7aaece0a028f51d8d036449df1c"
 LIGHT_TYPE_GLOBAL_ID = "26DmeZ15D7ZeHYavba3FdK"
 EXPECTED_PROXY_IDS = {
     "1faflkXXH6M9cnYPE9Liir",
@@ -62,7 +61,7 @@ def parse_args() -> argparse.Namespace:
     parser.add_argument("--source-svg", type=Path)
     parser.add_argument("--e301-svg", type=Path)
     parser.add_argument("--e303-svg", type=Path)
-    parser.add_argument("--expected-sha256", default=EXPECTED_SOURCE_SHA256)
+    parser.add_argument("--expected-sha256", help="Optional caller-frozen formal IFC hash")
     parser.add_argument("--tolerance-mm", type=float, default=0.1)
     return parser.parse_args()
 
@@ -513,7 +512,7 @@ def main() -> int:
     if any(drawing_paths) and not all(drawing_paths):
         raise RuntimeError("--source-svg, --e301-svg, and --e303-svg must be supplied together")
     source_sha = sha256(args.input)
-    if source_sha != args.expected_sha256:
+    if args.expected_sha256 and source_sha != args.expected_sha256:
         raise RuntimeError(
             f"formal IFC SHA drift: {source_sha} != {args.expected_sha256}"
         )

@@ -7,7 +7,8 @@ import { spawnSync } from "bun";
 
 const root = resolve(import.meta.dir, "../..");
 const script = resolve(root, "pipeline/scripts/elec_renovation_round1_candidate.py");
-const currentIfcHash = "9a4dac0fceaa4d274c604e59f0c73d187b6db7aaece0a028f51d8d036449df1c";
+const formalIfc = resolve(root, "2504 GBTB Yanlord Zhuhai.ifc");
+const currentIfcHash = createHash("sha256").update(readFileSync(formalIfc)).digest("hex");
 const temp = mkdtempSync(join(tmpdir(), "elec-renovation-round1-test-"));
 const output = join(temp, "candidate.json");
 const svg = join(temp, "candidate.svg");

@@ -21,7 +21,6 @@ from shapely.ops import unary_union
 from svg_audit_underlay import validate_wall_plan_source
 
 
-EXPECTED_IFC_SHA256 = "9a4dac0fceaa4d274c604e59f0c73d187b6db7aaece0a028f51d8d036449df1c"
 SPACE_IDS = {
     "R04": "2fhEbDfK1EkhJwlPikNm$b",
     "R09": "3gHz6U6BfFXgV6PnRzfOf$",
@@ -47,6 +46,7 @@ def parse_args() -> argparse.Namespace:
     root = Path(__file__).resolve().parents[2]
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--ifc", type=Path, default=root / "2504 GBTB Yanlord Zhuhai.ifc")
+    parser.add_argument("--expected-ifc-sha256", help="Optional caller-frozen formal IFC hash")
     parser.add_argument("--register", type=Path, default=root / "pipeline/decisions/a106-ceiling-device-review.csv")
     parser.add_argument("--demolition-register", type=Path, default=root / "pipeline/decisions/a102-demolition-review.csv")
     parser.add_argument("--elec-existing", type=Path, default=root / "build/elec/elec-existing-candidate.json")
@@ -132,8 +132,10 @@ def world_to_svg(position_mm: list[float]) -> tuple[float, float]:
 
 def compile_report(args: argparse.Namespace) -> dict[str, Any]:
     source_hash = sha256(args.ifc)
-    if source_hash != EXPECTED_IFC_SHA256:
-        raise RuntimeError(f"formal IFC hash changed: {source_hash}")
+    if args.expected_ifc_sha256 and source_hash != args.expected_ifc_sha256:
+        raise RuntimeError(
+            f"formal IFC hash changed: expected {args.expected_ifc_sha256}, got {source_hash}"
+        )
     existing = json.loads(args.elec_existing.read_text(encoding="utf-8"))
     if existing["source"]["sha256"] != source_hash:
         raise RuntimeError("ELEC existing report does not match the formal IFC")

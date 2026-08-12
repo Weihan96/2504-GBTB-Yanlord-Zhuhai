@@ -11,6 +11,8 @@ import sys
 from pathlib import Path
 from typing import Any, Iterable
 
+import ifcopenshell
+
 
 STAGES = ("reviewed-candidate", "construction-release-candidate")
 REGISTER_REQUIRED_FIELDS = {
@@ -300,7 +302,21 @@ def evaluate(args: argparse.Namespace) -> tuple[dict[str, Any], int]:
 
     if ifc_path.is_file():
         ifc_hash = sha256(ifc_path)
-        checks.append(make_check("FORMAL-IFC", "pass", "formal IFC is readable"))
+        try:
+            ifc_model = ifcopenshell.open(str(ifc_path))
+            entity_ids = ifc_model.wrapped_data.entity_names()
+            ifc_details = {
+                "schema": ifc_model.schema,
+                "entity_count": len(entity_ids),
+                "max_step_id": max(entity_ids, default=0),
+                "root_count": len(ifc_model.by_type("IfcRoot")),
+                "product_count": len(ifc_model.by_type("IfcProduct")),
+            }
+            checks.append(make_check("FORMAL-IFC", "pass", "formal IFC parses successfully", ifc_details))
+        except Exception as exc:
+            message = f"formal IFC cannot be parsed: {exc}"
+            errors.append(message)
+            checks.append(make_check("FORMAL-IFC", "fail", message))
     else:
         ifc_hash = ""
         message = f"formal IFC does not exist: {ifc_path}"

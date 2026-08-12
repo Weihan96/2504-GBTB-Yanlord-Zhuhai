@@ -24,7 +24,6 @@ from sync_owner_inputs import (
 )
 from equipment_ssot import appliance_projection_rows, validate as validate_equipment_ssot
 
-EXPECTED_IFC_SHA256 = "9a4dac0fceaa4d274c604e59f0c73d187b6db7aaece0a028f51d8d036449df1c"
 SCALE_DENOMINATOR = 50.0
 SVG_WORLD_OFFSET_MM = 10000.0
 LOAD_SCENARIO_HEADERS = [
@@ -48,6 +47,7 @@ def parse_args() -> argparse.Namespace:
     root = Path(__file__).resolve().parents[2]
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--ifc", type=Path, default=root / "2504 GBTB Yanlord Zhuhai.ifc")
+    parser.add_argument("--expected-ifc-sha256", help="Optional caller-frozen formal IFC hash")
     parser.add_argument(
         "--requirements",
         type=Path,
@@ -611,8 +611,10 @@ def main() -> int:
     args = parse_args()
     root = Path(__file__).resolve().parents[2]
     ifc_hash = sha256(args.ifc)
-    if ifc_hash != EXPECTED_IFC_SHA256:
-        raise RuntimeError(f"formal IFC hash changed: {ifc_hash}")
+    if args.expected_ifc_sha256 and ifc_hash != args.expected_ifc_sha256:
+        raise RuntimeError(
+            f"formal IFC hash changed: expected {args.expected_ifc_sha256}, got {ifc_hash}"
+        )
     requirements = read_requirements(args.requirements)
     existing = read_json(args.elec_existing)
     positioning = read_json(args.elec_positioning)

@@ -1,6 +1,6 @@
 import { expect, test } from "bun:test";
 import { createHash } from "node:crypto";
-import { mkdtempSync, readFileSync } from "node:fs";
+import { mkdtempSync, readFileSync, readdirSync } from "node:fs";
 import { tmpdir } from "node:os";
 import { join, resolve } from "node:path";
 
@@ -72,3 +72,19 @@ test("IDS report declares the current IFC hash and rejects a stale caller freeze
   expect(rejected.exitCode).toBe(1);
   expect(rejected.stderr.toString()).toContain("caller-frozen hash");
 }, 20_000);
+
+test("IDS stdout-only audit writes no files and hard-fails unmet requirements", () => {
+  const ifc = resolve(root, "2504 GBTB Yanlord Zhuhai.ifc");
+  const ids = resolve(root, "pipeline/ids/p0-construction-information.ids");
+  const empty = mkdtempSync(join(tmpdir(), "ids-stdout-only-"));
+  const run = Bun.spawnSync([
+    "python3", modulePath, "--input", ifc, "--ids", ids,
+    "--stdout-only", "--fail-on-failure",
+  ], { cwd: empty, stdout: "pipe", stderr: "pipe" });
+  expect(run.exitCode).toBe(1);
+  expect(run.stderr.toString()).toBe("");
+  const report = JSON.parse(run.stdout.toString());
+  expect(report.status).toBe(false);
+  expect(report.source.ifc_sha256).toHaveLength(64);
+  expect(readdirSync(empty)).toEqual([]);
+}, 40_000);

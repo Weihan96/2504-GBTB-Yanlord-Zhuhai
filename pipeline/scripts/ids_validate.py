@@ -136,15 +136,20 @@ def parse_args() -> argparse.Namespace:
     parser = argparse.ArgumentParser()
     parser.add_argument("--input", required=True, type=Path)
     parser.add_argument("--ids", required=True, type=Path)
-    parser.add_argument("--report", required=True, type=Path)
+    parser.add_argument("--report", type=Path)
     parser.add_argument("--markdown", type=Path)
     parser.add_argument("--expected-ifc-sha256")
     parser.add_argument("--fail-on-failure", action="store_true")
+    parser.add_argument("--stdout-only", action="store_true")
     return parser.parse_args()
 
 
 def main() -> int:
     args = parse_args()
+    if args.stdout_only and (args.report or args.markdown):
+        raise SystemExit("--stdout-only cannot be combined with --report or --markdown")
+    if not args.stdout_only and not args.report:
+        raise SystemExit("--report is required unless --stdout-only is used")
     if not args.input.is_file():
         raise SystemExit(f"IFC not found: {args.input}")
     if not args.ids.is_file():
@@ -187,26 +192,28 @@ def main() -> int:
         }
     )
 
-    args.report.parent.mkdir(parents=True, exist_ok=True)
-    args.report.write_text(json.dumps(report, ensure_ascii=False, indent=2) + "\n")
-    if args.markdown:
-        args.markdown.parent.mkdir(parents=True, exist_ok=True)
-        args.markdown.write_text(markdown_report(report))
-
-    print(
-        json.dumps(
-            {
-                "report": str(args.report),
-                "markdown": str(args.markdown) if args.markdown else None,
-                "status": report["status"],
-                "specifications_pass": report["total_specifications_pass"],
-                "specifications_total": report["total_specifications"],
-                "checks_pass": report["total_checks_pass"],
-                "checks_total": report["total_checks"],
-            },
-            ensure_ascii=False,
+    if args.stdout_only:
+        print(json.dumps(report, ensure_ascii=False))
+    else:
+        args.report.parent.mkdir(parents=True, exist_ok=True)
+        args.report.write_text(json.dumps(report, ensure_ascii=False, indent=2) + "\n")
+        if args.markdown:
+            args.markdown.parent.mkdir(parents=True, exist_ok=True)
+            args.markdown.write_text(markdown_report(report))
+        print(
+            json.dumps(
+                {
+                    "report": str(args.report),
+                    "markdown": str(args.markdown) if args.markdown else None,
+                    "status": report["status"],
+                    "specifications_pass": report["total_specifications_pass"],
+                    "specifications_total": report["total_specifications"],
+                    "checks_pass": report["total_checks_pass"],
+                    "checks_total": report["total_checks"],
+                },
+                ensure_ascii=False,
+            )
         )
-    )
     return 1 if args.fail_on_failure and not report["status"] else 0
 
 

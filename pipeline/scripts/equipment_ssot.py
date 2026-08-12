@@ -583,6 +583,20 @@ def audit_ifc(root: Path, report_path: Path) -> dict[str, Any]:
     validate(root)
     _, masters, _, _ = load_canonical(root)
     model = ifcopenshell.open(root / FORMAL_IFC)
+    summary, coverage = assert_ifc_coverage(root, masters, model)
+    report = {"mode": "read_only_equipment_ssot_ifc_coverage", "summary": summary,
+              "coverage": coverage}
+    report_path.parent.mkdir(parents=True, exist_ok=True)
+    report_path.write_text(json.dumps(report, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
+    return summary
+
+
+def assert_ifc_coverage(root: Path, masters: list[dict[str, str]], model: Any) -> tuple[dict[str, Any], list[dict[str, str]]]:
+    """Prove canonical equipment identities still match the formal IFC.
+
+    This intentionally does not call ``validate`` first, so it can guard a
+    controlled source-hash refresh after a legitimate, geometry-safe IFC save.
+    """
     scoped = ["IfcElectricAppliance", "IfcFurniture", "IfcSanitaryTerminal", "IfcWasteTerminal", "IfcSensor", "IfcDoor", "IfcWindow"]
     expected: dict[str, str] = {}
     for cls in scoped:
@@ -608,11 +622,39 @@ def audit_ifc(root: Path, report_path: Path) -> dict[str, Any]:
     summary = {"formal_ifc_sha256": sha256(root / FORMAL_IFC), "scope_count": len(expected),
                "covered_count": len(expected), "missing_count": 0, "duplicate_count": 0,
                "class_counts": dict(Counter(expected.values()))}
-    report = {"mode": "read_only_equipment_ssot_ifc_coverage", "summary": summary,
-              "coverage": [{"global_id": gid, "ifc_class": expected[gid], "equipment_id": owners[gid][0]} for gid in sorted(expected)]}
-    report_path.parent.mkdir(parents=True, exist_ok=True)
-    report_path.write_text(json.dumps(report, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
-    return summary
+    coverage = [{"global_id": gid, "ifc_class": expected[gid], "equipment_id": owners[gid][0]} for gid in sorted(expected)]
+    return summary, coverage
+
+
+def refresh_ifc_source_hashes(root: Path, *, dry_run: bool = False) -> dict[str, Any]:
+    """Refresh only evidence rows whose local source is the formal IFC.
+
+    Product identity coverage is checked before any CSV write. This keeps an
+    elevation-only or relationship-only IFC save from silently accepting lost,
+    duplicated, or newly unregistered equipment identities.
+    """
+    schema, masters, _, sources = load_canonical(root)
+    model = ifcopenshell.open(root / FORMAL_IFC)
+    coverage, _ = assert_ifc_coverage(root, masters, model)
+    current_hash = coverage["formal_ifc_sha256"]
+    targets = [row for row in sources if row["source_document"] == FORMAL_IFC and row["local_path"] == FORMAL_IFC]
+    if not targets:
+        raise RuntimeError("no canonical evidence rows point explicitly to the formal IFC")
+    prior_hashes = sorted({row["sha256"] for row in targets})
+    changed = [row for row in targets if row["sha256"] != current_hash]
+    if not dry_run and changed:
+        for row in changed:
+            row["sha256"] = current_hash
+        write_csv(root / SOURCES, schema["tables"]["source-evidence-register.csv"]["columns"], sources)
+        validate(root)
+    return {
+        "formal_ifc_sha256": current_hash,
+        "scoped_ifc_object_count": coverage["scope_count"],
+        "target_source_count": len(targets),
+        "updated_source_count": len(changed),
+        "prior_hashes": prior_hashes,
+        "dry_run": dry_run,
+    }
 
 
 def reconcile(root: Path, report_path: Path) -> dict[str, Any]:
@@ -717,9 +759,10 @@ def migrate_furniture_roles(root: Path) -> dict[str, Any]:
 
 def main() -> int:
     parser = argparse.ArgumentParser()
-    parser.add_argument("command", choices=["migrate", "validate", "sync-projections", "check-projections", "audit-ifc", "reconcile", "normalize-sources", "migrate-furniture-roles", "all"])
+    parser.add_argument("command", choices=["migrate", "validate", "sync-projections", "check-projections", "audit-ifc", "refresh-ifc-source-hashes", "reconcile", "normalize-sources", "migrate-furniture-roles", "all"])
     parser.add_argument("--root", type=Path, default=Path.cwd())
     parser.add_argument("--report", type=Path, default=Path("build/equipment-ssot/ifc-coverage.json"))
+    parser.add_argument("--dry-run", action="store_true")
     args = parser.parse_args()
     root = args.root.resolve()
     result: dict[str, Any] = {}
@@ -730,6 +773,7 @@ def main() -> int:
     elif args.command == "sync-projections": result = projections(root)
     elif args.command == "check-projections": result = projections(root, check=True)
     elif args.command == "audit-ifc": result = audit_ifc(root, args.report if args.report.is_absolute() else root / args.report)
+    elif args.command == "refresh-ifc-source-hashes": result = refresh_ifc_source_hashes(root, dry_run=args.dry_run)
     elif args.command == "reconcile": result = reconcile(root, root / "build/equipment-ssot/migration-reconciliation.json")
     elif args.command == "normalize-sources": result = normalize_source_paths(root)
     elif args.command == "migrate-furniture-roles": result = migrate_furniture_roles(root)

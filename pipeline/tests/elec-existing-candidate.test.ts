@@ -37,6 +37,13 @@ test("ELEC candidate separates unused type definitions from instances", async ()
   expect(source).toContain("不含回路、功率、防水或接口推断");
 });
 
+test("ELEC candidate has no stale project hash baked into its default", async () => {
+  const source = await Bun.file(scriptPath).text();
+  expect(source).toContain('parser.add_argument("--expected-sha256"');
+  expect(source).toContain("if args.expected_sha256 and source_sha != args.expected_sha256");
+  expect(source).not.toContain("EXPECTED_SOURCE_SHA256");
+});
+
 test(
   "ELEC candidate inventories the formal IFC without writing it",
   async () => {

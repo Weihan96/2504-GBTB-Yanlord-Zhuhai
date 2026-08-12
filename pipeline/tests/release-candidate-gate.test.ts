@@ -25,14 +25,24 @@ function sha256(path: string): string {
   return createHash("sha256").update(readFileSync(path)).digest("hex");
 }
 
-function makeFixture(options: { stale?: boolean; duplicate?: boolean } = {}): Fixture {
+function makeFixture(options: { stale?: boolean; duplicate?: boolean; malformedIfc?: boolean } = {}): Fixture {
   const fixtureRoot = mkdtempSync(join(tmpdir(), "release-gate-"));
   const ifc = join(fixtureRoot, "formal.ifc");
   const register = join(fixtureRoot, "drawing-register.csv");
   const report = join(fixtureRoot, "professional-report.json");
   const reportRegister = join(fixtureRoot, "release-report-register.csv");
   mkdirSync(join(fixtureRoot, "output"));
-  writeFileSync(ifc, "ISO-10303-21;\nEND-ISO-10303-21;\n");
+  if (options.malformedIfc) {
+    writeFileSync(ifc, "ISO-10303-21;\nEND-ISO-10303-21;\n");
+  } else {
+    const createIfc = Bun.spawnSync([
+      "python3",
+      "-c",
+      "import ifcopenshell,sys; f=ifcopenshell.file(schema='IFC4'); f.create_entity('IfcProject',GlobalId=ifcopenshell.guid.new(),Name='Test'); f.write(sys.argv[1])",
+      ifc,
+    ]);
+    if (createIfc.exitCode !== 0) throw new Error(createIfc.stderr.toString());
+  }
   writeFileSync(join(fixtureRoot, "output", "A-001.pdf"), "candidate");
   writeFileSync(join(fixtureRoot, "output", "report-proof.png"), "proof");
   const duplicate = options.duplicate
@@ -148,6 +158,16 @@ test("duplicate drawing numbers fail the gate", () => {
   const check = output.checks.find((item: any) => item.id === "DRAWING-NUMBERS");
   expect(check.status).toBe("fail");
   expect(check.details.duplicates).toEqual(["A-001"]);
+});
+
+test("every stage rejects a malformed IFC even when its file hash is current", () => {
+  const fixture = makeFixture({ malformedIfc: true });
+  const run = runGate(fixture, "reviewed-candidate");
+  expect(run.exitCode).toBe(1);
+  const output = JSON.parse(run.stdout);
+  const check = output.checks.find((item: any) => item.id === "FORMAL-IFC");
+  expect(check.status).toBe("fail");
+  expect(check.message).toContain("cannot be parsed");
 });
 
 test("canonical professional reports cannot be omitted by the caller", () => {
