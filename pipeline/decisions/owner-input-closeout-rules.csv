@@ -1,5 +1,7 @@
 input_id,closeout_kind,responsible_party,required_evidence,automatic_close_allowed,notes
-A104-M07-EVIDENCE,site_or_drawing_evidence,建筑设计/现场,项目门表或可定位到 M07 的官方 CAD 或现场开门照片,no,产品通用资料不能替代本项目门扇开启关系
+A103-WALL-TAG-SCHEME,human_design_selection,业主/建筑设计,确认 88 面墙审核图与 EW/NW 编号规则,no,确认后才允许机械写入正式 IFC Tag
+A104-M05-M06-DIMENSIONS,product_interface_evidence,全屋定制/建筑设计,可定位到本项目 M05/M06 Sail 门组的订单门窗表或厂家 shop drawing,no,通用产品页面和 IFC 包围盒不能替代项目名义尺寸
+A104-M07-EVIDENCE,site_or_drawing_evidence,建筑设计/现场,项目门表或可定位到 M07 的官方 CAD、订单或现场开门照片，包含名义宽高和开启关系,no,产品通用资料不能替代本项目门扇尺寸与开启关系
 E302-ENTRY-SIDE,site_or_drawing_evidence,建筑设计/现场,完成面门套柜门与门扇关系尺寸或可定位图纸,no,用户方向已提交但墙侧几何须由项目证据关闭
 E302-ENTRY-PANEL,human_product_selection,业主/电气设计,具体面板 SKU 与 CSA 证书编号及接线负载底盒资料,no,品牌系列认证不能自动覆盖淘宝具体 SKU
 E302-MASTER-SIDE,site_or_drawing_evidence,建筑设计/现场,Master A 与 Master B 各自墙侧门套净距及见光板构造,no,两块面板角色已确认但真实安装面未关闭
