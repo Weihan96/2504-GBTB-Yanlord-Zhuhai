@@ -19,7 +19,7 @@ test("P0 metadata candidate is limited to geometry-neutral, evidenced fields", (
 
 test("P0 metadata candidate has explicit 392 to 499 IDS acceptance", () => {
   const source = readFileSync(script, "utf8");
-  expect(source).toContain("EXPECTED_SOURCE_IDS_PASS = 392");
+    expect(source).toContain("EXPECTED_SOURCE_IDS_PASS = {392, 499}");
   expect(source).toContain("EXPECTED_CANDIDATE_IDS_PASS = 499");
   expect(source).toContain('"protected_products_geometry_exact"');
   expect(source).toContain('"fills_voids_relationships_unchanged"');

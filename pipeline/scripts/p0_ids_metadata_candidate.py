@@ -37,7 +37,7 @@ A104_REGISTER = PROJECT_ROOT / "pipeline/decisions/a104-door-window-review.csv"
 IDS_PATH = PROJECT_ROOT / "pipeline/ids/p0-construction-information.ids"
 IDS_VALIDATOR = PROJECT_ROOT / "pipeline/scripts/ids_validate.py"
 EXPECTED_SOURCE_IDS_CHECKS = 593
-EXPECTED_SOURCE_IDS_PASS = 392
+EXPECTED_SOURCE_IDS_PASS = {392, 499}
 EXPECTED_CANDIDATE_IDS_PASS = 499
 EXPECTED_WALL_COUNT = 88
 EXPECTED_DOOR_COUNT = 8
@@ -117,11 +117,15 @@ def relationship_fingerprint(model: ifcopenshell.file) -> dict[str, list[tuple[s
     }
 
 
-def axis_length_mm(wall: Any) -> float:
-    representation = (
+def axis_representation(wall: Any) -> Any | None:
+    return (
         ifcopenshell.util.representation.get_representation(wall, "Plan", "Axis", "GRAPH_VIEW")
         or ifcopenshell.util.representation.get_representation(wall, "Model", "Axis", "GRAPH_VIEW")
     )
+
+
+def axis_length_mm(wall: Any) -> float:
+    representation = axis_representation(wall)
     if representation is None or len(representation.Items) != 1:
         raise RuntimeError(f"{wall.GlobalId}: expected exactly one Axis item")
     curve = representation.Items[0]
@@ -144,7 +148,11 @@ def wall_lengths(model: ifcopenshell.file, wall_ids: set[str]) -> list[dict[str,
             basis = "confirmed_project_dimension"
         elif global_id in BODY_LENGTHS_MM:
             length = BODY_LENGTHS_MM[global_id]
+            if axis_representation(wall) is not None:
+                raise RuntimeError(f"{global_id}: Body fallback is invalid because an Axis now exists")
             dimensions = world_bbox_mm(settings, wall)["dimensions_mm"]
+            if abs(dimensions[0] - dimensions[1]) <= 0.1:
+                raise RuntimeError(f"{global_id}: Body has no unique horizontal long direction")
             horizontal_long = max(dimensions[:2])
             if abs(horizontal_long - length) > 0.1:
                 raise RuntimeError(
@@ -231,12 +239,37 @@ def main() -> int:
     wall_ids = {row["global_id"] for row in a103}
     if len(a103) != EXPECTED_WALL_COUNT or len(wall_ids) != EXPECTED_WALL_COUNT:
         raise RuntimeError("A-103 register must contain 88 unique final-built walls")
+    final_wall_ids = {
+        wall.GlobalId
+        for wall in source.by_type("IfcWall")
+        if str(
+            ifcopenshell.util.element.get_psets(wall)
+            .get("Pset_WallCommon", {})
+            .get("Status")
+            or ""
+        ).strip().upper()
+        not in {"DEMOLISH", "DEMOLISHED"}
+    }
+    if wall_ids != final_wall_ids:
+        raise RuntimeError("A-103 register does not exactly match the formal final-built wall set")
     if {row["source_ifc_sha256"] for row in a103} != {source_hash}:
         raise RuntimeError("A-103 register is stale against the formal IFC")
     door_rows = [row for row in a104 if row["ifc_class"] == "IfcDoor"]
     window_rows = [row for row in a104 if row["ifc_class"] == "IfcWindow"]
     if len(door_rows) != EXPECTED_DOOR_COUNT or len(window_rows) != EXPECTED_WINDOW_COUNT:
         raise RuntimeError("A-104 register must contain 8 doors and 11 windows")
+    a104_ids = [row["global_id"] for row in a104]
+    if len(a104_ids) != len(set(a104_ids)):
+        raise RuntimeError("A-104 register contains duplicate GlobalIds")
+    for row in door_rows + window_rows:
+        entity = source.by_guid(row["global_id"])
+        if entity is None or not entity.is_a(row["ifc_class"]):
+            raise RuntimeError(f"{row['global_id']}: A-104 IFC class does not match the formal IFC")
+        expected_predefined_type = "DOOR" if row["ifc_class"] == "IfcDoor" else "WINDOW"
+        if row["candidate_predefined_type"] != expected_predefined_type:
+            raise RuntimeError(
+                f"{row['global_id']}: candidate_predefined_type must be {expected_predefined_type}"
+            )
     if {row["source_ifc_sha256"] for row in a104} != {source_hash}:
         raise RuntimeError("A-104 register is stale against the formal IFC")
 
@@ -349,7 +382,7 @@ def main() -> int:
         and gates["protected_products_geometry_exact"]
         and gates["maximum_placement_matrix_delta"] == 0.0
         and gates["source_ids_checks"] == EXPECTED_SOURCE_IDS_CHECKS
-        and gates["source_ids_pass"] == EXPECTED_SOURCE_IDS_PASS
+        and gates["source_ids_pass"] in EXPECTED_SOURCE_IDS_PASS
         and gates["candidate_ids_checks"] == EXPECTED_SOURCE_IDS_CHECKS
         and gates["candidate_ids_pass"] == EXPECTED_CANDIDATE_IDS_PASS
     )

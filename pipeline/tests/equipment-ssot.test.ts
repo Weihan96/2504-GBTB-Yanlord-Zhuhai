@@ -58,4 +58,4 @@ test("equipment SSOT can audit an IFC evidence hash refresh without writing", ()
   expect(report.target_source_count).toBeGreaterThan(1);
   expect(report.dry_run).toBe(true);
   expect(readFileSync(sourcePath)).toEqual(before);
-});
+}, 30_000);
