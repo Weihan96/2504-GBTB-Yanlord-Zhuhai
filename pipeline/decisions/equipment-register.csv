@@ -23,7 +23,7 @@ APP-013,APPLIANCE,固定厨房电器,油烟机,Siemens,Siemens LS33R6VB9W/01（C
 APP-014,APPLIANCE,水处理设备,直饮机,,,,1,not_selected,pending,西厨,西厨使用点,,西厨使用点,yes,logical_input,APP-014,,,,,,,0.80,yes,appliance,APP-014,补产品安装图和排水需求
 APP-015,APPLIANCE,水处理设备,净水器,,,,1,not_selected,pending,西厨柜内,西厨柜内接口区,,西厨柜内接口区,yes,logical_input,APP-015,,,,,,,0.80,yes,appliance,APP-015,存放位置与龙头使用点分开记录
 APP-016,APPLIANCE,固定厨房电器,垃圾处理器,,,,1,not_selected,pending,西厨水槽柜,西厨水槽柜,,西厨水槽柜,yes,logical_input,APP-016,,,,,,,0.80,yes,appliance,APP-016,补功率/开关方式/排水连接要求
-APP-017,APPLIANCE,洗衣设备,LG WashTower,,,,1,not_selected,pending,中厨,中厨,,中厨,yes,logical_input,APP-017,,,,,,,0.80,yes,appliance,APP-017,正式 IFC 有设备体量；补完整型号与安装图
+APP-017,APPLIANCE,洗衣设备,LG WashTower,,,,1,not_selected,pending,中厨,中厨,,中厨,yes,global_id,3JAkt8PsX7vPfGKWLK5EKp,IfcBuildingElementProxy,,,3JAkt8PsX7vPfGKWLK5EKp,IFC-FORMAL-001,正式 IFC 的 IfcBuildingElementProxy GlobalId 与既有体量,1.00,yes,appliance,APP-017,正式 IFC 有设备体量；补完整型号与安装图
 APP-018,NETWORK,网络设备,Huawei 联通智家设备,Huawei,,,1,candidate,partial,玄关弱电箱,玄关弱电箱,,玄关弱电箱,yes,logical_input,APP-018,,,,,,,0.80,yes,appliance,APP-018,实际箱内运行已确认；补底部铭牌与设备功能
 FUR-SHE01,FURNITURE,bookcase,Rafiki,Baxter,Rafiki,,1,selected,confirmed,,,,,yes,type_name,SHE01,IfcFurniture,SHE01,3erXbcQWHCt8x59$W3bG_Q,,FUR-SRC-SHE01,用户确认产品链接；Baxter 官方页面将 Rafiki 标识为 bookcase,1.00,no,furniture_product,SHE01,
 FUR-Libelle,FURNITURE,modular_bookcase,Libelle,Baxter,Libelle,,1,selected,confirmed,,存放酒和调酒器具,,存放酒和调酒器具,yes,type_name,Libelle,IfcFurniture,Libelle,1FudEC16D6iAkSWQC_7G2k,,FUR-SRC-Libelle,用户确认产品链接和使用意图；Baxter 官方页面将 Libelle 标识为可配置瓶架和储物单元的模块化书架,1.00,no,furniture_product,Libelle,

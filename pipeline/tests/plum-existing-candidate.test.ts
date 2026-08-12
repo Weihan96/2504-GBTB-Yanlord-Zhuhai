@@ -57,6 +57,10 @@ test("PLUM candidate runs against the frozen formal IFC", async () => {
   expect(report.qa.distribution_data.status).toBe("data_missing");
   expect(report.qa.pvc110_world_geometry_unchanged).toBe(true);
   expect(report.qa.service_demand_classification_pass).toBe(true);
+  expect(report.qa.equipment_ssot_coverage_pass).toBe(true);
+  expect(report.inventory.equipment_ssot_linked_plum_object_count).toBe(33);
+  expect(report.inventory.plum_release_blocking_requirement_count).toBe(4);
+  expect(report.inventory.hvac_plum_release_blocking_requirement_count).toBe(14);
   const p201 = await Bun.file("build/plum/p201-demand-endpoints.json").json();
   expect(p201.demand_endpoints.filter((row: any) => row.service_demand_candidate)).toHaveLength(24);
   expect(
@@ -66,6 +70,16 @@ test("PLUM candidate runs against the frozen formal IFC", async () => {
   expect(
     Math.max(...p202.objects.flatMap((row: any) => row.object_origin_mm.map(Math.abs))),
   ).toBeLessThan(20_000);
+  const services = await Bun.file("build/plum/equipment-service-requirements.json").json();
+  const byId = new Map(services.equipment.map((row: any) => [row.equipment_id, row]));
+  for (const equipmentId of ["APP-009", "APP-010"]) {
+    const requirements = new Map(
+      byId.get(equipmentId).requirements.map((row: any) => [row.parameter_key, row]),
+    );
+    expect(requirements.get("water_connection")?.value).toBe("G3/4 cold water");
+    expect(requirements.get("drain_connection_od")?.value).toBe("38");
+    expect(requirements.get("drain_connection_od")?.source_id).toBe("APP-DW-INSTALL-001");
+  }
 }, 30_000);
 
 test("PLUM candidate still supports a caller-frozen source hash", () => {

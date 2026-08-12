@@ -6,8 +6,6 @@ import { join, resolve } from "node:path";
 const root = resolve(import.meta.dir, "../..");
 const script = resolve(root, "pipeline/scripts/int1_existing_candidate.py");
 const ifc = resolve(root, "2504 GBTB Yanlord Zhuhai.ifc");
-const roles = resolve(root, "pipeline/decisions/furniture-installation-role.csv");
-const products = resolve(root, "pipeline/decisions/furniture-product-register.csv");
 const constructionAudit = resolve(root, "build/construction-surfaces/audit.json");
 
 test("INT1 candidate preserves role split and blocks unverified fabrication inputs", () => {
@@ -24,10 +22,6 @@ test("INT1 candidate preserves role split and blocks unverified fabrication inpu
       output,
       "--decision-csv",
       decisionCsv,
-      "--role-decisions",
-      roles,
-      "--product-register",
-      products,
       "--construction-audit",
       constructionAudit,
     ],
@@ -50,6 +44,8 @@ test("INT1 candidate preserves role split and blocks unverified fabrication inpu
   expect(report.summary.sheet_ids).toEqual(["I-501", "I-502", "I-503", "I-504"]);
   expect(report.summary.block_count).toBe(4);
   expect(report.summary.geberit_flush_plate_semantic_corrections).toBe(2);
+  expect(report.summary.equipment_ssot_linked_object_records).toBe(123);
+  expect(report.summary.equipment_ssot_unlinked_scoped_records).toBe(0);
   expect(report.gates.candidate_generation_pass).toBe(true);
   expect(report.gates.ifc_write_allowed).toBe(false);
   expect(report.gates.fabrication_dimensions_ready).toBe(false);
@@ -65,6 +61,18 @@ test("INT1 candidate preserves role split and blocks unverified fabrication inpu
   expect(report.records.every((item: { dimension_status: string }) =>
     item.dimension_status === "existing_world_bbox_not_fabrication_dimension"
   )).toBe(true);
+
+  const kitchenProducts = new Map(
+    report.kitchen_product_installation_requirements.map((item: any) => [item.equipment_id, item]),
+  );
+  expect(kitchenProducts.get("APP-011")?.model).toContain("HB754G2B1W");
+  expect(kitchenProducts.get("APP-012")?.model).toContain("ER9EPA33MP/01");
+  expect(kitchenProducts.get("APP-013")?.model).toContain("LS33R6VB9W/01");
+  const ovenRequirements = new Map(
+    kitchenProducts.get("APP-011").requirements.map((item: any) => [item.parameter_key, item]),
+  );
+  expect(ovenRequirements.get("rated_current")?.value).toBe("16");
+  expect(ovenRequirements.get("niche_width_min")?.source_id).toBe("APP-011-OFFICIAL-001");
 
   const byId = new Map(
     report.records.map((item: { global_id: string }) => [item.global_id, item]),

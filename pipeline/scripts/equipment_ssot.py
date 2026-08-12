@@ -589,6 +589,14 @@ def audit_ifc(root: Path, report_path: Path) -> dict[str, Any]:
         for product in model.by_type(cls): expected[product.GlobalId] = cls
     for product in model.by_type("IfcElementAssembly"):
         if (product.Name or "") in {"WC", "WC_01", "Drain Center"}: expected[product.GlobalId] = "IfcElementAssembly"
+    for row in masters:
+        if row["ifc_class"] != "IfcBuildingElementProxy":
+            continue
+        for gid in split_ids(row["ifc_global_ids"]):
+            product = model.by_guid(gid)
+            if not product or product.is_a() != "IfcBuildingElementProxy":
+                raise RuntimeError(f"registered equipment proxy is missing or has the wrong IFC class: {gid}")
+            expected[gid] = "IfcBuildingElementProxy"
     owners: dict[str, list[str]] = defaultdict(list)
     for row in masters:
         for gid in split_ids(row["ifc_global_ids"]): owners[gid].append(row["equipment_id"])

@@ -24,6 +24,7 @@ from furniture_anchor_audit import (
     read_product_register,
     read_role_decisions,
 )
+from equipment_ssot import load_canonical, split_ids, validate as validate_equipment_ssot
 
 
 EXPECTED_FURNITURE = 89
@@ -78,6 +79,12 @@ CSV_FIELDS = [
     "human_review_required",
     "basis",
     "confidence",
+    "equipment_id",
+    "equipment_decision_status",
+    "equipment_procurement_status",
+    "equipment_source_ids",
+    "installation_requirement_count",
+    "blocking_requirement_count",
     "stop_condition",
     "source_ifc_sha256",
 ]
@@ -223,11 +230,13 @@ def object_record(
     basis: str,
     confidence: float,
     identity: dict[str, Any] | None = None,
+    equipment: dict[str, Any] | None = None,
     review_status: str = "existing_model_candidate",
 ) -> dict[str, Any]:
     type_object = assigned_type(product)
     minimum, maximum, dimensions = world_bbox(settings, product, bbox_registry)
     identity = identity or {}
+    equipment = equipment or {}
     return {
         "record_kind": "existing_object",
         "sheet_id": sheet_id,
@@ -254,6 +263,15 @@ def object_record(
         "human_review_required": False,
         "basis": basis,
         "confidence": confidence,
+        "equipment_id": equipment.get("equipment_id", ""),
+        "equipment_decision_status": equipment.get("decision_status", ""),
+        "equipment_procurement_status": equipment.get("procurement_status", ""),
+        "equipment_source_ids": equipment.get("source_ids", []),
+        "installation_requirement_count": len(equipment.get("requirements", [])),
+        "blocking_requirement_count": sum(
+            row.get("blocks_release") == "yes"
+            for row in equipment.get("requirements", [])
+        ),
         "stop_condition": "Do not infer fabrication openings or service connection centres from this envelope.",
         "source_ifc_sha256": source_hash,
     }
@@ -282,6 +300,12 @@ def blocker_csv_record(blocker: dict[str, str], source_hash: str) -> dict[str, A
         "human_review_required": True,
         "basis": blocker["condition"],
         "confidence": 1.0,
+        "equipment_id": "",
+        "equipment_decision_status": "",
+        "equipment_procurement_status": "",
+        "equipment_source_ids": "",
+        "installation_requirement_count": "",
+        "blocking_requirement_count": "",
         "stop_condition": blocker["stop_condition"],
         "source_ifc_sha256": source_hash,
     }
@@ -338,21 +362,63 @@ def parse_args() -> argparse.Namespace:
     parser.add_argument("--input", required=True, type=Path)
     parser.add_argument("--output-dir", required=True, type=Path)
     parser.add_argument("--decision-csv", required=True, type=Path)
-    parser.add_argument("--role-decisions", required=True, type=Path)
-    parser.add_argument("--product-register", required=True, type=Path)
     parser.add_argument("--construction-audit", required=True, type=Path)
     return parser.parse_args()
+
+
+def equipment_owner_index(
+    equipment_rows: list[dict[str, str]],
+    requirement_rows: list[dict[str, str]],
+) -> dict[str, dict[str, Any]]:
+    requirements: dict[str, list[dict[str, str]]] = {}
+    for row in requirement_rows:
+        requirements.setdefault(row["equipment_id"], []).append(row)
+    owners: dict[str, dict[str, Any]] = {}
+    for row in equipment_rows:
+        snapshot = {
+            **row,
+            "source_ids": split_ids(row["source_ids"]),
+            "requirements": requirements.get(row["equipment_id"], []),
+        }
+        for global_id in split_ids(row["ifc_global_ids"]):
+            if global_id in owners:
+                raise RuntimeError(f"equipment SSOT assigns {global_id} more than once")
+            owners[global_id] = snapshot
+    return owners
+
+
+def requirement_snapshot(row: dict[str, str]) -> dict[str, Any]:
+    return {
+        "requirement_id": row["requirement_id"],
+        "discipline": row["discipline"],
+        "parameter_key": row["parameter_key"],
+        "value": row["value_number"] or row["value_text"],
+        "unit": row["unit"],
+        "value_origin": row["value_origin"],
+        "status": row["status"],
+        "source_id": row["source_id"],
+        "blocks_release": row["blocks_release"] == "yes",
+    }
 
 
 def main() -> None:
     args = parse_args()
     source_path = args.input.resolve()
     source_hash = sha256(source_path)
+    root = Path(__file__).resolve().parents[2]
+    validate_equipment_ssot(root)
+    _, equipment_rows, requirement_rows, _ = load_canonical(root)
+    owners = equipment_owner_index(equipment_rows, requirement_rows)
+    equipment_by_id = {row["equipment_id"]: row for row in equipment_rows}
+    requirements_by_id: dict[str, list[dict[str, str]]] = {}
+    for row in requirement_rows:
+        requirements_by_id.setdefault(row["equipment_id"], []).append(row)
     model = ifcopenshell.open(source_path)
     settings = ifcopenshell.geom.settings()
     settings.set(settings.USE_WORLD_COORDS, True)
-    role_decisions = read_role_decisions(args.role_decisions)
-    product_records = read_product_register(args.product_register)
+    canonical_register = root / "pipeline/decisions/equipment-register.csv"
+    role_decisions = read_role_decisions(canonical_register)
+    product_records = read_product_register(canonical_register)
     bbox_registry = read_bbox_registry(args.construction_audit, source_hash)
 
     records: list[dict[str, Any]] = []
@@ -386,6 +452,7 @@ def main() -> None:
                 role["basis"],
                 float(role["confidence"]),
                 identity,
+                owners.get(furniture.GlobalId),
             )
         )
         furniture_role_counts[installation_role] += 1
@@ -405,6 +472,7 @@ def main() -> None:
             object_record(
                 settings, product, "I-501", source_hash, bbox_registry, "fixed_equipment",
                 "equipment_envelope_coordination", "Exact IFC GlobalId and assigned type preserve the existing equipment identity.", 1.0,
+                equipment=owners.get(global_id),
             )
         )
     for global_id in sorted(KITCHEN_SANITARY_IDS):
@@ -413,6 +481,7 @@ def main() -> None:
             object_record(
                 settings, product, "I-501", source_hash, bbox_registry, "fixed_sanitary_fixture",
                 "kitchen_fixture_envelope_coordination", "Exact IFC GlobalId and assigned sanitary type preserve the existing fixture identity.", 1.0,
+                equipment=owners.get(global_id),
             )
         )
     for global_id in sorted(KITCHEN_CONTEXT_IDS):
@@ -436,6 +505,7 @@ def main() -> None:
             object_record(
                 settings, sanitary, "I-502", source_hash, bbox_registry, "fixed_sanitary_fixture",
                 "bathroom_fixture_envelope_coordination", "Existing assigned sanitary type is retained for grouping; it does not prove rough-in centres.", 0.8,
+                equipment=owners.get(sanitary.GlobalId),
                 review_status=review_status,
             )
         )
@@ -444,6 +514,7 @@ def main() -> None:
             object_record(
                 settings, waste, "I-502", source_hash, bbox_registry, "fixed_waste_terminal",
                 "bathroom_drain_envelope_coordination", "Existing waste-terminal identity and world geometry; connection centres remain unconfirmed.", 0.8,
+                equipment=owners.get(waste.GlobalId),
             )
         )
     for global_id in sorted(BATHROOM_CONTEXT_IDS):
@@ -460,10 +531,20 @@ def main() -> None:
         object_record(
             settings, washtower, "I-503", source_hash, bbox_registry, "fixed_equipment",
             "laundry_equipment_envelope_coordination", "Exact IFC GlobalId, LG WashTower name and existing description preserve the current model identity.", 1.0,
+            equipment=owners.get(WASHTOWER_ID),
         )
     )
 
     object_records = [record for record in records if record["record_kind"] == "existing_object"]
+    ssot_scoped_records = [
+        record for record in object_records
+        if record["ifc_class"] in {
+            "IfcFurniture", "IfcElectricAppliance", "IfcSanitaryTerminal", "IfcWasteTerminal"
+        }
+    ]
+    missing_ssot = sorted(record["global_id"] for record in ssot_scoped_records if not record["equipment_id"])
+    if missing_ssot:
+        raise RuntimeError(f"INT1 scoped objects missing from equipment SSOT: {missing_ssot}")
     object_ids = [record["global_id"] for record in object_records]
     if len(object_ids) != len(set(object_ids)):
         duplicates = [key for key, count in Counter(object_ids).items() if count > 1]
@@ -490,6 +571,8 @@ def main() -> None:
         "geberit_flush_plate_semantic_corrections": sum(
             record["global_id"] in GEBERIT_FLUSH_PLATE_IDS for record in object_records
         ),
+        "equipment_ssot_linked_object_records": sum(bool(record["equipment_id"]) for record in object_records),
+        "equipment_ssot_unlinked_scoped_records": len(missing_ssot),
     }
     candidate_generation_pass = (
         summary["furniture_total"] == EXPECTED_FURNITURE
@@ -502,7 +585,14 @@ def main() -> None:
     report = {
         "generated_at": datetime.now(timezone.utc).isoformat(),
         "mode": "read_only_existing_object_candidate",
-        "source": {"ifc": str(source_path), "ifc_sha256": source_hash},
+        "source": {
+            "ifc": str(source_path), "ifc_sha256": source_hash,
+            "equipment_ssot": {
+                "equipment_register_sha256": sha256(root / "pipeline/decisions/equipment-register.csv"),
+                "installation_requirements_sha256": sha256(root / "pipeline/decisions/equipment-installation-requirements.csv"),
+                "source_evidence_sha256": sha256(root / "pipeline/decisions/source-evidence-register.csv"),
+            },
+        },
         "summary": summary,
         "gates": {
             "candidate_generation_pass": candidate_generation_pass,
@@ -511,6 +601,21 @@ def main() -> None:
             "int1_completion_pass": False,
         },
         "blockers": BLOCKERS,
+        "kitchen_product_installation_requirements": [
+            {
+                "equipment_id": equipment_id,
+                "item_name": equipment_by_id[equipment_id]["item_name"],
+                "manufacturer": equipment_by_id[equipment_id]["manufacturer"],
+                "model": equipment_by_id[equipment_id]["model"],
+                "procurement_status": equipment_by_id[equipment_id]["procurement_status"],
+                "decision_status": equipment_by_id[equipment_id]["decision_status"],
+                "requirements": [
+                    requirement_snapshot(row)
+                    for row in requirements_by_id.get(equipment_id, [])
+                ],
+            }
+            for equipment_id in ("APP-011", "APP-012", "APP-013")
+        ],
         "records": object_records,
     }
     if not candidate_generation_pass:

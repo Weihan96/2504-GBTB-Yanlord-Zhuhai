@@ -24,6 +24,7 @@ import numpy as np
 
 from flow_segment_centerline_audit import mesh_components
 from geometry_alignment_audit import geometry_settings, world_mesh_mm
+from equipment_ssot import load_canonical, split_ids, validate as validate_equipment_ssot
 
 
 PVC110_IDS = ("178mqyyzzFowLcbXcH6prO", "0bfVg4Ys1CevZs$qxhkXTo")
@@ -41,6 +42,12 @@ EXPECTED_REVIEW_IDS = {
     "PLUM-SITE-001", "PLUM-HOTWATER-001", "PLUM-KITCHEN-DRAIN-001",
 }
 GEOMETRY_SETTINGS = geometry_settings()
+PLUM_SERVICE_KEYS = {
+    "water_required", "drain_required", "water_connection", "drain_connection_od",
+    "water_pressure_min", "water_pressure_max", "water_flow_min",
+    "cold_water_temperature_max", "drain_pipe_od", "drain_slope_min",
+    "drain_slope_max",
+}
 
 
 def parse_args() -> argparse.Namespace:
@@ -226,6 +233,68 @@ def write_json(path: Path, data: Any) -> None:
     path.write_text(json.dumps(data, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
 
 
+def equipment_owner_index(rows: list[dict[str, str]]) -> dict[str, dict[str, str]]:
+    owners: dict[str, dict[str, str]] = {}
+    for row in rows:
+        for global_id in split_ids(row["ifc_global_ids"]):
+            if global_id in owners:
+                raise RuntimeError(f"equipment SSOT assigns {global_id} more than once")
+            owners[global_id] = row
+    return owners
+
+
+def requirement_record(row: dict[str, str]) -> dict[str, Any]:
+    return {
+        "requirement_id": row["requirement_id"],
+        "discipline": row["discipline"],
+        "parameter_key": row["parameter_key"],
+        "value": row["value_number"] or row["value_text"],
+        "unit": row["unit"],
+        "value_origin": row["value_origin"],
+        "status": row["status"],
+        "source_id": row["source_id"],
+        "blocks_release": row["blocks_release"] == "yes",
+    }
+
+
+def equipment_snapshot(
+    owner: dict[str, str],
+    requirements: list[dict[str, str]],
+) -> dict[str, Any]:
+    owned = [row for row in requirements if row["equipment_id"] == owner["equipment_id"]]
+    return {
+        "equipment_id": owner["equipment_id"],
+        "item_name": owner["item_name"],
+        "manufacturer": owner["manufacturer"],
+        "model": owner["model"],
+        "procurement_status": owner["procurement_status"],
+        "decision_status": owner["decision_status"],
+        "source_ids": split_ids(owner["source_ids"]),
+        "requirements": [requirement_record(row) for row in owned],
+    }
+
+
+def service_requirement_candidates(
+    equipment: list[dict[str, str]],
+    requirements: list[dict[str, str]],
+) -> list[dict[str, Any]]:
+    relevant: dict[str, list[dict[str, str]]] = {}
+    for row in requirements:
+        if row["parameter_key"] in PLUM_SERVICE_KEYS:
+            relevant.setdefault(row["equipment_id"], []).append(row)
+    by_id = {row["equipment_id"]: row for row in equipment}
+    return [
+        {
+            **equipment_snapshot(by_id[equipment_id], rows),
+            "use_location_candidate": by_id[equipment_id]["use_location_candidate"],
+            "use_location_confirmed": by_id[equipment_id]["use_location_confirmed"],
+            "requirements": [requirement_record(row) for row in rows],
+            "candidate_is_write_authority": False,
+        }
+        for equipment_id, rows in sorted(relevant.items())
+    ]
+
+
 def main() -> None:
     args = parse_args()
     root = args.root.resolve()
@@ -239,6 +308,10 @@ def main() -> None:
             f"formal IFC hash changed: expected {args.expected_ifc_sha256}, got {ifc_sha}"
         )
 
+    validate_equipment_ssot(root)
+    _, equipment_rows, requirement_rows, _ = load_canonical(root)
+    owner_by_global_id = equipment_owner_index(equipment_rows)
+    service_candidates = service_requirement_candidates(equipment_rows, requirement_rows)
     model = ifcopenshell.open(ifc_path)
     review_rows = read_review(review_path)
     sanitary = sorted(model.by_type("IfcSanitaryTerminal"), key=lambda product: product.GlobalId)
@@ -258,7 +331,11 @@ def main() -> None:
 
     def record(product: Any) -> dict[str, Any]:
         if product.GlobalId not in record_cache:
-            record_cache[product.GlobalId] = product_record(product)
+            value = product_record(product)
+            owner = owner_by_global_id.get(product.GlobalId)
+            if owner:
+                value["equipment_ssot"] = equipment_snapshot(owner, requirement_rows)
+            record_cache[product.GlobalId] = value
         return record_cache[product.GlobalId]
 
     p201 = {
@@ -281,6 +358,13 @@ def main() -> None:
         ],
     }
     p202_products = sanitary + waste + assemblies + drainage
+    scoped_products = sanitary + waste + assemblies
+    missing_ssot = sorted(
+        product.GlobalId for product in scoped_products
+        if product.GlobalId not in owner_by_global_id
+    )
+    if missing_ssot:
+        raise RuntimeError(f"PLUM IFC objects missing from equipment SSOT: {missing_ssot}")
     service_demand_count = sum(
         service_demand_classification(product)["service_demand_candidate"]
         for product in sanitary
@@ -319,18 +403,27 @@ def main() -> None:
         "pvc110_world_geometry_unchanged": all(row["world_geometry_unchanged"] for row in pvc110),
         "review_register_complete": len(review_rows) == len(EXPECTED_REVIEW_IDS),
         "service_demand_classification_pass": service_demand_count == 24,
+        "equipment_ssot_coverage_pass": len(scoped_products) == 33 and not missing_ssot,
     }
     qa["candidate_registry_pass"] = all((
         qa["expected_counts_pass"], qa["unique_candidate_global_ids"],
         missing_connectivity_declared, qa["pvc110_product_count"] == 2,
         qa["pvc110_branch_count"] == 6, qa["pvc110_world_geometry_unchanged"],
         qa["review_register_complete"], qa["service_demand_classification_pass"],
+        qa["equipment_ssot_coverage_pass"],
     ))
     qa["construction_release_pass"] = False
 
     report = {
         "generated_at": datetime.now(timezone.utc).isoformat(),
-        "source": {"path": str(ifc_path), "ifc_sha256": ifc_sha, "schema": model.schema},
+        "source": {
+            "path": str(ifc_path), "ifc_sha256": ifc_sha, "schema": model.schema,
+            "equipment_ssot": {
+                "equipment_register_sha256": sha256(root / "pipeline/decisions/equipment-register.csv"),
+                "installation_requirements_sha256": sha256(root / "pipeline/decisions/equipment-installation-requirements.csv"),
+                "source_evidence_sha256": sha256(root / "pipeline/decisions/source-evidence-register.csv"),
+            },
+        },
         "geometry_baseline": {"git_ref": args.geometry_baseline_ref},
         "inventory": {
             "sanitary_terminal_count": len(sanitary),
@@ -341,6 +434,16 @@ def main() -> None:
             "p201_service_demand_candidate_count": service_demand_count,
             "p201_non_service_component_count": len(p201["demand_endpoints"]) - service_demand_count,
             "p202_existing_object_count": len(p202["objects"]),
+            "equipment_ssot_linked_plum_object_count": len(scoped_products),
+            "equipment_service_candidate_count": len(service_candidates),
+            "plum_release_blocking_requirement_count": sum(
+                row["blocks_release"] == "yes" and row["discipline"] == "PLUM"
+                for row in requirement_rows
+            ),
+            "hvac_plum_release_blocking_requirement_count": sum(
+                row["blocks_release"] == "yes" and row["discipline"] == "HVAC/PLUM"
+                for row in requirement_rows
+            ),
         },
         "pvc110": pvc110,
         "qa": qa,
@@ -353,11 +456,21 @@ def main() -> None:
         "outputs": {
             "p201": "build/plum/p201-demand-endpoints.json",
             "p202": "build/plum/p202-existing-location-register.json",
+            "equipment_service_requirements": "build/plum/equipment-service-requirements.json",
             "review": "pipeline/decisions/plum-existing-review.csv",
         },
     }
     write_json(output_dir / "p201-demand-endpoints.json", p201)
     write_json(output_dir / "p202-existing-location-register.json", p202)
+    write_json(
+        output_dir / "equipment-service-requirements.json",
+        {
+            "source_ifc_sha256": ifc_sha,
+            "mode": "read_only_equipment_service_requirement_candidate",
+            "equipment": service_candidates,
+            "automatic_ifc_write_allowed": False,
+        },
+    )
     write_json(output_dir / "plum-report.json", report)
     print(json.dumps(report["inventory"], ensure_ascii=False))
     print(json.dumps(qa, ensure_ascii=False))

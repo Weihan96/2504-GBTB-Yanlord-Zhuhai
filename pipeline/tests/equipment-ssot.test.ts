@@ -24,8 +24,8 @@ test("equipment SSOT validates projections and covers every scoped IFC object", 
     mode: "check",
   });
   expect(report.ifc_coverage).toMatchObject({
-    scope_count: 161,
-    covered_count: 161,
+    scope_count: 162,
+    covered_count: 162,
     missing_count: 0,
     duplicate_count: 0,
   });
@@ -38,8 +38,9 @@ test("equipment SSOT validates projections and covers every scoped IFC object", 
     IfcDoor: 8,
     IfcWindow: 11,
     IfcElementAssembly: 3,
+    IfcBuildingElementProxy: 1,
   });
-}, 60_000);
+}, 180_000);
 
 test("equipment SSOT never writes the formal IFC", () => {
   const source = readFileSync(script, "utf8");

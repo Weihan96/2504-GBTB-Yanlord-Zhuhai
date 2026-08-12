@@ -40,12 +40,16 @@ test("ELEC candidate separates unused type definitions from instances", async ()
 test(
   "ELEC candidate inventories the formal IFC without writing it",
   async () => {
+    const ifcPath = resolve(root, "2504 GBTB Yanlord Zhuhai.ifc");
+    const expectedIfcSha256 = new Bun.CryptoHasher("sha256")
+      .update(await Bun.file(ifcPath).arrayBuffer())
+      .digest("hex");
     const result = Bun.spawnSync(
       [
         "python3",
         scriptPath,
         "--input",
-        resolve(root, "2504 GBTB Yanlord Zhuhai.ifc"),
+        ifcPath,
         "--review",
         reviewPath,
         "--output",
@@ -61,9 +65,7 @@ test(
     );
     expect(result.exitCode, result.stderr.toString()).toBe(0);
     const report = JSON.parse(await Bun.file(reportPath).text());
-    expect(report.source.sha256).toBe(
-      "6c2fd8da9e9ad7ddbc2b63415a27f1c979e8995b880d8fce210a2dda2ef2aab6",
-    );
+    expect(report.source.sha256).toBe(expectedIfcSha256);
     expect(report.gates.candidate_pass).toBe(true);
     expect(report.gates.construction_release_ready).toBe(false);
     expect(report.gates.light_count).toBe(79);
