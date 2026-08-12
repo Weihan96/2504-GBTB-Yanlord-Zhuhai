@@ -25,7 +25,7 @@ from shapely.ops import unary_union
 from svg_audit_underlay import validate_wall_plan_source
 
 
-EXPECTED_SOURCE_SHA256 = "6c2fd8da9e9ad7ddbc2b63415a27f1c979e8995b880d8fce210a2dda2ef2aab6"
+EXPECTED_SOURCE_SHA256 = "9a4dac0fceaa4d274c604e59f0c73d187b6db7aaece0a028f51d8d036449df1c"
 LIGHT_TYPE_GLOBAL_ID = "26DmeZ15D7ZeHYavba3FdK"
 EXPECTED_PROXY_IDS = {
     "1faflkXXH6M9cnYPE9Liir",

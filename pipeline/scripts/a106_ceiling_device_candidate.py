@@ -21,7 +21,7 @@ from shapely.ops import unary_union
 from svg_audit_underlay import validate_wall_plan_source
 
 
-EXPECTED_IFC_SHA256 = "6c2fd8da9e9ad7ddbc2b63415a27f1c979e8995b880d8fce210a2dda2ef2aab6"
+EXPECTED_IFC_SHA256 = "9a4dac0fceaa4d274c604e59f0c73d187b6db7aaece0a028f51d8d036449df1c"
 SPACE_IDS = {
     "R04": "2fhEbDfK1EkhJwlPikNm$b",
     "R09": "3gHz6U6BfFXgV6PnRzfOf$",
