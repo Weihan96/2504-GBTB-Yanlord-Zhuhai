@@ -19,6 +19,8 @@ from pathlib import Path
 from typing import Any
 from xml.etree import ElementTree as ET
 
+from equipment_ssot import apply_owner_appliances, projections
+
 
 DECISION_HEADERS = [
     "input_id", "workstream", "priority", "blocks_release", "question",
@@ -476,8 +478,13 @@ def main() -> int:
             encoding="utf-8",
         )
     if args.apply:
+        default_appliances = Path(__file__).resolve().parents[2] / "pipeline/decisions/appliance-input-register.csv"
+        if args.appliances.resolve() == default_appliances.resolve():
+            apply_owner_appliances(Path(__file__).resolve().parents[2], appliances)
+            projections(Path(__file__).resolve().parents[2])
         write_csv(args.decisions, DECISION_HEADERS, decisions)
-        write_csv(args.appliances, APPLIANCE_HEADERS, appliances)
+        if args.appliances.resolve() != default_appliances.resolve():
+            write_csv(args.appliances, APPLIANCE_HEADERS, appliances)
         update_pm(args.pm, pm_block(data))
     print(json.dumps(report, ensure_ascii=False, indent=2))
     return 0

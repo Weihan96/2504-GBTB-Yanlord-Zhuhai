@@ -22,18 +22,11 @@ from sync_owner_inputs import (
     validate_appliances,
     validate_decisions,
 )
+from equipment_ssot import appliance_projection_rows, validate as validate_equipment_ssot
 
 EXPECTED_IFC_SHA256 = "9a4dac0fceaa4d274c604e59f0c73d187b6db7aaece0a028f51d8d036449df1c"
 SCALE_DENOMINATOR = 50.0
 SVG_WORLD_OFFSET_MM = 10000.0
-CANDIDATE_POWER_RANGES_BY_APPLIANCE_ID_W = {
-    "APP-001": [1500, 2200],
-    "APP-002": [300, 1200],
-    "APP-003": [800, 1500],
-    "APP-004": [1200, 1800],
-    "APP-005": [1000, 1800],
-    "APP-006": [150, 400],
-}
 LOAD_SCENARIO_HEADERS = [
     "scenario_id",
     "socket_id",
@@ -75,11 +68,7 @@ def parse_args() -> argparse.Namespace:
         type=Path,
         default=root / "build/int1/int1-existing-report.json",
     )
-    parser.add_argument(
-        "--appliances",
-        type=Path,
-        default=root / "pipeline/decisions/appliance-input-register.csv",
-    )
+    parser.add_argument("--appliances", type=Path)
     parser.add_argument(
         "--owner-decisions",
         type=Path,
@@ -249,11 +238,11 @@ def read_load_scenarios(path: Path) -> list[dict[str, Any]]:
 
 
 def appliance_socket_context(
-    appliance_path: Path,
+    appliance_input: Path | list[dict[str, str]],
     load_scenario_path: Path,
     circuit_decisions: dict[str, dict[str, str]],
 ) -> dict[str, dict[str, Any]]:
-    rows = read_owner_csv(appliance_path, APPLIANCE_HEADERS)
+    rows = read_owner_csv(appliance_input, APPLIANCE_HEADERS) if isinstance(appliance_input, Path) else appliance_input
     errors = validate_appliances(rows, rows)
     if errors:
         raise RuntimeError("invalid appliance input register: " + "; ".join(errors))
@@ -262,6 +251,11 @@ def appliance_socket_context(
         for row in normalized_inputs([], rows)["appliances"]
     }
     appliance_by_id = {row["appliance_id"]: row for row in rows}
+    candidate_ranges_by_id = {
+        row["appliance_id"]: [int(float(value)) for value in row.get("_candidate_power_range_w", [])]
+        for row in rows
+        if len(row.get("_candidate_power_range_w", [])) == 2 and all(row["_candidate_power_range_w"])
+    }
     scenarios = read_load_scenarios(load_scenario_path)
     contexts: dict[str, dict[str, Any]] = {}
     for socket_id in ("NS-01", "NS-02"):
@@ -278,7 +272,8 @@ def appliance_socket_context(
             effective = normalized_by_id[row["appliance_id"]]["effective"]
             if effective["rated_power_w"]:
                 known_load_w += float(effective["rated_power_w"]) * int(effective["quantity"])
-            candidate_range = CANDIDATE_POWER_RANGES_BY_APPLIANCE_ID_W.get(row["appliance_id"])
+            raw_range = row.get("_candidate_power_range_w", [])
+            candidate_range = [int(float(value)) for value in raw_range] if len(raw_range) == 2 and all(raw_range) else None
             group = row["simultaneous_group"] or "UNASSIGNED"
             if candidate_range:
                 bucket = groups.setdefault(group, {"minimum_w": 0, "maximum_w": 0, "appliance_ids": []})
@@ -311,7 +306,7 @@ def appliance_socket_context(
             missing_ranges = sorted(
                 appliance_id
                 for appliance_id in scenario["appliance_ids"]
-                if appliance_id not in CANDIDATE_POWER_RANGES_BY_APPLIANCE_ID_W
+                if appliance_id not in candidate_ranges_by_id
             )
             if unknown_ids or missing_ranges:
                 raise RuntimeError(
@@ -319,11 +314,11 @@ def appliance_socket_context(
                     f"not_at_socket={unknown_ids} missing_ranges={missing_ranges}"
                 )
             minimum_w = sum(
-                CANDIDATE_POWER_RANGES_BY_APPLIANCE_ID_W[appliance_id][0]
+                candidate_ranges_by_id[appliance_id][0]
                 for appliance_id in scenario["appliance_ids"]
             )
             maximum_w = sum(
-                CANDIDATE_POWER_RANGES_BY_APPLIANCE_ID_W[appliance_id][1]
+                candidate_ranges_by_id[appliance_id][1]
                 for appliance_id in scenario["appliance_ids"]
             )
             scenario_loads.append({
@@ -614,6 +609,7 @@ def render_items(report: dict[str, Any]) -> list[tuple[dict[str, Any], str, str]
 
 def main() -> int:
     args = parse_args()
+    root = Path(__file__).resolve().parents[2]
     ifc_hash = sha256(args.ifc)
     if ifc_hash != EXPECTED_IFC_SHA256:
         raise RuntimeError(f"formal IFC hash changed: {ifc_hash}")
@@ -631,8 +627,16 @@ def main() -> int:
 
     bedside = bedside_candidates(int1["records"])
     circuit_decisions = e303_circuit_decisions(args.owner_decisions)
+    if args.appliances:
+        appliance_rows = read_owner_csv(args.appliances, APPLIANCE_HEADERS)
+        appliance_source = {"path": str(args.appliances.resolve()), "sha256": sha256(args.appliances)}
+    else:
+        validate_equipment_ssot(root)
+        appliance_rows = appliance_projection_rows(root)
+        canonical_paths = [root / "pipeline/decisions/equipment-register.csv", root / "pipeline/decisions/equipment-installation-requirements.csv", root / "pipeline/decisions/source-evidence-register.csv"]
+        appliance_source = {"canonical_tables": {str(path.relative_to(root)): sha256(path) for path in canonical_paths}}
     appliance_context = appliance_socket_context(
-        args.appliances,
+        appliance_rows,
         args.load_scenarios,
         circuit_decisions,
     )
@@ -644,10 +648,7 @@ def main() -> int:
         "mode": "read_only_renovation_electrical_round1_candidate",
         "source_ifc_sha256": ifc_hash,
         "requirements_path": str(args.requirements.resolve()),
-        "appliance_inputs": {
-            "path": str(args.appliances.resolve()),
-            "sha256": sha256(args.appliances),
-        },
+        "appliance_inputs": appliance_source,
         "owner_inputs": {
             "path": str(args.owner_decisions.resolve()),
             "sha256": sha256(args.owner_decisions),

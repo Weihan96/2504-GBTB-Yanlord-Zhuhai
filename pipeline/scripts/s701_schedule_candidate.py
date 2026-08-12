@@ -16,6 +16,8 @@ from datetime import datetime, timezone
 from pathlib import Path
 from typing import Any
 
+from equipment_ssot import load_canonical, requirement_map, split_ids, validate as validate_equipment_ssot
+
 
 FIELDS = [
     "schedule_id", "section", "source_key", "item_name", "confirmed_scope",
@@ -68,29 +70,36 @@ def row(
 
 def build_rows(root: Path, ifc_hash: str) -> tuple[list[dict[str, str]], dict[str, Path]]:
     sources = {
-        "furniture": root / "pipeline/decisions/furniture-product-register.csv",
-        "appliances": root / "pipeline/decisions/appliance-input-register.csv",
-        "doors_windows": root / "pipeline/decisions/a104-door-window-review.csv",
-        "m401": root / "pipeline/decisions/m401-existing-review.csv",
+        "equipment": root / "pipeline/decisions/equipment-register.csv",
+        "requirements": root / "pipeline/decisions/equipment-installation-requirements.csv",
+        "evidence": root / "pipeline/decisions/source-evidence-register.csv",
         "wfin": root / "pipeline/decisions/wfin-open-issues.csv",
     }
     for name, path in sources.items():
         if not path.is_file():
             raise RuntimeError(f"missing S-701 source {name}: {path}")
 
+    validate_equipment_ssot(root)
+    _, equipment, requirements, evidence_rows = load_canonical(root)
+    requirements_by_equipment = requirement_map(requirements)
+    evidence_by_id = {item["source_id"]: item for item in evidence_rows}
     result: list[dict[str, str]] = []
-    for index, item in enumerate(read_csv(sources["furniture"]), 1):
-        if item["status"] != "confirmed":
-            raise RuntimeError(f"furniture identity is not confirmed: {item['product_name']}")
+
+    furniture = [item for item in equipment if item["legacy_kind"] == "furniture_product" and item["schedule_included"] == "yes"]
+    for index, item in enumerate(furniture, 1):
+        if item["decision_status"] != "confirmed":
+            raise RuntimeError(f"furniture identity is not confirmed: {item['item_name']}")
+        source_urls = [evidence_by_id[sid]["source_url"] for sid in split_ids(item["source_ids"]) if sid in evidence_by_id]
         result.append(row(
             f"S701-FUR-{index:02d}", "家具产品身份", item["selector_value"],
-            " ".join(part for part in (item["manufacturer"], item["product_name"], item["product_variant"]) if part),
-            "厂家与产品系列身份已确认", item["intended_use"] or "用途未填写",
-            "本项目最终规格、数量、五金配置、安装图与现场接口", item["source_url"],
+            " ".join(part for part in (item["manufacturer"], item["item_name"], item["variant"]) if part),
+            "厂家与产品系列身份已确认", item["use_location_confirmed"] or "用途未填写",
+            "本项目最终规格、数量、五金配置、安装图与现场接口", "；".join(source_urls) or item["source_ids"],
             "identity_confirmed_installation_pending", ifc_hash,
         ))
 
-    for item in read_csv(sources["appliances"]):
+    appliances = [item for item in equipment if item["legacy_kind"] == "appliance" and item["schedule_included"] == "yes"]
+    for item in appliances:
         confirmed = []
         if item["storage_location_confirmed"]:
             confirmed.append(f"存放={item['storage_location_confirmed']}")
@@ -101,54 +110,49 @@ def build_rows(root: Path, ifc_hash: str) -> tuple[list[dict[str, str]], dict[st
             candidate.append(f"存放候选={item['storage_location_candidate']}")
         if item["use_location_candidate"]:
             candidate.append(f"使用候选={item['use_location_candidate']}")
+        req = requirements_by_equipment[item["equipment_id"]]
         unresolved = [name for name, value in (
-            ("型号", item["model"]), ("铭牌功率", item["rated_power_w"]),
-            ("证据", item["evidence_reference"]),
+            ("型号", item["model"]), ("铭牌功率", req.get("rated_power", "")),
+            ("证据", item["source_ids"]),
         ) if not value]
         unresolved.extend(
             name for name, value in (
-                ("给水接口", item["water_required"]), ("排水接口", item["drain_required"]),
-                ("燃气", item["gas_required"]), ("通风", item["ventilation_required"]),
+                ("给水接口", req.get("water_required", "")), ("排水接口", req.get("drain_required", "")),
+                ("燃气", req.get("gas_required", "")), ("通风", req.get("ventilation_required", "")),
             ) if value in {"", "model_dependent"}
         )
         result.append(row(
-            f"S701-{item['appliance_id']}", "家电与移动厨电", item["appliance_id"], item["appliance_name"],
+            f"S701-{item['equipment_id']}", "家电与移动厨电", item["equipment_id"], item["item_name"],
             "；".join(confirmed) or "尚无关闭项", "；".join(candidate) or "无位置候选",
-            "、".join(unresolved) or "仍须厂家安装图与现场接口复核", item["evidence_reference"] or "appliance-input-register.csv",
+            "、".join(unresolved) or "仍须厂家安装图与现场接口复核", item["source_ids"] or "source-evidence-register.csv",
             (
                 "confirmed_input_installation_review_pending"
-                if item["status"] == "已确认"
-                else "partial_input" if item["status"] == "部分确认" else "input_required"
+                if item["decision_status"] == "confirmed"
+                else "partial_input" if item["decision_status"] == "partial" else "input_required"
             ),
             ifc_hash,
         ))
 
-    door_window_rows = read_csv(sources["doors_windows"])
-    stale = sorted({item["source_ifc_sha256"] for item in door_window_rows if item["source_ifc_sha256"] != ifc_hash})
-    if stale:
-        raise RuntimeError(f"A-104 schedule evidence is stale: {stale}")
+    door_window_rows = [item for item in equipment if item["legacy_kind"] == "a104" and item["schedule_included"] == "yes"]
     for item in door_window_rows:
-        operation = item["operation_type"] or "NOTDEFINED"
+        req = requirements_by_equipment[item["equipment_id"]]
+        operation = req.get("operation_type", "") or "NOTDEFINED"
         unresolved = "厂家门窗表、五金型号、安装/收口与现场复核"
         if operation == "NOTDEFINED":
             unresolved = "开启方向/合页侧、" + unresolved
         result.append(row(
-            f"S701-{item['candidate_id']}", "门窗与五金", item["global_id"],
-            f"{item['candidate_tag']} · {item['ifc_class']}",
-            f"身份/定位；名义尺寸 {item['nominal_width_mm']}×{item['nominal_height_mm']} mm",
+            f"S701-{item['legacy_id']}", "门窗与五金", item["ifc_global_ids"], item["item_name"],
+            f"身份/定位；名义尺寸 {req.get('nominal_width','')}×{req.get('nominal_height','')} mm",
             f"OperationType={operation}", unresolved,
-            "a104-door-window-review.csv", "observed_geometry_hardware_pending", ifc_hash,
+            item["source_ids"], "observed_geometry_hardware_pending", ifc_hash,
         ))
 
-    m401_rows = read_csv(sources["m401"])
-    stale = sorted({item["source_ifc_sha256"] for item in m401_rows if item["source_ifc_sha256"] != ifc_hash})
-    if stale:
-        raise RuntimeError(f"M-401 schedule evidence is stale: {stale}")
-    for item in (item for item in m401_rows if item["record_kind"] == "type_definition"):
+    hvac_rows = [item for item in equipment if item["legacy_kind"] == "hvac_interface" and item["ifc_type_global_id"]]
+    for item in hvac_rows:
         result.append(row(
-            f"S701-HVAC-{item['type_name']}", "暖通设备类型", item["type_global_id"], item["type_name"],
-            f"当前 IFC 已分配类型；实例数 {item['type_occurrence_count']}", item["type_description"],
-            item["missing_or_unverified"], "m401-existing-review.csv",
+            f"S701-HVAC-{item['ifc_type_name']}", "暖通设备类型", item["ifc_type_global_id"], item["ifc_type_name"],
+            f"当前 IFC 已分配类型；实例数 {item['quantity']}", item["model"],
+            "最终精确型号、接口坐标、功率、风量、检修条件", item["source_ids"],
             "observed_type_not_final_selection", ifc_hash,
         ))
 

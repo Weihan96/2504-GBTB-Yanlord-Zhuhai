@@ -50,6 +50,14 @@ def read_role_decisions(path: Path | None) -> list[dict[str, Any]]:
         return []
     with path.open(newline="", encoding="utf-8-sig") as handle:
         rows = list(csv.DictReader(handle))
+    if rows and "equipment_id" in rows[0]:
+        source_path = path.with_name("source-evidence-register.csv")
+        with source_path.open(newline="", encoding="utf-8-sig") as handle:
+            rows = [
+                json.loads(row["legacy_projection_json"])
+                for row in csv.DictReader(handle)
+                if "furniture-installation-role.csv" in row["legacy_targets"].split(";")
+            ]
     if not rows or set(rows[0]) != ROLE_DECISION_FIELDS:
         raise RuntimeError(f"invalid furniture role decision schema: {path}")
     seen: set[tuple[str, str]] = set()
@@ -77,6 +85,22 @@ def read_product_register(path: Path | None) -> list[dict[str, Any]]:
         return []
     with path.open(newline="", encoding="utf-8-sig") as handle:
         rows = list(csv.DictReader(handle))
+    if rows and "equipment_id" in rows[0]:
+        source_path = path.with_name("source-evidence-register.csv")
+        with source_path.open(newline="", encoding="utf-8-sig") as handle:
+            source_by_id = {row["source_id"]: row for row in csv.DictReader(handle)}
+        rows = [
+            {
+                "selector_kind": row["selector_kind"], "selector_value": row["selector_value"],
+                "manufacturer": row["manufacturer"], "product_name": row["item_name"],
+                "product_variant": row["variant"], "product_category": row["category"],
+                "intended_use": row["use_location_confirmed"],
+                "source_url": source_by_id.get(row["source_ids"], {}).get("source_url", ""),
+                "identity_basis": row["identity_basis"], "confidence": row["confidence"],
+                "human_review_required": row["human_review_required"], "status": "confirmed",
+            }
+            for row in rows if row["legacy_kind"] == "furniture_product"
+        ]
     if not rows or set(rows[0]) != PRODUCT_REGISTER_FIELDS:
         raise RuntimeError(f"invalid furniture product register schema: {path}")
     seen: set[tuple[str, str]] = set()

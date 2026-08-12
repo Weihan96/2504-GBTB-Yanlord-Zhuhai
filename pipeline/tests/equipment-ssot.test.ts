@@ -1,0 +1,48 @@
+import { expect, test } from "bun:test";
+import { readFileSync } from "node:fs";
+import { resolve } from "node:path";
+
+const root = resolve(import.meta.dir, "../..");
+const script = resolve(root, "pipeline/scripts/equipment_ssot.py");
+
+test("equipment SSOT validates projections and covers every scoped IFC object", () => {
+  const run = Bun.spawnSync(["python3", script, "all"], { cwd: root });
+  expect(run.exitCode).toBe(0);
+  const report = JSON.parse(run.stdout.toString());
+  expect(report.validate).toMatchObject({
+    master_count: 146,
+    requirement_count: 396,
+    source_count: 89,
+    schema_version: "1.0.0",
+  });
+  expect(report.projections).toMatchObject({
+    appliance_rows: 18,
+    furniture_rows: 9,
+    elec_evidence_rows: 24,
+    hvac_evidence_rows: 4,
+    furniture_role_rows: 51,
+    mode: "check",
+  });
+  expect(report.ifc_coverage).toMatchObject({
+    scope_count: 161,
+    covered_count: 161,
+    missing_count: 0,
+    duplicate_count: 0,
+  });
+  expect(report.ifc_coverage.class_counts).toEqual({
+    IfcElectricAppliance: 19,
+    IfcFurniture: 89,
+    IfcSanitaryTerminal: 27,
+    IfcWasteTerminal: 3,
+    IfcSensor: 1,
+    IfcDoor: 8,
+    IfcWindow: 11,
+    IfcElementAssembly: 3,
+  });
+}, 60_000);
+
+test("equipment SSOT never writes the formal IFC", () => {
+  const source = readFileSync(script, "utf8");
+  expect(source).not.toContain("model.write(");
+  expect(source).not.toContain("ifc.write(");
+});

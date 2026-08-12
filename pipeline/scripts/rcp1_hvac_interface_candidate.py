@@ -45,7 +45,8 @@ def main() -> int:
     parser = argparse.ArgumentParser()
     parser.add_argument("--input", type=Path, required=True)
     parser.add_argument("--m401-review", type=Path, required=True)
-    parser.add_argument("--evidence", type=Path, required=True)
+    parser.add_argument("--evidence", type=Path)
+    parser.add_argument("--source-evidence", type=Path, default=Path("pipeline/decisions/source-evidence-register.csv"))
     parser.add_argument("--output", type=Path, required=True)
     parser.add_argument("--manual-dir", type=Path)
     args = parser.parse_args()
@@ -57,7 +58,17 @@ def main() -> int:
         raise RuntimeError("M-401 review does not match the formal IFC")
 
     model = ifcopenshell.open(args.input)
-    evidence_rows = read_csv(args.evidence)
+    if args.evidence:
+        evidence_rows = read_csv(args.evidence)
+        evidence_register = args.evidence
+    else:
+        canonical_sources = read_csv(args.source_evidence)
+        evidence_rows = [
+            json.loads(row["legacy_projection_json"])
+            for row in canonical_sources
+            if "rcp1-hvac-equipment-interface-evidence.csv" in split_values(row["legacy_targets"])
+        ]
+        evidence_register = args.source_evidence
     occurrences = []
     manual_checks = []
     type_assignments_match = True
@@ -152,7 +163,7 @@ def main() -> int:
             "ifc": str(args.input),
             "ifc_sha256": formal_sha,
             "m401_review": str(args.m401_review),
-            "evidence_register": str(args.evidence),
+            "evidence_register": str(evidence_register),
         },
         "summary": {
             "equipment_count": len(occurrences),

@@ -1,0 +1,50 @@
+{
+  "schema_version": "1.0.0",
+  "tables": {
+    "equipment-register.csv": {
+      "primary_key": "equipment_id",
+      "columns": [
+        "equipment_id", "domain", "category", "item_name", "manufacturer", "model", "variant",
+        "quantity", "procurement_status", "decision_status", "storage_location_candidate",
+        "use_location_candidate", "storage_location_confirmed", "use_location_confirmed",
+        "schedule_included", "selector_kind", "selector_value", "ifc_class", "ifc_type_name",
+        "ifc_type_global_id", "ifc_global_ids", "source_ids", "identity_basis", "confidence",
+        "human_review_required", "legacy_kind", "legacy_id", "notes"
+      ],
+      "required": ["equipment_id", "domain", "item_name", "decision_status", "schedule_included", "human_review_required"],
+      "enums": {
+        "domain": ["APPLIANCE", "NETWORK", "HVAC", "FURNITURE", "SANITARY", "DRAINAGE", "DOOR_WINDOW", "SAFETY", "ASSEMBLY"],
+        "procurement_status": ["", "not_selected", "candidate", "selected", "purchased_arrived", "existing", "not_applicable"],
+        "decision_status": ["pending", "partial", "confirmed", "ifc_observed", "candidate", "superseded"],
+        "schedule_included": ["yes", "no"],
+        "selector_kind": ["", "global_id", "type_name", "ifc_type_global_id", "logical_input"],
+        "human_review_required": ["yes", "no"]
+      }
+    },
+    "equipment-installation-requirements.csv": {
+      "primary_key": "requirement_id",
+      "foreign_keys": {"equipment_id": "equipment-register.csv.equipment_id", "source_id": "source-evidence-register.csv.source_id"},
+      "columns": [
+        "requirement_id", "equipment_id", "discipline", "parameter_key", "value_text", "value_number",
+        "unit", "datum", "value_origin", "status", "source_id", "source_locator", "blocks_release", "notes"
+      ],
+      "required": ["requirement_id", "equipment_id", "discipline", "parameter_key", "value_origin", "status", "blocks_release"],
+      "enums": {
+        "value_origin": ["user_input", "official_exact_model", "official_model_family", "ifc_observed", "project_candidate", "site_observed", "pending"],
+        "status": ["pending", "candidate", "confirmed", "observed", "not_applicable", "superseded"],
+        "blocks_release": ["yes", "no"]
+      }
+    },
+    "source-evidence-register.csv": {
+      "primary_key": "source_id",
+      "columns": [
+        "source_id", "discipline", "sheet_id", "decision_scope", "source_kind", "source_document",
+        "source_url", "local_path", "sha256", "locator", "evidence", "proves", "does_not_prove",
+        "status", "confidence", "review_required", "formal_ifc_write_allowed", "manufacturer",
+        "model_scope", "revision", "publication_date", "legacy_targets", "legacy_projection_json", "notes"
+      ],
+      "required": ["source_id", "source_kind", "source_document", "sha256", "status", "review_required", "formal_ifc_write_allowed"],
+      "enums": {"review_required": ["yes", "no"], "formal_ifc_write_allowed": ["yes", "no"]}
+    }
+  }
+}
