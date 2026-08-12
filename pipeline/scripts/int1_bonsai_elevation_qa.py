@@ -45,8 +45,33 @@ def forward_entities(roots) -> dict[int, str]:
     return entities
 
 
-def product_geometry_graph(product) -> dict[int, str]:
-    return forward_entities((product.ObjectPlacement, product.Representation))
+def original_geometry_graph(product) -> dict[int, str]:
+    """Graph only placements and source representations, not their mutable list owner."""
+    representations = []
+    if product.Representation:
+        for representation in product.Representation.Representations:
+            context = representation.ContextOfItems
+            if (
+                getattr(context, "ContextIdentifier", None) == "Body"
+                and getattr(context, "TargetView", None) == "ELEVATION_VIEW"
+            ):
+                continue
+            representations.append(representation)
+    return forward_entities((product.ObjectPlacement, *representations))
+
+
+def candidate_original_geometry_graph(product) -> dict[int, str]:
+    representations = []
+    if product.Representation:
+        for representation in product.Representation.Representations:
+            context = representation.ContextOfItems
+            if (
+                getattr(context, "ContextIdentifier", None) == "Body"
+                and getattr(context, "TargetView", None) == "ELEVATION_VIEW"
+            ):
+                continue
+            representations.append(representation)
+    return forward_entities((product.ObjectPlacement, *representations))
 
 
 def matrix_max_delta(first, second) -> float:
@@ -81,15 +106,24 @@ def main() -> None:
     }
 
     product_records = []
-    for source_product in source.by_type("IfcProduct"):
+    source_products = source.by_type("IfcProduct")
+    protected_products = [
+        product
+        for product in source_products
+        if not (
+            product.is_a("IfcAnnotation")
+            and getattr(product, "ObjectType", None) == "DRAWING"
+        )
+    ]
+    for source_product in protected_products:
         candidate_product = candidate_by_guid.get(source_product.GlobalId)
         if candidate_product is None:
             product_records.append(
                 {"global_id": source_product.GlobalId, "status": "removed"}
             )
             continue
-        source_graph = product_geometry_graph(source_product)
-        candidate_graph = product_geometry_graph(candidate_product)
+        source_graph = original_geometry_graph(source_product)
+        candidate_graph = candidate_original_geometry_graph(candidate_product)
         graph_equal = source_graph == candidate_graph
         placement_delta = matrix_max_delta(
             ifcopenshell.util.placement.get_local_placement(
@@ -123,7 +157,11 @@ def main() -> None:
     for drawing in sorted(drawings, key=lambda item: item.Name):
         pset = ifcopenshell.util.element.get_pset(drawing, "EPset_Drawing")
         document = drawing_document(candidate, drawing)
-        svg_path = PROJECT_ROOT / document.Location
+        candidate_relative = (
+            arguments.candidate.resolve().parent / document.Location
+        ).resolve()
+        project_relative = (PROJECT_ROOT / document.Location).resolve()
+        svg_path = candidate_relative if candidate_relative.is_file() else project_relative
         root = ET.parse(svg_path).getroot()
         image_count = sum(element.tag.endswith("image") for element in root.iter())
         drawing_records.append(
@@ -151,7 +189,8 @@ def main() -> None:
         record
         for record in drawing_records
         if record["target_view"] != "ELEVATION_VIEW"
-        or record["scale"] != "1/50"
+        or record["scale"]
+        != ("1/30" if record["name"].startswith("EL-P0") else "1/50")
         or record["has_underlay"] is not False
         or record["svg_image_element_count"] != 0
         or not record["svg_has_noninteger_highlights"]
@@ -159,7 +198,8 @@ def main() -> None:
     result = {
         "source_ifc_sha256": sha256(arguments.source),
         "candidate_ifc_sha256": sha256(arguments.candidate),
-        "source_product_count": len(product_records),
+        "source_product_count": len(source_products),
+        "protected_original_product_count": len(product_records),
         "source_represented_product_count": len(represented),
         "original_product_geometry_graph_exact_count": sum(
             record.get("geometry_graph_exact", False) for record in product_records
@@ -181,10 +221,12 @@ def main() -> None:
         "drawing_failures": drawing_failures,
         "drawings": drawing_records,
         "proof": (
-            "Exact equality of every original product ObjectPlacement and "
-            "Representation forward STEP subgraph proves 0.0 mm world-geometry change."
+            "Exact equality of every non-Drawing original product ObjectPlacement and "
+            "non-ELEVATION_VIEW Representation forward STEP subgraph proves 0.0 mm "
+            "physical world-geometry change; Drawing cameras and lightweight view-only "
+            "representations are the intentional scope."
         ),
-        "pass": not changed and len(drawing_records) == 36 and not drawing_failures,
+        "pass": not changed and len(drawing_records) == 44 and not drawing_failures,
     }
     arguments.output.parent.mkdir(parents=True, exist_ok=True)
     arguments.output.write_text(

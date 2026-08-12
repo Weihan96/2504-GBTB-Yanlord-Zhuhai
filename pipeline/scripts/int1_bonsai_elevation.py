@@ -35,8 +35,12 @@ from mathutils import Vector
 
 
 REGISTER = Path("pipeline/decisions/int1-elevation-view-register.csv")
-OUTPUT_DIR = Path("drawings/elevations/native")
-REPORT_DIR = Path("build/int1/native-bonsai")
+OUTPUT_DIR = Path(
+    os.environ.get("INT1_BONSAI_OUTPUT_DIR", "drawings/elevations/native")
+)
+REPORT_DIR = Path(
+    os.environ.get("INT1_BONSAI_REPORT_DIR", "build/int1/native-bonsai")
+)
 PROJECT_ROOT = Path(__file__).resolve().parents[2]
 CAMERA_Z_M = 1.25
 VIEW_BOTTOM_M = -0.10
@@ -112,17 +116,36 @@ def read_rows(
 
 
 def drawing_name(row: dict[str, str]) -> str:
+    if row.get("drawing_name"):
+        return row["drawing_name"]
     suffix = DIRECTION[row["direction"]]["suffix"]
     room = row["space_reference"].split(" ", 1)[0]
     return f'{row["sheet_id"]}-{row["view_id"]}-{room}-{suffix}'
 
 
 def get_space_bbox(row: dict[str, str]) -> tuple[tuple[float, float, float], tuple[float, float, float]]:
-    space = tool.Ifc.get().by_guid(row["space_global_id"])
-    obj = tool.Ifc.get_object(space)
-    if not obj:
-        raise RuntimeError(f'space is not loaded: {row["space_global_id"]}')
-    return world_bbox(obj)
+    global_ids = row.get("space_global_ids", row["space_global_id"]).split(";")
+    boxes = []
+    for global_id in global_ids:
+        space = tool.Ifc.get().by_guid(global_id)
+        obj = tool.Ifc.get_object(space)
+        if not obj:
+            raise RuntimeError(f"space is not loaded: {global_id}")
+        boxes.append(world_bbox(obj))
+    minimum = [min(box[0][axis] for box in boxes) for axis in range(3)]
+    maximum = [max(box[1][axis] for box in boxes) for axis in range(3)]
+    # Public unfolded elevations use an explicit plan strip.  This makes the
+    # view scope auditable and avoids clipping to one room's Space boundary.
+    overrides = (
+        ("scope_min_x_mm", minimum, 0),
+        ("scope_min_y_mm", minimum, 1),
+        ("scope_max_x_mm", maximum, 0),
+        ("scope_max_y_mm", maximum, 1),
+    )
+    for key, target, axis in overrides:
+        if row.get(key):
+            target[axis] = float(row[key]) / 1000
+    return tuple(minimum), tuple(maximum)
 
 
 def is_demolish_wall(element: ifcopenshell.entity_instance) -> bool:
@@ -209,6 +232,11 @@ def linework_elements(
     excluded = []
     for item in elements:
         element = item[0]
+        if ifcopenshell.util.representation.get_representation(
+            element, "Model", "Body", "ELEVATION_VIEW"
+        ):
+            included.append(item)
+            continue
         node_count = representation_node_count(element)
         if node_count > MAX_OCC_REPRESENTATION_NODES:
             excluded.append(
@@ -233,11 +261,21 @@ def camera_dimensions(
     anchor = (float(row["ifc_x_mm"]) / 1000, float(row["ifc_y_mm"]) / 1000)
     axis = direction["axis"]
     target = maximum[axis] if direction["sign"] > 0 else minimum[axis]
-    clip_end = abs(target - anchor[axis]) + WALL_BACK_MARGIN_M
+    wall_back_margin = float(row.get("wall_back_margin_m", WALL_BACK_MARGIN_M))
+    horizontal_margin = float(row.get("horizontal_margin_m", HORIZONTAL_MARGIN_M))
+    view_bottom = float(row.get("view_bottom_m", VIEW_BOTTOM_M))
+    view_top = float(row.get("view_top_m", VIEW_TOP_M))
+    clip_end = abs(target - anchor[axis]) + wall_back_margin
     projected_axis = 0 if axis == 1 else 1
-    width = maximum[projected_axis] - minimum[projected_axis] + HORIZONTAL_MARGIN_M
-    height = VIEW_TOP_M - VIEW_BOTTOM_M
+    width = maximum[projected_axis] - minimum[projected_axis] + horizontal_margin
+    height = view_top - view_bottom
     return width, height, clip_end
+
+
+def camera_z(row: dict[str, str]) -> float:
+    view_bottom = float(row.get("view_bottom_m", VIEW_BOTTOM_M))
+    view_top = float(row.get("view_top_m", VIEW_TOP_M))
+    return (view_bottom + view_top) / 2
 
 
 def find_or_create_drawing(row: dict[str, str]) -> ifcopenshell.entity_instance:
@@ -256,7 +294,7 @@ def find_or_create_drawing(row: dict[str, str]) -> ifcopenshell.entity_instance:
     bpy.context.scene.cursor.location = (
         float(row["ifc_x_mm"]) / 1000,
         float(row["ifc_y_mm"]) / 1000,
-        CAMERA_Z_M,
+        camera_z(row),
     )
     before = {
         drawing.id()
@@ -300,7 +338,7 @@ def configure_drawing(
     bpy.context.scene.cursor.location = (
         float(row["ifc_x_mm"]) / 1000,
         float(row["ifc_y_mm"]) / 1000,
-        CAMERA_Z_M,
+        camera_z(row),
     )
     camera.matrix_world = tool.Drawing.generate_drawing_matrix(
         "ELEVATION_VIEW", DIRECTION[row["direction"]]["hint"]
@@ -314,7 +352,15 @@ def configure_drawing(
     cprops.update_props = False
     cprops.camera_type = "ORTHO"
     cprops.target_view = "ELEVATION_VIEW"
-    cprops.diagram_scale = "1:50|1/50"
+    human_scale = row.get("human_scale", "1:50")
+    scale = row.get("scale", "1/50")
+    enum_scale = f"{human_scale}|{scale}"
+    if enum_scale == "1:30|1/30":
+        cprops.custom_scale_numerator = "1"
+        cprops.custom_scale_denominator = "30"
+        cprops.diagram_scale = "CUSTOM"
+    else:
+        cprops.diagram_scale = enum_scale
     cprops.has_underlay = False
     cprops.has_linework = True
     cprops.has_annotation = False
@@ -337,8 +383,8 @@ def configure_drawing(
         pset=pset,
         properties={
             "TargetView": "ELEVATION_VIEW",
-            "Scale": "1/50",
-            "HumanScale": "1:50",
+            "Scale": scale,
+            "HumanScale": human_scale,
             "HasUnderlay": False,
             "HasLinework": True,
             "HasAnnotation": False,
@@ -495,6 +541,7 @@ def build_view(project_root: Path, row: dict[str, str]) -> dict[str, Any]:
         "source_locator": row["source_locator"],
         "space_reference": row["space_reference"],
         "space_global_id": row["space_global_id"],
+        "space_global_ids": row.get("space_global_ids", row["space_global_id"]).split(";"),
         "drawing": {
             "id": drawing.id(),
             "global_id": drawing.GlobalId,
@@ -514,10 +561,19 @@ def build_view(project_root: Path, row: dict[str, str]) -> dict[str, Any]:
             "ortho_scale_m": camera.data.ortho_scale,
             "resolution": [bpy.context.scene.render.resolution_x, bpy.context.scene.render.resolution_y],
         },
+        "scale": row.get("scale", "1/50"),
+        "human_scale": row.get("human_scale", "1:50"),
         "room_bbox_m": [list(room_bbox[0]), list(room_bbox[1])],
         "include_count": len(elements),
         "include_global_ids": [item[0].GlobalId for item in elements],
         "include_class_counts": dict(Counter(item[0].is_a() for item in elements)),
+        "lightweight_elevation_global_ids": [
+            item[0].GlobalId
+            for item in elements
+            if ifcopenshell.util.representation.get_representation(
+                item[0], "Model", "Body", "ELEVATION_VIEW"
+            )
+        ],
         "demolish_wall_count": 0,
         "complexity_exclusion_count": len(complexity_exclusions),
         "complexity_exclusions": complexity_exclusions,

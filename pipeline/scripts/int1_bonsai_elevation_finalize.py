@@ -18,7 +18,9 @@ import ifcopenshell.util.element
 
 PROJECT_ROOT = Path(__file__).resolve().parents[2]
 REGISTER = PROJECT_ROOT / "pipeline/decisions/int1-elevation-view-register.csv"
-REPORT_DIR = PROJECT_ROOT / "build/int1/native-bonsai"
+REPORT_DIR = PROJECT_ROOT / os.environ.get(
+    "INT1_BONSAI_REPORT_DIR", "build/int1/native-bonsai"
+)
 OUTPUT_DIR = PROJECT_ROOT / "drawings/elevations/native"
 MANIFEST = OUTPUT_DIR / "manifest.json"
 
@@ -50,6 +52,7 @@ def drawing_document(model: ifcopenshell.file, drawing: ifcopenshell.entity_inst
 def main() -> None:
     parser = argparse.ArgumentParser()
     parser.add_argument("checkpoint", type=Path)
+    parser.add_argument("--source-ifc-sha256-before-batch")
     parser.add_argument(
         "--skip-ifc-write",
         action="store_true",
@@ -65,6 +68,7 @@ def main() -> None:
         for drawing in model.by_type("IfcAnnotation")
         if getattr(drawing, "ObjectType", None) == "DRAWING"
         and (drawing.Name or "").startswith("EL-")
+        and not (drawing.Name or "").startswith("EL-P0")
     ]
     if len(drawings) != 36:
         raise RuntimeError(f"expected 36 native elevations, got {len(drawings)}")
@@ -144,9 +148,7 @@ def main() -> None:
         "generated_at": datetime.now(timezone.utc).isoformat(),
         "generator": "Bonsai 0.8.4 native Drawing / bim.create_drawing",
         "source_ifc": "2504 GBTB Yanlord Zhuhai.ifc",
-        "source_ifc_sha256_before_batch": (
-            "6c2fd8da9e9ad7ddbc2b63415a27f1c979e8995b880d8fce210a2dda2ef2aab6"
-        ),
+        "source_ifc_sha256_before_batch": arguments.source_ifc_sha256_before_batch,
         "checkpoint_sha256": sha256(checkpoint),
         "view_count": len(reports),
         "sheet_count": len({report["sheet_id"] for report in reports}),
@@ -166,13 +168,27 @@ def main() -> None:
                 for exclusion in report["complexity_exclusions"]
             }
         ),
+        "lightweight_elevation_unique_global_ids": sorted(
+            {
+                global_id
+                for report in reports
+                for global_id in json.loads(
+                    (REPORT_DIR / f'{report["drawing_name"]}-source.json').read_text(
+                        encoding="utf-8"
+                    )
+                ).get("lightweight_elevation_global_ids", [])
+            }
+        ),
         "views": reports,
-        "pass": True,
+        "pass": len(reports) == 36
+        and not any(report["complexity_exclusions"] for report in reports),
     }
     MANIFEST.write_text(
         json.dumps(manifest, ensure_ascii=False, indent=2) + "\n", encoding="utf-8"
     )
     print(json.dumps(manifest | {"views": f"{len(reports)} records"}, ensure_ascii=False))
+    if not manifest["pass"]:
+        raise SystemExit(1)
 
 
 if __name__ == "__main__":

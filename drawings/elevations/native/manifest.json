@@ -1,20 +1,22 @@
 {
-  "generated_at": "2026-08-11T17:24:50.584539+00:00",
+  "generated_at": "2026-08-12T07:01:39.003622+00:00",
   "generator": "Bonsai 0.8.4 native Drawing / bim.create_drawing",
   "source_ifc": "2504 GBTB Yanlord Zhuhai.ifc",
-  "source_ifc_sha256_before_batch": "6c2fd8da9e9ad7ddbc2b63415a27f1c979e8995b880d8fce210a2dda2ef2aab6",
-  "checkpoint_sha256": "e17a3b6a068508140df555960f5bb72d2b7cc00f3c40adb0ccd10754ecd388be",
+  "source_ifc_sha256_before_batch": "f15bf2647d9a5094606d46c333a57747062031e3b79239975eb153ff8cada016",
+  "checkpoint_sha256": "9a4dac0fceaa4d274c604e59f0c73d187b6db7aaece0a028f51d8d036449df1c",
   "view_count": 36,
   "sheet_count": 9,
   "linework_mode_counts": {
-    "FREESTYLE": 9,
-    "OPENCASCADE": 27
+    "OPENCASCADE": 36
   },
   "demolish_wall_count": 0,
-  "complexity_exclusion_occurrences": 36,
-  "complexity_exclusion_unique_global_ids": [
+  "complexity_exclusion_occurrences": 0,
+  "complexity_exclusion_unique_global_ids": [],
+  "lightweight_elevation_unique_global_ids": [
     "0V9CnYT0n3GvkLmXhxvv$u",
     "0YgqsahOH4FvZ_nLwl_Tlf",
+    "1MzM8Ms2vFo8KEm503j9w2",
+    "1i_pqgLv9A7uuV7MjaArBW",
     "2S2c498tb7$gzdukjhCGVQ",
     "2iKOL78$H0N9Yd9$ky3pW4",
     "2wViHGrwX2hOYCb3MDNb$9",
@@ -36,7 +38,7 @@
       "source_locator": "01 DWG > KP-01 立面索引图 > VIEWPORT #243CB4 > INSERT #243CB7 > resolved leader target A1; 02 DWG > EL-01 客餐厅立面图",
       "target_view": "ELEVATION_VIEW",
       "scale": "1/50",
-      "linework_mode": "FREESTYLE",
+      "linework_mode": "OPENCASCADE",
       "has_underlay": false,
       "has_annotation": false,
       "include_count": 43,
@@ -46,7 +48,7 @@
       "major_integer_highlight_count": 16,
       "maximum_integer_residual_mm": 0.49990272521972656,
       "svg": "drawings/elevations/native/EL-01-01-R14-PY.svg",
-      "svg_sha256": "52f01fd03d9e76f1b3e6de0a286f68dc23f9378ab076ee1eddaabfbcf1bab339"
+      "svg_sha256": "f961c0d20c1bfce5755582310ecf177a6868a234cbb0a18d6a7d46625d39b8b6"
     },
     {
       "view_id": "02",
@@ -60,7 +62,7 @@
       "source_locator": "01 DWG > KP-01 立面索引图 > VIEWPORT #243CB4 > INSERT #243C78 > resolved leader target A2; 02 DWG > EL-01 客餐厅立面图",
       "target_view": "ELEVATION_VIEW",
       "scale": "1/50",
-      "linework_mode": "FREESTYLE",
+      "linework_mode": "OPENCASCADE",
       "has_underlay": false,
       "has_annotation": false,
       "include_count": 36,
@@ -70,7 +72,7 @@
       "major_integer_highlight_count": 16,
       "maximum_integer_residual_mm": 0.4848651885986328,
       "svg": "drawings/elevations/native/EL-01-02-R20-PY.svg",
-      "svg_sha256": "2c9a580a49b828d4ca117ec2b47d49033677707c1254d384c09da5e96b993d73"
+      "svg_sha256": "b2f20f8519fd414e5a31ef62e0a3ea75dde321398449ddb207e7f02eb655cd72"
     },
     {
       "view_id": "03",
@@ -84,7 +86,7 @@
       "source_locator": "01 DWG > KP-01 立面索引图 > VIEWPORT #243CB4 > INSERT #243C87 > resolved leader target A2; 02 DWG > EL-01 客餐厅立面图",
       "target_view": "ELEVATION_VIEW",
       "scale": "1/50",
-      "linework_mode": "FREESTYLE",
+      "linework_mode": "OPENCASCADE",
       "has_underlay": false,
       "has_annotation": false,
       "include_count": 36,
@@ -94,7 +96,7 @@
       "major_integer_highlight_count": 6,
       "maximum_integer_residual_mm": 0.4848651885986328,
       "svg": "drawings/elevations/native/EL-01-03-R20-PX.svg",
-      "svg_sha256": "e7b45be08f6f2b3e9a7dfbdb86a8313612398fd2e20d1e506397ca1136e16039"
+      "svg_sha256": "b7f1f9222620b9d71402c44d75bf6cb6bdf8ed681af139bf6e4bd00674e2177e"
     },
     {
       "view_id": "04",
@@ -108,7 +110,7 @@
       "source_locator": "01 DWG > KP-01 立面索引图 > VIEWPORT #243CB4 > INSERT #243C96 > resolved leader target A2; 02 DWG > EL-02 客餐厅立面图",
       "target_view": "ELEVATION_VIEW",
       "scale": "1/50",
-      "linework_mode": "FREESTYLE",
+      "linework_mode": "OPENCASCADE",
       "has_underlay": false,
       "has_annotation": false,
       "include_count": 36,
@@ -118,7 +120,7 @@
       "major_integer_highlight_count": 7,
       "maximum_integer_residual_mm": 0.4799180030822754,
       "svg": "drawings/elevations/native/EL-02-04-R20-NY.svg",
-      "svg_sha256": "300b2a64693d04e9ec47a621891bbf8f38f3612a754812a551ee2c15032f9c7d"
+      "svg_sha256": "a59b94345d24a2c78fb057e8f4c56047ba32912dad961c92a852cc717cdd1235"
     },
     {
       "view_id": "05",
@@ -132,7 +134,7 @@
       "source_locator": "01 DWG > KP-01 立面索引图 > VIEWPORT #243CB4 > INSERT #243CA5 > resolved leader target A2; 02 DWG > EL-02 客餐厅立面图",
       "target_view": "ELEVATION_VIEW",
       "scale": "1/50",
-      "linework_mode": "FREESTYLE",
+      "linework_mode": "OPENCASCADE",
       "has_underlay": false,
       "has_annotation": false,
       "include_count": 36,
@@ -142,7 +144,7 @@
       "major_integer_highlight_count": 8,
       "maximum_integer_residual_mm": 0.4848651885986328,
       "svg": "drawings/elevations/native/EL-02-05-R20-NX.svg",
-      "svg_sha256": "095eb9fd6c6e561cb977720e4b2a87c2ad40cd1b5032ccaa1774bd9c6dd932c9"
+      "svg_sha256": "12976093a1b52da5adf3b22ecb4d09352c868b0736dfba987c2e4fb6f74a32f1"
     },
     {
       "view_id": "06",
@@ -156,7 +158,7 @@
       "source_locator": "01 DWG > KP-01 立面索引图 > VIEWPORT #243CB4 > INSERT #243CCE > resolved leader target A3; 02 DWG > EL-03 厨房立面图",
       "target_view": "ELEVATION_VIEW",
       "scale": "1/50",
-      "linework_mode": "FREESTYLE",
+      "linework_mode": "OPENCASCADE",
       "has_underlay": false,
       "has_annotation": false,
       "include_count": 44,
@@ -166,7 +168,7 @@
       "major_integer_highlight_count": 13,
       "maximum_integer_residual_mm": 0.4788665771484375,
       "svg": "drawings/elevations/native/EL-03-06-R04-PY.svg",
-      "svg_sha256": "bf0e404689ca68269379e5f254a49b3defd9b73c63eb43106dba9e918b218f01"
+      "svg_sha256": "f72622f5d8b39b2eb20125a1172a0c0b81f9c6377c0436a28fa3ff3084702f4c"
     },
     {
       "view_id": "07",
@@ -180,7 +182,7 @@
       "source_locator": "01 DWG > KP-01 立面索引图 > VIEWPORT #243CB4 > INSERT #243CDD > resolved leader target A3; 02 DWG > EL-03 厨房立面图",
       "target_view": "ELEVATION_VIEW",
       "scale": "1/50",
-      "linework_mode": "FREESTYLE",
+      "linework_mode": "OPENCASCADE",
       "has_underlay": false,
       "has_annotation": false,
       "include_count": 44,
@@ -190,7 +192,7 @@
       "major_integer_highlight_count": 17,
       "maximum_integer_residual_mm": 0.49993896484375,
       "svg": "drawings/elevations/native/EL-03-07-R04-PX.svg",
-      "svg_sha256": "505fffac611568a0fe32d334a0bd87051bf0035f14617ee0dcc653625ceb9118"
+      "svg_sha256": "ece83d11b3a10a2fd6395e0a54f9212135356775ff9f1b15e449048da9965144"
     },
     {
       "view_id": "08",
@@ -204,7 +206,7 @@
       "source_locator": "01 DWG > KP-01 立面索引图 > VIEWPORT #243CB4 > INSERT #243CEC > resolved leader target A3; 02 DWG > EL-03 厨房立面图",
       "target_view": "ELEVATION_VIEW",
       "scale": "1/50",
-      "linework_mode": "FREESTYLE",
+      "linework_mode": "OPENCASCADE",
       "has_underlay": false,
       "has_annotation": false,
       "include_count": 44,
@@ -214,7 +216,7 @@
       "major_integer_highlight_count": 19,
       "maximum_integer_residual_mm": 0.4999685287475586,
       "svg": "drawings/elevations/native/EL-03-08-R04-NY.svg",
-      "svg_sha256": "ed49fedff3ebd7b5f280fa18f167abd8b4e048d257c2587d723b333ce3d27dff"
+      "svg_sha256": "06206797fa3877bc1f0af4e4bbca986e2b72a1f3f998634008416ef28e26e66f"
     },
     {
       "view_id": "09",
@@ -228,7 +230,7 @@
       "source_locator": "01 DWG > KP-01 立面索引图 > VIEWPORT #243CB4 > INSERT #243CFB > resolved leader target A3; 02 DWG > EL-03 厨房立面图",
       "target_view": "ELEVATION_VIEW",
       "scale": "1/50",
-      "linework_mode": "FREESTYLE",
+      "linework_mode": "OPENCASCADE",
       "has_underlay": false,
       "has_annotation": false,
       "include_count": 44,
@@ -238,7 +240,7 @@
       "major_integer_highlight_count": 8,
       "maximum_integer_residual_mm": 0.4999685287475586,
       "svg": "drawings/elevations/native/EL-03-09-R04-NX.svg",
-      "svg_sha256": "131b4408e477febc8153bf246dab75b9637cda769e8569d66310d6eb12c91f25"
+      "svg_sha256": "65f2495c332c662a12a212e308811d51d49b8daea2afa6b4d0a1347782f34b6b"
     },
     {
       "view_id": "10",
@@ -262,7 +264,7 @@
       "major_integer_highlight_count": 8,
       "maximum_integer_residual_mm": 0.47788429260253906,
       "svg": "drawings/elevations/native/EL-04-10-R07-PY.svg",
-      "svg_sha256": "ab2b5bf0fd13c80c7f2bdc995bb48950b43eff59bc44cc83d4f40266ed9dfd20"
+      "svg_sha256": "4fea6c09dda531d41d2cb7a20274469be0836358fa1fb2152015ebf8ae07098f"
     },
     {
       "view_id": "11",
@@ -286,7 +288,7 @@
       "major_integer_highlight_count": 19,
       "maximum_integer_residual_mm": 0.47788429260253906,
       "svg": "drawings/elevations/native/EL-04-11-R07-PX.svg",
-      "svg_sha256": "c6e5e26fb95a9fad1896b4df4b4664cc02326358ef91dee03887788397daf69b"
+      "svg_sha256": "b09aea97fa6bdb5cae7ab8098870dfd87c62984f48c02b87f506fd9e68840952"
     },
     {
       "view_id": "12",
@@ -310,7 +312,7 @@
       "major_integer_highlight_count": 9,
       "maximum_integer_residual_mm": 0.4554595947265625,
       "svg": "drawings/elevations/native/EL-04-12-R07-NY.svg",
-      "svg_sha256": "a9862671000cccbe2093b1caebf0023a742c158a7e16d4a170f688ee1dd60bf3"
+      "svg_sha256": "8251016746602679b77f8c7b28396033d297f774840280faa09e68c2abf4b4eb"
     },
     {
       "view_id": "13",
@@ -334,7 +336,7 @@
       "major_integer_highlight_count": 5,
       "maximum_integer_residual_mm": 0.47788429260253906,
       "svg": "drawings/elevations/native/EL-04-13-R07-NX.svg",
-      "svg_sha256": "c9bdd616e0fa9a6dba2a58c474a6fc5779bc32208c171bb4b7e8e3795422d463"
+      "svg_sha256": "c4a6955b988e42de6532a949dfcf234e6df0fe41d7527e12b168f94c1aede6c3"
     },
     {
       "view_id": "14",
@@ -351,29 +353,14 @@
       "linework_mode": "OPENCASCADE",
       "has_underlay": false,
       "has_annotation": false,
-      "include_count": 42,
+      "include_count": 44,
       "demolish_wall_count": 0,
-      "complexity_exclusions": [
-        {
-          "global_id": "2xmcLzu1rDTeMzRuNxPDyE",
-          "ifc_class": "IfcFurniture",
-          "name": "Furniture",
-          "representation_node_count": 119589,
-          "reason": "OpenCASCADE serializer safety threshold"
-        },
-        {
-          "global_id": "3IQBEqO5vDI8Z9k1Ltge_N",
-          "ifc_class": "IfcFurniture",
-          "name": "Furniture",
-          "representation_node_count": 29656,
-          "reason": "OpenCASCADE serializer safety threshold"
-        }
-      ],
-      "integer_highlight_count": 5,
-      "major_integer_highlight_count": 5,
-      "maximum_integer_residual_mm": 0.3351707458496094,
+      "complexity_exclusions": [],
+      "integer_highlight_count": 7,
+      "major_integer_highlight_count": 7,
+      "maximum_integer_residual_mm": 0.4412841796875,
       "svg": "drawings/elevations/native/EL-05-14-R09-PY.svg",
-      "svg_sha256": "2d22d4dafeb421aae08e9f30f44db7798803cc0f4e77345abf78def50507f6f0"
+      "svg_sha256": "5d5c8386b24b5ad8b8a7cd712e901881b2927bb3e6d09dee6a0cb70ca70b0f25"
     },
     {
       "view_id": "15",
@@ -390,29 +377,14 @@
       "linework_mode": "OPENCASCADE",
       "has_underlay": false,
       "has_annotation": false,
-      "include_count": 42,
+      "include_count": 44,
       "demolish_wall_count": 0,
-      "complexity_exclusions": [
-        {
-          "global_id": "2xmcLzu1rDTeMzRuNxPDyE",
-          "ifc_class": "IfcFurniture",
-          "name": "Furniture",
-          "representation_node_count": 119589,
-          "reason": "OpenCASCADE serializer safety threshold"
-        },
-        {
-          "global_id": "3IQBEqO5vDI8Z9k1Ltge_N",
-          "ifc_class": "IfcFurniture",
-          "name": "Furniture",
-          "representation_node_count": 29656,
-          "reason": "OpenCASCADE serializer safety threshold"
-        }
-      ],
-      "integer_highlight_count": 13,
-      "major_integer_highlight_count": 12,
-      "maximum_integer_residual_mm": 0.4155426025390625,
+      "complexity_exclusions": [],
+      "integer_highlight_count": 14,
+      "major_integer_highlight_count": 13,
+      "maximum_integer_residual_mm": 0.42110252380371094,
       "svg": "drawings/elevations/native/EL-05-15-R09-PX.svg",
-      "svg_sha256": "b1188c4632cf476a46a1999e7ad51dddc8434d819772b8aa7310a61958c91a6a"
+      "svg_sha256": "d00c40a085d57f4c29ff91ffcfa06916c561f83a549c91fed82634f0e2153900"
     },
     {
       "view_id": "16",
@@ -429,29 +401,14 @@
       "linework_mode": "OPENCASCADE",
       "has_underlay": false,
       "has_annotation": false,
-      "include_count": 42,
+      "include_count": 44,
       "demolish_wall_count": 0,
-      "complexity_exclusions": [
-        {
-          "global_id": "2xmcLzu1rDTeMzRuNxPDyE",
-          "ifc_class": "IfcFurniture",
-          "name": "Furniture",
-          "representation_node_count": 119589,
-          "reason": "OpenCASCADE serializer safety threshold"
-        },
-        {
-          "global_id": "3IQBEqO5vDI8Z9k1Ltge_N",
-          "ifc_class": "IfcFurniture",
-          "name": "Furniture",
-          "representation_node_count": 29656,
-          "reason": "OpenCASCADE serializer safety threshold"
-        }
-      ],
-      "integer_highlight_count": 22,
-      "major_integer_highlight_count": 16,
-      "maximum_integer_residual_mm": 0.4155426025390625,
+      "complexity_exclusions": [],
+      "integer_highlight_count": 24,
+      "major_integer_highlight_count": 18,
+      "maximum_integer_residual_mm": 0.4412841796875,
       "svg": "drawings/elevations/native/EL-05-16-R09-NY.svg",
-      "svg_sha256": "22e8d3c54e99762bc84b0b5c18f96a1127bf17fc3a9c66db067d113e5fbe0202"
+      "svg_sha256": "31bde49dd13e96040c39ee3478c422d5b7f769da808172882a9d3aefe80f6cdc"
     },
     {
       "view_id": "17",
@@ -468,29 +425,14 @@
       "linework_mode": "OPENCASCADE",
       "has_underlay": false,
       "has_annotation": false,
-      "include_count": 42,
+      "include_count": 44,
       "demolish_wall_count": 0,
-      "complexity_exclusions": [
-        {
-          "global_id": "2xmcLzu1rDTeMzRuNxPDyE",
-          "ifc_class": "IfcFurniture",
-          "name": "Furniture",
-          "representation_node_count": 119589,
-          "reason": "OpenCASCADE serializer safety threshold"
-        },
-        {
-          "global_id": "3IQBEqO5vDI8Z9k1Ltge_N",
-          "ifc_class": "IfcFurniture",
-          "name": "Furniture",
-          "representation_node_count": 29656,
-          "reason": "OpenCASCADE serializer safety threshold"
-        }
-      ],
-      "integer_highlight_count": 6,
-      "major_integer_highlight_count": 6,
-      "maximum_integer_residual_mm": 0.18787384033203125,
+      "complexity_exclusions": [],
+      "integer_highlight_count": 8,
+      "major_integer_highlight_count": 8,
+      "maximum_integer_residual_mm": 0.4412841796875,
       "svg": "drawings/elevations/native/EL-05-17-R09-NX.svg",
-      "svg_sha256": "01e138414566c35727ace58e1df23cbf63bdccb73df0319c40156f29007cb4bc"
+      "svg_sha256": "748f04d13e51ea69fd1678a2ec2629297c336f71625447d80f1e21e23f0bd396"
     },
     {
       "view_id": "18",
@@ -514,7 +456,7 @@
       "major_integer_highlight_count": 6,
       "maximum_integer_residual_mm": 0.4202556610107422,
       "svg": "drawings/elevations/native/EL-06-18-R13-PY.svg",
-      "svg_sha256": "e5665d86e000e9c95000a08dcc052e272fc5d9326791c5abcd21d8f2ac056d1e"
+      "svg_sha256": "f6c33343d490bee414c9cd92742ba51dd7cc7fe507a3b2d608568c8a7b2f857a"
     },
     {
       "view_id": "19",
@@ -531,50 +473,14 @@
       "linework_mode": "OPENCASCADE",
       "has_underlay": false,
       "has_annotation": false,
-      "include_count": 60,
+      "include_count": 65,
       "demolish_wall_count": 0,
-      "complexity_exclusions": [
-        {
-          "global_id": "0V9CnYT0n3GvkLmXhxvv$u",
-          "ifc_class": "IfcPipeSegment",
-          "name": "PipeSegment",
-          "representation_node_count": 37956,
-          "reason": "OpenCASCADE serializer safety threshold"
-        },
-        {
-          "global_id": "2S2c498tb7$gzdukjhCGVQ",
-          "ifc_class": "IfcSanitaryTerminal",
-          "name": "SanitaryTerminal",
-          "representation_node_count": 44551,
-          "reason": "OpenCASCADE serializer safety threshold"
-        },
-        {
-          "global_id": "2iKOL78$H0N9Yd9$ky3pW4",
-          "ifc_class": "IfcSanitaryTerminal",
-          "name": "SanitaryTerminal",
-          "representation_node_count": 42850,
-          "reason": "OpenCASCADE serializer safety threshold"
-        },
-        {
-          "global_id": "2wViHGrwX2hOYCb3MDNb$9",
-          "ifc_class": "IfcPipeSegment",
-          "name": "PipeSegment",
-          "representation_node_count": 37956,
-          "reason": "OpenCASCADE serializer safety threshold"
-        },
-        {
-          "global_id": "3pvAlH5C14v8uVEJ1LmK8M",
-          "ifc_class": "IfcSanitaryTerminal",
-          "name": "SanitaryTerminal",
-          "representation_node_count": 69276,
-          "reason": "OpenCASCADE serializer safety threshold"
-        }
-      ],
-      "integer_highlight_count": 29,
-      "major_integer_highlight_count": 27,
+      "complexity_exclusions": [],
+      "integer_highlight_count": 31,
+      "major_integer_highlight_count": 29,
       "maximum_integer_residual_mm": 0.49996185302734375,
       "svg": "drawings/elevations/native/EL-06-19-R12-PY.svg",
-      "svg_sha256": "eae28af1a71eab5dfb237c51acd08e7e10feae6e4d8a21381ed529de073102a2"
+      "svg_sha256": "a9b8b6ed1740b8d2a324f91a261ea86c10d5143113686851621eff49190c089c"
     },
     {
       "view_id": "20",
@@ -591,50 +497,14 @@
       "linework_mode": "OPENCASCADE",
       "has_underlay": false,
       "has_annotation": false,
-      "include_count": 60,
+      "include_count": 65,
       "demolish_wall_count": 0,
-      "complexity_exclusions": [
-        {
-          "global_id": "0V9CnYT0n3GvkLmXhxvv$u",
-          "ifc_class": "IfcPipeSegment",
-          "name": "PipeSegment",
-          "representation_node_count": 37956,
-          "reason": "OpenCASCADE serializer safety threshold"
-        },
-        {
-          "global_id": "2S2c498tb7$gzdukjhCGVQ",
-          "ifc_class": "IfcSanitaryTerminal",
-          "name": "SanitaryTerminal",
-          "representation_node_count": 44551,
-          "reason": "OpenCASCADE serializer safety threshold"
-        },
-        {
-          "global_id": "2iKOL78$H0N9Yd9$ky3pW4",
-          "ifc_class": "IfcSanitaryTerminal",
-          "name": "SanitaryTerminal",
-          "representation_node_count": 42850,
-          "reason": "OpenCASCADE serializer safety threshold"
-        },
-        {
-          "global_id": "2wViHGrwX2hOYCb3MDNb$9",
-          "ifc_class": "IfcPipeSegment",
-          "name": "PipeSegment",
-          "representation_node_count": 37956,
-          "reason": "OpenCASCADE serializer safety threshold"
-        },
-        {
-          "global_id": "3pvAlH5C14v8uVEJ1LmK8M",
-          "ifc_class": "IfcSanitaryTerminal",
-          "name": "SanitaryTerminal",
-          "representation_node_count": 69276,
-          "reason": "OpenCASCADE serializer safety threshold"
-        }
-      ],
-      "integer_highlight_count": 23,
-      "major_integer_highlight_count": 23,
-      "maximum_integer_residual_mm": 0.49999523162841797,
+      "complexity_exclusions": [],
+      "integer_highlight_count": 26,
+      "major_integer_highlight_count": 26,
+      "maximum_integer_residual_mm": 0.4999984800815582,
       "svg": "drawings/elevations/native/EL-06-20-R12-NY.svg",
-      "svg_sha256": "685b1d2b3eb1fa0e0221cb04a693c186c56a02cb2fe28863c4326f2c043a3c59"
+      "svg_sha256": "1ef5e7728ffafaa611d8b930de0b994d5df456d0df1ed2bbba8484c9d2b6175f"
     },
     {
       "view_id": "21",
@@ -651,50 +521,14 @@
       "linework_mode": "OPENCASCADE",
       "has_underlay": false,
       "has_annotation": false,
-      "include_count": 60,
+      "include_count": 65,
       "demolish_wall_count": 0,
-      "complexity_exclusions": [
-        {
-          "global_id": "0V9CnYT0n3GvkLmXhxvv$u",
-          "ifc_class": "IfcPipeSegment",
-          "name": "PipeSegment",
-          "representation_node_count": 37956,
-          "reason": "OpenCASCADE serializer safety threshold"
-        },
-        {
-          "global_id": "2S2c498tb7$gzdukjhCGVQ",
-          "ifc_class": "IfcSanitaryTerminal",
-          "name": "SanitaryTerminal",
-          "representation_node_count": 44551,
-          "reason": "OpenCASCADE serializer safety threshold"
-        },
-        {
-          "global_id": "2iKOL78$H0N9Yd9$ky3pW4",
-          "ifc_class": "IfcSanitaryTerminal",
-          "name": "SanitaryTerminal",
-          "representation_node_count": 42850,
-          "reason": "OpenCASCADE serializer safety threshold"
-        },
-        {
-          "global_id": "2wViHGrwX2hOYCb3MDNb$9",
-          "ifc_class": "IfcPipeSegment",
-          "name": "PipeSegment",
-          "representation_node_count": 37956,
-          "reason": "OpenCASCADE serializer safety threshold"
-        },
-        {
-          "global_id": "3pvAlH5C14v8uVEJ1LmK8M",
-          "ifc_class": "IfcSanitaryTerminal",
-          "name": "SanitaryTerminal",
-          "representation_node_count": 69276,
-          "reason": "OpenCASCADE serializer safety threshold"
-        }
-      ],
-      "integer_highlight_count": 44,
-      "major_integer_highlight_count": 42,
-      "maximum_integer_residual_mm": 0.49999523162841797,
+      "complexity_exclusions": [],
+      "integer_highlight_count": 48,
+      "major_integer_highlight_count": 46,
+      "maximum_integer_residual_mm": 0.4999984800815582,
       "svg": "drawings/elevations/native/EL-06-21-R12-PX.svg",
-      "svg_sha256": "216914b74f3a3eb416343453800d659d0e755956b49233b9fa93779b2edf0630"
+      "svg_sha256": "a93e8b382d5f5ac5818bf07fb27015e9512fc22c80e23f070df6e0a1599dddaa"
     },
     {
       "view_id": "22",
@@ -711,50 +545,14 @@
       "linework_mode": "OPENCASCADE",
       "has_underlay": false,
       "has_annotation": false,
-      "include_count": 60,
+      "include_count": 65,
       "demolish_wall_count": 0,
-      "complexity_exclusions": [
-        {
-          "global_id": "0V9CnYT0n3GvkLmXhxvv$u",
-          "ifc_class": "IfcPipeSegment",
-          "name": "PipeSegment",
-          "representation_node_count": 37956,
-          "reason": "OpenCASCADE serializer safety threshold"
-        },
-        {
-          "global_id": "2S2c498tb7$gzdukjhCGVQ",
-          "ifc_class": "IfcSanitaryTerminal",
-          "name": "SanitaryTerminal",
-          "representation_node_count": 44551,
-          "reason": "OpenCASCADE serializer safety threshold"
-        },
-        {
-          "global_id": "2iKOL78$H0N9Yd9$ky3pW4",
-          "ifc_class": "IfcSanitaryTerminal",
-          "name": "SanitaryTerminal",
-          "representation_node_count": 42850,
-          "reason": "OpenCASCADE serializer safety threshold"
-        },
-        {
-          "global_id": "2wViHGrwX2hOYCb3MDNb$9",
-          "ifc_class": "IfcPipeSegment",
-          "name": "PipeSegment",
-          "representation_node_count": 37956,
-          "reason": "OpenCASCADE serializer safety threshold"
-        },
-        {
-          "global_id": "3pvAlH5C14v8uVEJ1LmK8M",
-          "ifc_class": "IfcSanitaryTerminal",
-          "name": "SanitaryTerminal",
-          "representation_node_count": 69276,
-          "reason": "OpenCASCADE serializer safety threshold"
-        }
-      ],
-      "integer_highlight_count": 25,
-      "major_integer_highlight_count": 23,
+      "complexity_exclusions": [],
+      "integer_highlight_count": 27,
+      "major_integer_highlight_count": 25,
       "maximum_integer_residual_mm": 0.49996185302734375,
       "svg": "drawings/elevations/native/EL-06-22-R12-NX.svg",
-      "svg_sha256": "1c748547208c153adbc2f2641f28e6a8918c8de6cc967aaae3a940cde3fe7b66"
+      "svg_sha256": "774da96d26fe34ba64ca8c791c440ef0b7b6bec1f6e4e22a5c3dc8a3117413b2"
     },
     {
       "view_id": "23",
@@ -778,7 +576,7 @@
       "major_integer_highlight_count": 4,
       "maximum_integer_residual_mm": 0.41668701171875,
       "svg": "drawings/elevations/native/EL-07-23-R15-PY.svg",
-      "svg_sha256": "91cb9f2aba5e753061bffd98869365ecc9fd10d38585b54a0cea6426f0a86eb8"
+      "svg_sha256": "1064d36ee31f0b4cc6f9b65b2f72f8bd96ac94f0c3c7a17f9f06b6d3291347eb"
     },
     {
       "view_id": "24",
@@ -802,7 +600,7 @@
       "major_integer_highlight_count": 4,
       "maximum_integer_residual_mm": 0.41668701171875,
       "svg": "drawings/elevations/native/EL-07-24-R15-PX.svg",
-      "svg_sha256": "097110031ab329567a609a79cb28ccc04a5ed6bed319511295d35fffcbedf39f"
+      "svg_sha256": "46cc98848fe3a8cb10cbe87f0c51649af09198edc9d6cb13e67595b104a68ea5"
     },
     {
       "view_id": "25",
@@ -826,7 +624,7 @@
       "major_integer_highlight_count": 2,
       "maximum_integer_residual_mm": 0.1987457275390625,
       "svg": "drawings/elevations/native/EL-07-25-R15-NY.svg",
-      "svg_sha256": "2e452229063e81f0d5b69c5ac811a1752034911ac1d0c54a436aaca9a9697f81"
+      "svg_sha256": "da63c9a2d21592a3787898ff6b9baf6f199a835eef737107aba1c5b7c8c2ecb9"
     },
     {
       "view_id": "26",
@@ -850,7 +648,7 @@
       "major_integer_highlight_count": 4,
       "maximum_integer_residual_mm": 0.41314053535461426,
       "svg": "drawings/elevations/native/EL-07-26-R15-NX.svg",
-      "svg_sha256": "3d9e58a1e04b05282c692976d00597a136f5c06a9dae207c05753fb0f27150a0"
+      "svg_sha256": "8cbf3d59038e58e3502823b3dae81de16332fbf12365d4717966af08b9e4f5d5"
     },
     {
       "view_id": "27",
@@ -874,7 +672,7 @@
       "major_integer_highlight_count": 7,
       "maximum_integer_residual_mm": 0.4038658142089844,
       "svg": "drawings/elevations/native/EL-08-27-R18-PY.svg",
-      "svg_sha256": "57ebcd14c4cc5a2bf515049f9045c7177765d8ac5465cca0a7eabd8c66c766d8"
+      "svg_sha256": "6e19023f8a43c3eb23e6bccafad0e20a39672fe471b79983854061894b2a6d15"
     },
     {
       "view_id": "28",
@@ -891,29 +689,14 @@
       "linework_mode": "OPENCASCADE",
       "has_underlay": false,
       "has_annotation": false,
-      "include_count": 45,
+      "include_count": 47,
       "demolish_wall_count": 0,
-      "complexity_exclusions": [
-        {
-          "global_id": "0YgqsahOH4FvZ_nLwl_Tlf",
-          "ifc_class": "IfcPipeSegment",
-          "name": "PipeSegment",
-          "representation_node_count": 37956,
-          "reason": "OpenCASCADE serializer safety threshold"
-        },
-        {
-          "global_id": "3hgNkx97vCTOC2eewCpMNk",
-          "ifc_class": "IfcSanitaryTerminal",
-          "name": "SanitaryTerminal",
-          "representation_node_count": 69276,
-          "reason": "OpenCASCADE serializer safety threshold"
-        }
-      ],
-      "integer_highlight_count": 24,
-      "major_integer_highlight_count": 20,
+      "complexity_exclusions": [],
+      "integer_highlight_count": 25,
+      "major_integer_highlight_count": 21,
       "maximum_integer_residual_mm": 0.4999666213989258,
       "svg": "drawings/elevations/native/EL-08-28-R17-PY.svg",
-      "svg_sha256": "6a79f5feb8ef48c00fc45dc25feb3badda2f7e6218cba43e3aa69fcf93800be1"
+      "svg_sha256": "db813274eff907006091802971c927127fcf525ef7cd4f7353dbb622e2a85575"
     },
     {
       "view_id": "29",
@@ -930,29 +713,14 @@
       "linework_mode": "OPENCASCADE",
       "has_underlay": false,
       "has_annotation": false,
-      "include_count": 45,
+      "include_count": 47,
       "demolish_wall_count": 0,
-      "complexity_exclusions": [
-        {
-          "global_id": "0YgqsahOH4FvZ_nLwl_Tlf",
-          "ifc_class": "IfcPipeSegment",
-          "name": "PipeSegment",
-          "representation_node_count": 37956,
-          "reason": "OpenCASCADE serializer safety threshold"
-        },
-        {
-          "global_id": "3hgNkx97vCTOC2eewCpMNk",
-          "ifc_class": "IfcSanitaryTerminal",
-          "name": "SanitaryTerminal",
-          "representation_node_count": 69276,
-          "reason": "OpenCASCADE serializer safety threshold"
-        }
-      ],
-      "integer_highlight_count": 30,
-      "major_integer_highlight_count": 27,
+      "complexity_exclusions": [],
+      "integer_highlight_count": 32,
+      "major_integer_highlight_count": 29,
       "maximum_integer_residual_mm": 0.4999990463256836,
       "svg": "drawings/elevations/native/EL-08-29-R17-PX.svg",
-      "svg_sha256": "a4141adb5266392c658af5e33e9814f802fedb61307aec0481b2374763a2ae55"
+      "svg_sha256": "d929f00a41381baa0ac94219ace3c4d9026c7e05a45e6bdf32ab045e6b5b9129"
     },
     {
       "view_id": "30",
@@ -976,7 +744,7 @@
       "major_integer_highlight_count": 10,
       "maximum_integer_residual_mm": 0.4999995231628418,
       "svg": "drawings/elevations/native/EL-08-30-R16-NY.svg",
-      "svg_sha256": "6640372e4a156806f51ee1dd87f94bdfe25657c9f416951add79439951c912d8"
+      "svg_sha256": "c66a79602f578234703f9e755b21ed4176045a62a57cdfd7a6ce459cf0fd04aa"
     },
     {
       "view_id": "31",
@@ -993,29 +761,14 @@
       "linework_mode": "OPENCASCADE",
       "has_underlay": false,
       "has_annotation": false,
-      "include_count": 45,
+      "include_count": 47,
       "demolish_wall_count": 0,
-      "complexity_exclusions": [
-        {
-          "global_id": "0YgqsahOH4FvZ_nLwl_Tlf",
-          "ifc_class": "IfcPipeSegment",
-          "name": "PipeSegment",
-          "representation_node_count": 37956,
-          "reason": "OpenCASCADE serializer safety threshold"
-        },
-        {
-          "global_id": "3hgNkx97vCTOC2eewCpMNk",
-          "ifc_class": "IfcSanitaryTerminal",
-          "name": "SanitaryTerminal",
-          "representation_node_count": 69276,
-          "reason": "OpenCASCADE serializer safety threshold"
-        }
-      ],
-      "integer_highlight_count": 19,
-      "major_integer_highlight_count": 19,
+      "complexity_exclusions": [],
+      "integer_highlight_count": 21,
+      "major_integer_highlight_count": 21,
       "maximum_integer_residual_mm": 0.4999990463256836,
       "svg": "drawings/elevations/native/EL-08-31-R17-NY.svg",
-      "svg_sha256": "3adfdb7e7a88e7946f39f791910cee2c7f7a8d015c986c9fe4299db1010674ee"
+      "svg_sha256": "5ace515722c3d675383de9aefb6e6d8f97572b32dc46d2e4367ba11ee52dbf35"
     },
     {
       "view_id": "32",
@@ -1032,29 +785,14 @@
       "linework_mode": "OPENCASCADE",
       "has_underlay": false,
       "has_annotation": false,
-      "include_count": 45,
+      "include_count": 47,
       "demolish_wall_count": 0,
-      "complexity_exclusions": [
-        {
-          "global_id": "0YgqsahOH4FvZ_nLwl_Tlf",
-          "ifc_class": "IfcPipeSegment",
-          "name": "PipeSegment",
-          "representation_node_count": 37956,
-          "reason": "OpenCASCADE serializer safety threshold"
-        },
-        {
-          "global_id": "3hgNkx97vCTOC2eewCpMNk",
-          "ifc_class": "IfcSanitaryTerminal",
-          "name": "SanitaryTerminal",
-          "representation_node_count": 69276,
-          "reason": "OpenCASCADE serializer safety threshold"
-        }
-      ],
+      "complexity_exclusions": [],
       "integer_highlight_count": 20,
       "major_integer_highlight_count": 16,
       "maximum_integer_residual_mm": 0.4999666213989258,
       "svg": "drawings/elevations/native/EL-08-32-R17-NX.svg",
-      "svg_sha256": "03ac8d04088b68b39901c15bb5b1ae799ac1a6b5e3ddbb5756f3d5c40337dfdb"
+      "svg_sha256": "b2051e6290d07e51ca2f02e3ea30043b647a8566940542abb2f22c02c424d802"
     },
     {
       "view_id": "33",
@@ -1078,7 +816,7 @@
       "major_integer_highlight_count": 19,
       "maximum_integer_residual_mm": 0.4999580383300781,
       "svg": "drawings/elevations/native/EL-09-33-R22-PY.svg",
-      "svg_sha256": "f83df5a74134e53d55391b5ae7c152000c9853d0a55f7204992c0f5538e68ffd"
+      "svg_sha256": "c55c343f176e4a1ae48e22cd40f25e21481d2d0dac8b0324b0e7312e2fa28688"
     },
     {
       "view_id": "34",
@@ -1102,7 +840,7 @@
       "major_integer_highlight_count": 23,
       "maximum_integer_residual_mm": 0.49999892711639404,
       "svg": "drawings/elevations/native/EL-09-34-R22-PX.svg",
-      "svg_sha256": "14e77da38d557c8f3a3507c0a2df1d60cbc835bea998396597aa1170f1fa5296"
+      "svg_sha256": "7027a2c79412653aea6bcb73fec8f774220b376b82058787bdc2cae017e95c2f"
     },
     {
       "view_id": "35",
@@ -1126,7 +864,7 @@
       "major_integer_highlight_count": 13,
       "maximum_integer_residual_mm": 0.49999892711639404,
       "svg": "drawings/elevations/native/EL-09-35-R22-NY.svg",
-      "svg_sha256": "7bf63762b8f682fd81da7145e4bcd3475d911f7ef9736701e70d9f13888ac68a"
+      "svg_sha256": "f246e2659fbcdc47632122174549142a9ea5cfbed8ad217062f71a0800a5328d"
     },
     {
       "view_id": "36",
@@ -1150,7 +888,7 @@
       "major_integer_highlight_count": 4,
       "maximum_integer_residual_mm": 0.44803380966186523,
       "svg": "drawings/elevations/native/EL-09-36-R22-NX.svg",
-      "svg_sha256": "b9a256874ee5f20ad2b8735a4b8669eb289dea2f2dbdb9fe625be09a83157d2d"
+      "svg_sha256": "a70e54245bba8222f034970b3890163d8b95d05aeece22df6da4d8d555903249"
     }
   ],
   "pass": true

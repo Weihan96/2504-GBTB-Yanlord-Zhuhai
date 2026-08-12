@@ -11,7 +11,12 @@ test("native Bonsai elevation manifest covers all registered views", () => {
   expect(manifest.view_count).toBe(36);
   expect(manifest.sheet_count).toBe(9);
   expect(manifest.demolish_wall_count).toBe(0);
-  expect(manifest.linework_mode_counts).toEqual({ FREESTYLE: 9, OPENCASCADE: 27 });
+  expect(manifest.linework_mode_counts).toEqual({ OPENCASCADE: 36 });
+  expect(manifest.complexity_exclusion_occurrences).toBe(0);
+  expect(manifest.complexity_exclusion_unique_global_ids).toEqual([]);
+  // Eleven lightweight objects are visible in the original 36 views; the
+  // twelfth is scoped only by the public-space P01/P02 batch.
+  expect(manifest.lightweight_elevation_unique_global_ids).toHaveLength(11);
   expect(new Set(manifest.views.map((view: { view_id: string }) => view.view_id)).size).toBe(36);
 });
 

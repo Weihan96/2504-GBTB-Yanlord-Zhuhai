@@ -65,6 +65,19 @@ def main() -> None:
     spec.loader.exec_module(module)
     reports = module.run(view_ids=view_ids)
 
+    # Checkpoints live under build/int1 but are promoted to the project root.
+    # Keep SVG document references relative to the final formal IFC location.
+    for report in reports:
+        drawing = tool.Ifc.get().by_guid(report["drawing"]["global_id"])
+        relations = [
+            inverse
+            for inverse in tool.Ifc.get().get_inverse(drawing)
+            if inverse.is_a("IfcRelAssociatesDocument")
+        ]
+        if len(relations) != 1:
+            raise RuntimeError(f"{drawing.Name}: expected one document relation")
+        relations[0].RelatingDocument.Location = report["svg"]
+
     # Freestyle performs some dependency-graph cleanup after the operator
     # returns.  Give it a quiet boundary before serialising the IFC.
     time.sleep(2)
@@ -80,6 +93,15 @@ def main() -> None:
     missing = generated_names - {drawing.Name for drawing in drawings}
     if missing:
         raise RuntimeError(f"checkpoint verification missed drawings: {sorted(missing)}")
+    for name in generated_names:
+        drawing = next(item for item in drawings if item.Name == name)
+        relation = next(
+            inverse
+            for inverse in verified.get_inverse(drawing)
+            if inverse.is_a("IfcRelAssociatesDocument")
+        )
+        if not relation.RelatingDocument.Location.startswith("drawings/"):
+            raise RuntimeError(f"{name}: document location is not promotion-safe")
     os.replace(temporary, checkpoint)
 
     print(

@@ -5,6 +5,8 @@ from __future__ import annotations
 
 import csv
 import math
+import shutil
+import subprocess
 import xml.etree.ElementTree as ET
 from collections import defaultdict
 from copy import deepcopy
@@ -15,6 +17,7 @@ PROJECT_ROOT = Path(__file__).resolve().parents[2]
 REGISTER = PROJECT_ROOT / "pipeline/decisions/int1-elevation-view-register.csv"
 NATIVE_DIR = PROJECT_ROOT / "drawings/elevations/native"
 SHEET_DIR = PROJECT_ROOT / "drawings/elevations"
+IMAGE_DIR = PROJECT_ROOT / "output/images/elevations"
 WIDTH = 1600
 HEIGHT = 1200
 MARGIN = 44
@@ -22,6 +25,20 @@ HEADER = 92
 GAP = 28
 SVG_NS = "http://www.w3.org/2000/svg"
 ET.register_namespace("", SVG_NS)
+
+
+def chrome() -> Path:
+    candidates = [
+        Path("/Applications/Google Chrome.app/Contents/MacOS/Google Chrome"),
+        Path("/Applications/Chromium.app/Contents/MacOS/Chromium"),
+    ]
+    for candidate in candidates:
+        if candidate.is_file():
+            return candidate
+    found = shutil.which("google-chrome") or shutil.which("chromium")
+    if found:
+        return Path(found)
+    raise RuntimeError("Chrome/Chromium is required to render review PNGs")
 
 
 def native_name(row: dict[str, str]) -> str:
@@ -60,16 +77,16 @@ def main() -> None:
         style = ET.SubElement(root, f"{{{SVG_NS}}}style")
         style.text = (
             "text{font-family:-apple-system,BlinkMacSystemFont,'PingFang SC',sans-serif;}"
-            ".title{font-size:32px;font-weight:700;fill:#102a43;}"
-            ".meta{font-size:16px;fill:#486581;}"
-            ".view-title{font-size:18px;font-weight:650;fill:#102a43;}"
-            ".review{font-size:14px;fill:#b42318;}"
-            ".frame{fill:#fff;stroke:#bcccdc;stroke-width:1.5;}"
+            ".int1-sheet-title{font-size:32px;font-weight:700;fill:#102a43;}"
+            ".int1-sheet-meta{font-size:16px;fill:#486581;}"
+            ".int1-sheet-view-title{font-size:18px;font-weight:650;fill:#102a43;}"
+            ".int1-sheet-review{font-size:14px;fill:#b42318;}"
+            ".int1-sheet-frame{fill:#fff;stroke:#bcccdc;stroke-width:1.5;}"
         )
         ET.SubElement(root, f"{{{SVG_NS}}}rect", {"width": str(WIDTH), "height": str(HEIGHT), "fill": "#f7f9fc"})
-        title = ET.SubElement(root, f"{{{SVG_NS}}}text", {"x": str(MARGIN), "y": "43", "class": "title"})
+        title = ET.SubElement(root, f"{{{SVG_NS}}}text", {"x": str(MARGIN), "y": "43", "class": "int1-sheet-title"})
         title.text = f"{sheet_id}  Bonsai 原生室内立面审核图"
-        meta = ET.SubElement(root, f"{{{SVG_NS}}}text", {"x": str(MARGIN), "y": "72", "class": "meta"})
+        meta = ET.SubElement(root, f"{{{SVG_NS}}}text", {"x": str(MARGIN), "y": "72", "class": "int1-sheet-meta"})
         meta.text = "IFC ELEVATION_VIEW · 1:50 · 无 underlay 纹理 · 红/橙框为非整数世界几何"
 
         for index, row in enumerate(views):
@@ -86,7 +103,7 @@ def main() -> None:
                     "width": f"{cell_width:.2f}",
                     "height": f"{cell_height:.2f}",
                     "rx": "8",
-                    "class": "frame",
+                    "class": "int1-sheet-frame",
                 },
             )
             name = native_name(row)
@@ -97,7 +114,7 @@ def main() -> None:
             label = ET.SubElement(
                 root,
                 f"{{{SVG_NS}}}text",
-                {"x": f"{x+16:.2f}", "y": f"{y+27:.2f}", "class": "view-title"},
+                {"x": f"{x+16:.2f}", "y": f"{y+27:.2f}", "class": "int1-sheet-view-title"},
             )
             label.text = (
                 f'{row["view_id"]} · {row["space_reference"]} · 视向 {row["direction"]}'
@@ -106,7 +123,7 @@ def main() -> None:
                 review = ET.SubElement(
                     root,
                     f"{{{SVG_NS}}}text",
-                    {"x": f"{x+16:.2f}", "y": f"{y+49:.2f}", "class": "review"},
+                    {"x": f"{x+16:.2f}", "y": f"{y+49:.2f}", "class": "int1-sheet-review"},
                 )
                 review.text = "官方标题/当前 Space 映射待复核"
             nested = ET.SubElement(
@@ -130,7 +147,27 @@ def main() -> None:
         output.write_text(
             "\n".join(line.rstrip() for line in lines) + "\n", encoding="utf-8"
         )
+        png = IMAGE_DIR / f"{sheet_id}-bonsai-native.png"
+        png.parent.mkdir(parents=True, exist_ok=True)
+        subprocess.run(
+            [
+                str(chrome()),
+                "--headless=new",
+                "--disable-gpu",
+                "--hide-scrollbars",
+                "--force-device-scale-factor=1",
+                f"--screenshot={png}",
+                f"--window-size={WIDTH},{HEIGHT}",
+                output.resolve().as_uri(),
+            ],
+            check=True,
+            capture_output=True,
+            text=True,
+        )
+        if png.read_bytes()[:8] != b"\x89PNG\r\n\x1a\n":
+            raise RuntimeError(f"invalid PNG: {png}")
         print(output.relative_to(PROJECT_ROOT))
+        print(png.relative_to(PROJECT_ROOT))
 
 
 if __name__ == "__main__":
