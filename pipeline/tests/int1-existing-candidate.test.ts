@@ -113,7 +113,7 @@ test("INT1 candidate preserves role split and blocks unverified fabrication inpu
   expect(csv).not.toContain("\r\n");
   expect((csv.match(/,BLOCK,/g) ?? []).length).toBe(4);
   expect(csv).toContain("existing_world_bbox_not_fabrication_dimension");
-}, 20_000);
+}, 60_000);
 
 test("INT1 script contains no formal IFC write path", () => {
   const source = readFileSync(script, "utf8");

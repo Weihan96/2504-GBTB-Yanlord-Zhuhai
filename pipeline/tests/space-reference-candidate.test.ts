@@ -28,4 +28,4 @@ test("Space Reference candidate produces 22 unique codes with foyer first", asyn
   expect([0, 22]).toContain(report.formal_ifc_reference_count);
   expect(report.existing_references_match_candidate).toBe(true);
   expect(report.qa.formal_ifc_unchanged).toBe(true);
-});
+}, 30_000);

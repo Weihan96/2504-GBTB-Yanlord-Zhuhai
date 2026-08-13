@@ -31,8 +31,8 @@ test("M-401 inventory separates instances, types, context and missing inputs", (
   expect(report.mode).toBe("read_only_m401_existing_candidate");
   expect(report.source_ifc_sha256).toBe(currentIfcHash);
   expect(report.source.ifc_sha256).toBe(currentIfcHash);
-  expect(report.legacy_evidence.status).toBe("stale_not_refreshed");
-  expect(report.legacy_evidence.current_formal_ifc).toBe(false);
+  expect(report.legacy_evidence.status).toBe("current_external_audit");
+  expect(report.legacy_evidence.current_formal_ifc).toBe(true);
   expect(report.summary.actual_instances).toBe(28);
   expect(report.summary.instance_role_counts).toEqual({
     assigned_ac_equipment_instance: 5,

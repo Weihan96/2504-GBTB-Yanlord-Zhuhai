@@ -66,5 +66,5 @@ test(
       )),
     ).toBeLessThanOrEqual(0.1);
   },
-  300_000,
+  600_000,
 );

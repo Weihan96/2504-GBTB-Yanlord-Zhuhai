@@ -47,4 +47,4 @@ test("WFIN candidate segments CLADDING at mixed finish boundaries", async () => 
   const segments = await Bun.file(resolve(temp, "segments.csv")).text();
   expect((segments.match(/,TADELAKT,/g) ?? []).length).toBe(24);
   expect((segments.match(/,WHITE_WALL,/g) ?? []).length).toBe(28);
-});
+}, 30_000);

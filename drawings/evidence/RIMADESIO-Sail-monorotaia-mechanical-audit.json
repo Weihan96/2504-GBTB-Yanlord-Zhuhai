@@ -1,0 +1,170 @@
+{
+  "mode": "read-only-official-cad-to-ifc-audit",
+  "source": {
+    "official_dwg": "/Users/jiaxinchen/Documents/Projects/仁恒-滨海湾/2504 GBTB Yanlord Zhuhai/drawings/evidence/RIMADESIO-official-Sail-monorotaia.dwg",
+    "official_dwg_sha256": "4eeaeb27b0668bb22b9b4fb191091e07eabbb2b259d90cedcdc45584a1f68e52",
+    "verified_conversion_dxf": "/Users/jiaxinchen/Documents/Projects/仁恒-滨海湾/2504 GBTB Yanlord Zhuhai/drawings/evidence/RIMADESIO-Sail-monorotaia.dxf",
+    "verified_conversion_dxf_sha256": "76b40456832e6c3e217c8bf58dc58ee49214beca710269660dc11a087209adb4",
+    "formal_ifc": "/Users/jiaxinchen/Documents/Projects/仁恒-滨海湾/2504 GBTB Yanlord Zhuhai/2504 GBTB Yanlord Zhuhai.ifc",
+    "formal_ifc_sha256": "446a9fc8447d38e16dacad7dcce3df097b03f8a457c6bc80fca03d3560891632",
+    "ifc_schema": "IFC4"
+  },
+  "cad_inventory": {
+    "entity_count": 1338,
+    "entity_type_counts": {
+      "3DSOLID": 192,
+      "ARC": 241,
+      "CIRCLE": 3,
+      "DIMENSION": 52,
+      "INSERT": 159,
+      "LINE": 451,
+      "LWPOLYLINE": 14,
+      "MTEXT": 52,
+      "POINT": 156,
+      "REGION": 16,
+      "VIEWPORT": 2
+    },
+    "distinct_annotation_count": 26,
+    "generic_dimensions": {
+      "panel_width_mm": [
+        1000
+      ],
+      "opening_width_mm": [
+        976,
+        989,
+        1978
+      ],
+      "rail_width_mm": [
+        2011,
+        2037,
+        4022
+      ],
+      "panel_height_mm": [
+        2670
+      ],
+      "opening_height_mm": [
+        2666,
+        2678
+      ]
+    }
+  },
+  "ifc_occurrences": {
+    "M05": {
+      "global_id": "2D5BPoo2XFSvhTdfPenCh7",
+      "ifc_class": "IfcDoor",
+      "name": "Rimadesio Sail 格栅门板",
+      "tag": "M05",
+      "overall_width_mm": null,
+      "overall_height_mm": null,
+      "world_bbox_mm": {
+        "min_mm": [
+          -5035.28165817261,
+          -53.78240966796879,
+          12.00000000000001
+        ],
+        "max_mm": [
+          -4035.28165817261,
+          -15.7824096679688,
+          2412.0
+        ],
+        "dimensions_mm": [
+          1000.0,
+          37.99999999999999,
+          2400.0
+        ],
+        "centre_mm": [
+          -4535.28165817261,
+          -34.78240966796879,
+          1212.0
+        ]
+      }
+    },
+    "M06": {
+      "global_id": "0zjVS5FBbBewgUkk0fdfiv",
+      "ifc_class": "IfcDoor",
+      "name": "Rimadesio Sail 轨道",
+      "tag": "M06",
+      "overall_width_mm": null,
+      "overall_height_mm": null,
+      "world_bbox_mm": {
+        "min_mm": [
+          -5235.28165817261,
+          -65.48510360717779,
+          2407.699911594391
+        ],
+        "max_mm": [
+          -4035.28165817261,
+          -4.081668853759799,
+          2414.5177416801453
+        ],
+        "dimensions_mm": [
+          1200.0,
+          61.40343475341799,
+          6.8178300857543945
+        ],
+        "centre_mm": [
+          -4635.28165817261,
+          -34.78338623046879,
+          2411.108826637268
+        ]
+      }
+    }
+  },
+  "ifc_group": {
+    "name": "M05/M06 Rimadesio Sail 门组",
+    "members": [
+      "0zjVS5FBbBewgUkk0fdfiv",
+      "2D5BPoo2XFSvhTdfPenCh7"
+    ]
+  },
+  "comparisons": {
+    "m05_panel_width": {
+      "ifc_observed_mm": 1000.0,
+      "official_generic_examples_mm": [
+        1000
+      ],
+      "numeric_match": true,
+      "project_nominal_dimension_proven": false
+    },
+    "m05_panel_height": {
+      "ifc_observed_mm": 2400.0,
+      "official_generic_examples_mm": [
+        2670
+      ],
+      "numeric_match": false,
+      "project_nominal_dimension_proven": false
+    },
+    "m06_rail_long_axis": {
+      "ifc_observed_mm": 1200.0,
+      "official_generic_examples_mm": [
+        2011,
+        2037,
+        4022
+      ],
+      "numeric_match": false,
+      "project_nominal_dimension_proven": false
+    }
+  },
+  "evidence_boundary": {
+    "proves": [
+      "Rimadesio Sail MONOROTAIA is a single-track sliding system family",
+      "the official CAD contains generic one-panel and two-panel installation examples",
+      "M05 and M06 are already the exact two-member project Sail group"
+    ],
+    "does_not_prove": [
+      "project opening width or height",
+      "project panel nominal width or height",
+      "project rail nominal length",
+      "sliding direction, host opening, rail substrate, closure detail, or installation tolerance"
+    ],
+    "formal_ifc_write_allowed": false,
+    "dimension_closeout_rule": "retain blank OverallWidth/OverallHeight until a project order, door schedule, or manufacturer shop drawing identifies M05/M06"
+  },
+  "gates": {
+    "official_dwg_hash_verified": true,
+    "generic_dimensions_extracted": true,
+    "ifc_group_exact": true,
+    "ifc_nominal_dimensions_still_blank": true,
+    "mechanical_pass": true
+  }
+}

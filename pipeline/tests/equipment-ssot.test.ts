@@ -167,27 +167,35 @@ def rows(path):
 equipment=rows(sys.argv[1]); requirements=rows(sys.argv[2]); sources=rows(sys.argv[3])
 source=next(row for row in sources if row["source_id"]=="RIMADESIO-SAIL-MONOROTAIA-001")
 cad=pathlib.Path(sys.argv[4])
+dxf=pathlib.Path(sys.argv[5])
 print(json.dumps({
   "masters":[row for row in equipment if row["equipment_id"] in {"DW-M05","DW-M06"}],
   "requirements":[row for row in requirements if row["equipment_id"] in {"DW-M05","DW-M06"}],
   "source":source,
   "actual_sha256":hashlib.sha256(cad.read_bytes()).hexdigest(),
+  "dxf_sha256":hashlib.sha256(dxf.read_bytes()).hexdigest(),
 },ensure_ascii=False))
 `;
   const cadPath = resolve(root, "drawings/evidence/RIMADESIO-official-Sail-monorotaia.dwg");
-  const run = Bun.spawnSync(["python3", "-c", extract, equipmentPath, requirementsPath, sourcesPath, cadPath], { cwd: root });
+  const dxfPath = resolve(root, "drawings/evidence/RIMADESIO-Sail-monorotaia.dxf");
+  const run = Bun.spawnSync(["python3", "-c", extract, equipmentPath, requirementsPath, sourcesPath, cadPath, dxfPath], { cwd: root });
   expect(run.exitCode, run.stderr.toString()).toBe(0);
   const data = JSON.parse(run.stdout.toString()) as {
     masters: Array<Record<string, string>>;
     requirements: Array<Record<string, string>>;
     source: Record<string, string>;
     actual_sha256: string;
+    dxf_sha256: string;
   };
   expect(data.source).toMatchObject({
     sha256: "4eeaeb27b0668bb22b9b4fb191091e07eabbb2b259d90cedcdc45584a1f68e52",
     status: "verified_official_family_cad",
     formal_ifc_write_allowed: "no",
   });
+  expect(data.source.locator).toContain("76b40456832e6c3e217c8bf58dc58ee49214beca710269660dc11a087209adb4");
+  expect(data.dxf_sha256).toBe("76b40456832e6c3e217c8bf58dc58ee49214beca710269660dc11a087209adb4");
+  expect(data.source.evidence).toContain("轨道长 2011/2037/4022 mm");
+  expect(data.source.notes).toContain("RIMADESIO-Sail-monorotaia-mechanical-audit.json");
   expect(data.actual_sha256).toBe(data.source.sha256);
   for (const equipmentId of ["DW-M05", "DW-M06"]) {
     expect(data.masters.find((row) => row.equipment_id === equipmentId)?.source_ids).toContain("RIMADESIO-SAIL-MONOROTAIA-001");

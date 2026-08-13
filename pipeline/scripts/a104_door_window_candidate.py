@@ -67,6 +67,11 @@ def parse_args() -> argparse.Namespace:
     parser.add_argument("--review-register", required=True, type=Path)
     parser.add_argument("--report", required=True, type=Path)
     parser.add_argument(
+        "--sail-cad-audit",
+        type=Path,
+        default=Path("drawings/evidence/RIMADESIO-Sail-monorotaia-mechanical-audit.json"),
+    )
+    parser.add_argument(
         "--expected-ifc-sha256",
         help="Optional caller-frozen SHA-256 for the formal IFC; defaults to the current file hash.",
     )
@@ -81,6 +86,20 @@ def validate_source_sha(path: Path, expected_sha256: str | None = None) -> str:
             f"formal IFC SHA-256 mismatch: expected {expected_sha256}, found {source_sha}"
         )
     return source_sha
+
+
+def load_sail_cad_audit(path: Path, expected_ifc_sha256: str) -> dict[str, Any]:
+    audit = json.loads(path.read_text(encoding="utf-8"))
+    if audit.get("source", {}).get("formal_ifc_sha256") != expected_ifc_sha256:
+        raise RuntimeError("Sail CAD audit does not match the formal IFC")
+    if audit.get("gates", {}).get("mechanical_pass") is not True:
+        raise RuntimeError("Sail CAD mechanical audit is not passing")
+    if audit.get("evidence_boundary", {}).get("formal_ifc_write_allowed") is not False:
+        raise RuntimeError("Sail CAD audit unexpectedly permits a formal IFC write")
+    dimensions = audit.get("cad_inventory", {}).get("generic_dimensions", {})
+    if dimensions.get("panel_width_mm") != [1000] or dimensions.get("rail_width_mm") != [2011, 2037, 4022]:
+        raise RuntimeError("Sail CAD generic dimensions drifted")
+    return audit
 
 
 def svg_escape(value: Any) -> str:
@@ -512,6 +531,7 @@ def render_side_panel(
     pair_relations: Sequence[dict[str, Any]],
     collision_count: int,
     formal_semantics: dict[str, Any],
+    sail_cad_audit: dict[str, Any],
 ) -> str:
     lines = ['<g id="a104-side-panel"><rect class="a104-panel" x="402" y="7" width="93" height="386"/>']
     y = 16.0
@@ -552,6 +572,11 @@ def render_side_panel(
     if formal_semantics["complete"]:
         line("已确认语义：编号 19／门名 4／门窗组 3", "a104-panel-note", 4.5)
         line("† 3 樘无 IfcRelFillsElement；关系待深化", "a104-panel-note", 4.5)
+        line(
+            f"Sail 单轨 CAD：{sail_cad_audit['cad_inventory']['entity_count']} 实体；项目尺寸待订单",
+            "a104-panel-note",
+            4.5,
+        )
     else:
         line("※ 仅表示必须在 Blender 确认", "a104-panel-note", 4.5)
     lines.append("</g>")
@@ -592,6 +617,7 @@ def inject_candidate_svg(source: str, generated: str) -> str:
 def main() -> None:
     args = parse_args()
     source_sha = validate_source_sha(args.input, args.expected_ifc_sha256)
+    sail_cad_audit = load_sail_cad_audit(args.sail_cad_audit, source_sha)
     model = ifcopenshell.open(args.input)
     source_svg = args.source_svg.read_text(encoding="utf-8")
     doors, windows, pair_relations = build_inventory(model, args.tolerance_mm)
@@ -618,7 +644,15 @@ def main() -> None:
     ]
     if collisions:
         raise RuntimeError(f"generated label collisions remain: {collisions}")
-    panel = render_side_panel(source_sha, doors, windows, pair_relations, len(collisions), formal_semantics)
+    panel = render_side_panel(
+        source_sha,
+        doors,
+        windows,
+        pair_relations,
+        len(collisions),
+        formal_semantics,
+        sail_cad_audit,
+    )
     output_svg = inject_candidate_svg(source_svg, marker_markup + panel)
     args.output_svg.parent.mkdir(parents=True, exist_ok=True)
     args.output_svg.write_text(output_svg, encoding="utf-8")
@@ -673,10 +707,18 @@ def main() -> None:
             "schema": model.schema,
             "wall_plan_svg": str(args.source_svg.resolve()),
             "wall_plan_svg_sha256": sha256(args.source_svg),
+            "sail_cad_audit": str(args.sail_cad_audit.resolve()),
+            "sail_cad_audit_sha256": sha256(args.sail_cad_audit),
         },
         "tolerance_mm": args.tolerance_mm,
         "numbering_rule": "M=door and W=window; plan scan north-to-south, then west-to-east; current formal tags are verified when present; D prefix is reserved by A-102 demolition walls",
         "formal_semantics": formal_semantics,
+        "sail_cad_evidence": {
+            "generic_dimensions": sail_cad_audit["cad_inventory"]["generic_dimensions"],
+            "ifc_occurrence_comparisons": sail_cad_audit["comparisons"],
+            "formal_ifc_write_allowed": sail_cad_audit["evidence_boundary"]["formal_ifc_write_allowed"],
+            "dimension_closeout_rule": sail_cad_audit["evidence_boundary"]["dimension_closeout_rule"],
+        },
         "doors": doors,
         "windows": windows,
         "shared_host_opening_relations": pair_relations,

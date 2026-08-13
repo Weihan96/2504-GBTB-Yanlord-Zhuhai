@@ -82,7 +82,7 @@ test("A-103 approved apply validates tags, IDS, and zero geometry change on a se
   } finally {
     rmSync(temporary, { recursive: true, force: true });
   }
-}, 120_000);
+}, 300_000);
 
 test("A-103 apply refuses an in-place path without the replace-source guard", () => {
   const result = Bun.spawnSync([

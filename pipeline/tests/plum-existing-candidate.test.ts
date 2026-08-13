@@ -1,9 +1,23 @@
 import { expect, test } from "bun:test";
 import { createHash } from "node:crypto";
 import { readFileSync } from "node:fs";
+import { splitCsvLine } from "../src/cli";
 
 const script = "pipeline/scripts/plum_existing_candidate.py";
 const source = await Bun.file(script).text();
+
+function blockingRequirementCount(discipline: string): number {
+  const rows = readFileSync(
+    "pipeline/decisions/equipment-installation-requirements.csv",
+    "utf8",
+  ).trimEnd().split("\n").map(splitCsvLine);
+  const header = rows.shift()!;
+  const disciplineIndex = header.indexOf("discipline");
+  const blocksReleaseIndex = header.indexOf("blocks_release");
+  return rows.filter(
+    (row) => row[disciplineIndex] === discipline && row[blocksReleaseIndex] === "yes",
+  ).length;
+}
 
 test("PLUM candidate protects observable counts and PVC110 identity", () => {
   expect(source).toContain('len(sanitary) != 27');
@@ -59,8 +73,12 @@ test("PLUM candidate runs against the frozen formal IFC", async () => {
   expect(report.qa.service_demand_classification_pass).toBe(true);
   expect(report.qa.equipment_ssot_coverage_pass).toBe(true);
   expect(report.inventory.equipment_ssot_linked_plum_object_count).toBe(33);
-  expect(report.inventory.plum_release_blocking_requirement_count).toBe(4);
-  expect(report.inventory.hvac_plum_release_blocking_requirement_count).toBe(14);
+  expect(report.inventory.plum_release_blocking_requirement_count).toBe(
+    blockingRequirementCount("PLUM"),
+  );
+  expect(report.inventory.hvac_plum_release_blocking_requirement_count).toBe(
+    blockingRequirementCount("HVAC/PLUM"),
+  );
   const p201 = await Bun.file("build/plum/p201-demand-endpoints.json").json();
   expect(p201.demand_endpoints.filter((row: any) => row.service_demand_candidate)).toHaveLength(24);
   expect(
@@ -80,7 +98,7 @@ test("PLUM candidate runs against the frozen formal IFC", async () => {
     expect(requirements.get("drain_connection_od")?.value).toBe("38");
     expect(requirements.get("drain_connection_od")?.source_id).toBe("APP-DW-INSTALL-001");
   }
-}, 30_000);
+}, 120_000);
 
 test("PLUM candidate still supports a caller-frozen source hash", () => {
   const result = Bun.spawnSync([

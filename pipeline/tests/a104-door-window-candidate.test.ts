@@ -128,3 +128,24 @@ print(json.dumps(module.formal_semantics_state(model, records), ensure_ascii=Fal
     complete: true,
   });
 });
+
+test("A104 consumes the Sail CAD audit without expanding its IFC write boundary", () => {
+  const auditPath = resolve(root, "drawings/evidence/RIMADESIO-Sail-monorotaia-mechanical-audit.json");
+  const result = runPython(`
+audit = module.load_sail_cad_audit(
+    pathlib.Path(${JSON.stringify(auditPath)}),
+    "446a9fc8447d38e16dacad7dcce3df097b03f8a457c6bc80fca03d3560891632",
+)
+print(json.dumps({
+    "entity_count": audit["cad_inventory"]["entity_count"],
+    "rail_widths": audit["cad_inventory"]["generic_dimensions"]["rail_width_mm"],
+    "formal_ifc_write_allowed": audit["evidence_boundary"]["formal_ifc_write_allowed"],
+}))
+`);
+  expect(result.exitCode, result.stderr.toString()).toBe(0);
+  expect(JSON.parse(result.stdout.toString())).toEqual({
+    entity_count: 1338,
+    rail_widths: [2011, 2037, 4022],
+    formal_ifc_write_allowed: false,
+  });
+});

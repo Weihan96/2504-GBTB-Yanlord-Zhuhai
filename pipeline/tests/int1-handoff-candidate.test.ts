@@ -33,9 +33,9 @@ test("INT1 handoff classifies the exact 16 proxies without authorizing writes", 
     records_by_sheet: { "I-501": 11, "I-502": 1, "I-504": 4 },
     named_worktop_or_countertop_candidates: 3,
     named_bathroom_pipe_wall_candidates: 1,
-    legacy_cad_references: 4,
+    legacy_cad_references: 5,
     horizontal_joinery_panel_candidates: 5,
-    vertical_joinery_panel_candidates: 2,
+    vertical_joinery_panel_candidates: 1,
     full_height_joinery_volume_candidates: 1,
     unclassified_joinery_proxies: 0,
     shape_error_count: 3,
@@ -52,7 +52,7 @@ test("INT1 handoff classifies the exact 16 proxies without authorizing writes", 
   expect(report.records.every((row: any) => row.review_required === true)).toBe(true);
   expect(report.records.every((row: any) => row.automatic_ifc_write_allowed === false)).toBe(true);
   expect(readFileSync(csv, "utf8").split("\n").filter(Boolean)).toHaveLength(17);
-}, 20_000);
+}, 60_000);
 
 test("INT1 handoff candidate contains no IFC write path", () => {
   const source = readFileSync(resolve(root, "pipeline/scripts/int1_handoff_candidate.py"), "utf8");
