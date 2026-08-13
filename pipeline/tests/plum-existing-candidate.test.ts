@@ -71,6 +71,9 @@ test("PLUM candidate runs against the frozen formal IFC", async () => {
   expect(report.qa.distribution_data.status).toBe("data_missing");
   expect(report.qa.pvc110_world_geometry_unchanged).toBe(true);
   expect(report.qa.service_demand_classification_pass).toBe(true);
+  expect(report.qa.confirmed_service_media_has_exact_model_evidence).toBe(true);
+  expect(report.inventory.p201_confirmed_service_media_endpoint_count).toBe(3);
+  expect(report.inventory.p201_unknown_service_media_endpoint_count).toBe(21);
   expect(report.qa.equipment_ssot_coverage_pass).toBe(true);
   expect(report.inventory.equipment_ssot_linked_plum_object_count).toBe(33);
   expect(report.inventory.plum_release_blocking_requirement_count).toBe(
@@ -84,6 +87,19 @@ test("PLUM candidate runs against the frozen formal IFC", async () => {
   expect(
     p201.demand_endpoints.filter((row: any) => !row.service_demand_candidate).map((row: any) => row.candidate_role).sort(),
   ).toEqual(["flush_actuator_panel", "flush_actuator_panel", "joinery_drawer_equipment"]);
+  const endpointByGuid = new Map(p201.demand_endpoints.map((row: any) => [row.global_id, row]));
+  for (const guid of ["3hgNkx97vCTOC2eewCpMNk", "3pvAlH5C14v8uVEJ1LmK8M"]) {
+    expect(endpointByGuid.get(guid).service_media_demand).toMatchObject({
+      cold_water: { status: "confirmed", required: true, source_id: "GEB-OFFICIAL-224212-001" },
+      hot_water: { status: "confirmed", required: false, source_id: "GEB-OFFICIAL-224212-001" },
+      drain: { status: "confirmed", required: true, source_id: "GEB-OFFICIAL-224212-001" },
+    });
+  }
+  expect(endpointByGuid.get("2S2c498tb7$gzdukjhCGVQ").service_media_demand).toMatchObject({
+    cold_water: { status: "confirmed", required: false },
+    hot_water: { status: "confirmed", required: false },
+    drain: { status: "confirmed", required: true },
+  });
   const p202 = await Bun.file("build/plum/p202-existing-location-register.json").json();
   expect(
     Math.max(...p202.objects.flatMap((row: any) => row.object_origin_mm.map(Math.abs))),

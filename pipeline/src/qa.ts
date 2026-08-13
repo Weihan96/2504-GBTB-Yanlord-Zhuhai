@@ -21,6 +21,14 @@ export interface DecisionSnapshot {
   invalid: Array<{ decisionId: string; reason: string }>;
 }
 
+export interface SpaceReviewSnapshot {
+  path: string;
+  total: number;
+  implemented: number;
+  ready: boolean;
+  errors: string[];
+}
+
 export interface GateResult {
   id: string;
   status: GateStatus;
@@ -38,13 +46,21 @@ export interface QaReport {
 interface ProjectConfig {
   ifcSchema: string;
   baselineCounts: Record<string, number>;
+  baselineAnnotationTypes?: Record<string, number>;
+  baselineElevationDrawingPairs?: number;
 }
 
 function gate(id: string, status: GateStatus, summary: string, evidence: Record<string, unknown> = {}): GateResult {
   return { id, status, summary, evidence };
 }
 
-export function buildQaReport(snapshot: IfcSnapshot, drawings: DrawingSnapshot[], config: ProjectConfig, decisions: DecisionSnapshot[] = []): QaReport {
+export function buildQaReport(
+  snapshot: IfcSnapshot,
+  drawings: DrawingSnapshot[],
+  config: ProjectConfig,
+  decisions: DecisionSnapshot[] = [],
+  spaceReview?: SpaceReviewSnapshot,
+): QaReport {
   const gates: GateResult[] = [];
   gates.push(
     gate(
@@ -66,11 +82,43 @@ export function buildQaReport(snapshot: IfcSnapshot, drawings: DrawingSnapshot[]
   const countDrift = Object.entries(config.baselineCounts)
     .filter(([type, expected]) => (snapshot.entityCounts[type] ?? 0) !== expected)
     .map(([type, expected]) => ({ type, expected, actual: snapshot.entityCounts[type] ?? 0 }));
-  gates.push(gate("BASELINE-COUNTS", countDrift.length === 0 ? "pass" : "warn", countDrift.length === 0 ? "Critical entity counts match the recorded baseline." : "Critical entity counts drifted from the recorded baseline.", { drift: countDrift }));
+  const annotationTypeDrift = Object.entries(config.baselineAnnotationTypes ?? {})
+    .filter(([type, expected]) => (snapshot.annotations.byObjectType[type] ?? 0) !== expected)
+    .map(([type, expected]) => ({ type, expected, actual: snapshot.annotations.byObjectType[type] ?? 0 }));
+  const drawingNames = snapshot.annotations.drawings.map((item) => item.name).filter((name): name is string => Boolean(name));
+  const elevationNames = snapshot.annotations.elevations.map((item) => item.name).filter((name): name is string => Boolean(name));
+  const pairedElevationDrawingNames = elevationNames.filter((name) => drawingNames.includes(name));
+  const annotationPairingOk = config.baselineElevationDrawingPairs === undefined || (
+    pairedElevationDrawingNames.length === config.baselineElevationDrawingPairs
+    && new Set(elevationNames).size === elevationNames.length
+    && new Set(pairedElevationDrawingNames).size === pairedElevationDrawingNames.length
+  );
+  const baselineOk = countDrift.length === 0 && annotationTypeDrift.length === 0 && annotationPairingOk;
+  gates.push(gate("BASELINE-COUNTS", baselineOk ? "pass" : "warn", baselineOk ? "Critical entity counts and annotation composition match the recorded baseline." : "Critical entity counts or annotation composition drifted from the recorded baseline.", {
+    drift: countDrift,
+    annotationTypeDrift,
+    annotationPairing: {
+      expectedPairs: config.baselineElevationDrawingPairs ?? null,
+      actualPairs: pairedElevationDrawingNames.length,
+      elevationNameCount: elevationNames.length,
+      uniqueElevationNameCount: new Set(elevationNames).size,
+    },
+  }));
 
   const spaceIdentityOk = snapshot.spaces.missingName === 0 && snapshot.spaces.missingLongName === 0;
   gates.push(gate("SPACE-IDENTITY", spaceIdentityOk ? "pass" : "block", spaceIdentityOk ? "All spaces have Name and LongName." : "Some spaces are missing Name or LongName.", snapshot.spaces));
-  gates.push(gate("SPACE-REVIEW", snapshot.spaces.provisional === 0 && snapshot.spaces.pendingDelete === 0 ? "pass" : "block", snapshot.spaces.provisional === 0 && snapshot.spaces.pendingDelete === 0 ? "All space semantics are release-ready." : "Provisional or pending-delete spaces remain.", { provisional: snapshot.spaces.provisional, pendingDelete: snapshot.spaces.pendingDelete }));
+  const referenceCount = snapshot.spaces.records.filter((space) => space.reference).length;
+  const uniqueReferenceCount = new Set(snapshot.spaces.records.map((space) => space.reference).filter(Boolean)).size;
+  const spaceReviewOk = spaceReview
+    ? spaceReview.ready && referenceCount === snapshot.spaces.total && uniqueReferenceCount === snapshot.spaces.total && snapshot.spaces.pendingDelete === 0
+    : snapshot.spaces.provisional === 0 && snapshot.spaces.pendingDelete === 0;
+  gates.push(gate("SPACE-REVIEW", spaceReviewOk ? "pass" : "block", spaceReviewOk ? "All Space references match the implemented review register; legacy provisional ObjectType values are disclosed." : "Space semantics, references, or the implemented review register are incomplete.", {
+    provisionalObjectTypeCount: snapshot.spaces.provisional,
+    pendingDelete: snapshot.spaces.pendingDelete,
+    referenceCount,
+    uniqueReferenceCount,
+    review: spaceReview ?? null,
+  }));
   gates.push(gate("SPACE-STOREY-RELATION", snapshot.spaces.aggregatedUnderStorey === snapshot.spaces.total ? "pass" : "block", snapshot.spaces.aggregatedUnderStorey === snapshot.spaces.total ? "Every space is aggregated under a storey." : "Spaces are not represented through the expected storey aggregation relationship.", { total: snapshot.spaces.total, contained: snapshot.spaces.containedInStorey, aggregated: snapshot.spaces.aggregatedUnderStorey }));
 
   gates.push(gate("DOOR-LOCATION-DATA", snapshot.doors.missingTag === 0 && snapshot.doors.missingOverallSize === 0 && snapshot.doors.missingOpeningFill === 0 ? "pass" : "block", "Door numbering, overall size, and opening-fill readiness for A-104.", { total: snapshot.doors.total, missingTag: snapshot.doors.missingTag, missingOverallSize: snapshot.doors.missingOverallSize, missingOpeningFill: snapshot.doors.missingOpeningFill }));

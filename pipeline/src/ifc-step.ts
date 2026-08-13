@@ -11,6 +11,7 @@ export interface IfcElementRecord {
   overallHeight?: number | null;
   overallWidth?: number | null;
   fillsOpening?: boolean;
+  reference?: string | null;
 }
 
 export interface IfcSnapshot {
@@ -34,6 +35,7 @@ export interface IfcSnapshot {
     total: number;
     byObjectType: Record<string, number>;
     drawings: Array<{ globalId: string | null; name: string | null }>;
+    elevations: Array<{ globalId: string | null; name: string | null }>;
   };
   documents: Array<{ location: string | null; identification: string | null }>;
   grids: { axes: string[] };
@@ -119,6 +121,12 @@ function stepNumber(value: string | undefined): number | null {
   return Number.isFinite(parsed) ? parsed : null;
 }
 
+function stepTypedValue(value: string | undefined): string | null {
+  if (!value || value === "$" || value === "*") return null;
+  const match = /^[A-Z0-9_]+\((.*)\)$/.exec(value.trim());
+  return decodeStepString(match?.[1] ?? value);
+}
+
 function parseEntityLine(line: string): ParsedEntity | null {
   const match = /^#(\d+)=([A-Z0-9_]+)\((.*)\);$/.exec(line);
   if (!match) return null;
@@ -159,6 +167,7 @@ export function analyzeIfcText(text: string, path = "model.ifc", byteSize = Buff
   const duplicateGlobalIds = new Set<string>();
   const annotationTypes: Record<string, number> = {};
   const drawings: Array<{ globalId: string | null; name: string | null }> = [];
+  const elevations: Array<{ globalId: string | null; name: string | null }> = [];
   const documents: Array<{ location: string | null; identification: string | null }> = [];
   const axes: string[] = [];
   const spaces: IfcElementRecord[] = [];
@@ -167,6 +176,9 @@ export function analyzeIfcText(text: string, path = "model.ifc", byteSize = Buff
   const fillElementIds = new Set<number>();
   const containedRelations: number[][] = [];
   const aggregateRelations: number[][] = [];
+  const propertySingleValues = new Map<number, { name: string | null; value: string | null }>();
+  const propertySets = new Map<number, { name: string | null; propertyIds: number[] }>();
+  const propertyRelations: Array<{ relatedIds: number[]; propertySetId: number | null }> = [];
   let projectName: string | null = null;
 
   let start = 0;
@@ -193,6 +205,25 @@ export function analyzeIfcText(text: string, path = "model.ifc", byteSize = Buff
       const objectType = decodeStepString(entity.args[4]) ?? "<missing>";
       increment(annotationTypes, objectType);
       if (objectType === "DRAWING") drawings.push({ globalId: possibleGuid, name: decodeStepString(entity.args[2]) });
+      if (objectType === "ELEVATION") elevations.push({ globalId: possibleGuid, name: decodeStepString(entity.args[2]) });
+    }
+    if (entity.type === "IFCPROPERTYSINGLEVALUE") {
+      propertySingleValues.set(entity.id, {
+        name: decodeStepString(entity.args[0]),
+        value: stepTypedValue(entity.args[2]),
+      });
+    }
+    if (entity.type === "IFCPROPERTYSET") {
+      propertySets.set(entity.id, {
+        name: decodeStepString(entity.args[2]),
+        propertyIds: extractReferences(entity.args[4]),
+      });
+    }
+    if (entity.type === "IFCRELDEFINESBYPROPERTIES") {
+      propertyRelations.push({
+        relatedIds: extractReferences(entity.args[4]),
+        propertySetId: extractReferences(entity.args[5])[0] ?? null,
+      });
     }
     if (entity.type === "IFCDOCUMENTREFERENCE") {
       documents.push({ identification: decodeStepString(entity.args[0]), location: decodeStepString(entity.args[1]) });
@@ -228,6 +259,19 @@ export function analyzeIfcText(text: string, path = "model.ifc", byteSize = Buff
   }
 
   for (const record of [...doors, ...windows]) record.fillsOpening = fillElementIds.has(record.stepId);
+  const spaceByStepId = new Map(spaces.map((space) => [space.stepId, space]));
+  for (const relation of propertyRelations) {
+    const propertySet = relation.propertySetId ? propertySets.get(relation.propertySetId) : undefined;
+    if (propertySet?.name !== "Pset_SpaceCommon") continue;
+    const reference = propertySet.propertyIds
+      .map((propertyId) => propertySingleValues.get(propertyId))
+      .find((property) => property?.name === "Reference")?.value;
+    if (!reference) continue;
+    for (const relatedId of relation.relatedIds) {
+      const space = spaceByStepId.get(relatedId);
+      if (space) space.reference = reference;
+    }
+  }
   const spaceIds = new Set(spaces.map((space) => space.stepId));
   const countRelatedSpaces = (relations: number[][]) => {
     const related = new Set<number>();
@@ -261,7 +305,7 @@ export function analyzeIfcText(text: string, path = "model.ifc", byteSize = Buff
       duplicateGlobalIds: [...duplicateGlobalIds].sort(),
       hasValidFooter: /ENDSEC;\s*END-ISO-10303-21;\s*$/.test(text),
     },
-    annotations: { total: counts.IFCANNOTATION ?? 0, byObjectType: annotationTypes, drawings },
+    annotations: { total: counts.IFCANNOTATION ?? 0, byObjectType: annotationTypes, drawings, elevations },
     documents,
     grids: { axes: [...new Set(axes)].sort() },
     spaces: {

@@ -51,12 +51,18 @@ test("P-201 renders all demand endpoints without inventing water topology", asyn
     invented_equipment_interface_count: 0,
   });
   expect(report.summary.connection_requirement_counts).toEqual({ unknown: 27 });
+  expect(report.summary.service_media_status_counts).toEqual({
+    confirmed_exact_model: 3,
+    unknown: 21,
+    not_applicable: 3,
+  });
   expect(report.gates).toMatchObject({
     source_hashes_current: true,
     caller_frozen_hash_checked: true,
     all_registered_objects_drawn: true,
     service_and_non_service_split_explicit: true,
-    unknown_water_demands_preserved: true,
+    unknown_connection_coordinates_preserved: true,
+    confirmed_service_media_has_exact_model_evidence: true,
     formal_distribution_topology_present: false,
     ifc_unchanged_during_generation: true,
     automatic_ifc_write_allowed: false,
@@ -72,7 +78,9 @@ test("P-201 renders all demand endpoints without inventing water topology", asyn
   for (const row of sourceRecords) expect(rendered).toContain(`data-global-id="${row.global_id}"`);
   expect((rendered.match(/data-service-demand="true"/g) ?? [])).toHaveLength(24);
   expect((rendered.match(/data-service-demand="false"/g) ?? [])).toHaveLength(3);
-  expect(rendered).toContain("冷热水需求：unknown");
+  expect(rendered).toContain("冷水 是｜热水 否｜排水 是");
+  expect(rendered).toContain("冷水 否｜热水 否｜排水 是");
+  expect(rendered).toContain("冷热排需求：unknown");
   expect(rendered).toContain("无 IfcDistributionPort / System / 正式管线拓扑");
   expect(rendered).not.toContain("<polyline");
   expect(rendered).not.toContain("<path");

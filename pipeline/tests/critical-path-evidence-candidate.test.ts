@@ -28,6 +28,12 @@ test("ELEC/RCP1 critical-path evidence validates current reports and publish has
   expect(report.excluded_previews.every((row: any) =>
     !row.registered_for_release && !row.used_as_publish_target && !row.eligible_for_release
   )).toBe(true);
+  expect(report.release_blockers).not.toContain(
+    "stale Blender preview caches must not be used as current construction evidence",
+  );
+  expect(report.warnings).toContain(
+    "stale Blender preview caches remain on disk but are mechanically excluded from release reports and publish targets",
+  );
 });
 
 test("critical-path evidence fails closed on a publish hash mismatch", () => {

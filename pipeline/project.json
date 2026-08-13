@@ -8,10 +8,17 @@
     "IFCWALL": 101,
     "IFCDOOR": 8,
     "IFCWINDOW": 11,
-    "IFCANNOTATION": 125,
+    "IFCANNOTATION": 169,
     "IFCGRID": 1,
     "IFCGRIDAXIS": 20
   },
+  "baselineAnnotationTypes": {
+    "DRAWING": 49,
+    "GRID": 76,
+    "ELEVATION": 44
+  },
+  "baselineElevationDrawingPairs": 44,
+  "spaceReviewFile": "pipeline/decisions/space-reference-review.csv",
   "drawings": [
     {
       "id": "WALL-PLAN",

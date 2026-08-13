@@ -25,3 +25,44 @@ END-ISO-10303-21;`);
   expect(report.summary.block).toBeGreaterThan(0);
   expect(report.gates.find((gate) => gate.id === "SPACE-REVIEW")?.status).toBe("block");
 });
+
+test("implemented Space review evidence supersedes legacy provisional ObjectType", () => {
+  const snapshot = analyzeIfcText(`ISO-10303-21;
+HEADER;
+FILE_SCHEMA(('IFC4'));
+ENDSEC;
+DATA;
+#1=IFCSPACE('0AAAAAAAAAAAAAAAAAAAAA',$,'SPACE-01',$,'PROVISIONAL_GRID_CELL',#2,#3,'Room',$,.INTERNAL.,$);
+#4=IFCPROPERTYSINGLEVALUE('Reference',$,IFCIDENTIFIER('R01'),$);
+#5=IFCPROPERTYSET('0BBBBBBBBBBBBBBBBBBBBB',$,'Pset_SpaceCommon',$,(#4));
+#6=IFCRELDEFINESBYPROPERTIES('0CCCCCCCCCCCCCCCCCCCCC',$,$,$,(#1),#5);
+ENDSEC;
+END-ISO-10303-21;`);
+  const report = buildQaReport(
+    snapshot,
+    [],
+    { ifcSchema: "IFC4", baselineCounts: { IFCSPACE: 1 } },
+    [],
+    { path: "space-review.csv", total: 1, implemented: 1, ready: true, errors: [] },
+  );
+  expect(report.gates.find((gate) => gate.id === "SPACE-REVIEW")?.status).toBe("pass");
+});
+
+test("annotation composition and paired elevation names are baseline evidence", () => {
+  const snapshot = analyzeIfcText(`ISO-10303-21;
+HEADER;
+FILE_SCHEMA(('IFC4'));
+ENDSEC;
+DATA;
+#1=IFCANNOTATION('0AAAAAAAAAAAAAAAAAAAAA',$,'EL-01',$,'DRAWING',#2,#3);
+#4=IFCANNOTATION('0BBBBBBBBBBBBBBBBBBBBB',$,'EL-01',$,'ELEVATION',#5,$);
+ENDSEC;
+END-ISO-10303-21;`);
+  const report = buildQaReport(snapshot, [], {
+    ifcSchema: "IFC4",
+    baselineCounts: { IFCANNOTATION: 2 },
+    baselineAnnotationTypes: { DRAWING: 1, ELEVATION: 1 },
+    baselineElevationDrawingPairs: 1,
+  });
+  expect(report.gates.find((gate) => gate.id === "BASELINE-COUNTS")?.status).toBe("pass");
+});

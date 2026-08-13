@@ -113,8 +113,14 @@ def short_number(value: float) -> str:
 def render_endpoint_row(row: dict[str, Any], index: int, x: int, y: int, width: int) -> str:
     service = bool(row["service_demand_candidate"])
     badge_class = "service-badge" if service else "component-badge"
-    status_class = "unknown" if service else "component"
-    status = "冷热水需求：unknown" if service else "非服务组合构件｜不生成需求"
+    media = row["service_media_demand"]
+    media_confirmed = service and all(item["status"] == "confirmed" for item in media.values())
+    status_class = "confirmed" if media_confirmed else ("unknown" if service else "component")
+    if media_confirmed:
+        token = lambda name: "是" if media[name]["required"] else "否"
+        status = f"冷水 {token('cold_water')}｜热水 {token('hot_water')}｜排水 {token('drain')}"
+    else:
+        status = "冷热排需求：unknown" if service else "非服务组合构件｜不生成需求"
     origin = row["object_origin_mm"]
     type_name = row.get("type_name") or "未命名类型"
     predefined = row.get("type_predefined_type") or "NOTDEFINED"
@@ -166,6 +172,11 @@ def render_svg(records: list[dict[str, Any]], ifc_hash: str) -> str:
 
     ordered = [row for room in ROOM_ORDER for row in room_rows[room]]
     indexed = {row["global_id"]: index for index, row in enumerate(ordered, 1)}
+    confirmed_media_count = sum(
+        row["service_demand_candidate"]
+        and all(item["status"] == "confirmed" for item in row["service_media_demand"].values())
+        for row in ordered
+    )
     left, _ = render_room_panel("BATHM", room_rows["BATHM"], indexed, 40, 180, 750)
     right_parts: list[str] = []
     right_y = 180
@@ -186,13 +197,13 @@ def render_svg(records: list[dict[str, Any]], ifc_hash: str) -> str:
 .badge-text{{font:700 11px ui-monospace,monospace;fill:#1e3a8a;text-anchor:middle}}
 .endpoint-title{{font:700 14px -apple-system,"PingFang SC",sans-serif;fill:#1e293b}}
 .endpoint-meta{{font:11px ui-monospace,SFMono-Regular,monospace;fill:#64748b}}
-.unknown{{font:700 12px -apple-system,"PingFang SC",sans-serif;fill:#b45309}}.component{{font:700 12px -apple-system,"PingFang SC",sans-serif;fill:#475569}}
+.unknown{{font:700 12px -apple-system,"PingFang SC",sans-serif;fill:#b45309}}.confirmed{{font:700 12px -apple-system,"PingFang SC",sans-serif;fill:#047857}}.component{{font:700 12px -apple-system,"PingFang SC",sans-serif;fill:#475569}}
 .footer{{font:13px ui-monospace,SFMono-Regular,monospace;fill:#64748b}}
 </style>
 <rect class="bg" width="1600" height="1220"/>
 <text class="title" x="40" y="58">P-201 给水 / 热水需求端点候选</text>
 <text class="meta" x="40" y="94">24 个服务需求候选 + 3 个非服务组合构件｜按当前 IFC 对象原点分区登记｜位置不是接口或粗装点</text>
-<text class="warning" x="40" y="126">无 IfcDistributionPort / System / 正式管线拓扑；冷热水 unknown 保持 unknown；不含管径、水压、设备接口推定</text>
+<text class="warning" x="40" y="126">无 IfcDistributionPort / System / 正式管线拓扑；{confirmed_media_count} 个精确型号端点关闭介质需求，其余保持 unknown</text>
 <text class="meta" x="40" y="154">本图是待复核需求清单，不是开发商交付参考图，也不是最终给水、热水管线施工图。</text>
 {left}{''.join(right_parts)}
 <text class="footer" x="40" y="1192">IFC SHA-256 {ifc_hash} · automatic_ifc_write_allowed=false · construction_release_ready=false</text>
@@ -232,6 +243,11 @@ def main() -> None:
     records = endpoints["demand_endpoints"]
     room_counts = Counter((row.get("container") or {}).get("name") or "UNASSIGNED" for row in records)
     service_count = sum(bool(row["service_demand_candidate"]) for row in records)
+    confirmed_media_count = sum(
+        row["service_demand_candidate"]
+        and all(item["status"] == "confirmed" for item in row["service_media_demand"].values())
+        for row in records
+    )
 
     svg_path.parent.mkdir(parents=True, exist_ok=True)
     svg_path.write_text(render_svg(records, ifc_hash), encoding="utf-8")
@@ -269,6 +285,11 @@ def main() -> None:
             "non_service_component_count": len(records) - service_count,
             "room_counts": dict(sorted(room_counts.items())),
             "connection_requirement_counts": dict(Counter(row["connection_requirement"] for row in records)),
+            "service_media_status_counts": {
+                "confirmed_exact_model": confirmed_media_count,
+                "unknown": service_count - confirmed_media_count,
+                "not_applicable": len(records) - service_count,
+            },
             "ifc_distribution_port_count": distribution["IfcDistributionPort"],
             "ifc_system_count": distribution["IfcSystem"],
             "ifc_distribution_system_count": distribution["IfcDistributionSystem"],
@@ -288,14 +309,15 @@ def main() -> None:
             "caller_frozen_hash_checked": bool(args.expected_ifc_sha256),
             "all_registered_objects_drawn": True,
             "service_and_non_service_split_explicit": True,
-            "unknown_water_demands_preserved": all(row["connection_requirement"] == "unknown" for row in records),
+            "unknown_connection_coordinates_preserved": all(row["connection_requirement"] == "unknown" for row in records),
+            "confirmed_service_media_has_exact_model_evidence": confirmed_media_count == 3,
             "formal_distribution_topology_present": False,
             "ifc_unchanged_during_generation": ending_ifc_hash == ifc_hash,
             "automatic_ifc_write_allowed": False,
             "construction_release_ready": False,
         },
         "open_release_items": [
-            "确认每个需求端点的冷水、热水或无需给水属性",
+            f"确认其余 {service_count - confirmed_media_count} 个服务端点的冷水、热水与排水属性",
             "取得设备厂家接口、流量与压力要求",
             "完成正式管线路由、管径、阀件、保温和系统拓扑设计",
             "现场复核对象原点与真实接口/粗装点的偏差",

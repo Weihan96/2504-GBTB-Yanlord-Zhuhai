@@ -7,6 +7,7 @@ import csv
 import hashlib
 import json
 import math
+import re
 from datetime import datetime, timezone
 from pathlib import Path
 
@@ -53,6 +54,72 @@ def sha256(path: Path) -> str:
 def read_csv(path: Path) -> list[dict[str, str]]:
     with path.open(newline="", encoding="utf-8-sig") as handle:
         return list(csv.DictReader(handle))
+
+
+def requirement_value(row: dict[str, str]) -> str | float | None:
+    text_value = row.get("value_text", "").strip()
+    if text_value:
+        return text_value
+    number_value = row.get("value_number", "").strip()
+    if not number_value:
+        return None
+    value = float(number_value)
+    return int(value) if value.is_integer() else value
+
+
+def manufacturer_interface_inputs(
+    equipment_rows: list[dict[str, str]], requirement_rows: list[dict[str, str]]
+) -> dict:
+    candidate_ids_by_equipment: dict[str, list[str]] = {}
+    for row in equipment_rows:
+        equipment_id = row.get("equipment_id", "")
+        if not equipment_id.startswith("HVAC-"):
+            continue
+        candidate_ids_by_equipment[equipment_id] = sorted(
+            set(re.findall(r"A0[1-6]", row.get("item_name", "")))
+        )
+
+    by_equipment = {
+        candidate_id: {"requirements": [], "release_blocking_requirements": []}
+        for candidate_id in EQUIPMENT
+    }
+    consumed = 0
+    blocking = 0
+    for row in requirement_rows:
+        candidate_ids = candidate_ids_by_equipment.get(row.get("equipment_id", ""), [])
+        if not candidate_ids or "HVAC" not in row.get("discipline", ""):
+            continue
+        requirement = {
+            "requirement_id": row["requirement_id"],
+            "requirement_name": row["parameter_key"],
+            "value": requirement_value(row),
+            "unit": row.get("unit", "") or None,
+            "status": row.get("status", ""),
+            "basis_kind": row.get("value_origin", ""),
+            "evidence_id": row.get("source_id", "") or None,
+            "blocks_release": row.get("blocks_release", "").lower() == "yes",
+            "notes": row.get("notes", "") or None,
+        }
+        for candidate_id in candidate_ids:
+            by_equipment[candidate_id]["requirements"].append(requirement)
+            consumed += 1
+            if requirement["blocks_release"]:
+                by_equipment[candidate_id]["release_blocking_requirements"].append(
+                    requirement["requirement_name"]
+                )
+                blocking += 1
+
+    for payload in by_equipment.values():
+        payload["requirements"].sort(key=lambda row: row["requirement_id"])
+        payload["release_blocking_requirements"] = sorted(
+            set(payload["release_blocking_requirements"])
+        )
+    return {
+        "source_of_truth": "equipment-register.csv + equipment-installation-requirements.csv",
+        "consumed_requirement_count": consumed,
+        "release_blocking_requirement_count": blocking,
+        "by_equipment": by_equipment,
+    }
 
 
 def bbox_clearance_mm(first: dict, second: dict) -> float:
@@ -221,6 +288,8 @@ def main() -> int:
     parser.add_argument("--delivery-dwg", type=Path, required=True)
     parser.add_argument("--routes", type=Path, required=True)
     parser.add_argument("--waypoints", type=Path, required=True)
+    parser.add_argument("--equipment-register", type=Path, required=True)
+    parser.add_argument("--requirements", type=Path, required=True)
     parser.add_argument("--output", type=Path, required=True)
     args = parser.parse_args()
 
@@ -233,7 +302,10 @@ def main() -> int:
         raise RuntimeError("legacy blend audit does not match the formal IFC")
     route_rows = read_csv(args.routes)
     waypoint_rows = read_csv(args.waypoints)
+    equipment_rows = read_csv(args.equipment_register)
+    requirement_rows = read_csv(args.requirements)
     validate_decisions(route_rows, waypoint_rows)
+    manufacturer_inputs = manufacturer_interface_inputs(equipment_rows, requirement_rows)
 
     model = ifcopenshell.open(args.input)
     opening_by_global_id = {item["global_id"]: item for item in hvac["developer_opening_pairing"]}
@@ -283,6 +355,10 @@ def main() -> int:
             "delivery_dwg_sha256": sha256(args.delivery_dwg),
             "route_register": str(args.routes.resolve()),
             "waypoint_register": str(args.waypoints.resolve()),
+            "equipment_register": str(args.equipment_register.resolve()),
+            "equipment_register_sha256": sha256(args.equipment_register),
+            "installation_requirements": str(args.requirements.resolve()),
+            "installation_requirements_sha256": sha256(args.requirements),
         },
         "scope": {
             "formal_ifc_write_allowed": False,
@@ -334,6 +410,7 @@ def main() -> int:
             "legacy_pipe_independent_components": hvac["summary"]["legacy_pipe_independent_components"],
             "status": "constraint_skeleton_started_real_ports_sections_slopes_and_fittings_pending",
         },
+        "manufacturer_interface_inputs": manufacturer_inputs,
         "authoring_contract": {
             "source_of_truth": "IFC plus route and waypoint decision registers",
             "blender_role": "rebuildable constraint editing and Geometry Nodes preview only",
@@ -348,8 +425,8 @@ def main() -> int:
             },
             {
                 "input_id": "RCP1C-I05",
-                "question": "确认管径/风管截面、保温外径、弯曲半径、冷凝水坡度、吊架与检修净距。",
-                "why_required": "当前路径只是有序锚点骨架，不是加工或施工几何。",
+                "question": "确认尚未被厂家证据覆盖的风量与风管截面、保温外径、弯曲半径、最终锚固/吊架和检修净距；补齐 A05/A06 冷媒与排水参数。",
+                "why_required": "A01–A04 已有名义冷媒管径、排水外径与坡度，A05 已有吊杆/风口/检修候选；当前仍缺施工路线所需的完整截面、端口和现场构造。",
             },
         ],
         "gates": {
@@ -357,6 +434,21 @@ def main() -> int:
             "six_fixed_equipment_positions_registered": len(equipment) == 6,
             "seven_existing_openings_registered": len(openings) == 7,
             "confirmed_shared_and_multihop_graph_ready": True,
+            "manufacturer_constraints_consumed_from_ssot": manufacturer_inputs["consumed_requirement_count"] > 0,
+            "a01_a04_refrigerant_and_condensate_nominals_available": all(
+                {
+                    "gas_pipe_od",
+                    "liquid_pipe_od",
+                    "drain_pipe_od",
+                    "drain_slope_min",
+                    "drain_slope_max",
+                }.issubset({
+                    row["requirement_name"]
+                    for row in manufacturer_inputs["by_equipment"][candidate_id]["requirements"]
+                    if row["value"] is not None
+                })
+                for candidate_id in ("A01", "A02", "A03", "A04")
+            ),
             "legacy_pipe_topology_matches": legacy_topology_ok,
             "demolition_walls_excluded_from_permanent_obstacles": (
                 len(a05_diagnostic["route"]["demolition_wall_crossings"]) >= 1

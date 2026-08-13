@@ -577,3 +577,9 @@ REQ-0575,SAN-021,PLUM,official_reference_drain_hole_diameter,,46,mm,,official_mo
 REQ-0576,SAN-021,PLUM,official_reference_tap_hole_diameter,,38,mm,,official_model_family,candidate,ANTONIOLUPI-STREET-TECH-001,仅适用于带台面龙头孔的官方变体,no,若采用墙出水则不应开孔
 REQ-0577,SAN-021,STRUCTURE,official_reference_installation_method,wall-supported or cabinet-supported,,,,official_model_family,candidate,ANTONIOLUPI-STREET-INSTALL-001,官方系列安装体系,no,国内定制支架墙体基层与柜体承托须盖章深化
 REQ-0578,SAN-018,WFIN,official_material_option,Rosso Levanto marble,,,,official_model_family,candidate,FALPER-SORGENTE-MATERIAL-001,官方产品目录第 6 页,no,确认系列可选材质；本项目国内定制石材批次和表面仍须封样
+REQ-0579,SAN-014,PLUM,cold_water_demand,yes,,,,official_exact_model,confirmed,GEB-OFFICIAL-224212-001,精确 SKU 给水接口与最高工作水温 25°C,no,只确认水箱冷水需求；不确认项目接口坐标或管线路由
+REQ-0580,SAN-014,PLUM,hot_water_demand,no,,,,official_exact_model,confirmed,GEB-OFFICIAL-224212-001,精确 SKU 给水接口与最高工作水温 25°C,no,不得为隐蔽水箱配置热水
+REQ-0581,SAN-014,PLUM,drain_demand,yes,,,,official_exact_model,confirmed,GEB-OFFICIAL-224212-001,精确 SKU WC 连接与排水弯均 Ø90,no,只确认排水需求；不确认项目排水中心或转接位置
+REQ-0582,SAN-001,PLUM,cold_water_demand,no,,,,official_exact_model,confirmed,GEB-OFFICIAL-154446-001,CleanLine50 精确 SKU 为线性排水槽,no,排水槽本体不是给水用水点
+REQ-0583,SAN-001,PLUM,hot_water_demand,no,,,,official_exact_model,confirmed,GEB-OFFICIAL-154446-001,CleanLine50 精确 SKU 为线性排水槽,no,排水槽本体不是热水用水点
+REQ-0584,SAN-001,PLUM,drain_demand,yes,,,,official_exact_model,confirmed,GEB-OFFICIAL-154446-001,CleanLine50 精确 SKU 与集成坡度,no,只确认排水需求；实际排水中心仍由安装套件和现场关闭

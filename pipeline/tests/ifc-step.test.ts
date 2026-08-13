@@ -13,6 +13,9 @@ DATA;
 #4=IFCDOOR('0DDDDDDDDDDDDDDDDDDDDD',$,'Door',$,$,#12,#13,$,2000.,800.,.DOOR.,.SINGLE_SWING_LEFT.,$);
 #5=IFCWINDOW('0EEEEEEEEEEEEEEEEEEEEE',$,'Window',$,$,#14,#15,'W01',1800.,1200.,.WINDOW.,.SINGLE_PANEL.,$);
 #6=IFCANNOTATION('0FFFFFFFFFFFFFFFFFFFFF',$,'Wall Plan',$,'DRAWING',#16,#17);
+#21=IFCPROPERTYSINGLEVALUE('Reference',$,IFCIDENTIFIER('R01'),$);
+#22=IFCPROPERTYSET('0IIIIIIIIIIIIIIIIIIIII',$,'Pset_SpaceCommon',$,(#21));
+#23=IFCRELDEFINESBYPROPERTIES('0JJJJJJJJJJJJJJJJJJJJJ',$,$,$,(#3),#22);
 #7=IFCGRIDAXIS('08',#18,.T.);
 #8=IFCRELCONTAINEDINSPATIALSTRUCTURE('0GGGGGGGGGGGGGGGGGGGGG',$,$,$,(#3),#2);
 #9=IFCRELFILLSELEMENT('0HHHHHHHHHHHHHHHHHHHHH',$,$,$,#20,#4);
@@ -34,6 +37,7 @@ describe("STEP parser", () => {
     expect(snapshot.projectName).toBe("Project");
     expect(snapshot.spaces.total).toBe(1);
     expect(snapshot.spaces.records[0].longName).toBe("主卧");
+    expect(snapshot.spaces.records[0].reference).toBe("R01");
     expect(snapshot.spaces.provisional).toBe(1);
     expect(snapshot.spaces.containedInStorey).toBe(1);
     expect(snapshot.spaces.aggregatedUnderStorey).toBe(0);

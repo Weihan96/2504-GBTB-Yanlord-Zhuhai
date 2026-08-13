@@ -28,6 +28,10 @@ test("RCP1 route graph accepts shared openings and ordered multi-hop paths", asy
       resolve(root, "pipeline/decisions/rcp1-hvac-route-register.csv"),
       "--waypoints",
       resolve(root, "pipeline/decisions/rcp1-hvac-route-waypoints.csv"),
+      "--equipment-register",
+      resolve(root, "pipeline/decisions/equipment-register.csv"),
+      "--requirements",
+      resolve(root, "pipeline/decisions/equipment-installation-requirements.csv"),
       "--output",
       output,
     ],
@@ -54,5 +58,18 @@ test("RCP1 route graph accepts shared openings and ordered multi-hop paths", asy
   expect(report.legacy_reference.component_topology_matches).toBe(true);
   expect(report.legacy_reference.maximum_component_dimension_difference_mm).toBeLessThan(0.016);
   expect(report.gates.confirmed_shared_and_multihop_graph_ready).toBe(true);
+  expect(report.gates.manufacturer_constraints_consumed_from_ssot).toBe(true);
+  expect(report.gates.a01_a04_refrigerant_and_condensate_nominals_available).toBe(true);
+  const a02Requirements = Object.fromEntries(report.manufacturer_interface_inputs.by_equipment.A02.requirements
+    .map((item: any) => [item.requirement_name, item.value]));
+  expect(a02Requirements.gas_pipe_od).toBe(12.7);
+  expect(a02Requirements.liquid_pipe_od).toBe(6.35);
+  expect(a02Requirements.drain_pipe_od).toBe(32);
+  const a05Requirements = Object.fromEntries(report.manufacturer_interface_inputs.by_equipment.A05.requirements
+    .map((item: any) => [item.requirement_name, item.value]));
+  expect(a05Requirements.service_access_width_min).toBe(450);
+  expect(a05Requirements.supply_duct_length_min).toBe(1000);
+  expect(report.manufacturer_interface_inputs.by_equipment.A06.release_blocking_requirements)
+    .toContain("nominal_body_width");
   expect(report.gates.formal_ifc_write_allowed).toBe(false);
 }, 30_000);

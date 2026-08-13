@@ -1,7 +1,7 @@
 import { mkdir } from "node:fs/promises";
 import { dirname, resolve } from "node:path";
 import { snapshotIfc } from "./ifc-step";
-import { buildQaReport, renderQaMarkdown, type DecisionSnapshot, type DrawingSnapshot } from "./qa";
+import { buildQaReport, renderQaMarkdown, type DecisionSnapshot, type DrawingSnapshot, type SpaceReviewSnapshot } from "./qa";
 
 export const DECISION_STATUSES = new Set(["pending", "confirmed", "rejected", "implemented", "delegated", "planned"]);
 
@@ -18,6 +18,9 @@ interface ProjectConfig {
   ifcPath: string;
   ifcSchema: string;
   baselineCounts: Record<string, number>;
+  baselineAnnotationTypes?: Record<string, number>;
+  baselineElevationDrawingPairs?: number;
+  spaceReviewFile?: string;
   drawings: DrawingConfig[];
   decisionFiles: string[];
   output: {
@@ -109,6 +112,43 @@ async function inspectDecisionFile(path: string): Promise<DecisionSnapshot> {
   };
 }
 
+async function inspectSpaceReviewFile(path: string, snapshot: Awaited<ReturnType<typeof snapshotIfc>>): Promise<SpaceReviewSnapshot> {
+  const absolutePath = resolve(repositoryRoot, path);
+  const text = await Bun.file(absolutePath).text();
+  const lines = text.split(/\r?\n/).filter((line) => line.trim().length > 0);
+  const headers = splitCsvLine(lines[0] ?? "");
+  const records = lines.slice(1).map((line) => {
+    const fields = splitCsvLine(line);
+    return Object.fromEntries(headers.map((header, index) => [header, fields[index] ?? ""]));
+  });
+  const errors: string[] = [];
+  const guidSet = new Set(records.map((record) => record.space_global_id));
+  const referenceSet = new Set(records.map((record) => record.candidate_reference));
+  if (records.length !== snapshot.spaces.total) errors.push(`expected ${snapshot.spaces.total} review rows, found ${records.length}`);
+  if (guidSet.size !== records.length) errors.push("space review GlobalIds are not unique");
+  if (referenceSet.size !== records.length) errors.push("space review references are not unique");
+  const reviewByGuid = new Map(records.map((record) => [record.space_global_id, record]));
+  for (const space of snapshot.spaces.records) {
+    const review = space.globalId ? reviewByGuid.get(space.globalId) : undefined;
+    if (!review) {
+      errors.push(`missing review row for ${space.globalId ?? `STEP #${space.stepId}`}`);
+      continue;
+    }
+    if (review.status !== "implemented") errors.push(`${space.globalId}: status=${review.status}`);
+    if (review.candidate_reference !== review.current_reference) errors.push(`${space.globalId}: candidate/current reference mismatch`);
+    if (review.current_reference !== space.reference) errors.push(`${space.globalId}: IFC/reference register mismatch`);
+    if (review.space_name !== (space.name ?? "")) errors.push(`${space.globalId}: Name mismatch`);
+    if (review.space_long_name !== (space.longName ?? "")) errors.push(`${space.globalId}: LongName mismatch`);
+  }
+  return {
+    path,
+    total: records.length,
+    implemented: records.filter((record) => record.status === "implemented").length,
+    ready: errors.length === 0,
+    errors,
+  };
+}
+
 async function main(): Promise<void> {
   const command = process.argv[2] ?? "help";
   if (!new Set(["snapshot", "check"]).has(command)) {
@@ -122,7 +162,8 @@ async function main(): Promise<void> {
   const snapshot = await snapshotIfc(ifcPath);
   const drawingSnapshots = await Promise.all(config.drawings.map(inspectDrawing));
   const decisionSnapshots = await Promise.all(config.decisionFiles.map(inspectDecisionFile));
-  const snapshotArtifact = { projectId: config.projectId, projectName: config.projectName, ifc: snapshot, drawings: drawingSnapshots, decisions: decisionSnapshots };
+  const spaceReview = config.spaceReviewFile ? await inspectSpaceReviewFile(config.spaceReviewFile, snapshot) : undefined;
+  const snapshotArtifact = { projectId: config.projectId, projectName: config.projectName, ifc: snapshot, drawings: drawingSnapshots, decisions: decisionSnapshots, spaceReview };
   const snapshotPath = resolve(repositoryRoot, config.output.snapshot);
   await writeJson(snapshotPath, snapshotArtifact);
   console.log(`snapshot: ${config.output.snapshot}`);
@@ -131,7 +172,7 @@ async function main(): Promise<void> {
 
   if (command === "snapshot") return;
 
-  const report = buildQaReport(snapshot, drawingSnapshots, config, decisionSnapshots);
+  const report = buildQaReport(snapshot, drawingSnapshots, config, decisionSnapshots, spaceReview);
   const qaJsonPath = resolve(repositoryRoot, config.output.qaJson);
   const qaMarkdownPath = resolve(repositoryRoot, config.output.qaMarkdown);
   await writeJson(qaJsonPath, report);

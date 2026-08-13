@@ -368,8 +368,10 @@ def main() -> None:
         "release_blockers": [
             "ELEC switch, socket, network and product decisions remain open in source reports",
             "RCP1 final airside, refrigerant and condensate routes remain open",
-            "stale Blender preview caches must not be used as current construction evidence",
         ],
+        "warnings": [
+            "stale Blender preview caches remain on disk but are mechanically excluded from release reports and publish targets",
+        ] if any(not row["current_formal_ifc"] for row in excluded_previews) else [],
     }
     output = resolve(root, args.output)
     output.parent.mkdir(parents=True, exist_ok=True)

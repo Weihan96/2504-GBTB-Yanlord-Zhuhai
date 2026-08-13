@@ -46,7 +46,15 @@ PLUM_SERVICE_KEYS = {
     "water_required", "drain_required", "water_connection", "drain_connection_od",
     "water_pressure_min", "water_pressure_max", "water_flow_min",
     "cold_water_temperature_max", "drain_pipe_od", "drain_slope_min",
-    "drain_slope_max",
+    "drain_slope_max", "cold_water_demand", "hot_water_demand", "drain_demand",
+    "water_supply_connection", "wc_connection_diameter", "drain_bend_diameter",
+    "waste_size", "official_reference_floor_drain_zone_diameter",
+    "official_reference_visible_drain_cover_diameter", "official_reference_trap_connection",
+}
+SERVICE_MEDIA_KEYS = {
+    "cold_water": "cold_water_demand",
+    "hot_water": "hot_water_demand",
+    "drain": "drain_demand",
 }
 
 
@@ -274,6 +282,41 @@ def equipment_snapshot(
     }
 
 
+def service_media_demand(
+    owner: dict[str, str] | None,
+    requirements: list[dict[str, str]],
+    service_candidate: bool,
+) -> dict[str, dict[str, Any]]:
+    if not service_candidate:
+        return {
+            medium: {"status": "not_applicable", "required": False, "source_id": None}
+            for medium in SERVICE_MEDIA_KEYS
+        }
+    owned = [row for row in requirements if owner and row["equipment_id"] == owner["equipment_id"]]
+    result: dict[str, dict[str, Any]] = {}
+    for medium, parameter_key in SERVICE_MEDIA_KEYS.items():
+        evidence = next((
+            row for row in owned
+            if row["parameter_key"] == parameter_key
+            and row["status"] == "confirmed"
+            and row["value_origin"] == "official_exact_model"
+            and row["source_id"]
+            and row["value_text"] in {"yes", "no"}
+        ), None)
+        result[medium] = (
+            {
+                "status": "confirmed",
+                "required": evidence["value_text"] == "yes",
+                "basis_kind": evidence["value_origin"],
+                "source_id": evidence["source_id"],
+                "requirement_id": evidence["requirement_id"],
+            }
+            if evidence else
+            {"status": "unknown", "required": None, "source_id": None}
+        )
+    return result
+
+
 def service_requirement_candidates(
     equipment: list[dict[str, str]],
     requirements: list[dict[str, str]],
@@ -338,6 +381,20 @@ def main() -> None:
             record_cache[product.GlobalId] = value
         return record_cache[product.GlobalId]
 
+    def endpoint_record(product: Any) -> dict[str, Any]:
+        classification = service_demand_classification(product)
+        owner = owner_by_global_id.get(product.GlobalId)
+        return {
+            **record(product),
+            **classification,
+            "service_media_demand": service_media_demand(
+                owner, requirement_rows, classification["service_demand_candidate"]
+            ),
+            "connection_requirement": "unknown",
+            "is_ifc_distribution_port": False,
+            "candidate_is_write_authority": False,
+        }
+
     p201 = {
         "candidate": "P-201 sanitary-terminal service-demand classification",
         "source_ifc_sha256": ifc_sha,
@@ -346,16 +403,7 @@ def main() -> None:
             "cold-water connection inference", "hot-water connection inference",
             "pipe routing", "pipe sizing", "system connectivity", "rough-in anchor writes",
         ],
-        "demand_endpoints": [
-            {
-                **record(product),
-                **service_demand_classification(product),
-                "connection_requirement": "unknown",
-                "is_ifc_distribution_port": False,
-                "candidate_is_write_authority": False,
-            }
-            for product in sanitary
-        ],
+        "demand_endpoints": [endpoint_record(product) for product in sanitary],
     }
     p202_products = sanitary + waste + assemblies + drainage
     scoped_products = sanitary + waste + assemblies
@@ -368,6 +416,10 @@ def main() -> None:
     service_demand_count = sum(
         service_demand_classification(product)["service_demand_candidate"]
         for product in sanitary
+    )
+    confirmed_media_endpoints = sum(
+        all(item["status"] == "confirmed" for item in row["service_media_demand"].values())
+        for row in p201["demand_endpoints"] if row["service_demand_candidate"]
     )
     p202 = {
         "candidate": "P-202 existing drainage and sanitary location register",
@@ -403,6 +455,7 @@ def main() -> None:
         "pvc110_world_geometry_unchanged": all(row["world_geometry_unchanged"] for row in pvc110),
         "review_register_complete": len(review_rows) == len(EXPECTED_REVIEW_IDS),
         "service_demand_classification_pass": service_demand_count == 24,
+        "confirmed_service_media_has_exact_model_evidence": confirmed_media_endpoints == 3,
         "equipment_ssot_coverage_pass": len(scoped_products) == 33 and not missing_ssot,
     }
     qa["candidate_registry_pass"] = all((
@@ -410,7 +463,7 @@ def main() -> None:
         missing_connectivity_declared, qa["pvc110_product_count"] == 2,
         qa["pvc110_branch_count"] == 6, qa["pvc110_world_geometry_unchanged"],
         qa["review_register_complete"], qa["service_demand_classification_pass"],
-        qa["equipment_ssot_coverage_pass"],
+        qa["equipment_ssot_coverage_pass"], qa["confirmed_service_media_has_exact_model_evidence"],
     ))
     qa["construction_release_pass"] = False
 
@@ -433,6 +486,8 @@ def main() -> None:
             "p201_registered_terminal_count": len(p201["demand_endpoints"]),
             "p201_service_demand_candidate_count": service_demand_count,
             "p201_non_service_component_count": len(p201["demand_endpoints"]) - service_demand_count,
+            "p201_confirmed_service_media_endpoint_count": confirmed_media_endpoints,
+            "p201_unknown_service_media_endpoint_count": service_demand_count - confirmed_media_endpoints,
             "p202_existing_object_count": len(p202["objects"]),
             "equipment_ssot_linked_plum_object_count": len(scoped_products),
             "equipment_service_candidate_count": len(service_candidates),
