@@ -1,12 +1,14 @@
 import { expect, test } from "bun:test";
-import { readFileSync } from "node:fs";
-import { resolve } from "node:path";
+import { mkdtempSync, readFileSync, writeFileSync } from "node:fs";
+import { tmpdir } from "node:os";
+import { join, resolve } from "node:path";
 import { spawnSync } from "bun";
 
 const root = resolve(import.meta.dir, "../..");
 const script = resolve(root, "pipeline/scripts/elec_control_network_candidate.py");
 const output = resolve(root, "build/elec/elec-control-network-candidate.test.json");
 const svg = resolve(root, "build/elec/E302-E304-control-network-candidate.test.svg");
+const topology = resolve(root, "pipeline/decisions/e304-network-topology.csv");
 const productGateNames = [
   "exact_sku_certificate_match",
   "control_role_closed",
@@ -55,6 +57,7 @@ test("confirmed control, network, and safety roles compile as read-only coordina
   expect(report.gates.five_downstream_endpoints_present).toBe(true);
   expect(report.gates.two_AP_power_methods_pending).toBe(true);
   expect(report.gates.physical_ports_remain_unassigned).toBe(true);
+  expect(report.gates.AP_topology_uses_current_a106_mechanical_assessment).toBe(true);
   expect(report.gates.main_bedroom_AP_clearance_reserve_pass).toBe(true);
   expect(report.gates.guest_bedroom_AP_clearance_reserve_pass).toBe(true);
   const mainBedroomAp = report.network_coordination_zones.find(
@@ -62,6 +65,26 @@ test("confirmed control, network, and safety roles compile as read-only coordina
   );
   expect(mainBedroomAp.position_mm).toEqual([-5840, -2844, 2720]);
   expect(mainBedroomAp.clearance_margin_mm).toBeCloseTo(578.5, 3);
+  expect(mainBedroomAp.mechanical_assessment.clearance_margins_mm.light_edge).toBeCloseTo(578.5, 3);
+  expect(mainBedroomAp.governing_known_clearance).toEqual({
+    kind: "wall_boundary",
+    margin_mm: expect.closeTo(260, 3),
+  });
+  const guestBedroomAp = report.network_coordination_zones.find(
+    (candidate: any) => candidate.candidate_id === "A106-AP-R14",
+  );
+  expect(guestBedroomAp.mechanical_assessment.clearance_margins_mm.light_edge).toBeCloseTo(213.5, 3);
+  expect(guestBedroomAp.governing_known_clearance.kind).toBe("same_room_smoke");
+  expect(guestBedroomAp.governing_known_clearance.margin_mm).toBeCloseTo(121.563, 3);
+  const apLinks = report.network_topology.links.filter((link: any) => link.target_node.startsWith("A106-AP-"));
+  expect(apLinks).toHaveLength(2);
+  for (const link of apLinks) {
+    expect(link.a106_mechanical_evidence.candidate_id).toBe(link.target_node);
+    expect(link.a106_mechanical_evidence.final_release_pass).toBe(false);
+    expect(link.poe_required).toBe("TBD");
+    expect(link.local_power_required).toBe("TBD");
+    expect(link.notes).not.toMatch(/\b\d+(?:\.\d+)?\s*mm\b/i);
+  }
   expect(report.gates.gateway_identity_complete).toBe(false);
   expect(report.gates.cabinet_dimensions_complete).toBe(false);
   expect(report.gates.thermal_test_complete).toBe(false);
@@ -90,6 +113,28 @@ test("confirmed control, network, and safety roles compile as read-only coordina
   expect(renderedSvg).toContain("Matter 网络类型按准确 SKU；Matter ≠ KNX");
   expect(renderedSvg).toContain("Wall Plan-underlay.png");
 }, 30_000);
+
+test("stale hard-coded AP clearance in network topology fails closed", () => {
+  const temp = mkdtempSync(join(tmpdir(), "elec-control-network-"));
+  const staleTopology = join(temp, "e304-network-topology.csv");
+  const stale = readFileSync(topology, "utf8").replace(
+    "position and mechanical clearances derive from the current A-106 candidate report",
+    "current ceiling position has only 1.5 mm clearance reserve",
+  );
+  writeFileSync(staleTopology, stale);
+  const run = spawnSync([
+    "python3",
+    script,
+    "--network-topology",
+    staleTopology,
+    "--output",
+    join(temp, "report.json"),
+    "--output-svg",
+    join(temp, "candidate.svg"),
+  ], { cwd: root });
+  expect(run.exitCode).not.toBe(0);
+  expect(run.stderr.toString()).toContain("must not hard-code mechanical clearance dimensions");
+});
 
 test("Entry A, Master A, and Master B each fail every named product release gate with a reason", () => {
   const run = spawnSync(["python3", script, "--output", output, "--output-svg", svg], { cwd: root });

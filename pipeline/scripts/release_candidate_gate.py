@@ -85,6 +85,11 @@ def parse_args() -> argparse.Namespace:
         default=[],
         help="Optional extra professional JSON report; canonical reports cannot be omitted.",
     )
+    parser.add_argument(
+        "--output",
+        type=Path,
+        help="Optional JSON snapshot path; written atomically after evaluation.",
+    )
     return parser.parse_args()
 
 
@@ -786,7 +791,14 @@ def evaluate(args: argparse.Namespace) -> tuple[dict[str, Any], int]:
 def main() -> int:
     args = parse_args()
     report, exit_code = evaluate(args)
-    print(json.dumps(report, ensure_ascii=False, sort_keys=True))
+    serialized = json.dumps(report, ensure_ascii=False, sort_keys=True)
+    if args.output:
+        output_path = resolve_input(args.root.resolve(), args.output)
+        output_path.parent.mkdir(parents=True, exist_ok=True)
+        temporary_path = output_path.with_name(f".{output_path.name}.tmp")
+        temporary_path.write_text(serialized + "\n", encoding="utf-8")
+        temporary_path.replace(output_path)
+    print(serialized)
     return exit_code
 
 

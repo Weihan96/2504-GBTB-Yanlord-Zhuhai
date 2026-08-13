@@ -150,6 +150,32 @@ test("every stage rejects a professional report with an old IFC hash", () => {
   expect(check.details.reports[0].ifc_hashes).toEqual(["0".repeat(64)]);
 });
 
+test("release gate atomically refreshes an explicit JSON snapshot", () => {
+  const fixture = makeFixture();
+  const output = join(fixture.root, "build", "release", "reviewed-current.json");
+  const result = Bun.spawnSync([
+    "python3",
+    script,
+    "--stage",
+    "reviewed-candidate",
+    "--root",
+    fixture.root,
+    "--ifc",
+    fixture.ifc,
+    "--drawing-register",
+    fixture.register,
+    "--report-register",
+    fixture.reportRegister,
+    "--output",
+    output,
+  ]);
+  expect(result.exitCode).toBe(0);
+  const stdout = JSON.parse(result.stdout.toString());
+  const saved = JSON.parse(readFileSync(output, "utf8"));
+  expect(saved).toEqual(stdout);
+  expect(saved.source.formal_ifc_sha256).toBe(sha256(fixture.ifc));
+});
+
 test("duplicate drawing numbers fail the gate", () => {
   const fixture = makeFixture({ duplicate: true });
   const run = runGate(fixture, "reviewed-candidate");

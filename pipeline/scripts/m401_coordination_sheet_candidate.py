@@ -157,6 +157,34 @@ def validate_routes(
     return result
 
 
+def validate_mapping_coverage(
+    report: dict[str, Any], ifc_hash: str,
+) -> tuple[list[dict[str, Any]], list[dict[str, Any]]]:
+    if report.get("source", {}).get("ifc_sha256") != ifc_hash:
+        raise RuntimeError("RCP1 route-readiness mapping is stale against the formal IFC")
+    mappings = report.get("equipment_opening_mapping", [])
+    interfaces = report.get("interface_coverage", [])
+    if [row.get("equipment_id") for row in mappings] != [f"A0{index}" for index in range(1, 7)]:
+        raise RuntimeError("RCP1 equipment-opening mapping must cover A01–A06 exactly once")
+    if [row.get("opening_id") for row in interfaces] != [f"H0{index}" for index in range(1, 8)]:
+        raise RuntimeError("RCP1 interface coverage must cover H01–H07 exactly once")
+    if Counter(row.get("status") for row in mappings) != {
+        "user_confirmed": 2,
+        "geometry_candidate": 4,
+    }:
+        raise RuntimeError("RCP1 mapping confirmation/candidate boundary drifted")
+    if any(row.get("formal_ifc_write_allowed") is not False for row in mappings + interfaces):
+        raise RuntimeError("RCP1 mapping coverage unexpectedly grants IFC write authority")
+    required_gates = (
+        "six_equipment_opening_mappings_registered",
+        "seven_interfaces_have_controlled_roles",
+        "confirmed_and_candidate_mapping_split_preserved",
+    )
+    if any(report.get("gates", {}).get(name) is not True for name in required_gates):
+        raise RuntimeError("RCP1 mapping coverage gates are incomplete")
+    return mappings, interfaces
+
+
 def validate_safety(
     ifc_path: Path,
     a106_report: dict[str, Any],
@@ -208,6 +236,7 @@ def render_svg(
     routes: list[dict[str, Any]],
     blockers: list[dict[str, Any]],
     safety: dict[str, Any],
+    mappings: list[dict[str, Any]],
 ) -> str:
     type_cards = []
     for index, item in enumerate(sorted(types, key=lambda row: row["type_name"])):
@@ -254,9 +283,25 @@ def render_svg(
             f'<text class="block-name" x="1018" y="{y + 50}">{esc(blocker_names[blocker["queue_id"]])}</text>'
         )
 
+    mapping_cards = []
+    for index, mapping in enumerate(mappings):
+        column = index % 3
+        row = index // 3
+        x = 70 + column * 500
+        y = 905 + row * 63
+        confirmed = mapping["status"] == "user_confirmed"
+        status_label = "用户确认" if confirmed else "几何候选"
+        card_class = "map-confirmed" if confirmed else "map-candidate"
+        mapping_cards.append(
+            f'<rect class="{card_class}" x="{x}" y="{y}" width="470" height="50" rx="9"/>'
+            f'<text class="map-id" x="{x + 18}" y="{y + 22}">{esc(mapping["equipment_id"])} → {esc(mapping["opening_id"])}</text>'
+            f'<text class="map-status" x="{x + 160}" y="{y + 22}">{status_label}</text>'
+            f'<text class="map-note" x="{x + 18}" y="{y + 41}">最小包围盒净距候选 {float(mapping["minimum_clearance_candidate_mm"]):.1f} mm · 不写 IFC</text>'
+        )
+
     roles = inventory_summary["instance_role_counts"]
     return f'''<?xml version="1.0" encoding="UTF-8"?>
-<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="1080" viewBox="0 0 1600 1080">
+<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="1240" viewBox="0 0 1600 1240">
 <style>
 .bg{{fill:#f3f6fa}}.panel{{fill:#fff;stroke:#cbd5e1;stroke-width:2}}.card{{fill:#eef6ff;stroke:#93c5fd;stroke-width:2}}
 .title{{font:700 38px -apple-system,"PingFang SC",sans-serif;fill:#0f172a}}.subtitle{{font:18px -apple-system,"PingFang SC",sans-serif;fill:#475569}}
@@ -266,11 +311,14 @@ def render_svg(
 .route{{fill:#f8fafc;stroke:#cbd5e1}}.route-id{{font:700 15px ui-monospace,monospace;fill:#334155}}.route-label{{font:700 17px -apple-system,"PingFang SC",sans-serif;fill:#0f4c81}}
 .route-note{{font:13px -apple-system,"PingFang SC",sans-serif;fill:#a16207}}.block{{fill:#fff7ed;stroke:#fdba74;stroke-width:2}}
 .block-id{{font:700 15px ui-monospace,monospace;fill:#9a3412}}.block-name{{font:16px -apple-system,"PingFang SC",sans-serif;fill:#7c2d12}}
+.map-confirmed{{fill:#eff6ff;stroke:#60a5fa;stroke-width:2}}.map-candidate{{fill:#f8fafc;stroke:#94a3b8;stroke-width:2}}
+.map-id{{font:700 17px ui-monospace,monospace;fill:#0f4c81}}.map-status{{font:700 15px -apple-system,"PingFang SC",sans-serif;fill:#475569}}
+.map-note{{font:13px -apple-system,"PingFang SC",sans-serif;fill:#64748b}}
 .safety{{fill:#ecfdf5;stroke:#6ee7b7;stroke-width:2}}.safety-title{{font:700 19px -apple-system,"PingFang SC",sans-serif;fill:#065f46}}
 .safety-text{{font:15px -apple-system,"PingFang SC",sans-serif;fill:#064e3b}}.gate{{font:700 16px ui-monospace,monospace;fill:#991b1b}}
 .footer{{font:14px ui-monospace,monospace;fill:#64748b}}
 </style>
-<rect class="bg" width="1600" height="1080"/>
+<rect class="bg" width="1600" height="1240"/>
 <text class="title" x="55" y="62">M-401 空调、通风及安全设备协调候选</text>
 <text class="subtitle" x="55" y="100">证据化索引 + 路线约束图 · 只读生成 · 旧紫色管线不是装修后最终路线 · 非施工发布</text>
 <rect class="panel" x="55" y="125" width="1490" height="90" rx="14"/>
@@ -293,11 +341,14 @@ def render_svg(
 <text class="section" x="998" y="418">不得冒充完成的发布阻塞</text>
 {''.join(blocker_cards)}
 
-<rect class="safety" x="55" y="890" width="1490" height="125" rx="16"/>
-<text class="safety-title" x="82" y="925">安全设备现状：正式 IFC 仅 1 个 IfcSensor / FIRESENSOR</text>
-<text class="safety-text" x="82" y="955">A106-FIRE-R04 · 中厨 R04 · 位置 {esc(safety["confirmed_position_mm"])} mm 已确认；最终感温/感烟/复合类型、产品、供电通信和厂家安装条件仍待确认。</text>
-<text class="gate" x="82" y="987">automatic_ifc_write_allowed=false · construction_release_ready=false · 未建模内容不得由近接、名称或旧几何推断</text>
-<text class="footer" x="55" y="1053">IFC SHA-256 {ifc_hash} · 29 tracked instances · 5 body AC + 1 placement-only AC · 5 BLOCK</text>
+<text class="section" x="70" y="892">6 台设备—7 个既有接口覆盖矩阵（确认关系与几何候选分层）</text>
+{''.join(mapping_cards)}
+
+<rect class="safety" x="55" y="1040" width="1490" height="125" rx="16"/>
+<text class="safety-title" x="82" y="1075">安全设备现状：正式 IFC 仅 1 个 IfcSensor / FIRESENSOR</text>
+<text class="safety-text" x="82" y="1105">A106-FIRE-R04 · 中厨 R04 · 位置 {esc(safety["confirmed_position_mm"])} mm 已确认；最终感温/感烟/复合类型、产品、供电通信和厂家安装条件仍待确认。</text>
+<text class="gate" x="82" y="1137">automatic_ifc_write_allowed=false · construction_release_ready=false · 未建模内容不得由近接、名称或旧几何推断</text>
+<text class="footer" x="55" y="1213">IFC SHA-256 {ifc_hash} · 6/6 equipment mappings · 7/7 controlled interface roles · 5 BLOCK</text>
 </svg>
 '''
 
@@ -312,7 +363,7 @@ def render_png(svg_path: Path, png_path: Path, chrome: Path) -> None:
             "--hide-scrollbars",
             "--force-device-scale-factor=1",
             f"--screenshot={png_path}",
-            "--window-size=1600,1080",
+            "--window-size=1600,1240",
             svg_path.resolve().as_uri(),
         ],
         check=True,
@@ -334,6 +385,7 @@ def main() -> None:
     parser.add_argument("--m401-review", type=Path, default=Path("pipeline/decisions/m401-existing-review.csv"))
     parser.add_argument("--route-register", type=Path, default=Path("pipeline/decisions/rcp1-hvac-route-register.csv"))
     parser.add_argument("--route-waypoints", type=Path, default=Path("pipeline/decisions/rcp1-hvac-route-waypoints.csv"))
+    parser.add_argument("--route-readiness", type=Path, default=Path("build/rcp1/route-readiness-candidate.json"))
     parser.add_argument("--a106-report", type=Path, default=Path("build/elec/a106-ceiling-device-candidate.json"))
     parser.add_argument("--output-svg", type=Path, default=Path("drawings/M-401-hvac-safety-coordination-candidate.svg"))
     parser.add_argument("--proof-png", type=Path, default=Path("build/rcp1/M-401-hvac-safety-coordination-candidate.png"))
@@ -349,6 +401,7 @@ def main() -> None:
         "m401_review": resolve(args.m401_review),
         "route_register": resolve(args.route_register),
         "route_waypoints": resolve(args.route_waypoints),
+        "route_readiness": resolve(args.route_readiness),
         "a106_report": resolve(args.a106_report),
     }
     for label, path in paths.items():
@@ -370,6 +423,10 @@ def main() -> None:
         read_csv(paths["route_register"]),
         read_csv(paths["route_waypoints"]),
     )
+    mappings, interfaces = validate_mapping_coverage(
+        read_json(paths["route_readiness"]),
+        ifc_hash,
+    )
     safety = validate_safety(paths["ifc"], read_json(paths["a106_report"]), ifc_hash)
 
     output_svg = resolve(args.output_svg)
@@ -377,7 +434,7 @@ def main() -> None:
     report_path = resolve(args.report)
     output_svg.parent.mkdir(parents=True, exist_ok=True)
     output_svg.write_text(
-        render_svg(ifc_hash, m401_report["summary"], types, routes, blockers, safety),
+        render_svg(ifc_hash, m401_report["summary"], types, routes, blockers, safety, mappings),
         encoding="utf-8",
     )
     render_png(output_svg, proof_png, find_chrome(args.chrome))
@@ -399,12 +456,22 @@ def main() -> None:
             "missing_input_block_count": len(blockers),
             "confirmed_route_constraint_count": len(routes),
             "confirmed_waypoint_count": sum(len(items) for items in EXPECTED_WAYPOINTS.values()),
+            "equipment_opening_mapping_count": len(mappings),
+            "controlled_interface_role_count": len(interfaces),
+            "user_confirmed_equipment_mapping_count": sum(
+                item["status"] == "user_confirmed" for item in mappings
+            ),
+            "geometry_candidate_equipment_mapping_count": sum(
+                item["status"] == "geometry_candidate" for item in mappings
+            ),
             "ifc_sensor_instances": safety["ifc_sensor_instances"],
             "ifc_alarm_instances": safety["ifc_alarm_instances"],
             "legacy_routes_declared_final_count": 0,
         },
         "equipment_types": types,
         "route_constraints": routes,
+        "equipment_opening_mapping": mappings,
+        "interface_coverage": interfaces,
         "release_blockers": blockers,
         "safety_context": safety,
         "outputs": {
@@ -420,6 +487,14 @@ def main() -> None:
             "source_hashes_current": True,
             "inventory_counts_match": True,
             "route_constraints_confirmed": True,
+            "six_equipment_opening_mappings_registered": len(mappings) == 6,
+            "seven_interfaces_have_controlled_roles": (
+                len(interfaces) == 7 and all(item["role"] for item in interfaces)
+            ),
+            "mapping_confirmation_boundary_preserved": (
+                sum(item["status"] == "user_confirmed" for item in mappings) == 2
+                and sum(item["status"] == "geometry_candidate" for item in mappings) == 4
+            ),
             "legacy_routes_marked_nonfinal": all(not item["final_remodel_route"] for item in routes),
             "one_ifc_sensor_preserved": safety["ifc_sensor_instances"] == 1,
             "kitchen_fire_position_only_closed": safety["review_status"] == "position_confirmed_type_pending",

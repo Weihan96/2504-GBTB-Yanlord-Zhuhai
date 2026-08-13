@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="1080" viewBox="0 0 1600 1080">
+<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="1240" viewBox="0 0 1600 1240">
 <style>
 .bg{fill:#f3f6fa}.panel{fill:#fff;stroke:#cbd5e1;stroke-width:2}.card{fill:#eef6ff;stroke:#93c5fd;stroke-width:2}
 .title{font:700 38px -apple-system,"PingFang SC",sans-serif;fill:#0f172a}.subtitle{font:18px -apple-system,"PingFang SC",sans-serif;fill:#475569}
@@ -9,11 +9,14 @@
 .route{fill:#f8fafc;stroke:#cbd5e1}.route-id{font:700 15px ui-monospace,monospace;fill:#334155}.route-label{font:700 17px -apple-system,"PingFang SC",sans-serif;fill:#0f4c81}
 .route-note{font:13px -apple-system,"PingFang SC",sans-serif;fill:#a16207}.block{fill:#fff7ed;stroke:#fdba74;stroke-width:2}
 .block-id{font:700 15px ui-monospace,monospace;fill:#9a3412}.block-name{font:16px -apple-system,"PingFang SC",sans-serif;fill:#7c2d12}
+.map-confirmed{fill:#eff6ff;stroke:#60a5fa;stroke-width:2}.map-candidate{fill:#f8fafc;stroke:#94a3b8;stroke-width:2}
+.map-id{font:700 17px ui-monospace,monospace;fill:#0f4c81}.map-status{font:700 15px -apple-system,"PingFang SC",sans-serif;fill:#475569}
+.map-note{font:13px -apple-system,"PingFang SC",sans-serif;fill:#64748b}
 .safety{fill:#ecfdf5;stroke:#6ee7b7;stroke-width:2}.safety-title{font:700 19px -apple-system,"PingFang SC",sans-serif;fill:#065f46}
 .safety-text{font:15px -apple-system,"PingFang SC",sans-serif;fill:#064e3b}.gate{font:700 16px ui-monospace,monospace;fill:#991b1b}
 .footer{font:14px ui-monospace,monospace;fill:#64748b}
 </style>
-<rect class="bg" width="1600" height="1080"/>
+<rect class="bg" width="1600" height="1240"/>
 <text class="title" x="55" y="62">M-401 空调、通风及安全设备协调候选</text>
 <text class="subtitle" x="55" y="100">证据化索引 + 路线约束图 · 只读生成 · 旧紫色管线不是装修后最终路线 · 非施工发布</text>
 <rect class="panel" x="55" y="125" width="1490" height="90" rx="14"/>
@@ -36,9 +39,12 @@
 <text class="section" x="998" y="418">不得冒充完成的发布阻塞</text>
 <rect class="block" x="995" y="425" width="530" height="70" rx="10"/><text class="block-id" x="1018" y="449">M401-MISS-001 · BLOCK</text><text class="block-name" x="1018" y="475">正式风口 / 系统 / 端口连接</text><rect class="block" x="995" y="507" width="530" height="70" rx="10"/><text class="block-id" x="1018" y="531">M401-MISS-002 · BLOCK</text><text class="block-name" x="1018" y="557">厨房可燃气体报警器</text><rect class="block" x="995" y="589" width="530" height="70" rx="10"/><text class="block-id" x="1018" y="613">M401-MISS-003 · BLOCK</text><text class="block-name" x="1018" y="639">卧室 / 客厅火警与厨房最终产品</text><rect class="block" x="995" y="671" width="530" height="70" rx="10"/><text class="block-id" x="1018" y="695">M401-MISS-004 · BLOCK</text><text class="block-name" x="1018" y="721">卫生间暖风 / 通风设备</text><rect class="block" x="995" y="753" width="530" height="70" rx="10"/><text class="block-id" x="1018" y="777">M401-MISS-005 · BLOCK</text><text class="block-name" x="1018" y="803">风量、管径、坡度、电气、控制与检修</text>
 
-<rect class="safety" x="55" y="890" width="1490" height="125" rx="16"/>
-<text class="safety-title" x="82" y="925">安全设备现状：正式 IFC 仅 1 个 IfcSensor / FIRESENSOR</text>
-<text class="safety-text" x="82" y="955">A106-FIRE-R04 · 中厨 R04 · 位置 [1800.0, -4576.0, 2400.0] mm 已确认；最终感温/感烟/复合类型、产品、供电通信和厂家安装条件仍待确认。</text>
-<text class="gate" x="82" y="987">automatic_ifc_write_allowed=false · construction_release_ready=false · 未建模内容不得由近接、名称或旧几何推断</text>
-<text class="footer" x="55" y="1053">IFC SHA-256 bd5ee6d2cad49cd03bbef7c15ab8a9bc5a246925705f86032271c6aa3e103fb8 · 29 tracked instances · 5 body AC + 1 placement-only AC · 5 BLOCK</text>
+<text class="section" x="70" y="892">6 台设备—7 个既有接口覆盖矩阵（确认关系与几何候选分层）</text>
+<rect class="map-candidate" x="70" y="905" width="470" height="50" rx="9"/><text class="map-id" x="88" y="927">A01 → H05</text><text class="map-status" x="230" y="927">几何候选</text><text class="map-note" x="88" y="946">最小包围盒净距候选 249.6 mm · 不写 IFC</text><rect class="map-confirmed" x="570" y="905" width="470" height="50" rx="9"/><text class="map-id" x="588" y="927">A02 → H03</text><text class="map-status" x="730" y="927">用户确认</text><text class="map-note" x="588" y="946">最小包围盒净距候选 1575.4 mm · 不写 IFC</text><rect class="map-confirmed" x="1070" y="905" width="470" height="50" rx="9"/><text class="map-id" x="1088" y="927">A03 → H04</text><text class="map-status" x="1230" y="927">用户确认</text><text class="map-note" x="1088" y="946">最小包围盒净距候选 192.9 mm · 不写 IFC</text><rect class="map-candidate" x="70" y="968" width="470" height="50" rx="9"/><text class="map-id" x="88" y="990">A04 → H06</text><text class="map-status" x="230" y="990">几何候选</text><text class="map-note" x="88" y="1009">最小包围盒净距候选 297.9 mm · 不写 IFC</text><rect class="map-candidate" x="570" y="968" width="470" height="50" rx="9"/><text class="map-id" x="588" y="990">A05 → H07</text><text class="map-status" x="730" y="990">几何候选</text><text class="map-note" x="588" y="1009">最小包围盒净距候选 621.0 mm · 不写 IFC</text><rect class="map-candidate" x="1070" y="968" width="470" height="50" rx="9"/><text class="map-id" x="1088" y="990">A06 → H03</text><text class="map-status" x="1230" y="990">几何候选</text><text class="map-note" x="1088" y="1009">最小包围盒净距候选 343.5 mm · 不写 IFC</text>
+
+<rect class="safety" x="55" y="1040" width="1490" height="125" rx="16"/>
+<text class="safety-title" x="82" y="1075">安全设备现状：正式 IFC 仅 1 个 IfcSensor / FIRESENSOR</text>
+<text class="safety-text" x="82" y="1105">A106-FIRE-R04 · 中厨 R04 · 位置 [1800.0, -4576.0, 2400.0] mm 已确认；最终感温/感烟/复合类型、产品、供电通信和厂家安装条件仍待确认。</text>
+<text class="gate" x="82" y="1137">automatic_ifc_write_allowed=false · construction_release_ready=false · 未建模内容不得由近接、名称或旧几何推断</text>
+<text class="footer" x="55" y="1213">IFC SHA-256 bd5ee6d2cad49cd03bbef7c15ab8a9bc5a246925705f86032271c6aa3e103fb8 · 6/6 equipment mappings · 7/7 controlled interface roles · 5 BLOCK</text>
 </svg>

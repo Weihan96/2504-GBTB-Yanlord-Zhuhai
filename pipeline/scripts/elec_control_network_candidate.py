@@ -40,6 +40,17 @@ SWITCH_PRODUCT_GATE_NAMES = (
     "ecosystem_behavior_acceptance",
 )
 SWITCH_PRODUCT_PANEL_IDS = ("CTRL-ENTRY-A", "CTRL-MASTER-A", "CTRL-MASTER-B")
+AP_TOPOLOGY_TARGETS = {
+    "A106-AP-R09": ("R09", "main_bedroom_AP"),
+    "A106-AP-R14": ("R14", "guest_bedroom_AP"),
+}
+AP_CLEARANCE_KEYS = (
+    "light_edge",
+    "wall_boundary",
+    "beam",
+    "high_level_obstacle",
+    "same_room_smoke",
+)
 
 
 def parse_args() -> argparse.Namespace:
@@ -96,6 +107,100 @@ def read_network_topology(path: Path) -> list[dict[str, str]]:
     if any(row["physical_port"] not in {"", "TBD"} for row in rows):
         raise RuntimeError("E-304 physical ports must remain TBD before field verification")
     return rows
+
+
+def compile_ap_mechanical_evidence(
+    ceiling_audit: dict[str, Any],
+    ceiling_audit_path: Path,
+    source_ifc_sha256: str,
+) -> dict[str, dict[str, Any]]:
+    if ceiling_audit.get("source_ifc_sha256") != source_ifc_sha256:
+        raise RuntimeError("A-106 ceiling-device report does not match the current formal IFC")
+    candidates = ceiling_audit.get("candidates")
+    if not isinstance(candidates, list):
+        raise RuntimeError("A-106 ceiling-device report candidates are missing")
+    by_candidate_id = {row.get("candidate_id"): row for row in candidates}
+    if len(by_candidate_id) != len(candidates):
+        raise RuntimeError("A-106 ceiling-device candidate IDs are not unique")
+
+    evidence: dict[str, dict[str, Any]] = {}
+    for candidate_id, (room_reference, _target_role) in AP_TOPOLOGY_TARGETS.items():
+        candidate = by_candidate_id.get(candidate_id)
+        if candidate is None:
+            raise RuntimeError(f"A-106 ceiling-device report is missing {candidate_id}")
+        if candidate.get("device_role") != "wireless_access_point":
+            raise RuntimeError(f"{candidate_id}: A-106 device role is not wireless_access_point")
+        if candidate.get("room_reference") != room_reference:
+            raise RuntimeError(f"{candidate_id}: A-106 room reference drift")
+        assessment = candidate.get("ap_mechanical_assessment")
+        if not isinstance(assessment, dict):
+            raise RuntimeError(f"{candidate_id}: A-106 AP mechanical assessment is missing")
+        required = assessment.get("required_clearances_mm")
+        measured = assessment.get("measured_clearances_mm")
+        margins = assessment.get("clearance_margins_mm")
+        if not all(isinstance(values, dict) for values in (required, measured, margins)):
+            raise RuntimeError(f"{candidate_id}: A-106 AP clearance dictionaries are missing")
+        if any(set(values) != set(AP_CLEARANCE_KEYS) for values in (required, measured, margins)):
+            raise RuntimeError(f"{candidate_id}: A-106 AP clearance schema changed")
+        for key in AP_CLEARANCE_KEYS:
+            measured_value = measured[key]
+            margin_value = margins[key]
+            if measured_value is None:
+                if margin_value is not None:
+                    raise RuntimeError(f"{candidate_id}: {key} margin exists without a measurement")
+                continue
+            expected_margin = float(measured_value) - float(required[key])
+            if margin_value is None or abs(float(margin_value) - expected_margin) > 0.001:
+                raise RuntimeError(f"{candidate_id}: {key} clearance margin is inconsistent")
+        known_margins = {
+            key: float(value)
+            for key, value in margins.items()
+            if value is not None
+        }
+        governing_key = min(known_margins, key=known_margins.get)
+        evidence[candidate_id] = {
+            "source_report": str(ceiling_audit_path.resolve()),
+            "source_sha256": sha256(ceiling_audit_path),
+            "candidate_id": candidate_id,
+            "room_reference": room_reference,
+            "position_mm": candidate["position_mm"],
+            "known_geometry_pass": bool(candidate["known_geometry_pass"]),
+            "mechanical_assessment_pass": bool(assessment["pass"]),
+            "required_clearances_mm": required,
+            "measured_clearances_mm": measured,
+            "clearance_margins_mm": margins,
+            "governing_known_clearance": {
+                "kind": governing_key,
+                "margin_mm": round(known_margins[governing_key], 6),
+            },
+            "final_release_pass": bool(candidate["final_release_pass"]),
+        }
+    return evidence
+
+
+def compile_network_topology(
+    rows: list[dict[str, str]],
+    ap_evidence: dict[str, dict[str, Any]],
+) -> list[dict[str, Any]]:
+    ap_rows = {row["target_node"]: row for row in rows if row["target_node"] in AP_TOPOLOGY_TARGETS}
+    if set(ap_rows) != set(AP_TOPOLOGY_TARGETS):
+        raise RuntimeError("E-304 network topology must reference both current A-106 AP candidates")
+    enriched: list[dict[str, Any]] = []
+    for row in rows:
+        target_node = row["target_node"]
+        if target_node not in AP_TOPOLOGY_TARGETS:
+            enriched.append(row)
+            continue
+        expected_room, expected_role = AP_TOPOLOGY_TARGETS[target_node]
+        if row["target_room_reference"] != expected_room or row["target_role"] != expected_role:
+            raise RuntimeError(f"{target_node}: E-304 topology identity disagrees with A-106")
+        if re.search(r"\b\d+(?:\.\d+)?\s*mm\b", row["notes"], flags=re.IGNORECASE):
+            raise RuntimeError(
+                f"{target_node}: AP topology notes must not hard-code mechanical clearance dimensions; "
+                "consume the current A-106 report"
+            )
+        enriched.append({**row, "a106_mechanical_evidence": ap_evidence[target_node]})
+    return enriched
 
 
 def compile_switch_product_review(path: Path) -> dict[str, Any]:
@@ -364,7 +469,14 @@ def network_zones(
         candidate = by_candidate_id[candidate_id]
         audit = audit_by_candidate_id[candidate_id]
         space = by_reference[reference]
-        light_margin_mm = float(audit["nearest_light_edge_clearance_mm"]) - float(audit["required_light_clearance_mm"])
+        assessment = audit["ap_mechanical_assessment"]
+        light_margin_mm = float(assessment["clearance_margins_mm"]["light_edge"])
+        known_margins = {
+            key: float(value)
+            for key, value in assessment["clearance_margins_mm"].items()
+            if value is not None
+        }
+        governing_key = min(known_margins, key=known_margins.get)
         rows.append({
             "candidate_id": candidate_id,
             "kind": "network_device_mechanical_position_candidate",
@@ -380,11 +492,16 @@ def network_zones(
             "nearest_light_edge_clearance_mm": audit["nearest_light_edge_clearance_mm"],
             "required_light_clearance_mm": audit["required_light_clearance_mm"],
             "clearance_margin_mm": round(light_margin_mm, 6),
+            "mechanical_assessment": assessment,
+            "governing_known_clearance": {
+                "kind": governing_key,
+                "margin_mm": round(known_margins[governing_key], 6),
+            },
             "coordination_reserve_target_mm": 100.0,
             "position_basis": candidate["position_basis"],
             "coordinate_status": (
                 "mechanical_position_candidate_low_clearance_reserve_product_power_data_review_pending"
-                if light_margin_mm < 100.0
+                if not assessment["pass"]
                 else "mechanical_position_candidate_product_power_data_review_pending"
             ),
             "confidence": float(candidate["confidence"]),
@@ -628,11 +745,13 @@ def main() -> int:
     ceiling_devices = read_csv(args.ceiling_devices)
     router_evidence = json.loads(args.router_evidence.read_text(encoding="utf-8"))
     ceiling_audit = json.loads(args.ceiling_audit.read_text(encoding="utf-8"))
-    topology = read_network_topology(args.network_topology)
+    topology_rows = read_network_topology(args.network_topology)
     if len(ceiling_devices) != 6 or len({row["candidate_id"] for row in ceiling_devices}) != 6:
         raise RuntimeError("A-106 ceiling-device register must contain six unique candidates")
     fire_sensor = kitchen_fire_sensor(args.ifc)
     networks = network_zones(spaces, ceiling_devices, ceiling_audit, router_evidence, owner_gates)
+    ap_evidence = compile_ap_mechanical_evidence(ceiling_audit, args.ceiling_audit, source_hash)
+    topology = compile_network_topology(topology_rows, ap_evidence)
     safety_devices = safety_device_zones(spaces, ceiling_devices, fire_sensor)
     router_zones = [row for row in networks if row["network_role"] == "router_no_AP"]
     ap_candidates = [row for row in networks if row["network_role"] == "wireless_access_point"]
@@ -666,6 +785,11 @@ def main() -> int:
         "network_topology": {
             "path": str(args.network_topology.resolve()),
             "sha256": sha256(args.network_topology),
+            "a106_mechanical_source": {
+                "path": str(args.ceiling_audit.resolve()),
+                "sha256": sha256(args.ceiling_audit),
+                "source_ifc_sha256": ceiling_audit["source_ifc_sha256"],
+            },
             "links": topology,
             "minimum_downstream_data_links": 5,
             "minimum_switch_ports_candidate": 6,
@@ -749,6 +873,10 @@ def main() -> int:
                 for row in topology
             ) == 2,
             "physical_ports_remain_unassigned": all(row["physical_port"] in {"", "TBD"} for row in topology),
+            "AP_topology_uses_current_a106_mechanical_assessment": all(
+                row.get("a106_mechanical_evidence") == ap_evidence[row["target_node"]]
+                for row in topology if row["target_node"] in AP_TOPOLOGY_TARGETS
+            ),
             "main_bedroom_AP_clearance_reserve_pass": next(
                 row for row in ap_candidates if row["candidate_id"] == "A106-AP-R09"
             )["clearance_margin_mm"] >= 100.0,

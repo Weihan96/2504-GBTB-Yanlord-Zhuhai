@@ -45,6 +45,10 @@ test("M-401 coordination sheet preserves evidence boundaries and emits PNG proof
     missing_input_block_count: 5,
     confirmed_route_constraint_count: 6,
     confirmed_waypoint_count: 7,
+    equipment_opening_mapping_count: 6,
+    controlled_interface_role_count: 7,
+    user_confirmed_equipment_mapping_count: 2,
+    geometry_candidate_equipment_mapping_count: 4,
     ifc_sensor_instances: 1,
     ifc_alarm_instances: 0,
     legacy_routes_declared_final_count: 0,
@@ -68,6 +72,14 @@ test("M-401 coordination sheet preserves evidence boundaries and emits PNG proof
     item.final_remodel_route === false
   )).toBe(true);
   expect(report.route_constraints.find((item: any) => item.route_id === "RCP1-SERVICE-A03").waypoint_order).toEqual(["A03", "H04", "H02"]);
+  expect(report.equipment_opening_mapping).toHaveLength(6);
+  expect(report.interface_coverage).toHaveLength(7);
+  expect(report.equipment_opening_mapping.find((item: any) => item.equipment_id === "A02")).toMatchObject({
+    opening_id: "H03", status: "user_confirmed", formal_ifc_write_allowed: false,
+  });
+  expect(report.equipment_opening_mapping.find((item: any) => item.equipment_id === "A06")).toMatchObject({
+    opening_id: "H03", status: "geometry_candidate", formal_ifc_write_allowed: false,
+  });
   expect(report.release_blockers).toHaveLength(5);
   expect(report.release_blockers.every((item: any) => item.review_status === "BLOCK")).toBe(true);
   expect(report.safety_context).toMatchObject({
@@ -84,6 +96,9 @@ test("M-401 coordination sheet preserves evidence boundaries and emits PNG proof
     source_hashes_current: true,
     inventory_counts_match: true,
     route_constraints_confirmed: true,
+    six_equipment_opening_mappings_registered: true,
+    seven_interfaces_have_controlled_roles: true,
+    mapping_confirmation_boundary_preserved: true,
     legacy_routes_marked_nonfinal: true,
     one_ifc_sensor_preserved: true,
     kitchen_fire_position_only_closed: true,
@@ -100,6 +115,8 @@ test("M-401 coordination sheet preserves evidence boundaries and emits PNG proof
   const svgText = readFileSync(svg, "utf8");
   expect(svgText).toContain("旧紫色管线不是装修后最终路线");
   expect(svgText).toContain("A03 → H04 → H02");
+  expect(svgText).toContain("A06 → H03");
+  expect(svgText).toContain("6/6 equipment mappings");
   expect(svgText).toContain("5 BLOCK");
   expect(svgText).toContain("construction_release_ready=false");
 }, 30_000);

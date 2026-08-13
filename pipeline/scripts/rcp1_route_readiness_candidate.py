@@ -42,6 +42,49 @@ DIRECT_SERVICE = {
     "A06": ("R07", "餐厅", "user_confirmed"),
 }
 
+EQUIPMENT_OPENING_MAPPING = {
+    "A01": {
+        "opening_id": "H05",
+        "status": "geometry_candidate",
+        "basis": "nearest existing opening by current IFC world-AABB clearance",
+    },
+    "A02": {
+        "opening_id": "H03",
+        "status": "user_confirmed",
+        "basis": "confirmed RCP1-SERVICE-A02 waypoint path A02 → H03",
+    },
+    "A03": {
+        "opening_id": "H04",
+        "status": "user_confirmed",
+        "basis": "confirmed RCP1-SERVICE-A03 first equipment-side waypoint A03 → H04",
+    },
+    "A04": {
+        "opening_id": "H06",
+        "status": "geometry_candidate",
+        "basis": "nearest existing opening by current IFC world-AABB clearance",
+    },
+    "A05": {
+        "opening_id": "H07",
+        "status": "geometry_candidate",
+        "basis": "nearest existing opening by current IFC world-AABB clearance; H07 endpoint role is separately user-confirmed",
+    },
+    "A06": {
+        "opening_id": "H03",
+        "status": "geometry_candidate",
+        "basis": "nearest existing opening by current IFC world-AABB clearance; shared-opening use remains a candidate",
+    },
+}
+
+INTERFACE_ROLES = {
+    "H01": "user_confirmed_outdoor_unit_interface",
+    "H02": "user_confirmed_multihop_downstream_anchor",
+    "H03": "user_confirmed_A02_service_opening_with_A06_candidate",
+    "H04": "user_confirmed_A03_equipment_side_opening",
+    "H05": "geometry_candidate_equipment_service_opening",
+    "H06": "geometry_candidate_equipment_service_opening",
+    "H07": "user_confirmed_condensate_endpoint_with_A05_candidate",
+}
+
 
 def sha256(path: Path) -> str:
     digest = hashlib.sha256()
@@ -280,6 +323,64 @@ def route_graph(
     return routes
 
 
+def mapping_coverage(equipment: list[dict], routes: list[dict]) -> tuple[list[dict], list[dict]]:
+    equipment_by_id = {row["equipment_id"]: row for row in equipment}
+    mappings: list[dict] = []
+    for equipment_id in sorted(EQUIPMENT_OPENING_MAPPING):
+        definition = EQUIPMENT_OPENING_MAPPING[equipment_id]
+        opening_id = definition["opening_id"]
+        ranked = equipment_by_id[equipment_id]["opening_ranking"]
+        relation = next(row for row in ranked if row["opening_id"] == opening_id)
+        rank = next(index for index, row in enumerate(ranked, 1) if row["opening_id"] == opening_id)
+        if definition["status"] == "geometry_candidate" and rank != 1:
+            raise RuntimeError(
+                f"geometry-derived mapping is no longer nearest: {equipment_id} → {opening_id} rank={rank}"
+            )
+        mappings.append({
+            "equipment_id": equipment_id,
+            "equipment_global_id": equipment_by_id[equipment_id]["global_id"],
+            "opening_id": opening_id,
+            "opening_global_id": relation["global_id"],
+            "minimum_clearance_candidate_mm": relation["clearance_mm"],
+            "opening_rank_by_clearance": rank,
+            "status": definition["status"],
+            "basis": definition["basis"],
+            "direct_service": equipment_by_id[equipment_id]["direct_service"],
+            "formal_ifc_write_allowed": False,
+        })
+
+    route_ids_by_anchor: dict[str, set[str]] = {opening_id: set() for opening_id in OPENINGS}
+    for route in routes:
+        for waypoint in route["waypoints"]:
+            anchor_id = waypoint["anchor_id"]
+            if anchor_id in route_ids_by_anchor:
+                route_ids_by_anchor[anchor_id].add(route["route_id"])
+        terminal_anchor_id = route.get("terminal_anchor_id", "")
+        if terminal_anchor_id in route_ids_by_anchor:
+            route_ids_by_anchor[terminal_anchor_id].add(route["route_id"])
+
+    coverage = []
+    for opening_id in sorted(OPENINGS):
+        assigned = [row for row in mappings if row["opening_id"] == opening_id]
+        coverage.append({
+            "opening_id": opening_id,
+            "opening_global_id": OPENINGS[opening_id],
+            "role": INTERFACE_ROLES[opening_id],
+            "route_ids": sorted(route_ids_by_anchor[opening_id]),
+            "equipment_mappings": [
+                {"equipment_id": row["equipment_id"], "status": row["status"]}
+                for row in assigned
+            ],
+            "coverage_status": (
+                "user_confirmed_route_or_endpoint"
+                if route_ids_by_anchor[opening_id]
+                else "geometry_candidate"
+            ),
+            "formal_ifc_write_allowed": False,
+        })
+    return mappings, coverage
+
+
 def main() -> int:
     parser = argparse.ArgumentParser()
     parser.add_argument("--input", type=Path, required=True)
@@ -324,6 +425,7 @@ def main() -> int:
     ]
     opening_by_code = {row["opening_id"]: row for row in openings}
     routes = route_graph(route_rows, waypoint_rows, equipment_by_id, opening_by_code)
+    equipment_opening_mappings, interface_coverage = mapping_coverage(equipment, routes)
 
     port_count = len(model.by_type("IfcDistributionPort"))
     system_count = len(model.by_type("IfcSystem"))
@@ -381,6 +483,8 @@ def main() -> int:
         "equipment": equipment,
         "openings": openings,
         "confirmed_route_graph": routes,
+        "equipment_opening_mapping": equipment_opening_mappings,
+        "interface_coverage": interface_coverage,
         "interface_roles": {
             "H01": {
                 "role": "outdoor_unit_interface_at_existing_opening",
@@ -443,6 +547,16 @@ def main() -> int:
             "source_hash_matches": True,
             "six_fixed_equipment_positions_registered": len(equipment) == 6,
             "seven_existing_openings_registered": len(openings) == 7,
+            "six_equipment_opening_mappings_registered": len(equipment_opening_mappings) == 6,
+            "seven_interfaces_have_controlled_roles": (
+                len(interface_coverage) == 7
+                and all(row["role"] for row in interface_coverage)
+            ),
+            "confirmed_and_candidate_mapping_split_preserved": (
+                sum(row["status"] == "user_confirmed" for row in equipment_opening_mappings) == 2
+                and sum(row["status"] == "geometry_candidate" for row in equipment_opening_mappings) == 4
+                and all(not row["formal_ifc_write_allowed"] for row in equipment_opening_mappings)
+            ),
             "confirmed_shared_and_multihop_graph_ready": True,
             "manufacturer_constraints_consumed_from_ssot": manufacturer_inputs["consumed_requirement_count"] > 0,
             "a01_a04_refrigerant_and_condensate_nominals_available": all(
@@ -475,6 +589,8 @@ def main() -> int:
     print(json.dumps({
         "fixed_equipment": len(equipment),
         "existing_openings": len(openings),
+        "equipment_opening_mappings": len(equipment_opening_mappings),
+        "controlled_interface_roles": len(interface_coverage),
         "confirmed_routes": len(routes),
         "confirmed_route_segments": sum(len(route["segments"]) for route in routes),
         "legacy_topology_matches": legacy_topology_ok,
