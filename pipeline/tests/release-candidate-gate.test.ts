@@ -201,6 +201,10 @@ test("construction release rejects an intrinsically failing professional report"
 test("reviewed candidates disclose explicit construction readiness blockers", () => {
   const fixture = makeFixture();
   writeFileSync(
+    fixture.register,
+    "sheet_number,title,status,publish_target,notes\nA-001,Index,candidate,output/A-001.pdf,ready\n",
+  );
+  writeFileSync(
     fixture.report,
     JSON.stringify({
       source_ifc_sha256: sha256(fixture.ifc),
@@ -215,6 +219,47 @@ test("reviewed candidates disclose explicit construction readiness blockers", ()
   expect(check.details.blocked_reports[0].blockers).toEqual([
     "gates.construction_release_ready=false",
   ]);
+  expect(output.result.construction_release_candidate_ready).toBe(false);
+});
+
+test("construction release becomes ready only in the construction stage with no blockers", () => {
+  const fixture = makeFixture();
+  writeFileSync(
+    fixture.register,
+    "sheet_number,title,status,publish_target,notes\nA-001,Index,candidate,output/A-001.pdf,ready\n",
+  );
+  const run = runGate(fixture, "construction-release-candidate");
+  expect(run.exitCode, run.stderr).toBe(0);
+  const output = JSON.parse(run.stdout);
+  expect(output.result.reviewed_candidate_ready).toBe(true);
+  expect(output.result.construction_release_candidate_ready).toBe(true);
+});
+
+test("reviewed candidates reject a report artifact whose bytes drift from its declared hash", () => {
+  const fixture = makeFixture();
+  const artifact = join(fixture.root, "output", "A-001.pdf");
+  writeFileSync(
+    fixture.report,
+    JSON.stringify({
+      source_ifc_sha256: sha256(fixture.ifc),
+      output_records: [
+        {
+          path: "output/A-001.pdf",
+          passes: true,
+          sha256: sha256(artifact),
+        },
+      ],
+    }),
+  );
+  writeFileSync(artifact, "stale candidate bytes");
+  const run = runGate(fixture, "reviewed-candidate");
+  expect(run.exitCode).toBe(1);
+  const output = JSON.parse(run.stdout);
+  const check = output.checks.find((item: any) => item.id === "REPORT-ARTIFACT-INTEGRITY");
+  expect(check.status).toBe("fail");
+  expect(check.details.records[0].exists).toBe(true);
+  expect(check.details.records[0].hash_matches).toBe(false);
+  expect(check.details.errors[0]).toContain("artifact SHA-256 does not match");
 });
 
 test("construction release recognizes every declared blocker shape used by project reports", () => {
@@ -227,7 +272,7 @@ test("construction release recognizes every declared blocker shape used by proje
     fixture.report,
     JSON.stringify({
       source_ifc_sha256: sha256(fixture.ifc),
-      summary: { releasable: false },
+      summary: { releasable: false, construction_release_pass: false },
       gates: [
         { id: "QA-01", status: "block" },
         { fabrication_dimension_ready: false },
@@ -236,6 +281,7 @@ test("construction release recognizes every declared blocker shape used by proje
       candidates: [{ final_release_pass: false, release_blocker: "manufacturer review pending" }],
       blockers: [{ issue_id: "INT1-BLOCK-001" }],
       release_blockers: [{ issue_id: "M401-MISS-001" }],
+      release_blocks: [{ issue_id: "PLUM-MISS-001" }],
       open_release_items: ["confirm service interface"],
       blocking_input_ids: ["A101-MAIN-BAY-01"],
     }),
@@ -247,6 +293,7 @@ test("construction release recognizes every declared blocker shape used by proje
     (item: any) => item.id === "PROFESSIONAL-REPORT-READINESS",
   ).details.blocked_reports[0].blockers;
   expect(blockers).toContain("summary.releasable=false");
+  expect(blockers).toContain("summary.construction_release_pass=false");
   expect(blockers).toContain("gates[0].status=block");
   expect(blockers).toContain("gates[1].fabrication_dimension_ready=false");
   expect(blockers).toContain("gates[2].whole_home_switch_positioning_complete=false");
@@ -254,6 +301,7 @@ test("construction release recognizes every declared blocker shape used by proje
   expect(blockers).toContain("candidates[0].release_blocker=nonempty");
   expect(blockers).toContain("blockers=nonempty");
   expect(blockers).toContain("release_blockers=nonempty");
+  expect(blockers).toContain("release_blocks=nonempty");
   expect(blockers).toContain("open_release_items=nonempty");
   expect(blockers).toContain("blocking_input_ids=nonempty");
 });

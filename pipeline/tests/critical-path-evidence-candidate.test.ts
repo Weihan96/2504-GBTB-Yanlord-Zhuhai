@@ -15,11 +15,14 @@ test("ELEC/RCP1 critical-path evidence validates current reports and publish has
   expect(report.summary.scope_sheet_count).toBe(6);
   expect(report.summary.critical_report_count).toBe(9);
   expect(report.summary.current_critical_report_count).toBe(9);
+  expect(report.summary.dependency_contract_report_count).toBe(2);
+  expect(report.summary.current_dependency_contract_report_count).toBe(2);
   expect(report.summary.publish_bundle_count).toBe(4);
   expect(report.summary.mechanical_publish_bundle_pass_count).toBe(4);
   expect(report.summary.excluded_preview_count).toBe(4);
   expect(report.summary.stale_excluded_preview_count).toBeGreaterThan(0);
   expect(report.gates.reviewed_candidate_evidence_pass).toBe(true);
+  expect(report.gates.all_declared_source_dependencies_match).toBe(true);
   expect(report.gates.construction_release_ready).toBe(false);
   expect(report.gates.formal_ifc_write_allowed).toBe(false);
   expect(report.publish_bundles.every((bundle: any) =>
@@ -60,6 +63,28 @@ test("critical-path evidence fails closed on a publish hash mismatch", () => {
   const report = JSON.parse(readFileSync(output, "utf8"));
   expect(report.gates.all_publish_bundles_mechanically_match).toBe(false);
   expect(report.gates.reviewed_candidate_evidence_pass).toBe(false);
+});
+
+test("source dependency validation fails closed when only the consumed CSV bytes drift", () => {
+  const temporary = mkdtempSync(join(tmpdir(), "critical-path-dependency-"));
+  const dependency = join(temporary, "equipment-installation-requirements.csv");
+  writeFileSync(dependency, "current bytes");
+  const probe = String.raw`
+import importlib.util,json,pathlib,sys
+spec=importlib.util.spec_from_file_location("critical",sys.argv[1])
+module=importlib.util.module_from_spec(spec); spec.loader.exec_module(module)
+root=pathlib.Path(sys.argv[2]).resolve()
+dependency=pathlib.Path(sys.argv[3]).resolve()
+payload={"source_dependencies":[{"path":str(dependency),"sha256":"0"*64}]}
+records,errors=module.validate_source_dependencies(root,payload)
+print(json.dumps({"records":records,"errors":errors}))
+`;
+  const result = Bun.spawnSync(["python3", "-c", probe, script, temporary, dependency]);
+  expect(result.exitCode, result.stderr.toString()).toBe(0);
+  const report = JSON.parse(result.stdout.toString());
+  expect(report.records[0].exists).toBe(true);
+  expect(report.records[0].hash_match).toBe(false);
+  expect(report.errors).toContain("source_dependencies[0] SHA-256 does not match");
 });
 
 test("critical-path evidence has no Blender or IFC write path", () => {

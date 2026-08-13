@@ -1,9 +1,14 @@
 import { expect, test } from "bun:test";
+import { createHash } from "node:crypto";
 import { readFileSync } from "node:fs";
 import { resolve } from "node:path";
 
 const root = resolve(import.meta.dir, "../..");
 const script = resolve(root, "pipeline/scripts/equipment_ssot.py");
+
+function fileSha256(path: string): string {
+  return createHash("sha256").update(readFileSync(path)).digest("hex");
+}
 
 test("equipment SSOT validates projections and covers every scoped IFC object", () => {
   const run = Bun.spawnSync(["python3", script, "all"], { cwd: root });
@@ -41,6 +46,25 @@ test("equipment SSOT validates projections and covers every scoped IFC object", 
     IfcBuildingElementProxy: 1,
   });
 }, 180_000);
+
+test("local evidence uses an exact lowercase SHA-256 instead of a truncated digest", () => {
+  const extract = String.raw`
+import csv,json,sys
+with open(sys.argv[1],encoding="utf-8-sig",newline="") as stream:
+    print(json.dumps(list(csv.DictReader(stream)),ensure_ascii=False))
+`;
+  const register = resolve(root, "pipeline/decisions/source-evidence-register.csv");
+  const run = Bun.spawnSync(["python3", "-c", extract, register], { cwd: root });
+  expect(run.exitCode, run.stderr.toString()).toBe(0);
+  const rows = JSON.parse(run.stdout.toString()) as Array<Record<string, string>>;
+  for (const row of rows) {
+    if (row.sha256.startsWith("not_applicable_")) continue;
+    expect(row.sha256).toMatch(/^[0-9a-f]{64}$/);
+    if (!row.local_path) continue;
+    const localPath = resolve(root, row.local_path);
+    expect(fileSha256(localPath)).toBe(row.sha256);
+  }
+}, 30_000);
 
 test("equipment SSOT never writes the formal IFC", () => {
   const source = readFileSync(script, "utf8");

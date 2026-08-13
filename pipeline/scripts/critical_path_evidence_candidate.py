@@ -24,6 +24,7 @@ CRITICAL_REPORTS = {
     "M401-SHEET": Path("build/rcp1/m401-coordination-sheet-candidate.json"),
     "RCP1-ROUTE-READINESS": Path("build/rcp1/route-readiness-candidate.json"),
 }
+DEPENDENCY_CONTRACT_REPORTS = {"ELEC-ROUND1", "RCP1-ROUTE-READINESS"}
 EXCLUDED_PREVIEWS = {
     "RCP1-HVAC-INTERFACE-OLD": Path("build/rcp1/hvac-interface-candidate.json"),
     "RCP1-HVAC-PREVIEW": Path("build/rcp1/hvac-route-preview-candidate.json"),
@@ -130,6 +131,55 @@ def write_authority_closed(value: Any) -> bool:
     )
 
 
+def validate_source_dependencies(
+    root: Path,
+    payload: dict[str, Any],
+) -> tuple[list[dict[str, Any]], list[str]]:
+    raw_dependencies = payload.get("source_dependencies")
+    if not isinstance(raw_dependencies, list) or not raw_dependencies:
+        return [], ["source_dependencies must be a non-empty list"]
+    records: list[dict[str, Any]] = []
+    errors: list[str] = []
+    for index, raw in enumerate(raw_dependencies):
+        if not isinstance(raw, dict):
+            errors.append(f"source_dependencies[{index}] must be an object")
+            continue
+        declared_path = raw.get("path")
+        declared_hash = raw.get("sha256")
+        if not isinstance(declared_path, str) or not declared_path:
+            errors.append(f"source_dependencies[{index}].path must be a non-empty string")
+            continue
+        path = resolve(root, Path(declared_path))
+        inside = inside_project(root, path)
+        exists = path.is_file()
+        actual_hash = sha256(path) if exists else ""
+        valid_hash = (
+            isinstance(declared_hash, str)
+            and len(declared_hash) == 64
+            and all(character in "0123456789abcdef" for character in declared_hash)
+        )
+        hash_match = inside and exists and valid_hash and actual_hash == declared_hash
+        records.append(
+            {
+                "path": str(path),
+                "inside_project": inside,
+                "exists": exists,
+                "declared_sha256": declared_hash if isinstance(declared_hash, str) else "",
+                "actual_sha256": actual_hash,
+                "hash_match": hash_match,
+            }
+        )
+        if not inside:
+            errors.append(f"source_dependencies[{index}] resolves outside the project")
+        if not exists:
+            errors.append(f"source_dependencies[{index}] does not exist")
+        if not valid_hash:
+            errors.append(f"source_dependencies[{index}].sha256 is invalid")
+        elif exists and actual_hash != declared_hash:
+            errors.append(f"source_dependencies[{index}] SHA-256 does not match")
+    return records, errors
+
+
 def report_evidence(
     root: Path, report_id: str, relative_path: Path, formal_hash: str
 ) -> tuple[dict[str, Any], dict[str, Any]]:
@@ -140,6 +190,10 @@ def report_evidence(
     non_closed_authorities = [
         item for item in authorities if not write_authority_closed(item["value"])
     ]
+    dependency_records: list[dict[str, Any]] = []
+    dependency_errors: list[str] = []
+    if report_id in DEPENDENCY_CONTRACT_REPORTS:
+        dependency_records, dependency_errors = validate_source_dependencies(root, payload)
     result = {
         "report_id": report_id,
         "path": str(path),
@@ -149,6 +203,9 @@ def report_evidence(
         "write_authority_count": len(authorities),
         "non_closed_write_authorities": non_closed_authorities,
         "formal_ifc_write_closed": bool(authorities) and not non_closed_authorities,
+        "source_dependencies": dependency_records,
+        "source_dependency_errors": dependency_errors,
+        "source_dependencies_current": not dependency_errors,
     }
     return result, payload
 
@@ -315,6 +372,9 @@ def main() -> None:
         )
 
     reports_current = all(row["current_formal_ifc"] for row in critical_reports)
+    source_dependencies_current = all(
+        row["source_dependencies_current"] for row in critical_reports
+    )
     write_closed = all(row["formal_ifc_write_closed"] for row in critical_reports)
     publish_pass = all(row["mechanical_pass"] for row in publish_bundles)
     previews_excluded = all(
@@ -322,7 +382,14 @@ def main() -> None:
         for row in excluded_previews
     )
     reviewed_pass = all(
-        (reports_current, write_closed, publish_pass, shared_targets_match, previews_excluded)
+        (
+            reports_current,
+            source_dependencies_current,
+            write_closed,
+            publish_pass,
+            shared_targets_match,
+            previews_excluded,
+        )
     )
     report = {
         "schema_version": "1.0.0",
@@ -343,6 +410,13 @@ def main() -> None:
             "current_critical_report_count": sum(
                 row["current_formal_ifc"] for row in critical_reports
             ),
+            "dependency_contract_report_count": sum(
+                bool(row["source_dependencies"]) for row in critical_reports
+            ),
+            "current_dependency_contract_report_count": sum(
+                bool(row["source_dependencies"]) and row["source_dependencies_current"]
+                for row in critical_reports
+            ),
             "publish_bundle_count": len(publish_bundles),
             "mechanical_publish_bundle_pass_count": sum(
                 row["mechanical_pass"] for row in publish_bundles
@@ -357,6 +431,7 @@ def main() -> None:
         "excluded_previews": excluded_previews,
         "gates": {
             "all_critical_reports_match_formal_ifc": reports_current,
+            "all_declared_source_dependencies_match": source_dependencies_current,
             "all_critical_reports_close_formal_ifc_write": write_closed,
             "all_publish_bundles_mechanically_match": publish_pass,
             "shared_e301_e303_and_e302_e304_targets_match": shared_targets_match,

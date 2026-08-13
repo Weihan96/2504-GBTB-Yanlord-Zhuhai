@@ -37,6 +37,7 @@ DIRECT_OUTPUT_KEYS = {
     "render_report",
 }
 CONSTRUCTION_FALSE_BLOCKER_KEYS = {
+    "construction_release_pass",
     "construction_release_ready",
     "fabrication_dimension_ready",
     "final_release_pass",
@@ -53,6 +54,7 @@ CONSTRUCTION_NONEMPTY_BLOCKER_KEYS = {
     "open_release_items",
     "release_blocker",
     "release_blockers",
+    "release_blocks",
 }
 
 
@@ -277,6 +279,71 @@ def output_record(root: Path, declared: str, owner: str) -> dict[str, Any]:
     }
 
 
+def validate_declared_artifact_records(
+    root: Path,
+    payload: Any,
+    owner: str,
+) -> tuple[list[dict[str, Any]], list[str]]:
+    """Validate a report's explicit top-level output_records contract when present."""
+    if not isinstance(payload, dict) or "output_records" not in payload:
+        return [], []
+    raw_records = payload["output_records"]
+    if not isinstance(raw_records, list):
+        return [], [f"{owner}: output_records must be a list"]
+
+    records: list[dict[str, Any]] = []
+    errors: list[str] = []
+    for index, raw in enumerate(raw_records):
+        record_owner = f"{owner}:output_records[{index}]"
+        if not isinstance(raw, dict):
+            errors.append(f"{record_owner}: record must be an object")
+            continue
+        declared_path = raw.get("path")
+        declared_hash = raw.get("sha256")
+        declared_passes = raw.get("passes")
+        if not isinstance(declared_path, str) or not path_like_output(declared_path):
+            errors.append(f"{record_owner}: path must be a local file path")
+            continue
+        path = resolve_input(root, Path(declared_path))
+        try:
+            path.relative_to(root)
+            inside_root = True
+        except ValueError:
+            inside_root = False
+        exists = path.is_file()
+        valid_hash = (
+            isinstance(declared_hash, str)
+            and len(declared_hash) == 64
+            and all(character in "0123456789abcdef" for character in declared_hash)
+        )
+        actual_hash = sha256(path) if exists else ""
+        hash_matches = valid_hash and exists and actual_hash == declared_hash
+        record = {
+            "owner": owner,
+            "index": index,
+            "declared_path": declared_path,
+            "resolved_path": str(path),
+            "inside_root": inside_root,
+            "exists": exists,
+            "declared_passes": declared_passes,
+            "declared_sha256": declared_hash if isinstance(declared_hash, str) else "",
+            "actual_sha256": actual_hash,
+            "hash_matches": hash_matches,
+        }
+        records.append(record)
+        if not inside_root:
+            errors.append(f"{record_owner}: path resolves outside the project root")
+        if not exists:
+            errors.append(f"{record_owner}: artifact does not exist")
+        if declared_passes is not True:
+            errors.append(f"{record_owner}: passes must be true")
+        if not valid_hash:
+            errors.append(f"{record_owner}: sha256 must be 64 lowercase hexadecimal characters")
+        elif exists and not hash_matches:
+            errors.append(f"{record_owner}: artifact SHA-256 does not match")
+    return records, errors
+
+
 def evaluate(args: argparse.Namespace) -> tuple[dict[str, Any], int]:
     root = args.root.resolve()
     ifc_path = resolve_input(root, args.ifc)
@@ -413,6 +480,8 @@ def evaluate(args: argparse.Namespace) -> tuple[dict[str, Any], int]:
 
     report_results: list[dict[str, Any]] = []
     report_outputs: list[dict[str, Any]] = []
+    declared_artifact_records: list[dict[str, Any]] = []
+    declared_artifact_errors: list[str] = []
     for report_path in report_paths:
         result: dict[str, Any] = {
             "path": str(report_path),
@@ -420,6 +489,8 @@ def evaluate(args: argparse.Namespace) -> tuple[dict[str, Any], int]:
             "ifc_hashes": [],
             "current_ifc_hash": False,
             "declared_outputs": [],
+            "declared_artifact_records": [],
+            "declared_artifact_errors": [],
             "construction_release_blockers": [],
         }
         if not report_path.is_file():
@@ -434,10 +505,19 @@ def evaluate(args: argparse.Namespace) -> tuple[dict[str, Any], int]:
             continue
         hashes = extract_ifc_hashes(payload)
         declared_outputs = extract_declared_outputs(payload)
+        artifact_records, artifact_errors = validate_declared_artifact_records(
+            root,
+            payload,
+            report_path.name,
+        )
         result["ifc_hashes"] = hashes
         result["current_ifc_hash"] = bool(ifc_hash) and hashes == [ifc_hash]
         result["declared_outputs"] = declared_outputs
+        result["declared_artifact_records"] = artifact_records
+        result["declared_artifact_errors"] = artifact_errors
         result["construction_release_blockers"] = construction_release_blockers(payload)
+        declared_artifact_records.extend(artifact_records)
+        declared_artifact_errors.extend(artifact_errors)
         if not hashes:
             result["error"] = "report does not declare an IFC SHA-256"
         elif not result["current_ifc_hash"]:
@@ -466,6 +546,28 @@ def evaluate(args: argparse.Namespace) -> tuple[dict[str, Any], int]:
             report_status,
             message,
             {"reports": report_results},
+        )
+    )
+
+    if declared_artifact_errors:
+        message = (
+            f"{len(declared_artifact_errors)} declared artifact integrity error(s) were found"
+        )
+        errors.append(message)
+        artifact_status = "fail"
+    else:
+        message = "all explicitly hashed report artifacts match their declared SHA-256"
+        artifact_status = "pass"
+    checks.append(
+        make_check(
+            "REPORT-ARTIFACT-INTEGRITY",
+            artifact_status,
+            message,
+            {
+                "record_count": len(declared_artifact_records),
+                "records": declared_artifact_records,
+                "errors": declared_artifact_errors,
+            },
         )
     )
 
@@ -525,7 +627,12 @@ def evaluate(args: argparse.Namespace) -> tuple[dict[str, Any], int]:
     )
 
     passed = not errors
-    construction_ready = passed and not planned_rows
+    construction_ready = (
+        args.stage == "construction-release-candidate"
+        and passed
+        and not planned_rows
+        and not intrinsic_blocked_reports
+    )
     result = {
         "schema_version": "1.0",
         "command": "release-candidate-gate",
@@ -559,6 +666,10 @@ def evaluate(args: argparse.Namespace) -> tuple[dict[str, Any], int]:
             "report_output_count": len(report_outputs),
             "existing_report_output_count": sum(
                 1 for item in report_outputs if item["exists"]
+            ),
+            "declared_artifact_record_count": len(declared_artifact_records),
+            "current_declared_artifact_record_count": sum(
+                1 for item in declared_artifact_records if item["hash_matches"]
             ),
             "unresolved_count": len(unresolved),
             "error_count": len(errors),

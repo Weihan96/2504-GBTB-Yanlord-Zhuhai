@@ -1,5 +1,6 @@
 report_id,workstream,report_path,required_stage,notes
 QA-CURRENT,QA,build/reports/qa-report.json,reviewed-candidate,当前正式 IFC 机械 QA
+M072-PACKAGE,M072,build/m072/m072-report.json,reviewed-candidate,图纸目录与候选输出哈希/幅面/结构审计
 ARCH-A101-INPUT,A-101,build/a101/a101-survey-input.json,reviewed-candidate,现场实测输入状态与待确认清单
 ARCH-A102,A-102,build/a102/a102-wall-plan-candidate.json,reviewed-candidate,拆除平面候选
 ARCH-A103,A-103,build/a103/a103-report.json,reviewed-candidate,墙体尺寸与语义候选

@@ -632,11 +632,13 @@ def main() -> int:
     if args.appliances:
         appliance_rows = read_owner_csv(args.appliances, APPLIANCE_HEADERS)
         appliance_source = {"path": str(args.appliances.resolve()), "sha256": sha256(args.appliances)}
+        appliance_dependency_paths = [args.appliances]
     else:
         validate_equipment_ssot(root)
         appliance_rows = appliance_projection_rows(root)
         canonical_paths = [root / "pipeline/decisions/equipment-register.csv", root / "pipeline/decisions/equipment-installation-requirements.csv", root / "pipeline/decisions/source-evidence-register.csv"]
         appliance_source = {"canonical_tables": {str(path.relative_to(root)): sha256(path) for path in canonical_paths}}
+        appliance_dependency_paths = canonical_paths
     appliance_context = appliance_socket_context(
         appliance_rows,
         args.load_scenarios,
@@ -650,6 +652,18 @@ def main() -> int:
         "mode": "read_only_renovation_electrical_round1_candidate",
         "source_ifc_sha256": ifc_hash,
         "requirements_path": str(args.requirements.resolve()),
+        "source_dependencies": [
+            {"path": str(path.resolve()), "sha256": sha256(path)}
+            for path in [
+                args.requirements,
+                args.elec_existing,
+                args.elec_positioning,
+                args.int1,
+                args.owner_decisions,
+                args.load_scenarios,
+                *appliance_dependency_paths,
+            ]
+        ],
         "appliance_inputs": appliance_source,
         "owner_inputs": {
             "path": str(args.owner_decisions.resolve()),

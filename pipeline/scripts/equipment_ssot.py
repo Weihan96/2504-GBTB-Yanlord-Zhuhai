@@ -440,7 +440,13 @@ def validate(root: Path) -> dict[str, Any]:
     for row in sources:
         local = row["local_path"]
         expected = row["sha256"]
-        if re.fullmatch(r"[0-9a-f]{64}", expected):
+        exact_hash = bool(re.fullmatch(r"[0-9a-f]{64}", expected))
+        not_applicable_hash = expected.startswith("not_applicable_")
+        if not exact_hash and not not_applicable_hash:
+            errors.append(
+                f"{row['source_id']}: sha256 must be 64 lowercase hexadecimal characters or an explicit not_applicable_* marker"
+            )
+        if exact_hash:
             resolved = local or evidence_local_path(root, row["source_document"])
             path = Path(resolved) if Path(resolved).is_absolute() else root / resolved
             if not path.is_file():

@@ -360,6 +360,16 @@ def main() -> int:
             "installation_requirements": str(args.requirements.resolve()),
             "installation_requirements_sha256": sha256(args.requirements),
         },
+        "source_dependencies": [
+            {"path": str(path.resolve()), "sha256": sha256(path)}
+            for path in (
+                args.hvac_report,
+                args.routes,
+                args.waypoints,
+                args.equipment_register,
+                args.requirements,
+            )
+        ],
         "scope": {
             "formal_ifc_write_allowed": False,
             "equipment_positions_may_move": False,
