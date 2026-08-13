@@ -39,7 +39,7 @@ def remove_obsolete_route_options() -> int:
 def label_fixed_equipment_positions() -> int:
     replacements = {
         "A06 旧版东侧候选": ("A06 固定机位", "A06 固定机位 → 送回风待深化"),
-        "RCP1_LEGACY_AC_LABEL": (None, "A06 固定机位（正式 IFC 身份待补）"),
+        "RCP1_LEGACY_AC_LABEL": (None, "A06 固定机位（正式 placement-only 身份）"),
         "RCP1_LIVING_GAP_LABEL": (None, "R20 客厅：送回风待深化"),
     }
     updated = 0

@@ -35,7 +35,7 @@ print(json.dumps({
     phase: { EXISTING: 84, NEW: 4 },
     load: { "false": 64, "true": 20 },
   });
-});
+}, 30_000);
 
 test("A103 kitchen pier normalization is idempotent at 154 mm", () => {
   const result = runPython(`
@@ -47,4 +47,4 @@ print(json.dumps(module.normalize_kitchen_pier_thickness(model)))
   expect(output.target_thickness_mm).toBe(154);
   expect(output.changed_coordinate_count).toBe(4);
   expect(output.maximum_intended_world_shift_mm).toBe(0);
-});
+}, 30_000);

@@ -17,8 +17,8 @@
 <text class="title" x="55" y="62">M-401 空调、通风及安全设备协调候选</text>
 <text class="subtitle" x="55" y="100">证据化索引 + 路线约束图 · 只读生成 · 旧紫色管线不是装修后最终路线 · 非施工发布</text>
 <rect class="panel" x="55" y="125" width="1490" height="90" rx="14"/>
-<text class="kpi" x="90" y="168">28</text><text class="kpi-label" x="90" y="194">既有实例</text>
-<text class="kpi" x="250" y="168">3 / 5</text><text class="kpi-label" x="250" y="194">AC 类型 / 已分配实例</text>
+<text class="kpi" x="90" y="168">29</text><text class="kpi-label" x="90" y="194">可追踪实例</text>
+<text class="kpi" x="250" y="168">5 + 1</text><text class="kpi-label" x="250" y="194">实体 AC / 点位 AC</text>
 <text class="kpi" x="500" y="168">5</text><text class="kpi-label" x="500" y="194">旧冷媒/冷凝几何</text>
 <text class="kpi" x="675" y="168">2 + 1</text><text class="kpi-label" x="675" y="194">风口 Proxy / 止回阀 Proxy</text>
 <text class="kpi" x="970" y="168">6 / 7</text><text class="kpi-label" x="970" y="194">确认约束 / 顺序锚点</text>
@@ -29,7 +29,7 @@
 
 <rect class="panel" x="55" y="390" width="900" height="475" rx="16"/>
 <text class="section" x="78" y="418">用户确认的服务 / 端点 / 经过顺序约束</text>
-<rect class="route" x="70" y="425" width="860" height="52" rx="9"/><text class="route-id" x="92" y="447">RCP1-AIRSIDE-A02</text><text class="route-label" x="360" y="447">A02 → R07 餐厅（服务对象）</text><text class="route-note" x="92" y="467">用户确认约束 · 非最终管线 · 不写 IFC</text><rect class="route" x="70" y="492" width="860" height="52" rx="9"/><text class="route-id" x="92" y="514">RCP1-AIRSIDE-A06</text><text class="route-label" x="360" y="514">A06 → R07 餐厅（旧 blend 位置）</text><text class="route-note" x="92" y="534">用户确认约束 · 非最终管线 · 不写 IFC</text><rect class="route" x="70" y="559" width="860" height="52" rx="9"/><text class="route-id" x="92" y="581">RCP1-SERVICE-A02</text><text class="route-label" x="360" y="581">A02 → H03</text><text class="route-note" x="92" y="601">用户确认约束 · 非最终管线 · 不写 IFC</text><rect class="route" x="70" y="626" width="860" height="52" rx="9"/><text class="route-id" x="92" y="648">RCP1-SERVICE-A03</text><text class="route-label" x="360" y="648">A03 → H04 → H02</text><text class="route-note" x="92" y="668">用户确认约束 · 非最终管线 · 不写 IFC</text><rect class="route" x="70" y="693" width="860" height="52" rx="9"/><text class="route-id" x="92" y="715">RCP1-CONDENSATE-ENDPOINT</text><text class="route-label" x="360" y="715">H07 = 冷凝水排放接口位置</text><text class="route-note" x="92" y="735">用户确认约束 · 非最终管线 · 不写 IFC</text><rect class="route" x="70" y="760" width="860" height="52" rx="9"/><text class="route-id" x="92" y="782">RCP1-OUTDOOR-ENDPOINT</text><text class="route-label" x="360" y="782">H01 = 室外机接口位置</text><text class="route-note" x="92" y="802">用户确认约束 · 非最终管线 · 不写 IFC</text>
+<rect class="route" x="70" y="425" width="860" height="52" rx="9"/><text class="route-id" x="92" y="447">RCP1-AIRSIDE-A02</text><text class="route-label" x="360" y="447">A02 → R07 餐厅（服务对象）</text><text class="route-note" x="92" y="467">用户确认约束 · 非最终管线 · 不写 IFC</text><rect class="route" x="70" y="492" width="860" height="52" rx="9"/><text class="route-id" x="92" y="514">RCP1-AIRSIDE-A06</text><text class="route-label" x="360" y="514">A06 → R07 餐厅（正式 placement-only 身份）</text><text class="route-note" x="92" y="534">用户确认约束 · 非最终管线 · 不写 IFC</text><rect class="route" x="70" y="559" width="860" height="52" rx="9"/><text class="route-id" x="92" y="581">RCP1-SERVICE-A02</text><text class="route-label" x="360" y="581">A02 → H03</text><text class="route-note" x="92" y="601">用户确认约束 · 非最终管线 · 不写 IFC</text><rect class="route" x="70" y="626" width="860" height="52" rx="9"/><text class="route-id" x="92" y="648">RCP1-SERVICE-A03</text><text class="route-label" x="360" y="648">A03 → H04 → H02</text><text class="route-note" x="92" y="668">用户确认约束 · 非最终管线 · 不写 IFC</text><rect class="route" x="70" y="693" width="860" height="52" rx="9"/><text class="route-id" x="92" y="715">RCP1-CONDENSATE-ENDPOINT</text><text class="route-label" x="360" y="715">H07 = 冷凝水排放接口位置</text><text class="route-note" x="92" y="735">用户确认约束 · 非最终管线 · 不写 IFC</text><rect class="route" x="70" y="760" width="860" height="52" rx="9"/><text class="route-id" x="92" y="782">RCP1-OUTDOOR-ENDPOINT</text><text class="route-label" x="360" y="782">H01 = 室外机接口位置</text><text class="route-note" x="92" y="802">用户确认约束 · 非最终管线 · 不写 IFC</text>
 <text class="warn" x="78" y="838">只表达对象、端点和顺序；不表达介质、管径、保温、坡度、端口连接或施工走向。</text>
 
 <rect class="panel" x="975" y="390" width="570" height="475" rx="16"/>
@@ -40,5 +40,5 @@
 <text class="safety-title" x="82" y="925">安全设备现状：正式 IFC 仅 1 个 IfcSensor / FIRESENSOR</text>
 <text class="safety-text" x="82" y="955">A106-FIRE-R04 · 中厨 R04 · 位置 [1800.0, -4576.0, 2400.0] mm 已确认；最终感温/感烟/复合类型、产品、供电通信和厂家安装条件仍待确认。</text>
 <text class="gate" x="82" y="987">automatic_ifc_write_allowed=false · construction_release_ready=false · 未建模内容不得由近接、名称或旧几何推断</text>
-<text class="footer" x="55" y="1053">IFC SHA-256 446a9fc8447d38e16dacad7dcce3df097b03f8a457c6bc80fca03d3560891632 · 28 instances · 3 AC types · 5 BLOCK · source role counts verified</text>
+<text class="footer" x="55" y="1053">IFC SHA-256 bd5ee6d2cad49cd03bbef7c15ab8a9bc5a246925705f86032271c6aa3e103fb8 · 29 tracked instances · 5 body AC + 1 placement-only AC · 5 BLOCK</text>
 </svg>

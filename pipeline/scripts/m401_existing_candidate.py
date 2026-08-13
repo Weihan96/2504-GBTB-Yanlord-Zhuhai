@@ -15,6 +15,7 @@ from typing import Any
 import ifcopenshell
 import ifcopenshell.geom
 import ifcopenshell.util.element
+import ifcopenshell.util.placement
 
 
 AC_TYPE_NAMES = {"AC1180", "AC700", "AC700F"}
@@ -86,6 +87,7 @@ CEILING_CONTEXT_IDS = {
     "0jI$MQCH9A_w5aml5rEXbg",
     "3BNIc86L19ZBCt40wmF$KZ",
 }
+A06_GLOBAL_ID = "0YzEUom7522RIg1TonOQXn"
 
 CSV_FIELDS = [
     "record_kind",
@@ -260,6 +262,42 @@ def instance_record(
     }
 
 
+def placement_only_record(
+    product: ifcopenshell.entity_instance, source_hash: str
+) -> dict[str, Any]:
+    matrix = ifcopenshell.util.placement.get_local_placement(product.ObjectPlacement)
+    return {
+        "record_kind": "actual_instance",
+        "queue_id": "M401-EQUIP-002",
+        "global_id": product.GlobalId,
+        "ifc_class": product.is_a(),
+        "name": product.Name or "",
+        "description": product.Description or "",
+        "object_type": product.ObjectType or "",
+        "predefined_type": product.PredefinedType or "",
+        "type_global_id": "",
+        "type_name": "",
+        "type_description": "",
+        "type_occurrence_count": "",
+        "container": container_name(product),
+        "observable_role": "placement_only_ac_equipment_instance",
+        "bbox_min_mm": "",
+        "bbox_max_mm": "",
+        "dimensions_mm": "",
+        "basis": (
+            "Formal placement-only IfcUnitaryEquipment/AIRCONDITIONINGUNIT at "
+            f"{[round(float(matrix[index][3]), 6) for index in range(3)]} mm; "
+            "no Body, product type, ports or system are present."
+        ),
+        "confidence": 1.0,
+        "human_review_required": True,
+        "review_status": "FORMAL_IDENTITY_PRESENT_PRODUCT_INTERFACE_PENDING",
+        "missing_or_unverified": "manufacturer, model, capacity, body dimensions, ports, services, controls and access",
+        "stop_condition": "Use the fixed point and compiled symbol only; do not infer a body envelope or interface geometry.",
+        "source_ifc_sha256": source_hash,
+    }
+
+
 def type_record(type_object: ifcopenshell.entity_instance, source_hash: str) -> dict[str, Any]:
     count = type_occurrence_count(type_object)
     return {
@@ -379,6 +417,17 @@ def main() -> None:
             )
         )
 
+    a06 = model.by_guid(A06_GLOBAL_ID)
+    if (
+        a06 is None
+        or a06.is_a() != "IfcUnitaryEquipment"
+        or a06.PredefinedType != "AIRCONDITIONINGUNIT"
+        or a06.Representation is not None
+        or container_name(a06) != "CEL"
+    ):
+        raise RuntimeError("A06 placement-only formal identity drifted")
+    records.append(placement_only_record(a06, source_hash))
+
     hvac_flows = []
     for product in model.by_type("IfcFlowSegment"):
         if product.Name not in HVAC_FLOW_NAMES or product.ObjectType != "HVAC":
@@ -447,6 +496,7 @@ def main() -> None:
     expected_counts = Counter(
         {
             "assigned_ac_equipment_instance": 5,
+            "placement_only_ac_equipment_instance": 1,
             "legacy_base_refrigerant_liquid_geometry": 2,
             "legacy_base_refrigerant_gas_geometry": 2,
             "legacy_base_condensate_geometry": 1,

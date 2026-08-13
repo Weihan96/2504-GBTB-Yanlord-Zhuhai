@@ -593,8 +593,9 @@ def main() -> int:
             "legacy_pipe_geometry_is_final_route": False,
         },
         "summary": {
-            "formal_ac_candidates": len(EXPECTED_AC_IDS),
-            "legacy_east_ac_candidates_without_global_id": 1,
+            "formal_body_ac_candidates": len(EXPECTED_AC_IDS),
+            "formal_placement_only_ac_candidates": 1,
+            "formal_ac_candidates_total": len(EXPECTED_AC_IDS) + 1,
             "developer_openings": len(EXPECTED_OPENING_IDS),
             "legacy_pipe_products": len(EXPECTED_PIPE_IDS),
             "legacy_pipe_independent_components": sum(
@@ -607,6 +608,9 @@ def main() -> int:
         "formal_equipment_pairing": equipment_pairing,
         "legacy_east_ac_candidate": {
             **legacy_candidate,
+            "formal_global_id": "0YzEUom7522RIg1TonOQXn",
+            "formal_identity_status": "present_placement_only",
+            "envelope_role": "legacy_diagnostic_only_not_formal_body",
             "service_space_probe": legacy_service_probe,
         },
         "developer_opening_pairing": opening_pairing,
@@ -632,14 +636,14 @@ def main() -> int:
             },
             {
                 "diagnostic_id": "RCP1-AIR-FIXED-A06-TO-R20",
-                "equipment_candidate": "legacy-east-no-global-id",
-                "description": "diagnose an air-side path from fixed legacy-position equipment A06 toward living room R20",
+                "equipment_candidate": "0YzEUom7522RIg1TonOQXn",
+                "description": "diagnose an air-side path from fixed placement-only equipment A06 toward living room R20",
                 "route": option_b_route,
                 "equipment_position_status": "confirmed_fixed",
-                "formal_ifc_identity_required": True,
+                "formal_ifc_identity_required": False,
                 "new_living_supply_and_return_design_required": True,
                 "status": "route_diagnostic_only",
-                "basis": "fixed position recovered from the legacy model; current local -Y direction serves R07 and the object still lacks a formal GlobalId",
+                "basis": "formal placement-only identity is present; the legacy envelope remains diagnostic-only because product dimensions and ports are unconfirmed",
             },
         ],
         "legacy_pipe_components": pipe_components,
@@ -652,8 +656,8 @@ def main() -> int:
             },
             {
                 "question_id": "RCP1B-Q02",
-                "question": "A06 位置已确认固定但尚无正式 GlobalId；先补正式身份，再从固定位置设计其送回风连接。",
-                "required_evidence": "A06 正式 IFC 身份、设备型号/能力、客厅服务关系、送回风形式和检修包络",
+                "question": "A06 正式身份与固定点位已关闭；从该点位设计送回风连接，不补画虚构机身。",
+                "required_evidence": "A06 设备型号/能力、客厅服务关系、送回风形式、厂家端口和检修包络",
             },
             {
                 "question_id": "RCP1B-Q03",

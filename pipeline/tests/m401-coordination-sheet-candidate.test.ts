@@ -38,9 +38,10 @@ test("M-401 coordination sheet preserves evidence boundaries and emits PNG proof
   expect(report.mode).toBe("read_only_m401_hvac_safety_coordination_sheet_candidate");
   expect(report.source_ifc_sha256).toBe(before);
   expect(report.summary).toMatchObject({
-    actual_instance_count: 28,
+    actual_instance_count: 29,
     ac_type_count: 3,
     assigned_ac_instance_count: 5,
+    placement_only_ac_instance_count: 1,
     missing_input_block_count: 5,
     confirmed_route_constraint_count: 6,
     confirmed_waypoint_count: 7,
@@ -50,6 +51,7 @@ test("M-401 coordination sheet preserves evidence boundaries and emits PNG proof
   });
   expect(report.summary.instance_role_counts).toEqual({
     assigned_ac_equipment_instance: 5,
+    placement_only_ac_equipment_instance: 1,
     high_level_ceiling_or_led_coordination_context: 15,
     legacy_base_condensate_geometry: 1,
     legacy_base_refrigerant_gas_geometry: 2,

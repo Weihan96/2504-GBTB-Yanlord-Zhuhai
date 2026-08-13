@@ -16,8 +16,8 @@ test("equipment SSOT validates projections and covers every scoped IFC object", 
   const report = JSON.parse(run.stdout.toString());
   expect(report.validate).toMatchObject({
     master_count: 153,
-    requirement_count: 584,
-    source_count: 118,
+    requirement_count: 590,
+    source_count: 119,
     schema_version: "1.0.0",
   });
   expect(report.projections).toMatchObject({
@@ -29,13 +29,14 @@ test("equipment SSOT validates projections and covers every scoped IFC object", 
     mode: "check",
   });
   expect(report.ifc_coverage).toMatchObject({
-    scope_count: 162,
-    covered_count: 162,
+    scope_count: 163,
+    covered_count: 163,
     missing_count: 0,
     duplicate_count: 0,
   });
   expect(report.ifc_coverage.class_counts).toEqual({
     IfcElectricAppliance: 19,
+    IfcUnitaryEquipment: 1,
     IfcFurniture: 89,
     IfcSanitaryTerminal: 27,
     IfcWasteTerminal: 3,
@@ -78,7 +79,7 @@ test("equipment SSOT can audit an IFC evidence hash refresh without writing", ()
   const run = Bun.spawnSync(["python3", script, "refresh-ifc-source-hashes", "--dry-run"], { cwd: root });
   expect(run.exitCode, run.stderr.toString()).toBe(0);
   const report = JSON.parse(run.stdout.toString());
-  expect(report.scoped_ifc_object_count).toBe(162);
+  expect(report.scoped_ifc_object_count).toBe(163);
   expect(report.target_source_count).toBeGreaterThan(1);
   expect(report.dry_run).toBe(true);
   expect(readFileSync(sourcePath)).toEqual(before);

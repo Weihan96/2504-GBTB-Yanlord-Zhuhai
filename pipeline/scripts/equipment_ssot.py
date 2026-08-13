@@ -603,7 +603,7 @@ def assert_ifc_coverage(root: Path, masters: list[dict[str, str]], model: Any) -
     This intentionally does not call ``validate`` first, so it can guard a
     controlled source-hash refresh after a legitimate, geometry-safe IFC save.
     """
-    scoped = ["IfcElectricAppliance", "IfcFurniture", "IfcSanitaryTerminal", "IfcWasteTerminal", "IfcSensor", "IfcDoor", "IfcWindow"]
+    scoped = ["IfcElectricAppliance", "IfcUnitaryEquipment", "IfcFurniture", "IfcSanitaryTerminal", "IfcWasteTerminal", "IfcSensor", "IfcDoor", "IfcWindow"]
     expected: dict[str, str] = {}
     for cls in scoped:
         for product in model.by_type(cls): expected[product.GlobalId] = cls
@@ -701,6 +701,57 @@ def reconcile(root: Path, report_path: Path) -> dict[str, Any]:
     return summary
 
 
+def refresh_local_source_hashes(
+    root: Path, *, source_id: str = "", dry_run: bool = False
+) -> dict[str, Any]:
+    """Refresh exact hashes for existing project-local evidence without changing its claims."""
+    schema, _masters, _reqs, sources = load_canonical(root)
+    selected = [row for row in sources if not source_id or row["source_id"] == source_id]
+    if source_id and not selected:
+        raise RuntimeError(f"unknown source_id: {source_id}")
+    changes: list[dict[str, str]] = []
+    for row in selected:
+        resolved = row["local_path"] or evidence_local_path(root, row["source_document"])
+        path = Path(resolved) if Path(resolved).is_absolute() else root / resolved
+        if not path.is_file():
+            continue
+        current_hash = sha256(path)
+        if row["sha256"] == current_hash:
+            continue
+        changes.append(
+            {
+                "source_id": row["source_id"],
+                "path": str(path),
+                "before_sha256": row["sha256"],
+                "after_sha256": current_hash,
+            }
+        )
+        if dry_run:
+            continue
+        row["sha256"] = current_hash
+        if row["legacy_projection_json"]:
+            projection = json.loads(row["legacy_projection_json"])
+            if "source_sha256" in projection:
+                projection["source_sha256"] = current_hash
+                row["legacy_projection_json"] = json.dumps(
+                    projection, ensure_ascii=False, separators=(",", ":")
+                )
+    if changes and not dry_run:
+        write_csv(
+            root / SOURCES,
+            schema["tables"]["source-evidence-register.csv"]["columns"],
+            sources,
+        )
+        projections(root)
+        validate(root)
+    return {
+        "source_id_filter": source_id,
+        "changed_count": len(changes),
+        "changes": changes,
+        "dry_run": dry_run,
+    }
+
+
 def normalize_source_paths(root: Path) -> dict[str, Any]:
     schema, masters, _, sources = load_canonical(root)
     updated = 0
@@ -765,10 +816,11 @@ def migrate_furniture_roles(root: Path) -> dict[str, Any]:
 
 def main() -> int:
     parser = argparse.ArgumentParser()
-    parser.add_argument("command", choices=["migrate", "validate", "sync-projections", "check-projections", "audit-ifc", "refresh-ifc-source-hashes", "reconcile", "normalize-sources", "migrate-furniture-roles", "all"])
+    parser.add_argument("command", choices=["migrate", "validate", "sync-projections", "check-projections", "audit-ifc", "refresh-ifc-source-hashes", "refresh-local-source-hashes", "reconcile", "normalize-sources", "migrate-furniture-roles", "all"])
     parser.add_argument("--root", type=Path, default=Path.cwd())
     parser.add_argument("--report", type=Path, default=Path("build/equipment-ssot/ifc-coverage.json"))
     parser.add_argument("--dry-run", action="store_true")
+    parser.add_argument("--source-id", default="")
     args = parser.parse_args()
     root = args.root.resolve()
     result: dict[str, Any] = {}
@@ -780,6 +832,9 @@ def main() -> int:
     elif args.command == "check-projections": result = projections(root, check=True)
     elif args.command == "audit-ifc": result = audit_ifc(root, args.report if args.report.is_absolute() else root / args.report)
     elif args.command == "refresh-ifc-source-hashes": result = refresh_ifc_source_hashes(root, dry_run=args.dry_run)
+    elif args.command == "refresh-local-source-hashes": result = refresh_local_source_hashes(
+        root, source_id=args.source_id, dry_run=args.dry_run
+    )
     elif args.command == "reconcile": result = reconcile(root, root / "build/equipment-ssot/migration-reconciliation.json")
     elif args.command == "normalize-sources": result = normalize_source_paths(root)
     elif args.command == "migrate-furniture-roles": result = migrate_furniture_roles(root)

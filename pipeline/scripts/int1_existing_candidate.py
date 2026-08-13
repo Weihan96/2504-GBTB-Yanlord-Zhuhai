@@ -8,7 +8,6 @@ import csv
 import hashlib
 import json
 from collections import Counter
-from datetime import datetime, timezone
 from pathlib import Path
 from typing import Any
 
@@ -633,7 +632,6 @@ def main() -> None:
         and summary["geberit_flush_plate_semantic_corrections"] == 2
     )
     report = {
-        "generated_at": datetime.now(timezone.utc).isoformat(),
         "mode": "read_only_existing_object_candidate",
         "source": {
             "ifc": str(source_path), "ifc_sha256": source_hash,

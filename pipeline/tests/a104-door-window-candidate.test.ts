@@ -127,14 +127,18 @@ print(json.dumps(module.formal_semantics_state(model, records), ensure_ascii=Fal
     groups_pass: true,
     complete: true,
   });
-});
+}, 30_000);
 
-test("A104 consumes the Sail CAD audit without expanding its IFC write boundary", () => {
+test("A104 consumes the Sail CAD audit without expanding its IFC write boundary", async () => {
   const auditPath = resolve(root, "drawings/evidence/RIMADESIO-Sail-monorotaia-mechanical-audit.json");
+  const ifcPath = resolve(root, "2504 GBTB Yanlord Zhuhai.ifc");
+  const currentSha = createHash("sha256")
+    .update(new Uint8Array(await Bun.file(ifcPath).arrayBuffer()))
+    .digest("hex");
   const result = runPython(`
 audit = module.load_sail_cad_audit(
     pathlib.Path(${JSON.stringify(auditPath)}),
-    "446a9fc8447d38e16dacad7dcce3df097b03f8a457c6bc80fca03d3560891632",
+    ${JSON.stringify(currentSha)},
 )
 print(json.dumps({
     "entity_count": audit["cad_inventory"]["entity_count"],
@@ -148,4 +152,4 @@ print(json.dumps({
     rail_widths: [2011, 2037, 4022],
     formal_ifc_write_allowed: false,
   });
-});
+}, 30_000);

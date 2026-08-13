@@ -185,8 +185,12 @@ def supplemental_equipment_demands(int1: dict[str, Any], route: dict[str, Any]) 
     if len(a06_matches) != 1:
         raise RuntimeError(f"expected one A06 legacy equipment record, got {len(a06_matches)}")
     a06 = a06_matches[0]
-    if a06["position_status"] != "confirmed_fixed" or a06["formal_identity_status"] != "missing":
-        raise RuntimeError("A06 legacy equipment status changed")
+    if (
+        a06["position_status"] != "confirmed_fixed"
+        or a06["formal_identity_status"] != "present_placement_only"
+        or a06["global_id"] != "0YzEUom7522RIg1TonOQXn"
+    ):
+        raise RuntimeError("A06 placement-only formal identity changed")
     return [
         {
             "source_kind": "formal_named_equipment_proxy",
@@ -203,18 +207,18 @@ def supplemental_equipment_demands(int1: dict[str, Any], route: dict[str, Any]) 
             "automatic_ifc_write_allowed": False,
         },
         {
-            "source_kind": "hash_fixed_legacy_equipment_candidate",
+            "source_kind": "formal_placement_only_equipment",
             "source_id": "A06",
-            "global_id": "",
+            "global_id": a06["global_id"],
             "equipment_role": "east AC serving dining room",
             "placement_room_reference": "R02",
             "placement_room_name": "走廊",
             "served_room_reference": "R07",
             "coordination_centre_mm": [round(float(value), 6) for value in a06["centre_mm"]],
-            "basis": "user-confirmed fixed A06 position recovered from the hash-fixed legacy blend; formal IFC identity is still missing",
+            "basis": "formal placement-only A06 identity and fixed point; the hash-fixed legacy blend remains position provenance and no product envelope or port is inferred",
             "confidence": 1.0,
             "review_required": True,
-            "position_status": "equipment_identity_missing_connection_pending",
+            "position_status": "formal_identity_present_product_connection_pending",
             "automatic_ifc_write_allowed": False,
         },
     ]

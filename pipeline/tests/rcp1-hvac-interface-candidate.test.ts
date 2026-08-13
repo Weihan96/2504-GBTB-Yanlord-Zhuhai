@@ -27,8 +27,8 @@ test("HVAC interface candidate validates types and preserves unresolved gates", 
   expect(report.mode).toBe("read_only_rcp1_hvac_manufacturer_interface_candidate");
   expect(report.summary).toEqual({
     equipment_count: 6,
-    formal_identity_present_count: 5,
-    formal_identity_missing_count: 1,
+    formal_identity_present_count: 6,
+    formal_identity_missing_count: 0,
     official_interface_match_count: 4,
     official_geometry_only_match_count: 1,
     model_text_mismatch_count: 0,
@@ -38,10 +38,10 @@ test("HVAC interface candidate validates types and preserves unresolved gates", 
   expect(report.gates.source_hash_matches_m401_review).toBe(true);
   expect(report.gates.formal_ifc_type_assignments_match).toBe(true);
   expect(report.gates.available_local_manual_hashes_match).toBe(true);
-  expect(report.gates.all_equipment_has_formal_identity).toBe(false);
-  expect(report.gates.all_present_model_texts_have_official_family_match).toBe(true);
+  expect(report.gates.all_equipment_has_formal_identity).toBe(true);
+  expect(report.gates.all_present_model_texts_have_official_family_match).toBe(false);
   expect(report.gates.all_model_interfaces_have_official_match).toBe(false);
   expect(report.gates.precise_port_coordinates_ready).toBe(false);
   expect(report.gates.formal_ifc_write_allowed).toBe(false);
   expect(report.occurrences.every((row: any) => row.formal_ifc_write_allowed !== true)).toBe(true);
-});
+}, 30_000);

@@ -79,8 +79,9 @@ test("RCP1 remodel HVAC candidate keeps proximity separate from connection", asy
 
   const report = await Bun.file(output).json();
   expect(report.source.ifc_sha256).toBe(fixture.hash);
-  expect(report.summary.formal_ac_candidates).toBe(5);
-  expect(report.summary.legacy_east_ac_candidates_without_global_id).toBe(1);
+  expect(report.summary.formal_body_ac_candidates).toBe(5);
+  expect(report.summary.formal_placement_only_ac_candidates).toBe(1);
+  expect(report.summary.formal_ac_candidates_total).toBe(6);
   expect(report.summary.developer_openings).toBe(7);
   expect(report.summary.legacy_pipe_products).toBe(5);
   expect(report.summary.legacy_pipe_independent_components).toBe(12);
@@ -116,7 +117,7 @@ test("RCP1 remodel HVAC candidate keeps proximity separate from connection", asy
   expect(a05Diagnostic.route.permanent_wall_crossings).toHaveLength(0);
   expect(a06Diagnostic.diagnostic_id).toBe("RCP1-AIR-FIXED-A06-TO-R20");
   expect(a06Diagnostic.equipment_position_status).toBe("confirmed_fixed");
-  expect(a06Diagnostic.formal_ifc_identity_required).toBe(true);
+  expect(a06Diagnostic.formal_ifc_identity_required).toBe(false);
   expect(a06Diagnostic.route.turn_from_current_airside_degrees).toBeGreaterThan(90);
   expect(report.gates.formal_ifc_write_allowed).toBe(false);
   expect(report.gates.hvac_design_ready).toBe(false);

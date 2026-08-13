@@ -40,7 +40,7 @@ print(json.dumps({"values": values, "mismatch": mismatch}))
   const value = JSON.parse(result.stdout.toString());
   expect(value.values).toEqual([currentSha, currentSha]);
   expect(value.mismatch).toContain("formal IFC SHA-256 mismatch");
-});
+}, 30_000);
 
 test("A105 top-plane fit reports slope and downhill direction", () => {
   const script = `

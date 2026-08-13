@@ -20,7 +20,7 @@ EQUIPMENT = {
     "A03": {"global_id": "06GpMzzWj1XQobAhD35cgU", "label": "次卧"},
     "A04": {"global_id": "1PUCikoaP5fgiYt8sJd8$6", "label": "西厨"},
     "A05": {"global_id": "1yW7DASIz8qA$2j8z9tdl2", "label": "书房"},
-    "A06": {"global_id": None, "label": "东侧固定机位"},
+    "A06": {"global_id": "0YzEUom7522RIg1TonOQXn", "label": "东侧固定机位"},
 }
 
 OPENINGS = {
@@ -141,7 +141,7 @@ def relation_distance(item: dict, opening_global_id: str) -> float:
 
 def equipment_row(candidate_id: str, report: dict, opening_by_id: dict[str, dict]) -> dict:
     definition = EQUIPMENT[candidate_id]
-    if definition["global_id"] is None:
+    if candidate_id == "A06":
         legacy = report["legacy_east_ac_candidate"]
         bbox = legacy["predicted_formal_bbox"]
         ranked = sorted(
@@ -156,7 +156,7 @@ def equipment_row(candidate_id: str, report: dict, opening_by_id: dict[str, dict
             key=lambda row: (row["clearance_mm"], row["opening_id"]),
         )
         centre = legacy["predicted_formal_centre_mm"]
-        formal_identity_status = "missing"
+        formal_identity_status = "present_placement_only"
     else:
         item = next(
             item

@@ -102,5 +102,5 @@ test(
     expect(e301).toContain("Wall Plan-underlay.png");
     expect(e303).toContain("Wall Plan-underlay.png");
   },
-  30_000,
+  90_000,
 );

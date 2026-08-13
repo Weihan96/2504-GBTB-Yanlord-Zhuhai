@@ -33,9 +33,10 @@ test("M-401 inventory separates instances, types, context and missing inputs", (
   expect(report.source.ifc_sha256).toBe(currentIfcHash);
   expect(report.legacy_evidence.status).toBe("current_external_audit");
   expect(report.legacy_evidence.current_formal_ifc).toBe(true);
-  expect(report.summary.actual_instances).toBe(28);
+  expect(report.summary.actual_instances).toBe(29);
   expect(report.summary.instance_role_counts).toEqual({
     assigned_ac_equipment_instance: 5,
+    placement_only_ac_equipment_instance: 1,
     legacy_base_condensate_geometry: 1,
     legacy_base_refrigerant_gas_geometry: 2,
     legacy_base_refrigerant_liquid_geometry: 2,
@@ -45,7 +46,7 @@ test("M-401 inventory separates instances, types, context and missing inputs", (
   });
   expect(report.summary.type_definitions).toBe(3);
   expect(report.summary.missing_input_blocks).toBe(5);
-  expect(report.summary.human_review_queue).toBe(18);
+  expect(report.summary.human_review_queue).toBe(19);
   expect(report.summary.ifc_air_terminal_instances).toBe(0);
   expect(report.summary.ifc_fan_instances).toBe(0);
   expect(report.summary.ifc_sensor_instances).toBe(1);
@@ -61,7 +62,12 @@ test("M-401 inventory separates instances, types, context and missing inputs", (
   const instances = report.records.filter(
     (item: { record_kind: string }) => item.record_kind === "actual_instance",
   );
-  expect(new Set(instances.map((item: { global_id: string }) => item.global_id)).size).toBe(28);
+  expect(new Set(instances.map((item: { global_id: string }) => item.global_id)).size).toBe(29);
+  const a06 = instances.find(
+    (item: { global_id: string }) => item.global_id === "0YzEUom7522RIg1TonOQXn",
+  );
+  expect(a06.observable_role).toBe("placement_only_ac_equipment_instance");
+  expect(a06.dimensions_mm).toBe("");
   const valve = instances.find(
     (item: { global_id: string }) => item.global_id === "1faflkXXH6M9cnYPE9Liir",
   );

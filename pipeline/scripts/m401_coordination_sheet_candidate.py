@@ -21,6 +21,7 @@ import ifcopenshell
 
 EXPECTED_ROLE_COUNTS = {
     "assigned_ac_equipment_instance": 5,
+    "placement_only_ac_equipment_instance": 1,
     "high_level_ceiling_or_led_coordination_context": 15,
     "legacy_base_condensate_geometry": 1,
     "legacy_base_refrigerant_gas_geometry": 2,
@@ -86,18 +87,18 @@ def validate_inventory(
     if report.get("source_ifc_sha256") != ifc_hash:
         raise RuntimeError("M-401 inventory report is stale against the formal IFC")
     summary = report.get("summary", {})
-    if summary.get("actual_instances") != 28:
-        raise RuntimeError("M-401 actual-instance count drifted from 28")
+    if summary.get("actual_instances") != 29:
+        raise RuntimeError("M-401 actual-instance count drifted from 29")
     if summary.get("instance_role_counts") != EXPECTED_ROLE_COUNTS:
         raise RuntimeError("M-401 observable role counts drifted")
     if summary.get("type_definitions") != 3 or summary.get("missing_input_blocks") != 5:
         raise RuntimeError("M-401 type/BLOCK boundary drifted")
     if summary.get("ifc_sensor_instances") != 1:
         raise RuntimeError("M-401 inventory no longer reports exactly one IfcSensor")
-    if len(review_rows) != 36 or any(row.get("source_ifc_sha256") != ifc_hash for row in review_rows):
+    if len(review_rows) != 37 or any(row.get("source_ifc_sha256") != ifc_hash for row in review_rows):
         raise RuntimeError("M-401 review CSV is incomplete or stale")
     if Counter(row["record_kind"] for row in review_rows) != {
-        "actual_instance": 28,
+        "actual_instance": 29,
         "type_definition": 3,
         "missing_input": 5,
     }:
@@ -221,7 +222,7 @@ def render_svg(
 
     route_labels = {
         "RCP1-AIRSIDE-A02": "A02 → R07 餐厅（服务对象）",
-        "RCP1-AIRSIDE-A06": "A06 → R07 餐厅（旧 blend 位置）",
+        "RCP1-AIRSIDE-A06": "A06 → R07 餐厅（正式 placement-only 身份）",
         "RCP1-SERVICE-A02": "A02 → H03",
         "RCP1-SERVICE-A03": "A03 → H04 → H02",
         "RCP1-CONDENSATE-ENDPOINT": "H07 = 冷凝水排放接口位置",
@@ -273,8 +274,8 @@ def render_svg(
 <text class="title" x="55" y="62">M-401 空调、通风及安全设备协调候选</text>
 <text class="subtitle" x="55" y="100">证据化索引 + 路线约束图 · 只读生成 · 旧紫色管线不是装修后最终路线 · 非施工发布</text>
 <rect class="panel" x="55" y="125" width="1490" height="90" rx="14"/>
-<text class="kpi" x="90" y="168">28</text><text class="kpi-label" x="90" y="194">既有实例</text>
-<text class="kpi" x="250" y="168">3 / 5</text><text class="kpi-label" x="250" y="194">AC 类型 / 已分配实例</text>
+<text class="kpi" x="90" y="168">29</text><text class="kpi-label" x="90" y="194">可追踪实例</text>
+<text class="kpi" x="250" y="168">5 + 1</text><text class="kpi-label" x="250" y="194">实体 AC / 点位 AC</text>
 <text class="kpi" x="500" y="168">5</text><text class="kpi-label" x="500" y="194">旧冷媒/冷凝几何</text>
 <text class="kpi" x="675" y="168">2 + 1</text><text class="kpi-label" x="675" y="194">风口 Proxy / 止回阀 Proxy</text>
 <text class="kpi" x="970" y="168">6 / 7</text><text class="kpi-label" x="970" y="194">确认约束 / 顺序锚点</text>
@@ -296,7 +297,7 @@ def render_svg(
 <text class="safety-title" x="82" y="925">安全设备现状：正式 IFC 仅 1 个 IfcSensor / FIRESENSOR</text>
 <text class="safety-text" x="82" y="955">A106-FIRE-R04 · 中厨 R04 · 位置 {esc(safety["confirmed_position_mm"])} mm 已确认；最终感温/感烟/复合类型、产品、供电通信和厂家安装条件仍待确认。</text>
 <text class="gate" x="82" y="987">automatic_ifc_write_allowed=false · construction_release_ready=false · 未建模内容不得由近接、名称或旧几何推断</text>
-<text class="footer" x="55" y="1053">IFC SHA-256 {ifc_hash} · 28 instances · 3 AC types · 5 BLOCK · source role counts verified</text>
+<text class="footer" x="55" y="1053">IFC SHA-256 {ifc_hash} · 29 tracked instances · 5 body AC + 1 placement-only AC · 5 BLOCK</text>
 </svg>
 '''
 
@@ -394,6 +395,7 @@ def main() -> None:
             "instance_role_counts": m401_report["summary"]["instance_role_counts"],
             "ac_type_count": len(types),
             "assigned_ac_instance_count": sum(int(item["type_occurrence_count"]) for item in types),
+            "placement_only_ac_instance_count": m401_report["summary"]["instance_role_counts"]["placement_only_ac_equipment_instance"],
             "missing_input_block_count": len(blockers),
             "confirmed_route_constraint_count": len(routes),
             "confirmed_waypoint_count": sum(len(items) for items in EXPECTED_WAYPOINTS.values()),

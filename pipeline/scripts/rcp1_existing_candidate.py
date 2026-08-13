@@ -24,6 +24,7 @@ from shapely.ops import unary_union
 
 PROTECTED_HANDOFF_IDS = {"16Ey9Flj9BK9VRun$ozzjH", "0zWtSQZzjFQg_PORjlssbe"}
 OTHER_HIGH_PROXY_IDS = {"1faflkXXH6M9cnYPE9Liir"}
+A06_GLOBAL_ID = "0YzEUom7522RIg1TonOQXn"
 EXPECTED_AC_OPENING_IDS = {
     "3qgu$TepT0J8Yat7ZQ90Mf",
     "2oHWzdjkr8X8Yt0Gd2e3RQ",
@@ -640,6 +641,25 @@ def main() -> int:
             )
         )
 
+    a06 = model.by_guid(A06_GLOBAL_ID)
+    a06_matrix = get_local_placement(a06.ObjectPlacement)
+    placement_only_ac_equipment = [
+        {
+            "global_id": a06.GlobalId,
+            "ifc_class": a06.is_a(),
+            "name": a06.Name,
+            "tag": a06.Tag,
+            "predefined_type": a06.PredefinedType,
+            "category": "formal_placement_only_ac_equipment",
+            "container": str(getattr(get_container(a06), "Name", "") or ""),
+            "world_translation_mm": [float(a06_matrix[index][3]) for index in range(3)],
+            "has_representation": a06.Representation is not None,
+            "basis": "formal IfcUnitaryEquipment/AIRCONDITIONINGUNIT occurrence and fixed placement; no Body, product type, ports or system inferred",
+            "confidence": 1.0,
+            "review_required": "yes",
+        }
+    ]
+
     named_high_openings = []
     for product in model.by_type("IfcOpeningElement"):
         if product.GlobalId not in EXPECTED_AC_OPENING_IDS:
@@ -722,6 +742,8 @@ def main() -> int:
         "dcl_proxy_count": len(dcl_proxies),
         "name_only_air_outlet_proxy_count": sum(item["category"] == "name_only_air_outlet_proxy" for item in dcl_proxies),
         "typed_high_equipment_count": len(typed_high_equipment),
+        "placement_only_ac_equipment_count": len(placement_only_ac_equipment),
+        "fixed_ac_identity_count": len(typed_high_equipment) + len(placement_only_ac_equipment),
         "named_high_opening_count": len(named_high_openings),
         "high_flow_segment_count": len(high_flow_segments),
         "other_high_proxy_count": len(other_high_proxies),
@@ -748,6 +770,12 @@ def main() -> int:
             gates["dcl_proxy_count"] == 18,
             gates["name_only_air_outlet_proxy_count"] == 2,
             gates["typed_high_equipment_count"] == 5,
+            gates["placement_only_ac_equipment_count"] == 1,
+            gates["fixed_ac_identity_count"] == 6,
+            placement_only_ac_equipment[0]["ifc_class"] == "IfcUnitaryEquipment",
+            placement_only_ac_equipment[0]["predefined_type"] == "AIRCONDITIONINGUNIT",
+            placement_only_ac_equipment[0]["container"] == "CEL",
+            placement_only_ac_equipment[0]["has_representation"] is False,
             gates["named_high_opening_count"] == 7,
             {item["global_id"] for item in named_high_openings} == EXPECTED_AC_OPENING_IDS,
             gates["high_flow_segment_count"] == 5,
@@ -791,6 +819,7 @@ def main() -> int:
     coordination["legacy_evidence"] = legacy_evidence
     coordination["inventory_counts"] = {
         "typed_high_equipment": len(typed_high_equipment),
+        "placement_only_ac_equipment": len(placement_only_ac_equipment),
         "named_high_openings": len(named_high_openings),
         "high_flow_segments": len(high_flow_segments),
         "name_only_air_outlet_proxies": sum(
@@ -837,6 +866,7 @@ def main() -> int:
             "light_fixtures": lights,
             "dcl_proxies": dcl_proxies,
             "typed_high_equipment": typed_high_equipment,
+            "placement_only_ac_equipment": placement_only_ac_equipment,
             "named_high_openings": named_high_openings,
             "high_flow_segments": high_flow_segments,
             "other_high_proxies": other_high_proxies,

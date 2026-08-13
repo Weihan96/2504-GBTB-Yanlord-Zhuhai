@@ -69,6 +69,8 @@ test(
     expect(report.gates.dcl_proxy_count).toBe(18);
     expect(report.gates.name_only_air_outlet_proxy_count).toBe(2);
     expect(report.gates.typed_high_equipment_count).toBe(5);
+    expect(report.gates.placement_only_ac_equipment_count).toBe(1);
+    expect(report.gates.fixed_ac_identity_count).toBe(6);
     expect(report.gates.named_high_opening_count).toBe(7);
     expect(report.gates.high_flow_segment_count).toBe(5);
     expect(report.gates.other_high_proxy_count).toBe(1);
@@ -79,6 +81,12 @@ test(
     expect(Object.values(report.gates.topology).every((value) => value === 0)).toBe(true);
     for (const group of Object.values(report.inventory) as any[][]) {
       for (const item of group) {
+        if (item.category === "formal_placement_only_ac_equipment") {
+          expect(item.has_representation).toBe(false);
+          expect(item.world_translation_mm).toHaveLength(3);
+          expect(item.basis.length).toBeGreaterThan(0);
+          continue;
+        }
         expect(item.bbox.dimensions_mm.length).toBe(3);
         expect(item.elevation_mm.bottom).toBeNumber();
         expect(item.basis.length).toBeGreaterThan(0);
