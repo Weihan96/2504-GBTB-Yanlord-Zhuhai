@@ -95,7 +95,7 @@ test("INT1 candidate preserves role split and blocks unverified fabrication inpu
   );
   expect(byId.get("3JAkt8PsX7vPfGKWLK5EKp")?.sheet_id).toBe("I-503");
   expect(byId.get("3JAkt8PsX7vPfGKWLK5EKp")?.type_description).toBe(
-    "FN23BQH W600D660H1655",
+    "Project coordination clearance W650 D800 H1900; not manufacturer body or interface dimensions",
   );
   expect(byId.get("0UOnmuAdP1MPy6p3olwiEU")?.type_name).toBe("WD01");
   expect(byId.get("3PQOXKxgj6IftqWXFXMQXG")?.type_name).toBe("OV01");

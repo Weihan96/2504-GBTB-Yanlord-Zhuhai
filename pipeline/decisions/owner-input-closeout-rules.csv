@@ -1,4 +1,4 @@
-input_id,closeout_kind,responsible_party,required_evidence,automatic_close_allowed,notes
+﻿input_id,closeout_kind,responsible_party,required_evidence,automatic_close_allowed,notes
 A103-WALL-TAG-SCHEME,human_design_selection,业主/建筑设计,确认 88 面墙审核图与 EW/NW 编号规则,no,确认后才允许机械写入正式 IFC Tag
 A104-M05-M06-DIMENSIONS,product_interface_evidence,全屋定制/建筑设计,可定位到本项目 M05/M06 Sail 门组的订单门窗表或厂家 shop drawing,no,通用产品页面和 IFC 包围盒不能替代项目名义尺寸
 A104-M07-EVIDENCE,site_or_drawing_evidence,建筑设计/现场,项目门表或可定位到 M07 的官方 CAD、订单或现场开门照片，包含名义宽高和开启关系,no,产品通用资料不能替代本项目门扇尺寸与开启关系
@@ -22,7 +22,8 @@ WFIN-TADELAKT,human_material_selection,业主/材料设计,最终厂家完整体
 RCP1-HVAC-PORTS,product_interface_evidence,空调厂家/机电设计,最终设备型号及送回风冷媒冷凝水接口图,no,无批准厂家接口图时只保留路线候选
 PLUM-ROUGHINS,product_interface_evidence,设备方/给排水设计,逐台最终产品给排水热水电源安装图,no,存放位置不得替代实际使用和粗装接口
 DET1-WATERPROOF,human_material_selection,业主/建筑设计,最终防水厂家体系上翻高度门口节点与样板,no,须与地漏坡向门槛高差一起人审
-APP014-APP015-ALIAS,product_interface_evidence,设备方/给排水设计/电气设计,WS7060BC1C/01 准确安装说明书，含功率、柜孔、给水、排水、电源与检修,no,一台实物和别名去重已确认；施工接口仍须厂家资料。
+APP014-APP015-ALIAS,final_shop_drawing_and_site_interface,设备方/橱柜方/给排水设计/电气设计,WS7FSB0C1C 最终柜体安装图、现场给排水/电源位置及检修复核,no,官方共用说明书已取得；APP-015 去重已关闭；剩余为项目落位与现场接口。
 APP004-COFFEE-FINAL,human_product_selection,业主/设备方,GS3 或 E1 Prima EXP 最终订单、准确 220V 版本铭牌及安装说明书,no,候选功率不得代替最终铭牌。
 APP016-DISPOSER-DATA,product_interface_evidence,设备方/橱柜设计/给排水设计,勒科斯 F50 订单或铭牌及厂家安装图，含功率、开关、法兰和排水接口,no,同类产品常见值不能关闭。
 E302-BEDSIDE-220V,site_or_drawing_evidence,建筑设计/家具设计/电气设计,逐房床、床头柜、软包和窗帘完成尺寸下的插座点位、高度与面板组合图,no,每侧至少两个 220V 数量规则已确认；本规则只关闭准确定位。
+APP017-SIEMENS-STACK,manufacturer_compatibility_and_rough_in,西门子客服/设备方/橱柜方/给排水设计/电气设计,书面确认 WG54M7D20W 与 WQ55M7U20W 对应 E-Nr./FD 可叠放、17008829 的商业型号与抽板配置；最终侧置插座/水龙头/排水和维修抽出尺寸,no,不得以 WTZ27510 官网候选反向宣称 17008829 带抽板或逐型号已兼容。

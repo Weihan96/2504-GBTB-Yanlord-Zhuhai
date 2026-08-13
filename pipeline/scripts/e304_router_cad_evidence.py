@@ -88,7 +88,10 @@ def read_evidence_register(path: Path, root: Path) -> list[dict[str, Any]]:
     evidence_ids = [row["evidence_id"] for row in rows]
     if not required_ids.issubset(evidence_ids) or len(evidence_ids) != len(set(evidence_ids)):
         raise RuntimeError("E-304 evidence register is missing required evidence or has duplicate IDs")
-    required = ("source_kind", "source_document", "source_sha256", "source_locator", "evidence", "proves", "does_not_prove", "status")
+    # A precise official URL may itself be the locator.  Page-level anchors are
+    # required only when the evidence record declares one; a blank optional
+    # locator must not invalidate an otherwise complete official web source.
+    required = ("source_kind", "source_document", "source_sha256", "evidence", "proves", "does_not_prove", "status")
     if any(not row[field] for row in rows for field in required):
         raise RuntimeError("E-304 evidence register contains an incomplete evidence row")
     for row in rows:

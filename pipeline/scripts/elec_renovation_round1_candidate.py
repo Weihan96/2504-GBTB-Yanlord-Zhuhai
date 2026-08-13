@@ -294,11 +294,7 @@ def appliance_socket_context(
         selected_ids = {row["appliance_id"] for row in selected}
         circuit_input_id = E303_CIRCUIT_INPUT_BY_SOCKET[socket_id]
         circuit_decision = circuit_decisions[circuit_input_id]
-        if circuit_decision["status"] not in USE_CONFIRMED_STATUSES:
-            raise RuntimeError(
-                f"{circuit_input_id}: explicit load scenarios require 采用候选 or 自定义确认; "
-                f"got {circuit_decision['status']!r}"
-            )
+        use_confirmed = circuit_decision["status"] in USE_CONFIRMED_STATUSES
         socket_scenarios = [row for row in scenarios if row["socket_id"] == socket_id]
         scenario_loads = []
         for scenario in socket_scenarios:
@@ -335,8 +331,8 @@ def appliance_socket_context(
         simultaneous_minimum_w = min(row["minimum_w"] for row in scenario_loads)
         simultaneous_maximum_w = max(row["maximum_w"] for row in scenario_loads)
         semantic_gates = {
-            "use_confirmed": True,
-            "planning_envelope_compiled": True,
+            "use_confirmed": use_confirmed,
+            "planning_envelope_compiled": use_confirmed,
             "product_and_circuit_fixed": False,
         }
         connection_positions_candidate = 3
@@ -357,19 +353,30 @@ def appliance_socket_context(
                 "simultaneous_use_basis": (
                     f"explicit scenarios authorized by {circuit_input_id} "
                     f"status {circuit_decision['status']}"
+                    if use_confirmed
+                    else f"explicit scenarios remain unapproved because {circuit_input_id} "
+                    f"status is {circuit_decision['status']}; values are retained only for audit"
                 ),
                 "planning_voltage_v": PLANNING_VOLTAGE_V,
                 "single_socket_class_current_a": SINGLE_SOCKET_CLASS_CURRENT_A,
                 "single_socket_class_capacity_w": SINGLE_SOCKET_CLASS_CAPACITY_W,
-                "minimum_independent_circuit_count_candidate": max(
-                    1,
-                    math.ceil(
-                        simultaneous_maximum_w
-                        / SINGLE_SOCKET_CLASS_CAPACITY_W
-                    ),
+                "minimum_independent_circuit_count_candidate": (
+                    max(
+                        1,
+                        math.ceil(
+                            simultaneous_maximum_w
+                            / SINGLE_SOCKET_CLASS_CAPACITY_W
+                        ),
+                    )
+                    if use_confirmed
+                    else None
                 ),
                 "minimum_connection_positions_candidate": connection_positions_candidate,
-                "calculation_status": "listed_and_simultaneous_planning_envelopes_not_confirmed_product_load",
+                "calculation_status": (
+                    "listed_and_simultaneous_planning_envelopes_not_confirmed_product_load"
+                    if use_confirmed
+                    else "owner_use_scenario_pending_no_circuit_candidate"
+                ),
                 "final_conductor_protection_rcd_pending": True,
             },
             "semantic_gates": semantic_gates,
@@ -402,7 +409,11 @@ def new_socket_candidates(
             "review_required": True,
             "height_status": "650 mm AFF review candidate; socket type, splash protection and final elevation pending",
             "socket_form_candidate": "three concealed covered socket positions, one on each island face below the countertop/table overlap; final product and panel cut-out pending",
-            "circuit_strategy_candidate": "two independent socket circuits from the accepted explicit NS-01 scenarios; separate the hot-pot load from blender/sous-vide loads",
+            "circuit_strategy_candidate": (
+                "two independent socket circuits from the accepted explicit NS-01 scenarios; separate the hot-pot load from blender/sous-vide loads"
+                if appliance_context["NS-01"]["semantic_gates"]["use_confirmed"]
+                else "no circuit-count candidate; APP-001 through APP-003 exact rated powers and owner use scenario remain pending"
+            ),
             "automatic_ifc_write_allowed": False,
             "appliance_context": appliance_context["NS-01"],
         },
@@ -420,7 +431,11 @@ def new_socket_candidates(
             "review_required": True,
             "height_status": "panel bottom 300 mm AFF confirmed general datum; intended appliance and wall-side position remain pending",
             "socket_form_candidate": "minimal linear track socket or custom concealed flip-up assembly; product, module count and cabinet detail pending",
-            "circuit_strategy_candidate": "one circuit capacity candidate from the accepted explicit NS-02 scenarios; final model loads still govern",
+            "circuit_strategy_candidate": (
+                "one circuit capacity candidate from the accepted explicit NS-02 scenarios; final model loads still govern"
+                if appliance_context["NS-02"]["semantic_gates"]["use_confirmed"]
+                else "no circuit-count candidate; final coffee machine, grinder and kettle rated powers remain pending"
+            ),
             "automatic_ifc_write_allowed": False,
             "appliance_context": appliance_context["NS-02"],
         },
@@ -577,11 +592,15 @@ def render_svg(source: str, report: dict[str, Any]) -> str:
     ns02 = next(row for row in report["new_socket_candidates"] if row["candidate_id"] == "NS-02")
     ns01_plan = ns01["appliance_context"]["planning_envelope"]
     ns02_plan = ns02["appliance_context"]["planning_envelope"]
-    markup.append('<text class="r1-heading" x="407" y="72">E-303 容量候选｜220V / 16A-class</text>')
+    circuit_candidates_authorized = report["gates"]["use_confirmed"]
+    heading = "E-303 容量候选｜220V / 16A-class" if circuit_candidates_authorized else "E-303 容量研究｜回路候选待业主确认"
+    ns01_circuit = f'{ns01_plan["minimum_independent_circuit_count_candidate"]} 回路候选' if circuit_candidates_authorized else "回路数未定"
+    ns02_circuit = f'{ns02_plan["minimum_independent_circuit_count_candidate"]} 回路候选' if circuit_candidates_authorized else "回路数未定"
+    markup.append(f'<text class="r1-heading" x="407" y="72">{heading}</text>')
     markup.append(f'<text class="r1-text" x="407" y="81">NS-01 全连接 {ns01_plan["listed_device_connected_minimum_w"] / 1000:.1f}–{ns01_plan["listed_device_connected_maximum_w"] / 1000:.1f}｜同时 {ns01_plan["simultaneous_design_minimum_w"] / 1000:.1f}–{ns01_plan["simultaneous_design_maximum_w"] / 1000:.1f} kW</text>')
-    markup.append(f'<text class="r1-text" x="407" y="88">三面各 1 个隐藏盖板位｜{ns01_plan["minimum_independent_circuit_count_candidate"]} 回路候选</text>')
+    markup.append(f'<text class="r1-text" x="407" y="88">三面各 1 个隐藏盖板位｜{ns01_circuit}</text>')
     markup.append(f'<text class="r1-text" x="407" y="99">NS-02 同时使用：{ns02_plan["simultaneous_design_minimum_w"] / 1000:.2f}–{ns02_plan["simultaneous_design_maximum_w"] / 1000:.1f} kW</text>')
-    markup.append(f'<text class="r1-text" x="407" y="106">线性轨道或自制翻盖｜{ns02_plan["minimum_independent_circuit_count_candidate"]} 回路候选</text>')
+    markup.append(f'<text class="r1-text" x="407" y="106">线性轨道或自制翻盖｜{ns02_circuit}</text>')
     markup.append('<text class="r1-warn" x="407" y="120">全连接/同时包络 ≠ 未购设备铭牌功率</text>')
     markup.append('<text class="r1-warn" x="407" y="127">最终线径、保护、RCD 与产品须电气复核</text>')
     markup.append('<text class="r1-note" x="407" y="141">柜体标记是供电范围，不是最终出线口</text>')
@@ -710,9 +729,12 @@ def main() -> int:
                 row["candidate_id"]: len(row["appliance_context"]["items"])
                 for row in new_sockets
             } == {"NS-01": 3, "NS-02": 3}
+            and {
+                row["candidate_id"]: row["appliance_context"]["known_connected_load_w"]
+                for row in new_sockets
+            } == {"NS-01": 0.0, "NS-02": 1200.0}
             and all(
-                row["appliance_context"]["known_connected_load_w"] == 0
-                and not row["appliance_context"]["socket_form_and_circuit_sizing_ready"]
+                not row["appliance_context"]["socket_form_and_circuit_sizing_ready"]
                 for row in new_sockets
             ),
             "circuit_planning_candidates_match_confirmed_use": {

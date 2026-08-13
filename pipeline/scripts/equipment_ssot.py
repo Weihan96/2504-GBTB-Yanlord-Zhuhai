@@ -94,6 +94,8 @@ def status_for_appliance(value: str) -> tuple[str, str]:
         return "confirmed", "purchased_arrived"
     if value == "部分确认":
         return "partial", "candidate"
+    if value == "不适用":
+        return "superseded", "not_applicable"
     return "pending", "not_selected"
 
 
@@ -516,7 +518,7 @@ def apply_owner_appliances(root: Path, appliances: list[dict[str, str]]) -> None
             "quantity": item["quantity"], "procurement_status": procurement, "decision_status": decision,
             "storage_location_candidate": item["storage_location_candidate"], "use_location_candidate": item["use_location_candidate"],
             "storage_location_confirmed": item["storage_location_confirmed"], "use_location_confirmed": item["use_location_confirmed"],
-            "identity_basis": item["evidence_reference"], "human_review_required": "no" if decision == "confirmed" else "yes", "notes": item["notes"],
+            "identity_basis": item["evidence_reference"], "human_review_required": "no" if decision in {"confirmed", "superseded"} else "yes", "notes": item["notes"],
         })
         references = split_ids(item["evidence_reference"]) if ";" in item["evidence_reference"] and "http" not in item["evidence_reference"] else []
         canonical_refs = split_ids(prior_source_ids) if item["evidence_reference"] == prior_evidence else [sid for sid in references if sid in source_ids]

@@ -494,15 +494,50 @@ def add_integer_highlights(
     return records
 
 
-def valid_linework_cache(svg_path: Path) -> bool:
+def valid_linework_cache(
+    project_root: Path,
+    svg_path: Path,
+    drawing_name_value: str,
+) -> bool:
+    """Accept a Freestyle cache only when it belongs to the loaded IFC.
+
+    A syntactically valid SVG is not sufficient: after an IFC product rename
+    or geometry edit, Bonsai's cache can still contain the previous linework.
+    The source report provides the IFC content hash, while GlobalId/name pairs
+    in the cached SVG catch legacy reports created before this gate existed.
+    """
+
     cache_path = svg_path.parent / "cache" / f"{svg_path.stem}-linework.svg"
     if not cache_path.is_file() or cache_path.stat().st_size < 1000:
+        return False
+    report_path = project_root / REPORT_DIR / f"{drawing_name_value}-source.json"
+    if not report_path.is_file():
+        return False
+    try:
+        report = json.loads(report_path.read_text(encoding="utf-8"))
+    except (json.JSONDecodeError, OSError):
+        return False
+    if report.get("formal_ifc_sha256_before_save") != sha256(Path(tool.Ifc.get_path())):
         return False
     try:
         root = ET.parse(cache_path).getroot()
     except ET.ParseError:
         return False
-    return any(element.tag.endswith("path") for element in root.iter())
+    if not any(element.tag.endswith("path") for element in root.iter()):
+        return False
+    for svg_element in root.iter():
+        attributes = {
+            key.rsplit("}", 1)[-1].split(":")[-1]: value
+            for key, value in svg_element.attrib.items()
+        }
+        global_id = attributes.get("guid")
+        cached_name = attributes.get("name")
+        if not global_id or cached_name is None:
+            continue
+        entity = tool.Ifc.get().by_guid(global_id)
+        if entity and cached_name != (entity.Name or ""):
+            return False
+    return True
 
 
 def build_view(project_root: Path, row: dict[str, str]) -> dict[str, Any]:
@@ -519,7 +554,9 @@ def build_view(project_root: Path, row: dict[str, str]) -> dict[str, Any]:
         raise RuntimeError(f"failed to activate {drawing.Name}: {result}")
     dprops = tool.Drawing.get_document_props()
     dprops.should_use_underlay_cache = False
-    dprops.should_use_linework_cache = LINEWORK_MODE == "FREESTYLE" and valid_linework_cache(svg_path)
+    dprops.should_use_linework_cache = LINEWORK_MODE == "FREESTYLE" and valid_linework_cache(
+        project_root, svg_path, drawing.Name
+    )
     dprops.should_use_annotation_cache = False
     result = bpy.ops.bim.create_drawing(
         print_all=False, open_viewer=False, sync=False

@@ -23,7 +23,7 @@ REQ-0021,APP-004,PLUM,water_required,model_dependent,,,,user_input,pending,,,yes
 REQ-0022,APP-004,PLUM,drain_required,model_dependent,,,,user_input,pending,,,yes,
 REQ-0023,APP-004,GAS,gas_required,no,,,,user_input,confirmed,,,no,
 REQ-0024,APP-004,HVAC,ventilation_required,no,,,,user_input,confirmed,,,no,
-REQ-0025,APP-005,ELEC,rated_power,,1200,W,,user_input,candidate,OWNER-INBOX-20260814-001,,yes,业主提供；准确 Hario 型号和铭牌待补。
+REQ-0025,APP-005,ELEC,rated_power,,1200,W,,user_input,confirmed,OWNER-INBOX-20260814-001,,no,业主提供；准确 Hario 型号和铭牌待补。
 REQ-0026,APP-005,ELEC,simultaneous_group,NS02-A,,,,user_input,confirmed,,,no,
 REQ-0027,APP-005,PLUM,water_required,no,,,,user_input,confirmed,,,no,
 REQ-0028,APP-005,PLUM,drain_required,no,,,,user_input,confirmed,,,no,
@@ -155,30 +155,30 @@ REQ-0153,APP-013,MULTI,ceiling_opening_diameter,,190,mm,,official_exact_model,co
 REQ-0154,APP-013,MULTI,access_opening_width,,400,mm,,official_exact_model,confirmed,APP-013-OFFICIAL-001,,no,
 REQ-0155,APP-013,MULTI,access_opening_height,,400,mm,,official_exact_model,confirmed,APP-013-OFFICIAL-001,,no,
 REQ-0156,APP-013,MULTI,clearance_to_gas_hob_pan_support_min,,650,mm,,official_exact_model,confirmed,APP-013-OFFICIAL-001,,no,
-REQ-0157,APP-014,ELEC,rated_power,,,W,,user_input,pending,,,yes,
+REQ-0157,APP-014,ELEC,rated_power,,2200,W,,official_exact_model,confirmed,APP-014-SIEMENS-MANUAL-001,,no,
 REQ-0158,APP-014,ELEC,simultaneous_group,WATER-A,,,,user_input,confirmed,,,no,
-REQ-0159,APP-014,PLUM,water_required,yes,,,,user_input,confirmed,,,no,
-REQ-0160,APP-014,PLUM,drain_required,model_dependent,,,,user_input,pending,,,yes,
+REQ-0159,APP-014,PLUM,water_required,yes,,,,official_exact_model,confirmed,APP-014-SIEMENS-MANUAL-001,,no,
+REQ-0160,APP-014,PLUM,drain_required,yes,,,,official_exact_model,confirmed,APP-014-SIEMENS-MANUAL-001,,no,
 REQ-0161,APP-014,GAS,gas_required,no,,,,user_input,confirmed,,,no,
-REQ-0162,APP-014,HVAC,ventilation_required,no,,,,user_input,confirmed,,,no,
-REQ-0163,APP-015,ELEC,rated_power,,0,,,user_input,not_applicable,OWNER-INBOX-20260814-001,,no,功能别名，不新增实物或接口。
-REQ-0164,APP-015,ELEC,simultaneous_group,APP-014_alias_no_count,,,,user_input,not_applicable,OWNER-INBOX-20260814-001,,no,功能别名，不新增实物或接口。
-REQ-0165,APP-015,PLUM,water_required,not_applicable_alias,,,,user_input,not_applicable,OWNER-INBOX-20260814-001,,no,功能别名，不新增实物或接口。
-REQ-0166,APP-015,PLUM,drain_required,not_applicable_alias,,,,user_input,not_applicable,OWNER-INBOX-20260814-001,,no,功能别名，不新增实物或接口。
-REQ-0167,APP-015,GAS,gas_required,not_applicable_alias,,,,user_input,not_applicable,OWNER-INBOX-20260814-001,,no,功能别名，不新增实物或接口。
-REQ-0168,APP-015,HVAC,ventilation_required,not_applicable_alias,,,,user_input,not_applicable,OWNER-INBOX-20260814-001,,no,功能别名，不新增实物或接口。
+REQ-0162,APP-014,HVAC/INT1,ventilation_required,yes,,,,official_exact_model,confirmed,APP-014-SIEMENS-MANUAL-001,,no,嵌柜须保持通风。
+REQ-0163,APP-015,ELEC,rated_power,,0,,,user_input,confirmed,OWNER-INBOX-20260814-001,,no,功能别名，不新增实物或接口。
+REQ-0164,APP-015,ELEC,simultaneous_group,APP-014_alias_no_count,,,,user_input,confirmed,OWNER-INBOX-20260814-001,,no,功能别名，不新增实物或接口。
+REQ-0165,APP-015,PLUM,water_required,not_applicable_alias,,,,user_input,confirmed,OWNER-INBOX-20260814-001,,no,功能别名，不新增实物或接口。
+REQ-0166,APP-015,PLUM,drain_required,not_applicable_alias,,,,user_input,confirmed,OWNER-INBOX-20260814-001,,no,功能别名，不新增实物或接口。
+REQ-0167,APP-015,GAS,gas_required,not_applicable_alias,,,,user_input,confirmed,OWNER-INBOX-20260814-001,,no,功能别名，不新增实物或接口。
+REQ-0168,APP-015,HVAC,ventilation_required,not_applicable_alias,,,,user_input,confirmed,OWNER-INBOX-20260814-001,,no,功能别名，不新增实物或接口。
 REQ-0169,APP-016,ELEC,rated_power,,,W,,pending,pending,,,yes,勒科斯 F50 候选缺厂家安装图/铭牌，不按同类产品猜测。
 REQ-0170,APP-016,ELEC,simultaneous_group,WATER-A,,,,user_input,confirmed,,,no,
 REQ-0171,APP-016,PLUM,water_required,no,,,,user_input,confirmed,,,no,
 REQ-0172,APP-016,PLUM,drain_required,yes,,,,user_input,confirmed,,,no,
 REQ-0173,APP-016,GAS,gas_required,no,,,,user_input,confirmed,,,no,
 REQ-0174,APP-016,HVAC,ventilation_required,no,,,,user_input,confirmed,,,no,
-REQ-0175,APP-017,ELEC,rated_power,,,W,,user_input,pending,,,yes,
+REQ-0175,APP-017,ELEC,rated_power,,2700,W,,project_candidate,confirmed,APP-017-SIEMENS-WASHER-MANUAL-001,,no,两台额定功率算术合计；不自动决定共用回路。
 REQ-0176,APP-017,ELEC,simultaneous_group,LAUNDRY-A,,,,user_input,confirmed,,,no,
-REQ-0177,APP-017,PLUM,water_required,yes,,,,user_input,confirmed,,,no,
-REQ-0178,APP-017,PLUM,drain_required,yes,,,,user_input,confirmed,,,no,
+REQ-0177,APP-017,PLUM,water_required,yes,,,,official_exact_model,confirmed,APP-017-SIEMENS-WASHER-MANUAL-001,,no,仅洗衣机需要生活给水。
+REQ-0178,APP-017,PLUM,drain_required,yes,,,,official_exact_model,confirmed,APP-017-SIEMENS-DRYER-MANUAL-001,,no,洗衣排水；干衣机可冷凝水盒或直接排水。
 REQ-0179,APP-017,GAS,gas_required,no,,,,user_input,confirmed,,,no,
-REQ-0180,APP-017,HVAC,ventilation_required,yes,,,,user_input,confirmed,,,no,
+REQ-0180,APP-017,HVAC,ventilation_required,yes,,,,official_exact_model,confirmed,APP-017-SIEMENS-DRYER-MANUAL-001,,no,开放柜、通风口畅通；不得六面密封。
 REQ-0181,APP-018,ELEC,rated_power,,,W,,user_input,pending,,,yes,
 REQ-0182,APP-018,ELEC,simultaneous_group,CONTINUOUS,,,,user_input,confirmed,,,no,
 REQ-0183,APP-018,PLUM,water_required,no,,,,user_input,confirmed,,,no,
@@ -593,17 +593,12 @@ REQ-0591,APP-004,ELEC,candidate_power_gs3,,2120,W,,official_exact_model,candidat
 REQ-0592,APP-004,ELEC,candidate_power_e1_prima_exp,1600_or_2600_by_version,,W,,official_model_family,candidate,APP-004-E1PRIMA-OFFICIAL-001,,yes,须按中国 220V 实购版本锁值。
 REQ-0595,APP-014,MULTI,functional_alias,APP-015,,,,user_input,confirmed,OWNER-INBOX-20260814-001,,no,同一台实物的净水功能历史编号。
 REQ-0596,APP-014,MULTI,physical_unit_count,,1,unit,,user_input,confirmed,OWNER-INBOX-20260814-001,,no,APP-014/015 合计只统计一台。
-REQ-0597,APP-014,MULTI,exact_enr,WS7060BC1C/01,,,,official_exact_model,confirmed,APP-014-SIEMENS-OFFICIAL-001,,no,
-REQ-0598,APP-014,MULTI,installation_manual,unknown,,,,pending,pending,,,yes,需准确 E-Nr. 安装说明书关闭功率、柜孔、给排水、电源与检修。
+REQ-0597,APP-014,MULTI,exact_enr,WS7FSB0C1C,,,,official_exact_model,confirmed,APP-014-SIEMENS-NEW-WEB-001,,no,当前业主优选。
+REQ-0598,APP-014,MULTI,installation_manual,8001325304_D,,,,official_exact_model,confirmed,APP-014-SIEMENS-MANUAL-001,,no,新旧款共用官方说明书。
 REQ-0599,APP-015,MULTI,alias_of,APP-014,,,,user_input,confirmed,OWNER-INBOX-20260814-001,,no,唯一物理设备为 APP-014。
 REQ-0600,APP-016,PLUM,flange_size,,,mm,,pending,pending,,,yes,勒科斯 F50 候选缺厂家安装图/铭牌，不按同类产品猜测。
 REQ-0601,APP-016,PLUM,drain_connection,,,mm,,pending,pending,,,yes,勒科斯 F50 候选缺厂家安装图/铭牌，不按同类产品猜测。
 REQ-0602,APP-016,ELEC,switch_method,,,,,pending,pending,,,yes,勒科斯 F50 候选缺厂家安装图/铭牌，不按同类产品猜测。
-REQ-0603,APP-017,INT1,product_width,,600,mm,,official_exact_model,confirmed,APP-017-LG-OFFICIAL-001,,no,
-REQ-0604,APP-017,INT1,product_depth,,660,mm,,official_exact_model,confirmed,APP-017-LG-OFFICIAL-001,,no,
-REQ-0605,APP-017,INT1,product_height,,1655,mm,,official_exact_model,confirmed,APP-017-LG-OFFICIAL-001,,no,
-REQ-0606,APP-017,INT1,wash_capacity,,13,kg,,official_exact_model,confirmed,APP-017-LG-OFFICIAL-001,,no,
-REQ-0607,APP-017,INT1,dry_capacity,,10,kg,,official_exact_model,confirmed,APP-017-LG-OFFICIAL-001,,no,
 REQ-0608,CTRL-ENTRY-A,ELEC,controlled_categories,ambient_LED;accent_spotlights,,,,user_input,confirmed,OWNER-INBOX-20260814-001,,no,
 REQ-0609,CTRL-ENTRY-A,ELEC,exact_sku,,,,,pending,pending,,,yes,颜色、键数和有线/无线版本未锁。
 REQ-0610,CTRL-ENTRY-A,ELEC,terminal_diagram,,,,,pending,pending,,,yes,零火文案不能替代端子定义和接线图。
@@ -657,3 +652,74 @@ REQ-0657,APP-004,PLUM,candidate_gs3_water_mode,reservoir_or_direct_plumb,,,,offi
 REQ-0658,APP-004,PLUM,candidate_gs3_drain_mode,model_and_mode_dependent,,,,official_exact_model,candidate,APP-004-GS3-OFFICIAL-001,,yes,仅预留可关闭接口，不据此施工定版。
 REQ-0659,APP-004,PLUM,candidate_e1_prima_water_mode,reservoir_or_direct_plumb,,,,official_exact_model,candidate,APP-004-E1PRIMA-OFFICIAL-001,,yes,最终未选 E1 Prima EXP 时不参与施工接口。
 REQ-0660,APP-004,PLUM,candidate_e1_prima_drain_mode,model_and_mode_dependent,,,,official_exact_model,candidate,APP-004-E1PRIMA-OFFICIAL-001,,yes,仅预留可关闭接口，不据此施工定版。
+REQ-0661,APP-017,ELEC,independent_power_plug_count,,2,unit,,official_exact_model,confirmed,APP-017-SIEMENS-DRYER-MANUAL-001,,no,两台各一根电源线和插头；禁止排插/延长线。
+REQ-0662,APP-017,ELEC,shared_branch_circuit_permission,unknown,,,,pending,pending,,,yes,厂家资料未明确允许共回路；由配电计算和当地规范关闭。
+REQ-0663,APP-017,MULTI,equipment_form,two_independent_appliances_stacked,,,,user_input,confirmed,,,no,不得标作洗干一体机或 WashTower。
+REQ-0664,APP-017,INT1,stack_connector_order_number,17008829,,,,official_exact_model,confirmed,APP-017-SIEMENS-DRYER-MANUAL-001,,no,说明书订货号；是否带抽板 unknown。
+REQ-0665,APP-017,INT1,stack_connector_drawer_status,unknown,,,,pending,pending,,,yes,说明书没有抽板描述。
+REQ-0666,APP-017,INT1,stack_connector_commercial_candidate,WTZ27510,,,,official_exact_model,candidate,APP-017-SIEMENS-WTZ27510-WEB-001,,yes,官网称带抽板；尚未证明等同 17008829 或逐型号兼容。
+REQ-0667,APP-017,INT1,stack_body_height_sum,,1690,mm,,project_candidate,confirmed,APP-017-SIEMENS-DRYER-WEB-001,,no,两台厂家机身高度算术和，不得单独用于柜体放样。
+REQ-0668,APP-017,INT1,manufacturer_open_cabinet_width_min,,630,mm,,official_exact_model,confirmed,APP-017-SIEMENS-DRYER-MANUAL-001,,no,干衣机说明书叠放开放柜最小值。
+REQ-0669,APP-017,INT1,manufacturer_open_cabinet_depth_min,,640,mm,,official_exact_model,confirmed,APP-017-SIEMENS-DRYER-MANUAL-001,,no,干衣机说明书叠放开放柜最小值。
+REQ-0670,APP-017,INT1,manufacturer_open_cabinet_height_min,,1730,mm,,official_exact_model,confirmed,APP-017-SIEMENS-DRYER-MANUAL-001,,no,已经高于 1690 mm 纯机身和。
+REQ-0671,APP-017,INT1,coordination_clear_width,,650,mm,,user_input,confirmed,,,no,项目有效净空，不是厂家产品尺寸。
+REQ-0672,APP-017,INT1,coordination_clear_depth,,800,mm,,user_input,confirmed,,,no,项目有效净空，不是厂家产品尺寸。
+REQ-0673,APP-017,INT1,coordination_clear_height,,1900,mm,,user_input,confirmed,,,no,项目有效净空，含连接件、调平及安装维护余量。
+REQ-0674,APP-017,INT1,fixed_front_threshold_allowed,no,,,,user_input,confirmed,,,no,整套设备必须可向前抽出维修。
+REQ-0675,APP-017,INT1,removable_side_top_panels_required,yes,,,,user_input,confirmed,,,no,两侧与顶部可拆卸收口。
+REQ-0676,APP-017,ELEC/PLUM/INT1,service_connections_preferred_zone,side_accessible_not_directly_behind,,,,user_input,confirmed,,,no,避免软管和插头在机器正后方受挤压。
+REQ-0677,APP-017,ELEC/PLUM,service_interface_center_coordinates,unknown,,,,pending,pending,,,yes,待厂家安装图/现场深化，不得从 IFC proxy 包围盒推测。
+REQ-0678,APP-017,INT1,front_open_total_depth,,1111,mm,,official_exact_model,confirmed,APP-017-SIEMENS-DRYER-WEB-001,,no,两台 90° 开门总深均为 1111 mm；前方取衣空间按此复核。
+REQ-0679,APP-017,PLUM,dryer_condensate_discharge,tank_or_direct_drain,,,,official_exact_model,confirmed,APP-017-SIEMENS-DRYER-MANUAL-001,,no,直排附件随机附带。
+REQ-0680,APP-017,PLUM,shared_siphon_y_distributor,,15000490,,,official_exact_model,candidate,APP-017-SIEMENS-DRYER-MANUAL-001,,no,官方 Y 分配器可使洗衣机与干衣机共用虹吸口；现场深化确认。
+REQ-0681,APP-017,MULTI,wool_selection_reason,washer wool 2kg; dryer wool rack one garment stationary,,,,official_exact_model,confirmed,APP-017-SIEMENS-DRYER-MANUAL-001,,no,产品选择理由，不是建筑安装条件。
+REQ-0682,APP-017-WASHER,ELEC/PLUM/INT1,product_width,,598,mm,,official_exact_model,confirmed,APP-017-SIEMENS-WASHER-WEB-001,,no,厂家参数；不作为接口中心坐标。
+REQ-0683,APP-017-WASHER,ELEC/PLUM/INT1,product_height,,848,mm,,official_exact_model,confirmed,APP-017-SIEMENS-WASHER-WEB-001,,no,厂家参数；不作为接口中心坐标。
+REQ-0684,APP-017-WASHER,ELEC/PLUM/INT1,product_depth,,600,mm,,official_exact_model,confirmed,APP-017-SIEMENS-WASHER-WEB-001,,no,厂家参数；不作为接口中心坐标。
+REQ-0685,APP-017-WASHER,ELEC/PLUM/INT1,door_closed_depth,,639,mm,,official_exact_model,confirmed,APP-017-SIEMENS-WASHER-WEB-001,,no,厂家参数；不作为接口中心坐标。
+REQ-0686,APP-017-WASHER,ELEC/PLUM/INT1,door_open_90_depth,,1111,mm,,official_exact_model,confirmed,APP-017-SIEMENS-WASHER-WEB-001,,no,厂家参数；不作为接口中心坐标。
+REQ-0687,APP-017-WASHER,ELEC/PLUM/INT1,leveling_height_add_max,,12,mm,,official_exact_model,confirmed,APP-017-SIEMENS-WASHER-WEB-001,,no,厂家参数；不作为接口中心坐标。
+REQ-0688,APP-017-WASHER,ELEC/PLUM/INT1,rated_power,,1900,W,,official_exact_model,confirmed,APP-017-SIEMENS-WASHER-MANUAL-001,,no,厂家参数；不作为接口中心坐标。
+REQ-0689,APP-017-WASHER,ELEC/PLUM/INT1,rated_voltage,,220,V,,official_exact_model,confirmed,APP-017-SIEMENS-WASHER-MANUAL-001,,no,厂家参数；不作为接口中心坐标。
+REQ-0690,APP-017-WASHER,ELEC/PLUM/INT1,frequency,,50,Hz,,official_exact_model,confirmed,APP-017-SIEMENS-WASHER-MANUAL-001,,no,厂家参数；不作为接口中心坐标。
+REQ-0691,APP-017-WASHER,ELEC/PLUM/INT1,minimum_fuse,,10,A,,official_exact_model,confirmed,APP-017-SIEMENS-WASHER-MANUAL-001,,no,厂家参数；不作为接口中心坐标。
+REQ-0692,APP-017-WASHER,ELEC/PLUM/INT1,power_cord_length,,2100,mm,,official_exact_model,confirmed,APP-017-SIEMENS-WASHER-MANUAL-001,,no,厂家参数；不作为接口中心坐标。
+REQ-0693,APP-017-WASHER,ELEC/PLUM/INT1,water_connection,G3/4 cold water,,,,official_exact_model,confirmed,APP-017-SIEMENS-WASHER-MANUAL-001,,no,厂家参数；不作为接口中心坐标。
+REQ-0694,APP-017-WASHER,ELEC/PLUM/INT1,water_pressure_min,,100,kPa,,official_exact_model,confirmed,APP-017-SIEMENS-WASHER-MANUAL-001,,no,厂家参数；不作为接口中心坐标。
+REQ-0695,APP-017-WASHER,ELEC/PLUM/INT1,water_pressure_max,,1000,kPa,,official_exact_model,confirmed,APP-017-SIEMENS-WASHER-MANUAL-001,,no,厂家参数；不作为接口中心坐标。
+REQ-0696,APP-017-WASHER,ELEC/PLUM/INT1,inlet_hose_length,,1200,mm,,official_exact_model,confirmed,APP-017-SIEMENS-WASHER-MANUAL-001,,no,厂家参数；不作为接口中心坐标。
+REQ-0697,APP-017-WASHER,ELEC/PLUM/INT1,drain_hose_length,,1500,mm,,official_exact_model,confirmed,APP-017-SIEMENS-WASHER-MANUAL-001,,no,厂家参数；不作为接口中心坐标。
+REQ-0698,APP-017-WASHER,ELEC/PLUM/INT1,drain_height_max,,1000,mm,,official_exact_model,confirmed,APP-017-SIEMENS-WASHER-MANUAL-001,,no,厂家参数；不作为接口中心坐标。
+REQ-0699,APP-017-WASHER,ELEC/PLUM/INT1,wool_program_load_max,,2,kg,,official_exact_model,confirmed,APP-017-SIEMENS-WASHER-MANUAL-001,,no,厂家参数；不作为接口中心坐标。
+REQ-0700,APP-017-WASHER,ELEC/PLUM/INT1,door_handedness,unknown,,,,pending,pending,APP-017-SIEMENS-WASHER-MANUAL-001,,yes,厂家参数；不作为接口中心坐标。
+REQ-0701,APP-017-DRYER,ELEC/PLUM/INT1,product_width,,598,mm,,official_exact_model,confirmed,APP-017-SIEMENS-DRYER-WEB-001,,no,厂家参数；不作为接口中心坐标。
+REQ-0702,APP-017-DRYER,ELEC/PLUM/INT1,product_height,,842,mm,,official_exact_model,confirmed,APP-017-SIEMENS-DRYER-WEB-001,,no,厂家参数；不作为接口中心坐标。
+REQ-0703,APP-017-DRYER,ELEC/PLUM/INT1,product_depth,,600,mm,,official_exact_model,confirmed,APP-017-SIEMENS-DRYER-WEB-001,,no,厂家参数；不作为接口中心坐标。
+REQ-0704,APP-017-DRYER,ELEC/PLUM/INT1,door_closed_depth,,639,mm,,official_exact_model,confirmed,APP-017-SIEMENS-DRYER-WEB-001,,no,厂家参数；不作为接口中心坐标。
+REQ-0705,APP-017-DRYER,ELEC/PLUM/INT1,door_open_90_depth,,1111,mm,,official_exact_model,confirmed,APP-017-SIEMENS-DRYER-WEB-001,,no,厂家参数；不作为接口中心坐标。
+REQ-0706,APP-017-DRYER,ELEC/PLUM/INT1,leveling_height_add_max,,15,mm,,official_exact_model,confirmed,APP-017-SIEMENS-DRYER-WEB-001,,no,厂家参数；不作为接口中心坐标。
+REQ-0707,APP-017-DRYER,ELEC/PLUM/INT1,rated_power,,800,W,,official_exact_model,confirmed,APP-017-SIEMENS-DRYER-MANUAL-001,,no,厂家参数；不作为接口中心坐标。
+REQ-0708,APP-017-DRYER,ELEC/PLUM/INT1,rated_voltage,,220,V,,official_exact_model,confirmed,APP-017-SIEMENS-DRYER-MANUAL-001,,no,厂家参数；不作为接口中心坐标。
+REQ-0709,APP-017-DRYER,ELEC/PLUM/INT1,frequency,,50,Hz,,official_exact_model,confirmed,APP-017-SIEMENS-DRYER-MANUAL-001,,no,厂家参数；不作为接口中心坐标。
+REQ-0710,APP-017-DRYER,ELEC/PLUM/INT1,minimum_fuse,,10,A,,official_exact_model,confirmed,APP-017-SIEMENS-DRYER-MANUAL-001,,no,厂家参数；不作为接口中心坐标。
+REQ-0711,APP-017-DRYER,ELEC/PLUM/INT1,power_cord_length,,1450,mm,,official_exact_model,confirmed,APP-017-SIEMENS-DRYER-MANUAL-001,,no,厂家参数；不作为接口中心坐标。
+REQ-0712,APP-017-DRYER,ELEC/PLUM/INT1,wool_rack_included,yes,,,,official_exact_model,confirmed,APP-017-SIEMENS-DRYER-MANUAL-001,,no,厂家参数；不作为接口中心坐标。
+REQ-0713,APP-017-DRYER,ELEC/PLUM/INT1,wool_rack_program_load,one_garment,,,,official_exact_model,confirmed,APP-017-SIEMENS-DRYER-MANUAL-001,,no,厂家参数；不作为接口中心坐标。
+REQ-0714,APP-017-DRYER,ELEC/PLUM/INT1,door_handedness,customer_service_reversible,,,,official_exact_model,confirmed,APP-017-SIEMENS-DRYER-MANUAL-001,,no,厂家参数；不作为接口中心坐标。
+REQ-0715,APP-014,MULTI,price_comparison_alternative,WS7060BC1C,,,,user_input,confirmed,APP-014-SIEMENS-OLD-WEB-001,,no,旧款只作比价备选，不是当前优选或已采购。
+REQ-0716,APP-014,ELEC,rated_voltage,,220,V,,official_exact_model,confirmed,APP-014-SIEMENS-MANUAL-001,,no,
+REQ-0717,APP-014,ELEC,frequency,,50,Hz,,official_exact_model,confirmed,APP-014-SIEMENS-MANUAL-001,,no,
+REQ-0718,APP-014,ELEC,rated_current_max,,10,A,,official_exact_model,confirmed,APP-014-SIEMENS-NEW-WEB-001,,no,
+REQ-0719,APP-014,INT1,product_width,,594,mm,,official_exact_model,confirmed,APP-014-SIEMENS-MANUAL-001,,no,
+REQ-0720,APP-014,INT1,product_height,,455,mm,,official_exact_model,confirmed,APP-014-SIEMENS-MANUAL-001,,no,
+REQ-0721,APP-014,INT1,product_depth,,550,mm,,official_exact_model,confirmed,APP-014-SIEMENS-MANUAL-001,,no,
+REQ-0722,APP-014,PLUM,water_pressure_min,,0.1,MPa,,official_exact_model,confirmed,APP-014-SIEMENS-MANUAL-001,,no,
+REQ-0723,APP-014,PLUM,water_pressure_max,,0.4,MPa,,official_exact_model,confirmed,APP-014-SIEMENS-MANUAL-001,,no,
+REQ-0724,APP-014,PLUM,inlet_water_temperature_min,,5,°C,,official_exact_model,confirmed,APP-014-SIEMENS-MANUAL-001,,no,
+REQ-0725,APP-014,PLUM,inlet_water_temperature_max,,38,°C,,official_exact_model,confirmed,APP-014-SIEMENS-MANUAL-001,,no,
+REQ-0726,APP-014,INT1,ventilation_opening_area_min,,100,cm2,,official_exact_model,confirmed,APP-014-SIEMENS-MANUAL-001,,no,橱柜上部通风口，不得遮盖。
+REQ-0727,APP-014,INT1,cabinet_side_opening_diameter_min,,80,mm,,official_exact_model,confirmed,APP-014-SIEMENS-MANUAL-001,,no,
+REQ-0728,APP-014,INT1,faucet_hole_diameter,,30,mm,,official_exact_model,confirmed,APP-014-SIEMENS-MANUAL-001,,no,
+REQ-0729,APP-014,ELEC/PLUM,service_distance_max,,3000,mm,,official_exact_model,confirmed,APP-014-SIEMENS-MANUAL-001,,no,随机自带 3 m 管；改装须咨询安装工程师。
+REQ-0730,APP-014,ELEC,power_cord_length,,2000,mm,,official_exact_model,confirmed,APP-014-SIEMENS-MANUAL-001,,no,
+REQ-0731,APP-014,ELEC/INT1,power_outlet_location,left_right_or_upper_adjacent_cabinet_not_below_unit,,,,official_exact_model,confirmed,APP-014-SIEMENS-MANUAL-001,,no,插头必须可自由插拔。

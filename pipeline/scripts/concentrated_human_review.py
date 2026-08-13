@@ -93,6 +93,42 @@ INT1_PACKAGES = (
         "responsible_party": "家具深化/建筑设计/业主",
         "required_evidence": "客卫干区立面和镜柜加工图，明确宽高深、分格开启、层板通风与满载条件",
     },
+    {
+        "package_id": "INT1-JINK-CONTROL-PANELS",
+        "title": "JINK EGG 控制面板嵌装适配",
+        "equipment_ids": {"CTRL-ENTRY-A", "CTRL-MASTER-A", "CTRL-MASTER-B"},
+        "root_cause": "候选面板族外形不能替代准确 SKU、端子图、底盒净深和本项目平嵌收口验证",
+        "affected_sheets": ["E-302", "I-504"],
+        "responsible_party": "电气设计/设备方/建筑设计",
+        "required_evidence": "准确 SKU、厂家端子图、底盒与饰面节点及样板安装复核",
+    },
+    {
+        "package_id": "INT1-SIEMENS-LAUNDRY-STACK",
+        "title": "西门子洗衣机与热泵干衣机叠放连接",
+        "equipment_ids": {"APP-017", "APP-017-WASHER", "APP-017-DRYER"},
+        "root_cause": "说明书订货号 17008829 已确认，但抽板配置、WTZ27510 商业型号映射和两台 E-Nr./FD 逐型号兼容尚未书面关闭",
+        "affected_sheets": ["I-503", "E-303", "P-201", "S-701"],
+        "responsible_party": "西门子客服/设备方/橱柜深化",
+        "required_evidence": "西门子书面确认本两台设备的原厂连接件商业型号、抽板配置和逐型号兼容性",
+    },
+    {
+        "package_id": "INT1-KITCHEN-GAS-ALARM",
+        "title": "中厨燃气报警器准入与平嵌条件",
+        "equipment_ids": {"SENSOR-GAS-R04"},
+        "root_cause": "研究候选不能替代珠海燃气公司的准入、认证、联动阀及平嵌书面许可",
+        "affected_sheets": ["A-106", "E-303", "I-501"],
+        "responsible_party": "燃气公司/设备方/电气设计",
+        "required_evidence": "燃气公司书面回复及最终产品安装图，含供电、联动、标高、禁距与收口许可",
+    },
+    {
+        "package_id": "INT1-KITCHEN-FIRE-SENSOR",
+        "title": "中厨火灾探测器最终类型与装饰收口",
+        "equipment_ids": {"SENSOR-001"},
+        "root_cause": "已确认点位不等于已确认感温、感烟或复合产品及其平嵌装饰条件",
+        "affected_sheets": ["A-106", "E-301", "I-501"],
+        "responsible_party": "消防/设备方/建筑设计",
+        "required_evidence": "消防或设备方确认最终探测类型、准确型号、供电通信、安装禁距和装饰收口许可",
+    },
 )
 
 
@@ -400,9 +436,15 @@ def requirement_review_packages(
     packages: list[dict[str, Any]] = []
     mapped: set[str] = set()
 
-    int1_rows = [row for row in blockers if row["discipline"].upper() == "INT1"]
+    int1_rows = [
+        row for row in blockers
+        if "INT1" in {part.strip() for part in row["discipline"].upper().split("/")}
+    ]
     for definition in INT1_PACKAGES:
-        rows = [row for row in int1_rows if row["equipment_id"] in definition["equipment_ids"]]
+        # Stable root-cause packages are equipment-owned, so capture every
+        # blocking discipline for that equipment instead of losing compound
+        # values such as ELEC/INT1, ELEC/GAS, or ELEC/PLUM/INT1.
+        rows = [row for row in blockers if row["equipment_id"] in definition["equipment_ids"]]
         if not rows:
             raise ValueError(f"INT1 package has no current requirements: {definition['package_id']}")
         packages.append(

@@ -15,27 +15,27 @@ test("equipment SSOT validates projections and covers every scoped IFC object", 
   expect(run.exitCode).toBe(0);
   const report = JSON.parse(run.stdout.toString());
   expect(report.validate).toMatchObject({
-    master_count: 159,
-    requirement_count: 658,
-    source_count: 154,
+    master_count: 161,
+    requirement_count: 724,
+    source_count: 163,
     schema_version: "1.0.0",
   });
   expect(report.projections).toMatchObject({
     appliance_rows: 18,
     furniture_rows: 9,
-    elec_evidence_rows: 58,
+    elec_evidence_rows: 67,
     hvac_evidence_rows: 4,
     furniture_role_rows: 51,
     mode: "check",
   });
   expect(report.ifc_coverage).toMatchObject({
-    scope_count: 163,
-    covered_count: 163,
+    scope_count: 165,
+    covered_count: 165,
     missing_count: 0,
     duplicate_count: 0,
   });
   expect(report.ifc_coverage.class_counts).toEqual({
-    IfcElectricAppliance: 19,
+    IfcElectricAppliance: 21,
     IfcUnitaryEquipment: 1,
     IfcFurniture: 89,
     IfcSanitaryTerminal: 27,
@@ -102,9 +102,9 @@ print(json.dumps({
   const rule = (id: string) => data.rules.find((row) => row.rule_id === id);
 
   expect(master("APP-014")).toMatchObject({
-    model: "WS7060BC1C/01",
+    model: "WS7FSB0C1C",
     quantity: "1",
-    procurement_status: "selected",
+    procurement_status: "candidate",
     decision_status: "partial",
   });
   expect(requirement("APP-014", "functional_alias")).toMatchObject({
@@ -112,8 +112,13 @@ print(json.dumps({
     status: "confirmed",
   });
   expect(requirement("APP-014", "installation_manual")).toMatchObject({
-    status: "pending",
-    blocks_release: "yes",
+    value_text: "8001325304_D",
+    status: "confirmed",
+    blocks_release: "no",
+  });
+  expect(requirement("APP-014", "price_comparison_alternative")).toMatchObject({
+    value_text: "WS7060BC1C",
+    status: "confirmed",
   });
   expect(master("APP-015")).toMatchObject({
     quantity: "0",
@@ -122,9 +127,25 @@ print(json.dumps({
     schedule_included: "no",
   });
   expect(requirement("APP-015", "alias_of")).toMatchObject({ value_text: "APP-014", status: "confirmed" });
-  for (const key of ["rated_power", "water_required", "drain_required", "gas_required", "ventilation_required"]) {
+  expect(master("APP-017")).toMatchObject({
+    manufacturer: "Siemens",
+    model: "WG54M7D20W + WQ55M7U20W",
+    procurement_status: "candidate",
+  });
+  expect(requirement("APP-017", "coordination_clear_width")?.value_number).toBe("650");
+  expect(requirement("APP-017", "coordination_clear_height")?.value_number).toBe("1900");
+  expect(requirement("APP-017", "coordination_clear_depth")?.value_number).toBe("800");
+  expect(requirement("APP-017", "independent_power_plug_count")?.value_number).toBe("2");
+  expect(requirement("APP-017", "stack_connector_order_number")?.value_text).toBe("17008829");
+  expect(requirement("APP-015", "rated_power")).toMatchObject({
+    value_number: "0",
+    status: "confirmed",
+    blocks_release: "no",
+  });
+  for (const key of ["water_required", "drain_required", "gas_required", "ventilation_required"]) {
     expect(requirement("APP-015", key), `APP-015.${key}`).toMatchObject({
-      status: "not_applicable",
+      value_text: "not_applicable_alias",
+      status: "confirmed",
       blocks_release: "no",
     });
   }
@@ -135,7 +156,7 @@ print(json.dumps({
     value_text: "1600_or_2600_by_version",
     status: "candidate",
   });
-  expect(requirement("APP-005", "rated_power")).toMatchObject({ value_number: "1200", status: "candidate" });
+  expect(requirement("APP-005", "rated_power")).toMatchObject({ value_number: "1200", status: "confirmed" });
   expect(master("APP-016")).toMatchObject({ procurement_status: "candidate", decision_status: "partial" });
   expect(requirement("APP-016", "rated_power")).toMatchObject({ status: "pending", blocks_release: "yes" });
 
@@ -185,7 +206,7 @@ test("equipment SSOT can audit an IFC evidence hash refresh without writing", ()
   const run = Bun.spawnSync(["python3", script, "refresh-ifc-source-hashes", "--dry-run"], { cwd: root });
   expect(run.exitCode, run.stderr.toString()).toBe(0);
   const report = JSON.parse(run.stdout.toString());
-  expect(report.scoped_ifc_object_count).toBe(163);
+  expect(report.scoped_ifc_object_count).toBe(165);
   expect(report.target_source_count).toBeGreaterThan(1);
   expect(report.dry_run).toBe(true);
   expect(readFileSync(sourcePath)).toEqual(before);

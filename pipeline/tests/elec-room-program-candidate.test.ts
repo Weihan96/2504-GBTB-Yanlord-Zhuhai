@@ -18,7 +18,7 @@ test("all rooms and modelled equipment receive read-only electrical program cove
   expect(report.summary.network_data_groups_min).toBe(7);
   expect(report.summary.manual_dedicated_power_min).toBe(9);
   expect(report.summary.cabinet_light_feed_zones_min).toBe(7);
-  expect(report.summary.modelled_equipment_power_demands).toBe(16);
+  expect(report.summary.modelled_equipment_power_demands).toBe(17);
   expect(report.summary.formal_switch_instances).toBe(0);
   expect(report.summary.formal_network_instances).toBe(0);
   expect(report.design_rule_summary).toEqual({
@@ -48,6 +48,12 @@ test("all rooms and modelled equipment receive read-only electrical program cove
   expect(report.gates.whole_home_switch_positioning_complete).toBe(false);
   expect(report.gates.whole_home_network_positioning_complete).toBe(false);
   expect(report.gates.automatic_ifc_write_allowed).toBe(false);
+  const laundry = report.equipment_power_demands.filter((row: { source_id: string }) =>
+    ["APP-017-WASHER", "APP-017-DRYER"].includes(row.source_id)
+  );
+  expect(laundry).toHaveLength(2);
+  expect(laundry.map((row: { rated_power_w: number }) => row.rated_power_w).sort((a: number, b: number) => a - b)).toEqual([800, 1900]);
+  expect(laundry.every((row: { independent_plug_required: boolean }) => row.independent_plug_required)).toBe(true);
   const rendered = readFileSync(svg, "utf8");
   expect(rendered).toContain("E-302/E-304 逐房间用电与弱电功能程序候选");
   expect(rendered).toContain("客厅/书房共用1个路由器");

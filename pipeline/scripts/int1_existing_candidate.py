@@ -51,7 +51,7 @@ BATHROOM_CONTEXT_IDS = {
     "04rs0EDjn2EvxytEQSxWRB",  # confirmed new WAL170 bathroom wall
     "3jha5L04zBjh0$pMl_tHLy",  # confirmed new WAL170 bathroom wall
 }
-WASHTOWER_ID = "3JAkt8PsX7vPfGKWLK5EKp"
+LAUNDRY_STACK_COORDINATION_ID = "3JAkt8PsX7vPfGKWLK5EKp"
 GEBERIT_FLUSH_PLATE_IDS = {
     "2gFgcOYEXEaQWAzcKulTFt",
     "2lDPsdQevFSfeOThtjSlPG",
@@ -575,12 +575,13 @@ def main() -> None:
             )
         )
 
-    washtower = model.by_guid(WASHTOWER_ID)
+    laundry_stack = model.by_guid(LAUNDRY_STACK_COORDINATION_ID)
     records.append(
         object_record(
-            settings, washtower, "I-503", source_hash, bbox_registry, "fixed_equipment",
-            "laundry_equipment_envelope_coordination", "Exact IFC GlobalId, LG WashTower name and existing description preserve the current model identity.", 1.0,
-            equipment=owners.get(WASHTOWER_ID),
+            settings, laundry_stack, "I-503", source_hash, bbox_registry, "fixed_equipment",
+            "laundry_equipment_clearance_coordination",
+            "Exact IFC GlobalId identifies the APP-017 coordination-clearance carrier; its world bbox is a project clearance, not either manufacturer's product body or an interface centre.", 1.0,
+            equipment=owners.get(LAUNDRY_STACK_COORDINATION_ID),
         )
     )
 

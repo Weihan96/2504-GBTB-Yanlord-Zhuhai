@@ -79,8 +79,13 @@ test(
     expect(report.gates.socket_count).toBe(11);
     expect(report.gates.typed_equipment_count).toBe(8);
     expect(report.gates.proxy_handoff_count).toBe(9);
-    expect(report.gates.used_appliance_type_count).toBe(9);
+    expect(report.gates.used_appliance_type_count).toBe(11);
     expect(report.gates.unused_appliance_type_count).toBe(33);
+    expect(report.gates.placement_only_semantic_appliance_count).toBe(2);
+    expect(report.gates.placement_only_semantic_appliance_ids).toEqual([
+      "1Uzcf8kU9J2w9K40VkzCgV",
+      "3_ZSeTAOPNThu9wyl2sOxQ",
+    ]);
     expect(report.gates.e302_switch_instances).toBe(0);
     expect(report.gates.e304_network_instances).toBe(0);
     expect(report.gates.automatic_ifc_write_allowed).toBe(false);

@@ -539,9 +539,11 @@ def main() -> int:
     assign_candidate_ids(lights, "L")
 
     appliances = model.by_type("IfcElectricAppliance")
+    geometric_appliances = [product for product in appliances if product.Representation is not None]
+    placement_only_appliances = [product for product in appliances if product.Representation is None]
     sockets = [
         instance_record(product, settings, footprints)
-        for product in appliances
+        for product in geometric_appliances
         if str(getattr(get_type(product), "ElementType", "") or "") == "SOCKET"
     ]
     for record in sockets:
@@ -551,7 +553,7 @@ def main() -> int:
 
     equipment = [
         instance_record(product, settings, footprints)
-        for product in appliances
+        for product in geometric_appliances
         if str(getattr(get_type(product), "ElementType", "") or "") != "SOCKET"
     ]
     for record in equipment:
@@ -645,6 +647,8 @@ def main() -> int:
         "appliance_type_count": len(appliance_types),
         "used_appliance_type_count": len(used_types),
         "unused_appliance_type_count": len(unused_types),
+        "placement_only_semantic_appliance_count": len(placement_only_appliances),
+        "placement_only_semantic_appliance_ids": sorted(product.GlobalId for product in placement_only_appliances),
         "type_library_separated_from_instances": not ({record["global_id"] for record in used_types} & {record["global_id"] for record in unused_types}),
         "e302_switch_instances": e302_instances,
         "e302_unused_control_type_definitions": len(control_types),
@@ -673,9 +677,13 @@ def main() -> int:
             gates["proxy_handoff_over_0_1_mm"] == 9,
             gates["related_opening_count"] == 4,
             gates["related_openings_have_one_host"],
-            gates["appliance_type_count"] == 42,
-            gates["used_appliance_type_count"] == 9,
+            gates["appliance_type_count"] == 44,
+            gates["used_appliance_type_count"] == 11,
             gates["unused_appliance_type_count"] == 33,
+            gates["placement_only_semantic_appliance_count"] == 2,
+            set(gates["placement_only_semantic_appliance_ids"]) == {
+                "1Uzcf8kU9J2w9K40VkzCgV", "3_ZSeTAOPNThu9wyl2sOxQ"
+            },
             gates["type_library_separated_from_instances"],
             gates["e302_switch_instances"] == 0,
             gates["e302_unused_control_type_definitions"] == 13,
@@ -741,6 +749,15 @@ def main() -> int:
                 "status": "existing_points_and_footprints_candidate",
                 "sockets": sockets,
                 "typed_equipment": equipment,
+                "placement_only_semantic_appliances": [
+                    {
+                        "global_id": product.GlobalId,
+                        "name": str(product.Name or ""),
+                        "assigned_type": str(getattr(get_type(product), "ElementType", "") or ""),
+                        "drawing_role": "represented_by_APP-017_parent_coordination_clearance",
+                    }
+                    for product in placement_only_appliances
+                ],
                 "proxy_handoffs": proxies,
                 "related_openings": openings,
                 "missing": ["power", "voltage", "circuit", "waterproofing", "interface"],

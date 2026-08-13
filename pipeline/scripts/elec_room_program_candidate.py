@@ -106,8 +106,10 @@ def compile_design_rule_summary(rules: list[dict[str, Any]]) -> dict[str, Any]:
     )
     return {
         "physical_wired_switch_only": any(
-            row["rule_kind"] == "control_method" and row["value"] == "physical_wired_only"
-            for row in confirmed
+            row["rule_kind"] == "control_method"
+            and "physical_wall_controls_required" in row["value"]
+            and "physical_interface_confirmed" in row["status"]
+            for row in rules
         ),
         "panel_bottom_AFF_mm": datums,
         "bedroom_AP_count": network_roles["wireless_access_point"],
@@ -174,9 +176,9 @@ def proxy_equipment_demands(elec: dict[str, Any], positioning: dict[str, Any]) -
 
 
 def supplemental_equipment_demands(int1: dict[str, Any], route: dict[str, Any]) -> list[dict[str, Any]]:
-    wash_tower = next(row for row in int1["records"] if row["global_id"] == "3JAkt8PsX7vPfGKWLK5EKp")
-    wash_centre = [
-        round((float(wash_tower["bbox_min_mm"][axis]) + float(wash_tower["bbox_max_mm"][axis])) / 2.0, 6)
+    laundry_stack = next(row for row in int1["records"] if row["global_id"] == "3JAkt8PsX7vPfGKWLK5EKp")
+    laundry_centre = [
+        round((float(laundry_stack["bbox_min_mm"][axis]) + float(laundry_stack["bbox_max_mm"][axis])) / 2.0, 6)
         for axis in range(3)
     ]
     if route["source"]["legacy_blend_sha256"] != EXPECTED_LEGACY_BLEND_SHA256:
@@ -193,17 +195,37 @@ def supplemental_equipment_demands(int1: dict[str, Any], route: dict[str, Any]) 
         raise RuntimeError("A06 placement-only formal identity changed")
     return [
         {
-            "source_kind": "formal_named_equipment_proxy",
-            "source_id": "INT1-WASHTOWER",
-            "global_id": wash_tower["global_id"],
-            "equipment_role": "LG WashTower",
+            "source_kind": "formal_laundry_coordination_clearance",
+            "source_id": "APP-017-WASHER",
+            "global_id": "1Uzcf8kU9J2w9K40VkzCgV",
+            "coordination_proxy_global_id": laundry_stack["global_id"],
+            "equipment_role": "Siemens WG54M7D20W washer · plug 1 of 2",
             "placement_room_reference": "R04",
             "placement_room_name": "中厨",
-            "coordination_centre_mm": wash_centre,
-            "basis": "formal IFC named LG WashTower envelope contained by R04; manufacturer connection point remains unknown",
+            "coordination_centre_mm": laundry_centre,
+            "basis": "formal APP-017 coordination clearance geometrically falls within R04; this centre is not the washer socket, inlet or drain position",
             "confidence": 1.0,
             "review_required": True,
-            "position_status": "equipment_envelope_only",
+            "position_status": "coordination_clearance_only_service_position_pending",
+            "rated_power_w": 1900,
+            "independent_plug_required": True,
+            "automatic_ifc_write_allowed": False,
+        },
+        {
+            "source_kind": "formal_laundry_coordination_clearance",
+            "source_id": "APP-017-DRYER",
+            "global_id": "3_ZSeTAOPNThu9wyl2sOxQ",
+            "coordination_proxy_global_id": laundry_stack["global_id"],
+            "equipment_role": "Siemens WQ55M7U20W heat-pump dryer · plug 2 of 2",
+            "placement_room_reference": "R04",
+            "placement_room_name": "中厨",
+            "coordination_centre_mm": laundry_centre,
+            "basis": "formal APP-017 coordination clearance geometrically falls within R04; this centre is not the dryer socket or condensate-drain position",
+            "confidence": 1.0,
+            "review_required": True,
+            "position_status": "coordination_clearance_only_service_position_pending",
+            "rated_power_w": 800,
+            "independent_plug_required": True,
             "automatic_ifc_write_allowed": False,
         },
         {
@@ -402,7 +424,7 @@ def main() -> int:
         "equipment_demand_semantics": "placement and interface coordination only; wattage completeness is tracked separately",
         "gates": {
             "all_22_spaces_programmed": len(rooms) == 22,
-            "all_equipment_coordination_demands_have_position_evidence": len(equipment) == 16 and all(row["basis"] for row in equipment),
+            "all_equipment_coordination_demands_have_position_evidence": len(equipment) == 17 and all(row["basis"] for row in equipment),
             "all_equipment_electrical_loads_have_evidence": False,
             "developer_references_are_not_final_design": True,
             "confirmed_design_rules_are_complete": design_rule_summary == {
