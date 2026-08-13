@@ -583,3 +583,9 @@ REQ-0581,SAN-014,PLUM,drain_demand,yes,,,,official_exact_model,confirmed,GEB-OFF
 REQ-0582,SAN-001,PLUM,cold_water_demand,no,,,,official_exact_model,confirmed,GEB-OFFICIAL-154446-001,CleanLine50 精确 SKU 为线性排水槽,no,排水槽本体不是给水用水点
 REQ-0583,SAN-001,PLUM,hot_water_demand,no,,,,official_exact_model,confirmed,GEB-OFFICIAL-154446-001,CleanLine50 精确 SKU 为线性排水槽,no,排水槽本体不是热水用水点
 REQ-0584,SAN-001,PLUM,drain_demand,yes,,,,official_exact_model,confirmed,GEB-OFFICIAL-154446-001,CleanLine50 精确 SKU 与集成坡度,no,只确认排水需求；实际排水中心仍由安装套件和现场关闭
+REQ-0585,APP-009,PLUM,cold_water_demand,yes,,,,official_exact_model,confirmed,APP-DW-INSTALL-001,p.1–2,no,精确候选型号安装图确认 G3/4 冷水；只关闭设备介质需求，不确认现场阀门、支管、软管路径或坐标
+REQ-0586,APP-009,PLUM,hot_water_demand,no,,,,official_exact_model,confirmed,APP-DW-INSTALL-001,p.1–2,no,精确候选型号安装图只允许冷水且冷水不高于 25°C；不得配置热水需求
+REQ-0587,APP-009,PLUM,drain_demand,yes,,,,official_exact_model,confirmed,APP-DW-INSTALL-001,p.1–2,no,精确候选型号安装图确认 Ø38 排水接管；只关闭设备介质需求，不确认项目排水中心、转接或路径
+REQ-0588,APP-010,PLUM,cold_water_demand,yes,,,,official_exact_model,confirmed,APP-DW-INSTALL-001,p.1–2,no,精确候选型号安装图确认 G3/4 冷水；只关闭设备介质需求，不确认现场阀门、支管、软管路径或坐标
+REQ-0589,APP-010,PLUM,hot_water_demand,no,,,,official_exact_model,confirmed,APP-DW-INSTALL-001,p.1–2,no,精确候选型号安装图只允许冷水且冷水不高于 25°C；不得配置热水需求
+REQ-0590,APP-010,PLUM,drain_demand,yes,,,,official_exact_model,confirmed,APP-DW-INSTALL-001,p.1–2,no,精确候选型号安装图确认 Ø38 排水接管；只关闭设备介质需求，不确认项目排水中心、转接或路径

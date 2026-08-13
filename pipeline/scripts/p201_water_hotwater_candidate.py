@@ -211,6 +211,25 @@ def render_svg(records: list[dict[str, Any]], ifc_hash: str) -> str:
 '''
 
 
+def exact_media_evidence_complete(records: list[dict[str, Any]]) -> bool:
+    """Require every incrementally confirmed endpoint to have a complete exact-model set."""
+    for record in records:
+        if not record["service_demand_candidate"]:
+            continue
+        media = list(record["service_media_demand"].values())
+        confirmed = [item for item in media if item["status"] == "confirmed"]
+        if confirmed and len(confirmed) != len(media):
+            return False
+        if any(
+            item.get("basis_kind") != "official_exact_model"
+            or not item.get("source_id")
+            or not item.get("requirement_id")
+            for item in confirmed
+        ):
+            return False
+    return True
+
+
 def main() -> None:
     root_default = Path(__file__).resolve().parents[2]
     parser = argparse.ArgumentParser(description=__doc__)
@@ -248,6 +267,7 @@ def main() -> None:
         and all(item["status"] == "confirmed" for item in row["service_media_demand"].values())
         for row in records
     )
+    exact_media_evidence_pass = exact_media_evidence_complete(records)
 
     svg_path.parent.mkdir(parents=True, exist_ok=True)
     svg_path.write_text(render_svg(records, ifc_hash), encoding="utf-8")
@@ -310,7 +330,7 @@ def main() -> None:
             "all_registered_objects_drawn": True,
             "service_and_non_service_split_explicit": True,
             "unknown_connection_coordinates_preserved": all(row["connection_requirement"] == "unknown" for row in records),
-            "confirmed_service_media_has_exact_model_evidence": confirmed_media_count == 3,
+            "confirmed_service_media_has_exact_model_evidence": exact_media_evidence_pass,
             "formal_distribution_topology_present": False,
             "ifc_unchanged_during_generation": ending_ifc_hash == ifc_hash,
             "automatic_ifc_write_allowed": False,

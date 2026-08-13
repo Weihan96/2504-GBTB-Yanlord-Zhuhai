@@ -262,6 +262,35 @@ test("reviewed candidates reject a report artifact whose bytes drift from its de
   expect(check.details.errors[0]).toContain("artifact SHA-256 does not match");
 });
 
+test("reviewed candidates reject a report whose declared source dependency drifts", () => {
+  const fixture = makeFixture();
+  const dependency = join(fixture.root, "source.csv");
+  writeFileSync(dependency, "current source\n");
+  writeFileSync(
+    fixture.report,
+    JSON.stringify({
+      source_ifc_sha256: sha256(fixture.ifc),
+      source_dependencies: [
+        {
+          path: "source.csv",
+          sha256: sha256(dependency),
+        },
+      ],
+    }),
+  );
+  writeFileSync(dependency, "drifted source\n");
+  const run = runGate(fixture, "reviewed-candidate");
+  expect(run.exitCode).toBe(1);
+  const output = JSON.parse(run.stdout);
+  const check = output.checks.find(
+    (item: any) => item.id === "REPORT-SOURCE-DEPENDENCY-INTEGRITY",
+  );
+  expect(check.status).toBe("fail");
+  expect(check.details.records[0].exists).toBe(true);
+  expect(check.details.records[0].hash_matches).toBe(false);
+  expect(check.details.errors[0]).toContain("source dependency SHA-256 does not match");
+});
+
 test("construction release recognizes every declared blocker shape used by project reports", () => {
   const fixture = makeFixture();
   writeFileSync(

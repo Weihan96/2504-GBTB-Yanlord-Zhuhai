@@ -6,11 +6,13 @@ import { join, resolve } from "node:path";
 const root = resolve(import.meta.dir, "../..");
 const script = resolve(root, "pipeline/scripts/pm_progress_check.py");
 
-function fixture(summaryDone: number) {
+function fixture(summaryDone: number, ssotCount = 1) {
   const directory = mkdtempSync(join(tmpdir(), "pm-progress-"));
   const path = join(directory, "pm.md");
   writeFileSync(path, `
 | PM 进度（派生） | 2 项中 ${summaryDone} 项完成（50%） |
+
+当前为设备主表 \`${ssotCount}\` 条、安装条件 \`${ssotCount}\` 条、证据 \`${ssotCount}\` 条。
 
 \`\`\`mermaid
 gantt
@@ -25,11 +27,19 @@ gantt
 
 ### 任务台账操作规则
 `);
-  return path;
+  for (const name of ["equipment.csv", "requirements.csv", "evidence.csv"]) {
+    writeFileSync(join(directory, name), "id\nROW-001\n");
+  }
+  return { directory, path };
 }
 
-function run(path: string) {
-  return Bun.spawnSync(["python3", script, "--pm", path], {
+function run({ directory, path }: ReturnType<typeof fixture>) {
+  return Bun.spawnSync([
+    "python3", script, "--pm", path,
+    "--equipment-register", join(directory, "equipment.csv"),
+    "--installation-requirements", join(directory, "requirements.csv"),
+    "--source-evidence", join(directory, "evidence.csv"),
+  ], {
     cwd: root,
     stdout: "pipe",
     stderr: "pipe",
@@ -51,4 +61,12 @@ test("stale PM summary fails closed", () => {
   const result = run(fixture(0));
   expect(result.exitCode).toBe(1);
   expect(JSON.parse(result.stdout.toString()).errors[0]).toContain("does not match ledger");
+});
+
+test("stale equipment SSOT counts fail closed", () => {
+  const result = run(fixture(1, 0));
+  expect(result.exitCode).toBe(1);
+  expect(JSON.parse(result.stdout.toString()).errors).toContainEqual(
+    expect.stringContaining("do not match canonical tables"),
+  );
 });

@@ -106,6 +106,8 @@ test("P-201 rejects a stale caller-frozen IFC hash", () => {
 
 test("P-201 generator has no IFC or Blender write path", () => {
   const source = readFileSync(script, "utf8");
+  expect(source).toContain("exact_media_evidence_complete(records)");
+  expect(source).not.toContain("confirmed_media_count == 3");
   expect(source).not.toContain("ifcopenshell");
   expect(source).not.toContain("model.write(");
   expect(source).not.toContain("ifcopenshell.api.run");

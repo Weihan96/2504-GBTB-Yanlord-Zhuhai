@@ -1,6 +1,8 @@
 import { expect, test } from "bun:test";
 import { createHash } from "node:crypto";
-import { readFileSync } from "node:fs";
+import { mkdtempSync, readFileSync } from "node:fs";
+import { tmpdir } from "node:os";
+import { join, resolve } from "node:path";
 import { splitCsvLine } from "../src/cli";
 
 const script = "pipeline/scripts/plum_existing_candidate.py";
@@ -46,6 +48,29 @@ test("missing system data is disclosed instead of passed", () => {
   expect(source).toContain('"connectivity_qa_passed": False');
   expect(source).toContain('qa["construction_release_pass"] = False');
   expect(source).toContain('"candidate_registry_pass"');
+});
+
+test("exact-model service evidence can grow beyond the original three endpoints", () => {
+  const probe = String.raw`
+import importlib.util,json,pathlib,sys
+sys.path.insert(0,str(pathlib.Path(sys.argv[1]).parent))
+spec=importlib.util.spec_from_file_location("plum",sys.argv[1])
+module=importlib.util.module_from_spec(spec); spec.loader.exec_module(module)
+def endpoint(statuses):
+    return {"service_demand_candidate":True,"service_media_demand":{
+        key: ({"status":status,"basis_kind":"official_exact_model","source_id":"SRC","requirement_id":"REQ"}
+              if status == "confirmed" else {"status":"unknown","source_id":None})
+        for key,status in zip(("cold_water","hot_water","drain"),statuses)
+    }}
+complete=[endpoint(["confirmed"]*3) for _ in range(4)] + [endpoint(["unknown"]*3)]
+partial=complete + [endpoint(["confirmed","unknown","confirmed"])]
+print(json.dumps({"complete":module.exact_media_evidence_complete(complete),"partial":module.exact_media_evidence_complete(partial)}))
+`;
+  const temporary = mkdtempSync(join(tmpdir(), "plum-media-evidence-"));
+  const run = Bun.spawnSync(["python3", "-c", probe, resolve(script)], { cwd: temporary });
+  expect(run.exitCode, run.stderr.toString()).toBe(0);
+  expect(JSON.parse(run.stdout.toString())).toEqual({ complete: true, partial: false });
+  expect(source).not.toContain("confirmed_media_endpoints == 3");
 });
 
 test("PLUM candidate runs against the frozen formal IFC", async () => {

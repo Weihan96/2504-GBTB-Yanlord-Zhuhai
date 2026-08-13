@@ -317,6 +317,25 @@ def service_media_demand(
     return result
 
 
+def exact_media_evidence_complete(records: list[dict[str, Any]]) -> bool:
+    """Allow incremental exact-model evidence without accepting partial media sets."""
+    for record in records:
+        if not record["service_demand_candidate"]:
+            continue
+        media = list(record["service_media_demand"].values())
+        confirmed = [item for item in media if item["status"] == "confirmed"]
+        if confirmed and len(confirmed) != len(media):
+            return False
+        if any(
+            item.get("basis_kind") != "official_exact_model"
+            or not item.get("source_id")
+            or not item.get("requirement_id")
+            for item in confirmed
+        ):
+            return False
+    return True
+
+
 def service_requirement_candidates(
     equipment: list[dict[str, str]],
     requirements: list[dict[str, str]],
@@ -421,6 +440,7 @@ def main() -> None:
         all(item["status"] == "confirmed" for item in row["service_media_demand"].values())
         for row in p201["demand_endpoints"] if row["service_demand_candidate"]
     )
+    exact_media_evidence_pass = exact_media_evidence_complete(p201["demand_endpoints"])
     p202 = {
         "candidate": "P-202 existing drainage and sanitary location register",
         "source_ifc_sha256": ifc_sha,
@@ -455,7 +475,7 @@ def main() -> None:
         "pvc110_world_geometry_unchanged": all(row["world_geometry_unchanged"] for row in pvc110),
         "review_register_complete": len(review_rows) == len(EXPECTED_REVIEW_IDS),
         "service_demand_classification_pass": service_demand_count == 24,
-        "confirmed_service_media_has_exact_model_evidence": confirmed_media_endpoints == 3,
+        "confirmed_service_media_has_exact_model_evidence": exact_media_evidence_pass,
         "equipment_ssot_coverage_pass": len(scoped_products) == 33 and not missing_ssot,
     }
     qa["candidate_registry_pass"] = all((

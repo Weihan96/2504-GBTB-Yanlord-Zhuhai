@@ -4,6 +4,7 @@
 from __future__ import annotations
 
 import argparse
+import csv
 import json
 import re
 from pathlib import Path
@@ -12,11 +13,20 @@ from pathlib import Path
 DEFAULT_PM = Path("drawings/滨海湾装修施工图深化工作管理.md")
 TASK_RE = re.compile(r"^- \[([ x])\] \*\*([A-Z][A-Z0-9]+)｜", re.MULTILINE)
 SUMMARY_RE = re.compile(r"PM 进度（派生）.*?(\d+) 项中 (\d+) 项完成（(\d+)%）")
+EQUIPMENT_SSOT_RE = re.compile(
+    r"当前为设备主表 `(\d+)` 条、安装条件 `(\d+)` 条、证据 `(\d+)` 条"
+)
+DEFAULT_EQUIPMENT = Path("pipeline/decisions/equipment-register.csv")
+DEFAULT_REQUIREMENTS = Path("pipeline/decisions/equipment-installation-requirements.csv")
+DEFAULT_EVIDENCE = Path("pipeline/decisions/source-evidence-register.csv")
 
 
 def parse_args() -> argparse.Namespace:
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--pm", type=Path, default=DEFAULT_PM)
+    parser.add_argument("--equipment-register", type=Path, default=DEFAULT_EQUIPMENT)
+    parser.add_argument("--installation-requirements", type=Path, default=DEFAULT_REQUIREMENTS)
+    parser.add_argument("--source-evidence", type=Path, default=DEFAULT_EVIDENCE)
     return parser.parse_args()
 
 
@@ -43,7 +53,17 @@ def gantt_states(text: str, task_ids: set[str]) -> dict[str, bool]:
     return states
 
 
-def check(path: Path) -> dict[str, object]:
+def csv_record_count(path: Path) -> int:
+    with path.open(encoding="utf-8-sig", newline="") as stream:
+        return sum(1 for _ in csv.DictReader(stream))
+
+
+def check(
+    path: Path,
+    equipment_register: Path,
+    installation_requirements: Path,
+    source_evidence: Path,
+) -> dict[str, object]:
     text = path.read_text(encoding="utf-8")
     ledger = section(text, "## 5. PM 任务台账", "### 任务台账操作规则")
     tasks = [(task_id, mark == "x") for mark, task_id in TASK_RE.findall(ledger)]
@@ -85,11 +105,40 @@ def check(path: Path) -> dict[str, object]:
     if mismatched:
         errors.append("Gantt done state differs from ledger: " + ", ".join(mismatched))
 
+    ssot_paths = {
+        "equipment": equipment_register,
+        "requirements": installation_requirements,
+        "evidence": source_evidence,
+    }
+    missing_ssot = [name for name, source in ssot_paths.items() if not source.is_file()]
+    ssot_actual = None
+    ssot_declared = None
+    if missing_ssot:
+        errors.append("equipment SSOT files are missing: " + ", ".join(missing_ssot))
+    else:
+        ssot_actual = {
+            name: csv_record_count(source) for name, source in ssot_paths.items()
+        }
+        ssot_match = EQUIPMENT_SSOT_RE.search(text)
+        if not ssot_match:
+            errors.append("current equipment SSOT count sentence is missing")
+        else:
+            ssot_declared = {
+                "equipment": int(ssot_match.group(1)),
+                "requirements": int(ssot_match.group(2)),
+                "evidence": int(ssot_match.group(3)),
+            }
+            if ssot_declared != ssot_actual:
+                errors.append(
+                    f"PM equipment SSOT counts {ssot_declared} do not match canonical tables {ssot_actual}"
+                )
+
     return {
         "status": not errors,
         "read_only": True,
         "pm_path": str(path),
         "summary": {"total": total, "done": done, "open": total - done, "percent": percent},
+        "equipment_ssot": {"declared": ssot_declared, "actual": ssot_actual},
         "gantt_task_count": len(states),
         "errors": errors,
     }
@@ -97,7 +146,12 @@ def check(path: Path) -> dict[str, object]:
 
 def main() -> int:
     args = parse_args()
-    result = check(args.pm)
+    result = check(
+        args.pm,
+        args.equipment_register,
+        args.installation_requirements,
+        args.source_evidence,
+    )
     print(json.dumps(result, ensure_ascii=False, indent=2))
     return 0 if result["status"] else 1
 

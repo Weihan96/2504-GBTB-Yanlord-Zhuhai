@@ -65,6 +65,14 @@ def sha256(path: Path) -> str:
     return digest.hexdigest()
 
 
+def declared_path(root: Path, path: Path) -> str:
+    resolved = path.resolve()
+    try:
+        return str(resolved.relative_to(root))
+    except ValueError:
+        return str(resolved)
+
+
 def read_candidate(path: Path) -> tuple[list[dict[str, Any]], list[dict[str, str]], str]:
     rows = list(csv.DictReader(path.open(newline="", encoding="utf-8-sig")))
     if not rows:
@@ -331,6 +339,21 @@ def parse_args() -> argparse.Namespace:
     parser.add_argument("--pdf-dir", required=True, type=Path)
     parser.add_argument("--build-dir", required=True, type=Path)
     parser.add_argument("--existing-report", required=True, type=Path)
+    parser.add_argument(
+        "--equipment-register",
+        type=Path,
+        default=Path("pipeline/decisions/equipment-register.csv"),
+    )
+    parser.add_argument(
+        "--installation-requirements",
+        type=Path,
+        default=Path("pipeline/decisions/equipment-installation-requirements.csv"),
+    )
+    parser.add_argument(
+        "--source-evidence",
+        type=Path,
+        default=Path("pipeline/decisions/source-evidence-register.csv"),
+    )
     parser.add_argument("--render-script", type=Path)
     parser.add_argument("--render-pdfs", action="store_true")
     return parser.parse_args()
@@ -338,6 +361,18 @@ def parse_args() -> argparse.Namespace:
 
 def main() -> None:
     args = parse_args()
+    root = Path.cwd().resolve()
+    dependency_paths = [
+        args.source_ifc.resolve(),
+        args.input_csv.resolve(),
+        args.existing_report.resolve(),
+        args.equipment_register.resolve(),
+        args.installation_requirements.resolve(),
+        args.source_evidence.resolve(),
+    ]
+    for path in dependency_paths:
+        if not path.is_file():
+            raise RuntimeError(f"missing INT1 drawing dependency: {path}")
     records, blockers, source_hash = read_candidate(args.input_csv)
     actual_hash = sha256(args.source_ifc)
     if source_hash != actual_hash:
@@ -371,10 +406,10 @@ def main() -> None:
             ) + "\n",
             encoding="utf-8",
         )
-        root = ET.parse(output_svg).getroot()
-        if root.attrib.get("data-sheet-id") != sheet_id:
+        xml_root = ET.parse(output_svg).getroot()
+        if xml_root.attrib.get("data-sheet-id") != sheet_id:
             raise RuntimeError(f"SVG sheet ID gate failed: {sheet_id}")
-        overlays = [node for node in root.iter() if node.tag.endswith("rect") and node.attrib.get("data-global-id")]
+        overlays = [node for node in xml_root.iter() if node.tag.endswith("rect") and node.attrib.get("data-global-id")]
         if len(overlays) != len(sheet_records):
             raise RuntimeError(f"SVG overlay count gate failed: {sheet_id}")
         report = {
@@ -421,6 +456,9 @@ def main() -> None:
                     "pdf_page": rendered["page"],
                     "pdf_pass": True,
                     "proof_png": str(proof),
+                    "proof_png_sha256": sha256(proof),
+                    "render_report": str(pdf_report),
+                    "render_report_sha256": sha256(pdf_report),
                 }
             )
         sheet_reports.append(report)
@@ -429,6 +467,13 @@ def main() -> None:
         "generated_at": datetime.now(timezone.utc).isoformat(),
         "mode": "read_only_int1_drawing_candidate",
         "source_ifc_sha256": source_hash,
+        "source_dependencies": [
+            {
+                "path": declared_path(root, path),
+                "sha256": sha256(path),
+            }
+            for path in dependency_paths
+        ],
         "summary": {
             "sheet_count": 4,
             "existing_object_count": len(records),
@@ -448,6 +493,19 @@ def main() -> None:
             "int1_completion_pass": False,
         },
         "sheets": sheet_reports,
+        "output_records": [
+            {
+                "path": declared_path(root, Path(sheet[key])),
+                "sha256": sheet[f"{key}_sha256"],
+                "passes": True,
+            }
+            for sheet in sheet_reports
+            for key in (
+                ["svg", "pdf", "proof_png", "render_report"]
+                if args.render_pdfs
+                else ["svg"]
+            )
+        ],
         "blockers": [
             {
                 "issue_id": row["object_name"],

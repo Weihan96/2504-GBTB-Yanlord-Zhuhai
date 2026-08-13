@@ -344,6 +344,69 @@ def validate_declared_artifact_records(
     return records, errors
 
 
+def validate_source_dependencies(
+    root: Path,
+    payload: Any,
+    owner: str,
+) -> tuple[list[dict[str, Any]], list[str]]:
+    """Validate a report's explicit top-level source_dependencies contract when present."""
+    if not isinstance(payload, dict) or "source_dependencies" not in payload:
+        return [], []
+    raw_dependencies = payload["source_dependencies"]
+    if not isinstance(raw_dependencies, list) or not raw_dependencies:
+        return [], [f"{owner}: source_dependencies must be a non-empty list"]
+
+    records: list[dict[str, Any]] = []
+    errors: list[str] = []
+    for index, raw in enumerate(raw_dependencies):
+        dependency_owner = f"{owner}:source_dependencies[{index}]"
+        if not isinstance(raw, dict):
+            errors.append(f"{dependency_owner}: dependency must be an object")
+            continue
+        declared_path = raw.get("path")
+        declared_hash = raw.get("sha256")
+        if not isinstance(declared_path, str) or not path_like_output(declared_path):
+            errors.append(f"{dependency_owner}: path must be a local file path")
+            continue
+        path = resolve_input(root, Path(declared_path))
+        try:
+            path.relative_to(root)
+            inside_root = True
+        except ValueError:
+            inside_root = False
+        exists = path.is_file()
+        valid_hash = (
+            isinstance(declared_hash, str)
+            and len(declared_hash) == 64
+            and all(character in "0123456789abcdef" for character in declared_hash)
+        )
+        actual_hash = sha256(path) if exists else ""
+        hash_matches = valid_hash and exists and actual_hash == declared_hash
+        record = {
+            "owner": owner,
+            "index": index,
+            "declared_path": declared_path,
+            "resolved_path": str(path),
+            "inside_root": inside_root,
+            "exists": exists,
+            "declared_sha256": declared_hash if isinstance(declared_hash, str) else "",
+            "actual_sha256": actual_hash,
+            "hash_matches": hash_matches,
+        }
+        records.append(record)
+        if not inside_root:
+            errors.append(f"{dependency_owner}: path resolves outside the project root")
+        if not exists:
+            errors.append(f"{dependency_owner}: source dependency does not exist")
+        if not valid_hash:
+            errors.append(
+                f"{dependency_owner}: sha256 must be 64 lowercase hexadecimal characters"
+            )
+        elif exists and not hash_matches:
+            errors.append(f"{dependency_owner}: source dependency SHA-256 does not match")
+    return records, errors
+
+
 def evaluate(args: argparse.Namespace) -> tuple[dict[str, Any], int]:
     root = args.root.resolve()
     ifc_path = resolve_input(root, args.ifc)
@@ -482,6 +545,8 @@ def evaluate(args: argparse.Namespace) -> tuple[dict[str, Any], int]:
     report_outputs: list[dict[str, Any]] = []
     declared_artifact_records: list[dict[str, Any]] = []
     declared_artifact_errors: list[str] = []
+    source_dependency_records: list[dict[str, Any]] = []
+    source_dependency_errors: list[str] = []
     for report_path in report_paths:
         result: dict[str, Any] = {
             "path": str(report_path),
@@ -491,6 +556,8 @@ def evaluate(args: argparse.Namespace) -> tuple[dict[str, Any], int]:
             "declared_outputs": [],
             "declared_artifact_records": [],
             "declared_artifact_errors": [],
+            "source_dependency_records": [],
+            "source_dependency_errors": [],
             "construction_release_blockers": [],
         }
         if not report_path.is_file():
@@ -510,14 +577,23 @@ def evaluate(args: argparse.Namespace) -> tuple[dict[str, Any], int]:
             payload,
             report_path.name,
         )
+        dependency_records, dependency_errors = validate_source_dependencies(
+            root,
+            payload,
+            report_path.name,
+        )
         result["ifc_hashes"] = hashes
         result["current_ifc_hash"] = bool(ifc_hash) and hashes == [ifc_hash]
         result["declared_outputs"] = declared_outputs
         result["declared_artifact_records"] = artifact_records
         result["declared_artifact_errors"] = artifact_errors
+        result["source_dependency_records"] = dependency_records
+        result["source_dependency_errors"] = dependency_errors
         result["construction_release_blockers"] = construction_release_blockers(payload)
         declared_artifact_records.extend(artifact_records)
         declared_artifact_errors.extend(artifact_errors)
+        source_dependency_records.extend(dependency_records)
+        source_dependency_errors.extend(dependency_errors)
         if not hashes:
             result["error"] = "report does not declare an IFC SHA-256"
         elif not result["current_ifc_hash"]:
@@ -567,6 +643,28 @@ def evaluate(args: argparse.Namespace) -> tuple[dict[str, Any], int]:
                 "record_count": len(declared_artifact_records),
                 "records": declared_artifact_records,
                 "errors": declared_artifact_errors,
+            },
+        )
+    )
+
+    if source_dependency_errors:
+        message = (
+            f"{len(source_dependency_errors)} declared source dependency integrity error(s) were found"
+        )
+        errors.append(message)
+        dependency_status = "fail"
+    else:
+        message = "all explicitly hashed report source dependencies match their declared SHA-256"
+        dependency_status = "pass"
+    checks.append(
+        make_check(
+            "REPORT-SOURCE-DEPENDENCY-INTEGRITY",
+            dependency_status,
+            message,
+            {
+                "record_count": len(source_dependency_records),
+                "records": source_dependency_records,
+                "errors": source_dependency_errors,
             },
         )
     )
@@ -670,6 +768,10 @@ def evaluate(args: argparse.Namespace) -> tuple[dict[str, Any], int]:
             "declared_artifact_record_count": len(declared_artifact_records),
             "current_declared_artifact_record_count": sum(
                 1 for item in declared_artifact_records if item["hash_matches"]
+            ),
+            "source_dependency_record_count": len(source_dependency_records),
+            "current_source_dependency_record_count": sum(
+                1 for item in source_dependency_records if item["hash_matches"]
             ),
             "unresolved_count": len(unresolved),
             "error_count": len(errors),

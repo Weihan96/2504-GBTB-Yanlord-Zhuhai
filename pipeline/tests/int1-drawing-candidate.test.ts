@@ -77,7 +77,7 @@ test("INT1 drawing candidate produces four safe coordination-envelope sheets", (
     ],
     { cwd: root },
   );
-  expect(result.exitCode).toBe(0);
+  expect(result.exitCode, result.stderr.toString()).toBe(0);
   const report = JSON.parse(
     readFileSync(join(temporary, "build/int1-drawing-report.json"), "utf8"),
   );
@@ -88,6 +88,8 @@ test("INT1 drawing candidate produces four safe coordination-envelope sheets", (
   expect(report.summary.all_overlays_are_coordination_envelopes).toBe(true);
   expect(report.summary.installation_interface_row_count).toBe(2);
   expect(report.summary.unlocated_interface_count).toBe(2);
+  expect(report.source_dependencies).toHaveLength(6);
+  expect(report.output_records).toHaveLength(4);
   expect(report.gates.candidate_generation_pass).toBe(true);
   expect(report.gates.formal_ifc_write_allowed).toBe(false);
   expect(report.gates.fabrication_dimension_ready).toBe(false);
