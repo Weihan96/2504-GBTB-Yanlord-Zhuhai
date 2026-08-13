@@ -20,7 +20,7 @@ import p0_ids_metadata_candidate as p0
 ROOT = Path(__file__).resolve().parents[2]
 FORMAL_IFC = ROOT / "2504 GBTB Yanlord Zhuhai.ifc"
 REGISTER = ROOT / "pipeline/decisions/a103-wall-status-review.csv"
-EXPECTED_SOURCE_IDS_PASS = 499
+EXPECTED_SOURCE_IDS_PASS = {499, 587}
 EXPECTED_CANDIDATE_IDS_PASS = 587
 
 
@@ -176,7 +176,7 @@ def main() -> int:
         and gates["protected_products_geometry_exact"]
         and gates["maximum_placement_matrix_delta"] == 0.0
         and gates["fills_voids_relationships_unchanged"]
-        and gates["source_ids_pass"] == EXPECTED_SOURCE_IDS_PASS
+        and gates["source_ids_pass"] in EXPECTED_SOURCE_IDS_PASS
         and gates["candidate_ids_pass"] == EXPECTED_CANDIDATE_IDS_PASS
     )
     report = {

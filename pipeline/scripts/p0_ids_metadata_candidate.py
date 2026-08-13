@@ -37,8 +37,8 @@ A104_REGISTER = PROJECT_ROOT / "pipeline/decisions/a104-door-window-review.csv"
 IDS_PATH = PROJECT_ROOT / "pipeline/ids/p0-construction-information.ids"
 IDS_VALIDATOR = PROJECT_ROOT / "pipeline/scripts/ids_validate.py"
 EXPECTED_SOURCE_IDS_CHECKS = 593
-EXPECTED_SOURCE_IDS_PASS = {392, 499}
-EXPECTED_CANDIDATE_IDS_PASS = 499
+EXPECTED_SOURCE_IDS_PASS = {392, 499, 587}
+MINIMUM_CANDIDATE_IDS_PASS = 499
 EXPECTED_WALL_COUNT = 88
 EXPECTED_DOOR_COUNT = 8
 EXPECTED_WINDOW_COUNT = 11
@@ -384,7 +384,9 @@ def main() -> int:
         and gates["source_ids_checks"] == EXPECTED_SOURCE_IDS_CHECKS
         and gates["source_ids_pass"] in EXPECTED_SOURCE_IDS_PASS
         and gates["candidate_ids_checks"] == EXPECTED_SOURCE_IDS_CHECKS
-        and gates["candidate_ids_pass"] == EXPECTED_CANDIDATE_IDS_PASS
+        and gates["candidate_ids_pass"] == max(
+            gates["source_ids_pass"], MINIMUM_CANDIDATE_IDS_PASS
+        )
     )
     report = {
         "generated_at": datetime.now(timezone.utc).isoformat(),

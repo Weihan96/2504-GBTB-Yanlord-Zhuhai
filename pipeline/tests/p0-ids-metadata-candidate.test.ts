@@ -17,10 +17,11 @@ test("P0 metadata candidate is limited to geometry-neutral, evidenced fields", (
   expect(source).not.toContain("OverallHeight =");
 });
 
-test("P0 metadata candidate has explicit 392 to 499 IDS acceptance", () => {
+test("P0 metadata candidate is idempotent after the wall-tag IDS batch", () => {
   const source = readFileSync(script, "utf8");
-    expect(source).toContain("EXPECTED_SOURCE_IDS_PASS = {392, 499}");
-  expect(source).toContain("EXPECTED_CANDIDATE_IDS_PASS = 499");
+  expect(source).toContain("EXPECTED_SOURCE_IDS_PASS = {392, 499, 587}");
+  expect(source).toContain("MINIMUM_CANDIDATE_IDS_PASS = 499");
+  expect(source).toContain("max(");
   expect(source).toContain('"protected_products_geometry_exact"');
   expect(source).toContain('"fills_voids_relationships_unchanged"');
 });

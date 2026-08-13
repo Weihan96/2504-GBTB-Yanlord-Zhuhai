@@ -13,6 +13,7 @@ test("A-103 wall tags remain a review-only geometry-neutral candidate", () => {
   expect(source).toContain('"formal_ifc_write_allowed": False');
   expect(source).toContain("protected_products_geometry_exact");
   expect(source).toContain("EXPECTED_CANDIDATE_IDS_PASS = 587");
+  expect(source).toContain("EXPECTED_SOURCE_IDS_PASS = {499, 587}");
   expect(source).not.toContain("FORMAL_IFC.write");
   expect(review).toContain("label_collision_count");
   expect(review).toContain('"formal_ifc_write_allowed": False');
