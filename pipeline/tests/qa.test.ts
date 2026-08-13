@@ -66,3 +66,91 @@ END-ISO-10303-21;`);
   });
   expect(report.gates.find((gate) => gate.id === "BASELINE-COUNTS")?.status).toBe("pass");
 });
+
+test("concentrated human review blocks QA while controlled root items remain open", () => {
+  const snapshot = analyzeIfcText(`ISO-10303-21;
+HEADER;
+FILE_SCHEMA(('IFC4'));
+ENDSEC;
+DATA;
+ENDSEC;
+END-ISO-10303-21;`);
+  const report = buildQaReport(
+    snapshot,
+    [],
+    { ifcSchema: "IFC4", baselineCounts: {} },
+    [],
+    undefined,
+    {
+      path: "build/release/concentrated-human-review-current.json",
+      sourceIfcSha256: snapshot.source.sha256,
+      reviewItemCount: 7,
+      openRootReviewItemCount: 2,
+      unmappedBlockerCount: 0,
+      mappingComplete: true,
+      constructionReleaseReady: false,
+      errors: [],
+    },
+  );
+  const gate = report.gates.find((item) => item.id === "CONCENTRATED-HUMAN-REVIEW");
+  expect(gate?.status).toBe("block");
+  expect(gate?.summary).toContain("2 concentrated root review item(s) remain open");
+});
+
+test("concentrated human review fails closed on unmapped blockers", () => {
+  const snapshot = analyzeIfcText(`ISO-10303-21;
+HEADER;
+FILE_SCHEMA(('IFC4'));
+ENDSEC;
+DATA;
+ENDSEC;
+END-ISO-10303-21;`);
+  const report = buildQaReport(
+    snapshot,
+    [],
+    { ifcSchema: "IFC4", baselineCounts: {} },
+    [],
+    undefined,
+    {
+      path: "build/release/concentrated-human-review-current.json",
+      sourceIfcSha256: snapshot.source.sha256,
+      reviewItemCount: 1,
+      openRootReviewItemCount: 1,
+      unmappedBlockerCount: 1,
+      mappingComplete: false,
+      constructionReleaseReady: false,
+      errors: [],
+    },
+  );
+  const gate = report.gates.find((item) => item.id === "CONCENTRATED-HUMAN-REVIEW");
+  expect(gate?.status).toBe("block");
+  expect(gate?.summary).toContain("1 release blocker(s) lack a controlled root review item");
+});
+
+test("concentrated human review passes when mapping is complete and no root items remain", () => {
+  const snapshot = analyzeIfcText(`ISO-10303-21;
+HEADER;
+FILE_SCHEMA(('IFC4'));
+ENDSEC;
+DATA;
+ENDSEC;
+END-ISO-10303-21;`);
+  const report = buildQaReport(
+    snapshot,
+    [],
+    { ifcSchema: "IFC4", baselineCounts: {} },
+    [],
+    undefined,
+    {
+      path: "build/release/concentrated-human-review-current.json",
+      sourceIfcSha256: snapshot.source.sha256,
+      reviewItemCount: 0,
+      openRootReviewItemCount: 0,
+      unmappedBlockerCount: 0,
+      mappingComplete: true,
+      constructionReleaseReady: false,
+      errors: [],
+    },
+  );
+  expect(report.gates.find((item) => item.id === "CONCENTRATED-HUMAN-REVIEW")?.status).toBe("pass");
+});

@@ -29,6 +29,17 @@ export interface SpaceReviewSnapshot {
   errors: string[];
 }
 
+export interface ConcentratedReviewSnapshot {
+  path: string;
+  sourceIfcSha256: string;
+  reviewItemCount: number;
+  openRootReviewItemCount: number;
+  unmappedBlockerCount: number;
+  mappingComplete: boolean;
+  constructionReleaseReady: boolean;
+  errors: string[];
+}
+
 export interface GateResult {
   id: string;
   status: GateStatus;
@@ -60,6 +71,7 @@ export function buildQaReport(
   config: ProjectConfig,
   decisions: DecisionSnapshot[] = [],
   spaceReview?: SpaceReviewSnapshot,
+  concentratedReview?: ConcentratedReviewSnapshot,
 ): QaReport {
   const gates: GateResult[] = [];
   gates.push(
@@ -70,6 +82,23 @@ export function buildQaReport(
       { expected: config.ifcSchema, actual: snapshot.schema },
     ),
   );
+
+  if (concentratedReview) {
+    const currentHash = concentratedReview.sourceIfcSha256 === snapshot.source.sha256;
+    const complete = concentratedReview.mappingComplete
+      && concentratedReview.unmappedBlockerCount === 0
+      && concentratedReview.errors.length === 0;
+    const closed = concentratedReview.openRootReviewItemCount === 0;
+    const status: GateStatus = currentHash && complete && closed ? "pass" : "block";
+    const summary = !currentHash
+      ? "Concentrated human-review evidence is stale against the formal IFC."
+      : !complete
+        ? `${concentratedReview.unmappedBlockerCount} release blocker(s) lack a controlled root review item.`
+        : closed
+          ? "All concentrated root review items are closed."
+          : `${concentratedReview.openRootReviewItemCount} concentrated root review item(s) remain open.`;
+    gates.push(gate("CONCENTRATED-HUMAN-REVIEW", status, summary, concentratedReview));
+  }
 
   const integrityOk =
     snapshot.integrity.duplicateStepIds.length === 0 &&

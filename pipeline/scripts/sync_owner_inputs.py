@@ -1,8 +1,10 @@
 #!/usr/bin/env python3
-"""Validate and synchronize the owner input workbook into project registers.
+"""Validate and synchronize the owner input workbook and its SSOT projections.
 
-The default mode is a read-only dry run. ``--apply`` updates only the owner
-input CSV registers and the generated PM status block. It never writes IFC.
+The default mode is a read-only dry run. ``--apply`` updates the owner input
+registers and PM status block, then rebuilds the workbook's three read-only
+views from canonical CSVs. Read-only workbook views never write back to those
+canonical CSVs. The script never writes IFC.
 """
 
 from __future__ import annotations
@@ -10,13 +12,16 @@ from __future__ import annotations
 import argparse
 import csv
 import json
+import os
+import posixpath
 import re
 import sys
+import tempfile
 import zipfile
 from collections import Counter
 from datetime import datetime
 from pathlib import Path
-from typing import Any
+from typing import Any, Optional
 from xml.etree import ElementTree as ET
 
 from equipment_ssot import apply_owner_appliances, projections
@@ -58,6 +63,25 @@ APPLIANCE_USER_FIELDS = {
     "gas_required", "ventilation_required", "model", "evidence_reference",
     "status", "notes",
 }
+EXPECTED_WORKBOOK_SHEETS = [
+    "使用说明", "设计决策", "家电清单", "设备主表", "安装条件", "证据索引",
+]
+READONLY_VIEW_SPECS = {
+    "设备主表": {
+        "argument": "equipment_register",
+        "primary_key": "equipment_id",
+    },
+    "安装条件": {
+        "argument": "installation_requirements",
+        "primary_key": "requirement_id",
+    },
+    "证据索引": {
+        "argument": "evidence_register",
+        "primary_key": "source_id",
+    },
+}
+MAIN_NS = "http://schemas.openxmlformats.org/spreadsheetml/2006/main"
+PACKAGE_REL_NS = "http://schemas.openxmlformats.org/package/2006/relationships"
 
 
 def parse_args() -> argparse.Namespace:
@@ -67,6 +91,9 @@ def parse_args() -> argparse.Namespace:
     parser.add_argument("--decisions", type=Path, default=root / "pipeline/decisions/owner-input-register.csv")
     parser.add_argument("--appliances", type=Path, default=root / "pipeline/decisions/appliance-input-register.csv")
     parser.add_argument("--closeout-rules", type=Path, default=root / "pipeline/decisions/owner-input-closeout-rules.csv")
+    parser.add_argument("--equipment-register", type=Path, default=root / "pipeline/decisions/equipment-register.csv")
+    parser.add_argument("--installation-requirements", type=Path, default=root / "pipeline/decisions/equipment-installation-requirements.csv")
+    parser.add_argument("--evidence-register", type=Path, default=root / "pipeline/decisions/source-evidence-register.csv")
     parser.add_argument("--pm", type=Path, default=root / "drawings/滨海湾装修施工图深化工作管理.md")
     parser.add_argument("--report", type=Path, help="Optional user-owned JSON preview path")
     parser.add_argument("--open-items", type=Path, help="Optional user-owned Markdown open-items path")
@@ -82,11 +109,13 @@ def column_index(reference: str) -> int:
     return value - 1
 
 
-def read_xlsx(path: Path) -> tuple[list[dict[str, str]], list[dict[str, str]]]:
+def read_xlsx(
+    path: Path,
+) -> tuple[list[dict[str, str]], list[dict[str, str]], dict[str, list[list[str]]], list[str]]:
     with zipfile.ZipFile(path) as archive:
         strings = _shared_strings(archive)
         paths = _sheet_paths(archive)
-        missing = {"设计决策", "家电清单"} - set(paths)
+        missing = set(EXPECTED_WORKBOOK_SHEETS) - set(paths)
         if missing:
             raise ValueError(f"workbook missing sheets: {', '.join(sorted(missing))}")
         decisions = _table(
@@ -97,7 +126,11 @@ def read_xlsx(path: Path) -> tuple[list[dict[str, str]], list[dict[str, str]]]:
             _sheet_rows(archive, paths["家电清单"], strings),
             APPLIANCE_HEADERS, APPLIANCE_DISPLAY_HEADERS, "家电清单",
         )
-    return decisions, appliances
+        readonly_rows = {
+            sheet_name: _sheet_rows(archive, paths[sheet_name], strings)
+            for sheet_name in READONLY_VIEW_SPECS
+        }
+    return decisions, appliances, readonly_rows, list(paths)
 
 
 def _shared_strings(archive: zipfile.ZipFile) -> list[str]:
@@ -167,12 +200,300 @@ def read_csv(path: Path, headers: list[str]) -> list[dict[str, str]]:
         return [{key: (value or "").strip() for key, value in row.items()} for row in reader]
 
 
+def read_canonical_csv(path: Path) -> tuple[list[str], list[dict[str, str]]]:
+    with path.open(encoding="utf-8-sig", newline="") as handle:
+        reader = csv.DictReader(handle)
+        headers = list(reader.fieldnames or [])
+        if not headers:
+            raise ValueError(f"{path} has no header")
+        rows = [
+            {key: (value or "").strip() for key, value in row.items()}
+            for row in reader
+        ]
+    return headers, rows
+
+
 def write_csv(path: Path, headers: list[str], rows: list[dict[str, str]]) -> None:
     path.parent.mkdir(parents=True, exist_ok=True)
     with path.open("w", encoding="utf-8", newline="") as handle:
         writer = csv.DictWriter(handle, fieldnames=headers, lineterminator="\n")
         writer.writeheader()
         writer.writerows(rows)
+
+
+def readonly_view_parity(
+    sheet_name: str,
+    workbook_rows: list[list[str]],
+    canonical_headers: list[str],
+    canonical_rows: list[dict[str, str]],
+    primary_key: str,
+) -> dict[str, Any]:
+    actual_headers = [value.strip() for value in workbook_rows[1]] if len(workbook_rows) > 1 else []
+    columns_match = actual_headers == canonical_headers
+    actual_records: list[dict[str, str]] = []
+    if actual_headers:
+        for values in workbook_rows[2:]:
+            padded = values + [""] * (len(actual_headers) - len(values))
+            record = {
+                header: str(padded[index]).strip()
+                for index, header in enumerate(actual_headers)
+            }
+            if any(record.values()):
+                actual_records.append(record)
+
+    expected_keys = [row.get(primary_key, "") for row in canonical_rows]
+    actual_keys = [row.get(primary_key, "") for row in actual_records]
+    duplicate_keys = sorted(
+        key for key, count in Counter(actual_keys).items() if key and count > 1
+    )
+    expected_key_set = set(expected_keys)
+    actual_key_set = set(actual_keys)
+    missing_keys = sorted(expected_key_set - actual_key_set)
+    extra_keys = sorted(actual_key_set - expected_key_set)
+    keys_match = (
+        not duplicate_keys
+        and "" not in actual_key_set
+        and actual_key_set == expected_key_set
+        and len(actual_keys) == len(expected_keys)
+    )
+
+    canonical_by_key = {row[primary_key]: row for row in canonical_rows}
+    actual_by_key = {row.get(primary_key, ""): row for row in actual_records}
+    value_mismatches: list[dict[str, Any]] = []
+    cell_mismatch_count = 0
+    row_value_mismatch_count = 0
+    if columns_match:
+        for key in sorted(expected_key_set & actual_key_set):
+            changed_fields = [
+                header
+                for header in canonical_headers
+                if actual_by_key[key].get(header, "") != canonical_by_key[key].get(header, "")
+            ]
+            if changed_fields:
+                row_value_mismatch_count += 1
+                cell_mismatch_count += len(changed_fields)
+                if len(value_mismatches) < 50:
+                    value_mismatches.append({"id": key, "changed_fields": changed_fields})
+    values_match = columns_match and not missing_keys and not extra_keys and cell_mismatch_count == 0
+    row_count_match = len(actual_records) == len(canonical_rows)
+    all_match = columns_match and row_count_match and keys_match and values_match
+    return {
+        "sheet": sheet_name,
+        "primary_key": primary_key,
+        "canonical_row_count": len(canonical_rows),
+        "workbook_row_count": len(actual_records),
+        "row_count_match": row_count_match,
+        "canonical_columns": canonical_headers,
+        "workbook_columns": actual_headers,
+        "columns_match": columns_match,
+        "keys_match": keys_match,
+        "missing_keys": missing_keys,
+        "extra_keys": extra_keys,
+        "duplicate_keys": duplicate_keys,
+        "blank_key_count": actual_keys.count(""),
+        "values_match": values_match,
+        "row_value_mismatch_count": row_value_mismatch_count,
+        "cell_mismatch_count": cell_mismatch_count,
+        "value_mismatches": value_mismatches,
+        "all_match": all_match,
+    }
+
+
+def readonly_views_parity(
+    readonly_rows: dict[str, list[list[str]]],
+    workbook_sheet_names: list[str],
+    canonical_tables: dict[str, tuple[list[str], list[dict[str, str]]]],
+) -> dict[str, Any]:
+    views = {
+        sheet_name: readonly_view_parity(
+            sheet_name,
+            readonly_rows[sheet_name],
+            canonical_tables[sheet_name][0],
+            canonical_tables[sheet_name][1],
+            spec["primary_key"],
+        )
+        for sheet_name, spec in READONLY_VIEW_SPECS.items()
+    }
+    workbook_structure_match = workbook_sheet_names == EXPECTED_WORKBOOK_SHEETS
+    return {
+        "workbook_sheet_names": workbook_sheet_names,
+        "expected_workbook_sheet_names": EXPECTED_WORKBOOK_SHEETS,
+        "workbook_structure_match": workbook_structure_match,
+        "views": views,
+        "all_match": workbook_structure_match and all(
+            view["all_match"] for view in views.values()
+        ),
+    }
+
+
+def _column_reference(index: int) -> str:
+    result = ""
+    value = index + 1
+    while value:
+        value, remainder = divmod(value - 1, 26)
+        result = chr(ord("A") + remainder) + result
+    return result
+
+
+def _cell(
+    row_number: int, column_index_value: int, value: str, style: Optional[str],
+) -> ET.Element:
+    attributes = {
+        "r": f"{_column_reference(column_index_value)}{row_number}",
+        "t": "inlineStr",
+    }
+    if style is not None:
+        attributes["s"] = style
+    cell = ET.Element(f"{{{MAIN_NS}}}c", attributes)
+    inline = ET.SubElement(cell, f"{{{MAIN_NS}}}is")
+    text = ET.SubElement(inline, f"{{{MAIN_NS}}}t")
+    if value != value.strip() or "\n" in value:
+        text.set("{http://www.w3.org/XML/1998/namespace}space", "preserve")
+    text.text = value
+    return cell
+
+
+def _table_path_for_sheet(
+    archive: zipfile.ZipFile, sheet_path: str,
+) -> str:
+    relationship_path = posixpath.join(
+        posixpath.dirname(sheet_path), "_rels", posixpath.basename(sheet_path) + ".rels",
+    )
+    relationship_root = ET.fromstring(archive.read(relationship_path))
+    table_relationships = [
+        relationship
+        for relationship in relationship_root.findall(f"{{{PACKAGE_REL_NS}}}Relationship")
+        if relationship.attrib.get("Type", "").endswith("/table")
+    ]
+    if len(table_relationships) != 1:
+        raise ValueError(f"{sheet_path}: expected exactly one table relationship")
+    target = table_relationships[0].attrib["Target"]
+    if target.startswith("/"):
+        return target.lstrip("/")
+    return posixpath.normpath(posixpath.join(posixpath.dirname(sheet_path), target))
+
+
+def _rebuilt_sheet_xml(
+    source: bytes, headers: list[str], rows: list[dict[str, str]], sheet_name: str,
+) -> bytes:
+    root = ET.fromstring(source)
+    sheet_data = root.find(f"{{{MAIN_NS}}}sheetData")
+    if sheet_data is None:
+        raise ValueError(f"{sheet_name}: sheetData missing")
+    existing_rows = list(sheet_data)
+    if len(existing_rows) < 3:
+        raise ValueError(f"{sheet_name}: title/header/data style templates missing")
+    title_row, header_template, data_template = existing_rows[:3]
+    header_cells = list(header_template)
+    data_cells = list(data_template)
+    header_styles = [cell.attrib.get("s") for cell in header_cells]
+    data_styles = [cell.attrib.get("s") for cell in data_cells]
+    header_fallback = header_styles[-1] if header_styles else None
+    data_fallback = data_styles[-1] if data_styles else None
+
+    for child in existing_rows:
+        sheet_data.remove(child)
+    sheet_data.append(title_row)
+
+    header_attributes = dict(header_template.attrib)
+    header_attributes["r"] = "2"
+    header_row = ET.Element(f"{{{MAIN_NS}}}row", header_attributes)
+    for index, header in enumerate(headers):
+        style = header_styles[index] if index < len(header_styles) else header_fallback
+        header_row.append(_cell(2, index, header, style))
+    sheet_data.append(header_row)
+
+    data_attributes = dict(data_template.attrib)
+    for offset, record in enumerate(rows, start=3):
+        row_attributes = dict(data_attributes)
+        row_attributes["r"] = str(offset)
+        row = ET.Element(f"{{{MAIN_NS}}}row", row_attributes)
+        for index, header in enumerate(headers):
+            style = data_styles[index] if index < len(data_styles) else data_fallback
+            row.append(_cell(offset, index, record.get(header, ""), style))
+        sheet_data.append(row)
+
+    merge_cells = root.find(f"{{{MAIN_NS}}}mergeCells")
+    if merge_cells is not None and len(merge_cells):
+        list(merge_cells)[0].set("ref", f"A1:{_column_reference(len(headers)-1)}1")
+    return ET.tostring(root, encoding="utf-8", xml_declaration=True)
+
+
+def _rebuilt_table_xml(source: bytes, headers: list[str], row_count: int) -> bytes:
+    root = ET.fromstring(source)
+    table_ref = f"A2:{_column_reference(len(headers)-1)}{row_count+2}"
+    root.set("ref", table_ref)
+    auto_filter = root.find(f"{{{MAIN_NS}}}autoFilter")
+    if auto_filter is not None:
+        auto_filter.set("ref", table_ref)
+    table_columns = root.find(f"{{{MAIN_NS}}}tableColumns")
+    if table_columns is None:
+        raise ValueError("tableColumns missing")
+    for child in list(table_columns):
+        table_columns.remove(child)
+    table_columns.set("count", str(len(headers)))
+    for index, header in enumerate(headers, start=1):
+        ET.SubElement(
+            table_columns,
+            f"{{{MAIN_NS}}}tableColumn",
+            {"id": str(index), "name": header},
+        )
+    return ET.tostring(root, encoding="utf-8", xml_declaration=True)
+
+
+def _updated_instruction_summary_xml(
+    source: bytes, summary_values: dict[str, int],
+) -> bytes:
+    root = ET.fromstring(source)
+    for reference, value in summary_values.items():
+        cell = root.find(f".//{{{MAIN_NS}}}c[@r='{reference}']")
+        if cell is None:
+            raise ValueError(f"使用说明: summary cell {reference} missing")
+        for child in list(cell):
+            cell.remove(child)
+        cell.set("t", "n")
+        value_node = ET.SubElement(cell, f"{{{MAIN_NS}}}v")
+        value_node.text = str(value)
+    return ET.tostring(root, encoding="utf-8", xml_declaration=True)
+
+
+def rebuild_readonly_views(
+    workbook_path: Path,
+    canonical_tables: dict[str, tuple[list[str], list[dict[str, str]]]],
+    summary_values: dict[str, int],
+) -> None:
+    with zipfile.ZipFile(workbook_path, "r") as source_archive:
+        sheet_paths = _sheet_paths(source_archive)
+        replacements: dict[str, bytes] = {
+            sheet_paths["使用说明"]: _updated_instruction_summary_xml(
+                source_archive.read(sheet_paths["使用说明"]), summary_values,
+            ),
+        }
+        for sheet_name in READONLY_VIEW_SPECS:
+            sheet_path = sheet_paths[sheet_name]
+            headers, rows = canonical_tables[sheet_name]
+            replacements[sheet_path] = _rebuilt_sheet_xml(
+                source_archive.read(sheet_path), headers, rows, sheet_name,
+            )
+            table_path = _table_path_for_sheet(source_archive, sheet_path)
+            replacements[table_path] = _rebuilt_table_xml(
+                source_archive.read(table_path), headers, len(rows),
+            )
+
+        temporary = tempfile.NamedTemporaryFile(
+            prefix=workbook_path.stem + "-", suffix=".xlsx",
+            dir=workbook_path.parent, delete=False,
+        )
+        temporary_path = Path(temporary.name)
+        temporary.close()
+        try:
+            with zipfile.ZipFile(temporary_path, "w") as target_archive:
+                for info in source_archive.infolist():
+                    target_archive.writestr(info, replacements.get(info.filename, source_archive.read(info.filename)))
+            os.replace(temporary_path, workbook_path)
+        finally:
+            if temporary_path.exists():
+                temporary_path.unlink()
 
 
 def validate_unique(rows: list[dict[str, str]], key: str, label: str) -> list[str]:
@@ -286,9 +607,30 @@ def validate_closeout_rules(
     return errors
 
 
+def decision_closeout_status(
+    decision: dict[str, str], closeout_rule: dict[str, str],
+) -> str:
+    if decision["status"] == "不适用":
+        return "not_applicable"
+    if (
+        decision["status"] == "自定义确认"
+        and closeout_rule["closeout_kind"] == "human_design_selection"
+        and decision["user_value"]
+        and decision["evidence_reference"]
+    ):
+        return "closed_by_human_confirmation"
+    if decision["status"] in {"采用候选", "自定义确认"}:
+        return "decision_confirmed_evidence_pending"
+    return "open"
+
+
 def normalized_inputs(
     decisions: list[dict[str, str]], appliances: list[dict[str, str]],
+    closeout_rules: Optional[list[dict[str, str]]] = None,
 ) -> dict[str, Any]:
+    closeout_by_id = {
+        row["input_id"]: row for row in (closeout_rules or [])
+    }
     normalized_decisions = []
     for row in decisions:
         effective_value = ""
@@ -299,6 +641,12 @@ def normalized_inputs(
         normalized_decisions.append({
             "input_id": row["input_id"],
             "status": row["status"],
+            "decision_status": row["status"],
+            "closeout_status": (
+                decision_closeout_status(row, closeout_by_id[row["input_id"]])
+                if row["input_id"] in closeout_by_id
+                else "not_evaluated"
+            ),
             "candidate_value": row["candidate_value"],
             "effective_value": effective_value,
             "evidence_reference": row["evidence_reference"] if effective_value else "",
@@ -345,8 +693,20 @@ def summary(
     decisions: list[dict[str, str]], appliances: list[dict[str, str]],
     closeout_rules: list[dict[str, str]],
 ) -> dict[str, Any]:
-    release_open = [row["input_id"] for row in decisions if row["blocks_release"] == "yes" and row["status"] not in {"采用候选", "自定义确认", "不适用"}]
     closeout_by_id = {row["input_id"]: row for row in closeout_rules}
+    closeout_status_by_id = {
+        row["input_id"]: decision_closeout_status(
+            row, closeout_by_id[row["input_id"]],
+        )
+        for row in decisions
+    }
+    release_open = [
+        row["input_id"]
+        for row in decisions
+        if row["blocks_release"] == "yes"
+        and closeout_status_by_id[row["input_id"]]
+        not in {"closed_by_human_confirmation", "not_applicable"}
+    ]
     open_closeout = [closeout_by_id[input_id] for input_id in release_open]
     appliance_open = [row["appliance_id"] for row in appliances if row["status"] not in {"已确认", "不适用"}]
     load_by_group: dict[str, float] = {}
@@ -359,6 +719,7 @@ def summary(
             unknown_power.setdefault(group, []).append(row["appliance_id"])
     return {
         "decision_status_counts": dict(sorted(Counter(row["status"] for row in decisions).items())),
+        "decision_closeout_status_counts": dict(sorted(Counter(closeout_status_by_id.values()).items())),
         "appliance_status_counts": dict(sorted(Counter(row["status"] for row in appliances).items())),
         "release_blocking_open_count": len(release_open),
         "release_blocking_open_ids": release_open,
@@ -386,6 +747,7 @@ def open_items_markdown(
         f"- 必须由人审、现场、厂家或主管方关闭：{data['human_or_external_closeout_open_count']} 项",
         f"- 未完全确认家电：{data['appliance_open_count']} 项",
         "- 候选值只有在状态改为“采用候选”后才视为确认。", "",
+        "- “采用候选”只确认设计选择，不会自动关闭施工证据、厂家接口或回路计算。", "",
         "## 无保留发布阻塞输入", "",
         "| ID | 专业 | 关闭类型 | 责任方 | 所需证据 | 状态 | 已填写值 |",
         "| --- | --- | --- | --- | --- | --- | --- |",
@@ -416,7 +778,7 @@ def pm_block(data: dict[str, Any]) -> str:
         f"- 无保留发布阻塞输入仍开放：**{data['release_blocking_open_count']}** 项；不阻止明确披露未决项的待复核候选版。",
         f"- 其中本地脚本可自动关闭：**{data['automatic_close_open_count']}** 项；须由人审、现场、厂家或主管方关闭：**{data['human_or_external_closeout_open_count']}** 项。",
         f"- 家电条目尚未完全确认：**{data['appliance_open_count']}** 项。",
-        "- 候选值不等于确认；只有“采用候选”或“自定义确认”的设计决策才关闭输入项。",
+        "- “采用候选”只关闭设计选择，不自动关闭施工证据；设计状态与施工关闭状态分别计算。",
         "- 同步脚本只更新决策登记与本状态块，不直接写正式 IFC。", PM_END,
     ])
 
@@ -434,13 +796,27 @@ def update_pm(path: Path, block: str) -> None:
     path.write_text(text, encoding="utf-8")
 
 
+def load_readonly_canonical_tables(
+    args: argparse.Namespace,
+) -> dict[str, tuple[list[str], list[dict[str, str]]]]:
+    return {
+        sheet_name: read_canonical_csv(getattr(args, spec["argument"]))
+        for sheet_name, spec in READONLY_VIEW_SPECS.items()
+    }
+
+
 def main() -> int:
     args = parse_args()
     baseline_decisions = read_csv(args.decisions, DECISION_HEADERS)
     baseline_appliances = read_csv(args.appliances, APPLIANCE_HEADERS)
     closeout_rules = read_csv(args.closeout_rules, CLOSEOUT_HEADERS)
+    canonical_tables = load_readonly_canonical_tables(args)
+    readonly_parity: Optional[dict[str, Any]] = None
     if args.input.suffix.lower() == ".xlsx":
-        decisions, appliances = read_xlsx(args.input)
+        decisions, appliances, readonly_rows, workbook_sheet_names = read_xlsx(args.input)
+        readonly_parity = readonly_views_parity(
+            readonly_rows, workbook_sheet_names, canonical_tables,
+        )
     elif args.input.suffix.lower() == ".csv":
         decisions = read_csv(args.input, DECISION_HEADERS)
         appliances = baseline_appliances
@@ -465,18 +841,10 @@ def main() -> int:
         "formal_ifc_write": False,
         "decision_changes": diff_rows(baseline_decisions, decisions, "input_id"),
         "appliance_changes": diff_rows(baseline_appliances, appliances, "appliance_id"),
+        "readonly_view_parity": readonly_parity,
         "summary": data,
-        "normalized_inputs": normalized_inputs(decisions, appliances),
+        "normalized_inputs": normalized_inputs(decisions, appliances, closeout_rules),
     }
-    if args.report:
-        args.report.parent.mkdir(parents=True, exist_ok=True)
-        args.report.write_text(json.dumps(report, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
-    if args.open_items:
-        args.open_items.parent.mkdir(parents=True, exist_ok=True)
-        args.open_items.write_text(
-            open_items_markdown(decisions, appliances, closeout_rules, data),
-            encoding="utf-8",
-        )
     if args.apply:
         default_appliances = Path(__file__).resolve().parents[2] / "pipeline/decisions/appliance-input-register.csv"
         if args.appliances.resolve() == default_appliances.resolve():
@@ -486,7 +854,35 @@ def main() -> int:
         if args.appliances.resolve() != default_appliances.resolve():
             write_csv(args.appliances, APPLIANCE_HEADERS, appliances)
         update_pm(args.pm, pm_block(data))
+        if args.input.suffix.lower() == ".xlsx":
+            canonical_tables = load_readonly_canonical_tables(args)
+            rebuild_readonly_views(
+                args.input,
+                canonical_tables,
+                {
+                    "B13": len(decisions),
+                    "B14": data["release_blocking_open_count"],
+                    "B15": len(appliances),
+                    "B16": sum(row["status"] == "已确认" for row in appliances),
+                },
+            )
+            _, _, rebuilt_rows, rebuilt_sheet_names = read_xlsx(args.input)
+            report["readonly_view_parity_after_apply"] = readonly_views_parity(
+                rebuilt_rows, rebuilt_sheet_names, canonical_tables,
+            )
+    if args.report:
+        args.report.parent.mkdir(parents=True, exist_ok=True)
+        args.report.write_text(json.dumps(report, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
+    if args.open_items:
+        args.open_items.parent.mkdir(parents=True, exist_ok=True)
+        args.open_items.write_text(
+            open_items_markdown(decisions, appliances, closeout_rules, data),
+            encoding="utf-8",
+        )
     print(json.dumps(report, ensure_ascii=False, indent=2))
+    if args.apply and args.input.suffix.lower() == ".xlsx":
+        if not report["readonly_view_parity_after_apply"]["all_match"]:
+            return 2
     return 0
 
 

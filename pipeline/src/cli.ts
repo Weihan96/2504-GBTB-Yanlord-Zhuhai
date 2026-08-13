@@ -1,7 +1,7 @@
 import { mkdir } from "node:fs/promises";
 import { dirname, resolve } from "node:path";
 import { snapshotIfc } from "./ifc-step";
-import { buildQaReport, renderQaMarkdown, type DecisionSnapshot, type DrawingSnapshot, type SpaceReviewSnapshot } from "./qa";
+import { buildQaReport, renderQaMarkdown, type ConcentratedReviewSnapshot, type DecisionSnapshot, type DrawingSnapshot, type SpaceReviewSnapshot } from "./qa";
 
 export const DECISION_STATUSES = new Set(["pending", "confirmed", "rejected", "implemented", "delegated", "planned"]);
 
@@ -21,6 +21,7 @@ interface ProjectConfig {
   baselineAnnotationTypes?: Record<string, number>;
   baselineElevationDrawingPairs?: number;
   spaceReviewFile?: string;
+  concentratedReviewFile?: string;
   drawings: DrawingConfig[];
   decisionFiles: string[];
   output: {
@@ -149,6 +150,62 @@ async function inspectSpaceReviewFile(path: string, snapshot: Awaited<ReturnType
   };
 }
 
+async function inspectConcentratedReviewFile(path: string): Promise<ConcentratedReviewSnapshot> {
+  const absolutePath = resolve(repositoryRoot, path);
+  const file = Bun.file(absolutePath);
+  if (!(await file.exists())) {
+    return {
+      path,
+      sourceIfcSha256: "",
+      reviewItemCount: 0,
+      openRootReviewItemCount: 0,
+      unmappedBlockerCount: 1,
+      mappingComplete: false,
+      constructionReleaseReady: false,
+      errors: ["concentrated human-review report is missing"],
+    };
+  }
+  try {
+    const report = await file.json() as Record<string, any>;
+    const summary = report.summary ?? {};
+    const gates = report.gates ?? {};
+    const errors: string[] = [];
+    if (typeof report.source_ifc_sha256 !== "string" || report.source_ifc_sha256.length !== 64) {
+      errors.push("source_ifc_sha256 is missing or invalid");
+    }
+    for (const key of ["review_item_count", "open_root_review_item_count", "unmapped_blocker_count"]) {
+      if (!Number.isInteger(summary[key]) || summary[key] < 0) errors.push(`summary.${key} is invalid`);
+    }
+    if (typeof gates.all_blocking_requirements_mapped !== "boolean") {
+      errors.push("gates.all_blocking_requirements_mapped is missing");
+    }
+    if (typeof gates.construction_release_ready !== "boolean") {
+      errors.push("gates.construction_release_ready is missing");
+    }
+    return {
+      path,
+      sourceIfcSha256: report.source_ifc_sha256 ?? "",
+      reviewItemCount: summary.review_item_count ?? 0,
+      openRootReviewItemCount: summary.open_root_review_item_count ?? 0,
+      unmappedBlockerCount: summary.unmapped_blocker_count ?? 0,
+      mappingComplete: gates.all_blocking_requirements_mapped === true,
+      constructionReleaseReady: gates.construction_release_ready === true,
+      errors,
+    };
+  } catch (error) {
+    return {
+      path,
+      sourceIfcSha256: "",
+      reviewItemCount: 0,
+      openRootReviewItemCount: 0,
+      unmappedBlockerCount: 1,
+      mappingComplete: false,
+      constructionReleaseReady: false,
+      errors: [`cannot parse concentrated human-review report: ${String(error)}`],
+    };
+  }
+}
+
 async function main(): Promise<void> {
   const command = process.argv[2] ?? "help";
   if (!new Set(["snapshot", "check"]).has(command)) {
@@ -163,7 +220,10 @@ async function main(): Promise<void> {
   const drawingSnapshots = await Promise.all(config.drawings.map(inspectDrawing));
   const decisionSnapshots = await Promise.all(config.decisionFiles.map(inspectDecisionFile));
   const spaceReview = config.spaceReviewFile ? await inspectSpaceReviewFile(config.spaceReviewFile, snapshot) : undefined;
-  const snapshotArtifact = { projectId: config.projectId, projectName: config.projectName, ifc: snapshot, drawings: drawingSnapshots, decisions: decisionSnapshots, spaceReview };
+  const concentratedReview = config.concentratedReviewFile
+    ? await inspectConcentratedReviewFile(config.concentratedReviewFile)
+    : undefined;
+  const snapshotArtifact = { projectId: config.projectId, projectName: config.projectName, ifc: snapshot, drawings: drawingSnapshots, decisions: decisionSnapshots, spaceReview, concentratedReview };
   const snapshotPath = resolve(repositoryRoot, config.output.snapshot);
   await writeJson(snapshotPath, snapshotArtifact);
   console.log(`snapshot: ${config.output.snapshot}`);
@@ -172,7 +232,7 @@ async function main(): Promise<void> {
 
   if (command === "snapshot") return;
 
-  const report = buildQaReport(snapshot, drawingSnapshots, config, decisionSnapshots, spaceReview);
+  const report = buildQaReport(snapshot, drawingSnapshots, config, decisionSnapshots, spaceReview, concentratedReview);
   const qaJsonPath = resolve(repositoryRoot, config.output.qaJson);
   const qaMarkdownPath = resolve(repositoryRoot, config.output.qaMarkdown);
   await writeJson(qaJsonPath, report);

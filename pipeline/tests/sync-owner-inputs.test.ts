@@ -1,5 +1,5 @@
 import { expect, test } from "bun:test";
-import { existsSync, mkdtempSync, readFileSync, writeFileSync } from "node:fs";
+import { copyFileSync, existsSync, mkdtempSync, readFileSync, writeFileSync } from "node:fs";
 import { tmpdir } from "node:os";
 import { join, resolve } from "node:path";
 
@@ -33,6 +33,18 @@ test("owner input sync is dry-run by default and never writes IFC", () => {
   );
   expect(entry.candidate_value).not.toBe("");
   expect(entry.effective_value).toBe("");
+  const adopted = parsed.normalized_inputs.decisions.find(
+    (row: { input_id: string }) => row.input_id === "E303-NS01-FORM",
+  );
+  expect(adopted).toMatchObject({
+    decision_status: "采用候选",
+    closeout_status: "decision_confirmed_evidence_pending",
+  });
+  expect(parsed.summary.release_blocking_open_ids).toContain("E303-NS01-FORM");
+  const wallTags = parsed.normalized_inputs.decisions.find(
+    (row: { input_id: string }) => row.input_id === "A103-WALL-TAG-SCHEME",
+  );
+  expect(wallTags.closeout_status).toBe("closed_by_human_confirmation");
 });
 
 test("default dry-run writes only stdout", () => {
@@ -130,49 +142,165 @@ test("zero electrical load is accepted only for gas appliances", () => {
   );
   const input = join(temp, "invalid-appliances.csv");
   writeFileSync(input, invalid);
-  const workbook = join(temp, "input.xlsx");
-  const script = `
-from pathlib import Path
-import csv, zipfile
-from xml.sax.saxutils import escape
-
-root = Path(${JSON.stringify(root)})
-rows = list(csv.reader(Path(${JSON.stringify(input)}).open(encoding="utf-8-sig")))
-decision_rows = list(csv.reader((root / "pipeline/decisions/owner-input-register.csv").open(encoding="utf-8-sig")))
-display = {
-  "decisions": ${JSON.stringify([
-    "ID", "专业", "优先级", "阻塞无保留发布", "需要你确认", "常见候选（不等于确认）",
-    "你的确认值", "单位", "状态", "证据/链接", "现有依据", "同步目标", "备注",
-  ])},
-  "appliances": ${JSON.stringify([
-    "设备ID", "设备名称", "类别", "候选存放位置", "候选使用位置", "确认存放位置",
-    "确认使用位置", "数量", "额定功率(W)", "同时使用组", "需给水", "需排水",
-    "需燃气", "需通风", "型号", "证据/链接", "状态", "备注",
-  ])},
-}
-def sheet_xml(data, header):
-    values = [header] + data[1:]
-    body = []
-    for r, row in enumerate(values, 1):
-        cells = []
-        for c, value in enumerate(row, 1):
-            n, letters = c, ""
-            while n:
-                n, rem = divmod(n - 1, 26); letters = chr(65 + rem) + letters
-            cells.append(f'<c r="{letters}{r}" t="inlineStr"><is><t>{escape(value)}</t></is></c>')
-        body.append(f'<row r="{r}">' + ''.join(cells) + '</row>')
-    return '<?xml version="1.0" encoding="UTF-8" standalone="yes"?><worksheet xmlns="http://schemas.openxmlformats.org/spreadsheetml/2006/main"><sheetData>' + ''.join(body) + '</sheetData></worksheet>'
-with zipfile.ZipFile(Path(${JSON.stringify(workbook)}), "w") as z:
-    z.writestr("xl/workbook.xml", '<?xml version="1.0"?><workbook xmlns="http://schemas.openxmlformats.org/spreadsheetml/2006/main" xmlns:r="http://schemas.openxmlformats.org/officeDocument/2006/relationships"><sheets><sheet name="设计决策" sheetId="1" r:id="rId1"/><sheet name="家电清单" sheetId="2" r:id="rId2"/></sheets></workbook>')
-    z.writestr("xl/_rels/workbook.xml.rels", '<?xml version="1.0"?><Relationships xmlns="http://schemas.openxmlformats.org/package/2006/relationships"><Relationship Id="rId1" Target="worksheets/sheet1.xml"/><Relationship Id="rId2" Target="worksheets/sheet2.xml"/></Relationships>')
-    z.writestr("xl/worksheets/sheet1.xml", sheet_xml(decision_rows, display["decisions"]))
-    z.writestr("xl/worksheets/sheet2.xml", sheet_xml(rows, display["appliances"]))
-`;
-  const built = Bun.spawnSync(["python3", "-c", script], { cwd: root });
-  expect(built.exitCode).toBe(0);
   const rejected = Bun.spawnSync([
-    "python3", "pipeline/scripts/sync_owner_inputs.py", "--input", workbook,
+    "python3", "pipeline/scripts/sync_owner_inputs.py",
+    "--input", "pipeline/decisions/owner-input-register.csv",
+    "--appliances", input,
   ], { cwd: root });
   expect(rejected.exitCode).toBe(2);
   expect(rejected.stderr.toString()).toContain("zero is allowed only for a gas appliance");
 });
+
+test("readonly SSOT sheets report full parity and apply rebuilds them without CSV writeback", () => {
+  const temp = mkdtempSync(join(tmpdir(), "owner-inputs-parity-"));
+  const workbook = join(temp, "owner-inputs.xlsx");
+  const decisions = join(temp, "owner-input-register.csv");
+  const appliances = join(temp, "appliance-input-register.csv");
+  const closeout = join(temp, "owner-input-closeout-rules.csv");
+  const pm = join(temp, "pm.md");
+  const equipment = join(temp, "equipment-register.csv");
+  const requirements = join(temp, "equipment-installation-requirements.csv");
+  const evidence = join(temp, "source-evidence-register.csv");
+  for (const [source, target] of [
+    ["output/forms/滨海湾施工输入清单.xlsx", workbook],
+    ["pipeline/decisions/owner-input-register.csv", decisions],
+    ["pipeline/decisions/appliance-input-register.csv", appliances],
+    ["pipeline/decisions/owner-input-closeout-rules.csv", closeout],
+    ["drawings/滨海湾装修施工图深化工作管理.md", pm],
+    ["pipeline/decisions/equipment-register.csv", equipment],
+    ["pipeline/decisions/equipment-installation-requirements.csv", requirements],
+    ["pipeline/decisions/source-evidence-register.csv", evidence],
+  ] as const) {
+    copyFileSync(join(root, source), target);
+  }
+
+  const equipmentText = readFileSync(equipment, "utf8");
+  const changedEquipment = equipmentText.replace(
+    "APP-001,APPLIANCE,移动厨电,火锅电器",
+    "APP-001,APPLIANCE,移动厨电,火锅设备（parity test）",
+  );
+  expect(changedEquipment).not.toBe(equipmentText);
+  writeFileSync(equipment, changedEquipment);
+  writeFileSync(
+    requirements,
+    readFileSync(requirements, "utf8").trimEnd()
+      + "\nREQ-PARITY-TEST,APP-001,ELEC,parity_test,yes,,,,project_candidate,candidate,,,yes,test only\n",
+  );
+  const evidenceText = readFileSync(evidence, "utf8");
+  const changedEvidence = evidenceText.replace(
+    "强弱电箱位于过道高柜",
+    "强弱电箱位于过道高柜（parity test）",
+  );
+  expect(changedEvidence).not.toBe(evidenceText);
+  writeFileSync(evidence, changedEvidence);
+
+  const args = [
+    "--input", workbook,
+    "--decisions", decisions,
+    "--appliances", appliances,
+    "--closeout-rules", closeout,
+    "--pm", pm,
+    "--equipment-register", equipment,
+    "--installation-requirements", requirements,
+    "--evidence-register", evidence,
+  ];
+  const dryRun = Bun.spawnSync([
+    "python3", "pipeline/scripts/sync_owner_inputs.py", ...args,
+  ], { cwd: root });
+  expect(dryRun.exitCode, dryRun.stderr.toString()).toBe(0);
+  const before = JSON.parse(dryRun.stdout.toString());
+  expect(before.readonly_view_parity.workbook_structure_match).toBe(true);
+  expect(before.readonly_view_parity.views["设备主表"]).toMatchObject({
+    row_count_match: true,
+    columns_match: true,
+    keys_match: true,
+    values_match: false,
+    all_match: false,
+  });
+  expect(before.readonly_view_parity.views["安装条件"]).toMatchObject({
+    row_count_match: false,
+    columns_match: true,
+    keys_match: false,
+    all_match: false,
+  });
+  expect(before.readonly_view_parity.views["证据索引"]).toMatchObject({
+    columns_match: true,
+    values_match: false,
+    all_match: false,
+  });
+
+  const canonicalBefore = new Map([
+    [equipment, readFileSync(equipment)],
+    [requirements, readFileSync(requirements)],
+    [evidence, readFileSync(evidence)],
+  ]);
+  const applied = Bun.spawnSync([
+    "python3", "pipeline/scripts/sync_owner_inputs.py", ...args, "--apply",
+  ], { cwd: root });
+  expect(applied.exitCode, applied.stderr.toString()).toBe(0);
+  const after = JSON.parse(applied.stdout.toString());
+  expect(after.readonly_view_parity.all_match).toBe(false);
+  expect(after.readonly_view_parity_after_apply.all_match).toBe(true);
+  const tableAudit = Bun.spawnSync([
+    "python3", "-c", String.raw`
+import json,sys,zipfile
+from xml.etree import ElementTree as ET
+ns="http://schemas.openxmlformats.org/spreadsheetml/2006/main"
+with zipfile.ZipFile(sys.argv[1]) as archive:
+    assert archive.testzip() is None
+    result={}
+    for name in archive.namelist():
+        if not name.startswith("xl/tables/table") or not name.endswith(".xml"):
+            continue
+        root=ET.fromstring(archive.read(name))
+        result[root.attrib["name"]]=root.attrib["ref"]
+print(json.dumps(result,ensure_ascii=False))
+`, workbook,
+  ], { cwd: root });
+  expect(tableAudit.exitCode, tableAudit.stderr.toString()).toBe(0);
+  const tableRefs = JSON.parse(tableAudit.stdout.toString());
+  expect(tableRefs["设备主表Table"]).toBe("A2:AB155");
+  expect(tableRefs["安装条件Table"]).toBe("A2:N593");
+  expect(tableRefs["证据索引Table"]).toBe("A2:X121");
+  const summaryAudit = Bun.spawnSync([
+    "python3", "-c", String.raw`
+import json,sys,zipfile
+from xml.etree import ElementTree as ET
+ns="http://schemas.openxmlformats.org/spreadsheetml/2006/main"
+with zipfile.ZipFile(sys.argv[1]) as archive:
+    root=ET.fromstring(archive.read("xl/worksheets/sheet1.xml"))
+    result={}
+    for reference in ("B13","B14","B15","B16"):
+        cell=root.find(f".//{{{ns}}}c[@r='{reference}']")
+        value=cell.find(f"{{{ns}}}v") if cell is not None else None
+        result[reference]=value.text if value is not None else None
+print(json.dumps(result,ensure_ascii=False))
+`, workbook,
+  ], { cwd: root });
+  expect(summaryAudit.exitCode, summaryAudit.stderr.toString()).toBe(0);
+  expect(JSON.parse(summaryAudit.stdout.toString())).toEqual({
+    B13: "23",
+    B14: "22",
+    B15: "18",
+    B16: "3",
+  });
+  for (const [path, contents] of canonicalBefore) {
+    expect(readFileSync(path)).toEqual(contents);
+  }
+
+  const verified = Bun.spawnSync([
+    "python3", "pipeline/scripts/sync_owner_inputs.py", ...args,
+  ], { cwd: root });
+  expect(verified.exitCode, verified.stderr.toString()).toBe(0);
+  const verifiedReport = JSON.parse(verified.stdout.toString());
+  expect(verifiedReport.readonly_view_parity.all_match).toBe(true);
+  for (const view of Object.values(verifiedReport.readonly_view_parity.views) as Array<Record<string, unknown>>) {
+    expect(view).toMatchObject({
+      row_count_match: true,
+      columns_match: true,
+      keys_match: true,
+      values_match: true,
+      all_match: true,
+    });
+  }
+}, 30_000);
