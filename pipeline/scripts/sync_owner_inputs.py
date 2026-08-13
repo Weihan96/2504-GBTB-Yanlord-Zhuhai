@@ -563,20 +563,28 @@ def validate_appliances(rows: list[dict[str, str]], baseline: list[dict[str, str
             errors.append(f"{row['appliance_id']}: invalid status {row['status']!r}")
         try:
             quantity = int(float(row["quantity"]))
-            if quantity < 1:
+            if quantity < 0 or (quantity == 0 and row["status"] != "不适用"):
                 raise ValueError
             row["quantity"] = str(quantity)
         except ValueError:
-            errors.append(f"{row['appliance_id']}: quantity must be a positive integer")
+            errors.append(
+                f"{row['appliance_id']}: quantity must be a positive integer; "
+                "zero is allowed only for a not-applicable alias"
+            )
         if row["rated_power_w"]:
             try:
                 rated_power = float(row["rated_power_w"])
-                if rated_power < 0 or (rated_power == 0 and row["gas_required"] != "yes"):
+                if rated_power < 0 or (
+                    rated_power == 0
+                    and row["gas_required"] != "yes"
+                    and row["status"] != "不适用"
+                ):
                     raise ValueError
             except ValueError:
                 errors.append(
                     f"{row['appliance_id']}: rated_power_w must be positive; "
-                    "zero is allowed only for a gas appliance with no mains load"
+                    "zero is allowed only for a gas appliance with no mains load "
+                    "or a not-applicable alias"
                 )
         if row["status"] == "已确认":
             for field in ("storage_location_confirmed", "use_location_confirmed", "rated_power_w", "model"):

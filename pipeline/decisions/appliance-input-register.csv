@@ -1,10 +1,10 @@
 ﻿appliance_id,appliance_name,category,storage_location_candidate,use_location_candidate,storage_location_confirmed,use_location_confirmed,quantity,rated_power_w,simultaneous_group,water_required,drain_required,gas_required,ventilation_required,model,evidence_reference,status,notes
-APP-001,火锅电器,移动厨电,厨房柜内,西厨岛台 NS-01,,西厨岛台 NS-01,1,,NS01-A,no,no,no,no,,,部分确认,实际使用位置已由用户说明；补型号与铭牌功率
-APP-002,搅拌机,移动厨电,厨房柜内,西厨岛台 NS-01,,西厨岛台 NS-01,1,,NS01-B,no,no,no,no,,,部分确认,用户已确认可与火锅同时使用；仍缺型号与铭牌功率
-APP-003,Sous-vide 棒,移动厨电,厨房柜内,西厨岛台 NS-01,,西厨岛台 NS-01,1,,NS01-B,no,no,no,no,,,部分确认,长时间运行需确认容器和插座位置
-APP-004,咖啡机,咖啡设备,餐边柜,餐边柜 NS-02,,餐边柜 NS-02,1,,NS02-A,model_dependent,model_dependent,no,no,,,部分确认,实际使用位置已由用户说明
-APP-005,手冲电热水壶,咖啡设备,餐边柜,餐边柜 NS-02,,餐边柜 NS-02,1,,NS02-A,no,no,no,no,,,部分确认,用户已确认不与咖啡机同时使用；仍缺最终型号与铭牌功率
-APP-006,磨豆机,咖啡设备,餐边柜,餐边柜 NS-02,,餐边柜 NS-02,1,,NS02-B,no,no,no,no,,,部分确认,补型号与铭牌功率
+APP-001,火锅电器,移动厨电,厨房柜内,西厨岛台 NS-01,,西厨岛台 NS-01,1,,NS01-A,no,no,no,no,,业主确认 NS-01 使用场景；准确型号和功率未知,部分确认,NS-01 三面各一隐藏盖板插座；火锅可与 APP-002/APP-003 中一件同时使用。未提供型号和铭牌功率，不计算总负荷。
+APP-002,搅拌机,移动厨电,厨房柜内,西厨岛台 NS-01,,西厨岛台 NS-01,1,,NS01-B,no,no,no,no,,业主确认 NS-01 使用场景；准确型号和功率未知,部分确认,可与火锅同时使用；型号和铭牌功率保持 unknown。
+APP-003,Sous-vide 棒,移动厨电,厨房柜内,西厨岛台 NS-01,,西厨岛台 NS-01,1,,NS01-B,no,no,no,no,,业主确认 NS-01 使用场景；准确型号和功率未知,部分确认,可与火锅同时使用的备选小厨电；型号和铭牌功率保持 unknown。
+APP-004,咖啡机,咖啡设备,餐边柜,餐边柜 NS-02,,餐边柜 NS-02,1,,NS02-A,model_dependent,model_dependent,no,no,GS3 / E1 Prima EXP（候选二选一）,业主给出两款候选；厂家资料仅作为候选参数，最终机型未定,部分确认,GS3 与 E1 Prima EXP 均为研究候选，不得作为已选产品。可预留可关闭净水支路和排水，但最终接口按实购机型关闭。
+APP-005,手冲电热水壶,咖啡设备,餐边柜,餐边柜 NS-02,,餐边柜 NS-02,1,1200,NS02-A,no,no,no,no,,业主提供 Hario 品牌和 1200W；准确型号待定,部分确认,1200W 为业主提供的候选功率，仍须按实购型号和铭牌复核；不与咖啡机同时使用。
+APP-006,磨豆机,咖啡设备,餐边柜,餐边柜 NS-02,,餐边柜 NS-02,1,,NS02-B,no,no,no,no,,业主确认 NS-02 使用场景；准确型号和功率未知,部分确认,与咖啡机同时使用；型号和铭牌功率保持 unknown。
 APP-007,冰箱 1,固定厨房电器,西厨,西厨,,西厨,1,,CONTINUOUS,no,no,no,yes,,,待填写,持续供电且不得进入照明总控
 APP-008,冰箱 2,固定厨房电器,西厨,西厨,,西厨,1,,CONTINUOUS,no,no,no,yes,,,待填写,持续供电且不得进入照明总控
 APP-009,岛台洗碗机 1,固定厨房电器,西厨岛台,西厨岛台,,西厨岛台,1,2000,DISHWASHER-A,yes,yes,no,no,Siemens SJ85ZX26MC,"【用户选型候选】https://e.tb.cn/h.8TnxVNjugUfIImB?tk=93QITaQnSCj CZ007
@@ -20,8 +20,8 @@ APP-010,岛台洗碗机 2,固定厨房电器,西厨岛台,西厨岛台,,西厨�
 APP-011,烤箱,固定厨房电器,西厨高柜,西厨高柜,西厨高柜,西厨高柜,1,3400,COOKING-A,no,no,no,yes,Siemens HB754G2B1W,APP-011-PHOTO-001;APP-011-OFFICIAL-001,已确认,已到货（包装照片）；220V/50Hz，最大功率3400W，16A插头；机身595×594×548 mm；柜体开口宽560–568、高585–595、深≥550 mm；进风面积≥200 cm²；电源线约1.2 m。
 APP-012,炉灶,固定厨房电器,中厨,中厨,中厨,中厨,1,0,COOKING-B,no,no,yes,yes,Siemens ER9EPA33MP/01（JZT-ER9EPA33MP）,APP-012-PHOTO-001;APP-012-PHOTO-002;APP-012-OFFICIAL-001,已确认,已到货（包装照片）；天然气12T/2.0kPa；额定热负荷左/中/右5.2/2.0/5.2kW；DC1.5V电池点火；外形920×500×150 mm；台面开孔880×455 mm、4×R15；橱柜通风≥100cm²；独立安装下方净空≥100mm（下置电器时隔板至台面≥120mm）；燃气接驳以当地燃气公司要求为准。
 APP-013,油烟机,固定厨房电器,中厨,中厨,中厨,中厨,1,385,COOKING-B,no,no,no,yes,Siemens LS33R6VB9W/01（CXW-380-LS33R6VB9W）,APP-013-PHOTO-001;APP-013-PHOTO-002;APP-013-OFFICIAL-001,已确认,已到货（包装照片）；220V/50Hz，额定输入385W；外形895×345×873 mm；烟管及止逆阀内径≥160mm，烟管宜≤3m且1弯；墙洞建议Ø180mm；吊顶圆孔Ø190mm；吊顶内预留电源；检修口建议400×400mm；与燃气灶承锅面净距≥650mm；电源线约1.3m。
-APP-014,直饮机,水处理设备,西厨,西厨使用点,,西厨使用点,1,,WATER-A,yes,model_dependent,no,no,,,待填写,补产品安装图和排水需求
-APP-015,净水器,水处理设备,西厨柜内,西厨柜内接口区,,西厨柜内接口区,1,,WATER-A,yes,model_dependent,no,no,,,待填写,存放位置与龙头使用点分开记录
-APP-016,垃圾处理器,固定厨房电器,西厨水槽柜,西厨水槽柜,,西厨水槽柜,1,,WATER-A,no,yes,no,no,,,待填写,补功率/开关方式/排水连接要求
-APP-017,LG WashTower,洗衣设备,中厨,中厨,,中厨,1,,LAUNDRY-A,yes,yes,no,yes,,正式 IFC 的 IfcBuildingElementProxy GlobalId 与既有体量,待填写,正式 IFC 有设备体量；补完整型号与安装图
+APP-014,双出水反渗透净饮一体机（直饮+净水）,水处理设备,西厨,西厨使用点,,西厨使用点,1,,WATER-A,yes,model_dependent,no,no,WS7060BC1C/01,业主明确型号 WS7060BC1C；西门子官方支持页核实 E-Nr. WS7060BC1C/01；APP-015 为同一实物功能别名,部分确认,一台实物同时承担直饮与净水功能；功率、给排水、电源、柜孔和检修条件仍须准确安装说明书。不得与 APP-015 重复统计。
+APP-015,净水功能别名（同 APP-014）,水处理设备,西厨柜内,西厨柜内接口区,,西厨柜内接口区,0,0,APP-014_alias_no_count,not_applicable_alias,not_applicable_alias,not_applicable_alias,not_applicable_alias,WS7060BC1C/01,业主明确 APP-015 与 APP-014 是同一台实物；本行仅为功能/历史编号别名,不适用,Alias of APP-014。不得生成第二台设备，不重复统计电源、给水、排水、数量或回路。
+APP-016,垃圾处理器,固定厨房电器,西厨水槽柜,西厨水槽柜,,西厨水槽柜,1,,WATER-A,no,yes,no,no,F50（业主提供候选）,业主补充候选名称“勒科斯 F50”；尚无厂家安装图、订单或铭牌,部分确认,候选身份不等于已选/已购；额定功率、开关方式、法兰尺寸和排水接口保持 unknown。
+APP-017,LG WashTower,洗衣设备,中厨,中厨,,中厨,1,,LAUNDRY-A,yes,yes,no,yes,FN23BQH,正式 IFC 描述识别型号，LG 中国官网核实准确型号与包络；采购状态未确认,部分确认,13kg 洗+10kg 烘，600×660×1655mm 为官方产品包络；额定功率、进排水、插座、柜门和搬运净空仍待准确手册与现场复核。
 APP-018,Huawei 联通智家设备,网络设备,玄关弱电箱,玄关弱电箱,,玄关弱电箱,1,,CONTINUOUS,no,no,no,yes,,,部分确认,实际箱内运行已确认；补底部铭牌与设备功能

@@ -15,15 +15,15 @@ test("equipment SSOT validates projections and covers every scoped IFC object", 
   expect(run.exitCode).toBe(0);
   const report = JSON.parse(run.stdout.toString());
   expect(report.validate).toMatchObject({
-    master_count: 153,
-    requirement_count: 590,
-    source_count: 119,
+    master_count: 159,
+    requirement_count: 658,
+    source_count: 154,
     schema_version: "1.0.0",
   });
   expect(report.projections).toMatchObject({
     appliance_rows: 18,
     furniture_rows: 9,
-    elec_evidence_rows: 24,
+    elec_evidence_rows: 58,
     hvac_evidence_rows: 4,
     furniture_role_rows: 51,
     mode: "check",
@@ -66,6 +66,112 @@ with open(sys.argv[1],encoding="utf-8-sig",newline="") as stream:
     expect(fileSha256(localPath)).toBe(row.sha256);
   }
 }, 30_000);
+
+test("2026-08-14 owner inputs preserve aliases, candidates, unknowns, and provenance", () => {
+  const extract = String.raw`
+import csv,json,sys
+def rows(path):
+    with open(path,encoding="utf-8-sig",newline="") as stream:
+        return list(csv.DictReader(stream))
+masters=rows(sys.argv[1]); requirements=rows(sys.argv[2]); sources=rows(sys.argv[3]); rules=rows(sys.argv[4])
+ids={"APP-004","APP-005","APP-014","APP-015","APP-016","APP-017","CTRL-ENTRY-A","NET-AP-R09","NET-AP-R14","SENSOR-GAS-R04","SENSOR-001"}
+print(json.dumps({
+  "masters":[row for row in masters if row["equipment_id"] in ids],
+  "requirements":[row for row in requirements if row["equipment_id"] in ids],
+  "sources":[row for row in sources if row["source_id"]=="OWNER-INBOX-20260814-001" or row["local_path"].startswith("drawings/evidence/owner-input-20260814/")],
+  "rules":[row for row in rules if row["rule_id"] in {"ELEC-DES-020","ELEC-DES-022","ELEC-DES-033","ELEC-DES-035","ELEC-DES-037","ELEC-DES-040","ELEC-DES-041"}],
+},ensure_ascii=False))
+`;
+  const run = Bun.spawnSync([
+    "python3", "-c", extract,
+    resolve(root, "pipeline/decisions/equipment-register.csv"),
+    resolve(root, "pipeline/decisions/equipment-installation-requirements.csv"),
+    resolve(root, "pipeline/decisions/source-evidence-register.csv"),
+    resolve(root, "pipeline/decisions/elec-design-rules.csv"),
+  ], { cwd: root });
+  expect(run.exitCode, run.stderr.toString()).toBe(0);
+  const data = JSON.parse(run.stdout.toString()) as {
+    masters: Array<Record<string, string>>;
+    requirements: Array<Record<string, string>>;
+    sources: Array<Record<string, string>>;
+    rules: Array<Record<string, string>>;
+  };
+  const master = (id: string) => data.masters.find((row) => row.equipment_id === id);
+  const requirement = (id: string, key: string) =>
+    data.requirements.find((row) => row.equipment_id === id && row.parameter_key === key);
+  const rule = (id: string) => data.rules.find((row) => row.rule_id === id);
+
+  expect(master("APP-014")).toMatchObject({
+    model: "WS7060BC1C/01",
+    quantity: "1",
+    procurement_status: "selected",
+    decision_status: "partial",
+  });
+  expect(requirement("APP-014", "functional_alias")).toMatchObject({
+    value_text: "APP-015",
+    status: "confirmed",
+  });
+  expect(requirement("APP-014", "installation_manual")).toMatchObject({
+    status: "pending",
+    blocks_release: "yes",
+  });
+  expect(master("APP-015")).toMatchObject({
+    quantity: "0",
+    procurement_status: "not_applicable",
+    decision_status: "superseded",
+    schedule_included: "no",
+  });
+  expect(requirement("APP-015", "alias_of")).toMatchObject({ value_text: "APP-014", status: "confirmed" });
+  for (const key of ["rated_power", "water_required", "drain_required", "gas_required", "ventilation_required"]) {
+    expect(requirement("APP-015", key), `APP-015.${key}`).toMatchObject({
+      status: "not_applicable",
+      blocks_release: "no",
+    });
+  }
+
+  expect(requirement("APP-004", "rated_power")).toMatchObject({ status: "pending", blocks_release: "yes" });
+  expect(requirement("APP-004", "candidate_power_gs3")).toMatchObject({ value_number: "2120", status: "candidate" });
+  expect(requirement("APP-004", "candidate_power_e1_prima_exp")).toMatchObject({
+    value_text: "1600_or_2600_by_version",
+    status: "candidate",
+  });
+  expect(requirement("APP-005", "rated_power")).toMatchObject({ value_number: "1200", status: "candidate" });
+  expect(master("APP-016")).toMatchObject({ procurement_status: "candidate", decision_status: "partial" });
+  expect(requirement("APP-016", "rated_power")).toMatchObject({ status: "pending", blocks_release: "yes" });
+
+  expect(master("CTRL-ENTRY-A")).toMatchObject({ procurement_status: "candidate", decision_status: "candidate" });
+  for (const key of ["exact_sku", "terminal_diagram", "minimum_backbox_clear_depth"]) {
+    expect(requirement("CTRL-ENTRY-A", key), `CTRL-ENTRY-A.${key}`).toMatchObject({
+      status: "pending",
+      blocks_release: "yes",
+    });
+  }
+  for (const id of ["NET-AP-R09", "NET-AP-R14"]) {
+    expect(requirement(id, "final_model"), `${id}.final_model`).toMatchObject({ status: "pending", blocks_release: "yes" });
+    expect(requirement(id, "cable_continuity_test"), `${id}.cable_continuity_test`).toMatchObject({ status: "pending" });
+  }
+  expect(master("SENSOR-GAS-R04")).toMatchObject({ model: "", decision_status: "pending" });
+  expect(requirement("SENSOR-GAS-R04", "gas_company_approval")).toMatchObject({ status: "pending", blocks_release: "yes" });
+  expect(requirement("SENSOR-GAS-R04", "consultation_candidates")).toMatchObject({ status: "candidate" });
+  expect(requirement("SENSOR-001", "final_detector_type_and_model")).toMatchObject({ status: "pending" });
+
+  expect(rule("ELEC-DES-020")?.status).toBe("superseded_by_device_first_selection");
+  expect(rule("ELEC-DES-022")?.status).toBe("superseded_by_gas_authority_gate");
+  for (const id of ["ELEC-DES-033", "ELEC-DES-035"]) {
+    expect(rule(id)?.status).toBe("pending_power_data_no_circuit_count_locked");
+  }
+  expect(rule("ELEC-DES-037")?.value).toContain("actual_length_x_W_per_m");
+  expect(rule("ELEC-DES-040")?.value).toContain("minimum_2_per_usable_side");
+  expect(rule("ELEC-DES-041")?.status).toBe("confirmed_process_exact_model_unknown");
+
+  const snapshot = data.sources.find((row) => row.source_id === "OWNER-INBOX-20260814-001");
+  expect(snapshot).toMatchObject({
+    sha256: "0dde421f925a8f16a0a52706db29b544d115cebd596b850cb9f18dea26da27ec",
+    status: "verified_owner_input_snapshot",
+    formal_ifc_write_allowed: "no",
+  });
+  expect(data.sources.filter((row) => row.local_path.startsWith("drawings/evidence/owner-input-20260814/"))).toHaveLength(18);
+});
 
 test("equipment SSOT never writes the formal IFC", () => {
   const source = readFileSync(script, "utf8");

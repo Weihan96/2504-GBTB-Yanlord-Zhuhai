@@ -23,7 +23,7 @@ REQ-0021,APP-004,PLUM,water_required,model_dependent,,,,user_input,pending,,,yes
 REQ-0022,APP-004,PLUM,drain_required,model_dependent,,,,user_input,pending,,,yes,
 REQ-0023,APP-004,GAS,gas_required,no,,,,user_input,confirmed,,,no,
 REQ-0024,APP-004,HVAC,ventilation_required,no,,,,user_input,confirmed,,,no,
-REQ-0025,APP-005,ELEC,rated_power,,,W,,user_input,pending,,,yes,
+REQ-0025,APP-005,ELEC,rated_power,,1200,W,,user_input,candidate,OWNER-INBOX-20260814-001,,yes,业主提供；准确 Hario 型号和铭牌待补。
 REQ-0026,APP-005,ELEC,simultaneous_group,NS02-A,,,,user_input,confirmed,,,no,
 REQ-0027,APP-005,PLUM,water_required,no,,,,user_input,confirmed,,,no,
 REQ-0028,APP-005,PLUM,drain_required,no,,,,user_input,confirmed,,,no,
@@ -161,13 +161,13 @@ REQ-0159,APP-014,PLUM,water_required,yes,,,,user_input,confirmed,,,no,
 REQ-0160,APP-014,PLUM,drain_required,model_dependent,,,,user_input,pending,,,yes,
 REQ-0161,APP-014,GAS,gas_required,no,,,,user_input,confirmed,,,no,
 REQ-0162,APP-014,HVAC,ventilation_required,no,,,,user_input,confirmed,,,no,
-REQ-0163,APP-015,ELEC,rated_power,,,W,,user_input,pending,,,yes,
-REQ-0164,APP-015,ELEC,simultaneous_group,WATER-A,,,,user_input,confirmed,,,no,
-REQ-0165,APP-015,PLUM,water_required,yes,,,,user_input,confirmed,,,no,
-REQ-0166,APP-015,PLUM,drain_required,model_dependent,,,,user_input,pending,,,yes,
-REQ-0167,APP-015,GAS,gas_required,no,,,,user_input,confirmed,,,no,
-REQ-0168,APP-015,HVAC,ventilation_required,no,,,,user_input,confirmed,,,no,
-REQ-0169,APP-016,ELEC,rated_power,,,W,,user_input,pending,,,yes,
+REQ-0163,APP-015,ELEC,rated_power,,0,,,user_input,not_applicable,OWNER-INBOX-20260814-001,,no,功能别名，不新增实物或接口。
+REQ-0164,APP-015,ELEC,simultaneous_group,APP-014_alias_no_count,,,,user_input,not_applicable,OWNER-INBOX-20260814-001,,no,功能别名，不新增实物或接口。
+REQ-0165,APP-015,PLUM,water_required,not_applicable_alias,,,,user_input,not_applicable,OWNER-INBOX-20260814-001,,no,功能别名，不新增实物或接口。
+REQ-0166,APP-015,PLUM,drain_required,not_applicable_alias,,,,user_input,not_applicable,OWNER-INBOX-20260814-001,,no,功能别名，不新增实物或接口。
+REQ-0167,APP-015,GAS,gas_required,not_applicable_alias,,,,user_input,not_applicable,OWNER-INBOX-20260814-001,,no,功能别名，不新增实物或接口。
+REQ-0168,APP-015,HVAC,ventilation_required,not_applicable_alias,,,,user_input,not_applicable,OWNER-INBOX-20260814-001,,no,功能别名，不新增实物或接口。
+REQ-0169,APP-016,ELEC,rated_power,,,W,,pending,pending,,,yes,勒科斯 F50 候选缺厂家安装图/铭牌，不按同类产品猜测。
 REQ-0170,APP-016,ELEC,simultaneous_group,WATER-A,,,,user_input,confirmed,,,no,
 REQ-0171,APP-016,PLUM,water_required,no,,,,user_input,confirmed,,,no,
 REQ-0172,APP-016,PLUM,drain_required,yes,,,,user_input,confirmed,,,no,
@@ -589,3 +589,71 @@ REQ-0587,APP-009,PLUM,drain_demand,yes,,,,official_exact_model,confirmed,APP-DW-
 REQ-0588,APP-010,PLUM,cold_water_demand,yes,,,,official_exact_model,confirmed,APP-DW-INSTALL-001,p.1–2,no,精确候选型号安装图确认 G3/4 冷水；只关闭设备介质需求，不确认现场阀门、支管、软管路径或坐标
 REQ-0589,APP-010,PLUM,hot_water_demand,no,,,,official_exact_model,confirmed,APP-DW-INSTALL-001,p.1–2,no,精确候选型号安装图只允许冷水且冷水不高于 25°C；不得配置热水需求
 REQ-0590,APP-010,PLUM,drain_demand,yes,,,,official_exact_model,confirmed,APP-DW-INSTALL-001,p.1–2,no,精确候选型号安装图确认 Ø38 排水接管；只关闭设备介质需求，不确认项目排水中心、转接或路径
+REQ-0591,APP-004,ELEC,candidate_power_gs3,,2120,W,,official_exact_model,candidate,APP-004-GS3-OFFICIAL-001,,yes,候选功率；最终未选 GS3 时不参与回路统计。
+REQ-0592,APP-004,ELEC,candidate_power_e1_prima_exp,1600_or_2600_by_version,,W,,official_model_family,candidate,APP-004-E1PRIMA-OFFICIAL-001,,yes,须按中国 220V 实购版本锁值。
+REQ-0595,APP-014,MULTI,functional_alias,APP-015,,,,user_input,confirmed,OWNER-INBOX-20260814-001,,no,同一台实物的净水功能历史编号。
+REQ-0596,APP-014,MULTI,physical_unit_count,,1,unit,,user_input,confirmed,OWNER-INBOX-20260814-001,,no,APP-014/015 合计只统计一台。
+REQ-0597,APP-014,MULTI,exact_enr,WS7060BC1C/01,,,,official_exact_model,confirmed,APP-014-SIEMENS-OFFICIAL-001,,no,
+REQ-0598,APP-014,MULTI,installation_manual,unknown,,,,pending,pending,,,yes,需准确 E-Nr. 安装说明书关闭功率、柜孔、给排水、电源与检修。
+REQ-0599,APP-015,MULTI,alias_of,APP-014,,,,user_input,confirmed,OWNER-INBOX-20260814-001,,no,唯一物理设备为 APP-014。
+REQ-0600,APP-016,PLUM,flange_size,,,mm,,pending,pending,,,yes,勒科斯 F50 候选缺厂家安装图/铭牌，不按同类产品猜测。
+REQ-0601,APP-016,PLUM,drain_connection,,,mm,,pending,pending,,,yes,勒科斯 F50 候选缺厂家安装图/铭牌，不按同类产品猜测。
+REQ-0602,APP-016,ELEC,switch_method,,,,,pending,pending,,,yes,勒科斯 F50 候选缺厂家安装图/铭牌，不按同类产品猜测。
+REQ-0603,APP-017,INT1,product_width,,600,mm,,official_exact_model,confirmed,APP-017-LG-OFFICIAL-001,,no,
+REQ-0604,APP-017,INT1,product_depth,,660,mm,,official_exact_model,confirmed,APP-017-LG-OFFICIAL-001,,no,
+REQ-0605,APP-017,INT1,product_height,,1655,mm,,official_exact_model,confirmed,APP-017-LG-OFFICIAL-001,,no,
+REQ-0606,APP-017,INT1,wash_capacity,,13,kg,,official_exact_model,confirmed,APP-017-LG-OFFICIAL-001,,no,
+REQ-0607,APP-017,INT1,dry_capacity,,10,kg,,official_exact_model,confirmed,APP-017-LG-OFFICIAL-001,,no,
+REQ-0608,CTRL-ENTRY-A,ELEC,controlled_categories,ambient_LED;accent_spotlights,,,,user_input,confirmed,OWNER-INBOX-20260814-001,,no,
+REQ-0609,CTRL-ENTRY-A,ELEC,exact_sku,,,,,pending,pending,,,yes,颜色、键数和有线/无线版本未锁。
+REQ-0610,CTRL-ENTRY-A,ELEC,terminal_diagram,,,,,pending,pending,,,yes,零火文案不能替代端子定义和接线图。
+REQ-0611,CTRL-ENTRY-A,ELEC/INT1,minimum_backbox_clear_depth,,,mm,,pending,pending,,,yes,须包含端子及导线弯曲空间。
+REQ-0612,CTRL-ENTRY-A,INT1,candidate_face_width,,85.8,mm,,official_model_family,candidate,JINK-EGG-OFFICIAL-001,,yes,
+REQ-0613,CTRL-ENTRY-A,INT1,candidate_face_height,,86,mm,,official_model_family,candidate,JINK-EGG-OFFICIAL-001,,yes,
+REQ-0614,CTRL-ENTRY-A,INT1,candidate_product_depth,,37.55,mm,,official_model_family,candidate,JINK-EGG-OFFICIAL-001,,yes,产品深度不等于底盒最小净深。
+REQ-0615,CTRL-ENTRY-A,INT1,inset_trim_fit,vendor_sample_confirmation_required,,,,project_candidate,candidate,TB-PANASURFACE-SWITCH-INSET-001,,yes,装饰框不替代电气底盒；一开/二开/三开指相邻面板数量。
+REQ-0616,CTRL-MASTER-A,ELEC,controlled_categories,ambient_LED;accent_spotlights,,,,user_input,confirmed,OWNER-INBOX-20260814-001,,no,
+REQ-0617,CTRL-MASTER-A,ELEC,exact_sku,,,,,pending,pending,,,yes,颜色、键数和有线/无线版本未锁。
+REQ-0618,CTRL-MASTER-A,ELEC,terminal_diagram,,,,,pending,pending,,,yes,零火文案不能替代端子定义和接线图。
+REQ-0619,CTRL-MASTER-A,ELEC/INT1,minimum_backbox_clear_depth,,,mm,,pending,pending,,,yes,须包含端子及导线弯曲空间。
+REQ-0620,CTRL-MASTER-A,INT1,candidate_face_width,,85.8,mm,,official_model_family,candidate,JINK-EGG-OFFICIAL-001,,yes,
+REQ-0621,CTRL-MASTER-A,INT1,candidate_face_height,,86,mm,,official_model_family,candidate,JINK-EGG-OFFICIAL-001,,yes,
+REQ-0622,CTRL-MASTER-A,INT1,candidate_product_depth,,37.55,mm,,official_model_family,candidate,JINK-EGG-OFFICIAL-001,,yes,产品深度不等于底盒最小净深。
+REQ-0623,CTRL-MASTER-A,INT1,inset_trim_fit,vendor_sample_confirmation_required,,,,project_candidate,candidate,TB-PANASURFACE-SWITCH-INSET-001,,yes,装饰框不替代电气底盒；一开/二开/三开指相邻面板数量。
+REQ-0624,CTRL-MASTER-B,ELEC,controlled_categories,ambient_LED;accent_spotlights,,,,user_input,confirmed,OWNER-INBOX-20260814-001,,no,
+REQ-0625,CTRL-MASTER-B,ELEC,exact_sku,,,,,pending,pending,,,yes,颜色、键数和有线/无线版本未锁。
+REQ-0626,CTRL-MASTER-B,ELEC,terminal_diagram,,,,,pending,pending,,,yes,零火文案不能替代端子定义和接线图。
+REQ-0627,CTRL-MASTER-B,ELEC/INT1,minimum_backbox_clear_depth,,,mm,,pending,pending,,,yes,须包含端子及导线弯曲空间。
+REQ-0628,CTRL-MASTER-B,INT1,candidate_face_width,,85.8,mm,,official_model_family,candidate,JINK-EGG-OFFICIAL-001,,yes,
+REQ-0629,CTRL-MASTER-B,INT1,candidate_face_height,,86,mm,,official_model_family,candidate,JINK-EGG-OFFICIAL-001,,yes,
+REQ-0630,CTRL-MASTER-B,INT1,candidate_product_depth,,37.55,mm,,official_model_family,candidate,JINK-EGG-OFFICIAL-001,,yes,产品深度不等于底盒最小净深。
+REQ-0631,CTRL-MASTER-B,INT1,inset_trim_fit,vendor_sample_confirmation_required,,,,project_candidate,candidate,TB-PANASURFACE-SWITCH-INSET-001,,yes,装饰框不替代电气底盒；一开/二开/三开指相邻面板数量。
+REQ-0632,NET-AP-R09,ELEC,final_model,,,,,pending,pending,,,yes,
+REQ-0633,NET-AP-R09,ELEC,home_run_cable,CAT6_or_higher_to_weak_current_box,,,,project_candidate,candidate,OWNER-INBOX-20260814-001,,yes,
+REQ-0634,NET-AP-R09,ELEC,cable_continuity_test,,,,,pending,pending,,,yes,
+REQ-0635,NET-AP-R09,ELEC,local_220v_for_current_candidates,not_applicable_if_PoE,,,,project_candidate,candidate,OWNER-INBOX-20260814-001,,yes,若改 FTTR/本地供电设备则重新设计，不能继承。
+REQ-0636,NET-AP-R09,ELEC,candidate_ap362e_max_power,,9.4,W,,official_exact_model,candidate,HUAWEI-AP362E-OFFICIAL-001,,yes,
+REQ-0637,NET-AP-R09,ELEC,candidate_ap362e_power,802.3af_PoE,,,,official_exact_model,candidate,HUAWEI-AP362E-OFFICIAL-001,,yes,
+REQ-0638,NET-AP-R09,ELEC,candidate_rgeap262e_power,802.3at_PoE_or_12V_DC,,,,official_exact_model,candidate,RUIJIE-EAP262E-OFFICIAL-001,,yes,
+REQ-0639,NET-AP-R14,ELEC,final_model,,,,,pending,pending,,,yes,
+REQ-0640,NET-AP-R14,ELEC,home_run_cable,CAT6_or_higher_to_weak_current_box,,,,project_candidate,candidate,OWNER-INBOX-20260814-001,,yes,
+REQ-0641,NET-AP-R14,ELEC,cable_continuity_test,,,,,pending,pending,,,yes,
+REQ-0642,NET-AP-R14,ELEC,local_220v_for_current_candidates,not_applicable_if_PoE,,,,project_candidate,candidate,OWNER-INBOX-20260814-001,,yes,若改 FTTR/本地供电设备则重新设计，不能继承。
+REQ-0643,NET-AP-R14,ELEC,candidate_ap362e_max_power,,9.4,W,,official_exact_model,candidate,HUAWEI-AP362E-OFFICIAL-001,,yes,
+REQ-0644,NET-AP-R14,ELEC,candidate_ap362e_power,802.3af_PoE,,,,official_exact_model,candidate,HUAWEI-AP362E-OFFICIAL-001,,yes,
+REQ-0645,NET-AP-R14,ELEC,candidate_rgeap262e_power,802.3at_PoE_or_12V_DC,,,,official_exact_model,candidate,RUIJIE-EAP262E-OFFICIAL-001,,yes,
+REQ-0646,SENSOR-GAS-R04,ELEC/GAS,exact_model,,,,,pending,pending,,,yes,须由珠海燃气公司/主管要求和最终设备资料关闭。
+REQ-0647,SENSOR-GAS-R04,ELEC/GAS,gas_company_approval,,,,,pending,pending,,,yes,须由珠海燃气公司/主管要求和最终设备资料关闭。
+REQ-0648,SENSOR-GAS-R04,ELEC/GAS,certification,,,,,pending,pending,,,yes,须由珠海燃气公司/主管要求和最终设备资料关闭。
+REQ-0649,SENSOR-GAS-R04,ELEC/GAS,supply,,,,,pending,pending,,,yes,须由珠海燃气公司/主管要求和最终设备资料关闭。
+REQ-0650,SENSOR-GAS-R04,ELEC/GAS,valve_interface,,,,,pending,pending,,,yes,须由珠海燃气公司/主管要求和最终设备资料关闭。
+REQ-0651,SENSOR-GAS-R04,ELEC/GAS,installation_height,,,,,pending,pending,,,yes,须由珠海燃气公司/主管要求和最终设备资料关闭。
+REQ-0652,SENSOR-GAS-R04,ELEC/GAS,clearance_to_appliances_and_openings,,,,,pending,pending,,,yes,须由珠海燃气公司/主管要求和最终设备资料关闭。
+REQ-0653,SENSOR-GAS-R04,ELEC/GAS,inset_trim_written_approval,,,,,pending,pending,,,yes,须由珠海燃气公司/主管要求和最终设备资料关闭。
+REQ-0654,SENSOR-GAS-R04,ELEC/GAS,consultation_candidates,JT-GS838C-NBAC-H05;JT-KEA01;JT-KEA31;JT-KWE_family;JT-AM5301-JG,,,,project_candidate,candidate,OWNER-INBOX-20260814-001,,yes,仅供咨询，不代表批准或采购。
+REQ-0655,SENSOR-001,ELEC/FIRE,final_detector_type_and_model,,,,,pending,pending,,,yes,位置已确认；感温/感烟/复合和产品仍待消防/设备方。
+REQ-0656,SENSOR-001,INT1/FIRE,inset_trim_fit,vendor_and_fire_authority_confirmation_required,,,,project_candidate,candidate,TB-PANASURFACE-ALARM-INSET-001,,yes,先定设备再按准确型号确认装饰件。
+REQ-0657,APP-004,PLUM,candidate_gs3_water_mode,reservoir_or_direct_plumb,,,,official_exact_model,candidate,APP-004-GS3-OFFICIAL-001,,yes,最终未选 GS3 时不参与施工接口。
+REQ-0658,APP-004,PLUM,candidate_gs3_drain_mode,model_and_mode_dependent,,,,official_exact_model,candidate,APP-004-GS3-OFFICIAL-001,,yes,仅预留可关闭接口，不据此施工定版。
+REQ-0659,APP-004,PLUM,candidate_e1_prima_water_mode,reservoir_or_direct_plumb,,,,official_exact_model,candidate,APP-004-E1PRIMA-OFFICIAL-001,,yes,最终未选 E1 Prima EXP 时不参与施工接口。
+REQ-0660,APP-004,PLUM,candidate_e1_prima_drain_mode,model_and_mode_dependent,,,,official_exact_model,candidate,APP-004-E1PRIMA-OFFICIAL-001,,yes,仅预留可关闭接口，不据此施工定版。

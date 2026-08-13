@@ -478,7 +478,15 @@ def appliance_projection_rows(root: Path) -> list[dict[str, str]]:
         if row["legacy_kind"] != "appliance":
             continue
         values = reqmap[row["equipment_id"]]
-        status = "已确认" if row["decision_status"] == "confirmed" else "部分确认" if row["decision_status"] == "partial" else "待填写"
+        status = (
+            "不适用"
+            if row["procurement_status"] == "not_applicable" or row["decision_status"] == "superseded"
+            else "已确认"
+            if row["decision_status"] == "confirmed"
+            else "部分确认"
+            if row["decision_status"] == "partial"
+            else "待填写"
+        )
         result.append({
             "appliance_id": row["legacy_id"], "appliance_name": row["item_name"], "category": row["category"],
             "storage_location_candidate": row["storage_location_candidate"], "use_location_candidate": row["use_location_candidate"],

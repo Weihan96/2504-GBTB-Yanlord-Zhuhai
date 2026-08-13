@@ -259,9 +259,9 @@ print(json.dumps(result,ensure_ascii=False))
   ], { cwd: root });
   expect(tableAudit.exitCode, tableAudit.stderr.toString()).toBe(0);
   const tableRefs = JSON.parse(tableAudit.stdout.toString());
-  expect(tableRefs["设备主表Table"]).toBe("A2:AB155");
-  expect(tableRefs["安装条件Table"]).toBe("A2:N593");
-  expect(tableRefs["证据索引Table"]).toBe("A2:X121");
+  expect(tableRefs["设备主表Table"]).toBe("A2:AB161");
+  expect(tableRefs["安装条件Table"]).toBe("A2:N661");
+  expect(tableRefs["证据索引Table"]).toBe("A2:X156");
   const summaryAudit = Bun.spawnSync([
     "python3", "-c", String.raw`
 import json,sys,zipfile
@@ -279,8 +279,8 @@ print(json.dumps(result,ensure_ascii=False))
   ], { cwd: root });
   expect(summaryAudit.exitCode, summaryAudit.stderr.toString()).toBe(0);
   expect(JSON.parse(summaryAudit.stdout.toString())).toEqual({
-    B13: "23",
-    B14: "22",
+    B13: "27",
+    B14: "26",
     B15: "18",
     B16: "3",
   });
