@@ -215,12 +215,12 @@ REQ-0213,DW-M04,ARCH,host_relation,HOSTED,,,,ifc_observed,observed,IFC-FORMAL-00
 REQ-0214,DW-M04,ARCH,sill_or_threshold_z,,0.000000,mm,,ifc_observed,observed,IFC-FORMAL-001,,no,
 REQ-0215,DW-M05,ARCH,nominal_width,,,mm,,ifc_observed,pending,IFC-FORMAL-001,,yes,
 REQ-0216,DW-M05,ARCH,nominal_height,,,mm,,ifc_observed,pending,IFC-FORMAL-001,,yes,
-REQ-0217,DW-M05,ARCH,operation_type,,,,,ifc_observed,pending,IFC-FORMAL-001,,yes,
+REQ-0217,DW-M05,ARCH,operation_type,single-track sliding system; direction unresolved,,,,official_model_family,candidate,RIMADESIO-SAIL-MONOROTAIA-001,官方 DWG 文件名与官方产品页,yes,仅确认 Sail MONOROTAIA 系统族；左右滑向和项目安装方式仍未关闭
 REQ-0218,DW-M05,ARCH,host_relation,UNHOSTED,,,,ifc_observed,observed,IFC-FORMAL-001,,no,
 REQ-0219,DW-M05,ARCH,sill_or_threshold_z,,12.000000,mm,,ifc_observed,observed,IFC-FORMAL-001,,no,
 REQ-0220,DW-M06,ARCH,nominal_width,,,mm,,ifc_observed,pending,IFC-FORMAL-001,,yes,
 REQ-0221,DW-M06,ARCH,nominal_height,,,mm,,ifc_observed,pending,IFC-FORMAL-001,,yes,
-REQ-0222,DW-M06,ARCH,operation_type,,,,,ifc_observed,pending,IFC-FORMAL-001,,yes,
+REQ-0222,DW-M06,ARCH,operation_type,single-track sliding system component; direction unresolved,,,,official_model_family,candidate,RIMADESIO-SAIL-MONOROTAIA-001,官方 DWG 文件名与官方产品页,yes,M06 为同樘门轨道构件；不把轨道几何当作门洞尺寸
 REQ-0223,DW-M06,ARCH,host_relation,UNHOSTED,,,,ifc_observed,observed,IFC-FORMAL-001,,no,
 REQ-0224,DW-M06,ARCH,sill_or_threshold_z,,2407.699912,mm,,ifc_observed,observed,IFC-FORMAL-001,,no,
 REQ-0225,DW-M07,ARCH,nominal_width,,,mm,,ifc_observed,pending,IFC-FORMAL-001,,yes,
@@ -395,3 +395,185 @@ REQ-0393,FURIFC-028,INT1,installation_role,loose_furniture,,,,project_candidate,
 REQ-0394,FURIFC-001,INT1,installation_role,fixed_furniture,,,,project_candidate,confirmed,FUR-ROLE-SRC-2e0c7dfb150a,,no,对象名 505 UP V1.LP.S、LIVING 容器与 2912×436×2380 mm 全高柜体几何共同证明固定安装 | confidence=0.99
 REQ-0395,FURIFC-003,INT1,installation_role,fixed_furniture,,,,project_candidate,confirmed,FUR-ROLE-SRC-34648f4c3ff7,,no,对象名 VVD Island worktop board 明确为岛台固定台面板 | confidence=1.00
 REQ-0396,FURIFC-002,INT1,installation_role,fixed_furniture,,,,project_candidate,confirmed,FUR-ROLE-SRC-2a7cfd77b897,,no,对象名 VVD Island Inner Sideboard 明确为岛台固定侧板 | confidence=1.00
+REQ-0397,HVAC-003,HVAC,hanger_centre_width,,1220,mm,,official_model_family,candidate,RCP1-HVAC-IFACE-003,印刷页12,no,RPIZ-18~71*LN5Q* 通配型号族；用于吊顶内协调，最终吊装仍须厂家审批
+REQ-0398,HVAC-003,HVAC,hanger_centre_depth,,410,mm,,official_model_family,candidate,RCP1-HVAC-IFACE-003,印刷页12,no,RPIZ-18~71*LN5Q* 通配型号族
+REQ-0399,HVAC-003,HVAC,return_air_opening_width,,1029,mm,,official_model_family,candidate,RCP1-HVAC-IFACE-003,印刷页12,no,回风口候选净开口；不得代替现场风管深化
+REQ-0400,HVAC-003,HVAC,return_air_opening_height,,171,mm,,official_model_family,candidate,RCP1-HVAC-IFACE-003,印刷页12,no,回风口候选净开口；不得代替现场风管深化
+REQ-0401,HVAC-003,HVAC,supply_air_opening_width,,1020,mm,,official_model_family,candidate,RCP1-HVAC-IFACE-003,印刷页12,no,送风口候选净开口；不得代替现场风管深化
+REQ-0402,HVAC-003,HVAC,supply_air_opening_height,,130,mm,,official_model_family,candidate,RCP1-HVAC-IFACE-003,印刷页12,no,送风口候选净开口；不得代替现场风管深化
+REQ-0403,HVAC-003,HVAC,service_access_width_min,,450,mm,,official_model_family,candidate,RCP1-HVAC-IFACE-003,印刷页12,no,电控箱侧检修口最小值；接管侧仍未关闭
+REQ-0404,HVAC-003,HVAC,service_access_height_min,,450,mm,,official_model_family,candidate,RCP1-HVAC-IFACE-003,印刷页12,no,电控箱侧检修口最小值；不可拆吊顶还须保证机下检修
+REQ-0405,HVAC-003,HVAC,supply_duct_length_min,,1000,mm,,official_model_family,candidate,RCP1-HVAC-IFACE-003,印刷页13,no,送风端连接不少于 1 m 风管
+REQ-0406,HVAC-003,HVAC,return_duct_length_min,,1000,mm,,official_model_family,candidate,RCP1-HVAC-IFACE-003,印刷页13,no,回风端连接不少于 1 m 风管
+REQ-0407,HVAC-003,HVAC,hanger_bolt_spec,W3/8 or M10,,,,official_model_family,candidate,RCP1-HVAC-IFACE-003,印刷页13,no,仅确认螺栓规格；锚固和荷载须按结构及厂家要求
+REQ-0408,SAN-GEB-001,PLUM,electronic_component_code,245.963.00.1,,,,site_observed,observed,GEB-PHOTO-146361-ELEC-001,包装标签,no,Nuna V Combo 电子部件收货身份
+REQ-0409,SAN-GEB-001,PLUM,ceramic_component_code,245.964.00.1,,,,site_observed,observed,GEB-PHOTO-146361-CERAMIC-001,包装标签,no,Nuna V Combo 陶瓷体收货身份
+REQ-0410,SAN-014,PLUM,concealed_cistern_depth,,120,mm,,official_exact_model,confirmed,GEB-OFFICIAL-224212-001,PDF 第10页／印刷页11,no,精确 SKU 224.212.00.2
+REQ-0411,SAN-014,PLUM,frame_height,,1120,mm,,official_exact_model,confirmed,GEB-OFFICIAL-224212-001,PDF 第10页／印刷页11,no,精确 SKU 224.212.00.2
+REQ-0412,SAN-014,PLUM,full_flush_volume,,5,L,,official_exact_model,confirmed,GEB-OFFICIAL-224212-001,PDF 第10页／印刷页11,no,出厂设置
+REQ-0413,SAN-014,PLUM,reduced_flush_volume,,3.5,L,,official_exact_model,confirmed,GEB-OFFICIAL-224212-001,PDF 第10页／印刷页11,no,出厂设置
+REQ-0414,DRAIN-GEB-002,PLUM,outlet_nominal_diameter,,50,mm,,official_exact_model,confirmed,GEB-OFFICIAL-154150-001,官方产品页,no,CleanLine 安装套件 DN50/Ø50
+REQ-0415,DRAIN-GEB-004,PLUM,grating_width,,100,mm,,site_observed,observed,GEB-PHOTO-388013-001,包装标签,no,标签 10x10；安装开孔待官方说明书
+REQ-0416,DRAIN-GEB-004,PLUM,grating_depth,,100,mm,,site_observed,observed,GEB-PHOTO-388013-001,包装标签,no,标签 10x10；安装开孔待官方说明书
+REQ-0417,DRAIN-GEB-004,PLUM,outlet_nominal_diameter,,50,mm,,official_exact_model,confirmed,GEB-OFFICIAL-388013-001,官方产品页,no,DN50/Ø50
+REQ-0418,DRAIN-GEB-004,PLUM,outlet_orientation,horizontal,,,,official_exact_model,confirmed,GEB-OFFICIAL-388013-001,官方产品页,no,水平出水
+REQ-0419,DRAIN-GEB-004,PLUM,intended_use,washing_machine,,,,official_exact_model,confirmed,GEB-OFFICIAL-388013-001,官方产品页,no,洗衣机专用，不替代淋浴地漏
+REQ-0420,DRAIN-GEB-001,PLUM,adapter_nominal_sizes,DN100/90,,,,official_exact_model,confirmed,GEB-OFFICIAL-152464-001,官方产品页,no,PVC 插口侧另见 Ø110
+REQ-0421,DRAIN-GEB-003,PLUM,adapter_nominal_diameter,,50,mm,,official_exact_model,confirmed,GEB-OFFICIAL-154298-001,第1页,no,DN50 且内外径标称 Ø50
+REQ-0422,SAN-001,PLUM,finish,brushed stainless steel,,,,official_exact_model,confirmed,GEB-OFFICIAL-154446-001,官方产品页,no,SKU 154.446.KS.1 对应 CleanLine50；箱标另印 CleanLine60，身份以 SKU 和官方目录为准
+REQ-0423,SAN-014,PLUM,frame_width,,500,mm,,official_exact_model,confirmed,GEB-OFFICIAL-224212-001,PDF 第10页／印刷页11,no,精确 SKU 224.212.00.2
+REQ-0424,SAN-014,PLUM,foot_adjustment_min,,0,mm,,official_exact_model,confirmed,GEB-OFFICIAL-224212-001,PDF 第10页／印刷页11,no,支脚调节范围下限
+REQ-0425,SAN-014,PLUM,foot_adjustment_max,,200,mm,,official_exact_model,confirmed,GEB-OFFICIAL-224212-001,PDF 第10页／印刷页11,no,支脚调节范围上限
+REQ-0426,SAN-014,PLUM,wc_fastening_spacing_options,180 or 230 mm,,,,official_exact_model,confirmed,GEB-OFFICIAL-224212-001,PDF 第10页／印刷页11,no,挂厕螺杆中心距选项
+REQ-0427,SAN-014,PLUM,water_supply_connection,R 1/2 rear or top centre,,,,official_exact_model,confirmed,GEB-OFFICIAL-224212-001,PDF 第10页／印刷页11,no,最终现场走向仍须与 Nuna 隐藏接口协调
+REQ-0428,SAN-014,PLUM,wc_connection_diameter,,90,mm,,official_exact_model,confirmed,GEB-OFFICIAL-224212-001,PDF 第10页／印刷页11,no,WC 连接套件
+REQ-0429,SAN-014,PLUM,drain_bend_diameter,,90,mm,,official_exact_model,confirmed,GEB-OFFICIAL-224212-001,PDF 第10页／印刷页11,no,PE-HD 90度排水弯；转 PVC 另配 152.464.00.1
+REQ-0430,SAN-014,PLUM,threaded_rod_spec,M12,,,,official_exact_model,confirmed,GEB-OFFICIAL-224212-001,PDF 第10页／印刷页11,no,产品随附两根螺杆
+REQ-0431,SAN-014,PLUM,flow_pressure_min,,0.1,bar,,official_exact_model,confirmed,GEB-OFFICIAL-224212-001,PDF 第10页／印刷页11,no,标准产品流动压力范围
+REQ-0432,SAN-014,PLUM,flow_pressure_max,,10,bar,,official_exact_model,confirmed,GEB-OFFICIAL-224212-001,PDF 第10页／印刷页11,no,标准产品流动压力范围
+REQ-0433,SAN-003,PLUM,product_width,,246,mm,,official_exact_model,confirmed,GEB-OFFICIAL-115770-001,第2页,no,Sigma01 115.770.11.5
+REQ-0434,SAN-003,PLUM,product_height,,164,mm,,official_exact_model,confirmed,GEB-OFFICIAL-115770-001,第2页,no,Sigma01 115.770.11.5
+REQ-0435,SAN-003,PLUM,product_depth,,13,mm,,official_exact_model,confirmed,GEB-OFFICIAL-115770-001,第2页,no,Sigma01 115.770.11.5
+REQ-0436,SAN-003,PLUM,actuation_force_max,,20,N,,official_exact_model,confirmed,GEB-OFFICIAL-115770-001,第1页,no,最大操作力
+REQ-0437,SAN-003,PLUM,actuation_direction,front,,,,official_exact_model,confirmed,GEB-OFFICIAL-115770-001,第1页,no,正面操作
+REQ-0438,SAN-003,PLUM,flush_mode,dual_flush,,,,official_exact_model,confirmed,GEB-OFFICIAL-115770-001,第1-2页,no,圆形双按键
+REQ-0439,SAN-001,PLUM,channel_length_min,,300,mm,,official_exact_model,confirmed,GEB-OFFICIAL-154446-001,官方产品页,no,CleanLine50 154.446.KS.1
+REQ-0440,SAN-001,PLUM,channel_length_max,,900,mm,,official_exact_model,confirmed,GEB-OFFICIAL-154446-001,官方产品页,no,CleanLine50 154.446.KS.1；实际裁切长度仍待排版
+REQ-0441,SAN-001,PLUM,floor_tile_build_up_min,,10,mm,,official_exact_model,confirmed,GEB-OFFICIAL-154446-001,官方产品页,no,适用地砖构造范围
+REQ-0442,SAN-001,PLUM,floor_tile_build_up_max,,35,mm,,official_exact_model,confirmed,GEB-OFFICIAL-154446-001,官方产品页,no,适用地砖构造范围
+REQ-0443,SAN-001,PLUM,cut_to_length_allowed,yes,,,,official_exact_model,confirmed,GEB-OFFICIAL-154446-001,官方产品页,no,实际裁切长度须结合排水中心与地砖排版
+REQ-0444,SAN-001,PLUM,integrated_slope,yes,,,,official_exact_model,confirmed,GEB-OFFICIAL-154446-001,官方产品页,no,不替代卫生间整体地面坡向设计
+REQ-0445,DRAIN-GEB-002,PLUM,screed_height_at_inlet_min,,90,mm,,official_exact_model,confirmed,GEB-OFFICIAL-154150-001,官方产品页,no,入口处找平层高度
+REQ-0446,DRAIN-GEB-002,PLUM,screed_height_at_inlet_max,,220,mm,,official_exact_model,confirmed,GEB-OFFICIAL-154150-001,官方产品页,no,入口处找平层高度
+REQ-0447,DRAIN-GEB-002,PLUM,water_seal_depth,,50,mm,,official_exact_model,confirmed,GEB-OFFICIAL-154150-001,官方产品页,no,CleanLine 安装套件
+REQ-0448,DRAIN-GEB-002,PLUM,outlet_orientation,horizontal,,,,official_exact_model,confirmed,GEB-OFFICIAL-154150-001,官方产品页,no,水平出水
+REQ-0449,DRAIN-GEB-002,PLUM,waterproof_membrane_overlap_approx,,100,mm,,official_exact_model,confirmed,GEB-OFFICIAL-154150-001,官方产品页,no,预装防水膜四周约 100 mm；最终搭接依防水体系
+REQ-0450,DRAIN-GEB-002,PLUM,required_pvc_adapter,154.298.00.1,,,,official_exact_model,confirmed,GEB-OFFICIAL-154150-001,官方产品页,no,接 PVC 时另配
+REQ-0451,DRAIN-GEB-003,PLUM,material,plastic,,,,official_exact_model,confirmed,GEB-OFFICIAL-154298-001,第1页,no,精确 SKU 154.298.00.1
+REQ-0452,DRAIN-GEB-004,PLUM,water_seal_depth,,50,mm,,official_exact_model,confirmed,GEB-OFFICIAL-388013-001,官方产品页,no,Aquorea 洗衣机地漏
+REQ-0453,DRAIN-GEB-004,PLUM,material,PE-HD,,,,official_exact_model,confirmed,GEB-OFFICIAL-388013-001,官方产品页,no,精确 SKU 388.013.00.2
+REQ-0454,DRAIN-GEB-004,PLUM,load_class,H 1.5,,,,official_exact_model,confirmed,GEB-OFFICIAL-388013-001,官方产品页,no,1.5 kN
+REQ-0455,DRAIN-GEB-001,PLUM,pvc_socket_diameter,,110,mm,,official_exact_model,confirmed,GEB-OFFICIAL-152464-001,官方产品页,no,PVC 插口侧
+REQ-0456,DRAIN-GEB-001,PLUM,material,plastic,,,,official_exact_model,confirmed,GEB-OFFICIAL-152464-001,官方产品页,no,精确 SKU 152.464.00.1
+REQ-0457,SAN-GEB-001,PLUM,installation_method,wall_hung,,,,official_model_family,candidate,GEB-OFFICIAL-146361-001,吉博力中国产品页,no,精确 SKU 身份由收货证据确认；官网只证明产品族
+REQ-0458,SAN-GEB-001,ELEC/PLUM,service_connection_concealment,hidden_water_and_electrical,,,,official_model_family,candidate,GEB-OFFICIAL-146361-001,吉博力中国产品页,no,隐藏意图不等于接口坐标已确认
+REQ-0459,SAN-GEB-001,ELEC,rated_power,,,W,,pending,pending,,,yes,官网未公开；须精确型号说明书或铭牌
+REQ-0460,SAN-GEB-001,PLUM,water_pressure,,,,,pending,pending,,,yes,官网未公开；须精确型号说明书
+REQ-0461,SAN-GEB-001,PLUM,supply_connection_coordinate,,,,,pending,pending,,,yes,隐藏给水坐标待精确安装图
+REQ-0462,SAN-GEB-001,ELEC,power_connection_coordinate,,,,,pending,pending,,,yes,隐藏电源坐标待精确安装图
+REQ-0463,SAN-GEB-001,PLUM,drain_connection_coordinate,,,,,pending,pending,,,yes,隐藏排水坐标待精确安装图
+REQ-0464,SAN-GEB-001,MULTI,service_access_requirement,,,,,pending,pending,,,yes,检修与拆换要求待精确型号说明书
+REQ-0465,SAN-003,PROCUREMENT,required_quantity,,2,count,,ifc_observed,confirmed,IFC-FORMAL-001,同族实例数量,no,正式 IFC 中有 2 个 115.770 同族面板实例
+REQ-0466,SAN-003,PROCUREMENT,received_quantity,,1,count,,site_observed,confirmed,GEB-DELIVERY-002,发货单与收货照片,no,当前仅证明 1 件 115.770.11.5 已收货
+REQ-0467,SAN-003,PROCUREMENT,purchase_shortfall,,1,count,,pending,pending,GEB-DELIVERY-002,发货单与 IFC 数量对账,yes,第二块 Sigma01 面板尚无采购或收货证据
+REQ-0468,SAN-014,PROCUREMENT,required_quantity,,2,count,,ifc_observed,confirmed,IFC-FORMAL-001,同族实例数量,no,正式 IFC 中有 2 个 Duofix Sigma 同族实例
+REQ-0469,SAN-014,PROCUREMENT,received_quantity,,1,count,,site_observed,confirmed,GEB-DELIVERY-002,发货单与收货照片,no,当前仅证明 1 件 224.212.00.2 已收货
+REQ-0470,SAN-014,PROCUREMENT,purchase_shortfall,,1,count,,pending,pending,GEB-DELIVERY-002,发货单与 IFC 数量对账,yes,第二套 Duofix Sigma 尚无采购或收货证据
+REQ-0471,SAN-014,PLUM,completed_wc_height,,,,,pending,pending,GEB-OFFICIAL-224212-001,官方产品数据未给项目完成面坐便高度,yes,须由卫生间立面和产品安装图关闭
+REQ-0472,SAN-014,STRUCTURE,wall_anchor_design,,,,,pending,pending,GEB-OFFICIAL-224212-001,标准框架不等于项目墙体锚固节点,yes,须按实际墙体和厂家要求确定锚固
+REQ-0473,SAN-014,INT1,boxing_finished_thickness,,,,,pending,pending,GEB-OFFICIAL-224212-001,标准框架不等于项目包管完成厚度,yes,影响面板与坐便器完成面关系
+REQ-0474,SAN-014,MULTI,nuna_hidden_interface_coordination,,,,,pending,pending,GEB-OFFICIAL-224212-001,标准框架接口不等于 Nuna 精确隐藏水电坐标,yes,须与 Nuna 精确型号安装图联合关闭
+REQ-0475,SAN-003,INT1,panel_centre_height,,,,,pending,pending,GEB-OFFICIAL-115770-001,官方产品数据未给项目安装标高,yes,须由卫生间立面冻结
+REQ-0476,SAN-003,INT1,finished_surface_thickness,,,,,pending,pending,GEB-OFFICIAL-115770-001,面板产品深度不等于完成面构造厚度,yes,须与墙砖和水箱检修节点协调
+REQ-0477,SAN-003,PLUM,service_access_detail,,,,,pending,pending,GEB-OFFICIAL-115770-001,冲水面板可操作不等于项目检修节点已完成,yes,须形成可拆检修节点
+REQ-0478,SAN-001,PLUM,actual_cut_length,,,,,pending,pending,GEB-OFFICIAL-154446-001,官方仅给 300–900 mm 可裁范围,yes,须按淋浴区净宽和排版冻结实际裁切长度
+REQ-0479,SAN-001,PLUM,placement_mode,,,,,pending,pending,GEB-OFFICIAL-154446-001,官方允许靠墙或区域内安装,yes,须在卫生间平面明确靠墙或居中
+REQ-0480,SAN-001,PLUM,drain_centre_coordinate,,,,,pending,pending,GEB-OFFICIAL-154446-001,产品范围不包含项目排水中心坐标,yes,须与 154.150 安装套件和现场排水核对
+REQ-0481,SAN-001,INT1,tile_layout_coordination,,,,,pending,pending,GEB-OFFICIAL-154446-001,产品范围不包含项目地砖排版,yes,须联合完成面和坡向设计关闭
+REQ-0482,DRAIN-GEB-002,PLUM,final_installation_level,,,,,pending,pending,GEB-OFFICIAL-154150-001,官方仅给入口找平层高度范围,yes,须按天花 IFC 推导之外的地面完成面体系冻结
+REQ-0483,DRAIN-GEB-002,WFIN,waterproofing_system,,,,,pending,pending,GEB-OFFICIAL-154150-001,预装防水膜不等于项目防水体系已选,yes,须与 DET1 防水节点共同关闭
+REQ-0484,DRAIN-GEB-002,PLUM,site_pipe_orientation,,,,,pending,pending,GEB-OFFICIAL-154150-001,标准水平出水不等于现场管路朝向,yes,须按现场排水方向和坡度关闭
+REQ-0485,DRAIN-GEB-001,PLUM,final_assembly_orientation,,,,,pending,pending,GEB-OFFICIAL-152464-001,转接规格不等于与 Duofix 或 Nuna 的装配方向,yes,须由精确安装图和现场管路共同关闭
+REQ-0486,DRAIN-GEB-004,PLUM,washing_machine_hose_connection,,,,,pending,pending,GEB-OFFICIAL-388013-001,产品用途不等于软管接入节点已设计,yes,须确认软管固定与防回流做法
+REQ-0487,DRAIN-GEB-004,PLUM,installation_height,,,,,pending,pending,GEB-OFFICIAL-388013-001,官方产品数据未给项目完成面安装标高,yes,须结合地面构造关闭
+REQ-0488,DRAIN-GEB-004,PLUM,floor_slope,,,,,pending,pending,GEB-OFFICIAL-388013-001,产品水平出水不等于地面坡度已设计,yes,须在 P-201/P-202 和 DET1 中关闭
+REQ-0489,DRAIN-GEB-004,WFIN,waterproofing_detail,,,,,pending,pending,GEB-OFFICIAL-388013-001,产品数据不包含项目防水收口节点,yes,须与 DET1 防水体系共同关闭
+REQ-0490,SAN-KIT-001,INT1,product_width,,838,mm,,official_exact_model,confirmed,FOSTER-1014850-OFFICIAL-001,官方技术图,no,精确产品代码 1014850
+REQ-0491,SAN-KIT-001,INT1,product_depth,,500,mm,,official_exact_model,confirmed,FOSTER-1014850-OFFICIAL-001,官方技术图,no,精确产品代码 1014850
+REQ-0492,SAN-KIT-001,INT1,bowl_width,,790,mm,,official_exact_model,confirmed,FOSTER-1014850-OFFICIAL-001,官方技术图,no,盆体平面净尺寸
+REQ-0493,SAN-KIT-001,INT1,bowl_depth_plan,,400,mm,,official_exact_model,confirmed,FOSTER-1014850-OFFICIAL-001,官方技术图,no,盆体平面净尺寸
+REQ-0494,SAN-KIT-001,INT1,bowl_vertical_depth,,200,mm,,official_exact_model,confirmed,FOSTER-1014850-OFFICIAL-001,官方技术图,no,不含存水弯以下净空
+REQ-0495,SAN-KIT-001,INT1,cutout_width,,790,mm,,official_exact_model,confirmed,FOSTER-1014850-OFFICIAL-001,官方技术图,no,最终加工仍须使用随货模板
+REQ-0496,SAN-KIT-001,INT1,cutout_depth,,452,mm,,official_exact_model,confirmed,FOSTER-1014850-OFFICIAL-001,官方技术图,no,最终加工仍须使用随货模板
+REQ-0497,SAN-KIT-001,INT1,base_cabinet_width_min,,900,mm,,official_exact_model,confirmed,FOSTER-1014850-OFFICIAL-001,官方技术图,no,官方标注 90 cm 基础柜
+REQ-0498,SAN-KIT-001,INT1,installation_method,undermount,,,,official_exact_model,confirmed,FOSTER-1014850-OFFICIAL-001,官方产品页,no,台下安装
+REQ-0499,SAN-KIT-001,INT1,material,AISI 304 stainless steel,,,,official_exact_model,confirmed,FOSTER-1014850-OFFICIAL-001,官方产品页,no,Foster 顺纹拉丝
+REQ-0500,SAN-KIT-001,INT1,steel_thickness,,1,mm,,official_exact_model,confirmed,FOSTER-1014850-OFFICIAL-001,官方产品页,no,不等于台面厚度
+REQ-0501,SAN-KIT-001,PLUM,waste_size,3.5 inch,,,,official_exact_model,confirmed,FOSTER-1014850-OFFICIAL-001,官方产品页,no,末端排水管径和转接仍待设计
+REQ-0502,SAN-KIT-001,PLUM,mixer_hole_factory_provided,no,,,,official_exact_model,confirmed,FOSTER-1014850-OFFICIAL-001,官方产品页,no,龙头开孔须在台面/墙面另行深化
+REQ-0503,SAN-KIT-001,INT1,seal_and_fixing_method,silicone sealant plus undermount fixings,,,,official_exact_model,confirmed,FOSTER-1014850-INSTALL-001,安装手册,no,按随货模板开孔并在紧固后蓄水检漏
+REQ-0504,SAN-KIT-001,INT1,formal_ifc_placement,,,,,pending,pending,USER-PLUM-SINKS-001,正式 IFC 未找到可靠归属的厨房水槽对象,yes,须在正式 IFC 或加工图建立厨房水槽身份与位置
+REQ-0505,SAN-KIT-001,PLUM,drain_centre_coordinate,,,,,pending,pending,FOSTER-1014850-OFFICIAL-001,技术图未给排水中心数值坐标,yes,不得按示意图目测定位
+REQ-0506,SAN-KIT-001,PLUM,overflow_connection_coordinate,,,,,pending,pending,FOSTER-1014850-OFFICIAL-001,技术图未给溢水接口中心和软管路径,yes,须按实物或精确安装图关闭
+REQ-0507,SAN-KIT-001,INT1,trap_and_service_clearance,,,,,pending,pending,FOSTER-1014850-OFFICIAL-001,盆深 200 mm 不包含存水弯以下空间,yes,须与垃圾处理器和柜内收纳联合校核
+REQ-0508,SAN-KIT-001,INT1,cutout_tolerance_corner_radius_and_top_thickness,,,,,pending,pending,FOSTER-1014850-INSTALL-001,手册要求随货模板但公开资料未给加工公差,yes,加工厂须按实物模板与台面材料确认
+REQ-0509,SAN-KIT-001,PROCUREMENT,domestic_custom_order_scope,,,,,pending,pending,USER-PLUM-SINKS-001,用户说明为国内定制款,yes,须开箱核对密封件、排水器、溢水和存水弯配置
+REQ-0510,SAN-KIT-001,PLUM,final_waste_pipe_diameter_and_route,,,,,pending,pending,FOSTER-1014850-OFFICIAL-001,3.5 英寸排水器不等于现场排水管径与路线,yes,须在 P-201 和柜体加工图关闭
+REQ-0511,SAN-022,INT1,material,marble,,,,user_input,confirmed,USER-PLUM-SINKS-001,用户确认岛台水槽为大理石定制,no,具体石材待选
+REQ-0512,SAN-022,INT1,fabrication_method,custom fabricated,,,,user_input,confirmed,USER-PLUM-SINKS-001,用户确认定制方向,no,不等于加工尺寸已确认
+REQ-0513,SAN-022,INT1,finished_outer_dimensions,,,,,pending,pending,USER-PLUM-SINKS-001,定制品尚无加工图,yes,IFC 包围盒只作协调不得作为加工尺寸
+REQ-0514,SAN-022,INT1,bowl_plan_dimensions,,,,,pending,pending,USER-PLUM-SINKS-001,定制品尚无加工图,yes,须结合使用与清洁要求关闭
+REQ-0515,SAN-022,INT1,bowl_vertical_depth,,,,,pending,pending,USER-PLUM-SINKS-001,定制品尚无加工图,yes,影响柜内排水和结构净空
+REQ-0516,SAN-022,PLUM,drain_centre_coordinate,,,,,pending,pending,USER-PLUM-SINKS-001,定制品尚无排水定位,yes,须与柜内管路共同关闭
+REQ-0517,SAN-022,PLUM,overflow_requirement_and_coordinate,,,,,pending,pending,USER-PLUM-SINKS-001,用户未确认溢水配置,yes,须按石材盆设计和使用风险关闭
+REQ-0518,SAN-022,PLUM,waste_fitting_interface,,,,,pending,pending,USER-PLUM-SINKS-001,定制品尚无排水器规格,yes,须确定排水器与管径转接
+REQ-0519,SAN-022,WFIN,sealing_and_waterproofing_detail,,,,,pending,pending,USER-PLUM-SINKS-001,大理石定制意向不包含密封防水节点,yes,须与石材防护和台面节点共同关闭
+REQ-0520,SAN-022,STRUCTURE,support_cutout_and_shop_drawing,,,,,pending,pending,USER-PLUM-SINKS-001,定制品尚无支撑与加工图,yes,须核对石材强度、开孔、运输和现场安装
+REQ-0521,FURIFC-003,INT1,material,marble,,,,user_input,confirmed,USER-PLUM-SINKS-001,用户确认岛台台面为大理石定制,no,具体石材待选
+REQ-0522,FURIFC-003,INT1,fabrication_method,custom fabricated,,,,user_input,confirmed,USER-PLUM-SINKS-001,用户确认定制方向,no,不等于加工尺寸已确认
+REQ-0523,FURIFC-003,WFIN,stone_species_and_finish,,,,,pending,pending,USER-PLUM-SINKS-001,只确认大理石未确认具体石材和表面,yes,须与样板和采购批次关闭
+REQ-0524,FURIFC-003,INT1,finished_thickness,,,,,pending,pending,USER-PLUM-SINKS-001,定制台面未给厚度,yes,影响边型、支撑与开孔
+REQ-0525,FURIFC-003,INT1,edge_profile,,,,,pending,pending,USER-PLUM-SINKS-001,定制台面未给边型,yes,须在加工图明确
+REQ-0526,FURIFC-003,WFIN,slab_joint_and_vein_layout,,,,,pending,pending,USER-PLUM-SINKS-001,定制台面未给拼缝和纹理方向,yes,须按可采购荒料排版
+REQ-0527,FURIFC-003,INT1,cutout_schedule,,,,,pending,pending,USER-PLUM-SINKS-001,水槽龙头插座等开孔未统一,yes,须汇总所有设备精确模板
+REQ-0528,FURIFC-003,STRUCTURE,reinforcement_and_support,,,,,pending,pending,USER-PLUM-SINKS-001,大理石定制不等于结构支撑已完成,yes,须按跨度开孔和石材性能设计
+REQ-0529,FURIFC-003,INT1,fabrication_shop_drawing,,,,,pending,pending,USER-PLUM-SINKS-001,尚无定制加工图,yes,加工前必须与正式 IFC 和设备模板对账
+REQ-0530,SAN-021,PLUM,product_family,Street,,,,user_input,confirmed,USER-PLUM-SINKS-001,用户确认国内定制 antoniolupi Street,no,不等于官方标准料号
+REQ-0531,SAN-021,WFIN,material,Rosso Levanto marble,,,,user_input,confirmed,USER-PLUM-SINKS-001,用户写 Levanto Red；官方系列名 Rosso Levanto,no,石材批次和表面待关闭
+REQ-0532,SAN-021,INT1,fabrication_method,domestic custom based on official family,,,,user_input,confirmed,USER-PLUM-SINKS-001,国内定制款,no,官方系列尺寸不能自动变成加工尺寸
+REQ-0533,SAN-021,INT1,official_top_depth_options,400 or 470 mm,,,,official_model_family,candidate,ANTONIOLUPI-STREET-OFFICIAL-001,官方 Street 系列模块,no,仅作定制协调参考
+REQ-0534,SAN-021,INT1,official_integrated_basin_width_options,540 or 720 mm,,,,official_model_family,candidate,ANTONIOLUPI-STREET-OFFICIAL-001,官方 Street 系列模块,no,仅作定制协调参考
+REQ-0535,SAN-021,PLUM,official_drain_concept,free-flowing marble drain standard,,,,official_model_family,candidate,ANTONIOLUPI-STREET-OFFICIAL-001,官方 Street 系列说明,no,国内定制排水器仍须另行确认
+REQ-0536,SAN-021,INT1,room_mapping_candidate,BATHM,,,,project_candidate,candidate,IFC-FORMAL-001,IFC 类型 STREET 位于 BATHM,no,用户未逐房间点名，须在立面确认
+REQ-0537,SAN-021,PROCUREMENT,exact_custom_article_code,,,,,pending,pending,USER-PLUM-SINKS-001,只确认系列与国内定制,yes,须由加工订单或 shop drawing 给出
+REQ-0538,SAN-021,INT1,final_length_depth_and_height,,,,,pending,pending,USER-PLUM-SINKS-001,国内定制无精确加工尺寸,yes,IFC 1000×470×250 mm 包围盒只作协调
+REQ-0539,SAN-021,INT1,basin_quantity_and_width,,,,,pending,pending,USER-PLUM-SINKS-001,IFC 有两个 STREET-H 子部件但不证明最终双盆构成,yes,须由立面和加工图关闭
+REQ-0540,SAN-021,PLUM,tap_mounting_and_hole_schedule,,,,,pending,pending,USER-PLUM-SINKS-001,用户未确认墙出水或台面龙头,yes,影响台面开孔与墙内预埋
+REQ-0541,SAN-021,PLUM,drain_and_supply_coordinates,,,,,pending,pending,USER-PLUM-SINKS-001,国内定制无水电加工定位,yes,须与 P-202 关闭
+REQ-0542,SAN-021,STRUCTURE,vanity_support_and_shop_drawing,,,,,pending,pending,USER-PLUM-SINKS-001,国内定制无支撑和加工图,yes,须核对墙体基层、柜体、石材和检修
+REQ-0543,SAN-017,INT1,parent_product_candidate,SAN-021 antoniolupi Street,,,,project_candidate,candidate,IFC-FORMAL-001,两个 STREET-H 对象与 STREET 主体同处 BATHM,no,不得单独计为两个已采购成品
+REQ-0544,SAN-018,PLUM,product_family,Sorgente,,,,user_input,confirmed,USER-PLUM-SINKS-001,用户确认国内定制 Falper Sorgente,no,不等于官方标准料号
+REQ-0545,SAN-018,WFIN,material,Rosso Levanto marble,,,,user_input,confirmed,USER-PLUM-SINKS-001,用户写 Levanto Red；官方常用名 Rosso Levanto,no,石材批次和表面待关闭
+REQ-0546,SAN-018,INT1,fabrication_method,domestic custom based on official family,,,,user_input,confirmed,USER-PLUM-SINKS-001,国内定制款,no,官方系列尺寸不能自动变成加工尺寸
+REQ-0547,SAN-018,INT1,room_mapping_candidate,BATHG dry area,,,,project_candidate,candidate,IFC-FORMAL-001,BS01 位于 BATHG 且 BATHM 已有 STREET 类型,no,用户未逐房间点名，须在立面确认
+REQ-0548,SAN-018,PROCUREMENT,exact_custom_configuration,,,,,pending,pending,USER-PLUM-SINKS-001,只确认系列与国内定制,yes,须由加工订单或 shop drawing 给出
+REQ-0549,SAN-018,INT1,final_dimensions_and_basin_geometry,,,,,pending,pending,USER-PLUM-SINKS-001,国内定制无精确加工尺寸,yes,IFC 包围盒只作协调
+REQ-0550,SAN-018,PLUM,tap_drain_and_supply_coordinates,,,,,pending,pending,USER-PLUM-SINKS-001,国内定制无水电加工定位,yes,须与 P-202 和客卫干区立面关闭
+REQ-0551,SAN-018,STRUCTURE,support_and_shop_drawing,,,,,pending,pending,USER-PLUM-SINKS-001,国内定制无支撑和加工图,yes,须核对墙体基层、柜体、石材和检修
+REQ-0552,FUR-BATHG-MIRROR-001,INT1,design_intent,full-height segmented mirror cabinet,,,,user_input,candidate,INT1-BATHG-MIRROR-REF-001,用户表示正在考虑,no,未选定产品与构造
+REQ-0553,FUR-BATHG-MIRROR-001,INT1,location_candidate,BATHG dry-area rear wall,,,,user_input,candidate,INT1-BATHG-MIRROR-REF-001,用户指定客卫干区后面,no,须在客卫立面确认具体墙段
+REQ-0554,FUR-BATHG-MIRROR-001,INT1,finished_width,,,,,pending,pending,INT1-BATHG-MIRROR-REF-001,参考图无项目尺寸,yes,须按墙面净宽与门套收口确定
+REQ-0555,FUR-BATHG-MIRROR-001,INT1,finished_height,,,,,pending,pending,INT1-BATHG-MIRROR-REF-001,参考图无项目尺寸,yes,须按当前天花 IFC 完成面与踢脚确定
+REQ-0556,FUR-BATHG-MIRROR-001,INT1,cabinet_depth,,,,,pending,pending,INT1-BATHG-MIRROR-REF-001,参考图无柜深,yes,须满足储物和通行净宽
+REQ-0557,FUR-BATHG-MIRROR-001,INT1,door_segmentation_and_swing,,,,,pending,pending,INT1-BATHG-MIRROR-REF-001,参考图无法证明门扇分格与开启,yes,须避让台盆龙头、门扇和侧墙
+REQ-0558,FUR-BATHG-MIRROR-001,STRUCTURE,wall_backing_and_fixing,,,,,pending,pending,INT1-BATHG-MIRROR-REF-001,参考图不包含墙体基层,yes,须按满载重量与墙体类型设计
+REQ-0559,FUR-BATHG-MIRROR-001,SAFETY,mirror_safety_specification,,,,,pending,pending,INT1-BATHG-MIRROR-REF-001,参考图不证明镜材安全构造,yes,须由产品和规范审查关闭
+REQ-0560,FUR-BATHG-MIRROR-001,WFIN,moisture_resistant_material_system,,,,,pending,pending,INT1-BATHG-MIRROR-REF-001,参考图不证明湿区适用性,yes,须明确柜体基材、封边和五金防潮等级
+REQ-0561,FUR-BATHG-MIRROR-001,ELEC,lighting_integration_decision,,,,,pending,pending,INT1-BATHG-MIRROR-REF-001,图中有灯光但用户只确认类似视觉参考,yes,不得自动增加灯带
+REQ-0562,FUR-BATHG-MIRROR-001,ELEC,power_driver_and_service_access,,,,,pending,pending,INT1-BATHG-MIRROR-REF-001,是否带灯和除雾尚未决定,yes,若采用电气功能须预留可检修电源与驱动
+REQ-0563,FUR-BATHG-MIRROR-001,INT1,internal_shelves_ventilation_and_load,,,,,pending,pending,INT1-BATHG-MIRROR-REF-001,参考图不证明内部构造,yes,须按收纳物品与柜深关闭
+REQ-0564,SAN-018,INT1,official_reference_outer_diameter,,520,mm,,official_model_family,candidate,FALPER-SORGENTE-OFFICIAL-001,WFA/WFB 技术图,no,只作国内定制原型协调
+REQ-0565,SAN-018,INT1,official_reference_total_height,,900,mm,,official_model_family,candidate,FALPER-SORGENTE-OFFICIAL-001,WFA/WFB 技术图,no,只作国内定制原型协调
+REQ-0566,SAN-018,INT1,official_reference_basin_opening_diameter,,500,mm,,official_model_family,candidate,FALPER-SORGENTE-OFFICIAL-001,WFA/WFB 技术图,no,只作国内定制原型协调
+REQ-0567,SAN-018,INT1,official_reference_bowl_depth,,84,mm,,official_model_family,candidate,FALPER-SORGENTE-OFFICIAL-001,WFA/WFB 技术图,no,图示近似值；不得作为国内加工尺寸
+REQ-0568,SAN-018,INT1,official_reference_base_diameter,,224,mm,,official_model_family,candidate,FALPER-SORGENTE-OFFICIAL-001,WFA/WFB 技术图,no,影响地面固定与排水预留
+REQ-0569,SAN-018,PLUM,official_reference_floor_drain_zone_diameter,,150,mm,,official_model_family,candidate,FALPER-SORGENTE-OFFICIAL-001,WFA/WFB 技术图,no,中心地排预留区；最终坐标由加工图关闭
+REQ-0570,SAN-018,PLUM,official_reference_visible_drain_cover_diameter,,90,mm,,official_model_family,candidate,FALPER-SORGENTE-OFFICIAL-001,WFA/WFB 技术图,no,国内定制排水盖待确认
+REQ-0571,SAN-018,PLUM,official_reference_trap_connection,G 1 1/4,,,,official_model_family,candidate,FALPER-SORGENTE-OFFICIAL-001,WFA/WFB 技术图,no,最终转接与现场排水另行设计
+REQ-0572,SAN-018,INT1,official_reference_installation_method,freestanding floor-fixed with pins,,,,official_model_family,candidate,FALPER-SORGENTE-OFFICIAL-001,WFA/WFB 技术图,no,墙体不承托但地面固定和防水穿孔须深化
+REQ-0573,SAN-018,PLUM,final_floor_drain_centre_and_fixing_template,,,,,pending,pending,FALPER-SORGENTE-OFFICIAL-001,官方只给原型中心区且国内定制尺寸未关闭,yes,须由加工厂盖章图和现场放线关闭
+REQ-0574,SAN-021,PLUM,official_marble_overflow,no,,,,official_model_family,candidate,ANTONIOLUPI-STREET-TECH-001,官方 Street 大理石版本,no,国内定制仍须明确是否保留该构造
+REQ-0575,SAN-021,PLUM,official_reference_drain_hole_diameter,,46,mm,,official_model_family,candidate,ANTONIOLUPI-STREET-TECH-001,官方技术变体,no,最终排水器和加工孔以国内 shop drawing 为准
+REQ-0576,SAN-021,PLUM,official_reference_tap_hole_diameter,,38,mm,,official_model_family,candidate,ANTONIOLUPI-STREET-TECH-001,仅适用于带台面龙头孔的官方变体,no,若采用墙出水则不应开孔
+REQ-0577,SAN-021,STRUCTURE,official_reference_installation_method,wall-supported or cabinet-supported,,,,official_model_family,candidate,ANTONIOLUPI-STREET-INSTALL-001,官方系列安装体系,no,国内定制支架墙体基层与柜体承托须盖章深化
+REQ-0578,SAN-018,WFIN,official_material_option,Rosso Levanto marble,,,,official_model_family,candidate,FALPER-SORGENTE-MATERIAL-001,官方产品目录第 6 页,no,确认系列可选材质；本项目国内定制石材批次和表面仍须封样

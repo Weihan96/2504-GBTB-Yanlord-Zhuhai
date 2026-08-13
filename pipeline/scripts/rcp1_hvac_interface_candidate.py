@@ -147,7 +147,11 @@ def main() -> int:
             "pdf_page": evidence["pdf_page"] or None,
         })
 
-    exact_family = [row for row in occurrences if row["interface_status"].startswith("official_model_family_match")]
+    exact_interface = [row for row in occurrences if row["interface_status"].startswith("official_model_family_match")]
+    geometry_only = [
+        row for row in occurrences
+        if row["interface_status"] == "accepted_exact_family_wildcard_geometry_only"
+    ]
     missing_identity = [row for row in occurrences if row["formal_identity_status"] == "missing"]
     unresolved_model = [row for row in occurrences if row["interface_status"] == "model_text_mismatch_requires_confirmation"]
     precise_ports = [
@@ -169,7 +173,8 @@ def main() -> int:
             "equipment_count": len(occurrences),
             "formal_identity_present_count": len(occurrences) - len(missing_identity),
             "formal_identity_missing_count": len(missing_identity),
-            "official_model_family_match_count": len(exact_family),
+            "official_interface_match_count": len(exact_interface),
+            "official_geometry_only_match_count": len(geometry_only),
             "model_text_mismatch_count": len(unresolved_model),
             "precise_port_coordinate_ready_count": len(precise_ports),
             "formal_ifc_write_allowed_count": len(formal_writes_allowed),
@@ -179,7 +184,10 @@ def main() -> int:
             "formal_ifc_type_assignments_match": type_assignments_match,
             "available_local_manual_hashes_match": local_manual_hashes_match,
             "all_equipment_has_formal_identity": len(missing_identity) == 0,
-            "all_model_texts_have_exact_official_match": len(unresolved_model) == 0,
+            "all_present_model_texts_have_official_family_match": (
+                len(exact_interface) + len(geometry_only) == len(occurrences) - len(missing_identity)
+            ),
+            "all_model_interfaces_have_official_match": len(exact_interface) == len(occurrences),
             "precise_port_coordinates_ready": len(precise_ports) == len(occurrences),
             "formal_ifc_write_allowed": len(formal_writes_allowed) == len(occurrences),
         },
