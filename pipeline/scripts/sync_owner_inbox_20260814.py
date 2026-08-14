@@ -1,8 +1,8 @@
 #!/usr/bin/env python3
 """Absorb the 2026-08-14 owner inbox snapshot into canonical project data.
 
-The ignored inbox remains untouched.  This script only consumes the promoted,
-hash-pinned evidence snapshot under drawings/evidence/.
+The historical inbox is consumed from the promoted, hash-pinned evidence
+snapshot under drawings/evidence/; the temporary inbox need not exist.
 """
 
 from __future__ import annotations
@@ -17,9 +17,13 @@ from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[2]
 DECISIONS = ROOT / "pipeline/decisions"
-SNAPSHOT = ROOT / "drawings/evidence/OWNER-INPUT-20260814.md"
-SNAPSHOT_SHA256 = "0dde421f925a8f16a0a52706db29b544d115cebd596b850cb9f18dea26da27ec"
+SNAPSHOT = ROOT / "drawings/evidence/OWNER-INPUT-20260814-SYNCED.md"
+SNAPSHOT_SHA256 = "83b1fc425ec8632c997455a7924aa8669eb2dc06856c6ca4de0eea7da2d89053"
+SNAPSHOT_PAYLOAD_SHA256 = "0dde421f925a8f16a0a52706db29b544d115cebd596b850cb9f18dea26da27ec"
+SNAPSHOT_SYNCED_AT = "2026-08-14T11:01:15+08:00"
 IMAGE_DIR = ROOT / "drawings/evidence/owner-input-20260814"
+LIGHTING_DWG = ROOT / "drawings/evidence/lighting/ZOYLIGHT-D1-20250815.dwg"
+LIGHTING_DWG_SHA256 = "f857849f015fcec58f6f8d52a842ce341f6512dc1feabfbb9f465d1bdfcb4522"
 BOM_FILES = {
     "appliance-input-register.csv",
     "elec-source-evidence.csv",
@@ -35,6 +39,15 @@ def sha256(path: Path) -> str:
         for chunk in iter(lambda: handle.read(1024 * 1024), b""):
             digest.update(chunk)
     return digest.hexdigest()
+
+
+def snapshot_payload_sha256(path: Path) -> str:
+    data = path.read_bytes()
+    marker = "# 仁恒滨海湾｜业主输入待同步\n".encode()
+    offset = data.find(marker)
+    if offset < 0:
+        raise RuntimeError("promoted owner snapshot payload marker missing")
+    return hashlib.sha256(data[offset:]).hexdigest()
 
 
 def read_csv(path: Path) -> tuple[list[str], list[dict[str, str]]]:
@@ -107,6 +120,8 @@ def source_row(
     locator: str = "",
     manufacturer: str = "",
     model_scope: str = "",
+    revision: str = "",
+    publication_date: str = "",
     notes: str = "",
     project_to_elec: bool = False,
 ) -> dict[str, str]:
@@ -130,8 +145,8 @@ def source_row(
         "formal_ifc_write_allowed": "no",
         "manufacturer": manufacturer,
         "model_scope": model_scope,
-        "revision": "",
-        "publication_date": "",
+        "revision": revision,
+        "publication_date": publication_date,
         "legacy_targets": "",
         "legacy_projection_json": "",
         "notes": notes,
@@ -218,9 +233,13 @@ def main() -> None:
 
     if sha256(SNAPSHOT) != SNAPSHOT_SHA256:
         raise RuntimeError("promoted owner snapshot hash changed")
+    if snapshot_payload_sha256(SNAPSHOT) != SNAPSHOT_PAYLOAD_SHA256:
+        raise RuntimeError("promoted owner snapshot original payload changed")
     image_paths = sorted(IMAGE_DIR.glob("*.webp"))
     if len(image_paths) != 18:
         raise RuntimeError(f"expected 18 promoted evidence images, found {len(image_paths)}")
+    if sha256(LIGHTING_DWG) != LIGHTING_DWG_SHA256:
+        raise RuntimeError("promoted Zoylight lighting DWG hash changed")
 
     files = {
         name: read_csv(DECISIONS / name)
@@ -250,15 +269,15 @@ def main() -> None:
         scope="2026-08-14 业主补充输入完整快照",
         kind="owner_input_markdown_snapshot",
         document="业主输入-待同步.md",
-        local="drawings/evidence/OWNER-INPUT-20260814.md",
+        local="drawings/evidence/OWNER-INPUT-20260814-SYNCED.md",
         digest=SNAPSHOT_SHA256,
-        locator="完整文档 01–09 节；原入口 tmp/owner-input-inbox/业主输入-待同步.md 保持不变",
+        locator=f"完整文档 01–09 节；已同步留底；最终复核完成时间 {SNAPSHOT_SYNCED_AT}",
         evidence="业主直接输入、明确确认、候选产品、研究结论与待确认事项的完整同步快照",
         proves="业主直接表达的功能、数量、使用场景、候选范围与确认程度",
         does_not_prove="厂家技术参数、商品在售状态、燃气公司准入、现场施工完成状态或未提供的型号接口",
         status="verified_owner_input_snapshot",
         review="no",
-        notes="confirmed/tentative/unknown/research conclusion 必须按正文分别解释，不得把整份文档统一升级为确认。",
+        notes=f"原始正文 SHA-256={SNAPSHOT_PAYLOAD_SHA256}；confirmed/tentative/unknown/research conclusion 必须按正文分别解释，不得把整份文档统一升级为确认。",
     ))
 
     image_groups = {
@@ -295,6 +314,7 @@ def main() -> None:
     web_sources = [
         source_row("TB-JINK-EGG-001", discipline="ELEC", sheet_id="E-302", scope="JINK EGG 淘宝商品页", kind="taobao_product_page", document="淘宝商品 964347781373", url="https://detail.tmall.com/item.htm?id=964347781373", evidence="商品页标题、属性型号 EGG 与零火三键/六键、锂电无线六键在售选项", proves="商品候选与在售 SKU 文案", does_not_prove="业主已选准确 SKU、官方端子图、每路负载、底盒净深或证书对应", status="commerce_page_research_candidate_only", confidence="0.90", manufacturer="JINK", model_scope="EGG", project_to_elec=True),
         source_row("JINK-EGG-OFFICIAL-001", discipline="ELEC", sheet_id="E-302", scope="JINK EGG 官方产品族", kind="official_product_web", document="JINK Switch EGG official product page", url="https://www.jinkhome.com/products/jink-switch-egg", evidence="官方产品族列出 3-Key/3-Relay、6-Key/3-Relay、Wireless Scene 6-Key、Matter over Thread、100–275V AC 与 85.8×86×37.55 mm 86 系列外形", proves="EGG 产品族功能、协议、供电和外形研究结论", does_not_prove="淘宝准确 SKU、每路/整机 2000W 口径、端子图、最低底盒净深、传统有线双控或项目选定", status="verified_official_family_research", confidence="0.95", manufacturer="JINK", model_scope="EGG family", project_to_elec=True),
+        source_row("ZOYLIGHT-D1-20250815-001", discipline="ELEC/INT1", sheet_id="E-301/E-302/RCP-1", scope="D1 户型照明设计控制映射依据", kind="owner_directed_consultant_dwg", document="缀忆灯光 D1 户型照明设计 2025-08-15", local="drawings/evidence/lighting/ZOYLIGHT-D1-20250815.dwg", digest="f857849f015fcec58f6f8d52a842ce341f6512dc1feabfbb9f465d1bdfcb4522", locator="业主在 OWNER-INBOX-20260814-001 第 01 节指定；AutoCAD 2000 DWG", evidence="业主要求 Entry A、Master A、Master B 的氛围 LED 与重点射灯控制映射结合该灯光设计稿深化", proves="该 DWG 是控制功能映射和后续回路提取的指定设计来源", does_not_prove="准确 JINK SKU、端子接线、实际回路负载、现场施工完成状态或最终逐键映射", status="verified_owner_directed_design_source_pending_circuit_extraction", manufacturer="Zoylight", model_scope="D1 lighting design", revision="2025-08-15", notes="原文件按字节固化；未从 DWG 自动推断或写入回路。", project_to_elec=True),
         source_row("JINK-8E-CSA-001", discipline="ELEC", sheet_id="E-302", scope="JINK 8e Matter 证书边界", kind="official_certification_web", document="CSA JINK 8e Switch Series", url="https://csa-iot.org/csa_product/jink-8e-switch-series-3/", evidence="CSA 页面覆盖 JINK 8e 系列指定 Family SKU、Matter 1.1、Thread + Bluetooth", proves="8e 系列证书存在", does_not_prove="EGG 或 2.5D Neo 商品 SKU 与 8e Family SKU 相同或可借用该证书", status="verified_official_certificate_family_only", manufacturer="Longan Link/JINK", model_scope="JINK 8e family", project_to_elec=True),
         source_row("TB-JINK-2P5D-001", discipline="ELEC", sheet_id="E-302", scope="JINK 2.5D Neo 淘宝商品页", kind="taobao_product_page", document="淘宝商品 1062885293798", url="https://detail.tmall.com/item.htm?id=1062885293798", evidence="页面展示 1–3 GANG 16A 与单路 20A/40A 候选，属性与商品图对 Matter 传输协议表述冲突", proves="2.5D Neo 候选商品及页面内部协议冲突", does_not_prove="准确 SKU、最终传输协议、项目选定、接线图或证书", status="commerce_page_conflicting_research_candidate_only", confidence="0.80", manufacturer="JINK", model_scope="2.5D Neo", project_to_elec=True),
         source_row("TB-PANASURFACE-SWITCH-INSET-001", discipline="ELEC/INT1", sheet_id="E-302/I-501", scope="86 型开关平嵌装饰框", kind="taobao_product_page", document="淘宝商品 958552490234", url="https://item.taobao.com/item.htm?id=958552490234", evidence="商品标注 86 型、ABS、定制；一开/二开/三开表示相邻面板数量", proves="装饰框为饰面收口候选而非电气底盒", does_not_prove="未经商家按 EGG 实物确认即可通配、底盒深度、阻燃或接线", status="commerce_page_research_candidate_only", confidence="0.90", manufacturer="Panasurface", model_scope="86-type custom inset trim", project_to_elec=True),
@@ -332,9 +352,9 @@ def main() -> None:
         eq[equipment_id].update(values)
 
     new_equipment = [
-        {"equipment_id":"CTRL-ENTRY-A","domain":"ASSEMBLY","category":"照明控制面板","item_name":"Entry A 智能照明控制面板","manufacturer":"JINK","model":"EGG 3-Key/3-Relay（研究优选，准确 SKU 未定）","variant":"wired_candidate","quantity":"1","procurement_status":"candidate","decision_status":"candidate","use_location_candidate":"入户门口墙面","use_location_confirmed":"","schedule_included":"yes","selector_kind":"logical_input","selector_value":"CTRL-ENTRY-A","source_ids":merge_ids(common_owner_ids,"TB-JINK-EGG-001;JINK-EGG-OFFICIAL-001;JINK-8E-CSA-001;TB-PANASURFACE-SWITCH-INSET-001"),"identity_basis":"业主确认两类照明控制用途；EGG 3-Key/3-Relay 仅为研究优选","confidence":"0.85","human_review_required":"yes","legacy_kind":"","legacy_id":"","notes":"准确 SKU、颜色、按键数、端子图、每路负载、传统有线双控、底盒净深和平嵌适配均未关闭。"},
-        {"equipment_id":"CTRL-MASTER-A","domain":"ASSEMBLY","category":"照明控制面板","item_name":"Master A 主卧智能照明控制面板","manufacturer":"JINK","model":"EGG 3-Key/3-Relay 或 Wireless Scene 6-Key（研究候选）","variant":"direct_load_or_scene_only_candidate","quantity":"1","procurement_status":"candidate","decision_status":"candidate","use_location_candidate":"主卧内衣柜见光板","use_location_confirmed":"","schedule_included":"yes","selector_kind":"logical_input","selector_value":"CTRL-MASTER-A","source_ids":merge_ids(common_owner_ids,"TB-JINK-EGG-001;JINK-EGG-OFFICIAL-001;TB-PANASURFACE-SWITCH-INSET-001"),"identity_basis":"业主确认 Master A 独立角色；直接负载与纯场景方案尚未选择","confidence":"0.85","human_review_required":"yes","legacy_kind":"","legacy_id":"","notes":"见光板内直接承载负载前须核实阻燃背盒、固定、散热、检修、板厚开孔、各回路功率和启动浪涌。"},
-        {"equipment_id":"CTRL-MASTER-B","domain":"ASSEMBLY","category":"照明控制面板","item_name":"Master B 公区双控面板","manufacturer":"JINK","model":"EGG 3-Key/3-Relay（研究优选，准确 SKU 未定）","variant":"wired_candidate","quantity":"1","procurement_status":"candidate","decision_status":"candidate","use_location_candidate":"主卧入口外墙面","use_location_confirmed":"","schedule_included":"yes","selector_kind":"logical_input","selector_value":"CTRL-MASTER-B","source_ids":merge_ids(common_owner_ids,"TB-JINK-EGG-001;JINK-EGG-OFFICIAL-001"),"identity_basis":"业主确认 Master B 与 Master A 为不同位置和角色；产品仅研究候选","confidence":"0.85","human_review_required":"yes","legacy_kind":"","legacy_id":"","notes":"客厅/书房/餐厅双控角色已确认；准确 SKU、传统有线双控拓扑、端子图和墙侧施工条件未关闭。"},
+        {"equipment_id":"CTRL-ENTRY-A","domain":"ASSEMBLY","category":"照明控制面板","item_name":"Entry A 智能照明控制面板","manufacturer":"JINK","model":"EGG 3-Key/3-Relay（研究优选，准确 SKU 未定）","variant":"wired_candidate","quantity":"1","procurement_status":"candidate","decision_status":"candidate","use_location_candidate":"入户门口墙面","use_location_confirmed":"","schedule_included":"yes","selector_kind":"logical_input","selector_value":"CTRL-ENTRY-A","source_ids":merge_ids(common_owner_ids,"TB-JINK-EGG-001;JINK-EGG-OFFICIAL-001;JINK-8E-CSA-001;TB-PANASURFACE-SWITCH-INSET-001;ZOYLIGHT-D1-20250815-001"),"identity_basis":"业主确认两类照明控制用途；EGG 3-Key/3-Relay 仅为研究优选","confidence":"0.85","human_review_required":"yes","legacy_kind":"","legacy_id":"","notes":"准确 SKU、颜色、按键数、端子图、每路负载、传统有线双控、底盒净深和平嵌适配均未关闭。"},
+        {"equipment_id":"CTRL-MASTER-A","domain":"ASSEMBLY","category":"照明控制面板","item_name":"Master A 主卧智能照明控制面板","manufacturer":"JINK","model":"EGG 3-Key/3-Relay 或 Wireless Scene 6-Key（研究候选）","variant":"direct_load_or_scene_only_candidate","quantity":"1","procurement_status":"candidate","decision_status":"candidate","use_location_candidate":"主卧内衣柜见光板","use_location_confirmed":"","schedule_included":"yes","selector_kind":"logical_input","selector_value":"CTRL-MASTER-A","source_ids":merge_ids(common_owner_ids,"TB-JINK-EGG-001;JINK-EGG-OFFICIAL-001;TB-PANASURFACE-SWITCH-INSET-001;ZOYLIGHT-D1-20250815-001"),"identity_basis":"业主确认 Master A 独立角色；直接负载与纯场景方案尚未选择","confidence":"0.85","human_review_required":"yes","legacy_kind":"","legacy_id":"","notes":"见光板内直接承载负载前须核实阻燃背盒、固定、散热、检修、板厚开孔、各回路功率和启动浪涌。"},
+        {"equipment_id":"CTRL-MASTER-B","domain":"ASSEMBLY","category":"照明控制面板","item_name":"Master B 公区双控面板","manufacturer":"JINK","model":"EGG 3-Key/3-Relay（研究优选，准确 SKU 未定）","variant":"wired_candidate","quantity":"1","procurement_status":"candidate","decision_status":"candidate","use_location_candidate":"主卧入口外墙面","use_location_confirmed":"","schedule_included":"yes","selector_kind":"logical_input","selector_value":"CTRL-MASTER-B","source_ids":merge_ids(common_owner_ids,"TB-JINK-EGG-001;JINK-EGG-OFFICIAL-001;ZOYLIGHT-D1-20250815-001"),"identity_basis":"业主确认 Master B 与 Master A 为不同位置和角色；产品仅研究候选","confidence":"0.85","human_review_required":"yes","legacy_kind":"","legacy_id":"","notes":"客厅/书房/餐厅双控角色已确认；准确 SKU、传统有线双控拓扑、端子图和墙侧施工条件未关闭。"},
         {"equipment_id":"NET-AP-R09","domain":"NETWORK","category":"吸顶无线接入点","item_name":"主卧吸顶 AP","manufacturer":"Huawei / Ruijie","model":"AP362E / RG-EAP262E（候选）","variant":"PoE_recess_candidate","quantity":"1","procurement_status":"candidate","decision_status":"candidate","use_location_candidate":"R09 主卧天花候选点","use_location_confirmed":"","schedule_included":"yes","selector_kind":"logical_input","selector_value":"NET-AP-R09","source_ids":merge_ids(common_owner_ids,"TB-PANASURFACE-AP-INSET-001;HUAWEI-AP362E-OFFICIAL-001;RUIJIE-EAP262E-OFFICIAL-001"),"identity_basis":"预埋件只明确适配两款候选；若无锐捷生态暂优先研究 AP362E","confidence":"0.85","human_review_required":"yes","legacy_kind":"","legacy_id":"","notes":"最终型号/生态、CAT6 通断、PoE 交换机预算、覆盖、散热、检修和预埋件机械适配待关闭。"},
         {"equipment_id":"NET-AP-R14","domain":"NETWORK","category":"吸顶无线接入点","item_name":"次卧吸顶 AP","manufacturer":"Huawei / Ruijie","model":"AP362E / RG-EAP262E（候选）","variant":"PoE_recess_candidate","quantity":"1","procurement_status":"candidate","decision_status":"candidate","use_location_candidate":"R14 次卧天花候选点","use_location_confirmed":"","schedule_included":"yes","selector_kind":"logical_input","selector_value":"NET-AP-R14","source_ids":merge_ids(common_owner_ids,"TB-PANASURFACE-AP-INSET-001;HUAWEI-AP362E-OFFICIAL-001;RUIJIE-EAP262E-OFFICIAL-001"),"identity_basis":"预埋件只明确适配两款候选；若无锐捷生态暂优先研究 AP362E","confidence":"0.85","human_review_required":"yes","legacy_kind":"","legacy_id":"","notes":"最终型号/生态、CAT6 通断、PoE 交换机预算、覆盖、散热、检修和预埋件机械适配待关闭。"},
         {"equipment_id":"SENSOR-GAS-R04","domain":"SAFETY","category":"家用可燃气体探测器","item_name":"中厨燃气报警器","manufacturer":"","model":"","variant":"authority_approved_model_pending","quantity":"1","procurement_status":"not_selected","decision_status":"pending","use_location_candidate":"R04 中厨；准确位置待燃气公司","use_location_confirmed":"","schedule_included":"yes","selector_kind":"logical_input","selector_value":"SENSOR-GAS-R04","source_ids":merge_ids(common_owner_ids,"A106-GAS-OFFICIAL-001;GAS-HANWEI-KEA01-OFFICIAL-001;GAS-HANWEI-KWE-OFFICIAL-001;GAS-CUBIC-AM5301-OFFICIAL-001;TB-PANASURFACE-ALARM-INSET-001"),"identity_basis":"业主要求设置燃气报警器；准确型号须由当地燃气公司/主管要求确认","confidence":"1.00","human_review_required":"yes","legacy_kind":"","legacy_id":"","notes":"JT-GS838C-NBAC-H05、JT-KEA01/KEA31、JT-KWE 系列、JT-AM5301-JG 均只作为咨询候选，未获批准；不得锁定开孔、供电、联动或安装高度。"},
@@ -456,7 +476,7 @@ def main() -> None:
             row["required_evidence"] = "EGG 实物/完整尺寸图、Panasurface 书面适配确认、JINK 底盒净深与端子空间、基层和收口节点"
 
     if args.check:
-        print(json.dumps({"snapshot_sha256": SNAPSHOT_SHA256, "evidence_images": len(image_paths), "mode": "check", "planned_tables": list(files)}, ensure_ascii=False, indent=2))
+        print(json.dumps({"snapshot_sha256": SNAPSHOT_SHA256, "snapshot_payload_sha256": SNAPSHOT_PAYLOAD_SHA256, "snapshot_synced_at": SNAPSHOT_SYNCED_AT, "evidence_images": len(image_paths), "lighting_dwg_sha256": LIGHTING_DWG_SHA256, "mode": "check", "planned_tables": list(files)}, ensure_ascii=False, indent=2))
         return
 
     for name, (fields, _original_rows) in files.items():
@@ -473,6 +493,8 @@ def main() -> None:
 
     print(json.dumps({
         "snapshot_sha256": SNAPSHOT_SHA256,
+        "snapshot_payload_sha256": SNAPSHOT_PAYLOAD_SHA256,
+        "snapshot_synced_at": SNAPSHOT_SYNCED_AT,
         "evidence_images": len(image_paths),
         "equipment_rows": len(equipment),
         "requirement_rows": len(requirements),

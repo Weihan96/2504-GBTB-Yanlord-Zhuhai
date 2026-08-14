@@ -1,3 +1,14 @@
+---
+record_status: synced_archive
+source_entry: tmp/owner-input-inbox/业主输入-待同步.md
+source_payload_sha256: 0dde421f925a8f16a0a52706db29b544d115cebd596b850cb9f18dea26da27ec
+initial_sync_commit: bf468e3467369081530508b20deb9ed4a9d67f02
+initial_sync_completed_at: 2026-08-14T01:22:25+08:00
+final_reconciliation_completed_at: 2026-08-14T11:01:15+08:00
+---
+
+> **同步状态：已同步留底。** 临时入口已在完整复核后移出项目；以下原始正文保持逐字节不变。`source_payload_sha256` 对应本说明之后、从原始一级标题开始的完整正文。
+
 # 仁恒滨海湾｜业主输入待同步
 
 > 这是项目内的本地填写入口，位于 Git 已忽略的 `tmp/`，不会进入正式数据，也不会影响另一个任务。

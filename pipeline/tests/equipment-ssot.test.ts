@@ -17,13 +17,13 @@ test("equipment SSOT validates projections and covers every scoped IFC object", 
   expect(report.validate).toMatchObject({
     master_count: 161,
     requirement_count: 724,
-    source_count: 163,
+    source_count: 164,
     schema_version: "1.0.0",
   });
   expect(report.projections).toMatchObject({
     appliance_rows: 18,
     furniture_rows: 9,
-    elec_evidence_rows: 67,
+    elec_evidence_rows: 68,
     hvac_evidence_rows: 4,
     furniture_role_rows: 51,
     mode: "check",
@@ -78,7 +78,7 @@ ids={"APP-004","APP-005","APP-014","APP-015","APP-016","APP-017","CTRL-ENTRY-A",
 print(json.dumps({
   "masters":[row for row in masters if row["equipment_id"] in ids],
   "requirements":[row for row in requirements if row["equipment_id"] in ids],
-  "sources":[row for row in sources if row["source_id"]=="OWNER-INBOX-20260814-001" or row["local_path"].startswith("drawings/evidence/owner-input-20260814/")],
+  "sources":[row for row in sources if row["source_id"] in {"OWNER-INBOX-20260814-001","ZOYLIGHT-D1-20250815-001"} or row["local_path"].startswith("drawings/evidence/owner-input-20260814/")],
   "rules":[row for row in rules if row["rule_id"] in {"ELEC-DES-020","ELEC-DES-022","ELEC-DES-033","ELEC-DES-035","ELEC-DES-037","ELEC-DES-040","ELEC-DES-041"}],
 },ensure_ascii=False))
 `;
@@ -161,6 +161,7 @@ print(json.dumps({
   expect(requirement("APP-016", "rated_power")).toMatchObject({ status: "pending", blocks_release: "yes" });
 
   expect(master("CTRL-ENTRY-A")).toMatchObject({ procurement_status: "candidate", decision_status: "candidate" });
+  expect(master("CTRL-ENTRY-A")?.source_ids).toContain("ZOYLIGHT-D1-20250815-001");
   for (const key of ["exact_sku", "terminal_diagram", "minimum_backbox_clear_depth"]) {
     expect(requirement("CTRL-ENTRY-A", key), `CTRL-ENTRY-A.${key}`).toMatchObject({
       status: "pending",
@@ -187,11 +188,26 @@ print(json.dumps({
 
   const snapshot = data.sources.find((row) => row.source_id === "OWNER-INBOX-20260814-001");
   expect(snapshot).toMatchObject({
-    sha256: "0dde421f925a8f16a0a52706db29b544d115cebd596b850cb9f18dea26da27ec",
+    local_path: "drawings/evidence/OWNER-INPUT-20260814-SYNCED.md",
+    sha256: "83b1fc425ec8632c997455a7924aa8669eb2dc06856c6ca4de0eea7da2d89053",
     status: "verified_owner_input_snapshot",
     formal_ifc_write_allowed: "no",
   });
+  const snapshotText = readFileSync(resolve(root, snapshot!.local_path), "utf8");
+  expect(snapshotText).toContain("record_status: synced_archive");
+  expect(snapshotText).toContain("final_reconciliation_completed_at: 2026-08-14T11:01:15+08:00");
+  expect(snapshotText).toContain("source_payload_sha256: 0dde421f925a8f16a0a52706db29b544d115cebd596b850cb9f18dea26da27ec");
   expect(data.sources.filter((row) => row.local_path.startsWith("drawings/evidence/owner-input-20260814/"))).toHaveLength(18);
+  const lighting = data.sources.find((row) => row.source_id === "ZOYLIGHT-D1-20250815-001");
+  expect(lighting).toMatchObject({
+    local_path: "drawings/evidence/lighting/ZOYLIGHT-D1-20250815.dwg",
+    sha256: "f857849f015fcec58f6f8d52a842ce341f6512dc1feabfbb9f465d1bdfcb4522",
+    status: "verified_owner_directed_design_source_pending_circuit_extraction",
+    formal_ifc_write_allowed: "no",
+  });
+  const gasTemplate = readFileSync(resolve(root, "drawings/evidence/A106-燃气公司咨询模板.md"), "utf8");
+  expect(gasTemplate).toContain("型号均为咨询候选");
+  expect(gasTemplate).toContain("不代表燃气公司已批准");
 });
 
 test("equipment SSOT never writes the formal IFC", () => {
