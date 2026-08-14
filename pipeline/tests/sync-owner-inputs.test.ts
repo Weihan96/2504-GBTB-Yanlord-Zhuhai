@@ -261,7 +261,7 @@ print(json.dumps(result,ensure_ascii=False))
   const tableRefs = JSON.parse(tableAudit.stdout.toString());
   expect(tableRefs["设备主表Table"]).toBe("A2:AB163");
   expect(tableRefs["安装条件Table"]).toBe("A2:N727");
-  expect(tableRefs["证据索引Table"]).toBe("A2:X166");
+  expect(tableRefs["证据索引Table"]).toBe("A2:X176");
   const summaryAudit = Bun.spawnSync([
     "python3", "-c", String.raw`
 import json,sys,zipfile

@@ -17,7 +17,7 @@ test("equipment SSOT validates projections and covers every scoped IFC object", 
   expect(report.validate).toMatchObject({
     master_count: 161,
     requirement_count: 724,
-    source_count: 164,
+    source_count: 174,
     schema_version: "1.0.0",
   });
   expect(report.projections).toMatchObject({

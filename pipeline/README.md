@@ -38,6 +38,7 @@
 bun run pipeline:snapshot
 bun run pipeline:check
 bun run pipeline:gate
+bun run pipeline:evidence-portability-check
 bun run pipeline:coordinate-audit
 bun run pipeline:geometry-alignment-audit
 bun run pipeline:geometry-diff-head
@@ -54,7 +55,8 @@ bun test
 ```
 
 - `pipeline:snapshot`：读取 IFC 和现有 SVG，生成源哈希与结构快照。
-- `pipeline:check`：生成 QA JSON/Markdown；允许已知阻塞存在，便于持续盘点。
+- `pipeline:check`：先执行证据可移植性硬门，再生成 QA JSON/Markdown；允许已登记的设计决策阻塞继续存在，但不放行来源缺失、哈希漂移或第二输出根。
+- `pipeline:evidence-portability-check`：以 `pipeline/decisions/source-evidence-register.csv` 为唯一来源登记真相，只读扫描全部决策 CSV 的来源字段及 `drawings/evidence/`。仓库外绝对路径、`file://`、Downloads/Desktop/TemporaryItems/`tmp/`、缺少项目内副本、证据哈希漂移、未登记 evidence 文件和根目录复数 `outputs/` 均硬失败并非零退出；HTTP(S) 商品或厂家链接可以保留。默认输出人读 stdout，追加 `-- --json` 输出稳定 JSON；命令不生成或修改登记表、报告文件或证据文件。确需临时放行单个未登记文件时必须显式传入 `-- --allow-unregistered 'drawings/evidence/<path>::原因'`，路径和原因都会进入 stdout/JSON，默认仍为硬失败。
 - `pipeline:owner-inputs`：读取 `output/forms/滨海湾施工输入清单.xlsx`，校验固定设计输入 ID、状态和值，并生成 dry-run 差异和开放项报告。工作簿把“设计决策”与“家电清单”分开，家电强制区分存放位置和实际使用位置；候选值只有在状态改为“采用候选”时才视为确认。默认不更新源数据；`pipeline:owner-inputs-apply` 只更新两张输入登记和 PM 自动状态块，不写正式 IFC。
 - `pipeline:gate`：执行同一套检查；存在阻塞时返回非零退出码，用于发布门。
 - `pipeline:coordinate-audit`：只读统计对象 origin、IFC 长度数值和非整数分布；当前 origin 复核阈值为 `0.1 mm`。
