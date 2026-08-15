@@ -102,9 +102,9 @@ def read_network_topology(path: Path) -> list[dict[str, str]]:
     ids = [row["link_id"] for row in rows]
     if len(rows) != 6 or len(ids) != len(set(ids)):
         raise RuntimeError("E-304 network topology must contain six unique requirement links")
-    if any(row["status"] != "requirement_candidate" for row in rows):
-        raise RuntimeError("E-304 network topology contains a non-candidate link")
-    if any(row["physical_port"] not in {"", "TBD"} for row in rows):
+    if any(row["status"] not in {"requirement_candidate", "research_conclusion"} for row in rows):
+        raise RuntimeError("E-304 network topology contains an unsupported status")
+    if any(row["physical_port"] and not row["physical_port"].startswith("TBD") for row in rows):
         raise RuntimeError("E-304 physical ports must remain TBD before field verification")
     return rows
 
@@ -219,10 +219,19 @@ def compile_switch_product_review(path: Path) -> dict[str, Any]:
     }
     if len(rows) != len(keyed) or set(keyed) != expected_keys:
         raise RuntimeError("E-302 switch product review must contain three panels with eight unique gates each")
-    if any(row["passed"].strip().lower() != "false" for row in rows):
-        raise RuntimeError("E-302 switch product release gates must remain false")
-    if any(not row["failure_reason"].strip() or not row["required_evidence"].strip() for row in rows):
-        raise RuntimeError("every E-302 switch product gate requires a failure reason and closeout evidence")
+    if any(row["passed"].strip().lower() not in {"true", "false"} for row in rows):
+        raise RuntimeError("E-302 switch product release gates must be boolean")
+    if any(
+        row["passed"].strip().lower() == "false"
+        and (not row["failure_reason"].strip() or not row["required_evidence"].strip())
+        for row in rows
+    ):
+        raise RuntimeError("every failed E-302 switch product gate requires a reason and closeout evidence")
+    if any(
+        keyed[(panel_id, "control_role_closed")]["passed"].strip().lower() != "true"
+        for panel_id in SWITCH_PRODUCT_PANEL_IDS
+    ):
+        raise RuntimeError("E-302 functional control roles must remain closed")
 
     panels = []
     release_blockers = []
@@ -242,6 +251,7 @@ def compile_switch_product_review(path: Path) -> dict[str, Any]:
                 "required_evidence": row["required_evidence"],
             }
             for row in panel_rows
+            if row["passed"].strip().lower() == "false"
         ]
         release_blockers.extend(blockers)
         panels.append({
@@ -250,7 +260,7 @@ def compile_switch_product_review(path: Path) -> dict[str, Any]:
             "product_candidate": panel_rows[0]["product_candidate"],
             "product_evidence_scope": panel_rows[0]["product_evidence_scope"],
             "installation_context": panel_rows[0]["installation_context"],
-            "gates": {row["gate"]: False for row in panel_rows},
+            "gates": {row["gate"]: row["passed"].strip().lower() == "true" for row in panel_rows},
             "release_ready": False,
             "release_blockers": blockers,
         })
@@ -487,7 +497,7 @@ def network_zones(
             "network_role": "wireless_access_point",
             "wired_backhaul_required": True,
             "wired_backhaul_confirmed": owner_gates["cable_continuity_complete"],
-            "power_method_candidates": ["PoE", "local_power"],
+            "power_method_candidates": ["PoE"],
             "poe_power_method_confirmed": owner_gates["ap_power_method_complete"],
             "nearest_light_edge_clearance_mm": audit["nearest_light_edge_clearance_mm"],
             "required_light_clearance_mm": audit["required_light_clearance_mm"],
@@ -708,10 +718,10 @@ def render_svg(source: str, report: dict[str, Any]) -> str:
         '<text class="cn-warn" x="407" y="118">Master A 内控主卧；Master B 外控客书餐，均待 A-104</text>',
         '<text class="cn-warn" x="407" y="126">150mm 仅为常见协调候选净距，未经完成面实测</text>',
         f'<text class="cn-text" x="407" y="134">主卧 AP 灯具净距余量 {main_bedroom_ap_margin:.1f}mm｜机械候选</text>',
-        '<text class="cn-text" x="407" y="148">网络需求：5 个下游端点｜2 个 AP 供电方式待定</text>',
+        '<text class="cn-text" x="407" y="148">网络需求：5 个下游端点｜2 个 AP 均采用 PoE</text>',
         '<text class="cn-text" x="407" y="156">交换侧最少 6 口候选（含 1 个路由器上联）</text>',
-        '<text class="cn-warn" x="407" y="170">端口号/PoE 功率/线缆通断/散热均未关闭</text>',
-        '<text class="cn-warn" x="407" y="186">产品发布门：3 面板 × 8 门＝24 项，全部 BLOCK</text>',
+        '<text class="cn-warn" x="407" y="170">PoE 架构已定｜端口号/功率预算/通断/散热待证据</text>',
+        '<text class="cn-warn" x="407" y="186">面板功能角色 3/3 PASS｜其余产品门 21 项 BLOCK</text>',
         '<text class="cn-warn" x="407" y="194">Entry A：EGG 仅族级 CSA；淘宝变体未匹配</text>',
         '<text class="cn-warn" x="407" y="202">Master A：2.5D Neo 有厂家参数；无官方 CSA 关联</text>',
         '<text class="cn-warn" x="407" y="210">Master A 见光板：阻燃背盒/固定基层/散热/可检修未闭</text>',
@@ -793,8 +803,8 @@ def main() -> int:
             "links": topology,
             "minimum_downstream_data_links": 5,
             "minimum_switch_ports_candidate": 6,
-            "ap_power_method_pending_endpoint_count": 2,
-            "poe_budget_formula": None,
+            "ap_power_method_pending_endpoint_count": 0,
+            "poe_budget_formula": "sum(final_AP_nameplate_power_w) plus switch design margin; exact values pending final models",
             "formal_physical_ports_assigned": False,
         },
         "summary": {
@@ -845,7 +855,10 @@ def main() -> int:
             "entry_candidate_not_mislabeled_selected": next(
                 row for row in control_options if row["candidate_id"] == "CTRL-ENTRY-A"
             )["effective_selection"] is False,
-            "controlled_fixture_group_mapping_complete": False,
+            "controlled_fixture_group_mapping_complete": all(
+                panel["gates"]["control_role_closed"]
+                for panel in switch_product_review["panels"]
+            ),
             "three_two_way_groups_present": all(
                 next(row for row in control_options if row["candidate_id"] == panel_id)["controlled_groups"]
                 == ["客厅", "书房", "餐厅"]
@@ -868,11 +881,14 @@ def main() -> int:
             "five_downstream_endpoints_present": sum(
                 row["target_role"] != "router_to_switch_uplink" for row in topology
             ) == 5,
-            "two_AP_power_methods_pending": sum(
-                row["poe_required"] == "TBD" and row["local_power_required"] == "TBD"
+            "two_AP_power_methods_confirmed_PoE": sum(
+                row["poe_required"] == "yes" and row["local_power_required"] == "no"
                 for row in topology
             ) == 2,
-            "physical_ports_remain_unassigned": all(row["physical_port"] in {"", "TBD"} for row in topology),
+            "physical_ports_remain_unassigned": all(
+                not row["physical_port"] or row["physical_port"].startswith("TBD")
+                for row in topology
+            ),
             "AP_topology_uses_current_a106_mechanical_assessment": all(
                 row.get("a106_mechanical_evidence") == ap_evidence[row["target_node"]]
                 for row in topology if row["target_node"] in AP_TOPOLOGY_TARGETS

@@ -16,14 +16,14 @@ test("equipment SSOT validates projections and covers every scoped IFC object", 
   const report = JSON.parse(run.stdout.toString());
   expect(report.validate).toMatchObject({
     master_count: 161,
-    requirement_count: 724,
-    source_count: 174,
+    requirement_count: 818,
+    source_count: 180,
     schema_version: "1.0.0",
   });
   expect(report.projections).toMatchObject({
     appliance_rows: 18,
     furniture_rows: 9,
-    elec_evidence_rows: 68,
+    elec_evidence_rows: 69,
     hvac_evidence_rows: 4,
     furniture_role_rows: 51,
     mode: "check",
@@ -74,7 +74,7 @@ def rows(path):
     with open(path,encoding="utf-8-sig",newline="") as stream:
         return list(csv.DictReader(stream))
 masters=rows(sys.argv[1]); requirements=rows(sys.argv[2]); sources=rows(sys.argv[3]); rules=rows(sys.argv[4])
-ids={"APP-004","APP-005","APP-014","APP-015","APP-016","APP-017","CTRL-ENTRY-A","NET-AP-R09","NET-AP-R14","SENSOR-GAS-R04","SENSOR-001"}
+ids={"APP-004","APP-005","APP-011","APP-014","APP-015","APP-016","APP-017","CTRL-ENTRY-A","NET-AP-R09","NET-AP-R14","SENSOR-GAS-R04","SENSOR-001"}
 print(json.dumps({
   "masters":[row for row in masters if row["equipment_id"] in ids],
   "requirements":[row for row in requirements if row["equipment_id"] in ids],
@@ -150,7 +150,18 @@ print(json.dumps({
     });
   }
 
-  expect(requirement("APP-004", "rated_power")).toMatchObject({ status: "pending", blocks_release: "yes" });
+  expect(requirement("APP-004", "rated_power")).toMatchObject({ status: "pending", blocks_release: "no" });
+  expect(requirement("APP-004", "design_reserve_power_w")).toMatchObject({
+    value_number: "2600",
+    value_origin: "research_conclusion",
+    status: "confirmed",
+  });
+  expect(requirement("APP-011", "appliance_plug_rating_a")?.value_number).toBe("16");
+  expect(requirement("APP-011", "wall_socket_rating_a")?.value_number).toBe("16");
+  expect(requirement("APP-017", "wall_socket_rating_a")?.value_number).toBe("10");
+  expect(requirement("APP-017", "wall_socket_quantity")?.value_number).toBe("2");
+  expect(requirement("APP-017", "shared_branch_circuit_permission")?.value_text).toBe("yes");
+  expect(requirement("APP-017", "branch_breaker_rating_a")?.value_number).toBe("16");
   expect(requirement("APP-004", "candidate_power_gs3")).toMatchObject({ value_number: "2120", status: "candidate" });
   expect(requirement("APP-004", "candidate_power_e1_prima_exp")).toMatchObject({
     value_text: "1600_or_2600_by_version",
@@ -180,7 +191,7 @@ print(json.dumps({
   expect(rule("ELEC-DES-020")?.status).toBe("superseded_by_device_first_selection");
   expect(rule("ELEC-DES-022")?.status).toBe("superseded_by_gas_authority_gate");
   for (const id of ["ELEC-DES-033", "ELEC-DES-035"]) {
-    expect(rule(id)?.status).toBe("pending_power_data_no_circuit_count_locked");
+    expect(rule(id)?.status).toBe("research_conclusion");
   }
   expect(rule("ELEC-DES-037")?.value).toContain("actual_length_x_W_per_m");
   expect(rule("ELEC-DES-040")?.value).toContain("minimum_2_per_usable_side");

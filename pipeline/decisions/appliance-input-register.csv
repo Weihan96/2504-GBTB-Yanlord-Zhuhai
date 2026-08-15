@@ -1,8 +1,8 @@
 ﻿appliance_id,appliance_name,category,storage_location_candidate,use_location_candidate,storage_location_confirmed,use_location_confirmed,quantity,rated_power_w,simultaneous_group,water_required,drain_required,gas_required,ventilation_required,model,evidence_reference,status,notes
-APP-001,火锅电器,移动厨电,厨房柜内,西厨岛台 NS-01,,西厨岛台 NS-01,1,,NS01-A,no,no,no,no,,业主确认 NS-01 使用场景；准确型号和功率未知,部分确认,NS-01 三面各一隐藏盖板插座；火锅可与 APP-002/APP-003 中一件同时使用。未提供型号和铭牌功率，不计算总负荷。
-APP-002,搅拌机,移动厨电,厨房柜内,西厨岛台 NS-01,,西厨岛台 NS-01,1,,NS01-B,no,no,no,no,,业主确认 NS-01 使用场景；准确型号和功率未知,部分确认,可与火锅同时使用；型号和铭牌功率保持 unknown。
-APP-003,Sous-vide 棒,移动厨电,厨房柜内,西厨岛台 NS-01,,西厨岛台 NS-01,1,,NS01-B,no,no,no,no,,业主确认 NS-01 使用场景；准确型号和功率未知,部分确认,可与火锅同时使用的备选小厨电；型号和铭牌功率保持 unknown。
-APP-004,咖啡机,咖啡设备,餐边柜,餐边柜 NS-02,,餐边柜 NS-02,1,,NS02-A,model_dependent,model_dependent,no,no,GS3 / E1 Prima EXP（候选二选一）,业主给出两款候选；厂家资料仅作为候选参数，最终机型未定,部分确认,GS3 与 E1 Prima EXP 均为研究候选，不得作为已选产品。可预留可关闭净水支路和排水，但最终接口按实购机型关闭。
+APP-001,火锅电器,移动厨电,厨房柜内,西厨岛台 NS-01,,西厨岛台 NS-01,1,,NS01-A,no,no,no,no,,业主确认 NS-01 使用场景；准确型号和功率未知,部分确认,准确型号和名牌功率保持 unknown；NS-01 已按两个同时 10A 移动负载端口的不利工况设计两路 C16，未把回路容量冒充为产品功率。
+APP-002,搅拌机,移动厨电,厨房柜内,西厨岛台 NS-01,,西厨岛台 NS-01,1,,NS01-B,no,no,no,no,,业主确认 NS-01 使用场景；准确型号和功率未知,部分确认,准确型号和名牌功率保持 unknown；与火锅同时使用时必须分路。
+APP-003,Sous-vide 棒,移动厨电,厨房柜内,西厨岛台 NS-01,,西厨岛台 NS-01,1,,NS01-B,no,no,no,no,,业主确认 NS-01 使用场景；准确型号和功率未知,部分确认,准确型号和名牌功率保持 unknown；与火锅同时使用时必须分路。
+APP-004,咖啡机,咖啡设备,餐边柜,餐边柜 NS-02,,餐边柜 NS-02,1,,NS02-A,model_dependent,model_dependent,no,no,GS3 / E1 Prima EXP（候选二选一）,业主给出两款候选；厂家资料仅作为候选参数，最终机型未定,部分确认,GS3 与 E1 Prima EXP 均保持候选，未采购、未终选；粗装按 2600W 不利值预留独立 C16 和接线盒，最终面板按实购插头匹配。
 APP-005,手冲电热水壶,咖啡设备,餐边柜,餐边柜 NS-02,,餐边柜 NS-02,1,1200,NS02-A,no,no,no,no,,业主提供 Hario 品牌和 1200W；准确型号待定,部分确认,1200W 为业主提供的候选功率，仍须按实购型号和铭牌复核；不与咖啡机同时使用。
 APP-006,磨豆机,咖啡设备,餐边柜,餐边柜 NS-02,,餐边柜 NS-02,1,,NS02-B,no,no,no,no,,业主确认 NS-02 使用场景；准确型号和功率未知,部分确认,与咖啡机同时使用；型号和铭牌功率保持 unknown。
 APP-007,冰箱 1,固定厨房电器,西厨,西厨,,西厨,1,,CONTINUOUS,no,no,no,yes,,,待填写,持续供电且不得进入照明总控
@@ -11,17 +11,17 @@ APP-009,岛台洗碗机 1,固定厨房电器,西厨岛台,西厨岛台,,西厨�
 【西门子中国】https://www.siemens-home.bsh-group.com/cn/zh/mkt-product/SJ85ZX26MC
 【官方规格表】drawings/evidence/APP-009-010-Siemens-SJ85ZX26MC-specsheet.pdf
 【官方安装图】drawings/evidence/APP-009-010-Siemens-SJ85ZX26MC-installation-9002067344_A.pdf
-【官方说明书】drawings/evidence/APP-009-010-Siemens-SJ85ZX26MC-user-manual-9002057324_C.pdf",部分确认,Google Sheet 已填写选型候选，尚未采购；官方确认 2000 W/220 V，产品 775×598×550 mm，柜孔 H780–835×W600–608×D≥550 mm，G3/4 冷水、Ø38 排水、管线孔≥100×50 mm，门板 W594、厚≤20 mm、重3.5–8.5 kg。仍须分别核对采购/铭牌 E-Nr. 与 FD、门板高度和踢脚开门关系、现场阀门/排水/插座位置及可抽出检修空间；不得把候选型号写成已购产品。
+【官方说明书】drawings/evidence/APP-009-010-Siemens-SJ85ZX26MC-user-manual-9002057324_C.pdf",部分确认,候选洗碗机未采购；按官方 2000W/10A 和两台同时工况，每台各配 10A 接地插座、独立 C16 RCBO 和 2.5mm² 铜线。
 APP-010,岛台洗碗机 2,固定厨房电器,西厨岛台,西厨岛台,,西厨岛台,1,2000,DISHWASHER-B,yes,yes,no,no,Siemens SJ85ZX26MC,"【用户选型候选】https://e.tb.cn/h.8TnxVNjugUfIImB?tk=93QITaQnSCj CZ007
 【西门子中国】https://www.siemens-home.bsh-group.com/cn/zh/mkt-product/SJ85ZX26MC
 【官方规格表】drawings/evidence/APP-009-010-Siemens-SJ85ZX26MC-specsheet.pdf
 【官方安装图】drawings/evidence/APP-009-010-Siemens-SJ85ZX26MC-installation-9002067344_A.pdf
-【官方说明书】drawings/evidence/APP-009-010-Siemens-SJ85ZX26MC-user-manual-9002057324_C.pdf",部分确认,Google Sheet 已填写选型候选，尚未采购；官方确认 2000 W/220 V，产品 775×598×550 mm，柜孔 H780–835×W600–608×D≥550 mm，G3/4 冷水、Ø38 排水、管线孔≥100×50 mm，门板 W594、厚≤20 mm、重3.5–8.5 kg。仍须分别核对采购/铭牌 E-Nr. 与 FD、门板高度和踢脚开门关系、现场阀门/排水/插座位置及可抽出检修空间；不得把候选型号写成已购产品。
-APP-011,烤箱,固定厨房电器,西厨高柜,西厨高柜,西厨高柜,西厨高柜,1,3400,COOKING-A,no,no,no,yes,Siemens HB754G2B1W,APP-011-PHOTO-001;APP-011-OFFICIAL-001,已确认,已到货（包装照片）；220V/50Hz，最大功率3400W，16A插头；机身595×594×548 mm；柜体开口宽560–568、高585–595、深≥550 mm；进风面积≥200 cm²；电源线约1.2 m。
-APP-012,炉灶,固定厨房电器,中厨,中厨,中厨,中厨,1,0,COOKING-B,no,no,yes,yes,Siemens ER9EPA33MP/01（JZT-ER9EPA33MP）,APP-012-PHOTO-001;APP-012-PHOTO-002;APP-012-OFFICIAL-001,已确认,已到货（包装照片）；天然气12T/2.0kPa；额定热负荷左/中/右5.2/2.0/5.2kW；DC1.5V电池点火；外形920×500×150 mm；台面开孔880×455 mm、4×R15；橱柜通风≥100cm²；独立安装下方净空≥100mm（下置电器时隔板至台面≥120mm）；燃气接驳以当地燃气公司要求为准。
-APP-013,油烟机,固定厨房电器,中厨,中厨,中厨,中厨,1,385,COOKING-B,no,no,no,yes,Siemens LS33R6VB9W/01（CXW-380-LS33R6VB9W）,APP-013-PHOTO-001;APP-013-PHOTO-002;APP-013-OFFICIAL-001,已确认,已到货（包装照片）；220V/50Hz，额定输入385W；外形895×345×873 mm；烟管及止逆阀内径≥160mm，烟管宜≤3m且1弯；墙洞建议Ø180mm；吊顶圆孔Ø190mm；吊顶内预留电源；检修口建议400×400mm；与燃气灶承锅面净距≥650mm；电源线约1.3m。
-APP-014,西门子嵌入式净水饮水机（直饮+净水）,水处理设备,西厨,西厨使用点,,西厨使用点,1,2200,WATER-A,yes,yes,no,yes,WS7FSB0C1C,业主明确新款 WS7FSB0C1C 为优选、旧款 WS7060BC1C 仅作比价备选；两者官方资料核验,部分确认,APP-015 为同一实物功能别名。新款为当前优选、旧款仅比价备选；均未因本次研究标记为已采购。共用官方安装说明书。
-APP-015,净水功能别名（同 APP-014）,水处理设备,西厨柜内,西厨柜内接口区,,西厨柜内接口区,0,0,APP-014_alias_no_count,not_applicable_alias,not_applicable_alias,not_applicable_alias,not_applicable_alias,WS7FSB0C1C,业主明确新款 WS7FSB0C1C 为优选、旧款 WS7060BC1C 仅作比价备选；两者官方资料核验,不适用,Alias of APP-014；不得重复统计设备或接口。
+【官方说明书】drawings/evidence/APP-009-010-Siemens-SJ85ZX26MC-user-manual-9002057324_C.pdf",部分确认,候选洗碗机未采购；按官方 2000W/10A 和两台同时工况，每台各配 10A 接地插座、独立 C16 RCBO 和 2.5mm² 铜线。
+APP-011,烤箱,固定厨房电器,西厨高柜,西厨高柜,西厨高柜,西厨高柜,1,3400,COOKING-A,no,no,no,yes,Siemens HB754G2B1W,APP-011-PHOTO-001;APP-011-OFFICIAL-001,已确认,已到货；官方 3400W/16A 插头。16A 三孔插座、独立 C16 RCBO、4mm² 铜线，插座设相邻可检修柜格而非机身正后。
+APP-012,炉灶,固定厨房电器,中厨,中厨,中厨,中厨,1,0,COOKING-B,no,no,yes,yes,Siemens ER9EPA33MP/01（JZT-ER9EPA33MP）,APP-012-PHOTO-001;APP-012-PHOTO-002;APP-012-OFFICIAL-001,已确认,已到货；DC1.5V 电池点火，设备不需电源插座；原灶位插座仅作 10A 检修备用点，接厨房固定辅助回路。
+APP-013,油烟机,固定厨房电器,中厨,中厨,中厨,中厨,1,385,COOKING-B,no,no,no,yes,Siemens LS33R6VB9W/01（CXW-380-LS33R6VB9W）,APP-013-PHOTO-001;APP-013-PHOTO-002;APP-013-OFFICIAL-001,已确认,已到货；官方 385W，设计电流约 1.75A；10A 接地插座接厨房固定辅助回路，不独立成回路。
+APP-014,西门子嵌入式净水饮水机（直饮+净水）,水处理设备,西厨,西厨使用点,,西厨使用点,1,2200,WATER-A,yes,yes,no,yes,WS7FSB0C1C,业主明确新款 WS7FSB0C1C 为优选、旧款 WS7060BC1C 仅作比价备选；两者官方资料核验,部分确认,新款为优选候选但未采购；2200W，10A 三孔邻柜插座，独立 C16 RCBO、2.5mm² 铜线和剩余电流保护；APP-015 仅为别名。
+APP-015,净水功能别名（同 APP-014）,水处理设备,西厨柜内,西厨柜内接口区,,西厨柜内接口区,0,0,APP-014_alias_no_count,not_applicable_alias,not_applicable_alias,not_applicable_alias,not_applicable_alias,WS7FSB0C1C,业主明确新款 WS7FSB0C1C 为优选、旧款 WS7060BC1C 仅作比价备选；两者官方资料核验,不适用,APP-014 的功能别名，quantity=0、不入设备表、不重复计算功率、插座、回路或给排水。
 APP-016,垃圾处理器,固定厨房电器,西厨水槽柜,西厨水槽柜,,西厨水槽柜,1,,WATER-A,no,yes,no,no,F50（业主提供候选）,业主补充候选名称“勒科斯 F50”；尚无厂家安装图、订单或铭牌,部分确认,候选身份不等于已选/已购；额定功率、开关方式、法兰尺寸和排水接口保持 unknown。
-APP-017,西门子洗衣机＋热泵干衣机叠放套装,洗衣设备,中厨家政位,中厨家政位,,中厨家政位,1,2700,LAUNDRY-A,yes,yes,no,yes,WG54M7D20W + WQ55M7U20W,业主明确改选两台独立西门子设备上下叠放；官方精确型号资料核实尺寸、负载、水电和叠放规则,部分确认,不是洗干一体机或 WashTower。有效协调净空 650W×800D×1900H mm；两个可检修插座；给排水优先侧置；不得六面密封；原厂连接件必须使用。说明书订货号 17008829 已确认，但其抽板状态及与 WTZ27510 的商业型号映射仍待西门子书面核对。
+APP-017,西门子洗衣机＋热泵干衣机叠放套装,洗衣设备,中厨家政位,中厨家政位,,中厨家政位,1,2700,LAUNDRY-A,yes,yes,no,yes,WG54M7D20W + WQ55M7U20W,业主明确改选两台独立西门子设备上下叠放；官方精确型号资料核实尺寸、负载、水电和叠放规则,部分确认,候选精确双机叠放；1900W+800W=2700W，约 12.3A@220V；一路洗衣区独立 C16 RCBO、2.5mm² 铜线和两个侧面可检修 10A 接地插座，不使用排插/延长线。
 APP-018,Huawei 联通智家设备,网络设备,玄关弱电箱,玄关弱电箱,,玄关弱电箱,1,,CONTINUOUS,no,no,no,yes,,,部分确认,实际箱内运行已确认；补底部铭牌与设备功能

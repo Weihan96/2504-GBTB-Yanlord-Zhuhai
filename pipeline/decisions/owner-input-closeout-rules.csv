@@ -1,29 +1,29 @@
 ﻿input_id,closeout_kind,responsible_party,required_evidence,automatic_close_allowed,notes
 A103-WALL-TAG-SCHEME,human_design_selection,业主/建筑设计,确认 88 面墙审核图与 EW/NW 编号规则,no,确认后才允许机械写入正式 IFC Tag
-A104-M05-M06-DIMENSIONS,product_interface_evidence,全屋定制/建筑设计,可定位到本项目 M05/M06 Sail 门组的订单门窗表或厂家 shop drawing,no,通用产品页面和 IFC 包围盒不能替代项目名义尺寸
-A104-M07-EVIDENCE,site_or_drawing_evidence,建筑设计/现场,项目门表或可定位到 M07 的官方 CAD、订单或现场开门照片，包含名义宽高和开启关系,no,产品通用资料不能替代本项目门扇尺寸与开启关系
+A104-M05-M06-DIMENSIONS,product_interface_evidence,全屋定制/建筑设计,按 A104-SHOP-REQUEST-20260815 提交项目订单/shop drawing：洞口、门板、轨道、滑向、基层、收口和公差,no,通用产品页面和 IFC 包围盒不能替代项目名义尺寸
+A104-M07-EVIDENCE,site_or_drawing_evidence,建筑设计/现场,按 A104-SHOP-REQUEST-20260815 提交 Pivot 项目 shop drawing：名义宽高、左右手、开启包络、门套/衣柜净距和 Master A 避让,no,产品通用资料不能替代本项目门扇尺寸与开启关系
 E302-ENTRY-SIDE,site_or_drawing_evidence,建筑设计/现场,完成面门套柜门与门扇关系尺寸或可定位图纸,no,用户方向已提交但墙侧几何须由项目证据关闭
-E302-ENTRY-PANEL,human_product_selection,业主/电气设计,具体面板 SKU 与 CSA 证书编号及接线负载底盒资料,no,品牌系列认证不能自动覆盖淘宝具体 SKU
+E302-ENTRY-PANEL,external_product_evidence,智能面板厂家/电气方,准确 SKU、端子图、每路负载/浪涌、证书编号、底盒净深和平嵌适配,no,功能/粗装结论已闭合；此门只关闭最终产品、现场测试或面板安装。
 E302-MASTER-SIDE,site_or_drawing_evidence,建筑设计/现场,Master A 与 Master B 各自墙侧门套净距及见光板构造,no,两块面板角色已确认但真实安装面未关闭
-E302-MASTER-PANEL,human_design_selection,业主/照明设计,两块面板最终键序标签与对应灯组清单,no,功能分工已确认但逐键映射仍需人审
+E302-MASTER-PANEL,external_product_evidence,智能面板厂家/照明设计,Master A/B 准确 SKU、直接负载/场景方案、双控端子图、负载和底盒/见光板安装图,no,功能/粗装结论已闭合；此门只关闭最终产品、现场测试或面板安装。
 E303-NS01-FORM,product_interface_evidence,家具设计/电气设计,VVD 详图与最终盖板产品安装开孔检修资料,no,三面各一位置已采用但产品接口仍需厂家资料
-E303-NS01-CIRCUIT,product_interface_evidence,电气设计/设备方,移动厨电最终铭牌功率与保护回路计算,no,同时使用规则已采用但线径保护器 RCD 不自动确定
+E303-NS01-CIRCUIT,external_product_evidence,设备商家/业主,APP-001～003 实购后的型号和名牌功率，仅用于设备表完整性，不重开已闭合的两路 C16 粗装,no,功能/粗装结论已闭合；此门只关闭最终产品、现场测试或面板安装。
 E303-NS02-FORM,human_product_selection,业主/家具设计,线性轨道或隐藏翻盖最终选型与餐边柜立面,no,两个方向尚未二选一
-E303-NS02-CIRCUIT,product_interface_evidence,电气设计/设备方,咖啡设备最终铭牌功率与保护回路计算,no,不同时使用规则已采用但保护设计仍待设备资料
+E303-NS02-CIRCUIT,external_product_evidence,咖啡机商家/电气方,实购咖啡机型号、名牌和插头照片，用于最终面板匹配；粗装已按 2600W/C16 闭合,no,功能/粗装结论已闭合；此门只关闭最终产品、现场测试或面板安装。
 E304-GATEWAY-IDENTITY,human_product_selection,业主/网络设计,最终路由网关交换机 AP 型号及角色清单,no,现有 V175 与 K155 不代表装修后最终设备
-E304-CABINET-DIMENSIONS,site_measurement,现场,弱电箱与柜格净宽净高净深及单位照片,no,用户填写值需区分箱体和柜格并修正 525m 单位
-E304-CABINET-VENTILATION,site_test,现场/设备方,柜门关闭连续运行温度记录与测量位置照片,no,手感 30-40℃ 不能代替可复核温升试验
-E304-CABLE-CONTINUITY,site_test,弱电施工,逐根测线仪通断结果与两端标签照片,no,线缆标签只能证明候选去向
-E304-AP-POWER,human_product_selection,网络设计/设备方,最终 AP 型号 PoE 标准或本地电源安装图,no,现有 K155 本地电源不自动决定新 AP 供电
-A106-FIRE-TYPE,authority_product_evidence,消防/设备方,现行有效产品认证厂家说明书及厨房适用性确认,no,正式 IFC 只冻结 FIRESENSOR 点位
-A106-GAS-ALARM,authority_product_evidence,燃气公司/设备方,燃气公司准入型号厂家说明书供电通信及安装净距,no,型号和安装条件必须由燃气主管方关闭
+E304-CABINET-DIMENSIONS,site_measurement,现场,填写 E304-SITE-CHECKLIST-20260815 的弱电箱/柜格净尺寸并附带尺照片,no,用户填写值需区分箱体和柜格并修正 525m 单位
+E304-CABINET-VENTILATION,site_test,现场/设备方,完成 E304-SITE-CHECKLIST-20260815 的 120 min 柜门关闭全负载温升试验,no,手感 30-40℃ 不能代替可复核温升试验
+E304-CABLE-CONTINUITY,site_test,弱电施工,填写 E304-SITE-CHECKLIST-20260815 的逐根 1–8 线序、端点、标签和照片,no,线缆标签只能证明候选去向
+E304-AP-POWER,site_and_product_evidence,网络设备方/现场,实购 AP 准确型号和功耗、PoE 交换机端口/总预算、CAT6 通断与端接顺序测试,no,功能/粗装结论已闭合；此门只关闭最终产品、现场测试或面板安装。
+A106-FIRE-TYPE,authority_product_evidence,消防/设备方,按 A106-CONSULTATION-PACK-20260815 由消防/设备方书面确认类型、型号、认证、供电通信和安装净距,no,正式 IFC 只冻结 FIRESENSOR 点位
+A106-GAS-ALARM,authority_product_evidence,燃气公司/设备方,发送 A106-燃气公司咨询模板并按 A106-CONSULTATION-PACK-20260815 收齐书面准入、联动、供电、净距与验收回复,no,型号和安装条件必须由燃气主管方关闭
 WFIN-WHITE-SYSTEM,human_material_selection,业主/材料设计,最终厂家体系色号光泽厚度与样板确认,no,暂缓项不得用常见值关闭
 WFIN-TADELAKT,human_material_selection,业主/材料设计,最终厂家完整体系湿区基层防水收口与样板,no,网页意向不能替代施工体系
-RCP1-HVAC-PORTS,product_interface_evidence,空调厂家/机电设计,最终设备型号及送回风冷媒冷凝水接口图,no,无批准厂家接口图时只保留路线候选
-PLUM-ROUGHINS,product_interface_evidence,设备方/给排水设计,逐台最终产品给排水热水电源安装图,no,存放位置不得替代实际使用和粗装接口
+RCP1-HVAC-PORTS,product_interface_evidence,空调厂家/机电设计,按 RCP1-PLUM-REQUEST-20260815 的 A01–A06 行提交准确接口图和设计参数,no,无批准厂家接口图时只保留路线候选
+PLUM-ROUGHINS,product_interface_evidence,设备方/给排水设计,按 RCP1-PLUM-REQUEST-20260815 逐台提交厂家图、现场标高/方向、防水检修和定制 shop drawing,no,存放位置不得替代实际使用和粗装接口
 DET1-WATERPROOF,human_material_selection,业主/建筑设计,最终防水厂家体系上翻高度门口节点与样板,no,须与地漏坡向门槛高差一起人审
 APP014-APP015-ALIAS,final_shop_drawing_and_site_interface,设备方/橱柜方/给排水设计/电气设计,WS7FSB0C1C 最终柜体安装图、现场给排水/电源位置及检修复核,no,官方共用说明书已取得；APP-015 去重已关闭；剩余为项目落位与现场接口。
 APP004-COFFEE-FINAL,human_product_selection,业主/设备方,GS3 或 E1 Prima EXP 最终订单、准确 220V 版本铭牌及安装说明书,no,候选功率不得代替最终铭牌。
-APP016-DISPOSER-DATA,product_interface_evidence,设备方/橱柜设计/给排水设计,勒科斯 F50 订单或铭牌及厂家安装图，含功率、开关、法兰和排水接口,no,同类产品常见值不能关闭。
+APP016-DISPOSER-DATA,product_interface_evidence,设备方/橱柜设计/给排水设计,勒科斯 F50 同机铭牌照片和官方安装图，包含功率、控制/电源、法兰/开孔、机身净距和排水接口,no,同类产品常见值不能关闭。
 E302-BEDSIDE-220V,site_or_drawing_evidence,建筑设计/家具设计/电气设计,逐房床、床头柜、软包和窗帘完成尺寸下的插座点位、高度与面板组合图,no,每侧至少两个 220V 数量规则已确认；本规则只关闭准确定位。
 APP017-SIEMENS-STACK,manufacturer_compatibility_and_rough_in,西门子客服/设备方/橱柜方/给排水设计/电气设计,书面确认 WG54M7D20W 与 WQ55M7U20W 对应 E-Nr./FD 可叠放、17008829 的商业型号与抽板配置；最终侧置插座/水龙头/排水和维修抽出尺寸,no,不得以 WTZ27510 官网候选反向宣称 17008829 带抽板或逐型号已兼容。

@@ -209,8 +209,7 @@ OFFICIAL_REQUIREMENTS: dict[str, list[tuple[str, str, str, str]]] = {
 }
 OFFICIAL_REQUIREMENTS["APP-010"] = OFFICIAL_REQUIREMENTS["APP-009"]
 CANDIDATE_POWER_RANGES = {
-    "APP-001": (1500, 2200), "APP-002": (300, 1200), "APP-003": (800, 1500),
-    "APP-004": (1200, 1800), "APP-005": (1000, 1800), "APP-006": (150, 400),
+    "APP-005": (1000, 1800), "APP-006": (150, 400),
 }
 
 
@@ -459,6 +458,73 @@ def validate(root: Path) -> dict[str, Any]:
         if row["legacy_projection_json"]:
             try: json.loads(row["legacy_projection_json"])
             except json.JSONDecodeError: errors.append(f"{row['source_id']}: invalid legacy projection JSON")
+
+    requirement_index = {
+        (row["equipment_id"], row["parameter_key"]): row for row in reqs
+    }
+
+    def require_value(equipment_id: str, key: str, expected: str) -> None:
+        row = requirement_index.get((equipment_id, key))
+        actual = (row or {}).get("value_number") or (row or {}).get("value_text")
+        if row is None or actual != expected:
+            errors.append(
+                f"electrical semantics: {equipment_id}.{key} expected {expected!r}, got {actual!r}"
+            )
+
+    # The physical appliance plug, wall socket, branch breaker, and circuit
+    # dedication are separate domains. These assertions prevent the old
+    # shortcut "two plugs => two 16 A sockets/circuits" from returning.
+    for equipment_id in ("APP-011", "APP-017"):
+        for key in (
+            "wall_socket_rating_a",
+            "branch_breaker_rating_a",
+            "dedicated_branch_circuit",
+        ):
+            if (equipment_id, key) not in requirement_index:
+                errors.append(f"electrical semantics: missing {equipment_id}.{key}")
+    require_value("APP-011", "appliance_plug_rating_a", "16")
+    require_value("APP-011", "wall_socket_rating_a", "16")
+    require_value("APP-011", "branch_breaker_rating_a", "16")
+    require_value("APP-017", "wall_socket_rating_a", "10")
+    require_value("APP-017", "wall_socket_quantity", "2")
+    require_value("APP-017", "branch_breaker_rating_a", "16")
+    require_value("APP-017", "shared_branch_circuit_permission", "yes")
+    require_value("APP-017", "simultaneous_design_load_w", "2700")
+    require_value("APP-014", "wall_socket_rating_a", "10")
+    require_value("APP-014", "branch_breaker_rating_a", "16")
+    require_value("APP-004", "design_reserve_power_w", "2600")
+
+    for equipment_id in ("APP-011", "APP-014", "APP-017"):
+        require_value(equipment_id, "interface_center_coordinates", "unknown")
+
+    master_by_id = {row["equipment_id"]: row for row in masters}
+    app014 = master_by_id.get("APP-014", {})
+    app015 = master_by_id.get("APP-015", {})
+    if not (
+        app014.get("quantity") == "1"
+        and app014.get("schedule_included") == "yes"
+        and app015.get("quantity") == "0"
+        and app015.get("schedule_included") == "no"
+        and app015.get("decision_status") == "superseded"
+    ):
+        errors.append("APP-014/APP-015 alias counting invariant failed")
+
+    false_16a_patterns = (
+        "washer 16a",
+        "dryer 16a",
+        "washer_and_dryer_16a",
+        "two 16a sockets",
+        "两个16a插座",
+        "洗衣机16a插座",
+        "干衣机16a插座",
+    )
+    for row in reqs:
+        if row["equipment_id"] != "APP-017":
+            continue
+        blob = " ".join(str(value).lower().replace(" ", "") for value in row.values())
+        if any(pattern.replace(" ", "") in blob for pattern in false_16a_patterns):
+            errors.append(f"{row['requirement_id']}: obsolete APP-017 16 A socket conclusion")
+
     if errors:
         raise RuntimeError("equipment SSOT validation failed:\n- " + "\n- ".join(errors))
     return {"master_count": len(masters), "requirement_count": len(reqs), "source_count": len(sources), "schema_version": schema["schema_version"]}

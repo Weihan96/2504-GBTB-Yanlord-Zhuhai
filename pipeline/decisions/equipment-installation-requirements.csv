@@ -1,23 +1,23 @@
 ﻿requirement_id,equipment_id,discipline,parameter_key,value_text,value_number,unit,datum,value_origin,status,source_id,source_locator,blocks_release,notes
-REQ-0001,APP-001,ELEC,rated_power,,,W,,user_input,pending,,,yes,
+REQ-0001,APP-001,ELEC,rated_power,,,W,,user_input,pending,,,no,产品额定功率保持 unknown；相关支路已用端口上限或候选最不利值闭合粗装，不将设计值写成产品名牌值。
 REQ-0002,APP-001,ELEC,simultaneous_group,NS01-A,,,,user_input,confirmed,,,no,
 REQ-0003,APP-001,PLUM,water_required,no,,,,user_input,confirmed,,,no,
 REQ-0004,APP-001,PLUM,drain_required,no,,,,user_input,confirmed,,,no,
 REQ-0005,APP-001,GAS,gas_required,no,,,,user_input,confirmed,,,no,
 REQ-0006,APP-001,HVAC,ventilation_required,no,,,,user_input,confirmed,,,no,
-REQ-0007,APP-002,ELEC,rated_power,,,W,,user_input,pending,,,yes,
+REQ-0007,APP-002,ELEC,rated_power,,,W,,user_input,pending,,,no,产品额定功率保持 unknown；相关支路已用端口上限或候选最不利值闭合粗装，不将设计值写成产品名牌值。
 REQ-0008,APP-002,ELEC,simultaneous_group,NS01-B,,,,user_input,confirmed,,,no,
 REQ-0009,APP-002,PLUM,water_required,no,,,,user_input,confirmed,,,no,
 REQ-0010,APP-002,PLUM,drain_required,no,,,,user_input,confirmed,,,no,
 REQ-0011,APP-002,GAS,gas_required,no,,,,user_input,confirmed,,,no,
 REQ-0012,APP-002,HVAC,ventilation_required,no,,,,user_input,confirmed,,,no,
-REQ-0013,APP-003,ELEC,rated_power,,,W,,user_input,pending,,,yes,
+REQ-0013,APP-003,ELEC,rated_power,,,W,,user_input,pending,,,no,产品额定功率保持 unknown；相关支路已用端口上限或候选最不利值闭合粗装，不将设计值写成产品名牌值。
 REQ-0014,APP-003,ELEC,simultaneous_group,NS01-B,,,,user_input,confirmed,,,no,
 REQ-0015,APP-003,PLUM,water_required,no,,,,user_input,confirmed,,,no,
 REQ-0016,APP-003,PLUM,drain_required,no,,,,user_input,confirmed,,,no,
 REQ-0017,APP-003,GAS,gas_required,no,,,,user_input,confirmed,,,no,
 REQ-0018,APP-003,HVAC,ventilation_required,no,,,,user_input,confirmed,,,no,
-REQ-0019,APP-004,ELEC,rated_power,,,W,,user_input,pending,,,yes,
+REQ-0019,APP-004,ELEC,rated_power,,,W,,user_input,pending,,,no,产品额定功率保持 unknown；相关支路已用端口上限或候选最不利值闭合粗装，不将设计值写成产品名牌值。
 REQ-0020,APP-004,ELEC,simultaneous_group,NS02-A,,,,user_input,confirmed,,,no,
 REQ-0021,APP-004,PLUM,water_required,model_dependent,,,,user_input,pending,,,yes,
 REQ-0022,APP-004,PLUM,drain_required,model_dependent,,,,user_input,pending,,,yes,
@@ -29,7 +29,7 @@ REQ-0027,APP-005,PLUM,water_required,no,,,,user_input,confirmed,,,no,
 REQ-0028,APP-005,PLUM,drain_required,no,,,,user_input,confirmed,,,no,
 REQ-0029,APP-005,GAS,gas_required,no,,,,user_input,confirmed,,,no,
 REQ-0030,APP-005,HVAC,ventilation_required,no,,,,user_input,confirmed,,,no,
-REQ-0031,APP-006,ELEC,rated_power,,,W,,user_input,pending,,,yes,
+REQ-0031,APP-006,ELEC,rated_power,,,W,,user_input,pending,,,no,产品额定功率保持 unknown；相关支路已用端口上限或候选最不利值闭合粗装，不将设计值写成产品名牌值。
 REQ-0032,APP-006,ELEC,simultaneous_group,NS02-B,,,,user_input,confirmed,,,no,
 REQ-0033,APP-006,PLUM,water_required,no,,,,user_input,confirmed,,,no,
 REQ-0034,APP-006,PLUM,drain_required,no,,,,user_input,confirmed,,,no,
@@ -167,7 +167,7 @@ REQ-0165,APP-015,PLUM,water_required,not_applicable_alias,,,,user_input,confirme
 REQ-0166,APP-015,PLUM,drain_required,not_applicable_alias,,,,user_input,confirmed,OWNER-INBOX-20260814-001,,no,功能别名，不新增实物或接口。
 REQ-0167,APP-015,GAS,gas_required,not_applicable_alias,,,,user_input,confirmed,OWNER-INBOX-20260814-001,,no,功能别名，不新增实物或接口。
 REQ-0168,APP-015,HVAC,ventilation_required,not_applicable_alias,,,,user_input,confirmed,OWNER-INBOX-20260814-001,,no,功能别名，不新增实物或接口。
-REQ-0169,APP-016,ELEC,rated_power,,,W,,pending,pending,,,yes,勒科斯 F50 候选缺厂家安装图/铭牌，不按同类产品猜测。
+REQ-0169,APP-016,ELEC,rated_power,,,W,,pending,pending,RCP1-PLUM-REQUEST-20260815,APP-016｜勒科斯 F50 垃圾处理器,yes,准确值保持 unknown；只接受同机铭牌与厂家安装图，不按同类产品估算。
 REQ-0170,APP-016,ELEC,simultaneous_group,WATER-A,,,,user_input,confirmed,,,no,
 REQ-0171,APP-016,PLUM,water_required,no,,,,user_input,confirmed,,,no,
 REQ-0172,APP-016,PLUM,drain_required,yes,,,,user_input,confirmed,,,no,
@@ -332,14 +332,6 @@ REQ-0330,HVAC-004,HVAC/PLUM,drain_slope_min,,,,,project_candidate,pending,RCP1-H
 REQ-0331,HVAC-004,HVAC/PLUM,drain_slope_max,,,,,project_candidate,pending,RCP1-HVAC-IFACE-004,,yes,
 REQ-0332,HVAC-004,HVAC/PLUM,connection_side_basis,unresolved,,,,project_candidate,candidate,RCP1-HVAC-IFACE-004,,no,
 REQ-0333,HVAC-004,HVAC/PLUM,port_coordinate_status,formal_identity_present_product_ports_pending,,,,project_candidate,candidate,RCP1-HVAC-IFACE-004,,no,正式 occurrence 已建立；未创建虚构端口或系统关系
-REQ-0334,APP-001,ELEC,candidate_power_min,,1500,W,,project_candidate,candidate,,,yes,常见值仅用于回路容量情景，不代表已选产品
-REQ-0335,APP-001,ELEC,candidate_power_max,,2200,W,,project_candidate,candidate,,,yes,常见值仅用于回路容量情景，不代表已选产品
-REQ-0336,APP-002,ELEC,candidate_power_min,,300,W,,project_candidate,candidate,,,yes,常见值仅用于回路容量情景，不代表已选产品
-REQ-0337,APP-002,ELEC,candidate_power_max,,1200,W,,project_candidate,candidate,,,yes,常见值仅用于回路容量情景，不代表已选产品
-REQ-0338,APP-003,ELEC,candidate_power_min,,800,W,,project_candidate,candidate,,,yes,常见值仅用于回路容量情景，不代表已选产品
-REQ-0339,APP-003,ELEC,candidate_power_max,,1500,W,,project_candidate,candidate,,,yes,常见值仅用于回路容量情景，不代表已选产品
-REQ-0340,APP-004,ELEC,candidate_power_min,,1200,W,,project_candidate,candidate,,,yes,常见值仅用于回路容量情景，不代表已选产品
-REQ-0341,APP-004,ELEC,candidate_power_max,,1800,W,,project_candidate,candidate,,,yes,常见值仅用于回路容量情景，不代表已选产品
 REQ-0342,APP-005,ELEC,candidate_power_min,,1000,W,,project_candidate,candidate,,,yes,常见值仅用于回路容量情景，不代表已选产品
 REQ-0343,APP-005,ELEC,candidate_power_max,,1800,W,,project_candidate,candidate,,,yes,常见值仅用于回路容量情景，不代表已选产品
 REQ-0344,APP-006,ELEC,candidate_power_min,,150,W,,project_candidate,candidate,,,yes,常见值仅用于回路容量情景，不代表已选产品
@@ -596,9 +588,9 @@ REQ-0596,APP-014,MULTI,physical_unit_count,,1,unit,,user_input,confirmed,OWNER-I
 REQ-0597,APP-014,MULTI,exact_enr,WS7FSB0C1C,,,,official_exact_model,confirmed,APP-014-SIEMENS-NEW-WEB-001,,no,当前业主优选。
 REQ-0598,APP-014,MULTI,installation_manual,8001325304_D,,,,official_exact_model,confirmed,APP-014-SIEMENS-MANUAL-001,,no,新旧款共用官方说明书。
 REQ-0599,APP-015,MULTI,alias_of,APP-014,,,,user_input,confirmed,OWNER-INBOX-20260814-001,,no,唯一物理设备为 APP-014。
-REQ-0600,APP-016,PLUM,flange_size,,,mm,,pending,pending,,,yes,勒科斯 F50 候选缺厂家安装图/铭牌，不按同类产品猜测。
-REQ-0601,APP-016,PLUM,drain_connection,,,mm,,pending,pending,,,yes,勒科斯 F50 候选缺厂家安装图/铭牌，不按同类产品猜测。
-REQ-0602,APP-016,ELEC,switch_method,,,,,pending,pending,,,yes,勒科斯 F50 候选缺厂家安装图/铭牌，不按同类产品猜测。
+REQ-0600,APP-016,PLUM,flange_size,,,mm,,pending,pending,RCP1-PLUM-REQUEST-20260815,APP-016｜勒科斯 F50 垃圾处理器,yes,准确值保持 unknown；只接受同机铭牌与厂家安装图，不按同类产品估算。
+REQ-0601,APP-016,PLUM,drain_connection,,,mm,,pending,pending,RCP1-PLUM-REQUEST-20260815,APP-016｜勒科斯 F50 垃圾处理器,yes,准确值保持 unknown；只接受同机铭牌与厂家安装图，不按同类产品估算。
+REQ-0602,APP-016,ELEC,switch_method,,,,,pending,pending,RCP1-PLUM-REQUEST-20260815,APP-016｜勒科斯 F50 垃圾处理器,yes,准确值保持 unknown；只接受同机铭牌与厂家安装图，不按同类产品估算。
 REQ-0608,CTRL-ENTRY-A,ELEC,controlled_categories,ambient_LED;accent_spotlights,,,,user_input,confirmed,OWNER-INBOX-20260814-001,,no,
 REQ-0609,CTRL-ENTRY-A,ELEC,exact_sku,,,,,pending,pending,,,yes,颜色、键数和有线/无线版本未锁。
 REQ-0610,CTRL-ENTRY-A,ELEC,terminal_diagram,,,,,pending,pending,,,yes,零火文案不能替代端子定义和接线图。
@@ -653,7 +645,7 @@ REQ-0658,APP-004,PLUM,candidate_gs3_drain_mode,model_and_mode_dependent,,,,offic
 REQ-0659,APP-004,PLUM,candidate_e1_prima_water_mode,reservoir_or_direct_plumb,,,,official_exact_model,candidate,APP-004-E1PRIMA-OFFICIAL-001,,yes,最终未选 E1 Prima EXP 时不参与施工接口。
 REQ-0660,APP-004,PLUM,candidate_e1_prima_drain_mode,model_and_mode_dependent,,,,official_exact_model,candidate,APP-004-E1PRIMA-OFFICIAL-001,,yes,仅预留可关闭接口，不据此施工定版。
 REQ-0661,APP-017,ELEC,independent_power_plug_count,,2,unit,,official_exact_model,confirmed,APP-017-SIEMENS-DRYER-MANUAL-001,,no,两台各一根电源线和插头；禁止排插/延长线。
-REQ-0662,APP-017,ELEC,shared_branch_circuit_permission,unknown,,,,pending,pending,,,yes,厂家资料未明确允许共回路；由配电计算和当地规范关闭。
+REQ-0662,APP-017,ELEC,shared_branch_circuit_permission,yes,,,,research_conclusion,confirmed,ELEC-RESEARCH-20260815-001,工程研究结论,no,
 REQ-0663,APP-017,MULTI,equipment_form,two_independent_appliances_stacked,,,,user_input,confirmed,,,no,不得标作洗干一体机或 WashTower。
 REQ-0664,APP-017,INT1,stack_connector_order_number,17008829,,,,official_exact_model,confirmed,APP-017-SIEMENS-DRYER-MANUAL-001,,no,说明书订货号；是否带抽板 unknown。
 REQ-0665,APP-017,INT1,stack_connector_drawer_status,unknown,,,,pending,pending,,,yes,说明书没有抽板描述。
@@ -723,3 +715,105 @@ REQ-0728,APP-014,INT1,faucet_hole_diameter,,30,mm,,official_exact_model,confirme
 REQ-0729,APP-014,ELEC/PLUM,service_distance_max,,3000,mm,,official_exact_model,confirmed,APP-014-SIEMENS-MANUAL-001,,no,随机自带 3 m 管；改装须咨询安装工程师。
 REQ-0730,APP-014,ELEC,power_cord_length,,2000,mm,,official_exact_model,confirmed,APP-014-SIEMENS-MANUAL-001,,no,
 REQ-0731,APP-014,ELEC/INT1,power_outlet_location,left_right_or_upper_adjacent_cabinet_not_below_unit,,,,official_exact_model,confirmed,APP-014-SIEMENS-MANUAL-001,,no,插头必须可自由插拔。
+REQ-ELEC-20260815-001,APP-011,ELEC,appliance_plug_rating_a,,16,A,,official_exact_model,confirmed,APP-011-OFFICIAL-001,官方规格表,no,
+REQ-ELEC-20260815-002,APP-011,ELEC,wall_socket_rating_a,,16,A,,research_conclusion,confirmed,ELEC-RESEARCH-20260815-001,工程研究结论,no,
+REQ-ELEC-20260815-003,APP-011,ELEC,branch_breaker_rating_a,,16,A,,research_conclusion,confirmed,ELEC-RESEARCH-20260815-001,工程研究结论,no,
+REQ-ELEC-20260815-004,APP-011,ELEC,conductor_cross_section_mm2,,4,mm2,,research_conclusion,confirmed,ELEC-RESEARCH-20260815-001,工程研究结论,no,
+REQ-ELEC-20260815-005,APP-011,ELEC,branch_breaker_curve,C,,,,research_conclusion,confirmed,ELEC-RESEARCH-20260815-001,工程研究结论,no,
+REQ-ELEC-20260815-006,APP-011,ELEC,rcbo_required,yes,,,,research_conclusion,confirmed,ELEC-RESEARCH-20260815-001,工程研究结论,no,
+REQ-ELEC-20260815-007,APP-011,ELEC,dedicated_branch_circuit,yes,,,,research_conclusion,confirmed,ELEC-RESEARCH-20260815-001,工程研究结论,no,
+REQ-ELEC-20260815-008,APP-011,ELEC,socket_service_location,adjacent_accessible_cabinet_not_directly_behind,,,,research_conclusion,confirmed,ELEC-RESEARCH-20260815-001,工程研究结论,no,
+REQ-ELEC-20260815-009,APP-011,ELEC,track_socket_allowed,no,,,,research_conclusion,confirmed,ELEC-RESEARCH-20260815-001,工程研究结论,no,
+REQ-ELEC-20260815-010,APP-011,ELEC,interface_center_coordinates,unknown,,,,pending,pending,,,yes,说明书未提供接口中心坐标，不推测。
+REQ-ELEC-20260815-011,APP-017,ELEC,washer_rated_power_w,,1900,W,,official_exact_model,confirmed,APP-017-SIEMENS-WASHER-MANUAL-001,p.24,no,
+REQ-ELEC-20260815-012,APP-017,ELEC,dryer_rated_power_w,,800,W,,official_exact_model,confirmed,APP-017-SIEMENS-DRYER-MANUAL-001,p.40,no,
+REQ-ELEC-20260815-013,APP-017,ELEC,simultaneous_design_load_w,,2700,W,,research_conclusion,confirmed,ELEC-RESEARCH-20260815-001,工程研究结论,no,
+REQ-ELEC-20260815-014,APP-017,ELEC,simultaneous_design_current_a,,12.3,A,,research_conclusion,confirmed,ELEC-RESEARCH-20260815-001,工程研究结论,no,
+REQ-ELEC-20260815-015,APP-017,ELEC,wall_socket_rating_a,,10,A,,research_conclusion,confirmed,ELEC-RESEARCH-20260815-001,工程研究结论,no,
+REQ-ELEC-20260815-016,APP-017,ELEC,wall_socket_quantity,,2,count,,research_conclusion,confirmed,ELEC-RESEARCH-20260815-001,工程研究结论,no,
+REQ-ELEC-20260815-017,APP-017,ELEC,branch_breaker_rating_a,,16,A,,research_conclusion,confirmed,ELEC-RESEARCH-20260815-001,工程研究结论,no,
+REQ-ELEC-20260815-018,APP-017,ELEC,conductor_cross_section_mm2,,2.5,mm2,,research_conclusion,confirmed,ELEC-RESEARCH-20260815-001,工程研究结论,no,
+REQ-ELEC-20260815-019,APP-017,ELEC,dedicated_branch_circuit,laundry_area_shared_by_washer_and_dryer,,,,research_conclusion,confirmed,ELEC-RESEARCH-20260815-001,工程研究结论,no,
+REQ-ELEC-20260815-020,APP-017,ELEC,rcbo_required,yes,,,,research_conclusion,confirmed,ELEC-RESEARCH-20260815-001,工程研究结论,no,
+REQ-ELEC-20260815-021,APP-017,ELEC,extension_or_power_strip_allowed,no,,,,research_conclusion,confirmed,ELEC-RESEARCH-20260815-001,工程研究结论,no,
+REQ-ELEC-20260815-022,APP-017,ELEC,socket_service_location,two_independent_accessible_side_cabinet_positions_not_behind_appliances,,,,research_conclusion,confirmed,ELEC-RESEARCH-20260815-001,工程研究结论,no,
+REQ-ELEC-20260815-023,APP-017,ELEC,appliance_plug_rating_a,unknown,,,,pending,pending,,,no,说明书给出最小保险 10A，但未明示插头额定标识；墙面 10A 插座为研究结论。
+REQ-ELEC-20260815-024,APP-017,ELEC,interface_center_coordinates,unknown,,,,pending,pending,,,yes,水、排水和电源接口中心坐标未由说明书提供。
+REQ-ELEC-20260815-025,APP-014,ELEC,wall_socket_rating_a,,10,A,,official_exact_model,confirmed,APP-014-SIEMENS-MANUAL-001,pp.18-20,no,
+REQ-ELEC-20260815-026,APP-014,ELEC,branch_breaker_rating_a,,16,A,,research_conclusion,confirmed,ELEC-RESEARCH-20260815-001,工程研究结论,no,
+REQ-ELEC-20260815-027,APP-014,ELEC,conductor_cross_section_mm2,,2.5,mm2,,research_conclusion,confirmed,ELEC-RESEARCH-20260815-001,工程研究结论,no,
+REQ-ELEC-20260815-028,APP-014,ELEC,dedicated_branch_circuit,yes,,,,research_conclusion,confirmed,ELEC-RESEARCH-20260815-001,工程研究结论,no,
+REQ-ELEC-20260815-029,APP-014,ELEC,rcbo_required,yes,,,,research_conclusion,confirmed,ELEC-RESEARCH-20260815-001,工程研究结论,no,
+REQ-ELEC-20260815-030,APP-014,ELEC,residual_current_protection_required,yes,,,,research_conclusion,confirmed,ELEC-RESEARCH-20260815-001,工程研究结论,no,
+REQ-ELEC-20260815-031,APP-014,ELEC,interface_center_coordinates,unknown,,,,pending,pending,,,yes,安装图仅给服务区和距离，没有可写入的接口中心坐标。
+REQ-ELEC-20260815-032,APP-013,ELEC,design_current_a,,1.75,A,,research_conclusion,confirmed,ELEC-RESEARCH-20260815-001,工程研究结论,no,
+REQ-ELEC-20260815-033,APP-013,ELEC,wall_socket_rating_a,,10,A,,research_conclusion,confirmed,ELEC-RESEARCH-20260815-001,工程研究结论,no,
+REQ-ELEC-20260815-034,APP-013,ELEC,dedicated_branch_circuit,no,,,,research_conclusion,confirmed,ELEC-RESEARCH-20260815-001,工程研究结论,no,
+REQ-ELEC-20260815-035,APP-013,ELEC,assigned_branch_circuit,kitchen_fixed_auxiliary,,,,research_conclusion,confirmed,ELEC-RESEARCH-20260815-001,工程研究结论,no,
+REQ-ELEC-20260815-036,APP-012,ELEC,ignition_power_source,DC_1.5V_battery,,,,official_exact_model,confirmed,APP-012-OFFICIAL-001,官方产品资料,no,
+REQ-ELEC-20260815-037,APP-012,ELEC,wall_socket_required_for_appliance,no,,,,research_conclusion,confirmed,ELEC-RESEARCH-20260815-001,工程研究结论,no,
+REQ-ELEC-20260815-038,APP-012,ELEC,service_spare_socket_rating_a,,10,A,,research_conclusion,confirmed,ELEC-RESEARCH-20260815-001,工程研究结论,no,
+REQ-ELEC-20260815-039,APP-012,ELEC,service_spare_socket_circuit,kitchen_fixed_auxiliary,,,,research_conclusion,confirmed,ELEC-RESEARCH-20260815-001,工程研究结论,no,
+REQ-ELEC-20260815-040,APP-009,ELEC,wall_socket_rating_a,,10,A,,research_conclusion,confirmed,ELEC-RESEARCH-20260815-001,工程研究结论,no,
+REQ-ELEC-20260815-041,APP-009,ELEC,branch_breaker_rating_a,,16,A,,research_conclusion,confirmed,ELEC-RESEARCH-20260815-001,工程研究结论,no,
+REQ-ELEC-20260815-042,APP-009,ELEC,conductor_cross_section_mm2,,2.5,mm2,,research_conclusion,confirmed,ELEC-RESEARCH-20260815-001,工程研究结论,no,
+REQ-ELEC-20260815-043,APP-009,ELEC,dedicated_branch_circuit,yes,,,,research_conclusion,confirmed,ELEC-RESEARCH-20260815-001,工程研究结论,no,
+REQ-ELEC-20260815-044,APP-009,ELEC,rcbo_required,yes,,,,research_conclusion,confirmed,ELEC-RESEARCH-20260815-001,工程研究结论,no,
+REQ-ELEC-20260815-045,APP-009,ELEC,simultaneous_operation_with_peer,yes,,,,research_conclusion,confirmed,ELEC-RESEARCH-20260815-001,工程研究结论,no,
+REQ-ELEC-20260815-046,APP-010,ELEC,wall_socket_rating_a,,10,A,,research_conclusion,confirmed,ELEC-RESEARCH-20260815-001,工程研究结论,no,
+REQ-ELEC-20260815-047,APP-010,ELEC,branch_breaker_rating_a,,16,A,,research_conclusion,confirmed,ELEC-RESEARCH-20260815-001,工程研究结论,no,
+REQ-ELEC-20260815-048,APP-010,ELEC,conductor_cross_section_mm2,,2.5,mm2,,research_conclusion,confirmed,ELEC-RESEARCH-20260815-001,工程研究结论,no,
+REQ-ELEC-20260815-049,APP-010,ELEC,dedicated_branch_circuit,yes,,,,research_conclusion,confirmed,ELEC-RESEARCH-20260815-001,工程研究结论,no,
+REQ-ELEC-20260815-050,APP-010,ELEC,rcbo_required,yes,,,,research_conclusion,confirmed,ELEC-RESEARCH-20260815-001,工程研究结论,no,
+REQ-ELEC-20260815-051,APP-010,ELEC,simultaneous_operation_with_peer,yes,,,,research_conclusion,confirmed,ELEC-RESEARCH-20260815-001,工程研究结论,no,
+REQ-ELEC-20260815-052,APP-004,ELEC,design_reserve_power_w,,2600,W,,research_conclusion,confirmed,ELEC-RESEARCH-20260815-001,工程研究结论,no,
+REQ-ELEC-20260815-053,APP-004,ELEC,design_reserve_current_a,,11.8,A,,research_conclusion,confirmed,ELEC-RESEARCH-20260815-001,工程研究结论,no,
+REQ-ELEC-20260815-054,APP-004,ELEC,branch_breaker_rating_a,,16,A,,research_conclusion,confirmed,ELEC-RESEARCH-20260815-001,工程研究结论,no,
+REQ-ELEC-20260815-055,APP-004,ELEC,conductor_cross_section_mm2,,2.5,mm2,,research_conclusion,confirmed,ELEC-RESEARCH-20260815-001,工程研究结论,no,
+REQ-ELEC-20260815-056,APP-004,ELEC,dedicated_branch_circuit,yes,,,,research_conclusion,confirmed,ELEC-RESEARCH-20260815-001,工程研究结论,no,
+REQ-ELEC-20260815-057,APP-004,ELEC,rcbo_required,yes,,,,research_conclusion,confirmed,ELEC-RESEARCH-20260815-001,工程研究结论,no,
+REQ-ELEC-20260815-058,APP-004,ELEC,connection_box_reserved,yes,,,,research_conclusion,confirmed,ELEC-RESEARCH-20260815-001,工程研究结论,no,
+REQ-ELEC-20260815-059,APP-004,ELEC,wall_socket_rating_a,unknown,,,,pending,pending,,,no,最终按实购机器插头匹配 10A/16A 面板，当前不冻结。
+REQ-ELEC-20260815-060,APP-004,ELEC,procurement_selection_required_before_rough_in,no,,,,research_conclusion,confirmed,ELEC-RESEARCH-20260815-001,工程研究结论,no,
+REQ-ELEC-20260815-061,APP-004,ELEC,water_and_drain_provision,optional_valved_and_capped,,,,research_conclusion,confirmed,ELEC-RESEARCH-20260815-001,工程研究结论,no,
+REQ-ELEC-20260815-062,APP-001,ELEC,wall_socket_rating_a,,10,A,,research_conclusion,confirmed,ELEC-RESEARCH-20260815-001,工程研究结论,no,
+REQ-ELEC-20260815-063,APP-001,ELEC,ns01_branch_allocation,hotpot_separate_from_second_simultaneous_appliance,,,,research_conclusion,confirmed,ELEC-RESEARCH-20260815-001,工程研究结论,no,
+REQ-ELEC-20260815-064,APP-002,ELEC,wall_socket_rating_a,,10,A,,research_conclusion,confirmed,ELEC-RESEARCH-20260815-001,工程研究结论,no,
+REQ-ELEC-20260815-065,APP-002,ELEC,ns01_branch_allocation,hotpot_separate_from_second_simultaneous_appliance,,,,research_conclusion,confirmed,ELEC-RESEARCH-20260815-001,工程研究结论,no,
+REQ-ELEC-20260815-066,APP-003,ELEC,wall_socket_rating_a,,10,A,,research_conclusion,confirmed,ELEC-RESEARCH-20260815-001,工程研究结论,no,
+REQ-ELEC-20260815-067,APP-003,ELEC,ns01_branch_allocation,hotpot_separate_from_second_simultaneous_appliance,,,,research_conclusion,confirmed,ELEC-RESEARCH-20260815-001,工程研究结论,no,
+REQ-ELEC-20260815-068,APP-001,ELEC,ns01_total_branch_circuits,,2,count,,research_conclusion,confirmed,ELEC-RESEARCH-20260815-001,工程研究结论,no,
+REQ-ELEC-20260815-069,APP-001,ELEC,branch_breaker_rating_a,,16,A,,research_conclusion,confirmed,ELEC-RESEARCH-20260815-001,工程研究结论,no,
+REQ-ELEC-20260815-070,APP-001,ELEC,conductor_cross_section_mm2,,2.5,mm2,,research_conclusion,confirmed,ELEC-RESEARCH-20260815-001,工程研究结论,no,
+REQ-ELEC-20260815-071,APP-001,ELEC,rcbo_required,yes,,,,research_conclusion,confirmed,ELEC-RESEARCH-20260815-001,工程研究结论,no,
+REQ-ELEC-20260815-072,APP-001,ELEC,adverse_design_current_a,,20,A,,research_conclusion,confirmed,ELEC-RESEARCH-20260815-001,工程研究结论,no,
+REQ-ELEC-20260815-073,CTRL-ENTRY-A,ELEC,logical_panel_quantity,,1,count,,research_conclusion,confirmed,ELEC-RESEARCH-20260815-001,工程研究结论,no,
+REQ-ELEC-20260815-074,CTRL-ENTRY-A,ELEC,minimum_key_count,,4,count,,research_conclusion,confirmed,ELEC-RESEARCH-20260815-001,工程研究结论,no,
+REQ-ELEC-20260815-075,CTRL-ENTRY-A,ELEC,key_order_door_to_far,living_two_way;study_two_way;dining_two_way;lighting_master,,,,research_conclusion,confirmed,ELEC-RESEARCH-20260815-001,工程研究结论,no,
+REQ-ELEC-20260815-076,CTRL-ENTRY-A,ELEC,controlled_loads,living;study;dining_lighting,,,,research_conclusion,confirmed,ELEC-RESEARCH-20260815-001,工程研究结论,no,
+REQ-ELEC-20260815-077,CTRL-ENTRY-A,ELEC,scene_control_relation,lighting_master_command_only_no_continuous_load_cutoff,,,,research_conclusion,confirmed,ELEC-RESEARCH-20260815-001,工程研究结论,no,
+REQ-ELEC-20260815-078,CTRL-ENTRY-A,ELEC,interface_center_coordinates,unknown,,,,pending,pending,,,yes,待 M07/门套/见光板完成面证据确认真实安装面和净距。
+REQ-ELEC-20260815-079,CTRL-MASTER-B,ELEC,logical_panel_quantity,,1,count,,research_conclusion,confirmed,ELEC-RESEARCH-20260815-001,工程研究结论,no,
+REQ-ELEC-20260815-080,CTRL-MASTER-B,ELEC,minimum_key_count,,3,count,,research_conclusion,confirmed,ELEC-RESEARCH-20260815-001,工程研究结论,no,
+REQ-ELEC-20260815-081,CTRL-MASTER-B,ELEC,key_order_door_to_far,living_two_way;study_two_way;dining_two_way,,,,research_conclusion,confirmed,ELEC-RESEARCH-20260815-001,工程研究结论,no,
+REQ-ELEC-20260815-082,CTRL-MASTER-B,ELEC,controlled_loads,living;study;dining_lighting,,,,research_conclusion,confirmed,ELEC-RESEARCH-20260815-001,工程研究结论,no,
+REQ-ELEC-20260815-083,CTRL-MASTER-B,ELEC,two_way_relation,true_wired_two_way_with_CTRL_ENTRY_A_not_scene_substitution,,,,research_conclusion,confirmed,ELEC-RESEARCH-20260815-001,工程研究结论,no,
+REQ-ELEC-20260815-084,CTRL-MASTER-B,ELEC,interface_center_coordinates,unknown,,,,pending,pending,,,yes,待 M07/门套/见光板完成面证据确认真实安装面和净距。
+REQ-ELEC-20260815-085,CTRL-MASTER-A,ELEC,logical_panel_quantity,,1,count,,research_conclusion,confirmed,ELEC-RESEARCH-20260815-001,工程研究结论,no,
+REQ-ELEC-20260815-086,CTRL-MASTER-A,ELEC,minimum_key_count,,2,count,,research_conclusion,confirmed,ELEC-RESEARCH-20260815-001,工程研究结论,no,
+REQ-ELEC-20260815-087,CTRL-MASTER-A,ELEC,key_order_door_to_far,master_ambient_LED;master_accent_spotlights,,,,research_conclusion,confirmed,ELEC-RESEARCH-20260815-001,工程研究结论,no,
+REQ-ELEC-20260815-088,CTRL-MASTER-A,ELEC,controlled_loads,master_ambient_LED;master_accent_spotlights,,,,research_conclusion,confirmed,ELEC-RESEARCH-20260815-001,工程研究结论,no,
+REQ-ELEC-20260815-089,CTRL-MASTER-A,ELEC,scene_control_relation,direct_load_or_scene_command_by_final_product_underlying_load_switching_required,,,,research_conclusion,confirmed,ELEC-RESEARCH-20260815-001,工程研究结论,no,
+REQ-ELEC-20260815-090,CTRL-MASTER-A,ELEC,interface_center_coordinates,unknown,,,,pending,pending,,,yes,待 M07/门套/见光板完成面证据确认真实安装面和净距。
+REQ-ELEC-20260815-091,NET-AP-R09,ELEC,poe_supply_required,yes,,,,research_conclusion,confirmed,ELEC-RESEARCH-20260815-001,工程研究结论,no,
+REQ-ELEC-20260815-092,NET-AP-R09,ELEC,local_220v_power_required,no,,,,research_conclusion,confirmed,ELEC-RESEARCH-20260815-001,工程研究结论,no,
+REQ-ELEC-20260815-093,NET-AP-R09,ELEC,network_topology,CAT6_star_home_run_to_weak_current_cabinet_PoE_switch,,,,research_conclusion,confirmed,ELEC-RESEARCH-20260815-001,工程研究结论,no,
+REQ-ELEC-20260815-094,NET-AP-R09,ELEC,poe_switch_port_class,IEEE_802.3at_backward_compatible_with_802.3af,,,,research_conclusion,confirmed,ELEC-RESEARCH-20260815-001,工程研究结论,no,
+REQ-ELEC-20260815-095,NET-AP-R09,ELEC,final_endpoint_power_w,unknown,,,,pending,pending,,,yes,按实购 AP 官方功率和交换机总 PoE 预算闭合。
+REQ-ELEC-20260815-096,NET-AP-R09,ELEC,cable_continuity,unknown,,,,pending,pending,,,yes,现场网线通断和端接顺序尚未测试。
+REQ-ELEC-20260815-097,NET-AP-R14,ELEC,poe_supply_required,yes,,,,research_conclusion,confirmed,ELEC-RESEARCH-20260815-001,工程研究结论,no,
+REQ-ELEC-20260815-098,NET-AP-R14,ELEC,local_220v_power_required,no,,,,research_conclusion,confirmed,ELEC-RESEARCH-20260815-001,工程研究结论,no,
+REQ-ELEC-20260815-099,NET-AP-R14,ELEC,network_topology,CAT6_star_home_run_to_weak_current_cabinet_PoE_switch,,,,research_conclusion,confirmed,ELEC-RESEARCH-20260815-001,工程研究结论,no,
+REQ-ELEC-20260815-100,NET-AP-R14,ELEC,poe_switch_port_class,IEEE_802.3at_backward_compatible_with_802.3af,,,,research_conclusion,confirmed,ELEC-RESEARCH-20260815-001,工程研究结论,no,
+REQ-ELEC-20260815-101,NET-AP-R14,ELEC,final_endpoint_power_w,unknown,,,,pending,pending,,,yes,按实购 AP 官方功率和交换机总 PoE 预算闭合。
+REQ-ELEC-20260815-102,NET-AP-R14,ELEC,cable_continuity,unknown,,,,pending,pending,,,yes,现场网线通断和端接顺序尚未测试。
