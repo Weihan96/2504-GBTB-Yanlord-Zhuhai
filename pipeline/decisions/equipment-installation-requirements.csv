@@ -817,3 +817,19 @@ REQ-ELEC-20260815-099,NET-AP-R14,ELEC,network_topology,CAT6_star_home_run_to_wea
 REQ-ELEC-20260815-100,NET-AP-R14,ELEC,poe_switch_port_class,IEEE_802.3at_backward_compatible_with_802.3af,,,,research_conclusion,confirmed,ELEC-RESEARCH-20260815-001,工程研究结论,no,
 REQ-ELEC-20260815-101,NET-AP-R14,ELEC,final_endpoint_power_w,unknown,,,,pending,pending,,,yes,按实购 AP 官方功率和交换机总 PoE 预算闭合。
 REQ-ELEC-20260815-102,NET-AP-R14,ELEC,cable_continuity,unknown,,,,pending,pending,,,yes,现场网线通断和端接顺序尚未测试。
+REQ-APP019-001,APP-019,ELEC,rated_power,,,W,,pending,pending,OWNER-INPUT-APP019-20260815,业主仅确认设备类别与数量,yes,保持 unknown；关闭证据：准确型号名牌功率。
+REQ-APP019-002,APP-019,ELEC,simultaneous_group,,,,,pending,pending,OWNER-INPUT-APP019-20260815,业主仅确认设备类别与数量,yes,保持 unknown；关闭证据：使用位置和同时工况。
+REQ-APP019-003,APP-019,PLUM,water_required,,,,,pending,pending,OWNER-INPUT-APP019-20260815,业主仅确认设备类别与数量,yes,保持 unknown；关闭证据：准确型号安装图。
+REQ-APP019-004,APP-019,PLUM,drain_required,,,,,pending,pending,OWNER-INPUT-APP019-20260815,业主仅确认设备类别与数量,yes,保持 unknown；关闭证据：准确型号安装图。
+REQ-APP019-005,APP-019,GAS,gas_required,,,,,pending,pending,OWNER-INPUT-APP019-20260815,业主仅确认设备类别与数量,yes,保持 unknown；关闭证据：准确型号安装图。
+REQ-APP019-006,APP-019,HVAC/INT1,ventilation_required,,,,,pending,pending,OWNER-INPUT-APP019-20260815,业主仅确认设备类别与数量,yes,保持 unknown；关闭证据：准确型号散热和净距要求。
+REQ-APP019-007,APP-019,INT1,installation_mode,unknown,,,,pending,pending,OWNER-INPUT-APP019-20260815,业主仅确认设备类别与数量,yes,保持 unknown；关闭证据：台面、落地或嵌入形式。
+REQ-APP019-008,APP-019,ELEC,appliance_plug_rating_a,unknown,,A,,pending,pending,OWNER-INPUT-APP019-20260815,业主仅确认设备类别与数量,yes,保持 unknown；关闭证据：实物插头或厂家电气页。
+REQ-APP019-009,APP-019,ELEC,wall_socket_rating_a,unknown,,A,,pending,pending,OWNER-INPUT-APP019-20260815,业主仅确认设备类别与数量,yes,保持 unknown；关闭证据：按实购插头和支路计算匹配。
+REQ-APP019-010,APP-019,ELEC,branch_breaker_rating_a,unknown,,A,,pending,pending,OWNER-INPUT-APP019-20260815,业主仅确认设备类别与数量,yes,保持 unknown；关闭证据：名牌负荷、同时工况和回路计算。
+REQ-APP019-011,APP-019,ELEC,dedicated_branch_circuit,unknown,,,,pending,pending,OWNER-INPUT-APP019-20260815,业主仅确认设备类别与数量,yes,保持 unknown；关闭证据：名牌负荷、位置和共路工况。
+REQ-APP019-012,APP-019,INT1,product_width,unknown,,mm,,pending,pending,OWNER-INPUT-APP019-20260815,业主仅确认设备类别与数量,yes,保持 unknown；关闭证据：准确型号尺寸图。
+REQ-APP019-013,APP-019,INT1,product_height,unknown,,mm,,pending,pending,OWNER-INPUT-APP019-20260815,业主仅确认设备类别与数量,yes,保持 unknown；关闭证据：准确型号尺寸图。
+REQ-APP019-014,APP-019,INT1,product_depth,unknown,,mm,,pending,pending,OWNER-INPUT-APP019-20260815,业主仅确认设备类别与数量,yes,保持 unknown；关闭证据：准确型号尺寸图。
+REQ-APP019-015,APP-019,INT1,service_clearance,unknown,,mm,,pending,pending,OWNER-INPUT-APP019-20260815,业主仅确认设备类别与数量,yes,保持 unknown；关闭证据：厂家散热、操作和检修要求。
+REQ-APP019-016,APP-019,MULTI,interface_center_coordinates,unknown,,,,pending,pending,OWNER-INPUT-APP019-20260815,业主仅确认设备类别与数量,yes,保持 unknown；关闭证据：厂家安装图与项目定位。

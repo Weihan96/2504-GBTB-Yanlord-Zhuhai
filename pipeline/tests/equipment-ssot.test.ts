@@ -15,13 +15,13 @@ test("equipment SSOT validates projections and covers every scoped IFC object", 
   expect(run.exitCode).toBe(0);
   const report = JSON.parse(run.stdout.toString());
   expect(report.validate).toMatchObject({
-    master_count: 161,
-    requirement_count: 818,
-    source_count: 180,
+    master_count: 162,
+    requirement_count: 834,
+    source_count: 181,
     schema_version: "1.0.0",
   });
   expect(report.projections).toMatchObject({
-    appliance_rows: 18,
+    appliance_rows: 19,
     furniture_rows: 9,
     elec_evidence_rows: 69,
     hvac_evidence_rows: 4,
@@ -67,18 +67,18 @@ with open(sys.argv[1],encoding="utf-8-sig",newline="") as stream:
   }
 }, 30_000);
 
-test("2026-08-14 owner inputs preserve aliases, candidates, unknowns, and provenance", () => {
+test("owner inputs preserve aliases, candidates, unknowns, and provenance", () => {
   const extract = String.raw`
 import csv,json,sys
 def rows(path):
     with open(path,encoding="utf-8-sig",newline="") as stream:
         return list(csv.DictReader(stream))
 masters=rows(sys.argv[1]); requirements=rows(sys.argv[2]); sources=rows(sys.argv[3]); rules=rows(sys.argv[4])
-ids={"APP-004","APP-005","APP-011","APP-014","APP-015","APP-016","APP-017","CTRL-ENTRY-A","NET-AP-R09","NET-AP-R14","SENSOR-GAS-R04","SENSOR-001"}
+ids={"APP-004","APP-005","APP-011","APP-014","APP-015","APP-016","APP-017","APP-019","CTRL-ENTRY-A","NET-AP-R09","NET-AP-R14","SENSOR-GAS-R04","SENSOR-001"}
 print(json.dumps({
   "masters":[row for row in masters if row["equipment_id"] in ids],
   "requirements":[row for row in requirements if row["equipment_id"] in ids],
-  "sources":[row for row in sources if row["source_id"] in {"OWNER-INBOX-20260814-001","ZOYLIGHT-D1-20250815-001"} or row["local_path"].startswith("drawings/evidence/owner-input-20260814/")],
+  "sources":[row for row in sources if row["source_id"] in {"OWNER-INBOX-20260814-001","OWNER-INPUT-APP019-20260815","ZOYLIGHT-D1-20250815-001"} or row["local_path"].startswith("drawings/evidence/owner-input-20260814/")],
   "rules":[row for row in rules if row["rule_id"] in {"ELEC-DES-020","ELEC-DES-022","ELEC-DES-033","ELEC-DES-035","ELEC-DES-037","ELEC-DES-040","ELEC-DES-041"}],
 },ensure_ascii=False))
 `;
@@ -170,6 +170,31 @@ print(json.dumps({
   expect(requirement("APP-005", "rated_power")).toMatchObject({ value_number: "1200", status: "confirmed" });
   expect(master("APP-016")).toMatchObject({ procurement_status: "candidate", decision_status: "partial" });
   expect(requirement("APP-016", "rated_power")).toMatchObject({ status: "pending", blocks_release: "yes" });
+  expect(master("APP-019")).toMatchObject({
+    item_name: "冰淇淋机",
+    quantity: "1",
+    model: "",
+    procurement_status: "candidate",
+    decision_status: "partial",
+  });
+  for (const key of [
+    "rated_power", "water_required", "drain_required", "appliance_plug_rating_a",
+    "wall_socket_rating_a", "branch_breaker_rating_a", "dedicated_branch_circuit",
+    "interface_center_coordinates",
+  ]) {
+    expect(requirement("APP-019", key), `APP-019.${key}`).toMatchObject({
+      status: "pending",
+      blocks_release: "yes",
+    });
+  }
+  expect(requirement("APP-019", "appliance_plug_rating_a")?.value_text).toBe("unknown");
+  expect(requirement("APP-019", "interface_center_coordinates")?.value_text).toBe("unknown");
+  const iceCreamSource = data.sources.find((row) => row.source_id === "OWNER-INPUT-APP019-20260815");
+  expect(iceCreamSource).toMatchObject({
+    local_path: "drawings/evidence/OWNER-INPUT-APP-019-20260815.md",
+    status: "confirmed_owner_input_identity_only",
+    formal_ifc_write_allowed: "no",
+  });
 
   expect(master("CTRL-ENTRY-A")).toMatchObject({ procurement_status: "candidate", decision_status: "candidate" });
   expect(master("CTRL-ENTRY-A")?.source_ids).toContain("ZOYLIGHT-D1-20250815-001");

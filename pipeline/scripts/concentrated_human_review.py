@@ -112,6 +112,15 @@ INT1_PACKAGES = (
         "required_evidence": "西门子书面确认本两台设备的原厂连接件商业型号、抽板配置和逐型号兼容性",
     },
     {
+        "package_id": "INT1-ICE-CREAM-MACHINE-SELECTION",
+        "title": "冰淇淋机选型与安装接口",
+        "equipment_ids": {"APP-019"},
+        "root_cause": "业主只确认新增一台冰淇淋机，未确认位置、安装形式或准确型号",
+        "affected_sheets": ["I-501", "E-303", "E-304", "P-201", "P-202"],
+        "responsible_party": "业主/商家/设备厂家",
+        "required_evidence": "确认使用位置与安装形式，并提供准确型号铭牌或官方安装图，含功率、插头、给排水、通风、机身尺寸、检修净空和接口定位",
+    },
+    {
         "package_id": "INT1-KITCHEN-GAS-ALARM",
         "title": "中厨燃气报警器准入与平嵌条件",
         "equipment_ids": {"SENSOR-GAS-R04"},
