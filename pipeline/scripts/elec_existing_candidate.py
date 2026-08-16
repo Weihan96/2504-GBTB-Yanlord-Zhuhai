@@ -22,7 +22,7 @@ from ifcopenshell.util.placement import get_local_placement
 from shapely.geometry import Point, Polygon
 from shapely.ops import unary_union
 
-from svg_audit_underlay import validate_wall_plan_source
+from svg_audit_underlay import validate_electrical_coordination_source
 
 
 LIGHT_TYPE_GLOBAL_ID = "26DmeZ15D7ZeHYavba3FdK"
@@ -705,7 +705,7 @@ def main() -> int:
     drawing_gates: dict[str, Any] = {}
     if args.source_svg is not None:
         source_svg = args.source_svg.read_text(encoding="utf-8")
-        validate_wall_plan_source(source_svg, args.source_svg, args.input)
+        validate_electrical_coordination_source(source_svg, args.source_svg, args.input)
         e301_svg, e301_gates = render_e301(source_svg, source_sha, lights, light_room_counts)
         e303_svg, e303_gates = render_e303(source_svg, source_sha, sockets, equipment, proxies)
         drawing_gates = {"E-301": e301_gates, "E-303": e303_gates}

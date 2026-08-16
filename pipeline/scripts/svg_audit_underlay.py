@@ -80,3 +80,41 @@ def validate_wall_plan_source(source: str, source_svg: Path, ifc_path: Path) -> 
     }
     if invalid_state:
         raise RuntimeError(f"invalid Wall Plan camera/texture state: {invalid_state}")
+
+
+def validate_electrical_coordination_source(source: str, source_svg: Path, ifc_path: Path) -> None:
+    """Require a current Wall Plan derivative with visible doors and fixed joinery."""
+    source_svg = source_svg.resolve()
+    ifc_path = ifc_path.resolve()
+    wall_plan = source_svg.with_name("Wall Plan.svg")
+    if not wall_plan.is_file():
+        raise RuntimeError("electrical coordination source must travel with Wall Plan.svg")
+    validate_wall_plan_source(wall_plan.read_text(encoding="utf-8"), wall_plan, ifc_path)
+
+    manifest_path = source_svg.with_name("Electrical Coordination Plan-source.json")
+    if not manifest_path.is_file():
+        raise RuntimeError("electrical coordination source manifest is missing")
+    manifest = json.loads(manifest_path.read_text(encoding="utf-8"))
+    expected = {
+        "formal_ifc_sha256": sha256(ifc_path),
+        "wall_plan_svg_sha256": sha256(wall_plan),
+        "coordination_svg_sha256": sha256(source_svg),
+    }
+    mismatches = {
+        key: {"manifest": manifest.get(key), "actual": value}
+        for key, value in expected.items()
+        if manifest.get(key) != value
+    }
+    if mismatches:
+        raise RuntimeError(f"stale electrical coordination source manifest: {mismatches}")
+
+    counts = manifest.get("counts", {})
+    required_counts = {"walls": 101, "doors": 8, "fixed_furniture": 70}
+    if {key: counts.get(key) for key in required_counts} != required_counts:
+        raise RuntimeError(f"electrical coordination source counts changed: {counts}")
+    if source.count('data-coordination-kind="door"') != required_counts["doors"]:
+        raise RuntimeError("electrical coordination source door visibility count changed")
+    if source.count('data-coordination-kind="fixed_furniture"') != required_counts["fixed_furniture"]:
+        raise RuntimeError("electrical coordination source fixed-furniture visibility count changed")
+    if source.count('data-electrical-coordination="current-ifc"') != 1:
+        raise RuntimeError("electrical coordination source identity is missing or duplicated")

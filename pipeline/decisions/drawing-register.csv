@@ -8,9 +8,9 @@ A-105,地面完成面及标高图,FFL PLAN,candidate,output/pdf/A-105-floor-fini
 P-201,给水、热水及设备图,Wall Plan,candidate,drawings/P-201-water-hotwater-demand-candidate.svg,已确认产品的官方介质需求继续采用；吉博力、Foster、洗烘、定制盆和 APP-016 缺项已转为逐台厂家/现场索取表，未提供的压力、中心、管径和路线保持 unknown。
 P-202,排水及洁具定位图,Sanitary Plan,candidate,output/pdf/P-202-drainage-sanitary-candidate.pdf,现状排水保持只读；最终标高、方向、坡度、防水、检修和定制 shop drawing 按 RCP1-PLUM-厂家接口索取表关闭，不从 IFC proxy 或效果图推测。
 E-301,灯具布置图,Wall Plan,candidate,output/pdf/E-301-E-303-renovation-round1-candidate.pdf,79 个现有灯具保留为底稿；第一轮已补 4 个床头灯平面候选，灯具、安装高度、开关与回路待后续反向复核
-E-302,开关及照明控制图,Wall Plan,candidate,output/pdf/E-302-E-304-control-network-candidate.pdf,Entry A/Master A/Master B 已分别闭合为 4/2/3 键逻辑功能，含三组真实双控、主卧氛围/重点和只作用于照明的总控命令；准确 SKU、端子、负载/浪涌、底盒、平嵌适配及 M07/门套净距仍阻断最终发布。
+E-302,开关及照明控制图,Electrical Coordination Plan,candidate,output/pdf/E-302-E-304-control-network-candidate.pdf,Entry A/Master A/Master B 已分别闭合为 4/2/3 键逻辑功能；5 个开发商既有空调控制面板按 1300mm 参考标高可见但系统归属和保留迁移策略待现场及厂家确认；准确 SKU、端子、负载/浪涌、底盒、平嵌适配及 M07/门套净距仍阻断最终发布。
 E-303,插座与设备电源图,Wall Plan,candidate,output/pdf/E-301-E-303-renovation-round1-candidate.pdf,设备插头、墙面插座、支路保护和独立回路已拆分语义。烤箱为明确 16A 插头/16A 插座+独立 C16；洗烘为两个 10A 插座共用一路洗衣区 C16，非两个 16A 插座/两回路。NS-01 按两个 10A 端口同时的 20A 不利工况分两路 C16；NS-02 咖啡机按 2600W 预留独立 C16 与接线盒，面板按实购插头。说明书未给的接口中心仍 unknown。
-E-304,弱电及网络图,Wall Plan,candidate,output/pdf/E-302-E-304-control-network-candidate.pdf,两个吸顶 AP 已采用 CAT6 星型回弱电箱 PoE 交换机的拓扑，AP 点不另设 220V；交换端口按 802.3at 向下兼容 802.3af 预留。实购 AP 功耗、PoE 总预算、弱电箱净尺寸/柜门温升、网线通断和端接顺序仍待厂家/现场证据。
+E-304,弱电及网络图,Electrical Coordination Plan,candidate,output/pdf/E-302-E-304-control-network-candidate.pdf,两个吸顶 AP 已采用 CAT6 星型回弱电箱 PoE 交换机的拓扑；开发商既有可视对讲和门铃参考点已恢复可见并保持待现场确认。实购 AP 功耗、PoE 总预算、弱电箱净尺寸/柜门温升、网线通断、门禁接口和端接顺序仍待厂家/物业/现场证据。
 A-106,综合天花图,Wall Plan,candidate,output/pdf/A-106-ceiling-device-candidate.pdf,厨房火灾探测点位已确认；感温/感烟/复合与产品由消防/设备方确认。燃气公司咨询模板及最终附件/回填清单已就绪，所有报警器型号仍为咨询候选，未获批准。
 M-401,空调、通风及安全设备协调图,,candidate,drawings/M-401-hvac-safety-coordination-candidate.svg,A01–A04 官方管径/坡度已关闭；A05 仍缺准确冷媒/排水接口，A06 缺产品与全部接口；六台精确端口坐标均未批准，按厂家索取表关闭后再冻结路线。
 I-501,厨房平面、立面及剖面,Furniture Plan,candidate,output/pdf/I-501-kitchen-existing-candidate.pdf,70 个既有对象协调包络入图；APP-009/010 两台未采购 SJ85ZX26MC 候选的官方柜孔、G3/4 冷水与 Ø38 排水约束已作为 2 条无定位接口表项入图，不生成粗装 XYZ、阀门、软管路径或开孔位置；EL-03 视图 06～09 及 EL-P01/P02 公共空间折线展开和贯穿长立面已写入正式 IFC 的 Bonsai 原生 Drawing；新增 1:30 无纹理 SVG 与手机 PNG；其余厂家安装图、燃气实测和五金运动包络未关闭

@@ -1,0 +1,24 @@
+{
+  "mode": "current_ifc_electrical_coordination_underlay",
+  "formal_ifc_sha256": "7a50b87e8f48a7c2bfbaa9f1dabdfca7155fa684b2325c66aa1ae15c8ab0a25c",
+  "wall_plan_svg_path": "drawings/Wall Plan.svg",
+  "wall_plan_svg_sha256": "10986b8753bb6f95a54f03f58d085076dfb03f05d9da7d064bbf0fbb54ed6846",
+  "int1_report_path": "build/int1/int1-existing-report.json",
+  "int1_report_sha256": "68e193957c94f6c02480c9485a1a0521665fd0fd317907c6f8a3c2a3e1d608e5",
+  "coordination_svg_path": "drawings/Electrical Coordination Plan.svg",
+  "coordination_svg_sha256": "29205fb4c0b8c218830398baf523ec542a6c4e4cfc6ba6c987b9eae80cc47a56",
+  "counts": {
+    "walls": 101,
+    "doors": 8,
+    "fixed_furniture": 70,
+    "door_footprint_parts": 10,
+    "fixed_furniture_footprint_parts": 130
+  },
+  "gates": {
+    "wall_plan_current": true,
+    "doors_from_current_ifc": true,
+    "fixed_furniture_from_current_ifc_and_int1_role_register": true,
+    "stale_furniture_plan_not_used": true,
+    "automatic_ifc_write_allowed": false
+  }
+}

@@ -419,9 +419,59 @@ def _rebuilt_sheet_xml(
     return ET.tostring(root, encoding="utf-8", xml_declaration=True)
 
 
-def _rebuilt_table_xml(source: bytes, headers: list[str], row_count: int) -> bytes:
+def _rebuilt_input_sheet_xml(
+    source: bytes,
+    headers: list[str],
+    display_headers: list[str],
+    rows: list[dict[str, str]],
+    sheet_name: str,
+) -> bytes:
     root = ET.fromstring(source)
-    table_ref = f"A2:{_column_reference(len(headers)-1)}{row_count+2}"
+    sheet_data = root.find(f"{{{MAIN_NS}}}sheetData")
+    if sheet_data is None:
+        raise ValueError(f"{sheet_name}: sheetData missing")
+    existing_rows = list(sheet_data)
+    if len(existing_rows) < 2:
+        raise ValueError(f"{sheet_name}: header/data style templates missing")
+    header_template, data_template = existing_rows[:2]
+    header_cells = list(header_template)
+    data_cells = list(data_template)
+    header_styles = [cell.attrib.get("s") for cell in header_cells]
+    data_styles = [cell.attrib.get("s") for cell in data_cells]
+    header_fallback = header_styles[-1] if header_styles else None
+    data_fallback = data_styles[-1] if data_styles else None
+
+    for child in existing_rows:
+        sheet_data.remove(child)
+
+    header_attributes = dict(header_template.attrib)
+    header_attributes["r"] = "1"
+    header_row = ET.Element(f"{{{MAIN_NS}}}row", header_attributes)
+    for index, display_header in enumerate(display_headers):
+        style = header_styles[index] if index < len(header_styles) else header_fallback
+        header_row.append(_cell(1, index, display_header, style))
+    sheet_data.append(header_row)
+
+    data_attributes = dict(data_template.attrib)
+    for row_number, record in enumerate(rows, start=2):
+        row_attributes = dict(data_attributes)
+        row_attributes["r"] = str(row_number)
+        row = ET.Element(f"{{{MAIN_NS}}}row", row_attributes)
+        for index, header in enumerate(headers):
+            style = data_styles[index] if index < len(data_styles) else data_fallback
+            row.append(_cell(row_number, index, record.get(header, ""), style))
+        sheet_data.append(row)
+    return ET.tostring(root, encoding="utf-8", xml_declaration=True)
+
+
+def _rebuilt_table_xml(
+    source: bytes, headers: list[str], row_count: int, header_row: int = 2,
+) -> bytes:
+    root = ET.fromstring(source)
+    table_ref = (
+        f"A{header_row}:{_column_reference(len(headers)-1)}"
+        f"{row_count+header_row}"
+    )
     root.set("ref", table_ref)
     auto_filter = root.find(f"{{{MAIN_NS}}}autoFilter")
     if auto_filter is not None:
@@ -457,8 +507,9 @@ def _updated_instruction_summary_xml(
     return ET.tostring(root, encoding="utf-8", xml_declaration=True)
 
 
-def rebuild_readonly_views(
+def rebuild_workbook_views(
     workbook_path: Path,
+    decisions: list[dict[str, str]],
     canonical_tables: dict[str, tuple[list[str], list[dict[str, str]]]],
     summary_values: dict[str, int],
 ) -> None:
@@ -469,6 +520,23 @@ def rebuild_readonly_views(
                 source_archive.read(sheet_paths["使用说明"]), summary_values,
             ),
         }
+        decision_sheet_path = sheet_paths["设计决策"]
+        replacements[decision_sheet_path] = _rebuilt_input_sheet_xml(
+            source_archive.read(decision_sheet_path),
+            DECISION_HEADERS,
+            DECISION_DISPLAY_HEADERS,
+            decisions,
+            "设计决策",
+        )
+        decision_table_path = _table_path_for_sheet(
+            source_archive, decision_sheet_path,
+        )
+        replacements[decision_table_path] = _rebuilt_table_xml(
+            source_archive.read(decision_table_path),
+            DECISION_DISPLAY_HEADERS,
+            len(decisions),
+            header_row=1,
+        )
         for sheet_name in READONLY_VIEW_SPECS:
             sheet_path = sheet_paths[sheet_name]
             headers, rows = canonical_tables[sheet_name]
@@ -503,6 +571,17 @@ def validate_unique(rows: list[dict[str, str]], key: str, label: str) -> list[st
     if duplicates:
         errors.append(f"{label}: duplicate IDs: {', '.join(duplicates)}")
     return errors
+
+
+def merge_missing_canonical_decisions(
+    workbook_rows: list[dict[str, str]],
+    canonical_rows: list[dict[str, str]],
+) -> tuple[list[dict[str, str]], list[str]]:
+    workbook_ids = {row["input_id"] for row in workbook_rows}
+    additions = [
+        dict(row) for row in canonical_rows if row["input_id"] not in workbook_ids
+    ]
+    return workbook_rows + additions, [row["input_id"] for row in additions]
 
 
 def validate_protected_fields(
@@ -820,8 +899,12 @@ def main() -> int:
     closeout_rules = read_csv(args.closeout_rules, CLOSEOUT_HEADERS)
     canonical_tables = load_readonly_canonical_tables(args)
     readonly_parity: Optional[dict[str, Any]] = None
+    workbook_decision_additions: list[str] = []
     if args.input.suffix.lower() == ".xlsx":
         decisions, appliances, readonly_rows, workbook_sheet_names = read_xlsx(args.input)
+        decisions, workbook_decision_additions = merge_missing_canonical_decisions(
+            decisions, baseline_decisions,
+        )
         readonly_parity = readonly_views_parity(
             readonly_rows, workbook_sheet_names, canonical_tables,
         )
@@ -843,19 +926,26 @@ def main() -> int:
         return 2
 
     data = summary(decisions, appliances, closeout_rules)
+    appliance_changes = diff_rows(
+        baseline_appliances, appliances, "appliance_id",
+    )
     report = {
         "mode": "apply" if args.apply else "dry-run",
         "input": str(args.input.resolve()),
         "formal_ifc_write": False,
         "decision_changes": diff_rows(baseline_decisions, decisions, "input_id"),
-        "appliance_changes": diff_rows(baseline_appliances, appliances, "appliance_id"),
+        "workbook_decision_additions": workbook_decision_additions,
+        "appliance_changes": appliance_changes,
         "readonly_view_parity": readonly_parity,
         "summary": data,
         "normalized_inputs": normalized_inputs(decisions, appliances, closeout_rules),
     }
     if args.apply:
         default_appliances = Path(__file__).resolve().parents[2] / "pipeline/decisions/appliance-input-register.csv"
-        if args.appliances.resolve() == default_appliances.resolve():
+        if (
+            args.appliances.resolve() == default_appliances.resolve()
+            and appliance_changes
+        ):
             apply_owner_appliances(Path(__file__).resolve().parents[2], appliances)
             projections(Path(__file__).resolve().parents[2])
         write_csv(args.decisions, DECISION_HEADERS, decisions)
@@ -864,8 +954,9 @@ def main() -> int:
         update_pm(args.pm, pm_block(data))
         if args.input.suffix.lower() == ".xlsx":
             canonical_tables = load_readonly_canonical_tables(args)
-            rebuild_readonly_views(
+            rebuild_workbook_views(
                 args.input,
+                decisions,
                 canonical_tables,
                 {
                     "B13": len(decisions),

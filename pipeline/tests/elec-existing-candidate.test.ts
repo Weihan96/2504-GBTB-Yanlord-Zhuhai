@@ -62,7 +62,7 @@ test(
         "--output",
         reportPath,
         "--source-svg",
-        resolve(root, "drawings/Wall Plan.svg"),
+        resolve(root, "drawings/Electrical Coordination Plan.svg"),
         "--e301-svg",
         e301TestSvg,
         "--e303-svg",
@@ -106,6 +106,10 @@ test(
     expect(e303).toContain('viewBox="0 0 500 400"');
     expect(e301).toContain("Wall Plan-underlay.png");
     expect(e303).toContain("Wall Plan-underlay.png");
+    expect((e301.match(/data-coordination-kind="door"/g) ?? []).length).toBe(8);
+    expect((e301.match(/data-coordination-kind="fixed_furniture"/g) ?? []).length).toBe(70);
+    expect((e303.match(/data-coordination-kind="door"/g) ?? []).length).toBe(8);
+    expect((e303.match(/data-coordination-kind="fixed_furniture"/g) ?? []).length).toBe(70);
   },
   90_000,
 );

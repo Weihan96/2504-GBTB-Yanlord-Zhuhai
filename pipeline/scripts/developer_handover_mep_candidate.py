@@ -20,6 +20,8 @@ from ifcopenshell.util.element import get_psets
 from shapely.geometry import Point, Polygon
 from shapely.ops import unary_union
 
+from svg_audit_underlay import validate_electrical_coordination_source
+
 
 EXPECTED_SOURCE_DXF_SHA256 = "51dc592477cb772da36e643d507877f0cc28c253797c7bae0c913dcaeaabf94f"
 EXPECTED_DWG_CONVERSION_SHA256 = "706483de83d90e526d7d7cf4f0b097902a4f97868c16aba5f6fac9d9e942f0f0"
@@ -56,7 +58,9 @@ def parse_args() -> argparse.Namespace:
         default=source_root / "(D1户型-115)建筑资料平面图.dxf",
     )
     parser.add_argument("--converted-dxf", type=Path, default=root / "tmp/dwg/d1-handover-plan.dxf")
-    parser.add_argument("--source-svg", type=Path, default=root / "drawings/Wall Plan.svg")
+    parser.add_argument(
+        "--source-svg", type=Path, default=root / "drawings/Electrical Coordination Plan.svg"
+    )
     parser.add_argument(
         "--elec-svg",
         type=Path,
@@ -425,6 +429,7 @@ def main() -> int:
     args.output.parent.mkdir(parents=True, exist_ok=True)
     args.output.write_text(json.dumps(report, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
     source_svg = args.source_svg.read_text(encoding="utf-8")
+    validate_electrical_coordination_source(source_svg, args.source_svg, args.ifc)
     args.elec_svg.write_text(render_reference_svg(source_svg, records, "ELEC", ifc_hash), encoding="utf-8")
     args.plum_svg.write_text(render_reference_svg(source_svg, records, "PLUM", ifc_hash), encoding="utf-8")
     print(json.dumps({"summary": report["summary"], "gates": report["gates"]}, ensure_ascii=False))

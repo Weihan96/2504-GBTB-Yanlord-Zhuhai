@@ -16,7 +16,7 @@ import ifcopenshell
 import ifcopenshell.geom
 import ifcopenshell.util.placement
 
-from svg_audit_underlay import validate_wall_plan_source
+from svg_audit_underlay import validate_electrical_coordination_source
 from sync_owner_inputs import DECISION_HEADERS, normalized_inputs, read_csv as read_owner_csv, validate_decisions
 
 KITCHEN_FIRE_SENSOR_GLOBAL_ID = "2fwceKahvBqQXqal2ZcIUF"
@@ -28,6 +28,10 @@ E304_OWNER_INPUT_IDS = (
     "E304-CABINET-VENTILATION",
     "E304-CABLE-CONTINUITY",
     "E304-AP-POWER",
+)
+DEVELOPER_CONTROL_OWNER_INPUT_IDS = (
+    "E302-HVAC-CONTROL-PANELS",
+    "E304-VIDEO-INTERCOM-DOORBELL",
 )
 SWITCH_PRODUCT_GATE_NAMES = (
     "exact_sku_certificate_match",
@@ -64,6 +68,11 @@ def parse_args() -> argparse.Namespace:
     parser.add_argument("--owner-decisions", type=Path, default=root / "pipeline/decisions/owner-input-register.csv")
     parser.add_argument("--spaces", type=Path, default=root / "pipeline/decisions/space-reference-review.csv")
     parser.add_argument("--router-evidence", type=Path, default=root / "build/elec/e304-router-cad-evidence.json")
+    parser.add_argument(
+        "--developer-control-reference",
+        type=Path,
+        default=root / "build/elec/elec-developer-control-reference.json",
+    )
     parser.add_argument("--ceiling-audit", type=Path, default=root / "build/elec/a106-ceiling-device-candidate.json")
     parser.add_argument("--network-topology", type=Path, default=root / "pipeline/decisions/e304-network-topology.csv")
     parser.add_argument(
@@ -71,7 +80,9 @@ def parse_args() -> argparse.Namespace:
         type=Path,
         default=root / "pipeline/decisions/e302-switch-product-review.csv",
     )
-    parser.add_argument("--source-svg", type=Path, default=root / "drawings/Wall Plan.svg")
+    parser.add_argument(
+        "--source-svg", type=Path, default=root / "drawings/Electrical Coordination Plan.svg"
+    )
     parser.add_argument("--output", type=Path, default=root / "build/elec/elec-control-network-candidate.json")
     parser.add_argument("--output-svg", type=Path, default=root / "drawings/E302-E304-control-network-candidate.svg")
     return parser.parse_args()
@@ -385,6 +396,20 @@ def e304_owner_input_gates(owner_decisions: dict[str, dict[str, str]]) -> dict[s
     }
 
 
+def developer_control_owner_gates(owner_decisions: dict[str, dict[str, str]]) -> dict[str, bool]:
+    closed = {
+        input_id: bool(
+            owner_decisions[input_id]["effective_value"]
+            and owner_decisions[input_id]["evidence_reference"]
+        )
+        for input_id in DEVELOPER_CONTROL_OWNER_INPUT_IDS
+    }
+    return {
+        "hvac_control_field_confirmation_complete": closed["E302-HVAC-CONTROL-PANELS"],
+        "access_control_field_confirmation_complete": closed["E304-VIDEO-INTERCOM-DOORBELL"],
+    }
+
+
 def control_wall_side_options(
     ifc_path: Path,
     controls: list[dict[str, Any]],
@@ -670,9 +695,15 @@ def render_svg(source: str, report: dict[str, Any]) -> str:
             status = "USER/PENDING"
         else:
             status = "OPTION"
+        if row["candidate_id"] == "CTRL-ENTRY-A":
+            label_x, label_y, label_anchor = x - 3.4, y + 7, "end"
+        elif row["candidate_id"] == "CTRL-ENTRY-B":
+            label_x, label_y, label_anchor = x - 3.4, y - 4, "end"
+        else:
+            label_x, label_y, label_anchor = x + 3.2, y + (-3 if index % 2 else 5), "start"
         markup.append(
             f'<g data-candidate-id="{candidate_id}"><rect class="cn-control" x="{x-2.2:.3f}" y="{y-2.2:.3f}" width="4.4" height="4.4"/>'
-            f'<text class="cn-label" x="{x+3.2:.3f}" y="{y+(-3 if index % 2 else 5):.3f}">{candidate_id} {status}</text></g>'
+            f'<text class="cn-label" x="{label_x:.3f}" y="{label_y:.3f}" text-anchor="{label_anchor}">{candidate_id} {status}</text></g>'
         )
     for index, row in enumerate(report["network_coordination_zones"]):
         position = row["plan_position_mm"] if "plan_position_mm" in row else row["position_mm"]
@@ -697,6 +728,30 @@ def render_svg(source: str, report: dict[str, Any]) -> str:
             f'<g data-candidate-id="{candidate_id}"><circle class="{css}" cx="{x:.3f}" cy="{y:.3f}" r="2.2"/>'
             f'<text class="cn-label" x="{x+3.4:.3f}" y="{y+(5 if index % 2 else -3):.3f}">{candidate_id}</text></g>'
         )
+    for index, row in enumerate(report["hvac_control_panel_references"]):
+        x, y = world_to_svg(row["position_mm"])
+        candidate_id = html.escape(row["candidate_id"])
+        markup.append(
+            f'<g data-candidate-id="{candidate_id}" data-elec-kind="hvac-control-panel-reference">'
+            f'<rect class="cn-hvac" x="{x-2.2:.3f}" y="{y-2.2:.3f}" width="4.4" height="4.4" transform="rotate(45 {x:.3f} {y:.3f})"/>'
+            f'<text class="cn-label" x="{x+3.4:.3f}" y="{y+(5 if index % 2 else -3):.3f}">{candidate_id} AC</text>'
+            f'<title>{candidate_id} | developer existing reference | field confirmation pending</title></g>'
+        )
+    for index, row in enumerate(report["access_control_references"]):
+        x, y = world_to_svg(row["position_mm"])
+        candidate_id = html.escape(row["candidate_id"])
+        css = "cn-intercom" if row["device_role"] == "video_intercom" else "cn-doorbell"
+        label = "对讲" if row["device_role"] == "video_intercom" else "门铃"
+        if row["device_role"] == "doorbell":
+            label_x, label_y, label_anchor = x - 3.4, y + 7, "end"
+        else:
+            label_x, label_y, label_anchor = x - 3.4, y - 4, "end"
+        markup.append(
+            f'<g data-candidate-id="{candidate_id}" data-elec-kind="{html.escape(row["device_role"])}-reference">'
+            f'<circle class="{css}" cx="{x:.3f}" cy="{y:.3f}" r="2.4"/>'
+            f'<text class="cn-label" x="{label_x:.3f}" y="{label_y:.3f}" text-anchor="{label_anchor}">{candidate_id} {label}</text>'
+            f'<title>{candidate_id} | developer existing reference | field confirmation pending</title></g>'
+        )
     main_bedroom_ap = next(
         row
         for row in report["network_coordination_zones"]
@@ -708,11 +763,11 @@ def render_svg(source: str, report: dict[str, Any]) -> str:
         '<text class="cn-title" x="407" y="16">控制、网络与安全设备协调区</text>',
         '<text class="cn-note" x="407" y="24">Bonsai 同批材质底图｜A-106 点位联动｜非施工发布</text>',
         '<text class="cn-text" x="407" y="39">洋红方块：4 个门口墙侧 A/B 候选</text>',
-        '<text class="cn-text" x="407" y="47">蓝点：主卧/次卧 AP 机械候选点</text>',
-        '<text class="cn-text" x="407" y="55">紫点：玄关高柜路由器平面柜位</text>',
-        '<text class="cn-text" x="407" y="63">橙点：3 个烟感机械候选点</text>',
-        '<text class="cn-text" x="407" y="71">深红点：厨房火灾正式 IFC 定位点</text>',
-        '<text class="cn-text" x="407" y="79">红点：厨房燃气报警器房间区</text>',
+        '<text class="cn-text" x="407" y="47">青色菱形：5 个开发商既有空调面板</text>',
+        '<text class="cn-text" x="407" y="55">绿色/棕色点：既有可视对讲 / 门铃</text>',
+        '<text class="cn-text" x="407" y="63">蓝点：主卧/次卧 AP｜紫点：玄关高柜路由器平面柜位</text>',
+        '<text class="cn-text" x="407" y="71">橙/深红/红：烟感/火灾点/燃气房间区</text>',
+        '<text class="cn-warn" x="407" y="79">空调面板/对讲/门铃：交付参考，待现场确认</text>',
         '<text class="cn-text" x="407" y="93">双控：客厅＋书房＋餐厅｜仅实体有线</text>',
         '<text class="cn-text" x="407" y="101">开关面板底边：1300 mm AFF</text>',
         '<text class="cn-warn" x="407" y="118">Master A 内控主卧；Master B 外控客书餐，均待 A-104</text>',
@@ -729,7 +784,7 @@ def render_svg(source: str, report: dict[str, Any]) -> str:
         f'<text class="cn-note" x="407" y="382">IFC SHA {report["source_ifc_sha256"][:12]}…</text></g>',
     ])
     style = """
-@page{size:500mm 400mm;margin:0}.cn-control{fill:#d63384;stroke:#6b1742;stroke-width:.7}.cn-ap{fill:#228be6;stroke:#0b477d;stroke-width:.7}.cn-router{fill:#7048e8;stroke:#35206f;stroke-width:.7}.cn-smoke{fill:#f59f00;stroke:#7a4d00;stroke-width:.7}.cn-fire{fill:#8f1020;stroke:#4a0710;stroke-width:.7}.cn-gas{fill:#e03131;stroke:#751414;stroke-width:.7}.cn-label,.cn-title,.cn-note,.cn-text,.cn-warn{font-family:Arial,'Noto Sans CJK SC',sans-serif;fill:#102f43}.cn-label{font-size:2.2px;font-weight:700;paint-order:stroke;stroke:#fff;stroke-width:.8px}.cn-panel{fill:#fbfcfd;stroke:#102f43;stroke-width:.5}.cn-title{font-size:3.7px;font-weight:700}.cn-note{font-size:2.15px;fill:#526777}.cn-text{font-size:2.3px}.cn-warn{font-size:2.15px;fill:#c92a2a;font-weight:700}
+@page{size:500mm 400mm;margin:0}.cn-control{fill:#d63384;stroke:#6b1742;stroke-width:.7}.cn-hvac{fill:#12b8c4;stroke:#075b63;stroke-width:.7}.cn-intercom{fill:#2f9e44;stroke:#145c23;stroke-width:.7}.cn-doorbell{fill:#9c6644;stroke:#5b3826;stroke-width:.7}.cn-ap{fill:#228be6;stroke:#0b477d;stroke-width:.7}.cn-router{fill:#7048e8;stroke:#35206f;stroke-width:.7}.cn-smoke{fill:#f59f00;stroke:#7a4d00;stroke-width:.7}.cn-fire{fill:#8f1020;stroke:#4a0710;stroke-width:.7}.cn-gas{fill:#e03131;stroke:#751414;stroke-width:.7}.cn-label,.cn-title,.cn-note,.cn-text,.cn-warn{font-family:Arial,'Noto Sans CJK SC',sans-serif;fill:#102f43}.cn-label{font-size:2.2px;font-weight:700;paint-order:stroke;stroke:#fff;stroke-width:.8px}.cn-panel{fill:#fbfcfd;stroke:#102f43;stroke-width:.5}.cn-title{font-size:3.7px;font-weight:700}.cn-note{font-size:2.15px;fill:#526777}.cn-text{font-size:2.3px}.cn-warn{font-size:2.15px;fill:#c92a2a;font-weight:700}
 """
     return source.replace("</svg>", f'<style id="elec-control-network-style">{style}</style><g id="elec-control-network">{"".join(markup)}</g></svg>', 1)
 
@@ -745,6 +800,7 @@ def main() -> int:
     controls = control_zones(read_csv(args.doors))
     owner_decisions = effective_owner_decisions(args.owner_decisions)
     owner_gates = e304_owner_input_gates(owner_decisions)
+    developer_control_gates = developer_control_owner_gates(owner_decisions)
     switch_product_review = compile_switch_product_review(args.switch_product_review)
     control_options = control_wall_side_options(args.ifc, controls, owner_decisions)
     control_panels = [
@@ -754,6 +810,11 @@ def main() -> int:
     spaces = read_csv(args.spaces)
     ceiling_devices = read_csv(args.ceiling_devices)
     router_evidence = json.loads(args.router_evidence.read_text(encoding="utf-8"))
+    developer_control = json.loads(args.developer_control_reference.read_text(encoding="utf-8"))
+    if developer_control.get("source_ifc_sha256") != source_hash:
+        raise RuntimeError("developer control reference does not match the current formal IFC")
+    hvac_control_panels = developer_control.get("hvac_control_panel_references", [])
+    access_controls = developer_control.get("access_control_references", [])
     ceiling_audit = json.loads(args.ceiling_audit.read_text(encoding="utf-8"))
     topology_rows = read_network_topology(args.network_topology)
     if len(ceiling_devices) != 6 or len({row["candidate_id"] for row in ceiling_devices}) != 6:
@@ -779,19 +840,25 @@ def main() -> int:
                 input_id: owner_decisions[input_id]["effective_value"]
                 for input_id in (
                     "E302-ENTRY-SIDE", "E302-ENTRY-PANEL", "E302-MASTER-SIDE", "E302-MASTER-PANEL",
-                    *E304_OWNER_INPUT_IDS,
+                    *E304_OWNER_INPUT_IDS, *DEVELOPER_CONTROL_OWNER_INPUT_IDS,
                 )
             },
             "submitted": {
                 input_id: owner_decisions[input_id]["user_value"]
                 for input_id in (
                     "E302-ENTRY-SIDE", "E302-ENTRY-PANEL", "E302-MASTER-SIDE", "E302-MASTER-PANEL",
-                    *E304_OWNER_INPUT_IDS,
+                    *E304_OWNER_INPUT_IDS, *DEVELOPER_CONTROL_OWNER_INPUT_IDS,
                 )
             },
             "e304_completion_gates": owner_gates,
+            "developer_control_completion_gates": developer_control_gates,
         },
         "router_evidence_path": str(args.router_evidence.resolve()),
+        "developer_control_reference": {
+            "path": str(args.developer_control_reference.resolve()),
+            "sha256": sha256(args.developer_control_reference),
+            "source_status": "developer_handover_existing_reference_field_confirmation_pending",
+        },
         "network_topology": {
             "path": str(args.network_topology.resolve()),
             "sha256": sha256(args.network_topology),
@@ -827,12 +894,17 @@ def main() -> int:
                 len(panel["gates"]) for panel in switch_product_review["panels"]
             ),
             "switch_product_release_blockers": len(switch_product_review["release_blockers"]),
+            "hvac_control_panel_references": len(hvac_control_panels),
+            "video_intercom_references": sum(row["device_role"] == "video_intercom" for row in access_controls),
+            "doorbell_references": sum(row["device_role"] == "doorbell" for row in access_controls),
         },
         "control_coordination_zones": controls,
         "control_wall_side_options": control_options,
         "control_panel_candidates": control_panels,
         "network_coordination_zones": networks,
         "safety_device_coordination_zones": safety_devices,
+        "hvac_control_panel_references": hvac_control_panels,
+        "access_control_references": access_controls,
         "switch_product_review": switch_product_review,
         "release_blockers": switch_product_review["release_blockers"],
         "gates": {
@@ -900,6 +972,7 @@ def main() -> int:
                 row for row in ap_candidates if row["candidate_id"] == "A106-AP-R14"
             )["clearance_margin_mm"] >= 100.0,
             **owner_gates,
+            **developer_control_gates,
             "three_smoke_candidates_present": len(smoke_zones) == 3 and {row["candidate_id"] for row in smoke_zones} == {"A106-SMOKE-R09", "A106-SMOKE-R14", "A106-SMOKE-R20"},
             "smoke_positioning_constraints_present": all(row["mechanical_positioning_constraints_mm"] == {
                 "minimum_wall_or_beam_clearance": 500,
@@ -913,6 +986,23 @@ def main() -> int:
             and fire_positions[0]["position_mm"] == [1800.0, -4576.0, 2400.0],
             "one_kitchen_gas_alarm_zone_present": len(gas_zones) == 1 and gas_zones[0]["room_reference"] == "R04",
             "gas_alarm_model_authority_pending": len(gas_zones) == 1 and gas_zones[0]["approval_status"] == "gas_authority_model_approval_pending",
+            "five_developer_hvac_control_panels_visible": len(hvac_control_panels) == 5
+            and {row["candidate_id"] for row in hvac_control_panels}
+            == {"DEV-S002", "DEV-S004", "DEV-S009", "DEV-S010", "DEV-S011"},
+            "developer_hvac_control_panel_heights_visible": all(
+                row["installation_height_mm"] == 1300.0 for row in hvac_control_panels
+            ),
+            "developer_video_intercom_visible": sum(
+                row["device_role"] == "video_intercom" for row in access_controls
+            ) == 1,
+            "developer_doorbell_visible": sum(
+                row["device_role"] == "doorbell" for row in access_controls
+            ) == 1,
+            "developer_controls_remain_reference_pending_field_confirmation": all(
+                row["source_status"] == "developer_handover_existing_reference_field_confirmation_pending"
+                and row["automatic_ifc_write_allowed"] is False
+                for row in [*hvac_control_panels, *access_controls]
+            ),
             "a106_exact_positions_imported": all(
                 "candidate" in row["coordinate_status"] or "confirmed_ifc_position" in row["coordinate_status"]
                 for row in ap_candidates + smoke_zones + fire_positions
@@ -928,7 +1018,7 @@ def main() -> int:
     args.output.parent.mkdir(parents=True, exist_ok=True)
     args.output.write_text(json.dumps(report, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
     source = args.source_svg.read_text(encoding="utf-8")
-    validate_wall_plan_source(source, args.source_svg, args.ifc)
+    validate_electrical_coordination_source(source, args.source_svg, args.ifc)
     args.output_svg.write_text(render_svg(source, report), encoding="utf-8")
     print(json.dumps({"summary": report["summary"], "gates": report["gates"]}, ensure_ascii=False))
     return 0

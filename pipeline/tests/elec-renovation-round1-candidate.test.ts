@@ -108,6 +108,8 @@ test("first-round renovation electrical demands stay read-only and complete", ()
   const renderedSvg = readFileSync(svg, "utf8");
   expect(renderedSvg).toContain("elec-renovation-round1");
   expect(renderedSvg).toContain("Wall Plan-underlay.png");
+  expect((renderedSvg.match(/data-coordination-kind="door"/g) ?? []).length).toBe(8);
+  expect((renderedSvg.match(/data-coordination-kind="fixed_furniture"/g) ?? []).length).toBe(70);
   expect(renderedSvg).toContain("NS-01 两个 10A 端口同时：20A / 4.4kW");
   expect(renderedSvg).toContain("NS-02 咖啡候选上限：11.82A / 2.6kW");
   expect(renderedSvg).toContain("E-303 容量研究结论｜220V / C16 RCBO");

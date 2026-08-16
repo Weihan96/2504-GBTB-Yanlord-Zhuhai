@@ -34,7 +34,10 @@ test("developer handover MEP points map into the current IFC coordinate system w
   expect(report.gates.all_points_have_space_candidate).toBe(true);
   expect(report.gates.developer_reference_is_renovation_design).toBe(false);
   expect(report.gates.automatic_ifc_write_allowed).toBe(false);
-  expect(readFileSync(elecSvg, "utf8")).toContain("developer-elec-reference");
+  const renderedElec = readFileSync(elecSvg, "utf8");
+  expect(renderedElec).toContain("developer-elec-reference");
+  expect((renderedElec.match(/data-coordination-kind="door"/g) ?? []).length).toBe(8);
+  expect((renderedElec.match(/data-coordination-kind="fixed_furniture"/g) ?? []).length).toBe(70);
   expect(readFileSync(plumSvg, "utf8")).toContain("developer-plum-reference");
 }, 60_000);
 

@@ -13,7 +13,7 @@ import re
 from pathlib import Path
 from typing import Any, Callable
 
-from svg_audit_underlay import validate_wall_plan_source
+from svg_audit_underlay import validate_electrical_coordination_source
 from sync_owner_inputs import (
     APPLIANCE_HEADERS,
     DECISION_HEADERS,
@@ -91,7 +91,9 @@ def parse_args() -> argparse.Namespace:
         type=Path,
         default=root / "pipeline/decisions/e303-circuit-design.csv",
     )
-    parser.add_argument("--source-svg", type=Path, default=root / "drawings/Wall Plan.svg")
+    parser.add_argument(
+        "--source-svg", type=Path, default=root / "drawings/Electrical Coordination Plan.svg"
+    )
     parser.add_argument(
         "--output",
         type=Path,
@@ -757,7 +759,7 @@ def main() -> int:
     args.output.parent.mkdir(parents=True, exist_ok=True)
     args.output.write_text(json.dumps(report, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
     source = args.source_svg.read_text(encoding="utf-8")
-    validate_wall_plan_source(source, args.source_svg, args.ifc)
+    validate_electrical_coordination_source(source, args.source_svg, args.ifc)
     args.output_svg.write_text(
         render_svg(source, report),
         encoding="utf-8",
