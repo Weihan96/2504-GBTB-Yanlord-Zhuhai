@@ -99,6 +99,9 @@ test("compiler preserves decision status and evidence-gated closeout status", ()
       expect(output.closeout_status).toBe("decision_confirmed_evidence_pending");
       expect(output.closeout_status).not.toBe("verified");
     }
+    if (decision.status === "不适用") {
+      expect(output.closeout_status).toBe("not_applicable");
+    }
   }
   expect(report.formal_ifc.sha256).toBe(sha256(sources.ifc));
   expect(report.source_ifc_sha256).toBe(report.formal_ifc.sha256);
@@ -113,17 +116,21 @@ test("compiler preserves decision status and evidence-gated closeout status", ()
   for (const [key, path] of Object.entries(sources)) expect(sha256(path)).toBe(sourceHashes[key]);
 });
 
-test("all current INT1 blockers form seven stable and lossless review packages", () => {
+test("all current INT1 blockers form thirteen stable and lossless review packages", () => {
   const { process, jsonOutput } = runCompiler();
   expect(process.exitCode, process.stderr.toString()).toBe(0);
   const report = JSON.parse(readFileSync(jsonOutput, "utf8"));
   const currentInt1 = parseCsv(sources.requirements)
-    .filter((row) => row.blocks_release === "yes" && row.discipline.toUpperCase() === "INT1")
+    .filter((row) => row.blocks_release === "yes" && row.discipline.toUpperCase().split("/").includes("INT1"))
     .map((row) => row.requirement_id)
     .sort();
+  const currentInt1Set = new Set(currentInt1);
   const packages = report.requirement_review_packages.filter((row: any) => row.root_cause_id.startsWith("INT1-"));
-  const projected = packages.flatMap((row: any) => row.requirement_ids).sort();
-  expect(packages).toHaveLength(7);
+  const projected = packages
+    .flatMap((row: any) => row.requirement_ids)
+    .filter((requirementId: string) => currentInt1Set.has(requirementId))
+    .sort();
+  expect(packages).toHaveLength(13);
   expect(projected).toEqual(currentInt1);
   expect(new Set(projected).size).toBe(projected.length);
   for (const reviewPackage of packages) {

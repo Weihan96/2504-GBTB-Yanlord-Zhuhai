@@ -1,5 +1,5 @@
 ﻿sheet_number,title,source_view,status,publish_target,notes
-A-001,图纸目录、设计说明与图例,,candidate,output/pdf/A-001-drawing-index-candidate.pdf,M072 自动汇总全部图号、阶段、版本、说明和图例
+A-001,图纸目录、设计说明与图例,,candidate,output/pdf/A-001-drawing-index-candidate.pdf,M072 自动汇总全部图号、阶段、版本、说明和图例；最终交付增加材质化正投影产品页要求：平面＋正/展开立面＋材质纹理＋尺寸链＋统一版式，与施工协调图并行且不替代厂家加工图
 A-101,现状测量平面图,,planned,,待现场实测主要开间、进深、层高、梁底、窗台与不可移动物业条件
 A-102,现状与拆除墙定位图,Wall Plan,candidate,output/pdf/A-102-demolition-plan-candidate.pdf,13 面 DEMOLISH IfcWall 已写入正式 IFC；SVG/PDF 含现状/新建/已拆记录/计划拆除图例、D01-D13 近似尺寸表，机械 QA 通过
 A-103,新建墙体及施工定位图,Wall Plan,candidate,output/pdf/A-103-wall-plan-candidate.pdf,已生成当前 IFC 的墙体分组、20 轴闭合尺寸链、4 面已确认新墙和 5 个有宿主门洞定位；84 面 EXISTING 与 4 面 NEW 已写入标准属性
@@ -13,10 +13,10 @@ E-303,插座与设备电源图,Wall Plan,candidate,output/pdf/E-301-E-303-renova
 E-304,弱电及网络图,Electrical Coordination Plan,candidate,output/pdf/E-302-E-304-control-network-candidate.pdf,两个吸顶 AP 已采用 CAT6 星型回弱电箱 PoE 交换机的拓扑；开发商既有可视对讲和门铃参考点已恢复可见并保持待现场确认。实购 AP 功耗、PoE 总预算、弱电箱净尺寸/柜门温升、网线通断、门禁接口和端接顺序仍待厂家/物业/现场证据。
 A-106,综合天花图,Wall Plan,candidate,output/pdf/A-106-ceiling-device-candidate.pdf,厨房火灾探测点位已确认；感温/感烟/复合与产品由消防/设备方确认。燃气公司咨询模板及最终附件/回填清单已就绪，所有报警器型号仍为咨询候选，未获批准。
 M-401,空调、通风及安全设备协调图,,candidate,drawings/M-401-hvac-safety-coordination-candidate.svg,A01–A04 官方管径/坡度已关闭；A05 仍缺准确冷媒/排水接口，A06 缺产品与全部接口；六台精确端口坐标均未批准，按厂家索取表关闭后再冻结路线。
-I-501,厨房平面、立面及剖面,Furniture Plan,candidate,output/pdf/I-501-kitchen-existing-candidate.pdf,70 个既有对象协调包络入图；APP-009/010 两台未采购 SJ85ZX26MC 候选的官方柜孔、G3/4 冷水与 Ø38 排水约束已作为 2 条无定位接口表项入图，不生成粗装 XYZ、阀门、软管路径或开孔位置；EL-03 视图 06～09 及 EL-P01/P02 公共空间折线展开和贯穿长立面已写入正式 IFC 的 Bonsai 原生 Drawing；新增 1:30 无纹理 SVG 与手机 PNG；其余厂家安装图、燃气实测和五金运动包络未关闭
-I-502,卫生间平面、立面及节点,Sanitary Plan,candidate,output/pdf/I-502-bathroom-existing-candidate.pdf,33 个既有对象协调包络入图；EL-06 视图 18～22 与 EL-08 视图 27～32 已写入正式 IFC；原 9 个深层 BRep、公共空间新增 2 个对象及全量重编发现的 BED02 现均有纯折线 ELEVATION_VIEW，详细 Body 未替换；洁具粗装图、五金运动包络和节点未关闭
-I-503,入户、家政及固定家具深化图,Furniture Plan,candidate,output/pdf/I-503-entry-laundry-existing-candidate.pdf,APP-017 已改为 Siemens WG54M7D20W 独立洗衣机＋WQ55M7U20W 热泵干衣机上下叠放；图面显示 650W×800D×1900H mm 项目协调净空而非厂家机身或接口尺寸，两个 placement-only IfcElectricAppliance 语义子件不虚构 Body。17008829 为说明书订货号；WTZ27510 带抽板仅作候选，二者映射及逐 E-Nr./FD 兼容仍待西门子书面确认；最终柜体、侧置水电、前抽维修和剖切视向待深化
+I-501,厨房平面、立面及剖面,Furniture Plan,candidate,output/pdf/I-501-kitchen-existing-candidate.pdf,70 个既有对象协调包络入图；APP-009/010 两台未采购 SJ85ZX26MC 候选的官方柜孔、G3/4 冷水与 Ø38 排水约束已作为 2 条无定位接口表项入图，不生成粗装 XYZ、阀门、软管路径或开孔位置；EL-03 视图 06～09 及 EL-P01/P02 公共空间折线展开和贯穿长立面已写入正式 IFC 的 Bonsai 原生 Drawing；新增 1:30 无纹理 SVG 与手机 PNG；其余厂家安装图、燃气实测和五金运动包络未关闭；中厨墙面更新为灶台操作墙台面同材大板＋远端墙浅置物架，准确墙段、材料、加工和架后背衬待深化；最终需输出材质化正投影厨房产品页
+I-502,卫生间平面、立面及节点,Sanitary Plan,candidate,output/pdf/I-502-bathroom-existing-candidate.pdf,33 个既有对象协调包络入图；EL-06 视图 18～22 与 EL-08 视图 27～32 已写入正式 IFC；原 9 个深层 BRep、公共空间新增 2 个对象及全量重编发现的 BED02 现均有纯折线 ELEVATION_VIEW，详细 Body 未替换；洁具粗装图、五金运动包络和节点未关闭；厕所定制地漏渠道与水母地漏/中央集水器＋托克乐思网＋线性排水渠方向已确认，准确房间、数量和 shop drawing 待商家；最终需输出材质化正投影卫生间产品页
+I-503,入户、家政及固定家具深化图,Furniture Plan,candidate,output/pdf/I-503-entry-laundry-existing-candidate.pdf,APP-017 已改为 Siemens WG54M7D20W 独立洗衣机＋WQ55M7U20W 热泵干衣机上下叠放；图面显示 650W×800D×1900H mm 项目协调净空而非厂家机身或接口尺寸，两个 placement-only IfcElectricAppliance 语义子件不虚构 Body。17008829 为说明书订货号；WTZ27510 带抽板仅作候选，二者映射及逐 E-Nr./FD 兼容仍待西门子书面确认。业主已确认入户须支持拿快递／临时落包；准确位置、形式和尺寸须结合门扇、通道、Entry 控制及强弱电检修范围深化
 I-504,其他固定家具立面与剖面,Furniture Plan,candidate,output/pdf/I-504-other-fixed-furniture-existing-candidate.pdf,25 个既有对象协调包络入图；EL-01/02/04/05/07/09 及公共空间 EL-P01/P02 已写入正式 IFC 的 Bonsai 原生 Drawing；SIS04、HIMA01、BED01 等复杂家具使用受控折线立面，官方旧图名与当前 Space 分开保留；包络不是加工、开孔或粗装尺寸
 D-601,材料与收口节点,Wall Finish Plan,candidate,drawings/D-601-material-junction-detail-candidate.svg,DET1 已生成 6 个材料与收口变量节点的待复核候选；材料产品、厂家做法和施工构造 18 个字段全部保持未决，不自动写 IFC
 D-602,防水与湿区节点,FFL PLAN,candidate,drawings/D-602-waterproof-wet-area-detail-candidate.svg,DET1 已生成 6 个防水与湿区变量节点的待复核候选；材料产品、厂家做法和施工构造 18 个字段全部保持未决，不自动写 IFC
-S-701,材料、设备及五金表,,candidate,drawings/S-701-material-equipment-hardware-schedule-candidate.svg,50 条家具产品身份、家电使用/存放、门窗五金、既有暖通类型和墙面材料系统记录已按已确认/候选/未决分栏；APP-017 已改为西门子两机叠放，APP-014 已改为 WS7FSB0C1C 优选且 WS7060BC1C 仅作比价备选；不是下单表，原厂连接件兼容、最终接口、柜体加工和现场条件未关闭
+S-701,材料、设备及五金表,,candidate,drawings/S-701-material-equipment-hardware-schedule-candidate.svg,53 条家具产品身份、家电使用/存放、门窗五金、既有暖通类型、定制地漏方向和墙面材料系统记录按已确认/候选/未决分栏；中厨采用灶台操作墙台面同材大板＋远端墙浅置物架方向；厕所定制地漏渠道已定但 shop drawing 未齐；不是下单表

@@ -30,6 +30,15 @@ TADELAKT_SPACE_NAMES = {
     "客卫",
     "客卫飘窗",
 }
+KITCHEN_SLAB_SHELF_SPACE_NAMES = {"中厨"}
+
+
+def finish_for_space(space_name: str) -> tuple[str, str]:
+    if space_name in KITCHEN_SLAB_SHELF_SPACE_NAMES:
+        return "KITCHEN_SLAB_SHELF_SCHEME", "台面同材大板＋浅置物架墙（待 I-501 分墙段深化）"
+    if space_name in TADELAKT_SPACE_NAMES:
+        return "TADELAKT", "Tadelakt"
+    return "WHITE_WALL", "大白墙"
 
 
 def parse_args() -> argparse.Namespace:
@@ -122,6 +131,7 @@ def finish_segments(
         end = min(maximum[axis], bbox["max_mm"][axis])
         if end - start <= tolerance:
             continue
+        finish_code, finish_name = finish_for_space(space["long_name"])
         raw.append(
             {
                 "axis": "X" if axis == 0 else "Y",
@@ -130,8 +140,8 @@ def finish_segments(
                 "end_mm": end,
                 "space_global_ids": [space["global_id"]],
                 "space_long_names": [space["long_name"]],
-                "candidate_finish_code": "TADELAKT" if space["long_name"] in TADELAKT_SPACE_NAMES else "WHITE_WALL",
-                "candidate_finish": "Tadelakt" if space["long_name"] in TADELAKT_SPACE_NAMES else "大白墙",
+                "candidate_finish_code": finish_code,
+                "candidate_finish": finish_name,
             }
         )
     raw.sort(key=lambda item: (item["start_mm"], item["end_mm"], item["space_long_names"]))
@@ -215,6 +225,7 @@ def side_panel(records: list[dict[str, Any]], segments: list[dict[str, Any]], so
     rows = [
         ("IFC 饰面对象", str(len(records))),
         ("跨材料边界对象", str(object_counts["MULTI_FINISH_SPLIT_REQUIRED"])),
+        ("中厨大板/置物架方案分段", str(segment_counts["KITCHEN_SLAB_SHELF_SCHEME"])),
         ("Tadelakt 分段", str(segment_counts["TADELAKT"])),
         ("大白墙分段", str(segment_counts["WHITE_WALL"])),
     ]
@@ -235,9 +246,11 @@ def side_panel(records: list[dict[str, Any]], segments: list[dict[str, Any]], so
             f'<text x="417" y="{y + 3.2:.1f}" font-size="3.0">大白墙（默认）</text>',
             f'<rect x="406" y="{y + 7:.1f}" width="8" height="4" fill="#65b9a9" stroke="#156b60" stroke-width="0.25"/>',
             f'<text x="417" y="{y + 10.2:.1f}" font-size="3.0">Tadelakt</text>',
+            f'<rect x="406" y="{y + 14:.1f}" width="8" height="4" fill="#e6dfd2" stroke="#7b7061" stroke-width="0.25"/>',
+            f'<text x="417" y="{y + 17.2:.1f}" font-size="3.0">中厨大板＋浅置物架方案</text>',
         ]
     )
-    y += 18.0
+    y += 25.0
     parts.append(f'<text x="406" y="{y:.1f}" font-size="3.2" font-weight="700">Tadelakt 房间范围</text>')
     y += 5.0
     for name in tadelakt_spaces:
@@ -246,8 +259,9 @@ def side_panel(records: list[dict[str, Any]], segments: list[dict[str, Any]], so
     y += 3.0
     notes = [
         "规则：次卧及其飘窗、两卫干/湿区及飘窗",
-        "当前画面 2 件已确认大白墙；1 件延后判断",
-        "待定：品牌系统、颜色、厚度、基层、防水节点",
+        "中厨 R04：灶台操作墙用台面同材大板；远端墙设浅置物架",
+        "大板待定：准确材质、厚度、板幅、拼缝、耐热与开孔",
+        "置物架待定：墙段、宽深高、层数、承载、固定基层与背衬",
         "参考链接只作材质方向证据，不作施工参数",
         f"IFC SHA {source_sha[:12]}…",
     ]
@@ -360,9 +374,9 @@ def main() -> None:
     counts = Counter(record["candidate_finish_code"] for record in records)
     all_segments = [segment for record in records for segment in record["segments"]]
     segment_counts = Counter(segment["candidate_finish_code"] for segment in all_segments)
-    if counts != Counter({"WHITE_WALL": 27, "TADELAKT": 23, "MULTI_FINISH_SPLIT_REQUIRED": 1}):
+    if counts != Counter({"WHITE_WALL": 23, "TADELAKT": 23, "KITCHEN_SLAB_SHELF_SCHEME": 2, "MULTI_FINISH_SPLIT_REQUIRED": 3}):
         raise RuntimeError(f"unexpected object finish counts: {dict(counts)}")
-    if segment_counts != Counter({"WHITE_WALL": 28, "TADELAKT": 24}) or len(all_segments) != 52:
+    if segment_counts != Counter({"WHITE_WALL": 26, "TADELAKT": 24, "KITCHEN_SLAB_SHELF_SCHEME": 4}) or len(all_segments) != 54:
         raise RuntimeError(f"unexpected finish segments: count={len(all_segments)}, finishes={dict(segment_counts)}")
 
     args.register.parent.mkdir(parents=True, exist_ok=True)
@@ -424,14 +438,17 @@ svg { display: block; }
 * { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
 .wfin-white-wall path { fill: #dce3e8 !important; stroke: #68727a !important; stroke-width: 0.35 !important; }
 .wfin-tadelakt path { fill: #65b9a9 !important; stroke: #156b60 !important; stroke-width: 0.45 !important; }
+.wfin-kitchen-slab-shelf path { fill: #e6dfd2 !important; stroke: #7b7061 !important; stroke-width: 0.45 !important; }
 .wfin-split-required path { fill: #f1d4a9 !important; stroke: #c65f00 !important; stroke-width: 0.55 !important; }
 .wfin-white-wall rect { fill: #dce3e8 !important; stroke: #68727a !important; stroke-width: 0.35 !important; }
 .wfin-tadelakt rect { fill: #65b9a9 !important; stroke: #156b60 !important; stroke-width: 0.45 !important; }
+.wfin-kitchen-slab-shelf rect { fill: #e6dfd2 !important; stroke: #7b7061 !important; stroke-width: 0.45 !important; }
 .wfin-split-required rect { fill: #f1d4a9 !important; stroke: #c65f00 !important; stroke-width: 0.55 !important; }
 .wfin-fallback rect { stroke-dasharray: 1.2 0.7; }
 .wfin-indicator { fill: none !important; stroke-width: 1.3 !important; stroke-linecap: butt; opacity: 0.92; }
 .wfin-indicator.wfin-white-wall { stroke: #8e9ba5 !important; }
 .wfin-indicator.wfin-tadelakt { stroke: #00a88f !important; }
+.wfin-indicator.wfin-kitchen-slab-shelf { stroke: #8b7b69 !important; }
 """
     svg = svg.replace("</style>", css + "</style>", 1)
     fragment_count = 0
@@ -442,6 +459,7 @@ svg { display: block; }
         class_name = {
             "TADELAKT": "wfin-tadelakt",
             "WHITE_WALL": "wfin-white-wall",
+            "KITCHEN_SLAB_SHELF_SCHEME": "wfin-kitchen-slab-shelf",
             "MULTI_FINISH_SPLIT_REQUIRED": "wfin-split-required",
         }[record["candidate_finish_code"]]
         svg, count = add_class(svg, record["covering_global_id"], class_name)
@@ -451,7 +469,11 @@ svg { display: block; }
             fragment_object_count += 1
         fragment_count += count
     for segment in all_segments:
-        class_name = "wfin-tadelakt" if segment["candidate_finish_code"] == "TADELAKT" else "wfin-white-wall"
+        class_name = {
+            "TADELAKT": "wfin-tadelakt",
+            "WHITE_WALL": "wfin-white-wall",
+            "KITCHEN_SLAB_SHELF_SCHEME": "wfin-kitchen-slab-shelf",
+        }[segment["candidate_finish_code"]]
         indicators.append(plan_indicator(segment, class_name))
     svg = svg.replace(
         "</svg>",
@@ -472,18 +494,19 @@ svg { display: block; }
         "source_svg": {"path": str(args.source_svg), "sha256": sha256(args.source_svg)},
         "automatic_ifc_write_allowed": False,
         "cladding_count": len(records),
-        "single_finish_object_count": counts["TADELAKT"] + counts["WHITE_WALL"],
+        "single_finish_object_count": counts["TADELAKT"] + counts["WHITE_WALL"] + counts["KITCHEN_SLAB_SHELF_SCHEME"],
         "mixed_finish_object_count": counts["MULTI_FINISH_SPLIT_REQUIRED"],
         "finish_segment_count": len(all_segments),
         "tadelakt_segment_count": segment_counts["TADELAKT"],
         "white_wall_segment_count": segment_counts["WHITE_WALL"],
+        "kitchen_slab_shelf_scheme_segment_count": segment_counts["KITCHEN_SLAB_SHELF_SCHEME"],
         "source_svg_fragment_count": fragment_count,
         "source_svg_object_count": fragment_object_count,
         "fallback_object_count": len(fallback_fragments),
         "main_bath_dry_segment_count": len(main_bath_dry_segments),
         "mixed_finish_object_ids": [record["covering_global_id"] for record in records if record["candidate_finish_code"] == "MULTI_FINISH_SPLIT_REQUIRED"],
-        "controlled_gap": "当前画面两块橙色饰面已确认整件为大白墙；剩余 1 个跨界对象延后至最终统一选材",
-        "unresolved_parameters": ["品牌/产品系统", "颜色/样板", "完成面总厚度", "基层", "湿区防水与收口节点"],
+        "controlled_gap": "中厨 R04 已确认灶台操作墙采用台面同材大板、远端墙采用浅置物架；当前 Grid Space 分段只表达房间级方案，不虚构准确墙段、置物架或大板加工几何",
+        "unresolved_parameters": ["灶台操作墙与远端墙准确映射", "大板材质/厚度/板幅/拼缝/耐热/开孔", "大板完成高度", "置物架位置/宽深高/层数/承载/固定", "置物架背衬完成面", "防潮防水及柜体设备收口"],
         "references": [
             "https://mp.weixin.qq.com/s/roqN3h93WZ0AER71lJzaUQ",
             "https://www.modamuri.com/article195.html",
@@ -492,8 +515,10 @@ svg { display: block; }
         ],
         "qa": {
             "effective_cladding_count_51": len(records) == 51,
-            "finish_segment_partition_complete": segment_counts["TADELAKT"] + segment_counts["WHITE_WALL"] == len(all_segments),
-            "mixed_finish_objects_blocked_from_whole_object_assignment": counts["MULTI_FINISH_SPLIT_REQUIRED"] == 1,
+            "finish_segment_partition_complete": segment_counts["TADELAKT"] + segment_counts["WHITE_WALL"] + segment_counts["KITCHEN_SLAB_SHELF_SCHEME"] == len(all_segments),
+            "mixed_finish_objects_blocked_from_whole_object_assignment": counts["MULTI_FINISH_SPLIT_REQUIRED"] == 3,
+            "kitchen_countertop_match_slab_and_shallow_shelf_direction_confirmed": segment_counts["KITCHEN_SLAB_SHELF_SCHEME"] == 4,
+            "kitchen_exact_wall_segment_mapping_pending": segment_counts["KITCHEN_SLAB_SHELF_SCHEME"] == 4,
             "candidate_visual_contains_every_cladding": fragment_object_count + len(fallback_fragments) == len(records),
             "formal_ifc_unchanged": True,
         },
@@ -503,8 +528,9 @@ svg { display: block; }
     args.report.write_text(json.dumps(report, ensure_ascii=False, indent=2), encoding="utf-8")
     print(
         f"WFIN candidate: {len(records)} CLADDING, {len(all_segments)} finish segments "
-        f"({segment_counts['TADELAKT']} Tadelakt, {segment_counts['WHITE_WALL']} white wall), "
-        f"1 deferred split-review object, IFC unchanged"
+        f"({segment_counts['TADELAKT']} Tadelakt, {segment_counts['WHITE_WALL']} white wall, "
+        f"{segment_counts['KITCHEN_SLAB_SHELF_SCHEME']} kitchen slab/shelf scheme), "
+        f"3 mixed-finish objects / 1 deferred split-review object, IFC unchanged"
     )
 
 

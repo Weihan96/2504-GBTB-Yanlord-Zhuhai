@@ -56,6 +56,9 @@ ROLE_STYLE = {
     "fixed_context": ("#9aa5ad", "#4c5961", "Wall / slab / assembly context"),
 }
 
+ENTRY_PARCEL_FUNCTION_ID = "INT1-ENTRY-PARCEL-FUNCTION"
+ENTRY_PARCEL_LAYOUT_ID = "INT1-ENTRY-PARCEL-LAYOUT"
+
 
 def sha256(path: Path) -> str:
     digest = hashlib.sha256()
@@ -159,6 +162,26 @@ def read_dishwasher_interfaces(path: Path, source_hash: str) -> list[dict[str, A
     return result
 
 
+def read_entry_parcel_requirements(path: Path) -> dict[str, dict[str, str]]:
+    rows = {
+        row["input_id"]: row
+        for row in csv.DictReader(path.open(newline="", encoding="utf-8-sig"))
+    }
+    missing = {
+        ENTRY_PARCEL_FUNCTION_ID,
+        ENTRY_PARCEL_LAYOUT_ID,
+    } - rows.keys()
+    if missing:
+        raise RuntimeError(f"owner-input register is missing entry parcel rows: {sorted(missing)}")
+    function = rows[ENTRY_PARCEL_FUNCTION_ID]
+    layout = rows[ENTRY_PARCEL_LAYOUT_ID]
+    if function["status"] != "自定义确认" or not function["user_value"]:
+        raise RuntimeError("entry parcel function must remain owner-confirmed")
+    if layout["status"] != "需证据" or layout["user_value"]:
+        raise RuntimeError("entry parcel layout must remain evidence-pending")
+    return {ENTRY_PARCEL_FUNCTION_ID: function, ENTRY_PARCEL_LAYOUT_ID: layout}
+
+
 def interface_requirement(interface: dict[str, Any], key: str) -> dict[str, str]:
     return next(
         item for item in interface["requirements"] if item["parameter_key"] == key
@@ -207,8 +230,14 @@ def make_svg(
     source_hash: str,
     underlay_hash: str,
     dishwasher_interfaces: list[dict[str, Any]],
+    entry_parcel_requirements: dict[str, dict[str, str]],
 ) -> str:
     spec = SHEETS[sheet_id]
+    confirmed_style = (
+        "  .confirmed { font-size: 2.8px; font-weight: 700; fill: #216b45; }\n"
+        if sheet_id == "I-503"
+        else ""
+    )
     overlays = []
     for record in records:
         x, y, width, height = plan_rect(record)
@@ -283,6 +312,24 @@ def make_svg(
         interface_lines.append(
             svg_text(382.0, row_y + 5.0, "BLOCK: rough-in XYZ / valves / hose path / opening position", "block")
         )
+    elif sheet_id == "I-503":
+        function = entry_parcel_requirements[ENTRY_PARCEL_FUNCTION_ID]
+        layout = entry_parcel_requirements[ENTRY_PARCEL_LAYOUT_ID]
+        interface_lines.extend(
+            [
+                f'<g data-requirement-id="{ENTRY_PARCEL_FUNCTION_ID}" data-status="owner-confirmed">',
+                svg_text(382.0, 286.0, "CONFIRMED · 拿快递／临时落包功能", "confirmed"),
+                svg_text(382.0, 291.0, function["candidate_value"], "interface"),
+                svg_text(382.0, 296.0, "避开门扇、通道、控制面板及强弱电检修", "interface"),
+                "</g>",
+                f'<g data-requirement-id="{ENTRY_PARCEL_LAYOUT_ID}" data-status="evidence-pending">',
+                svg_text(382.0, 304.0, "PENDING · I-503 平／立面确定位置、形式与尺寸", "block"),
+                svg_text(382.0, 309.0, "门内顺手可达；不得占门扇包络或通道", "interface"),
+                svg_text(382.0, 314.0, "不得遮挡 Entry、门禁及强弱电箱检修", "interface"),
+                svg_text(382.0, 319.0, "墙侧／形式／宽深／标高：待 I-503 深化", "interface"),
+                "</g>",
+            ]
+        )
 
     legend = []
     legend_y = 373.5
@@ -308,7 +355,7 @@ def make_svg(
   .index {{ font-size: 2.75px; }}
   .legend {{ font-size: 2.5px; }}
   .block {{ font-size: 2.65px; font-weight: 700; fill: #b32121; }}
-  .interface {{ font-size: 2.55px; fill: #244f65; }}
+{confirmed_style}  .interface {{ font-size: 2.55px; fill: #244f65; }}
 </style>
 <rect width="500" height="400" fill="white"/>
 <rect x="7" y="7" width="366" height="366" fill="#fafafa" stroke="#30363b" stroke-width="0.5"/>
@@ -354,6 +401,11 @@ def parse_args() -> argparse.Namespace:
         type=Path,
         default=Path("pipeline/decisions/source-evidence-register.csv"),
     )
+    parser.add_argument(
+        "--owner-inputs",
+        type=Path,
+        default=Path("pipeline/decisions/owner-input-register.csv"),
+    )
     parser.add_argument("--render-script", type=Path)
     parser.add_argument("--render-pdfs", action="store_true")
     return parser.parse_args()
@@ -369,6 +421,7 @@ def main() -> None:
         args.equipment_register.resolve(),
         args.installation_requirements.resolve(),
         args.source_evidence.resolve(),
+        args.owner_inputs.resolve(),
     ]
     for path in dependency_paths:
         if not path.is_file():
@@ -384,6 +437,7 @@ def main() -> None:
     ):
         raise RuntimeError("unexpected INT1 sheet object counts")
     dishwasher_interfaces = read_dishwasher_interfaces(args.existing_report, source_hash)
+    entry_parcel_requirements = read_entry_parcel_requirements(args.owner_inputs)
 
     args.drawings_dir.mkdir(parents=True, exist_ok=True)
     args.pdf_dir.mkdir(parents=True, exist_ok=True)
@@ -403,6 +457,7 @@ def main() -> None:
                 source_hash,
                 sha256(underlay),
                 dishwasher_interfaces,
+                entry_parcel_requirements,
             ) + "\n",
             encoding="utf-8",
         )
@@ -427,6 +482,12 @@ def main() -> None:
             "block_count": len(blockers),
             "installation_interface_row_count": (
                 len(dishwasher_interfaces) if sheet_id == "I-501" else 0
+            ),
+            "confirmed_functional_requirement_ids": (
+                [ENTRY_PARCEL_FUNCTION_ID] if sheet_id == "I-503" else []
+            ),
+            "pending_layout_requirement_ids": (
+                [ENTRY_PARCEL_LAYOUT_ID] if sheet_id == "I-503" else []
             ),
             "mechanical_pass": True,
         }

@@ -19,6 +19,8 @@ A106-FIRE-TYPE,authority_product_evidence,消防/设备方,按 A106-CONSULTATION
 A106-GAS-ALARM,authority_product_evidence,燃气公司/设备方,发送 A106-燃气公司咨询模板并按 A106-CONSULTATION-PACK-20260815 收齐书面准入、联动、供电、净距与验收回复,no,型号和安装条件必须由燃气主管方关闭
 WFIN-WHITE-SYSTEM,human_material_selection,业主/材料设计,最终厂家体系色号光泽厚度与样板确认,no,暂缓项不得用常见值关闭
 WFIN-TADELAKT,human_material_selection,业主/材料设计,最终厂家完整体系湿区基层防水收口与样板,no,网页意向不能替代施工体系
+WFIN-KITCHEN-PUTTY-COVERAGE,human_design_selection,业主/室内设计,业主确认旧全生堂中厨方案已由台面同材大板＋浅置物架方案取代,no,已由 OWNER-WFIN-KITCHEN-SLAB-SHELF-20260817 关闭并保留历史。
+WFIN-KITCHEN-PUTTY-SYSTEM,human_design_selection,业主/室内设计,确认不再把全生堂产品系统作为中厨当前材料索取项,no,已关闭为不适用当前中厨方案；不再等待全生堂厨房系统资料。
 RCP1-HVAC-PORTS,product_interface_evidence,空调厂家/机电设计,按 RCP1-PLUM-REQUEST-20260815 的 A01–A06 行提交准确接口图和设计参数,no,无批准厂家接口图时只保留路线候选
 PLUM-ROUGHINS,product_interface_evidence,设备方/给排水设计,按 RCP1-PLUM-REQUEST-20260815 逐台提交厂家图、现场标高/方向、防水检修和定制 shop drawing,no,存放位置不得替代实际使用和粗装接口
 DET1-WATERPROOF,human_material_selection,业主/建筑设计,最终防水厂家体系上翻高度门口节点与样板,no,须与地漏坡向门槛高差一起人审
@@ -29,3 +31,11 @@ E302-BEDSIDE-220V,site_or_drawing_evidence,建筑设计/家具设计/电气设�
 APP017-SIEMENS-STACK,manufacturer_compatibility_and_rough_in,西门子客服/设备方/橱柜方/给排水设计/电气设计,书面确认 WG54M7D20W 与 WQ55M7U20W 对应 E-Nr./FD 可叠放、17008829 的商业型号与抽板配置；最终侧置插座/水龙头/排水和维修抽出尺寸,no,不得以 WTZ27510 官网候选反向宣称 17008829 带抽板或逐型号已兼容。
 E302-HVAC-CONTROL-PANELS,site_and_system_evidence,空调厂家/机电设计/现场,5 个现有面板逐点照片和线路核对表；对应 A01–A06 的系统归属；保留迁移合并结论；最终控制器接口与安装定位,no,开发商图只证明既有参考位置和 1300mm 标注；不能证明装修后控制系统。
 E304-VIDEO-INTERCOM-DOORBELL,site_and_system_evidence,物业/门禁厂家/弱电设计/现场,可视对讲和门铃实物型号线路物业接口测试；保留迁移或接入结论；门套完成面后的最终定位,no,开发商图只证明既有参考位置和标注高度；不能证明装修后门禁系统已接通。
+INT1-ENTRY-PARCEL-FUNCTION,human_design_selection,业主/室内设计,业主确认入户须支持拿快递、签收和临时落包,no,功能需求关闭后仍须由独立布局条目关闭准确解法。
+INT1-ENTRY-PARCEL-LAYOUT,site_or_drawing_evidence,室内设计/全屋定制/现场,I-503 玄关平面＋立面／剖面候选及必要现场净尺寸：门扇开启、通行净宽、柜体分格、Entry 控制与强弱电检修范围,no,不得用常见玄关柜尺寸、未核实门扇包络或单张无比例照片冻结位置和尺寸。
+WFIN-KITCHEN-SLAB-SHELF-SCOPE,human_design_selection,业主/室内设计,业主确认灶台操作墙台面同材大板＋远端墙浅置物架,no,设计方向已关闭，准确构造由独立深化项关闭。
+WFIN-KITCHEN-SLAB-SHELF-DETAIL,product_interface_evidence,室内设计/全屋定制/台面与大板供应商/现场,I-501 分墙段平立面及联合 shop drawing：大板材料厚度板幅拼缝耐热开孔收口；浅置物架位置宽深高层数承载固定基层背衬和清洁方式；防潮防水连续节点,no,不得用常见置物架尺寸或房间级 WFIN 分段代替项目加工图。
+DRAWING-MATERIALIZED-ORTHO-SCOPE,human_design_selection,业主/室内设计,业主确认材质化正投影产品页为最终交付内容,no,交付范围已关闭。
+DRAWING-MATERIALIZED-ORTHO-INPUTS,product_interface_evidence,全屋定制/材料供应商/设备方/现场/室内设计,最终柜体 shop drawing、现场完成面尺寸、材料编号与纹理/样板、设备外形与开启包络、大板范围厚度拼缝边缘及开孔,no,未齐前允许输出明确标记未知项的候选产品页，不得冒充最终材料或加工图。
+PLUM-CUSTOM-DRAIN-VENDOR,human_design_selection,业主/给排水设计,业主确认定制主页渠道与水母地漏/中央集水器＋托克乐思网＋线性排水渠组合方向,no,渠道和方向已关闭。
+PLUM-CUSTOM-DRAIN-SHOP-DRAWING,product_interface_evidence,定制地漏商家/给排水设计/防水/现场,商家主体与订单；逐卫生间数量/房间映射/组件清单；准确型号材质表面；总长宽深、排水口径方向、水封、流量、找平层/完成面范围、防水法兰、坡向、检修清洁、排水中心和安装公差的 shop drawing,no,shop drawing 未签认前不替代 Geberit、不改正式 IFC 地漏与坡面。

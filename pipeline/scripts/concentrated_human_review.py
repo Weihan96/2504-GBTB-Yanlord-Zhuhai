@@ -17,7 +17,9 @@ from typing import Any
 
 
 CONFIRMED_DECISION_STATUSES = {"采用候选", "自定义确认", "已确认", "confirmed"}
-KNOWN_DECISION_STATUSES = CONFIRMED_DECISION_STATUSES | {"待填写", "需证据", "暂缓"}
+NOT_APPLICABLE_DECISION_STATUSES = {"不适用"}
+KNOWN_DECISION_STATUSES = CONFIRMED_DECISION_STATUSES | NOT_APPLICABLE_DECISION_STATUSES | {"待填写", "需证据", "暂缓"}
+CLOSED_CLOSEOUT_STATUSES = {"verified", "not_applicable"}
 EVIDENCE_GATED_CLOSEOUT_KINDS = {
     "authority_product_evidence",
     "human_material_selection",
@@ -56,6 +58,15 @@ INT1_PACKAGES = (
         "affected_sheets": ["I-501", "P-201", "P-202"],
         "responsible_party": "石材加工/家具深化/给排水设计",
         "required_evidence": "盖章加工图，明确成品外尺寸、盆腔平面、深度及与排水接口的关系",
+    },
+    {
+        "package_id": "INT1-CUSTOM-FLOOR-DRAIN",
+        "title": "厕所定制水母地漏／中央集水器与线性排水渠",
+        "equipment_ids": {"DRAIN-CUSTOM-001"},
+        "root_cause": "业主只确认定制渠道和组件方向，尚无逐房间数量、准确组件、加工尺寸、排水与防水接口或与吉博力构件的分配关系",
+        "affected_sheets": ["P-202", "I-502", "D-602", "S-701"],
+        "responsible_party": "定制地漏商家/给排水设计/防水/全屋定制",
+        "required_evidence": "逐卫生间盖章 shop drawing 与组件清单，明确数量和房间映射、长宽深、材质表面、过滤、水封、设计流量、出水口、完成标高、坡向、防水法兰、清扫检修及与吉博力构件的沿用／替换／连接关系",
     },
     {
         "package_id": "INT1-ISLAND-WORKTOP",
@@ -340,6 +351,8 @@ def closeout_status(decision: dict[str, str], rule: dict[str, str]) -> str:
     automatic = rule["automatic_close_allowed"].lower()
     if automatic not in {"yes", "no"}:
         raise ValueError(f"invalid automatic_close_allowed for {decision['input_id']}: {automatic!r}")
+    if status in NOT_APPLICABLE_DECISION_STATUSES:
+        return "not_applicable"
     if status == "暂缓":
         return "deferred_blocker"
     if status == "待填写":
@@ -599,7 +612,7 @@ def main() -> int:
         review_items = [
             {"review_item_kind": "owner_input", **item}
             for item in decision_items
-            if item["blocks_release"] and item["closeout_status"] != "verified"
+            if item["blocks_release"] and item["closeout_status"] not in CLOSED_CLOSEOUT_STATUSES
         ] + [
             {"review_item_kind": "requirement_package", **package}
             for package in requirement_packages
@@ -627,7 +640,7 @@ def main() -> int:
             "summary": {
                 "owner_input_count": len(decision_items),
                 "owner_closeout_status_counts": dict(sorted(closeout_counts.items())),
-                "owner_closeout_open_count": sum(item["closeout_status"] != "verified" for item in decision_items),
+                "owner_closeout_open_count": sum(item["closeout_status"] not in CLOSED_CLOSEOUT_STATUSES for item in decision_items),
                 "blocking_requirement_count": len(blockers),
                 "int1_requirement_count": len(int1),
                 "requirement_review_package_count": len(requirement_packages),
@@ -654,7 +667,13 @@ def main() -> int:
         }
         atomic_write(paths["json_output"], json.dumps(report, ensure_ascii=False, indent=2) + "\n")
         atomic_write(paths["markdown_output"], markdown(report))
-        print(json.dumps(report, ensure_ascii=False, indent=2))
+        print(json.dumps({
+            "status": "ok",
+            "json_output": str(paths["json_output"]),
+            "markdown_output": str(paths["markdown_output"]),
+            "summary": report["summary"],
+            "gates": report["gates"],
+        }, ensure_ascii=False, indent=2))
         return 0
     except (OSError, UnicodeError, csv.Error, ValueError) as exc:
         print(json.dumps({"status": "fail_closed", "error": str(exc)}, ensure_ascii=False), file=sys.stderr)

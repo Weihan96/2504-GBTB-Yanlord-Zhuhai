@@ -833,3 +833,18 @@ REQ-APP019-013,APP-019,INT1,product_height,unknown,,mm,,pending,pending,OWNER-IN
 REQ-APP019-014,APP-019,INT1,product_depth,unknown,,mm,,pending,pending,OWNER-INPUT-APP019-20260815,业主仅确认设备类别与数量,yes,保持 unknown；关闭证据：准确型号尺寸图。
 REQ-APP019-015,APP-019,INT1,service_clearance,unknown,,mm,,pending,pending,OWNER-INPUT-APP019-20260815,业主仅确认设备类别与数量,yes,保持 unknown；关闭证据：厂家散热、操作和检修要求。
 REQ-APP019-016,APP-019,MULTI,interface_center_coordinates,unknown,,,,pending,pending,OWNER-INPUT-APP019-20260815,业主仅确认设备类别与数量,yes,保持 unknown；关闭证据：厂家安装图与项目定位。
+REQ-DRAINCUST-001,DRAIN-CUSTOM-001,PLUM/DET1/INT1,vendor_profile,https://www.xiaohongshu.com/user/profile/61137f3c000000000100af65,,,,user_input,confirmed,OWNER-PLUM-CUSTOM-DRAIN-20260817,业主 2026-08-17 确认,no,稳定主页 URL；账号主体待订单核验
+REQ-DRAINCUST-002,DRAIN-CUSTOM-001,PLUM/DET1/INT1,assembly_direction,水母地漏/中央集水器＋托克乐思网＋线性地漏排水渠,,,,user_input,confirmed,OWNER-PLUM-CUSTOM-DRAIN-20260817,业主 2026-08-17 确认,no,业主确认组合方向；不是准确产品型号
+REQ-DRAINCUST-003,DRAIN-CUSTOM-001,PLUM/DET1/INT1,component_models,unknown,,,,pending,pending,OWNER-PLUM-CUSTOM-DRAIN-20260817,当前仅确认渠道与组合方向,yes,关闭证据：逐组件准确品牌/型号/材质/表面和订单组件表。
+REQ-DRAINCUST-004,DRAIN-CUSTOM-001,PLUM/DET1/INT1,quantity,unknown,,,,pending,pending,OWNER-PLUM-CUSTOM-DRAIN-20260817,当前仅确认渠道与组合方向,yes,关闭证据：逐卫生间数量表。
+REQ-DRAINCUST-005,DRAIN-CUSTOM-001,PLUM/DET1/INT1,room_mapping,unknown,,,,pending,pending,OWNER-PLUM-CUSTOM-DRAIN-20260817,当前仅确认渠道与组合方向,yes,关闭证据：主卫/客卫等逐空间映射。
+REQ-DRAINCUST-006,DRAIN-CUSTOM-001,PLUM/DET1/INT1,shop_drawing,unknown,,,,pending,pending,OWNER-PLUM-CUSTOM-DRAIN-20260817,当前仅确认渠道与组合方向,yes,关闭证据：商家签认项目 shop drawing。
+REQ-DRAINCUST-007,DRAIN-CUSTOM-001,PLUM/DET1/INT1,overall_dimensions,unknown,,,,pending,pending,OWNER-PLUM-CUSTOM-DRAIN-20260817,当前仅确认渠道与组合方向,yes,关闭证据：总长、宽、深及组件包络。
+REQ-DRAINCUST-008,DRAIN-CUSTOM-001,PLUM/DET1/INT1,outlet_nominal_diameter,unknown,,,,pending,pending,OWNER-PLUM-CUSTOM-DRAIN-20260817,当前仅确认渠道与组合方向,yes,关闭证据：准确排水口径和连接制式。
+REQ-DRAINCUST-009,DRAIN-CUSTOM-001,PLUM/DET1/INT1,outlet_orientation,unknown,,,,pending,pending,OWNER-PLUM-CUSTOM-DRAIN-20260817,当前仅确认渠道与组合方向,yes,关闭证据：出水方向与现场连接剖面。
+REQ-DRAINCUST-010,DRAIN-CUSTOM-001,PLUM/DET1/INT1,water_seal_depth,unknown,,,,pending,pending,OWNER-PLUM-CUSTOM-DRAIN-20260817,当前仅确认渠道与组合方向,yes,关闭证据：同型号水封构造与深度。
+REQ-DRAINCUST-011,DRAIN-CUSTOM-001,PLUM/DET1/INT1,design_flow_rate,unknown,,,,pending,pending,OWNER-PLUM-CUSTOM-DRAIN-20260817,当前仅确认渠道与组合方向,yes,关闭证据：厂家设计/测试流量及适用边界。
+REQ-DRAINCUST-012,DRAIN-CUSTOM-001,PLUM/DET1/INT1,waterproof_flange_and_build_up,unknown,,,,pending,pending,OWNER-PLUM-CUSTOM-DRAIN-20260817,当前仅确认渠道与组合方向,yes,关闭证据：防水法兰/翼环、找平层与完成面适用范围。
+REQ-DRAINCUST-013,DRAIN-CUSTOM-001,PLUM/DET1/INT1,finish_level_and_slope_interface,unknown,,,,pending,pending,OWNER-PLUM-CUSTOM-DRAIN-20260817,当前仅确认渠道与组合方向,yes,关闭证据：完成标高、坡向、拼接与公差。
+REQ-DRAINCUST-014,DRAIN-CUSTOM-001,PLUM/DET1/INT1,service_and_cleaning_access,unknown,,,,pending,pending,OWNER-PLUM-CUSTOM-DRAIN-20260817,当前仅确认渠道与组合方向,yes,关闭证据：毛发网取出、清洁、检修和更换方式。
+REQ-DRAINCUST-015,DRAIN-CUSTOM-001,PLUM/DET1/INT1,interface_center_coordinates,unknown,,,,pending,pending,OWNER-PLUM-CUSTOM-DRAIN-20260817,当前仅确认渠道与组合方向,yes,关闭证据：厂家安装图与项目定位；不得推测中心坐标。

@@ -156,8 +156,23 @@ def build_rows(root: Path, ifc_hash: str) -> tuple[list[dict[str, str]], dict[st
             "observed_type_not_final_selection", ifc_hash,
         ))
 
+    custom_drain_rows = [item for item in equipment if item["legacy_kind"] == "owner_custom_drain" and item["schedule_included"] == "yes"]
+    for item in custom_drain_rows:
+        req = requirements_by_equipment[item["equipment_id"]]
+        result.append(row(
+            f"S701-{item['equipment_id']}", "洁具与排水", item["equipment_id"], item["item_name"],
+            "定制渠道与组合方向已由业主确认", item["variant"],
+            "、".join(name for name, value in (
+                ("房间/数量", req.get("room_mapping", "")),
+                ("准确组件型号", req.get("component_models", "")),
+                ("厂家 shop drawing", req.get("shop_drawing", "")),
+                ("排水/防水/完成面接口", req.get("interface_center_coordinates", "")),
+            ) if not value or value == "unknown"),
+            item["source_ids"], "owner_selected_custom_direction_shop_drawing_pending", ifc_hash,
+        ))
+
     for item in read_csv(sources["wfin"]):
-        if item["issue_id"] not in {"WFIN-R02", "WFIN-R03"}:
+        if item["issue_id"] not in {"WFIN-R02", "WFIN-R03", "WFIN-R05"}:
             continue
         result.append(row(
             f"S701-{item['issue_id']}", "墙面材料系统", item["issue_id"], item["scope"],
@@ -183,7 +198,8 @@ def render_svg(rows: list[dict[str, str]], ifc_hash: str) -> str:
         ("家电与移动厨电", "存放位置与使用位置严格分列"),
         ("门窗与五金", "定位/名义尺寸可查；厂家五金未冻结"),
         ("暖通设备类型", "仅登记 IFC 既有类型，不代表最终选型"),
-        ("墙面材料系统", "Tadelakt/大白墙为意图，产品体系未定"),
+        ("洁具与排水", "定制渠道与组合方向已确认；准确接口仍待 shop drawing"),
+        ("墙面材料系统", "Tadelakt/大白墙/中厨同材大板＋浅置物架为意图"),
     ]
     cards = []
     for index, (name, note) in enumerate(sections):

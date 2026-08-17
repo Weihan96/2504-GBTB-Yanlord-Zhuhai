@@ -136,11 +136,11 @@ def build_nodes(ifc_hash: str) -> list[dict[str, str]]:
         ),
         node(
             "D601-N04", "D-601", "墙地顶收口", "踢脚、墙顶交界与不同材料收口",
-            "墙面候选已区分大白墙与 Tadelakt 意图；最终产品选择已延后",
+            "墙面候选已区分大白墙、Tadelakt 与中厨 R04 台面同材大板／浅置物架方案；中厨准确墙段和构造未定",
             "房间/墙段｜踢脚型式｜墙顶收口｜材料分界｜阴影缝/密封策略",
-            "Tadelakt 系统、大白墙涂料系统、踢脚产品和样板未定",
+            "Tadelakt 系统、大白墙涂料系统、中厨大板材质/厚度/板幅/拼缝与浅置物架材质/背衬、踢脚产品和样板未定",
             "完成面总厚、基层、防水衔接与分界构造未定",
-            "设计/材料供应商/现场", "wfin-open-issues.csv WFIN-R01/R02/R03；施工图检查清单 D-601", ifc_hash,
+            "设计/材料供应商/现场", "wfin-open-issues.csv WFIN-R01/R02/R03/R05；施工图检查清单 D-601", ifc_hash,
         ),
         node(
             "D601-N05", "D-601", "柜墙交界", "固定家具、台面、饰面与墙体交界",
@@ -160,19 +160,19 @@ def build_nodes(ifc_hash: str) -> list[dict[str, str]]:
         ),
         node(
             "D602-N01", "D-602", "防水范围", "卫生间、淋浴区、厨房及阳台",
-            "湿区与墙面材意图已有候选；防水范围和高度尚未确认",
+            "湿区与墙面材料意图已有候选；中厨 R04 已确认灶台操作墙台面同材大板、远端墙浅置物架，但厨房防潮防水范围和高度尚未确认",
             "空间｜墙/地范围｜上翻高度｜终止位置｜与门窗/柜体衔接",
             "防水产品系统、底涂、增强层和密封材未定",
             "基层处理、遍数/厚度、上翻与收头构造未定",
-            "防水供应商/设计/施工/监理", "施工图检查清单 D-602；wfin-open-issues.csv WFIN-R02", ifc_hash,
+            "防水供应商/设计/施工/监理", "施工图检查清单 D-602；wfin-open-issues.csv WFIN-R02/R05", ifc_hash,
         ),
         node(
             "D602-N02", "D-602", "淋浴排水", "淋浴区、地漏与毛发过滤",
-            "18 个湿区坡面的 1.047% 及箭头所示下坡方向已确认；毛发过滤需求已记录",
+            "18 个湿区坡面的 1.047% 及箭头所示下坡方向已确认；业主已指定水母地漏/中央集水器＋托克乐思网＋线性排水渠的定制方向",
             "湿区｜地漏位置/型式｜排水路径｜毛发网取出方向｜检修与清理空间",
-            "地漏、线性排水和毛发过滤产品未定",
+            "定制商家渠道已定；准确组件型号、数量、房间映射、材质和 shop drawing 未定",
             "地漏翼环、防水压接、找坡层和可清理构造未定",
-            "给排水/防水/洁具供应商/现场", "PM 卫生间坡向；深化设计注意事项#8；a105-floor-review.csv", ifc_hash,
+            "给排水/防水/定制地漏商家/现场", "OWNER-PLUM-CUSTOM-DRAIN-20260817；PM 卫生间坡向；深化设计注意事项#8；a105-floor-review.csv", ifc_hash,
         ),
         node(
             "D602-N03", "D-602", "管根与穿透", "供排水、套管、墙地穿透点",
@@ -340,7 +340,7 @@ def main() -> None:
     if len(threshold_rows) != 8 or any(row["review_group"] != "A105-R03" for row in threshold_rows):
         raise RuntimeError("A-105 threshold evidence is incomplete")
     wfin_rows = {row["issue_id"]: row for row in read_csv(paths["wfin_issues"])}
-    if not {"WFIN-R01", "WFIN-R02", "WFIN-R03"}.issubset(wfin_rows):
+    if not {"WFIN-R01", "WFIN-R02", "WFIN-R03", "WFIN-R05"}.issubset(wfin_rows):
         raise RuntimeError("WFIN material/product open issues are incomplete")
 
     ifc_hash = sha256(paths["ifc"])

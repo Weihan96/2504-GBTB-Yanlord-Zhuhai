@@ -60,10 +60,10 @@ def read_register(path: Path) -> list[dict[str, str]]:
     counts: dict[str, int] = {}
     for row in rows:
         counts[row["candidate_finish_code"]] = counts.get(row["candidate_finish_code"], 0) + 1
-        expected_status = "deferred_material_review" if row["candidate_finish_code"] == "MULTI_FINISH_SPLIT_REQUIRED" else "confirmed_candidate"
+        expected_status = "deferred_material_review" if row["review_required"] == "yes" else "confirmed_candidate"
         if row["status"] != expected_status or row["formal_ifc_write_allowed"] != "no":
             raise RuntimeError(f"unapproved WFIN row {row['covering_global_id']}")
-    if counts != {"WHITE_WALL": 27, "TADELAKT": 23, "MULTI_FINISH_SPLIT_REQUIRED": 1}:
+    if counts != {"WHITE_WALL": 23, "TADELAKT": 23, "KITCHEN_SLAB_SHELF_SCHEME": 2, "MULTI_FINISH_SPLIT_REQUIRED": 3}:
         raise RuntimeError(f"unexpected WFIN partition {counts}")
     return rows
 
@@ -78,7 +78,7 @@ def read_segments(path: Path) -> dict[str, list[dict[str, str]]]:
         by_covering.setdefault(row["covering_global_id"], []).append(row)
         if row["formal_ifc_write_allowed"] != "no":
             raise RuntimeError(f"segment write boundary missing for {row['segment_id']}")
-    if len(rows) != 52 or counts != {"WHITE_WALL": 28, "TADELAKT": 24} or len(by_covering) != 51:
+    if len(rows) != 54 or counts != {"WHITE_WALL": 26, "TADELAKT": 24, "KITCHEN_SLAB_SHELF_SCHEME": 4} or len(by_covering) != 51:
         raise RuntimeError(f"unexpected WFIN segment partition: rows={len(rows)}, counts={counts}, objects={len(by_covering)}")
     return by_covering
 
@@ -149,7 +149,7 @@ def write_issues(path: Path) -> None:
             "issue_id": "WFIN-R03",
             "scope": "white-wall-system",
             "object_guid": "",
-            "current_evidence": "当前候选分段中 28 段为大白墙；其中两件跨 Space 对象已由用户确认为整件大白墙，最终产品选择统一延后",
+            "current_evidence": "当前候选分段中 26 段为大白墙；其中两件跨 Space 对象已由用户确认为整件大白墙，最终产品选择统一延后",
             "required_action_or_decision": "确认涂料体系、白色样板/光泽、基层处理和完成面总厚",
             "basis": "大白墙房间范围已确认，但产品与施工层次尚未确认",
             "confidence": "1.00",
@@ -168,6 +168,18 @@ def write_issues(path: Path) -> None:
             "review_required": "yes",
             "status": "anchor_candidate_required",
             "stop_condition": "未证明锚点在实际几何且世界几何 0.0 mm 前不得写 placement",
+        },
+        {
+            "issue_id": "WFIN-R05",
+            "scope": "kitchen-countertop-match-slab-and-shallow-shelf-system",
+            "object_guid": "1nl6eDw2H0gwKgR3NLW4h6; 3wU1hhFVz3AvGTchfzAZXl; 39ssagG3n08RmEGQ8p0HPN; 2D_AY5nR96Qf5uU1y3Srzn",
+            "current_evidence": "全生堂商家明确建议厨房贴砖便于打理；业主随后确认灶台操作墙采用台面同材大板、远端墙采用浅置物架，并撤回中厨全墙全生堂方案",
+            "required_action_or_decision": "由 I-501／全屋定制明确灶台操作墙与远端墙；提交大板材质、厚度、板幅、拼缝、耐热、开孔和收口，以及浅置物架宽深高、层数、承载、固定基层、背衬和清洁方式",
+            "basis": "VENDOR-WFIN-全生堂厨房建议贴砖-20260817 与 OWNER-WFIN-中厨同材大板浅置物架-20260817；当前只关闭设计方向，不具备加工尺寸或准确墙段",
+            "confidence": "1.00",
+            "review_required": "yes",
+            "status": "decision_required",
+            "stop_condition": "墙段、材料、尺寸和节点未关闭前，只发布房间级大板／置物架方案候选；不生成加工尺寸、不写正式 IFC 材料或置物架几何，也不保留中厨全墙全生堂要求",
         },
     ]
     path.parent.mkdir(parents=True, exist_ok=True)
@@ -223,6 +235,7 @@ def main() -> None:
         )
         relation.GlobalId = deterministic_guid(covering.GlobalId, "REL")
         contains_tadelakt = any(segment["candidate_finish_code"] == "TADELAKT" for segment in covering_segments)
+        contains_kitchen_scheme = any(segment["candidate_finish_code"] == "KITCHEN_SLAB_SHELF_SCHEME" for segment in covering_segments)
         segment_summary = " | ".join(
             f'{segment["segment_id"]}:{segment["candidate_finish_code"]}:{segment["start_mm"]}-{segment["end_mm"]}mm'
             for segment in covering_segments
@@ -245,7 +258,13 @@ def main() -> None:
                 "ColourSamplePending": True,
                 "TotalThicknessPending": True,
                 "SubstratePending": True,
-                "WaterproofingDetailPending": contains_tadelakt,
+                "WaterproofingDetailPending": contains_tadelakt or contains_kitchen_scheme,
+                "KitchenSlabShelfSchemeConfirmed": contains_kitchen_scheme,
+                "CooklineBacksplashCountertopMatchConfirmed": contains_kitchen_scheme,
+                "RemoteWallShallowShelvesConfirmed": contains_kitchen_scheme,
+                "ExactWallSegmentMappingPending": contains_kitchen_scheme,
+                "SlabMaterialAndFabricationPending": contains_kitchen_scheme,
+                "ShelfDimensionsAndBackingPending": contains_kitchen_scheme,
                 "FormalIfcWriteAllowed": False,
             },
         )
@@ -311,11 +330,12 @@ def main() -> None:
         "finish_segment_count": sum(len(value) for value in segments_by_covering.values()),
         "tadelakt_segment_count": sum(segment["candidate_finish_code"] == "TADELAKT" for value in segments_by_covering.values() for segment in value),
         "white_wall_segment_count": sum(segment["candidate_finish_code"] == "WHITE_WALL" for value in segments_by_covering.values() for segment in value),
+        "kitchen_slab_shelf_scheme_segment_count": sum(segment["candidate_finish_code"] == "KITCHEN_SLAB_SHELF_SCHEME" for value in segments_by_covering.values() for segment in value),
         "new_root_count": len(expected_new_roots),
         "maximum_world_vertex_change_mm": maximum_change,
         "material_associations_preserved": True,
-        "open_issue_count": 4,
-        "formal_write_blockers": ["WFIN-R01", "WFIN-R02", "WFIN-R03", "WFIN-R04"],
+        "open_issue_count": 5,
+        "formal_write_blockers": ["WFIN-R01", "WFIN-R02", "WFIN-R03", "WFIN-R04", "WFIN-R05"],
         "qa": {
             "segment_partition_complete": True,
             "mixed_finish_whole_object_assignment_blocked": True,
@@ -324,13 +344,21 @@ def main() -> None:
             "geometry_within_tolerance": maximum_change <= args.tolerance_mm,
             "materials_unchanged": True,
             "formal_ifc_unchanged": True,
+            "kitchen_countertop_match_slab_and_shallow_shelf_direction_confirmed": sum(
+                segment["candidate_finish_code"] == "KITCHEN_SLAB_SHELF_SCHEME"
+                for value in segments_by_covering.values() for segment in value
+            ) == 4,
+            "kitchen_exact_wall_segment_mapping_pending": sum(
+                segment["candidate_finish_code"] == "KITCHEN_SLAB_SHELF_SCHEME"
+                for value in segments_by_covering.values() for segment in value
+            ) == 4,
         },
         "applied": applied,
     }
     args.report.parent.mkdir(parents=True, exist_ok=True)
     args.report.write_text(json.dumps(report, ensure_ascii=False, indent=2), encoding="utf-8")
     print(
-        f"WFIN semantics candidate: {len(rows)} intent Psets, 52 finish segments, 1 deferred split-review object, "
+        f"WFIN semantics candidate: {len(rows)} intent Psets, 54 finish segments, 3 mixed-finish objects / 1 deferred split-review object, "
         f"geometry max change {maximum_change:.6f} mm, materials preserved, formal IFC unchanged"
     )
 

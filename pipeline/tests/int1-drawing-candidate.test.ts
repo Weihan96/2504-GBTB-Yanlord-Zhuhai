@@ -88,7 +88,7 @@ test("INT1 drawing candidate produces four safe coordination-envelope sheets", (
   expect(report.summary.all_overlays_are_coordination_envelopes).toBe(true);
   expect(report.summary.installation_interface_row_count).toBe(2);
   expect(report.summary.unlocated_interface_count).toBe(2);
-  expect(report.source_dependencies).toHaveLength(6);
+  expect(report.source_dependencies).toHaveLength(7);
   expect(report.output_records).toHaveLength(4);
   expect(report.gates.candidate_generation_pass).toBe(true);
   expect(report.gates.formal_ifc_write_allowed).toBe(false);
@@ -110,6 +110,7 @@ test("INT1 drawing candidate produces four safe coordination-envelope sheets", (
     sheet.installation_interface_row_count
   )).toEqual([2, 0, 0, 0]);
   const kitchenSvg = readFileSync(join(drawings, "I-501-kitchen-existing-candidate.svg"), "utf8");
+  const entrySvg = readFileSync(join(drawings, "I-503-entry-laundry-existing-candidate.svg"), "utf8");
   expect(kitchenSvg).toContain('data-equipment-id="APP-009"');
   expect(kitchenSvg).toContain('data-equipment-id="APP-010"');
   expect(kitchenSvg).toContain('data-project-interface-status="unlocated"');
@@ -118,6 +119,12 @@ test("INT1 drawing candidate produces four safe coordination-envelope sheets", (
   expect(kitchenSvg).toContain("Niche H780–835 mm · W600–608 mm · D≥550 mm");
   expect(kitchenSvg).toContain("rough-in XYZ / valves / hose path / opening position");
   expect((kitchenSvg.match(/data-equipment-id=/g) ?? []).length).toBe(2);
+  expect(entrySvg).toContain('data-requirement-id="INT1-ENTRY-PARCEL-FUNCTION"');
+  expect(entrySvg).toContain('data-requirement-id="INT1-ENTRY-PARCEL-LAYOUT"');
+  expect(entrySvg).toContain("CONFIRMED · 拿快递／临时落包功能");
+  expect(entrySvg).toContain("PENDING · I-503 平／立面确定位置、形式与尺寸");
+  expect(report.sheets.find((sheet: { sheet_id: string }) => sheet.sheet_id === "I-503")
+    ?.confirmed_functional_requirement_ids).toEqual(["INT1-ENTRY-PARCEL-FUNCTION"]);
   for (const sheet of report.sheets) {
     expect(sheet.dimension_status).toBe(
       "existing_world_bbox_not_fabrication_dimension",
