@@ -213,19 +213,19 @@ REQ-0211,DW-M04,ARCH,nominal_height,,2000,mm,,ifc_observed,observed,IFC-FORMAL-0
 REQ-0212,DW-M04,ARCH,operation_type,SINGLE_SWING_LEFT,,,,ifc_observed,observed,IFC-FORMAL-001,,no,
 REQ-0213,DW-M04,ARCH,host_relation,HOSTED,,,,ifc_observed,observed,IFC-FORMAL-001,,no,
 REQ-0214,DW-M04,ARCH,sill_or_threshold_z,,0.000000,mm,,ifc_observed,observed,IFC-FORMAL-001,,no,
-REQ-0215,DW-M05,ARCH,nominal_width,,,mm,,ifc_observed,pending,IFC-FORMAL-001,,yes,
-REQ-0216,DW-M05,ARCH,nominal_height,,,mm,,ifc_observed,pending,IFC-FORMAL-001,,yes,
-REQ-0217,DW-M05,ARCH,operation_type,single-track sliding system; direction unresolved,,,,official_model_family,candidate,RIMADESIO-SAIL-MONOROTAIA-001,官方 DWG 文件名与官方产品页,yes,仅确认 Sail MONOROTAIA 系统族；左右滑向和项目安装方式仍未关闭
+REQ-0215,DW-M05,ARCH,nominal_width,,1000,mm,,research_conclusion,candidate,A104-SHOP-REQUEST-20260815,Sail official size range + A-104 project geometry; D02,yes,我方拟定门扇宽度，待供货安装方在直接确认表 D02 勾是；未写入正式 IFC。
+REQ-0216,DW-M05,ARCH,nominal_height,,2400,mm,,research_conclusion,candidate,A104-SHOP-REQUEST-20260815,Sail official size range + A-104 project geometry; D02,yes,我方拟定门扇高度；对应 2 道水平横档，待供货安装方勾是；未写入正式 IFC。
+REQ-0217,DW-M05,ARCH,operation_type,Sail MONOROTAIA single-track single-leaf; slide left/west,,,,research_conclusion,candidate,A104-SHOP-REQUEST-20260815,official CAD/product sheet + direct confirmation D01/D05,yes,产品族由官方资料确认；项目滑向为工程推导，待供货安装方勾是。
 REQ-0218,DW-M05,ARCH,host_relation,UNHOSTED,,,,ifc_observed,observed,IFC-FORMAL-001,,no,
 REQ-0219,DW-M05,ARCH,sill_or_threshold_z,,12.000000,mm,,ifc_observed,observed,IFC-FORMAL-001,,no,
-REQ-0220,DW-M06,ARCH,nominal_width,,,mm,,ifc_observed,pending,IFC-FORMAL-001,,yes,
+REQ-0220,DW-M06,ARCH,nominal_width,,2000,mm,,research_conclusion,candidate,A104-SHOP-REQUEST-20260815,official monorail modules + 1000 mm project leaf; D03,yes,拟采用 2000 mm 标准顶轨以满足 1000 mm 门扇完整滑开；待供货安装方勾是；不沿用 1200 mm 早期示意。
 REQ-0221,DW-M06,ARCH,nominal_height,,,mm,,ifc_observed,pending,IFC-FORMAL-001,,yes,
-REQ-0222,DW-M06,ARCH,operation_type,single-track sliding system component; direction unresolved,,,,official_model_family,candidate,RIMADESIO-SAIL-MONOROTAIA-001,官方 DWG 文件名与官方产品页,yes,M06 为同樘门轨道构件；不把轨道几何当作门洞尺寸
+REQ-0222,DW-M06,ARCH,operation_type,Sail MONOROTAIA concealed ceiling track; left/west slide; no continuous floor track; lower anti-sway/positioning component per Rimadesio final shop drawing,,,,research_conclusion,candidate,A104-SHOP-REQUEST-20260815,official CAD layers sail_ELEMENTI_PERNO / ELEMENTI_PAVIMENTO + direct confirmation D03-D06,yes,M06 为同一门组顶轨，不是第二樘门；不再推定‘可更换导向件’，下部防摆／定位构件的准确形式和位置由 Rimadesio 最终深化图确认。
 REQ-0223,DW-M06,ARCH,host_relation,UNHOSTED,,,,ifc_observed,observed,IFC-FORMAL-001,,no,
 REQ-0224,DW-M06,ARCH,sill_or_threshold_z,,2407.699912,mm,,ifc_observed,observed,IFC-FORMAL-001,,no,
-REQ-0225,DW-M07,ARCH,nominal_width,,,mm,,ifc_observed,pending,IFC-FORMAL-001,,yes,
-REQ-0226,DW-M07,ARCH,nominal_height,,,mm,,ifc_observed,pending,IFC-FORMAL-001,,yes,
-REQ-0227,DW-M07,ARCH,operation_type,,,,,ifc_observed,pending,IFC-FORMAL-001,,yes,
+REQ-0225,DW-M07,ARCH,nominal_width,,950,mm,,research_conclusion,candidate,A104-SHOP-REQUEST-20260815,Poliform Pivot official system + A-104 project geometry; D08,yes,我方拟定项目门扇宽度，待供货安装方勾是；通用产品资料不单独证明该项目值。
+REQ-0226,DW-M07,ARCH,nominal_height,,2400,mm,,research_conclusion,candidate,A104-SHOP-REQUEST-20260815,Poliform Pivot official system + A-104 project geometry; D08,yes,我方拟定项目门扇高度，待供货安装方勾是；未写入正式 IFC。
+REQ-0227,DW-M07,ARCH,operation_type,single Pivot; opens inward to master; parks at drawing-left fixed wall/wardrobe,,,,research_conclusion,candidate,A104-SHOP-REQUEST-20260815,official Pivot configurations + A-104/photo spatial reasoning; D07/D09-D12,yes,轴心门系统由官方资料支持；项目开启与停靠关系为工程推导，待供货安装方勾是。
 REQ-0228,DW-M07,ARCH,host_relation,UNHOSTED,,,,ifc_observed,observed,IFC-FORMAL-001,,no,
 REQ-0229,DW-M07,ARCH,sill_or_threshold_z,,16.058349,mm,,ifc_observed,observed,IFC-FORMAL-001,,no,
 REQ-0230,DW-M08,ARCH,nominal_width,,900,mm,,ifc_observed,observed,IFC-FORMAL-001,,no,
@@ -503,7 +503,7 @@ REQ-0509,SAN-KIT-001,PROCUREMENT,domestic_custom_order_scope,,,,,pending,pending
 REQ-0510,SAN-KIT-001,PLUM,final_waste_pipe_diameter_and_route,,,,,pending,pending,FOSTER-1014850-OFFICIAL-001,3.5 英寸排水器不等于现场排水管径与路线,yes,须在 P-201 和柜体加工图关闭
 REQ-0511,SAN-022,INT1,material,marble,,,,user_input,confirmed,USER-PLUM-SINKS-001,用户确认岛台水槽为大理石定制,no,具体石材待选
 REQ-0512,SAN-022,INT1,fabrication_method,custom fabricated,,,,user_input,confirmed,USER-PLUM-SINKS-001,用户确认定制方向,no,不等于加工尺寸已确认
-REQ-0513,SAN-022,INT1,finished_outer_dimensions,,,,,pending,pending,USER-PLUM-SINKS-001,定制品尚无加工图,yes,IFC 包围盒只作协调不得作为加工尺寸
+REQ-0513,SAN-022,INT1,finished_outer_width,,600,mm,,user_input,confirmed,OWNER-WFIN-VVD-SINKS-20260817,业主于 2026-08-17 明确另一定制水槽宽度 600 mm,no,只关闭宽度；深度和高度仍须加工图，不得以 IFC 包围盒补齐。
 REQ-0514,SAN-022,INT1,bowl_plan_dimensions,,,,,pending,pending,USER-PLUM-SINKS-001,定制品尚无加工图,yes,须结合使用与清洁要求关闭
 REQ-0515,SAN-022,INT1,bowl_vertical_depth,,,,,pending,pending,USER-PLUM-SINKS-001,定制品尚无加工图,yes,影响柜内排水和结构净空
 REQ-0516,SAN-022,PLUM,drain_centre_coordinate,,,,,pending,pending,USER-PLUM-SINKS-001,定制品尚无排水定位,yes,须与柜内管路共同关闭
@@ -513,8 +513,8 @@ REQ-0519,SAN-022,WFIN,sealing_and_waterproofing_detail,,,,,pending,pending,USER-
 REQ-0520,SAN-022,STRUCTURE,support_cutout_and_shop_drawing,,,,,pending,pending,USER-PLUM-SINKS-001,定制品尚无支撑与加工图,yes,须核对石材强度、开孔、运输和现场安装
 REQ-0521,FURIFC-003,INT1,material,marble,,,,user_input,confirmed,USER-PLUM-SINKS-001,用户确认岛台台面为大理石定制,no,具体石材待选
 REQ-0522,FURIFC-003,INT1,fabrication_method,custom fabricated,,,,user_input,confirmed,USER-PLUM-SINKS-001,用户确认定制方向,no,不等于加工尺寸已确认
-REQ-0523,FURIFC-003,WFIN,stone_species_and_finish,,,,,pending,pending,USER-PLUM-SINKS-001,只确认大理石未确认具体石材和表面,yes,须与样板和采购批次关闭
-REQ-0524,FURIFC-003,INT1,finished_thickness,,,,,pending,pending,USER-PLUM-SINKS-001,定制台面未给厚度,yes,影响边型、支撑与开孔
+REQ-0523,FURIFC-003,WFIN,stone_species_and_finish,Travertino titan marble,,,,user_input,confirmed,OWNER-WFIN-VVD-SINKS-20260817,VVD product sheet page 9 / owner project adoption,no,石材名称已确认；样板、采购批次、纹理与表面验收仍待项目签认。
+REQ-0524,FURIFC-003,INT1,finished_thickness,,60,mm,,user_input,confirmed,OWNER-WFIN-VVD-SINKS-20260817,VVD product sheet page 9: top th.60 / owner project adoption,no,项目台面完成厚度 60 mm；不证明边型、支撑或开孔。
 REQ-0525,FURIFC-003,INT1,edge_profile,,,,,pending,pending,USER-PLUM-SINKS-001,定制台面未给边型,yes,须在加工图明确
 REQ-0526,FURIFC-003,WFIN,slab_joint_and_vein_layout,,,,,pending,pending,USER-PLUM-SINKS-001,定制台面未给拼缝和纹理方向,yes,须按可采购荒料排版
 REQ-0527,FURIFC-003,INT1,cutout_schedule,,,,,pending,pending,USER-PLUM-SINKS-001,水槽龙头插座等开孔未统一,yes,须汇总所有设备精确模板
@@ -848,3 +848,34 @@ REQ-DRAINCUST-012,DRAIN-CUSTOM-001,PLUM/DET1/INT1,waterproof_flange_and_build_up
 REQ-DRAINCUST-013,DRAIN-CUSTOM-001,PLUM/DET1/INT1,finish_level_and_slope_interface,unknown,,,,pending,pending,OWNER-PLUM-CUSTOM-DRAIN-20260817,当前仅确认渠道与组合方向,yes,关闭证据：完成标高、坡向、拼接与公差。
 REQ-DRAINCUST-014,DRAIN-CUSTOM-001,PLUM/DET1/INT1,service_and_cleaning_access,unknown,,,,pending,pending,OWNER-PLUM-CUSTOM-DRAIN-20260817,当前仅确认渠道与组合方向,yes,关闭证据：毛发网取出、清洁、检修和更换方式。
 REQ-DRAINCUST-015,DRAIN-CUSTOM-001,PLUM/DET1/INT1,interface_center_coordinates,unknown,,,,pending,pending,OWNER-PLUM-CUSTOM-DRAIN-20260817,当前仅确认渠道与组合方向,yes,关闭证据：厂家安装图与项目定位；不得推测中心坐标。
+REQ-SAN022-016,SAN-022,INT1,finished_outer_depth_and_height,,,,,pending,pending,OWNER-WFIN-VVD-SINKS-20260817,业主只确认 600 mm 宽度,yes,由定制水槽加工图明确；不得采用 VVD 示例水槽或 IFC 包围盒。
+REQ-VVD-001,KIT-VVD-FINISH-001,INT1/WFIN,product_family,VVD,,,,user_input,confirmed,OWNER-WFIN-VVD-SINKS-20260817,产品页第 9 页／业主采用,no,产品语言已确认，不等于向 Molteni&C 下单。
+REQ-VVD-002,KIT-VVD-FINISH-001,INT1/WFIN,island_structure,Slate,,,,user_input,confirmed,OWNER-WFIN-VVD-SINKS-20260817,VVD_ISLAND finishes,no,
+REQ-VVD-003,KIT-VVD-FINISH-001,INT1/WFIN,island_and_wall_base_doors,Nebula steel,,,,user_input,confirmed,OWNER-WFIN-VVD-SINKS-20260817,VVD page 9 finishes,no,
+REQ-VVD-004,KIT-VVD-FINISH-001,INT1/WFIN,top_and_backsplash,Travertino titan marble / top 60 mm,,,,user_input,confirmed,OWNER-WFIN-VVD-SINKS-20260817,VVD page 9 finishes; owner backsplash direction,no,产品页中的 external sink w.1200 不适用于本项目。
+REQ-VVD-005,KIT-VVD-FINISH-001,INT1/WFIN,thermo_oak_components,pull-out drawers; snack; column doors; equipped open columns; side panels; extension doors,,,,user_input,confirmed,OWNER-WFIN-VVD-SINKS-20260817,VVD page 9 finishes,no,
+REQ-VVD-006,KIT-VVD-FINISH-001,INT1/WFIN,pewter_components,metal lacquer side panels; horizontal finger recess; hood/support; skirting 60 mm,,,,user_input,confirmed,OWNER-WFIN-VVD-SINKS-20260817,VVD page 9 finishes,no,
+REQ-VVD-007,KIT-VVD-FINISH-001,INT1/WFIN,lighting_shelves,Thermo oak / thickness 36 mm,,,,user_input,confirmed,OWNER-WFIN-VVD-SINKS-20260817,VVD_WALL COMPOSITION,no,
+REQ-VVD-008,KIT-VVD-FINISH-001,ELEC/INT1,integrated_lighting,all base units internal LED; hood integrated LED; open columns both sides; Sistema 7 all sides,,,,user_input,confirmed,OWNER-WFIN-VVD-SINKS-20260817,VVD page 9 lighting callouts,no,只确认照明范围，不证明功率、色温、驱动器、回路和检修位置。
+REQ-VVD-009,KIT-VVD-FINISH-001,INT1/WFIN,project_material_sample_and_batch,,,,,pending,pending,VVD-PRODUCT-SHEET-P9-001,产品页为产品系列参考,yes,由材料供应商提交实物样板、编号、表面和同批次供货声明。
+REQ-VVD-010,KIT-VVD-FINISH-001,INT1/WFIN,slab_layout_joints_edge_cutouts,,,,,pending,pending,OWNER-WFIN-VVD-SINKS-20260817,项目加工图尚缺,yes,按项目墙段、设备模板和可采购荒料联合深化。
+REQ-VVD-011,KIT-VVD-FINISH-001,ELEC/INT1,led_driver_wiring_and_service,,,,,pending,pending,VVD-PRODUCT-SHEET-P9-001,产品页只列照明范围,yes,由全屋定制/灯光/电气提交功率、色温、驱动器、接线和更换路径。
+REQ-VVD-012,KIT-VVD-FINISH-001,INT1/STRUCTURE,shallow_shelf_dimensions_load_fixing,,,,,pending,pending,OWNER-WFIN-VVD-SINKS-20260817,远端墙仅确认浅置物架方向,yes,由 I-501 和全屋定制加工图关闭。
+REQ-HVACCTRL-001,HVAC-CTRL-001,RCP1/ELEC,exact_model,PC-P1HEQ,,,,user_input,confirmed,OWNER-HVAC-PC-P1HEQ-20260817,official manual P02037Q / owner input,no,
+REQ-HVACCTRL-002,HVAC-CTRL-001,RCP1,existing_control_point_quantity,,5,point,,project_candidate,confirmed,OWNER-HVAC-PC-P1HEQ-20260817,开发商图 5 个 AC 控制点／项目机械提取记录,no,是既有参考点数量，不证明最终系统分组。
+REQ-HVACCTRL-003,HVAC-CTRL-001,RCP1/ELEC,maximum_controlled_indoor_units,,6,unit,,official_exact_model,confirmed,HITACHI-PC-P1HEQ-P02037Q-001,PC-P1HEQ 官方安装说明,no,官方上限，不代表本项目采用 6 台群控。
+REQ-HVACCTRL-004,HVAC-CTRL-001,ELEC/RCP1,control_wiring,two-core / 1P-0.75 mm² minimum,,,,official_exact_model,confirmed,HITACHI-PC-P1HEQ-P02037Q-001,PC-P1HEQ 官方安装说明,no,项目总长度、端子和屏蔽/金属管条件仍须厂家签认。
+REQ-HVACCTRL-005,HVAC-CTRL-001,ELEC/RCP1,minimum_separation_from_power_wiring,,300,mm,,official_exact_model,confirmed,HITACHI-PC-P1HEQ-P02037Q-001,PC-P1HEQ 官方安装说明,no,
+REQ-HVACCTRL-006,HVAC-CTRL-001,RCP1,compatibility_with_A01_A06,,,,,pending,pending,OWNER-HVAC-PC-P1HEQ-20260817,型号已定但系统兼容性未签认,yes,由日立空调供货/安装方封闭确认。
+REQ-HVACCTRL-007,HVAC-CTRL-001,RCP1/ELEC,five_point_to_indoor_unit_mapping,,,,,pending,pending,OWNER-HVAC-PC-P1HEQ-20260817,开发商图未给点到机组映射,yes,现场逐点核对并与 A01–A06 系统图对账。
+REQ-HVACCTRL-008,HVAC-CTRL-001,RCP1/INT1,keep_move_merge_strategy,,,,,pending,pending,OWNER-HVAC-PC-P1HEQ-20260817,装修后控制策略未定,yes,每个点位填写保留/迁移/合并，不重新询问产品型号。
+REQ-HVACCTRL-009,HVAC-CTRL-001,ELEC/RCP1,project_terminal_diagram_and_total_length,,,,,pending,pending,HITACHI-PC-P1HEQ-P02037Q-001,官方手册只证明通用要求,yes,由空调厂家提交项目端子图和线长校核。
+REQ-HVACCTRL-010,HVAC-CTRL-001,INT1/ELEC,final_panel_coordinates_and_mounting,,,,,pending,pending,OWNER-HVAC-PC-P1HEQ-20260817,最终位置须避开门扇、柜门和收口,yes,现场照片、净宽和底边标高关闭；不得推测中心坐标。
+REQ-INTERCOM-001,ACCESS-INTERCOM-001,ELEC/INT1/NETWORK,manufacturer,DNAKE／狄耐克,,,,site_observed,confirmed,OWNER-E304-DNAKE-PHOTO-20260817,现场照片正面／版本信息页,no,设备正面品牌标识可见。
+REQ-INTERCOM-002,ACCESS-INTERCOM-001,ELEC/INT1/NETWORK,system_version,1.6.0 20210615,,,,site_observed,confirmed,OWNER-E304-DNAKE-PHOTO-20260817,现场照片正面／版本信息页,no,仅记录照片拍摄时可见软件版本，不用于反推硬件型号。
+REQ-INTERCOM-003,ACCESS-INTERCOM-001,ELEC/INT1/NETWORK,application_version,1.1.0 20210615 16M,,,,site_observed,confirmed,OWNER-E304-DNAKE-PHOTO-20260817,现场照片正面／版本信息页,no,仅记录照片拍摄时可见应用版本，不用于反推硬件型号。
+REQ-INTERCOM-004,ACCESS-INTERCOM-001,ELEC/INT1/NETWORK,exact_model,unknown,,,,pending,pending,OWNER-E304-DNAKE-PHOTO-20260817,现有照片未显示该信息,yes,关闭证据：背面／侧面型号标签或工程信息页；不得凭外观或软件版本猜测。
+REQ-INTERCOM-005,ACCESS-INTERCOM-001,ELEC/INT1/NETWORK,terminal_diagram_and_existing_wiring,unknown,,,,pending,pending,OWNER-E304-DNAKE-PHOTO-20260817,现有照片未显示该信息,yes,关闭证据：端子与线缆近照、端子定义和现有接法。
+REQ-INTERCOM-006,ACCESS-INTERCOM-001,ELEC/INT1/NETWORK,property_system_compatibility,unknown,,,,pending,pending,OWNER-E304-DNAKE-PHOTO-20260817,现有照片未显示该信息,yes,关闭证据：物业或门禁维护方书面确认系统角色、兼容与移动限制。
+REQ-INTERCOM-007,ACCESS-INTERCOM-001,ELEC/INT1/NETWORK,keep_move_integrate_strategy,unknown,,,,pending,pending,OWNER-E304-DNAKE-PHOTO-20260817,现有照片未显示该信息,yes,关闭证据：保留、迁移或接入装修后系统的签认结论。
+REQ-INTERCOM-008,ACCESS-INTERCOM-001,ELEC/INT1/NETWORK,final_panel_coordinates_and_mounting,unknown,,,,pending,pending,OWNER-E304-DNAKE-PHOTO-20260817,现有照片未显示该信息,yes,关闭证据：门套完成面后的安装面、净距和底边标高；接口中心坐标不得推测。

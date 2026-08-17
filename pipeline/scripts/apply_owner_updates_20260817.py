@@ -64,10 +64,160 @@ def update_sources() -> None:
         "sha256": sha256("drawings/evidence/A104-M05-M07-shop-drawing-request-20260815.md"),
         "locator": "M05 格栅滑门门扇＋M06 配套顶部单轨轨道；M07；证据边界",
         "evidence": "以全屋定制可直接理解的名称说明 M05/M06 属于同一套 Rimadesio Sail MONOROTAIA 门组，并列出官方 CAD、正式 IFC 与开发商 DXF 的机械证据边界及项目索取字段",
-        "notes": "2026-08-17 将抽象的‘M05/M06 对应关系’改为门扇、轨道和同一门组的白话说明；请求包仍只定义最短关闭证据。",
+        "notes": "2026-08-17 将抽象的‘M05/M06 对应关系’改为门扇、轨道和同一门组的白话说明；删除无依据的‘可更换导向件’，改由原厂深化确认下部防摆／定位构件，并在工作簿内嵌 M05 开启方向附图。",
+    })
+    outbound_forms = {
+        "OUTBOUND-FORM-DOOR-20260817": {
+            "filename": "01-门组做法确认表-发全屋定制.md",
+            "locator": "Markdown 门组确认 D01-D13；M05 开启方向文字示意",
+            "evidence": "可直接在 Codex 中编辑和回填的 Markdown；M05 向左／西滑动方向以文字箭头标注，下部防摆／定位构件不预设原厂未确认的具体形式",
+            "proves": "门组问询采用封闭式确认，且收件人无需另找 A-104 才能理解 M05 拟定开启方向",
+            "does_not_prove": "供货安装方已经确认、下部定位构件准确型号和位置、候选尺寸已批准或正式 IFC 已修改",
+            "notes": "2026-08-17 改为唯一 Markdown 可编辑源；删除‘可更换导向件’推测。",
+        },
+        "OUTBOUND-FORM-HVAC-20260817": {
+            "filename": "02-日立空调接口确认表-发空调厂家.md",
+            "locator": "Markdown 日立空调 H01-H09、PC-P1HEQ P01-P07 及附件依据",
+            "evidence": "可直接在 Codex 中编辑和回填的 Markdown；把已知型号与仍需厂家确认的接口、兼容性和逐点控制映射分开",
+            "proves": "HVAC 对外问询已形成封闭式确认项，且未虚构接口中心、最终路线或控制映射",
+            "does_not_prove": "厂家已经确认、现场安装条件已经复核或正式 IFC 已修改",
+            "notes": "2026-08-17 改为唯一 Markdown 可编辑源；原 XLSX 退出正式输出目录。",
+        },
+        "OUTBOUND-FORM-PLUM-20260817": {
+            "filename": "03-给排水设备确认表-发设备与施工方.md",
+            "locator": "Markdown 西门子洗烘、吉博力与卫浴、厨房设备、VVD、定制盆与地漏及附件依据",
+            "evidence": "可直接在 Codex 中编辑和回填的 Markdown；逐台区分已确认产品条件与仍缺 shop drawing、粗装接口和现场核对",
+            "proves": "给排水和厨房设备问询已收敛为封闭式确认项，且定制产品继续保留 shop drawing 门",
+            "does_not_prove": "厂家已经确认、定制加工尺寸已冻结、现场粗装条件已复核或正式 IFC 已修改",
+            "notes": "2026-08-17 改为唯一 Markdown 可编辑源；原 XLSX 退出正式输出目录。",
+        },
+        "OUTBOUND-FORM-GASFIRE-20260817": {
+            "filename": "04-燃气消防确认表-发主管单位.md",
+            "locator": "Markdown 燃气 R01-R08、消防 F01-F07 及附件依据",
+            "evidence": "可直接在 Codex 中编辑和回填的 Markdown；候选设备、主管部门准入、探测器类型和联动边界分别列示",
+            "proves": "燃气和消防咨询已形成可直接签认的封闭式问题，候选报警器未升级为已批准",
+            "does_not_prove": "燃气公司、消防或设备方已经批准任何候选产品、点位或联动方式",
+            "notes": "2026-08-17 改为唯一 Markdown 可编辑源；原 XLSX 退出正式输出目录。",
+        },
+        "OUTBOUND-FORM-SITE-20260817": {
+            "filename": "05-弱电现场记录表-发现场负责人.md",
+            "locator": "Markdown 弱电箱、温升、网线、门口设备、PC-P1HEQ 和快递现场记录",
+            "evidence": "可直接在 Codex 中编辑和回填的 Markdown；狄耐克品牌已预填，只要求现场补准确型号、端子线缆、物业兼容与保留／迁移／接入信息",
+            "proves": "弱电与门口设备问询已删除可由现场照片回答的对讲品牌问题",
+            "does_not_prove": "狄耐克室内机准确型号、端子接法、物业系统兼容、门铃身份或外部已经回复",
+            "notes": "2026-08-17 改为唯一 Markdown 可编辑源；按现场照片预填 DNAKE／狄耐克，IP/MAC 不进入对外表。",
+        },
+    }
+    for source_id, metadata in outbound_forms.items():
+        relative_path = f"output/forms/对外确认表/{metadata['filename']}"
+        row = by_id[source_id]
+        row.update({
+            "source_kind": "project_external_confirmation_markdown",
+            "source_document": metadata["filename"],
+            "local_path": relative_path,
+            "sha256": sha256(relative_path),
+            "locator": metadata["locator"],
+            "evidence": metadata["evidence"],
+            "proves": metadata["proves"],
+            "does_not_prove": metadata["does_not_prove"],
+            "status": "verified_confirmation_markdown_pending_external_response",
+            "notes": metadata["notes"],
+        })
+    site_checklist = by_id["E304-SITE-CHECKLIST-20260815"]
+    site_checklist.update({
+        "sha256": sha256("drawings/evidence/E304-现场最短取证清单-20260815.md"),
+        "evidence": "六张现场表的测量、单位、照片和回传规则；狄耐克对讲品牌已关闭，只补准确型号、端子线缆和物业系统证据",
+        "does_not_prove": "狄耐克准确型号、物业兼容、门铃身份、外部已经回复或项目值已经写入正式 IFC",
+        "notes": "2026-08-17 删除重复询问对讲品牌；IP/MAC 不进入对外表。",
+    })
+    by_id["GAS-CONSULTATION-TEMPLATE-001"].update({
+        "sha256": sha256("drawings/evidence/A106-燃气公司咨询模板.md"),
+        "notes": "2026-08-17 将可填写表引用改为唯一 Markdown 源；其余准入边界不变。",
+    })
+    by_id["A106-CONSULTATION-PACK-20260815"].update({
+        "sha256": sha256("drawings/evidence/A106-燃气消防最终咨询包-20260815.md"),
+        "notes": "2026-08-17 将可填写表引用改为唯一 Markdown 源；候选产品仍须主管单位签认。",
     })
 
     additions = [
+        {
+            "source_id": "OWNER-WFIN-BASEBOARD-SHADOW-GAP-20260817",
+            "discipline": "WFIN/DET1/INT1",
+            "sheet_id": "WFIN/D-601/I-502/I-503/I-504/S-701",
+            "decision_scope": "干区齐平宽踢脚与上下阴影缝候选",
+            "source_kind": "owner_shared_design_reference",
+            "source_document": "drawings/evidence/OWNER-WFIN-干区齐平踢脚阴影缝候选-20260817.md",
+            "source_url": "https://www.xiaohongshu.com/explore/68773092000000001202076c",
+            "local_path": "drawings/evidence/OWNER-WFIN-干区齐平踢脚阴影缝候选-20260817.md",
+            "sha256": sha256("drawings/evidence/OWNER-WFIN-干区齐平踢脚阴影缝候选-20260817.md"),
+            "locator": "齐平墙面同色宽踢脚、上下约 10 mm 阴影缝、墙下口型材和通缝关系",
+            "evidence": "业主要求记录该做法；参考案例说明齐平宽踢脚、上下阴影缝和墙门柜通缝的设计方向及施工前置条件",
+            "proves": "可作为卧室、走廊等干区的候选方向，并须与墙面找平、门套、隐形门和柜体统一深化",
+            "does_not_prove": "本项目最终采用、准确高度厚度材料颜色、阴影缝公差、湿区适用性或已完成实物样板",
+            "status": "owner_reference_candidate_not_final",
+            "confidence": "1.00",
+            "review_required": "yes",
+            "formal_ifc_write_allowed": "no",
+            "manufacturer": "",
+            "model_scope": "",
+            "revision": "2026-08-17",
+            "publication_date": "2025-08-05",
+            "legacy_targets": "",
+            "legacy_projection_json": "",
+            "notes": "中厨 VVD Pewter 60 mm 踢脚保持独立；湿区暂不采用上下双缝。",
+        },
+        {
+            "source_id": "OWNER-E304-DNAKE-PHOTO-20260817",
+            "discipline": "ELEC/INT1/NETWORK",
+            "sheet_id": "E-304/I-503",
+            "decision_scope": "既有可视对讲室内机品牌与版本信息",
+            "source_kind": "owner_provided_site_photo",
+            "source_document": "E304-DNAKE-indoor-monitor-version-photo-20260817.jpg",
+            "source_url": "",
+            "local_path": "drawings/evidence/E304-DNAKE-indoor-monitor-version-photo-20260817.jpg",
+            "sha256": sha256("drawings/evidence/E304-DNAKE-indoor-monitor-version-photo-20260817.jpg"),
+            "locator": "设备正面 DNAKE／狄耐克标识与版本信息页",
+            "evidence": "既有可视对讲室内机品牌为 DNAKE／狄耐克；系统版本 1.6.0 20210615；应用版本 1.1.0 20210615 16M",
+            "proves": "既有室内机的品牌和照片拍摄时可见的软件版本",
+            "does_not_prove": "准确型号、背部端子、既有线缆接法、物业系统兼容性、保留迁移接入方案或最终安装坐标",
+            "status": "verified_brand_and_software_version_only",
+            "confidence": "1.00",
+            "review_required": "yes",
+            "formal_ifc_write_allowed": "no",
+            "manufacturer": "DNAKE／狄耐克",
+            "model_scope": "unknown",
+            "revision": "2026-08-17",
+            "publication_date": "2026-08-17",
+            "legacy_targets": "",
+            "legacy_projection_json": "",
+            "notes": "原始照片中的网络地址不投影到 SSOT、对外表或图纸；准确型号继续保持 unknown。",
+        },
+        {
+            "source_id": "OWNER-E304-DNAKE-NOTE-20260817",
+            "discipline": "ELEC/INT1/NETWORK",
+            "sheet_id": "E-304/I-503",
+            "decision_scope": "狄耐克既有可视对讲证据边界说明",
+            "source_kind": "project_evidence_boundary_note",
+            "source_document": "OWNER-E304-狄耐克可视对讲室内机-20260817.md",
+            "source_url": "",
+            "local_path": "drawings/evidence/OWNER-E304-狄耐克可视对讲室内机-20260817.md",
+            "sha256": sha256("drawings/evidence/OWNER-E304-狄耐克可视对讲室内机-20260817.md"),
+            "locator": "品牌、可见软件版本、未证明事项和最短后续取证",
+            "evidence": "把现场照片可确认与不可确认的信息拆开，并明确网络地址不进入 SSOT、对外表或图纸",
+            "proves": "本次狄耐克现场照片的受控投影边界和剩余取证范围",
+            "does_not_prove": "准确型号、端子接法、物业系统兼容、保留迁移接入结论或最终坐标",
+            "status": "verified_project_evidence_boundary_note",
+            "confidence": "1.00",
+            "review_required": "yes",
+            "formal_ifc_write_allowed": "no",
+            "manufacturer": "DNAKE／狄耐克",
+            "model_scope": "unknown",
+            "revision": "2026-08-17",
+            "publication_date": "2026-08-17",
+            "legacy_targets": "",
+            "legacy_projection_json": "",
+            "notes": "原始现场照片由 OWNER-E304-DNAKE-PHOTO-20260817 单独登记。",
+        },
         {
             "source_id": "VENDOR-WFIN-QUANSHENGTANG-KITCHEN-20260817",
             "discipline": "WFIN/DET1/INT1",
@@ -209,6 +359,29 @@ def update_owner_inputs() -> None:
     fields, rows = read_csv(path)
     replacements = [
         {
+            "input_id": "WFIN-DRY-BASEBOARD-SHADOW-GAP-SCOPE", "workstream": "WFIN/DET1/INT1", "priority": "P1", "blocks_release": "no",
+            "question": "卧室、走廊等干区踢脚是否采用齐平宽踢脚＋上下阴影缝方向", "candidate_value": "墙面同色齐平宽踢脚；参考案例上下各约 10 mm 阴影缝；门套、隐形门和柜体边界连续通缝",
+            "user_value": "记录为干区候选，暂不最终冻结", "unit": "", "status": "采用候选",
+            "evidence_reference": "OWNER-WFIN-BASEBOARD-SHADOW-GAP-20260817", "source_basis": "业主于 2026-08-17 分享参考并要求记录；参考正文给出设计方向与施工前置条件",
+            "sync_target": "WFIN-R01;D-601;I-502;I-503;I-504;S-701", "notes": "仅适用于干区候选；中厨 VVD Pewter 60 mm 踢脚保持独立，湿区暂不采用上下双缝。",
+        },
+        {
+            "input_id": "WFIN-DRY-BASEBOARD-SHADOW-GAP-DETAIL", "workstream": "WFIN/DET1/INT1", "priority": "P1", "blocks_release": "yes",
+            "question": "干区齐平宽踢脚＋上下阴影缝如何形成可施工、可清洁并与门柜连续的节点", "candidate_value": "由 D-601 输出 1:5 墙脚节点与门套／隐形门／柜体通缝展开，并经实物样板确认",
+            "user_value": "", "unit": "mm", "status": "需证据", "evidence_reference": "OWNER-WFIN-BASEBOARD-SHADOW-GAP-20260817",
+            "source_basis": "参考案例没有提供本项目高度、厚度、材料、公差或湿区适用证据",
+            "sync_target": "WFIN-R01;D-601;I-502;I-503;I-504;S-701", "notes": "需关闭分房间适用范围、踢脚高度厚度材料、上下缝宽与公差、基层型材、转角、门柜通缝、耐撞拖地水和积灰清洁。",
+        },
+        {
+            "input_id": "E304-VIDEO-INTERCOM-DOORBELL", "workstream": "E-304", "priority": "P0", "blocks_release": "yes",
+            "question": "请确认现有狄耐克可视对讲室内机的准确型号、背部端子与线缆、物业系统兼容性，以及保留／迁移／接入方案；门铃另行核对",
+            "candidate_value": "可视对讲室内机品牌已确认为 DNAKE／狄耐克；开发商参考点按底边 1400 mm 协调；准确型号和系统接口待确认；门铃参考点按底边 1300 mm 协调",
+            "user_value": "门禁面板是狄耐克的，具体型号没看到", "unit": "", "status": "需证据",
+            "evidence_reference": "OWNER-E304-DNAKE-PHOTO-20260817;build/elec/elec-developer-control-reference.json",
+            "source_basis": "现场照片确认 DNAKE／狄耐克品牌及软件版本；开发商图证明既有对讲和门铃参考点",
+            "sync_target": "E-304;I-503", "notes": "不再询问可视对讲品牌；准确型号、端子、物业接口、保留迁移接入和最终坐标仍待现场／物业证据。照片中的 IP/MAC 不进入对外资料。",
+        },
+        {
             "input_id": "WFIN-KITCHEN-PUTTY-COVERAGE", "workstream": "WFIN/DET1/I-501", "priority": "P1", "blocks_release": "yes",
             "question": "中厨 R04 墙面采用什么材料以及是否保留瓷砖", "candidate_value": "中厨 R04 全部室内垂直墙面采用全生堂腻子；不用瓷砖",
             "user_value": "旧方案已撤回；当前改为灶台操作墙台面同材大板＋远端墙浅置物架", "unit": "", "status": "不适用",
@@ -276,6 +449,9 @@ def update_closeout_rules() -> None:
     path = DECISIONS / "owner-input-closeout-rules.csv"
     fields, rows = read_csv(path)
     records = [
+        {"input_id": "WFIN-DRY-BASEBOARD-SHADOW-GAP-SCOPE", "closeout_kind": "human_design_selection", "responsible_party": "业主/室内设计", "required_evidence": "业主确认该参考只作为卧室、走廊等干区候选，并明确中厨和湿区不套用", "automatic_close_allowed": "no", "notes": "候选方向已记录，最终采用仍由节点和样板关闭。"},
+        {"input_id": "WFIN-DRY-BASEBOARD-SHADOW-GAP-DETAIL", "closeout_kind": "material_and_mockup_evidence", "responsible_party": "室内设计/墙面施工/全屋定制/现场", "required_evidence": "D-601 1:5 节点；分房间适用表；踢脚高度厚度材料和颜色；上下阴影缝宽与公差；墙下口型材；门套/隐形门/柜体/转角通缝展开；耐撞、拖地水和积灰清洁实物样板", "automatic_close_allowed": "no", "notes": "不得按小红书图片直接下单或写正式 IFC。"},
+        {"input_id": "E304-VIDEO-INTERCOM-DOORBELL", "closeout_kind": "site_and_system_evidence", "responsible_party": "物业/门禁维护方/弱电设计/现场", "required_evidence": "狄耐克室内机背面或工程信息页的准确型号；背部端子、线缆和接法照片；物业系统兼容与移动限制书面确认；保留／迁移／接入结论；门铃实物身份及门套完成面后的最终定位", "automatic_close_allowed": "no", "notes": "DNAKE／狄耐克品牌和软件版本已由现场照片关闭，不再重复询问；开发商图仍只证明既有参考点和标注高度。"},
         {"input_id": "WFIN-KITCHEN-PUTTY-COVERAGE", "closeout_kind": "human_design_selection", "responsible_party": "业主/室内设计", "required_evidence": "业主确认旧全生堂中厨方案已由台面同材大板＋浅置物架方案取代", "automatic_close_allowed": "no", "notes": "已由 OWNER-WFIN-KITCHEN-SLAB-SHELF-20260817 关闭并保留历史。"},
         {"input_id": "WFIN-KITCHEN-PUTTY-SYSTEM", "closeout_kind": "human_design_selection", "responsible_party": "业主/室内设计", "required_evidence": "确认不再把全生堂产品系统作为中厨当前材料索取项", "automatic_close_allowed": "no", "notes": "已关闭为不适用当前中厨方案；不再等待全生堂厨房系统资料。"},
         {"input_id": "WFIN-KITCHEN-SLAB-SHELF-SCOPE", "closeout_kind": "human_design_selection", "responsible_party": "业主/室内设计", "required_evidence": "业主确认灶台操作墙台面同材大板＋远端墙浅置物架", "automatic_close_allowed": "no", "notes": "设计方向已关闭，准确构造由独立深化项关闭。"},
@@ -293,7 +469,7 @@ def update_closeout_rules() -> None:
 def update_equipment() -> None:
     path = DECISIONS / "equipment-register.csv"
     fields, rows = read_csv(path)
-    record = {
+    records = [{
         "equipment_id": "DRAIN-CUSTOM-001", "domain": "DRAINAGE", "category": "custom_floor_drain_assembly",
         "item_name": "厕所定制水母地漏/中央集水器＋托克乐思网＋线性排水渠组合", "manufacturer": "", "model": "",
         "variant": "owner_selected_custom_vendor_direction", "quantity": "", "procurement_status": "selected", "decision_status": "partial",
@@ -303,8 +479,19 @@ def update_equipment() -> None:
         "identity_basis": "业主确认小红书主页定制渠道与组件组合方向；公开检索不能替代订单或产品证据", "confidence": "1.00",
         "human_review_required": "yes", "legacy_kind": "owner_custom_drain", "legacy_id": "DRAIN-CUSTOM-001",
         "notes": "渠道和方向已定，非已采购/已加工；房间、数量、品牌型号、尺寸、接口和防水均待 shop drawing；不自动替代已购 Geberit CleanLine50。",
-    }
-    upsert(rows, "equipment_id", record)
+    }, {
+        "equipment_id": "ACCESS-INTERCOM-001", "domain": "NETWORK", "category": "video_intercom_indoor_monitor",
+        "item_name": "入户既有可视对讲室内机", "manufacturer": "DNAKE／狄耐克", "model": "",
+        "variant": "existing_indoor_monitor_exact_model_unknown", "quantity": "1", "procurement_status": "existing", "decision_status": "partial",
+        "storage_location_candidate": "", "use_location_candidate": "入户既有对讲参考点；开发商标注底边 1400 mm，现场待复核", "storage_location_confirmed": "", "use_location_confirmed": "",
+        "schedule_included": "yes", "selector_kind": "logical_input", "selector_value": "ACCESS-INTERCOM-001", "ifc_class": "", "ifc_type_name": "",
+        "ifc_type_global_id": "", "ifc_global_ids": "", "source_ids": "OWNER-E304-DNAKE-PHOTO-20260817",
+        "identity_basis": "业主现场照片正面可见 DNAKE／狄耐克标识和版本信息；照片没有型号铭牌",
+        "confidence": "1.00", "human_review_required": "yes", "legacy_kind": "existing_video_intercom", "legacy_id": "DEV-INTERCOM-001",
+        "notes": "品牌已确认；准确型号保持 unknown。端子、线缆、物业系统兼容、保留／迁移／接入方案及最终安装坐标均未关闭；照片中的网络地址不投影。",
+    }]
+    for record in records:
+        upsert(rows, "equipment_id", record)
     write_csv(path, fields, rows)
 
 
@@ -342,6 +529,30 @@ def update_requirements() -> None:
             "value_text": "unknown", "value_number": "", "unit": "", "datum": "", "value_origin": "pending", "status": "pending",
             "source_id": "OWNER-PLUM-CUSTOM-DRAIN-20260817", "source_locator": "当前仅确认渠道与组合方向", "blocks_release": "yes", "notes": note,
         })
+    intercom_confirmed = [
+        ("REQ-INTERCOM-001", "manufacturer", "DNAKE／狄耐克", "设备正面品牌标识可见。"),
+        ("REQ-INTERCOM-002", "system_version", "1.6.0 20210615", "仅记录照片拍摄时可见软件版本，不用于反推硬件型号。"),
+        ("REQ-INTERCOM-003", "application_version", "1.1.0 20210615 16M", "仅记录照片拍摄时可见应用版本，不用于反推硬件型号。"),
+    ]
+    for req_id, key, value, note in intercom_confirmed:
+        upsert(rows, "requirement_id", {
+            "requirement_id": req_id, "equipment_id": "ACCESS-INTERCOM-001", "discipline": "ELEC/INT1/NETWORK", "parameter_key": key,
+            "value_text": value, "value_number": "", "unit": "", "datum": "", "value_origin": "site_observed", "status": "confirmed",
+            "source_id": "OWNER-E304-DNAKE-PHOTO-20260817", "source_locator": "现场照片正面／版本信息页", "blocks_release": "no", "notes": note,
+        })
+    intercom_pending = [
+        ("REQ-INTERCOM-004", "exact_model", "关闭证据：背面／侧面型号标签或工程信息页；不得凭外观或软件版本猜测。"),
+        ("REQ-INTERCOM-005", "terminal_diagram_and_existing_wiring", "关闭证据：端子与线缆近照、端子定义和现有接法。"),
+        ("REQ-INTERCOM-006", "property_system_compatibility", "关闭证据：物业或门禁维护方书面确认系统角色、兼容与移动限制。"),
+        ("REQ-INTERCOM-007", "keep_move_integrate_strategy", "关闭证据：保留、迁移或接入装修后系统的签认结论。"),
+        ("REQ-INTERCOM-008", "final_panel_coordinates_and_mounting", "关闭证据：门套完成面后的安装面、净距和底边标高；接口中心坐标不得推测。"),
+    ]
+    for req_id, key, note in intercom_pending:
+        upsert(rows, "requirement_id", {
+            "requirement_id": req_id, "equipment_id": "ACCESS-INTERCOM-001", "discipline": "ELEC/INT1/NETWORK", "parameter_key": key,
+            "value_text": "unknown", "value_number": "", "unit": "", "datum": "", "value_origin": "pending", "status": "pending",
+            "source_id": "OWNER-E304-DNAKE-PHOTO-20260817", "source_locator": "现有照片未显示该信息", "blocks_release": "yes", "notes": note,
+        })
     write_csv(path, fields, rows)
 
 
@@ -352,7 +563,62 @@ def update_drawing_register() -> None:
     by_id["A-001"]["notes"] = "M072 自动汇总全部图号、阶段、版本、说明和图例；最终交付增加材质化正投影产品页要求：平面＋正/展开立面＋材质纹理＋尺寸链＋统一版式，与施工协调图并行且不替代厂家加工图"
     by_id["I-501"]["notes"] = "70 个既有对象协调包络入图；APP-009/010 两台未采购 SJ85ZX26MC 候选的官方柜孔、G3/4 冷水与 Ø38 排水约束已作为 2 条无定位接口表项入图，不生成粗装 XYZ、阀门、软管路径或开孔位置；EL-03 视图 06～09 及 EL-P01/P02 公共空间折线展开和贯穿长立面已写入正式 IFC 的 Bonsai 原生 Drawing；新增 1:30 无纹理 SVG 与手机 PNG；其余厂家安装图、燃气实测和五金运动包络未关闭；中厨墙面更新为灶台操作墙台面同材大板＋远端墙浅置物架，准确墙段、材料、加工和架后背衬待深化；最终需输出材质化正投影厨房产品页"
     by_id["I-502"]["notes"] = "33 个既有对象协调包络入图；EL-06 视图 18～22 与 EL-08 视图 27～32 已写入正式 IFC；原 9 个深层 BRep、公共空间新增 2 个对象及全量重编发现的 BED02 现均有纯折线 ELEVATION_VIEW，详细 Body 未替换；洁具粗装图、五金运动包络和节点未关闭；厕所定制地漏渠道与水母地漏/中央集水器＋托克乐思网＋线性排水渠方向已确认，准确房间、数量和 shop drawing 待商家；最终需输出材质化正投影卫生间产品页"
+    by_id["E-304"]["notes"] = "两个吸顶 AP 已采用 CAT6 星型回弱电箱 PoE 交换机的拓扑；既有可视对讲室内机品牌已由现场照片确认为 DNAKE／狄耐克，准确型号、端子、物业兼容和保留／迁移／接入方案仍待现场／物业确认；既有门铃仍为开发商参考点。实购 AP 功耗、PoE 总预算、弱电箱净尺寸/柜门温升、网线通断、门禁接口和端接顺序仍待厂家/物业/现场证据。"
     by_id["S-701"]["notes"] = "53 条家具产品身份、家电使用/存放、门窗五金、既有暖通类型、定制地漏方向和墙面材料系统记录按已确认/候选/未决分栏；中厨采用灶台操作墙台面同材大板＋远端墙浅置物架方向；厕所定制地漏渠道已定但 shop drawing 未齐；不是下单表"
+    by_id["D-601"]["notes"] = "材料与收口变量节点待复核；新增干区墙面同色齐平宽踢脚＋上下阴影缝候选，须以 1:5 墙脚节点、分房间适用表、门套/隐形门/柜体通缝展开和实物样板关闭；中厨 VVD Pewter 60 mm 踢脚保持独立，湿区暂不套用"
+    write_csv(path, fields, rows)
+
+
+def update_finish_details() -> None:
+    path = DECISIONS / "wfin-open-issues.csv"
+    fields, rows = read_csv(path)
+    upsert(rows, "issue_id", {
+        "issue_id": "WFIN-R06",
+        "scope": "dry-area-flush-wide-baseboard-shadow-gap",
+        "object_guid": "",
+        "current_evidence": "业主要求记录干区墙面同色齐平宽踢脚候选；参考案例为上下各约 10 mm 阴影缝、墙下口型材和门墙柜连续通缝。中厨 VVD Pewter 60 mm 踢脚保持独立，湿区暂不采用上下双缝。",
+        "required_action_or_decision": "由 D-601 输出 1:5 墙脚节点、分房间适用表、门套/隐形门/柜体/转角通缝展开，并以实物样板关闭材料、尺寸、公差、耐撞、拖地水和积灰清洁。",
+        "basis": "OWNER-WFIN-BASEBOARD-SHADOW-GAP-20260817；参考案例只支持候选方向，不支持项目加工尺寸或湿区适用性。",
+        "confidence": "1.00",
+        "review_required": "yes",
+        "status": "candidate_pending_detail_and_mockup",
+        "stop_condition": "节点和样板未批准前不得把参考案例尺寸写成项目尺寸、不得扩展到中厨或湿区、不得写正式 IFC 材料或几何。",
+    })
+    write_csv(path, fields, rows)
+
+    path = DECISIONS / "det1-detail-review.csv"
+    fields, rows = read_csv(path)
+    by_id = {row["node_id"]: row for row in rows}
+    row = by_id["D601-N04"]
+    row.update({
+        "confirmed_evidence": "中厨已确认 VVD 材料组合及 Pewter 60 mm 踢脚；业主另要求记录卧室、走廊等干区墙面同色齐平宽踢脚＋上下阴影缝候选，门套、隐形门和柜体连续通缝；准确节点未定",
+        "variable_parameters": "房间/墙段｜踢脚高度厚度材料｜上下阴影缝宽与公差｜墙下口型材｜门柜转角通缝｜墙顶收口｜材料分界｜密封/清洁策略",
+        "unresolved_material_or_product": "Tadelakt 与大白墙系统仍待选；干区踢脚材料、颜色和截面未定；中厨只待项目样板批次和加工节点",
+        "unresolved_construction": "干区 1:5 墙脚节点、分房间适用、基层型材、门柜转角通缝、耐撞、拖地水和积灰清洁样板未定；湿区排除边界待确认",
+        "source_references": "wfin-open-issues.csv WFIN-R01/R02/R03/R05/R06；OWNER-WFIN-BASEBOARD-SHADOW-GAP-20260817；OWNER-WFIN-VVD-SINKS-20260817；施工图检查清单 D-601",
+    })
+    write_csv(path, fields, rows)
+
+
+def update_door_coordination() -> None:
+    path = DECISIONS / "equipment-installation-requirements.csv"
+    fields, rows = read_csv(path)
+    by_id = {row["requirement_id"]: row for row in rows}
+    by_id["REQ-0222"].update({
+        "value_text": "Sail MONOROTAIA concealed ceiling track; left/west slide; no continuous floor track; lower anti-sway/positioning component per Rimadesio final shop drawing",
+        "source_locator": "official CAD layers sail_ELEMENTI_PERNO / ELEMENTI_PAVIMENTO + direct confirmation D03-D06",
+        "notes": "M06 为同一门组顶轨，不是第二樘门；不再推定‘可更换导向件’，下部防摆／定位构件的准确形式和位置由 Rimadesio 最终深化图确认。",
+    })
+    write_csv(path, fields, rows)
+
+    path = DECISIONS / "s701-schedule-review.csv"
+    fields, rows = read_csv(path)
+    by_id = {row["schedule_id"]: row for row in rows}
+    by_id["S701-M06"].update({
+        "candidate_or_observed_scope": "OperationType=Sail MONOROTAIA concealed ceiling track; left/west slide; no continuous floor track; lower anti-sway/positioning component per final Rimadesio shop drawing",
+        "unresolved_for_release": "厂家门窗表、下部防摆／定位构件准确型号与位置、五金安装/收口及现场复核",
+        "evidence_reference": "IFC-FORMAL-001;RIMADESIO-SAIL-MONOROTAIA-001;A104-SHOP-REQUEST-20260815;OUTBOUND-FORM-DOOR-20260817",
+    })
     write_csv(path, fields, rows)
 
 
@@ -362,8 +628,10 @@ def main() -> None:
     update_closeout_rules()
     update_equipment()
     update_requirements()
+    update_finish_details()
+    update_door_coordination()
     update_drawing_register()
-    print("Applied 2026-08-17 kitchen, product-sheet, and custom-drain owner updates.")
+    print("Applied 2026-08-17 kitchen, product-sheet, custom-drain, and DNAKE intercom owner updates.")
 
 
 if __name__ == "__main__":

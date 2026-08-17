@@ -1,7 +1,7 @@
 ﻿input_id,closeout_kind,responsible_party,required_evidence,automatic_close_allowed,notes
 A103-WALL-TAG-SCHEME,human_design_selection,业主/建筑设计,确认 88 面墙审核图与 EW/NW 编号规则,no,确认后才允许机械写入正式 IFC Tag
-A104-M05-M06-DIMENSIONS,product_interface_evidence,全屋定制/建筑设计,按 A104-SHOP-REQUEST-20260815 提交项目订单/shop drawing：洞口、门板、轨道、滑向、基层、收口和公差,no,通用产品页面和 IFC 包围盒不能替代项目名义尺寸
-A104-M07-EVIDENCE,site_or_drawing_evidence,建筑设计/现场,按 A104-SHOP-REQUEST-20260815 提交 Pivot 项目 shop drawing：名义宽高、左右手、开启包络、门套/衣柜净距和 Master A 避让,no,产品通用资料不能替代本项目门扇尺寸与开启关系
+A104-M05-M06-DIMENSIONS,closed_confirmation_of_proposed_solution,Rimadesio供货安装方/全屋定制,在 01-门组做法确认表 D01-D06 逐项勾是；如有否项，填写修正值并附签认图。,no,不接受开放式口头回复；项目值在勾是前保持研究结论。
+A104-M07-EVIDENCE,closed_confirmation_of_proposed_solution,Poliform供货安装方/全屋定制,在 01-门组做法确认表 D07-D12 逐项勾是；如有否项，填写修正值并附签认图。,no,项目宽高和开启关系由我方提出，不再开放式询问；勾是前保持研究结论。
 E302-ENTRY-SIDE,site_or_drawing_evidence,建筑设计/现场,完成面门套柜门与门扇关系尺寸或可定位图纸,no,用户方向已提交但墙侧几何须由项目证据关闭
 E302-ENTRY-PANEL,external_product_evidence,智能面板厂家/电气方,准确 SKU、端子图、每路负载/浪涌、证书编号、底盒净深和平嵌适配,no,功能/粗装结论已闭合；此门只关闭最终产品、现场测试或面板安装。
 E302-MASTER-SIDE,site_or_drawing_evidence,建筑设计/现场,Master A 与 Master B 各自墙侧门套净距及见光板构造,no,两块面板角色已确认但真实安装面未关闭
@@ -29,8 +29,8 @@ APP004-COFFEE-FINAL,human_product_selection,业主/设备方,GS3 或 E1 Prima EX
 APP016-DISPOSER-DATA,product_interface_evidence,设备方/橱柜设计/给排水设计,勒科斯 F50 同机铭牌照片和官方安装图，包含功率、控制/电源、法兰/开孔、机身净距和排水接口,no,同类产品常见值不能关闭。
 E302-BEDSIDE-220V,site_or_drawing_evidence,建筑设计/家具设计/电气设计,逐房床、床头柜、软包和窗帘完成尺寸下的插座点位、高度与面板组合图,no,每侧至少两个 220V 数量规则已确认；本规则只关闭准确定位。
 APP017-SIEMENS-STACK,manufacturer_compatibility_and_rough_in,西门子客服/设备方/橱柜方/给排水设计/电气设计,书面确认 WG54M7D20W 与 WQ55M7U20W 对应 E-Nr./FD 可叠放、17008829 的商业型号与抽板配置；最终侧置插座/水龙头/排水和维修抽出尺寸,no,不得以 WTZ27510 官网候选反向宣称 17008829 带抽板或逐型号已兼容。
-E302-HVAC-CONTROL-PANELS,site_and_system_evidence,空调厂家/机电设计/现场,5 个现有面板逐点照片和线路核对表；对应 A01–A06 的系统归属；保留迁移合并结论；最终控制器接口与安装定位,no,开发商图只证明既有参考位置和 1300mm 标注；不能证明装修后控制系统。
-E304-VIDEO-INTERCOM-DOORBELL,site_and_system_evidence,物业/门禁厂家/弱电设计/现场,可视对讲和门铃实物型号线路物业接口测试；保留迁移或接入结论；门套完成面后的最终定位,no,开发商图只证明既有参考位置和标注高度；不能证明装修后门禁系统已接通。
+E302-HVAC-CONTROL-PANELS,site_and_system_evidence,空调厂家/机电设计/现场,PC-P1HEQ 与 A01–A06 最终机组兼容性签认；5 个点位逐点控制对象和保留/迁移/合并表；项目端子图与线长校核；最终安装位置和照片,no,PC-P1HEQ 准确型号及官方通用安装规则已关闭，不再向厂家询问型号。
+E304-VIDEO-INTERCOM-DOORBELL,site_and_system_evidence,物业/门禁维护方/弱电设计/现场,狄耐克室内机背面或工程信息页的准确型号；背部端子、线缆和接法照片；物业系统兼容与移动限制书面确认；保留／迁移／接入结论；门铃实物身份及门套完成面后的最终定位,no,DNAKE／狄耐克品牌和软件版本已由现场照片关闭，不再重复询问；开发商图仍只证明既有参考点和标注高度。
 INT1-ENTRY-PARCEL-FUNCTION,human_design_selection,业主/室内设计,业主确认入户须支持拿快递、签收和临时落包,no,功能需求关闭后仍须由独立布局条目关闭准确解法。
 INT1-ENTRY-PARCEL-LAYOUT,site_or_drawing_evidence,室内设计/全屋定制/现场,I-503 玄关平面＋立面／剖面候选及必要现场净尺寸：门扇开启、通行净宽、柜体分格、Entry 控制与强弱电检修范围,no,不得用常见玄关柜尺寸、未核实门扇包络或单张无比例照片冻结位置和尺寸。
 WFIN-KITCHEN-SLAB-SHELF-SCOPE,human_design_selection,业主/室内设计,业主确认灶台操作墙台面同材大板＋远端墙浅置物架,no,设计方向已关闭，准确构造由独立深化项关闭。
@@ -39,3 +39,8 @@ DRAWING-MATERIALIZED-ORTHO-SCOPE,human_design_selection,业主/室内设计,业�
 DRAWING-MATERIALIZED-ORTHO-INPUTS,product_interface_evidence,全屋定制/材料供应商/设备方/现场/室内设计,最终柜体 shop drawing、现场完成面尺寸、材料编号与纹理/样板、设备外形与开启包络、大板范围厚度拼缝边缘及开孔,no,未齐前允许输出明确标记未知项的候选产品页，不得冒充最终材料或加工图。
 PLUM-CUSTOM-DRAIN-VENDOR,human_design_selection,业主/给排水设计,业主确认定制主页渠道与水母地漏/中央集水器＋托克乐思网＋线性排水渠组合方向,no,渠道和方向已关闭。
 PLUM-CUSTOM-DRAIN-SHOP-DRAWING,product_interface_evidence,定制地漏商家/给排水设计/防水/现场,商家主体与订单；逐卫生间数量/房间映射/组件清单；准确型号材质表面；总长宽深、排水口径方向、水封、流量、找平层/完成面范围、防水法兰、坡向、检修清洁、排水中心和安装公差的 shop drawing,no,shop drawing 未签认前不替代 Geberit、不改正式 IFC 地漏与坡面。
+WFIN-VVD-FINISH-SCHEDULE,human_design_selection,业主/室内设计,业主确认采用 VVD 产品页第 9 页材料组合及本项目水槽替换关系,no,已由 OWNER-WFIN-VVD-SINKS-20260817 关闭；不等于项目加工图或采购。
+INT1-BATHG-TISSUE-WASTE-SCHEME,human_design_selection,业主/室内设计,业主在 I-502 客卫干区平面与立面候选中确认采用外露置物架或台盆左侧全高服务塔柜，并明确是否与既有全高镜柜意向合并,no,当前只记录两个方案与设计推荐；优先深化窄柜不等于业主已做最终选择。
+INT1-BATHG-TISSUE-WASTE-DETAIL,site_or_drawing_evidence,室内设计/全屋定制/洁具五金/现场,I-502 客卫干区完成面实测＋平立剖＋1:1 五金样板：台盆与 M03 门套/开启包络、柜宽深高、纸巾仓/垃圾仓隔湿、不锈钢内胆、十字铰链/反弹器或抽拉滑轨的型号与承载、开启/抽拉行程、操作高度、满载固定、防潮、通风、清洁检修及与镜柜/给排水的接口,no,不得用 IFC 协调包络、400 mm 优选面宽（或 350–450 mm 候选范围）及 250–280 mm 柜深代替现场尺寸与加工图。
+WFIN-DRY-BASEBOARD-SHADOW-GAP-SCOPE,human_design_selection,业主/室内设计,业主确认该参考只作为卧室、走廊等干区候选，并明确中厨和湿区不套用,no,候选方向已记录，最终采用仍由节点和样板关闭。
+WFIN-DRY-BASEBOARD-SHADOW-GAP-DETAIL,material_and_mockup_evidence,室内设计/墙面施工/全屋定制/现场,D-601 1:5 节点；分房间适用表；踢脚高度厚度材料和颜色；上下阴影缝宽与公差；墙下口型材；门套/隐形门/柜体/转角通缝展开；耐撞、拖地水和积灰清洁实物样板,no,不得按小红书图片直接下单或写正式 IFC。
