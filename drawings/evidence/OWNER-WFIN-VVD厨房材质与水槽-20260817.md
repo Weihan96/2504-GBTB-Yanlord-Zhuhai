@@ -10,6 +10,11 @@
 - 灶台操作墙背板采用厨房台面同材 Travertino titan marble 大板；远端墙采用浅置物架。
 - Foster 主水槽采用 Milano 1014 850（产品代码 1014850），外形 838×500 mm，台下安装。开孔、盆体、排水器等准确参数继续以 Foster 官方资料和随货模板控制。
 - 另一只定制水槽的项目宽度为 600 mm。其深度、高度、盆体净尺寸、下水、溢水、支撑、防水和加工公差仍须由定制加工图关闭。
+- 岛台不设置产品页示意的 trolley。
+- 不采用产品页示意的 Suspended VVD hood。油烟机改为整合在本项目 `Sistema 7 Wall Unit 4 Doors` 内；Molteni 官方资料只证明 Sistema 7 产品族允许整合油烟机，项目四门柜配置、准确油烟机、风管、净距和检修须由加工图关闭。
+- 正式 IFC GlobalId `1C2NYt_qT35P4jTGTCHJyh` 对应玻璃门柜，不是无门开放柜；本轮只修正协调语义，不修改正式 IFC。
+- 所有地柜内部 LED 由灯光设计师确定并供货，送至柜体工厂组装；功率、色温、驱动器、回路、接线和更换路径继续由灯光与柜体联合图关闭。
+- 岛台 600 mm 石材盆下方采用抽拉式收纳，参考 Molteni&C / Dada `Eco kits` 的盆下抽屉、垃圾桶和清洁用品托盘产品语言；准确抽屉、桶体、管线避让和检修包络仍由加工图关闭。
 
 ## VVD 岛台材料
 
@@ -20,18 +25,14 @@
 - Pewter metal lacquer side panels
 - Pewter horizontal finger recess
 - Pewter skirting，高 60 mm
-- Suspended VVD hood
 - Thermo oak snack with Pewter support
-- Trolley with Pewter structure and Thermo oak drawers
 - 所有地柜配置内部 LED 灯
 
-## 悬挂式 VVD 油烟机架材料
+## 油烟机与 Sistema 7 墙柜
 
-- Pewter support
-- Pewter hood
-- Thermo oak shelves
-- Integrated LED light
-- 产品页示意包含 4 块透明玻璃搁板和 2 块 Thermo oak 搁板；本项目准确数量、长度、深度、承载和固定方式仍由加工图确认。
+- 本项目不采用悬挂式 VVD 油烟机架，也不照抄 2021 产品页中的独立 hood 构图。
+- 油烟机整合在 `Sistema 7 Wall Unit 4 Doors` 内；准确四门分格、柜宽、油烟机型号、安装位置、风管、散热、隔油、检修和防火净距由项目加工图确认。
+- Molteni 当前官方 Kitchen Collection 资料记载 Sistema 7 墙柜可按设计需要把油烟机设置在三种位置之一，只支持产品族可行性，不支持本项目已完成厂家签认。
 
 ## VVD 墙柜组合材料
 
@@ -50,6 +51,7 @@
 - 所有地柜配置内部 LED 灯
 - Equipped open column：Thermo oak structure / side panels，透明玻璃搁板，Thermo oak 搁板，黑色烤漆底架和杯架，两侧 LED
 - Sistema 7：Thermo oak structure，透明玻璃门配 Pewter 框，Thermo oak 内抽，四周 LED
+- GlobalId `1C2NYt_qT35P4jTGTCHJyh`：玻璃门柜；不得继续标为 equipped open column。
 
 ## 必须保留的证据边界
 
@@ -57,9 +59,12 @@
 - Bel Œil 案例只作效果参考，不证明本项目材料批次、石材纹理、节点、灯具功率或尺寸。
 - 本文件已关闭材料名称、台面厚度、灯架厚度、踢脚高度、Foster 水槽身份与外形尺寸、定制水槽宽度；不得继续向供应商询问这些已经回答的问题。
 - 尚待外部关闭的只有项目级样板／批次、石材排版和拼缝、边型、准确开孔、结构支撑、LED 接线与检修、浅置物架准确尺寸与承载、以及定制水槽除宽度外的加工接口。
+- Sistema 7 柜内油烟机和 Eco kits 只采用官方产品族做法作为深化依据，不能据此推测本项目柜宽、开孔、接口中心或下单配置。
 
 ## 参考
 
 - 本地归档：`drawings/evidence/VVD-product-sheet-official-202112.pdf`
 - Foster 官方产品页：https://www.fosterspa.com/en-ww/foster-milano-1014-850.aspx
 - 效果参考：https://www.bel-oeil.com/en/realisations/molteni-vvd-kitchen-in-marseille/
+- Molteni Kitchen Collection：https://molteni.it/en/download/document/3c1c2c00b23e4dbb8ab7c89fa68936d8008a7a56
+- Molteni Eco kits：https://www.molteni.it/en/product/kit-eco

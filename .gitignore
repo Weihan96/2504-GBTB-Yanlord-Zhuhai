@@ -27,3 +27,6 @@ __pycache__/
 # IFC-to-drawing compiler outputs are reproducible and never source data.
 /build/
 /tmp/
+
+# Artifact Tool workbook inspection streams are local QA sidecars.
+*.inspect.ndjson

@@ -21,14 +21,14 @@ WFIN-WHITE-SYSTEM,human_material_selection,业主/材料设计,最终厂家体�
 WFIN-TADELAKT,human_material_selection,业主/材料设计,最终厂家完整体系湿区基层防水收口与样板,no,网页意向不能替代施工体系
 WFIN-KITCHEN-PUTTY-COVERAGE,human_design_selection,业主/室内设计,业主确认旧全生堂中厨方案已由台面同材大板＋浅置物架方案取代,no,已由 OWNER-WFIN-KITCHEN-SLAB-SHELF-20260817 关闭并保留历史。
 WFIN-KITCHEN-PUTTY-SYSTEM,human_design_selection,业主/室内设计,确认不再把全生堂产品系统作为中厨当前材料索取项,no,已关闭为不适用当前中厨方案；不再等待全生堂厨房系统资料。
-RCP1-HVAC-PORTS,product_interface_evidence,空调厂家/机电设计,按 RCP1-PLUM-REQUEST-20260815 的 A01–A06 行提交准确接口图和设计参数,no,无批准厂家接口图时只保留路线候选
-PLUM-ROUGHINS,product_interface_evidence,设备方/给排水设计,按 RCP1-PLUM-REQUEST-20260815 逐台提交厂家图、现场标高/方向、防水检修和定制 shop drawing,no,存放位置不得替代实际使用和粗装接口
+RCP1-HVAC-PORTS,product_interface_evidence,空调厂家/机电设计,日立／机电设计提交 A05/A06 准确型号和 A01-A06 项目接口图；书面给出冷媒／冷凝水保温材料与厚度、完成外径、送回风、端口、冷凝水排放和检修条件；证明最终路线与吊顶净高相容。,no,A01-A04 型号族、裸管规格和接管侧已由 MS 接受；P02010Q 未给保温厚度，旧 IFC 管线不能关闭最终模型匹配。
+PLUM-ROUGHINS,product_interface_evidence,设备方/给排水设计,按 EXT-外部信息最短清单-20260818 和 09 表提交准确墙排、柜体服务路径、洁具接口、定制地漏／石材盆／油烟机联合 shop drawing；说明书未给的中心坐标由项目图关闭。,no,Foster 官方参数、洗烘电气语义和被否决 Geberit 不再重复询问。
 DET1-WATERPROOF,human_material_selection,业主/建筑设计,最终防水厂家体系上翻高度门口节点与样板,no,须与地漏坡向门槛高差一起人审
 APP014-APP015-ALIAS,final_shop_drawing_and_site_interface,设备方/橱柜方/给排水设计/电气设计,WS7FSB0C1C 最终柜体安装图、现场给排水/电源位置及检修复核,no,官方共用说明书已取得；APP-015 去重已关闭；剩余为项目落位与现场接口。
 APP004-COFFEE-FINAL,human_product_selection,业主/设备方,GS3 或 E1 Prima EXP 最终订单、准确 220V 版本铭牌及安装说明书,no,候选功率不得代替最终铭牌。
-APP016-DISPOSER-DATA,product_interface_evidence,设备方/橱柜设计/给排水设计,勒科斯 F50 同机铭牌照片和官方安装图，包含功率、控制/电源、法兰/开孔、机身净距和排水接口,no,同类产品常见值不能关闭。
+APP016-DISPOSER-DATA,product_interface_evidence,设备方/橱柜设计/给排水设计,最终所选垃圾处理器同型号铭牌与官方／供货商签认尺寸图，包含额定输入、插头／控制、总高直径、法兰／开孔、排水、洗碗机支管、空气开关和拆换包络。,no,F50 已否决；Franke 134.0721.210 只作研究候选，不能用其他地区 SKU 或同类机尺寸关闭。
 E302-BEDSIDE-220V,site_or_drawing_evidence,建筑设计/家具设计/电气设计,逐房床、床头柜、软包和窗帘完成尺寸下的插座点位、高度与面板组合图,no,每侧至少两个 220V 数量规则已确认；本规则只关闭准确定位。
-APP017-SIEMENS-STACK,manufacturer_compatibility_and_rough_in,西门子客服/设备方/橱柜方/给排水设计/电气设计,书面确认 WG54M7D20W 与 WQ55M7U20W 对应 E-Nr./FD 可叠放、17008829 的商业型号与抽板配置；最终侧置插座/水龙头/排水和维修抽出尺寸,no,不得以 WTZ27510 官网候选反向宣称 17008829 带抽板或逐型号已兼容。
+APP017-SIEMENS-STACK,manufacturer_compatibility_and_rough_in,西门子客服/设备方/橱柜方/给排水设计/电气设计,西门子书面确认 WTZ27510 与两台实购 E-Nr./FD 兼容；给排水／柜体方提交准确双接口墙排产品图及洗衣／干衣冷凝水独立接入口、阀门、两个侧置 10A 插座、蝴蝶门、通风和整机抽出联合剖面。,no,上下顺序、两个 10A 插座、共用 C16 和侧置检修已由 MS 确认，不再重复询问。
 E302-HVAC-CONTROL-PANELS,site_and_system_evidence,空调厂家/机电设计/现场,PC-P1HEQ 与 A01–A06 最终机组兼容性签认；5 个点位逐点控制对象和保留/迁移/合并表；项目端子图与线长校核；最终安装位置和照片,no,PC-P1HEQ 准确型号及官方通用安装规则已关闭，不再向厂家询问型号。
 E304-VIDEO-INTERCOM-DOORBELL,site_and_system_evidence,物业/门禁维护方/弱电设计/现场,狄耐克室内机背面或工程信息页的准确型号；背部端子、线缆和接法照片；物业系统兼容与移动限制书面确认；保留／迁移／接入结论；门铃实物身份及门套完成面后的最终定位,no,DNAKE／狄耐克品牌和软件版本已由现场照片关闭，不再重复询问；开发商图仍只证明既有参考点和标注高度。
 INT1-ENTRY-PARCEL-FUNCTION,human_design_selection,业主/室内设计,业主确认入户须支持拿快递、签收和临时落包,no,功能需求关闭后仍须由独立布局条目关闭准确解法。
@@ -44,3 +44,8 @@ INT1-BATHG-TISSUE-WASTE-SCHEME,human_design_selection,业主/室内设计,业主
 INT1-BATHG-TISSUE-WASTE-DETAIL,site_or_drawing_evidence,室内设计/全屋定制/洁具五金/现场,I-502 客卫干区完成面实测＋平立剖＋1:1 五金样板：台盆与 M03 门套/开启包络、柜宽深高、纸巾仓/垃圾仓隔湿、不锈钢内胆、十字铰链/反弹器或抽拉滑轨的型号与承载、开启/抽拉行程、操作高度、满载固定、防潮、通风、清洁检修及与镜柜/给排水的接口,no,不得用 IFC 协调包络、400 mm 优选面宽（或 350–450 mm 候选范围）及 250–280 mm 柜深代替现场尺寸与加工图。
 WFIN-DRY-BASEBOARD-SHADOW-GAP-SCOPE,human_design_selection,业主/室内设计,业主确认该参考只作为卧室、走廊等干区候选，并明确中厨和湿区不套用,no,候选方向已记录，最终采用仍由节点和样板关闭。
 WFIN-DRY-BASEBOARD-SHADOW-GAP-DETAIL,material_and_mockup_evidence,室内设计/墙面施工/全屋定制/现场,D-601 1:5 节点；分房间适用表；踢脚高度厚度材料和颜色；上下阴影缝宽与公差；墙下口型材；门套/隐形门/柜体/转角通缝展开；耐撞、拖地水和积灰清洁实物样板,no,不得按小红书图片直接下单或写正式 IFC。
+PLUM-GEBERIT-CURRENT-USE-20260818,human_design_selection,业主/给排水设计,MS 对 G01-G07、C02 的逐项确认,no,当前用途决定已关闭；采购历史保留。
+APP017-WALL-DRAIN-20260818,product_interface_evidence,西门子/给排水/家政柜,准确墙排品牌型号、双接口图、排水标高管径、防回流防臭、清洁和柜内检修剖面,no,388.013.00.2 已否决且不是可直接替代的墙排。
+INT1-VVD-HOOD-TROLLEY-20260818,human_design_selection,业主/室内设计,MS 确认无 trolley、无悬挂式 hood、油烟机整合 Sistema 7 四门玻璃墙柜,no,方向已关闭，项目接口由 09 表关闭。
+INT1-KITCHEN-ISLAND-LAYOUT-20260818,vendor_shop_drawing_and_compatibility,全屋定制/西门子/给排水/电气,在 09 表 K01 答是／否并提交两台进水排水插座柜孔软管检修路径的岛台平面剖面,no,保持相邻是研究结论；厂家图返回前不改正式 IFC。
+SAN022-ECO-KIT-20260818,vendor_shop_drawing_and_compatibility,全屋定制/石材/给排水,09 表 K05 联合剖面：盆体、抽屉、垃圾桶、海绵托盘、存水弯排水、溢水、支撑和检修,no,Eco kits 只证明产品族做法。

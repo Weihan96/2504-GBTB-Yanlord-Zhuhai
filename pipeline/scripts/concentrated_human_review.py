@@ -78,6 +78,15 @@ INT1_PACKAGES = (
         "required_evidence": "岛台盖章加工图及水槽、龙头、插座等全部实物模板汇总开孔表",
     },
     {
+        "package_id": "INT1-KITCHEN-APPLIANCE-LAYOUT",
+        "title": "岛台水槽与两台洗碗机联合布置",
+        "equipment_ids": {"APP-009", "APP-010"},
+        "root_cause": "业主已确认两台洗碗机相邻的布置方向，但产品资料和现有 IFC 不能证明软管、柜孔、给排水和检修路径可实施",
+        "affected_sheets": ["I-501", "P-201", "P-202", "E-303"],
+        "responsible_party": "橱柜深化/西门子设备方/给排水设计",
+        "required_evidence": "签认的厨房联合 shop drawing，证明两台机器与定制水槽的模块关系，并标出阀门、排水、软管、柜孔、插座和抽机检修路径",
+    },
+    {
         "package_id": "INT1-VVD-KITCHEN-FINISH-SYSTEM",
         "title": "VVD 厨房材料、照明与浅置物架深化",
         "equipment_ids": {"KIT-VVD-FINISH-001"},
@@ -195,6 +204,14 @@ DISCIPLINE_PACKAGES = {
         "affected_sheets": ["E-303", "E-304"],
         "responsible_party": "设备方/电气设计/业主",
         "required_evidence": "最终型号铭牌、官方说明书和项目回路计算或接线接口图",
+    },
+    "HVAC": {
+        "package_id": "REQ-HVAC-INSULATION-INTERFACES",
+        "title": "空调管路保温与防结露构造",
+        "root_cause": "现有日立资料确认冷媒管和冷凝水管需保温，但未给出本项目的材料、厚度、防火和防结露参数",
+        "affected_sheets": ["M-401", "D-602"],
+        "responsible_party": "日立空调供货安装/机电设计",
+        "required_evidence": "项目保温规格表或厂家书面签认，标明冷媒气管、液管和冷凝水管的材料、厚度、外径、防火等级及穿墙收口",
     },
     "HVAC/PLUM": {
         "package_id": "REQ-HVAC-FINAL-INTERFACES",
