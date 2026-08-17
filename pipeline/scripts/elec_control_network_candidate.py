@@ -66,6 +66,16 @@ def parse_args() -> argparse.Namespace:
     parser.add_argument("--ceiling-devices", type=Path, default=root / "pipeline/decisions/a106-ceiling-device-review.csv")
     parser.add_argument("--doors", type=Path, default=root / "pipeline/decisions/a104-door-window-review.csv")
     parser.add_argument("--owner-decisions", type=Path, default=root / "pipeline/decisions/owner-input-register.csv")
+    parser.add_argument(
+        "--equipment-register",
+        type=Path,
+        default=root / "pipeline/decisions/equipment-register.csv",
+    )
+    parser.add_argument(
+        "--installation-requirements",
+        type=Path,
+        default=root / "pipeline/decisions/equipment-installation-requirements.csv",
+    )
     parser.add_argument("--spaces", type=Path, default=root / "pipeline/decisions/space-reference-review.csv")
     parser.add_argument("--router-evidence", type=Path, default=root / "build/elec/e304-router-cad-evidence.json")
     parser.add_argument(
@@ -410,6 +420,160 @@ def developer_control_owner_gates(owner_decisions: dict[str, dict[str, str]]) ->
     }
 
 
+def compile_hvac_controller_selection(
+    equipment_path: Path,
+    requirements_path: Path,
+    panel_references: list[dict[str, Any]],
+) -> dict[str, Any]:
+    equipment = {row["equipment_id"]: row for row in read_csv(equipment_path)}
+    controller = equipment.get("HVAC-CTRL-001")
+    if controller is None:
+        raise RuntimeError("equipment register is missing HVAC-CTRL-001")
+    expected = {
+        "manufacturer": "日立／海信日立",
+        "model": "PC-P1HEQ",
+        "quantity": "5",
+        "procurement_status": "selected",
+        "decision_status": "partial",
+    }
+    if any(controller[key] != value for key, value in expected.items()):
+        raise RuntimeError("HVAC-CTRL-001 identity or decision boundary changed")
+
+    requirements = {
+        row["parameter_key"]: row
+        for row in read_csv(requirements_path)
+        if row["equipment_id"] == "HVAC-CTRL-001"
+    }
+    confirmed = {
+        "exact_model": "PC-P1HEQ",
+        "existing_control_point_quantity": "5",
+        "maximum_controlled_indoor_units": "6",
+        "control_wiring": "two-core / 1P-0.75 mm² minimum",
+        "minimum_separation_from_power_wiring": "300",
+    }
+    for key, value in confirmed.items():
+        row = requirements.get(key)
+        actual = "" if row is None else (row["value_text"] or row["value_number"])
+        if row is None or row["status"] != "confirmed" or actual != value:
+            raise RuntimeError(f"HVAC-CTRL-001 confirmed requirement changed: {key}")
+    pending = {
+        "compatibility_with_A01_A06",
+        "five_point_to_indoor_unit_mapping",
+        "keep_move_merge_strategy",
+        "project_terminal_diagram_and_total_length",
+        "final_panel_coordinates_and_mounting",
+    }
+    if any(
+        key not in requirements or requirements[key]["status"] != "pending"
+        for key in pending
+    ):
+        raise RuntimeError("HVAC-CTRL-001 project application boundary changed")
+    if len(panel_references) != int(controller["quantity"]):
+        raise RuntimeError("PC-P1HEQ selected quantity does not match developer control references")
+
+    for row in panel_references:
+        row.update(
+            {
+                "selected_controller_equipment_id": "HVAC-CTRL-001",
+                "selected_controller_model": controller["model"],
+                "product_selection_status": "confirmed",
+                "project_mapping_status": "pending",
+                "system_compatibility_status": "pending",
+                "keep_move_merge_status": "pending",
+                "automatic_ifc_write_allowed": False,
+            }
+        )
+    return {
+        "equipment_id": "HVAC-CTRL-001",
+        "manufacturer": controller["manufacturer"],
+        "model": controller["model"],
+        "quantity": int(controller["quantity"]),
+        "product_selection_status": "confirmed",
+        "project_mapping_status": "pending",
+        "system_compatibility_status": "pending",
+        "confirmed_generic_installation": {
+            "maximum_controlled_indoor_units": 6,
+            "control_wiring": "two-core / 1P-0.75 mm² minimum",
+            "minimum_separation_from_power_wiring_mm": 300,
+        },
+        "pending_project_application": sorted(pending),
+    }
+
+
+def compile_access_intercom_identity(
+    equipment_path: Path,
+    requirements_path: Path,
+    access_references: list[dict[str, Any]],
+) -> dict[str, Any]:
+    equipment = {row["equipment_id"]: row for row in read_csv(equipment_path)}
+    intercom = equipment.get("ACCESS-INTERCOM-001")
+    if intercom is None:
+        raise RuntimeError("equipment register is missing ACCESS-INTERCOM-001")
+    expected = {
+        "manufacturer": "DNAKE／狄耐克",
+        "model": "",
+        "quantity": "1",
+        "procurement_status": "existing",
+        "decision_status": "partial",
+    }
+    if any(intercom[key] != value for key, value in expected.items()):
+        raise RuntimeError("ACCESS-INTERCOM-001 identity or unknown-model boundary changed")
+
+    requirements = {
+        row["parameter_key"]: row
+        for row in read_csv(requirements_path)
+        if row["equipment_id"] == "ACCESS-INTERCOM-001"
+    }
+    confirmed = {
+        "manufacturer": "DNAKE／狄耐克",
+        "system_version": "1.6.0 20210615",
+        "application_version": "1.1.0 20210615 16M",
+    }
+    for key, value in confirmed.items():
+        row = requirements.get(key)
+        if row is None or row["status"] != "confirmed" or row["value_text"] != value:
+            raise RuntimeError(f"ACCESS-INTERCOM-001 confirmed requirement changed: {key}")
+    pending = {
+        "exact_model",
+        "terminal_diagram_and_existing_wiring",
+        "property_system_compatibility",
+        "keep_move_integrate_strategy",
+        "final_panel_coordinates_and_mounting",
+    }
+    if any(
+        key not in requirements
+        or requirements[key]["status"] != "pending"
+        or requirements[key]["value_text"] != "unknown"
+        for key in pending
+    ):
+        raise RuntimeError("ACCESS-INTERCOM-001 pending interface boundary changed")
+
+    references = [row for row in access_references if row["device_role"] == "video_intercom"]
+    if len(references) != 1:
+        raise RuntimeError("expected one developer video intercom reference")
+    references[0].update({
+        "equipment_id": "ACCESS-INTERCOM-001",
+        "manufacturer": intercom["manufacturer"],
+        "exact_model": None,
+        "brand_status": "confirmed_from_site_photo",
+        "exact_model_status": "pending",
+        "system_interface_status": "pending",
+        "automatic_ifc_write_allowed": False,
+    })
+    return {
+        "equipment_id": "ACCESS-INTERCOM-001",
+        "manufacturer": intercom["manufacturer"],
+        "exact_model": None,
+        "brand_status": "confirmed_from_site_photo",
+        "exact_model_status": "pending",
+        "confirmed_software_versions": {
+            "system": confirmed["system_version"],
+            "application": confirmed["application_version"],
+        },
+        "pending_project_application": sorted(pending),
+    }
+
+
 def control_wall_side_options(
     ifc_path: Path,
     controls: list[dict[str, Any]],
@@ -734,14 +898,14 @@ def render_svg(source: str, report: dict[str, Any]) -> str:
         markup.append(
             f'<g data-candidate-id="{candidate_id}" data-elec-kind="hvac-control-panel-reference">'
             f'<rect class="cn-hvac" x="{x-2.2:.3f}" y="{y-2.2:.3f}" width="4.4" height="4.4" transform="rotate(45 {x:.3f} {y:.3f})"/>'
-            f'<text class="cn-label" x="{x+3.4:.3f}" y="{y+(5 if index % 2 else -3):.3f}">{candidate_id} AC</text>'
-            f'<title>{candidate_id} | developer existing reference | field confirmation pending</title></g>'
+            f'<text class="cn-label" x="{x+3.4:.3f}" y="{y+(5 if index % 2 else -3):.3f}">{candidate_id} P1HEQ</text>'
+            f'<title>{candidate_id} | PC-P1HEQ selected | A01-A06 mapping and compatibility pending</title></g>'
         )
     for index, row in enumerate(report["access_control_references"]):
         x, y = world_to_svg(row["position_mm"])
         candidate_id = html.escape(row["candidate_id"])
         css = "cn-intercom" if row["device_role"] == "video_intercom" else "cn-doorbell"
-        label = "对讲" if row["device_role"] == "video_intercom" else "门铃"
+        label = "狄耐克对讲" if row["device_role"] == "video_intercom" else "门铃"
         if row["device_role"] == "doorbell":
             label_x, label_y, label_anchor = x - 3.4, y + 7, "end"
         else:
@@ -750,7 +914,7 @@ def render_svg(source: str, report: dict[str, Any]) -> str:
             f'<g data-candidate-id="{candidate_id}" data-elec-kind="{html.escape(row["device_role"])}-reference">'
             f'<circle class="{css}" cx="{x:.3f}" cy="{y:.3f}" r="2.4"/>'
             f'<text class="cn-label" x="{label_x:.3f}" y="{label_y:.3f}" text-anchor="{label_anchor}">{candidate_id} {label}</text>'
-            f'<title>{candidate_id} | developer existing reference | field confirmation pending</title></g>'
+            f'<title>{candidate_id} | {"DNAKE brand confirmed; exact model and system interface pending" if row["device_role"] == "video_intercom" else "developer existing reference; field confirmation pending"}</title></g>'
         )
     main_bedroom_ap = next(
         row
@@ -763,13 +927,14 @@ def render_svg(source: str, report: dict[str, Any]) -> str:
         '<text class="cn-title" x="407" y="16">控制、网络与安全设备协调区</text>',
         '<text class="cn-note" x="407" y="24">Bonsai 同批材质底图｜A-106 点位联动｜非施工发布</text>',
         '<text class="cn-text" x="407" y="39">洋红方块：4 个门口墙侧 A/B 候选</text>',
-        '<text class="cn-text" x="407" y="47">青色菱形：5 个开发商既有空调面板</text>',
-        '<text class="cn-text" x="407" y="55">绿色/棕色点：既有可视对讲 / 门铃</text>',
+        '<text class="cn-text" x="407" y="47">青色菱形：5 个既有控制点｜PC-P1HEQ 已选</text>',
+        '<text class="cn-text" x="407" y="55">绿色/棕色点：既有狄耐克可视对讲 / 门铃</text>',
         '<text class="cn-text" x="407" y="63">蓝点：主卧/次卧 AP｜紫点：玄关高柜路由器平面柜位</text>',
         '<text class="cn-text" x="407" y="71">橙/深红/红：烟感/火灾点/燃气房间区</text>',
-        '<text class="cn-warn" x="407" y="79">空调面板/对讲/门铃：交付参考，待现场确认</text>',
-        '<text class="cn-text" x="407" y="93">双控：客厅＋书房＋餐厅｜仅实体有线</text>',
-        '<text class="cn-text" x="407" y="101">开关面板底边：1300 mm AFF</text>',
+        '<text class="cn-warn" x="407" y="79">PC-P1HEQ 型号已定；兼容/映射/迁移及最终定位待签认</text>',
+        '<text class="cn-text" x="407" y="87">对讲品牌已定；型号/端子/物业接口与门铃身份待确认</text>',
+        '<text class="cn-text" x="407" y="101">双控：客厅＋书房＋餐厅｜仅实体有线</text>',
+        '<text class="cn-text" x="407" y="109">开关面板底边：1300 mm AFF</text>',
         '<text class="cn-warn" x="407" y="118">Master A 内控主卧；Master B 外控客书餐，均待 A-104</text>',
         '<text class="cn-warn" x="407" y="126">150mm 仅为常见协调候选净距，未经完成面实测</text>',
         f'<text class="cn-text" x="407" y="134">主卧 AP 灯具净距余量 {main_bedroom_ap_margin:.1f}mm｜机械候选</text>',
@@ -815,6 +980,16 @@ def main() -> int:
         raise RuntimeError("developer control reference does not match the current formal IFC")
     hvac_control_panels = developer_control.get("hvac_control_panel_references", [])
     access_controls = developer_control.get("access_control_references", [])
+    hvac_controller = compile_hvac_controller_selection(
+        args.equipment_register,
+        args.installation_requirements,
+        hvac_control_panels,
+    )
+    access_intercom = compile_access_intercom_identity(
+        args.equipment_register,
+        args.installation_requirements,
+        access_controls,
+    )
     ceiling_audit = json.loads(args.ceiling_audit.read_text(encoding="utf-8"))
     topology_rows = read_network_topology(args.network_topology)
     if len(ceiling_devices) != 6 or len({row["candidate_id"] for row in ceiling_devices}) != 6:
@@ -858,6 +1033,20 @@ def main() -> int:
             "path": str(args.developer_control_reference.resolve()),
             "sha256": sha256(args.developer_control_reference),
             "source_status": "developer_handover_existing_reference_field_confirmation_pending",
+        },
+        "hvac_controller_selection": {
+            "equipment_register_path": str(args.equipment_register.resolve()),
+            "equipment_register_sha256": sha256(args.equipment_register),
+            "installation_requirements_path": str(args.installation_requirements.resolve()),
+            "installation_requirements_sha256": sha256(args.installation_requirements),
+            **hvac_controller,
+        },
+        "access_intercom_identity": {
+            "equipment_register_path": str(args.equipment_register.resolve()),
+            "equipment_register_sha256": sha256(args.equipment_register),
+            "installation_requirements_path": str(args.installation_requirements.resolve()),
+            "installation_requirements_sha256": sha256(args.installation_requirements),
+            **access_intercom,
         },
         "network_topology": {
             "path": str(args.network_topology.resolve()),
@@ -992,9 +1181,27 @@ def main() -> int:
             "developer_hvac_control_panel_heights_visible": all(
                 row["installation_height_mm"] == 1300.0 for row in hvac_control_panels
             ),
+            "hvac_controller_model_propagated": all(
+                row["selected_controller_model"] == "PC-P1HEQ"
+                and row["product_selection_status"] == "confirmed"
+                for row in hvac_control_panels
+            ),
+            "hvac_project_application_remains_pending": all(
+                row["project_mapping_status"] == "pending"
+                and row["system_compatibility_status"] == "pending"
+                and row["keep_move_merge_status"] == "pending"
+                for row in hvac_control_panels
+            ),
             "developer_video_intercom_visible": sum(
                 row["device_role"] == "video_intercom" for row in access_controls
             ) == 1,
+            "developer_video_intercom_brand_propagated_model_pending": all(
+                row.get("manufacturer") == "DNAKE／狄耐克"
+                and row.get("brand_status") == "confirmed_from_site_photo"
+                and row.get("exact_model") is None
+                and row.get("exact_model_status") == "pending"
+                for row in access_controls if row["device_role"] == "video_intercom"
+            ),
             "developer_doorbell_visible": sum(
                 row["device_role"] == "doorbell" for row in access_controls
             ) == 1,

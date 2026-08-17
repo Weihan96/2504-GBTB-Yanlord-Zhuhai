@@ -182,6 +182,105 @@ def read_entry_parcel_requirements(path: Path) -> dict[str, dict[str, str]]:
     return {ENTRY_PARCEL_FUNCTION_ID: function, ENTRY_PARCEL_LAYOUT_ID: layout}
 
 
+def read_kitchen_project_specification(
+    equipment_path: Path,
+    requirements_path: Path,
+    source_evidence_path: Path,
+) -> dict[str, Any]:
+    equipment = {
+        row["equipment_id"]: row
+        for row in csv.DictReader(equipment_path.open(newline="", encoding="utf-8-sig"))
+    }
+    required_equipment = {"KIT-VVD-FINISH-001", "SAN-KIT-001", "SAN-022"}
+    if missing := required_equipment - equipment.keys():
+        raise RuntimeError(f"kitchen project specification is missing equipment: {sorted(missing)}")
+    if (
+        equipment["KIT-VVD-FINISH-001"]["model"] != "VVD"
+        or equipment["KIT-VVD-FINISH-001"]["procurement_status"] != "selected"
+        or equipment["KIT-VVD-FINISH-001"]["decision_status"] != "partial"
+    ):
+        raise RuntimeError("VVD kitchen decision boundary changed")
+    if (
+        equipment["SAN-KIT-001"]["manufacturer"] != "Foster"
+        or equipment["SAN-KIT-001"]["model"] != "1014 850"
+        or equipment["SAN-KIT-001"]["decision_status"] != "confirmed"
+    ):
+        raise RuntimeError("Foster 1014 850 identity changed")
+
+    requirements = {
+        (row["equipment_id"], row["parameter_key"]): row
+        for row in csv.DictReader(requirements_path.open(newline="", encoding="utf-8-sig"))
+    }
+
+    def require(
+        equipment_id: str,
+        parameter_key: str,
+        status: str,
+        expected: str | None = None,
+    ) -> dict[str, str]:
+        row = requirements.get((equipment_id, parameter_key))
+        if row is None or row["status"] != status:
+            raise RuntimeError(f"kitchen requirement boundary changed: {equipment_id}/{parameter_key}")
+        actual = row["value_text"] or row["value_number"]
+        if expected is not None and actual != expected:
+            raise RuntimeError(f"kitchen requirement value changed: {equipment_id}/{parameter_key}")
+        return row
+
+    confirmed = {
+        "island_structure": require("KIT-VVD-FINISH-001", "island_structure", "confirmed", "Slate")["value_text"],
+        "doors": require("KIT-VVD-FINISH-001", "island_and_wall_base_doors", "confirmed", "Nebula steel")["value_text"],
+        "top_and_backsplash": require(
+            "KIT-VVD-FINISH-001",
+            "top_and_backsplash",
+            "confirmed",
+            "Travertino titan marble / top 60 mm",
+        )["value_text"],
+        "lighting_shelves": require(
+            "KIT-VVD-FINISH-001",
+            "lighting_shelves",
+            "confirmed",
+            "Thermo oak / thickness 36 mm",
+        )["value_text"],
+        "pewter_components": require("KIT-VVD-FINISH-001", "pewter_components", "confirmed")["value_text"],
+        "integrated_lighting": require("KIT-VVD-FINISH-001", "integrated_lighting", "confirmed")["value_text"],
+        "foster_width_mm": int(require("SAN-KIT-001", "product_width", "confirmed", "838")["value_number"]),
+        "foster_depth_mm": int(require("SAN-KIT-001", "product_depth", "confirmed", "500")["value_number"]),
+        "foster_installation": require("SAN-KIT-001", "installation_method", "confirmed", "undermount")["value_text"],
+        "custom_sink_width_mm": int(require("SAN-022", "finished_outer_width", "confirmed", "600")["value_number"]),
+    }
+    pending_keys = (
+        ("KIT-VVD-FINISH-001", "project_material_sample_and_batch"),
+        ("KIT-VVD-FINISH-001", "slab_layout_joints_edge_cutouts"),
+        ("KIT-VVD-FINISH-001", "led_driver_wiring_and_service"),
+        ("KIT-VVD-FINISH-001", "shallow_shelf_dimensions_load_fixing"),
+        ("SAN-KIT-001", "formal_ifc_placement"),
+        ("SAN-KIT-001", "drain_centre_coordinate"),
+        ("SAN-022", "finished_outer_depth_and_height"),
+    )
+    for equipment_id, parameter_key in pending_keys:
+        require(equipment_id, parameter_key, "pending")
+
+    evidence_ids = {
+        row["source_id"]
+        for row in csv.DictReader(source_evidence_path.open(newline="", encoding="utf-8-sig"))
+    }
+    required_evidence = {
+        "VVD-PRODUCT-SHEET-P9-001",
+        "OWNER-WFIN-VVD-SINKS-20260817",
+        "FOSTER-1014850-OFFICIAL-001",
+    }
+    if missing := required_evidence - evidence_ids:
+        raise RuntimeError(f"kitchen drawing evidence is missing: {sorted(missing)}")
+
+    return {
+        "equipment_ids": sorted(required_equipment),
+        "confirmed": confirmed,
+        "pending_requirement_keys": [f"{equipment_id}/{key}" for equipment_id, key in pending_keys],
+        "design_reference_only": "VVD product sheet external sink w.1200",
+        "automatic_ifc_write_allowed": False,
+    }
+
+
 def interface_requirement(interface: dict[str, Any], key: str) -> dict[str, str]:
     return next(
         item for item in interface["requirements"] if item["parameter_key"] == key
@@ -231,11 +330,12 @@ def make_svg(
     underlay_hash: str,
     dishwasher_interfaces: list[dict[str, Any]],
     entry_parcel_requirements: dict[str, dict[str, str]],
+    kitchen_specification: dict[str, Any],
 ) -> str:
     spec = SHEETS[sheet_id]
     confirmed_style = (
         "  .confirmed { font-size: 2.8px; font-weight: 700; fill: #216b45; }\n"
-        if sheet_id == "I-503"
+        if sheet_id in {"I-501", "I-503"}
         else ""
     )
     overlays = []
@@ -249,17 +349,28 @@ def make_svg(
         )
 
     index_lines: list[str] = []
+    grouped_records = grouped_index(records)
     line_y = 58.0
-    for label, count, role in grouped_index(records):
+    for index, (label, count, role) in enumerate(grouped_records):
         _, stroke, _ = ROLE_STYLE[role]
+        if sheet_id == "I-501":
+            column = index // 24
+            row_index = index % 24
+            line_x = 383.0 + column * 55.0
+            line_y = 58.0 + row_index * 4.15
+            max_length = 21
+        else:
+            line_x = 383.0
+            max_length = 42
         index_lines.append(
-            f'<rect x="383" y="{line_y - 2.4:.3f}" width="2.2" height="2.2" fill="{stroke}"/>'
+            f'<rect x="{line_x:.3f}" y="{line_y - 2.4:.3f}" width="2.2" height="2.2" fill="{stroke}"/>'
         )
         display = f"{label}  x{count}"
-        if len(display) > 42:
-            display = display[:39] + "..."
-        index_lines.append(svg_text(387.0, line_y, display))
-        line_y += 4.15
+        if len(display) > max_length:
+            display = display[: max_length - 3] + "..."
+        index_lines.append(svg_text(line_x + 4.0, line_y, display))
+        if sheet_id != "I-501":
+            line_y += 4.15
 
     block_lines: list[str] = []
     block_y = 342.0
@@ -271,8 +382,32 @@ def make_svg(
 
     interface_lines: list[str] = []
     if sheet_id == "I-501":
-        interface_lines.append(svg_text(382.0, 286.0, "PRODUCT INTERFACES · NO PROJECT XYZ", "subtitle"))
-        row_y = 293.0
+        kitchen = kitchen_specification["confirmed"]
+        interface_lines.extend(
+            [
+                '<g data-equipment-id="KIT-VVD-FINISH-001" data-status="confirmed-material-direction">',
+                svg_text(382.0, 164.0, "CONFIRMED · VVD PROJECT MATERIAL DIRECTION", "confirmed"),
+                svg_text(382.0, 169.0, f"Structure {kitchen['island_structure']} · doors {kitchen['doors']}", "interface"),
+                svg_text(382.0, 174.0, "Thermo oak components · Pewter trims / hood / skirting 60", "interface"),
+                svg_text(382.0, 179.0, f"Top + cook wall backsplash: {kitchen['top_and_backsplash']}", "interface"),
+                svg_text(382.0, 184.0, f"Lighting shelves: {kitchen['lighting_shelves']}", "interface"),
+                svg_text(382.0, 189.0, "Integrated LED extents confirmed; driver / wiring / service pending", "block"),
+                "</g>",
+                '<g data-equipment-id="SAN-KIT-001 SAN-022" data-status="mixed-confirmed-pending">',
+                svg_text(
+                    382.0,
+                    196.0,
+                    f"Foster 1014 850: {kitchen['foster_width_mm']}×{kitchen['foster_depth_mm']} mm · undermount",
+                    "confirmed",
+                ),
+                svg_text(382.0, 201.0, f"Custom sink: width {kitchen['custom_sink_width_mm']} mm confirmed only", "confirmed"),
+                svg_text(382.0, 206.0, "VVD example sink W1200 is NOT a project dimension", "block"),
+                svg_text(382.0, 211.0, "PENDING: samples / slab layout / cutouts / shelf fixing / sink XYZ", "block"),
+                "</g>",
+            ]
+        )
+        interface_lines.append(svg_text(382.0, 220.0, "PRODUCT INTERFACES · NO PROJECT XYZ", "subtitle"))
+        row_y = 227.0
         for interface in dishwasher_interfaces:
             model = interface["model"].replace("Siemens ", "")
             use_location = interface["use_location"]
@@ -438,6 +573,11 @@ def main() -> None:
         raise RuntimeError("unexpected INT1 sheet object counts")
     dishwasher_interfaces = read_dishwasher_interfaces(args.existing_report, source_hash)
     entry_parcel_requirements = read_entry_parcel_requirements(args.owner_inputs)
+    kitchen_specification = read_kitchen_project_specification(
+        args.equipment_register,
+        args.installation_requirements,
+        args.source_evidence,
+    )
 
     args.drawings_dir.mkdir(parents=True, exist_ok=True)
     args.pdf_dir.mkdir(parents=True, exist_ok=True)
@@ -458,6 +598,7 @@ def main() -> None:
                 sha256(underlay),
                 dishwasher_interfaces,
                 entry_parcel_requirements,
+                kitchen_specification,
             ) + "\n",
             encoding="utf-8",
         )
@@ -482,6 +623,12 @@ def main() -> None:
             "block_count": len(blockers),
             "installation_interface_row_count": (
                 len(dishwasher_interfaces) if sheet_id == "I-501" else 0
+            ),
+            "confirmed_kitchen_equipment_ids": (
+                kitchen_specification["equipment_ids"] if sheet_id == "I-501" else []
+            ),
+            "pending_kitchen_requirement_keys": (
+                kitchen_specification["pending_requirement_keys"] if sheet_id == "I-501" else []
             ),
             "confirmed_functional_requirement_ids": (
                 [ENTRY_PARCEL_FUNCTION_ID] if sheet_id == "I-503" else []
@@ -546,12 +693,18 @@ def main() -> None:
                 row["project_interface_status"] == "unlocated"
                 for row in dishwasher_interfaces
             ),
+            "kitchen_project_specification_propagated": True,
         },
         "gates": {
             "candidate_generation_pass": all(row["mechanical_pass"] for row in sheet_reports),
             "formal_ifc_write_allowed": False,
             "fabrication_dimension_ready": False,
             "int1_completion_pass": False,
+            "kitchen_project_dimensions_not_fabricated_from_reference": (
+                kitchen_specification["design_reference_only"]
+                == "VVD product sheet external sink w.1200"
+                and kitchen_specification["automatic_ifc_write_allowed"] is False
+            ),
         },
         "sheets": sheet_reports,
         "output_records": [
