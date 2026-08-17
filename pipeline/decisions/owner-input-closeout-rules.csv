@@ -1,10 +1,10 @@
 ﻿input_id,closeout_kind,responsible_party,required_evidence,automatic_close_allowed,notes
 A103-WALL-TAG-SCHEME,human_design_selection,业主/建筑设计,确认 88 面墙审核图与 EW/NW 编号规则,no,确认后才允许机械写入正式 IFC Tag
-A104-M05-M06-DIMENSIONS,closed_confirmation_of_proposed_solution,Rimadesio供货安装方/全屋定制,在 01-门组做法确认表 D01-D06 逐项勾是；如有否项，填写修正值并附签认图。,no,不接受开放式口头回复；项目值在勾是前保持研究结论。
-A104-M07-EVIDENCE,closed_confirmation_of_proposed_solution,Poliform供货安装方/全屋定制,在 01-门组做法确认表 D07-D12 逐项勾是；如有否项，填写修正值并附签认图。,no,项目宽高和开启关系由我方提出，不再开放式询问；勾是前保持研究结论。
+A104-M05-M06-DIMENSIONS,vendor_shop_drawing_and_compatibility,Rimadesio供货安装方/全屋定制,在 06-门组厂家复核表 R01-R06 逐项回答是／否，并回传标有实际下单尺寸、原厂饰面编号、2000 mm 顶轨、向东／图纸右侧滑向、下部防摆／定位构件、吊顶固定、收口和检修路径的项目加工图。,no,01 表只证明 MS 的设计决定，不证明厂家兼容或项目加工图；不再询问 2 道水平横档。
+A104-M07-EVIDENCE,vendor_shop_drawing_and_compatibility,Poliform供货安装方/全屋定制,在 06-门组厂家复核表 P01-P05 逐项回答是／否，并回传标有 950×2400 mm 名义尺寸、顶／地轴、与衣柜背面新增护墙板齐平、向主卧内开、图纸右侧停靠、基层、净距和收口的项目加工图。,no,01 表只证明 MS 的设计决定；产品是否支持及准确下单尺寸仍由厂家签认。
 E302-ENTRY-SIDE,site_or_drawing_evidence,建筑设计/现场,完成面门套柜门与门扇关系尺寸或可定位图纸,no,用户方向已提交但墙侧几何须由项目证据关闭
 E302-ENTRY-PANEL,external_product_evidence,智能面板厂家/电气方,准确 SKU、端子图、每路负载/浪涌、证书编号、底盒净深和平嵌适配,no,功能/粗装结论已闭合；此门只关闭最终产品、现场测试或面板安装。
-E302-MASTER-SIDE,site_or_drawing_evidence,建筑设计/现场,Master A 与 Master B 各自墙侧门套净距及见光板构造,no,两块面板角色已确认但真实安装面未关闭
+E302-MASTER-SIDE,site_or_drawing_evidence,建筑设计/全屋定制/现场,门扇全开状态下，首选两门之间固定墙面的可安装净宽、底边标高和底盒净深；如首选无可用墙面，再测左门套／见光板侧；同时证明不落入 M07 活动门扇和五金范围。,no,业主位置优先级已确认；只剩现场几何和基层构造，不再问业主选择墙侧。
 E302-MASTER-PANEL,external_product_evidence,智能面板厂家/照明设计,Master A/B 准确 SKU、直接负载/场景方案、双控端子图、负载和底盒/见光板安装图,no,功能/粗装结论已闭合；此门只关闭最终产品、现场测试或面板安装。
 E303-NS01-FORM,product_interface_evidence,家具设计/电气设计,VVD 详图与最终盖板产品安装开孔检修资料,no,三面各一位置已采用但产品接口仍需厂家资料
 E303-NS01-CIRCUIT,external_product_evidence,设备商家/业主,APP-001～003 实购后的型号和名牌功率，仅用于设备表完整性，不重开已闭合的两路 C16 粗装,no,功能/粗装结论已闭合；此门只关闭最终产品、现场测试或面板安装。

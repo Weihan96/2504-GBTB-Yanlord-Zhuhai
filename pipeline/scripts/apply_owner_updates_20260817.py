@@ -64,16 +64,21 @@ def update_sources() -> None:
         "sha256": sha256("drawings/evidence/A104-M05-M07-shop-drawing-request-20260815.md"),
         "locator": "M05 格栅滑门门扇＋M06 配套顶部单轨轨道；M07；证据边界",
         "evidence": "以全屋定制可直接理解的名称说明 M05/M06 属于同一套 Rimadesio Sail MONOROTAIA 门组，并列出官方 CAD、正式 IFC 与开发商 DXF 的机械证据边界及项目索取字段",
-        "notes": "2026-08-17 将抽象的‘M05/M06 对应关系’改为门扇、轨道和同一门组的白话说明；删除无依据的‘可更换导向件’，改由原厂深化确认下部防摆／定位构件，并在工作簿内嵌 M05 开启方向附图。",
+        "notes": "2026-08-17 将抽象的‘M05/M06 对应关系’改为门扇、轨道和同一门组的白话说明；MS 已在 01 表确认项目方向并纠正 M05 为向东／图纸右侧滑、M07 为图纸右侧停靠；厂家签认改由 06 表及项目 shop drawing 关闭。",
     })
     outbound_forms = {
         "OUTBOUND-FORM-DOOR-20260817": {
             "filename": "01-门组做法确认表-发全屋定制.md",
-            "locator": "Markdown 门组确认 D01-D13；M05 开启方向文字示意",
-            "evidence": "可直接在 Codex 中编辑和回填的 Markdown；M05 向左／西滑动方向以文字箭头标注，下部防摆／定位构件不预设原厂未确认的具体形式",
-            "proves": "门组问询采用封闭式确认，且收件人无需另找 A-104 才能理解 M05 拟定开启方向",
-            "does_not_prove": "供货安装方已经确认、下部定位构件准确型号和位置、候选尺寸已批准或正式 IFC 已修改",
-            "notes": "2026-08-17 改为唯一 Markdown 可编辑源；删除‘可更换导向件’推测。",
+            "discipline": "A-104/INT1/E-302",
+            "sheet_id": "A-104/E-302",
+            "decision_scope": "MS 门组设计决定回复",
+            "source_kind": "owner_completed_confirmation_markdown",
+            "locator": "门组确认 D01-D13；回复人 MS；回复日期 2026-08-17",
+            "evidence": "MS 确认 M05/M06 系统、第二种官方 DWG 配置、白橡木／浅色木饰面、2000 mm 顶轨、向东／图纸右侧滑开；确认 M07 为 950×2400 mm Poliform Pivot、与衣柜背面新增护墙板齐平、向主卧内开并停靠图纸右侧；确认 Master A 首选安装面及后备位置",
+            "proves": "业主设计方向与优先安装关系已经确认，可进入项目 SSOT 和候选图纸",
+            "does_not_prove": "Rimadesio／Poliform 或全屋定制已经签认、准确下单尺寸、原厂饰面编号、下部防摆／定位构件、安装基层、现场净距或正式 IFC 已修改",
+            "status": "verified_owner_response_vendor_followup_pending",
+            "notes": "保留 MS 原始回答；原表中的向左／西文字示意被 D06 回答明确纠正，当前值以结构化 SSOT 和 06 厂家复核表为准。",
         },
         "OUTBOUND-FORM-HVAC-20260817": {
             "filename": "02-日立空调接口确认表-发空调厂家.md",
@@ -107,12 +112,49 @@ def update_sources() -> None:
             "does_not_prove": "狄耐克室内机准确型号、端子接法、物业系统兼容、门铃身份或外部已经回复",
             "notes": "2026-08-17 改为唯一 Markdown 可编辑源；按现场照片预填 DNAKE／狄耐克，IP/MAC 不进入对外表。",
         },
+        "OUTBOUND-FORM-DOOR-VENDOR-20260817": {
+            "filename": "06-门组厂家复核表-发Rimadesio与Poliform.md",
+            "discipline": "A-104/INT1",
+            "sheet_id": "A-104/I-504/S-701",
+            "decision_scope": "Rimadesio Sail 与 Poliform Pivot 厂家复核",
+            "locator": "Rimadesio R01-R06；Poliform P01-P05",
+            "evidence": "把 MS 已确认的设计方向转换为厂家只需回答是／否的复核项，并要求回传项目加工图",
+            "proves": "门组厂家问询已与业主设计决定分开，且当前东向滑开、右侧停靠和护墙板齐平关系已进入问询",
+            "does_not_prove": "厂家已经确认、项目加工图已经返回、准确下单尺寸和安装接口已经冻结",
+            "notes": "发送时随附 Rimadesio Sail 官方资料、MONOROTAIA DWG、Poliform Architectural PDF 和 A-104 候选图。",
+        },
+        "OUTBOUND-FORM-SMART-PANEL-20260817": {
+            "filename": "07-智能面板电气接口确认表-发JINK与电气方.md",
+            "discipline": "ELEC/NETWORK/INT1",
+            "sheet_id": "E-302/E-304/I-503",
+            "decision_scope": "JINK 智能面板产品与电气接口复核",
+            "locator": "J01-J10",
+            "evidence": "逐项询问 Entry A、Master A、Master B 的准确 SKU、直接负载／场景语义、负载与浪涌、接线、Matter 和见光板安装条件",
+            "proves": "智能面板剩余产品与电气接口问题已有可直接发送的封闭式表格",
+            "does_not_prove": "JINK 已经回复、准确 SKU 已选择、各回路负载已验算或现场底盒净距已复核",
+            "notes": "不重复询问三块面板的角色；只关闭产品、接线、负载和安装兼容。",
+        },
+        "OUTBOUND-FORM-JOINERY-DETAIL-20260817": {
+            "filename": "08-定制家具与墙脚节点确认表-发全屋定制.md",
+            "discipline": "INT1/DET1/WFIN",
+            "sheet_id": "I-502/I-504/D-601/S-701",
+            "decision_scope": "客卫服务塔与干区墙脚节点复核",
+            "locator": "客卫 F01-F04；干区墙脚 B01-B05",
+            "evidence": "把客卫纸巾／垃圾服务塔及干区齐平宽踢脚＋阴影缝转成全屋定制可签认的节点问题",
+            "proves": "此前没有对外关闭路径的定制家具和墙脚节点已有直接发送表格",
+            "does_not_prove": "全屋定制已经回复、节点尺寸已冻结或实物样板已经批准",
+            "notes": "湿区不直接套用干区木作节点；准确尺寸和材料仍由节点图及样板关闭。",
+        },
     }
     for source_id, metadata in outbound_forms.items():
         relative_path = f"output/forms/对外确认表/{metadata['filename']}"
-        row = by_id[source_id]
+        row = by_id.get(source_id, {field: "" for field in fields})
         row.update({
-            "source_kind": "project_external_confirmation_markdown",
+            "source_id": source_id,
+            "discipline": metadata.get("discipline", row.get("discipline", "")),
+            "sheet_id": metadata.get("sheet_id", row.get("sheet_id", "")),
+            "decision_scope": metadata.get("decision_scope", row.get("decision_scope", "")),
+            "source_kind": metadata.get("source_kind", "project_external_confirmation_markdown"),
             "source_document": metadata["filename"],
             "local_path": relative_path,
             "sha256": sha256(relative_path),
@@ -120,9 +162,16 @@ def update_sources() -> None:
             "evidence": metadata["evidence"],
             "proves": metadata["proves"],
             "does_not_prove": metadata["does_not_prove"],
-            "status": "verified_confirmation_markdown_pending_external_response",
+            "status": metadata.get("status", "verified_confirmation_markdown_pending_external_response"),
+            "confidence": "1.00",
+            "review_required": "yes",
+            "formal_ifc_write_allowed": "no",
+            "revision": "2026-08-17",
+            "publication_date": "2026-08-17",
             "notes": metadata["notes"],
         })
+        by_id[source_id] = row
+        upsert(rows, "source_id", row)
     site_checklist = by_id["E304-SITE-CHECKLIST-20260815"]
     site_checklist.update({
         "sha256": sha256("drawings/evidence/E304-现场最短取证清单-20260815.md"),
@@ -359,6 +408,36 @@ def update_owner_inputs() -> None:
     fields, rows = read_csv(path)
     replacements = [
         {
+            "input_id": "A104-M05-M06-DIMENSIONS", "workstream": "A-104/INT1", "priority": "P0", "blocks_release": "yes",
+            "question": "请 Rimadesio／全屋定制确认项目方已定的 Sail 门组做法并回传项目加工图",
+            "candidate_value": "M05/M06 为同一套 Sail MONOROTAIA 单轨单扇；官方 DWG 第二种配置；1000×2400 mm 白橡木／浅色木门扇；2000 mm 暗藏顶轨；无通长地轨；向东／图纸右侧滑开",
+            "user_value": "MS 于 2026-08-17 确认：采用官方 DWG 第二种配置，顶部轨道嵌入天花，门垛墙与门平行，白橡木／浅色木饰面；M05 向东／图纸右侧滑开；轨道末端保留检修条件。", "unit": "", "status": "自定义确认",
+            "evidence_reference": "OUTBOUND-FORM-DOOR-20260817;RIMADESIO-SAIL-PRODUCT-PDF-001;RIMADESIO-SAIL-MONOROTAIA-001;OUTBOUND-FORM-DOOR-VENDOR-20260817",
+            "source_basis": "01 表记录业主设计决定；官方资料证明产品族和通用构造；准确下单尺寸、饰面编号和安装接口仍由厂家加工图关闭。",
+            "sync_target": "A104 M05-M06 dimensions;I-504;S-701;P0 IDS",
+            "notes": "D03 所述‘2 道水平横档’未获业主确认，不进入当前设计要求。向东／图纸右侧是对原向左／西候选的明确纠正；未修改正式 IFC。",
+        },
+        {
+            "input_id": "A104-M07-EVIDENCE", "workstream": "A-104/E-302/INT1", "priority": "P0", "blocks_release": "yes",
+            "question": "请 Poliform／全屋定制确认项目方已定的 Pivot 门组做法并回传项目加工图",
+            "candidate_value": "Poliform Pivot 墙装单扇，950×2400 mm；关闭时与 Senzafine 背面新增护墙板齐平；向主卧内开并停靠图纸右侧固定墙／次卧侧",
+            "user_value": "MS 于 2026-08-17 确认：采用 Poliform Pivot 墙装单扇及官方门框、顶／地轴、金属门扇框系统；950×2400 mm；与衣柜背面新增护墙板齐平；向主卧内开，停靠图纸右侧固定墙／次卧侧。", "unit": "", "status": "自定义确认",
+            "evidence_reference": "OUTBOUND-FORM-DOOR-20260817;POLIFORM-ARCHITECTURAL-PDF-001;OUTBOUND-FORM-DOOR-VENDOR-20260817",
+            "source_basis": "01 表记录业主设计决定；Poliform 官方资料证明 Pivot 系统范围；准确下单尺寸、轴位、基层、净距和收口仍由项目加工图关闭。",
+            "sync_target": "A104-R03;E302-MASTER-SIDE;I-504;S-701;P0 IDS",
+            "notes": "与衣柜正面齐平和停靠图纸左侧的旧候选已被明确纠正；产品候选不得写成已采购。",
+        },
+        {
+            "input_id": "E302-MASTER-SIDE", "workstream": "E-302/A-104/INT1", "priority": "P0", "blocks_release": "yes",
+            "question": "请现场复核 Master A 首选墙面及后备安装面的实际净宽、门套／见光板构造与底盒净深",
+            "candidate_value": "首选主卧门与主卫门同时打开后两门之间的剩余固定墙面；如无可用固定墙面，后备为左门套／见光板侧",
+            "user_value": "MS 于 2026-08-17 确认：Master A 优先安装在主卧门和主卫门都打开后两者之间的剩余墙面；若没有剩余墙面，则安装在左门套／见光板侧。", "unit": "mm", "status": "自定义确认",
+            "evidence_reference": "OUTBOUND-FORM-DOOR-20260817;OUTBOUND-FORM-SITE-20260817",
+            "source_basis": "01 表关闭业主位置偏好；候选图和现场记录表负责验证门扇全开时的实际可安装面。",
+            "sync_target": "E302 master control;A104-R03;I-504",
+            "notes": "不安装在 Pivot 活动门扇、门套五金或开启包络内；接口中心坐标保持 unknown，直到现场完成面测量。",
+        },
+        {
             "input_id": "WFIN-DRY-BASEBOARD-SHADOW-GAP-SCOPE", "workstream": "WFIN/DET1/INT1", "priority": "P1", "blocks_release": "no",
             "question": "卧室、走廊等干区踢脚是否采用齐平宽踢脚＋上下阴影缝方向", "candidate_value": "墙面同色齐平宽踢脚；参考案例上下各约 10 mm 阴影缝；门套、隐形门和柜体边界连续通缝",
             "user_value": "记录为干区候选，暂不最终冻结", "unit": "", "status": "采用候选",
@@ -449,6 +528,9 @@ def update_closeout_rules() -> None:
     path = DECISIONS / "owner-input-closeout-rules.csv"
     fields, rows = read_csv(path)
     records = [
+        {"input_id": "A104-M05-M06-DIMENSIONS", "closeout_kind": "vendor_shop_drawing_and_compatibility", "responsible_party": "Rimadesio供货安装方/全屋定制", "required_evidence": "在 06-门组厂家复核表 R01-R06 逐项回答是／否，并回传标有实际下单尺寸、原厂饰面编号、2000 mm 顶轨、向东／图纸右侧滑向、下部防摆／定位构件、吊顶固定、收口和检修路径的项目加工图。", "automatic_close_allowed": "no", "notes": "01 表只证明 MS 的设计决定，不证明厂家兼容或项目加工图；不再询问 2 道水平横档。"},
+        {"input_id": "A104-M07-EVIDENCE", "closeout_kind": "vendor_shop_drawing_and_compatibility", "responsible_party": "Poliform供货安装方/全屋定制", "required_evidence": "在 06-门组厂家复核表 P01-P05 逐项回答是／否，并回传标有 950×2400 mm 名义尺寸、顶／地轴、与衣柜背面新增护墙板齐平、向主卧内开、图纸右侧停靠、基层、净距和收口的项目加工图。", "automatic_close_allowed": "no", "notes": "01 表只证明 MS 的设计决定；产品是否支持及准确下单尺寸仍由厂家签认。"},
+        {"input_id": "E302-MASTER-SIDE", "closeout_kind": "site_or_drawing_evidence", "responsible_party": "建筑设计/全屋定制/现场", "required_evidence": "门扇全开状态下，首选两门之间固定墙面的可安装净宽、底边标高和底盒净深；如首选无可用墙面，再测左门套／见光板侧；同时证明不落入 M07 活动门扇和五金范围。", "automatic_close_allowed": "no", "notes": "业主位置优先级已确认；只剩现场几何和基层构造，不再问业主选择墙侧。"},
         {"input_id": "WFIN-DRY-BASEBOARD-SHADOW-GAP-SCOPE", "closeout_kind": "human_design_selection", "responsible_party": "业主/室内设计", "required_evidence": "业主确认该参考只作为卧室、走廊等干区候选，并明确中厨和湿区不套用", "automatic_close_allowed": "no", "notes": "候选方向已记录，最终采用仍由节点和样板关闭。"},
         {"input_id": "WFIN-DRY-BASEBOARD-SHADOW-GAP-DETAIL", "closeout_kind": "material_and_mockup_evidence", "responsible_party": "室内设计/墙面施工/全屋定制/现场", "required_evidence": "D-601 1:5 节点；分房间适用表；踢脚高度厚度材料和颜色；上下阴影缝宽与公差；墙下口型材；门套/隐形门/柜体/转角通缝展开；耐撞、拖地水和积灰清洁实物样板", "automatic_close_allowed": "no", "notes": "不得按小红书图片直接下单或写正式 IFC。"},
         {"input_id": "E304-VIDEO-INTERCOM-DOORBELL", "closeout_kind": "site_and_system_evidence", "responsible_party": "物业/门禁维护方/弱电设计/现场", "required_evidence": "狄耐克室内机背面或工程信息页的准确型号；背部端子、线缆和接法照片；物业系统兼容与移动限制书面确认；保留／迁移／接入结论；门铃实物身份及门套完成面后的最终定位", "automatic_close_allowed": "no", "notes": "DNAKE／狄耐克品牌和软件版本已由现场照片关闭，不再重复询问；开发商图仍只证明既有参考点和标注高度。"},
@@ -469,6 +551,35 @@ def update_closeout_rules() -> None:
 def update_equipment() -> None:
     path = DECISIONS / "equipment-register.csv"
     fields, rows = read_csv(path)
+    by_id = {row["equipment_id"]: row for row in rows}
+    by_id["DW-M05"].update({
+        "variant": "Sail MONOROTAIA single-track single-leaf; official DWG second configuration; white oak/light wood owner direction",
+        "decision_status": "partial",
+        "source_ids": "IFC-FORMAL-001;RIMADESIO-SAIL-PRODUCT-PDF-001;RIMADESIO-SAIL-MONOROTAIA-001;OUTBOUND-FORM-DOOR-20260817;OUTBOUND-FORM-DOOR-VENDOR-20260817",
+        "identity_basis": "正式 IFC 证明既有对象与 1000×38×2400 mm 几何包络；官方资料证明 Sail 产品族；MS 确认第二种 DWG 配置、白橡木／浅色木和向东／图纸右侧滑向",
+        "notes": "业主设计方向已确认；准确下单尺寸、原厂饰面编号、吊顶固定、下部防摆／定位构件和收口仍待厂家项目加工图。D03 的 2 道水平横档不再作为项目要求。",
+    })
+    by_id["DW-M06"].update({
+        "variant": "Sail MONOROTAIA concealed ceiling top track for DW-M05",
+        "decision_status": "partial",
+        "source_ids": "IFC-FORMAL-001;RIMADESIO-SAIL-MONOROTAIA-001;OUTBOUND-FORM-DOOR-20260817;OUTBOUND-FORM-DOOR-VENDOR-20260817",
+        "identity_basis": "正式 IFC 证明既有轨道对象及早期 1200 mm 包络；MS 确认采用 2000 mm 暗藏顶轨、无通长地轨并保留检修条件",
+        "notes": "M06 是 M05 同一门组的顶轨，不是第二樘门；2000 mm 为项目名义值，最终长度、吊顶固定和下部防摆／定位构件仍待厂家项目加工图，不写正式 IFC。",
+    })
+    by_id["DW-M07"].update({
+        "manufacturer": "Poliform", "model": "Pivot",
+        "variant": "wall-mounted single Pivot integrated with Senzafine rear added wall panel",
+        "decision_status": "partial",
+        "source_ids": "IFC-FORMAL-001;POLIFORM-ARCHITECTURAL-PDF-001;OUTBOUND-FORM-DOOR-20260817;OUTBOUND-FORM-DOOR-VENDOR-20260817",
+        "identity_basis": "正式 IFC 证明既有门对象与空间位置；Poliform 官方资料证明 Pivot 系统；MS 确认 950×2400 mm、衣柜背面新增护墙板齐平、向主卧内开并停靠图纸右侧",
+        "notes": "业主设计方向已确认，产品仍未记为已采购；准确下单尺寸、顶／地轴、安装基层、门后净距和收口待厂家项目加工图。",
+    })
+    by_id["CTRL-MASTER-A"].update({
+        "use_location_candidate": "首选主卧门与主卫门全开后两门之间的剩余固定墙；后备左门套／见光板侧",
+        "source_ids": "OWNER-INBOX-20260814-001;OUTBOUND-FORM-DOOR-20260817;TB-JINK-EGG-001;JINK-EGG-OFFICIAL-001;TB-PANASURFACE-SWITCH-INSET-001;ZOYLIGHT-D1-20250815-001;ELEC-RESEARCH-20260815-001;OUTBOUND-FORM-SMART-PANEL-20260817",
+        "identity_basis": "业主确认 Master A 独立角色及安装面优先级；直接负载与纯场景方案尚未选择",
+        "notes": "首选与后备安装面已定，但须在两门全开状态实测固定墙／见光板净宽、底盒净深和五金避让；接口中心坐标保持 unknown。",
+    })
     records = [{
         "equipment_id": "DRAIN-CUSTOM-001", "domain": "DRAINAGE", "category": "custom_floor_drain_assembly",
         "item_name": "厕所定制水母地漏/中央集水器＋托克乐思网＋线性排水渠组合", "manufacturer": "", "model": "",
@@ -561,10 +672,13 @@ def update_drawing_register() -> None:
     fields, rows = read_csv(path)
     by_id = {row["sheet_number"]: row for row in rows}
     by_id["A-001"]["notes"] = "M072 自动汇总全部图号、阶段、版本、说明和图例；最终交付增加材质化正投影产品页要求：平面＋正/展开立面＋材质纹理＋尺寸链＋统一版式，与施工协调图并行且不替代厂家加工图"
+    by_id["A-104"]["notes"] = "MS 已确认：M05/M06 为 Sail MONOROTAIA 单轨单扇、官方 DWG 第二种配置、白橡木/浅色木、1000×2400 mm 门扇、2000 mm 暗藏顶轨、无通长地轨、向东/图纸右侧滑开；M07 为 Poliform Pivot 950×2400 mm，与 Senzafine 背面新增护墙板齐平、向主卧内开并停靠图纸右侧。候选图投影业主决定；准确下单尺寸、饰面编号、轴位、基层、净距与收口仍待 06 厂家复核表和项目加工图；正式 IFC 未修改。"
+    by_id["E-302"]["notes"] = "Entry A/Master A/Master B 的 4/2/3 键角色保持；MS 已确认 Master A 首选主卧门与主卫门全开后两门之间的剩余固定墙，后备为左门套/见光板侧。候选图显示该优先级但不生成接口中心坐标；实际净宽、底盒净深、M07 开启包络、准确 SKU、端子、负载/浪涌和平嵌适配仍阻断最终发布。"
     by_id["I-501"]["notes"] = "70 个既有对象协调包络入图；APP-009/010 两台未采购 SJ85ZX26MC 候选的官方柜孔、G3/4 冷水与 Ø38 排水约束已作为 2 条无定位接口表项入图，不生成粗装 XYZ、阀门、软管路径或开孔位置；EL-03 视图 06～09 及 EL-P01/P02 公共空间折线展开和贯穿长立面已写入正式 IFC 的 Bonsai 原生 Drawing；新增 1:30 无纹理 SVG 与手机 PNG；其余厂家安装图、燃气实测和五金运动包络未关闭；中厨墙面更新为灶台操作墙台面同材大板＋远端墙浅置物架，准确墙段、材料、加工和架后背衬待深化；最终需输出材质化正投影厨房产品页"
     by_id["I-502"]["notes"] = "33 个既有对象协调包络入图；EL-06 视图 18～22 与 EL-08 视图 27～32 已写入正式 IFC；原 9 个深层 BRep、公共空间新增 2 个对象及全量重编发现的 BED02 现均有纯折线 ELEVATION_VIEW，详细 Body 未替换；洁具粗装图、五金运动包络和节点未关闭；厕所定制地漏渠道与水母地漏/中央集水器＋托克乐思网＋线性排水渠方向已确认，准确房间、数量和 shop drawing 待商家；最终需输出材质化正投影卫生间产品页"
+    by_id["I-504"]["notes"] = "25 个既有对象协调包络入图；EL-01/02/04/05/07/09 及公共空间 EL-P01/P02 已写入正式 IFC 的 Bonsai 原生 Drawing；SIS04、HIMA01、BED01 等复杂家具使用受控折线立面。MS 已确认 M07 与 Senzafine 背面新增护墙板齐平、向主卧内开并停靠图纸右侧；Master A 首选两门全开后的中间固定墙、后备左门套/见光板侧。候选图只表达协调关系，准确护墙板厚度、门后净距、底盒和加工节点仍待厂家/现场。"
     by_id["E-304"]["notes"] = "两个吸顶 AP 已采用 CAT6 星型回弱电箱 PoE 交换机的拓扑；既有可视对讲室内机品牌已由现场照片确认为 DNAKE／狄耐克，准确型号、端子、物业兼容和保留／迁移／接入方案仍待现场／物业确认；既有门铃仍为开发商参考点。实购 AP 功耗、PoE 总预算、弱电箱净尺寸/柜门温升、网线通断、门禁接口和端接顺序仍待厂家/物业/现场证据。"
-    by_id["S-701"]["notes"] = "53 条家具产品身份、家电使用/存放、门窗五金、既有暖通类型、定制地漏方向和墙面材料系统记录按已确认/候选/未决分栏；中厨采用灶台操作墙台面同材大板＋远端墙浅置物架方向；厕所定制地漏渠道已定但 shop drawing 未齐；不是下单表"
+    by_id["S-701"]["notes"] = "家具产品身份、家电使用/存放、门窗五金、既有暖通类型、定制地漏方向和墙面材料系统按已确认/候选/未决分栏；M05/M06 的第二种官方 DWG 配置、白橡木/浅色木、东向/图纸右侧滑动与 M07 的护墙板齐平、图纸右侧停靠已按 MS 回复登记，厂家项目加工图仍未齐；中厨采用台面同材大板＋远端墙浅置物架；厕所定制地漏渠道已定但 shop drawing 未齐；不是下单表。"
     by_id["D-601"]["notes"] = "材料与收口变量节点待复核；新增干区墙面同色齐平宽踢脚＋上下阴影缝候选，须以 1:5 墙脚节点、分房间适用表、门套/隐形门/柜体通缝展开和实物样板关闭；中厨 VVD Pewter 60 mm 踢脚保持独立，湿区暂不套用"
     write_csv(path, fields, rows)
 
@@ -604,20 +718,85 @@ def update_door_coordination() -> None:
     path = DECISIONS / "equipment-installation-requirements.csv"
     fields, rows = read_csv(path)
     by_id = {row["requirement_id"]: row for row in rows}
-    by_id["REQ-0222"].update({
-        "value_text": "Sail MONOROTAIA concealed ceiling track; left/west slide; no continuous floor track; lower anti-sway/positioning component per Rimadesio final shop drawing",
-        "source_locator": "official CAD layers sail_ELEMENTI_PERNO / ELEMENTI_PAVIMENTO + direct confirmation D03-D06",
-        "notes": "M06 为同一门组顶轨，不是第二樘门；不再推定‘可更换导向件’，下部防摆／定位构件的准确形式和位置由 Rimadesio 最终深化图确认。",
+    by_id["REQ-0215"].update({
+        "value_origin": "user_input", "status": "confirmed", "source_id": "OUTBOUND-FORM-DOOR-20260817",
+        "source_locator": "D01-D04；MS／2026-08-17", "blocks_release": "no",
+        "notes": "MS 确认项目名义门扇宽度；准确下单尺寸仍由 06 表和厂家项目加工图关闭，未写入正式 IFC。",
     })
+    by_id["REQ-0216"].update({
+        "value_origin": "user_input", "status": "confirmed", "source_id": "OUTBOUND-FORM-DOOR-20260817",
+        "source_locator": "D01-D04；MS／2026-08-17", "blocks_release": "no",
+        "notes": "MS 确认项目名义门扇高度；D03 的 2 道水平横档未确认并从项目要求删除；准确下单尺寸仍待厂家项目加工图。",
+    })
+    by_id["REQ-0217"].update({
+        "value_text": "Sail MONOROTAIA single-track single-leaf; slide east/drawing-right",
+        "value_origin": "user_input", "status": "confirmed", "source_id": "OUTBOUND-FORM-DOOR-20260817",
+        "source_locator": "D01-D02、D06；MS／2026-08-17", "blocks_release": "no",
+        "notes": "MS 明确纠正旧向左／西候选；当前项目方向为向东／图纸右侧滑开。厂家兼容与完整开启包络仍由 06 表及加工图关闭。",
+    })
+    by_id["REQ-0220"].update({
+        "value_origin": "user_input", "status": "confirmed", "source_id": "OUTBOUND-FORM-DOOR-20260817",
+        "source_locator": "D04；MS／2026-08-17", "blocks_release": "no",
+        "notes": "MS 确认 2000 mm 项目名义顶轨；不沿用正式 IFC 的 1200 mm 早期示意。准确下单长度和固定方式待厂家加工图。",
+    })
+    by_id["REQ-0222"].update({
+        "value_text": "Sail MONOROTAIA concealed ceiling track; east/drawing-right slide; no continuous floor track; lower anti-sway/positioning component per Rimadesio final shop drawing",
+        "value_origin": "research_conclusion", "status": "candidate",
+        "source_id": "OUTBOUND-FORM-DOOR-VENDOR-20260817",
+        "source_locator": "D02、D04-D07；厂家复核 R01-R06", "blocks_release": "yes",
+        "notes": "MS 已确认同一门组、暗藏顶轨、无通长地轨、向东／图纸右侧滑开和检修要求；下部防摆／定位构件、吊顶固定与收口仍由 Rimadesio 项目加工图确认。",
+    })
+    by_id["REQ-0225"].update({
+        "value_origin": "user_input", "status": "confirmed", "source_id": "OUTBOUND-FORM-DOOR-20260817",
+        "source_locator": "D08-D09；MS／2026-08-17", "blocks_release": "no",
+        "notes": "MS 确认项目名义宽度；准确下单尺寸仍由 06 表和厂家项目加工图关闭。",
+    })
+    by_id["REQ-0226"].update({
+        "value_origin": "user_input", "status": "confirmed", "source_id": "OUTBOUND-FORM-DOOR-20260817",
+        "source_locator": "D08-D09；MS／2026-08-17", "blocks_release": "no",
+        "notes": "MS 确认项目名义高度；准确下单尺寸仍由 06 表和厂家项目加工图关闭。",
+    })
+    by_id["REQ-0227"].update({
+        "value_text": "single Pivot; opens inward to master; parks at drawing-right fixed wall/guest-bedroom side",
+        "value_origin": "user_input", "status": "confirmed", "source_id": "OUTBOUND-FORM-DOOR-20260817",
+        "source_locator": "D08-D12；MS／2026-08-17", "blocks_release": "no",
+        "notes": "MS 明确纠正旧图纸左侧停靠候选；当前为向主卧内开并停靠图纸右侧固定墙／次卧侧。厂家兼容、轴位和净距仍由 06 表及加工图关闭。",
+    })
+    confirmed = [
+        ("REQ-DOOR-OWNER-001", "DW-M05", "selected_official_configuration", "official DWG second configuration; concealed ceiling top track; jamb wall parallel to door travel", "D03；MS／2026-08-17", "不推测原厂配置代码；由厂家在 06 表填写准确配置／加工图编号。"),
+        ("REQ-DOOR-OWNER-002", "DW-M05", "finish_direction", "white oak / light wood", "D03；MS／2026-08-17", "业主饰面方向已定；准确原厂饰面编号和样板仍待厂家。"),
+        ("REQ-DOOR-OWNER-003", "DW-M06", "service_access", "removable end access allowing trolley adjustment and replacement without dismantling main ceiling", "D07；MS／2026-08-17", "具体检修口尺寸和构造由项目加工图关闭。"),
+        ("REQ-DOOR-OWNER-004", "DW-M07", "closed_alignment", "align with added wall panel on rear of Senzafine wardrobe", "D10；MS／2026-08-17", "已纠正旧衣柜正面齐平候选；护墙板厚度和收口待加工图。"),
+        ("REQ-DOOR-OWNER-005", "CTRL-MASTER-A", "preferred_installation_surface", "primary: remaining fixed wall between master-bedroom and master-bath doors when both open; fallback: left jamb/reveal-panel side", "D13；MS／2026-08-17", "最终安装坐标、净宽、标高和底盒净深保持 unknown，待现场实测。"),
+    ]
+    for req_id, equipment_id, key, value, locator, notes in confirmed:
+        upsert(rows, "requirement_id", {
+            "requirement_id": req_id, "equipment_id": equipment_id, "discipline": "ARCH/INT1/ELEC", "parameter_key": key,
+            "value_text": value, "value_number": "", "unit": "", "datum": "", "value_origin": "user_input", "status": "confirmed",
+            "source_id": "OUTBOUND-FORM-DOOR-20260817", "source_locator": locator, "blocks_release": "no", "notes": notes,
+        })
     write_csv(path, fields, rows)
 
     path = DECISIONS / "s701-schedule-review.csv"
     fields, rows = read_csv(path)
     by_id = {row["schedule_id"]: row for row in rows}
+    by_id["S701-M05"].update({
+        "confirmed_scope": "身份/定位；项目名义尺寸 1000×2400 mm；官方 DWG 第二种配置；白橡木／浅色木；向东／图纸右侧滑开",
+        "candidate_or_observed_scope": "Sail MONOROTAIA 单轨单扇；正式 IFC 仍为早期几何观察",
+        "unresolved_for_release": "厂家项目加工图、准确下单尺寸、原厂饰面编号、完整开启包络、安装/收口及现场复核",
+        "evidence_reference": "IFC-FORMAL-001;RIMADESIO-SAIL-MONOROTAIA-001;OUTBOUND-FORM-DOOR-20260817;OUTBOUND-FORM-DOOR-VENDOR-20260817",
+    })
     by_id["S701-M06"].update({
-        "candidate_or_observed_scope": "OperationType=Sail MONOROTAIA concealed ceiling track; left/west slide; no continuous floor track; lower anti-sway/positioning component per final Rimadesio shop drawing",
-        "unresolved_for_release": "厂家门窗表、下部防摆／定位构件准确型号与位置、五金安装/收口及现场复核",
-        "evidence_reference": "IFC-FORMAL-001;RIMADESIO-SAIL-MONOROTAIA-001;A104-SHOP-REQUEST-20260815;OUTBOUND-FORM-DOOR-20260817",
+        "confirmed_scope": "身份/定位；项目名义顶轨 2000 mm；暗藏顶轨、无通长地轨；向东／图纸右侧滑开；保留末端检修",
+        "candidate_or_observed_scope": "Sail MONOROTAIA 同门组顶轨；下部防摆／定位构件按最终 Rimadesio 项目加工图",
+        "unresolved_for_release": "厂家项目加工图、准确下单长度、下部防摆／定位构件、吊顶固定、安装/收口及现场复核",
+        "evidence_reference": "IFC-FORMAL-001;RIMADESIO-SAIL-MONOROTAIA-001;OUTBOUND-FORM-DOOR-20260817;OUTBOUND-FORM-DOOR-VENDOR-20260817",
+    })
+    by_id["S701-M07"].update({
+        "confirmed_scope": "Poliform Pivot 墙装单扇；项目名义尺寸 950×2400 mm；与衣柜背面新增护墙板齐平；向主卧内开并停靠图纸右侧",
+        "candidate_or_observed_scope": "官方 Pivot 门框、顶／地轴和金属门扇框；正式 IFC OperationType 仍为 NOTDEFINED",
+        "unresolved_for_release": "厂家项目加工图、准确下单尺寸、顶／地轴、门框护墙板收口、门后净距、基层与现场复核",
+        "evidence_reference": "IFC-FORMAL-001;POLIFORM-ARCHITECTURAL-PDF-001;OUTBOUND-FORM-DOOR-20260817;OUTBOUND-FORM-DOOR-VENDOR-20260817",
     })
     write_csv(path, fields, rows)
 

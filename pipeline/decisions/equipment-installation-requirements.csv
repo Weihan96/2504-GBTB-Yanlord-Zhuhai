@@ -213,19 +213,19 @@ REQ-0211,DW-M04,ARCH,nominal_height,,2000,mm,,ifc_observed,observed,IFC-FORMAL-0
 REQ-0212,DW-M04,ARCH,operation_type,SINGLE_SWING_LEFT,,,,ifc_observed,observed,IFC-FORMAL-001,,no,
 REQ-0213,DW-M04,ARCH,host_relation,HOSTED,,,,ifc_observed,observed,IFC-FORMAL-001,,no,
 REQ-0214,DW-M04,ARCH,sill_or_threshold_z,,0.000000,mm,,ifc_observed,observed,IFC-FORMAL-001,,no,
-REQ-0215,DW-M05,ARCH,nominal_width,,1000,mm,,research_conclusion,candidate,A104-SHOP-REQUEST-20260815,Sail official size range + A-104 project geometry; D02,yes,我方拟定门扇宽度，待供货安装方在直接确认表 D02 勾是；未写入正式 IFC。
-REQ-0216,DW-M05,ARCH,nominal_height,,2400,mm,,research_conclusion,candidate,A104-SHOP-REQUEST-20260815,Sail official size range + A-104 project geometry; D02,yes,我方拟定门扇高度；对应 2 道水平横档，待供货安装方勾是；未写入正式 IFC。
-REQ-0217,DW-M05,ARCH,operation_type,Sail MONOROTAIA single-track single-leaf; slide left/west,,,,research_conclusion,candidate,A104-SHOP-REQUEST-20260815,official CAD/product sheet + direct confirmation D01/D05,yes,产品族由官方资料确认；项目滑向为工程推导，待供货安装方勾是。
+REQ-0215,DW-M05,ARCH,nominal_width,,1000,mm,,user_input,confirmed,OUTBOUND-FORM-DOOR-20260817,D01-D04；MS／2026-08-17,no,MS 确认项目名义门扇宽度；准确下单尺寸仍由 06 表和厂家项目加工图关闭，未写入正式 IFC。
+REQ-0216,DW-M05,ARCH,nominal_height,,2400,mm,,user_input,confirmed,OUTBOUND-FORM-DOOR-20260817,D01-D04；MS／2026-08-17,no,MS 确认项目名义门扇高度；D03 的 2 道水平横档未确认并从项目要求删除；准确下单尺寸仍待厂家项目加工图。
+REQ-0217,DW-M05,ARCH,operation_type,Sail MONOROTAIA single-track single-leaf; slide east/drawing-right,,,,user_input,confirmed,OUTBOUND-FORM-DOOR-20260817,D01-D02、D06；MS／2026-08-17,no,MS 明确纠正旧向左／西候选；当前项目方向为向东／图纸右侧滑开。厂家兼容与完整开启包络仍由 06 表及加工图关闭。
 REQ-0218,DW-M05,ARCH,host_relation,UNHOSTED,,,,ifc_observed,observed,IFC-FORMAL-001,,no,
 REQ-0219,DW-M05,ARCH,sill_or_threshold_z,,12.000000,mm,,ifc_observed,observed,IFC-FORMAL-001,,no,
-REQ-0220,DW-M06,ARCH,nominal_width,,2000,mm,,research_conclusion,candidate,A104-SHOP-REQUEST-20260815,official monorail modules + 1000 mm project leaf; D03,yes,拟采用 2000 mm 标准顶轨以满足 1000 mm 门扇完整滑开；待供货安装方勾是；不沿用 1200 mm 早期示意。
+REQ-0220,DW-M06,ARCH,nominal_width,,2000,mm,,user_input,confirmed,OUTBOUND-FORM-DOOR-20260817,D04；MS／2026-08-17,no,MS 确认 2000 mm 项目名义顶轨；不沿用正式 IFC 的 1200 mm 早期示意。准确下单长度和固定方式待厂家加工图。
 REQ-0221,DW-M06,ARCH,nominal_height,,,mm,,ifc_observed,pending,IFC-FORMAL-001,,yes,
-REQ-0222,DW-M06,ARCH,operation_type,Sail MONOROTAIA concealed ceiling track; left/west slide; no continuous floor track; lower anti-sway/positioning component per Rimadesio final shop drawing,,,,research_conclusion,candidate,A104-SHOP-REQUEST-20260815,official CAD layers sail_ELEMENTI_PERNO / ELEMENTI_PAVIMENTO + direct confirmation D03-D06,yes,M06 为同一门组顶轨，不是第二樘门；不再推定‘可更换导向件’，下部防摆／定位构件的准确形式和位置由 Rimadesio 最终深化图确认。
+REQ-0222,DW-M06,ARCH,operation_type,Sail MONOROTAIA concealed ceiling track; east/drawing-right slide; no continuous floor track; lower anti-sway/positioning component per Rimadesio final shop drawing,,,,research_conclusion,candidate,OUTBOUND-FORM-DOOR-VENDOR-20260817,D02、D04-D07；厂家复核 R01-R06,yes,MS 已确认同一门组、暗藏顶轨、无通长地轨、向东／图纸右侧滑开和检修要求；下部防摆／定位构件、吊顶固定与收口仍由 Rimadesio 项目加工图确认。
 REQ-0223,DW-M06,ARCH,host_relation,UNHOSTED,,,,ifc_observed,observed,IFC-FORMAL-001,,no,
 REQ-0224,DW-M06,ARCH,sill_or_threshold_z,,2407.699912,mm,,ifc_observed,observed,IFC-FORMAL-001,,no,
-REQ-0225,DW-M07,ARCH,nominal_width,,950,mm,,research_conclusion,candidate,A104-SHOP-REQUEST-20260815,Poliform Pivot official system + A-104 project geometry; D08,yes,我方拟定项目门扇宽度，待供货安装方勾是；通用产品资料不单独证明该项目值。
-REQ-0226,DW-M07,ARCH,nominal_height,,2400,mm,,research_conclusion,candidate,A104-SHOP-REQUEST-20260815,Poliform Pivot official system + A-104 project geometry; D08,yes,我方拟定项目门扇高度，待供货安装方勾是；未写入正式 IFC。
-REQ-0227,DW-M07,ARCH,operation_type,single Pivot; opens inward to master; parks at drawing-left fixed wall/wardrobe,,,,research_conclusion,candidate,A104-SHOP-REQUEST-20260815,official Pivot configurations + A-104/photo spatial reasoning; D07/D09-D12,yes,轴心门系统由官方资料支持；项目开启与停靠关系为工程推导，待供货安装方勾是。
+REQ-0225,DW-M07,ARCH,nominal_width,,950,mm,,user_input,confirmed,OUTBOUND-FORM-DOOR-20260817,D08-D09；MS／2026-08-17,no,MS 确认项目名义宽度；准确下单尺寸仍由 06 表和厂家项目加工图关闭。
+REQ-0226,DW-M07,ARCH,nominal_height,,2400,mm,,user_input,confirmed,OUTBOUND-FORM-DOOR-20260817,D08-D09；MS／2026-08-17,no,MS 确认项目名义高度；准确下单尺寸仍由 06 表和厂家项目加工图关闭。
+REQ-0227,DW-M07,ARCH,operation_type,single Pivot; opens inward to master; parks at drawing-right fixed wall/guest-bedroom side,,,,user_input,confirmed,OUTBOUND-FORM-DOOR-20260817,D08-D12；MS／2026-08-17,no,MS 明确纠正旧图纸左侧停靠候选；当前为向主卧内开并停靠图纸右侧固定墙／次卧侧。厂家兼容、轴位和净距仍由 06 表及加工图关闭。
 REQ-0228,DW-M07,ARCH,host_relation,UNHOSTED,,,,ifc_observed,observed,IFC-FORMAL-001,,no,
 REQ-0229,DW-M07,ARCH,sill_or_threshold_z,,16.058349,mm,,ifc_observed,observed,IFC-FORMAL-001,,no,
 REQ-0230,DW-M08,ARCH,nominal_width,,900,mm,,ifc_observed,observed,IFC-FORMAL-001,,no,
@@ -879,3 +879,8 @@ REQ-INTERCOM-005,ACCESS-INTERCOM-001,ELEC/INT1/NETWORK,terminal_diagram_and_exis
 REQ-INTERCOM-006,ACCESS-INTERCOM-001,ELEC/INT1/NETWORK,property_system_compatibility,unknown,,,,pending,pending,OWNER-E304-DNAKE-PHOTO-20260817,现有照片未显示该信息,yes,关闭证据：物业或门禁维护方书面确认系统角色、兼容与移动限制。
 REQ-INTERCOM-007,ACCESS-INTERCOM-001,ELEC/INT1/NETWORK,keep_move_integrate_strategy,unknown,,,,pending,pending,OWNER-E304-DNAKE-PHOTO-20260817,现有照片未显示该信息,yes,关闭证据：保留、迁移或接入装修后系统的签认结论。
 REQ-INTERCOM-008,ACCESS-INTERCOM-001,ELEC/INT1/NETWORK,final_panel_coordinates_and_mounting,unknown,,,,pending,pending,OWNER-E304-DNAKE-PHOTO-20260817,现有照片未显示该信息,yes,关闭证据：门套完成面后的安装面、净距和底边标高；接口中心坐标不得推测。
+REQ-DOOR-OWNER-001,DW-M05,ARCH/INT1/ELEC,selected_official_configuration,official DWG second configuration; concealed ceiling top track; jamb wall parallel to door travel,,,,user_input,confirmed,OUTBOUND-FORM-DOOR-20260817,D03；MS／2026-08-17,no,不推测原厂配置代码；由厂家在 06 表填写准确配置／加工图编号。
+REQ-DOOR-OWNER-002,DW-M05,ARCH/INT1/ELEC,finish_direction,white oak / light wood,,,,user_input,confirmed,OUTBOUND-FORM-DOOR-20260817,D03；MS／2026-08-17,no,业主饰面方向已定；准确原厂饰面编号和样板仍待厂家。
+REQ-DOOR-OWNER-003,DW-M06,ARCH/INT1/ELEC,service_access,removable end access allowing trolley adjustment and replacement without dismantling main ceiling,,,,user_input,confirmed,OUTBOUND-FORM-DOOR-20260817,D07；MS／2026-08-17,no,具体检修口尺寸和构造由项目加工图关闭。
+REQ-DOOR-OWNER-004,DW-M07,ARCH/INT1/ELEC,closed_alignment,align with added wall panel on rear of Senzafine wardrobe,,,,user_input,confirmed,OUTBOUND-FORM-DOOR-20260817,D10；MS／2026-08-17,no,已纠正旧衣柜正面齐平候选；护墙板厚度和收口待加工图。
+REQ-DOOR-OWNER-005,CTRL-MASTER-A,ARCH/INT1/ELEC,preferred_installation_surface,primary: remaining fixed wall between master-bedroom and master-bath doors when both open; fallback: left jamb/reveal-panel side,,,,user_input,confirmed,OUTBOUND-FORM-DOOR-20260817,D13；MS／2026-08-17,no,最终安装坐标、净宽、标高和底盒净深保持 unknown，待现场实测。
