@@ -46,7 +46,7 @@ test("confirmed control, network, and safety roles compile as read-only coordina
   expect(Object.values(report.gates).every((value) => value === true || value === false)).toBe(true);
   expect(report.gates.two_doorway_zones_present).toBe(true);
   expect(report.gates.four_wall_side_options_present).toBe(true);
-  expect(report.gates.master_a_and_b_distinct_roles_pending_a104).toBe(true);
+  expect(report.gates.master_a_and_b_distinct_roles_with_owner_priority).toBe(true);
   expect(report.gates.entry_wall_side_not_auto_closed).toBe(true);
   expect(report.gates.entry_candidate_not_mislabeled_selected).toBe(true);
   expect(report.gates.controlled_fixture_group_mapping_complete).toBe(true);
@@ -117,17 +117,18 @@ test("confirmed control, network, and safety roles compile as read-only coordina
   expect((renderedSvg.match(/data-elec-kind="hvac-control-panel-reference"/g) ?? []).length).toBe(5);
   expect((renderedSvg.match(/data-elec-kind="video_intercom-reference"/g) ?? []).length).toBe(1);
   expect((renderedSvg.match(/data-elec-kind="doorbell-reference"/g) ?? []).length).toBe(1);
-  expect(renderedSvg).toContain("交付参考，待现场确认");
+  expect(renderedSvg).toContain("对讲品牌已定；型号/端子/物业接口与门铃身份待确认");
   expect(renderedSvg).toContain("elec-control-network");
   expect(renderedSvg).toContain("A106-FIRE-R04");
-  expect(renderedSvg).toContain("CTRL-MASTER-A USER/A104");
-  expect(renderedSvg).toContain("CTRL-MASTER-B USER/A104");
+  expect(renderedSvg).toContain("CTRL-MASTER-A OWNER PRIORITY");
+  expect(renderedSvg).toContain("CTRL-MASTER-B REQUIRED");
   expect(renderedSvg).toContain("CTRL-ENTRY-A USER/PENDING");
   expect(renderedSvg).toContain("CTRL-ENTRY-B OPTION");
   expect(renderedSvg).toContain("主卧 AP 灯具净距余量 578.5mm｜机械候选");
   expect(renderedSvg).toContain("玄关高柜路由器平面柜位");
   expect(renderedSvg).toContain("面板功能角色 3/3 PASS｜其余产品门 21 项 BLOCK");
   expect(renderedSvg).toContain("Matter 网络类型按准确 SKU；Matter ≠ KNX");
+  expect(renderedSvg).toContain("Master A 首选两门全开后的中间固定墙；后备左门套/见光板");
   expect(renderedSvg).toContain("Wall Plan-underlay.png");
 }, 30_000);
 

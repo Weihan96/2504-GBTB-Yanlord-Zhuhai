@@ -606,10 +606,18 @@ def control_wall_side_options(
         candidate_suffix = "A" if " A" in decision["candidate_value"] else None
         user_suffix = "A" if " A" in decision["user_value"] else "B" if " B" in decision["user_value"] else None
         effective_suffix = "A" if " A" in decision["effective_value"] else "B" if " B" in decision["effective_value"] else None
+        if control["candidate_id"] == "CTRL-MASTER":
+            required_owner_text = ("两者之间的剩余墙面", "左门套／见光板侧")
+            if decision["status"] != "自定义确认" or any(text not in decision["user_value"] for text in required_owner_text):
+                raise RuntimeError("Master A owner placement priority is not absorbed")
         for suffix, direction in (("A", -1.0), ("B", 1.0)):
             preferred = suffix == candidate_suffix
             if control["candidate_id"] == "CTRL-MASTER":
-                review_status = "distinct_user_directed_panel_pending_a104"
+                review_status = (
+                    "owner_priority_surface_pending_field_geometry"
+                    if suffix == "A"
+                    else "distinct_external_panel_pending_field_geometry"
+                )
             else:
                 review_status = (
                     "user_input_pending_geometry" if suffix == user_suffix
@@ -627,6 +635,15 @@ def control_wall_side_options(
                 if panel_role in {"entry_three_way_pair_and_lighting_master", "master_b_external_three_way_pair"}
                 else ["主卧氛围照明", "主卧重点照明"]
             )
+            is_effective_selection = suffix == effective_suffix
+            if control["candidate_id"] == "CTRL-MASTER":
+                is_effective_selection = False
+            placement_preference = ""
+            if control["candidate_id"] == "CTRL-MASTER" and suffix == "A":
+                placement_preference = (
+                    "首选主卧门与主卫门全开后两门之间的剩余固定墙；"
+                    "如无可用固定墙，后备左门套／见光板侧"
+                )
             result.append({
                 "candidate_id": f"{control['candidate_id']}-{suffix}",
                 "source_candidate_id": control["candidate_id"],
@@ -643,8 +660,15 @@ def control_wall_side_options(
                 "panel_role": panel_role,
                 "controlled_groups": controlled_groups,
                 "panel_required_by_user_direction": control["candidate_id"] == "CTRL-MASTER",
-                "effective_selection": suffix == effective_suffix,
-                "coordinate_status": "wall_side_option_not_final" if effective_suffix is None else "owner_selected_pending_geometry_evidence",
+                "effective_selection": is_effective_selection,
+                "placement_preference": placement_preference,
+                "coordinate_status": (
+                    "owner_priority_surface_only_final_coordinates_unknown"
+                    if control["candidate_id"] == "CTRL-MASTER" and suffix == "A"
+                    else "required_panel_role_final_coordinates_unknown"
+                    if control["candidate_id"] == "CTRL-MASTER"
+                    else "wall_side_option_not_final" if effective_suffix is None else "owner_selected_pending_geometry_evidence"
+                ),
                 "automatic_ifc_write_allowed": False,
             })
     return result
@@ -853,8 +877,10 @@ def render_svg(source: str, report: dict[str, Any]) -> str:
         candidate_id = html.escape(row["candidate_id"])
         if row["effective_selection"]:
             status = "SELECTED"
-        elif row["source_candidate_id"] == "CTRL-MASTER":
-            status = "USER/A104"
+        elif row["candidate_id"] == "CTRL-MASTER-A":
+            status = "OWNER PRIORITY"
+        elif row["candidate_id"] == "CTRL-MASTER-B":
+            status = "REQUIRED"
         elif row["review_status"] == "user_input_pending_geometry":
             status = "USER/PENDING"
         else:
@@ -935,8 +961,8 @@ def render_svg(source: str, report: dict[str, Any]) -> str:
         '<text class="cn-text" x="407" y="87">对讲品牌已定；型号/端子/物业接口与门铃身份待确认</text>',
         '<text class="cn-text" x="407" y="101">双控：客厅＋书房＋餐厅｜仅实体有线</text>',
         '<text class="cn-text" x="407" y="109">开关面板底边：1300 mm AFF</text>',
-        '<text class="cn-warn" x="407" y="118">Master A 内控主卧；Master B 外控客书餐，均待 A-104</text>',
-        '<text class="cn-warn" x="407" y="126">150mm 仅为常见协调候选净距，未经完成面实测</text>',
+        '<text class="cn-warn" x="407" y="118">Master A 首选两门全开后的中间固定墙；后备左门套/见光板</text>',
+        '<text class="cn-warn" x="407" y="126">位置优先级已定；净宽/底盒/标高与接口中心仍待现场</text>',
         f'<text class="cn-text" x="407" y="134">主卧 AP 灯具净距余量 {main_bedroom_ap_margin:.1f}mm｜机械候选</text>',
         '<text class="cn-text" x="407" y="148">网络需求：5 个下游端点｜2 个 AP 均采用 PoE</text>',
         '<text class="cn-text" x="407" y="156">交换侧最少 6 口候选（含 1 个路由器上联）</text>',
@@ -1099,14 +1125,18 @@ def main() -> int:
         "gates": {
             "two_doorway_zones_present": len(controls) == 2,
             "four_wall_side_options_present": len(control_options) == 4,
-            "master_a_and_b_distinct_roles_pending_a104": {
+            "master_a_and_b_distinct_roles_with_owner_priority": {
                 row["candidate_id"]: row["panel_role"]
                 for row in control_options if row["source_candidate_id"] == "CTRL-MASTER"
             } == {
                 "CTRL-MASTER-A": "master_a_internal_bedroom_lighting",
                 "CTRL-MASTER-B": "master_b_external_three_way_pair",
-            } and all(
-                row["review_status"] == "distinct_user_directed_panel_pending_a104"
+            } and next(
+                row for row in control_options if row["candidate_id"] == "CTRL-MASTER-A"
+            )["placement_preference"] == "首选主卧门与主卫门全开后两门之间的剩余固定墙；如无可用固定墙，后备左门套／见光板侧"
+            and all(
+                row["effective_selection"] is False
+                and "final_coordinates_unknown" in row["coordinate_status"]
                 for row in control_options if row["source_candidate_id"] == "CTRL-MASTER"
             ),
             "entry_wall_side_not_auto_closed": all(

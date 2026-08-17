@@ -72,6 +72,16 @@ def parse_args() -> argparse.Namespace:
         default=Path("drawings/evidence/RIMADESIO-Sail-monorotaia-mechanical-audit.json"),
     )
     parser.add_argument(
+        "--installation-requirements",
+        type=Path,
+        default=Path("pipeline/decisions/equipment-installation-requirements.csv"),
+    )
+    parser.add_argument(
+        "--owner-inputs",
+        type=Path,
+        default=Path("pipeline/decisions/owner-input-register.csv"),
+    )
+    parser.add_argument(
         "--expected-ifc-sha256",
         help="Optional caller-frozen SHA-256 for the formal IFC; defaults to the current file hash.",
     )
@@ -287,13 +297,75 @@ def close_confirmed_reviews(
     master_door["review_group"] = "A104-R03"
     master_door["review_required"] = "yes"
     master_door["review_question"] = (
-        "M07 主卧门缺少宿主洞口且 OperationType=NOTDEFINED；Master A 仅为暂定优选、仍待取证，"
-        "须依据官方 CAD、门表或现场开门照片确认合页侧、开启方向和门后占墙后再关闭 E-302。"
+        "M07 主卧门在正式 IFC 中仍缺少宿主洞口且 OperationType=NOTDEFINED；"
+        "项目设计决定由 SSOT 另行投影，厂家加工图与现场净距仍须保留审查。"
     )
     for relation in pair_relations:
         pair = {relation["first_global_id"], relation["second_global_id"]}
         if pair in CONFIRMED_GROUPS.values():
             relation["review_required"] = False
+
+
+def load_csv_by(path: Path, key: str) -> dict[str, dict[str, str]]:
+    with path.open(encoding="utf-8-sig", newline="") as handle:
+        return {row[key]: row for row in csv.DictReader(handle)}
+
+
+def project_owner_door_decisions(
+    records: Sequence[dict[str, Any]],
+    requirements_path: Path,
+    owner_inputs_path: Path,
+) -> None:
+    requirements = load_csv_by(requirements_path, "requirement_id")
+    owner_inputs = load_csv_by(owner_inputs_path, "input_id")
+    expected = {
+        "REQ-0217": "Sail MONOROTAIA single-track single-leaf; slide east/drawing-right",
+        "REQ-0227": "single Pivot; opens inward to master; parks at drawing-right fixed wall/guest-bedroom side",
+    }
+    for requirement_id, value in expected.items():
+        row = requirements.get(requirement_id)
+        if not row or row.get("value_text") != value or row.get("status") != "confirmed":
+            raise RuntimeError(f"owner door decision drifted: {requirement_id}")
+    for input_id in ("A104-M05-M06-DIMENSIONS", "A104-M07-EVIDENCE"):
+        row = owner_inputs.get(input_id)
+        if not row or row.get("status") != "自定义确认" or "MS 于 2026-08-17" not in row.get("user_value", ""):
+            raise RuntimeError(f"owner door response is not absorbed: {input_id}")
+
+    by_id = {record["candidate_id"]: record for record in records}
+    decisions = {
+        "M05": {
+            "project_nominal_width_mm": 1000.0,
+            "project_nominal_height_mm": 2400.0,
+            "project_operation_type": expected["REQ-0217"],
+            "project_operation_label": "向东／图纸右侧滑开",
+            "project_alignment_finish": "官方 DWG 第二种配置；白橡木／浅色木；门垛墙与滑向平行",
+            "review_question": "业主方向已确认；请 Rimadesio／全屋定制用 06 表和项目加工图确认准确下单尺寸、原厂饰面编号、完整开启包络、安装基层与收口。",
+        },
+        "M06": {
+            "project_nominal_width_mm": 2000.0,
+            "project_nominal_height_mm": None,
+            "project_operation_type": requirements["REQ-0222"]["value_text"],
+            "project_operation_label": "2000 顶轨；向东／图纸右侧滑开",
+            "project_alignment_finish": "暗藏顶轨；无通长地轨；末端可检修",
+            "review_question": "业主方向已确认；请 Rimadesio／全屋定制确认准确轨道长度、吊顶固定、下部防摆／定位构件、检修拆换路径与收口。",
+        },
+        "M07": {
+            "project_nominal_width_mm": 950.0,
+            "project_nominal_height_mm": 2400.0,
+            "project_operation_type": expected["REQ-0227"],
+            "project_operation_label": "向主卧内开；停靠图纸右侧",
+            "project_alignment_finish": "与 Senzafine 背面新增护墙板齐平",
+            "review_question": "业主方向已确认；请 Poliform／全屋定制用 06 表和项目加工图确认准确下单尺寸、顶／地轴、护墙板收口、门后净距和安装基层。",
+        },
+    }
+    for candidate_id, decision in decisions.items():
+        record = by_id[candidate_id]
+        record.update(decision)
+        record["project_decision_status"] = "owner_confirmed_vendor_shop_drawing_pending"
+        record["project_decision_source"] = "OUTBOUND-FORM-DOOR-20260817"
+        record["review_group"] = "A104-R-VENDOR"
+        record["review_required"] = "yes"
+        record["review_question"] = decision["review_question"]
 
 
 def build_inventory(
@@ -443,6 +515,13 @@ def register_rows(records: Iterable[dict[str, Any]], source_sha: str) -> list[di
                 "nominal_width_mm": "" if record["nominal_width_mm"] is None else format_mm(record["nominal_width_mm"]),
                 "nominal_height_mm": "" if record["nominal_height_mm"] is None else format_mm(record["nominal_height_mm"]),
                 "operation_type": record["operation_type"],
+                "project_nominal_width_mm": "" if record.get("project_nominal_width_mm") is None else format_mm(record["project_nominal_width_mm"]),
+                "project_nominal_height_mm": "" if record.get("project_nominal_height_mm") is None else format_mm(record["project_nominal_height_mm"]),
+                "project_operation_type": record.get("project_operation_type", ""),
+                "project_operation_label": record.get("project_operation_label", ""),
+                "project_alignment_finish": record.get("project_alignment_finish", ""),
+                "project_decision_status": record.get("project_decision_status", ""),
+                "project_decision_source": record.get("project_decision_source", ""),
                 "width_axis": record["width_axis"],
                 "opening_width_mm": "" if record["opening_width_mm"] is None else f"{record['opening_width_mm']:.6f}",
                 "opening_height_mm": "" if record["opening_height_mm"] is None else f"{record['opening_height_mm']:.6f}",
@@ -505,10 +584,12 @@ def render_plan_markers(records: Sequence[dict[str, Any]], occupied: list[Box]) 
                 f'<rect class="a104-unhosted" data-ifc-guid="{svg_escape(record["global_id"])}" '
                 f'x="{x:.3f}" y="{y:.3f}" width="{w:.3f}" height="{h:.3f}"/>'
             )
+        width = record.get("project_nominal_width_mm", record["nominal_width_mm"])
+        height = record.get("project_nominal_height_mm", record["nominal_height_mm"])
         size = (
-            f"{format_mm(record['nominal_width_mm'])}×{format_mm(record['nominal_height_mm'])}"
-            if record["nominal_width_mm"] is not None and record["nominal_height_mm"] is not None
-            else "尺寸待定"
+            f"{format_mm(width)}×{format_mm(height)}"
+            if width is not None and height is not None
+            else (f"L={format_mm(width)}" if width is not None else "尺寸待定")
         )
         label = f"{record['candidate_id']} {size}"
         tx, ty, box = place_label(cx, cy, label, occupied, offsets=offsets, font_size=2.15)
@@ -546,12 +627,15 @@ def render_side_panel(
     line(subtitle, "a104-panel-note", 7.0)
     line("门表", "a104-panel-heading", 5.5)
     for record in doors:
+        width = record.get("project_nominal_width_mm", record["nominal_width_mm"])
+        height = record.get("project_nominal_height_mm", record["nominal_height_mm"])
         size = (
-            f"{format_mm(record['nominal_width_mm'])}×{format_mm(record['nominal_height_mm'])}"
-            if record["nominal_width_mm"] is not None else "尺寸待定"
+            f"{format_mm(width)}×{format_mm(height)}"
+            if width is not None and height is not None else (f"L={format_mm(width)}" if width is not None else "尺寸待定")
         )
         marker = "※" if record["review_required"] == "yes" else ("†" if not record["host_wall_global_id"] else "")
-        line(f"{record['candidate_id']}{marker}  {size}  {record['operation_label']}", gap=4.4)
+        operation_label = record.get("project_operation_label") or record["operation_label"]
+        line(f"{record['candidate_id']}{marker}  {size}  {operation_label}", gap=4.4)
     y += 2.0
     line("窗表", "a104-panel-heading", 5.5)
     for record in windows:
@@ -631,6 +715,11 @@ def main() -> None:
     formal_semantics = formal_semantics_state(model, [*doors, *windows])
     if formal_semantics["complete"]:
         close_confirmed_reviews([*doors, *windows], pair_relations)
+    project_owner_door_decisions(
+        [*doors, *windows],
+        args.installation_requirements,
+        args.owner_inputs,
+    )
 
     rows = register_rows([*doors, *windows], source_sha)
     write_register(args.review_register, rows)
@@ -687,6 +776,16 @@ def main() -> None:
         "review_queue_count": len(review_queue),
         "automatic_ifc_write_allowed": False,
         "formal_semantics_complete": formal_semantics["complete"],
+        "owner_door_decisions_projected": all(
+            record.get("project_decision_status") == "owner_confirmed_vendor_shop_drawing_pending"
+            for record in doors
+            if record["candidate_id"] in {"M05", "M06", "M07"}
+        ),
+        "vendor_shop_drawing_boundary_preserved": all(
+            record["review_required"] == "yes"
+            for record in doors
+            if record["candidate_id"] in {"M05", "M06", "M07"}
+        ),
     }
     gates["mechanical_pass"] = (
         gates["ifc_schema_is_ifc4"]
@@ -697,6 +796,8 @@ def main() -> None:
         and gates["hosted_nominal_opening_checks_passed"] == 16
         and gates["candidate_identifier_duplicate_count"] == 0
         and gates["generated_label_collision_count"] == 0
+        and gates["owner_door_decisions_projected"]
+        and gates["vendor_shop_drawing_boundary_preserved"]
     )
     report = {
         "generated_at": datetime.now(timezone.utc).isoformat(),
@@ -709,6 +810,10 @@ def main() -> None:
             "wall_plan_svg_sha256": sha256(args.source_svg),
             "sail_cad_audit": str(args.sail_cad_audit.resolve()),
             "sail_cad_audit_sha256": sha256(args.sail_cad_audit),
+            "installation_requirements": str(args.installation_requirements.resolve()),
+            "installation_requirements_sha256": sha256(args.installation_requirements),
+            "owner_inputs": str(args.owner_inputs.resolve()),
+            "owner_inputs_sha256": sha256(args.owner_inputs),
         },
         "tolerance_mm": args.tolerance_mm,
         "numbering_rule": "M=door and W=window; plan scan north-to-south, then west-to-east; current formal tags are verified when present; D prefix is reserved by A-102 demolition walls",

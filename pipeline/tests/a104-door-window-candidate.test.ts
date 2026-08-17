@@ -52,7 +52,7 @@ test("A104 known semantic conflict and unhosted pair require review", () => {
   expect(values[1].review_group).toBe("A104-R02");
 });
 
-test("A104 keeps M07 swing review open after its identity is confirmed", () => {
+test("A104 keeps the formal M07 geometry boundary open before projecting owner decisions", () => {
   const result = runPython(`
 records = [{"global_id": module.MASTER_BEDROOM_DOOR, "review_group": "", "review_required": "no", "review_question": "", "confidence": 1.0}]
 module.close_confirmed_reviews(records, [])
@@ -63,8 +63,8 @@ print(json.dumps(records[0], ensure_ascii=False))
   expect(value.review_group).toBe("A104-R03");
   expect(value.review_required).toBe("yes");
   expect(value.review_question).toContain("OperationType=NOTDEFINED");
-  expect(value.review_question).toContain("Master A 仅为暂定优选");
-  expect(value.review_question).toContain("仍待取证");
+  expect(value.review_question).toContain("SSOT");
+  expect(value.review_question).toContain("厂家加工图与现场净距");
 });
 
 test("A104 uses the current IFC hash by default and rejects a mismatched caller freeze", async () => {
