@@ -11,8 +11,8 @@ E303-NS01-CIRCUIT,external_product_evidence,设备商家/业主,APP-001～003 �
 E303-NS02-FORM,human_product_selection,业主/家具设计,线性轨道或隐藏翻盖最终选型与餐边柜立面,no,两个方向尚未二选一
 E303-NS02-CIRCUIT,external_product_evidence,咖啡机商家/电气方,实购咖啡机型号、名牌和插头照片，用于最终面板匹配；粗装已按 2600W/C16 闭合,no,功能/粗装结论已闭合；此门只关闭最终产品、现场测试或面板安装。
 E304-GATEWAY-IDENTITY,human_product_selection,业主/网络设计,最终路由网关交换机 AP 型号及角色清单,no,现有 V175 与 K155 不代表装修后最终设备
-E304-CABINET-DIMENSIONS,site_measurement,现场,填写 E304-SITE-CHECKLIST-20260815 的弱电箱/柜格净尺寸并附带尺照片,no,用户填写值需区分箱体和柜格并修正 525m 单位
-E304-CABINET-VENTILATION,site_test,现场/设备方,完成 E304-SITE-CHECKLIST-20260815 的 120 min 柜门关闭全负载温升试验,no,手感 30-40℃ 不能代替可复核温升试验
+E304-CABINET-DIMENSIONS,site_measurement,现场负责人,05 表 N01-N05：准确净宽、净高、带尺复核净深、线缆弯曲后有效净深、柜格 W×H×D 和开门检修净空；每项附带尺照片,no,约测 110 mm、距墙 525 mm、H+350、CAD XY、右下柜格和五孔插座已知，不得重新按完全未知询问。
+E304-CABINET-VENTILATION,site_test,现场负责人/弱电施工方,05 表柜门关闭 0/60/120 min 全负载温升、设备／PoE 负载、告警掉线、通风孔和检修照片,no,手感 30-40℃ 不能代替可复核温升试验
 E304-CABLE-CONTINUITY,site_test,弱电施工,填写 E304-SITE-CHECKLIST-20260815 的逐根 1–8 线序、端点、标签和照片,no,线缆标签只能证明候选去向
 E304-AP-POWER,site_and_product_evidence,网络设备方/现场,实购 AP 准确型号和功耗、PoE 交换机端口/总预算、CAT6 通断与端接顺序测试,no,功能/粗装结论已闭合；此门只关闭最终产品、现场测试或面板安装。
 A106-FIRE-TYPE,authority_product_evidence,消防/设备方,按 A106-CONSULTATION-PACK-20260815 由消防/设备方书面确认类型、型号、认证、供电通信和安装净距,no,正式 IFC 只冻结 FIRESENSOR 点位
@@ -21,7 +21,7 @@ WFIN-WHITE-SYSTEM,human_material_selection,业主/材料设计,最终厂家体�
 WFIN-TADELAKT,human_material_selection,业主/材料设计,最终厂家完整体系湿区基层防水收口与样板,no,网页意向不能替代施工体系
 WFIN-KITCHEN-PUTTY-COVERAGE,human_design_selection,业主/室内设计,业主确认旧全生堂中厨方案已由台面同材大板＋浅置物架方案取代,no,已由 OWNER-WFIN-KITCHEN-SLAB-SHELF-20260817 关闭并保留历史。
 WFIN-KITCHEN-PUTTY-SYSTEM,human_design_selection,业主/室内设计,确认不再把全生堂产品系统作为中厨当前材料索取项,no,已关闭为不适用当前中厨方案；不再等待全生堂厨房系统资料。
-RCP1-HVAC-PORTS,product_interface_evidence,空调厂家/机电设计,日立／机电设计提交 A05/A06 准确型号和 A01-A06 项目接口图；书面给出冷媒／冷凝水保温材料与厚度、完成外径、送回风、端口、冷凝水排放和检修条件；证明最终路线与吊顶净高相容。,no,A01-A04 型号族、裸管规格和接管侧已由 MS 接受；P02010Q 未给保温厚度，旧 IFC 管线不能关闭最终模型匹配。
+RCP1-HVAC-PORTS,product_interface_evidence,机电设计/日立技术方/安装方,机电设计按珠海露点、管温、材料导热系数、防火和净空计算保温厚度及完成外径；日立／安装方签认兼容；另提交 A05/A06 型号和 A01-A06 项目接口图,no,P02010Q 只证明现场提供保温管，未给材料或厚度；旧 IFC 紫色管线不是最终带保温外径。
 PLUM-ROUGHINS,product_interface_evidence,设备方/给排水设计,提交准确墙排、柜体服务路径、洁具接口、定制地漏／石材盆／油烟机联合 shop drawing；说明书未给的中心坐标由项目图关闭。,no,Foster 官方参数、洗烘电气语义和被否决 Geberit 不再重复询问；厨房项目深化问题直接见 09 表。
 DET1-WATERPROOF,human_material_selection,业主/建筑设计,最终防水厂家体系上翻高度门口节点与样板,no,须与地漏坡向门槛高差一起人审
 APP014-APP015-ALIAS,final_shop_drawing_and_site_interface,设备方/橱柜方/给排水设计/电气设计,WS7FSB0C1C 最终柜体安装图、现场给排水/电源位置及检修复核,no,官方共用说明书已取得；APP-015 去重已关闭；剩余为项目落位与现场接口。
@@ -31,8 +31,8 @@ E302-BEDSIDE-220V,site_or_drawing_evidence,建筑设计/家具设计/电气设�
 APP017-SIEMENS-STACK,manufacturer_compatibility_and_rough_in,西门子客服/设备方/橱柜方/给排水设计/电气设计,西门子书面确认 WTZ27510 与两台实购 E-Nr./FD 兼容；给排水／柜体方提交准确双接口墙排产品图及洗衣／干衣冷凝水独立接入口、阀门、两个侧置 10A 插座、蝴蝶门、通风和整机抽出联合剖面。,no,上下顺序、两个 10A 插座、共用 C16 和侧置检修已由 MS 确认，不再重复询问。
 E302-HVAC-CONTROL-PANELS,site_and_system_evidence,空调厂家/机电设计/现场,PC-P1HEQ 与 A01–A06 最终机组兼容性签认；5 个点位逐点控制对象和保留/迁移/合并表；项目端子图与线长校核；最终安装位置和照片,no,PC-P1HEQ 准确型号及官方通用安装规则已关闭，不再向厂家询问型号。
 E304-VIDEO-INTERCOM-DOORBELL,site_and_system_evidence,物业/门禁维护方/弱电设计/现场,狄耐克室内机背面或工程信息页的准确型号；背部端子、线缆和接法照片；物业系统兼容与移动限制书面确认；保留／迁移／接入结论；门铃实物身份及门套完成面后的最终定位,no,DNAKE／狄耐克品牌和软件版本已由现场照片关闭，不再重复询问；开发商图仍只证明既有参考点和标注高度。
-INT1-ENTRY-PARCEL-FUNCTION,human_design_selection,业主/室内设计,业主确认入户须支持拿快递、签收和临时落包,no,功能需求关闭后仍须由独立布局条目关闭准确解法。
-INT1-ENTRY-PARCEL-LAYOUT,site_or_drawing_evidence,室内设计/全屋定制/现场,I-503 玄关平面＋立面／剖面候选及必要现场净尺寸：门扇开启、通行净宽、柜体分格、Entry 控制与强弱电检修范围,no,不得用常见玄关柜尺寸、未核实门扇包络或单张无比例照片冻结位置和尺寸。
+INT1-ENTRY-PARCEL-FUNCTION,human_design_selection,业主,MS 已确认入户需要临时置物以便取件时腾出双手,yes,功能已关闭，不再询问。
+INT1-ENTRY-PARCEL-LAYOUT,site_or_drawing_evidence,室内设计/现场,I-503 平立面形成时证明候选台面、抽拉板、托盘或换鞋凳不挡入户门、通道、Entry 面板及强弱电箱检修；必要照片或简图,no,I-503 前不强制填写门开／门关三套宽深高；不是专用快递柜。
 WFIN-KITCHEN-SLAB-SHELF-SCOPE,human_design_selection,业主/室内设计,业主确认灶台操作墙台面同材大板＋远端墙浅置物架,no,设计方向已关闭，准确构造由独立深化项关闭。
 WFIN-KITCHEN-SLAB-SHELF-DETAIL,product_interface_evidence,室内设计/全屋定制/台面与大板供应商/现场,I-501 分墙段平立面及联合 shop drawing：大板材料厚度板幅拼缝耐热开孔收口；浅置物架位置宽深高层数承载固定基层背衬和清洁方式；防潮防水连续节点,no,不得用常见置物架尺寸或房间级 WFIN 分段代替项目加工图。
 DRAWING-MATERIALIZED-ORTHO-SCOPE,human_design_selection,业主/室内设计,业主确认材质化正投影产品页为最终交付内容,no,交付范围已关闭。
@@ -49,3 +49,4 @@ APP017-WALL-DRAIN-20260818,product_interface_evidence,西门子/给排水/家政
 INT1-VVD-HOOD-TROLLEY-20260818,human_design_selection,业主/室内设计,MS 确认无 trolley、无悬挂式 hood、油烟机整合 Sistema 7 四门玻璃墙柜,no,方向已关闭，项目接口由 09 表关闭。
 INT1-KITCHEN-ISLAND-LAYOUT-20260818,vendor_shop_drawing_and_compatibility,全屋定制/西门子/给排水/电气,在 09 表 K01 答是／否并提交两台进水排水插座柜孔软管检修路径的岛台平面剖面,no,保持相邻是研究结论；厂家图返回前不改正式 IFC。
 SAN022-ECO-KIT-20260818,vendor_shop_drawing_and_compatibility,全屋定制/石材/给排水,09 表 K05 联合剖面：盆体、抽屉、垃圾桶、海绵托盘、存水弯排水、溢水、支撑和检修,no,Eco kits 只证明产品族做法。
+APP014-REPLACEABLE-SLEEVE,manufacturer_and_mockup_evidence,西门子技术方/给排水施工/橱柜方,随机管材料／外径及套管兼容签认；项目路线、弯曲半径、端部防水固定、渗漏可见节点和全程抽换样板,no,网络案例尺寸不是项目规格；无准确资料时接口和套管尺寸保持 unknown。

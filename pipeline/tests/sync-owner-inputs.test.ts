@@ -32,7 +32,9 @@ test("owner input sync is dry-run by default and never writes IFC", () => {
     (row: { input_id: string }) => row.input_id === "E302-ENTRY-SIDE",
   );
   expect(entry.candidate_value).not.toBe("");
-  expect(entry.effective_value).toBe("");
+  expect(entry.effective_value).toBe(
+    "Entry A；功能和键序已定，准确安装面、标高与底盒仍待现场",
+  );
   const adopted = parsed.normalized_inputs.decisions.find(
     (row: { input_id: string }) => row.input_id === "E303-NS01-FORM",
   );
@@ -61,7 +63,7 @@ test("owner input sync rejects a custom confirmation without a value", () => {
   const temp = mkdtempSync(join(tmpdir(), "owner-inputs-invalid-"));
   const source = readFileSync(join(root, "pipeline/decisions/owner-input-register.csv"), "utf8");
   const invalid = source.replace(
-    ",Entry A,,待填写,,门口控制应位于真实墙面",
+    ",Entry A；功能和键序已定，准确安装面、标高与底盒仍待现场,,自定义确认,,门口控制应位于真实墙面",
     ",,,自定义确认,,门口控制应位于真实墙面",
   );
   expect(invalid).not.toBe(source);
@@ -259,10 +261,11 @@ print(json.dumps(result,ensure_ascii=False))
   ], { cwd: root });
   expect(tableAudit.exitCode, tableAudit.stderr.toString()).toBe(0);
   const tableRefs = JSON.parse(tableAudit.stdout.toString());
-  expect(tableRefs["OwnerDecisionInputs"]).toBe("A1:M41");
-  expect(tableRefs["设备主表Table"]).toBe("A2:AB165");
-  expect(tableRefs["安装条件Table"]).toBe("A2:N852");
-  expect(tableRefs["证据索引Table"]).toBe("A2:X190");
+  expect(tableRefs["OwnerDecisionInputs"]).toBe("A1:M52");
+  expect(tableRefs["设备主表Table"]).toBe("A2:AB168");
+  // The parity fixture appends one synthetic requirement to the 909-row SSOT.
+  expect(tableRefs["安装条件Table"]).toBe("A2:N912");
+  expect(tableRefs["证据索引Table"]).toBe("A2:X218");
   const summaryAudit = Bun.spawnSync([
     "python3", "-c", String.raw`
 import json,sys,zipfile
@@ -280,8 +283,8 @@ print(json.dumps(result,ensure_ascii=False))
   ], { cwd: root });
   expect(summaryAudit.exitCode, summaryAudit.stderr.toString()).toBe(0);
   expect(JSON.parse(summaryAudit.stdout.toString())).toEqual({
-    B13: "40",
-    B14: "33",
+    B13: "51",
+    B14: "38",
     B15: "19",
     B16: "3",
   });

@@ -5,8 +5,8 @@
   "scripts": {
     "pipeline": "bun run pipeline/src/cli.ts",
     "pipeline:snapshot": "bun run pipeline/src/cli.ts snapshot",
-    "pipeline:check": "bun run pipeline:evidence-portability-check && bun run pipeline:equipment-ssot-check && bun run pipeline:pm-progress-check && bun run pipeline:concentrated-human-review && bun run pipeline/src/cli.ts check --report-only",
-    "pipeline:gate": "bun run pipeline:evidence-portability-check && bun run pipeline:equipment-ssot-check && bun run pipeline:pm-progress-check && bun run pipeline:concentrated-human-review && bun run pipeline/src/cli.ts check",
+    "pipeline:check": "bun run pipeline:evidence-portability-check && bun run pipeline:equipment-ssot-check && bun run pipeline:external-confirmation-forms-check && bun run pipeline:pm-progress-check && bun run pipeline:concentrated-human-review && bun run pipeline/src/cli.ts check --report-only",
+    "pipeline:gate": "bun run pipeline:evidence-portability-check && bun run pipeline:equipment-ssot-check && bun run pipeline:external-confirmation-forms-check && bun run pipeline:pm-progress-check && bun run pipeline:concentrated-human-review && bun run pipeline/src/cli.ts check",
     "pipeline:pm-progress-check": "python3 pipeline/scripts/pm_progress_check.py",
     "pipeline:equipment-ssot-validate": "python3 pipeline/scripts/equipment_ssot.py validate",
     "pipeline:equipment-ssot-ifc-audit": "python3 pipeline/scripts/equipment_ssot.py audit-ifc",
@@ -16,6 +16,7 @@
     "pipeline:equipment-ssot-sync": "python3 pipeline/scripts/equipment_ssot.py sync-projections",
     "pipeline:equipment-ssot-reconcile": "python3 pipeline/scripts/equipment_ssot.py reconcile",
     "pipeline:equipment-ssot-check": "python3 pipeline/scripts/equipment_ssot.py all",
+    "pipeline:external-confirmation-forms-check": "python3 pipeline/scripts/validate_external_confirmation_forms.py",
     "pipeline:evidence-portability-check": "bun run pipeline/src/evidence-portability.ts",
     "pipeline:s701-candidate": "python3 pipeline/scripts/s701_schedule_candidate.py",
     "pipeline:coordinate-audit": "python3 pipeline/scripts/coordinate_normalize.py audit --input '2504 GBTB Yanlord Zhuhai.ifc' --origin-tolerance-mm 0.1 --report build/coordinate-normalization/audit.json",

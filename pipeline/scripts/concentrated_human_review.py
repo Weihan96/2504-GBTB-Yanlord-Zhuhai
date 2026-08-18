@@ -87,6 +87,15 @@ INT1_PACKAGES = (
         "required_evidence": "签认的厨房联合 shop drawing，证明两台机器与定制水槽的模块关系，并标出阀门、排水、软管、柜孔、插座和抽机检修路径",
     },
     {
+        "package_id": "INT1-APP014-REPLACEABLE-SLEEVE",
+        "title": "APP-014 连续可抽换净水管套管",
+        "equipment_ids": {"APP-014"},
+        "root_cause": "业主只确认连续可抽换套管候选方向；官方说明书未给随机管准确材料外径、套管兼容、项目规格、路线和全程抽换能力",
+        "affected_sheets": ["P-201", "I-501", "S-701"],
+        "responsible_party": "西门子技术方/给排水施工/橱柜深化",
+        "required_evidence": "厂家确认随机管材料外径、弯曲半径和套管兼容；项目联合节点标出路线、端部防水固定和渗漏可见性；施工前完成全程抽换样板",
+    },
+    {
         "package_id": "INT1-VVD-KITCHEN-FINISH-SYSTEM",
         "title": "VVD 厨房材料、照明与浅置物架深化",
         "equipment_ids": {"KIT-VVD-FINISH-001"},

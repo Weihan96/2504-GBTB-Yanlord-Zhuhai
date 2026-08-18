@@ -128,12 +128,6 @@ def update_sources() -> None:
             "publication_date": "2026-08-18",
             "notes": "原始 MS 回答保留；未填写项继续由外部方关闭，不将业主回答冒充厂家签认。",
         })
-    by_id["EXT-EXTERNAL-INFO-MINIMUM-20260817"].update({
-        "sha256": sha256("drawings/evidence/EXT-外部信息最短清单-20260817.md"),
-        "status": "superseded_project_external_closeout_index",
-        "does_not_prove": "当前派件内容、外部方已回复或任何项目接口已冻结",
-        "notes": "保留为 2026-08-17 历史状态；不得继续作为现行发件清单。",
-    })
     by_id["OWNER-WFIN-VVD-SINKS-20260817"].update({
         "sha256": sha256("drawings/evidence/OWNER-WFIN-VVD厨房材质与水槽-20260817.md"),
         "evidence": "VVD 材料与两只项目水槽决定；2026-08-18 补充无 trolley、无悬挂式 hood、Sistema 7 四门玻璃墙柜内整合油烟机、灯光供货协作及 Eco kits 盆下收纳",
