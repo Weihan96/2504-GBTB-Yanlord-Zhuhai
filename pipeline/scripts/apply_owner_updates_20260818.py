@@ -131,7 +131,7 @@ def update_sources() -> None:
     by_id["EXT-EXTERNAL-INFO-MINIMUM-20260817"].update({
         "sha256": sha256("drawings/evidence/EXT-外部信息最短清单-20260817.md"),
         "status": "superseded_project_external_closeout_index",
-        "does_not_prove": "2026-08-18 当前外部清单；现行版本见 EXT-MINIMAL-LIST-20260818",
+        "does_not_prove": "当前派件内容、外部方已回复或任何项目接口已冻结",
         "notes": "保留为 2026-08-17 历史状态；不得继续作为现行发件清单。",
     })
     by_id["OWNER-WFIN-VVD-SINKS-20260817"].update({
@@ -235,22 +235,6 @@ def update_sources() -> None:
             does_not_prove="外部方已经回复或任何项目加工尺寸已冻结",
             status="verified_confirmation_markdown_pending_external_response",
         ),
-        source_record(
-            fields,
-            source_id="EXT-MINIMAL-LIST-20260818",
-            discipline="PM/QA01",
-            sheet_id="A-001/GANTT",
-            decision_scope="2026-08-18 当前外部证据最短清单",
-            source_kind="project_external_closeout_index",
-            source_document="EXT-外部信息最短清单-20260818.md",
-            local_path="drawings/evidence/EXT-外部信息最短清单-20260818.md",
-            sha256=sha256("drawings/evidence/EXT-外部信息最短清单-20260818.md"),
-            locator="直接发出的文件；西门子洗烘；定制地漏；已关闭；业主偏好",
-            evidence="把 MS 已回复项从对外询问中移除，并按收件人列出最短回复内容",
-            proves="当前外部关闭路径与内部已关闭边界",
-            does_not_prove="任何外部证据已返回",
-            status="verified_current_external_closeout_index",
-        ),
     ]
     for record in local_sources:
         upsert(rows, "source_id", record, fields)
@@ -269,8 +253,8 @@ def update_owner_inputs() -> None:
         "notes": "A01-A04 业主方向已关闭；A05/A06、全部精确端口、保温厚度、最终路线和模型匹配继续由日立／机电设计关闭。",
     })
     by_id["PLUM-ROUGHINS"].update({
-        "user_value": "MS 已确认洗烘、VVD、定制地漏和石材盆方向；Foster 官方尺寸已内部核验；剩余项目加工接口见 09 表及 2026-08-18 最短清单",
-        "evidence_reference": "OUTBOUND-FORM-PLUM-20260817;OWNER-RESPONSE-HVAC-PLUM-20260818;EXT-MINIMAL-LIST-20260818",
+        "user_value": "MS 已确认洗烘、VVD、定制地漏和石材盆方向；Foster 官方尺寸已内部核验；剩余厨房项目加工接口见 09 表",
+        "evidence_reference": "OUTBOUND-FORM-PLUM-20260817;OWNER-RESPONSE-HVAC-PLUM-20260818;OUTBOUND-FORM-KITCHEN-20260818",
         "notes": "不再重复询问 Foster、洗烘电气语义或已否决 Geberit；只收准确墙排、柜体服务路径、定制地漏／石材盆／油烟机加工图和洁具接口。",
     })
     by_id["APP016-DISPOSER-DATA"].update({
@@ -344,8 +328,8 @@ def update_closeout_rules() -> None:
         "notes": "A01-A04 型号族、裸管规格和接管侧已由 MS 接受；P02010Q 未给保温厚度，旧 IFC 管线不能关闭最终模型匹配。",
     })
     by_id["PLUM-ROUGHINS"].update({
-        "required_evidence": "按 EXT-外部信息最短清单-20260818 和 09 表提交准确墙排、柜体服务路径、洁具接口、定制地漏／石材盆／油烟机联合 shop drawing；说明书未给的中心坐标由项目图关闭。",
-        "notes": "Foster 官方参数、洗烘电气语义和被否决 Geberit 不再重复询问。",
+        "required_evidence": "提交准确墙排、柜体服务路径、洁具接口、定制地漏／石材盆／油烟机联合 shop drawing；说明书未给的中心坐标由项目图关闭。",
+        "notes": "Foster 官方参数、洗烘电气语义和被否决 Geberit 不再重复询问；厨房项目深化问题直接见 09 表。",
     })
     by_id["APP016-DISPOSER-DATA"].update({
         "required_evidence": "最终所选垃圾处理器同型号铭牌与官方／供货商签认尺寸图，包含额定输入、插头／控制、总高直径、法兰／开孔、排水、洗碗机支管、空气开关和拆换包络。",
@@ -600,7 +584,7 @@ def update_reviews_and_registers() -> None:
         "confirmed_scope": "主卫和客卫两个淋浴区均采用定制水母地漏／中央集水器＋托克乐思网＋线性排水渠；盖板打开后毛发网可取出",
         "candidate_or_observed_scope": "指定小红书主页商家定制；已登记 Geberit 线性排水组件当前不采用",
         "unresolved_for_release": "逐房间数量和组件型号、项目 shop drawing、排水／防水／完成面／找坡／清洁检修接口；装修宝典准确页面",
-        "evidence_reference": "OWNER-PLUM-CUSTOM-DRAIN-20260817;OUTBOUND-FORM-PLUM-20260817;EXT-MINIMAL-LIST-20260818",
+        "evidence_reference": "OWNER-PLUM-CUSTOM-DRAIN-20260817;OUTBOUND-FORM-PLUM-20260817;OWNER-RESPONSE-HVAC-PLUM-20260818",
         "review_status": "owner_scope_confirmed_shop_drawing_pending",
     })
     write_csv(path, fields, rows)

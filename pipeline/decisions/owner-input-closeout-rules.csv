@@ -22,7 +22,7 @@ WFIN-TADELAKT,human_material_selection,业主/材料设计,最终厂家完整体
 WFIN-KITCHEN-PUTTY-COVERAGE,human_design_selection,业主/室内设计,业主确认旧全生堂中厨方案已由台面同材大板＋浅置物架方案取代,no,已由 OWNER-WFIN-KITCHEN-SLAB-SHELF-20260817 关闭并保留历史。
 WFIN-KITCHEN-PUTTY-SYSTEM,human_design_selection,业主/室内设计,确认不再把全生堂产品系统作为中厨当前材料索取项,no,已关闭为不适用当前中厨方案；不再等待全生堂厨房系统资料。
 RCP1-HVAC-PORTS,product_interface_evidence,空调厂家/机电设计,日立／机电设计提交 A05/A06 准确型号和 A01-A06 项目接口图；书面给出冷媒／冷凝水保温材料与厚度、完成外径、送回风、端口、冷凝水排放和检修条件；证明最终路线与吊顶净高相容。,no,A01-A04 型号族、裸管规格和接管侧已由 MS 接受；P02010Q 未给保温厚度，旧 IFC 管线不能关闭最终模型匹配。
-PLUM-ROUGHINS,product_interface_evidence,设备方/给排水设计,按 EXT-外部信息最短清单-20260818 和 09 表提交准确墙排、柜体服务路径、洁具接口、定制地漏／石材盆／油烟机联合 shop drawing；说明书未给的中心坐标由项目图关闭。,no,Foster 官方参数、洗烘电气语义和被否决 Geberit 不再重复询问。
+PLUM-ROUGHINS,product_interface_evidence,设备方/给排水设计,提交准确墙排、柜体服务路径、洁具接口、定制地漏／石材盆／油烟机联合 shop drawing；说明书未给的中心坐标由项目图关闭。,no,Foster 官方参数、洗烘电气语义和被否决 Geberit 不再重复询问；厨房项目深化问题直接见 09 表。
 DET1-WATERPROOF,human_material_selection,业主/建筑设计,最终防水厂家体系上翻高度门口节点与样板,no,须与地漏坡向门槛高差一起人审
 APP014-APP015-ALIAS,final_shop_drawing_and_site_interface,设备方/橱柜方/给排水设计/电气设计,WS7FSB0C1C 最终柜体安装图、现场给排水/电源位置及检修复核,no,官方共用说明书已取得；APP-015 去重已关闭；剩余为项目落位与现场接口。
 APP004-COFFEE-FINAL,human_product_selection,业主/设备方,GS3 或 E1 Prima EXP 最终订单、准确 220V 版本铭牌及安装说明书,no,候选功率不得代替最终铭牌。
