@@ -31,7 +31,7 @@ FORM_SOURCES = {
     "OUTBOUND-FORM-PLUM-20260817": (
         "03-给排水设备确认表-发设备与施工方.md",
         "洗烘、现行吉博力、定制地漏、石材盆及 APP-014 套管边界已预填",
-        "旧 MS 回复已拆为 confirmed owner decision、official/research conclusion、external pending 和 unknown",
+        "旧 MS 回复已拆成已由业主决定、已有官方资料、仍需外部回答和确实未知四类，不再把机器状态词显示给收件人",
         "准确双口墙排、项目节点、定制产品加工图或任何接口中心已冻结",
         "verified_prefilled_confirmation_pending_external_interfaces",
     ),
@@ -143,7 +143,7 @@ def reconcile_source_register() -> None:
             "source_document": name,
             "local_path": f"output/forms/对外确认表/{name}",
             "sha256": form_hash(name),
-            "locator": "现行 Markdown；逐行已知信息／当前状态／只缺什么／责任方／回复附件",
+            "locator": "现行 Markdown；逐行说明已经知道什么／现在要做什么／由谁回答／在哪里回复",
             "evidence": evidence,
             "proves": proves,
             "does_not_prove": does_not_prove,

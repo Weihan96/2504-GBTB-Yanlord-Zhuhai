@@ -8,6 +8,7 @@ import hashlib
 import re
 import sys
 from pathlib import Path
+from urllib.parse import unquote, urlparse
 
 
 ROOT = Path(__file__).resolve().parents[2]
@@ -23,7 +24,7 @@ CURRENT = [
     "08-定制家具与墙脚节点确认表-发全屋定制.md",
     "09-厨房设备与柜体深化确认表-发橱柜设备方.md",
 ]
-ALLOWED_STATUSES = {
+FORBIDDEN_FORM_JARGON = {
     "confirmed owner decision",
     "official evidence",
     "official/research conclusion",
@@ -33,6 +34,7 @@ ALLOWED_STATUSES = {
     "authority signoff pending",
     "project internal pending",
     "owner preference pending",
+    "owner_reference_candidate_not_final",
     "unknown",
 }
 SOURCE_IDS = {
@@ -53,6 +55,11 @@ HISTORICAL_EXTERNAL_SOURCE_IDS = {
     "A106-CONSULTATION-PACK-20260815",
     "E304-SITE-CHECKLIST-20260815",
 }
+MARKDOWN_LINK = re.compile(r"!?\[[^\]]*\]\(([^)]+)\)")
+UNLINKED_ATTACHMENT = re.compile(
+    r"`[^`]+\.(?:pdf|md|dwg|dxf|svg|jpe?g|png|csv|xlsx|json|webp)`",
+    re.IGNORECASE,
+)
 
 
 def read_csv(path: Path, key: str) -> dict[str, dict[str, str]]:
@@ -70,12 +77,15 @@ def validate_tables(name: str, text: str, errors: list[str]) -> None:
         if not line.startswith("|"):
             continue
         header = cells(line)
-        if "当前状态" not in header:
+        if "现在请你做什么" not in header:
             continue
-        status_index = header.index("当前状态")
-        known_index = next((header.index(item) for item in header if item.startswith("已知")), None)
-        action_index = next((header.index(item) for item in header if item.startswith("只需")), None)
-        responsibility_index = header.index("责任方") if "责任方" in header else None
+        action_index = header.index("现在请你做什么")
+        responsibility_index = header.index("由谁回答") if "由谁回答" in header else None
+        response_index = header.index("请在这里回复") if "请在这里回复" in header else None
+        if responsibility_index is None:
+            errors.append(f"{name}:{index + 1}: action table is missing 由谁回答")
+        if response_index is None:
+            errors.append(f"{name}:{index + 1}: action table is missing 请在这里回复")
         row_index = index + 2
         while row_index < len(lines) and lines[row_index].startswith("|"):
             row = cells(lines[row_index])
@@ -83,15 +93,12 @@ def validate_tables(name: str, text: str, errors: list[str]) -> None:
                 errors.append(f"{name}:{row_index + 1}: table column count differs from header")
                 row_index += 1
                 continue
-            status = row[status_index]
-            if status not in ALLOWED_STATUSES:
-                errors.append(f"{name}:{row_index + 1}: unsupported status {status!r}")
-            if known_index is not None and not row[known_index]:
-                errors.append(f"{name}:{row_index + 1}: missing known-information context")
-            if action_index is not None and not row[action_index]:
+            if not row[action_index]:
                 errors.append(f"{name}:{row_index + 1}: missing remaining action")
             if responsibility_index is not None and not row[responsibility_index]:
                 errors.append(f"{name}:{row_index + 1}: missing responsible party")
+            if response_index is not None and not row[response_index]:
+                errors.append(f"{name}:{row_index + 1}: missing reply field")
             row_index += 1
 
 
@@ -99,6 +106,36 @@ def require(text: str, name: str, tokens: list[str], errors: list[str]) -> None:
     for token in tokens:
         if token not in text:
             errors.append(f"{name}: missing regression token {token!r}")
+
+
+def validate_links(path: Path, text: str, errors: list[str]) -> None:
+    """Require openable, portable links for every attachment named in a form."""
+    links = MARKDOWN_LINK.findall(text)
+    if not links:
+        errors.append(f"{path.name}: contains no clickable attachment or evidence links")
+    for raw_target in links:
+        target = raw_target.strip().split(" ", 1)[0].strip("<>")
+        parsed = urlparse(target)
+        if parsed.scheme in {"http", "https", "mailto"} or target.startswith("#"):
+            continue
+        if parsed.scheme:
+            errors.append(f"{path.name}: unsupported link scheme in {target!r}")
+            continue
+        decoded = unquote(target)
+        local_target = Path(decoded)
+        if local_target.is_absolute():
+            errors.append(f"{path.name}: local link must be project-relative: {target!r}")
+            continue
+        resolved = (path.parent / local_target).resolve()
+        try:
+            resolved.relative_to(ROOT.resolve())
+        except ValueError:
+            errors.append(f"{path.name}: local link leaves the project: {target!r}")
+            continue
+        if not resolved.exists():
+            errors.append(f"{path.name}: local link target does not exist: {target!r}")
+    for match in UNLINKED_ATTACHMENT.findall(text):
+        errors.append(f"{path.name}: attachment is named without a clickable link: {match}")
 
 
 def main() -> int:
@@ -120,17 +157,25 @@ def main() -> int:
             errors.append(f"{name}: contains contextless 待填写")
         if "外部信息最短清单" in text:
             errors.append(f"{name}: references deleted duplicate dispatch index")
+        if "当前状态" in text:
+            errors.append(f"{name}: exposes the internal status column to external readers")
+        for token in FORBIDDEN_FORM_JARGON:
+            if token in text:
+                errors.append(f"{name}: exposes internal status jargon {token!r}")
+        if name != CURRENT[0] and ("现在请你做什么" not in text or "由谁回答" not in text):
+            errors.append(f"{name}: does not state the requested action and who must answer")
+        validate_links(path, text, errors)
         validate_tables(name, text, errors)
 
-    require(texts.get(CURRENT[0], ""), CURRENT[0], ["已完成", "不再作为厂家或业主填写入口", "向东／图纸右侧滑开", "不要求“两道水平横档”"], errors)
-    require(texts.get(CURRENT[1], ""), CURRENT[1], ["现场提供的保温管", "未给材料、导热系数、防火等级或厚度", "旧 IFC 紫色管线不是最终带保温外径", "一只线控器最多控制 6 台室内机"], errors)
-    require(texts.get(CURRENT[2], ""), CURRENT[2], ["两个 16A 插座或两个回路", "已被当前方案替代", "网络案例中的“四分铝塑套管＋二分 PE 管”不是项目规格"], errors)
-    require(texts.get(CURRENT[3], ""), CURRENT[3], ["ER9EPA33MP", "未获批准", "厨房探测器点位已经确认"], errors)
-    require(texts.get(CURRENT[4], ""), CURRENT[4], ["现有约测 110 mm，待带尺复核", "525 mm", "H+350 mm", "(4600.016, -735.369) mm", "玄关高柜右下柜格", "五孔插座", "入户临时置物位"], errors)
-    require(texts.get(CURRENT[5], ""), CURRENT[5], ["只答“是／否”", "项目加工图", "地面无通长下轨"], errors)
-    require(texts.get(CURRENT[6], ""), CURRENT[6], ["至少 4 键", "客厅双控、书房双控、餐厅双控、照明总控", "真实物理接线双控", "氛围 LED、重点射灯"], errors)
-    require(texts.get(CURRENT[7], ""), CURRENT[7], ["350–450 mm", "owner_reference_candidate_not_final", "业主偏好"], errors)
-    require(texts.get(CURRENT[8], ""), CURRENT[8], ["LS33R6VB9W/01", "895×345×873 mm", "不得把 APP-015 重复计算", "灶台背板为台面同材大板，远端墙为浅置物架"], errors)
+    require(texts.get(CURRENT[0], ""), CURRENT[0], ["业主已经确认，不用填写", "向东／图纸右侧滑开", "不要求“两道水平横档”"], errors)
+    require(texts.get(CURRENT[1], ""), CURRENT[1], ["业主不用填写", "现场提供的保温管", "没有给材料、导热系数、防火等级或厚度", "一只面板最多控制 6 台室内机"], errors)
+    require(texts.get(CURRENT[2], ""), CURRENT[2], ["两个 16A 插座或两个回路", "已被当前方案替代", "网络案例里的“四分铝塑套管＋二分 PE 管”不是本项目规格"], errors)
+    require(texts.get(CURRENT[3], ""), CURRENT[3], ["ER9EPA33MP", "不代表已经批准或购买", "厨房探测器的位置已经确定"], errors)
+    require(texts.get(CURRENT[4], ""), CURRENT[4], ["现有估测净深约 110 mm，需要带尺复核", "525 mm", "箱底距地约 350 mm", "(4600.016, -735.369) mm", "玄关高柜右下格", "五孔插座", "入户临时置物位"], errors)
+    require(texts.get(CURRENT[5], ""), CURRENT[5], ["只答“是”或“否”", "本项目下单／安装图", "地面无通长下轨"], errors)
+    require(texts.get(CURRENT[6], ""), CURRENT[6], ["至少 4 个功能", "客厅双控、书房双控、餐厅双控、全屋照明总控", "断网时也必须", "氛围 LED、重点射灯"], errors)
+    require(texts.get(CURRENT[7], ""), CURRENT[7], ["350、400、450 mm", "看完后只需决定“采用／不采用”", "不是施工指令"], errors)
+    require(texts.get(CURRENT[8], ""), CURRENT[8], ["LS33R6VB9W/01", "895×345×873 mm", "不要重复计算", "灶台后和主要操作墙使用与台面同材"], errors)
 
     sources = read_csv(ROOT / "pipeline" / "decisions" / "source-evidence-register.csv", "source_id")
     owner_inputs = read_csv(ROOT / "pipeline" / "decisions" / "owner-input-register.csv", "input_id")
