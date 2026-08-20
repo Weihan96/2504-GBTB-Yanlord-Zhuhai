@@ -136,27 +136,27 @@ def build_nodes(ifc_hash: str) -> list[dict[str, str]]:
         ),
         node(
             "D601-N04", "D-601", "墙地顶收口", "踢脚、墙顶交界与不同材料收口",
-            "墙面候选已区分大白墙、Tadelakt 与中厨 R04 台面同材大板／浅置物架方案；中厨准确墙段和构造未定",
-            "房间/墙段｜踢脚型式｜墙顶收口｜材料分界｜阴影缝/密封策略",
-            "Tadelakt 系统、大白墙涂料系统、中厨大板材质/厚度/板幅/拼缝与浅置物架材质/背衬、踢脚产品和样板未定",
-            "完成面总厚、基层、防水衔接与分界构造未定",
-            "设计/材料供应商/现场", "wfin-open-issues.csv WFIN-R01/R02/R03/R05；施工图检查清单 D-601", ifc_hash,
+            "中厨 VVD Pewter 60 mm 踢脚独立；干区已确认保留原参考：墙面同色齐平宽踢脚＋上下各约 10 mm 阴影缝，门套、隐形门和柜体连续通缝",
+            "房间/墙段｜踢脚高度厚度材料｜上下阴影缝宽与公差｜墙下口型材｜门柜转角通缝｜墙顶收口｜材料分界｜密封/清洁策略",
+            "干区准确踢脚高度、厚度、材料、颜色、型材和清洁背衬待 D-601／样板；中厨只待项目样板与加工节点",
+            "干区 1:5 墙脚节点、分房间适用、基层型材、门柜转角通缝、耐撞、拖地水和积灰清洁样板未定；湿区排除边界待确认",
+            "设计/材料供应商/现场", "wfin-open-issues.csv WFIN-R01/R02/R03/R05/R06；OWNER-WFIN-BASEBOARD-SHADOW-GAP-20260817；OWNER-WFIN-VVD-SINKS-20260817；OWNER-LEGACY-DESIGN-BRIEF-20251216；施工图检查清单 D-601", ifc_hash,
         ),
         node(
             "D601-N05", "D-601", "柜墙交界", "固定家具、台面、饰面与墙体交界",
-            "INT1 现有对象只作协调包络，不作加工、开孔或粗装尺寸",
-            "空间/柜组｜收口位置｜可调节缝｜密封｜拆装与检修路径",
+            "INT1 现有对象只作协调包络，不作加工、开孔或粗装尺寸；旧稿保留次卧浅色木飘窗、客厅飘窗木盒与大白墙脱缝齐平，以及顶天立地酒架上方按最终满载加固的方向",
+            "空间/柜组｜收口位置｜可调节缝｜密封｜拆装与检修路径｜飘窗防潮日晒｜酒架满载与顶部固定",
             "柜体、台面、封板及收口产品未定",
-            "墙体基层、固定件、防潮/密封和现场误差吸收方式未定",
-            "室内设计/全屋定制/现场", "PM INT1；int1-drawing-report.json", ifc_hash,
+            "墙体基层、固定件、防潮/密封、伸缩、窗边防水、酒架满载锚固和现场误差吸收方式未定",
+            "室内设计/全屋定制/结构/现场", "PM INT1；int1-drawing-report.json；OWNER-LEGACY-DESIGN-BRIEF-20251216", ifc_hash,
         ),
         node(
             "D601-N06", "D-601", "阳台管道包覆", "阳台水管、阀门、接头与检修口",
-            "检查清单要求管道包覆不得阻断阀门、接头检修",
-            "管道/阀门位置｜包覆边界｜检修口｜通风/冷凝水｜拆卸顺序",
-            "包覆面材、检修口和五金未定",
-            "龙骨/板材、防潮、密封、管道振动隔离及可拆结构未定",
-            "设计/给排水/全屋定制/现场", "施工图检查清单 D-601", ifc_hash,
+            "检查清单要求管道包覆不得阻断阀门、接头检修；旧稿保留阳台塑木地板方向，但不把旧示例当准确产品或施工节点",
+            "管道/阀门位置｜包覆边界｜检修口｜通风/冷凝水｜拆卸顺序｜塑木完成面高度/排水/收边",
+            "包覆面材、检修口、五金及阳台塑木准确产品未定",
+            "龙骨/板材、防潮、密封、管道振动隔离、可拆结构，以及塑木排水、耐候、防火和检修节点未定",
+            "设计/给排水/全屋定制/现场", "施工图检查清单 D-601；OWNER-LEGACY-DESIGN-BRIEF-20251216", ifc_hash,
         ),
         node(
             "D602-N01", "D-602", "防水范围", "卫生间、淋浴区、厨房及阳台",
@@ -245,7 +245,10 @@ def render_svg(rows: list[dict[str, str]], ifc_hash: str, sheet_ids: tuple[str, 
                 f'<text class="badge-text" x="{x + 55}" y="{y + 36}">{html.escape(row["node_id"].split("-")[-1])}</text>',
                 f'<text class="category" x="{x + 90}" y="{y + 25}">{html.escape(row["category"])}</text>',
                 f'<text class="scope" x="{x + 90}" y="{y + 49}">{html.escape(clip(row["scope"], 39))}</text>',
-                f'<text class="pending" x="{x + 90}" y="{y + 73}">变量：{html.escape(clip(row["variable_parameters"], 40))}</text>',
+                # Reserve the right-hand status column. Chinese glyphs are close to
+                # one full font-size wide, so 40 characters overflowed into it on
+                # the single-sheet D-601 proof after the legacy directions landed.
+                f'<text class="pending" x="{x + 90}" y="{y + 73}">变量：{html.escape(clip(row["variable_parameters"], 28))}</text>',
                 f'<text class="status" x="{x + 610}" y="{y + 27}">待复核</text>',
                 f'<text class="lock" x="{x + 610}" y="{y + 67}">不写 IFC</text>',
             ])
@@ -351,6 +354,9 @@ def main() -> None:
         raise RuntimeError("INT1 drawing evidence is stale against the formal IFC")
 
     rows = build_nodes(ifc_hash)
+    next(row for row in rows if row["node_id"] == "D601-N04")["review_status"] = (
+        "owner_direction_confirmed_detail_pending_review"
+    )
     review_csv = resolve(args.review_csv)
     output_svg = resolve(args.output_svg)
     d601_svg = resolve(args.d601_svg)

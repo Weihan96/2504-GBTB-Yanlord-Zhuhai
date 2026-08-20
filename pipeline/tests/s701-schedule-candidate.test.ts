@@ -19,9 +19,9 @@ test("S-701 compiles a current read-only evidence schedule and PNG", () => {
   expect(result.exitCode).toBe(0);
   const payload = JSON.parse(readFileSync(report, "utf8"));
   expect(payload.source_ifc_sha256).toBe(currentIfcHash);
-  expect(payload.summary.record_count).toBe(53);
+  expect(payload.summary.record_count).toBe(56);
   expect(payload.summary.section_counts).toEqual({
-    "家具产品身份": 9, "家电与移动厨电": 18, "门窗与五金": 19, "暖通设备类型": 3, "洁具与排水": 1, "墙面材料系统": 3,
+    "家具产品身份": 9, "家电与移动厨电": 18, "门窗与五金": 19, "暖通设备类型": 3, "洁具与排水": 4, "墙面材料系统": 3,
   });
   expect(payload.gates.confirmed_candidate_unresolved_split).toBe(true);
   expect(payload.gates.automatic_ifc_write_allowed).toBe(false);

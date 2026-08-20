@@ -60,6 +60,15 @@ INT1_PACKAGES = (
         "required_evidence": "盖章加工图，明确成品外尺寸、盆腔平面、深度及与排水接口的关系",
     },
     {
+        "package_id": "INT1-PURCHASED-FAUCETS-INSTALL",
+        "title": "三件已购卫浴龙头的准确身份与安装接口",
+        "equipment_ids": {"SAN-023", "SAN-024", "SAN-025"},
+        "root_cause": "订单已证明三件产品各购 1 件及所示款式，但卖家分享标识不是已验证厂家料号，现有图片也不能关闭墙内阀体、台面开孔、接口尺寸、房间分配或第二淋浴区产品",
+        "affected_sheets": ["I-502", "P-201", "P-202", "D-602", "S-701"],
+        "responsible_party": "卫浴供货方/建筑设计/给排水设计/防水施工",
+        "required_evidence": "供货方提供订单对应的准确厂家料号与 SKU、带单位和完成面基准的安装图；项目 I-502／P-202 给出房间分配和定位后，由供货方复核阀体包络、埋深、开孔、接口、流量、防水和检修条件；另关闭第二淋浴区产品",
+    },
+    {
         "package_id": "INT1-CUSTOM-FLOOR-DRAIN",
         "title": "厕所定制水母地漏／中央集水器与线性排水渠",
         "equipment_ids": {"DRAIN-CUSTOM-001"},
@@ -108,10 +117,10 @@ INT1_PACKAGES = (
         "package_id": "INT1-PC-P1HEQ-CONTROL-MAPPING",
         "title": "PC-P1HEQ 五点系统映射与最终安装",
         "equipment_ids": {"HVAC-CTRL-001"},
-        "root_cause": "PC-P1HEQ 型号和官方通用安装规则已经确认，但开发商五个参考点不能证明装修后的 A01–A06 控制映射、兼容性、端子和最终位置",
+        "root_cause": "PC-P1HEQ 是开发商原配且既有系统兼容性已关闭；现在只缺五个物理点对应 A01–A06 的映射、装修后的保留迁移策略、项目端子图和最终位置",
         "affected_sheets": ["E-302", "M-401", "I-504"],
         "responsible_party": "日立空调供货安装/机电设计/现场",
-        "required_evidence": "厂家兼容性签认、五点控制对象与保留迁移合并表、项目端子图和线长校核，以及带标高和端子照片的最终位置记录",
+        "required_evidence": "五点控制对象与保留迁移合并表、项目端子图和线长校核，以及带标高和端子照片的最终位置记录；不再询问型号或兼容性",
     },
     {
         "package_id": "INT1-MASTER-BATH-STREET",
@@ -151,12 +160,12 @@ INT1_PACKAGES = (
     },
     {
         "package_id": "INT1-DNAKE-INTERCOM-INTEGRATION",
-        "title": "狄耐克既有可视对讲型号与物业系统接入",
+        "title": "狄耐克 280M-S3 既有可视对讲物业系统接入",
         "equipment_ids": {"ACCESS-INTERCOM-001"},
-        "root_cause": "现场照片已确认 DNAKE／狄耐克品牌和软件版本，但不能证明准确硬件型号、端子接法、物业系统兼容、移动限制或装修后接入方式",
+        "root_cause": "DNAKE／狄耐克 280M-S3 型号已经关闭；现在只缺实际供电与端子接法、物业系统兼容、移动限制和装修后接入方式",
         "affected_sheets": ["E-304", "I-503"],
         "responsible_party": "物业/门禁维护方/弱电设计/现场",
-        "required_evidence": "背面或工程信息页的准确型号；端子、线缆和现有接法照片；物业兼容与移动限制确认；保留、迁移或接入结论；门套完成面后的最终定位",
+        "required_evidence": "端子、线缆和现有接法照片；物业兼容与移动限制确认；保留、迁移或接入结论；门套完成面后的最终定位；不再拆机追问型号",
     },
     {
         "package_id": "INT1-SIEMENS-LAUNDRY-STACK",
@@ -277,6 +286,14 @@ DISCIPLINE_PACKAGES = {
         "affected_sheets": ["D-601", "D-602", "I-501", "I-502"],
         "responsible_party": "材料设计/建筑设计/加工方",
         "required_evidence": "最终材料体系、样板确认和与设备接口一致的防水密封节点",
+    },
+    "NETWORK/ELEC/RCP1": {
+        "package_id": "REQ-NETWORK-AP-MECHANICAL-POE",
+        "title": "TP-Link 吸顶 AP 开孔、拆换与 PoE 预算",
+        "root_cause": "TL-XAP1500GE-PoE/DC 是项目优先候选但尚未采购；官方外形、开孔和功率参数不能替代本项目吊顶机械节点、网线通断和交换机总预算",
+        "affected_sheets": ["A-106", "E-304"],
+        "responsible_party": "网络设计/弱电施工/吊顶深化/现场",
+        "required_evidence": "按 Ø184×40 mm 机身、Ø155 mm 开孔和 802.3at／11.1 W 参数完成吊顶剖面、拆换路线、Cat6 通断、端口分配和总 PoE 预算；最终 SKU 变化时重新校核",
     },
 }
 

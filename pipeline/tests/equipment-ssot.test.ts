@@ -6,6 +6,17 @@ import { resolve } from "node:path";
 const root = resolve(import.meta.dir, "../..");
 const script = resolve(root, "pipeline/scripts/equipment_ssot.py");
 
+function csvRecordCount(path: string): number {
+  const program = [
+    "import csv,sys",
+    "with open(sys.argv[1],encoding='utf-8-sig',newline='') as stream:",
+    " print(sum(1 for _ in csv.DictReader(stream)))",
+  ].join("\n");
+  const run = Bun.spawnSync(["python3", "-c", program, path], { cwd: root });
+  expect(run.exitCode, run.stderr.toString()).toBe(0);
+  return Number(run.stdout.toString().trim());
+}
+
 function fileSha256(path: string): string {
   return createHash("sha256").update(readFileSync(path)).digest("hex");
 }
@@ -15,10 +26,10 @@ test("equipment SSOT validates projections and covers every scoped IFC object", 
   expect(run.exitCode).toBe(0);
   const report = JSON.parse(run.stdout.toString());
   expect(report.validate).toMatchObject({
-    master_count: 162,
-    requirement_count: 834,
-    source_count: 181,
-    schema_version: "1.0.0",
+    master_count: csvRecordCount(resolve(root, "pipeline/decisions/equipment-register.csv")),
+    requirement_count: csvRecordCount(resolve(root, "pipeline/decisions/equipment-installation-requirements.csv")),
+    source_count: csvRecordCount(resolve(root, "pipeline/decisions/source-evidence-register.csv")),
+    schema_version: "1.1.0",
   });
   expect(report.projections).toMatchObject({
     appliance_rows: 19,
@@ -74,7 +85,7 @@ def rows(path):
     with open(path,encoding="utf-8-sig",newline="") as stream:
         return list(csv.DictReader(stream))
 masters=rows(sys.argv[1]); requirements=rows(sys.argv[2]); sources=rows(sys.argv[3]); rules=rows(sys.argv[4])
-ids={"APP-004","APP-005","APP-011","APP-014","APP-015","APP-016","APP-017","APP-019","CTRL-ENTRY-A","NET-AP-R09","NET-AP-R14","SENSOR-GAS-R04","SENSOR-001"}
+ids={"APP-004","APP-005","APP-011","APP-014","APP-015","APP-016","APP-017","APP-019","SAN-023","SAN-024","SAN-025","CTRL-ENTRY-A","NET-AP-R09","NET-AP-R14","SENSOR-GAS-R04","SENSOR-001"}
 print(json.dumps({
   "masters":[row for row in masters if row["equipment_id"] in ids],
   "requirements":[row for row in requirements if row["equipment_id"] in ids],
@@ -169,11 +180,24 @@ print(json.dumps({
   });
   expect(requirement("APP-005", "rated_power")).toMatchObject({ value_number: "1200", status: "confirmed" });
   expect(master("APP-016")).toMatchObject({ procurement_status: "candidate", decision_status: "partial" });
+  for (const [equipmentId, referenceLabel] of [
+    ["SAN-023", "MF287"],
+    ["SAN-024", "CZ356"],
+    ["SAN-025", "CZ028"],
+  ] as const) {
+    expect(master(equipmentId)).toMatchObject({
+      procurement_status: "purchased_delivery_unverified",
+      decision_status: "partial",
+      quantity: "1",
+    });
+    expect(master(equipmentId).model).toContain(referenceLabel);
+    expect(data.requirements.some((row) => row.equipment_id === equipmentId && row.parameter_key === "exact_manufacturer_article_and_sku" && row.status === "pending" && row.blocks_release === "yes")).toBe(true);
+  }
   expect(requirement("APP-016", "rated_power")).toMatchObject({ status: "pending", blocks_release: "yes" });
   expect(master("APP-019")).toMatchObject({
     item_name: "冰淇淋机",
     quantity: "1",
-    model: "",
+    model: "Mini Lussino 4080 / CREAMi 220 V（候选）",
     procurement_status: "candidate",
     decision_status: "partial",
   });
@@ -189,6 +213,10 @@ print(json.dumps({
   }
   expect(requirement("APP-019", "appliance_plug_rating_a")?.value_text).toBe("unknown");
   expect(requirement("APP-019", "interface_center_coordinates")?.value_text).toBe("unknown");
+  expect(requirement("APP-019", "project_clear_width")).toMatchObject({ value_number: "500", status: "confirmed", blocks_release: "no" });
+  expect(requirement("APP-019", "project_clear_depth")).toMatchObject({ value_number: "450", status: "confirmed", blocks_release: "no" });
+  expect(requirement("APP-019", "project_clear_height")).toMatchObject({ value_number: "450", status: "confirmed", blocks_release: "no" });
+  expect(requirement("APP-019", "minimum_support_load")).toMatchObject({ value_number: "20", status: "confirmed", blocks_release: "no" });
   const iceCreamSource = data.sources.find((row) => row.source_id === "OWNER-INPUT-APP019-20260815");
   expect(iceCreamSource).toMatchObject({
     local_path: "drawings/evidence/OWNER-INPUT-APP-019-20260815.md",
@@ -242,7 +270,8 @@ print(json.dumps({
     formal_ifc_write_allowed: "no",
   });
   const gasTemplate = readFileSync(resolve(root, "drawings/evidence/A106-燃气公司咨询模板.md"), "utf8");
-  expect(gasTemplate).toContain("型号均为咨询候选");
+  expect(gasTemplate).toContain("仅在贵司确认后选用");
+  expect(gasTemplate).toContain("如均不适用，请填准入品牌和准确型号");
   expect(gasTemplate).toContain("不代表燃气公司已批准");
 });
 
@@ -264,7 +293,7 @@ test("equipment SSOT can audit an IFC evidence hash refresh without writing", ()
   expect(readFileSync(sourcePath)).toEqual(before);
 }, 30_000);
 
-test("Geberit receipt shortfalls and installation unknowns block release mechanically", () => {
+test("Geberit receipt shortfalls remain blockers while withdrawn drain components are not current-scheme blockers", () => {
   const requirementsPath = resolve(root, "pipeline/decisions/equipment-installation-requirements.csv");
   const extract = String.raw`
 import csv,json,sys
@@ -289,19 +318,31 @@ print(json.dumps(rows,ensure_ascii=False))
     });
   }
 
-  const blockerKeys: Record<string, string[]> = {
+  const currentBlockerKeys: Record<string, string[]> = {
     "SAN-014": ["completed_wc_height", "wall_anchor_design", "boxing_finished_thickness", "nuna_hidden_interface_coordination"],
     "SAN-003": ["panel_centre_height", "finished_surface_thickness", "service_access_detail"],
+  };
+  for (const [equipmentId, keys] of Object.entries(currentBlockerKeys)) {
+    for (const key of keys) {
+      expect(get(equipmentId, key), `${equipmentId}.${key}`).toMatchObject({
+        status: "pending",
+        blocks_release: "yes",
+      });
+    }
+  }
+
+  const withdrawnKeys: Record<string, string[]> = {
     "SAN-001": ["actual_cut_length", "placement_mode", "drain_centre_coordinate", "tile_layout_coordination"],
     "DRAIN-GEB-002": ["final_installation_level", "waterproofing_system", "site_pipe_orientation"],
     "DRAIN-GEB-001": ["final_assembly_orientation"],
     "DRAIN-GEB-004": ["washing_machine_hose_connection", "installation_height", "floor_slope", "waterproofing_detail"],
   };
-  for (const [equipmentId, keys] of Object.entries(blockerKeys)) {
+  for (const [equipmentId, keys] of Object.entries(withdrawnKeys)) {
     for (const key of keys) {
       expect(get(equipmentId, key), `${equipmentId}.${key}`).toMatchObject({
-        status: "pending",
-        blocks_release: "yes",
+        value_text: "not_applicable_current_scheme",
+        status: "not_applicable",
+        blocks_release: "no",
       });
     }
   }
@@ -403,16 +444,13 @@ print(json.dumps({
   expect(data.actual_sha256).toBe(data.source.sha256);
   for (const equipmentId of ["DW-M05", "DW-M06"]) {
     expect(data.masters.find((row) => row.equipment_id === equipmentId)?.source_ids).toContain("RIMADESIO-SAIL-MONOROTAIA-001");
-    expect(data.requirements.find((row) => row.equipment_id === equipmentId && row.parameter_key === "operation_type")).toMatchObject({
-      status: "candidate",
-      source_id: "RIMADESIO-SAIL-MONOROTAIA-001",
-      blocks_release: "yes",
-    });
-    for (const key of ["nominal_width", "nominal_height"]) {
-      expect(data.requirements.find((row) => row.equipment_id === equipmentId && row.parameter_key === key)).toMatchObject({
-        status: "pending",
-        blocks_release: "yes",
-      });
-    }
   }
+  const requirement = (equipmentId: string, key: string) =>
+    data.requirements.find((row) => row.equipment_id === equipmentId && row.parameter_key === key);
+  expect(requirement("DW-M05", "operation_type")).toMatchObject({ status: "confirmed", blocks_release: "no" });
+  expect(requirement("DW-M05", "nominal_width")).toMatchObject({ value_number: "1000", status: "confirmed", blocks_release: "no" });
+  expect(requirement("DW-M05", "nominal_height")).toMatchObject({ value_number: "2400", status: "confirmed", blocks_release: "no" });
+  expect(requirement("DW-M06", "operation_type")).toMatchObject({ status: "candidate", blocks_release: "yes" });
+  expect(requirement("DW-M06", "nominal_width")).toMatchObject({ value_number: "2000", status: "confirmed", blocks_release: "no" });
+  expect(requirement("DW-M06", "nominal_height")).toMatchObject({ status: "pending", blocks_release: "yes" });
 });

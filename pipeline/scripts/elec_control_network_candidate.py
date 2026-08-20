@@ -433,8 +433,8 @@ def compile_hvac_controller_selection(
         "manufacturer": "日立／海信日立",
         "model": "PC-P1HEQ",
         "quantity": "5",
-        "procurement_status": "selected",
-        "decision_status": "partial",
+        "procurement_status": "existing",
+        "decision_status": "confirmed",
     }
     if any(controller[key] != value for key, value in expected.items()):
         raise RuntimeError("HVAC-CTRL-001 identity or decision boundary changed")
@@ -450,6 +450,7 @@ def compile_hvac_controller_selection(
         "maximum_controlled_indoor_units": "6",
         "control_wiring": "two-core / 1P-0.75 mm² minimum",
         "minimum_separation_from_power_wiring": "300",
+        "compatibility_with_A01_A06": "existing developer-delivered controller operating with existing Hitachi system",
     }
     for key, value in confirmed.items():
         row = requirements.get(key)
@@ -457,7 +458,6 @@ def compile_hvac_controller_selection(
         if row is None or row["status"] != "confirmed" or actual != value:
             raise RuntimeError(f"HVAC-CTRL-001 confirmed requirement changed: {key}")
     pending = {
-        "compatibility_with_A01_A06",
         "five_point_to_indoor_unit_mapping",
         "keep_move_merge_strategy",
         "project_terminal_diagram_and_total_length",
@@ -469,16 +469,16 @@ def compile_hvac_controller_selection(
     ):
         raise RuntimeError("HVAC-CTRL-001 project application boundary changed")
     if len(panel_references) != int(controller["quantity"]):
-        raise RuntimeError("PC-P1HEQ selected quantity does not match developer control references")
+        raise RuntimeError("PC-P1HEQ existing quantity does not match developer control references")
 
     for row in panel_references:
         row.update(
             {
                 "selected_controller_equipment_id": "HVAC-CTRL-001",
                 "selected_controller_model": controller["model"],
-                "product_selection_status": "confirmed",
+                "product_selection_status": "existing_confirmed",
                 "project_mapping_status": "pending",
-                "system_compatibility_status": "pending",
+                "system_compatibility_status": "confirmed_existing_system",
                 "keep_move_merge_status": "pending",
                 "automatic_ifc_write_allowed": False,
             }
@@ -488,9 +488,9 @@ def compile_hvac_controller_selection(
         "manufacturer": controller["manufacturer"],
         "model": controller["model"],
         "quantity": int(controller["quantity"]),
-        "product_selection_status": "confirmed",
+        "product_selection_status": "existing_confirmed",
         "project_mapping_status": "pending",
-        "system_compatibility_status": "pending",
+        "system_compatibility_status": "confirmed_existing_system",
         "confirmed_generic_installation": {
             "maximum_controlled_indoor_units": 6,
             "control_wiring": "two-core / 1P-0.75 mm² minimum",
@@ -511,10 +511,10 @@ def compile_access_intercom_identity(
         raise RuntimeError("equipment register is missing ACCESS-INTERCOM-001")
     expected = {
         "manufacturer": "DNAKE／狄耐克",
-        "model": "",
+        "model": "280M-S3",
         "quantity": "1",
         "procurement_status": "existing",
-        "decision_status": "partial",
+        "decision_status": "confirmed",
     }
     if any(intercom[key] != value for key, value in expected.items()):
         raise RuntimeError("ACCESS-INTERCOM-001 identity or unknown-model boundary changed")
@@ -528,13 +528,13 @@ def compile_access_intercom_identity(
         "manufacturer": "DNAKE／狄耐克",
         "system_version": "1.6.0 20210615",
         "application_version": "1.1.0 20210615 16M",
+        "exact_model": "280M-S3",
     }
     for key, value in confirmed.items():
         row = requirements.get(key)
         if row is None or row["status"] != "confirmed" or row["value_text"] != value:
             raise RuntimeError(f"ACCESS-INTERCOM-001 confirmed requirement changed: {key}")
     pending = {
-        "exact_model",
         "terminal_diagram_and_existing_wiring",
         "property_system_compatibility",
         "keep_move_integrate_strategy",
@@ -554,18 +554,18 @@ def compile_access_intercom_identity(
     references[0].update({
         "equipment_id": "ACCESS-INTERCOM-001",
         "manufacturer": intercom["manufacturer"],
-        "exact_model": None,
+        "exact_model": intercom["model"],
         "brand_status": "confirmed_from_site_photo",
-        "exact_model_status": "pending",
+        "exact_model_status": "confirmed_from_owner_model_photo",
         "system_interface_status": "pending",
         "automatic_ifc_write_allowed": False,
     })
     return {
         "equipment_id": "ACCESS-INTERCOM-001",
         "manufacturer": intercom["manufacturer"],
-        "exact_model": None,
+        "exact_model": intercom["model"],
         "brand_status": "confirmed_from_site_photo",
-        "exact_model_status": "pending",
+        "exact_model_status": "confirmed_from_owner_model_photo",
         "confirmed_software_versions": {
             "system": confirmed["system_version"],
             "application": confirmed["application_version"],
@@ -925,7 +925,7 @@ def render_svg(source: str, report: dict[str, Any]) -> str:
             f'<g data-candidate-id="{candidate_id}" data-elec-kind="hvac-control-panel-reference">'
             f'<rect class="cn-hvac" x="{x-2.2:.3f}" y="{y-2.2:.3f}" width="4.4" height="4.4" transform="rotate(45 {x:.3f} {y:.3f})"/>'
             f'<text class="cn-label" x="{x+3.4:.3f}" y="{y+(5 if index % 2 else -3):.3f}">{candidate_id} P1HEQ</text>'
-            f'<title>{candidate_id} | PC-P1HEQ selected | A01-A06 mapping and compatibility pending</title></g>'
+            f'<title>{candidate_id} | PC-P1HEQ developer-delivered existing controller | A01-A06 physical mapping pending</title></g>'
         )
     for index, row in enumerate(report["access_control_references"]):
         x, y = world_to_svg(row["position_mm"])
@@ -940,7 +940,7 @@ def render_svg(source: str, report: dict[str, Any]) -> str:
             f'<g data-candidate-id="{candidate_id}" data-elec-kind="{html.escape(row["device_role"])}-reference">'
             f'<circle class="{css}" cx="{x:.3f}" cy="{y:.3f}" r="2.4"/>'
             f'<text class="cn-label" x="{label_x:.3f}" y="{label_y:.3f}" text-anchor="{label_anchor}">{candidate_id} {label}</text>'
-            f'<title>{candidate_id} | {"DNAKE brand confirmed; exact model and system interface pending" if row["device_role"] == "video_intercom" else "developer existing reference; field confirmation pending"}</title></g>'
+            f'<title>{candidate_id} | {"DNAKE 280M-S3 identified; actual power, terminals and property-system interface pending" if row["device_role"] == "video_intercom" else "developer existing reference; field confirmation pending"}</title></g>'
         )
     main_bedroom_ap = next(
         row
@@ -953,12 +953,12 @@ def render_svg(source: str, report: dict[str, Any]) -> str:
         '<text class="cn-title" x="407" y="16">控制、网络与安全设备协调区</text>',
         '<text class="cn-note" x="407" y="24">Bonsai 同批材质底图｜A-106 点位联动｜非施工发布</text>',
         '<text class="cn-text" x="407" y="39">洋红方块：4 个门口墙侧 A/B 候选</text>',
-        '<text class="cn-text" x="407" y="47">青色菱形：5 个既有控制点｜PC-P1HEQ 已选</text>',
+        '<text class="cn-text" x="407" y="47">青色菱形：5 个开发商原配控制点｜PC-P1HEQ</text>',
         '<text class="cn-text" x="407" y="55">绿色/棕色点：既有狄耐克可视对讲 / 门铃</text>',
         '<text class="cn-text" x="407" y="63">蓝点：主卧/次卧 AP｜紫点：玄关高柜路由器平面柜位</text>',
         '<text class="cn-text" x="407" y="71">橙/深红/红：烟感/火灾点/燃气房间区</text>',
-        '<text class="cn-warn" x="407" y="79">PC-P1HEQ 型号已定；兼容/映射/迁移及最终定位待签认</text>',
-        '<text class="cn-text" x="407" y="87">对讲品牌已定；型号/端子/物业接口与门铃身份待确认</text>',
+        '<text class="cn-warn" x="407" y="79">原配系统兼容已关闭；机位映射/迁移及最终定位待项目图与现场</text>',
+        '<text class="cn-text" x="407" y="87">狄耐克 280M-S3 已识别；实际供电/端子/物业接口待现场</text>',
         '<text class="cn-text" x="407" y="101">双控：客厅＋书房＋餐厅｜仅实体有线</text>',
         '<text class="cn-text" x="407" y="109">开关面板底边：1300 mm AFF</text>',
         '<text class="cn-warn" x="407" y="118">Master A 首选两门全开后的中间固定墙；后备左门套/见光板</text>',
@@ -1213,23 +1213,23 @@ def main() -> int:
             ),
             "hvac_controller_model_propagated": all(
                 row["selected_controller_model"] == "PC-P1HEQ"
-                and row["product_selection_status"] == "confirmed"
+                and row["product_selection_status"] == "existing_confirmed"
                 for row in hvac_control_panels
             ),
-            "hvac_project_application_remains_pending": all(
+            "hvac_physical_mapping_and_final_installation_remain_pending": all(
                 row["project_mapping_status"] == "pending"
-                and row["system_compatibility_status"] == "pending"
+                and row["system_compatibility_status"] == "confirmed_existing_system"
                 and row["keep_move_merge_status"] == "pending"
                 for row in hvac_control_panels
             ),
             "developer_video_intercom_visible": sum(
                 row["device_role"] == "video_intercom" for row in access_controls
             ) == 1,
-            "developer_video_intercom_brand_propagated_model_pending": all(
+            "developer_video_intercom_identity_propagated_interfaces_pending": all(
                 row.get("manufacturer") == "DNAKE／狄耐克"
                 and row.get("brand_status") == "confirmed_from_site_photo"
-                and row.get("exact_model") is None
-                and row.get("exact_model_status") == "pending"
+                and row.get("exact_model") == "280M-S3"
+                and row.get("exact_model_status") == "confirmed_from_owner_model_photo"
                 for row in access_controls if row["device_role"] == "video_intercom"
             ),
             "developer_doorbell_visible": sum(

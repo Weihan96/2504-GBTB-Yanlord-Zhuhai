@@ -98,6 +98,11 @@ def parse_args() -> argparse.Namespace:
     parser.add_argument("--report", type=Path, help="Optional user-owned JSON preview path")
     parser.add_argument("--open-items", type=Path, help="Optional user-owned Markdown open-items path")
     parser.add_argument("--apply", action="store_true")
+    parser.add_argument(
+        "--refresh-input-sheets-from-canonical",
+        action="store_true",
+        help="Rebuild editable decision/appliance sheets from canonical CSVs after their answers were reconciled externally",
+    )
     return parser.parse_args()
 
 
@@ -510,6 +515,7 @@ def _updated_instruction_summary_xml(
 def rebuild_workbook_views(
     workbook_path: Path,
     decisions: list[dict[str, str]],
+    appliances: list[dict[str, str]],
     canonical_tables: dict[str, tuple[list[str], list[dict[str, str]]]],
     summary_values: dict[str, int],
 ) -> None:
@@ -535,6 +541,23 @@ def rebuild_workbook_views(
             source_archive.read(decision_table_path),
             DECISION_DISPLAY_HEADERS,
             len(decisions),
+            header_row=1,
+        )
+        appliance_sheet_path = sheet_paths["家电清单"]
+        replacements[appliance_sheet_path] = _rebuilt_input_sheet_xml(
+            source_archive.read(appliance_sheet_path),
+            APPLIANCE_HEADERS,
+            APPLIANCE_DISPLAY_HEADERS,
+            appliances,
+            "家电清单",
+        )
+        appliance_table_path = _table_path_for_sheet(
+            source_archive, appliance_sheet_path,
+        )
+        replacements[appliance_table_path] = _rebuilt_table_xml(
+            source_archive.read(appliance_table_path),
+            APPLIANCE_DISPLAY_HEADERS,
+            len(appliances),
             header_row=1,
         )
         for sheet_name in READONLY_VIEW_SPECS:
@@ -902,9 +925,16 @@ def main() -> int:
     workbook_decision_additions: list[str] = []
     if args.input.suffix.lower() == ".xlsx":
         decisions, appliances, readonly_rows, workbook_sheet_names = read_xlsx(args.input)
-        decisions, workbook_decision_additions = merge_missing_canonical_decisions(
-            decisions, baseline_decisions,
-        )
+        if args.refresh_input_sheets_from_canonical:
+            if not args.apply:
+                raise ValueError("--refresh-input-sheets-from-canonical requires --apply")
+            decisions = [dict(row) for row in baseline_decisions]
+            appliances = [dict(row) for row in baseline_appliances]
+            workbook_decision_additions = [row["input_id"] for row in baseline_decisions]
+        else:
+            decisions, workbook_decision_additions = merge_missing_canonical_decisions(
+                decisions, baseline_decisions,
+            )
         readonly_parity = readonly_views_parity(
             readonly_rows, workbook_sheet_names, canonical_tables,
         )
@@ -957,6 +987,7 @@ def main() -> int:
             rebuild_workbook_views(
                 args.input,
                 decisions,
+                appliances,
                 canonical_tables,
                 {
                     "B13": len(decisions),

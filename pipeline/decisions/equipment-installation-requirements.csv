@@ -167,7 +167,7 @@ REQ-0165,APP-015,PLUM,water_required,not_applicable_alias,,,,user_input,confirme
 REQ-0166,APP-015,PLUM,drain_required,not_applicable_alias,,,,user_input,confirmed,OWNER-INBOX-20260814-001,,no,功能别名，不新增实物或接口。
 REQ-0167,APP-015,GAS,gas_required,not_applicable_alias,,,,user_input,confirmed,OWNER-INBOX-20260814-001,,no,功能别名，不新增实物或接口。
 REQ-0168,APP-015,HVAC,ventilation_required,not_applicable_alias,,,,user_input,confirmed,OWNER-INBOX-20260814-001,,no,功能别名，不新增实物或接口。
-REQ-0169,APP-016,ELEC,rated_power,,,W,,pending,pending,APP-016-FRANKE-SLIM50-CN-RESEARCH-20260818,最终产品未选；研究候选官方资料不完整,yes,F50 已否决；Franke 134.0721.210 仅研究候选。最终同型号铭牌／安装图返回前保持 unknown，不从其他 SKU 外推。
+REQ-0169,APP-016,ELEC,rated_power,,,W,,pending,pending,APP-016-FRANKE-SLIM50-CN-RESEARCH-20260818,最终产品未选；研究候选官方资料不完整,yes,F50 保留为基准候选；Franke 134.0721.210 仅研究候选。最终所选同型号铭牌／安装图返回前保持 unknown，不从其他 SKU 外推。
 REQ-0170,APP-016,ELEC,simultaneous_group,WATER-A,,,,user_input,confirmed,,,no,
 REQ-0171,APP-016,PLUM,water_required,no,,,,user_input,confirmed,,,no,
 REQ-0172,APP-016,PLUM,drain_required,yes,,,,user_input,confirmed,,,no,
@@ -288,39 +288,39 @@ REQ-0286,DW-W11,ARCH,nominal_height,,1340,mm,,ifc_observed,observed,IFC-FORMAL-0
 REQ-0287,DW-W11,ARCH,operation_type,DOUBLE_PANEL_VERTICAL,,,,ifc_observed,observed,IFC-FORMAL-001,,no,
 REQ-0288,DW-W11,ARCH,host_relation,HOSTED,,,,ifc_observed,observed,IFC-FORMAL-001,,no,
 REQ-0289,DW-W11,ARCH,sill_or_threshold_z,,1080.000000,mm,,ifc_observed,observed,IFC-FORMAL-001,,no,
-REQ-0290,HVAC-001,HVAC/PLUM,nominal_body_width,,700,mm,,official_model_family,candidate,RCP1-HVAC-IFACE-001,,no,
-REQ-0291,HVAC-001,HVAC/PLUM,nominal_body_depth,,447,mm,,official_model_family,candidate,RCP1-HVAC-IFACE-001,,no,
-REQ-0292,HVAC-001,HVAC/PLUM,nominal_body_height,,192,mm,,official_model_family,candidate,RCP1-HVAC-IFACE-001,,no,
-REQ-0293,HVAC-001,HVAC/PLUM,capacity_group,18-50,,,,official_model_family,candidate,RCP1-HVAC-IFACE-001,,no,
-REQ-0294,HVAC-001,HVAC/PLUM,gas_pipe_od,,12.7,mm,,official_model_family,candidate,RCP1-HVAC-IFACE-001,,no,
-REQ-0295,HVAC-001,HVAC/PLUM,liquid_pipe_od,,6.35,mm,,official_model_family,candidate,RCP1-HVAC-IFACE-001,,no,
-REQ-0296,HVAC-001,HVAC/PLUM,drain_pipe_od,,32,mm,,official_model_family,candidate,RCP1-HVAC-IFACE-001,,no,
-REQ-0297,HVAC-001,HVAC/PLUM,drain_slope_min,1/100,,,,official_model_family,candidate,RCP1-HVAC-IFACE-001,,no,
-REQ-0298,HVAC-001,HVAC/PLUM,drain_slope_max,1/25,,,,official_model_family,candidate,RCP1-HVAC-IFACE-001,,no,
-REQ-0299,HVAC-001,HVAC/PLUM,connection_side_basis,equipment_local_positive_x_existing_connector_geometry,,,,official_model_family,candidate,RCP1-HVAC-IFACE-001,,no,
-REQ-0300,HVAC-001,HVAC/PLUM,port_coordinate_status,diagram_available_variant_selection_pending,,,,official_model_family,candidate,RCP1-HVAC-IFACE-001,,no,
-REQ-0301,HVAC-002,HVAC/PLUM,nominal_body_width,,700,mm,,official_model_family,candidate,RCP1-HVAC-IFACE-002,,no,
-REQ-0302,HVAC-002,HVAC/PLUM,nominal_body_depth,,447,mm,,official_model_family,candidate,RCP1-HVAC-IFACE-002,,no,
-REQ-0303,HVAC-002,HVAC/PLUM,nominal_body_height,,192,mm,,official_model_family,candidate,RCP1-HVAC-IFACE-002,,no,
-REQ-0304,HVAC-002,HVAC/PLUM,capacity_group,18-50,,,,official_model_family,candidate,RCP1-HVAC-IFACE-002,,no,
-REQ-0305,HVAC-002,HVAC/PLUM,gas_pipe_od,,12.7,mm,,official_model_family,candidate,RCP1-HVAC-IFACE-002,,no,
-REQ-0306,HVAC-002,HVAC/PLUM,liquid_pipe_od,,6.35,mm,,official_model_family,candidate,RCP1-HVAC-IFACE-002,,no,
-REQ-0307,HVAC-002,HVAC/PLUM,drain_pipe_od,,32,mm,,official_model_family,candidate,RCP1-HVAC-IFACE-002,,no,
-REQ-0308,HVAC-002,HVAC/PLUM,drain_slope_min,1/100,,,,official_model_family,candidate,RCP1-HVAC-IFACE-002,,no,
-REQ-0309,HVAC-002,HVAC/PLUM,drain_slope_max,1/25,,,,official_model_family,candidate,RCP1-HVAC-IFACE-002,,no,
-REQ-0310,HVAC-002,HVAC/PLUM,connection_side_basis,equipment_local_positive_x_existing_connector_geometry,,,,official_model_family,candidate,RCP1-HVAC-IFACE-002,,no,
-REQ-0311,HVAC-002,HVAC/PLUM,port_coordinate_status,diagram_available_variant_selection_pending,,,,official_model_family,candidate,RCP1-HVAC-IFACE-002,,no,
+REQ-0290,HVAC-001,HVAC/PLUM,nominal_body_width,,700,mm,,official_model_family,confirmed,RCP1-HVAC-IFACE-001,,no,开发商既有设备与 QD/QDF 镜像关系已确认；本参数不再作为选型候选。
+REQ-0291,HVAC-001,HVAC/PLUM,nominal_body_depth,,447,mm,,official_model_family,confirmed,RCP1-HVAC-IFACE-001,,no,开发商既有设备与 QD/QDF 镜像关系已确认；本参数不再作为选型候选。
+REQ-0292,HVAC-001,HVAC/PLUM,nominal_body_height,,192,mm,,official_model_family,confirmed,RCP1-HVAC-IFACE-001,,no,开发商既有设备与 QD/QDF 镜像关系已确认；本参数不再作为选型候选。
+REQ-0293,HVAC-001,HVAC/PLUM,capacity_group,18-50,,,,official_model_family,confirmed,RCP1-HVAC-IFACE-001,,no,开发商既有设备与 QD/QDF 镜像关系已确认；本参数不再作为选型候选。
+REQ-0294,HVAC-001,HVAC/PLUM,gas_pipe_od,,12.7,mm,,official_model_family,confirmed,RCP1-HVAC-IFACE-001,,no,开发商既有设备与 QD/QDF 镜像关系已确认；本参数不再作为选型候选。
+REQ-0295,HVAC-001,HVAC/PLUM,liquid_pipe_od,,6.35,mm,,official_model_family,confirmed,RCP1-HVAC-IFACE-001,,no,开发商既有设备与 QD/QDF 镜像关系已确认；本参数不再作为选型候选。
+REQ-0296,HVAC-001,HVAC/PLUM,drain_pipe_od,,32,mm,,official_model_family,confirmed,RCP1-HVAC-IFACE-001,,no,开发商既有设备与 QD/QDF 镜像关系已确认；本参数不再作为选型候选。
+REQ-0297,HVAC-001,HVAC/PLUM,drain_slope_min,1/100,,,,official_model_family,confirmed,RCP1-HVAC-IFACE-001,,no,开发商既有设备与 QD/QDF 镜像关系已确认；本参数不再作为选型候选。
+REQ-0298,HVAC-001,HVAC/PLUM,drain_slope_max,1/25,,,,official_model_family,confirmed,RCP1-HVAC-IFACE-001,,no,开发商既有设备与 QD/QDF 镜像关系已确认；本参数不再作为选型候选。
+REQ-0299,HVAC-001,HVAC/PLUM,connection_side_basis,equipment_local_positive_x_existing_connector_geometry,,,,official_model_family,confirmed,RCP1-HVAC-IFACE-001,,no,开发商既有设备与 QD/QDF 镜像关系已确认；本参数不再作为选型候选。
+REQ-0300,HVAC-001,HVAC/PLUM,port_coordinate_status,diagram_available_variant_selection_pending,,,,official_model_family,confirmed,RCP1-HVAC-IFACE-001,,no,开发商既有设备与 QD/QDF 镜像关系已确认；本参数不再作为选型候选。
+REQ-0301,HVAC-002,HVAC/PLUM,nominal_body_width,,700,mm,,official_model_family,confirmed,RCP1-HVAC-IFACE-002,,no,开发商既有设备与 QD/QDF 镜像关系已确认；本参数不再作为选型候选。
+REQ-0302,HVAC-002,HVAC/PLUM,nominal_body_depth,,447,mm,,official_model_family,confirmed,RCP1-HVAC-IFACE-002,,no,开发商既有设备与 QD/QDF 镜像关系已确认；本参数不再作为选型候选。
+REQ-0303,HVAC-002,HVAC/PLUM,nominal_body_height,,192,mm,,official_model_family,confirmed,RCP1-HVAC-IFACE-002,,no,开发商既有设备与 QD/QDF 镜像关系已确认；本参数不再作为选型候选。
+REQ-0304,HVAC-002,HVAC/PLUM,capacity_group,18-50,,,,official_model_family,confirmed,RCP1-HVAC-IFACE-002,,no,开发商既有设备与 QD/QDF 镜像关系已确认；本参数不再作为选型候选。
+REQ-0305,HVAC-002,HVAC/PLUM,gas_pipe_od,,12.7,mm,,official_model_family,confirmed,RCP1-HVAC-IFACE-002,,no,开发商既有设备与 QD/QDF 镜像关系已确认；本参数不再作为选型候选。
+REQ-0306,HVAC-002,HVAC/PLUM,liquid_pipe_od,,6.35,mm,,official_model_family,confirmed,RCP1-HVAC-IFACE-002,,no,开发商既有设备与 QD/QDF 镜像关系已确认；本参数不再作为选型候选。
+REQ-0307,HVAC-002,HVAC/PLUM,drain_pipe_od,,32,mm,,official_model_family,confirmed,RCP1-HVAC-IFACE-002,,no,开发商既有设备与 QD/QDF 镜像关系已确认；本参数不再作为选型候选。
+REQ-0308,HVAC-002,HVAC/PLUM,drain_slope_min,1/100,,,,official_model_family,confirmed,RCP1-HVAC-IFACE-002,,no,开发商既有设备与 QD/QDF 镜像关系已确认；本参数不再作为选型候选。
+REQ-0309,HVAC-002,HVAC/PLUM,drain_slope_max,1/25,,,,official_model_family,confirmed,RCP1-HVAC-IFACE-002,,no,开发商既有设备与 QD/QDF 镜像关系已确认；本参数不再作为选型候选。
+REQ-0310,HVAC-002,HVAC/PLUM,connection_side_basis,equipment_local_positive_x_existing_connector_geometry,,,,official_model_family,confirmed,RCP1-HVAC-IFACE-002,,no,开发商既有设备与 QD/QDF 镜像关系已确认；本参数不再作为选型候选。
+REQ-0311,HVAC-002,HVAC/PLUM,port_coordinate_status,diagram_available_variant_selection_pending,,,,official_model_family,confirmed,RCP1-HVAC-IFACE-002,,no,开发商既有设备与 QD/QDF 镜像关系已确认；本参数不再作为选型候选。
 REQ-0312,HVAC-003,HVAC/PLUM,nominal_body_width,,1180,mm,,official_model_family,candidate,RCP1-HVAC-IFACE-003,,no,
 REQ-0313,HVAC-003,HVAC/PLUM,nominal_body_depth,,447,mm,,official_model_family,candidate,RCP1-HVAC-IFACE-003,,no,
 REQ-0314,HVAC-003,HVAC/PLUM,nominal_body_height,,192,mm,,official_model_family,candidate,RCP1-HVAC-IFACE-003,,no,
 REQ-0315,HVAC-003,HVAC/PLUM,capacity_group,63-71,,,,official_model_family,candidate,RCP1-HVAC-IFACE-003,,no,
-REQ-0316,HVAC-003,HVAC/PLUM,gas_pipe_od,,,mm,,official_model_family,pending,RCP1-HVAC-IFACE-003,,yes,
-REQ-0317,HVAC-003,HVAC/PLUM,liquid_pipe_od,,,mm,,official_model_family,pending,RCP1-HVAC-IFACE-003,,yes,
-REQ-0318,HVAC-003,HVAC/PLUM,drain_pipe_od,,,mm,,official_model_family,pending,RCP1-HVAC-IFACE-003,,yes,
-REQ-0319,HVAC-003,HVAC/PLUM,drain_slope_min,,,,,official_model_family,pending,RCP1-HVAC-IFACE-003,,yes,
-REQ-0320,HVAC-003,HVAC/PLUM,drain_slope_max,,,,,official_model_family,pending,RCP1-HVAC-IFACE-003,,yes,
-REQ-0321,HVAC-003,HVAC/PLUM,connection_side_basis,unresolved,,,,official_model_family,candidate,RCP1-HVAC-IFACE-003,,no,
-REQ-0322,HVAC-003,HVAC/PLUM,port_coordinate_status,unresolved_exact_model_required,,,,official_model_family,candidate,RCP1-HVAC-IFACE-003,,no,
+REQ-0316,HVAC-003,HVAC/PLUM,gas_pipe_od,,15.88,mm,,official_exact_model,confirmed,RCP1-HVAC-IFACE-003,P02010Q；A05 RPIZ-71FSLN5QD/P,no,P02010Q 63–71 容量段气管外径。
+REQ-0317,HVAC-003,HVAC/PLUM,liquid_pipe_od,,9.53,mm,,official_exact_model,confirmed,RCP1-HVAC-IFACE-003,P02010Q；A05 RPIZ-71FSLN5QD/P,no,P02010Q 63–71 容量段液管外径。
+REQ-0318,HVAC-003,HVAC/PLUM,drain_pipe_od,,32,mm,,official_exact_model,confirmed,RCP1-HVAC-IFACE-003,P02010Q；A05 RPIZ-71FSLN5QD/P,no,P02010Q VP25 排水管外径。
+REQ-0319,HVAC-003,HVAC/PLUM,drain_slope_min,1/100,,,,official_exact_model,confirmed,RCP1-HVAC-IFACE-003,P02010Q；A05 RPIZ-71FSLN5QD/P,no,P02010Q 冷凝水连续坡度边界。
+REQ-0320,HVAC-003,HVAC/PLUM,drain_slope_max,1/25,,,,official_exact_model,confirmed,RCP1-HVAC-IFACE-003,P02010Q；A05 RPIZ-71FSLN5QD/P,no,P02010Q 冷凝水连续坡度边界。
+REQ-0321,HVAC-003,HVAC/PLUM,connection_side_basis,QD orientation; project drawing required,,,,official_exact_model,confirmed,RCP1-HVAC-IFACE-003,P02010Q；A05 RPIZ-71FSLN5QD/P,no,A05 铭牌 QD 身份已关闭；项目负责画路线。
+REQ-0322,HVAC-003,HVAC/PLUM,port_coordinate_status,official diagram basis; exact project center not provided,,,,official_exact_model,pending,RCP1-HVAC-IFACE-003,P02010Q；A05 RPIZ-71FSLN5QD/P,yes,不得推测接口中心；由项目图与厂家按图复核关闭。
 REQ-0323,HVAC-004,HVAC/PLUM,nominal_body_width,,,mm,,project_candidate,pending,RCP1-HVAC-IFACE-004,,yes,
 REQ-0324,HVAC-004,HVAC/PLUM,nominal_body_depth,,,mm,,project_candidate,pending,RCP1-HVAC-IFACE-004,,yes,
 REQ-0325,HVAC-004,HVAC/PLUM,nominal_body_height,,,mm,,project_candidate,pending,RCP1-HVAC-IFACE-004,,yes,
@@ -588,9 +588,9 @@ REQ-0596,APP-014,MULTI,physical_unit_count,,1,unit,,user_input,confirmed,OWNER-I
 REQ-0597,APP-014,MULTI,exact_enr,WS7FSB0C1C,,,,official_exact_model,confirmed,APP-014-SIEMENS-NEW-WEB-001,,no,当前业主优选。
 REQ-0598,APP-014,MULTI,installation_manual,8001325304_D,,,,official_exact_model,confirmed,APP-014-SIEMENS-MANUAL-001,,no,新旧款共用官方说明书。
 REQ-0599,APP-015,MULTI,alias_of,APP-014,,,,user_input,confirmed,OWNER-INBOX-20260814-001,,no,唯一物理设备为 APP-014。
-REQ-0600,APP-016,PLUM,flange_size,,,mm,,pending,pending,APP-016-FRANKE-SLIM50-CN-RESEARCH-20260818,最终产品未选；研究候选官方资料不完整,yes,F50 已否决；Franke 134.0721.210 仅研究候选。最终同型号铭牌／安装图返回前保持 unknown，不从其他 SKU 外推。
-REQ-0601,APP-016,PLUM,drain_connection,,,mm,,pending,pending,APP-016-FRANKE-SLIM50-CN-RESEARCH-20260818,最终产品未选；研究候选官方资料不完整,yes,F50 已否决；Franke 134.0721.210 仅研究候选。最终同型号铭牌／安装图返回前保持 unknown，不从其他 SKU 外推。
-REQ-0602,APP-016,ELEC,switch_method,,,,,pending,pending,APP-016-FRANKE-SLIM50-CN-RESEARCH-20260818,最终产品未选；研究候选官方资料不完整,yes,F50 已否决；Franke 134.0721.210 仅研究候选。最终同型号铭牌／安装图返回前保持 unknown，不从其他 SKU 外推。
+REQ-0600,APP-016,PLUM,flange_size,,,mm,,pending,pending,APP-016-FRANKE-SLIM50-CN-RESEARCH-20260818,最终产品未选；研究候选官方资料不完整,yes,F50 保留为基准候选；Franke 134.0721.210 仅研究候选。最终所选同型号铭牌／安装图返回前保持 unknown，不从其他 SKU 外推。
+REQ-0601,APP-016,PLUM,drain_connection,,,mm,,pending,pending,APP-016-FRANKE-SLIM50-CN-RESEARCH-20260818,最终产品未选；研究候选官方资料不完整,yes,F50 保留为基准候选；Franke 134.0721.210 仅研究候选。最终所选同型号铭牌／安装图返回前保持 unknown，不从其他 SKU 外推。
+REQ-0602,APP-016,ELEC,switch_method,,,,,pending,pending,APP-016-FRANKE-SLIM50-CN-RESEARCH-20260818,最终产品未选；研究候选官方资料不完整,yes,F50 保留为基准候选；Franke 134.0721.210 仅研究候选。最终所选同型号铭牌／安装图返回前保持 unknown，不从其他 SKU 外推。
 REQ-0608,CTRL-ENTRY-A,ELEC,controlled_categories,ambient_LED;accent_spotlights,,,,user_input,confirmed,OWNER-INBOX-20260814-001,,no,
 REQ-0609,CTRL-ENTRY-A,ELEC,exact_sku,,,,,pending,pending,,,yes,颜色、键数和有线/无线版本未锁。
 REQ-0610,CTRL-ENTRY-A,ELEC,terminal_diagram,,,,,pending,pending,,,yes,零火文案不能替代端子定义和接线图。
@@ -866,7 +866,7 @@ REQ-HVACCTRL-002,HVAC-CTRL-001,RCP1,existing_control_point_quantity,,5,point,,pr
 REQ-HVACCTRL-003,HVAC-CTRL-001,RCP1/ELEC,maximum_controlled_indoor_units,,6,unit,,official_exact_model,confirmed,HITACHI-PC-P1HEQ-P02037Q-001,PC-P1HEQ 官方安装说明,no,官方上限，不代表本项目采用 6 台群控。
 REQ-HVACCTRL-004,HVAC-CTRL-001,ELEC/RCP1,control_wiring,two-core / 1P-0.75 mm² minimum,,,,official_exact_model,confirmed,HITACHI-PC-P1HEQ-P02037Q-001,PC-P1HEQ 官方安装说明,no,项目总长度、端子和屏蔽/金属管条件仍须厂家签认。
 REQ-HVACCTRL-005,HVAC-CTRL-001,ELEC/RCP1,minimum_separation_from_power_wiring,,300,mm,,official_exact_model,confirmed,HITACHI-PC-P1HEQ-P02037Q-001,PC-P1HEQ 官方安装说明,no,
-REQ-HVACCTRL-006,HVAC-CTRL-001,RCP1,compatibility_with_A01_A06,,,,,pending,pending,OWNER-HVAC-PC-P1HEQ-20260817,型号已定但系统兼容性未签认,yes,由日立空调供货/安装方封闭确认。
+REQ-HVACCTRL-006,HVAC-CTRL-001,RCP1,compatibility_with_A01_A06,existing developer-delivered controller operating with existing Hitachi system,,,,site_observed,confirmed,OUTBOUND-FORM-HVAC-20260817,现行 02 表；业主确认精装房原配,no,不再询问兼容性；五点物理映射和最终控制策略分别处理。
 REQ-HVACCTRL-007,HVAC-CTRL-001,RCP1/ELEC,five_point_to_indoor_unit_mapping,,,,,pending,pending,OWNER-HVAC-PC-P1HEQ-20260817,开发商图未给点到机组映射,yes,现场逐点核对并与 A01–A06 系统图对账。
 REQ-HVACCTRL-008,HVAC-CTRL-001,RCP1/INT1,keep_move_merge_strategy,,,,,pending,pending,OWNER-HVAC-PC-P1HEQ-20260817,装修后控制策略未定,yes,每个点位填写保留/迁移/合并，不重新询问产品型号。
 REQ-HVACCTRL-009,HVAC-CTRL-001,ELEC/RCP1,project_terminal_diagram_and_total_length,,,,,pending,pending,HITACHI-PC-P1HEQ-P02037Q-001,官方手册只证明通用要求,yes,由空调厂家提交项目端子图和线长校核。
@@ -874,7 +874,7 @@ REQ-HVACCTRL-010,HVAC-CTRL-001,INT1/ELEC,final_panel_coordinates_and_mounting,,,
 REQ-INTERCOM-001,ACCESS-INTERCOM-001,ELEC/INT1/NETWORK,manufacturer,DNAKE／狄耐克,,,,site_observed,confirmed,OWNER-E304-DNAKE-PHOTO-20260817,现场照片正面／版本信息页,no,设备正面品牌标识可见。
 REQ-INTERCOM-002,ACCESS-INTERCOM-001,ELEC/INT1/NETWORK,system_version,1.6.0 20210615,,,,site_observed,confirmed,OWNER-E304-DNAKE-PHOTO-20260817,现场照片正面／版本信息页,no,仅记录照片拍摄时可见软件版本，不用于反推硬件型号。
 REQ-INTERCOM-003,ACCESS-INTERCOM-001,ELEC/INT1/NETWORK,application_version,1.1.0 20210615 16M,,,,site_observed,confirmed,OWNER-E304-DNAKE-PHOTO-20260817,现场照片正面／版本信息页,no,仅记录照片拍摄时可见应用版本，不用于反推硬件型号。
-REQ-INTERCOM-004,ACCESS-INTERCOM-001,ELEC/INT1/NETWORK,exact_model,unknown,,,,pending,pending,OWNER-E304-DNAKE-PHOTO-20260817,现有照片未显示该信息,yes,关闭证据：背面／侧面型号标签或工程信息页；不得凭外观或软件版本猜测。
+REQ-INTERCOM-004,ACCESS-INTERCOM-001,ELEC/INT1/NETWORK,exact_model,280M-S3,,,,research_conclusion,confirmed,DNAKE-280M-S3-OFFICIAL-20260819,业主现场照片与官方外观／规格匹配,no,型号不再重复询问；实际端子和供电仍由后续要求关闭。
 REQ-INTERCOM-005,ACCESS-INTERCOM-001,ELEC/INT1/NETWORK,terminal_diagram_and_existing_wiring,unknown,,,,pending,pending,OWNER-E304-DNAKE-PHOTO-20260817,现有照片未显示该信息,yes,关闭证据：端子与线缆近照、端子定义和现有接法。
 REQ-INTERCOM-006,ACCESS-INTERCOM-001,ELEC/INT1/NETWORK,property_system_compatibility,unknown,,,,pending,pending,OWNER-E304-DNAKE-PHOTO-20260817,现有照片未显示该信息,yes,关闭证据：物业或门禁维护方书面确认系统角色、兼容与移动限制。
 REQ-INTERCOM-007,ACCESS-INTERCOM-001,ELEC/INT1/NETWORK,keep_move_integrate_strategy,unknown,,,,pending,pending,OWNER-E304-DNAKE-PHOTO-20260817,现有照片未显示该信息,yes,关闭证据：保留、迁移或接入装修后系统的签认结论。
@@ -908,3 +908,34 @@ REQ-APP014-SLEEVE-20260818-002,APP-014,PLUM/INT1,supplied_tube_material_and_od,u
 REQ-APP014-SLEEVE-20260818-003,APP-014,PLUM/INT1,sleeve_compatibility_and_bend_radius,unknown,,,,pending,pending,OWNER-APP014-REPLACEABLE-SLEEVE-20260817,owner candidate and evidence boundary,yes,不得用网络案例尺寸代填。
 REQ-APP014-SLEEVE-20260818-004,APP-014,PLUM/INT1,sleeve_route_end_waterproof_and_leak_visibility,unknown,,,,pending,pending,OWNER-APP014-REPLACEABLE-SLEEVE-20260817,owner candidate and evidence boundary,yes,由 P-201／I-501 联合节点关闭。
 REQ-APP014-SLEEVE-20260818-005,APP-014,PLUM/INT1,full_route_pull_through_mockup,required,,,,project_candidate,pending,OWNER-APP014-REPLACEABLE-SLEEVE-20260817,owner candidate and evidence boundary,yes,施工前完成全程抽换样板并留照片。
+REQ-APP019-ENVELOPE-20260820-001,APP-019,ELEC/INT1/PLUM,project_clear_width,,500,mm,,research_conclusion,confirmed,OUTBOUND-FORM-KITCHEN-20260818,现行 09 表；家用台面机候选不利包络,no,家用台面机候选不利包络；不是实购设备宽度。
+REQ-APP019-ENVELOPE-20260820-002,APP-019,ELEC/INT1/PLUM,project_clear_depth,,450,mm,,research_conclusion,confirmed,OUTBOUND-FORM-KITCHEN-20260818,现行 09 表；家用台面机候选不利包络,no,家用台面机候选不利包络；不是实购设备深度。
+REQ-APP019-ENVELOPE-20260820-003,APP-019,ELEC/INT1/PLUM,project_clear_height,,450,mm,,research_conclusion,confirmed,OUTBOUND-FORM-KITCHEN-20260818,现行 09 表；家用台面机候选不利包络,no,家用台面机候选不利包络；不是实购设备高度。
+REQ-APP019-ENVELOPE-20260820-004,APP-019,ELEC/INT1/PLUM,minimum_support_load,,20,kg,,research_conclusion,confirmed,OUTBOUND-FORM-KITCHEN-20260818,现行 09 表；家用台面机候选不利包络,no,稳定台面或可取放柜格承重下限。
+REQ-APP019-ENVELOPE-20260820-005,APP-019,ELEC/INT1/PLUM,wall_socket_rating,10 A earthed accessible socket,,,,research_conclusion,confirmed,OUTBOUND-FORM-KITCHEN-20260818,现行 09 表；家用台面机候选不利包络,no,最终按实购插头复核；当前家用候选可共用普通厨房小家电回路。
+REQ-APP019-ENVELOPE-20260820-006,APP-019,ELEC/INT1/PLUM,water_and_drain_reservation,not required for current domestic candidates,,,,research_conclusion,confirmed,OUTBOUND-FORM-KITCHEN-20260818,现行 09 表；家用台面机候选不利包络,no,若改商用软冰机须重新设计。
+REQ-NETAP-TPLINK-20260820-001,NET-AP-R09,NETWORK/ELEC/RCP1,candidate_model,TL-XAP1500GE-PoE/DC 易展版,,,,official_exact_model,candidate,TPLINK-XAP1500GE-OFFICIAL-20260819,TP-Link 官方产品页,no,业主优先方向，非已购。
+REQ-NETAP-TPLINK-20260820-002,NET-AP-R09,NETWORK/ELEC/RCP1,body_and_cutout,body Ø184×40 mm; ceiling cutout Ø155 mm,,,,official_exact_model,candidate,TPLINK-XAP1500GE-OFFICIAL-20260819,TP-Link 官方产品页,yes,吊顶深化须保留水晶头弯曲、散热和拆换空间。
+REQ-NETAP-TPLINK-20260820-003,NET-AP-R09,NETWORK/ELEC/RCP1,poe_and_power,802.3at PoE; maximum 11.1 W,,,,official_exact_model,candidate,TPLINK-XAP1500GE-OFFICIAL-20260819,TP-Link 官方产品页,yes,用于交换机端口和总 PoE 预算。
+REQ-NETAP-R14-TPLINK-20260820-001,NET-AP-R14,NETWORK/ELEC/RCP1,candidate_model,TL-XAP1500GE-PoE/DC 易展版,,,,official_exact_model,candidate,TPLINK-XAP1500GE-OFFICIAL-20260819,TP-Link 官方产品页,no,业主优先方向，非已购。
+REQ-NETAP-R14-TPLINK-20260820-002,NET-AP-R14,NETWORK/ELEC/RCP1,body_and_cutout,body Ø184×40 mm; ceiling cutout Ø155 mm,,,,official_exact_model,candidate,TPLINK-XAP1500GE-OFFICIAL-20260819,TP-Link 官方产品页,yes,吊顶深化须保留水晶头弯曲、散热和拆换空间。
+REQ-NETAP-R14-TPLINK-20260820-003,NET-AP-R14,NETWORK/ELEC/RCP1,poe_and_power,802.3at PoE; maximum 11.1 W,,,,official_exact_model,candidate,TPLINK-XAP1500GE-OFFICIAL-20260819,TP-Link 官方产品页,yes,用于交换机端口和总 PoE 预算。
+REQ-SAN023-001,SAN-023,PROCUREMENT,purchase_status,purchased; transaction successful; quantity 1; delivery not evidenced,,,,owner_order_evidence,confirmed,OWNER-PLUM-FAUCETS-ORDER-IMAGE-20260820,订单截图；2024-12-04,no,关闭采购事实和数量，不证明已收货、原厂身份或安装接口。
+REQ-SAN023-002,SAN-023,PLUM/INT1,installation_type_and_finish,concealed wall-mounted basin faucet; brushed gold; twin handle,,,,owner_order_evidence,confirmed,OWNER-PLUM-PURCHASED-FAUCETS-20260820,采购事实与深化边界,no,功能类型和订单所示款式已确认。
+REQ-SAN023-003,SAN-023,PLUM,seller_diagram_visible_interface,G1/2 visible; control and spout relationship shown,,,,seller_installation_image,candidate,OWNER-PLUM-MF287-INSTALL-IMAGE-20260820,MF287 卖家尺寸图,no,只记录图上明确可读关系；不据此冻结墙内中心。
+REQ-SAN023-004,SAN-023,PROCUREMENT,exact_manufacturer_article_and_sku,unknown,,,,pending,pending,OWNER-PLUM-PURCHASED-FAUCETS-20260820,订单缺准确原厂料号,yes,MF287 是分享标识，不冒充厂家型号。
+REQ-SAN023-005,SAN-023,PLUM/INT1,dimension_units_centres_and_valve_envelope,unknown,,,,pending,pending,OWNER-PLUM-MF287-INSTALL-IMAGE-20260820,204cm／200cm 单位不可信,yes,须由卖家在原图确认单位，并补阀体包络、允许埋深、完成面基准和公差。
+REQ-SAN023-006,SAN-023,PLUM/INT1,final_room_mapping_and_project_coordinates,unknown,,,,project_candidate,pending,OWNER-PLUM-PURCHASED-FAUCETS-20260820,优先与客卫 Sorgente 协调,yes,项目先完成 I-502／P-202，再由供货方按图复核；接口中心不得推测。
+REQ-SAN024-001,SAN-024,PROCUREMENT,purchase_status,purchased; transaction successful; quantity 1; delivery not evidenced,,,,owner_order_evidence,confirmed,OWNER-PLUM-FAUCETS-ORDER-IMAGE-20260820,订单截图；2024-12-04,no,关闭采购事实和数量，不证明已收货、原厂身份或安装接口。
+REQ-SAN024-002,SAN-024,PLUM/INT1,installation_type_and_finish,deck-mounted two-hole split basin faucet; brushed-gold half-round style,,,,owner_order_evidence,confirmed,OWNER-PLUM-PURCHASED-FAUCETS-20260820,采购事实与深化边界,no,功能类型和订单所示款式已确认。
+REQ-SAN024-003,SAN-024,PROCUREMENT,exact_manufacturer_article_and_sku,unknown,,,,pending,pending,OWNER-PLUM-PURCHASED-FAUCETS-20260820,订单缺准确原厂料号,yes,CZ356 是分享标识，不冒充厂家型号。
+REQ-SAN024-004,SAN-024,PLUM/INT1,hole_diameters_centres_and_countertop_range,unknown,,,,pending,pending,OWNER-PLUM-PURCHASED-FAUCETS-20260820,当前无 CZ356 安装图,yes,须补两孔孔径／中心距、允许台面厚度、台下紧固和软管抽换空间。
+REQ-SAN024-005,SAN-024,PLUM/INT1,supply_interfaces_and_valve_access,unknown,,,,pending,pending,OWNER-PLUM-PURCHASED-FAUCETS-20260820,当前无 CZ356 安装图,yes,冷热接口、软管、阀门与检修必须进入联合剖面。
+REQ-SAN024-006,SAN-024,PLUM/INT1,final_room_mapping_and_project_coordinates,unknown,,,,project_candidate,pending,OWNER-PLUM-PURCHASED-FAUCETS-20260820,优先与主卫 Street 协调,yes,不得套用 Street 官方单 Ø38 mm 孔；由 I-502／P-202 与定制盆加工图关闭。
+REQ-SAN025-001,SAN-025,PROCUREMENT,purchase_status,purchased; transaction successful; quantity 1; delivery not evidenced,,,,owner_order_evidence,confirmed,OWNER-PLUM-FAUCETS-ORDER-IMAGE-20260820,订单截图；2024-12-04,no,只购 1 套；订单不证明已收货；不得复制为两个淋浴区。
+REQ-SAN025-002,SAN-025,PLUM/INT1,installation_type_and_finish,concealed shower system; brushed-gold wall-outlet style,,,,owner_order_evidence,confirmed,OWNER-PLUM-PURCHASED-FAUCETS-20260820,采购事实与深化边界,no,功能类型和订单所示款式已确认。
+REQ-SAN025-003,SAN-025,PLUM,seller_diagram_system_relationship,hot/cold supplies to concealed valve; overhead and hand shower shown,,,,seller_installation_image,candidate,OWNER-PLUM-CZ028-INSTALL-IMAGE-20260820,CZ028 卖家安装关系图,no,只记录系统组成关系，不作为开槽或接口尺寸。
+REQ-SAN025-004,SAN-025,PROCUREMENT,exact_manufacturer_article_and_sku,unknown,,,,pending,pending,OWNER-PLUM-PURCHASED-FAUCETS-20260820,订单缺准确原厂料号,yes,CZ028 是分享标识，不冒充厂家型号。
+REQ-SAN025-005,SAN-025,PLUM/INT1,valve_envelope_depth_opening_units_and_datum,unknown,,,,pending,pending,OWNER-PLUM-CZ028-INSTALL-IMAGE-20260820,图示 30×10×6 无单位和基准,yes,须补阀体包络、允许埋深、完成面基准、公差、防水和检修。
+REQ-SAN025-006,SAN-025,PLUM,interfaces_outputs_pressure_and_flow,unknown,,,,pending,pending,OWNER-PLUM-CZ028-INSTALL-IMAGE-20260820,卖家图只证明关系,yes,须补冷热及各出水口规格、顶喷固定、实际组件、压力和设计流量。
+REQ-SAN025-007,SAN-025,PLUM/INT1,final_room_mapping_and_second_shower_product,unknown,,,,pending,pending,OWNER-PLUM-PURCHASED-FAUCETS-20260820,项目有两个淋浴区但只购 1 套,yes,由 I-502 确认本套房间归属；第二淋浴区产品另行关闭。

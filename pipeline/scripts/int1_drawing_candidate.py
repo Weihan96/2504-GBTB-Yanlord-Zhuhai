@@ -59,6 +59,23 @@ ROLE_STYLE = {
 ENTRY_PARCEL_FUNCTION_ID = "INT1-ENTRY-PARCEL-FUNCTION"
 ENTRY_PARCEL_LAYOUT_ID = "INT1-ENTRY-PARCEL-LAYOUT"
 
+PROJECT_DIRECTION_IDS = {
+    "I-501": (
+        "WFIN-KITCHEN-SLAB-SHELF-SCOPE",
+        "INT1-KITCHEN-ISLAND-LAYOUT-20260818",
+        "SAN022-ECO-KIT-20260818",
+        "LEGACY-RCP-CURTAIN-COVE-WINERACK",
+    ),
+    "I-502": (
+        "INT1-BATHG-TISSUE-WASTE-SCHEME",
+        "PLUM-CUSTOM-DRAIN-VENDOR",
+    ),
+    "I-504": (
+        "WFIN-DRY-BASEBOARD-SHADOW-GAP-SCOPE",
+        "LEGACY-INT1-BAYWINDOW-WOOD",
+    ),
+}
+
 
 def sha256(path: Path) -> str:
     digest = hashlib.sha256()
@@ -180,6 +197,27 @@ def read_entry_parcel_requirements(path: Path) -> dict[str, dict[str, str]]:
     if layout["status"] != "需证据" or layout["user_value"]:
         raise RuntimeError("entry parcel layout must remain evidence-pending")
     return {ENTRY_PARCEL_FUNCTION_ID: function, ENTRY_PARCEL_LAYOUT_ID: layout}
+
+
+def read_project_directions(path: Path) -> dict[str, list[dict[str, str]]]:
+    rows = {
+        row["input_id"]: row
+        for row in csv.DictReader(path.open(newline="", encoding="utf-8-sig"))
+    }
+    required = {input_id for ids in PROJECT_DIRECTION_IDS.values() for input_id in ids}
+    if missing := required - rows.keys():
+        raise RuntimeError(f"owner-input register is missing INT1 project directions: {sorted(missing)}")
+    result: dict[str, list[dict[str, str]]] = {}
+    for sheet_id, input_ids in PROJECT_DIRECTION_IDS.items():
+        result[sheet_id] = []
+        for input_id in input_ids:
+            row = rows[input_id]
+            if not row["candidate_value"]:
+                raise RuntimeError(f"INT1 project direction has no known value: {input_id}")
+            if row["status"] not in {"自定义确认", "需证据"}:
+                raise RuntimeError(f"INT1 project direction has an unexpected status: {input_id}")
+            result[sheet_id].append(row)
+    return result
 
 
 def read_kitchen_project_specification(
@@ -331,6 +369,7 @@ def make_svg(
     dishwasher_interfaces: list[dict[str, Any]],
     entry_parcel_requirements: dict[str, dict[str, str]],
     kitchen_specification: dict[str, Any],
+    project_directions: dict[str, list[dict[str, str]]],
 ) -> str:
     spec = SHEETS[sheet_id]
     confirmed_style = (
@@ -466,6 +505,22 @@ def make_svg(
             ]
         )
 
+    if sheet_id in project_directions:
+        direction_y = 276.0 if sheet_id == "I-501" else 268.0
+        interface_lines.append(svg_text(382.0, direction_y, "SSOT PROJECT DIRECTIONS · DETAIL / SIGN-OFF PENDING", "subtitle"))
+        direction_y += 6.0
+        for row in project_directions[sheet_id]:
+            status_label = "OWNER CONFIRMED" if row["status"] == "自定义确认" else "KNOWN · DETAIL PENDING"
+            text = f"{status_label} · {row['candidate_value']}"
+            if len(text) > 66:
+                text = text[:65] + "…"
+            interface_lines.append(
+                f'<text x="382" y="{direction_y:.3f}" class="interface" '
+                f'data-requirement-id="{escape(row["input_id"])}" data-status="{escape(row["status"])}">'
+                f'{escape(text)}</text>'
+            )
+            direction_y += 5.0
+
     legend = []
     legend_y = 373.5
     legend_x = 12.0
@@ -573,6 +628,7 @@ def main() -> None:
         raise RuntimeError("unexpected INT1 sheet object counts")
     dishwasher_interfaces = read_dishwasher_interfaces(args.existing_report, source_hash)
     entry_parcel_requirements = read_entry_parcel_requirements(args.owner_inputs)
+    project_directions = read_project_directions(args.owner_inputs)
     kitchen_specification = read_kitchen_project_specification(
         args.equipment_register,
         args.installation_requirements,
@@ -599,6 +655,7 @@ def main() -> None:
                 dishwasher_interfaces,
                 entry_parcel_requirements,
                 kitchen_specification,
+                project_directions,
             ) + "\n",
             encoding="utf-8",
         )
@@ -636,6 +693,9 @@ def main() -> None:
             "pending_layout_requirement_ids": (
                 [ENTRY_PARCEL_LAYOUT_ID] if sheet_id == "I-503" else []
             ),
+            "project_direction_requirement_ids": [
+                row["input_id"] for row in project_directions.get(sheet_id, [])
+            ],
             "mechanical_pass": True,
         }
         if args.render_pdfs:
@@ -694,6 +754,7 @@ def main() -> None:
                 for row in dishwasher_interfaces
             ),
             "kitchen_project_specification_propagated": True,
+            "project_direction_requirement_count": sum(len(rows) for rows in project_directions.values()),
         },
         "gates": {
             "candidate_generation_pass": all(row["mechanical_pass"] for row in sheet_reports),

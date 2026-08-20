@@ -261,11 +261,11 @@ print(json.dumps(result,ensure_ascii=False))
   ], { cwd: root });
   expect(tableAudit.exitCode, tableAudit.stderr.toString()).toBe(0);
   const tableRefs = JSON.parse(tableAudit.stdout.toString());
-  expect(tableRefs["OwnerDecisionInputs"]).toBe("A1:M52");
-  expect(tableRefs["设备主表Table"]).toBe("A2:AB168");
-  // The parity fixture appends one synthetic requirement to the 909-row SSOT.
-  expect(tableRefs["安装条件Table"]).toBe("A2:N912");
-  expect(tableRefs["证据索引Table"]).toBe("A2:X218");
+  expect(tableRefs["OwnerDecisionInputs"]).toBe("A1:M60");
+  expect(tableRefs["设备主表Table"]).toBe("A2:AB171");
+  // The parity fixture appends one synthetic requirement to the 940-row SSOT.
+  expect(tableRefs["安装条件Table"]).toBe("A2:N943");
+  expect(tableRefs["证据索引Table"]).toBe("A2:X245");
   const summaryAudit = Bun.spawnSync([
     "python3", "-c", String.raw`
 import json,sys,zipfile
@@ -283,8 +283,8 @@ print(json.dumps(result,ensure_ascii=False))
   ], { cwd: root });
   expect(summaryAudit.exitCode, summaryAudit.stderr.toString()).toBe(0);
   expect(JSON.parse(summaryAudit.stdout.toString())).toEqual({
-    B13: "51",
-    B14: "38",
+    B13: "59",
+    B14: "44",
     B15: "19",
     B16: "3",
   });

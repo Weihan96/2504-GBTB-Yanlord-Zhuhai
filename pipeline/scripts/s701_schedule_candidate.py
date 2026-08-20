@@ -171,6 +171,26 @@ def build_rows(root: Path, ifc_hash: str) -> tuple[list[dict[str, str]], dict[st
             item["source_ids"], "owner_selected_custom_direction_shop_drawing_pending", ifc_hash,
         ))
 
+    purchased_faucet_ids = {"SAN-023", "SAN-024", "SAN-025"}
+    purchased_faucet_rows = [
+        item for item in equipment
+        if item["equipment_id"] in purchased_faucet_ids and item["schedule_included"] == "yes"
+    ]
+    for item in purchased_faucet_rows:
+        blocking_keys = [
+            requirement["parameter_key"]
+            for requirement in requirements
+            if requirement["equipment_id"] == item["equipment_id"]
+            and requirement["blocks_release"] == "yes"
+        ]
+        result.append(row(
+            f"S701-{item['equipment_id']}", "洁具与排水", item["equipment_id"], item["item_name"],
+            f"已购买，数量 {item['quantity']}；订单款式={item['variant']}",
+            f"项目位置候选={item['use_location_candidate']}；{item['model']}",
+            "、".join(blocking_keys),
+            item["source_ids"], "purchased_delivery_unverified_installation_pending", ifc_hash,
+        ))
+
     for item in read_csv(sources["wfin"]):
         if item["issue_id"] not in {"WFIN-R02", "WFIN-R03", "WFIN-R05"}:
             continue
