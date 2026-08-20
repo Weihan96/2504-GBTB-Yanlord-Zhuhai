@@ -116,7 +116,7 @@ test("compiler preserves decision status and evidence-gated closeout status", ()
   for (const [key, path] of Object.entries(sources)) expect(sha256(path)).toBe(sourceHashes[key]);
 });
 
-test("all current INT1 blockers form nineteen stable and lossless review packages", () => {
+test("all current INT1 blockers form twenty-two stable and lossless review packages", () => {
   const { process, jsonOutput } = runCompiler();
   expect(process.exitCode, process.stderr.toString()).toBe(0);
   const report = JSON.parse(readFileSync(jsonOutput, "utf8"));
@@ -130,7 +130,7 @@ test("all current INT1 blockers form nineteen stable and lossless review package
     .flatMap((row: any) => row.requirement_ids)
     .filter((requirementId: string) => currentInt1Set.has(requirementId))
     .sort();
-  expect(packages).toHaveLength(19);
+  expect(packages).toHaveLength(22);
   expect(projected).toEqual(currentInt1);
   expect(new Set(projected).size).toBe(projected.length);
   for (const reviewPackage of packages) {

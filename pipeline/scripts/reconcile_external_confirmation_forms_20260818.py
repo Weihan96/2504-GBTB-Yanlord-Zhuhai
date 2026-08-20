@@ -540,6 +540,54 @@ def reconcile_source_register() -> None:
         "model_scope": "280M-S3",
         "notes": "结合 DNAKE-280M-S3-OFFICIAL-20260819 识别准确型号；照片中的网络地址不投影。",
     })
+    remote_owner_sources = [
+        {
+            "source_id": "OWNER-KITCHEN-H70FT-20260820",
+            "discipline": "INT1/ELEC",
+            "sheet_id": "I-501/E-303/S-701",
+            "decision_scope": "惠人 H70FT 已购状态与岛台下存放决定",
+            "source_kind": "owner_notion_purchase_and_storage_confirmation",
+            "source_document": "业主 Notion 小家电存放安排＋Codex task 2026-08-20",
+            "source_url": "https://app.notion.com/p/weihanshen/278fda08ab6c800884eecac88b3d871b?source=copy_link",
+            "sha256": "not_applicable_owner_notion_live_page",
+            "locator": "岛台下分组；业主补充准确型号 H70FT",
+            "evidence": "H70FT 已购买；存放在岛台下；设备在台面使用而不是在关闭柜格内运行",
+            "proves": "准确型号、采购事实和存放位置决定",
+            "does_not_prove": "已经到货、实物 W×D×H、拆件高度、重量、电源线、附件包络或柜体加工尺寸",
+            "status": "confirmed_purchase_storage_dimensions_pending",
+            "confidence": "1.00",
+            "review_required": "yes",
+            "formal_ifc_write_allowed": "no",
+            "manufacturer": "HUROM／惠人",
+            "model_scope": "H70FT",
+            "revision": "2026-08-20",
+            "publication_date": "2026-08-20",
+            "notes": "购买不等于到货；存放位置不等于使用位置。",
+        },
+        {
+            "source_id": "OWNER-KITCHEN-TOOLS-PURCHASED-20260820",
+            "discipline": "INT1",
+            "sheet_id": "I-501/S-701",
+            "decision_scope": "八项已购厨房工具与 K-D01～K-D04 抽屉分组",
+            "source_kind": "owner_notion_purchase_list_and_project_storage_decision",
+            "source_document": "业主 Notion 已购厨房工具清单＋09 厨房结论表",
+            "source_url": "https://app.notion.com/p/weihanshen/3c2fda08ab6c80ccad27e0786345dc42?source=copy_link",
+            "sha256": "not_applicable_owner_notion_live_page",
+            "locator": "8 项已购工具；K-D01～K-D04 收纳结论",
+            "evidence": "8 项工具均按已购买处理；项目已决定长工具、酒具、锅具和易碎咖啡器具四类收纳",
+            "proves": "采购事实、数量口径和抽屉功能分组",
+            "does_not_prove": "已经到货、每件准确订单 SKU、完整实物包络、抽屉加工尺寸、导轨或摆样已经通过",
+            "status": "confirmed_purchase_storage_groups_measurement_pending",
+            "confidence": "1.00",
+            "review_required": "yes",
+            "formal_ifc_write_allowed": "no",
+            "revision": "2026-08-20",
+            "publication_date": "2026-08-20",
+            "notes": "未取得可靠尺寸的项目只缺实物测量，不重新开放收纳分组决定。",
+        },
+    ]
+    for values in remote_owner_sources:
+        upsert_full(rows, "source_id", source_record(fields, **values))
     write_csv(path, fields, rows)
 
 
@@ -683,6 +731,106 @@ def reconcile_owner_inputs() -> None:
         "status": "自定义确认",
         "notes": "方向已关闭，不再提供 A/B 方案。中厨 VVD Pewter 60 mm 踢脚保持独立；湿区不套用；准确截面、型材、公差和清洁背衬由 D-601 与 1:1 样板关闭。",
     })
+    update_by_id(rows, "input_id", "APP017-SIEMENS-STACK", {
+        "candidate_value": "WG54M7D20W + WQ55M7U20W；有效净空 650×800×1900 mm；双独立存水弯候选 SKU 5125125938318",
+        "user_value": "洗衣机下、干衣机上；WTZ27510 采用方向；两个侧置 10A 插座共用 C16；蝴蝶门；洗衣和干衣冷凝水分别进独立存水弯后下游合流",
+        "evidence_reference": merge_ids(next(row["evidence_reference"] for row in rows if row["input_id"] == "APP017-SIEMENS-STACK"), "OWNER-PLUM-GEBERIT-DOUBLE-TRAP-20260819"),
+        "notes": "双存水弯拓扑和优先 SKU 已关闭为项目候选；仍缺商家确认两只存水弯准确货号、非吉博力配件、接口、包络、防串水、标高、检修和双机排水试验。",
+    })
+    newly_absorbed_inputs = [
+        {
+            "input_id": "KITCHEN-H70FT-STORAGE",
+            "workstream": "INT1/ELEC",
+            "priority": "P1",
+            "blocks_release": "yes",
+            "question": "已购惠人 H70FT 如何在岛台下存放并在台面安全使用",
+            "candidate_value": "岛台下直立格或全拉出托盘；柜内只存放；台面使用位置设可触及 10A 接地插座",
+            "user_value": "准确型号 H70FT，已经购买，存放位置为岛台下",
+            "unit": "mm",
+            "status": "需证据",
+            "evidence_reference": "OWNER-KITCHEN-H70FT-20260820;OUTBOUND-FORM-KITCHEN-20260818",
+            "source_basis": "业主 Notion 存放安排、业主型号／采购确认和 09 表项目结论",
+            "sync_target": "APP-020;I-501;E-303;S-701",
+            "notes": "采购、型号和存放位置已关闭；只缺到货实测、取放包络、托盘承重、防污垫、湿附件通风和使用位置插座。",
+        },
+        {
+            "input_id": "KITCHEN-TOOLS-DRAWERS",
+            "workstream": "INT1",
+            "priority": "P1",
+            "blocks_release": "yes",
+            "question": "八项已购厨房工具如何进入 K-D01～K-D04 抽屉加工图",
+            "candidate_value": "K-D01 长工具；K-D02 Coravin 酒具；K-D03 奶锅／锅盖；K-D04 HARIO 易碎器具",
+            "user_value": "八项均已购买；收纳分组按 09 表执行，不交给橱柜方重新分配",
+            "unit": "mm",
+            "status": "需证据",
+            "evidence_reference": "OWNER-KITCHEN-TOOLS-PURCHASED-20260820;OUTBOUND-FORM-KITCHEN-20260818",
+            "source_basis": "业主 Notion 已购清单和项目收纳决定",
+            "sync_target": "KTOOL-001..008;I-501;S-701",
+            "notes": "只缺实物 SKU／包络、摆样、抽屉内净尺寸、导轨和承重；不重新开放四类收纳决定。",
+        },
+        {
+            "input_id": "INT1-WINDOW-TREATMENTS",
+            "workstream": "INT1/ELEC/A-104",
+            "priority": "P1",
+            "blocks_release": "yes",
+            "question": "全屋已确认窗饰方向如何形成逐窗报价和安装图",
+            "candidate_value": "公共区 Luminette K5-501；卧室 Silhouette N31-204；厨卫 25 mm 灰黑铝百叶；夜帘 A／B 两案比价",
+            "user_value": "日帘和百叶产品家族／颜色方向确认；夜帘保持 LightLock 优先与 Duolite 对照，尚未终选或下单",
+            "unit": "mm",
+            "status": "需证据",
+            "evidence_reference": "OWNER-INT1-WINDOW-TREATMENTS-20260818",
+            "source_basis": "业主窗饰设计方向和亨特道格拉斯官方产品研究",
+            "sync_target": "WINTR-001..004;A-104;A-106;E-303;I-504;S-701",
+            "notes": "只缺逐窗完成面复尺、分幅、收拢／操作侧、轨道、实体色卡、电源控制、报价和厂家安装图。",
+        },
+        {
+            "input_id": "WIN-CRANK-RETROFIT",
+            "workstream": "A-104/DET1",
+            "priority": "P1",
+            "blocks_release": "yes",
+            "question": "既有窗批量加装手摇开窗器如何完成产品与样板验证",
+            "candidate_value": "机械手摇款；参考厨房既有下轨固定；其余窗约 22 mm 闭合边仅作现场几何依据",
+            "user_value": "采用手摇机械款方向，不增加电源、控制线或智能联动",
+            "unit": "mm",
+            "status": "需证据",
+            "evidence_reference": "OWNER-WIN-CRANK-RETROFIT-20260820;OWNER-WIN-CRANK-PHOTO-01-20260820;OWNER-WIN-CRANK-PHOTO-02-20260820",
+            "source_basis": "业主现场测量、厨房既有实例和业主机械款决定",
+            "sync_target": "WIN-OPENER-001;A-104;D-601;S-701",
+            "notes": "只缺准确产品、推拉力、开启角、孔距、基层／排水腔避让、防水保修和一樘非厨房窗样板。",
+        },
+        {
+            "input_id": "E303-STRONGBOX-IDENTITY",
+            "workstream": "E-303/I-503",
+            "priority": "P2",
+            "blocks_release": "no",
+            "question": "既有强电配电箱铭牌能关闭哪些现状信息",
+            "candidate_value": "三江电气；手写型号 P230、箱号 PX1；铭牌 380/220 V、63 A",
+            "user_value": "按现场照片记录，不把 63 A 当成断路器整定或可增容结论",
+            "unit": "A",
+            "status": "自定义确认",
+            "evidence_reference": "E303-PHOTO-001;E303-PHOTO-002;ELEC-BOX-EVIDENCE-20260820",
+            "source_basis": "业主现场铭牌与正面照片",
+            "sync_target": "ELEC-DB-EXISTING-001;E-303;I-503",
+            "notes": "P230／PX1 为手写识读；如用于订货或更换须近距离复核。",
+        },
+        {
+            "input_id": "E303-STRONGBOX-CAPACITY",
+            "workstream": "E-303",
+            "priority": "P0",
+            "blocks_release": "yes",
+            "question": "装修新增回路前如何核实现有配电箱真实容量和回路余量",
+            "candidate_value": "铭牌 63 A 只描述箱体；不代表总开关整定、导线容量或剩余模数",
+            "user_value": "由电气方打开箱门记录，不凭外壳铭牌判断增容",
+            "unit": "A",
+            "status": "需证据",
+            "evidence_reference": "E303-PHOTO-001;E303-PHOTO-002;ELEC-BOX-EVIDENCE-20260820",
+            "source_basis": "现场铭牌证据边界",
+            "sync_target": "ELEC-DB-EXISTING-001;E-303",
+            "notes": "只缺总开关／分路断路器型号整定、回路标签、导线截面、剩余模数和新增回路负荷计算。",
+        },
+    ]
+    for item in newly_absorbed_inputs:
+        upsert_full(rows, "input_id", {field: item.get(field, "") for field in fields})
 
     sleeve = {field: "" for field in fields}
     sleeve.update({
@@ -848,6 +996,12 @@ def reconcile_closeout_rules() -> None:
         ("E304-CABINET-IDENTITY", "owner_and_site_evidence", "业主/项目内部", "三江电气正面照片和业主确认：箱内无铭牌，当前不为读取背面铭牌拆箱；现状旧箱型号不阻塞按有效安装包络选择新箱", "yes", "现状品牌与旧型号取证边界已关闭。"),
         ("PLUM-PURCHASED-FAUCETS-20260820", "owner_purchase_evidence", "业主/项目内部", "Notion 交易成功订单截图及三款所选外观；各 1 件", "yes", "只关闭已购状态、数量和订单所示款式，不证明原厂身份或安装接口。"),
         ("PLUM-PURCHASED-FAUCETS-INSTALL-20260820", "seller_and_project_installation_evidence", "供货方/给排水设计/全屋定制", "MF287／CZ356／CZ028 准确 SKU、单位、阀体包络、埋深、完成面基准、接口、孔径／中心距和房间映射；P-202/I-502 项目图后供货方按图复核", "no", "MF287 与 CZ028 现有卖家图只关闭系统关系；CZ356 安装图仍缺。"),
+        ("KITCHEN-H70FT-STORAGE", "site_measurement_and_project_detail", "室内设计/橱柜深化/电气设计/现场", "H70FT 到货实测 W×D×H、拆件高度、重量、电源线和附件包络；I-501/E-303 取放、承重、通风、防污和使用插座节点", "no", "采购、型号和岛台下存放位置已关闭。"),
+        ("KITCHEN-TOOLS-DRAWERS", "site_measurement_and_project_detail", "室内设计/橱柜深化/五金/现场", "八项实物 SKU 和包络；K-D01～K-D04 摆样、抽屉内净尺寸、分隔、导轨、承重和取放空间", "no", "四类收纳分组已关闭，不由橱柜方重新分配。"),
+        ("INT1-WINDOW-TREATMENTS", "site_measurement_product_quote_and_shopdrawing", "室内设计/窗饰供应安装/电气设计", "逐窗完成面复尺、分幅、操作与收拢、转角、头轨／侧轨、实体色卡、电源控制、分项报价和厂家安装图", "no", "日帘／百叶方向已确认；夜帘 A／B 两案尚未终选或下单。"),
+        ("WIN-CRANK-RETROFIT", "product_interface_and_mockup_evidence", "门窗／开窗器供应方/工头/物业", "准确手摇器、推拉力、开启角、底座孔距、下轨基层与排水腔避让、防水保修；一樘非厨房窗样板及开关锁闭淋水检查", "no", "机械手摇方向、无电源控制和现场既有下轨实例已关闭。"),
+        ("E303-STRONGBOX-IDENTITY", "owner_and_site_evidence", "项目内部", "现场铭牌和正面照片；P230／PX1 保持手写识读边界", "yes", "只关闭既有箱体可见身份，不证明回路能力。"),
+        ("E303-STRONGBOX-CAPACITY", "site_and_electrical_design_evidence", "电气设计/现场电工", "总开关与分路断路器型号整定、回路标签、导线截面、剩余模数和新增负荷计算", "no", "63 A 箱体铭牌值不得冒充真实容量或可增容结论。"),
     ]
     for input_id, kind, party, evidence, automatic, notes in missing_existing_rules:
         item = {field: "" for field in fields}
@@ -1088,6 +1242,40 @@ def reconcile_equipment() -> None:
         item = {field: "" for field in fields}
         item.update(values)
         upsert_full(rows, "equipment_id", item)
+    newly_absorbed_equipment = [
+        ("APP-020", "APPLIANCE", "juicer", "已购惠人 H70FT 原汁机", "HUROM／惠人", "H70FT", "岛台下存放；台面使用", "purchased_delivery_unverified", "partial", "", "岛台下", "厨房台面", "OWNER-KITCHEN-H70FT-20260820;OUTBOUND-FORM-KITCHEN-20260818", "appliance", "型号、已购和存放位置已确认；到货实测、承重、取放、湿附件通风和使用插座待 I-501／E-303。"),
+        ("KTOOL-001", "KITCHENWARE", "long_utensil", "Dreamfarm Clongs 食品夹", "Dreamfarm", "Clongs", "K-D01 长工具", "purchased_delivery_unverified", "partial", "", "K-D01", "厨房操作台", "OWNER-KITCHEN-TOOLS-PURCHASED-20260820", "owner_kitchen_tool", "已购与收纳分组已关闭；只缺实物包络和抽屉摆样。"),
+        ("KTOOL-002", "KITCHENWARE", "bowl_clip", "Kuhn Rikon 夹碗夹", "Kuhn Rikon", "订单 SKU 待到货复核", "K-D01 长工具", "purchased_delivery_unverified", "partial", "", "K-D01", "厨房操作台", "OWNER-KITCHEN-TOOLS-PURCHASED-20260820", "owner_kitchen_tool", "已购与收纳分组已关闭；准确 SKU 和包络待实物复核。"),
+        ("KTOOL-003", "KITCHENWARE", "wine_preservation", "Coravin Model 6+ 酒具套装", "Coravin", "Model 6+", "K-D02 独立酒具抽／柜格", "purchased_delivery_unverified", "partial", "", "K-D02", "餐厨区", "OWNER-KITCHEN-TOOLS-PURCHASED-20260820", "owner_kitchen_tool", "连原收纳盒独立存放；只缺实物盒尺寸和取放验证。"),
+        ("KTOOL-004", "KITCHENWARE", "wood_utensil_set", "Alessi Pots&Pans 木制厨具三件套", "Alessi", "Pots&Pans 3-piece", "K-D01 长工具", "purchased_delivery_unverified", "partial", "", "K-D01", "厨房操作台", "OWNER-KITCHEN-TOOLS-PURCHASED-20260820", "owner_kitchen_tool", "已购与收纳分组已关闭；只缺实物摆样。"),
+        ("KTOOL-005", "KITCHENWARE", "garlic_press", "Dreamfarm Garject 压蒜器", "Dreamfarm", "Garject", "K-D01 长工具", "purchased_delivery_unverified", "partial", "", "K-D01", "厨房操作台", "OWNER-KITCHEN-TOOLS-PURCHASED-20260820", "owner_kitchen_tool", "已购；设独立短格，只缺实物摆样。"),
+        ("KTOOL-006", "KITCHENWARE", "kitchen_shears", "Dreamfarm Bishears 厨房剪", "Dreamfarm", "Bishears", "K-D01 长工具", "purchased_delivery_unverified", "partial", "", "K-D01", "厨房操作台", "OWNER-KITCHEN-TOOLS-PURCHASED-20260820", "owner_kitchen_tool", "已购；带护套独立短格，只缺实物摆样。"),
+        ("KTOOL-007", "KITCHENWARE", "saucepan", "不锈钢单柄奶锅与玻璃沥水盖", "订单品牌待实物复核", "订单 SKU 待实物复核", "K-D03 深锅具抽", "purchased_delivery_unverified", "partial", "", "K-D03", "厨房操作台", "OWNER-KITCHEN-TOOLS-PURCHASED-20260820", "owner_kitchen_tool", "锅体平放，玻璃盖软垫竖放；只缺包含锅柄的实测包络。"),
+        ("KTOOL-008", "KITCHENWARE", "coffee_server_set", "HARIO 胡桃木 V60 玻璃套装", "HARIO", "V60 walnut glass set", "K-D04 易碎咖啡器具抽", "purchased_delivery_unverified", "partial", "", "K-D04", "厨房操作台", "OWNER-KITCHEN-TOOLS-PURCHASED-20260820", "owner_kitchen_tool", "已购；防滑软垫和可替换定位块，只缺实物摆样。"),
+        ("WINTR-001", "WINDOW_TREATMENT", "day_shade", "公共区日帘", "Hunter Douglas／亨特道格拉斯", "Luminette 萝美雅 K5-501", "产品家族与颜色方向确认", "not_selected", "partial", "", "", "公共区窗组", "OWNER-INT1-WINDOW-TREATMENTS-20260818", "owner_window_treatment", "未采购；只缺逐窗复尺、分幅、轨道、操作、色卡、报价和安装图。"),
+        ("WINTR-002", "WINDOW_TREATMENT", "day_shade", "卧室日帘", "Hunter Douglas／亨特道格拉斯", "Silhouette 丝络雅 N31-204", "产品家族与颜色方向确认", "not_selected", "partial", "", "", "卧室窗组", "OWNER-INT1-WINDOW-TREATMENTS-20260818", "owner_window_treatment", "未采购；只缺逐窗复尺、分幅、轨道、操作、色卡、报价和安装图。"),
+        ("WINTR-003", "WINDOW_TREATMENT", "wet_room_blind", "厨卫防潮百叶", "品牌待报价", "25 mm 铝百叶", "灰黑色方向确认", "not_selected", "partial", "", "", "厨卫窗组", "OWNER-INT1-WINDOW-TREATMENTS-20260818", "owner_window_treatment", "未采购；只缺逐窗复尺、耐湿样品、操作方式和安装图。"),
+        ("WINTR-004", "WINDOW_TREATMENT", "bedroom_blackout", "卧室夜间遮光系统", "Hunter Douglas／亨特道格拉斯", "Duette LightLock（优先） / Silhouette Duolite（对照）", "两案比价，尚未终选", "not_selected", "candidate", "", "", "卧室窗组", "OWNER-INT1-WINDOW-TREATMENTS-20260818", "owner_window_treatment", "候选不是已选或已购；只缺实体遮光比较、报价和安装节点后的终选。"),
+        ("WIN-OPENER-001", "DOOR_WINDOW", "manual_window_opener", "既有窗手摇开窗器改造", "准确产品待样板", "mechanical crank opener", "纯机械，不加电源与智能联动", "candidate", "partial", "", "", "非厨房既有窗，先做一樘样板", "OWNER-WIN-CRANK-RETROFIT-20260820;OWNER-WIN-CRANK-PHOTO-01-20260820;OWNER-WIN-CRANK-PHOTO-02-20260820", "owner_window_hardware", "22 mm 仅为现场几何依据；准确产品、受力、孔距、排水腔避让、防水保修和样板待关闭。"),
+        ("ELEC-DB-EXISTING-001", "ELECTRICAL", "distribution_box", "既有强电配电箱", "深圳市三江电气有限公司", "P230（手写识读）", "箱号 PX1；铭牌 380/220 V、63 A", "existing", "partial", "", "", "玄关高柜现状强电箱", "E303-PHOTO-001;E303-PHOTO-002;ELEC-BOX-EVIDENCE-20260820", "owner_existing_equipment", "63 A 是箱体铭牌观察值，不是总开关整定、导线容量或可增容结论。"),
+        ("HVAC-INS-EXISTING-001", "HVAC", "pipe_insulation", "既有华美 Class 1 橡塑保温管套", "Huamei／华美", "Class 1 Rubber Foam", "现场观察 11 种 ID×TK；逐段对应待施工开放", "existing", "ifc_observed", "", "", "开发商既有空调管路", "OWNER-HVAC-INSULATION-PHOTOS-20260819;HUAMEI-CLASS1-OFFICIAL-20260819", "hvac_insulation", "现场规格不是本项目最终计算厚度；最终按珠海露点、管温、导热系数、防火和逐段管径计算。"),
+        ("PLUM-LAUNDRY-TRAP-001", "DRAINAGE", "double_appliance_trap", "洗烘双独立存水弯组合候选", "良舍高端进口卫浴（非吉博力官方旗舰店）", "Taobao item 703917654224 / SKU 5125125938318", "两台设备各自独立存水弯后下游合流", "candidate", "partial", "", "", "洗衣区墙排", "OWNER-PLUM-GEBERIT-DOUBLE-TRAP-20260819", "owner_product_component", "优先比选 SKU，不写成吉博力原厂套装或已采购；准确零件、接口、水封、防串水、标高、检修和双机试验待按图复核。"),
+    ]
+    for equipment_id, domain, category, item_name, manufacturer, model, variant, procurement, decision, storage_candidate, storage_confirmed, use_confirmed, source_ids, legacy_kind, notes in newly_absorbed_equipment:
+        item = {field: "" for field in fields}
+        item.update({
+            "equipment_id": equipment_id, "domain": domain, "category": category,
+            "item_name": item_name, "manufacturer": manufacturer, "model": model,
+            "variant": variant, "quantity": "1", "procurement_status": procurement,
+            "decision_status": decision, "storage_location_candidate": storage_candidate,
+            "storage_location_confirmed": storage_confirmed, "use_location_confirmed": use_confirmed,
+            "schedule_included": "no" if equipment_id == "ELEC-DB-EXISTING-001" else "yes",
+            "selector_kind": "logical_input", "selector_value": equipment_id,
+            "source_ids": source_ids, "identity_basis": notes, "confidence": "1.00",
+            "human_review_required": "yes", "legacy_kind": legacy_kind,
+            "legacy_id": equipment_id, "notes": notes,
+        })
+        upsert_full(rows, "equipment_id", item)
     for row in rows:
         if row["equipment_id"] == "APP-014":
             row["source_ids"] = merge_ids(row["source_ids"], "OWNER-APP014-REPLACEABLE-SLEEVE-20260817")
@@ -1260,6 +1448,80 @@ def reconcile_requirements() -> None:
             update_by_id(rows, "requirement_id", req_id, item)
         else:
             rows.append(item)
+    update_by_id(rows, "requirement_id", "REQ-APP017-OWNER-20260818-003", {
+        "value_text": "candidate Taobao item 703917654224 / SKU 5125125938318; two independent traps then downstream merge",
+        "value_origin": "seller_installation_image",
+        "status": "candidate",
+        "source_id": "OWNER-PLUM-GEBERIT-DOUBLE-TRAP-20260819",
+        "source_locator": "商家双存水弯组合图",
+        "blocks_release": "yes",
+        "notes": "不再写成完全 unknown；该 SKU 是优先候选，含非吉博力原厂配件，准确零件、接口、水封、包络、标高和双机试验待按图复核。",
+    })
+    absorbed_requirements = []
+    def add_absorbed(req_id, equipment_id, discipline, key, value, origin, status, source_id, blocks, notes, number="", unit=""):
+        origin = {
+            "owner_confirmation": "user_input", "owner_decision": "user_input",
+            "project_decision": "project_candidate", "owner_candidate_seller_evidence": "seller_installation_image",
+            "official_product_family": "official_model_family", "engineering_calculation": "project_candidate",
+            "project_requirement": "project_candidate",
+        }.get(origin, origin)
+        status = "observed" if status == "ifc_observed" else status
+        absorbed_requirements.append((req_id, equipment_id, discipline, key, value, number, unit, origin, status, source_id, blocks, notes))
+
+    add_absorbed("REQ-APP020-001", "APP-020", "PROCUREMENT", "purchase_status", "purchased; delivery not evidenced", "owner_confirmation", "confirmed", "OWNER-KITCHEN-H70FT-20260820", "no", "已购不等于已到货。")
+    add_absorbed("REQ-APP020-002", "APP-020", "INT1", "storage_location", "VVD island base; storage only", "owner_decision", "confirmed", "OWNER-KITCHEN-H70FT-20260820", "no", "岛台下存放已关闭，不在关闭柜格内运行。")
+    add_absorbed("REQ-APP020-003", "APP-020", "INT1", "arrival_dimensions_weight_and_accessories", "unknown", "pending", "pending", "OWNER-KITCHEN-H70FT-20260820", "yes", "实测整机 W×D×H、拆投料筒后高度、重量、电源线和附件盒。")
+    add_absorbed("REQ-APP020-004", "APP-020", "INT1", "storage_detail", "front-access upright bay or full-extension tray; load, anti-soil mat and wet-accessory ventilation required", "project_decision", "confirmed", "OUTBOUND-FORM-KITCHEN-20260818", "yes", "由 I-501 给出净尺寸、导轨和取放路线后可加工。")
+    add_absorbed("REQ-APP020-005", "APP-020", "ELEC", "use_power_location", "accessible 10 A earthed socket at countertop use position; no default socket in storage-only bay", "project_decision", "confirmed", "OUTBOUND-FORM-KITCHEN-20260818", "yes", "实购插头与功率待到货复核，不预留给排水。")
+
+    tool_names = {
+        "KTOOL-001": ("K-D01", "Dreamfarm Clongs"), "KTOOL-002": ("K-D01", "Kuhn Rikon bowl clip"),
+        "KTOOL-003": ("K-D02", "Coravin Model 6+"), "KTOOL-004": ("K-D01", "Alessi Pots&Pans 3-piece"),
+        "KTOOL-005": ("K-D01", "Dreamfarm Garject"), "KTOOL-006": ("K-D01", "Dreamfarm Bishears"),
+        "KTOOL-007": ("K-D03", "saucepan and glass lid"), "KTOOL-008": ("K-D04", "HARIO V60 walnut glass set"),
+    }
+    for index, (equipment_id, (drawer, identity)) in enumerate(tool_names.items(), 1):
+        add_absorbed(f"REQ-KTOOL-{index:03d}-01", equipment_id, "PROCUREMENT", "purchase_status", "purchased; delivery not evidenced", "owner_confirmation", "confirmed", "OWNER-KITCHEN-TOOLS-PURCHASED-20260820", "no", f"{identity} 已购；未证明已到货。")
+        add_absorbed(f"REQ-KTOOL-{index:03d}-02", equipment_id, "INT1", "storage_group", drawer, "project_decision", "confirmed", "OWNER-KITCHEN-TOOLS-PURCHASED-20260820", "no", "抽屉分组已关闭，不交给橱柜方重新分配。")
+        add_absorbed(f"REQ-KTOOL-{index:03d}-03", equipment_id, "INT1", "arrival_envelope_and_drawer_mockup", "unknown", "pending", "pending", "OWNER-KITCHEN-TOOLS-PURCHASED-20260820", "yes", "到货后记录准确 SKU／包络，在 I-501 冻结前完成八件实物摆样和导轨承重复核。")
+
+    window_values = {
+        "WINTR-001": "Luminette K5-501 public-area day shade",
+        "WINTR-002": "Silhouette N31-204 bedroom day shade",
+        "WINTR-003": "25 mm grey-black aluminium blind for kitchen and bathrooms",
+        "WINTR-004": "Duette LightLock preferred / Silhouette Duolite comparison; not finally selected",
+    }
+    for index, (equipment_id, value) in enumerate(window_values.items(), 1):
+        status = "candidate" if equipment_id == "WINTR-004" else "confirmed"
+        add_absorbed(f"REQ-WINTR-{index:03d}-01", equipment_id, "INT1", "product_family_colour_direction", value, "owner_decision", status, "OWNER-INT1-WINDOW-TREATMENTS-20260818", "no", "产品方向不等于已选 SKU、已报价或已下单。")
+        add_absorbed(f"REQ-WINTR-{index:03d}-02", equipment_id, "INT1/ELEC", "finished_measure_split_control_track_shopdrawing", "unknown", "pending", "pending", "OWNER-INT1-WINDOW-TREATMENTS-20260818", "yes", "逐窗复尺、分幅、收拢／操作侧、头轨／侧轨、电源控制、色卡、报价和安装图统一关闭。")
+
+    add_absorbed("REQ-WINOPENER-001", "WIN-OPENER-001", "ARCH", "operation_and_power", "manual mechanical crank; no power, controls or smart linkage", "owner_decision", "confirmed", "OWNER-WIN-CRANK-RETROFIT-20260820", "no", "机械方向已关闭。")
+    add_absorbed("REQ-WINOPENER-002", "WIN-OPENER-001", "ARCH", "observed_closed_edge", "", "site_observed", "ifc_observed", "OWNER-WIN-CRANK-PHOTO-01-20260820", "no", "约 22 mm 只作研究依据，不直接下料。", "22", "mm")
+    add_absorbed("REQ-WINOPENER-003", "WIN-OPENER-001", "ARCH", "exact_product_force_angle_hole_spacing_substrate_waterproof_mockup", "unknown", "pending", "pending", "OWNER-WIN-CRANK-RETROFIT-20260820", "yes", "一樘非厨房窗样板同时验证锁闭、排水腔避让、淋水和保修。")
+
+    add_absorbed("REQ-ELECDB-001", "ELEC-DB-EXISTING-001", "ELEC", "nameplate_identity", "Sanjiang Electric; handwritten P230; box PX1; 380/220 V", "site_observed", "confirmed", "E303-PHOTO-001", "no", "P230／PX1 为手写识读，订货或更换前近距复核。")
+    add_absorbed("REQ-ELECDB-002", "ELEC-DB-EXISTING-001", "ELEC", "box_nameplate_current", "", "site_observed", "ifc_observed", "E303-PHOTO-001", "no", "箱体铭牌值，不是断路器整定或可增容结论。", "63", "A")
+    add_absorbed("REQ-ELECDB-003", "ELEC-DB-EXISTING-001", "ELEC", "actual_breakers_wiring_modules_and_capacity", "unknown", "pending", "pending", "ELEC-BOX-EVIDENCE-20260820", "yes", "打开箱门记录总开关、分路、导线截面、剩余模数并完成新增负荷计算。")
+
+    for index, spec in enumerate(("6x15", "10x15", "13x9", "13x15", "16x9", "16x15", "16x20", "20x15", "25x15", "32x9", "32x15"), 1):
+        add_absorbed(f"REQ-HVACINS-{index:03d}", "HVAC-INS-EXISTING-001", "HVAC", f"observed_id_x_tk_{index:02d}", spec, "site_observed", "ifc_observed", "OWNER-HVAC-INSULATION-PHOTOS-20260819", "no", "ID=内径，TK=单边壁厚；只证明现场出现过该规格。")
+    add_absorbed("REQ-HVACINS-020", "HVAC-INS-EXISTING-001", "HVAC", "official_product_boundary", "Huamei Class 1; lambda at 0 C <=0.034 W/(m.K); B1; standards per official source", "official_product_family", "confirmed", "HUAMEI-CLASS1-OFFICIAL-20260819", "no", "官方产品族性能不代表本项目逐段选型。")
+    add_absorbed("REQ-HVACINS-021", "HVAC-INS-EXISTING-001", "HVAC", "final_segment_pipe_and_insulation_schedule", "unknown", "engineering_calculation", "pending", "OWNER-HVAC-INSULATION-PHOTOS-20260819", "yes", "由 M-401 按珠海露点、管温、导热系数、防火与逐段管径计算，再由日立／安装方按图复核。")
+
+    add_absorbed("REQ-LAUNDRYTRAP-001", "PLUM-LAUNDRY-TRAP-001", "PLUM", "candidate_sku_and_topology", "Taobao item 703917654224 / SKU 5125125938318; two independent traps then downstream merge", "owner_candidate_seller_evidence", "candidate", "OWNER-PLUM-GEBERIT-DOUBLE-TRAP-20260819", "no", "优先比选，未采购，不是吉博力原厂成套批准。")
+    add_absorbed("REQ-LAUNDRYTRAP-002", "PLUM-LAUNDRY-TRAP-001", "PLUM", "exact_parts_interfaces_water_seal_envelope_and_height", "unknown", "pending", "pending", "OWNER-PLUM-GEBERIT-DOUBLE-TRAP-20260819", "yes", "项目先出 P-201／I-503 联合剖面，再由商家与西门子对图确认。")
+    add_absorbed("REQ-LAUNDRYTRAP-003", "PLUM-LAUNDRY-TRAP-001", "PLUM", "anti_crossflow_access_and_two_machine_test", "required", "project_requirement", "pending", "OWNER-PLUM-GEBERIT-DOUBLE-TRAP-20260819", "yes", "施工后同时排水试验，检查不串水、不溢水、可清扫和可更换。")
+
+    for req_id, equipment_id, discipline, key, value, number, unit, origin, status, source_id, blocks, notes in absorbed_requirements:
+        item = {field: "" for field in fields}
+        item.update({
+            "requirement_id": req_id, "equipment_id": equipment_id, "discipline": discipline,
+            "parameter_key": key, "value_text": value, "value_number": number, "unit": unit,
+            "value_origin": origin, "status": status, "source_id": source_id,
+            "source_locator": "2026-08-20 SSOT absorption", "blocks_release": blocks, "notes": notes,
+        })
+        upsert_full(rows, "requirement_id", item)
     write_csv(path, fields, rows)
 
 
@@ -1267,19 +1529,20 @@ def reconcile_secondary_projections() -> None:
     drawing_path = DECISIONS / "drawing-register.csv"
     drawing_fields, drawing_rows = read_csv(drawing_path)
     drawing_notes = {
-        "P-201": "Foster 1014850 官方参数已机械关闭；洗烘采用两台设备各自独立存水弯的双存水弯候选 SKU 5125125938318，但包含非吉博力原厂配件，须在项目剖面后复核兼容、防串水、标高和检修。600 mm 石材盆由项目先画联合剖面，不交给外部单位代设计。APP-016 保留 F50 基准候选并与 Franke Slim 50 CN 比较；未提供的中心、管径和路线继续不猜。",
-        "E-303": "设备插头、墙面插座、支路保护和独立回路继续分开表达。烤箱为 16A 插头／插座＋独立 C16；洗烘为两个 10A 插座共用一路 C16；冰淇淋机按 500×450×450 mm 家用候选包络、可拔插 10A 插座和散热条件预留，准确功率仍按实购型号关闭。APP-016 F50 未否决，Franke Slim 50 CN 只作比较候选；最终未选前不冻结法兰、开孔或接口中心。",
+        "P-201": "Foster 1014850 官方参数已机械关闭；洗烘采用两台设备各自独存水弯后下游合流的双存水弯方向，优先比选 Taobao item 703917654224 / SKU 5125125938318。该组合未采购且包含非吉博力原厂配件；项目先出 P-201／I-503 联合剖面，商家与西门子再对图复核零件、接口、水封、防串水、标高、检修和双机试验。600 mm 石材盆由项目先画联合剖面。APP-016 保留 F50 基准候选并与 Franke Slim 50 CN 比较；说明书未给的中心和路线继续不猜。",
+        "E-303": "设备插头、墙面插座、支路保护和独立回路分开表达。烤箱为 16A 插头／插座＋独立 C16；洗烘为两个 10A 插座共用一路 C16；冰淇淋机按家用候选包络预留。已购 H70FT 仅在台面使用位设可触及 10A 接地插座，纯存放柜格不默认加插座。既有强电箱为三江电气，手写 P230／PX1，铭牌 380/220 V、63 A；63 A 不得写成断路器整定或可增容结论，须由现场取证箱内断路器、导线、模数并计算负荷。",
         "E-304": "两个吸顶 AP 采用 Cat6 星型回弱电箱 PoE 拓扑；优先候选更新为 TP-Link TL-XAP1500GE-PoE/DC 易展版，准确外形 Ø184×40 mm、开孔 Ø155 mm、802.3at PoE、最大 11.1 W。现有对讲按 DNAKE 280M-S3 识别；型号不再询问，只补实际供电／端子、物业保留复装条件。弱电箱按有效安装包络、被动风道和可加装 120 mm 级风扇节点深化。",
-        "M-401": "A01/A04 为开发商既有 RPIZ-22FSLN5QD/P；A02/A03 为既有 RPIZ-22FSLN5QDF/P，正式 IFC 镜像关系由业主确认正确；A05 现场铭牌为 RPIZ-71FSLN5QD/P；A06 机位已定，施工开放遮挡后再绑定铭牌。华美 Class 1 现场存在 9／15／20 mm 多种壁厚，项目逐段画裸管、套管和完成外径；回风口兼检修口，冷凝水路线与支吊架由项目出图、竣工按标高验收。客厅 L 形转角送风口保留为造型方向，须以风量、静压、噪声、有效开口、型材、转角压损和检修核算关闭。说明书未给的接口中心继续不猜。",
+        "M-401": "A01/A04 为开发商既有 RPIZ-22FSLN5QD/P；A02/A03 为既有 RPIZ-22FSLN5QDF/P，正式 IFC 镜像关系正确；A05 现场铭牌为 RPIZ-71FSLN5QD/P；A06 施工开放遮挡后再绑定铭牌。华美 Class 1 现场观察到 6×15、10×15、13×9、13×15、16×9、16×15、16×20、20×15、25×15、32×9、32×15 mm 的 ID×TK 规格；这些是既有现场观察，不是最终设计厚度。项目须按珠海露点、管温、导热系数、防火和逐段管径计算，分列裸管外径、保温壁厚和完成外径，再由日立／安装方按图复核。回风口兼检修口，冷凝水路线和管箍标高由项目出图、竣工验收。说明书未给的接口中心继续不猜。",
         "D-601": "干区墙脚采用业主已确认的原参考方向：墙面同色齐平宽踢脚，上下各约 10 mm 阴影缝，门套／隐形门／柜体连续通缝；不再作为 A/B 候选。D-601 仍须输出 1:5 截面、基层型材、公差、清洁背衬和转角展开并做 1:1 样板。中厨 VVD Pewter 60 mm 与湿区保持独立。",
-        "S-701": "门、厨房、给排水、弱电和材料均按现行九份结论表投影。APP-016 中 F50 保留为基准候选，Franke Slim 50 CN 为 365 mm 高比较候选；APP-019 按 500×450×450 mm 家用设备包络预留；AP 优先 TP-Link TL-XAP1500GE；对讲为既有 DNAKE 280M-S3；干区双阴影缝和客卫台盆左侧服务塔为项目方向。不是下单表，产品候选不得写成已购。",
+        "S-701": "排程表同步登记 APP-020 惠人 H70FT（已购、到货未证）、八项已购厨房工具及 K-D01～K-D04 收纳分组、全屋窗饰方向、手摇开窗器改造、既有华美保温观察和洗烘双存水弯候选。夜帘、开窗器和双存水弯仍是候选，不得写成已选、已购或已批准；现场保温管套不得冒充最终设计厚度。",
     }
     for sheet, notes in drawing_notes.items():
         update_by_id(drawing_rows, "sheet_number", sheet, {"notes": notes})
     legacy_drawing_notes = {
         "A-105": "旧稿阳台塑木地板方向已登记；准确产品、完成面高度、排水、检修、收边、防火和耐候未关闭。公共区旧稿灰白洞石视觉与现行银白洞石岩板属于同向材料深化，不视为冲突。",
-        "A-106": "旧稿厨房木饰面拼板、卫浴／阳台木条拼缝隐藏检修、反灯槽型材、200 mm 客厅窗帘盒和酒架上方加固方向已吸收；材料防火防潮、基层、五金、检修路线、窗饰／灯光／风口协调及加固计算待项目节点。",
-        "I-501": "旧稿顶天立地酒架上方约 1300 mm 范围的加固意图已登记；最终按酒架自重、满载、顶部固定和吊顶体系出联合节点，不得只靠饰面板。",
+        "A-106": "旧稿厨房木饰面拼板、卫浴／阳台木条拼缝隐藏检修、反灯槽型材、200 mm 客厅窗帘盒和酒架上方加固方向已吸收。窗饰同步采用公共区 Luminette K5-501、卧室 Silhouette N31-204、厨卫 25 mm 灰黑铝百叶方向；夜帘为 LightLock 优先与 Duolite 对照，未终选或下单。完成面复尺、分幅、轨道、收拢、电源、色卡、报价和安装图待逐窗关闭。",
+        "I-501": "旧稿酒架上方约 1300 mm 加固意图已登记；最终按自重、满载、顶部固定和吊顶体系出联合节点。已购惠人 H70FT 确认存放于岛台下，应画正面取放直立格／全拉出托盘、承重、防污垫和湿附件通风；八项已购工具按 K-D01 长工具、K-D02 Coravin、K-D03 锅具／锅盖、K-D04 HARIO 易碎器具画抽屉及摆样，不交给橱柜方重新分配。",
+        "A-104": "全屋窗饰方向已确认但未下单，逐窗完成面、分幅和轨道等待厂家图关闭。既有窗增设纯机械手摇开窗器，不设电源和智能联动；约 22 mm 闭合边只作研究依据，须以准确产品和一樘非厨房窗样板关闭受力、孔距、排水腔避让、防水与保修。",
         "I-504": "旧稿次卧飘窗落地浅色木、客厅飘窗木盒与大白墙脱缝齐平的意图已登记；防潮、日晒、基层、伸缩、检修和窗边防水待平立剖与节点。",
     }
     for sheet, sentence in legacy_drawing_notes.items():

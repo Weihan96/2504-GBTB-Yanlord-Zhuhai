@@ -1,5 +1,5 @@
 {
-  "schema_version": "1.1.0",
+  "schema_version": "1.2.0",
   "tables": {
     "equipment-register.csv": {
       "primary_key": "equipment_id",
@@ -13,7 +13,7 @@
       ],
       "required": ["equipment_id", "domain", "item_name", "decision_status", "schedule_included", "human_review_required"],
       "enums": {
-        "domain": ["APPLIANCE", "NETWORK", "HVAC", "FURNITURE", "SANITARY", "DRAINAGE", "DOOR_WINDOW", "SAFETY", "ASSEMBLY"],
+        "domain": ["APPLIANCE", "KITCHENWARE", "NETWORK", "HVAC", "ELECTRICAL", "FURNITURE", "WINDOW_TREATMENT", "SANITARY", "DRAINAGE", "DOOR_WINDOW", "SAFETY", "ASSEMBLY"],
         "procurement_status": ["", "not_selected", "candidate", "selected", "purchased_delivery_unverified", "purchased_arrived", "existing", "not_applicable"],
         "decision_status": ["pending", "partial", "confirmed", "ifc_observed", "candidate", "superseded"],
         "schedule_included": ["yes", "no"],

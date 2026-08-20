@@ -29,10 +29,10 @@ test("equipment SSOT validates projections and covers every scoped IFC object", 
     master_count: csvRecordCount(resolve(root, "pipeline/decisions/equipment-register.csv")),
     requirement_count: csvRecordCount(resolve(root, "pipeline/decisions/equipment-installation-requirements.csv")),
     source_count: csvRecordCount(resolve(root, "pipeline/decisions/source-evidence-register.csv")),
-    schema_version: "1.1.0",
+    schema_version: "1.2.0",
   });
   expect(report.projections).toMatchObject({
-    appliance_rows: 19,
+    appliance_rows: 20,
     furniture_rows: 9,
     elec_evidence_rows: 69,
     hvac_evidence_rows: 4,
@@ -85,7 +85,7 @@ def rows(path):
     with open(path,encoding="utf-8-sig",newline="") as stream:
         return list(csv.DictReader(stream))
 masters=rows(sys.argv[1]); requirements=rows(sys.argv[2]); sources=rows(sys.argv[3]); rules=rows(sys.argv[4])
-ids={"APP-004","APP-005","APP-011","APP-014","APP-015","APP-016","APP-017","APP-019","SAN-023","SAN-024","SAN-025","CTRL-ENTRY-A","NET-AP-R09","NET-AP-R14","SENSOR-GAS-R04","SENSOR-001"}
+ids={"APP-004","APP-005","APP-011","APP-014","APP-015","APP-016","APP-017","APP-019","APP-020","KTOOL-001","KTOOL-008","WINTR-004","WIN-OPENER-001","ELEC-DB-EXISTING-001","HVAC-INS-EXISTING-001","PLUM-LAUNDRY-TRAP-001","SAN-023","SAN-024","SAN-025","CTRL-ENTRY-A","NET-AP-R09","NET-AP-R14","SENSOR-GAS-R04","SENSOR-001"}
 print(json.dumps({
   "masters":[row for row in masters if row["equipment_id"] in ids],
   "requirements":[row for row in requirements if row["equipment_id"] in ids],
@@ -223,6 +223,23 @@ print(json.dumps({
     status: "confirmed_owner_input_identity_only",
     formal_ifc_write_allowed: "no",
   });
+  expect(master("APP-020")).toMatchObject({
+    model: "H70FT", procurement_status: "purchased_delivery_unverified",
+    storage_location_confirmed: "岛台下", use_location_confirmed: "厨房台面",
+  });
+  expect(requirement("APP-020", "arrival_dimensions_weight_and_accessories")).toMatchObject({ status: "pending", blocks_release: "yes" });
+  for (const id of ["KTOOL-001", "KTOOL-008"]) {
+    expect(master(id)).toMatchObject({ procurement_status: "purchased_delivery_unverified", decision_status: "partial" });
+    expect(requirement(id, "storage_group")).toMatchObject({ status: "confirmed", blocks_release: "no" });
+  }
+  expect(master("WINTR-004")).toMatchObject({ procurement_status: "not_selected", decision_status: "candidate" });
+  expect(master("WIN-OPENER-001")).toMatchObject({ procurement_status: "candidate", decision_status: "partial" });
+  expect(requirement("ELEC-DB-EXISTING-001", "box_nameplate_current")).toMatchObject({ value_number: "63", status: "observed", blocks_release: "no" });
+  expect(requirement("ELEC-DB-EXISTING-001", "actual_breakers_wiring_modules_and_capacity")).toMatchObject({ value_text: "unknown", status: "pending", blocks_release: "yes" });
+  expect(requirement("HVAC-INS-EXISTING-001", "observed_id_x_tk_01")).toMatchObject({ value_text: "6x15", status: "observed", blocks_release: "no" });
+  expect(requirement("HVAC-INS-EXISTING-001", "final_segment_pipe_and_insulation_schedule")).toMatchObject({ value_text: "unknown", status: "pending", blocks_release: "yes" });
+  expect(master("PLUM-LAUNDRY-TRAP-001")).toMatchObject({ procurement_status: "candidate", decision_status: "partial" });
+  expect(requirement("APP-017", "dedicated_wall_drain_product")).toMatchObject({ status: "candidate", blocks_release: "yes" });
 
   expect(master("CTRL-ENTRY-A")).toMatchObject({ procurement_status: "candidate", decision_status: "candidate" });
   expect(master("CTRL-ENTRY-A")?.source_ids).toContain("ZOYLIGHT-D1-20250815-001");

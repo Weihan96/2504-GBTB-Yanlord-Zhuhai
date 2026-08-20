@@ -203,6 +203,33 @@ INT1_PACKAGES = (
         "responsible_party": "消防/设备方/建筑设计",
         "required_evidence": "消防或设备方确认最终探测类型、准确型号、供电通信、安装禁距和装饰收口许可",
     },
+    {
+        "package_id": "INT1-H70FT-STORAGE",
+        "title": "惠人 H70FT 岛台下存放节点",
+        "equipment_ids": {"APP-020"},
+        "root_cause": "型号、已购和岛台下存放已确认，但到货实物包络与柜体节点未冻结",
+        "affected_sheets": ["I-501", "E-303", "S-701"],
+        "responsible_party": "室内设计/橱柜深化/电气设计/现场",
+        "required_evidence": "到货实测、取放包络、托盘承重、防污与湿附件通风；I-501/E-303 项目图",
+    },
+    {
+        "package_id": "INT1-KITCHEN-TOOLS-DRAWERS",
+        "title": "已购厨房工具 K-D01～K-D04 抽屉深化",
+        "equipment_ids": {f"KTOOL-{index:03d}" for index in range(1, 9)},
+        "root_cause": "八项已购与四类收纳分组已关闭，但到货实物包络、摆样和五金未冻结",
+        "affected_sheets": ["I-501", "S-701"],
+        "responsible_party": "室内设计/橱柜深化/五金/现场",
+        "required_evidence": "八项实物 SKU／包络、抽屉内净尺寸、分隔摆样、导轨与承重；I-501 加工图",
+    },
+    {
+        "package_id": "INT1-WINDOW-TREATMENTS",
+        "title": "全屋窗饰逐窗深化",
+        "equipment_ids": {"WINTR-001", "WINTR-002", "WINTR-003", "WINTR-004"},
+        "root_cause": "日帘／百叶产品方向已关闭，夜帘为两案比较；逐窗完成面与安装系统未冻结",
+        "affected_sheets": ["A-104", "A-106", "E-303", "I-504", "S-701"],
+        "responsible_party": "室内设计/窗饰供应安装/电气设计",
+        "required_evidence": "逐窗复尺、分幅、操作与收拢侧、轨道、色卡、电源控制、分项报价和安装图",
+    },
 )
 
 

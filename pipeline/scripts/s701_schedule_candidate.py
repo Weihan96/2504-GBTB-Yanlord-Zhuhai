@@ -133,6 +133,15 @@ def build_rows(root: Path, ifc_hash: str) -> tuple[list[dict[str, str]], dict[st
             ifc_hash,
         ))
 
+    kitchen_tool_rows = [item for item in equipment if item["legacy_kind"] == "owner_kitchen_tool" and item["schedule_included"] == "yes"]
+    for item in kitchen_tool_rows:
+        result.append(row(
+            f"S701-{item['equipment_id']}", "家电与移动厨电", item["equipment_id"], item["item_name"],
+            f"已购；存放分组={item['storage_location_confirmed']}", item["variant"],
+            "到货实物 SKU／包络、抽屉内净尺寸、摆样、导轨与承重",
+            item["source_ids"], "purchased_delivery_unverified_storage_group_confirmed", ifc_hash,
+        ))
+
     door_window_rows = [item for item in equipment if item["legacy_kind"] == "a104" and item["schedule_included"] == "yes"]
     for item in door_window_rows:
         req = requirements_by_equipment[item["equipment_id"]]
@@ -147,6 +156,23 @@ def build_rows(root: Path, ifc_hash: str) -> tuple[list[dict[str, str]], dict[st
             item["source_ids"], "observed_geometry_hardware_pending", ifc_hash,
         ))
 
+    owner_window_rows = [
+        item for item in equipment
+        if item["legacy_kind"] in {"owner_window_treatment", "owner_window_hardware"}
+        and item["schedule_included"] == "yes"
+    ]
+    for item in owner_window_rows:
+        blocking = [
+            req["parameter_key"] for req in requirements
+            if req["equipment_id"] == item["equipment_id"] and req["blocks_release"] == "yes"
+        ]
+        result.append(row(
+            f"S701-{item['equipment_id']}", "门窗与五金", item["equipment_id"], item["item_name"],
+            item["variant"], f"采购状态={item['procurement_status']}",
+            "、".join(blocking) or "项目安装图与现场复核", item["source_ids"],
+            "owner_direction_detail_pending", ifc_hash,
+        ))
+
     hvac_rows = [item for item in equipment if item["legacy_kind"] == "hvac_interface" and item["ifc_type_global_id"]]
     for item in hvac_rows:
         result.append(row(
@@ -154,6 +180,15 @@ def build_rows(root: Path, ifc_hash: str) -> tuple[list[dict[str, str]], dict[st
             f"当前 IFC 已分配类型；实例数 {item['quantity']}", item["model"],
             "最终精确型号、接口坐标、功率、风量、检修条件", item["source_ids"],
             "observed_type_not_final_selection", ifc_hash,
+        ))
+
+    hvac_insulation_rows = [item for item in equipment if item["legacy_kind"] == "hvac_insulation" and item["schedule_included"] == "yes"]
+    for item in hvac_insulation_rows:
+        result.append(row(
+            f"S701-{item['equipment_id']}", "暖通设备类型", item["equipment_id"], item["item_name"],
+            "现场观察 11 种 ID×TK 规格；华美 Class 1 产品族性能已登记",
+            "现场观察值不是最终设计厚度", "M-401 逐段管径与防结露计算、日立／安装方按图复核",
+            item["source_ids"], "existing_observation_final_schedule_pending", ifc_hash,
         ))
 
     custom_drain_rows = [item for item in equipment if item["legacy_kind"] == "owner_custom_drain" and item["schedule_included"] == "yes"]
@@ -189,6 +224,18 @@ def build_rows(root: Path, ifc_hash: str) -> tuple[list[dict[str, str]], dict[st
             f"项目位置候选={item['use_location_candidate']}；{item['model']}",
             "、".join(blocking_keys),
             item["source_ids"], "purchased_delivery_unverified_installation_pending", ifc_hash,
+        ))
+
+    owner_product_component_rows = [item for item in equipment if item["legacy_kind"] == "owner_product_component" and item["schedule_included"] == "yes"]
+    for item in owner_product_component_rows:
+        blocking_keys = [
+            requirement["parameter_key"] for requirement in requirements
+            if requirement["equipment_id"] == item["equipment_id"] and requirement["blocks_release"] == "yes"
+        ]
+        result.append(row(
+            f"S701-{item['equipment_id']}", "洁具与排水", item["equipment_id"], item["item_name"],
+            item["variant"], f"优先候选={item['model']}；未采购",
+            "、".join(blocking_keys), item["source_ids"], "candidate_project_detail_external_review_pending", ifc_hash,
         ))
 
     for item in read_csv(sources["wfin"]):
