@@ -41,7 +41,7 @@ PLUM-CUSTOM-DRAIN-VENDOR,human_design_selection,业主/给排水设计,业主确
 PLUM-CUSTOM-DRAIN-SHOP-DRAWING,product_interface_evidence,定制地漏商家/给排水设计/防水/现场,商家主体与订单；逐卫生间数量/房间映射/组件清单；准确型号材质表面；总长宽深、排水口径方向、水封、流量、找平层/完成面范围、防水法兰、坡向、检修清洁、排水中心和安装公差的 shop drawing,no,shop drawing 未签认前不替代 Geberit、不改正式 IFC 地漏与坡面。
 WFIN-VVD-FINISH-SCHEDULE,human_design_selection,业主/室内设计,业主确认采用 VVD 产品页第 9 页材料组合及本项目水槽替换关系,no,已由 OWNER-WFIN-VVD-SINKS-20260817 关闭；不等于项目加工图或采购。
 INT1-BATHG-TISSUE-WASTE-SCHEME,human_design_selection,室内设计,I-502 按台盆左侧全高服务塔、优选 400 mm 面宽（350–450 mm 可调）、250–280 mm 深（上限 300 mm）完成平立剖并证明不超过台盆前缘,yes,业主设计决定已关闭；不再让全屋定制或业主二选一。
-INT1-BATHG-TISSUE-WASTE-DETAIL,site_or_drawing_evidence,室内设计/全屋定制/洁具五金/现场,I-502 客卫干区完成面实测＋平立剖＋1:1 五金样板：台盆与 M03 门套/开启包络、柜宽深高、纸巾仓/垃圾仓隔湿、不锈钢内胆、十字铰链/反弹器或抽拉滑轨的型号与承载、开启/抽拉行程、操作高度、满载固定、防潮、通风、清洁检修及与镜柜/给排水的接口,no,不得用 IFC 协调包络、400 mm 优选面宽（或 350–450 mm 候选范围）及 250–280 mm 柜深代替现场尺寸与加工图。
+INT1-BATHG-TISSUE-WASTE-DETAIL,site_or_drawing_evidence,室内设计/全屋定制/洁具五金/现场,I-502 客卫干区完成面实测＋平立剖＋1:1 五金样板：台盆与 M03 门套/开启包络、柜宽深高、纸巾仓/垃圾仓隔湿、不锈钢内胆、十字铰链/反弹器或抽拉滑轨的型号与承载、开启/抽拉行程、操作高度、满载固定、防潮、通风、清洁检修及与镜柜/给排水的接口；若保留 M04 对景墙超薄次选还须关闭门垛净宽、台盆侧缝、160–170 mm 局部柜深、60–90 mm 变深段及镜面反射视线,no,不得用 IFC 协调包络、400 mm 优选面宽（或 350–450 mm 候选范围）、250–280 mm 服务塔柜深、160–170 mm 超薄次选或当前门垛／侧缝估算代替现场尺寸与加工图。
 WFIN-DRY-BASEBOARD-SHADOW-GAP-SCOPE,human_design_selection,室内设计,业主已确认保留原参考：干区墙面同色齐平宽踢脚，上下各约 10 mm 阴影缝，门套／隐形门／柜体连续通缝,yes,方向已关闭；中厨 VVD 60 mm 与湿区另行处理。
 WFIN-DRY-BASEBOARD-SHADOW-GAP-DETAIL,material_and_mockup_evidence,室内设计/墙面施工/全屋定制/现场,D-601 1:5 节点；分房间适用表；踢脚高度厚度材料和颜色；上下阴影缝宽与公差；墙下口型材；门套/隐形门/柜体/转角通缝展开；耐撞、拖地水和积灰清洁实物样板,no,不得按小红书图片直接下单或写正式 IFC。
 PLUM-GEBERIT-CURRENT-USE-20260818,human_design_selection,业主/给排水设计,MS 对 G01-G07、C02 的逐项确认,no,当前用途决定已关闭；采购历史保留。
@@ -64,3 +64,4 @@ INT1-WINDOW-TREATMENTS,site_measurement_product_quote_and_shopdrawing,室内设�
 WIN-CRANK-RETROFIT,product_interface_and_mockup_evidence,门窗／开窗器供应方/工头/物业,准确手摇器、推拉力、开启角、底座孔距、下轨基层与排水腔避让、防水保修；一樘非厨房窗样板及开关锁闭淋水检查,no,机械手摇方向、无电源控制和现场既有下轨实例已关闭。
 E303-STRONGBOX-IDENTITY,owner_and_site_evidence,项目内部,现场铭牌和正面照片；P230／PX1 保持手写识读边界,yes,只关闭既有箱体可见身份，不证明回路能力。
 E303-STRONGBOX-CAPACITY,site_and_electrical_design_evidence,电气设计/现场电工,总开关与分路断路器型号整定、回路标签、导线截面、剩余模数和新增负荷计算,no,63 A 箱体铭牌值不得冒充真实容量或可增容结论。
+INT1-BATH-PLUNGER-HIDDEN-STORAGE,site_or_drawing_evidence,室内设计/全屋定制/洁具五金/现场,在 I-502 主卫与客卫平立剖逐一标出马桶旁隐藏专用柜格；提交最终疏通器实物最大外包络、柜内净宽深高、取用余量、独立隔污、可拆洗接污盘、通风干燥、耐水内衬、隐藏门五金和与马桶／冲水面板／淋浴隔断／房门的全开碰撞检查,no,业主已关闭“必须隐藏收纳”的功能要求；约 200W×200D×650H mm 仅为未选产品时的协调起点，不得代替实物与加工图。
