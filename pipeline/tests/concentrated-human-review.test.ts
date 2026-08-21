@@ -112,6 +112,23 @@ test("compiler preserves decision status and evidence-gated closeout status", ()
   expect(report.summary.unmapped_blocker_count).toBe(0);
   expect(report.summary.review_item_count).toBe(report.review_items.length);
   expect(report.summary.open_root_review_item_count).toBe(report.review_items.length);
+  expect(report.summary.recovery_stream_counts).toEqual({
+    authority_review: 2,
+    owner_preference: 4,
+    project_internal: 0,
+    site_evidence: 15,
+    vendor_review: 25,
+  });
+  expect(report.gates.all_open_owner_inputs_routed).toBe(true);
+  expect(report.gates.all_requirement_packages_have_delivery_target).toBe(true);
+  expect(report.gates.all_root_items_have_delivery_target).toBe(true);
+  for (const item of report.review_items) {
+    expect(item.delivery_target.length).toBeGreaterThan(0);
+    if (item.review_item_kind === "owner_input") expect(item.recovery_stream.length).toBeGreaterThan(0);
+    if (item.review_item_kind === "requirement_package") {
+      expect(item.delivery_target.startsWith("sheet:")).toBe(false);
+    }
+  }
   expect(readFileSync(markdownOutput, "utf8")).toContain(report.formal_ifc.sha256);
   for (const [key, path] of Object.entries(sources)) expect(sha256(path)).toBe(sourceHashes[key]);
 });
@@ -138,6 +155,7 @@ test("all current INT1 blockers form twenty-two stable and lossless review packa
     expect(reviewPackage.affected_sheets.length).toBeGreaterThan(0);
     expect(reviewPackage.responsible_party.length).toBeGreaterThan(0);
     expect(reviewPackage.required_evidence.length).toBeGreaterThan(0);
+    expect(reviewPackage.delivery_target.length).toBeGreaterThan(0);
   }
 });
 

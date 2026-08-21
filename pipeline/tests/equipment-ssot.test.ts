@@ -85,7 +85,7 @@ def rows(path):
     with open(path,encoding="utf-8-sig",newline="") as stream:
         return list(csv.DictReader(stream))
 masters=rows(sys.argv[1]); requirements=rows(sys.argv[2]); sources=rows(sys.argv[3]); rules=rows(sys.argv[4])
-ids={"APP-004","APP-005","APP-011","APP-014","APP-015","APP-016","APP-017","APP-019","APP-020","KTOOL-001","KTOOL-008","WINTR-004","WIN-OPENER-001","ELEC-DB-EXISTING-001","HVAC-INS-EXISTING-001","PLUM-LAUNDRY-TRAP-001","SAN-023","SAN-024","SAN-025","CTRL-ENTRY-A","NET-AP-R09","NET-AP-R14","SENSOR-GAS-R04","SENSOR-001"}
+ids={"APP-004","APP-005","APP-006","APP-007","APP-008","APP-011","APP-014","APP-015","APP-016","APP-017","APP-018","APP-019","APP-020","KTOOL-001","KTOOL-008","WINTR-004","WIN-OPENER-001","ELEC-DB-EXISTING-001","HVAC-INS-EXISTING-001","PLUM-LAUNDRY-TRAP-001","SAN-023","SAN-024","SAN-025","CTRL-ENTRY-A","NET-AP-R09","NET-AP-R14","SENSOR-GAS-R04","SENSOR-001"}
 print(json.dumps({
   "masters":[row for row in masters if row["equipment_id"] in ids],
   "requirements":[row for row in requirements if row["equipment_id"] in ids],
@@ -251,8 +251,20 @@ print(json.dumps({
   }
   for (const id of ["NET-AP-R09", "NET-AP-R14"]) {
     expect(requirement(id, "final_model"), `${id}.final_model`).toMatchObject({ status: "pending", blocks_release: "yes" });
-    expect(requirement(id, "cable_continuity_test"), `${id}.cable_continuity_test`).toMatchObject({ status: "pending" });
+    expect(requirement(id, "cable_continuity_test"), `${id}.cable_continuity_test`).toMatchObject({ status: "pending", blocks_release: "no" });
+    expect(requirement(id, "cable_continuity"), `${id}.cable_continuity`).toMatchObject({ status: "pending", blocks_release: "yes" });
+    for (const key of ["home_run_cable", "local_220v_for_current_candidates", "candidate_ap362e_max_power", "candidate_ap362e_power", "candidate_rgeap262e_power"]) {
+      expect(requirement(id, key), `${id}.${key}`).toMatchObject({ blocks_release: "no" });
+    }
   }
+  for (const id of ["APP-007", "APP-008", "APP-018"]) {
+    expect(requirement(id, "rated_power"), `${id}.rated_power`).toMatchObject({ status: "pending", blocks_release: "no" });
+  }
+  for (const id of ["APP-005", "APP-006"]) {
+    expect(requirement(id, "candidate_power_min"), `${id}.candidate_power_min`).toMatchObject({ blocks_release: "no" });
+    expect(requirement(id, "candidate_power_max"), `${id}.candidate_power_max`).toMatchObject({ blocks_release: "no" });
+  }
+  expect(requirement("APP-011", "interface_center_coordinates")).toMatchObject({ value_text: "unknown", status: "pending", blocks_release: "no" });
   expect(master("SENSOR-GAS-R04")).toMatchObject({ model: "", decision_status: "pending" });
   expect(requirement("SENSOR-GAS-R04", "gas_company_approval")).toMatchObject({ status: "pending", blocks_release: "yes" });
   expect(requirement("SENSOR-GAS-R04", "consultation_candidates")).toMatchObject({ status: "candidate" });

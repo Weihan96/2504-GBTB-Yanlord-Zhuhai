@@ -225,6 +225,53 @@ def validate_safety(
     }
 
 
+def validate_l_supply_design_direction(
+    owner_rows: list[dict[str, str]],
+    requirement_rows: list[dict[str, str]],
+) -> dict[str, Any]:
+    owner = {row["input_id"]: row for row in owner_rows}
+    row = owner.get("LEGACY-M401-L-SUPPLY-AIR")
+    if row is None:
+        raise RuntimeError("M-401 L-shaped supply-air project direction is missing")
+    if (
+        row["status"] != "需证据"
+        or "L 形转角风口" not in row["candidate_value"]
+        or "侧出风＋下回风" not in row["candidate_value"]
+        or "项目先计算并画图" not in row["user_value"]
+    ):
+        raise RuntimeError("M-401 L-shaped supply-air project direction changed")
+    requirements = {row["requirement_id"]: row for row in requirement_rows}
+    insulation = requirements.get("REQ-HVACINS-021")
+    if (
+        insulation is None
+        or insulation["status"] != "pending"
+        or insulation["blocks_release"] != "yes"
+    ):
+        raise RuntimeError("M-401 final insulation schedule boundary changed")
+    return {
+        "input_id": row["input_id"],
+        "design_direction": row["candidate_value"],
+        "owner_direction": row["user_value"],
+        "project_calculation_method": "A_eff >= Q / v_design",
+        "project_drawing_scope": (
+            "M-401 plan + section + grille schedule: airflow, effective free area, "
+            "face velocity, external static pressure, corner loss, noise, return-air access"
+        ),
+        "external_review_scope": (
+            "verify actual grille free-area ratio, corner-loss data, selected unit duty, "
+            "noise and maintenance access against the issued project drawing"
+        ),
+        "unknown_until_external_data": [
+            "final room airflow",
+            "available external static pressure",
+            "selected grille free-area ratio",
+            "corner pressure-loss coefficient",
+            "manufacturer noise data",
+            "final segment insulation schedule",
+        ],
+    }
+
+
 def esc(value: object) -> str:
     return html.escape(str(value))
 
@@ -237,6 +284,7 @@ def render_svg(
     blockers: list[dict[str, Any]],
     safety: dict[str, Any],
     mappings: list[dict[str, Any]],
+    l_supply: dict[str, Any],
 ) -> str:
     type_cards = []
     for index, item in enumerate(sorted(types, key=lambda row: row["type_name"])):
@@ -301,7 +349,7 @@ def render_svg(
 
     roles = inventory_summary["instance_role_counts"]
     return f'''<?xml version="1.0" encoding="UTF-8"?>
-<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="1240" viewBox="0 0 1600 1240">
+<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="1400" viewBox="0 0 1600 1400">
 <style>
 .bg{{fill:#f3f6fa}}.panel{{fill:#fff;stroke:#cbd5e1;stroke-width:2}}.card{{fill:#eef6ff;stroke:#93c5fd;stroke-width:2}}
 .title{{font:700 38px -apple-system,"PingFang SC",sans-serif;fill:#0f172a}}.subtitle{{font:18px -apple-system,"PingFang SC",sans-serif;fill:#475569}}
@@ -348,7 +396,14 @@ def render_svg(
 <text class="safety-title" x="82" y="1075">安全设备现状：正式 IFC 仅 1 个 IfcSensor / FIRESENSOR</text>
 <text class="safety-text" x="82" y="1105">A106-FIRE-R04 · 中厨 R04 · 位置 {esc(safety["confirmed_position_mm"])} mm 已确认；最终感温/感烟/复合类型、产品、供电通信和厂家安装条件仍待确认。</text>
 <text class="gate" x="82" y="1137">automatic_ifc_write_allowed=false · construction_release_ready=false · 未建模内容不得由近接、名称或旧几何推断</text>
-<text class="footer" x="55" y="1213">IFC SHA-256 {ifc_hash} · 6/6 equipment mappings · 7/7 controlled interface roles · 5 BLOCK</text>
+
+<rect class="panel" x="55" y="1185" width="1490" height="145" rx="16"/>
+<text class="section" x="82" y="1220">客厅 L 形转角送风口｜项目设计方向已定，性能数据待对图复核</text>
+<text class="route-label" x="82" y="1250">侧出风＋下回风；可拆回风口兼检修口；L 形风口用于弱化窗帘盒阳角</text>
+<text class="small" x="82" y="1278">项目计算：有效开口 Aeff ≥ Q / 设计面风速；M-401 须列风量、有效开口、面风速、机外静压、转角压损、噪声与检修路线。</text>
+<text class="small" x="82" y="1304">厂家／安装方只按项目图核对真实风口开孔率、转角损失、机组余压和噪声；没有数据时保持 unknown，不按效果图猜尺寸。</text>
+<text class="warn" x="82" y="1325">当前不可施工放样：最终房间风量、可用余压、风口开孔率、转角损失系数及逐段保温表仍待关闭。</text>
+<text class="footer" x="55" y="1373">IFC SHA-256 {ifc_hash} · 6/6 equipment mappings · 7/7 controlled interface roles · 5 BLOCK</text>
 </svg>
 '''
 
@@ -363,7 +418,7 @@ def render_png(svg_path: Path, png_path: Path, chrome: Path) -> None:
             "--hide-scrollbars",
             "--force-device-scale-factor=1",
             f"--screenshot={png_path}",
-            "--window-size=1600,1240",
+            "--window-size=1600,1400",
             svg_path.resolve().as_uri(),
         ],
         check=True,
@@ -387,6 +442,12 @@ def main() -> None:
     parser.add_argument("--route-waypoints", type=Path, default=Path("pipeline/decisions/rcp1-hvac-route-waypoints.csv"))
     parser.add_argument("--route-readiness", type=Path, default=Path("build/rcp1/route-readiness-candidate.json"))
     parser.add_argument("--a106-report", type=Path, default=Path("build/elec/a106-ceiling-device-candidate.json"))
+    parser.add_argument("--owner-inputs", type=Path, default=Path("pipeline/decisions/owner-input-register.csv"))
+    parser.add_argument(
+        "--installation-requirements",
+        type=Path,
+        default=Path("pipeline/decisions/equipment-installation-requirements.csv"),
+    )
     parser.add_argument("--output-svg", type=Path, default=Path("drawings/M-401-hvac-safety-coordination-candidate.svg"))
     parser.add_argument("--proof-png", type=Path, default=Path("build/rcp1/M-401-hvac-safety-coordination-candidate.png"))
     parser.add_argument("--report", type=Path, default=Path("build/rcp1/m401-coordination-sheet-candidate.json"))
@@ -403,6 +464,8 @@ def main() -> None:
         "route_waypoints": resolve(args.route_waypoints),
         "route_readiness": resolve(args.route_readiness),
         "a106_report": resolve(args.a106_report),
+        "owner_inputs": resolve(args.owner_inputs),
+        "installation_requirements": resolve(args.installation_requirements),
     }
     for label, path in paths.items():
         if not path.is_file():
@@ -428,13 +491,26 @@ def main() -> None:
         ifc_hash,
     )
     safety = validate_safety(paths["ifc"], read_json(paths["a106_report"]), ifc_hash)
+    l_supply = validate_l_supply_design_direction(
+        read_csv(paths["owner_inputs"]),
+        read_csv(paths["installation_requirements"]),
+    )
 
     output_svg = resolve(args.output_svg)
     proof_png = resolve(args.proof_png)
     report_path = resolve(args.report)
     output_svg.parent.mkdir(parents=True, exist_ok=True)
     output_svg.write_text(
-        render_svg(ifc_hash, m401_report["summary"], types, routes, blockers, safety, mappings),
+        render_svg(
+            ifc_hash,
+            m401_report["summary"],
+            types,
+            routes,
+            blockers,
+            safety,
+            mappings,
+            l_supply,
+        ),
         encoding="utf-8",
     )
     render_png(output_svg, proof_png, find_chrome(args.chrome))
@@ -474,6 +550,7 @@ def main() -> None:
         "interface_coverage": interfaces,
         "release_blockers": blockers,
         "safety_context": safety,
+        "l_shaped_supply_air_design": l_supply,
         "outputs": {
             "svg": {"path": str(output_svg), "sha256": sha256(output_svg)},
             "proof_png": {"path": str(proof_png), "sha256": sha256(proof_png)},

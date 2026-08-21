@@ -31,6 +31,141 @@ EVIDENCE_GATED_CLOSEOUT_KINDS = {
 }
 
 
+RECOVERY_STREAM_INPUT_IDS = {
+    "project_internal": set(),
+    "vendor_review": {
+        "A104-M05-M06-DIMENSIONS",
+        "A104-M07-EVIDENCE",
+        "E302-ENTRY-PANEL",
+        "E302-MASTER-PANEL",
+        "E303-NS01-FORM",
+        "RCP1-HVAC-PORTS",
+        "PLUM-ROUGHINS",
+        "APP014-APP015-ALIAS",
+        "APP017-SIEMENS-STACK",
+        "WFIN-KITCHEN-SLAB-SHELF-DETAIL",
+        "DRAWING-MATERIALIZED-ORTHO-INPUTS",
+        "PLUM-CUSTOM-DRAIN-SHOP-DRAWING",
+        "WFIN-DRY-BASEBOARD-SHADOW-GAP-DETAIL",
+        "APP017-WALL-DRAIN-20260818",
+        "INT1-KITCHEN-ISLAND-LAYOUT-20260818",
+        "SAN022-ECO-KIT-20260818",
+        "APP014-REPLACEABLE-SLEEVE",
+        "PLUM-PURCHASED-FAUCETS-INSTALL-20260820",
+        "LEGACY-WFIN-BALCONY-DECK",
+        "WIN-CRANK-RETROFIT",
+        "APP016-DISPOSER-DATA",
+        "LEGACY-RCP-CEILING-ACCESS",
+        "LEGACY-RCP-CURTAIN-COVE-WINERACK",
+        "LEGACY-INT1-BAYWINDOW-WOOD",
+        "LEGACY-M401-L-SUPPLY-AIR",
+    },
+    "site_evidence": {
+        "E302-ENTRY-SIDE",
+        "E302-MASTER-SIDE",
+        "E304-CABINET-DIMENSIONS",
+        "E304-CABINET-VENTILATION",
+        "E304-CABLE-CONTINUITY",
+        "E304-AP-POWER",
+        "E302-BEDSIDE-220V",
+        "E302-HVAC-CONTROL-PANELS",
+        "E304-VIDEO-INTERCOM-DOORBELL",
+        "INT1-BATHG-TISSUE-WASTE-DETAIL",
+        "KITCHEN-H70FT-STORAGE",
+        "KITCHEN-TOOLS-DRAWERS",
+        "INT1-WINDOW-TREATMENTS",
+        "E303-STRONGBOX-CAPACITY",
+        "INT1-ENTRY-PARCEL-LAYOUT",
+    },
+    "authority_review": {"A106-FIRE-TYPE", "A106-GAS-ALARM"},
+    "owner_preference": {
+        "E303-NS02-FORM",
+        "WFIN-WHITE-SYSTEM",
+        "WFIN-TADELAKT",
+        "DET1-WATERPROOF",
+    },
+}
+
+RECOVERY_DELIVERY_INPUT_IDS = {
+    "output/forms/对外确认表/02-日立空调接口确认表-发空调厂家.md": {
+        "RCP1-HVAC-PORTS", "E302-HVAC-CONTROL-PANELS", "LEGACY-M401-L-SUPPLY-AIR",
+    },
+    "output/forms/对外确认表/03-给排水设备确认表-发设备与施工方.md": {
+        "PLUM-ROUGHINS", "APP014-APP015-ALIAS", "APP017-SIEMENS-STACK",
+        "PLUM-CUSTOM-DRAIN-SHOP-DRAWING", "APP017-WALL-DRAIN-20260818",
+        "APP014-REPLACEABLE-SLEEVE", "PLUM-PURCHASED-FAUCETS-INSTALL-20260820",
+    },
+    "output/forms/对外确认表/04-燃气消防确认表-发主管单位.md": {
+        "A106-FIRE-TYPE", "A106-GAS-ALARM",
+    },
+    "output/forms/对外确认表/05-弱电现场记录表-发现场负责人.md": {
+        "E302-ENTRY-SIDE", "E302-MASTER-SIDE", "E304-CABINET-DIMENSIONS",
+        "E304-CABINET-VENTILATION", "E304-CABLE-CONTINUITY", "E304-AP-POWER",
+        "E302-BEDSIDE-220V", "E304-VIDEO-INTERCOM-DOORBELL",
+        "INT1-ENTRY-PARCEL-LAYOUT",
+    },
+    "output/forms/对外确认表/06-门组厂家复核表-发Rimadesio与Poliform.md": {
+        "A104-M05-M06-DIMENSIONS", "A104-M07-EVIDENCE",
+    },
+    "output/forms/对外确认表/07-智能面板电气接口确认表-发JINK与电气方.md": {
+        "E302-ENTRY-PANEL", "E302-MASTER-PANEL",
+    },
+    "output/forms/对外确认表/08-定制家具与墙脚节点确认表-发全屋定制.md": {
+        "INT1-BATHG-TISSUE-WASTE-DETAIL", "DRAWING-MATERIALIZED-ORTHO-INPUTS",
+        "WFIN-DRY-BASEBOARD-SHADOW-GAP-DETAIL", "LEGACY-RCP-CEILING-ACCESS",
+        "LEGACY-RCP-CURTAIN-COVE-WINERACK", "LEGACY-INT1-BAYWINDOW-WOOD",
+    },
+    "output/forms/对外确认表/09-厨房设备与柜体深化确认表-发橱柜设备方.md": {
+        "E303-NS01-FORM", "WFIN-KITCHEN-SLAB-SHELF-DETAIL",
+        "INT1-KITCHEN-ISLAND-LAYOUT-20260818", "SAN022-ECO-KIT-20260818",
+        "KITCHEN-H70FT-STORAGE", "KITCHEN-TOOLS-DRAWERS",
+        "APP016-DISPOSER-DATA",
+    },
+    "output/forms/业主偏好决策表-20260821.md": {
+        "E303-NS02-FORM", "WFIN-WHITE-SYSTEM", "WFIN-TADELAKT", "DET1-WATERPROOF",
+    },
+    "output/forms/对外确认表/10-强电箱容量现场复核表-发电气方.md": {
+        "E303-STRONGBOX-CAPACITY",
+    },
+    "output/forms/对外确认表/11-窗改造窗饰与阳台完成面确认表-发施工方.md": {
+        "WIN-CRANK-RETROFIT", "INT1-WINDOW-TREATMENTS", "LEGACY-WFIN-BALCONY-DECK",
+    },
+}
+
+REQUIREMENT_PACKAGE_DELIVERY_TARGETS = {
+    "INT1-GEBERIT-FINISH-INTERFACE": "output/forms/对外确认表/03-给排水设备确认表-发设备与施工方.md",
+    "INT1-FOSTER-KITCHEN-SINK": "output/forms/对外确认表/09-厨房设备与柜体深化确认表-发橱柜设备方.md",
+    "INT1-ISLAND-CUSTOM-SINK": "output/forms/对外确认表/09-厨房设备与柜体深化确认表-发橱柜设备方.md",
+    "INT1-PURCHASED-FAUCETS-INSTALL": "output/forms/对外确认表/03-给排水设备确认表-发设备与施工方.md",
+    "INT1-CUSTOM-FLOOR-DRAIN": "output/forms/对外确认表/03-给排水设备确认表-发设备与施工方.md",
+    "INT1-ISLAND-WORKTOP": "output/forms/对外确认表/09-厨房设备与柜体深化确认表-发橱柜设备方.md",
+    "INT1-KITCHEN-APPLIANCE-LAYOUT": "output/forms/对外确认表/09-厨房设备与柜体深化确认表-发橱柜设备方.md",
+    "INT1-APP014-REPLACEABLE-SLEEVE": "output/forms/对外确认表/03-给排水设备确认表-发设备与施工方.md",
+    "INT1-VVD-KITCHEN-FINISH-SYSTEM": "output/forms/对外确认表/09-厨房设备与柜体深化确认表-发橱柜设备方.md",
+    "INT1-PC-P1HEQ-CONTROL-MAPPING": "output/forms/对外确认表/02-日立空调接口确认表-发空调厂家.md",
+    "INT1-MASTER-BATH-STREET": "output/forms/对外确认表/03-给排水设备确认表-发设备与施工方.md",
+    "INT1-GUEST-BATH-SORGENTE": "output/forms/对外确认表/03-给排水设备确认表-发设备与施工方.md",
+    "INT1-GUEST-BATH-MIRROR-CABINET": "output/forms/对外确认表/08-定制家具与墙脚节点确认表-发全屋定制.md",
+    "INT1-JINK-CONTROL-PANELS": "output/forms/对外确认表/07-智能面板电气接口确认表-发JINK与电气方.md",
+    "INT1-DNAKE-INTERCOM-INTEGRATION": "output/forms/对外确认表/05-弱电现场记录表-发现场负责人.md",
+    "INT1-SIEMENS-LAUNDRY-STACK": "output/forms/对外确认表/03-给排水设备确认表-发设备与施工方.md",
+    "INT1-ICE-CREAM-MACHINE-SELECTION": "output/forms/对外确认表/09-厨房设备与柜体深化确认表-发橱柜设备方.md",
+    "INT1-KITCHEN-GAS-ALARM": "output/forms/对外确认表/04-燃气消防确认表-发主管单位.md",
+    "INT1-KITCHEN-FIRE-SENSOR": "output/forms/对外确认表/04-燃气消防确认表-发主管单位.md",
+    "INT1-H70FT-STORAGE": "output/forms/对外确认表/09-厨房设备与柜体深化确认表-发橱柜设备方.md",
+    "INT1-KITCHEN-TOOLS-DRAWERS": "output/forms/对外确认表/09-厨房设备与柜体深化确认表-发橱柜设备方.md",
+    "INT1-WINDOW-TREATMENTS": "output/forms/对外确认表/11-窗改造窗饰与阳台完成面确认表-发施工方.md",
+    "REQ-ARCH-PROJECT-DIMENSIONS": "output/forms/对外确认表/06-门组厂家复核表-发Rimadesio与Poliform.md",
+    "REQ-APP016-FINAL-INTERFACES": "output/forms/对外确认表/09-厨房设备与柜体深化确认表-发橱柜设备方.md",
+    "REQ-GEBERIT-NUNA-POWER-INTERFACE": "output/forms/对外确认表/03-给排水设备确认表-发设备与施工方.md",
+    "REQ-ELECDB-CAPACITY": "output/forms/对外确认表/10-强电箱容量现场复核表-发电气方.md",
+    "REQ-HVAC-FINAL-INTERFACES": "output/forms/对外确认表/02-日立空调接口确认表-发空调厂家.md",
+    "REQ-HVAC-INSULATION-INTERFACES": "output/forms/对外确认表/02-日立空调接口确认表-发空调厂家.md",
+    "REQ-PLUM-FINAL-ROUGHINS": "output/forms/对外确认表/03-给排水设备确认表-发设备与施工方.md",
+    "REQ-NETWORK-AP-MECHANICAL-POE": "output/forms/对外确认表/05-弱电现场记录表-发现场负责人.md",
+}
+
+
 INT1_PACKAGES = (
     {
         "package_id": "INT1-GEBERIT-FINISH-INTERFACE",
@@ -233,6 +368,46 @@ INT1_PACKAGES = (
 )
 
 
+EQUIPMENT_PACKAGES = (
+    {
+        "package_id": "REQ-APP016-FINAL-INTERFACES",
+        "title": "垃圾处理器最终功率、开关与机械接口",
+        "equipment_ids": {"APP-016"},
+        "root_cause": "F50 与 Franke Slim 50 CN 仍是比选候选；项目已画预留包络，但不能用另一型号的功率、开关、法兰或排水接口代填最终产品",
+        "affected_sheets": ["I-501", "E-303", "P-201", "S-701"],
+        "responsible_party": "F50 供货方/替代候选供货方/橱柜深化/电气与给排水设计",
+        "required_evidence": "准确型号铭牌和完整安装图，含额定功率、开关方式、法兰、排水、洗碗机支管、底部拆换净空、报价与保修；供货方只核对 I-501 预留包络能否容纳",
+    },
+    {
+        "package_id": "REQ-GEBERIT-NUNA-POWER-INTERFACE",
+        "title": "Geberit Nuna V Combo 隐藏电源与接口",
+        "equipment_ids": {"SAN-GEB-001"},
+        "root_cause": "146.361.00.1 已到货，但公开产品页不提供本套的额定功率和可定位隐藏电源中心",
+        "affected_sheets": ["I-502", "P-201", "E-303"],
+        "responsible_party": "Geberit 供货安装方/电气与给排水设计",
+        "required_evidence": "146.361.00.1 订单对应的准确安装图或厂家书面回复，标出额定功率、电源型式、隐藏服务区和完成面基准；说明书没有的中心坐标保持 unknown",
+    },
+    {
+        "package_id": "REQ-ELECDB-CAPACITY",
+        "title": "既有强电箱回路与增容能力",
+        "equipment_ids": {"ELEC-DB-EXISTING-001"},
+        "root_cause": "箱体铭牌 63 A 不能代表总开关整定、进线容量、剩余模数或新增回路可实施",
+        "affected_sheets": ["E-303"],
+        "responsible_party": "持证电工/电气设计/配电箱施工方",
+        "required_evidence": "打开箱门记录总开关和分路断路器型号整定、回路标签、导线截面、剩余模数和接线空间；再依 E-303 新增负荷计算给出保留、扩箱、换箱或分箱结论",
+    },
+    {
+        "package_id": "REQ-NETWORK-AP-MECHANICAL-POE",
+        "title": "TP-Link 吸顶 AP 开孔、拆换与 PoE 预算",
+        "equipment_ids": {"NET-AP-R09", "NET-AP-R14"},
+        "root_cause": "TL-XAP1500GE-PoE/DC 是项目优先候选但尚未采购；官方外形、开孔和功率参数不能替代本项目吊顶机械节点、网线通断和交换机总预算",
+        "affected_sheets": ["A-106", "E-304"],
+        "responsible_party": "网络设计/弱电施工/吊顶深化/现场",
+        "required_evidence": "按 Ø184×40 mm 机身、Ø155 mm 开孔和 802.3at／11.1 W 参数完成吊顶剖面、拆换路线、Cat6 通断、端口分配和总 PoE 预算；最终 SKU 变化时重新校核",
+    },
+)
+
+
 DISCIPLINE_PACKAGES = {
     "ARCH": {
         "package_id": "REQ-ARCH-PROJECT-DIMENSIONS",
@@ -241,14 +416,6 @@ DISCIPLINE_PACKAGES = {
         "affected_sheets": ["A-104", "I-504"],
         "responsible_party": "建筑设计/全屋定制/现场",
         "required_evidence": "项目订单、门窗表、厂家 shop drawing 或可定位现场证据",
-    },
-    "ELEC": {
-        "package_id": "REQ-ELEC-FINAL-POWER",
-        "title": "设备最终功率与电源接口",
-        "root_cause": "候选功率和未选型号不能关闭回路容量或精确电源接口",
-        "affected_sheets": ["E-303", "E-304"],
-        "responsible_party": "设备方/电气设计/业主",
-        "required_evidence": "最终型号铭牌、官方说明书和项目回路计算或接线接口图",
     },
     "HVAC": {
         "package_id": "REQ-HVAC-INSULATION-INTERFACES",
@@ -313,14 +480,6 @@ DISCIPLINE_PACKAGES = {
         "affected_sheets": ["D-601", "D-602", "I-501", "I-502"],
         "responsible_party": "材料设计/建筑设计/加工方",
         "required_evidence": "最终材料体系、样板确认和与设备接口一致的防水密封节点",
-    },
-    "NETWORK/ELEC/RCP1": {
-        "package_id": "REQ-NETWORK-AP-MECHANICAL-POE",
-        "title": "TP-Link 吸顶 AP 开孔、拆换与 PoE 预算",
-        "root_cause": "TL-XAP1500GE-PoE/DC 是项目优先候选但尚未采购；官方外形、开孔和功率参数不能替代本项目吊顶机械节点、网线通断和交换机总预算",
-        "affected_sheets": ["A-106", "E-304"],
-        "responsible_party": "网络设计/弱电施工/吊顶深化/现场",
-        "required_evidence": "按 Ø184×40 mm 机身、Ø155 mm 开孔和 802.3at／11.1 W 参数完成吊顶剖面、拆换路线、Cat6 通断、端口分配和总 PoE 预算；最终 SKU 变化时重新校核",
     },
 }
 
@@ -439,6 +598,94 @@ def affected_owner_sheets(workstream: str, drawing_ids: set[str]) -> list[str]:
     if not result:
         raise ValueError(f"unmapped owner workstream: {workstream}")
     return result
+
+
+def expand_unique_groups(groups: dict[str, set[str]], label: str) -> dict[str, str]:
+    """Invert a group -> IDs mapping while rejecting duplicate ownership."""
+    result: dict[str, str] = {}
+    for group, identifiers in groups.items():
+        for identifier in identifiers:
+            if identifier in result:
+                raise ValueError(
+                    f"{label} assigns {identifier} to both {result[identifier]} and {group}"
+                )
+            result[identifier] = group
+    return result
+
+
+def validate_delivery_target(target: str, root: Path, drawing_ids: set[str]) -> None:
+    if target.startswith("sheet:"):
+        sheet = target.removeprefix("sheet:")
+        if sheet not in drawing_ids:
+            raise ValueError(f"delivery target references unknown sheet: {target}")
+        return
+    resolved = (root / target).resolve()
+    try:
+        resolved.relative_to(root)
+    except ValueError as exc:
+        raise ValueError(f"delivery target leaves project root: {target}") from exc
+    if not resolved.is_file():
+        raise ValueError(f"delivery target does not exist: {target}")
+
+
+def route_open_owner_items(
+    items: list[dict[str, Any]],
+    root: Path,
+    drawing_ids: set[str],
+) -> Counter[str]:
+    open_items = [
+        item for item in items
+        if item["blocks_release"] and item["closeout_status"] not in CLOSED_CLOSEOUT_STATUSES
+    ]
+    open_ids = {item["input_id"] for item in open_items}
+    stream_by_id = expand_unique_groups(RECOVERY_STREAM_INPUT_IDS, "recovery stream")
+    target_by_id = expand_unique_groups(RECOVERY_DELIVERY_INPUT_IDS, "delivery target")
+    if open_ids != set(stream_by_id):
+        raise ValueError(
+            "open owner input/recovery stream mismatch; missing routes="
+            f"{sorted(open_ids - set(stream_by_id))}, stale routes={sorted(set(stream_by_id) - open_ids)}"
+        )
+    if open_ids != set(target_by_id):
+        raise ValueError(
+            "open owner input/delivery target mismatch; missing targets="
+            f"{sorted(open_ids - set(target_by_id))}, stale targets={sorted(set(target_by_id) - open_ids)}"
+        )
+    for target in set(target_by_id.values()):
+        validate_delivery_target(target, root, drawing_ids)
+    for item in open_items:
+        item["recovery_stream"] = stream_by_id[item["input_id"]]
+        item["delivery_target"] = target_by_id[item["input_id"]]
+    counts = Counter(item["recovery_stream"] for item in open_items)
+    for stream in RECOVERY_STREAM_INPUT_IDS:
+        counts.setdefault(stream, 0)
+    return counts
+
+
+def route_requirement_packages(
+    packages: list[dict[str, Any]],
+    root: Path,
+    drawing_ids: set[str],
+) -> None:
+    package_ids = {package["package_id"] for package in packages}
+    target_ids = set(REQUIREMENT_PACKAGE_DELIVERY_TARGETS)
+    if package_ids != target_ids:
+        raise ValueError(
+            "requirement package/delivery target mismatch; missing targets="
+            f"{sorted(package_ids - target_ids)}, stale targets={sorted(target_ids - package_ids)}"
+        )
+    internal_sheet_targets = sorted(
+        target for target in REQUIREMENT_PACKAGE_DELIVERY_TARGETS.values()
+        if target.startswith("sheet:")
+    )
+    if internal_sheet_targets:
+        raise ValueError(
+            "external-only requirement packages cannot use internal sheet delivery targets: "
+            + ", ".join(internal_sheet_targets)
+        )
+    for target in set(REQUIREMENT_PACKAGE_DELIVERY_TARGETS.values()):
+        validate_delivery_target(target, root, drawing_ids)
+    for package in packages:
+        package["delivery_target"] = REQUIREMENT_PACKAGE_DELIVERY_TARGETS[package["package_id"]]
 
 
 def closeout_status(decision: dict[str, str], rule: dict[str, str]) -> str:
@@ -575,6 +822,19 @@ def requirement_review_packages(
     if unmapped_int1:
         raise ValueError(f"unmapped INT1 root causes: {', '.join(unmapped_int1)}")
 
+    for definition in EQUIPMENT_PACKAGES:
+        rows = [
+            row for row in blockers
+            if row["equipment_id"] in definition["equipment_ids"]
+            and row["requirement_id"] not in mapped
+        ]
+        if not rows:
+            raise ValueError(f"equipment package has no current requirements: {definition['package_id']}")
+        packages.append(
+            make_requirement_package(definition, rows, equipment, drawing_ids, definition["package_id"])
+        )
+        mapped.update(row["requirement_id"] for row in rows)
+
     for discipline, definition in DISCIPLINE_PACKAGES.items():
         rows = [
             row
@@ -612,6 +872,9 @@ def markdown(report: dict[str, Any]) -> str:
         f"- 业主输入：{report['summary']['owner_input_count']} 条；待关闭：{report['summary']['owner_closeout_open_count']} 条",
         f"- release-blocking requirement：{report['summary']['blocking_requirement_count']} 条；聚合为 {report['summary']['requirement_review_package_count']} 包",
         f"- INT1：{report['summary']['int1_requirement_count']} 条；稳定聚合为 {report['summary']['int1_review_package_count']} 包",
+        "- 恢复分流：" + "、".join(
+            f"{name} {count} 条" for name, count in report["summary"]["recovery_stream_counts"].items()
+        ),
         "",
         "## 业主输入关闭状态",
         "",
@@ -621,6 +884,24 @@ def markdown(report: dict[str, Any]) -> str:
     for item in report["decision_review_items"]:
         lines.append(
             "| {input_id} | {decision_status} | {closeout_status} | {responsible_party} | {required_evidence} | {sheets} |".format(
+                **item,
+                sheets=", ".join(item["affected_sheets"]),
+            )
+        )
+    lines.extend(
+        [
+            "",
+            "## Release blocker 恢复分流",
+            "",
+            "| ID | 路径 | 交付目标 | 责任方 | 影响图纸 |",
+            "|---|---|---|---|---|",
+        ]
+    )
+    for item in report["review_items"]:
+        if item["review_item_kind"] != "owner_input":
+            continue
+        lines.append(
+            "| {input_id} | {recovery_stream} | {delivery_target} | {responsible_party} | {sheets} |".format(
                 **item,
                 sheets=", ".join(item["affected_sheets"]),
             )
@@ -637,6 +918,7 @@ def markdown(report: dict[str, Any]) -> str:
                 f"- 影响图纸：{', '.join(package['affected_sheets'])}",
                 f"- 责任方：{package['responsible_party']}",
                 f"- 所需证据：{package['required_evidence']}",
+                f"- 交付目标：{package['delivery_target']}",
                 "",
             ]
         )
@@ -703,6 +985,8 @@ def main() -> int:
 
         decision_items = owner_review_items(decisions, rules, drawing_ids)
         requirement_packages = requirement_review_packages(requirements, equipment, drawing_ids)
+        recovery_stream_counts = route_open_owner_items(decision_items, root, drawing_ids)
+        route_requirement_packages(requirement_packages, root, drawing_ids)
         blockers = [row for row in requirements if row["blocks_release"].lower() == "yes"]
         int1 = [row for row in blockers if row["discipline"].upper() == "INT1"]
         closeout_counts = Counter(item["closeout_status"] for item in decision_items)
@@ -746,6 +1030,8 @@ def main() -> int:
                 "open_root_review_item_count": len(review_items),
                 "unmapped_blocker_count": 0,
                 "review_item_count": len(review_items),
+                "recovery_stream_counts": dict(sorted(recovery_stream_counts.items())),
+                "delivery_target_count": len(review_items),
             },
             "decision_review_items": decision_items,
             "requirement_review_packages": requirement_packages,
@@ -758,6 +1044,17 @@ def main() -> int:
                 "all_release_blocking_requirements_mapped_once": True,
                 "all_blocking_requirements_mapped": True,
                 "int1_requirements_mapped_to_stable_packages": True,
+                "all_open_owner_inputs_routed": all(
+                    item.get("recovery_stream") and item.get("delivery_target")
+                    for item in review_items
+                    if item["review_item_kind"] == "owner_input"
+                ),
+                "all_requirement_packages_have_delivery_target": all(
+                    package.get("delivery_target") for package in requirement_packages
+                ),
+                "all_root_items_have_delivery_target": all(
+                    item.get("delivery_target") for item in review_items
+                ),
                 "formal_ifc_write_prohibited": True,
                 "construction_release_ready": construction_release_ready,
             },

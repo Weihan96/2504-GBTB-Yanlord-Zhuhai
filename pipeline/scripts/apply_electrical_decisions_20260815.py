@@ -184,10 +184,15 @@ def main() -> None:
             "notes": notes,
         })
 
-    for equipment_id in ("APP-001", "APP-002", "APP-003", "APP-004", "APP-006"):
+    for equipment_id in ("APP-001", "APP-002", "APP-003", "APP-004", "APP-006", "APP-007", "APP-008", "APP-018"):
         if (equipment_id, "rated_power") in by_pair:
             by_pair[(equipment_id, "rated_power")]["blocks_release"] = "no"
             by_pair[(equipment_id, "rated_power")]["notes"] = "产品额定功率保持 unknown；相关支路已用端口上限或候选最不利值闭合粗装，不将设计值写成产品名牌值。"
+    for equipment_id in ("APP-005", "APP-006"):
+        for key in ("candidate_power_min", "candidate_power_max"):
+            if (equipment_id, key) in by_pair:
+                by_pair[(equipment_id, key)]["blocks_release"] = "no"
+                by_pair[(equipment_id, key)]["notes"] = "仅作小功率辅助回路情景校核；NS-02 已按 10A 端口与候选最不利工况闭合粗装，准确型号只在设备登记时复核。"
 
     official = {
         "APP-011": ("APP-011-OFFICIAL-001", "官方规格表"),
@@ -201,7 +206,7 @@ def main() -> None:
     upsert("APP-011", "appliance_plug_rating_a", "16", unit="A", origin="official_exact_model", source=official["APP-011"][0], locator=official["APP-011"][1])
     for key, value, unit in [("wall_socket_rating_a", "16", "A"), ("branch_breaker_rating_a", "16", "A"), ("conductor_cross_section_mm2", "4", "mm2")]: upsert("APP-011", key, value, unit=unit)
     for key, value in [("branch_breaker_curve", "C"), ("rcbo_required", "yes"), ("dedicated_branch_circuit", "yes"), ("socket_service_location", "adjacent_accessible_cabinet_not_directly_behind"), ("track_socket_allowed", "no")]: upsert("APP-011", key, value)
-    upsert("APP-011", "interface_center_coordinates", "unknown", origin="pending", status="pending", source="", locator="", blocks="yes", notes="说明书未提供接口中心坐标，不推测。")
+    upsert("APP-011", "interface_center_coordinates", "unknown", origin="pending", status="pending", source="", locator="", blocks="no", notes="说明书未提供接口中心坐标，不推测；项目采用相邻可检修柜格插座，不以机背中心坐标作为粗装停止条件。")
 
     upsert("APP-017", "washer_rated_power_w", "1900", unit="W", origin="official_exact_model", source=official["APP-017-W"][0], locator=official["APP-017-W"][1])
     upsert("APP-017", "dryer_rated_power_w", "800", unit="W", origin="official_exact_model", source=official["APP-017-D"][0], locator=official["APP-017-D"][1])
@@ -262,6 +267,18 @@ def main() -> None:
         upsert(equipment_id, "interface_center_coordinates", "unknown", origin="pending", status="pending", source="", locator="", blocks="yes", notes="待 M07/门套/见光板完成面证据确认真实安装面和净距。")
 
     for equipment_id in ("NET-AP-R09", "NET-AP-R14"):
+        for key in (
+            "home_run_cable",
+            "local_220v_for_current_candidates",
+            "candidate_ap362e_max_power",
+            "candidate_ap362e_power",
+            "candidate_rgeap262e_power",
+            "cable_continuity_test",
+        ):
+            if (equipment_id, key) in by_pair:
+                by_pair[(equipment_id, key)]["blocks_release"] = "no"
+        if (equipment_id, "cable_continuity_test") in by_pair:
+            by_pair[(equipment_id, "cable_continuity_test")]["notes"] = "历史重复字段；现行停止条件为 cable_continuity，不重复计入阻断。"
         for key, value in [("poe_supply_required", "yes"), ("local_220v_power_required", "no"), ("network_topology", "CAT6_star_home_run_to_weak_current_cabinet_PoE_switch"), ("poe_switch_port_class", "IEEE_802.3at_backward_compatible_with_802.3af")]: upsert(equipment_id, key, value)
         upsert(equipment_id, "final_endpoint_power_w", "unknown", origin="pending", status="pending", source="", locator="", blocks="yes", notes="按实购 AP 官方功率和交换机总 PoE 预算闭合。")
         upsert(equipment_id, "cable_continuity", "unknown", origin="pending", status="pending", source="", locator="", blocks="yes", notes="现场网线通断和端接顺序尚未测试。")

@@ -49,6 +49,9 @@ test("A-106 ceiling device candidates pass known-geometry gates", () => {
   const renderedSvg = readFileSync(svg, "utf8");
   expect(renderedSvg).toContain("a106-ceiling-device-candidate");
   expect(renderedSvg).toContain("A106-FIRE-R04");
+  expect(renderedSvg).toContain("项目天花节点方向（方案已定）");
+  expect(renderedSvg).toContain("客厅窗帘盒名义宽 200 mm");
+  expect(renderedSvg).toContain("酒架上方按最终满载和倾覆工况设独立结构加固");
   expect(renderedSvg).toContain("Wall Plan-underlay.png");
   const wallGroupTags = renderedSvg.match(/<g\b[^>]*\bclass="[^"]*\bIfcWall\b[^"]*"[^>]*>/g) ?? [];
   for (const globalId of report.excluded_demolition_wall_global_ids) {

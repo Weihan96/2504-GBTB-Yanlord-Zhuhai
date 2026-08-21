@@ -283,9 +283,23 @@ def read_kitchen_project_specification(
         "integrated_lighting": require("KIT-VVD-FINISH-001", "integrated_lighting", "confirmed")["value_text"],
         "foster_width_mm": int(require("SAN-KIT-001", "product_width", "confirmed", "838")["value_number"]),
         "foster_depth_mm": int(require("SAN-KIT-001", "product_depth", "confirmed", "500")["value_number"]),
+        "foster_bowl_vertical_depth_mm": int(
+            require("SAN-KIT-001", "bowl_vertical_depth", "confirmed", "200")["value_number"]
+        ),
         "foster_installation": require("SAN-KIT-001", "installation_method", "confirmed", "undermount")["value_text"],
         "custom_sink_width_mm": int(require("SAN-022", "finished_outer_width", "confirmed", "600")["value_number"]),
     }
+    disposer = equipment.get("APP-016")
+    if disposer is None:
+        raise RuntimeError("kitchen project specification is missing APP-016")
+    if (
+        disposer["procurement_status"] != "candidate"
+        or disposer["decision_status"] != "partial"
+        or "F50（基准候选）" not in disposer["model"]
+        or "134.0721.210" not in disposer["model"]
+        or "365 mm" not in disposer["variant"]
+    ):
+        raise RuntimeError("APP-016 candidate boundary changed")
     pending_keys = (
         ("KIT-VVD-FINISH-001", "project_material_sample_and_batch"),
         ("KIT-VVD-FINISH-001", "slab_layout_joints_edge_cutouts"),
@@ -311,8 +325,20 @@ def read_kitchen_project_specification(
         raise RuntimeError(f"kitchen drawing evidence is missing: {sorted(missing)}")
 
     return {
-        "equipment_ids": sorted(required_equipment),
+        "equipment_ids": sorted(required_equipment | {"APP-016"}),
         "confirmed": confirmed,
+        "app016": {
+            "baseline_candidate": "F50",
+            "comparison_candidate": "Franke Slim 50 CN / 134.0721.210",
+            "comparison_height_below_installation_plane_mm": 365,
+            "coordination_height_below_countertop_mm": (
+                confirmed["foster_bowl_vertical_depth_mm"] + 365
+            ),
+            "final_product_selected": False,
+            "remaining_external_evidence": (
+                "exact power / flange / drain / bottom removal clearance / quote"
+            ),
+        },
         "pending_requirement_keys": [f"{equipment_id}/{key}" for equipment_id, key in pending_keys],
         "design_reference_only": "VVD product sheet external sink w.1200",
         "automatic_ifc_write_allowed": False,
@@ -372,11 +398,7 @@ def make_svg(
     project_directions: dict[str, list[dict[str, str]]],
 ) -> str:
     spec = SHEETS[sheet_id]
-    confirmed_style = (
-        "  .confirmed { font-size: 2.8px; font-weight: 700; fill: #216b45; }\n"
-        if sheet_id in {"I-501", "I-503"}
-        else ""
-    )
+    confirmed_style = "  .confirmed { font-size: 2.8px; font-weight: 700; fill: #216b45; }\n"
     overlays = []
     for record in records:
         x, y, width, height = plan_rect(record)
@@ -412,7 +434,7 @@ def make_svg(
             line_y += 4.15
 
     block_lines: list[str] = []
-    block_y = 342.0
+    block_y = 350.0 if sheet_id == "I-501" else 342.0
     for blocker in blockers:
         block_lines.append(
             svg_text(382.0, block_y, f"BLOCK {blocker['object_name']}: {blocker['type_name']}", "block")
@@ -486,6 +508,18 @@ def make_svg(
         interface_lines.append(
             svg_text(382.0, row_y + 5.0, "BLOCK: rough-in XYZ / valves / hose path / opening position", "block")
         )
+        disposer = kitchen_specification["app016"]
+        interface_lines.extend(
+            [
+                '<g data-equipment-id="APP-016" data-status="project-envelope-issued-external-model-review-pending">',
+                svg_text(382.0, 259.0, "APP-016 · PROJECT COORDINATION ENVELOPE", "subtitle"),
+                svg_text(382.0, 264.0, f"Foster bowl 200 + Franke H365 = ≈{disposer['coordination_height_below_countertop_mm']} below top", "interface"),
+                svg_text(382.0, 268.0, "Reserve bottom removal and drain / trap zone", "interface"),
+                svg_text(382.0, 272.0, "No pull-out storage may enter this envelope", "interface"),
+                svg_text(382.0, 276.0, "F50 vs Franke: supplier verifies interfaces + quote", "block"),
+                "</g>",
+            ]
+        )
     elif sheet_id == "I-503":
         function = entry_parcel_requirements[ENTRY_PARCEL_FUNCTION_ID]
         layout = entry_parcel_requirements[ENTRY_PARCEL_LAYOUT_ID]
@@ -496,17 +530,17 @@ def make_svg(
                 svg_text(382.0, 291.0, function["candidate_value"], "interface"),
                 svg_text(382.0, 296.0, "避开门扇、通道、控制面板及强弱电检修", "interface"),
                 "</g>",
-                f'<g data-requirement-id="{ENTRY_PARCEL_LAYOUT_ID}" data-status="evidence-pending">',
-                svg_text(382.0, 304.0, "PENDING · I-503 平／立面确定位置、形式与尺寸", "block"),
-                svg_text(382.0, 309.0, "门内顺手可达；不得占门扇包络或通道", "interface"),
-                svg_text(382.0, 314.0, "不得遮挡 Entry、门禁及强弱电箱检修", "interface"),
-                svg_text(382.0, 319.0, "墙侧／形式／宽深／标高：待 I-503 深化", "interface"),
+                f'<g data-requirement-id="{ENTRY_PARCEL_LAYOUT_ID}" data-status="project-option-issued-site-envelope-pending">',
+                svg_text(382.0, 304.0, "PROJECT OPTION · 玄关柜内抽拉板优先", "confirmed"),
+                svg_text(382.0, 309.0, "不用时完全收回；打开后供取件临时放包，不作专用快递柜", "interface"),
+                svg_text(382.0, 314.0, "必须避开门扇、通道、Entry／门禁与强弱电箱检修包络", "interface"),
+                svg_text(382.0, 319.0, "SITE ONLY: 柜格有效 W×H×D、五金侵入、抽拉行程与承重", "block"),
                 "</g>",
             ]
         )
 
     if sheet_id in project_directions:
-        direction_y = 276.0 if sheet_id == "I-501" else 268.0
+        direction_y = 289.0 if sheet_id == "I-501" else 268.0
         interface_lines.append(svg_text(382.0, direction_y, "SSOT PROJECT DIRECTIONS · DETAIL / SIGN-OFF PENDING", "subtitle"))
         direction_y += 6.0
         for row in project_directions[sheet_id]:
@@ -520,6 +554,40 @@ def make_svg(
                 f'{escape(text)}</text>'
             )
             direction_y += 5.0
+        if sheet_id == "I-501":
+            interface_lines.extend(
+                [
+                    svg_text(382.0, 321.0, "PROJECT DETAIL BASIS · EXTERNAL DIMENSIONS ONLY", "subtitle"),
+                    svg_text(382.0, 326.0, "600 stone sink: one 600 module; pull-out waste + cleaning storage retained", "confirmed"),
+                    svg_text(382.0, 331.0, "White remote wall + shallow shelf; removable / backing / clean edge", "confirmed"),
+                    svg_text(382.0, 336.0, "Ice cream: 500×450×450 clear / 20 kg / 10A; domestic unit only", "confirmed"),
+                    svg_text(382.0, 341.0, "H70FT + K-D01–04 fixed; site measures size / hardware", "confirmed"),
+                ]
+            )
+        elif sheet_id == "I-502":
+            interface_lines.extend(
+                [
+                    svg_text(382.0, 291.0, "PROJECT BATHROOM BASIS · NO VENDOR RE-LAYOUT", "subtitle"),
+                    svg_text(382.0, 296.0, "Guest mirror cabinet: 400 baseline; full-height mirrored front", "confirmed"),
+                    svg_text(382.0, 301.0, "Keep basin / service tower / door opening / internal service route", "interface"),
+                    svg_text(382.0, 306.0, "Master Street + guest Sorgente locations and service relations fixed", "confirmed"),
+                    svg_text(382.0, 311.0, "Fabricator supplies exact L×D×H / bowl / fixing / drain shop drawing", "block"),
+                    svg_text(382.0, 316.0, "Custom drains stay in project wet zones; vendor cannot move fixtures", "confirmed"),
+                    svg_text(382.0, 321.0, "Vendor returns length / outlet / flow / water seal / flange interfaces", "block"),
+                    svg_text(382.0, 326.0, "Geberit hidden centres remain unknown until exact official install drawing", "block"),
+                ]
+            )
+        if sheet_id == "I-504":
+            interface_lines.extend(
+                [
+                    svg_text(382.0, 293.0, "PROJECT NODE · 飘窗木作收口", "subtitle"),
+                    svg_text(382.0, 299.0, "客厅：木盒与大白墙脱缝，外表面齐平墙面", "confirmed"),
+                    svg_text(382.0, 304.0, "次卧：浅色木从地面连续落地至飘窗台", "confirmed"),
+                    svg_text(382.0, 309.0, "基层／防潮／木饰面／弹性边缝／窗边密封", "interface"),
+                    svg_text(382.0, 314.0, "不得覆盖窗边排水、渗漏观察或检修", "interface"),
+                    svg_text(382.0, 319.0, "EXTERNAL: 板厚、伸缩、固定、现场 W×H×D、样板", "block"),
+                ]
+            )
 
     legend = []
     legend_y = 373.5
@@ -691,6 +759,9 @@ def main() -> None:
                 [ENTRY_PARCEL_FUNCTION_ID] if sheet_id == "I-503" else []
             ),
             "pending_layout_requirement_ids": (
+                [ENTRY_PARCEL_LAYOUT_ID] if sheet_id == "I-503" else []
+            ),
+            "project_option_requirement_ids": (
                 [ENTRY_PARCEL_LAYOUT_ID] if sheet_id == "I-503" else []
             ),
             "project_direction_requirement_ids": [

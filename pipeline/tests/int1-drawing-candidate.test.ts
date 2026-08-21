@@ -110,7 +110,9 @@ test("INT1 drawing candidate produces four safe coordination-envelope sheets", (
     sheet.installation_interface_row_count
   )).toEqual([2, 0, 0, 0]);
   const kitchenSvg = readFileSync(join(drawings, "I-501-kitchen-existing-candidate.svg"), "utf8");
+  const bathroomSvg = readFileSync(join(drawings, "I-502-bathroom-existing-candidate.svg"), "utf8");
   const entrySvg = readFileSync(join(drawings, "I-503-entry-laundry-existing-candidate.svg"), "utf8");
+  const furnitureSvg = readFileSync(join(drawings, "I-504-other-fixed-furniture-existing-candidate.svg"), "utf8");
   expect(kitchenSvg).toContain('data-equipment-id="APP-009"');
   expect(kitchenSvg).toContain('data-equipment-id="APP-010"');
   expect(kitchenSvg).toContain('data-project-interface-status="unlocated"');
@@ -118,11 +120,24 @@ test("INT1 drawing candidate produces four safe coordination-envelope sheets", (
   expect(kitchenSvg).toContain("G3/4 cold water · drain Ø38 mm");
   expect(kitchenSvg).toContain("Niche H780–835 mm · W600–608 mm · D≥550 mm");
   expect(kitchenSvg).toContain("rough-in XYZ / valves / hose path / opening position");
-  expect((kitchenSvg.match(/data-equipment-id=/g) ?? []).length).toBe(2);
+  expect(kitchenSvg).toContain('data-equipment-id="APP-016"');
+  expect(kitchenSvg).toContain("Foster bowl 200 + Franke H365 = ≈565 below top");
+  expect(kitchenSvg).toContain("F50 vs Franke: supplier verifies interfaces + quote");
+  expect(kitchenSvg).toContain("600 stone sink: one 600 module");
+  expect(kitchenSvg).toContain("White remote wall + shallow shelf");
+  expect(kitchenSvg).toContain("Ice cream: 500×450×450 clear / 20 kg / 10A");
+  expect(kitchenSvg).toContain("H70FT + K-D01–04 fixed");
+  expect(bathroomSvg).toContain("PROJECT BATHROOM BASIS · NO VENDOR RE-LAYOUT");
+  expect(bathroomSvg).toContain("Guest mirror cabinet: 400 baseline");
+  expect(bathroomSvg).toContain("Master Street + guest Sorgente locations and service relations fixed");
+  expect((kitchenSvg.match(/data-equipment-id=/g) ?? []).length).toBe(5);
   expect(entrySvg).toContain('data-requirement-id="INT1-ENTRY-PARCEL-FUNCTION"');
   expect(entrySvg).toContain('data-requirement-id="INT1-ENTRY-PARCEL-LAYOUT"');
   expect(entrySvg).toContain("CONFIRMED · 拿快递／临时落包功能");
-  expect(entrySvg).toContain("PENDING · I-503 平／立面确定位置、形式与尺寸");
+  expect(entrySvg).toContain("PROJECT OPTION · 玄关柜内抽拉板优先");
+  expect(entrySvg).toContain("SITE ONLY: 柜格有效 W×H×D、五金侵入、抽拉行程与承重");
+  expect(furnitureSvg).toContain("PROJECT NODE · 飘窗木作收口");
+  expect(furnitureSvg).toContain("木盒与大白墙脱缝，外表面齐平墙面");
   expect(report.sheets.find((sheet: { sheet_id: string }) => sheet.sheet_id === "I-503")
     ?.confirmed_functional_requirement_ids).toEqual(["INT1-ENTRY-PARCEL-FUNCTION"]);
   for (const sheet of report.sheets) {

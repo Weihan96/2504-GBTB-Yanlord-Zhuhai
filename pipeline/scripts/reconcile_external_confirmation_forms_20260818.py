@@ -1,8 +1,9 @@
 #!/usr/bin/env python3
-"""Reconcile the nine current external Markdown forms back into project SSOT."""
+"""Reconcile the current external Markdown forms back into project SSOT."""
 
 from __future__ import annotations
 
+import argparse
 import csv
 import hashlib
 import json
@@ -76,6 +77,28 @@ FORM_SOURCES = {
         "只保留项目加工图、服务路径、实物收纳尺寸、F50／替代品准确资料报价和联合节点",
         "外部方已签认、项目加工接口已冻结或候选产品已最终选择",
         "verified_prefilled_kitchen_shopdrawing_confirmation_pending",
+    ),
+    "OUTBOUND-FORM-ELEC-CAPACITY-20260821": (
+        "10-强电箱容量现场复核表-发电气方.md",
+        "既有强电箱三江品牌、P230／PX1、380/220 V 和箱体铭牌 63 A 边界已预填",
+        "只让持证电工补总开关、分路、导线、剩余模数、接线空间和新增负荷计算",
+        "63 A 是总开关整定、入户导线容量、剩余容量或新增回路已经放行",
+        "verified_prefilled_electrical_capacity_review_pending",
+    ),
+    "OUTBOUND-FORM-WINDOWS-20260821": (
+        "11-窗改造窗饰与阳台完成面确认表-发施工方.md",
+        "机械手摇开窗器方向、既有厨房实例、约 22 mm 现场边界、窗饰产品家族／颜色方向和阳台塑木方向已预填",
+        "分别只收开窗器产品与样板、逐窗复尺／安装图／报价、塑木产品与完成面样板",
+        "任何开窗器产品、窗饰夜帘方案或塑木产品已采购、已批准或可直接批量施工",
+        "verified_prefilled_window_finish_confirmation_pending",
+    ),
+}
+
+FORM_SOURCE_DEFAULTS = {
+    "OUTBOUND-FORM-ELEC-CAPACITY-20260821": ("ELEC", "E-303"),
+    "OUTBOUND-FORM-WINDOWS-20260821": (
+        "ARCH/INT1/WFIN/ELEC",
+        "A-104/A-105/A-106/D-601/E-303/I-504/S-701",
     ),
 }
 
@@ -169,7 +192,24 @@ def reconcile_source_register() -> None:
     fields, rows = read_csv(path)
     rows = [row for row in rows if row["source_id"] != "EXT-EXTERNAL-INFO-MINIMUM-20260817"]
     for source_id, (name, evidence, proves, does_not_prove, status) in FORM_SOURCES.items():
-        update_by_id(rows, "source_id", source_id, {
+        row = next((item for item in rows if item["source_id"] == source_id), None)
+        if row is None:
+            discipline, sheet_id = FORM_SOURCE_DEFAULTS[source_id]
+            row = source_record(
+                fields,
+                source_id=source_id,
+                discipline=discipline,
+                sheet_id=sheet_id,
+                decision_scope=name.removesuffix(".md"),
+                source_kind="current_external_confirmation_form",
+                confidence="1.00",
+                review_required="yes",
+                formal_ifc_write_allowed="no",
+                revision="2026-08-21",
+                publication_date="2026-08-21",
+            )
+            rows.append(row)
+        row.update({
             "source_document": name,
             "local_path": f"output/forms/对外确认表/{name}",
             "sha256": form_hash(name),
@@ -1604,8 +1644,22 @@ def reconcile_secondary_projections() -> None:
     write_csv(schedule_path, schedule_fields, schedule_rows)
 
 
+def parse_args() -> argparse.Namespace:
+    parser = argparse.ArgumentParser(description=__doc__)
+    parser.add_argument(
+        "--source-register-only",
+        action="store_true",
+        help="Only refresh current form records and hashes in source-evidence-register.csv",
+    )
+    return parser.parse_args()
+
+
 def main() -> None:
+    args = parse_args()
     reconcile_source_register()
+    if args.source_register_only:
+        print(json.dumps({"status": "ok", "forms": len(FORM_SOURCES), "scope": "source-register-only"}, ensure_ascii=False))
+        return
     reconcile_owner_inputs()
     reconcile_closeout_rules()
     reconcile_equipment()

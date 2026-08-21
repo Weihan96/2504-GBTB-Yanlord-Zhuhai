@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Mechanical guardrails for the nine current external confirmation forms."""
+"""Mechanical guardrails for the current external confirmation forms."""
 
 from __future__ import annotations
 
@@ -23,6 +23,8 @@ CURRENT = [
     "07-智能面板电气接口确认表-发JINK与电气方.md",
     "08-定制家具与墙脚节点确认表-发全屋定制.md",
     "09-厨房设备与柜体深化确认表-发橱柜设备方.md",
+    "10-强电箱容量现场复核表-发电气方.md",
+    "11-窗改造窗饰与阳台完成面确认表-发施工方.md",
 ]
 FORBIDDEN_FORM_JARGON = {
     "confirmed owner decision",
@@ -47,6 +49,8 @@ SOURCE_IDS = {
     "07-智能面板电气接口确认表-发JINK与电气方.md": "OUTBOUND-FORM-SMART-PANEL-20260817",
     "08-定制家具与墙脚节点确认表-发全屋定制.md": "OUTBOUND-FORM-JOINERY-DETAIL-20260817",
     "09-厨房设备与柜体深化确认表-发橱柜设备方.md": "OUTBOUND-FORM-KITCHEN-20260818",
+    "10-强电箱容量现场复核表-发电气方.md": "OUTBOUND-FORM-ELEC-CAPACITY-20260821",
+    "11-窗改造窗饰与阳台完成面确认表-发施工方.md": "OUTBOUND-FORM-WINDOWS-20260821",
 }
 HISTORICAL_EXTERNAL_SOURCE_IDS = {
     "A104-SHOP-REQUEST-20260815",
@@ -72,7 +76,17 @@ def cells(line: str) -> list[str]:
 
 
 def validate_tables(name: str, text: str, errors: list[str]) -> None:
-    action_headers = ("现在请你做什么", "请确认的唯一问题", "唯一复核事项", "要确认的结果", "项目图中必须先画清的方案")
+    action_headers = (
+        "现在请你做什么",
+        "请确认的唯一问题",
+        "唯一复核事项",
+        "要确认的结果",
+        "项目图中必须先画清的方案",
+        "项目图中必须先完成",
+        "项目方案和样板要求",
+        "项目已经给出的方向",
+        "项目方案和材料要求",
+    )
     responsibility_headers = ("由谁回答", "谁回复", "谁复核")
     response_headers = ("请在这里回复", "直接填写", "外部单位只需填写")
     lines = text.splitlines()
@@ -174,14 +188,16 @@ def main() -> int:
         validate_tables(name, text, errors)
 
     require(texts.get(CURRENT[0], ""), CURRENT[0], ["业主已经确认，不用填写", "向东／图纸右侧滑开", "不要求“两道水平横档”"], errors)
-    require(texts.get(CURRENT[1], ""), CURRENT[1], ["业主不用填写", "华美", "RPIZ-71FSLN5QD/P", "一只面板最多控制 6 台室内机", "回风口同时作为检修口"], errors)
-    require(texts.get(CURRENT[2], ""), CURRENT[2], ["两个 16A 插座或两个回路", "双存水弯组合", "四分铝塑管套二分 PE 管的网络固定配方"], errors)
-    require(texts.get(CURRENT[3], ""), CURRENT[3], ["ER9EPA33MP", "不代表已经批准或购买", "厨房探测器的位置已经确定"], errors)
-    require(texts.get(CURRENT[4], ""), CURRENT[4], ["现有约测净深 110 mm", "525 mm", "H+350 mm", "(4600.016, -735.369) mm", "玄关高柜右下柜格", "五孔插座", "入户临时置物位", "TL-XAP1500GE-PoE/DC", "280M-S3"], errors)
+    require(texts.get(CURRENT[1], ""), CURRENT[1], ["业主不用填写", "华美", "RPIZ-71FSLN5QD/P", "A06", "QD", "QDF", "冷凝水路线", "支吊点标高", "一只面板最多控制 6 台室内机", "回风口同时作为检修口"], errors)
+    require(texts.get(CURRENT[2], ""), CURRENT[2], ["两个 16A 插座或两个回路", "双存水弯组合", "四分铝塑管套二分 PE 管的网络固定配方", "WTZ27510", "APP-014", "MF287", "CZ356", "CZ028", "Street", "Sorgente", "Nuna V Combo", "定制地漏"], errors)
+    require(texts.get(CURRENT[3], ""), CURRENT[3], ["ER9EPA33MP", "不代表已经批准或购买", "厨房探测器的位置已经确定", "甲烷报警器＋紧急切断阀", "现有消防主机"], errors)
+    require(texts.get(CURRENT[4], ""), CURRENT[4], ["现有约测净深 110 mm", "525 mm", "H+350 mm", "(4600.016, -735.369) mm", "玄关高柜右下柜格", "五孔插座", "入户临时置物位", "TL-XAP1500GE-PoE/DC", "280M-S3", "Entry A 已由业主选定", "两个可同时插入的 220 V 插座位", "PC-P1HEQ", "1～8 芯"], errors)
     require(texts.get(CURRENT[5], ""), CURRENT[5], ["可以 □　不可以 □", "本项目下单／安装图", "地面不做通长下轨"], errors)
     require(texts.get(CURRENT[6], ""), CURRENT[6], ["4 个基础功能", "4 个：客厅、书房、餐厅、照明总关", "传统有线双控", "主卧氛围 LED、主卧重点射灯"], errors)
-    require(texts.get(CURRENT[7], ""), CURRENT[7], ["350～450 mm", "上下约 10 mm 双阴影缝", "谁回复"], errors)
-    require(texts.get(CURRENT[8], ""), CURRENT[8], ["LS33R6VB9W/01", "895×345×873 mm", "不再让业主重复选择", "灶台后和主要操作墙使用与台面同材"], errors)
+    require(texts.get(CURRENT[7], ""), CURRENT[7], ["350～450 mm", "上下约 10 mm 双阴影缝", "全高镜柜", "材质化正投影", "谁回复"], errors)
+    require(texts.get(CURRENT[8], ""), CURRENT[8], ["LS33R6VB9W/01", "895×345×873 mm", "不再让业主重复选择", "灶台后和主要操作墙使用与台面同材", "NS-01", "三个外露面各设一个", "两路独立 C16", "H70FT", "K-D01", "600 mm 石材盆", "F50 仍是基准候选"], errors)
+    require(texts.get(CURRENT[9], ""), CURRENT[9], ["P230", "PX1", "63 A", "总开关", "剩余模数", "新增负荷计算"], errors)
+    require(texts.get(CURRENT[10], ""), CURRENT[10], ["机械手摇", "22 mm", "K5-501", "N31-204", "LightLock", "Duolite", "阳台塑木"], errors)
 
     sources = read_csv(ROOT / "pipeline" / "decisions" / "source-evidence-register.csv", "source_id")
     owner_inputs = read_csv(ROOT / "pipeline" / "decisions" / "owner-input-register.csv", "input_id")

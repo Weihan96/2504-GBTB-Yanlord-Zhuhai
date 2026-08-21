@@ -119,6 +119,10 @@ test("M-401 coordination sheet preserves evidence boundaries and emits PNG proof
   expect(svgText).toContain("6/6 equipment mappings");
   expect(svgText).toContain("5 BLOCK");
   expect(svgText).toContain("construction_release_ready=false");
+  expect(svgText).toContain("客厅 L 形转角送风口");
+  expect(svgText).toContain("有效开口 Aeff ≥ Q / 设计面风速");
+  expect(report.l_shaped_supply_air_design.project_calculation_method).toBe("A_eff >= Q / v_design");
+  expect(report.l_shaped_supply_air_design.unknown_until_external_data).toHaveLength(6);
 }, 30_000);
 
 test("M-401 coordination sheet rejects a stale caller-frozen IFC hash before outputs", () => {

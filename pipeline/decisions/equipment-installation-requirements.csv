@@ -19,8 +19,8 @@ REQ-0017,APP-003,GAS,gas_required,no,,,,user_input,confirmed,,,no,
 REQ-0018,APP-003,HVAC,ventilation_required,no,,,,user_input,confirmed,,,no,
 REQ-0019,APP-004,ELEC,rated_power,,,W,,user_input,pending,,,no,产品额定功率保持 unknown；相关支路已用端口上限或候选最不利值闭合粗装，不将设计值写成产品名牌值。
 REQ-0020,APP-004,ELEC,simultaneous_group,NS02-A,,,,user_input,confirmed,,,no,
-REQ-0021,APP-004,PLUM,water_required,model_dependent,,,,user_input,pending,,,yes,
-REQ-0022,APP-004,PLUM,drain_required,model_dependent,,,,user_input,pending,,,yes,
+REQ-0021,APP-004,PLUM,water_required,model_dependent,,,,user_input,pending,,,no,最终咖啡机模式仍未选；装修粗装已采用可选带阀封帽给水预留，具体机器是否接水只在安装阶段关闭。
+REQ-0022,APP-004,PLUM,drain_required,model_dependent,,,,user_input,pending,,,no,最终咖啡机模式仍未选；装修粗装已采用可选封帽排水预留，具体机器是否接排水只在安装阶段关闭。
 REQ-0023,APP-004,GAS,gas_required,no,,,,user_input,confirmed,,,no,
 REQ-0024,APP-004,HVAC,ventilation_required,no,,,,user_input,confirmed,,,no,
 REQ-0025,APP-005,ELEC,rated_power,,1200,W,,user_input,confirmed,OWNER-INBOX-20260814-001,,no,业主提供；准确 Hario 型号和铭牌待补。
@@ -35,13 +35,13 @@ REQ-0033,APP-006,PLUM,water_required,no,,,,user_input,confirmed,,,no,
 REQ-0034,APP-006,PLUM,drain_required,no,,,,user_input,confirmed,,,no,
 REQ-0035,APP-006,GAS,gas_required,no,,,,user_input,confirmed,,,no,
 REQ-0036,APP-006,HVAC,ventilation_required,no,,,,user_input,confirmed,,,no,
-REQ-0037,APP-007,ELEC,rated_power,,,W,,user_input,pending,,,yes,
+REQ-0037,APP-007,ELEC,rated_power,,,W,,user_input,pending,,,no,产品额定功率保持 unknown；相关支路已用端口上限或候选最不利值闭合粗装，不将设计值写成产品名牌值。
 REQ-0038,APP-007,ELEC,simultaneous_group,CONTINUOUS,,,,user_input,confirmed,,,no,
 REQ-0039,APP-007,PLUM,water_required,no,,,,user_input,confirmed,,,no,
 REQ-0040,APP-007,PLUM,drain_required,no,,,,user_input,confirmed,,,no,
 REQ-0041,APP-007,GAS,gas_required,no,,,,user_input,confirmed,,,no,
 REQ-0042,APP-007,HVAC,ventilation_required,yes,,,,user_input,confirmed,,,no,
-REQ-0043,APP-008,ELEC,rated_power,,,W,,user_input,pending,,,yes,
+REQ-0043,APP-008,ELEC,rated_power,,,W,,user_input,pending,,,no,产品额定功率保持 unknown；相关支路已用端口上限或候选最不利值闭合粗装，不将设计值写成产品名牌值。
 REQ-0044,APP-008,ELEC,simultaneous_group,CONTINUOUS,,,,user_input,confirmed,,,no,
 REQ-0045,APP-008,PLUM,water_required,no,,,,user_input,confirmed,,,no,
 REQ-0046,APP-008,PLUM,drain_required,no,,,,user_input,confirmed,,,no,
@@ -179,7 +179,7 @@ REQ-0177,APP-017,PLUM,water_required,yes,,,,official_exact_model,confirmed,APP-0
 REQ-0178,APP-017,PLUM,drain_required,yes,,,,official_exact_model,confirmed,APP-017-SIEMENS-DRYER-MANUAL-001,,no,洗衣排水；干衣机可冷凝水盒或直接排水。
 REQ-0179,APP-017,GAS,gas_required,no,,,,user_input,confirmed,,,no,
 REQ-0180,APP-017,HVAC,ventilation_required,yes,,,,official_exact_model,confirmed,APP-017-SIEMENS-DRYER-MANUAL-001,,no,开放柜、通风口畅通；不得六面密封。
-REQ-0181,APP-018,ELEC,rated_power,,,W,,user_input,pending,,,yes,
+REQ-0181,APP-018,ELEC,rated_power,,,W,,user_input,pending,,,no,既有弱电设备身份与额定功率只作设备登记；弱电箱供电与散热按最终主动设备清单、可更换电源和有效安装包络闭合。
 REQ-0182,APP-018,ELEC,simultaneous_group,CONTINUOUS,,,,user_input,confirmed,,,no,
 REQ-0183,APP-018,PLUM,water_required,no,,,,user_input,confirmed,,,no,
 REQ-0184,APP-018,PLUM,drain_required,no,,,,user_input,confirmed,,,no,
@@ -332,10 +332,10 @@ REQ-0330,HVAC-004,HVAC/PLUM,drain_slope_min,,,,,project_candidate,pending,RCP1-H
 REQ-0331,HVAC-004,HVAC/PLUM,drain_slope_max,,,,,project_candidate,pending,RCP1-HVAC-IFACE-004,,yes,
 REQ-0332,HVAC-004,HVAC/PLUM,connection_side_basis,unresolved,,,,project_candidate,candidate,RCP1-HVAC-IFACE-004,,no,
 REQ-0333,HVAC-004,HVAC/PLUM,port_coordinate_status,formal_identity_present_product_ports_pending,,,,project_candidate,candidate,RCP1-HVAC-IFACE-004,,no,正式 occurrence 已建立；未创建虚构端口或系统关系
-REQ-0342,APP-005,ELEC,candidate_power_min,,1000,W,,project_candidate,candidate,,,yes,常见值仅用于回路容量情景，不代表已选产品
-REQ-0343,APP-005,ELEC,candidate_power_max,,1800,W,,project_candidate,candidate,,,yes,常见值仅用于回路容量情景，不代表已选产品
-REQ-0344,APP-006,ELEC,candidate_power_min,,150,W,,project_candidate,candidate,,,yes,常见值仅用于回路容量情景，不代表已选产品
-REQ-0345,APP-006,ELEC,candidate_power_max,,400,W,,project_candidate,candidate,,,yes,常见值仅用于回路容量情景，不代表已选产品
+REQ-0342,APP-005,ELEC,candidate_power_min,,1000,W,,project_candidate,candidate,,,no,仅作小功率辅助回路情景校核；NS-02 已按 10A 端口与候选最不利工况闭合粗装，准确型号只在设备登记时复核。
+REQ-0343,APP-005,ELEC,candidate_power_max,,1800,W,,project_candidate,candidate,,,no,仅作小功率辅助回路情景校核；NS-02 已按 10A 端口与候选最不利工况闭合粗装，准确型号只在设备登记时复核。
+REQ-0344,APP-006,ELEC,candidate_power_min,,150,W,,project_candidate,candidate,,,no,仅作小功率辅助回路情景校核；NS-02 已按 10A 端口与候选最不利工况闭合粗装，准确型号只在设备登记时复核。
+REQ-0345,APP-006,ELEC,candidate_power_max,,400,W,,project_candidate,candidate,,,no,仅作小功率辅助回路情景校核；NS-02 已按 10A 端口与候选最不利工况闭合粗装，准确型号只在设备登记时复核。
 REQ-0346,FURIFC-031,INT1,installation_role,fixed_furniture,,,,project_candidate,confirmed,FUR-ROLE-SRC-ac1af453d928,,no,类型与 VVD 中 600×767×888 mm 几何共同识别为岛台固定柜体单元 | confidence=0.99
 REQ-0347,FURIFC-062,INT1,installation_role,fixed_furniture,,,,project_candidate,confirmed,FUR-ROLE-SRC-facd5fffb5d0,,no,类型与 VVD 中 600×767×693 mm 几何共同识别为岛台固定柜体单元 | confidence=0.99
 REQ-0348,FURIFC-033,INT1,installation_role,fixed_furniture,,,,project_candidate,confirmed,FUR-ROLE-SRC-2a281d2df076,,no,类型与 KITCHEN 中 617×1200×888 mm 几何共同识别为固定地柜 | confidence=0.99
@@ -581,8 +581,8 @@ REQ-0587,APP-009,PLUM,drain_demand,yes,,,,official_exact_model,confirmed,APP-DW-
 REQ-0588,APP-010,PLUM,cold_water_demand,yes,,,,official_exact_model,confirmed,APP-DW-INSTALL-001,p.1–2,no,精确候选型号安装图确认 G3/4 冷水；只关闭设备介质需求，不确认现场阀门、支管、软管路径或坐标
 REQ-0589,APP-010,PLUM,hot_water_demand,no,,,,official_exact_model,confirmed,APP-DW-INSTALL-001,p.1–2,no,精确候选型号安装图只允许冷水且冷水不高于 25°C；不得配置热水需求
 REQ-0590,APP-010,PLUM,drain_demand,yes,,,,official_exact_model,confirmed,APP-DW-INSTALL-001,p.1–2,no,精确候选型号安装图确认 Ø38 排水接管；只关闭设备介质需求，不确认项目排水中心、转接或路径
-REQ-0591,APP-004,ELEC,candidate_power_gs3,,2120,W,,official_exact_model,candidate,APP-004-GS3-OFFICIAL-001,,yes,候选功率；最终未选 GS3 时不参与回路统计。
-REQ-0592,APP-004,ELEC,candidate_power_e1_prima_exp,1600_or_2600_by_version,,W,,official_model_family,candidate,APP-004-E1PRIMA-OFFICIAL-001,,yes,须按中国 220V 实购版本锁值。
+REQ-0591,APP-004,ELEC,candidate_power_gs3,,2120,W,,official_exact_model,candidate,APP-004-GS3-OFFICIAL-001,,no,候选功率；装修粗装已按 2600W 不利值闭合，最终未选 GS3 时不参与设备铭牌统计。
+REQ-0592,APP-004,ELEC,candidate_power_e1_prima_exp,1600_or_2600_by_version,,W,,official_model_family,candidate,APP-004-E1PRIMA-OFFICIAL-001,,no,候选版本功率；装修粗装已按 2600W 不利值闭合，实购中国 220V 版本只在设备安装与铭牌登记时锁值。
 REQ-0595,APP-014,MULTI,functional_alias,APP-015,,,,user_input,confirmed,OWNER-INBOX-20260814-001,,no,同一台实物的净水功能历史编号。
 REQ-0596,APP-014,MULTI,physical_unit_count,,1,unit,,user_input,confirmed,OWNER-INBOX-20260814-001,,no,APP-014/015 合计只统计一台。
 REQ-0597,APP-014,MULTI,exact_enr,WS7FSB0C1C,,,,official_exact_model,confirmed,APP-014-SIEMENS-NEW-WEB-001,,no,当前业主优选。
@@ -616,19 +616,19 @@ REQ-0629,CTRL-MASTER-B,INT1,candidate_face_height,,86,mm,,official_model_family,
 REQ-0630,CTRL-MASTER-B,INT1,candidate_product_depth,,37.55,mm,,official_model_family,candidate,JINK-EGG-OFFICIAL-001,,yes,产品深度不等于底盒最小净深。
 REQ-0631,CTRL-MASTER-B,INT1,inset_trim_fit,vendor_sample_confirmation_required,,,,project_candidate,candidate,TB-PANASURFACE-SWITCH-INSET-001,,yes,装饰框不替代电气底盒；一开/二开/三开指相邻面板数量。
 REQ-0632,NET-AP-R09,ELEC,final_model,,,,,pending,pending,,,yes,
-REQ-0633,NET-AP-R09,ELEC,home_run_cable,CAT6_or_higher_to_weak_current_box,,,,project_candidate,candidate,OWNER-INBOX-20260814-001,,yes,
-REQ-0634,NET-AP-R09,ELEC,cable_continuity_test,,,,,pending,pending,,,yes,
-REQ-0635,NET-AP-R09,ELEC,local_220v_for_current_candidates,not_applicable_if_PoE,,,,project_candidate,candidate,OWNER-INBOX-20260814-001,,yes,若改 FTTR/本地供电设备则重新设计，不能继承。
-REQ-0636,NET-AP-R09,ELEC,candidate_ap362e_max_power,,9.4,W,,official_exact_model,candidate,HUAWEI-AP362E-OFFICIAL-001,,yes,
-REQ-0637,NET-AP-R09,ELEC,candidate_ap362e_power,802.3af_PoE,,,,official_exact_model,candidate,HUAWEI-AP362E-OFFICIAL-001,,yes,
-REQ-0638,NET-AP-R09,ELEC,candidate_rgeap262e_power,802.3at_PoE_or_12V_DC,,,,official_exact_model,candidate,RUIJIE-EAP262E-OFFICIAL-001,,yes,
+REQ-0633,NET-AP-R09,ELEC,home_run_cable,CAT6_or_higher_to_weak_current_box,,,,project_candidate,candidate,OWNER-INBOX-20260814-001,,no,已确定 Cat6 星型回弱电箱的项目拓扑；现场只需验证通断与端接。
+REQ-0634,NET-AP-R09,ELEC,cable_continuity_test,,,,,pending,pending,,,no,历史重复字段；现行停止条件为 cable_continuity，不重复计入阻断。
+REQ-0635,NET-AP-R09,ELEC,local_220v_for_current_candidates,not_applicable_if_PoE,,,,project_candidate,candidate,OWNER-INBOX-20260814-001,,no,项目采用 PoE，AP 点不设 220V；若改 FTTR/本地供电设备则重新设计，不能继承。
+REQ-0636,NET-AP-R09,ELEC,candidate_ap362e_max_power,,9.4,W,,official_exact_model,candidate,HUAWEI-AP362E-OFFICIAL-001,,no,历史候选产品参数，不再作为现行发布停止条件。
+REQ-0637,NET-AP-R09,ELEC,candidate_ap362e_power,802.3af_PoE,,,,official_exact_model,candidate,HUAWEI-AP362E-OFFICIAL-001,,no,历史候选产品参数，不再作为现行发布停止条件。
+REQ-0638,NET-AP-R09,ELEC,candidate_rgeap262e_power,802.3at_PoE_or_12V_DC,,,,official_exact_model,candidate,RUIJIE-EAP262E-OFFICIAL-001,,no,历史候选产品参数，不再作为现行发布停止条件。
 REQ-0639,NET-AP-R14,ELEC,final_model,,,,,pending,pending,,,yes,
-REQ-0640,NET-AP-R14,ELEC,home_run_cable,CAT6_or_higher_to_weak_current_box,,,,project_candidate,candidate,OWNER-INBOX-20260814-001,,yes,
-REQ-0641,NET-AP-R14,ELEC,cable_continuity_test,,,,,pending,pending,,,yes,
-REQ-0642,NET-AP-R14,ELEC,local_220v_for_current_candidates,not_applicable_if_PoE,,,,project_candidate,candidate,OWNER-INBOX-20260814-001,,yes,若改 FTTR/本地供电设备则重新设计，不能继承。
-REQ-0643,NET-AP-R14,ELEC,candidate_ap362e_max_power,,9.4,W,,official_exact_model,candidate,HUAWEI-AP362E-OFFICIAL-001,,yes,
-REQ-0644,NET-AP-R14,ELEC,candidate_ap362e_power,802.3af_PoE,,,,official_exact_model,candidate,HUAWEI-AP362E-OFFICIAL-001,,yes,
-REQ-0645,NET-AP-R14,ELEC,candidate_rgeap262e_power,802.3at_PoE_or_12V_DC,,,,official_exact_model,candidate,RUIJIE-EAP262E-OFFICIAL-001,,yes,
+REQ-0640,NET-AP-R14,ELEC,home_run_cable,CAT6_or_higher_to_weak_current_box,,,,project_candidate,candidate,OWNER-INBOX-20260814-001,,no,已确定 Cat6 星型回弱电箱的项目拓扑；现场只需验证通断与端接。
+REQ-0641,NET-AP-R14,ELEC,cable_continuity_test,,,,,pending,pending,,,no,历史重复字段；现行停止条件为 cable_continuity，不重复计入阻断。
+REQ-0642,NET-AP-R14,ELEC,local_220v_for_current_candidates,not_applicable_if_PoE,,,,project_candidate,candidate,OWNER-INBOX-20260814-001,,no,项目采用 PoE，AP 点不设 220V；若改 FTTR/本地供电设备则重新设计，不能继承。
+REQ-0643,NET-AP-R14,ELEC,candidate_ap362e_max_power,,9.4,W,,official_exact_model,candidate,HUAWEI-AP362E-OFFICIAL-001,,no,历史候选产品参数，不再作为现行发布停止条件。
+REQ-0644,NET-AP-R14,ELEC,candidate_ap362e_power,802.3af_PoE,,,,official_exact_model,candidate,HUAWEI-AP362E-OFFICIAL-001,,no,历史候选产品参数，不再作为现行发布停止条件。
+REQ-0645,NET-AP-R14,ELEC,candidate_rgeap262e_power,802.3at_PoE_or_12V_DC,,,,official_exact_model,candidate,RUIJIE-EAP262E-OFFICIAL-001,,no,历史候选产品参数，不再作为现行发布停止条件。
 REQ-0646,SENSOR-GAS-R04,ELEC/GAS,exact_model,,,,,pending,pending,,,yes,须由珠海燃气公司/主管要求和最终设备资料关闭。
 REQ-0647,SENSOR-GAS-R04,ELEC/GAS,gas_company_approval,,,,,pending,pending,,,yes,须由珠海燃气公司/主管要求和最终设备资料关闭。
 REQ-0648,SENSOR-GAS-R04,ELEC/GAS,certification,,,,,pending,pending,,,yes,须由珠海燃气公司/主管要求和最终设备资料关闭。
@@ -640,10 +640,10 @@ REQ-0653,SENSOR-GAS-R04,ELEC/GAS,inset_trim_written_approval,,,,,pending,pending
 REQ-0654,SENSOR-GAS-R04,ELEC/GAS,consultation_candidates,JT-GS838C-NBAC-H05;JT-KEA01;JT-KEA31;JT-KWE_family;JT-AM5301-JG,,,,project_candidate,candidate,OWNER-INBOX-20260814-001,,yes,仅供咨询，不代表批准或采购。
 REQ-0655,SENSOR-001,ELEC/FIRE,final_detector_type_and_model,,,,,pending,pending,,,yes,位置已确认；感温/感烟/复合和产品仍待消防/设备方。
 REQ-0656,SENSOR-001,INT1/FIRE,inset_trim_fit,vendor_and_fire_authority_confirmation_required,,,,project_candidate,candidate,TB-PANASURFACE-ALARM-INSET-001,,yes,先定设备再按准确型号确认装饰件。
-REQ-0657,APP-004,PLUM,candidate_gs3_water_mode,reservoir_or_direct_plumb,,,,official_exact_model,candidate,APP-004-GS3-OFFICIAL-001,,yes,最终未选 GS3 时不参与施工接口。
-REQ-0658,APP-004,PLUM,candidate_gs3_drain_mode,model_and_mode_dependent,,,,official_exact_model,candidate,APP-004-GS3-OFFICIAL-001,,yes,仅预留可关闭接口，不据此施工定版。
-REQ-0659,APP-004,PLUM,candidate_e1_prima_water_mode,reservoir_or_direct_plumb,,,,official_exact_model,candidate,APP-004-E1PRIMA-OFFICIAL-001,,yes,最终未选 E1 Prima EXP 时不参与施工接口。
-REQ-0660,APP-004,PLUM,candidate_e1_prima_drain_mode,model_and_mode_dependent,,,,official_exact_model,candidate,APP-004-E1PRIMA-OFFICIAL-001,,yes,仅预留可关闭接口，不据此施工定版。
+REQ-0657,APP-004,PLUM,candidate_gs3_water_mode,reservoir_or_direct_plumb,,,,official_exact_model,candidate,APP-004-GS3-OFFICIAL-001,,no,候选模式由带阀封帽给水预留覆盖；最终未选 GS3 时不参与设备安装接口。
+REQ-0658,APP-004,PLUM,candidate_gs3_drain_mode,model_and_mode_dependent,,,,official_exact_model,candidate,APP-004-GS3-OFFICIAL-001,,no,候选模式由封帽排水预留覆盖；最终接口在设备安装阶段关闭，不阻断装修粗装。
+REQ-0659,APP-004,PLUM,candidate_e1_prima_water_mode,reservoir_or_direct_plumb,,,,official_exact_model,candidate,APP-004-E1PRIMA-OFFICIAL-001,,no,候选模式由带阀封帽给水预留覆盖；最终未选 E1 Prima EXP 时不参与设备安装接口。
+REQ-0660,APP-004,PLUM,candidate_e1_prima_drain_mode,model_and_mode_dependent,,,,official_exact_model,candidate,APP-004-E1PRIMA-OFFICIAL-001,,no,候选模式由封帽排水预留覆盖；最终接口在设备安装阶段关闭，不阻断装修粗装。
 REQ-0661,APP-017,ELEC,independent_power_plug_count,,2,unit,,official_exact_model,confirmed,APP-017-SIEMENS-DRYER-MANUAL-001,,no,两台各一根电源线和插头；禁止排插/延长线。
 REQ-0662,APP-017,ELEC,shared_branch_circuit_permission,yes,,,,research_conclusion,confirmed,ELEC-RESEARCH-20260815-001,工程研究结论,no,
 REQ-0663,APP-017,MULTI,equipment_form,two_independent_appliances_stacked,,,,user_input,confirmed,,,no,不得标作洗干一体机或 WashTower。
@@ -724,7 +724,7 @@ REQ-ELEC-20260815-006,APP-011,ELEC,rcbo_required,yes,,,,research_conclusion,conf
 REQ-ELEC-20260815-007,APP-011,ELEC,dedicated_branch_circuit,yes,,,,research_conclusion,confirmed,ELEC-RESEARCH-20260815-001,工程研究结论,no,
 REQ-ELEC-20260815-008,APP-011,ELEC,socket_service_location,adjacent_accessible_cabinet_not_directly_behind,,,,research_conclusion,confirmed,ELEC-RESEARCH-20260815-001,工程研究结论,no,
 REQ-ELEC-20260815-009,APP-011,ELEC,track_socket_allowed,no,,,,research_conclusion,confirmed,ELEC-RESEARCH-20260815-001,工程研究结论,no,
-REQ-ELEC-20260815-010,APP-011,ELEC,interface_center_coordinates,unknown,,,,pending,pending,,,yes,说明书未提供接口中心坐标，不推测。
+REQ-ELEC-20260815-010,APP-011,ELEC,interface_center_coordinates,unknown,,,,pending,pending,,,no,说明书未提供接口中心坐标，不推测；项目采用相邻可检修柜格插座，不以机背中心坐标作为粗装停止条件。
 REQ-ELEC-20260815-011,APP-017,ELEC,washer_rated_power_w,,1900,W,,official_exact_model,confirmed,APP-017-SIEMENS-WASHER-MANUAL-001,p.24,no,
 REQ-ELEC-20260815-012,APP-017,ELEC,dryer_rated_power_w,,800,W,,official_exact_model,confirmed,APP-017-SIEMENS-DRYER-MANUAL-001,p.40,no,
 REQ-ELEC-20260815-013,APP-017,ELEC,simultaneous_design_load_w,,2700,W,,research_conclusion,confirmed,ELEC-RESEARCH-20260815-001,工程研究结论,no,

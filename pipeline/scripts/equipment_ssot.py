@@ -294,9 +294,9 @@ def migrate(root: Path) -> dict[str, Any]:
         if item["appliance_id"] in CANDIDATE_POWER_RANGES:
             minimum, maximum = CANDIDATE_POWER_RANGES[item["appliance_id"]]
             add_requirement(reqs, item["appliance_id"], "candidate_power_min", str(minimum), discipline="ELEC", unit="W",
-                            origin="project_candidate", status="candidate", blocks="yes", notes="常见值仅用于回路容量情景，不代表已选产品")
+                            origin="project_candidate", status="candidate", blocks="no", notes="常见值仅用于回路容量情景，不代表已选产品；已按端口额定和不利工况闭合粗装后不阻断发布")
             add_requirement(reqs, item["appliance_id"], "candidate_power_max", str(maximum), discipline="ELEC", unit="W",
-                            origin="project_candidate", status="candidate", blocks="yes", notes="常见值仅用于回路容量情景，不代表已选产品")
+                            origin="project_candidate", status="candidate", blocks="no", notes="常见值仅用于回路容量情景，不代表已选产品；已按端口额定和不利工况闭合粗装后不阻断发布")
 
     furniture_types: dict[str, Any] = {}
     for product in model.by_type("IfcFurniture"):

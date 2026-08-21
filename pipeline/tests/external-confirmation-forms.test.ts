@@ -10,5 +10,5 @@ test("current external forms consume SSOT context and retain explicit ownership"
   ], { cwd: root });
   expect(result.stderr.toString()).toBe("");
   expect(result.exitCode).toBe(0);
-  expect(result.stdout.toString()).toContain("9 current forms");
+  expect(result.stdout.toString()).toContain("11 current forms");
 });

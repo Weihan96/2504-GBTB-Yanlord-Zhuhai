@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="1240" viewBox="0 0 1600 1240">
+<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="1400" viewBox="0 0 1600 1400">
 <style>
 .bg{fill:#f3f6fa}.panel{fill:#fff;stroke:#cbd5e1;stroke-width:2}.card{fill:#eef6ff;stroke:#93c5fd;stroke-width:2}
 .title{font:700 38px -apple-system,"PingFang SC",sans-serif;fill:#0f172a}.subtitle{font:18px -apple-system,"PingFang SC",sans-serif;fill:#475569}
@@ -46,5 +46,12 @@
 <text class="safety-title" x="82" y="1075">安全设备现状：正式 IFC 仅 1 个 IfcSensor / FIRESENSOR</text>
 <text class="safety-text" x="82" y="1105">A106-FIRE-R04 · 中厨 R04 · 位置 [1800.0, -4576.0, 2400.0] mm 已确认；最终感温/感烟/复合类型、产品、供电通信和厂家安装条件仍待确认。</text>
 <text class="gate" x="82" y="1137">automatic_ifc_write_allowed=false · construction_release_ready=false · 未建模内容不得由近接、名称或旧几何推断</text>
-<text class="footer" x="55" y="1213">IFC SHA-256 7a50b87e8f48a7c2bfbaa9f1dabdfca7155fa684b2325c66aa1ae15c8ab0a25c · 6/6 equipment mappings · 7/7 controlled interface roles · 5 BLOCK</text>
+
+<rect class="panel" x="55" y="1185" width="1490" height="145" rx="16"/>
+<text class="section" x="82" y="1220">客厅 L 形转角送风口｜项目设计方向已定，性能数据待对图复核</text>
+<text class="route-label" x="82" y="1250">侧出风＋下回风；可拆回风口兼检修口；L 形风口用于弱化窗帘盒阳角</text>
+<text class="small" x="82" y="1278">项目计算：有效开口 Aeff ≥ Q / 设计面风速；M-401 须列风量、有效开口、面风速、机外静压、转角压损、噪声与检修路线。</text>
+<text class="small" x="82" y="1304">厂家／安装方只按项目图核对真实风口开孔率、转角损失、机组余压和噪声；没有数据时保持 unknown，不按效果图猜尺寸。</text>
+<text class="warn" x="82" y="1325">当前不可施工放样：最终房间风量、可用余压、风口开孔率、转角损失系数及逐段保温表仍待关闭。</text>
+<text class="footer" x="55" y="1373">IFC SHA-256 7a50b87e8f48a7c2bfbaa9f1dabdfca7155fa684b2325c66aa1ae15c8ab0a25c · 6/6 equipment mappings · 7/7 controlled interface roles · 5 BLOCK</text>
 </svg>

@@ -52,6 +52,11 @@ def parse_args() -> argparse.Namespace:
     parser.add_argument("--elec-existing", type=Path, default=root / "build/elec/elec-existing-candidate.json")
     parser.add_argument("--rcp1-existing", type=Path, default=root / "build/rcp1/rcp1-existing-candidate.json")
     parser.add_argument("--source-svg", type=Path, default=root / "drawings/Wall Plan.svg")
+    parser.add_argument(
+        "--owner-inputs",
+        type=Path,
+        default=root / "pipeline/decisions/owner-input-register.csv",
+    )
     parser.add_argument("--output", type=Path, default=root / "build/elec/a106-ceiling-device-candidate.json")
     parser.add_argument("--output-svg", type=Path, default=root / "drawings/A106-ceiling-device-candidate.svg")
     parser.add_argument("--tolerance-mm", type=float, default=0.1)
@@ -73,6 +78,24 @@ def read_csv(path: Path) -> list[dict[str, str]]:
     if len(ids) != len(set(ids)):
         raise RuntimeError("A-106 candidate IDs are not unique")
     return rows
+
+
+def read_ceiling_detail_directions(path: Path) -> dict[str, dict[str, str]]:
+    rows = {
+        row["input_id"]: row
+        for row in csv.DictReader(path.open(encoding="utf-8-sig", newline=""))
+    }
+    required = {
+        "LEGACY-RCP-CEILING-ACCESS",
+        "LEGACY-RCP-CURTAIN-COVE-WINERACK",
+    }
+    if missing := required - rows.keys():
+        raise RuntimeError(f"A-106 owner-input directions are missing: {sorted(missing)}")
+    selected = {input_id: rows[input_id] for input_id in required}
+    for input_id, row in selected.items():
+        if row["status"] != "需证据" or not row["candidate_value"] or not row["user_value"]:
+            raise RuntimeError(f"A-106 project direction boundary changed: {input_id}")
+    return selected
 
 
 def shape_data(settings: ifcopenshell.geom.settings, product: Any) -> tuple[np.ndarray, np.ndarray]:
@@ -444,7 +467,12 @@ def compile_report(args: argparse.Namespace) -> dict[str, Any]:
     }
 
 
-def render_svg(source: str, report: dict[str, Any], output: Path) -> None:
+def render_svg(
+    source: str,
+    report: dict[str, Any],
+    output: Path,
+    detail_directions: dict[str, dict[str, str]],
+) -> None:
     source = re.sub(r'width="400(?:\.0+)?mm"', 'width="500mm"', source, count=1)
     source = re.sub(r'viewBox="0 0 400(?:\.0+)? 400(?:\.0+)?"', 'viewBox="0 0 500 400"', source, count=1)
     demolition_ids = report["excluded_demolition_wall_global_ids"]
@@ -505,10 +533,20 @@ def render_svg(source: str, report: dict[str, Any], output: Path) -> None:
         '<text class="a106-warn" x="407" y="111">风口模型不完整：送风禁距门未关闭</text>',
         '<text class="a106-warn" x="407" y="119">厨房火灾点位已确认；最终类型/产品待确认</text>',
         '<text class="a106-warn" x="407" y="127">厨房燃气探测点位及型号待确认</text>',
+        '<text class="a106-section" x="407" y="145">项目天花节点方向（方案已定）</text>',
+        '<text class="a106-text" x="407" y="154">厨房：木饰面拼板；卫浴／阳台：木条拼缝内整板可拆检修</text>',
+        '<text class="a106-text" x="407" y="162">其余：双层石膏板；保留既有天花高低关系</text>',
+        '<text class="a106-text" x="407" y="170">节点须画：阻燃防潮基层、独立承重固定、开启五金、整机拆出路线</text>',
+        '<text class="a106-warn" x="407" y="178">外部只复核材料体系／固定／防火防潮／1:1 样板，不重选造型</text>',
+        '<text class="a106-section" x="407" y="195">窗帘盒、灯槽、酒架加固（方案已定）</text>',
+        '<text class="a106-text" x="407" y="204">客厅窗帘盒名义宽 200 mm；反灯槽采用直边铝型材收口</text>',
+        '<text class="a106-text" x="407" y="212">顶天立地酒架上方按最终满载和倾覆工况设独立结构加固</text>',
+        '<text class="a106-text" x="407" y="220">不得只固定在饰面板；须与灯具、风口、电源和检修拆装错开</text>',
+        '<text class="a106-warn" x="407" y="228">外部只回满载、锚固、材料及冲突圈图；准确接口中心仍 unknown</text>',
         f'<text class="a106-note" x="407" y="382">IFC SHA {report["source_ifc_sha256"][:12]}…</text></g>',
     ])
     style = """
-@page{size:500mm 400mm;margin:0}.a106-excluded-demolish{display:none!important}.a106-smoke{fill:#f59f00;stroke:#7a4d00;stroke-width:.7}.a106-fire{fill:#e03131;stroke:#7d1010;stroke-width:.7}.a106-ap{fill:#228be6;stroke:#0b477d;stroke-width:.7}.a106-light{fill:#868e96;stroke:#343a40;stroke-width:.25}.a106-known-clearance{fill:#f59f00;fill-opacity:.035;stroke:#f59f00;stroke-opacity:.32;stroke-width:.3;stroke-dasharray:1.2 1.2}.a106-label,.a106-title,.a106-note,.a106-text,.a106-warn{font-family:Arial,'Noto Sans CJK SC',sans-serif;fill:#102f43}.a106-label{font-size:2.2px;font-weight:700;paint-order:stroke;stroke:#fff;stroke-width:.8px}.a106-panel{fill:#fbfcfd;stroke:#102f43;stroke-width:.5}.a106-title{font-size:3.7px;font-weight:700}.a106-note{font-size:2.15px;fill:#526777}.a106-text{font-size:2.3px}.a106-warn{font-size:2.15px;fill:#c92a2a;font-weight:700}
+@page{size:500mm 400mm;margin:0}.a106-excluded-demolish{display:none!important}.a106-smoke{fill:#f59f00;stroke:#7a4d00;stroke-width:.7}.a106-fire{fill:#e03131;stroke:#7d1010;stroke-width:.7}.a106-ap{fill:#228be6;stroke:#0b477d;stroke-width:.7}.a106-light{fill:#868e96;stroke:#343a40;stroke-width:.25}.a106-known-clearance{fill:#f59f00;fill-opacity:.035;stroke:#f59f00;stroke-opacity:.32;stroke-width:.3;stroke-dasharray:1.2 1.2}.a106-label,.a106-title,.a106-note,.a106-text,.a106-warn,.a106-section{font-family:Arial,'Noto Sans CJK SC',sans-serif;fill:#102f43}.a106-label{font-size:2.2px;font-weight:700;paint-order:stroke;stroke:#fff;stroke-width:.8px}.a106-panel{fill:#fbfcfd;stroke:#102f43;stroke-width:.5}.a106-title{font-size:3.7px;font-weight:700}.a106-section{font-size:2.55px;font-weight:700;fill:#0b596e}.a106-note{font-size:2.15px;fill:#526777}.a106-text{font-size:2.3px}.a106-warn{font-size:2.15px;fill:#c92a2a;font-weight:700}
 """
     output.parent.mkdir(parents=True, exist_ok=True)
     output.write_text(source.replace("</svg>", f'<style id="a106-style">{style}</style><g id="a106-ceiling-device-candidate">{"".join(markup)}</g></svg>', 1), encoding="utf-8")
@@ -517,11 +555,20 @@ def render_svg(source: str, report: dict[str, Any], output: Path) -> None:
 def main() -> int:
     args = parse_args()
     report = compile_report(args)
+    detail_directions = read_ceiling_detail_directions(args.owner_inputs)
+    report["project_detail_directions"] = {
+        input_id: {
+            "candidate_value": row["candidate_value"],
+            "owner_value": row["user_value"],
+            "status": row["status"],
+        }
+        for input_id, row in detail_directions.items()
+    }
     args.output.parent.mkdir(parents=True, exist_ok=True)
     args.output.write_text(json.dumps(report, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
     source = args.source_svg.read_text(encoding="utf-8")
     validate_wall_plan_source(source, args.source_svg, args.ifc)
-    render_svg(source, report, args.output_svg)
+    render_svg(source, report, args.output_svg, detail_directions)
     print(json.dumps({"summary": report["summary"], "gates": report["gates"]}, ensure_ascii=False))
     return 0
 
