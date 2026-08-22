@@ -118,6 +118,8 @@ test("M-401 coordination sheet preserves evidence boundaries and emits PNG proof
   expect(svgText).toContain("A06 → H03");
   expect(svgText).toContain("6/6 equipment mappings");
   expect(svgText).toContain("5 BLOCK");
+  expect(svgText).toContain('width="500mm" height="400mm"');
+  expect(svgText).toContain("@page{size:500mm 400mm;margin:0}");
   expect(svgText).toContain("construction_release_ready=false");
   expect(svgText).toContain("客厅 L 形转角送风口");
   expect(svgText).toContain("有效开口 Aeff ≥ Q / 设计面风速");

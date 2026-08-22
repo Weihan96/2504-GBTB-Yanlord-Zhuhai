@@ -269,20 +269,33 @@ def render_svg(rows: list[dict[str, str]], ifc_hash: str) -> str:
         ("墙面材料系统", "Tadelakt/大白墙/中厨同材大板＋浅置物架为意图"),
     ]
     cards = []
+    card_width = 440
+    card_height = 150
+    card_x = (55, 525)
+    card_y = (190, 385, 580)
+    footer_safe_y = 835
     for index, (name, note) in enumerate(sections):
-        y = 190 + index * 130
+        column = index % 2
+        row_index = index // 2
+        x = card_x[column]
+        y = card_y[row_index]
         cards.append(
-            f'<rect class="card" x="55" y="{y}" width="910" height="105" rx="12"/>'
-            f'<text class="count" x="95" y="{y + 64}">{counts[name]}</text>'
-            f'<text class="section" x="180" y="{y + 42}">{html.escape(name)}</text>'
-            f'<text class="note" x="180" y="{y + 75}">{html.escape(note)}</text>'
+            f'<g class="schedule-card" data-card-index="{index}" data-card-bottom="{y + card_height}">'
+            f'<rect class="card" x="{x}" y="{y}" width="{card_width}" height="{card_height}" rx="12"/>'
+            f'<text class="count" x="{x + 48}" y="{y + 82}">{counts[name]}</text>'
+            f'<text class="section" x="{x + 95}" y="{y + 48}">{html.escape(name)}</text>'
+            f'<foreignObject x="{x + 95}" y="{y + 67}" width="{card_width - 120}" height="68">'
+            f'<div xmlns="http://www.w3.org/1999/xhtml" class="note">{html.escape(note)}</div>'
+            f'</foreignObject></g>'
         )
+    if max(card_y) + card_height >= footer_safe_y:
+        raise RuntimeError("S-701 card layout overlaps the footer safe zone")
     return f'''<?xml version="1.0" encoding="UTF-8"?>
-<svg xmlns="http://www.w3.org/2000/svg" width="1020" height="930" viewBox="0 0 1020 930">
+<svg xmlns="http://www.w3.org/2000/svg" width="1020" height="930" viewBox="0 0 1020 930" data-footer-safe-y="{footer_safe_y}">
 <style>
 .bg{{fill:#f4f7fb}}.card{{fill:#fff;stroke:#cbd5e1;stroke-width:2}}.title{{font:700 36px -apple-system,"PingFang SC",sans-serif;fill:#0f172a}}
 .meta{{font:17px -apple-system,"PingFang SC",sans-serif;fill:#475569}}.count{{font:700 38px ui-monospace,monospace;fill:#0f4c81;text-anchor:middle}}
-.section{{font:700 23px -apple-system,"PingFang SC",sans-serif;fill:#1e293b}}.note{{font:17px -apple-system,"PingFang SC",sans-serif;fill:#92400e}}
+.section{{font:700 22px -apple-system,"PingFang SC",sans-serif;fill:#1e293b}}.note{{font:16px/1.45 -apple-system,"PingFang SC",sans-serif;color:#92400e}}
 .gate{{font:700 17px ui-monospace,monospace;fill:#991b1b}}.footer{{font:14px ui-monospace,monospace;fill:#64748b}}
 </style><rect class="bg" width="1020" height="930"/>
 <text class="title" x="55" y="65">S-701 材料、设备及五金表候选</text>
@@ -344,6 +357,7 @@ def main() -> None:
         "outputs": {"review_csv": {"path": str(review_csv), "sha256": sha256(review_csv)},
                     "svg": {"path": str(svg), "sha256": sha256(svg)}, "proof_png": {"path": str(png), "sha256": sha256(png)}},
         "gates": {"source_hashes_current": True, "confirmed_candidate_unresolved_split": True,
+                  "layout_no_overlap": True,
                   "automatic_ifc_write_allowed": False, "construction_release_ready": False},
     }
     report_path.parent.mkdir(parents=True, exist_ok=True)

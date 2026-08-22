@@ -7,7 +7,7 @@ const script = readFileSync(
 );
 
 test("lightweight elevations are curve-only and preserve detailed bodies", () => {
-  expect(script).toContain('"Body", "ELEVATION_VIEW"');
+  expect(script).toContain('drawing_context(model, "ELEVATION_VIEW")');
   expect(script).toContain('"Body", "Curve3D"');
   expect(script).toContain("createIfcPolyline");
   expect(script).not.toContain("createIfcCircle");
@@ -36,6 +36,20 @@ test("all twelve controlled exclusions receive a lightweight profile", () => {
   for (const id of ids) expect(script).toContain(id);
 });
 
+test("toilets and washbasin receive plan and elevation drawing outlines", () => {
+  for (const id of [
+    "1rhZG98PPCSxaLeMFLTYb9",
+    "0UtU7yPb10ku4gsbGoM_sp",
+    "350tdaubr8QP3Cu2YMQZIN",
+  ]) expect(script).toContain(id);
+  expect(script).toContain('("PLAN_VIEW", "ELEVATION_VIEW")');
+  expect(script).toContain('"wall_hung_wc"');
+  expect(script).toContain('"pedestal_basin"');
+  expect(script).toContain('"coordination_only": True');
+  expect(script).toContain("replace_target_view=True");
+  expect(script).toContain("replaced_target_view_");
+});
+
 test("Bonsai elevation compiler prioritises lightweight target-view bodies", () => {
   const compiler = readFileSync(
     "pipeline/scripts/int1_bonsai_elevation.py",
@@ -46,4 +60,26 @@ test("Bonsai elevation compiler prioritises lightweight target-view bodies", () 
   );
   expect(compiler).toContain("lightweight_elevation_global_ids");
   expect(compiler).toContain("INT1_BONSAI_OUTPUT_DIR");
+});
+
+test("candidate preview can render without rewriting its checkpoint", () => {
+  const runner = readFileSync(
+    "pipeline/scripts/int1_bonsai_elevation_headless.py",
+    "utf8",
+  );
+  expect(runner).toContain('preview_only = "--preview-only" in arguments');
+  expect(runner).toContain('"--formal-ifc" in arguments');
+  expect(runner).toContain('os.environ["INT1_BONSAI_FORMAL_IFC"]');
+  expect(runner).toContain('"checkpoint_write_allowed": False');
+  expect(runner.indexOf("if preview_only:")).toBeLessThan(runner.indexOf("tool.Ifc.get().write"));
+
+  const publicRunner = readFileSync(
+    "pipeline/scripts/int1_bonsai_public_elevation_headless.py",
+    "utf8",
+  );
+  expect(publicRunner).toContain('preview_only = "--preview-only" in arguments');
+  expect(publicRunner).toContain('"checkpoint_write_allowed": False');
+  expect(publicRunner.indexOf("if preview_only:")).toBeLessThan(
+    publicRunner.indexOf("tool.Ifc.get().write"),
+  );
 });

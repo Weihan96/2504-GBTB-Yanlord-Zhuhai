@@ -80,7 +80,7 @@ def root(title: str, subtitle: str) -> ET.Element:
     meta = ET.SubElement(svg, f"{{{SVG_NS}}}text", {"x": str(MARGIN), "y": "96", "class": "int1-public-meta"})
     meta.text = subtitle
     warning = ET.SubElement(svg, f"{{{SVG_NS}}}text", {"x": str(MARGIN), "y": "130", "class": "int1-public-note"})
-    warning.text = "项目编译审核图，不冒充开发商原图；红/橙框为非整数世界几何。"
+    warning.text = "项目编译审核图，不冒充开发商原图；浅棕/浅米框为非整数世界几何。"
     return svg
 
 

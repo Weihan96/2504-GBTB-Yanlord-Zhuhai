@@ -17,6 +17,7 @@ import ifcopenshell.util.element
 
 
 PROJECT_ROOT = Path(__file__).resolve().parents[2]
+FORMAL_IFC = PROJECT_ROOT / "2504 GBTB Yanlord Zhuhai.ifc"
 REGISTER = PROJECT_ROOT / "pipeline/decisions/int1-elevation-view-register.csv"
 REPORT_DIR = PROJECT_ROOT / os.environ.get(
     "INT1_BONSAI_REPORT_DIR", "build/int1/native-bonsai"
@@ -31,6 +32,14 @@ def sha256(path: Path) -> str:
         for chunk in iter(lambda: handle.read(1024 * 1024), b""):
             digest.update(chunk)
     return digest.hexdigest()
+
+
+def project_relative(path: Path) -> str:
+    resolved = path.resolve()
+    try:
+        return resolved.relative_to(PROJECT_ROOT).as_posix()
+    except ValueError:
+        return str(resolved)
 
 
 def normalize_svg(path: Path) -> None:
@@ -52,6 +61,7 @@ def drawing_document(model: ifcopenshell.file, drawing: ifcopenshell.entity_inst
 def main() -> None:
     parser = argparse.ArgumentParser()
     parser.add_argument("checkpoint", type=Path)
+    parser.add_argument("--formal-ifc", type=Path, default=FORMAL_IFC)
     parser.add_argument("--source-ifc-sha256-before-batch")
     parser.add_argument(
         "--skip-ifc-write",
@@ -60,6 +70,11 @@ def main() -> None:
     )
     arguments = parser.parse_args()
     checkpoint = arguments.checkpoint.resolve()
+    formal_ifc = arguments.formal_ifc.resolve()
+    if not formal_ifc.is_file():
+        raise FileNotFoundError(formal_ifc)
+    checkpoint_hash = sha256(checkpoint)
+    formal_ifc_hash = sha256(formal_ifc)
     model = ifcopenshell.open(checkpoint)
     rows = list(csv.DictReader(REGISTER.open(encoding="utf-8-sig")))
     expected_view_ids = {row["view_id"] for row in rows}
@@ -87,6 +102,10 @@ def main() -> None:
         document.Location = f"drawings/elevations/native/{drawing.Name}.svg"
         source_path = REPORT_DIR / f"{drawing.Name}-source.json"
         source = json.loads(source_path.read_text(encoding="utf-8"))
+        if source.get("drawing_source_ifc_sha256") != checkpoint_hash:
+            raise RuntimeError(f"{drawing.Name}: drawing-source IFC lineage is stale")
+        if source.get("formal_ifc_sha256") != formal_ifc_hash:
+            raise RuntimeError(f"{drawing.Name}: formal IFC lineage is stale")
         pset = ifcopenshell.util.element.get_pset(drawing, "EPset_Drawing")
         reports.append(
             {
@@ -147,9 +166,16 @@ def main() -> None:
     manifest = {
         "generated_at": datetime.now(timezone.utc).isoformat(),
         "generator": "Bonsai 0.8.4 native Drawing / bim.create_drawing",
-        "source_ifc": "2504 GBTB Yanlord Zhuhai.ifc",
-        "source_ifc_sha256_before_batch": arguments.source_ifc_sha256_before_batch,
-        "checkpoint_sha256": sha256(checkpoint),
+        "source_ifc": project_relative(formal_ifc),
+        "source_ifc_sha256": formal_ifc_hash,
+        "source_ifc_sha256_before_batch": (
+            arguments.source_ifc_sha256_before_batch or formal_ifc_hash
+        ),
+        "drawing_source_ifc": project_relative(checkpoint),
+        "drawing_source_ifc_sha256": checkpoint_hash,
+        "drawing_source_is_derived": checkpoint != formal_ifc,
+        "drawing_source_lineage_verified": True,
+        "checkpoint_sha256": checkpoint_hash,
         "view_count": len(reports),
         "sheet_count": len({report["sheet_id"] for report in reports}),
         "linework_mode_counts": dict(
@@ -181,7 +207,16 @@ def main() -> None:
         ),
         "views": reports,
         "pass": len(reports) == 36
-        and not any(report["complexity_exclusions"] for report in reports),
+        and not any(report["complexity_exclusions"] for report in reports)
+        and all(
+            json.loads(
+                (REPORT_DIR / f'{report["drawing_name"]}-source.json').read_text(
+                    encoding="utf-8"
+                )
+            ).get("formal_ifc_sha256")
+            == formal_ifc_hash
+            for report in reports
+        ),
     }
     MANIFEST.write_text(
         json.dumps(manifest, ensure_ascii=False, indent=2) + "\n", encoding="utf-8"

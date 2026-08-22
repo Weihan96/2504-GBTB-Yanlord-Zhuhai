@@ -321,6 +321,9 @@ def project_owner_door_decisions(
     expected = {
         "REQ-0217": "Sail MONOROTAIA single-track single-leaf; slide east/drawing-right",
         "REQ-0227": "single Pivot; opens inward to master; parks at drawing-right fixed wall/guest-bedroom side",
+        "REQ-0732": "single swing; owner-defined left outswing from residence to common corridor",
+        "REQ-0733": "Skydoors Direttrice vertical aluminum strips; Oxidized Yellow Gray",
+        "REQ-0734": "custom segmented warm gray-brown leather; reference Line To drawing / Finish Leather",
     }
     for requirement_id, value in expected.items():
         row = requirements.get(requirement_id)
@@ -330,6 +333,14 @@ def project_owner_door_decisions(
         row = owner_inputs.get(input_id)
         if not row or row.get("status") != "自定义确认" or "MS 于 2026-08-17" not in row.get("user_value", ""):
             raise RuntimeError(f"owner door response is not absorbed: {input_id}")
+    m08_input = owner_inputs.get("A104-M08-ENTRY-DOOR")
+    if (
+        not m08_input
+        or m08_input.get("status") != "自定义确认"
+        or "左外开" not in m08_input.get("user_value", "")
+        or m08_input.get("evidence_reference") != "OWNER-A104-M08-ENTRY-DOOR-20260821"
+    ):
+        raise RuntimeError("owner door response is not absorbed: A104-M08-ENTRY-DOOR")
 
     by_id = {record["candidate_id"]: record for record in records}
     decisions = {
@@ -357,13 +368,32 @@ def project_owner_door_decisions(
             "project_alignment_finish": "与 Senzafine 背面新增护墙板齐平",
             "review_question": "业主方向已确认；请 Poliform／全屋定制用 06 表和项目加工图确认准确下单尺寸、顶／地轴、护墙板收口、门后净距和安装基层。",
         },
+        "M08": {
+            "project_nominal_width_mm": None,
+            "project_nominal_height_mm": None,
+            "project_operation_type": expected["REQ-0732"],
+            "project_operation_label": "左外开；从住宅室内向公共走廊开启",
+            "project_alignment_finish": (
+                "外侧 Skydoors Direttrice 氧化黄灰竖向铝条；"
+                "内侧定制分格暖灰棕皮革"
+            ),
+            "project_decision_source": "OWNER-A104-M08-ENTRY-DOOR-20260821",
+            "review_group": "A104-R-VENDOR-AUTHORITY",
+            "review_question": (
+                "业主开启与饰面方向已确认；请厂家按室内／室外视点画明铰链侧和开启弧线，"
+                "并由物业、消防／建筑专业及现场复核公共走道净宽、疏散、邻门碰撞、门洞基层、"
+                "防火防盗五金和两侧实体材料样板后再放行。"
+            ),
+        },
     }
     for candidate_id, decision in decisions.items():
         record = by_id[candidate_id]
         record.update(decision)
         record["project_decision_status"] = "owner_confirmed_vendor_shop_drawing_pending"
-        record["project_decision_source"] = "OUTBOUND-FORM-DOOR-20260817"
-        record["review_group"] = "A104-R-VENDOR"
+        record["project_decision_source"] = decision.get(
+            "project_decision_source", "OUTBOUND-FORM-DOOR-20260817"
+        )
+        record["review_group"] = decision.get("review_group", "A104-R-VENDOR")
         record["review_required"] = "yes"
         record["review_question"] = decision["review_question"]
 

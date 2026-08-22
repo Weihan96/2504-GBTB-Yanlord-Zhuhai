@@ -67,6 +67,29 @@ print(json.dumps(records[0], ensure_ascii=False))
   expect(value.review_question).toContain("厂家加工图与现场净距");
 });
 
+test("A104 projects the confirmed M08 outswing and finish direction without releasing construction", () => {
+  const requirementsPath = resolve(root, "pipeline/decisions/equipment-installation-requirements.csv");
+  const ownerInputsPath = resolve(root, "pipeline/decisions/owner-input-register.csv");
+  const result = runPython(`
+records = [{"candidate_id": candidate_id} for candidate_id in ("M05", "M06", "M07", "M08")]
+module.project_owner_door_decisions(
+    records,
+    pathlib.Path(${JSON.stringify(requirementsPath)}),
+    pathlib.Path(${JSON.stringify(ownerInputsPath)}),
+)
+print(json.dumps(next(row for row in records if row["candidate_id"] == "M08"), ensure_ascii=False))
+`);
+  expect(result.exitCode, result.stderr.toString()).toBe(0);
+  const value = JSON.parse(result.stdout.toString());
+  expect(value.project_operation_label).toBe("左外开；从住宅室内向公共走廊开启");
+  expect(value.project_alignment_finish).toContain("氧化黄灰竖向铝条");
+  expect(value.project_alignment_finish).toContain("暖灰棕皮革");
+  expect(value.project_decision_source).toBe("OWNER-A104-M08-ENTRY-DOOR-20260821");
+  expect(value.project_decision_status).toBe("owner_confirmed_vendor_shop_drawing_pending");
+  expect(value.review_group).toBe("A104-R-VENDOR-AUTHORITY");
+  expect(value.review_required).toBe("yes");
+});
+
 test("A104 uses the current IFC hash by default and rejects a mismatched caller freeze", async () => {
   const ifcPath = resolve(root, "2504 GBTB Yanlord Zhuhai.ifc");
   const currentSha = createHash("sha256")

@@ -24,9 +24,15 @@ test("S-701 compiles a current read-only evidence schedule and PNG", () => {
     "家具产品身份": 9, "家电与移动厨电": 27, "门窗与五金": 24, "暖通设备类型": 4, "洁具与排水": 5, "墙面材料系统": 3,
   });
   expect(payload.gates.confirmed_candidate_unresolved_split).toBe(true);
+  expect(payload.gates.layout_no_overlap).toBe(true);
   expect(payload.gates.automatic_ifc_write_allowed).toBe(false);
   expect(payload.gates.construction_release_ready).toBe(false);
   expect(readFileSync(join(temporary, "proof.png")).subarray(0, 8)).toEqual(Buffer.from("89504e470d0a1a0a", "hex"));
+  const svg = readFileSync(join(temporary, "candidate.svg"), "utf8");
+  const footerSafeY = Number(svg.match(/data-footer-safe-y="([0-9.]+)"/)?.[1]);
+  const cardBottoms = [...svg.matchAll(/data-card-bottom="([0-9.]+)"/g)].map((match) => Number(match[1]));
+  expect(cardBottoms).toHaveLength(6);
+  expect(Math.max(...cardBottoms)).toBeLessThan(footerSafeY);
 }, 20_000);
 
 test("S-701 source has no IFC write path", () => {

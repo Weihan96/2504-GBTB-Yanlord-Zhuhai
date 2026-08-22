@@ -1,0 +1,43 @@
+{
+  "schema_version": 2,
+  "generated_at": "2026-08-21T06:50:54.339427+00:00",
+  "generator": "Bonsai native Drawing / bpy.ops.bim.create_drawing",
+  "formal_ifc_sha256": "7a50b87e8f48a7c2bfbaa9f1dabdfca7155fa684b2325c66aa1ae15c8ab0a25c",
+  "drawing_global_id": "140pwjdu51i8Bf4yRy3ifH",
+  "drawing_name": "Wall Finish Plan",
+  "target_view": "PLAN_VIEW",
+  "scale": "1/50",
+  "shading_style": "Texture without Background",
+  "camera_type": "ORTHO",
+  "camera_ortho_scale_m": 20.0,
+  "underlay_cache": false,
+  "linework_cache": false,
+  "annotation_cache": false,
+  "texture_images_repaired": 0,
+  "unresolved_linked_texture_images": [],
+  "unresolved_unlinked_texture_images": [
+    "TexturesCom_CorrugatedPlates4_SingleStripe_1K_ao.tif: unused"
+  ],
+  "source_svg_sha256": "c9feea30dac372619d1f5e206abfc08fa8fcecbc9ec0a2b6c35bc11ee6c819f9",
+  "source_svg_bytes": 374434,
+  "linked_assets": [
+    {
+      "href": "Wall Finish Plan-underlay.png",
+      "sha256": "f45cd70b2506ccbaf569d8daea53e0ba3c47f1c287a75014aa9b4934e36eedc2",
+      "bytes": 13406273,
+      "width_px": 4724,
+      "height_px": 4724
+    }
+  ],
+  "formal_ifc_write_allowed": false,
+  "underlay_png_sha256": "f45cd70b2506ccbaf569d8daea53e0ba3c47f1c287a75014aa9b4934e36eedc2",
+  "underlay_width_px": 4724,
+  "underlay_height_px": 4724,
+  "elevation_index": {
+    "source": "pipeline/decisions/int1-elevation-view-register.csv",
+    "anchor_count": 12,
+    "official_view_count": 36,
+    "auxiliary_marker_count": 0,
+    "suppressed_ifc_drawing_marker_count": 44
+  }
+}

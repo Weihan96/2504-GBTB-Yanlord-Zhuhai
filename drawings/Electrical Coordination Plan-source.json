@@ -2,11 +2,11 @@
   "mode": "current_ifc_electrical_coordination_underlay",
   "formal_ifc_sha256": "7a50b87e8f48a7c2bfbaa9f1dabdfca7155fa684b2325c66aa1ae15c8ab0a25c",
   "wall_plan_svg_path": "drawings/Wall Plan.svg",
-  "wall_plan_svg_sha256": "10986b8753bb6f95a54f03f58d085076dfb03f05d9da7d064bbf0fbb54ed6846",
+  "wall_plan_svg_sha256": "dadb415c1ee742ffb0ab254966210a0862502668bedc2d5b0c87800778924a52",
   "int1_report_path": "build/int1/int1-existing-report.json",
-  "int1_report_sha256": "d4a4003c4d9aca894151d56a4a3e142d822d29c6912a94c558de59bceddd5016",
+  "int1_report_sha256": "820aa91d4e75a3769e61a794ba04ae4a68e562741935efb0a934501dfacc2c05",
   "coordination_svg_path": "drawings/Electrical Coordination Plan.svg",
-  "coordination_svg_sha256": "29205fb4c0b8c218830398baf523ec542a6c4e4cfc6ba6c987b9eae80cc47a56",
+  "coordination_svg_sha256": "27a1878418fd0bbdbec4c2bf7b69e511b3260d6d9b3afb3fba9e0aaba906a775",
   "counts": {
     "walls": 101,
     "doors": 8,
@@ -20,5 +20,14 @@
     "fixed_furniture_from_current_ifc_and_int1_role_register": true,
     "stale_furniture_plan_not_used": true,
     "automatic_ifc_write_allowed": false
+  },
+  "source_svg_sha256": "27a1878418fd0bbdbec4c2bf7b69e511b3260d6d9b3afb3fba9e0aaba906a775",
+  "source_svg_bytes": 362099,
+  "elevation_index": {
+    "source": "pipeline/decisions/int1-elevation-view-register.csv",
+    "anchor_count": 12,
+    "official_view_count": 36,
+    "auxiliary_marker_count": 0,
+    "suppressed_ifc_drawing_marker_count": 44
   }
 }

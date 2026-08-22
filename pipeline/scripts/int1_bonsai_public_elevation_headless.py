@@ -29,9 +29,26 @@ def sha256(path: Path) -> str:
 
 def main() -> None:
     arguments = sys.argv[sys.argv.index("--") + 1 :]
+    preview_only = "--preview-only" in arguments
+    if preview_only:
+        arguments.remove("--preview-only")
+    formal_ifc = None
+    if "--formal-ifc" in arguments:
+        index = arguments.index("--formal-ifc")
+        try:
+            formal_ifc = Path(arguments[index + 1]).resolve()
+        except IndexError as exc:
+            raise SystemExit("--formal-ifc requires a path") from exc
+        del arguments[index : index + 2]
     if len(arguments) != 1:
-        raise SystemExit("expected: checkpoint.ifc")
+        raise SystemExit(
+            "expected: [--preview-only] [--formal-ifc formal.ifc] checkpoint.ifc"
+        )
     checkpoint = Path(arguments[0]).resolve()
+    if formal_ifc is not None:
+        if not formal_ifc.is_file():
+            raise FileNotFoundError(formal_ifc)
+        os.environ["INT1_BONSAI_FORMAL_IFC"] = str(formal_ifc)
     os.chdir(PROJECT_ROOT)
     before_sha256 = sha256(checkpoint)
     result = bpy.ops.bim.load_project(
@@ -47,6 +64,29 @@ def main() -> None:
     assert spec.loader
     spec.loader.exec_module(module)
     reports = module.run()
+
+    if preview_only:
+        print(
+            "PUBLIC_BONSAI_PREVIEW="
+            + json.dumps(
+                {
+                    "checkpoint": str(checkpoint),
+                    "checkpoint_sha256": before_sha256,
+                    "formal_ifc": str(formal_ifc or checkpoint),
+                    "formal_ifc_sha256": sha256(formal_ifc or checkpoint),
+                    "drawing_source_is_derived": bool(
+                        formal_ifc and formal_ifc != checkpoint
+                    ),
+                    "drawing_names": sorted(
+                        report["drawing"]["name"] for report in reports
+                    ),
+                    "checkpoint_write_allowed": False,
+                    "pass": len(reports) == 8,
+                },
+                ensure_ascii=False,
+            )
+        )
+        return
 
     # The checkpoint lives under build/int1, but it is promoted to the project
     # root after QA.  Store document locations relative to that final formal

@@ -14,9 +14,16 @@ test("native Bonsai elevation manifest covers all registered views", () => {
   expect(manifest.linework_mode_counts).toEqual({ OPENCASCADE: 36 });
   expect(manifest.complexity_exclusion_occurrences).toBe(0);
   expect(manifest.complexity_exclusion_unique_global_ids).toEqual([]);
-  // Eleven lightweight objects are visible in the original 36 views; the
-  // twelfth is scoped only by the public-space P01/P02 batch.
-  expect(manifest.lightweight_elevation_unique_global_ids).toHaveLength(11);
+  expect(manifest.source_ifc).toBe("2504 GBTB Yanlord Zhuhai.ifc");
+  expect(manifest.drawing_source_ifc).toBe(
+    "build/candidates/2504-GBTB-lightweight-drawing.ifc",
+  );
+  expect(manifest.drawing_source_is_derived).toBe(true);
+  expect(manifest.drawing_source_lineage_verified).toBe(true);
+  // Eleven original lightweight objects plus two toilets and one washbasin
+  // are visible in the original 36 views. One additional controlled object is
+  // scoped only by the public-space P01/P02 batch.
+  expect(manifest.lightweight_elevation_unique_global_ids).toHaveLength(14);
   expect(new Set(manifest.views.map((view: { view_id: string }) => view.view_id)).size).toBe(36);
 });
 
@@ -27,6 +34,9 @@ test("every native view is vector-only and linked from the IFC manifest", () => 
     const svg = readFileSync(svgPath, "utf8");
     expect(svg).toContain('data-scale="1:50"');
     expect(svg).toContain('id="noninteger-highlights"');
+    expect(svg).toContain("stroke:#B88A5A");
+    expect(svg).toContain("stroke:#D8C7A1");
+    expect(svg).not.toContain("stroke:#e31b23");
     expect(svg).not.toMatch(/<image\b/i);
     expect(view.target_view).toBe("ELEVATION_VIEW");
     expect(view.scale).toBe("1/50");

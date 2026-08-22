@@ -16,6 +16,7 @@ import numpy as np
 from shapely.geometry import Polygon
 from shapely.ops import unary_union
 
+from plan_elevation_index import apply_official_elevation_index, update_source_manifest
 from svg_audit_underlay import validate_wall_plan_source
 
 
@@ -166,6 +167,7 @@ def main() -> int:
     output = wall_source.replace("</svg>", generated + "</svg>", 1)
     args.output_svg.parent.mkdir(parents=True, exist_ok=True)
     args.output_svg.write_text(output, encoding="utf-8")
+    elevation_index_report = apply_official_elevation_index(args.output_svg)
 
     manifest = {
         "mode": "current_ifc_electrical_coordination_underlay",
@@ -192,6 +194,7 @@ def main() -> int:
         },
     }
     args.manifest.write_text(json.dumps(manifest, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
+    update_source_manifest(args.output_svg, elevation_index_report)
     print(json.dumps({"counts": manifest["counts"], "gates": manifest["gates"]}, ensure_ascii=False))
     return 0
 

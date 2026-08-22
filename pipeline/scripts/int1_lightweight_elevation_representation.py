@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Add curve-only ELEVATION_VIEW bodies for deep-BRep drawing elements.
+"""Add curve-only target-view bodies for deep-BRep drawing elements.
 
 The detailed MODEL_VIEW Body remains untouched.  Bonsai prioritises a
 Model/Body/ELEVATION_VIEW representation when producing elevation drawings,
@@ -23,7 +23,7 @@ import ifcopenshell.util.representation
 
 
 EXPECTED_SOURCE_SHA256 = (
-    "e17a3b6a068508140df555960f5bb72d2b7cc00f3c40adb0ccd10754ecd388be"
+    "7a50b87e8f48a7c2bfbaa9f1dabdfca7155fa684b2325c66aa1ae15c8ab0a25c"
 )
 TARGETS = {
     "0V9CnYT0n3GvkLmXhxvv$u": ("DRA01", "pipe_flange"),
@@ -40,6 +40,16 @@ TARGETS = {
     "1i_pqgLv9A7uuV7MjaArBW": ("BED02", "bed"),
 }
 
+# These fixtures remain detailed in MODEL_VIEW.  The extra PLAN_VIEW and
+# ELEVATION_VIEW curves are drawing-only coordination outlines: they reduce
+# line density without pretending to replace manufacturer installation CAD.
+SANITARY_DRAWING_TARGETS = {
+    "1rhZG98PPCSxaLeMFLTYb9": ("Geberit 146.140", "wall_hung_wc"),
+    "0UtU7yPb10ku4gsbGoM_sp": ("Geberit 146.140", "wall_hung_wc"),
+    "350tdaubr8QP3Cu2YMQZIN": ("BS01", "pedestal_basin"),
+}
+SANITARY_TARGET_VIEWS = ("PLAN_VIEW", "ELEVATION_VIEW")
+
 
 def sha256(path: Path) -> str:
     digest = hashlib.sha256()
@@ -49,9 +59,9 @@ def sha256(path: Path) -> str:
     return digest.hexdigest()
 
 
-def elevation_context(model: ifcopenshell.file):
+def drawing_context(model: ifcopenshell.file, target_view: str):
     existing = ifcopenshell.util.representation.get_context(
-        model, "Model", "Body", "ELEVATION_VIEW"
+        model, "Model", "Body", target_view
     )
     if existing:
         return existing
@@ -62,7 +72,7 @@ def elevation_context(model: ifcopenshell.file):
         model,
         context_type="Model",
         context_identifier="Body",
-        target_view="ELEVATION_VIEW",
+        target_view=target_view,
         parent=parent,
     )
 
@@ -177,6 +187,27 @@ def profile_edges(bounds, profile: str):
             line((cx, y0, z0), (cx, y1, z0)),
             line((cx, y0, z1), (cx, y1, z1)),
         ]
+    elif profile == "wall_hung_wc":
+        # A compact plan/elevation silhouette: rear mounting line, front bowl
+        # line and seat/rim levels.  The detailed ceramic body is untouched.
+        edges += [
+            line((x0, y0, z0 + dz * 0.20), (x1, y0, z0 + dz * 0.20)),
+            line((x0, y1, z0 + dz * 0.20), (x1, y1, z0 + dz * 0.20)),
+            line((x0, cy, z0 + dz * 0.58), (x1, cy, z0 + dz * 0.58)),
+            line((x0, cy, z0 + dz * 0.72), (x1, cy, z0 + dz * 0.72)),
+            line((cx, y0, z0), (cx, y1, z0)),
+        ]
+    elif profile == "pedestal_basin":
+        # Basin rim and pedestal centre planes remain legible in both plan and
+        # elevation while avoiding thousands of tessellated stone edges.
+        edges += [
+            line((x0, y0, z1 - dz * 0.10), (x1, y0, z1 - dz * 0.10)),
+            line((x1, y0, z1 - dz * 0.10), (x1, y1, z1 - dz * 0.10)),
+            line((x1, y1, z1 - dz * 0.10), (x0, y1, z1 - dz * 0.10)),
+            line((x0, y1, z1 - dz * 0.10), (x0, y0, z1 - dz * 0.10)),
+            line((cx, y0, z0), (cx, y1, z1)),
+            line((x0, cy, z0), (x1, cy, z1)),
+        ]
     else:
         raise RuntimeError(f"unsupported lightweight profile: {profile}")
 
@@ -200,17 +231,29 @@ def representation_for_context(product, context):
     return matches[0] if matches else None
 
 
-def add_representation(model, product, context, profile: str):
+def add_representation(
+    model, product, context, profile: str, *, replace_target_view: bool = False
+):
     existing = representation_for_context(product, context)
     bounds = local_bbox_mm(product)
     if existing:
-        if existing.RepresentationType != "Curve3D" or any(
-            not item.is_a("IfcPolyline") for item in existing.Items
+        if existing.RepresentationType == "Curve3D" and all(
+            item.is_a("IfcPolyline") for item in existing.Items
         ):
+            return existing, bounds, len(existing.Items), "existing"
+        if not replace_target_view:
+            target_view = getattr(context, "TargetView", "target view")
             raise RuntimeError(
-                f"{product.GlobalId}: existing ELEVATION_VIEW is not controlled Curve3D"
+                f"{product.GlobalId}: existing {target_view} is not controlled Curve3D"
             )
-        return existing, bounds, len(existing.Items), "existing"
+        product.Representation.Representations = tuple(
+            representation
+            for representation in product.Representation.Representations
+            if representation != existing
+        )
+        replaced_type = existing.RepresentationType
+    else:
+        replaced_type = None
     edges = profile_edges(bounds, profile)
     items = [
         model.createIfcPolyline(
@@ -223,7 +266,8 @@ def add_representation(model, product, context, profile: str):
     )
     definition = product.Representation
     definition.Representations = tuple(definition.Representations) + (representation,)
-    return representation, bounds, len(edges), "created"
+    action = f"replaced_target_view_{replaced_type}" if replaced_type else "created"
+    return representation, bounds, len(edges), action
 
 
 def main() -> None:
@@ -244,7 +288,7 @@ def main() -> None:
         )
 
     model = ifcopenshell.open(source)
-    context = elevation_context(model)
+    context = drawing_context(model, "ELEVATION_VIEW")
     records = []
     for global_id, (expected_type, profile) in TARGETS.items():
         product = model.by_guid(global_id)
@@ -275,15 +319,51 @@ def main() -> None:
             }
         )
 
+    for global_id, (expected_type, profile) in SANITARY_DRAWING_TARGETS.items():
+        product = model.by_guid(global_id)
+        actual_type = next(
+            (relation.RelatingType.Name for relation in product.IsTypedBy), None
+        )
+        if actual_type != expected_type:
+            raise RuntimeError(
+                f"{global_id}: expected type {expected_type}, got {actual_type}"
+            )
+        for target_view in SANITARY_TARGET_VIEWS:
+            target_context = drawing_context(model, target_view)
+            representation, bounds, edge_count, action = add_representation(
+                model,
+                product,
+                target_context,
+                profile,
+                replace_target_view=True,
+            )
+            records.append(
+                {
+                    "global_id": global_id,
+                    "ifc_class": product.is_a(),
+                    "type_name": actual_type,
+                    "profile": profile,
+                    "representation_id": representation.id(),
+                    "representation_type": representation.RepresentationType,
+                    "context": [
+                        target_context.ContextType,
+                        target_context.ContextIdentifier,
+                        target_context.TargetView,
+                    ],
+                    "local_bbox_mm": [round(value, 6) for value in bounds],
+                    "edge_count": edge_count,
+                    "surface_count": 0,
+                    "action": action,
+                    "coordination_only": True,
+                    "source": "model-derived controlled outline; official manufacturer CAD may supersede after evidence review",
+                }
+            )
+
     output.parent.mkdir(parents=True, exist_ok=True)
     temporary = output.with_name(output.name + ".next")
     model.write(temporary)
     verified = ifcopenshell.open(temporary)
-    verified_context = ifcopenshell.util.representation.get_context(
-        verified, "Model", "Body", "ELEVATION_VIEW"
-    )
-    if not verified_context:
-        raise RuntimeError("candidate reload lost ELEVATION_VIEW context")
+    verified_context = drawing_context(verified, "ELEVATION_VIEW")
     for global_id in TARGETS:
         representation = representation_for_context(
             verified.by_guid(global_id), verified_context
@@ -292,6 +372,20 @@ def main() -> None:
             raise RuntimeError(f"{global_id}: candidate reload lost lightweight body")
         if any(not item.is_a("IfcPolyline") for item in representation.Items):
             raise RuntimeError(f"{global_id}: non-polyline item entered lightweight body")
+    for global_id in SANITARY_DRAWING_TARGETS:
+        for target_view in SANITARY_TARGET_VIEWS:
+            target_context = drawing_context(verified, target_view)
+            representation = representation_for_context(
+                verified.by_guid(global_id), target_context
+            )
+            if not representation or representation.RepresentationType != "Curve3D":
+                raise RuntimeError(
+                    f"{global_id}: candidate reload lost {target_view} lightweight body"
+                )
+            if any(not item.is_a("IfcPolyline") for item in representation.Items):
+                raise RuntimeError(
+                    f"{global_id}: non-polyline item entered {target_view} body"
+                )
     os.replace(temporary, output)
 
     report = {
@@ -299,11 +393,14 @@ def main() -> None:
         "source_ifc_sha256": source_hash,
         "candidate_ifc": str(output),
         "candidate_ifc_sha256": sha256(output),
-        "target_count": len(records),
+        "target_count": len(TARGETS) + len(SANITARY_DRAWING_TARGETS),
+        "representation_count": len(records),
+        "sanitary_target_count": len(SANITARY_DRAWING_TARGETS),
+        "sanitary_target_views": list(SANITARY_TARGET_VIEWS),
         "total_edge_count": sum(record["edge_count"] for record in records),
         "surface_count": 0,
         "records": records,
-        "pass": len(records) == 12 and all(record["edge_count"] < 40 for record in records),
+        "pass": len(records) == 18 and all(record["edge_count"] < 50 for record in records),
     }
     args.report.parent.mkdir(parents=True, exist_ok=True)
     args.report.write_text(

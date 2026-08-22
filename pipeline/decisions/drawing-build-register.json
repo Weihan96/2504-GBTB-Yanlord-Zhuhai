@@ -1,0 +1,76 @@
+{
+  "schema_version": 1,
+  "groups": [
+    {
+      "sheet_numbers": ["A-102"],
+      "underlays": ["Wall Plan"],
+      "commands": [["bun", "run", "pipeline:a102-candidate"]]
+    },
+    {
+      "sheet_numbers": ["A-103"],
+      "underlays": ["Wall Plan"],
+      "commands": [["bun", "run", "pipeline:a103-candidate"]]
+    },
+    {
+      "sheet_numbers": ["A-104"],
+      "underlays": ["Wall Plan"],
+      "commands": [["bun", "run", "pipeline:a104-candidate"]]
+    },
+    {
+      "sheet_numbers": ["A-105"],
+      "underlays": ["FFL PLAN"],
+      "commands": [["bun", "run", "pipeline:a105-candidate"]]
+    },
+    {
+      "sheet_numbers": ["A-106"],
+      "underlays": ["Wall Plan"],
+      "commands": [["bun", "run", "pipeline:a106-ceiling-device-candidate"]]
+    },
+    {
+      "sheet_numbers": ["WFIN"],
+      "underlays": ["Wall Finish Plan"],
+      "commands": [["bun", "run", "pipeline:wfin-candidate"]]
+    },
+    {
+      "sheet_numbers": ["P-201"],
+      "underlays": ["Wall Plan"],
+      "commands": [["bun", "run", "pipeline:p201-water-hotwater-candidate"]]
+    },
+    {
+      "sheet_numbers": ["P-202"],
+      "underlays": ["Sanitary Plan"],
+      "commands": [["bun", "run", "pipeline:plum-candidate"]]
+    },
+    {
+      "sheet_numbers": ["E-301", "E-303"],
+      "underlays": ["Wall Plan"],
+      "commands": [["bun", "run", "pipeline:elec-renovation-round1"]]
+    },
+    {
+      "sheet_numbers": ["E-302", "E-304"],
+      "underlays": ["Wall Plan"],
+      "commands": [
+        ["bun", "run", "pipeline:elec-control-network"],
+        ["bun", "run", "pipeline:elec-room-program"]
+      ]
+    },
+    {
+      "sheet_numbers": ["I-501", "I-502", "I-503", "I-504"],
+      "underlays": ["Furniture Plan", "Sanitary Plan"],
+      "commands": [["bun", "run", "pipeline:int1-candidate"]]
+    },
+    {
+      "sheet_numbers": ["M-401"],
+      "underlays": ["Wall Plan"],
+      "commands": [
+        ["bun", "run", "pipeline:a106-ceiling-device-candidate"],
+        ["bun", "run", "pipeline:m401-coordination-sheet-candidate"]
+      ]
+    },
+    {
+      "sheet_numbers": ["A-001"],
+      "underlays": [],
+      "commands": [["bun", "run", "pipeline:m072-package"]]
+    }
+  ]
+}

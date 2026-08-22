@@ -1,0 +1,43 @@
+{
+  "schema_version": 2,
+  "generated_at": "2026-08-21T06:49:14.150361+00:00",
+  "generator": "Bonsai native Drawing / bpy.ops.bim.create_drawing",
+  "formal_ifc_sha256": "7a50b87e8f48a7c2bfbaa9f1dabdfca7155fa684b2325c66aa1ae15c8ab0a25c",
+  "drawing_global_id": "14rvDJ$4L9o9QVZ86vPmyT",
+  "drawing_name": "Sanitary Plan",
+  "target_view": "PLAN_VIEW",
+  "scale": "1/50",
+  "shading_style": "Texture without Background",
+  "camera_type": "ORTHO",
+  "camera_ortho_scale_m": 20.0,
+  "underlay_cache": false,
+  "linework_cache": false,
+  "annotation_cache": false,
+  "texture_images_repaired": 0,
+  "unresolved_linked_texture_images": [],
+  "unresolved_unlinked_texture_images": [
+    "TexturesCom_CorrugatedPlates4_SingleStripe_1K_ao.tif: unused"
+  ],
+  "source_svg_sha256": "fdc181e0dc14e24bd4031a4a90c1e1becb95e1e6199d33d598f85569103bb114",
+  "source_svg_bytes": 1501945,
+  "linked_assets": [
+    {
+      "href": "Sanitary Plan-underlay.png",
+      "sha256": "fc3a4e711b3ea4d8cb82d6965c00c9a78c8aaa983b3d450b60400246cccef101",
+      "bytes": 13439723,
+      "width_px": 4724,
+      "height_px": 4724
+    }
+  ],
+  "formal_ifc_write_allowed": false,
+  "underlay_png_sha256": "fc3a4e711b3ea4d8cb82d6965c00c9a78c8aaa983b3d450b60400246cccef101",
+  "underlay_width_px": 4724,
+  "underlay_height_px": 4724,
+  "elevation_index": {
+    "source": "pipeline/decisions/int1-elevation-view-register.csv",
+    "anchor_count": 12,
+    "official_view_count": 36,
+    "auxiliary_marker_count": 0,
+    "suppressed_ifc_drawing_marker_count": 44
+  }
+}

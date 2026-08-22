@@ -349,8 +349,9 @@ def render_svg(
 
     roles = inventory_summary["instance_role_counts"]
     return f'''<?xml version="1.0" encoding="UTF-8"?>
-<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="1400" viewBox="0 0 1600 1400">
+<svg xmlns="http://www.w3.org/2000/svg" width="500mm" height="400mm" viewBox="0 0 1600 1400" preserveAspectRatio="xMidYMid meet">
 <style>
+@page{{size:500mm 400mm;margin:0}}
 .bg{{fill:#f3f6fa}}.panel{{fill:#fff;stroke:#cbd5e1;stroke-width:2}}.card{{fill:#eef6ff;stroke:#93c5fd;stroke-width:2}}
 .title{{font:700 38px -apple-system,"PingFang SC",sans-serif;fill:#0f172a}}.subtitle{{font:18px -apple-system,"PingFang SC",sans-serif;fill:#475569}}
 .kpi{{font:700 31px ui-monospace,SFMono-Regular,monospace;fill:#0f4c81}}.kpi-label{{font:15px -apple-system,"PingFang SC",sans-serif;fill:#475569}}

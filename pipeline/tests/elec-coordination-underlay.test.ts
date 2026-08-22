@@ -25,6 +25,8 @@ test("electrical coordination underlay carries current walls, doors, and fixed j
     automatic_ifc_write_allowed: false,
   });
   const rendered = readFileSync(svg, "utf8");
+  expect(rendered.match(/class="official-elevation-anchor"/g)).toHaveLength(12);
+  expect(rendered.match(/class="official-elevation-direction"/g)).toHaveLength(36);
   expect((rendered.match(/data-coordination-kind="door"/g) ?? []).length).toBe(8);
   expect((rendered.match(/data-coordination-kind="fixed_furniture"/g) ?? []).length).toBe(70);
   expect(rendered).toContain('data-electrical-coordination="current-ifc"');

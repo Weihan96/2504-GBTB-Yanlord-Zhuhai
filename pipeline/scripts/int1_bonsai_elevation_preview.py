@@ -87,7 +87,7 @@ def main() -> None:
         title = ET.SubElement(root, f"{{{SVG_NS}}}text", {"x": str(MARGIN), "y": "43", "class": "int1-sheet-title"})
         title.text = f"{sheet_id}  Bonsai 原生室内立面审核图"
         meta = ET.SubElement(root, f"{{{SVG_NS}}}text", {"x": str(MARGIN), "y": "72", "class": "int1-sheet-meta"})
-        meta.text = "IFC ELEVATION_VIEW · 1:50 · 无 underlay 纹理 · 红/橙框为非整数世界几何"
+        meta.text = "IFC ELEVATION_VIEW · 1:50 · 无 underlay 纹理 · 浅棕/浅米框为非整数世界几何"
 
         for index, row in enumerate(views):
             column = index % columns

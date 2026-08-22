@@ -79,6 +79,36 @@ def sha256(path: Path) -> str:
     return digest.hexdigest()
 
 
+def source_ifc_lineage() -> dict[str, Any]:
+    """Describe the authoritative IFC and the IFC actually used for linework.
+
+    A drawing-only candidate may add target-view Curve3D representations while
+    preserving the detailed MODEL_VIEW bodies from the formal IFC.  Recording
+    both files prevents the candidate from being mistaken for the SSOT.
+    """
+
+    drawing_source = Path(tool.Ifc.get_path()).resolve()
+    formal_source = Path(
+        os.environ.get("INT1_BONSAI_FORMAL_IFC", str(drawing_source))
+    ).resolve()
+    if not formal_source.is_file():
+        raise FileNotFoundError(formal_source)
+
+    def display(path: Path) -> str:
+        try:
+            return path.relative_to(PROJECT_ROOT).as_posix()
+        except ValueError:
+            return str(path)
+
+    return {
+        "formal_ifc": display(formal_source),
+        "formal_ifc_sha256": sha256(formal_source),
+        "drawing_source_ifc": display(drawing_source),
+        "drawing_source_ifc_sha256": sha256(drawing_source),
+        "drawing_source_is_derived": drawing_source != formal_source,
+    }
+
+
 def world_bbox(obj: bpy.types.Object) -> tuple[tuple[float, float, float], tuple[float, float, float]]:
     points = [obj.matrix_world @ Vector(corner) for corner in obj.bound_box]
     return (
@@ -459,9 +489,9 @@ def add_integer_highlights(
     records = []
     parts = [
         '<g id="noninteger-highlights" fill="none">',
-        '<style>.noninteger-major{stroke:#e31b23;stroke-width:.35;}'
-        '.noninteger-minor{stroke:#f28c00;stroke-width:.25;stroke-dasharray:1.2,.7;}'
-        '.noninteger-label{font-family:Arial,sans-serif;font-size:2px;fill:#b00020;stroke:none;}</style>',
+        '<style>.noninteger-major{stroke:#B88A5A;stroke-width:.30;}'
+        '.noninteger-minor{stroke:#D8C7A1;stroke-width:.22;stroke-dasharray:1.2,.7;}'
+        '.noninteger-label{font-family:Arial,sans-serif;font-size:2px;fill:#8A6746;stroke:none;}</style>',
     ]
     for element, _obj, minimum, maximum in elements:
         residual = integer_residual_mm(minimum, maximum)
@@ -566,6 +596,7 @@ def build_view(project_root: Path, row: dict[str, str]) -> dict[str, Any]:
 
     width, height, clip_end = camera_dimensions(row, room_bbox)
     highlights = add_integer_highlights(svg_path, camera, elements, width, height)
+    lineage = source_ifc_lineage()
     report = {
         "generated_at": datetime.now(timezone.utc).isoformat(),
         "generator": "Bonsai 0.8.4 bim.create_drawing",
@@ -623,6 +654,9 @@ def build_view(project_root: Path, row: dict[str, str]) -> dict[str, Any]:
         "integer_highlights": highlights,
         "svg": str(svg_path.relative_to(project_root)),
         "svg_sha256": sha256(svg_path),
+        **lineage,
+        # Legacy cache key: this intentionally follows the IFC loaded into
+        # Bonsai, which may be the drawing-only derivative rather than SSOT.
         "formal_ifc_sha256_before_save": sha256(Path(tool.Ifc.get_path())),
         "pass": True,
     }
