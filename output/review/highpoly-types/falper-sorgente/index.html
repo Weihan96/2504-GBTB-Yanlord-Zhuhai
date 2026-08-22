@@ -1,0 +1,38 @@
+<!doctype html>
+<html lang="zh-CN">
+<meta charset="utf-8">
+<title>Falper Sorgente WFB 高模图纸审核</title>
+<style>
+body{font:16px Arial,"PingFang SC",sans-serif;margin:30px;background:#f5f3ef;color:#1f2d3d}
+nav a{display:inline-block;margin:0 18px 10px 0}main{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:18px;margin:20px 0}
+article{background:white;padding:14px;border-radius:10px;box-shadow:0 1px 5px #0001}img{width:100%;height:auto;background:#fff}
+code{font-size:13px}.evidence{border-left:5px solid #1677c8}.note{color:#52677a}
+</style>
+<h1>Falper Sorgente WFB 高模图纸审核</h1>
+<p>状态：已批准。蓝线来自 Falper 官方 WFB 原生 DWG；正式权威 IFC 字节未改动。</p>
+<nav>
+  <a href="manifest.json">三视图 manifest</a>
+  <a href="bonsai-project-context-styled/manifest.json">实际 Bonsai 项目图纸 manifest</a>
+  <a href="project-context-manifest.json">项目上下文 manifest</a>
+  <a href="candidate-representations.json">候选路径</a>
+  <a href="../../../../pipeline/decisions/falper-sorgente-dwg-pdf-verification.json">DWG/PDF 机械校验</a>
+  <a href="INVALIDATED-proxy-contaminated.json">错误反例记录</a>
+  <a href="INVALIDATED-isolated-orange-render-evidence.json">橙色孤立图反例</a>
+</nav>
+<h2>实际 Bonsai IFC Drawing 相机结果</h2>
+<p class="note">Bonsai 直接打开已批准的派生 IFC，激活 Sanitary Plan 与 EL-08-30-R16-NY 两个 IFC Drawing 正交相机，并执行 <code>bpy.ops.bim.create_drawing</code>。墙体、家具、材质和标注均来自实际项目上下文；Falper 由标准 Body/PLAN_VIEW 与 Body/ELEVATION_VIEW 选择官方 WFB DWG 几何。白色遮罩和蓝色只改变显示样式，不替换 Bonsai 输出的 Falper 路径。</p>
+<main>
+  <article class="evidence"><h3>卫生平面图 · 局部审核</h3><a href="bonsai-project-context-styled/Sanitary Plan-Falper-WFB-review.svg"><img src="bonsai-project-context-styled/Sanitary Plan-Falper-WFB-review.svg" alt="actual Bonsai sanitary plan context"></a></article>
+  <article class="evidence"><h3>EL-08 立面 · 局部审核</h3><a href="bonsai-project-context-styled/EL-08-30-R16-NY-Falper-WFB-review.svg"><img src="bonsai-project-context-styled/EL-08-30-R16-NY-Falper-WFB-review.svg" alt="actual Bonsai elevation context"></a></article>
+  <article><h3>卫生平面图 · 完整图</h3><a href="bonsai-project-context-styled/Sanitary Plan-Falper-WFB-styled.svg">打开完整 SVG</a></article>
+  <article><h3>EL-08 立面 · 完整图</h3><a href="bonsai-project-context-styled/EL-08-30-R16-NY-Falper-WFB-styled.svg">打开完整 SVG</a></article>
+</main>
+<h2>不再作为验收结果的孤立单件图</h2>
+<p class="note">旧橙色选中线和孤立 Body Workbench 图只保留为反例/诊断证据，不能证明 Falper 在含墙体、家具的实际项目 IFC Drawing 中正确显示。</p>
+<h2>官方 CAD representation</h2>
+<main>
+  <article><h3>Plan</h3><a href="plan-approved-corrected.svg"><img src="plan-approved-corrected.svg" alt="approved official plan"></a></article>
+  <article><h3>Front / Side</h3><a href="elevations-approved-corrected.svg"><img src="elevations-approved-corrected.svg" alt="approved official elevations"></a></article>
+</main>
+<p class="note">正式 IFC 基线：<code>7a50b87e8f48a7c2bfbaa9f1dabdfca7155fa684b2325c66aa1ae15c8ab0a25c</code></p>
+</html>

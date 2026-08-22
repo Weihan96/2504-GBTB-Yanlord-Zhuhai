@@ -143,6 +143,7 @@ def main() -> int:
     parser.add_argument("--register", type=Path, default=DEFAULT_REGISTER)
     parser.add_argument("--blender", type=Path, default=BLENDER)
     parser.add_argument("--drawing", action="append", default=[])
+    parser.add_argument("--camera-local-y-offset-m", type=float, default=0.0)
     args = parser.parse_args()
     ifc_path = args.ifc.resolve()
     register_path = args.register.resolve()
@@ -177,6 +178,10 @@ def main() -> int:
             "--ifc", str(ifc_path), "--register", str(register_path),
             "--candidate-dir", str(candidate_dir), "--drawing", name,
         ]
+        if args.camera_local_y_offset_m:
+            command.extend(
+                ["--camera-local-y-offset-m", str(args.camera_local_y_offset_m)]
+            )
         try:
             process = subprocess.run(
                 command,

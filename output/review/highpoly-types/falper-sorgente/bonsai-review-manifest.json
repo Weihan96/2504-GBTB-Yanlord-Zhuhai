@@ -1,0 +1,146 @@
+{
+  "schema_version": 1,
+  "profile_key": "falper-sorgente",
+  "model_code": "WFB",
+  "review_status": "approved",
+  "scope": "isolated_single_representative",
+  "representative_global_id": "350tdaubr8QP3Cu2YMQZIN",
+  "geometry_product_count": 1,
+  "whole_model_render": false,
+  "blender_version": "4.5.3 LTS",
+  "bonsai_version": "0.8.4",
+  "object": {
+    "name": "IfcSanitaryTerminal/SanitaryTerminal",
+    "ifc_class": "IfcSanitaryTerminal",
+    "dimensions_m": [
+      0.502959,
+      0.502959,
+      0.903607
+    ]
+  },
+  "isolated_ifc": {
+    "path": "output/review/highpoly-types/falper-sorgente/Falper-Sorgente-WFB-bonsai-isolated.ifc",
+    "sha256": "e87f796d6b4987ab355f8c6c4014ec379f97baa2f09fea67b2da208a8c1f17f2"
+  },
+  "bonsai_session": {
+    "path": "output/review/highpoly-types/falper-sorgente/Falper-Sorgente-WFB-bonsai-review.blend",
+    "sha256": "b717a0d0a5db9b17cb06609644ee723542b95170bdb8dc8c5da955a369e62360",
+    "saved_active_representation": "Body",
+    "saved_camera_count": 4
+  },
+  "viewport_body_evidence": {
+    "isometric": {
+      "path": "output/review/highpoly-types/falper-sorgente/bonsai-iso.jpg",
+      "sha256": "d7413130c77d8205bfa823901dcd24be30d58c659429f2cbe7fe07357b6306ac"
+    },
+    "plan": {
+      "path": "output/review/highpoly-types/falper-sorgente/bonsai-plan.jpg",
+      "sha256": "021dee75907e7864734b0810b11dae0e7f2bed9b7f2eb65ab37348414d11667c"
+    },
+    "front_elevation": {
+      "path": "output/review/highpoly-types/falper-sorgente/bonsai-front-elevation.jpg",
+      "sha256": "059e2a28eb27ac3e1720ffa013600abd50e06f99b3ba9f65fd6adc90ca682c2a"
+    },
+    "side_elevation": {
+      "path": "output/review/highpoly-types/falper-sorgente/bonsai-side-elevation.jpg",
+      "sha256": "7d7e6dfd1ee44f6ad8c6d38af1f8fa723cf8e98c91959209e2b40056ddec6a43"
+    }
+  },
+  "viewport_body_evidence_is_render_result": false,
+  "representation_selection_evidence": {
+    "plan": {
+      "identifier": "FalperWFBPlan",
+      "target_view": "PLAN_VIEW",
+      "path_count": 5,
+      "dimensions_m": [
+        0.52,
+        0.52,
+        0.0
+      ],
+      "bonsai_screenshot": "output/review/highpoly-types/falper-sorgente/bonsai-plan-representation.jpg",
+      "bonsai_screenshot_sha256": "63b3a4e44a7cc4462b926e3bcda654344750de229b739098329996bd214faad4",
+      "cad_svg": "output/review/highpoly-types/falper-sorgente/plan-approved-corrected.svg"
+    },
+    "front": {
+      "identifier": "FalperWFBFront",
+      "target_view": "ELEVATION_VIEW",
+      "path_count": 4,
+      "dimensions_m": [
+        0.52,
+        0.0,
+        0.9
+      ],
+      "bonsai_screenshot": "output/review/highpoly-types/falper-sorgente/bonsai-front-representation.jpg",
+      "bonsai_screenshot_sha256": "ef60cdc5f7665c844a2d402295171adbc51d38d5db8a5d93122bd9f66209d221",
+      "cad_svg": "output/review/highpoly-types/falper-sorgente/elevations-approved-corrected.svg"
+    },
+    "side": {
+      "identifier": "FalperWFBSide",
+      "target_view": "ELEVATION_VIEW",
+      "path_count": 4,
+      "dimensions_m": [
+        0.0,
+        0.52,
+        0.9
+      ],
+      "bonsai_screenshot": "output/review/highpoly-types/falper-sorgente/bonsai-side-representation.jpg",
+      "bonsai_screenshot_sha256": "3640b7523a7dea397195f606d73db2a689c1e287393957031f369f1ad95499a8",
+      "cad_svg": "output/review/highpoly-types/falper-sorgente/elevations-approved-corrected.svg"
+    }
+  },
+  "representation_selection_evidence_is_render_result": false,
+  "camera_renders": {
+    "render_source": "actual_ifc_body_representation",
+    "render_engine": "BLENDER_WORKBENCH",
+    "resolution_px": [
+      1200,
+      1200
+    ],
+    "camera_type": "ORTHO",
+    "plan": {
+      "camera": "FALPER_CAM_PLAN",
+      "orthographic_scale_m": 0.60355,
+      "path": "output/review/highpoly-types/falper-sorgente/bonsai-camera-plan.png",
+      "sha256": "f326f3301284cacb470eafd56d07929ce670908f6c0a5ba90f8db526ed032f49"
+    },
+    "front_elevation": {
+      "camera": "FALPER_CAM_FRONT",
+      "orthographic_scale_m": 1.066256,
+      "path": "output/review/highpoly-types/falper-sorgente/bonsai-camera-front-elevation.png",
+      "sha256": "096a22e5b0d0768dc1345cf6f8fa4da3e23238d8329d6d14d8401871f4a47dc5"
+    },
+    "side_elevation": {
+      "camera": "FALPER_CAM_SIDE",
+      "orthographic_scale_m": 1.066256,
+      "path": "output/review/highpoly-types/falper-sorgente/bonsai-camera-side-elevation.png",
+      "sha256": "933cf0b104a73ac3b0a5b9a657d07ce44996bd5f151fd7dd4c9ef826b20380b0"
+    },
+    "isometric": {
+      "camera": "FALPER_CAM_ISO",
+      "orthographic_scale_m": 1.283122,
+      "path": "output/review/highpoly-types/falper-sorgente/bonsai-camera-iso.png",
+      "sha256": "6c9f009a629a51969b2563050772b52b283c7c3390cc7e9d2f2cb267aaa167e9"
+    }
+  },
+  "camera_renders_are_render_results": true,
+  "camera_renders_accepted_as_project_context_drawing_evidence": false,
+  "camera_renders_acceptance_note": "Isolated Body renders are retained only as geometry diagnostics; user acceptance requires actual IFC Drawing cameras with project walls, furniture and annotations.",
+  "project_context_bonsai_drawing_manifest": "output/review/highpoly-types/falper-sorgente/bonsai-project-context-styled/manifest.json",
+  "isolated_render_counterexample_record": "output/review/highpoly-types/falper-sorgente/INVALIDATED-isolated-orange-render-evidence.json",
+  "project_context_drawings": {
+    "manifest": "output/review/highpoly-types/falper-sorgente/project-context-manifest.json",
+    "plan": "output/review/highpoly-types/falper-sorgente/project-context-sanitary-plan.svg",
+    "front_elevation": "output/review/highpoly-types/falper-sorgente/project-context-elevation-EL-08-30-R16-NY.svg",
+    "rule": "retain project walls and furniture; replace the Falper Body projection with the approved native-DWG representation"
+  },
+  "approval": {
+    "reviewer": "project_owner",
+    "review_date": "2026-08-23",
+    "status": "approved"
+  },
+  "source_kind": "native_dwg",
+  "source_dwg_sha256": "4b3d8900f8ae249d7e9634339f3529d7d38a940dc2d0c909a7e90e31d3946831",
+  "proxy_geometry_included_in_drawing_representations": false,
+  "counterexample_record": "output/review/highpoly-types/falper-sorgente/INVALIDATED-proxy-contaminated.json",
+  "pass": true
+}

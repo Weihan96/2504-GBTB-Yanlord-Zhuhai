@@ -1,0 +1,53 @@
+{
+  "schema_version": 1,
+  "profile_key": "falper-sorgente",
+  "model_code": "WFB",
+  "representative_global_id": "350tdaubr8QP3Cu2YMQZIN",
+  "formal_ifc": "2504 GBTB Yanlord Zhuhai.ifc",
+  "formal_ifc_sha256": "7a50b87e8f48a7c2bfbaa9f1dabdfca7155fa684b2325c66aa1ae15c8ab0a25c",
+  "formal_ifc_bytes_unchanged": true,
+  "derived_ifc": "output/review/highpoly-types/falper-sorgente/Falper-Sorgente-WFB-derived-drawing-corrected.ifc",
+  "derived_ifc_sha256": "6bf983f164202472081fb492a6bf3e2d5a8c09e9bdfee6f7c224bda05628eb9a",
+  "candidate_manifest": "output/review/highpoly-types/falper-sorgente/manifest.json",
+  "candidate_manifest_sha256": "39bffa9024bebe4ea665b55853cfae5675cad2c6cbbbe2af18d25939a830c86a",
+  "approval_record": "pipeline/decisions/falper-sorgente-drawing-approval.json",
+  "approval_record_sha256": "04f3c33cf2420fb38d0fde8e218633e407ce945d8af0fbc409e103a4d3a4bbce",
+  "approval": {
+    "status": "approved",
+    "reviewer": "project_owner",
+    "review_date": "2026-08-23",
+    "approved_views": [
+      "plan",
+      "front",
+      "side"
+    ],
+    "scope": "family_reference_not_project_shop_drawing"
+  },
+  "representations": [
+    "Body",
+    "FalperWFBFront",
+    "FalperWFBPlan",
+    "FalperWFBSide"
+  ],
+  "representation_path_counts": {
+    "plan": 5,
+    "front": 4,
+    "side": 4
+  },
+  "bonsai_drawing_representation_path_counts": {
+    "plan": 5,
+    "front": 4
+  },
+  "bonsai_drawing_representation_selection": "Model/Body PLAN_VIEW and ELEVATION_VIEW",
+  "representation_source_mapping": "FalperWFBPlan=plan;FalperWFBFront=elevation;FalperWFBSide=elevation",
+  "representation_geometry_source": "official_native_dwg_paths_mm",
+  "proxy_geometry_included": false,
+  "official_linework_register": "pipeline/decisions/falper-sorgente-official-dwg-linework.json",
+  "official_linework_register_sha256": "2c66da0f96e123f8152afede2ecea0384965361c258320860c8da635f7a224ca",
+  "source_document_association": "IfcDocumentReference/IfcRelAssociatesDocument",
+  "source_property_set": "Pset_FalperSorgenteDrawingSource",
+  "source_kind": "native_dwg",
+  "source_dwg_sha256": "4b3d8900f8ae249d7e9634339f3529d7d38a940dc2d0c909a7e90e31d3946831",
+  "source_pdf_sha256": "b8bc94982bdd4305f2ffe5240daf429146470677157022860a0ef591514373c2",
+  "pass": true
+}

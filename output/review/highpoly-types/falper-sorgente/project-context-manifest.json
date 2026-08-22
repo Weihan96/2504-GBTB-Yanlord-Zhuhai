@@ -1,0 +1,80 @@
+{
+  "schema_version": 1,
+  "status": "approved",
+  "formal_ifc_write": false,
+  "formal_ifc_sha256": "7a50b87e8f48a7c2bfbaa9f1dabdfca7155fa684b2325c66aa1ae15c8ab0a25c",
+  "representation_ifc": "output/review/highpoly-types/falper-sorgente/Falper-Sorgente-WFB-bonsai-isolated.ifc",
+  "representation_ifc_sha256": "e87f796d6b4987ab355f8c6c4014ec379f97baa2f09fea67b2da208a8c1f17f2",
+  "representative_global_id": "350tdaubr8QP3Cu2YMQZIN",
+  "source_kind": "native_dwg",
+  "source_dwg_sha256": "4b3d8900f8ae249d7e9634339f3529d7d38a940dc2d0c909a7e90e31d3946831",
+  "scope": "family_reference_not_project_shop_drawing",
+  "rendering_rule": "project context retained; original Body projection replaced by approved native-DWG representation; white mask below official blue top layer",
+  "approval": {
+    "reviewer": "project_owner",
+    "review_date": "2026-08-23",
+    "status": "approved"
+  },
+  "views": [
+    {
+      "source": "drawings/Sanitary Plan.svg",
+      "output": "output/review/highpoly-types/falper-sorgente/project-context-sanitary-plan.svg",
+      "source_product_bounds": [
+        183.973981,
+        187.970407,
+        194.033153,
+        197.999998
+      ],
+      "output_sha256": "246a1870c714aa88b1d00a05caa1ad7bc33c424a61328d05ac9a0ef4541c5a5a",
+      "view": "plan",
+      "representation": "FalperWFBPlan",
+      "native_dwg_path_count": 5,
+      "placement_center": [
+        189.003567,
+        192.985202
+      ],
+      "white_mask": true,
+      "blue_top_layer": true,
+      "review_crop": {
+        "path": "output/review/highpoly-types/falper-sorgente/project-context-sanitary-plan-review.svg",
+        "sha256": "3446895cb3451f48df213a16cfff6bd0e27451c10ae6e1df131bc3d27d65dcbf",
+        "view_box": [
+          159.003567,
+          162.985202,
+          60.0,
+          60.0
+        ],
+        "purpose": "visual_review_crop_with_project_context"
+      }
+    },
+    {
+      "source": "drawings/elevations/native/EL-08-30-R16-NY.svg",
+      "output": "output/review/highpoly-types/falper-sorgente/project-context-elevation-EL-08-30-R16-NY.svg",
+      "source_product_bounds": [
+        -3.175113,
+        33.726331,
+        6.884058,
+        51.798467
+      ],
+      "output_sha256": "22952b81197ce59305395d78f32fed0114c95a0f3e420d8704ff73f7aee3562b",
+      "view": "front_elevation",
+      "representation": "FalperWFBFront",
+      "native_dwg_path_count": 4,
+      "placement_center_x": 1.854473,
+      "placement_baseline_y": 51.638467,
+      "white_mask": true,
+      "blue_top_layer": true,
+      "review_crop": {
+        "path": "output/review/highpoly-types/falper-sorgente/project-context-elevation-EL-08-30-R16-NY-review.svg",
+        "sha256": "0278e04bb369bf3b0f5113bf1042b465f13b63653d1ff1e8273bdfa47f08c770",
+        "view_box": [
+          -6.145527,
+          29.0,
+          20.0,
+          25.0
+        ],
+        "purpose": "visual_review_crop_with_project_context"
+      }
+    }
+  ]
+}

@@ -57,6 +57,8 @@ test("native refresh loads Bonsai and never writes the formal IFC", () => {
   const wrapper = readFileSync(statusScript, "utf8");
   expect(wrapper).not.toContain('"--background"');
   expect(wrapper).toContain("capture_output=True");
+  expect(wrapper).toContain("--camera-local-y-offset-m");
+  expect(source).toContain("camera_local_y_offset_m");
 });
 
 test("single-sheet dry run resolves its native underlays and grouped build", () => {

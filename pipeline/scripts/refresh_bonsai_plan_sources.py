@@ -26,6 +26,11 @@ from typing import Any
 import bpy
 import ifcopenshell.util.element
 from bonsai import tool
+from mathutils import Vector
+
+SCRIPTS_DIR = Path(__file__).resolve().parent
+if str(SCRIPTS_DIR) not in sys.path:
+    sys.path.insert(0, str(SCRIPTS_DIR))
 
 from plan_elevation_index import apply_official_elevation_index
 
@@ -57,6 +62,7 @@ def parse_args() -> argparse.Namespace:
     parser.add_argument("--register", type=Path, required=True)
     parser.add_argument("--candidate-dir", type=Path, required=True)
     parser.add_argument("--drawing", action="append", default=[])
+    parser.add_argument("--camera-local-y-offset-m", type=float, default=0.0)
     return parser.parse_args(arguments)
 
 
@@ -262,6 +268,10 @@ def main() -> None:
             camera = bpy.context.scene.camera
             if not camera or camera.data.type != "ORTHO":
                 raise RuntimeError(f"{drawing.Name}: Bonsai Drawing camera is not orthographic")
+            if args.camera_local_y_offset_m:
+                camera.matrix_world.translation += camera.matrix_world.to_3x3() @ Vector(
+                    (0.0, args.camera_local_y_offset_m, 0.0)
+                )
 
             props = tool.Drawing.get_document_props()
             props.should_use_underlay_cache = False
@@ -289,6 +299,7 @@ def main() -> None:
             "shading_style": pset["CurrentShadingStyle"],
             "camera_type": camera.data.type,
             "camera_ortho_scale_m": float(camera.data.ortho_scale),
+            "camera_local_y_offset_m": args.camera_local_y_offset_m,
             "underlay_cache": props.should_use_underlay_cache,
             "linework_cache": props.should_use_linework_cache,
             "annotation_cache": props.should_use_annotation_cache,

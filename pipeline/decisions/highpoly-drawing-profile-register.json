@@ -1,0 +1,46 @@
+{
+  "schema_version": 2,
+  "formal_ifc_sha256": "7a50b87e8f48a7c2bfbaa9f1dabdfca7155fa684b2325c66aa1ae15c8ab0a25c",
+  "profiles": {
+    "falper-sorgente": {
+      "display_name": "Falper Sorgente / project BS01 pedestal basin",
+      "ifc_type_name": "BS01",
+      "representative_global_id": "350tdaubr8QP3Cu2YMQZIN",
+      "expected_instance_global_ids": [
+        "350tdaubr8QP3Cu2YMQZIN"
+      ],
+      "profile_source": "isolated_highpoly_projection_with_native_wfb_dwg_family_reference",
+      "silhouette_simplify_mm": 1.0,
+      "semantic_sections": {
+        "plan": [
+          {"axis": "z", "fraction": 0.9, "label": "bowl_lower_rim"},
+          {"axis": "z", "fraction": 0.975, "label": "bowl_opening"}
+        ],
+        "front": [
+          {"axis": "y", "fraction": 0.5, "label": "centre_profile"}
+        ],
+        "side": [
+          {"axis": "x", "fraction": 0.5, "label": "centre_profile"}
+        ]
+      },
+      "required_semantics": [
+        "pedestal_outer_silhouette",
+        "bowl_opening",
+        "basin_side_edges",
+        "floor_contact"
+      ],
+      "official_reference": {
+        "source_id": "FALPER-SORGENTE-WFB-NATIVE-DWG-001",
+        "source_kind": "native_dwg",
+        "model_code": "WFB",
+        "scope": "family_reference_not_project_shop_drawing",
+        "linework_path": "pipeline/decisions/falper-sorgente-official-dwg-linework.json",
+        "verification_path": "pipeline/decisions/falper-sorgente-dwg-pdf-verification.json",
+        "source_dwg": "drawings/evidence/FALPER-official-Sorgente-WFB-2D.dwg",
+        "source_dwg_sha256": "4b3d8900f8ae249d7e9634339f3529d7d38a940dc2d0c909a7e90e31d3946831",
+        "source_pdf": "drawings/evidence/FALPER-official-Sorgente-WFA-WFB.pdf",
+        "source_pdf_sha256": "b8bc94982bdd4305f2ffe5240daf429146470677157022860a0ef591514373c2"
+      }
+    }
+  }
+}

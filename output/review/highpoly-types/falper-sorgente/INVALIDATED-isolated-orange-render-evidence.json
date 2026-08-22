@@ -1,0 +1,19 @@
+{
+  "schema_version": 1,
+  "status": "counterexample",
+  "invalidated_as": "project_context_bonsai_drawing_acceptance_evidence",
+  "reason": "Isolated orange selection screenshots and isolated Body Workbench renders do not prove that the approved WFB drawing representation is selected by an IFC Drawing camera together with project walls, furniture, materials and annotations.",
+  "still_valid_as": "isolated Body geometry diagnostic only",
+  "rejected_artifacts": [
+    "output/review/highpoly-types/falper-sorgente/bonsai-plan-representation.jpg",
+    "output/review/highpoly-types/falper-sorgente/bonsai-front-representation.jpg",
+    "output/review/highpoly-types/falper-sorgente/bonsai-side-representation.jpg",
+    "output/review/highpoly-types/falper-sorgente/bonsai-camera-plan.png",
+    "output/review/highpoly-types/falper-sorgente/bonsai-camera-front-elevation.png",
+    "output/review/highpoly-types/falper-sorgente/bonsai-camera-side-elevation.png"
+  ],
+  "replacement_manifest": "output/review/highpoly-types/falper-sorgente/bonsai-project-context-styled/manifest.json",
+  "replacement_evidence": "Actual Bonsai IFC Drawing cameras generated Sanitary Plan and EL-08-30-R16-NY from the approved derived IFC; the unchanged Falper product groups use Model/Body PLAN_VIEW and ELEVATION_VIEW native-DWG geometry.",
+  "formal_ifc_write": false,
+  "formal_ifc_sha256": "7a50b87e8f48a7c2bfbaa9f1dabdfca7155fa684b2325c66aa1ae15c8ab0a25c"
+}

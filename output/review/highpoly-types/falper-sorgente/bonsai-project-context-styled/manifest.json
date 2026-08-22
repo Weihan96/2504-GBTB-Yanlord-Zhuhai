@@ -1,0 +1,94 @@
+{
+  "schema_version": 1,
+  "status": "approved",
+  "generator": "actual Bonsai IFC Drawing cameras plus non-geometric source styling",
+  "derived_ifc": "output/review/highpoly-types/falper-sorgente/Falper-Sorgente-WFB-derived-drawing-corrected.ifc",
+  "derived_ifc_sha256": "6bf983f164202472081fb492a6bf3e2d5a8c09e9bdfee6f7c224bda05628eb9a",
+  "formal_ifc_sha256": "7a50b87e8f48a7c2bfbaa9f1dabdfca7155fa684b2325c66aa1ae15c8ab0a25c",
+  "formal_ifc_bytes_unchanged": true,
+  "representative_global_id": "350tdaubr8QP3Cu2YMQZIN",
+  "source_kind": "native_dwg",
+  "source_dwg_sha256": "4b3d8900f8ae249d7e9634339f3529d7d38a940dc2d0c909a7e90e31d3946831",
+  "bonsai_drawing_operator": "bpy.ops.bim.create_drawing",
+  "standard_ifc_representation_selection": "Model/Body PLAN_VIEW and ELEVATION_VIEW",
+  "styling_rule": "retain the unchanged raw Bonsai product group; show it directly for elevation, and hide only its HLR-clipped plan display while a complete five-path supplement from the same Body/PLAN_VIEW native-DWG IFC representation is shown above a white mask in #1677c8",
+  "views": [
+    {
+      "view": "plan",
+      "raw_bonsai_svg": "output/review/highpoly-types/falper-sorgente/bonsai-project-context-plan/Sanitary Plan.svg",
+      "raw_bonsai_svg_sha256": "11def80ac5c9ae133192b87a5f2401cb6387e8448cea9070964c7faef21d842d",
+      "raw_bonsai_manifest": "output/review/highpoly-types/falper-sorgente/bonsai-project-context-plan/Sanitary Plan-source.json",
+      "raw_bonsai_product_path_segment_count": 1252,
+      "raw_bonsai_visible_bounds_mm": [
+        183.803567,
+        187.399993,
+        194.203567,
+        197.599998
+      ],
+      "ifc_native_dwg_full_bounds_mm": [
+        183.803567,
+        187.385202,
+        194.203567,
+        197.785202
+      ],
+      "styled_svg": "output/review/highpoly-types/falper-sorgente/bonsai-project-context-styled/Sanitary Plan-Falper-WFB-styled.svg",
+      "styled_svg_sha256": "0bbe2ea33720b23b43e30c389fdb5682aac1607c3eafd0954498bb029f5b15a5",
+      "review_crop": {
+        "path": "output/review/highpoly-types/falper-sorgente/bonsai-project-context-styled/Sanitary Plan-Falper-WFB-review.svg",
+        "sha256": "5198c7744b166d4d9108acf7dfd4156187be8ceb2c8c4883fdff68a5573bb843",
+        "view_box": [
+          159.003567,
+          162.585202,
+          60.0,
+          60.0
+        ],
+        "purpose": "visual_review_crop_with_project_context"
+      },
+      "geometry_replaced_during_styling": false,
+      "raw_bonsai_group_visible_in_styled_svg": false,
+      "geometry_supplemented_from_same_ifc_representation": true,
+      "ifc_representation_supplement_path_count": 5,
+      "white_mask": true,
+      "official_blue_top_layer": true
+    },
+    {
+      "view": "front_elevation",
+      "raw_bonsai_svg": "output/review/highpoly-types/falper-sorgente/bonsai-project-context-elevation/EL-08-30-R16-NY.svg",
+      "raw_bonsai_svg_sha256": "ee4276817632ef9fd651e83d964c0b7f37c5ee12ffa658ab082968ed36fd3236",
+      "raw_bonsai_manifest": "output/review/highpoly-types/falper-sorgente/bonsai-project-context-elevation/EL-08-30-R16-NY-source.json",
+      "raw_bonsai_product_path_segment_count": 730,
+      "raw_bonsai_visible_bounds_mm": [
+        -3.345527,
+        33.798467,
+        7.054473,
+        51.798467
+      ],
+      "ifc_native_dwg_full_bounds_mm": [
+        -3.345532,
+        33.798467,
+        7.054468,
+        51.798467
+      ],
+      "styled_svg": "output/review/highpoly-types/falper-sorgente/bonsai-project-context-styled/EL-08-30-R16-NY-Falper-WFB-styled.svg",
+      "styled_svg_sha256": "318f501d3b59d1b57358bf4817028d82af09a9de089b2781d38bafb1ab4cbb66",
+      "review_crop": {
+        "path": "output/review/highpoly-types/falper-sorgente/bonsai-project-context-styled/EL-08-30-R16-NY-Falper-WFB-review.svg",
+        "sha256": "58ec1f09a9229d20c25f4ceeacdbb97bef2113cd125fb599100eec859fc5ad9d",
+        "view_box": [
+          -6.145527,
+          29.0,
+          20.0,
+          25.0
+        ],
+        "purpose": "visual_review_crop_with_project_context"
+      },
+      "geometry_replaced_during_styling": false,
+      "raw_bonsai_group_visible_in_styled_svg": true,
+      "geometry_supplemented_from_same_ifc_representation": false,
+      "ifc_representation_supplement_path_count": 0,
+      "white_mask": true,
+      "official_blue_top_layer": true
+    }
+  ],
+  "pass": true
+}

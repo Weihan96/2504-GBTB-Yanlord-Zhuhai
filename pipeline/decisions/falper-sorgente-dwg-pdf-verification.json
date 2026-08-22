@@ -1,0 +1,91 @@
+{
+  "schema_version": 1,
+  "generated_at": "2026-08-22T14:56:47.553193+00:00",
+  "mode": "mechanical_native_dwg_vs_official_vector_pdf",
+  "scope": "family_reference_not_project_shop_drawing",
+  "dwg_linework_register": "pipeline/decisions/falper-sorgente-official-dwg-linework.json",
+  "dwg_linework_register_sha256": "2c66da0f96e123f8152afede2ecea0384965361c258320860c8da635f7a224ca",
+  "pdf_linework_register": "pipeline/decisions/falper-sorgente-official-pdf-linework.json",
+  "pdf_linework_register_sha256": "ef37b6b40b3423b107add46c62cc336c0177b7aadf78f53605ba6823787bc632",
+  "records": [
+    {
+      "model_code": "WFA",
+      "view": "plan",
+      "dwg_source_kind": "native_dwg",
+      "dwg_sha256": "48ffe94e5a692cd03e8a09e67c658ebb42362817df03007bd90ff7a912567441",
+      "pdf_sha256": "b8bc94982bdd4305f2ffe5240daf429146470677157022860a0ef591514373c2",
+      "tolerance_mm": 0.75,
+      "tolerance_basis": "published_vector_plan_curve_within_0.75_mm",
+      "hausdorff_mm": 0.594246,
+      "expected_length_mm": 5220.004764,
+      "observed_length_mm": 5225.127916,
+      "length_delta_mm": 5.123152,
+      "pass": true
+    },
+    {
+      "model_code": "WFA",
+      "view": "elevation",
+      "dwg_source_kind": "native_dwg",
+      "dwg_sha256": "48ffe94e5a692cd03e8a09e67c658ebb42362817df03007bd90ff7a912567441",
+      "pdf_sha256": "b8bc94982bdd4305f2ffe5240daf429146470677157022860a0ef591514373c2",
+      "tolerance_mm": 6.0,
+      "tolerance_basis": "published_vector_elevation_curve_within_6_mm_or_0.67_percent_of_900_mm",
+      "hausdorff_mm": 5.014729,
+      "expected_length_mm": 2784.32865,
+      "observed_length_mm": 2804.89619,
+      "length_delta_mm": 20.56754,
+      "pass": true
+    },
+    {
+      "model_code": "WFB",
+      "view": "plan",
+      "dwg_source_kind": "native_dwg",
+      "dwg_sha256": "4b3d8900f8ae249d7e9634339f3529d7d38a940dc2d0c909a7e90e31d3946831",
+      "pdf_sha256": "b8bc94982bdd4305f2ffe5240daf429146470677157022860a0ef591514373c2",
+      "tolerance_mm": 0.75,
+      "tolerance_basis": "published_vector_plan_curve_within_0.75_mm",
+      "hausdorff_mm": 0.261569,
+      "expected_length_mm": 5220.004764,
+      "observed_length_mm": 5220.659462,
+      "length_delta_mm": 0.654698,
+      "pass": true
+    },
+    {
+      "model_code": "WFB",
+      "view": "elevation",
+      "dwg_source_kind": "native_dwg",
+      "dwg_sha256": "4b3d8900f8ae249d7e9634339f3529d7d38a940dc2d0c909a7e90e31d3946831",
+      "pdf_sha256": "b8bc94982bdd4305f2ffe5240daf429146470677157022860a0ef591514373c2",
+      "tolerance_mm": 6.0,
+      "tolerance_basis": "published_vector_elevation_curve_within_6_mm_or_0.67_percent_of_900_mm",
+      "hausdorff_mm": 4.981698,
+      "expected_length_mm": 2784.32865,
+      "observed_length_mm": 2805.930088,
+      "length_delta_mm": 21.601438,
+      "pass": true
+    }
+  ],
+  "wfa_wfb_native_family_geometry_diff": {
+    "plan": {
+      "hausdorff_mm": 0.0,
+      "expected_length_mm": 5220.004764,
+      "observed_length_mm": 5220.004764,
+      "length_delta_mm": 0.0
+    },
+    "elevation": {
+      "hausdorff_mm": 0.0,
+      "expected_length_mm": 2784.32865,
+      "observed_length_mm": 2784.32865,
+      "length_delta_mm": 0.0
+    }
+  },
+  "identity_gates": {
+    "wfa_2d_hash_match": true,
+    "wfb_2d_hash_match": true,
+    "pdf_hash_match": true,
+    "wfa_3d_used_as_wfb": false,
+    "project_review_model": "WFB",
+    "blue_line_source_kind": "native_dwg"
+  },
+  "pass": true
+}

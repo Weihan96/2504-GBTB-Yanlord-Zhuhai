@@ -1,0 +1,45 @@
+{
+  "schema_version": 1,
+  "validity_status": "invalidated",
+  "artifact_role": "counterexample",
+  "counterexample_label": "反例：代理几何被错误标注为官方 native DWG",
+  "invalidated_at": "2026-08-23",
+  "invalidation_reason": "Proxy silhouette and semantic paths were incorrectly written as native DWG geometry (plan/front/side counts 110/117/120 instead of 5/4/4).",
+  "superseded_by": "output/review/highpoly-types/falper-sorgente/derived-ifc-corrected-manifest.json",
+  "profile_key": "falper-sorgente",
+  "model_code": "WFB",
+  "representative_global_id": "350tdaubr8QP3Cu2YMQZIN",
+  "formal_ifc": "2504 GBTB Yanlord Zhuhai.ifc",
+  "formal_ifc_sha256": "7a50b87e8f48a7c2bfbaa9f1dabdfca7155fa684b2325c66aa1ae15c8ab0a25c",
+  "formal_ifc_bytes_unchanged": true,
+  "derived_ifc": "output/review/highpoly-types/falper-sorgente/Falper-Sorgente-WFB-derived-drawing.ifc",
+  "derived_ifc_sha256": "dbd984dddbac85d8129eeab017fafc1589cf98a57ad82ad32cc6199953fa82ea",
+  "candidate_manifest": "output/review/highpoly-types/falper-sorgente/manifest.json",
+  "candidate_manifest_sha256": "39bffa9024bebe4ea665b55853cfae5675cad2c6cbbbe2af18d25939a830c86a",
+  "approval_record": "pipeline/decisions/falper-sorgente-drawing-approval.json",
+  "approval_record_sha256": "04f3c33cf2420fb38d0fde8e218633e407ce945d8af0fbc409e103a4d3a4bbce",
+  "approval": {
+    "status": "approved",
+    "reviewer": "project_owner",
+    "review_date": "2026-08-23",
+    "approved_views": [
+      "plan",
+      "front",
+      "side"
+    ],
+    "scope": "family_reference_not_project_shop_drawing"
+  },
+  "representations": [
+    "Body",
+    "FalperWFBFront",
+    "FalperWFBPlan",
+    "FalperWFBSide"
+  ],
+  "representation_source_mapping": "FalperWFBPlan=plan;FalperWFBFront=elevation;FalperWFBSide=elevation",
+  "source_document_association": "IfcDocumentReference/IfcRelAssociatesDocument",
+  "source_property_set": "Pset_FalperSorgenteDrawingSource",
+  "source_kind": "native_dwg",
+  "source_dwg_sha256": "4b3d8900f8ae249d7e9634339f3529d7d38a940dc2d0c909a7e90e31d3946831",
+  "source_pdf_sha256": "b8bc94982bdd4305f2ffe5240daf429146470677157022860a0ef591514373c2",
+  "pass": false
+}

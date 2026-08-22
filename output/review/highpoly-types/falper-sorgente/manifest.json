@@ -1,0 +1,148 @@
+{
+  "schema_version": 2,
+  "generated_at": "2026-08-22T14:56:52.033092+00:00",
+  "generator": "pipeline/scripts/int1_highpoly_type_review.py",
+  "formal_ifc": "2504 GBTB Yanlord Zhuhai.ifc",
+  "formal_ifc_sha256": "7a50b87e8f48a7c2bfbaa9f1dabdfca7155fa684b2325c66aa1ae15c8ab0a25c",
+  "formal_ifc_sha256_after_generation": "7a50b87e8f48a7c2bfbaa9f1dabdfca7155fa684b2325c66aa1ae15c8ab0a25c",
+  "formal_ifc_bytes_unchanged": true,
+  "profile_register": "pipeline/decisions/highpoly-drawing-profile-register.json",
+  "profile_register_sha256": "3a39c3fa06e2cdecaf045d50644e0bc006aa161ab9a97b585dbe33da94bcd155",
+  "profile_key": "falper-sorgente",
+  "display_name": "Falper Sorgente / project BS01 pedestal basin",
+  "ifc_type_name": "BS01",
+  "representative_global_id": "350tdaubr8QP3Cu2YMQZIN",
+  "registered_instance_global_ids": [
+    "350tdaubr8QP3Cu2YMQZIN"
+  ],
+  "geometry_product_count": 1,
+  "whole_model_render": false,
+  "formal_ifc_write": false,
+  "mesh_vertex_count": 4624,
+  "mesh_face_count": 9280,
+  "local_bounds_mm": {
+    "minimum": [
+      -251.479523,
+      -251.47905,
+      -8.0
+    ],
+    "maximum": [
+      251.47905,
+      251.479523,
+      895.606812
+    ]
+  },
+  "official_reference": {
+    "source_id": "FALPER-SORGENTE-WFB-NATIVE-DWG-001",
+    "source_kind": "native_dwg",
+    "model_code": "WFB",
+    "scope": "family_reference_not_project_shop_drawing",
+    "linework_path": "pipeline/decisions/falper-sorgente-official-dwg-linework.json",
+    "verification_path": "pipeline/decisions/falper-sorgente-dwg-pdf-verification.json",
+    "source_dwg": "drawings/evidence/FALPER-official-Sorgente-WFB-2D.dwg",
+    "source_dwg_sha256": "4b3d8900f8ae249d7e9634339f3529d7d38a940dc2d0c909a7e90e31d3946831",
+    "source_pdf": "drawings/evidence/FALPER-official-Sorgente-WFA-WFB.pdf",
+    "source_pdf_sha256": "b8bc94982bdd4305f2ffe5240daf429146470677157022860a0ef591514373c2",
+    "linework_register": "pipeline/decisions/falper-sorgente-official-dwg-linework.json",
+    "linework_register_sha256": "2c66da0f96e123f8152afede2ecea0384965361c258320860c8da635f7a224ca",
+    "verification_register": "pipeline/decisions/falper-sorgente-dwg-pdf-verification.json",
+    "verification_register_sha256": "7af1c5c663880e63dd054445c88dfca53684497b14299728f40e97c3a6095ad0",
+    "verification_pass": true,
+    "pdf_cross_check_sha256": "b8bc94982bdd4305f2ffe5240daf429146470677157022860a0ef591514373c2"
+  },
+  "candidate_representations": "output/review/highpoly-types/falper-sorgente/candidate-representations.json",
+  "candidate_representations_sha256": "4b83e825532825086818074d74f68ff86610891c15a3481348ddf60480031fe9",
+  "views": [
+    {
+      "view": "plan",
+      "projection_axes": [
+        0,
+        1
+      ],
+      "svg": "output/review/highpoly-types/falper-sorgente/plan.svg",
+      "svg_sha256": "7a16e7172cad2a1d7379a0efd1a2fee545b39846dfb222d520eeaa8f5586b323",
+      "raw_edge_count": 13908,
+      "displayed_raw_edge_count": 580,
+      "silhouette_path_count": 1,
+      "semantic_path_count": 109,
+      "official_reference_path_count": 5,
+      "official_reference_source_point_count": 1285,
+      "official_reference_display_point_count": 435,
+      "blue_line_source_kind": "native_dwg",
+      "blue_line_model_code": "WFB",
+      "semantic_sections": [
+        {
+          "axis": "z",
+          "fraction": 0.9,
+          "label": "bowl_lower_rim",
+          "plane_mm": 805.24613,
+          "path_count": 88
+        },
+        {
+          "axis": "z",
+          "fraction": 0.975,
+          "label": "bowl_opening",
+          "plane_mm": 873.016641,
+          "path_count": 21
+        }
+      ]
+    },
+    {
+      "view": "front",
+      "projection_axes": [
+        0,
+        2
+      ],
+      "svg": "output/review/highpoly-types/falper-sorgente/front.svg",
+      "svg_sha256": "6cc2455acff345c4b513b57d8a5e9acd91c5524b00e4b83dcec8196d560d607a",
+      "raw_edge_count": 13908,
+      "displayed_raw_edge_count": 580,
+      "silhouette_path_count": 1,
+      "semantic_path_count": 116,
+      "official_reference_path_count": 4,
+      "official_reference_source_point_count": 1542,
+      "official_reference_display_point_count": 198,
+      "blue_line_source_kind": "native_dwg",
+      "blue_line_model_code": "WFB",
+      "semantic_sections": [
+        {
+          "axis": "y",
+          "fraction": 0.5,
+          "label": "centre_profile",
+          "plane_mm": 0.000237,
+          "path_count": 116
+        }
+      ]
+    },
+    {
+      "view": "side",
+      "projection_axes": [
+        1,
+        2
+      ],
+      "svg": "output/review/highpoly-types/falper-sorgente/side.svg",
+      "svg_sha256": "90da58176ce636b94b38e7f59021ba6354adb7d782b97f79d765c68542a08159",
+      "raw_edge_count": 13908,
+      "displayed_raw_edge_count": 580,
+      "silhouette_path_count": 1,
+      "semantic_path_count": 119,
+      "official_reference_path_count": 4,
+      "official_reference_source_point_count": 1542,
+      "official_reference_display_point_count": 198,
+      "blue_line_source_kind": "native_dwg",
+      "blue_line_model_code": "WFB",
+      "semantic_sections": [
+        {
+          "axis": "x",
+          "fraction": 0.5,
+          "label": "centre_profile",
+          "plane_mm": -0.000237,
+          "path_count": 119
+        }
+      ]
+    }
+  ],
+  "review_status": "visual_review_pending",
+  "approved_for_drawing_ifc": false,
+  "pass": true
+}

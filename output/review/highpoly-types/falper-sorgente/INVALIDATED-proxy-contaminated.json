@@ -1,0 +1,23 @@
+{
+  "schema_version": 1,
+  "status": "invalidated",
+  "artifact_role": "counterexample",
+  "counterexample_label": "反例：代理几何被错误标注为官方 native DWG",
+  "counterexample_lesson": "Structurally similar path arrays must retain distinct proxy_paths_mm and official_native_dwg_paths_mm identities at the IFC write boundary.",
+  "invalidated_at": "2026-08-23",
+  "reason": "The first derived IFC consumed simplified proxy paths instead of official native WFB DWG paths. The blue drain rectangle is not present in the official DWG.",
+  "invalid_artifacts": [
+    {
+      "path": "output/review/highpoly-types/falper-sorgente/Falper-Sorgente-WFB-derived-drawing.ifc",
+      "sha256": "dbd984dddbac85d8129eeab017fafc1589cf98a57ad82ad32cc6199953fa82ea"
+    },
+    {
+      "path": "output/review/highpoly-types/falper-sorgente/elevations-approved.svg"
+    },
+    {
+      "path": "output/review/highpoly-types/falper-sorgente/elevations-approved.png"
+    }
+  ],
+  "corrected_manifest": "output/review/highpoly-types/falper-sorgente/derived-ifc-corrected-manifest.json",
+  "corrected_ifc": "output/review/highpoly-types/falper-sorgente/Falper-Sorgente-WFB-derived-drawing-corrected.ifc"
+}

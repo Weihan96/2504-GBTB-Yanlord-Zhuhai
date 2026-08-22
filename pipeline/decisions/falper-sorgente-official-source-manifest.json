@@ -1,0 +1,36 @@
+{
+  "schema_version": 1,
+  "scope": "family_reference_not_project_shop_drawing",
+  "product_url": "https://falper.it/en/freestanding-washbasins/",
+  "autocad_2d_zip": {
+    "url": "https://falper.it/wp-content/uploads/2025/11/Lavabi-Freestanding-Autocad-2D.zip",
+    "local_path": "drawings/evidence/FALPER-official-Lavabi-Freestanding-Autocad-2D.zip",
+    "sha256": "9c52d19fc7cbdc7e87117bb257f80f65288c44fc0c9a7a54ec6597cb64e1c59e"
+  },
+  "technical_dwg_zip": {
+    "url": "https://falper.it/wp-content/uploads/2025/11/Lavabi-Freestanding-Scheda-tecnica-DWG.zip",
+    "download_sha256": "f78cb7d6d054b7f3721e490190cc8034b20bf9bd5369733af9f848db004106e2",
+    "member_identity": "WFA.dwg and WFB.dwg are byte-identical to the archived AutoCAD 2D ZIP members"
+  },
+  "autocad_3d_zip": {
+    "url": "https://falper.it/wp-content/uploads/2025/11/Lavabi-Freestanding-Autocad-3D.zip",
+    "download_sha256": "9657cfb23076d4a1af51eefc20a7794953e31f2768ebfca45ee6fce40ab886ac",
+    "wfa_3d_member_sha256": "6a9d4b45607ae7915b2b5925dfa818693984df4b3474bbf6b17ab3d53b72e956",
+    "usage": "identity_only_not_wfb_geometry_source"
+  },
+  "native_dwg_members": {
+    "WFA": {
+      "local_path": "drawings/evidence/FALPER-official-Sorgente-WFA-2D.dwg",
+      "sha256": "48ffe94e5a692cd03e8a09e67c658ebb42362817df03007bd90ff7a912567441"
+    },
+    "WFB": {
+      "local_path": "drawings/evidence/FALPER-official-Sorgente-WFB-2D.dwg",
+      "sha256": "4b3d8900f8ae249d7e9634339f3529d7d38a940dc2d0c909a7e90e31d3946831",
+      "review_blue_line_source": true
+    }
+  },
+  "official_vector_pdf": {
+    "local_path": "drawings/evidence/FALPER-official-Sorgente-WFA-WFB.pdf",
+    "sha256": "b8bc94982bdd4305f2ffe5240daf429146470677157022860a0ef591514373c2"
+  }
+}
