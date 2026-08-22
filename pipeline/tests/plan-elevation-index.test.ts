@@ -8,7 +8,7 @@ const script = resolve(root, "pipeline/scripts/plan_elevation_index.py");
 const source = resolve(root, "drawings/Wall Plan.svg");
 const register = resolve(root, "pipeline/decisions/int1-elevation-view-register.csv");
 
-test("plan elevation index exposes twelve official anchors and 36 directions", () => {
+test("plan elevation index uses the developer DWG split-circle markers", () => {
   const temporary = mkdtempSync(join(tmpdir(), "plan-elevation-index-"));
   const candidate = join(temporary, "Wall Plan.svg");
   copyFileSync(source, candidate);
@@ -18,7 +18,15 @@ test("plan elevation index exposes twelve official anchors and 36 directions", (
   expect(result.exitCode, result.stderr.toString()).toBe(0);
   const svg = readFileSync(candidate, "utf8");
   expect(svg.match(/class="official-elevation-anchor"/g)).toHaveLength(12);
-  expect(svg.match(/class="official-elevation-direction"/g)).toHaveLength(36);
+  expect(svg.match(/class="official-elevation-marker"/g)).toHaveLength(36);
+  expect(svg.match(/class="marker-arrow"/g)).toHaveLength(36);
+  expect(svg.match(/class="marker-circle"/g)).toHaveLength(36);
+  expect(svg.match(/class="marker-divider"/g)).toHaveLength(36);
+  expect(svg.match(/class="marker-view"/g)).toHaveLength(36);
+  expect(svg.match(/class="marker-sheet"/g)).toHaveLength(36);
+  expect(svg).toContain('data-symbol-source="developer-DWG-blocks-U516-U519"');
+  expect(svg).not.toContain('class="anchor-label"');
+  expect(svg).not.toMatch(/>A(?:[1-9]|1[0-2])<\/text>/);
   expect(svg).not.toContain('xlink:href="#elevation-arrow"');
   expect(svg).not.toContain('class="ELEVATION"');
   expect(svg).not.toContain("EL-P01");

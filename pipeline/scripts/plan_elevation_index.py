@@ -54,7 +54,7 @@ def svg_point(row: dict[str, str]) -> tuple[float, float]:
     return 200.0 + float(row["ifc_x_mm"]) / 50.0, 200.0 - float(row["ifc_y_mm"]) / 50.0
 
 
-def direction_graphic(direction: str, view_id: str) -> str:
+def direction_graphic(direction: str, view_id: str, sheet_id: str) -> str:
     vectors = {
         "+Y": (0.0, -1.0),
         "+X": (1.0, 0.0),
@@ -62,16 +62,34 @@ def direction_graphic(direction: str, view_id: str) -> str:
         "-X": (-1.0, 0.0),
     }
     dx, dy = vectors[direction]
-    start_x, start_y = dx * 3.0, dy * 3.0
-    end_x, end_y = dx * 7.0, dy * 7.0
-    label_x, label_y = dx * 9.4, dy * 9.4 + 0.55
-    if direction in {"+X", "-X"}:
-        label_y += 0.15
+    # Reproduce the developer DWG dynamic blocks *U516–*U519 instead of
+    # inventing a radial plan marker.  Each direction gets a conventional
+    # split-circle elevation marker, offset 7.475 mm from the shared leader
+    # target.  The sight triangle points outwards; the white circle masks its
+    # centre, as in the source CAD block.
+    offset = 7.475
+    radius = 5.292
+    centre_x, centre_y = dx * offset, dy * offset
+    if direction == "+Y":
+        triangle = f"{-offset:.3f},0 0,{-offset:.3f} {offset:.3f},0"
+    elif direction == "+X":
+        triangle = f"0,{-offset:.3f} {offset:.3f},0 0,{offset:.3f}"
+    elif direction == "-Y":
+        triangle = f"{-offset:.3f},0 0,{offset:.3f} {offset:.3f},0"
+    else:
+        triangle = f"0,{-offset:.3f} {-offset:.3f},0 0,{offset:.3f}"
     return (
-        f'<g class="official-elevation-direction" data-direction="{direction}" data-view-id="{view_id}">'
-        f'<line x1="{start_x:.2f}" y1="{start_y:.2f}" x2="{end_x:.2f}" y2="{end_y:.2f}"/>'
-        f'<circle cx="{end_x:.2f}" cy="{end_y:.2f}" r="0.75"/>'
-        f'<text x="{label_x:.2f}" y="{label_y:.2f}">{view_id}</text></g>'
+        f'<g class="official-elevation-marker" data-direction="{direction}" '
+        f'data-view-id="{view_id}" data-sheet-id="{sheet_id}" '
+        f'transform="translate({centre_x:.3f} {centre_y:.3f})">'
+        f'<title>立面 {view_id} / {sheet_id} / 视向 {direction}</title>'
+        f'<polygon class="marker-arrow" points="{triangle}"/>'
+        f'<circle class="marker-circle" r="{radius:.3f}"/>'
+        f'<line class="marker-divider" x1="{-radius:.3f}" y1="0" '
+        f'x2="{radius:.3f}" y2="0"/>'
+        f'<text class="marker-view" x="0" y="-1.55">{view_id}</text>'
+        f'<text class="marker-sheet" x="0" y="2.15">{sheet_id}</text>'
+        '</g>'
     )
 
 
@@ -82,28 +100,29 @@ def render_index(rows: list[dict[str, str]]) -> str:
     parts = [
         START,
         '<g id="official-elevation-index" data-source="official-DWG-KP-01" '
-        'data-anchor-count="12" data-view-count="36">',
-        '<style>.official-elevation-anchor{font-family:-apple-system,BlinkMacSystemFont,"PingFang SC",sans-serif;}'
-        '.official-elevation-anchor>circle{fill:#fffdf8;stroke:#8A6746;stroke-width:.34;}'
-        '.official-elevation-anchor>.anchor-label{font-size:1.45px;font-weight:700;fill:#6F5035;text-anchor:middle;dominant-baseline:central;}'
-        '.official-elevation-direction line{stroke:#B88A5A;stroke-width:.34;}'
-        '.official-elevation-direction circle{fill:#B88A5A;stroke:none;}'
-        '.official-elevation-direction text{font-size:1.55px;font-weight:650;fill:#6F5035;stroke:#fffdf8;stroke-width:.42;paint-order:stroke;'
-        'text-anchor:middle;dominant-baseline:central;}</style>',
+        'data-anchor-count="12" data-view-count="36" '
+        'data-symbol-source="developer-DWG-blocks-U516-U519">',
+        '<style>.official-elevation-anchor,.official-elevation-marker{font-family:-apple-system,BlinkMacSystemFont,"PingFang SC",sans-serif;}'
+        '.official-elevation-marker .marker-arrow{fill:#E8D7BF;stroke:#8F765C;stroke-width:.34;stroke-linejoin:round;}'
+        '.official-elevation-marker .marker-circle{fill:#FFFDF8;stroke:#8F765C;stroke-width:.34;}'
+        '.official-elevation-marker .marker-divider{stroke:#8F765C;stroke-width:.34;}'
+        '.official-elevation-marker text{fill:#604F40;text-anchor:middle;dominant-baseline:central;}'
+        '.official-elevation-marker .marker-view{font-size:2.05px;font-weight:700;}'
+        '.official-elevation-marker .marker-sheet{font-size:1.45px;font-weight:600;}</style>',
     ]
     for anchor_id in sorted(grouped, key=lambda value: int(value[1:])):
         anchor_rows = sorted(grouped[anchor_id], key=lambda row: int(row["view_id"]))
         x, y = svg_point(anchor_rows[0])
         view_ids = ",".join(row["view_id"] for row in anchor_rows)
         directions = "".join(
-            direction_graphic(row["direction"], row["view_id"])
+            direction_graphic(row["direction"], row["view_id"], row["sheet_id"])
             for row in anchor_rows
         )
         parts.append(
             f'<g class="official-elevation-anchor" data-anchor-id="{anchor_id}" '
             f'data-view-ids="{view_ids}" data-ifc-x-mm="{anchor_rows[0]["ifc_x_mm"]}" '
             f'data-ifc-y-mm="{anchor_rows[0]["ifc_y_mm"]}" transform="translate({x:.3f} {y:.3f})">'
-            f'<circle r="2.65"/><text class="anchor-label" x="0" y="0">{anchor_id}</text>{directions}</g>'
+            f'{directions}</g>'
         )
     parts.extend(["</g>", END])
     return "\n".join(parts)
