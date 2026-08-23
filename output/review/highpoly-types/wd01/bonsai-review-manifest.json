@@ -1,0 +1,143 @@
+{
+  "schema_version": 1,
+  "generator": "pipeline/scripts/render_wd01_bonsai_review.py",
+  "mode": "actual_bonsai_ifc_body_camera_render",
+  "representative_global_id": "2mPTt7$nvBSAn28I9NWt6T",
+  "geometry_product_count": 1,
+  "whole_model_render": false,
+  "formal_ifc": "2504 GBTB Yanlord Zhuhai.ifc",
+  "formal_ifc_sha256": "7a50b87e8f48a7c2bfbaa9f1dabdfca7155fa684b2325c66aa1ae15c8ab0a25c",
+  "formal_ifc_bytes_unchanged": true,
+  "isolated_ifc": "output/review/highpoly-types/wd01/Poliform-Pivot-Senzafine-WD01-bonsai-isolated.ifc",
+  "isolated_ifc_sha256": "adbfc60265feec704fc2c66b284fc64fd9187f2f2f99f2f67b9a3a80f56f3082",
+  "bonsai_session": {
+    "path": "output/review/highpoly-types/wd01/Poliform-Pivot-Senzafine-WD01-bonsai-review.blend",
+    "sha256": "32e3e22cfd949c720ebf8d5073816b8e5786513f6c8dee7e615e1cac0af2c6ed",
+    "saved_active_representation": "Body",
+    "saved_camera_count": 4,
+    "saved_camera_names": [
+      "POLIFORM_PIVOT_SENZAFINE_WD01_CAM_FRONT",
+      "POLIFORM_PIVOT_SENZAFINE_WD01_CAM_ISO",
+      "POLIFORM_PIVOT_SENZAFINE_WD01_CAM_PLAN",
+      "POLIFORM_PIVOT_SENZAFINE_WD01_CAM_SIDE"
+    ],
+    "ifc_definition_id": 1255,
+    "ifc_context_identifier": "Body",
+    "ifc_target_view": "MODEL_VIEW",
+    "front_camera_local_y_sign": -1.0,
+    "object_name": "IfcFurniture/Furniture",
+    "object_bounds_m": {
+      "minimum": [
+        -3.225189209,
+        -2.758672476,
+        0.009930003
+      ],
+      "maximum": [
+        -2.551664829,
+        -1.555793524,
+        2.399952888
+      ]
+    },
+    "local_axis_extents_m": {
+      "x": 1.202879003,
+      "y": 0.673524947,
+      "z": 2.390022993
+    },
+    "local_axes_world": [
+      [
+        7.5e-08,
+        -1.0,
+        0.0
+      ],
+      [
+        1.0,
+        7.5e-08,
+        0.0
+      ],
+      [
+        0.0,
+        0.0,
+        1.0
+      ]
+    ]
+  },
+  "renders": [
+    {
+      "view": "plan",
+      "camera": "POLIFORM_PIVOT_SENZAFINE_WD01_CAM_PLAN",
+      "camera_type": "ORTHO",
+      "camera_axis_basis": "IFC product local axes",
+      "camera_ortho_scale_m": 1.987158060074,
+      "projected_width_m": 0.673524856567,
+      "projected_height_m": 1.202878952026,
+      "image_aspect": 1.4,
+      "framing_margin_factor": 1.18,
+      "ortho_scale_quantization_safety_factor": 1.000001,
+      "render_operation": "bpy.ops.render.render(write_still=True)",
+      "path": "output/review/highpoly-types/wd01/bonsai-camera-plan.png",
+      "sha256": "ae282ef47ecde98dddcacc68d89db75b79272c6bc8aed1c56467dc4cabff3918",
+      "resolution": [
+        1400,
+        1000
+      ]
+    },
+    {
+      "view": "front",
+      "camera": "POLIFORM_PIVOT_SENZAFINE_WD01_CAM_FRONT",
+      "camera_type": "ORTHO",
+      "camera_axis_basis": "IFC product local axes",
+      "camera_ortho_scale_m": 3.948322057724,
+      "projected_width_m": 1.202878981467,
+      "projected_height_m": 2.390023102819,
+      "image_aspect": 1.4,
+      "framing_margin_factor": 1.18,
+      "ortho_scale_quantization_safety_factor": 1.000001,
+      "render_operation": "bpy.ops.render.render(write_still=True)",
+      "path": "output/review/highpoly-types/wd01/bonsai-camera-front-elevation.png",
+      "sha256": "c0c13e1b35ef0fe16ad5a5af2f4bd1ad16f4ed89feb48100de06393e80ae46a7",
+      "resolution": [
+        1400,
+        1000
+      ]
+    },
+    {
+      "view": "side",
+      "camera": "POLIFORM_PIVOT_SENZAFINE_WD01_CAM_SIDE",
+      "camera_type": "ORTHO",
+      "camera_axis_basis": "IFC product local axes",
+      "camera_ortho_scale_m": 3.948322057724,
+      "projected_width_m": 0.673524938041,
+      "projected_height_m": 2.390023083903,
+      "image_aspect": 1.4,
+      "framing_margin_factor": 1.18,
+      "ortho_scale_quantization_safety_factor": 1.000001,
+      "render_operation": "bpy.ops.render.render(write_still=True)",
+      "path": "output/review/highpoly-types/wd01/bonsai-camera-side-elevation.png",
+      "sha256": "2f93db5f79ada1ce9b65e159481da480f065bd3cd6b13904d82a27d97446b4f5",
+      "resolution": [
+        1400,
+        1000
+      ]
+    },
+    {
+      "view": "iso",
+      "camera": "POLIFORM_PIVOT_SENZAFINE_WD01_CAM_ISO",
+      "camera_type": "ORTHO",
+      "camera_axis_basis": "IFC product local axes",
+      "camera_ortho_scale_m": 4.489288330078,
+      "projected_width_m": 1.326817841997,
+      "projected_height_m": 2.71748405695,
+      "image_aspect": 1.4,
+      "framing_margin_factor": 1.18,
+      "ortho_scale_quantization_safety_factor": 1.000001,
+      "render_operation": "bpy.ops.render.render(write_still=True)",
+      "path": "output/review/highpoly-types/wd01/bonsai-camera-iso.png",
+      "sha256": "4bd23a0def03f5963e3ec67b923f4bbd2a225fe72f1a6a9a43b40b1f68b161e1",
+      "resolution": [
+        1400,
+        1000
+      ]
+    }
+  ],
+  "pass": true
+}

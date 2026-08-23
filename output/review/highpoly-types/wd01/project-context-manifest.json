@@ -1,0 +1,239 @@
+{
+  "schema_version": 1,
+  "generator": "pipeline/scripts/render_wd01_project_context.py",
+  "source_kind": "geometry_derived_simplified_proxy",
+  "source_label_zh": "基于原始高模几何生成的简化图纸表达",
+  "official_cad_used": false,
+  "third_party_cad_used": false,
+  "project_context_retained": true,
+  "walls_and_surrounding_project_elements_retained": true,
+  "overlay_top_layer_with_white_mask": true,
+  "blue_line_present": false,
+  "project_scale_svg_units_per_mm": 0.02,
+  "views": [
+    {
+      "view": "plan",
+      "candidate_view": "plan",
+      "source": "drawings/Furniture Plan.svg",
+      "output": "output/review/highpoly-types/wd01/project-context-furniture-plan.svg",
+      "output_sha256": "6eb8c93983a50bce3bd48c4bfaadd4c4420bd8fed1695f2411322000d9e0f049",
+      "review_crop": "output/review/highpoly-types/wd01/project-context-furniture-plan-review.svg",
+      "review_crop_sha256": "3dbd7372f6068b768f0ffa8d8388d8f50c4821a357b3e68d9e940dedf21c1a87",
+      "review_preview": "output/review/highpoly-types/wd01/project-context-furniture-plan-review-preview.png",
+      "review_preview_sha256": "827e72247300e65417eba9302f699b3711dcab369bf6a1d09926ffb8f9e12d34",
+      "overlay": {
+        "ifc_guid": "2mPTt7$nvBSAn28I9NWt6T",
+        "source_kind": "geometry_derived_simplified_proxy",
+        "source_label_zh": "基于原始高模几何生成的简化图纸表达",
+        "official_cad_used": false,
+        "third_party_cad_used": false,
+        "path_count": 7,
+        "fit": {
+          "rotate_quarter_turns": 1,
+          "alignment_mode": "centre",
+          "flip_projected_y": true,
+          "scale_svg_units_per_mm": 0.02,
+          "target_bbox": [
+            [
+              135.496215,
+              231.115867
+            ],
+            [
+              148.966701,
+              255.173444
+            ]
+          ],
+          "proxy_bbox": [
+            [
+              135.496215,
+              231.117934
+            ],
+            [
+              148.966701,
+              255.171377
+            ]
+          ],
+          "bbox_absolute_delta_svg_units": [
+            0.0,
+            0.004133
+          ],
+          "bbox_tolerance_svg_units": 0.3,
+          "uniform_scale_preserved": true,
+          "transformation_mode": "axis_swap_rigid_reflection_and_translation_only",
+          "pass": true
+        }
+      }
+    },
+    {
+      "view": "front",
+      "candidate_view": "front",
+      "source": "drawings/elevations/native/EL-05-15-R09-PX.svg",
+      "output": "output/review/highpoly-types/wd01/project-context-front-elevation.svg",
+      "output_sha256": "ebafeb056e696d582ca58a1803bd1ebc077cd1e88b64ccaf3554029695e1cf2d",
+      "review_crop": "output/review/highpoly-types/wd01/project-context-front-elevation-review.svg",
+      "review_crop_sha256": "10407cee5f204a2062071f4390fe4fb5d19a1b51668e2ff08e6f29cd7f071718",
+      "review_preview": "output/review/highpoly-types/wd01/project-context-front-elevation-review-preview.png",
+      "review_preview_sha256": "fa1b878e9d6c719ce46df032eb8948841c55ac8f952139888d10fc37d69787b4",
+      "overlay": {
+        "ifc_guid": "2mPTt7$nvBSAn28I9NWt6T",
+        "source_kind": "geometry_derived_simplified_proxy",
+        "source_label_zh": "基于原始高模几何生成的简化图纸表达",
+        "official_cad_used": false,
+        "third_party_cad_used": false,
+        "path_count": 3,
+        "fit": {
+          "rotate_quarter_turns": 0,
+          "alignment_mode": "centre",
+          "flip_projected_y": true,
+          "scale_svg_units_per_mm": 0.02,
+          "target_bbox": [
+            [
+              31.48367,
+              3.979767
+            ],
+            [
+              55.541247,
+              51.780224
+            ]
+          ],
+          "proxy_bbox": [
+            [
+              31.48367,
+              3.980467
+            ],
+            [
+              55.541247,
+              51.779524
+            ]
+          ],
+          "bbox_absolute_delta_svg_units": [
+            1e-06,
+            0.001399
+          ],
+          "bbox_tolerance_svg_units": 0.3,
+          "uniform_scale_preserved": true,
+          "transformation_mode": "axis_swap_rigid_reflection_and_translation_only",
+          "pass": true
+        }
+      }
+    },
+    {
+      "view": "side",
+      "candidate_view": "side",
+      "source": "drawings/elevations/native/EL-05-14-R09-PY.svg",
+      "output": "output/review/highpoly-types/wd01/project-context-side-elevation.svg",
+      "output_sha256": "586206d506cc54c54d86785a9f36b7748eda8e5624be2fda142f2e364b8cf353",
+      "review_crop": "output/review/highpoly-types/wd01/project-context-side-elevation-review.svg",
+      "review_crop_sha256": "92aee8fb199ba53ec219d314d0d723715df765cc553633049076be089fe441c5",
+      "review_preview": "output/review/highpoly-types/wd01/project-context-side-elevation-review-preview.png",
+      "review_preview_sha256": "82ba5ab7434dee95173141e4134391c7b7816ecbf91e91339ece6d7c57a4f1be",
+      "overlay": {
+        "ifc_guid": "2mPTt7$nvBSAn28I9NWt6T",
+        "source_kind": "geometry_derived_simplified_proxy",
+        "source_label_zh": "基于原始高模几何生成的简化图纸表达",
+        "official_cad_used": false,
+        "third_party_cad_used": false,
+        "path_count": 7,
+        "fit": {
+          "rotate_quarter_turns": 0,
+          "alignment_mode": "centre",
+          "flip_projected_y": true,
+          "scale_svg_units_per_mm": 0.02,
+          "target_bbox": [
+            [
+              85.772756,
+              3.99247
+            ],
+            [
+              98.962549,
+              51.791526
+            ]
+          ],
+          "proxy_bbox": [
+            [
+              85.634131,
+              3.992469
+            ],
+            [
+              99.101174,
+              51.791527
+            ]
+          ],
+          "bbox_absolute_delta_svg_units": [
+            0.27725,
+            1e-06
+          ],
+          "bbox_tolerance_svg_units": 0.3,
+          "uniform_scale_preserved": true,
+          "transformation_mode": "axis_swap_rigid_reflection_and_translation_only",
+          "pass": true
+        }
+      }
+    }
+  ],
+  "pass": true,
+  "semantic_view_mapping": {
+    "plan": {
+      "candidate_axes": [
+        0,
+        1
+      ],
+      "source": "drawings/Furniture Plan.svg",
+      "rotate_quarter_turns": 1,
+      "project_direction": "+Z"
+    },
+    "front": {
+      "candidate_axes": [
+        0,
+        2
+      ],
+      "source": "drawings/elevations/native/EL-05-15-R09-PX.svg",
+      "rotate_quarter_turns": 0,
+      "project_direction": "+X"
+    },
+    "side": {
+      "candidate_axes": [
+        1,
+        2
+      ],
+      "source": "drawings/elevations/native/EL-05-14-R09-PY.svg",
+      "rotate_quarter_turns": 0,
+      "project_direction": "+Y"
+    }
+  },
+  "context_view_scope": {
+    "included": [
+      "plan",
+      "front",
+      "side"
+    ],
+    "excluded": [],
+    "reason": "Furniture Plan.svg and the R09 +X/+Y native elevation SVGs contain an actual projection group for the same WD01 GlobalId. The alternate R09 -Y elevation is retained unchanged but is not duplicated in this three-view review."
+  },
+  "project_projection_note": {
+    "side_original_visible_projection_bbox_mm": [
+      659.48965,
+      2389.9528
+    ],
+    "complete_ifc_body_side_bbox_mm": [
+      673.52434,
+      2390.022879
+    ],
+    "interpretation": "The +Y project elevation clips or occludes about 14 mm of the complete Body side width. The review overlay preserves the complete Body at native 1:50 scale and aligns it to the original projection centre.",
+    "geometry_stretched": false
+  },
+  "review_annotation_suppression": {
+    "plan": "official-elevation-anchor groups only",
+    "front": "noninteger-highlights diagnostic group only",
+    "side": "noninteger-highlights diagnostic group only",
+    "scope": "derived review copies only; complete original project SVG sources remain unchanged",
+    "walls_furniture_and_ifc_geometry_removed": false
+  },
+  "review_preview_background": {
+    "plan": "opaque white review-only paper background",
+    "front": "opaque white review-only paper background",
+    "side": "opaque white review-only paper background",
+    "full_project_svg_remains_transparent": true,
+    "drawing_geometry_changed": false
+  }
+}

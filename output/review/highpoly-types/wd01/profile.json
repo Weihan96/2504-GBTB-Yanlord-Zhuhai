@@ -1,0 +1,42 @@
+{
+  "schema_version": 1,
+  "formal_ifc_sha256": "7a50b87e8f48a7c2bfbaa9f1dabdfca7155fa684b2325c66aa1ae15c8ab0a25c",
+  "profiles": {
+    "wd01": {
+      "display_name": "Poliform Pivot + Senzafine custom wardrobe / project WD01",
+      "ifc_type_name": "WD01",
+      "representative_global_id": "2mPTt7$nvBSAn28I9NWt6T",
+      "expected_instance_global_ids": ["2mPTt7$nvBSAn28I9NWt6T"],
+      "profile_source": "isolated_highpoly_projection; official_Poliform_Pivot_and_Senzafine_system_identity_verified; gated_resources_and_exact_project_native_cad_not_acquired",
+      "silhouette_simplify_mm": 1.0,
+      "semantic_sections": {"plan": [], "front": [], "side": []},
+      "required_semantics": [
+        "single_project_WD01_representative",
+        "full_height_custom_wardrobe_and_pivot_system_envelope",
+        "door_frame_and_internal_division_linework",
+        "project_configuration_not_substituted_by_catalogue_example"
+      ],
+      "drawing_source": {
+        "source_kind": "geometry_derived_simplified_proxy",
+        "source_label_zh": "基于原始高模几何生成的简化图纸表达",
+        "source_label_en": "simplified drawing representation derived from the original high-poly geometry",
+        "official_cad_used": false,
+        "third_party_cad_used": false
+      },
+      "official_reference": {
+        "source_id": "POLIFORM-PIVOT-SENZAFINE-WD01-OFFICIAL-IDENTITY-001",
+        "source_kind": "manufacturer_product_pages_and_remote_technical_pdf_system_identity_only",
+        "manufacturer": "Poliform",
+        "family": "Pivot + Senzafine Wardrobe",
+        "project_type_code": "WD01",
+        "scope": "official manufacturer Pivot and Senzafine system identity and remote technical-document evidence only; the project 1202.879 x 673.524 x 2390.023 mm arrangement is a custom configuration, not exact official CAD geometry or a project shop drawing",
+        "pivot_product_page": "https://www.poliform.it/en/products/pivot/",
+        "senzafine_product_page": "https://www.poliform.it/en/products/senzafine-wardrobe/",
+        "pivot_technical_pdf": "https://www.poliform.it/wp-content/uploads/pdf/278373-pivot-poliform-en-us.pdf",
+        "source_access_record": "output/review/highpoly-types/wd01/official-source/source-access-record.json",
+        "official_native_cad_status": "gated_resource_download_no_public_exact_WD01_configuration_asset_located_not_acquired",
+        "official_native_cad_used": false
+      }
+    }
+  }
+}
