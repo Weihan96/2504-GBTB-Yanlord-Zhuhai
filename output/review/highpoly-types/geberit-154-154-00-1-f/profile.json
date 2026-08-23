@@ -1,0 +1,43 @@
+{
+  "schema_version": 1,
+  "formal_ifc_sha256": "7a50b87e8f48a7c2bfbaa9f1dabdfca7155fa684b2325c66aa1ae15c8ab0a25c",
+  "profiles": {
+    "geberit-154-154-00-1-f": {
+      "display_name": "Geberit CleanLine 154.154.00.1 / project flange component .F",
+      "ifc_type_name": "Geberit 154.154.00.1.F",
+      "representative_global_id": "2jjNIn9gHBYwNSWwlM5T_i",
+      "expected_instance_global_ids": ["2jjNIn9gHBYwNSWwlM5T_i"],
+      "profile_source": "isolated_highpoly_projection; exact_official_parent_article_154_154_00_1_page_and_vector_eps_archived; project_dot_F_flange_decomposition_not_separately_published_manufacturer_article; native_component_cad_not_acquired",
+      "silhouette_simplify_mm": 0.25,
+      "semantic_sections": {"plan": [], "front": [], "side": []},
+      "required_semantics": [
+        "single_project_flange_component_representative",
+        "flange_subcomponent_not_complete_154_154_00_1_installation_set",
+        "project_IFC_Body_envelope_88_by_210_by_105_mm",
+        "parent_product_EPS_not_used_as_component_representation_geometry"
+      ],
+      "drawing_source": {
+        "source_kind": "geometry_derived_simplified_proxy",
+        "source_label_zh": "基于原始高模几何生成的简化图纸表达",
+        "source_label_en": "simplified drawing representation derived from the original high-poly geometry",
+        "official_cad_used": false,
+        "third_party_cad_used": false
+      },
+      "official_reference": {
+        "source_id": "GEBERIT-154-154-00-1-F-PARENT-EVIDENCE-001",
+        "source_kind": "manufacturer_parent_product_page_and_vector_eps_component_relationship_evidence_only",
+        "manufacturer": "Geberit",
+        "family": "CleanLine shower channel installation set",
+        "parent_article_number": "154.154.00.1",
+        "project_component_code": "154.154.00.1.F",
+        "project_component_role": "Flange",
+        "scope": "project-model flange subcomponent of the exact Geberit 154.154.00.1 parent installation set; .F is a project authoring decomposition label, not a separately published manufacturer article; parent EPS is not component CAD geometry or a project shop drawing",
+        "product_page": "https://catalog.geberit.co.uk/en-GB/product/PRO_199058",
+        "source_access_record": "output/review/highpoly-types/geberit-154-154-00-1-f/official-source/source-access-record.json",
+        "official_component_cad_status": "not_separately_published_parent_cadDrawings_empty_native_parent_DWG_urls_404",
+        "official_vector_eps_archived": true,
+        "official_component_cad_used": false
+      }
+    }
+  }
+}

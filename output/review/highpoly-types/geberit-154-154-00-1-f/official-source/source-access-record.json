@@ -1,0 +1,95 @@
+{
+  "schema_version": 1,
+  "manufacturer": "Geberit",
+  "family": "CleanLine shower channel installation set",
+  "project_ifc_type_name": "Geberit 154.154.00.1.F",
+  "project_ifc_type_description": "Flange for CleanLine shower channel, for screed height at inlet 90–220 mm",
+  "parent_manufacturer_article_number": "154.154.00.1",
+  "project_component_code": "154.154.00.1.F",
+  "project_component_role": "Flange",
+  "component_identity_boundary": ".F is a project authoring decomposition label and is not presented as a separately published Geberit article number",
+  "research_date": "2026-08-23",
+  "official_identity_sources": [
+    {
+      "kind": "manufacturer_parent_product_page",
+      "url": "https://catalog.geberit.co.uk/en-GB/product/PRO_199058",
+      "local_path": "output/review/highpoly-types/geberit-154-154-00-1-f/official-source/geberit-154-154-00-1-product-page.html",
+      "sha256": "234eb0fb1ecaec45c1a1113e5b1fac918cbb6bb9c3a7b11664a84550cfdd6435",
+      "identity_observation": "The official page resolves the containing CleanLine installation set to article 154.154.00.1; it does not publish .F as a separate manufacturer article."
+    },
+    {
+      "kind": "manufacturer_parent_vector_eps_top_view",
+      "url": "https://cdn.data.geberit.com/eps/99/04/DAS_199904.eps",
+      "local_path": "output/review/highpoly-types/geberit-154-154-00-1-f/official-source/DAS_199904-top-view.eps",
+      "sha256": "3c238df45acfd43d819565106cebe0133049b6500fc012b6a4a31cbb05137291",
+      "preview_path": "output/review/highpoly-types/geberit-154-154-00-1-f/official-source/DAS_199904-top-view-preview.png",
+      "preview_sha256": "4c0d229bc2581a7af834c45ccdbd72d390c68659fbdd92711aece130bc3045df",
+      "visual_check": "The top-view EPS shows the complete installation set and its flange area; no standalone flange drawing or separately extractable component identity is published."
+    },
+    {
+      "kind": "manufacturer_parent_vector_eps_front_view",
+      "url": "https://cdn.data.geberit.com/eps/99/02/DAS_199902.eps",
+      "local_path": "output/review/highpoly-types/geberit-154-154-00-1-f/official-source/DAS_199902-front-view.eps",
+      "sha256": "8114001caff7c8552563c219b1b3923340db00a18c8de174ce9b061d409c10ac",
+      "preview_path": "output/review/highpoly-types/geberit-154-154-00-1-f/official-source/DAS_199902-front-view-preview.png",
+      "preview_sha256": "31c1bc59bb1e5bb068585d8ae585e367002ae5dc1835745f3e01630fd1b21236",
+      "visual_check": "The front-view EPS dimensions the complete parent installation set, not the isolated project .F flange Body."
+    },
+    {
+      "kind": "manufacturer_parent_vector_eps_perspective",
+      "url": "https://cdn.data.geberit.com/eps/99/00/DAS_199900.eps",
+      "local_path": "output/review/highpoly-types/geberit-154-154-00-1-f/official-source/DAS_199900-perspective.eps",
+      "sha256": "cee509e98b933d5857df6a5b7179eca7abbd79d859c9913132818d5f28031c84",
+      "preview_path": "output/review/highpoly-types/geberit-154-154-00-1-f/official-source/DAS_199900-perspective-preview.png",
+      "preview_sha256": "124273d87c62b77e097cb066ff51d85ddc1f5ea68341f3862423db86b6714406",
+      "visual_check": "The perspective EPS confirms that the flange belongs to the parent assembly but is not standalone component CAD."
+    }
+  ],
+  "official_component_cad": {
+    "published_as_separate_manufacturer_article": false,
+    "published_access_surface": "official Geberit parent product page embedded article data",
+    "parent_product_cad_drawings_field": "undefined",
+    "parent_native_dwg_url_pattern_checked": "https://cdn.data.geberit.com/cad/154.154.00.1_{A,G,L,P}.dwg",
+    "parent_native_dwg_http_statuses": {"A": 404, "G": 404, "L": 404, "P": 404},
+    "acquired": false,
+    "exact_project_component_match": false,
+    "local_cad_files": [],
+    "official_parent_vector_eps_archived": true,
+    "official_parent_vector_eps_used_as_component_cad_geometry": false,
+    "reason": "The official sources describe and draw the complete 154.154.00.1 installation set. They do not provide a standalone .F flange CAD asset, so the parent EPS cannot be used as blue component geometry."
+  },
+  "official_product_cad": {
+    "scope": "project .F component, not the complete parent product",
+    "acquired": false,
+    "exact_project_configuration_match": false,
+    "local_cad_files": [],
+    "official_parent_vector_eps_archived": true,
+    "official_parent_vector_eps_used_as_component_cad_geometry": false
+  },
+  "project_component_geometry": {
+    "representative_global_id": "2jjNIn9gHBYwNSWwlM5T_i",
+    "body_local_xyz_mm": [88.0, 210.0, 104.999998],
+    "official_standalone_component_dimensions_available": false,
+    "mechanical_dimension_cross_check_applicable": false,
+    "note": "No official standalone flange dimensions were located. The project Body envelope is preserved without scaling and is not claimed to match a manufacturer component drawing."
+  },
+  "project_decomposition_evidence": {
+    "parent_installation_set_type": "Geberit 154.154.00",
+    "parent_installation_set_global_id": "14EazrLgP8whYZWY_yCuKy",
+    "sibling_cover_type": "Geberit 154.154.00.1.C",
+    "sibling_cover_global_id": "3ErNe1i1TCsQ3xogoRbN2S",
+    "component_type": "Geberit 154.154.00.1.F",
+    "component_global_id": "2jjNIn9gHBYwNSWwlM5T_i",
+    "interpretation": "The co-located parent, .C cover and .F flange types are project-model decomposition evidence; only the parent 154.154.00.1 is verified as a manufacturer article."
+  },
+  "drawing_geometry_source": {
+    "source_kind": "geometry_derived_simplified_proxy",
+    "source_label_zh": "基于原始高模几何生成的简化图纸表达",
+    "source_label_en": "simplified drawing representation derived from the original high-poly geometry",
+    "official_cad_used": false,
+    "official_parent_vector_eps_used_as_component_cad_geometry": false,
+    "third_party_cad_used": false
+  },
+  "scope": "project-model flange subcomponent of the exact Geberit 154.154.00.1 parent installation set; .F is a project authoring decomposition label, not a separately published manufacturer article; parent EPS is not component CAD geometry or a project shop drawing",
+  "pass": true
+}

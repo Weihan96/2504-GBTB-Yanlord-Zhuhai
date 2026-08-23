@@ -1,0 +1,251 @@
+{
+  "schema_version": 1,
+  "generator": "pipeline/scripts/render_geberit_154_154_00_1_f_project_context.py",
+  "source_kind": "geometry_derived_simplified_proxy",
+  "source_label_zh": "基于原始高模几何生成的简化图纸表达",
+  "official_cad_used": false,
+  "third_party_cad_used": false,
+  "project_context_retained": true,
+  "walls_and_surrounding_project_elements_retained": true,
+  "overlay_top_layer_with_white_mask": true,
+  "blue_line_present": false,
+  "project_scale_svg_units_per_mm": 0.02,
+  "views": [
+    {
+      "view": "plan",
+      "candidate_view": "plan",
+      "source": "drawings/Sanitary Plan.svg",
+      "output": "output/review/highpoly-types/geberit-154-154-00-1-f/project-context-sanitary-plan.svg",
+      "output_sha256": "319e45f0cc52536ee4a8eff2a541011445bb8f5403da97665fb382757cf87027",
+      "review_crop": "output/review/highpoly-types/geberit-154-154-00-1-f/project-context-sanitary-plan-review.svg",
+      "review_crop_sha256": "a3b7889fc59d237b0df018697a183190f8ed423ac45bef115ddc530b476d2b15",
+      "review_preview": "output/review/highpoly-types/geberit-154-154-00-1-f/project-context-sanitary-plan-review-preview.png",
+      "review_preview_sha256": "3afd136f64cdfe8b3f9e4572b0755badb5235068e4aec23b329d323efcf5a4a6",
+      "overlay": {
+        "ifc_guid": "2jjNIn9gHBYwNSWwlM5T_i",
+        "source_kind": "geometry_derived_simplified_proxy",
+        "source_label_zh": "基于原始高模几何生成的简化图纸表达",
+        "official_cad_used": false,
+        "third_party_cad_used": false,
+        "path_count": 2,
+        "fit": {
+          "rotate_quarter_turns": 0,
+          "alignment_mode": "centre",
+          "flip_projected_y": true,
+          "scale_svg_units_per_mm": 0.02,
+          "target_bbox": [
+            [
+              81.975177,
+              178.899998
+            ],
+            [
+              83.735177,
+              183.099998
+            ]
+          ],
+          "proxy_bbox": [
+            [
+              81.975177,
+              178.899998
+            ],
+            [
+              83.735177,
+              183.099998
+            ]
+          ],
+          "bbox_absolute_delta_svg_units": [
+            0.0,
+            0.0
+          ],
+          "bbox_tolerance_svg_units": 2.0,
+          "uniform_scale_preserved": true,
+          "transformation_mode": "axis_swap_rigid_reflection_and_translation_only",
+          "pass": true
+        }
+      }
+    },
+    {
+      "view": "front",
+      "candidate_view": "front",
+      "source": "drawings/elevations/native/EL-06-20-R12-NY.svg",
+      "output": "output/review/highpoly-types/geberit-154-154-00-1-f/project-context-r12-front-elevation.svg",
+      "output_sha256": "c2248eb91cda98f8cf90a999bcee158a4b6959e40256ebb3870392eb8a193d22",
+      "review_crop": "output/review/highpoly-types/geberit-154-154-00-1-f/project-context-r12-front-elevation-review.svg",
+      "review_crop_sha256": "584a3c4ed9ed385912b28e640269964987c2dc4f3de7aca5bfe7b05ff398ab11",
+      "review_preview": "output/review/highpoly-types/geberit-154-154-00-1-f/project-context-r12-front-elevation-review-preview.png",
+      "review_preview_sha256": "03062287ad549fbfa6560de57861ed335c400cf034634e4bc538e0121fba83b5",
+      "overlay": {
+        "ifc_guid": "2jjNIn9gHBYwNSWwlM5T_i",
+        "source_kind": "geometry_derived_simplified_proxy",
+        "source_label_zh": "基于原始高模几何生成的简化图纸表达",
+        "official_cad_used": false,
+        "third_party_cad_used": false,
+        "path_count": 7,
+        "fit": {
+          "rotate_quarter_turns": 0,
+          "alignment_mode": "centre",
+          "flip_projected_y": true,
+          "scale_svg_units_per_mm": 0.02,
+          "target_bbox": [
+            [
+              13.299441,
+              52.744734
+            ],
+            [
+              14.561442,
+              53.895801
+            ]
+          ],
+          "proxy_bbox": [
+            [
+              13.050441,
+              52.270268
+            ],
+            [
+              14.810441,
+              54.370268
+            ]
+          ],
+          "bbox_absolute_delta_svg_units": [
+            0.498,
+            0.948933
+          ],
+          "bbox_tolerance_svg_units": 2.0,
+          "uniform_scale_preserved": true,
+          "transformation_mode": "axis_swap_rigid_reflection_and_translation_only",
+          "pass": true
+        }
+      }
+    },
+    {
+      "view": "side",
+      "candidate_view": "side",
+      "source": "drawings/elevations/native/EL-06-21-R12-PX.svg",
+      "output": "output/review/highpoly-types/geberit-154-154-00-1-f/project-context-r12-side-elevation.svg",
+      "output_sha256": "626952e8b9568478292130cd485419d435cf2fe1ed4c66680c7b5bbdb46e43ef",
+      "review_crop": "output/review/highpoly-types/geberit-154-154-00-1-f/project-context-r12-side-elevation-review.svg",
+      "review_crop_sha256": "db161e58c4ad45d7da1e16d0a940866943b4fa8e02dce941e3df92a64ff153bf",
+      "review_preview": "output/review/highpoly-types/geberit-154-154-00-1-f/project-context-r12-side-elevation-review-preview.png",
+      "review_preview_sha256": "54df3f34c15c9ede4f840c189909f3fed2974b577e4ea0835c5f2a331680b372",
+      "overlay": {
+        "ifc_guid": "2jjNIn9gHBYwNSWwlM5T_i",
+        "source_kind": "geometry_derived_simplified_proxy",
+        "source_label_zh": "基于原始高模几何生成的简化图纸表达",
+        "official_cad_used": false,
+        "third_party_cad_used": false,
+        "path_count": 6,
+        "fit": {
+          "rotate_quarter_turns": 0,
+          "alignment_mode": "centre",
+          "flip_projected_y": true,
+          "scale_svg_units_per_mm": 0.02,
+          "target_bbox": [
+            [
+              38.33514,
+              52.295021
+            ],
+            [
+              42.53514,
+              52.662683
+            ]
+          ],
+          "proxy_bbox": [
+            [
+              38.33514,
+              51.428852
+            ],
+            [
+              42.53514,
+              53.528852
+            ]
+          ],
+          "bbox_absolute_delta_svg_units": [
+            0.0,
+            1.732338
+          ],
+          "bbox_tolerance_svg_units": 2.0,
+          "uniform_scale_preserved": true,
+          "transformation_mode": "axis_swap_rigid_reflection_and_translation_only",
+          "pass": true
+        }
+      }
+    }
+  ],
+  "pass": true,
+  "semantic_view_mapping": {
+    "plan": {
+      "candidate_axes": [
+        0,
+        1
+      ],
+      "source": "drawings/Sanitary Plan.svg",
+      "project_direction": "+Z"
+    },
+    "front": {
+      "candidate_axes": [
+        0,
+        2
+      ],
+      "source": "drawings/elevations/native/EL-06-20-R12-NY.svg",
+      "project_direction": "-Y"
+    },
+    "side": {
+      "candidate_axes": [
+        1,
+        2
+      ],
+      "source": "drawings/elevations/native/EL-06-21-R12-PX.svg",
+      "project_direction": "+X"
+    }
+  },
+  "project_projection_note": {
+    "ifc_body_local_xyz_mm": [
+      88.0,
+      210.0,
+      104.999998
+    ],
+    "official_standalone_component_dimensions_available": false,
+    "native_plan_projection_bbox_mm": [
+      88.0,
+      210.0
+    ],
+    "native_front_projection_bbox_mm": [
+      63.100047,
+      57.55335
+    ],
+    "native_side_projection_bbox_mm": [
+      210.0,
+      18.3831
+    ],
+    "body_projection_bbox_mm": {
+      "plan": [
+        88.0,
+        210.0
+      ],
+      "front": [
+        88.0,
+        104.999998
+      ],
+      "side": [
+        210.0,
+        104.999998
+      ]
+    },
+    "interpretation": "The plan projection matches the actual Body. Both native R12 elevations clip concealed flange geometry; the review overlay restores the complete Body at the fixed 1:50 scale and aligns it to the original projection centre.",
+    "geometry_stretched": false,
+    "native_project_plan_and_elevations_found": true,
+    "component_boundary": "The black overlay represents only the project .F Body; the complete official parent assembly is not substituted."
+  },
+  "review_preview_background": {
+    "all_views": "opaque white review-only paper background",
+    "full_project_svg_remains_transparent": true,
+    "drawing_geometry_changed": false
+  },
+  "review_annotation_suppression": {
+    "plan": [
+      "official-elevation-anchor"
+    ],
+    "scope": "review crop only; full project SVG retains all elevation markers",
+    "walls_furniture_and_ifc_geometry_removed": false
+  }
+}
