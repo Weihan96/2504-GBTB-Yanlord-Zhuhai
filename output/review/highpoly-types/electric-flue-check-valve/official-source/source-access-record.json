@@ -1,0 +1,87 @@
+{
+  "schema_version": 1,
+  "manufacturer": "unresolved_from_project_IFC",
+  "family": "unresolved_from_project_IFC",
+  "project_ifc_type_name": "Electric flue check valve",
+  "project_ifc_type_description": null,
+  "resolved_article_number": null,
+  "research_date": "2026-08-23",
+  "identity_evidence_sources": [
+    {
+      "kind": "project_existing_M401_review",
+      "local_path": "pipeline/decisions/m401-existing-review.csv",
+      "sha256": "89e17709ecc15509a6b3637854c14c20edc95e4c97cb32dd8d87630c87332136",
+      "identity_observation": "GlobalId 1faflkXXH6M9cnYPE9Liir is an untyped IfcBuildingElementProxy named Electric flue check valve. The review prohibits inference of served appliance, duct connection, powered action or access from proximity or shape."
+    },
+    {
+      "kind": "project_existing_ELEC_review",
+      "local_path": "pipeline/decisions/elec-existing-review.csv",
+      "sha256": "e8d9a0c3d0dbb27c21c7b68342b4291a541578d791a98330474fa095f4840adc",
+      "identity_observation": "The object has geometry but no type or installation-anchor semantics; identity, mounting face, access direction and the purpose of its two openings remain pending."
+    },
+    {
+      "kind": "project_existing_RCP_review",
+      "local_path": "pipeline/decisions/rcp1-existing-review.csv",
+      "sha256": "da4812537173aff77851f8bdc7ab289c0e1fd881583ad649df58e25edda1abef",
+      "identity_observation": "The high kitchen proxy has no IFC type, system or ports and is not eligible for automatic conversion to a damper or other distribution element."
+    }
+  ],
+  "project_projection_sources": [
+    {
+      "view": "R04 +X elevation",
+      "local_path": "drawings/elevations/native/EL-03-07-R04-PX.svg",
+      "sha256": "b3b11a52e1dc9f452ab9e357541e32e9747f499fff1157f155469d7cf7e498fa",
+      "observed_projection_bbox_svg_units": [4.799999938, 4.199999906]
+    },
+    {
+      "view": "R04 -Y elevation",
+      "local_path": "drawings/elevations/native/EL-03-08-R04-NY.svg",
+      "sha256": "b1cde7fb74c7bb3569d2e0a913920ff5065088d644404c0226599031a953419d",
+      "observed_projection_bbox_svg_units": [4.950002349, 4.199999906]
+    },
+    {
+      "view": "E303 equipment-location candidate",
+      "local_path": "drawings/E303-socket-equipment-location-candidate.svg",
+      "sha256": "5fd8c5f9060a2cae367c74970c4afd7732384cefcb80e03ffdad564dd368485c",
+      "observation": "PX009 is a location/envelope marker, not a model plan projection and therefore is not used as drawing geometry."
+    }
+  ],
+  "external_research_boundary": {
+    "exact_manufacturer_or_model_resolved": false,
+    "exact_official_product_page_resolved": false,
+    "exact_official_CAD_resolved": false,
+    "rejected_near_candidates": [
+      {
+        "manufacturer": "Novy",
+        "article_number": "906271",
+        "official_url": "https://www.novy.com/nl-nl/producten/accessoires/installatie-accessoires/kleppen/906271/",
+        "reason": "The official page identifies a 150 mm, 230 V electric valve, but the project IFC contains no Novy attribution or article number and the proxy geometry is not sufficient to prove identity."
+      },
+      {
+        "kind": "technical_type_patent_not_product_identity",
+        "publication": "CN209977425U",
+        "url": "https://patents.google.com/patent/CN209977425U/zh",
+        "reason": "The patent describes a spherical electric flue check-valve type and is shape-context evidence only; it does not identify the project product or provide manufacturer CAD for it."
+      }
+    ]
+  },
+  "official_product_cad": {
+    "published_access_surface": null,
+    "product_route": null,
+    "authentication_required": false,
+    "acquired": false,
+    "exact_project_configuration_match": false,
+    "local_cad_files": [],
+    "official_pdf_vector_used_as_cad_geometry": false,
+    "reason": "Manufacturer and model are absent from the project IFC and could not be resolved mechanically. No unrelated manufacturer CAD, patent drawing or third-party CAD is substituted."
+  },
+  "drawing_geometry_source": {
+    "source_kind": "geometry_derived_simplified_proxy",
+    "source_label_zh": "基于原始高模几何生成的简化图纸表达",
+    "source_label_en": "simplified drawing representation derived from the original high-poly geometry",
+    "official_cad_used": false,
+    "third_party_cad_used": false
+  },
+  "scope": "project IFC generic identity and observable geometry only; not manufacturer product identification, not official CAD geometry, not a system design and not a project shop drawing",
+  "pass": true
+}

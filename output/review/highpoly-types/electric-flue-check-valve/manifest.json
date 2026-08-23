@@ -1,0 +1,145 @@
+{
+  "schema_version": 1,
+  "generated_at": "2026-08-23T11:15:03.041081+00:00",
+  "generator": "pipeline/scripts/electric_flue_check_valve_review.py",
+  "formal_ifc": "2504 GBTB Yanlord Zhuhai.ifc",
+  "formal_ifc_sha256": "7a50b87e8f48a7c2bfbaa9f1dabdfca7155fa684b2325c66aa1ae15c8ab0a25c",
+  "formal_ifc_sha256_after_generation": "7a50b87e8f48a7c2bfbaa9f1dabdfca7155fa684b2325c66aa1ae15c8ab0a25c",
+  "formal_ifc_bytes_unchanged": true,
+  "profile_register": "output/review/highpoly-types/electric-flue-check-valve/profile.json",
+  "profile_register_sha256": "8f6efcf042ccf6747a561caedfa28ea010965e318b25e80b72e13bbd3f8405ec",
+  "profile_key": "electric-flue-check-valve",
+  "display_name": "Electric flue check valve / unresolved project proxy",
+  "ifc_type_name": "Electric flue check valve",
+  "ifc_type_description": null,
+  "article_number": "unresolved",
+  "representative_global_id": "1faflkXXH6M9cnYPE9Liir",
+  "registered_instance_global_ids": [
+    "1faflkXXH6M9cnYPE9Liir"
+  ],
+  "geometry_product_count": 1,
+  "whole_model_render": false,
+  "mesh_vertex_count": 766,
+  "mesh_face_count": 1400,
+  "bounds_mm": {
+    "minimum": [
+      -105.0,
+      -193.0,
+      -105.0
+    ],
+    "maximum": [
+      105.0,
+      47.000004,
+      142.500107
+    ],
+    "size": [
+      210.0,
+      240.000004,
+      247.500107
+    ]
+  },
+  "source_kind": "geometry_derived_simplified_proxy",
+  "source_label_zh": "基于原始高模几何生成的简化图纸表达",
+  "drawing_source": {
+    "source_kind": "geometry_derived_simplified_proxy",
+    "source_label_zh": "基于原始高模几何生成的简化图纸表达",
+    "source_label_en": "simplified drawing representation derived from the original high-poly geometry",
+    "official_cad_used": false,
+    "third_party_cad_used": false,
+    "official_source_access_record": "output/review/highpoly-types/electric-flue-check-valve/official-source/source-access-record.json",
+    "official_source_access_record_sha256": "0f5d402554851856e6ed497c4300c729cfad7d515102d9bc2683fdb64be71c28",
+    "official_product_cad_status": "manufacturer_and_model_unresolved_no_exact_official_CAD_match"
+  },
+  "official_reference": {
+    "source_id": "ELECTRIC-FLUE-CHECK-VALVE-PROJECT-EVIDENCE-001",
+    "source_kind": "project_ifc_identity_and_geometry_boundary_only",
+    "manufacturer": "unresolved_from_project_IFC",
+    "family": "unresolved_from_project_IFC",
+    "article_number": "not_provided",
+    "scope": "the project IFC supplies only a generic object name and observable geometry; manufacturer, model, served appliance, duct/system relationship, power/control and installation conditions remain unresolved; no manufacturer CAD is attributed or used",
+    "source_access_record": "output/review/highpoly-types/electric-flue-check-valve/official-source/source-access-record.json",
+    "official_product_cad_status": "manufacturer_and_model_unresolved_no_exact_official_CAD_match",
+    "official_product_cad_used": false
+  },
+  "official_identity_evidence_only": false,
+  "dimension_cross_check": null,
+  "official_cad_acquired": false,
+  "official_cad_exact_project_configuration_match": false,
+  "official_cad_used": false,
+  "third_party_cad_used": false,
+  "blue_line_present": false,
+  "official_source_access_record": "output/review/highpoly-types/electric-flue-check-valve/official-source/source-access-record.json",
+  "official_source_access_record_sha256": "0f5d402554851856e6ed497c4300c729cfad7d515102d9bc2683fdb64be71c28",
+  "candidate_representations": "output/review/highpoly-types/electric-flue-check-valve/candidate-representations.json",
+  "candidate_representations_sha256": "7d1517d8aa9b84726fff89cb8f6c49074e7cec8a426fd03ad8254240b72af39e",
+  "review_status": "visual_review_pending",
+  "approved_for_drawing_ifc": false,
+  "derived_ifc_write_allowed": false,
+  "formal_ifc_write": "not performed",
+  "views": [
+    {
+      "view": "plan",
+      "svg": "output/review/highpoly-types/electric-flue-check-valve/plan.svg",
+      "svg_sha256": "535eec84a1ef623b33340df9b5cb7b6d4c60802e6be056f203b38303f4976980",
+      "projection_axes": [
+        0,
+        1
+      ],
+      "raw_edge_count": 2164,
+      "displayed_raw_edge_count": 722,
+      "silhouette_path_count": 2,
+      "drawing_line_source_kind": "geometry_derived_simplified_proxy",
+      "drawing_line_source_label_zh": "基于原始高模几何生成的简化图纸表达",
+      "official_cad_path_count": 0,
+      "blue_line_present": false
+    },
+    {
+      "view": "front",
+      "svg": "output/review/highpoly-types/electric-flue-check-valve/front.svg",
+      "svg_sha256": "63e1230c1d3228b37c208a0dd917f3307c45add070ae0382177b2b75d8fd7eca",
+      "projection_axes": [
+        0,
+        2
+      ],
+      "raw_edge_count": 2164,
+      "displayed_raw_edge_count": 722,
+      "silhouette_path_count": 5,
+      "drawing_line_source_kind": "geometry_derived_simplified_proxy",
+      "drawing_line_source_label_zh": "基于原始高模几何生成的简化图纸表达",
+      "official_cad_path_count": 0,
+      "blue_line_present": false
+    },
+    {
+      "view": "side",
+      "svg": "output/review/highpoly-types/electric-flue-check-valve/side.svg",
+      "svg_sha256": "766fa7ff904e8e3aeab3e310bec66e68b847d0ee2b18da11b68f79fd772549fc",
+      "projection_axes": [
+        1,
+        2
+      ],
+      "raw_edge_count": 2164,
+      "displayed_raw_edge_count": 722,
+      "silhouette_path_count": 10,
+      "drawing_line_source_kind": "geometry_derived_simplified_proxy",
+      "drawing_line_source_label_zh": "基于原始高模几何生成的简化图纸表达",
+      "official_cad_path_count": 0,
+      "blue_line_present": false
+    }
+  ],
+  "pass": true,
+  "project_context": {
+    "manifest": "output/review/highpoly-types/electric-flue-check-valve/project-context-manifest.json",
+    "manifest_sha256": "8400b78cdd5df59a44a3fe6e68cd0d4749382cd11a8fb85d014d03a138c0b136",
+    "walls_and_surrounding_project_elements_retained": true,
+    "overlay_top_layer_with_white_mask": true,
+    "pass": true
+  },
+  "bonsai_review": {
+    "manifest": "output/review/highpoly-types/electric-flue-check-valve/bonsai-review-manifest.json",
+    "manifest_sha256": "9aec2d9e37262d7248cad3b47d5b075b6da0fab1c098a79ce57910eb6e8493d6",
+    "mode": "actual_bonsai_ifc_body_camera_render",
+    "saved_active_representation": "Body",
+    "saved_camera_count": 4,
+    "pass": true
+  }
+}

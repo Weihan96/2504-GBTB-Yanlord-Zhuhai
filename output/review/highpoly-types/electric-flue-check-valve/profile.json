@@ -1,0 +1,39 @@
+{
+  "schema_version": 1,
+  "formal_ifc_sha256": "7a50b87e8f48a7c2bfbaa9f1dabdfca7155fa684b2325c66aa1ae15c8ab0a25c",
+  "profiles": {
+    "electric-flue-check-valve": {
+      "display_name": "Electric flue check valve / unresolved project proxy",
+      "ifc_type_name": "Electric flue check valve",
+      "representative_global_id": "1faflkXXH6M9cnYPE9Liir",
+      "expected_instance_global_ids": ["1faflkXXH6M9cnYPE9Liir"],
+      "profile_source": "isolated_highpoly_projection; project_IFC_name_and_geometry_only; manufacturer_and_model_unresolved; no_official_CAD_match",
+      "silhouette_simplify_mm": 0.35,
+      "semantic_sections": {"plan": [], "front": [], "side": []},
+      "required_semantics": [
+        "single_untyped_project_proxy_only",
+        "spherical_body_opposed_collars_mounting_plate_and_actuator_box",
+        "manufacturer_model_and_system_relationship_unresolved",
+        "actual_IFC_Body_geometry_not_stretched"
+      ],
+      "drawing_source": {
+        "source_kind": "geometry_derived_simplified_proxy",
+        "source_label_zh": "基于原始高模几何生成的简化图纸表达",
+        "source_label_en": "simplified drawing representation derived from the original high-poly geometry",
+        "official_cad_used": false,
+        "third_party_cad_used": false
+      },
+      "official_reference": {
+        "source_id": "ELECTRIC-FLUE-CHECK-VALVE-PROJECT-EVIDENCE-001",
+        "source_kind": "project_ifc_identity_and_geometry_boundary_only",
+        "manufacturer": "unresolved_from_project_IFC",
+        "family": "unresolved_from_project_IFC",
+        "article_number": "not_provided",
+        "scope": "the project IFC supplies only a generic object name and observable geometry; manufacturer, model, served appliance, duct/system relationship, power/control and installation conditions remain unresolved; no manufacturer CAD is attributed or used",
+        "source_access_record": "output/review/highpoly-types/electric-flue-check-valve/official-source/source-access-record.json",
+        "official_product_cad_status": "manufacturer_and_model_unresolved_no_exact_official_CAD_match",
+        "official_product_cad_used": false
+      }
+    }
+  }
+}

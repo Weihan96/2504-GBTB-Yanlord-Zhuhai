@@ -1,0 +1,143 @@
+{
+  "schema_version": 1,
+  "generator": "pipeline/scripts/render_electric_flue_check_valve_bonsai_review.py",
+  "mode": "actual_bonsai_ifc_body_camera_render",
+  "representative_global_id": "1faflkXXH6M9cnYPE9Liir",
+  "geometry_product_count": 1,
+  "whole_model_render": false,
+  "formal_ifc": "2504 GBTB Yanlord Zhuhai.ifc",
+  "formal_ifc_sha256": "7a50b87e8f48a7c2bfbaa9f1dabdfca7155fa684b2325c66aa1ae15c8ab0a25c",
+  "formal_ifc_bytes_unchanged": true,
+  "isolated_ifc": "output/review/highpoly-types/electric-flue-check-valve/Electric-flue-check-valve-bonsai-isolated.ifc",
+  "isolated_ifc_sha256": "cb7da18e98c85d55df45f59246d4d8416d96e412e22ceee6c0579337ecf210b5",
+  "bonsai_session": {
+    "path": "output/review/highpoly-types/electric-flue-check-valve/Electric-flue-check-valve-bonsai-review.blend",
+    "sha256": "f513e9e9d9d6e5687a488907d66e17fdb8d59ea6aae16cf21a80d049d495e25b",
+    "saved_active_representation": "Body",
+    "saved_camera_count": 4,
+    "saved_camera_names": [
+      "ELECTRIC_FLUE_CHECK_VALVE_CAM_FRONT",
+      "ELECTRIC_FLUE_CHECK_VALVE_CAM_ISO",
+      "ELECTRIC_FLUE_CHECK_VALVE_CAM_PLAN",
+      "ELECTRIC_FLUE_CHECK_VALVE_CAM_SIDE"
+    ],
+    "ifc_definition_id": 1115,
+    "ifc_context_identifier": "Body",
+    "ifc_target_view": "MODEL_VIEW",
+    "front_camera_local_y_sign": -1.0,
+    "object_name": "IfcBuildingElementProxy/Electric flue check valve",
+    "object_bounds_m": {
+      "minimum": [
+        2.740182877,
+        -5.245933533,
+        2.559999943
+      ],
+      "maximum": [
+        2.987683058,
+        -5.005933762,
+        2.769999981
+      ]
+    },
+    "local_axis_extents_m": {
+      "x": 0.210000593,
+      "y": 0.239999808,
+      "z": 0.247500522
+    },
+    "local_axes_world": [
+      [
+        3.14e-07,
+        0.0,
+        1.0
+      ],
+      [
+        -1.51e-07,
+        -1.0,
+        0.0
+      ],
+      [
+        1.0,
+        -1.51e-07,
+        -3.14e-07
+      ]
+    ]
+  },
+  "renders": [
+    {
+      "view": "plan",
+      "camera": "ELECTRIC_FLUE_CHECK_VALVE_CAM_PLAN",
+      "camera_type": "ORTHO",
+      "camera_axis_basis": "IFC product local axes",
+      "camera_ortho_scale_m": 0.346921443939,
+      "projected_width_m": 0.239999802321,
+      "projected_height_m": 0.210000658125,
+      "image_aspect": 1.4,
+      "framing_margin_factor": 1.18,
+      "ortho_scale_quantization_safety_factor": 1.000001,
+      "render_operation": "bpy.ops.render.render(write_still=True)",
+      "path": "output/review/highpoly-types/electric-flue-check-valve/bonsai-camera-plan.png",
+      "sha256": "d19b597dd5f4e2e126dd4e2961ee34f358797511daf47035f08025f7702e8ddc",
+      "resolution": [
+        1400,
+        1000
+      ]
+    },
+    {
+      "view": "front",
+      "camera": "ELECTRIC_FLUE_CHECK_VALVE_CAM_FRONT",
+      "camera_type": "ORTHO",
+      "camera_axis_basis": "IFC product local axes",
+      "camera_ortho_scale_m": 0.346921265125,
+      "projected_width_m": 0.247500462405,
+      "projected_height_m": 0.210000561804,
+      "image_aspect": 1.4,
+      "framing_margin_factor": 1.18,
+      "ortho_scale_quantization_safety_factor": 1.000001,
+      "render_operation": "bpy.ops.render.render(write_still=True)",
+      "path": "output/review/highpoly-types/electric-flue-check-valve/bonsai-camera-front-elevation.png",
+      "sha256": "399de59d1c9bc715f7966a0532cba88474c5b8d6d0474509a8b2cb2e07743c57",
+      "resolution": [
+        1400,
+        1000
+      ]
+    },
+    {
+      "view": "side",
+      "camera": "ELECTRIC_FLUE_CHECK_VALVE_CAM_SIDE",
+      "camera_type": "ORTHO",
+      "camera_axis_basis": "IFC product local axes",
+      "camera_ortho_scale_m": 0.396480083466,
+      "projected_width_m": 0.247500606814,
+      "projected_height_m": 0.23999980849,
+      "image_aspect": 1.4,
+      "framing_margin_factor": 1.18,
+      "ortho_scale_quantization_safety_factor": 1.000001,
+      "render_operation": "bpy.ops.render.render(write_still=True)",
+      "path": "output/review/highpoly-types/electric-flue-check-valve/bonsai-camera-side-elevation.png",
+      "sha256": "3ea227918db3637c780b2cd5637c24247be3664e919107dc4ee09e3dad2e36a8",
+      "resolution": [
+        1400,
+        1000
+      ]
+    },
+    {
+      "view": "iso",
+      "camera": "ELECTRIC_FLUE_CHECK_VALVE_CAM_ISO",
+      "camera_type": "ORTHO",
+      "camera_axis_basis": "IFC product local axes",
+      "camera_ortho_scale_m": 0.612042963505,
+      "projected_width_m": 0.344714699277,
+      "projected_height_m": 0.370485685766,
+      "image_aspect": 1.4,
+      "framing_margin_factor": 1.18,
+      "ortho_scale_quantization_safety_factor": 1.000001,
+      "render_operation": "bpy.ops.render.render(write_still=True)",
+      "path": "output/review/highpoly-types/electric-flue-check-valve/bonsai-camera-iso.png",
+      "sha256": "5bef018064cc7f5fd69f7667bded53ea12a33c35fd462a0ea19d1286c1a790dc",
+      "resolution": [
+        1400,
+        1000
+      ]
+    }
+  ],
+  "pass": true
+}

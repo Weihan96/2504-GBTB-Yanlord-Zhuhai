@@ -1,0 +1,122 @@
+{
+  "schema_version": 1,
+  "generator": "pipeline/scripts/render_electric_flue_check_valve_project_context.py",
+  "source_kind": "geometry_derived_simplified_proxy",
+  "source_label_zh": "基于原始高模几何生成的简化图纸表达",
+  "official_cad_used": false,
+  "third_party_cad_used": false,
+  "project_context_retained": true,
+  "walls_and_surrounding_project_elements_retained": true,
+  "overlay_top_layer_with_white_mask": true,
+  "blue_line_present": false,
+  "project_scale_svg_units_per_mm": 0.02,
+  "views": [
+    {
+      "view": "r04-px",
+      "candidate_view": "plan",
+      "source": "drawings/elevations/native/EL-03-07-R04-PX.svg",
+      "output": "output/review/highpoly-types/electric-flue-check-valve/project-context-r04-px-elevation.svg",
+      "output_sha256": "12b77a14ed2548b3bcb43d606eedb350951396818b05a40fcef74f4a37f994b5",
+      "review_crop": "output/review/highpoly-types/electric-flue-check-valve/project-context-r04-px-elevation-review.svg",
+      "review_crop_sha256": "169d057859479bb80a0ee5d5fd0c3ec8d6b008921a95c6bc4e502a14886564a9",
+      "review_preview": "output/review/highpoly-types/electric-flue-check-valve/project-context-r04-px-elevation-review-preview.png",
+      "review_preview_sha256": "86976cc28d26d31c823edd6ddb2e176f4f5c17ad4a041acb1140ded446682e2e",
+      "overlay": {
+        "ifc_guid": "1faflkXXH6M9cnYPE9Liir",
+        "source_kind": "geometry_derived_simplified_proxy",
+        "source_label_zh": "基于原始高模几何生成的简化图纸表达",
+        "official_cad_used": false,
+        "third_party_cad_used": false,
+        "path_count": 2,
+        "fit": {
+          "rotate_quarter_turns": 1,
+          "alignment_mode": "centre",
+          "flip_projected_y": true,
+          "scale_svg_units_per_mm": 0.02,
+          "target_bbox": [
+            [
+              34.299602,
+              -3.399997
+            ],
+            [
+              39.099602,
+              0.800002
+            ]
+          ],
+          "proxy_bbox": [
+            [
+              34.299602,
+              -3.399997
+            ],
+            [
+              39.099602,
+              0.800003
+            ]
+          ],
+          "bbox_absolute_delta_svg_units": [
+            0.0,
+            0.0
+          ],
+          "bbox_tolerance_svg_units": 0.08,
+          "uniform_scale_preserved": true,
+          "transformation_mode": "axis_swap_rigid_reflection_and_translation_only",
+          "pass": true
+        }
+      }
+    },
+    {
+      "view": "r04-ny",
+      "candidate_view": "front",
+      "source": "drawings/elevations/native/EL-03-08-R04-NY.svg",
+      "output": "output/review/highpoly-types/electric-flue-check-valve/project-context-r04-ny-elevation.svg",
+      "output_sha256": "d04bda339e2ddd187aceeb2571a89079af7028834c219395c0727ebc016dffeb",
+      "review_crop": "output/review/highpoly-types/electric-flue-check-valve/project-context-r04-ny-elevation-review.svg",
+      "review_crop_sha256": "75e4297a1d570987d3b63eba9b57f1fad2346984851b7d40b40922b3443f8734",
+      "review_preview": "output/review/highpoly-types/electric-flue-check-valve/project-context-r04-ny-elevation-review-preview.png",
+      "review_preview_sha256": "4dd3d75b9f20c483cb4b094a569665c49b47c607f4d207cdd1e22577d8be726f",
+      "overlay": {
+        "ifc_guid": "1faflkXXH6M9cnYPE9Liir",
+        "source_kind": "geometry_derived_simplified_proxy",
+        "source_label_zh": "基于原始高模几何生成的简化图纸表达",
+        "official_cad_used": false,
+        "third_party_cad_used": false,
+        "path_count": 5,
+        "fit": {
+          "rotate_quarter_turns": 1,
+          "alignment_mode": "centre",
+          "flip_projected_y": true,
+          "scale_svg_units_per_mm": 0.02,
+          "target_bbox": [
+            [
+              13.665583,
+              -3.433177
+            ],
+            [
+              18.615586,
+              0.766823
+            ]
+          ],
+          "proxy_bbox": [
+            [
+              13.665583,
+              -3.433177
+            ],
+            [
+              18.615585,
+              0.766823
+            ]
+          ],
+          "bbox_absolute_delta_svg_units": [
+            0.0,
+            0.0
+          ],
+          "bbox_tolerance_svg_units": 0.08,
+          "uniform_scale_preserved": true,
+          "transformation_mode": "axis_swap_rigid_reflection_and_translation_only",
+          "pass": true
+        }
+      }
+    }
+  ],
+  "pass": true
+}
