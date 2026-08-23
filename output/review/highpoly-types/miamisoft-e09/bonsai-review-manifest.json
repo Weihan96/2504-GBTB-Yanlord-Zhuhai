@@ -1,0 +1,143 @@
+{
+  "schema_version": 1,
+  "generator": "pipeline/scripts/render_miamisoft_e09_bonsai_review.py",
+  "mode": "actual_bonsai_ifc_body_camera_render",
+  "representative_global_id": "3osoWufdD1mhDDAM6lcix4",
+  "geometry_product_count": 1,
+  "whole_model_render": false,
+  "formal_ifc": "2504 GBTB Yanlord Zhuhai.ifc",
+  "formal_ifc_sha256": "7a50b87e8f48a7c2bfbaa9f1dabdfca7155fa684b2325c66aa1ae15c8ab0a25c",
+  "formal_ifc_bytes_unchanged": true,
+  "isolated_ifc": "output/review/highpoly-types/miamisoft-e09/Baxter-Miami-Soft-E09-bonsai-isolated.ifc",
+  "isolated_ifc_sha256": "ee907a75ab190237239e9a623c09f726651b8f763c75829ed93a8785851dedf7",
+  "bonsai_session": {
+    "path": "output/review/highpoly-types/miamisoft-e09/Baxter-Miami-Soft-E09-bonsai-review.blend",
+    "sha256": "f3b3108247cbce6b24e6bbc059da233f2f6d076cb50436ce71882ea8b4ef3390",
+    "saved_active_representation": "Body",
+    "saved_camera_count": 4,
+    "saved_camera_names": [
+      "BAXTER_MIAMI_SOFT_E09_CAM_FRONT",
+      "BAXTER_MIAMI_SOFT_E09_CAM_ISO",
+      "BAXTER_MIAMI_SOFT_E09_CAM_PLAN",
+      "BAXTER_MIAMI_SOFT_E09_CAM_SIDE"
+    ],
+    "ifc_definition_id": 12159,
+    "ifc_context_identifier": "Body",
+    "ifc_target_view": "MODEL_VIEW",
+    "front_camera_local_y_sign": -1.0,
+    "object_name": "IfcFurniture/MiamiSoft E09",
+    "object_bounds_m": {
+      "minimum": [
+        1.66932106,
+        0.0727752,
+        0.01
+      ],
+      "maximum": [
+        2.814075232,
+        1.415948153,
+        0.807479918
+      ]
+    },
+    "local_axis_extents_m": {
+      "x": 1.34317306,
+      "y": 1.144754308,
+      "z": 0.797479928
+    },
+    "local_axes_world": [
+      [
+        7.5e-08,
+        -1.0,
+        0.0
+      ],
+      [
+        1.0,
+        7.5e-08,
+        0.0
+      ],
+      [
+        0.0,
+        0.0,
+        1.0
+      ]
+    ]
+  },
+  "renders": [
+    {
+      "view": "plan",
+      "camera": "BAXTER_MIAMI_SOFT_E09_CAM_PLAN",
+      "camera_type": "ORTHO",
+      "camera_axis_basis": "IFC product local axes",
+      "camera_ortho_scale_m": 2.218924283981,
+      "projected_width_m": 1.14475440979,
+      "projected_height_m": 1.343173146248,
+      "image_aspect": 1.4,
+      "framing_margin_factor": 1.18,
+      "ortho_scale_quantization_safety_factor": 1.000001,
+      "render_operation": "bpy.ops.render.render(write_still=True)",
+      "path": "output/review/highpoly-types/miamisoft-e09/bonsai-camera-plan.png",
+      "sha256": "99c228414b184bb386712efb275bd413de0319f5920931e2c5679b2e93635252",
+      "resolution": [
+        1400,
+        1000
+      ]
+    },
+    {
+      "view": "front",
+      "camera": "BAXTER_MIAMI_SOFT_E09_CAM_FRONT",
+      "camera_type": "ORTHO",
+      "camera_axis_basis": "IFC product local axes",
+      "camera_ortho_scale_m": 1.58494579792,
+      "projected_width_m": 1.343173059821,
+      "projected_height_m": 0.797480013966,
+      "image_aspect": 1.4,
+      "framing_margin_factor": 1.18,
+      "ortho_scale_quantization_safety_factor": 1.000001,
+      "render_operation": "bpy.ops.render.render(write_still=True)",
+      "path": "output/review/highpoly-types/miamisoft-e09/bonsai-camera-front-elevation.png",
+      "sha256": "c364d419249337062b7864af711dc8b528b50561f0b1bc29d6e129ab65e05488",
+      "resolution": [
+        1400,
+        1000
+      ]
+    },
+    {
+      "view": "side",
+      "camera": "BAXTER_MIAMI_SOFT_E09_CAM_SIDE",
+      "camera_type": "ORTHO",
+      "camera_axis_basis": "IFC product local axes",
+      "camera_ortho_scale_m": 1.350811481476,
+      "projected_width_m": 1.144754309287,
+      "projected_height_m": 0.797480146371,
+      "image_aspect": 1.4,
+      "framing_margin_factor": 1.18,
+      "ortho_scale_quantization_safety_factor": 1.000001,
+      "render_operation": "bpy.ops.render.render(write_still=True)",
+      "path": "output/review/highpoly-types/miamisoft-e09/bonsai-camera-side-elevation.png",
+      "sha256": "8a0efa082eab8d42a53e24fd00c052bfb49a83aceed119284f9ad2f73beae625",
+      "resolution": [
+        1400,
+        1000
+      ]
+    },
+    {
+      "view": "iso",
+      "camera": "BAXTER_MIAMI_SOFT_E09_CAM_ISO",
+      "camera_type": "ORTHO",
+      "camera_axis_basis": "IFC product local axes",
+      "camera_ortho_scale_m": 2.753608465195,
+      "projected_width_m": 1.759230344458,
+      "projected_height_m": 1.666831612587,
+      "image_aspect": 1.4,
+      "framing_margin_factor": 1.18,
+      "ortho_scale_quantization_safety_factor": 1.000001,
+      "render_operation": "bpy.ops.render.render(write_still=True)",
+      "path": "output/review/highpoly-types/miamisoft-e09/bonsai-camera-iso.png",
+      "sha256": "19aebe1f84099f2bbb4d00c3a902444ea6f3793cebb81bbf94c3df687983411b",
+      "resolution": [
+        1400,
+        1000
+      ]
+    }
+  ],
+  "pass": true
+}
