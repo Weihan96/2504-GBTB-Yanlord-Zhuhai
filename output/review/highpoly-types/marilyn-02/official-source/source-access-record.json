@@ -1,0 +1,103 @@
+{
+  "schema_version": 1,
+  "research_date": "2026-08-23",
+  "manufacturer": "Baxter",
+  "family": "Marilyn",
+  "designer": "Draga & Aurel",
+  "project_ifc_type_name": "Marilyn 02",
+  "project_ifc_type_description": "Pouf with swivel base W80D62H45",
+  "resolved_variant": "Marilyn pouf with swivel base - 80 x 62 x 45 cm",
+  "scope": "exact Baxter Marilyn pouf with swivel base 80 x 62 x 45 cm family CAD reference; not a project shop drawing",
+  "project_identity_evidence": {
+    "type_description_status": "exact_official_pouf_name_and_nominal_dimensions",
+    "exact_native_3ds_filename": "Marilyn_pouf_80x62xh45.3ds",
+    "native_dwg_cluster_dimensions_mm": [800, 620, 450],
+    "variant_status": "confirmed_marilyn_pouf_80x62x45"
+  },
+  "official_source_revalidation": {
+    "path": "output/review/highpoly-types/marilyn-02/official-source/official-source-revalidation.json",
+    "method": "fresh official web downloads; exact byte checks for ZIP and pouf measurement SVGs; ZIP-member hashes for DWG and pouf 3DS; page-13 raster identity for the dynamically regenerated technical PDF",
+    "marilyn_01_geometry_used": false,
+    "pass": true
+  },
+  "dimension_cross_check": {
+    "official_nominal_width_depth_height_mm": [800, 620, 450],
+    "project_ifc_body_local_xyz_mm": [810.61496, 591.948944, 456.581987],
+    "maximum_absolute_delta_mm": 28.051056,
+    "tolerance_mm": 35,
+    "pass": true
+  },
+  "official_sources": [
+    {
+      "kind": "manufacturer_product_page",
+      "url": "https://www.baxter.it/en/products/marilyn-sofas-and-armchairs",
+      "local_path": "output/review/highpoly-types/marilyn-02/official-source/baxter-marilyn-product-page.html",
+      "sha256": "e9f630d77aff716b01d21736117df23a491984183c2e4ea0f00c87a61df85140",
+      "identity_observation": "The official page lists both matte and glossy Marilyn poufs at 80 x 62 x 45 cm and exposes exact measurement SVGs."
+    },
+    {
+      "kind": "manufacturer_current_vector_technical_sheet",
+      "url": "https://productsbook.baxter.it/product-pdf/Marilyn_divani-e-poltrone_TechnicalSheet.pdf?code=MARI&lang=eng&sector=divani-e-poltrone&kind=indoor",
+      "local_path": "output/review/highpoly-types/marilyn-02/official-source/Baxter_Marilyn_current-technical-sheet.pdf",
+      "sha256": "8210ae5ce84b467fd6cb46a93c665fbfaed1606e806210a751ef24ea026ff581",
+      "role": "manufacturer family technical publication; identity evidence only, not representation linework"
+    },
+    {
+      "kind": "manufacturer_measurement_svg_matte",
+      "url": "https://productsbook.baxter.it/models/measurements/MARIPFMN80.svg",
+      "local_path": "output/review/highpoly-types/marilyn-02/official-source/MARIPFMN80.svg",
+      "sha256": "41a56a0df8de5fa5b362f752c94923c764816525bd7b00f0499b0dadba86f509",
+      "vector_object_audit": {"path_count": 236, "use_count": 51, "group_count": 51},
+      "role": "exact matte-frame pouf identity and dimension cross-check only"
+    },
+    {
+      "kind": "manufacturer_measurement_svg_glossy",
+      "url": "https://productsbook.baxter.it/models/measurements/MARIPFML80.svg",
+      "local_path": "output/review/highpoly-types/marilyn-02/official-source/MARIPFML80.svg",
+      "sha256": "2c2a9af1f2200e83658f0b9c17bccb022d9d3ab0bec205c9b667b5d7c6f7e96c",
+      "vector_object_audit": {"path_count": 236, "use_count": 51, "group_count": 51},
+      "role": "exact glossy-frame pouf identity and dimension cross-check only"
+    },
+    {
+      "kind": "manufacturer_native_2d_3d_zip",
+      "url": "https://dam.baxter.it/asset/9b02ac3a-7166-40df-9acc-1e8a2ad46705/Baxter_Marilyn_Armchair_2D_3D.zip",
+      "local_path": "output/review/highpoly-types/marilyn-02/official-source/Baxter_Marilyn_Armchair_2D_3D.zip",
+      "sha256": "db054a193c9c5b8dc45f0df39199b2d96dc3712a5a7e48821fe94dce1566fedb",
+      "role": "official native source package"
+    },
+    {
+      "kind": "manufacturer_native_2d_dwg",
+      "url": "https://dam.baxter.it/asset/9b02ac3a-7166-40df-9acc-1e8a2ad46705/Baxter_Marilyn_Armchair_2D_3D.zip#Baxter_Marilyn_Armchair_2D_3D/2D/Marilyn_Abaco.dwg",
+      "local_path": "output/review/highpoly-types/marilyn-02/official-source/Marilyn_Abaco.dwg",
+      "sha256": "cb9825eecab7c78ee28e7668e933c2fe413395a63bf75f3afab8cc4959864724",
+      "role": "authoritative pouf Plan/Front/Side representation linework source"
+    },
+    {
+      "kind": "manufacturer_exact_model_3ds",
+      "url": "https://dam.baxter.it/asset/9b02ac3a-7166-40df-9acc-1e8a2ad46705/Baxter_Marilyn_Armchair_2D_3D.zip#Baxter_Marilyn_Armchair_2D_3D/3D/Marilyn_pouf_80x62xh45.3ds",
+      "local_path": "output/review/highpoly-types/marilyn-02/official-source/Marilyn_pouf_80x62xh45.3ds",
+      "sha256": "53819a0b1321f0177cc162a4b93d62031b4c9aab77d06370e1de90c961cb97f9",
+      "role": "exact native filename independently identifies the 80 x 62 x 45 cm pouf variant; never substituted for project IFC Body"
+    }
+  ],
+  "native_cad_selection": {
+    "source_kind": "native_dwg",
+    "source_dwg": "output/review/highpoly-types/marilyn-02/official-source/Marilyn_Abaco.dwg",
+    "source_dwg_sha256": "cb9825eecab7c78ee28e7668e933c2fe413395a63bf75f3afab8cc4959864724",
+    "exact_model_3ds_filename": "Marilyn_pouf_80x62xh45.3ds",
+    "exact_model_3ds_sha256": "53819a0b1321f0177cc162a4b93d62031b4c9aab77d06370e1de90c961cb97f9",
+    "native_dimension_labels": ["800", "620", "450"],
+    "three_view_path_counts": {"plan": 10, "front": 52, "side": 56},
+    "official_cad_used": true,
+    "third_party_cad_used": false,
+    "pass": true
+  },
+  "drawing_geometry_source": {
+    "source_kind": "native_dwg",
+    "source_label_zh": "基于 Baxter 精确型号原生 DWG 的官方图纸表达",
+    "source_label_en": "official drawing representation from exact Baxter model native DWG",
+    "official_cad_used": true,
+    "third_party_cad_used": false
+  },
+  "pass": true
+}

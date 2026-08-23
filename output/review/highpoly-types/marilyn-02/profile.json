@@ -1,0 +1,44 @@
+{
+  "schema_version": 1,
+  "formal_ifc_sha256": "7a50b87e8f48a7c2bfbaa9f1dabdfca7155fa684b2325c66aa1ae15c8ab0a25c",
+  "profiles": {
+    "marilyn-02": {
+      "display_name": "Baxter Marilyn pouf / project Marilyn 02",
+      "ifc_type_name": "Marilyn 02",
+      "representative_global_id": "1THxa7p7n97w$wtLn4THjz",
+      "expected_instance_global_ids": ["1THxa7p7n97w$wtLn4THjz"],
+      "profile_source": "isolated_highpoly_projection; exact_baxter_native_dwg_and_pouf_3ds_archived; official_product_page_and_measurement_svg_cross_check",
+      "silhouette_simplify_mm": 0.4,
+      "semantic_sections": {"plan": [], "front": [], "side": []},
+      "required_semantics": [
+        "upholstered_pouf_shell",
+        "swivel_pedestal_base",
+        "official_800x620x450_mm_identity",
+        "exact_native_dwg_pouf_view_clusters"
+      ],
+      "drawing_source": {
+        "source_kind": "native_dwg",
+        "source_label_zh": "基于 Baxter 精确型号原生 DWG 的官方图纸表达",
+        "source_label_en": "official drawing representation from exact Baxter model native DWG",
+        "official_cad_used": true,
+        "third_party_cad_used": false
+      },
+      "official_reference": {
+        "source_id": "BAXTER-MARILYN-POUF-OFFICIAL-NATIVE-CAD-001",
+        "source_kind": "manufacturer_native_dwg_exact_model_3ds_product_page_and_measurement_svg",
+        "manufacturer": "Baxter",
+        "family": "Marilyn",
+        "designer": "Draga & Aurel",
+        "project_type_code": "Marilyn 02",
+        "resolved_variant": "pouf with swivel base, 80 x 62 x 45 cm",
+        "scope": "exact Baxter Marilyn pouf with swivel base 80 x 62 x 45 cm family CAD reference; not a project shop drawing",
+        "product_page": "https://www.baxter.it/en/products/marilyn-sofas-and-armchairs",
+        "native_zip": "https://dam.baxter.it/asset/9b02ac3a-7166-40df-9acc-1e8a2ad46705/Baxter_Marilyn_Armchair_2D_3D.zip",
+        "technical_sheet": "https://productsbook.baxter.it/product-pdf/Marilyn_divani-e-poltrone_TechnicalSheet.pdf?code=MARI&lang=eng&sector=divani-e-poltrone&kind=indoor",
+        "source_access_record": "output/review/highpoly-types/marilyn-02/official-source/source-access-record.json",
+        "official_source_revalidation": "output/review/highpoly-types/marilyn-02/official-source/official-source-revalidation.json",
+        "official_cad_used": true
+      }
+    }
+  }
+}

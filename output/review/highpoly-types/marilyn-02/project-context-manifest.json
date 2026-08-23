@@ -1,0 +1,248 @@
+{
+  "schema_version": 1,
+  "generator": "pipeline/scripts/render_marilyn_02_project_context.py",
+  "source_kind": "native_dwg",
+  "source_label_zh": "Baxter 官方原生 DWG",
+  "official_cad_used": true,
+  "third_party_cad_used": false,
+  "project_context_retained": true,
+  "walls_and_surrounding_project_elements_retained": true,
+  "overlay_top_layer_with_white_mask": true,
+  "blue_line_present": true,
+  "source_dwg_sha256": "cb9825eecab7c78ee28e7668e933c2fe413395a63bf75f3afab8cc4959864724",
+  "project_scale_svg_units_per_mm": 0.02,
+  "views": [
+    {
+      "view": "plan",
+      "candidate_view": "plan",
+      "source": "drawings/Furniture Plan.svg",
+      "output": "output/review/highpoly-types/marilyn-02/project-context-furniture-plan.svg",
+      "output_sha256": "800fdaa53a08d1b79be235c7f84acf0f30f05df0b3fd27cba70a839f47e6a74f",
+      "review_crop": "output/review/highpoly-types/marilyn-02/project-context-furniture-plan-review.svg",
+      "review_crop_sha256": "3e775e6c9d2cbc1aaa16f3a8ce4ce7f7d43dc9da75e182ab176382f4758a6b1f",
+      "review_preview": "output/review/highpoly-types/marilyn-02/project-context-furniture-plan-review-preview.png",
+      "review_preview_sha256": "86b3e1c535c8e7bd525010e8acd08959307be30e1468f3df9fe084a697323844",
+      "overlay": {
+        "ifc_guid": "1THxa7p7n97w$wtLn4THjz",
+        "source_kind": "native_dwg",
+        "source_label_zh": "Baxter 官方原生 DWG",
+        "official_cad_used": true,
+        "third_party_cad_used": false,
+        "source_dwg_sha256": "cb9825eecab7c78ee28e7668e933c2fe413395a63bf75f3afab8cc4959864724",
+        "path_count": 10,
+        "fit": {
+          "rotate_quarter_turns": 0,
+          "alignment_mode": "centre",
+          "flip_projected_y": true,
+          "scale_svg_units_per_mm": 0.02,
+          "target_bbox": [
+            [
+              288.47832,
+              169.393252
+            ],
+            [
+              304.774979,
+              181.097768
+            ]
+          ],
+          "proxy_bbox": [
+            [
+              288.478217,
+              169.393262
+            ],
+            [
+              304.775081,
+              181.097758
+            ]
+          ],
+          "bbox_absolute_delta_svg_units": [
+            0.000205,
+            2e-05
+          ],
+          "bbox_tolerance_svg_units": 1.2,
+          "uniform_scale_preserved": true,
+          "transformation_mode": "rigid_view_orientation_reflection_translation_and_native_1_50_scale_only",
+          "pass": true
+        }
+      }
+    },
+    {
+      "view": "front",
+      "candidate_view": "front",
+      "source": "drawings/elevations/native/EL-09-35-R22-NY.svg",
+      "output": "output/review/highpoly-types/marilyn-02/project-context-r22-front-elevation.svg",
+      "output_sha256": "54a035c3c97f4ddbabbf993b43f864e175a38bcb550dbc52d5930a8acbe03dcc",
+      "review_crop": "output/review/highpoly-types/marilyn-02/project-context-r22-front-elevation-review.svg",
+      "review_crop_sha256": "d02de2295aeecca765d35c3de8204e184fd6ecc425553a7621403d1929219702",
+      "review_preview": "output/review/highpoly-types/marilyn-02/project-context-r22-front-elevation-review-preview.png",
+      "review_preview_sha256": "30c35a4234005175532fb705f1196d3bd7b9c4e32e4f043a3efdb460ed90e16b",
+      "overlay": {
+        "ifc_guid": "1THxa7p7n97w$wtLn4THjz",
+        "source_kind": "native_dwg",
+        "source_label_zh": "Baxter 官方原生 DWG",
+        "official_cad_used": true,
+        "third_party_cad_used": false,
+        "source_dwg_sha256": "cb9825eecab7c78ee28e7668e933c2fe413395a63bf75f3afab8cc4959864724",
+        "path_count": 52,
+        "fit": {
+          "rotate_quarter_turns": 0,
+          "alignment_mode": "baseline_centre",
+          "flip_projected_y": true,
+          "scale_svg_units_per_mm": 0.02,
+          "target_bbox": [
+            [
+              25.743145,
+              40.579469
+            ],
+            [
+              41.955444,
+              49.711109
+            ]
+          ],
+          "proxy_bbox": [
+            [
+              25.843032,
+              40.704926
+            ],
+            [
+              41.855556,
+              49.711109
+            ]
+          ],
+          "bbox_absolute_delta_svg_units": [
+            0.199774,
+            0.125456
+          ],
+          "bbox_tolerance_svg_units": 1.2,
+          "uniform_scale_preserved": true,
+          "transformation_mode": "rigid_view_orientation_reflection_translation_and_native_1_50_scale_only",
+          "pass": true
+        }
+      }
+    },
+    {
+      "view": "side",
+      "candidate_view": "side",
+      "source": "drawings/elevations/native/EL-09-36-R22-NX.svg",
+      "output": "output/review/highpoly-types/marilyn-02/project-context-r22-side-elevation.svg",
+      "output_sha256": "15249a82ec30561c9b34863e3a8f3e5f4716509e785b0858dccd7467e78525cb",
+      "review_crop": "output/review/highpoly-types/marilyn-02/project-context-r22-side-elevation-review.svg",
+      "review_crop_sha256": "05cb4f7a01c994e7349435c471e7119695d6d0fbb04d15ab02204dbbd2099f17",
+      "review_preview": "output/review/highpoly-types/marilyn-02/project-context-r22-side-elevation-review-preview.png",
+      "review_preview_sha256": "56055121c3a71e15e42665f0a0f8c6a22f12e1f3bc341a9fc01dbea5b63fbcc5",
+      "overlay": {
+        "ifc_guid": "1THxa7p7n97w$wtLn4THjz",
+        "source_kind": "native_dwg",
+        "source_label_zh": "Baxter 官方原生 DWG",
+        "official_cad_used": true,
+        "third_party_cad_used": false,
+        "source_dwg_sha256": "cb9825eecab7c78ee28e7668e933c2fe413395a63bf75f3afab8cc4959864724",
+        "path_count": 56,
+        "fit": {
+          "rotate_quarter_turns": 0,
+          "alignment_mode": "baseline_centre",
+          "flip_projected_y": true,
+          "scale_svg_units_per_mm": 0.02,
+          "target_bbox": [
+            [
+              19.380045,
+              40.579467
+            ],
+            [
+              31.219024,
+              49.711107
+            ]
+          ],
+          "proxy_bbox": [
+            [
+              19.093272,
+              40.704887
+            ],
+            [
+              31.505797,
+              49.711107
+            ]
+          ],
+          "bbox_absolute_delta_svg_units": [
+            0.573546,
+            0.12542
+          ],
+          "bbox_tolerance_svg_units": 1.2,
+          "uniform_scale_preserved": true,
+          "transformation_mode": "rigid_view_orientation_reflection_translation_and_native_1_50_scale_only",
+          "pass": true
+        }
+      }
+    }
+  ],
+  "pass": true,
+  "semantic_view_mapping": {
+    "plan": {
+      "candidate_axes": [
+        0,
+        1
+      ],
+      "source": "drawings/Furniture Plan.svg",
+      "rotate_quarter_turns": 0,
+      "project_direction": "+Z"
+    },
+    "front": {
+      "candidate_axes": [
+        0,
+        2
+      ],
+      "source": "drawings/elevations/native/EL-09-35-R22-NY.svg",
+      "rotate_quarter_turns": 0,
+      "project_direction": "-Y",
+      "complete_project_projection_group_only": true
+    },
+    "side": {
+      "candidate_axes": [
+        1,
+        2
+      ],
+      "source": "drawings/elevations/native/EL-09-36-R22-NX.svg",
+      "rotate_quarter_turns": 0,
+      "project_direction": "-X",
+      "complete_project_projection_group_only": true
+    }
+  },
+  "context_view_scope": {
+    "included": [
+      "plan",
+      "front",
+      "side"
+    ],
+    "excluded": [],
+    "reason": "The Furniture Plan and selected R22 -Y/-X elevations contain mechanically complete Marilyn 02 projections."
+  },
+  "review_annotation_suppression": {
+    "plan": "official-elevation-anchor groups only",
+    "front": "noninteger residual-error diagnostic highlights only",
+    "side": "noninteger residual-error diagnostic highlights only",
+    "scope": "review crops only; complete project SVGs retain their annotations",
+    "walls_furniture_and_ifc_geometry_removed": false
+  },
+  "review_preview_background": {
+    "plan": "opaque white review-only paper background",
+    "front": "opaque white review-only paper background",
+    "side": "opaque white review-only paper background",
+    "full_project_svgs_remain_transparent": true,
+    "drawing_geometry_changed": false
+  },
+  "project_projection_note": {
+    "official_nominal_xyz_mm": [
+      800.0,
+      620.0,
+      450.0
+    ],
+    "ifc_body_local_xyz_mm": [
+      810.61496,
+      591.948944,
+      456.581987
+    ],
+    "project_ifc_description": "Pouf with swivel base W80D62H45",
+    "interpretation": "Exact official native-DWG pouf views are overlaid at native 1:50 scale and aligned by centre/floor baseline; no view is stretched to force-fit the project projection.",
+    "geometry_stretched": false
+  }
+}

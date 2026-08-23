@@ -1,0 +1,277 @@
+{
+  "schema_version": 1,
+  "generated_at": "2026-08-23T13:30:30.752193+00:00",
+  "generator": "pipeline/scripts/marilyn_02_review.py",
+  "formal_ifc": "2504 GBTB Yanlord Zhuhai.ifc",
+  "formal_ifc_sha256": "7a50b87e8f48a7c2bfbaa9f1dabdfca7155fa684b2325c66aa1ae15c8ab0a25c",
+  "formal_ifc_sha256_after_generation": "7a50b87e8f48a7c2bfbaa9f1dabdfca7155fa684b2325c66aa1ae15c8ab0a25c",
+  "formal_ifc_bytes_unchanged": true,
+  "profile_key": "marilyn-02",
+  "display_name": "Baxter Marilyn pouf / project Marilyn 02",
+  "ifc_type_name": "Marilyn 02",
+  "ifc_type_description": "Pouf with swivel base W80D62H45",
+  "representative_global_id": "1THxa7p7n97w$wtLn4THjz",
+  "geometry_product_count": 1,
+  "whole_model_render": false,
+  "mesh_vertex_count": 3476,
+  "mesh_face_count": 6721,
+  "bounds_mm": {
+    "minimum": [
+      -405.228973,
+      -296.012939,
+      0.020979
+    ],
+    "maximum": [
+      405.385986,
+      295.936005,
+      456.602966
+    ],
+    "size": [
+      810.61496,
+      591.948944,
+      456.581987
+    ]
+  },
+  "source_kind": "native_dwg",
+  "source_label_zh": "基于 Baxter 精确型号原生 DWG 的官方图纸表达",
+  "official_cad_acquired": true,
+  "official_cad_used": true,
+  "third_party_cad_used": false,
+  "drawing_source": {
+    "source_kind": "native_dwg",
+    "source_label_zh": "基于 Baxter 精确型号原生 DWG 的官方图纸表达",
+    "source_label_en": "official drawing representation from exact Baxter model native DWG",
+    "official_cad_used": true,
+    "third_party_cad_used": false
+  },
+  "source_dwg": "output/review/highpoly-types/marilyn-02/official-source/Marilyn_Abaco.dwg",
+  "source_dwg_sha256": "cb9825eecab7c78ee28e7668e933c2fe413395a63bf75f3afab8cc4959864724",
+  "official_native_dwg_linework": "output/review/highpoly-types/marilyn-02/official-native-dwg-linework.json",
+  "official_native_dwg_linework_sha256": "1d6413a9ba0ec37536bf6815e6312453d437df9642d486ba8413dc1b538d2d1f",
+  "official_source_access_record": "output/review/highpoly-types/marilyn-02/official-source/source-access-record.json",
+  "official_source_access_record_sha256": "17d19d6757be5f29d8f97eaf9ec56c471b6e5e22bd4791bdfaf2f36f2c8d9d7e",
+  "official_source_revalidation": {
+    "path": "output/review/highpoly-types/marilyn-02/official-source/official-source-revalidation.json",
+    "sha256": "56a358249ef8d5e54838cd9360e3a2f80bb6fa10bee6c80096dd33e018242eec",
+    "checked_at": "2026-08-23T13:28:33.838323+00:00",
+    "product_page_identity_tokens_pass": true,
+    "native_zip_bytes_match_archive": true,
+    "technical_pdf_identity_page_render_matches_archive": true,
+    "measurement_svgs_pass": true,
+    "marilyn_01_geometry_used": false,
+    "pass": true
+  },
+  "dimension_cross_check": {
+    "official_nominal_width_depth_height_mm": [
+      800,
+      620,
+      450
+    ],
+    "project_ifc_body_local_xyz_mm": [
+      810.61496,
+      591.948944,
+      456.581987
+    ],
+    "maximum_absolute_delta_mm": 28.051056,
+    "tolerance_mm": 35,
+    "pass": true
+  },
+  "native_dwg_ifc_view_comparisons": {
+    "plan": {
+      "official_visible_size_mm": [
+        814.843218,
+        585.224756
+      ],
+      "ifc_projection_size_mm": [
+        810.61496,
+        591.948944
+      ],
+      "absolute_delta_mm": [
+        4.228258,
+        6.724188
+      ],
+      "maximum_absolute_delta_mm": 6.724188,
+      "tolerance_mm": 35.0,
+      "geometry_scaled_to_match": false,
+      "pass": true
+    },
+    "front": {
+      "official_visible_size_mm": [
+        800.626219,
+        450.309161
+      ],
+      "ifc_projection_size_mm": [
+        810.61496,
+        456.581987
+      ],
+      "absolute_delta_mm": [
+        9.988741,
+        6.272826
+      ],
+      "maximum_absolute_delta_mm": 9.988741,
+      "tolerance_mm": 35.0,
+      "geometry_scaled_to_match": false,
+      "pass": true
+    },
+    "side": {
+      "official_visible_size_mm": [
+        620.626219,
+        450.310969
+      ],
+      "ifc_projection_size_mm": [
+        591.948944,
+        456.581987
+      ],
+      "absolute_delta_mm": [
+        28.677275,
+        6.271018
+      ],
+      "maximum_absolute_delta_mm": 28.677275,
+      "tolerance_mm": 35.0,
+      "geometry_scaled_to_match": false,
+      "pass": true
+    }
+  },
+  "candidate_representations": "output/review/highpoly-types/marilyn-02/candidate-representations.json",
+  "candidate_representations_sha256": "f085ab2f292e8e034ccabfd391a1d6f57221657236cdeb70809781e48bf3d349",
+  "review_status": "visual_review_pending",
+  "approved_for_drawing_ifc": false,
+  "derived_ifc_write_allowed": false,
+  "formal_ifc_write": "not performed",
+  "scope": "exact Baxter Marilyn pouf with swivel base 80 x 62 x 45 cm family CAD reference; not a project shop drawing",
+  "views": [
+    {
+      "view": "plan",
+      "svg": "output/review/highpoly-types/marilyn-02/plan.svg",
+      "svg_sha256": "3fa2b0f5be296ff0fa53d11641038be851065f7502fc1ddac63b50369cd7bac3",
+      "preview": "output/review/highpoly-types/marilyn-02/plan-preview.png",
+      "preview_sha256": "930f26bb1d2ce8155ee98adbfa006f96b1c095fda9379201b12709e4ff604bd9",
+      "projection_axes": [
+        0,
+        1
+      ],
+      "raw_edge_count": 10193,
+      "displayed_raw_edge_count": 600,
+      "silhouette_path_count": 3,
+      "official_cad_path_count": 10,
+      "blue_line_source_kind": "native_dwg",
+      "blue_line_native_dwg_sha256": "cb9825eecab7c78ee28e7668e933c2fe413395a63bf75f3afab8cc4959864724",
+      "white_mask_below_blue": true,
+      "view_orientation_transform": "none",
+      "geometry_scaled_to_match_ifc": false,
+      "blue_line_present": true,
+      "comparison": {
+        "official_visible_size_mm": [
+          814.843218,
+          585.224756
+        ],
+        "ifc_projection_size_mm": [
+          810.61496,
+          591.948944
+        ],
+        "absolute_delta_mm": [
+          4.228258,
+          6.724188
+        ],
+        "maximum_absolute_delta_mm": 6.724188,
+        "tolerance_mm": 35.0,
+        "geometry_scaled_to_match": false,
+        "pass": true
+      }
+    },
+    {
+      "view": "front",
+      "svg": "output/review/highpoly-types/marilyn-02/front.svg",
+      "svg_sha256": "fc08dd10adcd7d69e42cef88b5c161d3cf097a5ad2cb08dcf4651e1281b8cffe",
+      "preview": "output/review/highpoly-types/marilyn-02/front-preview.png",
+      "preview_sha256": "5fb58c259ac2bb8a06d36e82e59760a2b12ca0b3465a1ce481306143f5634469",
+      "projection_axes": [
+        0,
+        2
+      ],
+      "raw_edge_count": 10193,
+      "displayed_raw_edge_count": 600,
+      "silhouette_path_count": 1,
+      "official_cad_path_count": 52,
+      "blue_line_source_kind": "native_dwg",
+      "blue_line_native_dwg_sha256": "cb9825eecab7c78ee28e7668e933c2fe413395a63bf75f3afab8cc4959864724",
+      "white_mask_below_blue": true,
+      "view_orientation_transform": "none",
+      "geometry_scaled_to_match_ifc": false,
+      "blue_line_present": true,
+      "comparison": {
+        "official_visible_size_mm": [
+          800.626219,
+          450.309161
+        ],
+        "ifc_projection_size_mm": [
+          810.61496,
+          456.581987
+        ],
+        "absolute_delta_mm": [
+          9.988741,
+          6.272826
+        ],
+        "maximum_absolute_delta_mm": 9.988741,
+        "tolerance_mm": 35.0,
+        "geometry_scaled_to_match": false,
+        "pass": true
+      }
+    },
+    {
+      "view": "side",
+      "svg": "output/review/highpoly-types/marilyn-02/side.svg",
+      "svg_sha256": "af6d56ada2b1c0b60dc6699e3c31ff6d900106c1bc2b3d88f318193743304429",
+      "preview": "output/review/highpoly-types/marilyn-02/side-preview.png",
+      "preview_sha256": "543554007cf591b03dfaa0cd2ee665f38fbef8cf2ccba72a2a52bdf12d8675e3",
+      "projection_axes": [
+        1,
+        2
+      ],
+      "raw_edge_count": 10193,
+      "displayed_raw_edge_count": 600,
+      "silhouette_path_count": 1,
+      "official_cad_path_count": 56,
+      "blue_line_source_kind": "native_dwg",
+      "blue_line_native_dwg_sha256": "cb9825eecab7c78ee28e7668e933c2fe413395a63bf75f3afab8cc4959864724",
+      "white_mask_below_blue": true,
+      "view_orientation_transform": "mirror_x_for_ifc_yz_direction",
+      "geometry_scaled_to_match_ifc": false,
+      "blue_line_present": true,
+      "comparison": {
+        "official_visible_size_mm": [
+          620.626219,
+          450.310969
+        ],
+        "ifc_projection_size_mm": [
+          591.948944,
+          456.581987
+        ],
+        "absolute_delta_mm": [
+          28.677275,
+          6.271018
+        ],
+        "maximum_absolute_delta_mm": 28.677275,
+        "tolerance_mm": 35.0,
+        "geometry_scaled_to_match": false,
+        "pass": true
+      }
+    }
+  ],
+  "pass": true,
+  "project_context": {
+    "manifest": "output/review/highpoly-types/marilyn-02/project-context-manifest.json",
+    "manifest_sha256": "8f3c4d9c9a8d3e0baeec6cabcc55df0cc2a01ba6c340d054e03dcbd55cc35bbe",
+    "walls_and_surrounding_project_elements_retained": true,
+    "overlay_top_layer_with_white_mask": true,
+    "pass": true
+  },
+  "bonsai_review": {
+    "manifest": "output/review/highpoly-types/marilyn-02/bonsai-review-manifest.json",
+    "manifest_sha256": "fb24b106ec3fa133077d0b55a888b468bb73557c2f213fb661abdb1f585b7911",
+    "mode": "actual_bonsai_ifc_body_camera_render",
+    "saved_active_representation": "Body",
+    "saved_camera_count": 4,
+    "pass": true
+  }
+}
