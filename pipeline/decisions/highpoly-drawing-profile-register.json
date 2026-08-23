@@ -41,6 +41,1164 @@
         "source_pdf": "drawings/evidence/FALPER-official-Sorgente-WFA-WFB.pdf",
         "source_pdf_sha256": "b8bc94982bdd4305f2ffe5240daf429146470677157022860a0ef591514373c2"
       }
+    },
+    "geberit-146-140": {
+      "display_name": "Geberit 146.140 / AquaClean Sela wall-hung WC",
+      "ifc_type_name": "Geberit 146.140",
+      "representative_global_id": "1rhZG98PPCSxaLeMFLTYb9",
+      "expected_instance_global_ids": [
+        "0UtU7yPb10ku4gsbGoM_sp",
+        "1rhZG98PPCSxaLeMFLTYb9"
+      ],
+      "profile_source": "isolated_highpoly_projection_with_exact_official_146_140_native_dwg",
+      "silhouette_simplify_mm": 0.8,
+      "semantic_sections": {
+        "plan": [
+          {
+            "axis": "z",
+            "fraction": 0.58,
+            "label": "bowl_body"
+          },
+          {
+            "axis": "z",
+            "fraction": 0.72,
+            "label": "seat_rim"
+          }
+        ],
+        "front": [],
+        "side": []
+      },
+      "required_semantics": [
+        "ceramic_outer_silhouette",
+        "seat_or_rim_line",
+        "rear_wall_contact",
+        "suspended_underside"
+      ],
+      "official_reference": {
+        "source_id": "GEBERIT-AQUACLEAN-SELA-146-140-NATIVE-DWG-001",
+        "source_kind": "native_dwg",
+        "manufacturer": "Geberit",
+        "article_number": "146.140.11.1",
+        "scope": "official manufacturer product-family reference, not a project shop drawing",
+        "product_page": "https://catalog.international.geberit.com/en-GB/product/PRO_942494",
+        "linework_path": "output/review/highpoly-types/geberit-146-140/official-native-dwg-linework.json",
+        "official_cdn_revalidation": "output/review/highpoly-types/geberit-146-140/official-source/official-cdn-revalidation.json",
+        "view_mapping": {
+          "plan": "G",
+          "front": "A",
+          "side": "L"
+        }
+      }
+    },
+    "geberit-115-770": {
+      "display_name": "Geberit Sigma01 / 115.770.11.5 dual-flush actuator plate",
+      "ifc_type_name": "Geberit 115.770",
+      "representative_global_id": "2gFgcOYEXEaQWAzcKulTFt",
+      "expected_instance_global_ids": [
+        "2gFgcOYEXEaQWAzcKulTFt",
+        "2lDPsdQevFSfeOThtjSlPG"
+      ],
+      "profile_source": "isolated_highpoly_projection_with_exact_official_115_770_11_5_native_dwg",
+      "silhouette_simplify_mm": 0.25,
+      "semantic_sections": {"plan": [], "front": [], "side": []},
+      "required_semantics": [
+        "rectangular_actuator_plate_outer_silhouette",
+        "two_circular_flush_buttons",
+        "wall_contact_depth",
+        "semantic_correction_flush_plate_not_wcseat"
+      ],
+      "formal_ifc_semantic_issue": {
+        "stored_predefined_type": "WCSEAT",
+        "correct_product_kind": "dual_flush_actuator_plate",
+        "formal_ifc_modified": false
+      },
+      "drawing_source": {
+        "source_kind": "native_dwg",
+        "source_label_zh": "基于 Geberit 精确型号原生 DWG 的官方图纸表达",
+        "source_label_en": "official drawing representation from exact Geberit article native DWG",
+        "official_cad_used": true,
+        "third_party_cad_used": false
+      },
+      "official_reference": {
+        "source_id": "GEBERIT-SIGMA01-115-770-11-5-NATIVE-DWG-001",
+        "source_kind": "native_dwg",
+        "manufacturer": "Geberit",
+        "family": "Sigma01",
+        "article_number": "115.770.11.5",
+        "scope": "official manufacturer exact-article reference, not a project shop drawing",
+        "product_page": "https://catalog.kz.geberit.com/ru-KZ/product/PRO_100555",
+        "product_page_archive": "output/review/highpoly-types/geberit-115-770/official-source/geberit-sigma01-product-page.html",
+        "product_page_archive_sha256": "46ed8825fcc0dae55300ecd458bd4969163f026d68e0ed81ba37c39c3180a0d3",
+        "current_catalog_status": "current Sigma01 exact article 115.770.11.5, white glossy, dual flush",
+        "official_pdf": "output/review/highpoly-types/geberit-115-770/official-source/GEB-official-115770-Sigma01.pdf",
+        "official_pdf_sha256": "7157e54465bbf7b735868f42787833179184b174e2d7717443cd759e94089cd2",
+        "linework_path": "output/review/highpoly-types/geberit-115-770/official-native-dwg-linework.json",
+        "official_cdn_revalidation": "output/review/highpoly-types/geberit-115-770/official-source/official-cdn-revalidation.json",
+        "official_dimensions_mm": [246, 13, 164],
+        "view_mapping": {"plan": "G", "front": "A", "side": "L"}
+      }
+    },
+    "geberit-154-446-ks-1": {
+      "display_name": "Geberit CleanLine50 shower channel / 154.446.KS.1",
+      "ifc_type_name": "Geberit 154.446.KS.1",
+      "representative_global_id": "2S2c498tb7$gzdukjhCGVQ",
+      "expected_instance_global_ids": [
+        "2S2c498tb7$gzdukjhCGVQ"
+      ],
+      "profile_source": "isolated_highpoly_projection_with_exact_archived_154_446_ks_1_native_dwg",
+      "silhouette_simplify_mm": 0.35,
+      "semantic_sections": {
+        "plan": [],
+        "front": [],
+        "side": []
+      },
+      "required_semantics": [
+        "900_mm_channel_length",
+        "channel_outer_silhouette",
+        "removable_grate_and_inlet",
+        "finished_floor_interface"
+      ],
+      "official_reference": {
+        "source_id": "GEBERIT-CLEANLINE50-154-446-KS-1-NATIVE-DWG-001",
+        "source_kind": "native_dwg",
+        "manufacturer": "Geberit",
+        "article_number": "154.446.KS.1",
+        "replacement_article_number": "154.446.KS.2",
+        "replacement_cad_used": false,
+        "scope": "official manufacturer exact archived article reference, not a project shop drawing",
+        "product_page": "https://catalog.geberit-global.com/en-XB/product/PRO_4702328",
+        "linework_path": "output/review/highpoly-types/geberit-154-446-ks-1/official-native-dwg-linework.json",
+        "official_cdn_revalidation": "output/review/highpoly-types/geberit-154-446-ks-1/official-source/official-cdn-revalidation.json",
+        "view_mapping": {
+          "plan": "G",
+          "front": "A",
+          "side": "L"
+        }
+      }
+    },
+    "hima01": {
+      "display_name": "Poliform Hima screen / HIMA01 three elements 1000 mm",
+      "ifc_type_name": "HIMA01",
+      "representative_global_id": "2xmcLzu1rDTeMzRuNxPDyE",
+      "expected_instance_global_ids": [
+        "2xmcLzu1rDTeMzRuNxPDyE"
+      ],
+      "profile_source": "isolated_highpoly_projection; official_2d_dwg_published_but_registration_form_required_not_acquired",
+      "silhouette_simplify_mm": 1.0,
+      "semantic_sections": {
+        "plan": [],
+        "front": [],
+        "side": []
+      },
+      "required_semantics": [
+        "three_hinged_screen_elements",
+        "1000_mm_nominal_height",
+        "folded_plan_configuration",
+        "painted_metal_frame_and_woven_rope_extent"
+      ],
+      "drawing_source": {
+        "source_kind": "geometry_derived_simplified_proxy",
+        "source_label_zh": "基于原始高模几何生成的简化图纸表达",
+        "source_label_en": "simplified drawing representation derived from the original high-poly geometry",
+        "official_cad_used": false,
+        "third_party_cad_used": false
+      },
+      "official_reference": {
+        "source_id": "POLIFORM-HIMA-OFFICIAL-IDENTITY-001",
+        "source_kind": "manufacturer_product_page_and_technical_publication_identity_only",
+        "manufacturer": "Poliform",
+        "family": "Hima",
+        "designer": "Jean-Marie Massaud",
+        "design_year": 2022,
+        "scope": "official manufacturer family identity and nominal dimensions, not a project shop drawing and not drawing geometry",
+        "product_page": "https://www.poliform.it/en/products/hima/",
+        "technical_sheet": "https://www.poliform.it/assets/pdf/201250-hima-poliform-en-us.pdf",
+        "technical_sheet_legacy": "https://www.poliform.it/assets/pdf/200467-hima-poliform-en.pdf",
+        "news_2022_technical_publication": "https://www.poliform.it/assets/2022/05/Poliform_News_2022-2.pdf",
+        "source_access_record": "output/review/highpoly-types/hima01/official-source/source-access-record.json",
+        "official_2d_dwg_status": "published_registration_form_and_captcha_required_not_acquired",
+        "official_2d_dwg_used": false
+      }
+    },
+    "geberit-duofix-sigma-224-212": {
+      "display_name": "Geberit Duofix Sigma concealed cistern frame / 224.212.00.2",
+      "ifc_type_name": "Geberit Duofix Sigma",
+      "representative_global_id": "3hgNkx97vCTOC2eewCpMNk",
+      "expected_instance_global_ids": [
+        "3hgNkx97vCTOC2eewCpMNk",
+        "3pvAlH5C14v8uVEJ1LmK8M"
+      ],
+      "profile_source": "isolated_highpoly_projection_with_exact_project_selected_224_212_00_2_native_dwg",
+      "silhouette_simplify_mm": 0.8,
+      "semantic_sections": {
+        "plan": [],
+        "front": [],
+        "side": []
+      },
+      "required_semantics": [
+        "500_mm_frame_width",
+        "Sigma_12_cm_concealed_cistern",
+        "1120_mm_nominal_frame_height_with_adjustable_feet",
+        "WC_threaded_rods_and_connection_geometry"
+      ],
+      "official_reference": {
+        "source_id": "GEBERIT-DUOFIX-SIGMA-224-212-00-2-NATIVE-DWG-001",
+        "source_kind": "native_dwg",
+        "manufacturer": "Geberit",
+        "article_number": "224.212.00.2",
+        "scope": "official manufacturer exact article family reference, not a project shop drawing",
+        "official_catalogue": "https://cdn-geberit-country-sg.prod.web.geberit.com/_assets/local-media/brochures/2025-nsea-sanitary-and-bathroom-catalogue-web.pdf",
+        "local_catalogue_extract": "drawings/evidence/GEB-official-224212-catalogue-page11.pdf",
+        "project_received_box_label": "drawings/evidence/GEB-224212-duofix-sigma-box-label.jpg",
+        "linework_path": "output/review/highpoly-types/geberit-duofix-sigma-224-212/official-native-dwg-linework.json",
+        "official_source_revalidation": "output/review/highpoly-types/geberit-duofix-sigma-224-212/official-source/official-source-revalidation.json",
+        "view_mapping": {
+          "plan": "G",
+          "front": "A",
+          "side": "L"
+        }
+      }
+    },
+    "gessi316-54294": {
+      "display_name": "Gessi316 Meccanica three-hole wall-mounted basin group / 45089_54294",
+      "ifc_type_name": "Gessi316 54294",
+      "representative_global_id": "2iKOL78$H0N9Yd9$ky3pW4",
+      "expected_instance_global_ids": [
+        "2iKOL78$H0N9Yd9$ky3pW4"
+      ],
+      "profile_source": "isolated_highpoly_projection; exact_official_54294_native_dwg_and_vector_pdf_archived_and_cross_verified",
+      "silhouette_simplify_mm": 0.35,
+      "semantic_sections": {
+        "plan": [],
+        "front": [],
+        "side": []
+      },
+      "required_semantics": [
+        "three_hole_wall_mounted_basin_group",
+        "long_spout_54294",
+        "Meccanica_finish_family",
+        "without_waste"
+      ],
+      "drawing_source": {
+        "source_kind": "native_dwg",
+        "source_label_zh": "Gessi 官方精确型号 54294 原生 DWG 图纸表达",
+        "source_label_en": "drawing representation from the exact Gessi 54294 official native DWG",
+        "source_dwg_sha256": "dfe8bcf7e100c14187c387b75a35e3fe7f718c61595fadf66adfe92ca7648ff4",
+        "official_cad_used": true,
+        "third_party_cad_used": false
+      },
+      "official_reference": {
+        "source_id": "GESSI316-45089-54294-OFFICIAL-NATIVE-DWG-001",
+        "source_kind": "manufacturer_exact_native_dwg",
+        "manufacturer": "Gessi",
+        "family": "Gessi316 Meccanica",
+        "article_number": "45089_54294",
+        "scope": "official Gessi exact 54294 family reference and 45089_54294 article combination; not a project shop drawing",
+        "product_page": "https://areapro.gessi.com/en/product/54294",
+        "official_catalogue": "https://gwebassets.gessi.com/strapi-uploads/assets/MAGAZINE_GESSI_316_2026_d8f9138389.pdf",
+        "native_dwg_zip": "https://gessistorage.blob.core.windows.net/zwa/GPF5429400000G000_arc.zip",
+        "native_dwg": "output/review/highpoly-types/gessi316-54294/official-source/GPF5429400000G000_3.dwg",
+        "native_dwg_sha256": "dfe8bcf7e100c14187c387b75a35e3fe7f718c61595fadf66adfe92ca7648ff4",
+        "technical_pdf": "https://gessistorage.blob.core.windows.net/zc4/GPF5429400000G000_1.pdf",
+        "linework_path": "output/review/highpoly-types/gessi316-54294/official-native-dwg-linework.json",
+        "source_access_record": "output/review/highpoly-types/gessi316-54294/official-source/source-access-record.json",
+        "official_source_revalidation": "output/review/highpoly-types/gessi316-54294/official-source/official-source-revalidation.json",
+        "official_product_cad_status": "public_exact_54294_native_dwg_acquired",
+        "official_product_cad_used": true,
+        "companion_45089_dwg_used_as_54294_geometry": false
+      }
+    },
+    "bed02": {
+      "display_name": "Baxter Viktor bed / project BED02",
+      "ifc_type_name": "BED02",
+      "representative_global_id": "1i_pqgLv9A7uuV7MjaArBW",
+      "expected_instance_global_ids": [
+        "1i_pqgLv9A7uuV7MjaArBW"
+      ],
+      "profile_source": "isolated_highpoly_projection; official_baxter_identity_and_dimensions_archived; official_2d_3d_bim_login_required_not_acquired",
+      "silhouette_simplify_mm": 2.0,
+      "semantic_sections": {
+        "plan": [],
+        "front": [],
+        "side": []
+      },
+      "required_semantics": [
+        "quilted_upholstered_headboard",
+        "upholstered_bed_frame",
+        "four_antiqued_metal_feet",
+        "project_dimension_difference_retained_for_review"
+      ],
+      "drawing_source": {
+        "source_kind": "geometry_derived_simplified_proxy",
+        "source_label_zh": "基于原始高模几何生成的简化图纸表达",
+        "source_label_en": "simplified drawing representation derived from the original high-poly geometry",
+        "official_cad_used": false,
+        "third_party_cad_used": false
+      },
+      "official_reference": {
+        "source_id": "BAXTER-VIKTOR-BED-OFFICIAL-IDENTITY-001",
+        "source_kind": "manufacturer_product_page_technical_sheet_and_assembly_instructions_identity_only",
+        "manufacturer": "Baxter",
+        "family": "Viktor",
+        "designer": "Draga & Aurel",
+        "project_type_code": "BED02",
+        "project_ifc_description": "VIKTOR 162x234xh106",
+        "official_160x200_variant_overall_mm": [1720, 2340, 1060],
+        "scope": "manufacturer family identity and nominal dimensions only; dimension difference requires review; not a project shop drawing and not drawing geometry",
+        "product_page": "https://www.baxter.it/en/products/viktor-beds",
+        "technical_sheet": "https://dam.baxter.it/m/e9f40f5d27de0f5/original/Baxter_Viktor_letto_Indoor.pdf",
+        "assembly_instructions": "https://dam.baxter.it/m/55b97eeff80c31a9/original/Baxter_AssemblyInstructions_Viktor_bed.pdf",
+        "source_access_record": "output/review/highpoly-types/bed02/official-source/source-access-record.json",
+        "official_2d_3d_bim_status": "manufacturer_login_required_not_acquired",
+        "official_cad_used": false
+      }
+    },
+    "bed01": {
+      "display_name": "Baxter Casablanca bed / project BED01",
+      "ifc_type_name": "BED01",
+      "representative_global_id": "3IQBEqO5vDI8Z9k1Ltge_N",
+      "expected_instance_global_ids": [
+        "3IQBEqO5vDI8Z9k1Ltge_N"
+      ],
+      "profile_source": "isolated_highpoly_projection; official_baxter_identity_and_dimensions_archived; official_2d_3d_bim_login_required_not_acquired",
+      "silhouette_simplify_mm": 2.0,
+      "semantic_sections": {
+        "plan": [],
+        "front": [],
+        "side": []
+      },
+      "required_semantics": [
+        "two_folded_goose_down_headboard_cushions",
+        "upholstered_bed_frame",
+        "walnut_stained_beech_feet",
+        "manufacturer_dimension_conflict_retained_for_review"
+      ],
+      "drawing_source": {
+        "source_kind": "geometry_derived_simplified_proxy",
+        "source_label_zh": "基于原始高模几何生成的简化图纸表达",
+        "source_label_en": "simplified drawing representation derived from the original high-poly geometry",
+        "official_cad_used": false,
+        "third_party_cad_used": false
+      },
+      "official_reference": {
+        "source_id": "BAXTER-CASABLANCA-BED-OFFICIAL-IDENTITY-001",
+        "source_kind": "manufacturer_product_page_and_technical_sheet_identity_only",
+        "manufacturer": "Baxter",
+        "family": "Casablanca",
+        "designer": "Paola Navone",
+        "project_type_code": "BED01",
+        "project_ifc_description": "Casablanca 180",
+        "official_product_page_180x200_variant_overall_mm": [2100, 2520, 900],
+        "official_technical_sheet_180x200_variant_overall_mm": [2200, 2520, 900],
+        "scope": "manufacturer family and 180 x 200 cm variant identity only; manufacturer dimension conflict requires review; not a project shop drawing and not drawing geometry",
+        "product_page": "https://www.baxter.it/en/products/casablanca-beds",
+        "technical_sheet": "https://dam.baxter.it/m/394e8cfc516bb3a/original/Baxter_Casablanca_letto_Indoor.pdf",
+        "source_access_record": "output/review/highpoly-types/bed01/official-source/source-access-record.json",
+        "official_2d_3d_bim_status": "manufacturer_login_required_not_acquired",
+        "official_cad_used": false
+      }
+    },
+    "sxb010": {
+      "display_name": "Hunter Douglas 25 mm Venetian blind direction / project sxb010",
+      "ifc_type_name": "sxb010",
+      "representative_global_id": "1O9JRXCI56VRUbpuLJy86Z",
+      "expected_instance_global_ids": [
+        "1O9JRXCI56VRUbpuLJy86Z"
+      ],
+      "profile_source": "isolated_untyped_legacy_proxy_projection; owner-confirmed_hunter_douglas_25mm_family_direction; exact_sku_and_official_project_cad_not_confirmed",
+      "silhouette_simplify_mm": 0.35,
+      "semantic_sections": {
+        "plan": [],
+        "front": [],
+        "side": []
+      },
+      "semantic_view_axes": {
+        "plan": [0, 2],
+        "front": [0, 1],
+        "side": [2, 1]
+      },
+      "required_semantics": [
+        "25_mm_aluminium_venetian_slat_field",
+        "headrail_and_bottom_rail",
+        "ladder_tapes_or_cords",
+        "project_width_height_and_depth_not_official_shop_dimensions"
+      ],
+      "drawing_source": {
+        "source_kind": "geometry_derived_simplified_proxy",
+        "source_label_zh": "基于原始高模几何生成的简化图纸表达",
+        "source_label_en": "simplified drawing representation derived from the original high-poly geometry",
+        "official_cad_used": false,
+        "third_party_cad_used": false
+      },
+      "official_reference": {
+        "source_id": "HUNTER-DOUGLAS-SXB010-FAMILY-DIRECTION-001",
+        "source_kind": "owner_direction_and_manufacturer_family_materials_identity_only",
+        "manufacturer": "Hunter Douglas",
+        "family": "16/25 mm Venetian blinds",
+        "project_object_code": "sxb010",
+        "scope": "owner-confirmed Hunter Douglas 25 mm Venetian blind family and colour direction only; exact SKU, control system, finish code and project shop dimensions pending; not a project shop drawing and not official CAD geometry",
+        "product_page": "https://www.hunterdouglas.cn/product/venetian-blind/16mm-25mm-venetian-blinds",
+        "technical_brochure": "https://www.hunterdouglasdam.eu/m/39189f4b3bd19d3b/original/Brochure_VenetianWoodBlinds_EN.pdf",
+        "source_access_record": "output/review/highpoly-types/sxb010/official-source/source-access-record.json",
+        "official_project_cad_status": "not_published_on_verified_manufacturer_surfaces",
+        "official_cad_used": false
+      }
+    },
+    "cha02": {
+      "display_name": "RODA Orson 002 director lounge chair / project CHA02",
+      "ifc_type_name": "CHA02",
+      "representative_global_id": "3YoxxZCgbF3Ap7gztAKkcs",
+      "expected_instance_global_ids": [
+        "1GkE2YZ316gQw10Ev5DZOp",
+        "3YoxxZCgbF3Ap7gztAKkcs"
+      ],
+      "profile_source": "isolated_highpoly_projection; exact_roda_orson_002_identity_and_dimensions_archived; official_2d_3d_reserved_area_authentication_required_not_acquired",
+      "silhouette_simplify_mm": 0.5,
+      "semantic_sections": {
+        "plan": [],
+        "front": [],
+        "side": []
+      },
+      "required_semantics": [
+        "foldable_director_lounge_chair",
+        "teak_frame_and_cross_braces",
+        "Batyline_seat_back_and_side_panels",
+        "official_660x600x780_mm_identity_without_geometry_fitting"
+      ],
+      "drawing_source": {
+        "source_kind": "geometry_derived_simplified_proxy",
+        "source_label_zh": "基于原始高模几何生成的简化图纸表达",
+        "source_label_en": "simplified drawing representation derived from the original high-poly geometry",
+        "official_cad_used": false,
+        "third_party_cad_used": false
+      },
+      "official_reference": {
+        "source_id": "RODA-ORSON-002-CHA02-OFFICIAL-IDENTITY-001",
+        "source_kind": "manufacturer_product_page_and_fact_sheet_identity_only",
+        "manufacturer": "RODA",
+        "family": "Orson",
+        "model": "ORSON 002",
+        "designer": "Gordon Guillaumier",
+        "project_type_code": "CHA02",
+        "official_width_depth_height_mm": [660, 600, 780],
+        "scope": "exact RODA ORSON 002 manufacturer identity and dimensions; official 2D/3D downloads require reserved-area authentication and were not acquired; not a project shop drawing and not official CAD geometry",
+        "product_page": "https://www.rodaonline.com/en/collections/orson/",
+        "fact_sheet": "https://www.rodaonline.com/wp-content/uploads/RODA_ORSON_002_director_lounge_chair.pdf",
+        "source_access_record": "output/review/highpoly-types/cha02/official-source/source-access-record.json",
+        "official_2d_3d_status": "reserved_area_authentication_required_not_acquired",
+        "official_cad_used": false
+      }
+    },
+    "marilyn-01": {
+      "display_name": "Baxter Marilyn bergere armchair / project Marilyn 01",
+      "ifc_type_name": "Marilyn 01",
+      "representative_global_id": "3l2Ji4k2H9oOTDGWYUq7uV",
+      "expected_instance_global_ids": ["3l2Ji4k2H9oOTDGWYUq7uV"],
+      "profile_source": "isolated_highpoly_projection; exact_baxter_native_dwg_and_3ds_archived; official_vector_pdf_and_measurement_svg_cross_check",
+      "silhouette_simplify_mm": 0.45,
+      "semantic_sections": {"plan": [], "front": [], "side": []},
+      "required_semantics": ["bergere_high_back_shell", "upholstered_seat_and_back", "swivel_pedestal_base", "official_860x1000x940_mm_identity", "stale_ifc_description_height_disclosed"],
+      "drawing_source": {
+        "source_kind": "native_dwg",
+        "source_label_zh": "基于 Baxter 精确型号原生 DWG 的官方图纸表达",
+        "source_label_en": "official drawing representation from exact Baxter model native DWG",
+        "official_cad_used": true,
+        "third_party_cad_used": false
+      },
+      "official_reference": {
+        "source_id": "BAXTER-MARILYN-BERGERE-OFFICIAL-NATIVE-CAD-001",
+        "source_kind": "manufacturer_native_dwg_exact_model_3ds_vector_pdf_and_measurement_svg",
+        "manufacturer": "Baxter",
+        "family": "Marilyn",
+        "designer": "Draga & Aurel",
+        "project_type_code": "Marilyn 01",
+        "resolved_variant": "bergere armchair with swivel base, 86 x 100 x 94 cm",
+        "scope": "exact Baxter Marilyn bergere 86 x 100 x 94 cm family CAD reference; not a project shop drawing",
+        "product_page": "https://www.baxter.it/en/products/marilyn-sofas-and-armchairs",
+        "native_zip": "https://dam.baxter.it/asset/9b02ac3a-7166-40df-9acc-1e8a2ad46705/Baxter_Marilyn_Armchair_2D_3D.zip",
+        "technical_sheet": "https://productsbook.baxter.it/product-pdf/Marilyn_divani-e-poltrone_TechnicalSheet.pdf?code=MARI&lang=eng&sector=divani-e-poltrone&kind=indoor",
+        "source_access_record": "output/review/highpoly-types/marilyn-01/official-source/source-access-record.json",
+        "official_source_revalidation": "output/review/highpoly-types/marilyn-01/official-source/official-source-revalidation.json",
+        "official_cad_used": true
+      }
+    },
+    "trap01": {
+      "display_name": "Geberit space-saving dip tube trap 151.116.11.1 / project TRAP01",
+      "ifc_type_name": "TRAP01",
+      "representative_global_id": "2Ak2ma0lvBEA49UpplzUqi",
+      "expected_instance_global_ids": ["2Ak2ma0lvBEA49UpplzUqi"],
+      "profile_source": "isolated_highpoly_projection; exact_geberit_151_116_11_1_native_G_A_L_P_dwg_archived; adjustable_family_default_configuration_not_forced_into_shortened_project_instance",
+      "silhouette_simplify_mm": 0.18,
+      "semantic_sections": {"plan": [], "front": [], "side": []},
+      "required_semantics": [
+        "space_saving_horizontal_outlet_trap",
+        "d32_fixed_body_width",
+        "adjustable_horizontal_and_vertical_tubes",
+        "configured_project_instance_not_default_full_extension",
+        "official_family_CAD_archived_but_not_force_fitted"
+      ],
+      "drawing_source": {
+        "source_kind": "geometry_derived_simplified_proxy",
+        "source_label_zh": "基于原始高模几何生成的简化图纸表达",
+        "source_label_en": "simplified drawing representation derived from the original high-poly geometry",
+        "configuration_note": "The proxy preserves the shortened project installation configuration; it does not force-fit the official default family extension.",
+        "official_cad_acquired": true,
+        "official_cad_used_as_representation": false,
+        "third_party_cad_used": false
+      },
+      "official_reference": {
+        "source_id": "GEBERIT-151-116-11-1-TRAP01-OFFICIAL-NATIVE-CAD-001",
+        "source_kind": "exact_manufacturer_native_G_A_L_P_DWG_and_product_data_sheet",
+        "manufacturer": "Geberit",
+        "family": "dip tube trap for washbasin, space-saving model, horizontal outlet",
+        "article_number": "151.116.11.1",
+        "project_type_code": "TRAP01",
+        "scope": "exact Geberit 151.116.11.1 adjustable family reference; project instance is a shortened installation configuration; not a project shop drawing",
+        "product_page": "https://catalog.geberit.us/en-US/product/PRO_185224",
+        "product_data_sheet": "https://catalog.geberit.us/api/pdf/product?brand=geberit&locale=en-US&productId=PRO_185224",
+        "source_access_record": "output/review/highpoly-types/trap01/official-source/source-access-record.json",
+        "official_cad_acquired": true,
+        "official_cad_used_as_representation": false
+      }
+    },
+    "marilyn-02": {
+      "display_name": "Baxter Marilyn pouf / project Marilyn 02",
+      "ifc_type_name": "Marilyn 02",
+      "representative_global_id": "1THxa7p7n97w$wtLn4THjz",
+      "expected_instance_global_ids": ["1THxa7p7n97w$wtLn4THjz"],
+      "profile_source": "isolated_highpoly_projection; exact_baxter_native_dwg_and_pouf_3ds_archived; official_product_page_and_measurement_svg_cross_check",
+      "silhouette_simplify_mm": 0.4,
+      "semantic_sections": {"plan": [], "front": [], "side": []},
+      "required_semantics": ["upholstered_pouf_shell", "swivel_pedestal_base", "official_800x620x450_mm_identity", "exact_native_dwg_pouf_view_clusters"],
+      "drawing_source": {
+        "source_kind": "native_dwg",
+        "source_label_zh": "基于 Baxter 精确型号原生 DWG 的官方图纸表达",
+        "source_label_en": "official drawing representation from exact Baxter model native DWG",
+        "official_cad_used": true,
+        "third_party_cad_used": false
+      },
+      "official_reference": {
+        "source_id": "BAXTER-MARILYN-POUF-OFFICIAL-NATIVE-CAD-001",
+        "source_kind": "manufacturer_native_dwg_exact_model_3ds_product_page_and_measurement_svg",
+        "manufacturer": "Baxter",
+        "family": "Marilyn",
+        "designer": "Draga & Aurel",
+        "project_type_code": "Marilyn 02",
+        "resolved_variant": "pouf with swivel base, 80 x 62 x 45 cm",
+        "scope": "exact Baxter Marilyn pouf with swivel base 80 x 62 x 45 cm family CAD reference; not a project shop drawing",
+        "product_page": "https://www.baxter.it/en/products/marilyn-sofas-and-armchairs",
+        "native_zip": "https://dam.baxter.it/asset/9b02ac3a-7166-40df-9acc-1e8a2ad46705/Baxter_Marilyn_Armchair_2D_3D.zip",
+        "technical_sheet": "https://productsbook.baxter.it/product-pdf/Marilyn_divani-e-poltrone_TechnicalSheet.pdf?code=MARI&lang=eng&sector=divani-e-poltrone&kind=indoor",
+        "source_access_record": "output/review/highpoly-types/marilyn-02/official-source/source-access-record.json",
+        "official_source_revalidation": "output/review/highpoly-types/marilyn-02/official-source/official-source-revalidation.json",
+        "official_cad_used": true
+      }
+    },
+    "fau02": {
+      "display_name": "Falper floor-mounted basin spout / project FAU02",
+      "ifc_type_name": "FAU02",
+      "representative_global_id": "36ZX3QPyD7SvlXsDKMP8rY",
+      "expected_instance_global_ids": ["36ZX3QPyD7SvlXsDKMP8rY"],
+      "profile_source": "isolated_highpoly_projection; official_falper_cilindro_GH2_2d_technical_dwg_3d_dwg_and_pdf_archived_as_nearest_family_candidate; exact_project_article_rejected_by_mechanical_dimension_gate",
+      "silhouette_simplify_mm": 0.18,
+      "semantic_sections": {"plan": [], "front": [], "side": []},
+      "required_semantics": [
+        "floor_mounted_basin_spout",
+        "short_horizontal_neck_and_angled_outlet",
+        "round_stem_and_floor_flange",
+        "official_GH2_native_CAD_archived_but_not_used_as_project_representation",
+        "exact_project_article_unresolved_due_to_dimension_mismatch"
+      ],
+      "drawing_source": {
+        "source_kind": "geometry_derived_simplified_proxy",
+        "source_label_zh": "基于原始高模几何生成的简化图纸表达",
+        "source_label_en": "simplified drawing representation derived from the original high-poly geometry",
+        "official_cad_acquired": true,
+        "official_cad_used": false,
+        "official_cad_used_as_representation": false,
+        "third_party_cad_used": false
+      },
+      "official_reference": {
+        "source_id": "FALPER-CILINDRO-GH2-FAU02-NEAREST-FAMILY-CANDIDATE-001",
+        "source_kind": "manufacturer_native_2d_technical_dwg_3d_dwg_and_pdf_nearest_family_candidate_only",
+        "manufacturer": "Falper",
+        "family": "Cilindro",
+        "nearest_official_candidate": "GH2",
+        "project_type_code": "FAU02",
+        "scope": "official Falper Cilindro GH2 nearest family candidate only; project FAU02 exact article is not mechanically established; GH2 CAD is not used as representation and is not a project shop drawing",
+        "product_page": "https://falper.it/rubinetteria-cilindro/",
+        "technical_dwg_zip": "https://falper.it/wp-content/uploads/2025/11/Rubinetti-cilindro-Scheda-tecnica-DWG.zip",
+        "autocad_2d_zip": "https://falper.it/wp-content/uploads/2025/11/Rubinetti-cilindro-Autocad-2D.zip",
+        "autocad_3d_zip": "https://falper.it/wp-content/uploads/2025/11/Rubinetti-cilindro-Autocad-3D.zip",
+        "technical_pdf_zip": "https://falper.it/wp-content/uploads/2025/11/Rubinetti-cilindro-Scheda-tecnica-PDF.zip",
+        "source_access_record": "output/review/highpoly-types/fau02/official-source/source-access-record.json",
+        "official_cad_acquired": true,
+        "official_cad_used_as_representation": false
+      }
+    },
+    "cha01": {
+      "display_name": "Baxter Colette armchair 57 x 60 x 73 cm / project CHA01",
+      "ifc_type_name": "CHA01",
+      "representative_global_id": "1luHljRzDAhPNXxTDNu7qB",
+      "expected_instance_global_ids": ["1luHljRzDAhPNXxTDNu7qB", "2tCmGkmFz2_Pg0jRjf3Nup"],
+      "profile_source": "isolated_highpoly_projection; exact_baxter_colette_armchair_identity_dimensions_measurement_svg_and_vector_pdf_archived; authenticated_native_2d_3d_bim_not_acquired",
+      "silhouette_simplify_mm": 0.45,
+      "semantic_sections": {"plan": [], "front": [], "side": []},
+      "required_semantics": ["upholstered_little_armchair_shell", "wengé_stained_ash_four_leg_base", "official_570x600x730_mm_identity", "two_project_instances_share_one_type_and_mapped_body"],
+      "drawing_source": {
+        "source_kind": "geometry_derived_simplified_proxy",
+        "source_label_zh": "基于原始高模几何生成的简化图纸表达",
+        "source_label_en": "simplified drawing representation derived from the original high-poly geometry",
+        "official_cad_used": false,
+        "third_party_cad_used": false
+      },
+      "official_reference": {
+        "source_id": "BAXTER-COLETTE-ARMCHAIR-CHA01-OFFICIAL-IDENTITY-001",
+        "source_kind": "manufacturer_product_page_vector_technical_pdfs_and_measurement_svg_identity_only",
+        "manufacturer": "Baxter",
+        "family": "Colette",
+        "model": "Armchair / Poltroncina 57 x 60 x 73 cm",
+        "designer": "Roberto Lazzeroni",
+        "project_type_code": "CHA01",
+        "official_width_depth_height_mm": [570, 600, 730],
+        "scope": "exact Baxter Colette armchair 57 x 60 x 73 cm manufacturer identity; authenticated 2D/3D/BIM not acquired; technical PDFs and measurement SVG are identity evidence only; not a project shop drawing or official CAD geometry",
+        "product_page": "https://www.baxter.it/en/products/colette-chairs",
+        "technical_sheet": "https://productsbook.baxter.it/product-pdf/Colette_sedie_TechnicalSheet.pdf?code=COLE&kind=indoor&lang=eng&sector=sedie",
+        "measurement_svg": "https://productsbook.baxter.it/models/measurements/COLEPOCO57.svg",
+        "source_access_record": "output/review/highpoly-types/cha01/official-source/source-access-record.json",
+        "official_2d_3d_bim_status": "baxter_login_required_not_acquired",
+        "official_cad_used": false
+      }
+    },
+    "tab02": {
+      "display_name": "RODA Bernardo 367 side table / project TAB02",
+      "ifc_type_name": "TAB02",
+      "representative_global_id": "2eX84IyLr8_e34nuOoRPLQ",
+      "expected_instance_global_ids": ["2eX84IyLr8_e34nuOoRPLQ"],
+      "profile_source": "isolated_highpoly_projection; exact_roda_bernardo_367_identity_and_dimensions_archived; official_2d_3d_reserved_area_authentication_required_not_acquired",
+      "silhouette_simplify_mm": 0.5,
+      "semantic_sections": {"plan": [], "front": [], "side": []},
+      "required_semantics": [
+        "square_500_mm_top",
+        "central_stainless_steel_pedestal",
+        "Simplon_stone_base_diameter_300_mm",
+        "official_500x500x670_mm_identity_without_geometry_fitting"
+      ],
+      "drawing_source": {
+        "source_kind": "geometry_derived_simplified_proxy",
+        "source_label_zh": "基于原始高模几何生成的简化图纸表达",
+        "source_label_en": "simplified drawing representation derived from the original high-poly geometry",
+        "official_cad_used": false,
+        "third_party_cad_used": false
+      },
+      "official_reference": {
+        "source_id": "RODA-BERNARDO-367-TAB02-OFFICIAL-IDENTITY-001",
+        "source_kind": "manufacturer_collection_page_and_catalogue_identity_only",
+        "manufacturer": "RODA",
+        "family": "Bernardo",
+        "model": "BERNARDO 367",
+        "designer": "Rodolfo Dordoni",
+        "project_type_code": "TAB02",
+        "official_width_depth_height_mm": [500, 500, 670],
+        "scope": "exact RODA BERNARDO 367 manufacturer identity and public-catalogue dimensions; official 2D/3D downloads require reserved-area authentication and were not acquired; not a project shop drawing and not official CAD geometry",
+        "product_page": "https://www.rodaonline.com/en/collections/bernardo/",
+        "catalogue": "https://www.rodaonline.com/wp-content/uploads/RODA_CATALOGUE_2024.pdf",
+        "source_access_record": "output/review/highpoly-types/tab02/official-source/source-access-record.json",
+        "official_2d_3d_status": "reserved_area_authentication_required_not_acquired",
+        "official_cad_used": false
+      }
+    },
+    "bst01": {
+      "display_name": "Baxter Ninfea bedside table / project BST01",
+      "ifc_type_name": "BST01",
+      "representative_global_id": "3eic1dzkn5heTIn4PhF37v",
+      "expected_instance_global_ids": ["3eic1dzkn5heTIn4PhF37v"],
+      "profile_source": "isolated_highpoly_projection; exact_baxter_ninfea_bedside_table_family_and_420x420x450_dimensions_archived; left_right_opening_variants_both_archived_project_side_unresolved; native_2d_3d_bim_login_required_not_acquired",
+      "silhouette_simplify_mm": 0.5,
+      "semantic_sections": {"plan": [], "front": [], "side": []},
+      "required_semantics": [
+        "single_project_BST01_representative",
+        "official_420x420x450_mm_ninfea_bedside_family_identity",
+        "left_and_right_opening_variants_not_conflated",
+        "actual_IFC_Body_399_031x399_032x450_mm_not_stretched"
+      ],
+      "drawing_source": {
+        "source_kind": "geometry_derived_simplified_proxy",
+        "source_label_zh": "基于原始高模几何生成的简化图纸表达",
+        "source_label_en": "simplified drawing representation derived from the original high-poly geometry",
+        "official_cad_used": false,
+        "third_party_cad_used": false
+      },
+      "official_reference": {
+        "source_id": "BAXTER-NINFEA-BST01-OFFICIAL-IDENTITY-001",
+        "source_kind": "manufacturer_product_page_technical_pdf_and_public_left_right_measurement_svgs_identity_only",
+        "manufacturer": "Baxter",
+        "family": "Ninfea",
+        "designer": "Pietro Russo",
+        "project_type_code": "BST01",
+        "official_width_depth_height_mm": [420, 420, 450],
+        "scope": "exact Baxter Ninfea bedside-table family and nominal 42 x 42 x 45 cm dimensions; official right- and left-opening public vectors both archived because the project type does not record opening side; native 2D/3D/BIM requires login and was not acquired; public PDF/SVG are not representation CAD geometry or a project shop drawing",
+        "product_page": "https://www.baxter.it/en/products/ninfea-tables-and-coffee-tables",
+        "technical_sheet": "https://productsbook.baxter.it/product-pdf/Ninfea_tavoli-e-tavolini_TechnicalSheet.pdf?code=NINF&kind=indoor&lang=eng&sector=tavoli-e-tavolini",
+        "right_opening_measurement_svg": "https://productsbook.baxter.it/models/measurements/NINFCLE40D.svg",
+        "left_opening_measurement_svg": "https://productsbook.baxter.it/models/measurements/NINFCLE40S.svg",
+        "source_access_record": "output/review/highpoly-types/bst01/official-source/source-access-record.json",
+        "official_2d_3d_bim_status": "baxter_login_required_not_acquired",
+        "official_cad_used": false
+      }
+    },
+    "bst02": {
+      "display_name": "Baxter Beside bedside table / project BST02",
+      "ifc_type_name": "BST02",
+      "representative_global_id": "3hA0vKpcn44u4Tsx4tqiUz",
+      "expected_instance_global_ids": ["3hA0vKpcn44u4Tsx4tqiUz"],
+      "profile_source": "isolated_highpoly_projection; exact_baxter_beside_55x58x35_identity_and_public_measurement_svg_archived; native_2d_3d_bim_login_required_not_acquired; project_body_height_discrepancy_preserved",
+      "silhouette_simplify_mm": 0.5,
+      "semantic_sections": {"plan": [], "front": [], "side": []},
+      "required_semantics": [
+        "single_project_BST02_representative",
+        "official_550x580x350_mm_family_identity",
+        "actual_IFC_Body_560x577_889x250_mm_not_stretched",
+        "official_measurement_SVG_evidence_not_CAD_representation_geometry"
+      ],
+      "drawing_source": {
+        "source_kind": "geometry_derived_simplified_proxy",
+        "source_label_zh": "基于原始高模几何生成的简化图纸表达",
+        "source_label_en": "simplified drawing representation derived from the original high-poly geometry",
+        "official_cad_used": false,
+        "third_party_cad_used": false
+      },
+      "official_reference": {
+        "source_id": "BAXTER-BESIDE-BST02-OFFICIAL-IDENTITY-001",
+        "source_kind": "manufacturer_product_page_technical_pdf_and_public_measurement_svg_identity_only",
+        "manufacturer": "Baxter",
+        "family": "Beside",
+        "designer": "Studiopepe",
+        "project_type_code": "BST02",
+        "official_width_depth_height_mm": [550, 580, 350],
+        "scope": "exact Baxter Beside 55 x 58 x 35 cm manufacturer identity and public measurement evidence; native 2D/3D/BIM requires login and was not acquired; public PDF/SVG are not representation CAD geometry or a project shop drawing; the 100 mm project Body height discrepancy is retained",
+        "product_page": "https://www.baxter.it/en/products/beside-tables-and-coffee-tables",
+        "technical_sheet": "https://productsbook.baxter.it/product-pdf/Beside_tavoli-e-tavolini_TechnicalSheet.pdf?code=BESI&kind=indoor&lang=eng&sector=tavoli-e-tavolini",
+        "measurement_svg": "https://productsbook.baxter.it/models/measurements/BESICOBS55.svg",
+        "source_access_record": "output/review/highpoly-types/bst02/official-source/source-access-record.json",
+        "official_2d_3d_bim_status": "baxter_login_required_not_acquired",
+        "official_cad_used": false
+      }
+    },
+    "street-h": {
+      "display_name": "antoniolupi Street sink-holder subcomponent / project STREET-H",
+      "ifc_type_name": "STREET-H",
+      "representative_global_id": "2ajpw0I9n1dBypfISg3ejX",
+      "expected_instance_global_ids": ["2ajpw0I9n1dBypfISg3ejX", "3PRBtW00j1D8r2Or5PTFdh"],
+      "profile_source": "isolated_highpoly_projection; project_registry_maps_STREET_H_to_antoniolupi_Street_parent; official_complete_parent_top_DXF_archived_and_rejected_as_component_representation",
+      "silhouette_simplify_mm": 0.35,
+      "semantic_sections": {"plan": [], "front": [], "side": []},
+      "required_semantics": [
+        "one_representative_of_two_identical_STREET_H_instances",
+        "300_x_150_x_100_mm_project_component_envelope",
+        "official_parent_Street_top_not_substituted",
+        "no_blue_line_in_project_representation"
+      ],
+      "drawing_source": {
+        "source_kind": "geometry_derived_simplified_proxy",
+        "source_label_zh": "基于原始高模几何生成的简化图纸表达",
+        "source_label_en": "simplified drawing representation derived from the original high-poly geometry",
+        "official_cad_acquired": true,
+        "official_cad_used": false,
+        "official_parent_family_cad_archived_as_rejected_reference": true,
+        "third_party_cad_used": false
+      },
+      "official_reference": {
+        "source_id": "ANTONIOLUPI-STREET-H-OFFICIAL-PARENT-FAMILY-001",
+        "source_kind": "manufacturer_product_page_technical_pdf_and_native_dxf_parent_family_evidence",
+        "manufacturer": "antoniolupi",
+        "family": "Street",
+        "project_component": "STREET-H / Sink holder",
+        "scope": "complete Street parent-top family identity and geometry evidence only; not exact STREET-H component CAD, not a project shop drawing and not representation geometry",
+        "product_page": "https://www.antoniolupi.it/en/products/sinks/street",
+        "official_cad_archive": "output/review/highpoly-types/street-h/official-source/ANTONIOLUPI-official-Street-2D-CAD.zip",
+        "official_native_dxf": "output/review/highpoly-types/street-h/official-source/AL_Street.dxf",
+        "source_access_record": "output/review/highpoly-types/street-h/official-source/source-access-record.json",
+        "official_product_cad_status": "official_complete_parent_top_dxf_acquired_STREET_H_component_match_rejected",
+        "official_product_cad_used": false
+      }
+    },
+    "wd01": {
+      "display_name": "Poliform Pivot + Senzafine custom wardrobe / project WD01",
+      "ifc_type_name": "WD01",
+      "representative_global_id": "2mPTt7$nvBSAn28I9NWt6T",
+      "expected_instance_global_ids": ["2mPTt7$nvBSAn28I9NWt6T"],
+      "profile_source": "isolated_highpoly_projection; official_Poliform_Pivot_and_Senzafine_system_identity_verified; gated_resources_and_exact_project_native_cad_not_acquired",
+      "silhouette_simplify_mm": 1.0,
+      "semantic_sections": {"plan": [], "front": [], "side": []},
+      "required_semantics": [
+        "single_project_WD01_representative",
+        "full_height_custom_wardrobe_and_pivot_system_envelope",
+        "door_frame_and_internal_division_linework",
+        "project_configuration_not_substituted_by_catalogue_example"
+      ],
+      "drawing_source": {
+        "source_kind": "geometry_derived_simplified_proxy",
+        "source_label_zh": "基于原始高模几何生成的简化图纸表达",
+        "source_label_en": "simplified drawing representation derived from the original high-poly geometry",
+        "official_cad_used": false,
+        "third_party_cad_used": false
+      },
+      "official_reference": {
+        "source_id": "POLIFORM-PIVOT-SENZAFINE-WD01-OFFICIAL-IDENTITY-001",
+        "source_kind": "manufacturer_product_pages_and_remote_technical_pdf_system_identity_only",
+        "manufacturer": "Poliform",
+        "family": "Pivot + Senzafine Wardrobe",
+        "project_type_code": "WD01",
+        "scope": "official manufacturer Pivot and Senzafine system identity and remote technical-document evidence only; the project 1202.879 x 673.524 x 2390.023 mm arrangement is a custom configuration, not exact official CAD geometry or a project shop drawing",
+        "pivot_product_page": "https://www.poliform.it/en/products/pivot/",
+        "senzafine_product_page": "https://www.poliform.it/en/products/senzafine-wardrobe/",
+        "pivot_technical_pdf": "https://www.poliform.it/wp-content/uploads/pdf/278373-pivot-poliform-en-us.pdf",
+        "source_access_record": "output/review/highpoly-types/wd01/official-source/source-access-record.json",
+        "official_native_cad_status": "gated_resource_download_no_public_exact_WD01_configuration_asset_located_not_acquired",
+        "official_native_cad_used": false
+      }
+    },
+    "wd02": {
+      "display_name": "Poliform Senzafine glass wardrobe / project WD02",
+      "ifc_type_name": "WD02",
+      "representative_global_id": "3yuXF4PtnBHgIXDlmXFJ$7",
+      "expected_instance_global_ids": ["3yuXF4PtnBHgIXDlmXFJ$7"],
+      "profile_source": "isolated_highpoly_projection; official_poliform_senzafine_modular_family_identity_and_project_registry_verified; gated_resources_and_exact_project_native_cad_not_acquired",
+      "silhouette_simplify_mm": 1.0,
+      "semantic_sections": {"plan": [], "front": [], "side": []},
+      "required_semantics": [
+        "single_project_WD02_representative",
+        "full_height_modular_glass_wardrobe_envelope",
+        "front_door_and_internal_division_linework",
+        "project_configuration_not_substituted_by_catalogue_example"
+      ],
+      "drawing_source": {
+        "source_kind": "geometry_derived_simplified_proxy",
+        "source_label_zh": "基于原始高模几何生成的简化图纸表达",
+        "source_label_en": "simplified drawing representation derived from the original high-poly geometry",
+        "official_cad_used": false,
+        "third_party_cad_used": false
+      },
+      "official_reference": {
+        "source_id": "POLIFORM-SENZAFINE-WD02-OFFICIAL-IDENTITY-001",
+        "source_kind": "manufacturer_product_page_and_project_identity_register_family_identity_only",
+        "manufacturer": "Poliform",
+        "family": "Senzafine Wardrobe",
+        "project_type_code": "WD02",
+        "scope": "official manufacturer and Senzafine modular wardrobe-family identity only; not an exact project configuration, not official CAD geometry and not a project shop drawing",
+        "product_page": "https://www.poliform.it/en/products/senzafine-wardrobe/",
+        "technical_catalog_route": "https://www.poliform.it/it/technical-catalog/",
+        "source_access_record": "output/review/highpoly-types/wd02/official-source/source-access-record.json",
+        "official_native_cad_status": "gated_resource_download_no_public_exact_WD02_asset_located_not_acquired",
+        "official_native_cad_used": false
+      }
+    },
+    "street": {
+      "display_name": "antoniolupi Street domestic-custom integrated washbasin top / project STREET",
+      "ifc_type_name": "STREET",
+      "representative_global_id": "1FgLPMw$5B4wBH2ySMkXE1",
+      "expected_instance_global_ids": ["1FgLPMw$5B4wBH2ySMkXE1"],
+      "profile_source": "isolated_highpoly_projection; official_Street_family_DXF_archived; exact_domestic_custom_1000x470x250_configuration_absent",
+      "silhouette_simplify_mm": 0.45,
+      "semantic_sections": {"plan": [], "front": [], "side": []},
+      "required_semantics": [
+        "single_domestic_custom_STREET_top",
+        "1000_x_470_x_250_mm_project_Body_envelope",
+        "integrated_basin_and_free_flow_drain_shape_preserved",
+        "official_1080_mm_standard_clusters_not_substituted"
+      ],
+      "drawing_source": {
+        "source_kind": "geometry_derived_simplified_proxy",
+        "source_label_zh": "基于原始高模几何生成的简化图纸表达",
+        "source_label_en": "simplified drawing representation derived from the original high-poly geometry",
+        "official_cad_acquired": true,
+        "official_cad_used": false,
+        "official_family_cad_archived_as_rejected_reference": true,
+        "third_party_cad_used": false
+      },
+      "official_reference": {
+        "source_id": "ANTONIOLUPI-STREET-DOMESTIC-CUSTOM-OFFICIAL-FAMILY-001",
+        "source_kind": "manufacturer_product_page_technical_pdf_and_native_dxf_family_evidence",
+        "manufacturer": "antoniolupi",
+        "family": "Street",
+        "project_type": "STREET / domestic-custom integrated washbasin top",
+        "scope": "official Street family evidence; exact domestic-custom 1000 x 470 x 250 mm configuration absent; not a project shop drawing and not representation geometry",
+        "product_page": "https://www.antoniolupi.it/en/products/sinks/street",
+        "official_cad_archive": "output/review/highpoly-types/street/official-source/ANTONIOLUPI-official-Street-2D-CAD.zip",
+        "official_native_dxf": "output/review/highpoly-types/street/official-source/AL_Street.dxf",
+        "configuration_audit": "output/review/highpoly-types/street/official-native-dxf-configuration-audit.json",
+        "source_access_record": "output/review/highpoly-types/street/official-source/source-access-record.json",
+        "official_product_cad_status": "official_family_DXF_acquired_domestic_custom_1000x470x250_configuration_not_present",
+        "official_product_cad_used": false
+      }
+    },
+    "gessi316-54093": {
+      "display_name": "Gessi316 Meccanica high counter basin spout / 54093 G000",
+      "ifc_type_name": "Gessi316 54093",
+      "representative_global_id": "1jM_suNMPAw8_nvZejQSnp",
+      "expected_instance_global_ids": ["1jM_suNMPAw8_nvZejQSnp"],
+      "profile_source": "isolated IFC Body projection cross-checked against exact official 54093 G000 native DWG, technical vector PDF and public product API",
+      "silhouette_simplify_mm": 0.35,
+      "semantic_sections": {"plan": [], "front": [], "side": []},
+      "required_semantics": [
+        "single_project_Gessi316_54093_representative",
+        "high_counter_basin_spout_not_54091_medium_variant",
+        "exact_G000_configuration_not_G001_or_A004",
+        "50_mm_width_190_mm_reach_273_mm_height",
+        "actual_IFC_Body_geometry_not_stretched"
+      ],
+      "drawing_source": {
+        "source_kind": "native_dwg",
+        "source_label_zh": "Gessi 官方精确型号 54093 G000 原生 DWG 图纸表达",
+        "source_label_en": "drawing representation from the exact Gessi 54093 G000 official native DWG",
+        "source_dwg": "output/review/highpoly-types/gessi316-54093/official-source/GPF5409300000G000_3.dwg",
+        "source_dwg_sha256": "a9308fc8498d34c8cf2f68fd28aaf90b11e62bfc59424e0a5a3ac7f0d28d5047",
+        "official_cad_used": true,
+        "third_party_cad_used": false
+      },
+      "official_reference": {
+        "source_id": "GESSI316-54093-G000-OFFICIAL-NATIVE-DWG-001",
+        "source_kind": "manufacturer_exact_native_dwg",
+        "manufacturer": "Gessi",
+        "family": "Gessi316 Meccanica",
+        "article_number": "54093",
+        "configuration": "G000",
+        "scope": "official Gessi exact 54093 G000 family reference; not a project shop drawing",
+        "product_page": "https://areapro.gessi.com/en/product/54093",
+        "native_dwg_zip": "https://gessistorage.blob.core.windows.net/zwa/GPF5409300000G000_arc.zip",
+        "technical_drawing_pdf": "https://gessistorage.blob.core.windows.net/zc4/GPF5409300000G000_1.pdf",
+        "source_access_record": "output/review/highpoly-types/gessi316-54093/official-source/source-access-record.json",
+        "official_product_cad_status": "public_official_api_exact_54093_g000_native_dwg_acquired",
+        "official_product_cad_used": true
+      }
+    },
+    "geberit-154-154-00-1-f": {
+      "display_name": "Geberit CleanLine 154.154.00.1 / project flange component .F",
+      "ifc_type_name": "Geberit 154.154.00.1.F",
+      "representative_global_id": "2jjNIn9gHBYwNSWwlM5T_i",
+      "expected_instance_global_ids": ["2jjNIn9gHBYwNSWwlM5T_i"],
+      "profile_source": "isolated_highpoly_projection; exact_official_parent_article_154_154_00_1_page_and_vector_eps_archived; project_dot_F_flange_decomposition_not_separately_published_manufacturer_article; native_component_cad_not_acquired",
+      "silhouette_simplify_mm": 0.25,
+      "semantic_sections": {"plan": [], "front": [], "side": []},
+      "required_semantics": [
+        "single_project_flange_component_representative",
+        "flange_subcomponent_not_complete_154_154_00_1_installation_set",
+        "project_IFC_Body_envelope_88_by_210_by_105_mm",
+        "parent_product_EPS_not_used_as_component_representation_geometry"
+      ],
+      "drawing_source": {
+        "source_kind": "geometry_derived_simplified_proxy",
+        "source_label_zh": "基于原始高模几何生成的简化图纸表达",
+        "source_label_en": "simplified drawing representation derived from the original high-poly geometry",
+        "official_cad_used": false,
+        "third_party_cad_used": false
+      },
+      "official_reference": {
+        "source_id": "GEBERIT-154-154-00-1-F-PARENT-EVIDENCE-001",
+        "source_kind": "manufacturer_parent_product_page_and_vector_eps_component_relationship_evidence_only",
+        "manufacturer": "Geberit",
+        "family": "CleanLine shower channel installation set",
+        "parent_article_number": "154.154.00.1",
+        "project_component_code": "154.154.00.1.F",
+        "project_component_role": "Flange",
+        "scope": "project-model flange subcomponent of the exact Geberit 154.154.00.1 parent installation set; .F is a project authoring decomposition label, not a separately published manufacturer article; parent EPS is not component CAD geometry or a project shop drawing",
+        "product_page": "https://catalog.geberit.co.uk/en-GB/product/PRO_199058",
+        "source_access_record": "output/review/highpoly-types/geberit-154-154-00-1-f/official-source/source-access-record.json",
+        "official_component_cad_status": "not_separately_published_parent_cadDrawings_empty_native_parent_DWG_urls_404",
+        "official_vector_eps_archived": true,
+        "official_component_cad_used": false
+      }
+    },
+    "gessi316-54038": {
+      "display_name": "Gessi316 two-way built-in shower mixer external parts / 54038",
+      "ifc_type_name": "Gessi316 54038",
+      "representative_global_id": "245NU$zZL0d9tYTVwwBdk$",
+      "expected_instance_global_ids": [
+        "1sgpvCENf4xQiaypKWW2JC",
+        "245NU$zZL0d9tYTVwwBdk$"
+      ],
+      "profile_source": "isolated IFC Body projection cross-checked against exact official 54038 native DWG, technical vector PDF and public product API",
+      "silhouette_simplify_mm": 0.35,
+      "semantic_sections": {"plan": [], "front": [], "side": []},
+      "required_semantics": [
+        "two_way_built_in_shower_mixer_external_parts",
+        "diverter_water_outlet_handshower_hook_hose_and_handshower",
+        "exact_article_54038_not_adjacent_product_CAD",
+        "actual_IFC_Body_geometry_not_stretched",
+        "full_hose_vertical_envelope_difference_disclosed"
+      ],
+      "drawing_source": {
+        "source_kind": "native_dwg",
+        "source_label_zh": "Gessi 官方精确型号 54038 原生 DWG 图纸表达",
+        "source_label_en": "drawing representation from the exact Gessi 54038 official native DWG",
+        "source_dwg": "output/review/highpoly-types/gessi316-54038/official-source/GPF5403800000G000_3.dwg",
+        "source_dwg_sha256": "2c56b532bbbb78e5668050d1a7b52a7d545153a85a05efc377c7a651890897f1",
+        "official_cad_used": true,
+        "third_party_cad_used": false
+      },
+      "official_reference": {
+        "source_id": "GESSI316-54038-OFFICIAL-NATIVE-DWG-001",
+        "source_kind": "manufacturer_exact_native_dwg",
+        "manufacturer": "Gessi",
+        "family": "Gessi316",
+        "article_number": "54038",
+        "scope": "official Gessi exact 54038 family reference and 54139_54038 article combination; not a project shop drawing",
+        "product_page": "https://areapro.gessi.com/en/product/54038",
+        "native_dwg_zip": "https://gessistorage.blob.core.windows.net/zwa/GPF5403800000G000_arc.zip",
+        "technical_drawing_pdf": "https://gessistorage.blob.core.windows.net/zc4/GPF5403800000G000_1.pdf",
+        "source_access_record": "output/review/highpoly-types/gessi316-54038/official-source/source-access-record.json",
+        "official_product_cad_status": "public_official_api_exact_54038_native_dwg_acquired",
+        "official_product_cad_used": true
+      }
+    },
+    "gessi316-54145": {
+      "display_name": "Gessi316 Meccanica wall-mounted adjustable headshower / 54145 G000",
+      "ifc_type_name": "Gessi316 54145",
+      "representative_global_id": "3jT4sCgpHC98VSIUdGUNYH",
+      "expected_instance_global_ids": ["3jT4sCgpHC98VSIUdGUNYH"],
+      "profile_source": "isolated IFC Body projection cross-checked against exact official 54145 G000 native DWG, technical vector PDF and public product API",
+      "silhouette_simplify_mm": 0.35,
+      "semantic_sections": {"plan": [], "front": [], "side": []},
+      "required_semantics": [
+        "single_project_Gessi316_54145_representative",
+        "wall_mounted_adjustable_headshower_not_ceiling_mounted_54146",
+        "exact_G000_configuration_not_G001",
+        "600_mm_reach_300_mm_round_head",
+        "actual_IFC_Body_geometry_not_stretched"
+      ],
+      "drawing_source": {
+        "source_kind": "native_dwg",
+        "source_label_zh": "Gessi 官方精确型号 54145 G000 原生 DWG 图纸表达",
+        "source_label_en": "drawing representation from the exact Gessi 54145 G000 official native DWG",
+        "source_dwg": "output/review/highpoly-types/gessi316-54145/official-source/GPF5414500000G000_3.dwg",
+        "source_dwg_sha256": "9978b68468a61875acb0736aab45a62a98efadfd6be61d347e7ecaa94e08fd09",
+        "official_cad_used": true,
+        "third_party_cad_used": false
+      },
+      "official_reference": {
+        "source_id": "GESSI316-54145-G000-OFFICIAL-NATIVE-DWG-001",
+        "source_kind": "manufacturer_exact_native_dwg",
+        "manufacturer": "Gessi",
+        "family": "Gessi316 Meccanica",
+        "article_number": "54145",
+        "configuration": "G000",
+        "scope": "official Gessi exact 54145 G000 family reference; not a project shop drawing",
+        "product_page": "https://areapro.gessi.com/en/product/54145",
+        "native_dwg_zip": "https://gessistorage.blob.core.windows.net/zwa/GPF5414500000G000_arc.zip",
+        "technical_drawing_pdf": "https://gessistorage.blob.core.windows.net/zc4/GPF5414500000G000_1.pdf",
+        "source_access_record": "output/review/highpoly-types/gessi316-54145/official-source/source-access-record.json",
+        "official_product_cad_status": "public_official_api_exact_54145_g000_native_dwg_acquired",
+        "official_product_cad_used": true
+      }
+    },
+    "gessi316-54146": {
+      "display_name": "Gessi316 Meccanica ceiling-mounted adjustable headshower / 54146 G000",
+      "ifc_type_name": "Gessi316 54146",
+      "representative_global_id": "04DLh1Jk9Dcu9ibcaE0id8",
+      "expected_instance_global_ids": ["04DLh1Jk9Dcu9ibcaE0id8"],
+      "profile_source": "isolated IFC Body projection cross-checked against exact official 54146 G000 native DWG, technical vector PDF and public product API",
+      "silhouette_simplify_mm": 0.35,
+      "semantic_sections": {"plan": [], "front": [], "side": []},
+      "required_semantics": [
+        "single_project_Gessi316_54146_representative",
+        "ceiling_mounted_adjustable_headshower_not_wall_mounted_54145",
+        "exact_G000_configuration_not_G001",
+        "300_mm_round_head_276_mm_nominal_height",
+        "actual_IFC_Body_geometry_not_stretched"
+      ],
+      "drawing_source": {
+        "source_kind": "native_dwg",
+        "source_label_zh": "Gessi 官方精确型号 54146 G000 原生 DWG 图纸表达",
+        "source_label_en": "drawing representation from the exact Gessi 54146 G000 official native DWG",
+        "source_dwg": "output/review/highpoly-types/gessi316-54146/official-source/GPF5414600000G000_3.dwg",
+        "source_dwg_sha256": "c8ddb90f61565d5273a32574f777812bbb1d9ef33e2b98479f1e7c381e69950d",
+        "official_cad_used": true,
+        "third_party_cad_used": false
+      },
+      "official_reference": {
+        "source_id": "GESSI316-54146-G000-OFFICIAL-NATIVE-DWG-001",
+        "source_kind": "manufacturer_exact_native_dwg",
+        "manufacturer": "Gessi",
+        "family": "Gessi316 Meccanica",
+        "article_number": "54146",
+        "configuration": "G000",
+        "scope": "official Gessi exact 54146 G000 family reference; not a project shop drawing",
+        "product_page": "https://areapro.gessi.com/en/product/54146",
+        "native_dwg_zip": "https://gessistorage.blob.core.windows.net/zwa/GPF5414600000G000_arc.zip",
+        "technical_drawing_pdf": "https://gessistorage.blob.core.windows.net/zc4/GPF5414600000G000_1.pdf",
+        "source_access_record": "output/review/highpoly-types/gessi316-54146/official-source/source-access-record.json",
+        "official_product_cad_status": "public_official_api_exact_54146_g000_native_dwg_acquired",
+        "official_product_cad_used": true
+      }
+    },
+    "electric-flue-check-valve": {
+      "display_name": "Electric flue check valve / unresolved project proxy",
+      "ifc_type_name": "Electric flue check valve",
+      "representative_global_id": "1faflkXXH6M9cnYPE9Liir",
+      "expected_instance_global_ids": ["1faflkXXH6M9cnYPE9Liir"],
+      "profile_source": "isolated_highpoly_projection; project_IFC_name_and_geometry_only; manufacturer_and_model_unresolved; no_official_CAD_match",
+      "silhouette_simplify_mm": 0.35,
+      "semantic_sections": {"plan": [], "front": [], "side": []},
+      "required_semantics": [
+        "single_untyped_project_proxy_only",
+        "spherical_body_opposed_collars_mounting_plate_and_actuator_box",
+        "manufacturer_model_and_system_relationship_unresolved",
+        "actual_IFC_Body_geometry_not_stretched"
+      ],
+      "drawing_source": {
+        "source_kind": "geometry_derived_simplified_proxy",
+        "source_label_zh": "基于原始高模几何生成的简化图纸表达",
+        "source_label_en": "simplified drawing representation derived from the original high-poly geometry",
+        "official_cad_used": false,
+        "third_party_cad_used": false
+      },
+      "official_reference": {
+        "source_id": "ELECTRIC-FLUE-CHECK-VALVE-PROJECT-EVIDENCE-001",
+        "source_kind": "project_ifc_identity_and_geometry_boundary_only",
+        "manufacturer": "unresolved_from_project_IFC",
+        "family": "unresolved_from_project_IFC",
+        "article_number": "not_provided",
+        "scope": "the project IFC supplies only a generic object name and observable geometry; manufacturer, model, served appliance, duct/system relationship, power/control and installation conditions remain unresolved; no manufacturer CAD is attributed or used",
+        "source_access_record": "output/review/highpoly-types/electric-flue-check-valve/official-source/source-access-record.json",
+        "official_product_cad_status": "manufacturer_and_model_unresolved_no_exact_official_CAD_match",
+        "official_product_cad_used": false
+      }
+    },
+    "wd03": {
+      "display_name": "Poliform Senzafine wardrobe / project WD03",
+      "ifc_type_name": "WD03",
+      "representative_global_id": "3cmikd9MTB$egM5KQaNgUf",
+      "expected_instance_global_ids": ["3cmikd9MTB$egM5KQaNgUf"],
+      "profile_source": "isolated_highpoly_projection; official_poliform_senzafine_modular_family_identity_verified; gated_resources_and_exact_project_native_cad_not_acquired",
+      "silhouette_simplify_mm": 1.0,
+      "semantic_sections": {"plan": [], "front": [], "side": []},
+      "required_semantics": [
+        "single_project_WD03_representative",
+        "full_height_modular_wardrobe_envelope",
+        "front_door_and_internal_division_linework",
+        "project_configuration_not_substituted_by_catalogue_example"
+      ],
+      "drawing_source": {
+        "source_kind": "geometry_derived_simplified_proxy",
+        "source_label_zh": "基于原始高模几何生成的简化图纸表达",
+        "source_label_en": "simplified drawing representation derived from the original high-poly geometry",
+        "official_cad_used": false,
+        "third_party_cad_used": false
+      },
+      "official_reference": {
+        "source_id": "POLIFORM-SENZAFINE-WD03-OFFICIAL-IDENTITY-001",
+        "source_kind": "manufacturer_product_page_family_identity_only",
+        "manufacturer": "Poliform",
+        "family": "Senzafine Wardrobe",
+        "project_type_code": "WD03",
+        "scope": "official manufacturer and Senzafine modular wardrobe-family identity only; not an exact project configuration, not official CAD geometry and not a project shop drawing",
+        "product_page": "https://www.poliform.it/en/products/senzafine-wardrobe/",
+        "technical_catalog_route": "https://www.poliform.it/it/technical-catalog/",
+        "source_access_record": "output/review/highpoly-types/wd03/official-source/source-access-record.json",
+        "official_native_cad_status": "gated_resource_download_no_public_exact_WD03_asset_located_not_acquired",
+        "official_native_cad_used": false
+      }
     }
   }
 }

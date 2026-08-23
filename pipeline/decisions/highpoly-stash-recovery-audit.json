@@ -1,0 +1,221 @@
+{
+  "schema_version": 1,
+  "generator": "pipeline/scripts/audit_highpoly_stash_recovery.py",
+  "recovery_strategy": "read_only_extract_untracked_parent_then_supersede_with_audited_packages",
+  "top_level_stash_command_performed": null,
+  "stash_apply_performed": false,
+  "stash_pop_performed": false,
+  "stash_drop_performed": false,
+  "stash_mutation_performed": false,
+  "protected_other_task_stash": {
+    "ref_observed_from_stash_list_only": "stash@{0}",
+    "commit": "f52a1c8a09386001ce1f61ddf460e0e9cc9bfdd0",
+    "subject": "On main: WIP main: Libelle background studies from other task",
+    "content_inspected": false,
+    "mutated": false
+  },
+  "source_stash": {
+    "commit": "8620d0cd0ee91f0f6694b98d5099fb518aa65aaa",
+    "ref": "stash@{1}",
+    "subject": "On main: WIP main: superseded highpoly review candidates"
+  },
+  "source_untracked_tree": "8620d0cd0ee91f0f6694b98d5099fb518aa65aaa^3",
+  "tracked_delta_not_restored": [
+    {
+      "status": "A",
+      "path": "output/images/libelle-background-studies/libelle-preview-warm-silver-white.png"
+    },
+    {
+      "status": "A",
+      "path": "output/images/libelle-background-studies/libelle-scene-transparent-background.png"
+    }
+  ],
+  "tracked_delta_reason": "Libelle background images belong to another task; applying the stash would violate task isolation.",
+  "untracked_snapshot": [
+    {
+      "mode": "100644",
+      "object_type": "blob",
+      "stash_blob_oid": "eec7f36708914c0e7b5703d63d1b8f56f11a5865",
+      "path": "output/review/highpoly-types/README.md",
+      "current_path": "output/review/highpoly-types/README.md",
+      "successor_mapping_used": false,
+      "current_exists": true,
+      "current_blob_oid": "d1125033c1b6c9ca6a0c19d4f2cabe00c7734dda",
+      "current_sha256": "21c2c187aab1ddd4a0de8f2c8b5184afc4de17ef860b3adedcd22d1c415cf494",
+      "recovery_state": "recovered_and_superseded_by_audited_package"
+    },
+    {
+      "mode": "100644",
+      "object_type": "blob",
+      "stash_blob_oid": "e4f27d26fbcdc18935150c8eb50f607e1e4d7850",
+      "path": "output/review/highpoly-types/falper-sorgente/front.svg",
+      "current_path": "output/review/highpoly-types/falper-sorgente/front.svg",
+      "successor_mapping_used": false,
+      "current_exists": true,
+      "current_blob_oid": "946046caa2e90d689e49bac58988b523bc1daf6e",
+      "current_sha256": "6cc2455acff345c4b513b57d8a5e9acd91c5524b00e4b83dcec8196d560d607a",
+      "recovery_state": "recovered_and_superseded_by_audited_package"
+    },
+    {
+      "mode": "100644",
+      "object_type": "blob",
+      "stash_blob_oid": "513e41bfb9be6caf8878ca32620e8f1a57a0cad3",
+      "path": "output/review/highpoly-types/falper-sorgente/manifest.json",
+      "current_path": "output/review/highpoly-types/falper-sorgente/manifest.json",
+      "successor_mapping_used": false,
+      "current_exists": true,
+      "current_blob_oid": "e50f5b7bacbfc45e7d6095e2719beaa2c8a5523d",
+      "current_sha256": "39bffa9024bebe4ea665b55853cfae5675cad2c6cbbbe2af18d25939a830c86a",
+      "recovery_state": "recovered_and_superseded_by_audited_package"
+    },
+    {
+      "mode": "100644",
+      "object_type": "blob",
+      "stash_blob_oid": "d869308d6fba7fb159802db0cb3779843629ce1c",
+      "path": "output/review/highpoly-types/falper-sorgente/plan.svg",
+      "current_path": "output/review/highpoly-types/falper-sorgente/plan.svg",
+      "successor_mapping_used": false,
+      "current_exists": true,
+      "current_blob_oid": "ccfbf520ced4b24ad2ce2397e2e744ead4df6557",
+      "current_sha256": "7a16e7172cad2a1d7379a0efd1a2fee545b39846dfb222d520eeaa8f5586b323",
+      "recovery_state": "recovered_and_superseded_by_audited_package"
+    },
+    {
+      "mode": "100644",
+      "object_type": "blob",
+      "stash_blob_oid": "3ee8de92123fcb001a2621a103eac656586ae268",
+      "path": "output/review/highpoly-types/falper-sorgente/side.svg",
+      "current_path": "output/review/highpoly-types/falper-sorgente/side.svg",
+      "successor_mapping_used": false,
+      "current_exists": true,
+      "current_blob_oid": "3ea997bfceed4bca075cbce44196dcedf1cc48ec",
+      "current_sha256": "90da58176ce636b94b38e7f59021ba6354adb7d782b97f79d765c68542a08159",
+      "recovery_state": "recovered_and_superseded_by_audited_package"
+    },
+    {
+      "mode": "100644",
+      "object_type": "blob",
+      "stash_blob_oid": "f7537fade8623d4da805c3d3b4c45046a564ffa0",
+      "path": "output/review/highpoly-types/geberit-146-140/front.svg",
+      "current_path": "output/review/highpoly-types/geberit-146-140/front.svg",
+      "successor_mapping_used": false,
+      "current_exists": true,
+      "current_blob_oid": "7010f71fa87b4826392704fc00844b7b1817790b",
+      "current_sha256": "8e26e5f915394491c55731d88b710c1689c4df7b578e5486074e130984b0c99c",
+      "recovery_state": "recovered_and_superseded_by_audited_package"
+    },
+    {
+      "mode": "100644",
+      "object_type": "blob",
+      "stash_blob_oid": "2986f5d2e3cf838a6f487d0c1c18989f5548ef33",
+      "path": "output/review/highpoly-types/geberit-146-140/manifest.json",
+      "current_path": "output/review/highpoly-types/geberit-146-140/manifest.json",
+      "successor_mapping_used": false,
+      "current_exists": true,
+      "current_blob_oid": "4dba1c38afe34977c3a74a6154220d73f750cf38",
+      "current_sha256": "bc71a60801a3afd6ed16aadbae4493303e7987c273807473aaedbf97b130ae74",
+      "recovery_state": "recovered_and_superseded_by_audited_package"
+    },
+    {
+      "mode": "100644",
+      "object_type": "blob",
+      "stash_blob_oid": "7c56ece863afdbdfe272a53696592e585f205c38",
+      "path": "output/review/highpoly-types/geberit-146-140/plan.svg",
+      "current_path": "output/review/highpoly-types/geberit-146-140/plan.svg",
+      "successor_mapping_used": false,
+      "current_exists": true,
+      "current_blob_oid": "f95de8572cce1e950504b6f9dbd9aff8bebafc8d",
+      "current_sha256": "ea899d8db14d69d3378bde22d4d7c8e20300f265035769b1a615c5903e2164fd",
+      "recovery_state": "recovered_and_superseded_by_audited_package"
+    },
+    {
+      "mode": "100644",
+      "object_type": "blob",
+      "stash_blob_oid": "08971acb4a1d973d0eeb1b1f15429d9123cb6e8d",
+      "path": "output/review/highpoly-types/geberit-146-140/side.svg",
+      "current_path": "output/review/highpoly-types/geberit-146-140/side.svg",
+      "successor_mapping_used": false,
+      "current_exists": true,
+      "current_blob_oid": "e12a962f5a3ebef4a65a0e12b44aadaddb6602e5",
+      "current_sha256": "88960ea852851c6cfaa2b937bb40a63d0e9ce95d1c3b61a9ef6c7b075699d878",
+      "recovery_state": "recovered_and_superseded_by_audited_package"
+    },
+    {
+      "mode": "100644",
+      "object_type": "blob",
+      "stash_blob_oid": "588be8116526c66433cb4f6b7dcff7ab4f21fe78",
+      "path": "pipeline/decisions/falper-sorgente-official-pdf-linework.json",
+      "current_path": "pipeline/decisions/falper-sorgente-official-pdf-linework.json",
+      "successor_mapping_used": false,
+      "current_exists": true,
+      "current_blob_oid": "1ce3e51378efe2a11e801c9d94474901c2b717f9",
+      "current_sha256": "ef37b6b40b3423b107add46c62cc336c0177b7aadf78f53605ba6823787bc632",
+      "recovery_state": "recovered_and_superseded_by_audited_package"
+    },
+    {
+      "mode": "100644",
+      "object_type": "blob",
+      "stash_blob_oid": "03d91fea2a3796282c0c30db09c17ae0af8fdbd3",
+      "path": "pipeline/decisions/highpoly-drawing-profile-register.json",
+      "current_path": "pipeline/decisions/highpoly-drawing-profile-register.json",
+      "successor_mapping_used": false,
+      "current_exists": true,
+      "current_blob_oid": "818c8435da1771dd3c304dd9050490c228a249ce",
+      "current_sha256": "1289c0822d4384b737856104b56e699225712fe9cb06234f0d0c09a6d3cab7ca",
+      "recovery_state": "recovered_and_superseded_by_audited_package"
+    },
+    {
+      "mode": "100644",
+      "object_type": "blob",
+      "stash_blob_oid": "243a64586a0d8faec952619df11c9ec39470097e",
+      "path": "pipeline/scripts/extract_falper_sorgente_pdf_linework.py",
+      "current_path": "pipeline/scripts/extract_falper_sorgente_pdf_linework.py",
+      "successor_mapping_used": false,
+      "current_exists": true,
+      "current_blob_oid": "581166c2e56ea7d38077a615547b044a4b64e140",
+      "current_sha256": "ab3fea468f0d05144a1e5d89af50adc10cb1aa5ee72268fab006719905fde774",
+      "recovery_state": "recovered_and_superseded_by_audited_package"
+    },
+    {
+      "mode": "100644",
+      "object_type": "blob",
+      "stash_blob_oid": "7f7a124b68cb92ec46f1c0b2291a4c6f72c35195",
+      "path": "pipeline/scripts/int1_highpoly_type_review.py",
+      "current_path": "pipeline/scripts/int1_highpoly_type_review.py",
+      "successor_mapping_used": false,
+      "current_exists": true,
+      "current_blob_oid": "46386e26e339342e9f7f9fd0991c250c31ffef08",
+      "current_sha256": "d8bae33cae119969a8e07c89948cbbbd1e53c67a84df3ddf10b411fed04f7993",
+      "recovery_state": "recovered_and_superseded_by_audited_package"
+    },
+    {
+      "mode": "100644",
+      "object_type": "blob",
+      "stash_blob_oid": "7124fc50f6de541b2f174964411233f1c101c3fb",
+      "path": "pipeline/tests/int1-highpoly-type-review.test.ts",
+      "current_path": "pipeline/tests/falper-sorgente-highpoly-review.test.ts",
+      "successor_mapping_used": true,
+      "current_exists": true,
+      "current_blob_oid": "e2530395a248c8e039f1089fabf5df1707078b28",
+      "current_sha256": "2befaf588356103e4cc92fb0bbd69adb2d7c847f60edea945ac58f4fe45a5346",
+      "recovery_state": "recovered_and_superseded_by_audited_package"
+    }
+  ],
+  "candidate_product_slugs": [
+    "falper-sorgente",
+    "geberit-146-140"
+  ],
+  "inventory_product_count_after_recovery": 40,
+  "checks": {
+    "target_stash_found_by_subject": true,
+    "target_has_untracked_parent": true,
+    "untracked_snapshot_has_expected_file_count": true,
+    "all_untracked_snapshot_files_recovered": true,
+    "candidate_products_are_in_inventory": true,
+    "candidate_products_recovered": true,
+    "tracked_delta_is_other_task_only": true,
+    "protected_stash_is_distinct": true,
+    "stash_list_unchanged": true
+  },
+  "pass": true
+}

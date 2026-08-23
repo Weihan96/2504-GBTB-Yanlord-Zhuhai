@@ -1,0 +1,3687 @@
+{
+  "schema_version": 1,
+  "formal_ifc": "2504 GBTB Yanlord Zhuhai.ifc",
+  "formal_ifc_sha256": "7a50b87e8f48a7c2bfbaa9f1dabdfca7155fa684b2325c66aa1ae15c8ab0a25c",
+  "formal_ifc_bytes_unchanged": true,
+  "stashes_observed_read_only": [
+    "stash@{0}: On main: WIP main: Libelle background studies from other task",
+    "stash@{1}: On main: WIP main: superseded highpoly review candidates"
+  ],
+  "stash_mutation_performed": false,
+  "stash_recovery": {
+    "audit": "pipeline/decisions/highpoly-stash-recovery-audit.json",
+    "source_stash_commit": "8620d0cd0ee91f0f6694b98d5099fb518aa65aaa",
+    "source_untracked_tree": "8620d0cd0ee91f0f6694b98d5099fb518aa65aaa^3",
+    "recovered_file_count": 14,
+    "candidate_product_slugs": [
+      "falper-sorgente",
+      "geberit-146-140"
+    ],
+    "protected_other_task_stash": {
+      "ref_observed_from_stash_list_only": "stash@{0}",
+      "commit": "f52a1c8a09386001ce1f61ddf460e0e9cc9bfdd0",
+      "subject": "On main: WIP main: Libelle background studies from other task",
+      "content_inspected": false,
+      "mutated": false
+    },
+    "pass": true
+  },
+  "products": [
+    {
+      "type_name": "HIMA01",
+      "slug": "hima01",
+      "status": "review_ready_pending_approval",
+      "folder": "output/review/highpoly-types/hima01",
+      "representative_global_id": "2xmcLzu1rDTeMzRuNxPDyE",
+      "source_kind": "geometry_derived_simplified_proxy",
+      "official_cad_used": false,
+      "drawing_source_gate": {
+        "mode": "geometry_derived_fallback",
+        "source_kind": "geometry_derived_simplified_proxy",
+        "source_label_zh": "基于原始高模几何生成的简化图纸表达",
+        "official_cad_used": false,
+        "checks": {
+          "manifest_uses_fallback_kind": true,
+          "manifest_uses_exact_fallback_label": true,
+          "manifest_marks_official_cad_unused": true,
+          "candidate_uses_fallback_kind": true,
+          "candidate_uses_exact_fallback_label": true,
+          "candidate_marks_official_cad_unused": true,
+          "candidate_has_no_project_official_paths": true,
+          "separate_family_references_not_substituted": true,
+          "context_uses_fallback_kind": true,
+          "context_uses_exact_fallback_label": true,
+          "context_marks_official_cad_unused": true,
+          "context_has_no_blue_project_cad_line": true,
+          "source_access_record_exists": true,
+          "source_access_record_passes": true
+        },
+        "pass": true
+      },
+      "package": {
+        "required_files": [
+          "plan.svg",
+          "front.svg",
+          "side.svg",
+          "manifest.json",
+          "candidate-representations.json",
+          "bonsai-review-manifest.json",
+          "project-context-manifest.json",
+          "index.html",
+          "profile.json",
+          "review-contact-sheet.png"
+        ],
+        "missing_files": [],
+        "pass": true,
+        "index": "output/review/highpoly-types/hima01/index.html",
+        "contact_sheet": "output/review/highpoly-types/hima01/review-contact-sheet.png"
+      },
+      "formal_ifc": {
+        "sha256": "7a50b87e8f48a7c2bfbaa9f1dabdfca7155fa684b2325c66aa1ae15c8ab0a25c",
+        "manifest_hashes": [
+          "7a50b87e8f48a7c2bfbaa9f1dabdfca7155fa684b2325c66aa1ae15c8ab0a25c"
+        ],
+        "bytes_unchanged": true
+      },
+      "bonsai": {
+        "mode": "actual_bonsai_ifc_body_camera_render",
+        "actual_ifc_body_camera_render": true,
+        "saved_camera_count": 4,
+        "one_product_only": true,
+        "whole_model_render": false,
+        "pass": true
+      },
+      "project_context": {
+        "view_count": 3,
+        "project_context_retained": true,
+        "walls_and_surrounding_project_elements_retained": true,
+        "outputs": [
+          "output/review/highpoly-types/hima01/project-context-furniture-plan.svg",
+          "output/review/highpoly-types/hima01/project-context-front-elevation.svg",
+          "output/review/highpoly-types/hima01/project-context-side-elevation.svg"
+        ],
+        "pass": true,
+        "acceptance_rule": "project Plan/Elevation retains walls and surrounding furniture/equipment; the product drawing representation is overlaid in-place"
+      },
+      "approval": {
+        "record": "pipeline/decisions/hima01-drawing-approval.json",
+        "status": "pending",
+        "candidate_manifest_sha256": "fb8315fe838cd34553988aa89107d7e8d7bc0d1b376602815b51c0383b1d4382",
+        "manifest_sha256": "fb8315fe838cd34553988aa89107d7e8d7bc0d1b376602815b51c0383b1d4382",
+        "hash_matches": true,
+        "write_allowed": false,
+        "pass": true
+      },
+      "derived_ifcs": [],
+      "derived_ifc_gate_pass": true,
+      "writer": "pipeline/scripts/hima01_drawing_ifc.py",
+      "writer_exists": true,
+      "test": "pipeline/tests/hima01-highpoly-review.test.ts",
+      "test_exists": true,
+      "commits": [],
+      "commit_gate_pass": true,
+      "mechanical_pass": true
+    },
+    {
+      "type_name": "Geberit Duofix Sigma",
+      "slug": "geberit-duofix-sigma-224-212",
+      "status": "review_ready_pending_approval",
+      "folder": "output/review/highpoly-types/geberit-duofix-sigma-224-212",
+      "representative_global_id": "3hgNkx97vCTOC2eewCpMNk",
+      "source_kind": "native_dwg",
+      "official_cad_used": true,
+      "drawing_source_gate": {
+        "mode": "official_native_cad",
+        "source_kind": "native_dwg",
+        "source_label_zh": "基于 Geberit 精确型号原生 DWG 的官方图纸表达",
+        "official_cad_used": true,
+        "checks": {
+          "manifest_source_is_official_native_cad": true,
+          "candidate_source_is_official_native_cad": true,
+          "candidate_marks_official_cad_used": true,
+          "candidate_has_native_paths_for_all_views": true,
+          "context_source_is_official_native_cad": true,
+          "context_has_blue_official_top_layer": true,
+          "source_access_record_exists": true,
+          "source_access_record_passes": true
+        },
+        "pass": true
+      },
+      "package": {
+        "required_files": [
+          "plan.svg",
+          "front.svg",
+          "side.svg",
+          "manifest.json",
+          "candidate-representations.json",
+          "bonsai-review-manifest.json",
+          "project-context-manifest.json",
+          "index.html",
+          "profile.json",
+          "review-contact-sheet.png"
+        ],
+        "missing_files": [],
+        "pass": true,
+        "index": "output/review/highpoly-types/geberit-duofix-sigma-224-212/index.html",
+        "contact_sheet": "output/review/highpoly-types/geberit-duofix-sigma-224-212/review-contact-sheet.png"
+      },
+      "formal_ifc": {
+        "sha256": "7a50b87e8f48a7c2bfbaa9f1dabdfca7155fa684b2325c66aa1ae15c8ab0a25c",
+        "manifest_hashes": [
+          "7a50b87e8f48a7c2bfbaa9f1dabdfca7155fa684b2325c66aa1ae15c8ab0a25c"
+        ],
+        "bytes_unchanged": true
+      },
+      "bonsai": {
+        "mode": "actual_bonsai_ifc_body_camera_render",
+        "actual_ifc_body_camera_render": true,
+        "saved_camera_count": 4,
+        "one_product_only": true,
+        "whole_model_render": false,
+        "pass": true
+      },
+      "project_context": {
+        "view_count": 3,
+        "project_context_retained": true,
+        "walls_and_surrounding_project_elements_retained": true,
+        "outputs": [
+          "output/review/highpoly-types/geberit-duofix-sigma-224-212/project-context-sanitary-plan.svg",
+          "output/review/highpoly-types/geberit-duofix-sigma-224-212/project-context-front-elevation.svg",
+          "output/review/highpoly-types/geberit-duofix-sigma-224-212/project-context-side-elevation.svg"
+        ],
+        "pass": true,
+        "acceptance_rule": "project Plan/Elevation retains walls and surrounding furniture/equipment; the product drawing representation is overlaid in-place"
+      },
+      "approval": {
+        "record": "pipeline/decisions/geberit-duofix-sigma-224-212-drawing-approval.json",
+        "status": "pending",
+        "candidate_manifest_sha256": "ee5be36394f8f56a8397066710fdce9d3eb45b9abf57cef11f6b9d3c858ac2cf",
+        "manifest_sha256": "ee5be36394f8f56a8397066710fdce9d3eb45b9abf57cef11f6b9d3c858ac2cf",
+        "hash_matches": true,
+        "write_allowed": false,
+        "pass": true
+      },
+      "derived_ifcs": [],
+      "derived_ifc_gate_pass": true,
+      "writer": "pipeline/scripts/geberit_duofix_sigma_224_212_drawing_ifc.py",
+      "writer_exists": true,
+      "test": "pipeline/tests/geberit-duofix-sigma-224-212-highpoly-review.test.ts",
+      "test_exists": true,
+      "commits": [],
+      "commit_gate_pass": true,
+      "mechanical_pass": true
+    },
+    {
+      "type_name": "Geberit 154.446.KS.1",
+      "slug": "geberit-154-446-ks-1",
+      "status": "review_ready_pending_approval",
+      "folder": "output/review/highpoly-types/geberit-154-446-ks-1",
+      "representative_global_id": "2S2c498tb7$gzdukjhCGVQ",
+      "source_kind": "native_dwg",
+      "official_cad_used": true,
+      "drawing_source_gate": {
+        "mode": "official_native_cad",
+        "source_kind": "native_dwg",
+        "source_label_zh": "Geberit 官方归档原生 DWG 图纸表达",
+        "official_cad_used": true,
+        "checks": {
+          "manifest_source_is_official_native_cad": true,
+          "candidate_source_is_official_native_cad": true,
+          "candidate_marks_official_cad_used": true,
+          "candidate_has_native_paths_for_all_views": true,
+          "context_source_is_official_native_cad": true,
+          "context_has_blue_official_top_layer": true,
+          "source_access_record_exists": true,
+          "source_access_record_passes": true
+        },
+        "pass": true
+      },
+      "package": {
+        "required_files": [
+          "plan.svg",
+          "front.svg",
+          "side.svg",
+          "manifest.json",
+          "candidate-representations.json",
+          "bonsai-review-manifest.json",
+          "project-context-manifest.json",
+          "index.html",
+          "profile.json",
+          "review-contact-sheet.png"
+        ],
+        "missing_files": [],
+        "pass": true,
+        "index": "output/review/highpoly-types/geberit-154-446-ks-1/index.html",
+        "contact_sheet": "output/review/highpoly-types/geberit-154-446-ks-1/review-contact-sheet.png"
+      },
+      "formal_ifc": {
+        "sha256": "7a50b87e8f48a7c2bfbaa9f1dabdfca7155fa684b2325c66aa1ae15c8ab0a25c",
+        "manifest_hashes": [
+          "7a50b87e8f48a7c2bfbaa9f1dabdfca7155fa684b2325c66aa1ae15c8ab0a25c"
+        ],
+        "bytes_unchanged": true
+      },
+      "bonsai": {
+        "mode": "actual_bonsai_ifc_body_camera_render",
+        "actual_ifc_body_camera_render": true,
+        "saved_camera_count": 4,
+        "one_product_only": true,
+        "whole_model_render": false,
+        "pass": true
+      },
+      "project_context": {
+        "view_count": 3,
+        "project_context_retained": true,
+        "walls_and_surrounding_project_elements_retained": true,
+        "outputs": [
+          "output/review/highpoly-types/geberit-154-446-ks-1/project-context-sanitary-plan.svg",
+          "output/review/highpoly-types/geberit-154-446-ks-1/project-context-front-elevation.svg",
+          "output/review/highpoly-types/geberit-154-446-ks-1/project-context-side-elevation.svg"
+        ],
+        "pass": true,
+        "acceptance_rule": "project Plan/Elevation retains walls and surrounding furniture/equipment; the product drawing representation is overlaid in-place"
+      },
+      "approval": {
+        "record": "pipeline/decisions/geberit-154-446-ks-1-drawing-approval.json",
+        "status": "pending",
+        "candidate_manifest_sha256": "02ad1c7410d84ef606b8ac77810fce84ec69d4ed2c81c14d1c848a827c6d47eb",
+        "manifest_sha256": "02ad1c7410d84ef606b8ac77810fce84ec69d4ed2c81c14d1c848a827c6d47eb",
+        "hash_matches": true,
+        "write_allowed": false,
+        "pass": true
+      },
+      "derived_ifcs": [],
+      "derived_ifc_gate_pass": true,
+      "writer": "pipeline/scripts/geberit_154_446_ks_1_drawing_ifc.py",
+      "writer_exists": true,
+      "test": "pipeline/tests/geberit-154-446-ks-1-highpoly-review.test.ts",
+      "test_exists": true,
+      "commits": [],
+      "commit_gate_pass": true,
+      "mechanical_pass": true
+    },
+    {
+      "type_name": "Gessi316 54294",
+      "slug": "gessi316-54294",
+      "status": "review_ready_pending_approval",
+      "folder": "output/review/highpoly-types/gessi316-54294",
+      "representative_global_id": "2iKOL78$H0N9Yd9$ky3pW4",
+      "source_kind": "geometry_derived_simplified_proxy",
+      "official_cad_used": false,
+      "drawing_source_gate": {
+        "mode": "geometry_derived_fallback",
+        "source_kind": "geometry_derived_simplified_proxy",
+        "source_label_zh": "基于原始高模几何生成的简化图纸表达",
+        "official_cad_used": false,
+        "checks": {
+          "manifest_uses_fallback_kind": true,
+          "manifest_uses_exact_fallback_label": true,
+          "manifest_marks_official_cad_unused": true,
+          "candidate_uses_fallback_kind": true,
+          "candidate_uses_exact_fallback_label": true,
+          "candidate_marks_official_cad_unused": true,
+          "candidate_has_no_project_official_paths": true,
+          "separate_family_references_not_substituted": true,
+          "context_uses_fallback_kind": true,
+          "context_uses_exact_fallback_label": true,
+          "context_marks_official_cad_unused": true,
+          "context_has_no_blue_project_cad_line": true,
+          "source_access_record_exists": true,
+          "source_access_record_passes": true
+        },
+        "pass": true
+      },
+      "package": {
+        "required_files": [
+          "plan.svg",
+          "front.svg",
+          "side.svg",
+          "manifest.json",
+          "candidate-representations.json",
+          "bonsai-review-manifest.json",
+          "project-context-manifest.json",
+          "index.html",
+          "profile.json",
+          "review-contact-sheet.png"
+        ],
+        "missing_files": [],
+        "pass": true,
+        "index": "output/review/highpoly-types/gessi316-54294/index.html",
+        "contact_sheet": "output/review/highpoly-types/gessi316-54294/review-contact-sheet.png"
+      },
+      "formal_ifc": {
+        "sha256": "7a50b87e8f48a7c2bfbaa9f1dabdfca7155fa684b2325c66aa1ae15c8ab0a25c",
+        "manifest_hashes": [
+          "7a50b87e8f48a7c2bfbaa9f1dabdfca7155fa684b2325c66aa1ae15c8ab0a25c"
+        ],
+        "bytes_unchanged": true
+      },
+      "bonsai": {
+        "mode": "actual_bonsai_ifc_body_camera_render",
+        "actual_ifc_body_camera_render": true,
+        "saved_camera_count": 4,
+        "one_product_only": true,
+        "whole_model_render": false,
+        "pass": true
+      },
+      "project_context": {
+        "view_count": 3,
+        "project_context_retained": true,
+        "walls_and_surrounding_project_elements_retained": true,
+        "outputs": [
+          "output/review/highpoly-types/gessi316-54294/project-context-sanitary-plan.svg",
+          "output/review/highpoly-types/gessi316-54294/project-context-front-elevation.svg",
+          "output/review/highpoly-types/gessi316-54294/project-context-side-elevation.svg"
+        ],
+        "pass": true,
+        "acceptance_rule": "project Plan/Elevation retains walls and surrounding furniture/equipment; the product drawing representation is overlaid in-place"
+      },
+      "approval": {
+        "record": "pipeline/decisions/gessi316-54294-drawing-approval.json",
+        "status": "pending",
+        "candidate_manifest_sha256": "5588b12214805f04acc8c3cf02cf845fcd8b7bfd5503c9fec0978155ade2b055",
+        "manifest_sha256": "5588b12214805f04acc8c3cf02cf845fcd8b7bfd5503c9fec0978155ade2b055",
+        "hash_matches": true,
+        "write_allowed": false,
+        "pass": true
+      },
+      "derived_ifcs": [],
+      "derived_ifc_gate_pass": true,
+      "writer": "pipeline/scripts/gessi316_54294_drawing_ifc.py",
+      "writer_exists": true,
+      "test": "pipeline/tests/gessi316-54294-highpoly-review.test.ts",
+      "test_exists": true,
+      "commits": [],
+      "commit_gate_pass": true,
+      "mechanical_pass": true
+    },
+    {
+      "type_name": "BED02",
+      "slug": "bed02",
+      "status": "review_ready_pending_approval",
+      "folder": "output/review/highpoly-types/bed02",
+      "representative_global_id": "1i_pqgLv9A7uuV7MjaArBW",
+      "source_kind": "geometry_derived_simplified_proxy",
+      "official_cad_used": false,
+      "drawing_source_gate": {
+        "mode": "geometry_derived_fallback",
+        "source_kind": "geometry_derived_simplified_proxy",
+        "source_label_zh": "基于原始高模几何生成的简化图纸表达",
+        "official_cad_used": false,
+        "checks": {
+          "manifest_uses_fallback_kind": true,
+          "manifest_uses_exact_fallback_label": true,
+          "manifest_marks_official_cad_unused": true,
+          "candidate_uses_fallback_kind": true,
+          "candidate_uses_exact_fallback_label": true,
+          "candidate_marks_official_cad_unused": true,
+          "candidate_has_no_project_official_paths": true,
+          "separate_family_references_not_substituted": true,
+          "context_uses_fallback_kind": true,
+          "context_uses_exact_fallback_label": true,
+          "context_marks_official_cad_unused": true,
+          "context_has_no_blue_project_cad_line": true,
+          "source_access_record_exists": true,
+          "source_access_record_passes": true
+        },
+        "pass": true
+      },
+      "package": {
+        "required_files": [
+          "plan.svg",
+          "front.svg",
+          "side.svg",
+          "manifest.json",
+          "candidate-representations.json",
+          "bonsai-review-manifest.json",
+          "project-context-manifest.json",
+          "index.html",
+          "profile.json",
+          "review-contact-sheet.png"
+        ],
+        "missing_files": [],
+        "pass": true,
+        "index": "output/review/highpoly-types/bed02/index.html",
+        "contact_sheet": "output/review/highpoly-types/bed02/review-contact-sheet.png"
+      },
+      "formal_ifc": {
+        "sha256": "7a50b87e8f48a7c2bfbaa9f1dabdfca7155fa684b2325c66aa1ae15c8ab0a25c",
+        "manifest_hashes": [
+          "7a50b87e8f48a7c2bfbaa9f1dabdfca7155fa684b2325c66aa1ae15c8ab0a25c"
+        ],
+        "bytes_unchanged": true
+      },
+      "bonsai": {
+        "mode": "actual_bonsai_ifc_body_camera_render",
+        "actual_ifc_body_camera_render": true,
+        "saved_camera_count": 4,
+        "one_product_only": true,
+        "whole_model_render": false,
+        "pass": true
+      },
+      "project_context": {
+        "view_count": 1,
+        "project_context_retained": true,
+        "walls_and_surrounding_project_elements_retained": true,
+        "outputs": [
+          "output/review/highpoly-types/bed02/project-context-furniture-plan.svg"
+        ],
+        "pass": true,
+        "acceptance_rule": "project Plan/Elevation retains walls and surrounding furniture/equipment; the product drawing representation is overlaid in-place"
+      },
+      "approval": {
+        "record": "pipeline/decisions/bed02-drawing-approval.json",
+        "status": "pending",
+        "candidate_manifest_sha256": "26da86ad0bf6ea28872bda8f1004c63257188ac30d6e9409c8debab1b0ee137d",
+        "manifest_sha256": "26da86ad0bf6ea28872bda8f1004c63257188ac30d6e9409c8debab1b0ee137d",
+        "hash_matches": true,
+        "write_allowed": false,
+        "pass": true
+      },
+      "derived_ifcs": [],
+      "derived_ifc_gate_pass": true,
+      "writer": "pipeline/scripts/bed02_drawing_ifc.py",
+      "writer_exists": true,
+      "test": "pipeline/tests/bed02-highpoly-review.test.ts",
+      "test_exists": true,
+      "commits": [],
+      "commit_gate_pass": true,
+      "mechanical_pass": true
+    },
+    {
+      "type_name": "BED01",
+      "slug": "bed01",
+      "status": "review_ready_pending_approval",
+      "folder": "output/review/highpoly-types/bed01",
+      "representative_global_id": "3IQBEqO5vDI8Z9k1Ltge_N",
+      "source_kind": "geometry_derived_simplified_proxy",
+      "official_cad_used": false,
+      "drawing_source_gate": {
+        "mode": "geometry_derived_fallback",
+        "source_kind": "geometry_derived_simplified_proxy",
+        "source_label_zh": "基于原始高模几何生成的简化图纸表达",
+        "official_cad_used": false,
+        "checks": {
+          "manifest_uses_fallback_kind": true,
+          "manifest_uses_exact_fallback_label": true,
+          "manifest_marks_official_cad_unused": true,
+          "candidate_uses_fallback_kind": true,
+          "candidate_uses_exact_fallback_label": true,
+          "candidate_marks_official_cad_unused": true,
+          "candidate_has_no_project_official_paths": true,
+          "separate_family_references_not_substituted": true,
+          "context_uses_fallback_kind": true,
+          "context_uses_exact_fallback_label": true,
+          "context_marks_official_cad_unused": true,
+          "context_has_no_blue_project_cad_line": true,
+          "source_access_record_exists": true,
+          "source_access_record_passes": true
+        },
+        "pass": true
+      },
+      "package": {
+        "required_files": [
+          "plan.svg",
+          "front.svg",
+          "side.svg",
+          "manifest.json",
+          "candidate-representations.json",
+          "bonsai-review-manifest.json",
+          "project-context-manifest.json",
+          "index.html",
+          "profile.json",
+          "review-contact-sheet.png"
+        ],
+        "missing_files": [],
+        "pass": true,
+        "index": "output/review/highpoly-types/bed01/index.html",
+        "contact_sheet": "output/review/highpoly-types/bed01/review-contact-sheet.png"
+      },
+      "formal_ifc": {
+        "sha256": "7a50b87e8f48a7c2bfbaa9f1dabdfca7155fa684b2325c66aa1ae15c8ab0a25c",
+        "manifest_hashes": [
+          "7a50b87e8f48a7c2bfbaa9f1dabdfca7155fa684b2325c66aa1ae15c8ab0a25c"
+        ],
+        "bytes_unchanged": true
+      },
+      "bonsai": {
+        "mode": "actual_bonsai_ifc_body_camera_render",
+        "actual_ifc_body_camera_render": true,
+        "saved_camera_count": 4,
+        "one_product_only": true,
+        "whole_model_render": false,
+        "pass": true
+      },
+      "project_context": {
+        "view_count": 1,
+        "project_context_retained": true,
+        "walls_and_surrounding_project_elements_retained": true,
+        "outputs": [
+          "output/review/highpoly-types/bed01/project-context-furniture-plan.svg"
+        ],
+        "pass": true,
+        "acceptance_rule": "project Plan/Elevation retains walls and surrounding furniture/equipment; the product drawing representation is overlaid in-place"
+      },
+      "approval": {
+        "record": "pipeline/decisions/bed01-drawing-approval.json",
+        "status": "pending",
+        "candidate_manifest_sha256": "6d4a631cc22ccd670c90e4de0e26653fc8dd0ee7b4367cc331c5d1f162c909ef",
+        "manifest_sha256": "6d4a631cc22ccd670c90e4de0e26653fc8dd0ee7b4367cc331c5d1f162c909ef",
+        "hash_matches": true,
+        "write_allowed": false,
+        "pass": true
+      },
+      "derived_ifcs": [],
+      "derived_ifc_gate_pass": true,
+      "writer": "pipeline/scripts/bed01_drawing_ifc.py",
+      "writer_exists": true,
+      "test": "pipeline/tests/bed01-highpoly-review.test.ts",
+      "test_exists": true,
+      "commits": [],
+      "commit_gate_pass": true,
+      "mechanical_pass": true
+    },
+    {
+      "type_name": "sxb010",
+      "slug": "sxb010",
+      "status": "review_ready_pending_approval",
+      "folder": "output/review/highpoly-types/sxb010",
+      "representative_global_id": "1O9JRXCI56VRUbpuLJy86Z",
+      "source_kind": "geometry_derived_simplified_proxy",
+      "official_cad_used": false,
+      "drawing_source_gate": {
+        "mode": "geometry_derived_fallback",
+        "source_kind": "geometry_derived_simplified_proxy",
+        "source_label_zh": "基于原始高模几何生成的简化图纸表达",
+        "official_cad_used": false,
+        "checks": {
+          "manifest_uses_fallback_kind": true,
+          "manifest_uses_exact_fallback_label": true,
+          "manifest_marks_official_cad_unused": true,
+          "candidate_uses_fallback_kind": true,
+          "candidate_uses_exact_fallback_label": true,
+          "candidate_marks_official_cad_unused": true,
+          "candidate_has_no_project_official_paths": true,
+          "separate_family_references_not_substituted": true,
+          "context_uses_fallback_kind": true,
+          "context_uses_exact_fallback_label": true,
+          "context_marks_official_cad_unused": true,
+          "context_has_no_blue_project_cad_line": true,
+          "source_access_record_exists": true,
+          "source_access_record_passes": true
+        },
+        "pass": true
+      },
+      "package": {
+        "required_files": [
+          "plan.svg",
+          "front.svg",
+          "side.svg",
+          "manifest.json",
+          "candidate-representations.json",
+          "bonsai-review-manifest.json",
+          "project-context-manifest.json",
+          "index.html",
+          "profile.json",
+          "review-contact-sheet.png"
+        ],
+        "missing_files": [],
+        "pass": true,
+        "index": "output/review/highpoly-types/sxb010/index.html",
+        "contact_sheet": "output/review/highpoly-types/sxb010/review-contact-sheet.png"
+      },
+      "formal_ifc": {
+        "sha256": "7a50b87e8f48a7c2bfbaa9f1dabdfca7155fa684b2325c66aa1ae15c8ab0a25c",
+        "manifest_hashes": [
+          "7a50b87e8f48a7c2bfbaa9f1dabdfca7155fa684b2325c66aa1ae15c8ab0a25c"
+        ],
+        "bytes_unchanged": true
+      },
+      "bonsai": {
+        "mode": "actual_bonsai_ifc_body_camera_render",
+        "actual_ifc_body_camera_render": true,
+        "saved_camera_count": 4,
+        "one_product_only": true,
+        "whole_model_render": false,
+        "pass": true
+      },
+      "project_context": {
+        "view_count": 3,
+        "project_context_retained": true,
+        "walls_and_surrounding_project_elements_retained": true,
+        "outputs": [
+          "output/review/highpoly-types/sxb010/project-context-ffl-plan.svg",
+          "output/review/highpoly-types/sxb010/project-context-r07-front-elevation.svg",
+          "output/review/highpoly-types/sxb010/project-context-r07-side-elevation.svg"
+        ],
+        "pass": true,
+        "acceptance_rule": "project Plan/Elevation retains walls and surrounding furniture/equipment; the product drawing representation is overlaid in-place"
+      },
+      "approval": {
+        "record": "pipeline/decisions/sxb010-drawing-approval.json",
+        "status": "pending",
+        "candidate_manifest_sha256": "be5dff3f650571744f66df5a62246e9fe12611bc465f0ce28cca4d371c084038",
+        "manifest_sha256": "be5dff3f650571744f66df5a62246e9fe12611bc465f0ce28cca4d371c084038",
+        "hash_matches": true,
+        "write_allowed": false,
+        "pass": true
+      },
+      "derived_ifcs": [],
+      "derived_ifc_gate_pass": true,
+      "writer": "pipeline/scripts/sxb010_drawing_ifc.py",
+      "writer_exists": true,
+      "test": "pipeline/tests/sxb010-highpoly-review.test.ts",
+      "test_exists": true,
+      "commits": [],
+      "commit_gate_pass": true,
+      "mechanical_pass": true
+    },
+    {
+      "type_name": "CHA02",
+      "slug": "cha02",
+      "status": "review_ready_pending_approval",
+      "folder": "output/review/highpoly-types/cha02",
+      "representative_global_id": "3YoxxZCgbF3Ap7gztAKkcs",
+      "source_kind": "geometry_derived_simplified_proxy",
+      "official_cad_used": false,
+      "drawing_source_gate": {
+        "mode": "geometry_derived_fallback",
+        "source_kind": "geometry_derived_simplified_proxy",
+        "source_label_zh": "基于原始高模几何生成的简化图纸表达",
+        "official_cad_used": false,
+        "checks": {
+          "manifest_uses_fallback_kind": true,
+          "manifest_uses_exact_fallback_label": true,
+          "manifest_marks_official_cad_unused": true,
+          "candidate_uses_fallback_kind": true,
+          "candidate_uses_exact_fallback_label": true,
+          "candidate_marks_official_cad_unused": true,
+          "candidate_has_no_project_official_paths": true,
+          "separate_family_references_not_substituted": true,
+          "context_uses_fallback_kind": true,
+          "context_uses_exact_fallback_label": true,
+          "context_marks_official_cad_unused": true,
+          "context_has_no_blue_project_cad_line": true,
+          "source_access_record_exists": true,
+          "source_access_record_passes": true
+        },
+        "pass": true
+      },
+      "package": {
+        "required_files": [
+          "plan.svg",
+          "front.svg",
+          "side.svg",
+          "manifest.json",
+          "candidate-representations.json",
+          "bonsai-review-manifest.json",
+          "project-context-manifest.json",
+          "index.html",
+          "profile.json",
+          "review-contact-sheet.png"
+        ],
+        "missing_files": [],
+        "pass": true,
+        "index": "output/review/highpoly-types/cha02/index.html",
+        "contact_sheet": "output/review/highpoly-types/cha02/review-contact-sheet.png"
+      },
+      "formal_ifc": {
+        "sha256": "7a50b87e8f48a7c2bfbaa9f1dabdfca7155fa684b2325c66aa1ae15c8ab0a25c",
+        "manifest_hashes": [
+          "7a50b87e8f48a7c2bfbaa9f1dabdfca7155fa684b2325c66aa1ae15c8ab0a25c"
+        ],
+        "bytes_unchanged": true
+      },
+      "bonsai": {
+        "mode": "actual_bonsai_ifc_body_camera_render",
+        "actual_ifc_body_camera_render": true,
+        "saved_camera_count": 4,
+        "one_product_only": true,
+        "whole_model_render": false,
+        "pass": true
+      },
+      "project_context": {
+        "view_count": 1,
+        "project_context_retained": true,
+        "walls_and_surrounding_project_elements_retained": true,
+        "outputs": [
+          "output/review/highpoly-types/cha02/project-context-furniture-plan.svg"
+        ],
+        "pass": true,
+        "acceptance_rule": "project Plan/Elevation retains walls and surrounding furniture/equipment; the product drawing representation is overlaid in-place"
+      },
+      "approval": {
+        "record": "pipeline/decisions/cha02-drawing-approval.json",
+        "status": "pending",
+        "candidate_manifest_sha256": "d3c06e628c6a6d0b4e2509f681894decc0c3e6db8d7d9f318030d67b63426d86",
+        "manifest_sha256": "d3c06e628c6a6d0b4e2509f681894decc0c3e6db8d7d9f318030d67b63426d86",
+        "hash_matches": true,
+        "write_allowed": false,
+        "pass": true
+      },
+      "derived_ifcs": [],
+      "derived_ifc_gate_pass": true,
+      "writer": "pipeline/scripts/cha02_drawing_ifc.py",
+      "writer_exists": true,
+      "test": "pipeline/tests/cha02-highpoly-review.test.ts",
+      "test_exists": true,
+      "commits": [],
+      "commit_gate_pass": true,
+      "mechanical_pass": true
+    },
+    {
+      "type_name": "SIS04",
+      "slug": "sis04",
+      "status": "review_ready_pending_approval",
+      "folder": "output/review/highpoly-types/sis04",
+      "representative_global_id": "1MzM8Ms2vFo8KEm503j9w2",
+      "source_kind": "geometry_derived_simplified_proxy",
+      "official_cad_used": false,
+      "drawing_source_gate": {
+        "mode": "geometry_derived_fallback",
+        "source_kind": "geometry_derived_simplified_proxy",
+        "source_label_zh": "基于原始高模几何生成的简化图纸表达",
+        "official_cad_used": false,
+        "checks": {
+          "manifest_uses_fallback_kind": true,
+          "manifest_uses_exact_fallback_label": true,
+          "manifest_marks_official_cad_unused": true,
+          "candidate_uses_fallback_kind": true,
+          "candidate_uses_exact_fallback_label": true,
+          "candidate_marks_official_cad_unused": true,
+          "candidate_has_no_project_official_paths": true,
+          "separate_family_references_not_substituted": true,
+          "context_uses_fallback_kind": true,
+          "context_uses_exact_fallback_label": true,
+          "context_marks_official_cad_unused": true,
+          "context_has_no_blue_project_cad_line": true,
+          "source_access_record_exists": true,
+          "source_access_record_passes": true
+        },
+        "pass": true
+      },
+      "package": {
+        "required_files": [
+          "plan.svg",
+          "front.svg",
+          "side.svg",
+          "manifest.json",
+          "candidate-representations.json",
+          "bonsai-review-manifest.json",
+          "project-context-manifest.json",
+          "index.html",
+          "profile.json",
+          "review-contact-sheet.png"
+        ],
+        "missing_files": [],
+        "pass": true,
+        "index": "output/review/highpoly-types/sis04/index.html",
+        "contact_sheet": "output/review/highpoly-types/sis04/review-contact-sheet.png"
+      },
+      "formal_ifc": {
+        "sha256": "7a50b87e8f48a7c2bfbaa9f1dabdfca7155fa684b2325c66aa1ae15c8ab0a25c",
+        "manifest_hashes": [
+          "7a50b87e8f48a7c2bfbaa9f1dabdfca7155fa684b2325c66aa1ae15c8ab0a25c"
+        ],
+        "bytes_unchanged": true
+      },
+      "bonsai": {
+        "mode": "actual_bonsai_ifc_body_camera_render",
+        "actual_ifc_body_camera_render": true,
+        "saved_camera_count": 4,
+        "one_product_only": true,
+        "whole_model_render": false,
+        "pass": true
+      },
+      "project_context": {
+        "view_count": 3,
+        "project_context_retained": true,
+        "walls_and_surrounding_project_elements_retained": true,
+        "outputs": [
+          "output/review/highpoly-types/sis04/project-context-furniture-plan.svg",
+          "output/review/highpoly-types/sis04/project-context-r04-front-elevation.svg",
+          "output/review/highpoly-types/sis04/project-context-r04-side-elevation.svg"
+        ],
+        "pass": true,
+        "acceptance_rule": "project Plan/Elevation retains walls and surrounding furniture/equipment; the product drawing representation is overlaid in-place"
+      },
+      "approval": {
+        "record": "pipeline/decisions/sis04-drawing-approval.json",
+        "status": "pending",
+        "candidate_manifest_sha256": "519504de6154d764f31d05ed8f4d8129a94e496c2b5879a976b3bc491cff2e49",
+        "manifest_sha256": "519504de6154d764f31d05ed8f4d8129a94e496c2b5879a976b3bc491cff2e49",
+        "hash_matches": true,
+        "write_allowed": false,
+        "pass": true
+      },
+      "derived_ifcs": [],
+      "derived_ifc_gate_pass": true,
+      "writer": "pipeline/scripts/sis04_drawing_ifc.py",
+      "writer_exists": true,
+      "test": "pipeline/tests/sis04-highpoly-review.test.ts",
+      "test_exists": true,
+      "commits": [],
+      "commit_gate_pass": true,
+      "mechanical_pass": true
+    },
+    {
+      "type_name": "505 UP V1.LP.S",
+      "slug": "505-up-v1-lp-s",
+      "status": "review_ready_pending_approval",
+      "folder": "output/review/highpoly-types/505-up-v1-lp-s",
+      "representative_global_id": "19MpdkWqXC7uhUNhLQgrce",
+      "source_kind": "geometry_derived_simplified_proxy",
+      "official_cad_used": false,
+      "drawing_source_gate": {
+        "mode": "geometry_derived_fallback",
+        "source_kind": "geometry_derived_simplified_proxy",
+        "source_label_zh": "基于原始高模几何生成的简化图纸表达",
+        "official_cad_used": false,
+        "checks": {
+          "manifest_uses_fallback_kind": true,
+          "manifest_uses_exact_fallback_label": true,
+          "manifest_marks_official_cad_unused": true,
+          "candidate_uses_fallback_kind": true,
+          "candidate_uses_exact_fallback_label": true,
+          "candidate_marks_official_cad_unused": true,
+          "candidate_has_no_project_official_paths": true,
+          "separate_family_references_not_substituted": true,
+          "context_uses_fallback_kind": true,
+          "context_uses_exact_fallback_label": true,
+          "context_marks_official_cad_unused": true,
+          "context_has_no_blue_project_cad_line": true,
+          "source_access_record_exists": true,
+          "source_access_record_passes": true
+        },
+        "pass": true
+      },
+      "package": {
+        "required_files": [
+          "plan.svg",
+          "front.svg",
+          "side.svg",
+          "manifest.json",
+          "candidate-representations.json",
+          "bonsai-review-manifest.json",
+          "project-context-manifest.json",
+          "index.html",
+          "profile.json",
+          "review-contact-sheet.png"
+        ],
+        "missing_files": [],
+        "pass": true,
+        "index": "output/review/highpoly-types/505-up-v1-lp-s/index.html",
+        "contact_sheet": "output/review/highpoly-types/505-up-v1-lp-s/review-contact-sheet.png"
+      },
+      "formal_ifc": {
+        "sha256": "7a50b87e8f48a7c2bfbaa9f1dabdfca7155fa684b2325c66aa1ae15c8ab0a25c",
+        "manifest_hashes": [
+          "7a50b87e8f48a7c2bfbaa9f1dabdfca7155fa684b2325c66aa1ae15c8ab0a25c"
+        ],
+        "bytes_unchanged": true
+      },
+      "bonsai": {
+        "mode": "actual_bonsai_ifc_body_camera_render",
+        "actual_ifc_body_camera_render": true,
+        "saved_camera_count": 4,
+        "one_product_only": true,
+        "whole_model_render": false,
+        "pass": true
+      },
+      "project_context": {
+        "view_count": 1,
+        "project_context_retained": true,
+        "walls_and_surrounding_project_elements_retained": true,
+        "outputs": [
+          "output/review/highpoly-types/505-up-v1-lp-s/project-context-furniture-plan.svg"
+        ],
+        "pass": true,
+        "acceptance_rule": "project Plan/Elevation retains walls and surrounding furniture/equipment; the product drawing representation is overlaid in-place"
+      },
+      "approval": {
+        "record": "pipeline/decisions/505-up-v1-lp-s-drawing-approval.json",
+        "status": "pending",
+        "candidate_manifest_sha256": "5ca54b5407f45627931bd42a67e659d538ae3df33581fd259071c745ded3c040",
+        "manifest_sha256": "5ca54b5407f45627931bd42a67e659d538ae3df33581fd259071c745ded3c040",
+        "hash_matches": true,
+        "write_allowed": false,
+        "pass": true
+      },
+      "derived_ifcs": [],
+      "derived_ifc_gate_pass": true,
+      "writer": "pipeline/scripts/505_up_v1_lp_s_drawing_ifc.py",
+      "writer_exists": true,
+      "test": "pipeline/tests/505-up-v1-lp-s-highpoly-review.test.ts",
+      "test_exists": true,
+      "commits": [],
+      "commit_gate_pass": true,
+      "mechanical_pass": true
+    },
+    {
+      "type_name": "MiamiSoft E09",
+      "slug": "miamisoft-e09",
+      "status": "review_ready_pending_approval",
+      "folder": "output/review/highpoly-types/miamisoft-e09",
+      "representative_global_id": "3osoWufdD1mhDDAM6lcix4",
+      "source_kind": "geometry_derived_simplified_proxy",
+      "official_cad_used": false,
+      "drawing_source_gate": {
+        "mode": "geometry_derived_fallback",
+        "source_kind": "geometry_derived_simplified_proxy",
+        "source_label_zh": "基于原始高模几何生成的简化图纸表达",
+        "official_cad_used": false,
+        "checks": {
+          "manifest_uses_fallback_kind": true,
+          "manifest_uses_exact_fallback_label": true,
+          "manifest_marks_official_cad_unused": true,
+          "candidate_uses_fallback_kind": true,
+          "candidate_uses_exact_fallback_label": true,
+          "candidate_marks_official_cad_unused": true,
+          "candidate_has_no_project_official_paths": true,
+          "separate_family_references_not_substituted": true,
+          "context_uses_fallback_kind": true,
+          "context_uses_exact_fallback_label": true,
+          "context_marks_official_cad_unused": true,
+          "context_has_no_blue_project_cad_line": true,
+          "source_access_record_exists": true,
+          "source_access_record_passes": true
+        },
+        "pass": true
+      },
+      "package": {
+        "required_files": [
+          "plan.svg",
+          "front.svg",
+          "side.svg",
+          "manifest.json",
+          "candidate-representations.json",
+          "bonsai-review-manifest.json",
+          "project-context-manifest.json",
+          "index.html",
+          "profile.json",
+          "review-contact-sheet.png"
+        ],
+        "missing_files": [],
+        "pass": true,
+        "index": "output/review/highpoly-types/miamisoft-e09/index.html",
+        "contact_sheet": "output/review/highpoly-types/miamisoft-e09/review-contact-sheet.png"
+      },
+      "formal_ifc": {
+        "sha256": "7a50b87e8f48a7c2bfbaa9f1dabdfca7155fa684b2325c66aa1ae15c8ab0a25c",
+        "manifest_hashes": [
+          "7a50b87e8f48a7c2bfbaa9f1dabdfca7155fa684b2325c66aa1ae15c8ab0a25c"
+        ],
+        "bytes_unchanged": true
+      },
+      "bonsai": {
+        "mode": "actual_bonsai_ifc_body_camera_render",
+        "actual_ifc_body_camera_render": true,
+        "saved_camera_count": 4,
+        "one_product_only": true,
+        "whole_model_render": false,
+        "pass": true
+      },
+      "project_context": {
+        "view_count": 2,
+        "project_context_retained": true,
+        "walls_and_surrounding_project_elements_retained": true,
+        "outputs": [
+          "output/review/highpoly-types/miamisoft-e09/project-context-furniture-plan.svg",
+          "output/review/highpoly-types/miamisoft-e09/project-context-r20-side-elevation.svg"
+        ],
+        "pass": true,
+        "acceptance_rule": "project Plan/Elevation retains walls and surrounding furniture/equipment; the product drawing representation is overlaid in-place"
+      },
+      "approval": {
+        "record": "pipeline/decisions/miamisoft-e09-drawing-approval.json",
+        "status": "pending",
+        "candidate_manifest_sha256": "a0c3de4ba8beb3087b1fa905aba36a2f2ea0b5ece8d754b7069b9c34888f229b",
+        "manifest_sha256": "a0c3de4ba8beb3087b1fa905aba36a2f2ea0b5ece8d754b7069b9c34888f229b",
+        "hash_matches": true,
+        "write_allowed": false,
+        "pass": true
+      },
+      "derived_ifcs": [],
+      "derived_ifc_gate_pass": true,
+      "writer": "pipeline/scripts/miamisoft_e09_drawing_ifc.py",
+      "writer_exists": true,
+      "test": "pipeline/tests/miamisoft-e09-highpoly-review.test.ts",
+      "test_exists": true,
+      "commits": [],
+      "commit_gate_pass": true,
+      "mechanical_pass": true
+    },
+    {
+      "type_name": "MiamiSoft E07",
+      "slug": "miamisoft-e07",
+      "status": "review_ready_pending_approval",
+      "folder": "output/review/highpoly-types/miamisoft-e07",
+      "representative_global_id": "1G7iO6CfP64PjummX$qTbt",
+      "source_kind": "geometry_derived_simplified_proxy",
+      "official_cad_used": false,
+      "drawing_source_gate": {
+        "mode": "geometry_derived_fallback",
+        "source_kind": "geometry_derived_simplified_proxy",
+        "source_label_zh": "基于原始高模几何生成的简化图纸表达",
+        "official_cad_used": false,
+        "checks": {
+          "manifest_uses_fallback_kind": true,
+          "manifest_uses_exact_fallback_label": true,
+          "manifest_marks_official_cad_unused": true,
+          "candidate_uses_fallback_kind": true,
+          "candidate_uses_exact_fallback_label": true,
+          "candidate_marks_official_cad_unused": true,
+          "candidate_has_no_project_official_paths": true,
+          "separate_family_references_not_substituted": true,
+          "context_uses_fallback_kind": true,
+          "context_uses_exact_fallback_label": true,
+          "context_marks_official_cad_unused": true,
+          "context_has_no_blue_project_cad_line": true,
+          "source_access_record_exists": true,
+          "source_access_record_passes": true
+        },
+        "pass": true
+      },
+      "package": {
+        "required_files": [
+          "plan.svg",
+          "front.svg",
+          "side.svg",
+          "manifest.json",
+          "candidate-representations.json",
+          "bonsai-review-manifest.json",
+          "project-context-manifest.json",
+          "index.html",
+          "profile.json",
+          "review-contact-sheet.png"
+        ],
+        "missing_files": [],
+        "pass": true,
+        "index": "output/review/highpoly-types/miamisoft-e07/index.html",
+        "contact_sheet": "output/review/highpoly-types/miamisoft-e07/review-contact-sheet.png"
+      },
+      "formal_ifc": {
+        "sha256": "7a50b87e8f48a7c2bfbaa9f1dabdfca7155fa684b2325c66aa1ae15c8ab0a25c",
+        "manifest_hashes": [
+          "7a50b87e8f48a7c2bfbaa9f1dabdfca7155fa684b2325c66aa1ae15c8ab0a25c"
+        ],
+        "bytes_unchanged": true
+      },
+      "bonsai": {
+        "mode": "actual_bonsai_ifc_body_camera_render",
+        "actual_ifc_body_camera_render": true,
+        "saved_camera_count": 4,
+        "one_product_only": true,
+        "whole_model_render": false,
+        "pass": true
+      },
+      "project_context": {
+        "view_count": 2,
+        "project_context_retained": true,
+        "walls_and_surrounding_project_elements_retained": true,
+        "outputs": [
+          "output/review/highpoly-types/miamisoft-e07/project-context-furniture-plan.svg",
+          "output/review/highpoly-types/miamisoft-e07/project-context-r20-side-elevation.svg"
+        ],
+        "pass": true,
+        "acceptance_rule": "project Plan/Elevation retains walls and surrounding furniture/equipment; the product drawing representation is overlaid in-place"
+      },
+      "approval": {
+        "record": "pipeline/decisions/miamisoft-e07-drawing-approval.json",
+        "status": "pending",
+        "candidate_manifest_sha256": "705d36f5170557937e966e84e80a3dd4aba37bb31689d400e73c0395bfe4796a",
+        "manifest_sha256": "705d36f5170557937e966e84e80a3dd4aba37bb31689d400e73c0395bfe4796a",
+        "hash_matches": true,
+        "write_allowed": false,
+        "pass": true
+      },
+      "derived_ifcs": [],
+      "derived_ifc_gate_pass": true,
+      "writer": "pipeline/scripts/miamisoft_e07_drawing_ifc.py",
+      "writer_exists": true,
+      "test": "pipeline/tests/miamisoft-e07-highpoly-review.test.ts",
+      "test_exists": true,
+      "commits": [],
+      "commit_gate_pass": true,
+      "mechanical_pass": true
+    },
+    {
+      "type_name": "Marilyn 01",
+      "slug": "marilyn-01",
+      "status": "review_ready_pending_approval",
+      "folder": "output/review/highpoly-types/marilyn-01",
+      "representative_global_id": "3l2Ji4k2H9oOTDGWYUq7uV",
+      "source_kind": "native_dwg",
+      "official_cad_used": true,
+      "drawing_source_gate": {
+        "mode": "official_native_cad",
+        "source_kind": "native_dwg",
+        "source_label_zh": "基于 Baxter 精确型号原生 DWG 的官方图纸表达",
+        "official_cad_used": true,
+        "checks": {
+          "manifest_source_is_official_native_cad": true,
+          "candidate_source_is_official_native_cad": true,
+          "candidate_marks_official_cad_used": true,
+          "candidate_has_native_paths_for_all_views": true,
+          "context_source_is_official_native_cad": true,
+          "context_has_blue_official_top_layer": true,
+          "source_access_record_exists": true,
+          "source_access_record_passes": true
+        },
+        "pass": true
+      },
+      "package": {
+        "required_files": [
+          "plan.svg",
+          "front.svg",
+          "side.svg",
+          "manifest.json",
+          "candidate-representations.json",
+          "bonsai-review-manifest.json",
+          "project-context-manifest.json",
+          "index.html",
+          "profile.json",
+          "review-contact-sheet.png"
+        ],
+        "missing_files": [],
+        "pass": true,
+        "index": "output/review/highpoly-types/marilyn-01/index.html",
+        "contact_sheet": "output/review/highpoly-types/marilyn-01/review-contact-sheet.png"
+      },
+      "formal_ifc": {
+        "sha256": "7a50b87e8f48a7c2bfbaa9f1dabdfca7155fa684b2325c66aa1ae15c8ab0a25c",
+        "manifest_hashes": [
+          "7a50b87e8f48a7c2bfbaa9f1dabdfca7155fa684b2325c66aa1ae15c8ab0a25c"
+        ],
+        "bytes_unchanged": true
+      },
+      "bonsai": {
+        "mode": "actual_bonsai_ifc_body_camera_render",
+        "actual_ifc_body_camera_render": true,
+        "saved_camera_count": 4,
+        "one_product_only": true,
+        "whole_model_render": false,
+        "pass": true
+      },
+      "project_context": {
+        "view_count": 3,
+        "project_context_retained": true,
+        "walls_and_surrounding_project_elements_retained": true,
+        "outputs": [
+          "output/review/highpoly-types/marilyn-01/project-context-furniture-plan.svg",
+          "output/review/highpoly-types/marilyn-01/project-context-r22-front-elevation.svg",
+          "output/review/highpoly-types/marilyn-01/project-context-r22-side-elevation.svg"
+        ],
+        "pass": true,
+        "acceptance_rule": "project Plan/Elevation retains walls and surrounding furniture/equipment; the product drawing representation is overlaid in-place"
+      },
+      "approval": {
+        "record": "pipeline/decisions/marilyn-01-drawing-approval.json",
+        "status": "pending",
+        "candidate_manifest_sha256": "5b1d3a34432410cf03b13f114040a85d36a1b671811b363d5bd0cf23b76ee324",
+        "manifest_sha256": "5b1d3a34432410cf03b13f114040a85d36a1b671811b363d5bd0cf23b76ee324",
+        "hash_matches": true,
+        "write_allowed": false,
+        "pass": true
+      },
+      "derived_ifcs": [],
+      "derived_ifc_gate_pass": true,
+      "writer": "pipeline/scripts/marilyn_01_drawing_ifc.py",
+      "writer_exists": true,
+      "test": "pipeline/tests/marilyn-01-highpoly-review.test.ts",
+      "test_exists": true,
+      "commits": [],
+      "commit_gate_pass": true,
+      "mechanical_pass": true
+    },
+    {
+      "type_name": "MiamiSoft F03",
+      "slug": "miamisoft-f03",
+      "status": "review_ready_pending_approval",
+      "folder": "output/review/highpoly-types/miamisoft-f03",
+      "representative_global_id": "1y3lLYK$H9fPbuh1R1vAKX",
+      "source_kind": "geometry_derived_simplified_proxy",
+      "official_cad_used": false,
+      "drawing_source_gate": {
+        "mode": "geometry_derived_fallback",
+        "source_kind": "geometry_derived_simplified_proxy",
+        "source_label_zh": "基于原始高模几何生成的简化图纸表达",
+        "official_cad_used": false,
+        "checks": {
+          "manifest_uses_fallback_kind": true,
+          "manifest_uses_exact_fallback_label": true,
+          "manifest_marks_official_cad_unused": true,
+          "candidate_uses_fallback_kind": true,
+          "candidate_uses_exact_fallback_label": true,
+          "candidate_marks_official_cad_unused": true,
+          "candidate_has_no_project_official_paths": true,
+          "separate_family_references_not_substituted": true,
+          "context_uses_fallback_kind": true,
+          "context_uses_exact_fallback_label": true,
+          "context_marks_official_cad_unused": true,
+          "context_has_no_blue_project_cad_line": true,
+          "source_access_record_exists": true,
+          "source_access_record_passes": true
+        },
+        "pass": true
+      },
+      "package": {
+        "required_files": [
+          "plan.svg",
+          "front.svg",
+          "side.svg",
+          "manifest.json",
+          "candidate-representations.json",
+          "bonsai-review-manifest.json",
+          "project-context-manifest.json",
+          "index.html",
+          "profile.json",
+          "review-contact-sheet.png"
+        ],
+        "missing_files": [],
+        "pass": true,
+        "index": "output/review/highpoly-types/miamisoft-f03/index.html",
+        "contact_sheet": "output/review/highpoly-types/miamisoft-f03/review-contact-sheet.png"
+      },
+      "formal_ifc": {
+        "sha256": "7a50b87e8f48a7c2bfbaa9f1dabdfca7155fa684b2325c66aa1ae15c8ab0a25c",
+        "manifest_hashes": [
+          "7a50b87e8f48a7c2bfbaa9f1dabdfca7155fa684b2325c66aa1ae15c8ab0a25c"
+        ],
+        "bytes_unchanged": true
+      },
+      "bonsai": {
+        "mode": "actual_bonsai_ifc_body_camera_render",
+        "actual_ifc_body_camera_render": true,
+        "saved_camera_count": 4,
+        "one_product_only": true,
+        "whole_model_render": false,
+        "pass": true
+      },
+      "project_context": {
+        "view_count": 2,
+        "project_context_retained": true,
+        "walls_and_surrounding_project_elements_retained": true,
+        "outputs": [
+          "output/review/highpoly-types/miamisoft-f03/project-context-furniture-plan.svg",
+          "output/review/highpoly-types/miamisoft-f03/project-context-r20-side-elevation.svg"
+        ],
+        "pass": true,
+        "acceptance_rule": "project Plan/Elevation retains walls and surrounding furniture/equipment; the product drawing representation is overlaid in-place"
+      },
+      "approval": {
+        "record": "pipeline/decisions/miamisoft-f03-drawing-approval.json",
+        "status": "pending",
+        "candidate_manifest_sha256": "cbe405117283bb41e738ca80942975a5a0afd86402544ce56f6c2d48987663e5",
+        "manifest_sha256": "cbe405117283bb41e738ca80942975a5a0afd86402544ce56f6c2d48987663e5",
+        "hash_matches": true,
+        "write_allowed": false,
+        "pass": true
+      },
+      "derived_ifcs": [],
+      "derived_ifc_gate_pass": true,
+      "writer": "pipeline/scripts/miamisoft_f03_drawing_ifc.py",
+      "writer_exists": true,
+      "test": "pipeline/tests/miamisoft-f03-highpoly-review.test.ts",
+      "test_exists": true,
+      "commits": [],
+      "commit_gate_pass": true,
+      "mechanical_pass": true
+    },
+    {
+      "type_name": "TRAP01",
+      "slug": "trap01",
+      "status": "review_ready_pending_approval",
+      "folder": "output/review/highpoly-types/trap01",
+      "representative_global_id": "2Ak2ma0lvBEA49UpplzUqi",
+      "source_kind": "geometry_derived_simplified_proxy",
+      "official_cad_used": false,
+      "drawing_source_gate": {
+        "mode": "geometry_derived_fallback",
+        "source_kind": "geometry_derived_simplified_proxy",
+        "source_label_zh": "基于原始高模几何生成的简化图纸表达",
+        "official_cad_used": false,
+        "checks": {
+          "manifest_uses_fallback_kind": true,
+          "manifest_uses_exact_fallback_label": true,
+          "manifest_marks_official_cad_unused": true,
+          "candidate_uses_fallback_kind": true,
+          "candidate_uses_exact_fallback_label": true,
+          "candidate_marks_official_cad_unused": true,
+          "candidate_has_no_project_official_paths": true,
+          "separate_family_references_not_substituted": true,
+          "context_uses_fallback_kind": true,
+          "context_uses_exact_fallback_label": true,
+          "context_marks_official_cad_unused": true,
+          "context_has_no_blue_project_cad_line": true,
+          "source_access_record_exists": true,
+          "source_access_record_passes": true
+        },
+        "pass": true
+      },
+      "package": {
+        "required_files": [
+          "plan.svg",
+          "front.svg",
+          "side.svg",
+          "manifest.json",
+          "candidate-representations.json",
+          "bonsai-review-manifest.json",
+          "project-context-manifest.json",
+          "index.html",
+          "profile.json",
+          "review-contact-sheet.png"
+        ],
+        "missing_files": [],
+        "pass": true,
+        "index": "output/review/highpoly-types/trap01/index.html",
+        "contact_sheet": "output/review/highpoly-types/trap01/review-contact-sheet.png"
+      },
+      "formal_ifc": {
+        "sha256": "7a50b87e8f48a7c2bfbaa9f1dabdfca7155fa684b2325c66aa1ae15c8ab0a25c",
+        "manifest_hashes": [
+          "7a50b87e8f48a7c2bfbaa9f1dabdfca7155fa684b2325c66aa1ae15c8ab0a25c"
+        ],
+        "bytes_unchanged": true
+      },
+      "bonsai": {
+        "mode": "actual_bonsai_ifc_body_camera_render",
+        "actual_ifc_body_camera_render": true,
+        "saved_camera_count": 4,
+        "one_product_only": true,
+        "whole_model_render": false,
+        "pass": true
+      },
+      "project_context": {
+        "view_count": 1,
+        "project_context_retained": true,
+        "walls_and_surrounding_project_elements_retained": true,
+        "outputs": [
+          "output/review/highpoly-types/trap01/project-context-sanitary-plan.svg"
+        ],
+        "pass": true,
+        "acceptance_rule": "project Plan/Elevation retains walls and surrounding furniture/equipment; the product drawing representation is overlaid in-place"
+      },
+      "approval": {
+        "record": "pipeline/decisions/trap01-drawing-approval.json",
+        "status": "pending",
+        "candidate_manifest_sha256": "8797de8f27b6ff29aeccbd4df5b44ff67979e4ea5e1cc8922f35aa78cbda5f17",
+        "manifest_sha256": "8797de8f27b6ff29aeccbd4df5b44ff67979e4ea5e1cc8922f35aa78cbda5f17",
+        "hash_matches": true,
+        "write_allowed": false,
+        "pass": true
+      },
+      "derived_ifcs": [],
+      "derived_ifc_gate_pass": true,
+      "writer": "pipeline/scripts/trap01_drawing_ifc.py",
+      "writer_exists": true,
+      "test": "pipeline/tests/trap01-highpoly-review.test.ts",
+      "test_exists": true,
+      "commits": [],
+      "commit_gate_pass": true,
+      "mechanical_pass": true
+    },
+    {
+      "type_name": "Marilyn 02",
+      "slug": "marilyn-02",
+      "status": "review_ready_pending_approval",
+      "folder": "output/review/highpoly-types/marilyn-02",
+      "representative_global_id": "1THxa7p7n97w$wtLn4THjz",
+      "source_kind": "native_dwg",
+      "official_cad_used": true,
+      "drawing_source_gate": {
+        "mode": "official_native_cad",
+        "source_kind": "native_dwg",
+        "source_label_zh": "基于 Baxter 精确型号原生 DWG 的官方图纸表达",
+        "official_cad_used": true,
+        "checks": {
+          "manifest_source_is_official_native_cad": true,
+          "candidate_source_is_official_native_cad": true,
+          "candidate_marks_official_cad_used": true,
+          "candidate_has_native_paths_for_all_views": true,
+          "context_source_is_official_native_cad": true,
+          "context_has_blue_official_top_layer": true,
+          "source_access_record_exists": true,
+          "source_access_record_passes": true
+        },
+        "pass": true
+      },
+      "package": {
+        "required_files": [
+          "plan.svg",
+          "front.svg",
+          "side.svg",
+          "manifest.json",
+          "candidate-representations.json",
+          "bonsai-review-manifest.json",
+          "project-context-manifest.json",
+          "index.html",
+          "profile.json",
+          "review-contact-sheet.png"
+        ],
+        "missing_files": [],
+        "pass": true,
+        "index": "output/review/highpoly-types/marilyn-02/index.html",
+        "contact_sheet": "output/review/highpoly-types/marilyn-02/review-contact-sheet.png"
+      },
+      "formal_ifc": {
+        "sha256": "7a50b87e8f48a7c2bfbaa9f1dabdfca7155fa684b2325c66aa1ae15c8ab0a25c",
+        "manifest_hashes": [
+          "7a50b87e8f48a7c2bfbaa9f1dabdfca7155fa684b2325c66aa1ae15c8ab0a25c"
+        ],
+        "bytes_unchanged": true
+      },
+      "bonsai": {
+        "mode": "actual_bonsai_ifc_body_camera_render",
+        "actual_ifc_body_camera_render": true,
+        "saved_camera_count": 4,
+        "one_product_only": true,
+        "whole_model_render": false,
+        "pass": true
+      },
+      "project_context": {
+        "view_count": 3,
+        "project_context_retained": true,
+        "walls_and_surrounding_project_elements_retained": true,
+        "outputs": [
+          "output/review/highpoly-types/marilyn-02/project-context-furniture-plan.svg",
+          "output/review/highpoly-types/marilyn-02/project-context-r22-front-elevation.svg",
+          "output/review/highpoly-types/marilyn-02/project-context-r22-side-elevation.svg"
+        ],
+        "pass": true,
+        "acceptance_rule": "project Plan/Elevation retains walls and surrounding furniture/equipment; the product drawing representation is overlaid in-place"
+      },
+      "approval": {
+        "record": "pipeline/decisions/marilyn-02-drawing-approval.json",
+        "status": "pending",
+        "candidate_manifest_sha256": "a2b9449bb23371af6eea168d6198bb296028529088892463f31033b12ab49a26",
+        "manifest_sha256": "a2b9449bb23371af6eea168d6198bb296028529088892463f31033b12ab49a26",
+        "hash_matches": true,
+        "write_allowed": false,
+        "pass": true
+      },
+      "derived_ifcs": [],
+      "derived_ifc_gate_pass": true,
+      "writer": "pipeline/scripts/marilyn_02_drawing_ifc.py",
+      "writer_exists": true,
+      "test": "pipeline/tests/marilyn-02-highpoly-review.test.ts",
+      "test_exists": true,
+      "commits": [],
+      "commit_gate_pass": true,
+      "mechanical_pass": true
+    },
+    {
+      "type_name": "CHA01",
+      "slug": "cha01",
+      "status": "review_ready_pending_approval",
+      "folder": "output/review/highpoly-types/cha01",
+      "representative_global_id": "1luHljRzDAhPNXxTDNu7qB",
+      "source_kind": "geometry_derived_simplified_proxy",
+      "official_cad_used": false,
+      "drawing_source_gate": {
+        "mode": "geometry_derived_fallback",
+        "source_kind": "geometry_derived_simplified_proxy",
+        "source_label_zh": "基于原始高模几何生成的简化图纸表达",
+        "official_cad_used": false,
+        "checks": {
+          "manifest_uses_fallback_kind": true,
+          "manifest_uses_exact_fallback_label": true,
+          "manifest_marks_official_cad_unused": true,
+          "candidate_uses_fallback_kind": true,
+          "candidate_uses_exact_fallback_label": true,
+          "candidate_marks_official_cad_unused": true,
+          "candidate_has_no_project_official_paths": true,
+          "separate_family_references_not_substituted": true,
+          "context_uses_fallback_kind": true,
+          "context_uses_exact_fallback_label": true,
+          "context_marks_official_cad_unused": true,
+          "context_has_no_blue_project_cad_line": true,
+          "source_access_record_exists": true,
+          "source_access_record_passes": true
+        },
+        "pass": true
+      },
+      "package": {
+        "required_files": [
+          "plan.svg",
+          "front.svg",
+          "side.svg",
+          "manifest.json",
+          "candidate-representations.json",
+          "bonsai-review-manifest.json",
+          "project-context-manifest.json",
+          "index.html",
+          "profile.json",
+          "review-contact-sheet.png"
+        ],
+        "missing_files": [],
+        "pass": true,
+        "index": "output/review/highpoly-types/cha01/index.html",
+        "contact_sheet": "output/review/highpoly-types/cha01/review-contact-sheet.png"
+      },
+      "formal_ifc": {
+        "sha256": "7a50b87e8f48a7c2bfbaa9f1dabdfca7155fa684b2325c66aa1ae15c8ab0a25c",
+        "manifest_hashes": [
+          "7a50b87e8f48a7c2bfbaa9f1dabdfca7155fa684b2325c66aa1ae15c8ab0a25c"
+        ],
+        "bytes_unchanged": true
+      },
+      "bonsai": {
+        "mode": "actual_bonsai_ifc_body_camera_render",
+        "actual_ifc_body_camera_render": true,
+        "saved_camera_count": 4,
+        "one_product_only": true,
+        "whole_model_render": false,
+        "pass": true
+      },
+      "project_context": {
+        "view_count": 3,
+        "project_context_retained": true,
+        "walls_and_surrounding_project_elements_retained": true,
+        "outputs": [
+          "output/review/highpoly-types/cha01/project-context-furniture-plan.svg",
+          "output/review/highpoly-types/cha01/project-context-r07-front-elevation.svg",
+          "output/review/highpoly-types/cha01/project-context-r07-side-elevation.svg"
+        ],
+        "pass": true,
+        "acceptance_rule": "project Plan/Elevation retains walls and surrounding furniture/equipment; the product drawing representation is overlaid in-place"
+      },
+      "approval": {
+        "record": "pipeline/decisions/cha01-drawing-approval.json",
+        "status": "pending",
+        "candidate_manifest_sha256": "47d51e30276c64c17a707d54d28dfdc0294796979ab778c489875744d1f8a2c1",
+        "manifest_sha256": "47d51e30276c64c17a707d54d28dfdc0294796979ab778c489875744d1f8a2c1",
+        "hash_matches": true,
+        "write_allowed": false,
+        "pass": true
+      },
+      "derived_ifcs": [],
+      "derived_ifc_gate_pass": true,
+      "writer": "pipeline/scripts/cha01_drawing_ifc.py",
+      "writer_exists": true,
+      "test": "pipeline/tests/cha01-highpoly-review.test.ts",
+      "test_exists": true,
+      "commits": [],
+      "commit_gate_pass": true,
+      "mechanical_pass": true
+    },
+    {
+      "type_name": "MiamiSoft H01",
+      "slug": "miamisoft-h01",
+      "status": "review_ready_pending_approval",
+      "folder": "output/review/highpoly-types/miamisoft-h01",
+      "representative_global_id": "0B8rO47U14sgJ_ydZxqvs6",
+      "source_kind": "geometry_derived_simplified_proxy",
+      "official_cad_used": false,
+      "drawing_source_gate": {
+        "mode": "geometry_derived_fallback",
+        "source_kind": "geometry_derived_simplified_proxy",
+        "source_label_zh": "基于原始高模几何生成的简化图纸表达",
+        "official_cad_used": false,
+        "checks": {
+          "manifest_uses_fallback_kind": true,
+          "manifest_uses_exact_fallback_label": true,
+          "manifest_marks_official_cad_unused": true,
+          "candidate_uses_fallback_kind": true,
+          "candidate_uses_exact_fallback_label": true,
+          "candidate_marks_official_cad_unused": true,
+          "candidate_has_no_project_official_paths": true,
+          "separate_family_references_not_substituted": true,
+          "context_uses_fallback_kind": true,
+          "context_uses_exact_fallback_label": true,
+          "context_marks_official_cad_unused": true,
+          "context_has_no_blue_project_cad_line": true,
+          "source_access_record_exists": true,
+          "source_access_record_passes": true
+        },
+        "pass": true
+      },
+      "package": {
+        "required_files": [
+          "plan.svg",
+          "front.svg",
+          "side.svg",
+          "manifest.json",
+          "candidate-representations.json",
+          "bonsai-review-manifest.json",
+          "project-context-manifest.json",
+          "index.html",
+          "profile.json",
+          "review-contact-sheet.png"
+        ],
+        "missing_files": [],
+        "pass": true,
+        "index": "output/review/highpoly-types/miamisoft-h01/index.html",
+        "contact_sheet": "output/review/highpoly-types/miamisoft-h01/review-contact-sheet.png"
+      },
+      "formal_ifc": {
+        "sha256": "7a50b87e8f48a7c2bfbaa9f1dabdfca7155fa684b2325c66aa1ae15c8ab0a25c",
+        "manifest_hashes": [
+          "7a50b87e8f48a7c2bfbaa9f1dabdfca7155fa684b2325c66aa1ae15c8ab0a25c"
+        ],
+        "bytes_unchanged": true
+      },
+      "bonsai": {
+        "mode": "actual_bonsai_ifc_body_camera_render",
+        "actual_ifc_body_camera_render": true,
+        "saved_camera_count": 4,
+        "one_product_only": true,
+        "whole_model_render": false,
+        "pass": true
+      },
+      "project_context": {
+        "view_count": 2,
+        "project_context_retained": true,
+        "walls_and_surrounding_project_elements_retained": true,
+        "outputs": [
+          "output/review/highpoly-types/miamisoft-h01/project-context-furniture-plan.svg",
+          "output/review/highpoly-types/miamisoft-h01/project-context-r20-side-elevation.svg"
+        ],
+        "pass": true,
+        "acceptance_rule": "project Plan/Elevation retains walls and surrounding furniture/equipment; the product drawing representation is overlaid in-place"
+      },
+      "approval": {
+        "record": "pipeline/decisions/miamisoft-h01-drawing-approval.json",
+        "status": "pending",
+        "candidate_manifest_sha256": "3afa0bc9ff4aa94fe74604b556e69174000d7bebb9d1583283e2069ec0160803",
+        "manifest_sha256": "3afa0bc9ff4aa94fe74604b556e69174000d7bebb9d1583283e2069ec0160803",
+        "hash_matches": true,
+        "write_allowed": false,
+        "pass": true
+      },
+      "derived_ifcs": [],
+      "derived_ifc_gate_pass": true,
+      "writer": "pipeline/scripts/miamisoft_h01_drawing_ifc.py",
+      "writer_exists": true,
+      "test": "pipeline/tests/miamisoft-h01-highpoly-review.test.ts",
+      "test_exists": true,
+      "commits": [],
+      "commit_gate_pass": true,
+      "mechanical_pass": true
+    },
+    {
+      "type_name": "BS01",
+      "slug": "falper-sorgente",
+      "status": "completed",
+      "folder": "output/review/highpoly-types/falper-sorgente",
+      "representative_global_id": "350tdaubr8QP3Cu2YMQZIN",
+      "source_kind": "native_dwg",
+      "official_cad_used": true,
+      "drawing_source_gate": {
+        "mode": "approved_official_native_cad",
+        "source_kind": "native_dwg",
+        "source_label_zh": null,
+        "official_cad_used": true,
+        "checks": {
+          "manifest_source_is_official_native_cad": true,
+          "official_cad_used": true,
+          "context_source_is_official_native_cad": true,
+          "official_source_manifest_exists": true
+        },
+        "pass": true
+      },
+      "package": {
+        "required_files": [
+          "plan.svg",
+          "front.svg",
+          "side.svg",
+          "manifest.json",
+          "candidate-representations.json",
+          "bonsai-review-manifest.json",
+          "project-context-manifest.json",
+          "index.html"
+        ],
+        "missing_files": [],
+        "pass": true,
+        "index": "output/review/highpoly-types/falper-sorgente/index.html",
+        "contact_sheet": null
+      },
+      "formal_ifc": {
+        "sha256": "7a50b87e8f48a7c2bfbaa9f1dabdfca7155fa684b2325c66aa1ae15c8ab0a25c",
+        "manifest_hashes": [
+          "7a50b87e8f48a7c2bfbaa9f1dabdfca7155fa684b2325c66aa1ae15c8ab0a25c"
+        ],
+        "bytes_unchanged": true
+      },
+      "bonsai": {
+        "mode": "actual_bonsai_ifc_body_camera_render",
+        "actual_ifc_body_camera_render": true,
+        "saved_camera_count": 4,
+        "one_product_only": true,
+        "whole_model_render": false,
+        "pass": true
+      },
+      "project_context": {
+        "view_count": 2,
+        "project_context_retained": true,
+        "walls_and_surrounding_project_elements_retained": true,
+        "outputs": [
+          "output/review/highpoly-types/falper-sorgente/project-context-sanitary-plan.svg",
+          "output/review/highpoly-types/falper-sorgente/project-context-elevation-EL-08-30-R16-NY.svg"
+        ],
+        "pass": true,
+        "acceptance_rule": "project Plan/Elevation retains walls and surrounding furniture/equipment; the product drawing representation is overlaid in-place"
+      },
+      "approval": {
+        "record": "pipeline/decisions/falper-sorgente-drawing-approval.json",
+        "status": "approved",
+        "candidate_manifest_sha256": "39bffa9024bebe4ea665b55853cfae5675cad2c6cbbbe2af18d25939a830c86a",
+        "manifest_sha256": "39bffa9024bebe4ea665b55853cfae5675cad2c6cbbbe2af18d25939a830c86a",
+        "hash_matches": true,
+        "write_allowed": true,
+        "pass": true
+      },
+      "derived_ifcs": [
+        "output/review/highpoly-types/falper-sorgente/Falper-Sorgente-WFB-derived-drawing-corrected.ifc",
+        "output/review/highpoly-types/falper-sorgente/Falper-Sorgente-WFB-derived-drawing.ifc"
+      ],
+      "derived_ifc_gate_pass": true,
+      "writer": "pipeline/scripts/falper_sorgente_drawing_ifc.py",
+      "writer_exists": true,
+      "test": "pipeline/tests/falper-sorgente-highpoly-review.test.ts",
+      "test_exists": true,
+      "commits": [
+        "6378582eb8c06f816edb3dcca598618277c00196",
+        "567dfb8e61f390fec5ea49691b8f4dee110f59b0"
+      ],
+      "commit_gate_pass": true,
+      "mechanical_pass": true
+    },
+    {
+      "type_name": "Libelle",
+      "slug": "libelle",
+      "status": "excluded_other_task_do_not_touch",
+      "excluded": true,
+      "do_not_touch": true,
+      "folder_exists": false,
+      "mechanical_pass": true
+    },
+    {
+      "type_name": "Geberit 154.154.00",
+      "slug": "geberit-154-154-00",
+      "status": "review_ready_pending_approval",
+      "folder": "output/review/highpoly-types/geberit-154-154-00",
+      "representative_global_id": "14EazrLgP8whYZWY_yCuKy",
+      "source_kind": "geometry_derived_simplified_proxy",
+      "official_cad_used": false,
+      "drawing_source_gate": {
+        "mode": "geometry_derived_fallback",
+        "source_kind": "geometry_derived_simplified_proxy",
+        "source_label_zh": "基于原始高模几何生成的简化图纸表达",
+        "official_cad_used": false,
+        "checks": {
+          "manifest_uses_fallback_kind": true,
+          "manifest_uses_exact_fallback_label": true,
+          "manifest_marks_official_cad_unused": true,
+          "candidate_uses_fallback_kind": true,
+          "candidate_uses_exact_fallback_label": true,
+          "candidate_marks_official_cad_unused": true,
+          "candidate_has_no_project_official_paths": true,
+          "separate_family_references_not_substituted": true,
+          "context_uses_fallback_kind": true,
+          "context_uses_exact_fallback_label": true,
+          "context_marks_official_cad_unused": true,
+          "context_has_no_blue_project_cad_line": true,
+          "source_access_record_exists": true,
+          "source_access_record_passes": true
+        },
+        "pass": true
+      },
+      "package": {
+        "required_files": [
+          "plan.svg",
+          "front.svg",
+          "side.svg",
+          "manifest.json",
+          "candidate-representations.json",
+          "bonsai-review-manifest.json",
+          "project-context-manifest.json",
+          "index.html",
+          "profile.json",
+          "review-contact-sheet.png"
+        ],
+        "missing_files": [],
+        "pass": true,
+        "index": "output/review/highpoly-types/geberit-154-154-00/index.html",
+        "contact_sheet": "output/review/highpoly-types/geberit-154-154-00/review-contact-sheet.png"
+      },
+      "formal_ifc": {
+        "sha256": "7a50b87e8f48a7c2bfbaa9f1dabdfca7155fa684b2325c66aa1ae15c8ab0a25c",
+        "manifest_hashes": [
+          "7a50b87e8f48a7c2bfbaa9f1dabdfca7155fa684b2325c66aa1ae15c8ab0a25c"
+        ],
+        "bytes_unchanged": true
+      },
+      "bonsai": {
+        "mode": "actual_bonsai_ifc_body_camera_render",
+        "actual_ifc_body_camera_render": true,
+        "saved_camera_count": 4,
+        "one_product_only": true,
+        "whole_model_render": false,
+        "pass": true
+      },
+      "project_context": {
+        "view_count": 3,
+        "project_context_retained": true,
+        "walls_and_surrounding_project_elements_retained": true,
+        "outputs": [
+          "output/review/highpoly-types/geberit-154-154-00/project-context-sanitary-plan.svg",
+          "output/review/highpoly-types/geberit-154-154-00/project-context-r12-front-elevation.svg",
+          "output/review/highpoly-types/geberit-154-154-00/project-context-r12-side-elevation.svg"
+        ],
+        "pass": true,
+        "acceptance_rule": "project Plan/Elevation retains walls and surrounding furniture/equipment; the product drawing representation is overlaid in-place"
+      },
+      "approval": {
+        "record": "pipeline/decisions/geberit-154-154-00-drawing-approval.json",
+        "status": "pending",
+        "candidate_manifest_sha256": "b9590c2c9066d1f9b463ad85f94ae9f0828321bdd428867e2570269125b1421b",
+        "manifest_sha256": "b9590c2c9066d1f9b463ad85f94ae9f0828321bdd428867e2570269125b1421b",
+        "hash_matches": true,
+        "write_allowed": false,
+        "pass": true
+      },
+      "derived_ifcs": [],
+      "derived_ifc_gate_pass": true,
+      "writer": "pipeline/scripts/geberit_154_154_00_drawing_ifc.py",
+      "writer_exists": true,
+      "test": "pipeline/tests/geberit-154-154-00-highpoly-review.test.ts",
+      "test_exists": true,
+      "commits": [],
+      "commit_gate_pass": true,
+      "mechanical_pass": true
+    },
+    {
+      "type_name": "BST03",
+      "slug": "bst03",
+      "status": "review_ready_pending_approval",
+      "folder": "output/review/highpoly-types/bst03",
+      "representative_global_id": "1HZoxe$df4cBb4UXXH5J2S",
+      "source_kind": "geometry_derived_simplified_proxy",
+      "official_cad_used": false,
+      "drawing_source_gate": {
+        "mode": "geometry_derived_fallback",
+        "source_kind": "geometry_derived_simplified_proxy",
+        "source_label_zh": "基于原始高模几何生成的简化图纸表达",
+        "official_cad_used": false,
+        "checks": {
+          "manifest_uses_fallback_kind": true,
+          "manifest_uses_exact_fallback_label": true,
+          "manifest_marks_official_cad_unused": true,
+          "candidate_uses_fallback_kind": true,
+          "candidate_uses_exact_fallback_label": true,
+          "candidate_marks_official_cad_unused": true,
+          "candidate_has_no_project_official_paths": true,
+          "separate_family_references_not_substituted": true,
+          "context_uses_fallback_kind": true,
+          "context_uses_exact_fallback_label": true,
+          "context_marks_official_cad_unused": true,
+          "context_has_no_blue_project_cad_line": true,
+          "source_access_record_exists": true,
+          "source_access_record_passes": true
+        },
+        "pass": true
+      },
+      "package": {
+        "required_files": [
+          "plan.svg",
+          "front.svg",
+          "side.svg",
+          "manifest.json",
+          "candidate-representations.json",
+          "bonsai-review-manifest.json",
+          "project-context-manifest.json",
+          "index.html",
+          "profile.json",
+          "review-contact-sheet.png"
+        ],
+        "missing_files": [],
+        "pass": true,
+        "index": "output/review/highpoly-types/bst03/index.html",
+        "contact_sheet": "output/review/highpoly-types/bst03/review-contact-sheet.png"
+      },
+      "formal_ifc": {
+        "sha256": "7a50b87e8f48a7c2bfbaa9f1dabdfca7155fa684b2325c66aa1ae15c8ab0a25c",
+        "manifest_hashes": [
+          "7a50b87e8f48a7c2bfbaa9f1dabdfca7155fa684b2325c66aa1ae15c8ab0a25c"
+        ],
+        "bytes_unchanged": true
+      },
+      "bonsai": {
+        "mode": "actual_bonsai_ifc_body_camera_render",
+        "actual_ifc_body_camera_render": true,
+        "saved_camera_count": 4,
+        "one_product_only": true,
+        "whole_model_render": false,
+        "pass": true
+      },
+      "project_context": {
+        "view_count": 1,
+        "project_context_retained": true,
+        "walls_and_surrounding_project_elements_retained": true,
+        "outputs": [
+          "output/review/highpoly-types/bst03/project-context-furniture-plan.svg"
+        ],
+        "pass": true,
+        "acceptance_rule": "project Plan/Elevation retains walls and surrounding furniture/equipment; the product drawing representation is overlaid in-place"
+      },
+      "approval": {
+        "record": "pipeline/decisions/bst03-drawing-approval.json",
+        "status": "pending",
+        "candidate_manifest_sha256": "652ffc8e305bf9c30856fbdee5ff80665e45e5b92d8daea533cd635f4455968a",
+        "manifest_sha256": "652ffc8e305bf9c30856fbdee5ff80665e45e5b92d8daea533cd635f4455968a",
+        "hash_matches": true,
+        "write_allowed": false,
+        "pass": true
+      },
+      "derived_ifcs": [],
+      "derived_ifc_gate_pass": true,
+      "writer": "pipeline/scripts/bst03_drawing_ifc.py",
+      "writer_exists": true,
+      "test": "pipeline/tests/bst03-highpoly-review.test.ts",
+      "test_exists": true,
+      "commits": [],
+      "commit_gate_pass": true,
+      "mechanical_pass": true
+    },
+    {
+      "type_name": "FAU02",
+      "slug": "fau02",
+      "status": "review_ready_pending_approval",
+      "folder": "output/review/highpoly-types/fau02",
+      "representative_global_id": "36ZX3QPyD7SvlXsDKMP8rY",
+      "source_kind": "geometry_derived_simplified_proxy",
+      "official_cad_used": false,
+      "drawing_source_gate": {
+        "mode": "geometry_derived_fallback",
+        "source_kind": "geometry_derived_simplified_proxy",
+        "source_label_zh": "基于原始高模几何生成的简化图纸表达",
+        "official_cad_used": false,
+        "checks": {
+          "manifest_uses_fallback_kind": true,
+          "manifest_uses_exact_fallback_label": true,
+          "manifest_marks_official_cad_unused": true,
+          "candidate_uses_fallback_kind": true,
+          "candidate_uses_exact_fallback_label": true,
+          "candidate_marks_official_cad_unused": true,
+          "candidate_has_no_project_official_paths": true,
+          "separate_family_references_not_substituted": true,
+          "context_uses_fallback_kind": true,
+          "context_uses_exact_fallback_label": true,
+          "context_marks_official_cad_unused": true,
+          "context_has_no_blue_project_cad_line": true,
+          "source_access_record_exists": true,
+          "source_access_record_passes": true
+        },
+        "pass": true
+      },
+      "package": {
+        "required_files": [
+          "plan.svg",
+          "front.svg",
+          "side.svg",
+          "manifest.json",
+          "candidate-representations.json",
+          "bonsai-review-manifest.json",
+          "project-context-manifest.json",
+          "index.html",
+          "profile.json",
+          "review-contact-sheet.png"
+        ],
+        "missing_files": [],
+        "pass": true,
+        "index": "output/review/highpoly-types/fau02/index.html",
+        "contact_sheet": "output/review/highpoly-types/fau02/review-contact-sheet.png"
+      },
+      "formal_ifc": {
+        "sha256": "7a50b87e8f48a7c2bfbaa9f1dabdfca7155fa684b2325c66aa1ae15c8ab0a25c",
+        "manifest_hashes": [
+          "7a50b87e8f48a7c2bfbaa9f1dabdfca7155fa684b2325c66aa1ae15c8ab0a25c"
+        ],
+        "bytes_unchanged": true
+      },
+      "bonsai": {
+        "mode": "actual_bonsai_ifc_body_camera_render",
+        "actual_ifc_body_camera_render": true,
+        "saved_camera_count": 4,
+        "one_product_only": true,
+        "whole_model_render": false,
+        "pass": true
+      },
+      "project_context": {
+        "view_count": 3,
+        "project_context_retained": true,
+        "walls_and_surrounding_project_elements_retained": true,
+        "outputs": [
+          "output/review/highpoly-types/fau02/project-context-furniture-plan.svg",
+          "output/review/highpoly-types/fau02/project-context-front-elevation.svg",
+          "output/review/highpoly-types/fau02/project-context-side-elevation.svg"
+        ],
+        "pass": true,
+        "acceptance_rule": "project Plan/Elevation retains walls and surrounding furniture/equipment; the product drawing representation is overlaid in-place"
+      },
+      "approval": {
+        "record": "pipeline/decisions/fau02-drawing-approval.json",
+        "status": "pending",
+        "candidate_manifest_sha256": "1f0b217177346042d5829fcf5b8d90530dae85e33a555605a3d283245cac1862",
+        "manifest_sha256": "1f0b217177346042d5829fcf5b8d90530dae85e33a555605a3d283245cac1862",
+        "hash_matches": true,
+        "write_allowed": false,
+        "pass": true
+      },
+      "derived_ifcs": [],
+      "derived_ifc_gate_pass": true,
+      "writer": "pipeline/scripts/fau02_drawing_ifc.py",
+      "writer_exists": true,
+      "test": "pipeline/tests/fau02-highpoly-review.test.ts",
+      "test_exists": true,
+      "commits": [],
+      "commit_gate_pass": true,
+      "mechanical_pass": true
+    },
+    {
+      "type_name": "Gessi316 54146",
+      "slug": "gessi316-54146",
+      "status": "review_ready_pending_approval",
+      "folder": "output/review/highpoly-types/gessi316-54146",
+      "representative_global_id": "04DLh1Jk9Dcu9ibcaE0id8",
+      "source_kind": "geometry_derived_simplified_proxy",
+      "official_cad_used": false,
+      "drawing_source_gate": {
+        "mode": "geometry_derived_fallback",
+        "source_kind": "geometry_derived_simplified_proxy",
+        "source_label_zh": "基于原始高模几何生成的简化图纸表达",
+        "official_cad_used": false,
+        "checks": {
+          "manifest_uses_fallback_kind": true,
+          "manifest_uses_exact_fallback_label": true,
+          "manifest_marks_official_cad_unused": true,
+          "candidate_uses_fallback_kind": true,
+          "candidate_uses_exact_fallback_label": true,
+          "candidate_marks_official_cad_unused": true,
+          "candidate_has_no_project_official_paths": true,
+          "separate_family_references_not_substituted": true,
+          "context_uses_fallback_kind": true,
+          "context_uses_exact_fallback_label": true,
+          "context_marks_official_cad_unused": true,
+          "context_has_no_blue_project_cad_line": true,
+          "source_access_record_exists": true,
+          "source_access_record_passes": true
+        },
+        "pass": true
+      },
+      "package": {
+        "required_files": [
+          "plan.svg",
+          "front.svg",
+          "side.svg",
+          "manifest.json",
+          "candidate-representations.json",
+          "bonsai-review-manifest.json",
+          "project-context-manifest.json",
+          "index.html",
+          "profile.json",
+          "review-contact-sheet.png"
+        ],
+        "missing_files": [],
+        "pass": true,
+        "index": "output/review/highpoly-types/gessi316-54146/index.html",
+        "contact_sheet": "output/review/highpoly-types/gessi316-54146/review-contact-sheet.png"
+      },
+      "formal_ifc": {
+        "sha256": "7a50b87e8f48a7c2bfbaa9f1dabdfca7155fa684b2325c66aa1ae15c8ab0a25c",
+        "manifest_hashes": [
+          "7a50b87e8f48a7c2bfbaa9f1dabdfca7155fa684b2325c66aa1ae15c8ab0a25c"
+        ],
+        "bytes_unchanged": true
+      },
+      "bonsai": {
+        "mode": "actual_bonsai_ifc_body_camera_render",
+        "actual_ifc_body_camera_render": true,
+        "saved_camera_count": 4,
+        "one_product_only": true,
+        "whole_model_render": false,
+        "pass": true
+      },
+      "project_context": {
+        "view_count": 3,
+        "project_context_retained": true,
+        "walls_and_surrounding_project_elements_retained": true,
+        "outputs": [
+          "output/review/highpoly-types/gessi316-54146/project-context-ffl-plan.svg",
+          "output/review/highpoly-types/gessi316-54146/project-context-front-elevation.svg",
+          "output/review/highpoly-types/gessi316-54146/project-context-side-elevation.svg"
+        ],
+        "pass": true,
+        "acceptance_rule": "project Plan/Elevation retains walls and surrounding furniture/equipment; the product drawing representation is overlaid in-place"
+      },
+      "approval": {
+        "record": "pipeline/decisions/gessi316-54146-drawing-approval.json",
+        "status": "pending",
+        "candidate_manifest_sha256": "8ccf127adf32172dafb73c5df486972fcff74e3d2d1a4a0cd48283cb8575ac6d",
+        "manifest_sha256": "8ccf127adf32172dafb73c5df486972fcff74e3d2d1a4a0cd48283cb8575ac6d",
+        "hash_matches": true,
+        "write_allowed": false,
+        "pass": true
+      },
+      "derived_ifcs": [],
+      "derived_ifc_gate_pass": true,
+      "writer": "pipeline/scripts/gessi316_54146_drawing_ifc.py",
+      "writer_exists": true,
+      "test": "pipeline/tests/gessi316-54146-highpoly-review.test.ts",
+      "test_exists": true,
+      "commits": [],
+      "commit_gate_pass": true,
+      "mechanical_pass": true
+    },
+    {
+      "type_name": "WD03",
+      "slug": "wd03",
+      "status": "review_ready_pending_approval",
+      "folder": "output/review/highpoly-types/wd03",
+      "representative_global_id": "3cmikd9MTB$egM5KQaNgUf",
+      "source_kind": "geometry_derived_simplified_proxy",
+      "official_cad_used": false,
+      "drawing_source_gate": {
+        "mode": "geometry_derived_fallback",
+        "source_kind": "geometry_derived_simplified_proxy",
+        "source_label_zh": "基于原始高模几何生成的简化图纸表达",
+        "official_cad_used": false,
+        "checks": {
+          "manifest_uses_fallback_kind": true,
+          "manifest_uses_exact_fallback_label": true,
+          "manifest_marks_official_cad_unused": true,
+          "candidate_uses_fallback_kind": true,
+          "candidate_uses_exact_fallback_label": true,
+          "candidate_marks_official_cad_unused": true,
+          "candidate_has_no_project_official_paths": true,
+          "separate_family_references_not_substituted": true,
+          "context_uses_fallback_kind": true,
+          "context_uses_exact_fallback_label": true,
+          "context_marks_official_cad_unused": true,
+          "context_has_no_blue_project_cad_line": true,
+          "source_access_record_exists": true,
+          "source_access_record_passes": true
+        },
+        "pass": true
+      },
+      "package": {
+        "required_files": [
+          "plan.svg",
+          "front.svg",
+          "side.svg",
+          "manifest.json",
+          "candidate-representations.json",
+          "bonsai-review-manifest.json",
+          "project-context-manifest.json",
+          "index.html",
+          "profile.json",
+          "review-contact-sheet.png"
+        ],
+        "missing_files": [],
+        "pass": true,
+        "index": "output/review/highpoly-types/wd03/index.html",
+        "contact_sheet": "output/review/highpoly-types/wd03/review-contact-sheet.png"
+      },
+      "formal_ifc": {
+        "sha256": "7a50b87e8f48a7c2bfbaa9f1dabdfca7155fa684b2325c66aa1ae15c8ab0a25c",
+        "manifest_hashes": [
+          "7a50b87e8f48a7c2bfbaa9f1dabdfca7155fa684b2325c66aa1ae15c8ab0a25c"
+        ],
+        "bytes_unchanged": true
+      },
+      "bonsai": {
+        "mode": "actual_bonsai_ifc_body_camera_render",
+        "actual_ifc_body_camera_render": true,
+        "saved_camera_count": 4,
+        "one_product_only": true,
+        "whole_model_render": false,
+        "pass": true
+      },
+      "project_context": {
+        "view_count": 2,
+        "project_context_retained": true,
+        "walls_and_surrounding_project_elements_retained": true,
+        "outputs": [
+          "output/review/highpoly-types/wd03/project-context-furniture-plan.svg",
+          "output/review/highpoly-types/wd03/project-context-side-elevation.svg"
+        ],
+        "pass": true,
+        "acceptance_rule": "project Plan/Elevation retains walls and surrounding furniture/equipment; the product drawing representation is overlaid in-place"
+      },
+      "approval": {
+        "record": "pipeline/decisions/wd03-drawing-approval.json",
+        "status": "pending",
+        "candidate_manifest_sha256": "2e43233e1b10ce679ce923d7e778a90ebfee251113afae0a4ac8803c136004e1",
+        "manifest_sha256": "2e43233e1b10ce679ce923d7e778a90ebfee251113afae0a4ac8803c136004e1",
+        "hash_matches": true,
+        "write_allowed": false,
+        "pass": true
+      },
+      "derived_ifcs": [],
+      "derived_ifc_gate_pass": true,
+      "writer": "pipeline/scripts/wd03_drawing_ifc.py",
+      "writer_exists": true,
+      "test": "pipeline/tests/wd03-highpoly-review.test.ts",
+      "test_exists": true,
+      "commits": [],
+      "commit_gate_pass": true,
+      "mechanical_pass": true
+    },
+    {
+      "type_name": "MiamiSoft I03",
+      "slug": "miamisoft-i03",
+      "status": "review_ready_pending_approval",
+      "folder": "output/review/highpoly-types/miamisoft-i03",
+      "representative_global_id": "1hdNtfQRPCGfHLfqzdp6w0",
+      "source_kind": "geometry_derived_simplified_proxy",
+      "official_cad_used": false,
+      "drawing_source_gate": {
+        "mode": "geometry_derived_fallback",
+        "source_kind": "geometry_derived_simplified_proxy",
+        "source_label_zh": "基于原始高模几何生成的简化图纸表达",
+        "official_cad_used": false,
+        "checks": {
+          "manifest_uses_fallback_kind": true,
+          "manifest_uses_exact_fallback_label": true,
+          "manifest_marks_official_cad_unused": true,
+          "candidate_uses_fallback_kind": true,
+          "candidate_uses_exact_fallback_label": true,
+          "candidate_marks_official_cad_unused": true,
+          "candidate_has_no_project_official_paths": true,
+          "separate_family_references_not_substituted": true,
+          "context_uses_fallback_kind": true,
+          "context_uses_exact_fallback_label": true,
+          "context_marks_official_cad_unused": true,
+          "context_has_no_blue_project_cad_line": true,
+          "source_access_record_exists": true,
+          "source_access_record_passes": true
+        },
+        "pass": true
+      },
+      "package": {
+        "required_files": [
+          "plan.svg",
+          "front.svg",
+          "side.svg",
+          "manifest.json",
+          "candidate-representations.json",
+          "bonsai-review-manifest.json",
+          "project-context-manifest.json",
+          "index.html",
+          "profile.json",
+          "review-contact-sheet.png"
+        ],
+        "missing_files": [],
+        "pass": true,
+        "index": "output/review/highpoly-types/miamisoft-i03/index.html",
+        "contact_sheet": "output/review/highpoly-types/miamisoft-i03/review-contact-sheet.png"
+      },
+      "formal_ifc": {
+        "sha256": "7a50b87e8f48a7c2bfbaa9f1dabdfca7155fa684b2325c66aa1ae15c8ab0a25c",
+        "manifest_hashes": [
+          "7a50b87e8f48a7c2bfbaa9f1dabdfca7155fa684b2325c66aa1ae15c8ab0a25c"
+        ],
+        "bytes_unchanged": true
+      },
+      "bonsai": {
+        "mode": "actual_bonsai_ifc_body_camera_render",
+        "actual_ifc_body_camera_render": true,
+        "saved_camera_count": 4,
+        "one_product_only": true,
+        "whole_model_render": false,
+        "pass": true
+      },
+      "project_context": {
+        "view_count": 2,
+        "project_context_retained": true,
+        "walls_and_surrounding_project_elements_retained": true,
+        "outputs": [
+          "output/review/highpoly-types/miamisoft-i03/project-context-furniture-plan.svg",
+          "output/review/highpoly-types/miamisoft-i03/project-context-r20-side-elevation.svg"
+        ],
+        "pass": true,
+        "acceptance_rule": "project Plan/Elevation retains walls and surrounding furniture/equipment; the product drawing representation is overlaid in-place"
+      },
+      "approval": {
+        "record": "pipeline/decisions/miamisoft-i03-drawing-approval.json",
+        "status": "pending",
+        "candidate_manifest_sha256": "8efe88f473a146e60dd8079f62f07f845ea9babd6b10baaee3c31f54d9d990f8",
+        "manifest_sha256": "8efe88f473a146e60dd8079f62f07f845ea9babd6b10baaee3c31f54d9d990f8",
+        "hash_matches": true,
+        "write_allowed": false,
+        "pass": true
+      },
+      "derived_ifcs": [],
+      "derived_ifc_gate_pass": true,
+      "writer": "pipeline/scripts/miamisoft_i03_drawing_ifc.py",
+      "writer_exists": true,
+      "test": "pipeline/tests/miamisoft-i03-highpoly-review.test.ts",
+      "test_exists": true,
+      "commits": [],
+      "commit_gate_pass": true,
+      "mechanical_pass": true
+    },
+    {
+      "type_name": "Geberit 146.140",
+      "slug": "geberit-146-140",
+      "status": "review_ready_pending_approval",
+      "folder": "output/review/highpoly-types/geberit-146-140",
+      "representative_global_id": "1rhZG98PPCSxaLeMFLTYb9",
+      "source_kind": "native_dwg",
+      "official_cad_used": true,
+      "drawing_source_gate": {
+        "mode": "official_native_cad",
+        "source_kind": "native_dwg",
+        "source_label_zh": "Geberit 官方归档原生 DWG 图纸表达",
+        "official_cad_used": true,
+        "checks": {
+          "manifest_source_is_official_native_cad": true,
+          "candidate_source_is_official_native_cad": true,
+          "candidate_marks_official_cad_used": true,
+          "candidate_has_native_paths_for_all_views": true,
+          "context_source_is_official_native_cad": true,
+          "context_has_blue_official_top_layer": true,
+          "source_access_record_exists": true,
+          "source_access_record_passes": true
+        },
+        "pass": true
+      },
+      "package": {
+        "required_files": [
+          "plan.svg",
+          "front.svg",
+          "side.svg",
+          "manifest.json",
+          "candidate-representations.json",
+          "bonsai-review-manifest.json",
+          "project-context-manifest.json",
+          "index.html",
+          "profile.json",
+          "review-contact-sheet.png"
+        ],
+        "missing_files": [],
+        "pass": true,
+        "index": "output/review/highpoly-types/geberit-146-140/index.html",
+        "contact_sheet": "output/review/highpoly-types/geberit-146-140/review-contact-sheet.png"
+      },
+      "formal_ifc": {
+        "sha256": "7a50b87e8f48a7c2bfbaa9f1dabdfca7155fa684b2325c66aa1ae15c8ab0a25c",
+        "manifest_hashes": [
+          "7a50b87e8f48a7c2bfbaa9f1dabdfca7155fa684b2325c66aa1ae15c8ab0a25c"
+        ],
+        "bytes_unchanged": true
+      },
+      "bonsai": {
+        "mode": "actual_bonsai_ifc_body_camera_render",
+        "actual_ifc_body_camera_render": true,
+        "saved_camera_count": 4,
+        "one_product_only": true,
+        "whole_model_render": false,
+        "pass": true
+      },
+      "project_context": {
+        "view_count": 3,
+        "project_context_retained": true,
+        "walls_and_surrounding_project_elements_retained": true,
+        "outputs": [
+          "output/review/highpoly-types/geberit-146-140/project-context-sanitary-plan.svg",
+          "output/review/highpoly-types/geberit-146-140/project-context-front-elevation.svg",
+          "output/review/highpoly-types/geberit-146-140/project-context-side-elevation.svg"
+        ],
+        "pass": true,
+        "acceptance_rule": "project Plan/Elevation retains walls and surrounding furniture/equipment; the product drawing representation is overlaid in-place"
+      },
+      "approval": {
+        "record": "pipeline/decisions/geberit-146-140-drawing-approval.json",
+        "status": "pending",
+        "candidate_manifest_sha256": "bc71a60801a3afd6ed16aadbae4493303e7987c273807473aaedbf97b130ae74",
+        "manifest_sha256": "bc71a60801a3afd6ed16aadbae4493303e7987c273807473aaedbf97b130ae74",
+        "hash_matches": true,
+        "write_allowed": false,
+        "pass": true
+      },
+      "derived_ifcs": [],
+      "derived_ifc_gate_pass": true,
+      "writer": "pipeline/scripts/geberit_146_140_drawing_ifc.py",
+      "writer_exists": true,
+      "test": "pipeline/tests/geberit-146-140-highpoly-review.test.ts",
+      "test_exists": true,
+      "commits": [],
+      "commit_gate_pass": true,
+      "mechanical_pass": true
+    },
+    {
+      "type_name": "Gessi316 54145",
+      "slug": "gessi316-54145",
+      "status": "review_ready_pending_approval",
+      "folder": "output/review/highpoly-types/gessi316-54145",
+      "representative_global_id": "3jT4sCgpHC98VSIUdGUNYH",
+      "source_kind": "geometry_derived_simplified_proxy",
+      "official_cad_used": false,
+      "drawing_source_gate": {
+        "mode": "geometry_derived_fallback",
+        "source_kind": "geometry_derived_simplified_proxy",
+        "source_label_zh": "基于原始高模几何生成的简化图纸表达",
+        "official_cad_used": false,
+        "checks": {
+          "manifest_uses_fallback_kind": true,
+          "manifest_uses_exact_fallback_label": true,
+          "manifest_marks_official_cad_unused": true,
+          "candidate_uses_fallback_kind": true,
+          "candidate_uses_exact_fallback_label": true,
+          "candidate_marks_official_cad_unused": true,
+          "candidate_has_no_project_official_paths": true,
+          "separate_family_references_not_substituted": true,
+          "context_uses_fallback_kind": true,
+          "context_uses_exact_fallback_label": true,
+          "context_marks_official_cad_unused": true,
+          "context_has_no_blue_project_cad_line": true,
+          "source_access_record_exists": true,
+          "source_access_record_passes": true
+        },
+        "pass": true
+      },
+      "package": {
+        "required_files": [
+          "plan.svg",
+          "front.svg",
+          "side.svg",
+          "manifest.json",
+          "candidate-representations.json",
+          "bonsai-review-manifest.json",
+          "project-context-manifest.json",
+          "index.html",
+          "profile.json",
+          "review-contact-sheet.png"
+        ],
+        "missing_files": [],
+        "pass": true,
+        "index": "output/review/highpoly-types/gessi316-54145/index.html",
+        "contact_sheet": "output/review/highpoly-types/gessi316-54145/review-contact-sheet.png"
+      },
+      "formal_ifc": {
+        "sha256": "7a50b87e8f48a7c2bfbaa9f1dabdfca7155fa684b2325c66aa1ae15c8ab0a25c",
+        "manifest_hashes": [
+          "7a50b87e8f48a7c2bfbaa9f1dabdfca7155fa684b2325c66aa1ae15c8ab0a25c"
+        ],
+        "bytes_unchanged": true
+      },
+      "bonsai": {
+        "mode": "actual_bonsai_ifc_body_camera_render",
+        "actual_ifc_body_camera_render": true,
+        "saved_camera_count": 4,
+        "one_product_only": true,
+        "whole_model_render": false,
+        "pass": true
+      },
+      "project_context": {
+        "view_count": 3,
+        "project_context_retained": true,
+        "walls_and_surrounding_project_elements_retained": true,
+        "outputs": [
+          "output/review/highpoly-types/gessi316-54145/project-context-ffl-plan.svg",
+          "output/review/highpoly-types/gessi316-54145/project-context-front-elevation.svg",
+          "output/review/highpoly-types/gessi316-54145/project-context-side-elevation.svg"
+        ],
+        "pass": true,
+        "acceptance_rule": "project Plan/Elevation retains walls and surrounding furniture/equipment; the product drawing representation is overlaid in-place"
+      },
+      "approval": {
+        "record": "pipeline/decisions/gessi316-54145-drawing-approval.json",
+        "status": "pending",
+        "candidate_manifest_sha256": "9b3a1a460c08748c9cba16b75a2d3b4b219eeccb700a29e1654ab45442ab8064",
+        "manifest_sha256": "9b3a1a460c08748c9cba16b75a2d3b4b219eeccb700a29e1654ab45442ab8064",
+        "hash_matches": true,
+        "write_allowed": false,
+        "pass": true
+      },
+      "derived_ifcs": [],
+      "derived_ifc_gate_pass": true,
+      "writer": "pipeline/scripts/gessi316_54145_drawing_ifc.py",
+      "writer_exists": true,
+      "test": "pipeline/tests/gessi316-54145-highpoly-review.test.ts",
+      "test_exists": true,
+      "commits": [],
+      "commit_gate_pass": true,
+      "mechanical_pass": true
+    },
+    {
+      "type_name": "STREET-H",
+      "slug": "street-h",
+      "status": "review_ready_pending_approval",
+      "folder": "output/review/highpoly-types/street-h",
+      "representative_global_id": "2ajpw0I9n1dBypfISg3ejX",
+      "source_kind": "geometry_derived_simplified_proxy",
+      "official_cad_used": false,
+      "drawing_source_gate": {
+        "mode": "geometry_derived_fallback",
+        "source_kind": "geometry_derived_simplified_proxy",
+        "source_label_zh": "基于原始高模几何生成的简化图纸表达",
+        "official_cad_used": false,
+        "checks": {
+          "manifest_uses_fallback_kind": true,
+          "manifest_uses_exact_fallback_label": true,
+          "manifest_marks_official_cad_unused": true,
+          "candidate_uses_fallback_kind": true,
+          "candidate_uses_exact_fallback_label": true,
+          "candidate_marks_official_cad_unused": true,
+          "candidate_has_no_project_official_paths": true,
+          "separate_family_references_not_substituted": true,
+          "context_uses_fallback_kind": true,
+          "context_uses_exact_fallback_label": true,
+          "context_marks_official_cad_unused": true,
+          "context_has_no_blue_project_cad_line": true,
+          "source_access_record_exists": true,
+          "source_access_record_passes": true
+        },
+        "pass": true
+      },
+      "package": {
+        "required_files": [
+          "plan.svg",
+          "front.svg",
+          "side.svg",
+          "manifest.json",
+          "candidate-representations.json",
+          "bonsai-review-manifest.json",
+          "project-context-manifest.json",
+          "index.html",
+          "profile.json",
+          "review-contact-sheet.png"
+        ],
+        "missing_files": [],
+        "pass": true,
+        "index": "output/review/highpoly-types/street-h/index.html",
+        "contact_sheet": "output/review/highpoly-types/street-h/review-contact-sheet.png"
+      },
+      "formal_ifc": {
+        "sha256": "7a50b87e8f48a7c2bfbaa9f1dabdfca7155fa684b2325c66aa1ae15c8ab0a25c",
+        "manifest_hashes": [
+          "7a50b87e8f48a7c2bfbaa9f1dabdfca7155fa684b2325c66aa1ae15c8ab0a25c"
+        ],
+        "bytes_unchanged": true
+      },
+      "bonsai": {
+        "mode": "actual_bonsai_ifc_body_camera_render",
+        "actual_ifc_body_camera_render": true,
+        "saved_camera_count": 4,
+        "one_product_only": true,
+        "whole_model_render": false,
+        "pass": true
+      },
+      "project_context": {
+        "view_count": 1,
+        "project_context_retained": true,
+        "walls_and_surrounding_project_elements_retained": true,
+        "outputs": [
+          "output/review/highpoly-types/street-h/project-context-sanitary-plan.svg"
+        ],
+        "pass": true,
+        "acceptance_rule": "project Plan/Elevation retains walls and surrounding furniture/equipment; the product drawing representation is overlaid in-place"
+      },
+      "approval": {
+        "record": "pipeline/decisions/street-h-drawing-approval.json",
+        "status": "pending",
+        "candidate_manifest_sha256": "1f0d079e458081d34be266de48432d9f0155b31c735ecb93a8daea4ecdabfbea",
+        "manifest_sha256": "1f0d079e458081d34be266de48432d9f0155b31c735ecb93a8daea4ecdabfbea",
+        "hash_matches": true,
+        "write_allowed": false,
+        "pass": true
+      },
+      "derived_ifcs": [],
+      "derived_ifc_gate_pass": true,
+      "writer": "pipeline/scripts/street_h_drawing_ifc.py",
+      "writer_exists": true,
+      "test": "pipeline/tests/street-h-highpoly-review.test.ts",
+      "test_exists": true,
+      "commits": [],
+      "commit_gate_pass": true,
+      "mechanical_pass": true
+    },
+    {
+      "type_name": "WD02",
+      "slug": "wd02",
+      "status": "review_ready_pending_approval",
+      "folder": "output/review/highpoly-types/wd02",
+      "representative_global_id": "3yuXF4PtnBHgIXDlmXFJ$7",
+      "source_kind": "geometry_derived_simplified_proxy",
+      "official_cad_used": false,
+      "drawing_source_gate": {
+        "mode": "geometry_derived_fallback",
+        "source_kind": "geometry_derived_simplified_proxy",
+        "source_label_zh": "基于原始高模几何生成的简化图纸表达",
+        "official_cad_used": false,
+        "checks": {
+          "manifest_uses_fallback_kind": true,
+          "manifest_uses_exact_fallback_label": true,
+          "manifest_marks_official_cad_unused": true,
+          "candidate_uses_fallback_kind": true,
+          "candidate_uses_exact_fallback_label": true,
+          "candidate_marks_official_cad_unused": true,
+          "candidate_has_no_project_official_paths": true,
+          "separate_family_references_not_substituted": true,
+          "context_uses_fallback_kind": true,
+          "context_uses_exact_fallback_label": true,
+          "context_marks_official_cad_unused": true,
+          "context_has_no_blue_project_cad_line": true,
+          "source_access_record_exists": true,
+          "source_access_record_passes": true
+        },
+        "pass": true
+      },
+      "package": {
+        "required_files": [
+          "plan.svg",
+          "front.svg",
+          "side.svg",
+          "manifest.json",
+          "candidate-representations.json",
+          "bonsai-review-manifest.json",
+          "project-context-manifest.json",
+          "index.html",
+          "profile.json",
+          "review-contact-sheet.png"
+        ],
+        "missing_files": [],
+        "pass": true,
+        "index": "output/review/highpoly-types/wd02/index.html",
+        "contact_sheet": "output/review/highpoly-types/wd02/review-contact-sheet.png"
+      },
+      "formal_ifc": {
+        "sha256": "7a50b87e8f48a7c2bfbaa9f1dabdfca7155fa684b2325c66aa1ae15c8ab0a25c",
+        "manifest_hashes": [
+          "7a50b87e8f48a7c2bfbaa9f1dabdfca7155fa684b2325c66aa1ae15c8ab0a25c"
+        ],
+        "bytes_unchanged": true
+      },
+      "bonsai": {
+        "mode": "actual_bonsai_ifc_body_camera_render",
+        "actual_ifc_body_camera_render": true,
+        "saved_camera_count": 4,
+        "one_product_only": true,
+        "whole_model_render": false,
+        "pass": true
+      },
+      "project_context": {
+        "view_count": 3,
+        "project_context_retained": true,
+        "walls_and_surrounding_project_elements_retained": true,
+        "outputs": [
+          "output/review/highpoly-types/wd02/project-context-furniture-plan.svg",
+          "output/review/highpoly-types/wd02/project-context-front-elevation.svg",
+          "output/review/highpoly-types/wd02/project-context-side-elevation.svg"
+        ],
+        "pass": true,
+        "acceptance_rule": "project Plan/Elevation retains walls and surrounding furniture/equipment; the product drawing representation is overlaid in-place"
+      },
+      "approval": {
+        "record": "pipeline/decisions/wd02-drawing-approval.json",
+        "status": "pending",
+        "candidate_manifest_sha256": "b56b722e565d1282c9534b18c95927f7d1baa2bc005deb9a4291f9f4f9f56cf4",
+        "manifest_sha256": "b56b722e565d1282c9534b18c95927f7d1baa2bc005deb9a4291f9f4f9f56cf4",
+        "hash_matches": true,
+        "write_allowed": false,
+        "pass": true
+      },
+      "derived_ifcs": [],
+      "derived_ifc_gate_pass": true,
+      "writer": "pipeline/scripts/wd02_drawing_ifc.py",
+      "writer_exists": true,
+      "test": "pipeline/tests/wd02-highpoly-review.test.ts",
+      "test_exists": true,
+      "commits": [],
+      "commit_gate_pass": true,
+      "mechanical_pass": true
+    },
+    {
+      "type_name": "TAB02",
+      "slug": "tab02",
+      "status": "review_ready_pending_approval",
+      "folder": "output/review/highpoly-types/tab02",
+      "representative_global_id": "2eX84IyLr8_e34nuOoRPLQ",
+      "source_kind": "geometry_derived_simplified_proxy",
+      "official_cad_used": false,
+      "drawing_source_gate": {
+        "mode": "geometry_derived_fallback",
+        "source_kind": "geometry_derived_simplified_proxy",
+        "source_label_zh": "基于原始高模几何生成的简化图纸表达",
+        "official_cad_used": false,
+        "checks": {
+          "manifest_uses_fallback_kind": true,
+          "manifest_uses_exact_fallback_label": true,
+          "manifest_marks_official_cad_unused": true,
+          "candidate_uses_fallback_kind": true,
+          "candidate_uses_exact_fallback_label": true,
+          "candidate_marks_official_cad_unused": true,
+          "candidate_has_no_project_official_paths": true,
+          "separate_family_references_not_substituted": true,
+          "context_uses_fallback_kind": true,
+          "context_uses_exact_fallback_label": true,
+          "context_marks_official_cad_unused": true,
+          "context_has_no_blue_project_cad_line": true,
+          "source_access_record_exists": true,
+          "source_access_record_passes": true
+        },
+        "pass": true
+      },
+      "package": {
+        "required_files": [
+          "plan.svg",
+          "front.svg",
+          "side.svg",
+          "manifest.json",
+          "candidate-representations.json",
+          "bonsai-review-manifest.json",
+          "project-context-manifest.json",
+          "index.html",
+          "profile.json",
+          "review-contact-sheet.png"
+        ],
+        "missing_files": [],
+        "pass": true,
+        "index": "output/review/highpoly-types/tab02/index.html",
+        "contact_sheet": "output/review/highpoly-types/tab02/review-contact-sheet.png"
+      },
+      "formal_ifc": {
+        "sha256": "7a50b87e8f48a7c2bfbaa9f1dabdfca7155fa684b2325c66aa1ae15c8ab0a25c",
+        "manifest_hashes": [
+          "7a50b87e8f48a7c2bfbaa9f1dabdfca7155fa684b2325c66aa1ae15c8ab0a25c"
+        ],
+        "bytes_unchanged": true
+      },
+      "bonsai": {
+        "mode": "actual_bonsai_ifc_body_camera_render",
+        "actual_ifc_body_camera_render": true,
+        "saved_camera_count": 4,
+        "one_product_only": true,
+        "whole_model_render": false,
+        "pass": true
+      },
+      "project_context": {
+        "view_count": 1,
+        "project_context_retained": true,
+        "walls_and_surrounding_project_elements_retained": true,
+        "outputs": [
+          "output/review/highpoly-types/tab02/project-context-furniture-plan.svg"
+        ],
+        "pass": true,
+        "acceptance_rule": "project Plan/Elevation retains walls and surrounding furniture/equipment; the product drawing representation is overlaid in-place"
+      },
+      "approval": {
+        "record": "pipeline/decisions/tab02-drawing-approval.json",
+        "status": "pending",
+        "candidate_manifest_sha256": "1857a8201c1c17e1aba9150cb354d4b8d3cc5e65f9fdd9c66e0612bbe1172dd2",
+        "manifest_sha256": "1857a8201c1c17e1aba9150cb354d4b8d3cc5e65f9fdd9c66e0612bbe1172dd2",
+        "hash_matches": true,
+        "write_allowed": false,
+        "pass": true
+      },
+      "derived_ifcs": [],
+      "derived_ifc_gate_pass": true,
+      "writer": "pipeline/scripts/tab02_drawing_ifc.py",
+      "writer_exists": true,
+      "test": "pipeline/tests/tab02-highpoly-review.test.ts",
+      "test_exists": true,
+      "commits": [],
+      "commit_gate_pass": true,
+      "mechanical_pass": true
+    },
+    {
+      "type_name": "BST02",
+      "slug": "bst02",
+      "status": "review_ready_pending_approval",
+      "folder": "output/review/highpoly-types/bst02",
+      "representative_global_id": "3hA0vKpcn44u4Tsx4tqiUz",
+      "source_kind": "geometry_derived_simplified_proxy",
+      "official_cad_used": false,
+      "drawing_source_gate": {
+        "mode": "geometry_derived_fallback",
+        "source_kind": "geometry_derived_simplified_proxy",
+        "source_label_zh": "基于原始高模几何生成的简化图纸表达",
+        "official_cad_used": false,
+        "checks": {
+          "manifest_uses_fallback_kind": true,
+          "manifest_uses_exact_fallback_label": true,
+          "manifest_marks_official_cad_unused": true,
+          "candidate_uses_fallback_kind": true,
+          "candidate_uses_exact_fallback_label": true,
+          "candidate_marks_official_cad_unused": true,
+          "candidate_has_no_project_official_paths": true,
+          "separate_family_references_not_substituted": true,
+          "context_uses_fallback_kind": true,
+          "context_uses_exact_fallback_label": true,
+          "context_marks_official_cad_unused": true,
+          "context_has_no_blue_project_cad_line": true,
+          "source_access_record_exists": true,
+          "source_access_record_passes": true
+        },
+        "pass": true
+      },
+      "package": {
+        "required_files": [
+          "plan.svg",
+          "front.svg",
+          "side.svg",
+          "manifest.json",
+          "candidate-representations.json",
+          "bonsai-review-manifest.json",
+          "project-context-manifest.json",
+          "index.html",
+          "profile.json",
+          "review-contact-sheet.png"
+        ],
+        "missing_files": [],
+        "pass": true,
+        "index": "output/review/highpoly-types/bst02/index.html",
+        "contact_sheet": "output/review/highpoly-types/bst02/review-contact-sheet.png"
+      },
+      "formal_ifc": {
+        "sha256": "7a50b87e8f48a7c2bfbaa9f1dabdfca7155fa684b2325c66aa1ae15c8ab0a25c",
+        "manifest_hashes": [
+          "7a50b87e8f48a7c2bfbaa9f1dabdfca7155fa684b2325c66aa1ae15c8ab0a25c"
+        ],
+        "bytes_unchanged": true
+      },
+      "bonsai": {
+        "mode": "actual_bonsai_ifc_body_camera_render",
+        "actual_ifc_body_camera_render": true,
+        "saved_camera_count": 4,
+        "one_product_only": true,
+        "whole_model_render": false,
+        "pass": true
+      },
+      "project_context": {
+        "view_count": 2,
+        "project_context_retained": true,
+        "walls_and_surrounding_project_elements_retained": true,
+        "outputs": [
+          "output/review/highpoly-types/bst02/project-context-furniture-plan.svg",
+          "output/review/highpoly-types/bst02/project-context-side-elevation.svg"
+        ],
+        "pass": true,
+        "acceptance_rule": "project Plan/Elevation retains walls and surrounding furniture/equipment; the product drawing representation is overlaid in-place"
+      },
+      "approval": {
+        "record": "pipeline/decisions/bst02-drawing-approval.json",
+        "status": "pending",
+        "candidate_manifest_sha256": "29a6aaee593463758e891fde73a695ed3c75a1ae37ef3f90c59c3963e98c6540",
+        "manifest_sha256": "29a6aaee593463758e891fde73a695ed3c75a1ae37ef3f90c59c3963e98c6540",
+        "hash_matches": true,
+        "write_allowed": false,
+        "pass": true
+      },
+      "derived_ifcs": [],
+      "derived_ifc_gate_pass": true,
+      "writer": "pipeline/scripts/bst02_drawing_ifc.py",
+      "writer_exists": true,
+      "test": "pipeline/tests/bst02-highpoly-review.test.ts",
+      "test_exists": true,
+      "commits": [],
+      "commit_gate_pass": true,
+      "mechanical_pass": true
+    },
+    {
+      "type_name": "STREET",
+      "slug": "street",
+      "status": "review_ready_pending_approval",
+      "folder": "output/review/highpoly-types/street",
+      "representative_global_id": "1FgLPMw$5B4wBH2ySMkXE1",
+      "source_kind": "geometry_derived_simplified_proxy",
+      "official_cad_used": false,
+      "drawing_source_gate": {
+        "mode": "geometry_derived_fallback",
+        "source_kind": "geometry_derived_simplified_proxy",
+        "source_label_zh": "基于原始高模几何生成的简化图纸表达",
+        "official_cad_used": false,
+        "checks": {
+          "manifest_uses_fallback_kind": true,
+          "manifest_uses_exact_fallback_label": true,
+          "manifest_marks_official_cad_unused": true,
+          "candidate_uses_fallback_kind": true,
+          "candidate_uses_exact_fallback_label": true,
+          "candidate_marks_official_cad_unused": true,
+          "candidate_has_no_project_official_paths": true,
+          "separate_family_references_not_substituted": true,
+          "context_uses_fallback_kind": true,
+          "context_uses_exact_fallback_label": true,
+          "context_marks_official_cad_unused": true,
+          "context_has_no_blue_project_cad_line": true,
+          "source_access_record_exists": true,
+          "source_access_record_passes": true
+        },
+        "pass": true
+      },
+      "package": {
+        "required_files": [
+          "plan.svg",
+          "front.svg",
+          "side.svg",
+          "manifest.json",
+          "candidate-representations.json",
+          "bonsai-review-manifest.json",
+          "project-context-manifest.json",
+          "index.html",
+          "profile.json",
+          "review-contact-sheet.png"
+        ],
+        "missing_files": [],
+        "pass": true,
+        "index": "output/review/highpoly-types/street/index.html",
+        "contact_sheet": "output/review/highpoly-types/street/review-contact-sheet.png"
+      },
+      "formal_ifc": {
+        "sha256": "7a50b87e8f48a7c2bfbaa9f1dabdfca7155fa684b2325c66aa1ae15c8ab0a25c",
+        "manifest_hashes": [
+          "7a50b87e8f48a7c2bfbaa9f1dabdfca7155fa684b2325c66aa1ae15c8ab0a25c"
+        ],
+        "bytes_unchanged": true
+      },
+      "bonsai": {
+        "mode": "actual_bonsai_ifc_body_camera_render",
+        "actual_ifc_body_camera_render": true,
+        "saved_camera_count": 4,
+        "one_product_only": true,
+        "whole_model_render": false,
+        "pass": true
+      },
+      "project_context": {
+        "view_count": 1,
+        "project_context_retained": true,
+        "walls_and_surrounding_project_elements_retained": true,
+        "outputs": [
+          "output/review/highpoly-types/street/project-context-sanitary-plan.svg"
+        ],
+        "pass": true,
+        "acceptance_rule": "project Plan/Elevation retains walls and surrounding furniture/equipment; the product drawing representation is overlaid in-place"
+      },
+      "approval": {
+        "record": "pipeline/decisions/street-drawing-approval.json",
+        "status": "pending",
+        "candidate_manifest_sha256": "3734f4f4ebb0f82cce6995d8507b06ea15bb6a167fbed4f5ff83ccc957604ffe",
+        "manifest_sha256": "3734f4f4ebb0f82cce6995d8507b06ea15bb6a167fbed4f5ff83ccc957604ffe",
+        "hash_matches": true,
+        "write_allowed": false,
+        "pass": true
+      },
+      "derived_ifcs": [],
+      "derived_ifc_gate_pass": true,
+      "writer": "pipeline/scripts/street_drawing_ifc.py",
+      "writer_exists": true,
+      "test": "pipeline/tests/street-highpoly-review.test.ts",
+      "test_exists": true,
+      "commits": [],
+      "commit_gate_pass": true,
+      "mechanical_pass": true
+    },
+    {
+      "type_name": "Gessi316 54093",
+      "slug": "gessi316-54093",
+      "status": "review_ready_pending_approval",
+      "folder": "output/review/highpoly-types/gessi316-54093",
+      "representative_global_id": "1jM_suNMPAw8_nvZejQSnp",
+      "source_kind": "geometry_derived_simplified_proxy",
+      "official_cad_used": false,
+      "drawing_source_gate": {
+        "mode": "geometry_derived_fallback",
+        "source_kind": "geometry_derived_simplified_proxy",
+        "source_label_zh": "基于原始高模几何生成的简化图纸表达",
+        "official_cad_used": false,
+        "checks": {
+          "manifest_uses_fallback_kind": true,
+          "manifest_uses_exact_fallback_label": true,
+          "manifest_marks_official_cad_unused": true,
+          "candidate_uses_fallback_kind": true,
+          "candidate_uses_exact_fallback_label": true,
+          "candidate_marks_official_cad_unused": true,
+          "candidate_has_no_project_official_paths": true,
+          "separate_family_references_not_substituted": true,
+          "context_uses_fallback_kind": true,
+          "context_uses_exact_fallback_label": true,
+          "context_marks_official_cad_unused": true,
+          "context_has_no_blue_project_cad_line": true,
+          "source_access_record_exists": true,
+          "source_access_record_passes": true
+        },
+        "pass": true
+      },
+      "package": {
+        "required_files": [
+          "plan.svg",
+          "front.svg",
+          "side.svg",
+          "manifest.json",
+          "candidate-representations.json",
+          "bonsai-review-manifest.json",
+          "project-context-manifest.json",
+          "index.html",
+          "profile.json",
+          "review-contact-sheet.png"
+        ],
+        "missing_files": [],
+        "pass": true,
+        "index": "output/review/highpoly-types/gessi316-54093/index.html",
+        "contact_sheet": "output/review/highpoly-types/gessi316-54093/review-contact-sheet.png"
+      },
+      "formal_ifc": {
+        "sha256": "7a50b87e8f48a7c2bfbaa9f1dabdfca7155fa684b2325c66aa1ae15c8ab0a25c",
+        "manifest_hashes": [
+          "7a50b87e8f48a7c2bfbaa9f1dabdfca7155fa684b2325c66aa1ae15c8ab0a25c"
+        ],
+        "bytes_unchanged": true
+      },
+      "bonsai": {
+        "mode": "actual_bonsai_ifc_body_camera_render",
+        "actual_ifc_body_camera_render": true,
+        "saved_camera_count": 4,
+        "one_product_only": true,
+        "whole_model_render": false,
+        "pass": true
+      },
+      "project_context": {
+        "view_count": 1,
+        "project_context_retained": true,
+        "walls_and_surrounding_project_elements_retained": true,
+        "outputs": [
+          "output/review/highpoly-types/gessi316-54093/project-context-sanitary-plan.svg"
+        ],
+        "pass": true,
+        "acceptance_rule": "project Plan/Elevation retains walls and surrounding furniture/equipment; the product drawing representation is overlaid in-place"
+      },
+      "approval": {
+        "record": "pipeline/decisions/gessi316-54093-drawing-approval.json",
+        "status": "pending",
+        "candidate_manifest_sha256": "8cbe13f18f6c529f9d0b840927cd23c042e8a51f56f3c133c740fb38d3861914",
+        "manifest_sha256": "8cbe13f18f6c529f9d0b840927cd23c042e8a51f56f3c133c740fb38d3861914",
+        "hash_matches": true,
+        "write_allowed": false,
+        "pass": true
+      },
+      "derived_ifcs": [],
+      "derived_ifc_gate_pass": true,
+      "writer": "pipeline/scripts/gessi316_54093_drawing_ifc.py",
+      "writer_exists": true,
+      "test": "pipeline/tests/gessi316-54093-highpoly-review.test.ts",
+      "test_exists": true,
+      "commits": [],
+      "commit_gate_pass": true,
+      "mechanical_pass": true
+    },
+    {
+      "type_name": "Geberit 154.154.00.1.F",
+      "slug": "geberit-154-154-00-1-f",
+      "status": "review_ready_pending_approval",
+      "folder": "output/review/highpoly-types/geberit-154-154-00-1-f",
+      "representative_global_id": "2jjNIn9gHBYwNSWwlM5T_i",
+      "source_kind": "geometry_derived_simplified_proxy",
+      "official_cad_used": false,
+      "drawing_source_gate": {
+        "mode": "geometry_derived_fallback",
+        "source_kind": "geometry_derived_simplified_proxy",
+        "source_label_zh": "基于原始高模几何生成的简化图纸表达",
+        "official_cad_used": false,
+        "checks": {
+          "manifest_uses_fallback_kind": true,
+          "manifest_uses_exact_fallback_label": true,
+          "manifest_marks_official_cad_unused": true,
+          "candidate_uses_fallback_kind": true,
+          "candidate_uses_exact_fallback_label": true,
+          "candidate_marks_official_cad_unused": true,
+          "candidate_has_no_project_official_paths": true,
+          "separate_family_references_not_substituted": true,
+          "context_uses_fallback_kind": true,
+          "context_uses_exact_fallback_label": true,
+          "context_marks_official_cad_unused": true,
+          "context_has_no_blue_project_cad_line": true,
+          "source_access_record_exists": true,
+          "source_access_record_passes": true
+        },
+        "pass": true
+      },
+      "package": {
+        "required_files": [
+          "plan.svg",
+          "front.svg",
+          "side.svg",
+          "manifest.json",
+          "candidate-representations.json",
+          "bonsai-review-manifest.json",
+          "project-context-manifest.json",
+          "index.html",
+          "profile.json",
+          "review-contact-sheet.png"
+        ],
+        "missing_files": [],
+        "pass": true,
+        "index": "output/review/highpoly-types/geberit-154-154-00-1-f/index.html",
+        "contact_sheet": "output/review/highpoly-types/geberit-154-154-00-1-f/review-contact-sheet.png"
+      },
+      "formal_ifc": {
+        "sha256": "7a50b87e8f48a7c2bfbaa9f1dabdfca7155fa684b2325c66aa1ae15c8ab0a25c",
+        "manifest_hashes": [
+          "7a50b87e8f48a7c2bfbaa9f1dabdfca7155fa684b2325c66aa1ae15c8ab0a25c"
+        ],
+        "bytes_unchanged": true
+      },
+      "bonsai": {
+        "mode": "actual_bonsai_ifc_body_camera_render",
+        "actual_ifc_body_camera_render": true,
+        "saved_camera_count": 4,
+        "one_product_only": true,
+        "whole_model_render": false,
+        "pass": true
+      },
+      "project_context": {
+        "view_count": 3,
+        "project_context_retained": true,
+        "walls_and_surrounding_project_elements_retained": true,
+        "outputs": [
+          "output/review/highpoly-types/geberit-154-154-00-1-f/project-context-sanitary-plan.svg",
+          "output/review/highpoly-types/geberit-154-154-00-1-f/project-context-r12-front-elevation.svg",
+          "output/review/highpoly-types/geberit-154-154-00-1-f/project-context-r12-side-elevation.svg"
+        ],
+        "pass": true,
+        "acceptance_rule": "project Plan/Elevation retains walls and surrounding furniture/equipment; the product drawing representation is overlaid in-place"
+      },
+      "approval": {
+        "record": "pipeline/decisions/geberit-154-154-00-1-f-drawing-approval.json",
+        "status": "pending",
+        "candidate_manifest_sha256": "1ad8a551779b5e80f70c518e2e0d6f1746ba57d70dbdfebb1b9c6b7ab566f062",
+        "manifest_sha256": "1ad8a551779b5e80f70c518e2e0d6f1746ba57d70dbdfebb1b9c6b7ab566f062",
+        "hash_matches": true,
+        "write_allowed": false,
+        "pass": true
+      },
+      "derived_ifcs": [],
+      "derived_ifc_gate_pass": true,
+      "writer": "pipeline/scripts/geberit_154_154_00_1_f_drawing_ifc.py",
+      "writer_exists": true,
+      "test": "pipeline/tests/geberit-154-154-00-1-f-highpoly-review.test.ts",
+      "test_exists": true,
+      "commits": [],
+      "commit_gate_pass": true,
+      "mechanical_pass": true
+    },
+    {
+      "type_name": "Geberit 115.770",
+      "slug": "geberit-115-770",
+      "status": "review_ready_pending_approval",
+      "folder": "output/review/highpoly-types/geberit-115-770",
+      "representative_global_id": "2gFgcOYEXEaQWAzcKulTFt",
+      "source_kind": "native_dwg",
+      "official_cad_used": true,
+      "drawing_source_gate": {
+        "mode": "official_native_cad",
+        "source_kind": "native_dwg",
+        "source_label_zh": "基于 Geberit 精确型号原生 DWG 的官方图纸表达",
+        "official_cad_used": true,
+        "checks": {
+          "manifest_source_is_official_native_cad": true,
+          "candidate_source_is_official_native_cad": true,
+          "candidate_marks_official_cad_used": true,
+          "candidate_has_native_paths_for_all_views": true,
+          "context_source_is_official_native_cad": true,
+          "context_has_blue_official_top_layer": true,
+          "source_access_record_exists": true,
+          "source_access_record_passes": true
+        },
+        "pass": true
+      },
+      "package": {
+        "required_files": [
+          "plan.svg",
+          "front.svg",
+          "side.svg",
+          "manifest.json",
+          "candidate-representations.json",
+          "bonsai-review-manifest.json",
+          "project-context-manifest.json",
+          "index.html",
+          "profile.json",
+          "review-contact-sheet.png"
+        ],
+        "missing_files": [],
+        "pass": true,
+        "index": "output/review/highpoly-types/geberit-115-770/index.html",
+        "contact_sheet": "output/review/highpoly-types/geberit-115-770/review-contact-sheet.png"
+      },
+      "formal_ifc": {
+        "sha256": "7a50b87e8f48a7c2bfbaa9f1dabdfca7155fa684b2325c66aa1ae15c8ab0a25c",
+        "manifest_hashes": [
+          "7a50b87e8f48a7c2bfbaa9f1dabdfca7155fa684b2325c66aa1ae15c8ab0a25c"
+        ],
+        "bytes_unchanged": true
+      },
+      "bonsai": {
+        "mode": "actual_bonsai_ifc_body_camera_render",
+        "actual_ifc_body_camera_render": true,
+        "saved_camera_count": 4,
+        "one_product_only": true,
+        "whole_model_render": false,
+        "pass": true
+      },
+      "project_context": {
+        "view_count": 3,
+        "project_context_retained": true,
+        "walls_and_surrounding_project_elements_retained": true,
+        "outputs": [
+          "output/review/highpoly-types/geberit-115-770/project-context-sanitary-plan.svg",
+          "output/review/highpoly-types/geberit-115-770/project-context-front-elevation.svg",
+          "output/review/highpoly-types/geberit-115-770/project-context-side-elevation.svg"
+        ],
+        "pass": true,
+        "acceptance_rule": "project Plan/Elevation retains walls and surrounding furniture/equipment; the product drawing representation is overlaid in-place"
+      },
+      "approval": {
+        "record": "pipeline/decisions/geberit-115-770-drawing-approval.json",
+        "status": "pending",
+        "candidate_manifest_sha256": "36671b0b6fced4703c1a760c36b87e7224b4b4e28c92b7c45a8cd5f563253955",
+        "manifest_sha256": "36671b0b6fced4703c1a760c36b87e7224b4b4e28c92b7c45a8cd5f563253955",
+        "hash_matches": true,
+        "write_allowed": false,
+        "pass": true
+      },
+      "derived_ifcs": [],
+      "derived_ifc_gate_pass": true,
+      "writer": "pipeline/scripts/geberit_115_770_drawing_ifc.py",
+      "writer_exists": true,
+      "test": "pipeline/tests/geberit-115-770-highpoly-review.test.ts",
+      "test_exists": true,
+      "commits": [],
+      "commit_gate_pass": true,
+      "mechanical_pass": true
+    },
+    {
+      "type_name": "WD01",
+      "slug": "wd01",
+      "status": "review_ready_pending_approval",
+      "folder": "output/review/highpoly-types/wd01",
+      "representative_global_id": "2mPTt7$nvBSAn28I9NWt6T",
+      "source_kind": "geometry_derived_simplified_proxy",
+      "official_cad_used": false,
+      "drawing_source_gate": {
+        "mode": "geometry_derived_fallback",
+        "source_kind": "geometry_derived_simplified_proxy",
+        "source_label_zh": "基于原始高模几何生成的简化图纸表达",
+        "official_cad_used": false,
+        "checks": {
+          "manifest_uses_fallback_kind": true,
+          "manifest_uses_exact_fallback_label": true,
+          "manifest_marks_official_cad_unused": true,
+          "candidate_uses_fallback_kind": true,
+          "candidate_uses_exact_fallback_label": true,
+          "candidate_marks_official_cad_unused": true,
+          "candidate_has_no_project_official_paths": true,
+          "separate_family_references_not_substituted": true,
+          "context_uses_fallback_kind": true,
+          "context_uses_exact_fallback_label": true,
+          "context_marks_official_cad_unused": true,
+          "context_has_no_blue_project_cad_line": true,
+          "source_access_record_exists": true,
+          "source_access_record_passes": true
+        },
+        "pass": true
+      },
+      "package": {
+        "required_files": [
+          "plan.svg",
+          "front.svg",
+          "side.svg",
+          "manifest.json",
+          "candidate-representations.json",
+          "bonsai-review-manifest.json",
+          "project-context-manifest.json",
+          "index.html",
+          "profile.json",
+          "review-contact-sheet.png"
+        ],
+        "missing_files": [],
+        "pass": true,
+        "index": "output/review/highpoly-types/wd01/index.html",
+        "contact_sheet": "output/review/highpoly-types/wd01/review-contact-sheet.png"
+      },
+      "formal_ifc": {
+        "sha256": "7a50b87e8f48a7c2bfbaa9f1dabdfca7155fa684b2325c66aa1ae15c8ab0a25c",
+        "manifest_hashes": [
+          "7a50b87e8f48a7c2bfbaa9f1dabdfca7155fa684b2325c66aa1ae15c8ab0a25c"
+        ],
+        "bytes_unchanged": true
+      },
+      "bonsai": {
+        "mode": "actual_bonsai_ifc_body_camera_render",
+        "actual_ifc_body_camera_render": true,
+        "saved_camera_count": 4,
+        "one_product_only": true,
+        "whole_model_render": false,
+        "pass": true
+      },
+      "project_context": {
+        "view_count": 3,
+        "project_context_retained": true,
+        "walls_and_surrounding_project_elements_retained": true,
+        "outputs": [
+          "output/review/highpoly-types/wd01/project-context-furniture-plan.svg",
+          "output/review/highpoly-types/wd01/project-context-front-elevation.svg",
+          "output/review/highpoly-types/wd01/project-context-side-elevation.svg"
+        ],
+        "pass": true,
+        "acceptance_rule": "project Plan/Elevation retains walls and surrounding furniture/equipment; the product drawing representation is overlaid in-place"
+      },
+      "approval": {
+        "record": "pipeline/decisions/wd01-drawing-approval.json",
+        "status": "pending",
+        "candidate_manifest_sha256": "37de0021bdad664f5913b39f06ff3b82a1906bf8c87576b3d13ec8e55389f7e7",
+        "manifest_sha256": "37de0021bdad664f5913b39f06ff3b82a1906bf8c87576b3d13ec8e55389f7e7",
+        "hash_matches": true,
+        "write_allowed": false,
+        "pass": true
+      },
+      "derived_ifcs": [],
+      "derived_ifc_gate_pass": true,
+      "writer": "pipeline/scripts/wd01_drawing_ifc.py",
+      "writer_exists": true,
+      "test": "pipeline/tests/wd01-highpoly-review.test.ts",
+      "test_exists": true,
+      "commits": [],
+      "commit_gate_pass": true,
+      "mechanical_pass": true
+    },
+    {
+      "type_name": "Gessi316 54038",
+      "slug": "gessi316-54038",
+      "status": "review_ready_pending_approval",
+      "folder": "output/review/highpoly-types/gessi316-54038",
+      "representative_global_id": "245NU$zZL0d9tYTVwwBdk$",
+      "source_kind": "geometry_derived_simplified_proxy",
+      "official_cad_used": false,
+      "drawing_source_gate": {
+        "mode": "geometry_derived_fallback",
+        "source_kind": "geometry_derived_simplified_proxy",
+        "source_label_zh": "基于原始高模几何生成的简化图纸表达",
+        "official_cad_used": false,
+        "checks": {
+          "manifest_uses_fallback_kind": true,
+          "manifest_uses_exact_fallback_label": true,
+          "manifest_marks_official_cad_unused": true,
+          "candidate_uses_fallback_kind": true,
+          "candidate_uses_exact_fallback_label": true,
+          "candidate_marks_official_cad_unused": true,
+          "candidate_has_no_project_official_paths": true,
+          "separate_family_references_not_substituted": true,
+          "context_uses_fallback_kind": true,
+          "context_uses_exact_fallback_label": true,
+          "context_marks_official_cad_unused": true,
+          "context_has_no_blue_project_cad_line": true,
+          "source_access_record_exists": true,
+          "source_access_record_passes": true
+        },
+        "pass": true
+      },
+      "package": {
+        "required_files": [
+          "plan.svg",
+          "front.svg",
+          "side.svg",
+          "manifest.json",
+          "candidate-representations.json",
+          "bonsai-review-manifest.json",
+          "project-context-manifest.json",
+          "index.html",
+          "profile.json",
+          "review-contact-sheet.png"
+        ],
+        "missing_files": [],
+        "pass": true,
+        "index": "output/review/highpoly-types/gessi316-54038/index.html",
+        "contact_sheet": "output/review/highpoly-types/gessi316-54038/review-contact-sheet.png"
+      },
+      "formal_ifc": {
+        "sha256": "7a50b87e8f48a7c2bfbaa9f1dabdfca7155fa684b2325c66aa1ae15c8ab0a25c",
+        "manifest_hashes": [
+          "7a50b87e8f48a7c2bfbaa9f1dabdfca7155fa684b2325c66aa1ae15c8ab0a25c"
+        ],
+        "bytes_unchanged": true
+      },
+      "bonsai": {
+        "mode": "actual_bonsai_ifc_body_camera_render",
+        "actual_ifc_body_camera_render": true,
+        "saved_camera_count": 4,
+        "one_product_only": true,
+        "whole_model_render": false,
+        "pass": true
+      },
+      "project_context": {
+        "view_count": 3,
+        "project_context_retained": true,
+        "walls_and_surrounding_project_elements_retained": true,
+        "outputs": [
+          "output/review/highpoly-types/gessi316-54038/project-context-ffl-plan.svg",
+          "output/review/highpoly-types/gessi316-54038/project-context-front-elevation.svg",
+          "output/review/highpoly-types/gessi316-54038/project-context-side-elevation.svg"
+        ],
+        "pass": true,
+        "acceptance_rule": "project Plan/Elevation retains walls and surrounding furniture/equipment; the product drawing representation is overlaid in-place"
+      },
+      "approval": {
+        "record": "pipeline/decisions/gessi316-54038-drawing-approval.json",
+        "status": "pending",
+        "candidate_manifest_sha256": "af9fedd5a02aba2fc97312d163ca9b097711f0b93ca4ae63ea159db46ab20dd7",
+        "manifest_sha256": "af9fedd5a02aba2fc97312d163ca9b097711f0b93ca4ae63ea159db46ab20dd7",
+        "hash_matches": true,
+        "write_allowed": false,
+        "pass": true
+      },
+      "derived_ifcs": [],
+      "derived_ifc_gate_pass": true,
+      "writer": "pipeline/scripts/gessi316_54038_drawing_ifc.py",
+      "writer_exists": true,
+      "test": "pipeline/tests/gessi316-54038-highpoly-review.test.ts",
+      "test_exists": true,
+      "commits": [],
+      "commit_gate_pass": true,
+      "mechanical_pass": true
+    },
+    {
+      "type_name": "Electric flue check valve",
+      "slug": "electric-flue-check-valve",
+      "status": "review_ready_pending_approval",
+      "folder": "output/review/highpoly-types/electric-flue-check-valve",
+      "representative_global_id": "1faflkXXH6M9cnYPE9Liir",
+      "source_kind": "geometry_derived_simplified_proxy",
+      "official_cad_used": false,
+      "drawing_source_gate": {
+        "mode": "geometry_derived_fallback",
+        "source_kind": "geometry_derived_simplified_proxy",
+        "source_label_zh": "基于原始高模几何生成的简化图纸表达",
+        "official_cad_used": false,
+        "checks": {
+          "manifest_uses_fallback_kind": true,
+          "manifest_uses_exact_fallback_label": true,
+          "manifest_marks_official_cad_unused": true,
+          "candidate_uses_fallback_kind": true,
+          "candidate_uses_exact_fallback_label": true,
+          "candidate_marks_official_cad_unused": true,
+          "candidate_has_no_project_official_paths": true,
+          "separate_family_references_not_substituted": true,
+          "context_uses_fallback_kind": true,
+          "context_uses_exact_fallback_label": true,
+          "context_marks_official_cad_unused": true,
+          "context_has_no_blue_project_cad_line": true,
+          "source_access_record_exists": true,
+          "source_access_record_passes": true
+        },
+        "pass": true
+      },
+      "package": {
+        "required_files": [
+          "plan.svg",
+          "front.svg",
+          "side.svg",
+          "manifest.json",
+          "candidate-representations.json",
+          "bonsai-review-manifest.json",
+          "project-context-manifest.json",
+          "index.html",
+          "profile.json",
+          "review-contact-sheet.png"
+        ],
+        "missing_files": [],
+        "pass": true,
+        "index": "output/review/highpoly-types/electric-flue-check-valve/index.html",
+        "contact_sheet": "output/review/highpoly-types/electric-flue-check-valve/review-contact-sheet.png"
+      },
+      "formal_ifc": {
+        "sha256": "7a50b87e8f48a7c2bfbaa9f1dabdfca7155fa684b2325c66aa1ae15c8ab0a25c",
+        "manifest_hashes": [
+          "7a50b87e8f48a7c2bfbaa9f1dabdfca7155fa684b2325c66aa1ae15c8ab0a25c"
+        ],
+        "bytes_unchanged": true
+      },
+      "bonsai": {
+        "mode": "actual_bonsai_ifc_body_camera_render",
+        "actual_ifc_body_camera_render": true,
+        "saved_camera_count": 4,
+        "one_product_only": true,
+        "whole_model_render": false,
+        "pass": true
+      },
+      "project_context": {
+        "view_count": 2,
+        "project_context_retained": true,
+        "walls_and_surrounding_project_elements_retained": true,
+        "outputs": [
+          "output/review/highpoly-types/electric-flue-check-valve/project-context-r04-px-elevation.svg",
+          "output/review/highpoly-types/electric-flue-check-valve/project-context-r04-ny-elevation.svg"
+        ],
+        "pass": true,
+        "acceptance_rule": "project Plan/Elevation retains walls and surrounding furniture/equipment; the product drawing representation is overlaid in-place"
+      },
+      "approval": {
+        "record": "pipeline/decisions/electric-flue-check-valve-drawing-approval.json",
+        "status": "pending",
+        "candidate_manifest_sha256": "75d488304d14850387cca3c3d1c94a7af81a2b0a5b92dcdfa3843d6deac8637d",
+        "manifest_sha256": "75d488304d14850387cca3c3d1c94a7af81a2b0a5b92dcdfa3843d6deac8637d",
+        "hash_matches": true,
+        "write_allowed": false,
+        "pass": true
+      },
+      "derived_ifcs": [],
+      "derived_ifc_gate_pass": true,
+      "writer": "pipeline/scripts/electric_flue_check_valve_drawing_ifc.py",
+      "writer_exists": true,
+      "test": "pipeline/tests/electric-flue-check-valve-highpoly-review.test.ts",
+      "test_exists": true,
+      "commits": [],
+      "commit_gate_pass": true,
+      "mechanical_pass": true
+    },
+    {
+      "type_name": "BST01",
+      "slug": "bst01",
+      "status": "review_ready_pending_approval",
+      "folder": "output/review/highpoly-types/bst01",
+      "representative_global_id": "3eic1dzkn5heTIn4PhF37v",
+      "source_kind": "geometry_derived_simplified_proxy",
+      "official_cad_used": false,
+      "drawing_source_gate": {
+        "mode": "geometry_derived_fallback",
+        "source_kind": "geometry_derived_simplified_proxy",
+        "source_label_zh": "基于原始高模几何生成的简化图纸表达",
+        "official_cad_used": false,
+        "checks": {
+          "manifest_uses_fallback_kind": true,
+          "manifest_uses_exact_fallback_label": true,
+          "manifest_marks_official_cad_unused": true,
+          "candidate_uses_fallback_kind": true,
+          "candidate_uses_exact_fallback_label": true,
+          "candidate_marks_official_cad_unused": true,
+          "candidate_has_no_project_official_paths": true,
+          "separate_family_references_not_substituted": true,
+          "context_uses_fallback_kind": true,
+          "context_uses_exact_fallback_label": true,
+          "context_marks_official_cad_unused": true,
+          "context_has_no_blue_project_cad_line": true,
+          "source_access_record_exists": true,
+          "source_access_record_passes": true
+        },
+        "pass": true
+      },
+      "package": {
+        "required_files": [
+          "plan.svg",
+          "front.svg",
+          "side.svg",
+          "manifest.json",
+          "candidate-representations.json",
+          "bonsai-review-manifest.json",
+          "project-context-manifest.json",
+          "index.html",
+          "profile.json",
+          "review-contact-sheet.png"
+        ],
+        "missing_files": [],
+        "pass": true,
+        "index": "output/review/highpoly-types/bst01/index.html",
+        "contact_sheet": "output/review/highpoly-types/bst01/review-contact-sheet.png"
+      },
+      "formal_ifc": {
+        "sha256": "7a50b87e8f48a7c2bfbaa9f1dabdfca7155fa684b2325c66aa1ae15c8ab0a25c",
+        "manifest_hashes": [
+          "7a50b87e8f48a7c2bfbaa9f1dabdfca7155fa684b2325c66aa1ae15c8ab0a25c"
+        ],
+        "bytes_unchanged": true
+      },
+      "bonsai": {
+        "mode": "actual_bonsai_ifc_body_camera_render",
+        "actual_ifc_body_camera_render": true,
+        "saved_camera_count": 4,
+        "one_product_only": true,
+        "whole_model_render": false,
+        "pass": true
+      },
+      "project_context": {
+        "view_count": 3,
+        "project_context_retained": true,
+        "walls_and_surrounding_project_elements_retained": true,
+        "outputs": [
+          "output/review/highpoly-types/bst01/project-context-furniture-plan.svg",
+          "output/review/highpoly-types/bst01/project-context-front-elevation.svg",
+          "output/review/highpoly-types/bst01/project-context-side-elevation.svg"
+        ],
+        "pass": true,
+        "acceptance_rule": "project Plan/Elevation retains walls and surrounding furniture/equipment; the product drawing representation is overlaid in-place"
+      },
+      "approval": {
+        "record": "pipeline/decisions/bst01-drawing-approval.json",
+        "status": "pending",
+        "candidate_manifest_sha256": "64c902bacb0b71038d04c9e297dd48b998080b10a96659c845fb42a93c066b27",
+        "manifest_sha256": "64c902bacb0b71038d04c9e297dd48b998080b10a96659c845fb42a93c066b27",
+        "hash_matches": true,
+        "write_allowed": false,
+        "pass": true
+      },
+      "derived_ifcs": [],
+      "derived_ifc_gate_pass": true,
+      "writer": "pipeline/scripts/bst01_drawing_ifc.py",
+      "writer_exists": true,
+      "test": "pipeline/tests/bst01-highpoly-review.test.ts",
+      "test_exists": true,
+      "commits": [],
+      "commit_gate_pass": true,
+      "mechanical_pass": true
+    }
+  ],
+  "summary": {
+    "product_count": 40,
+    "completed_count": 1,
+    "fully_packaged_pending_count": 38,
+    "pending_human_approval_count": 38,
+    "excluded_other_task_count": 1,
+    "derived_ifc_product_count": 1,
+    "independently_committed_product_count": 1,
+    "package_mechanical_pass": true,
+    "stash_recovery_pass": true,
+    "goal_complete": false,
+    "remaining_gate": "Each pending product requires explicit human approval before its derived IFC is written and that product folder is committed."
+  }
+}

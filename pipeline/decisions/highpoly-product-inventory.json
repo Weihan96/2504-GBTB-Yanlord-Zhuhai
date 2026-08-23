@@ -1,0 +1,1087 @@
+{
+  "schema_version": 1,
+  "formal_ifc": "2504 GBTB Yanlord Zhuhai.ifc",
+  "formal_ifc_sha256": "7a50b87e8f48a7c2bfbaa9f1dabdfca7155fa684b2325c66aa1ae15c8ab0a25c",
+  "inventory_method": "IFC representation topology only; no whole-model rendering or create_shape calls",
+  "thresholds": {
+    "minimum_polygonal_faces": 1000,
+    "minimum_coordinates": 2000
+  },
+  "product_scope_classes": [
+    "IfcBuildingElementProxy",
+    "IfcElectricAppliance",
+    "IfcFurniture",
+    "IfcSanitaryTerminal",
+    "IfcWasteTerminal"
+  ],
+  "product_count": 40,
+  "completed_product_count": 1,
+  "in_progress_product_count": 0,
+  "review_ready_pending_approval_product_count": 38,
+  "excluded_other_task_count": 1,
+  "products": [
+    {
+      "type_name": "HIMA01",
+      "type_global_id": "0lZnf636H3xPeZDVQam9Ip",
+      "type_class": "IfcFurnitureType",
+      "ifc_classes": [
+        "IfcFurniture"
+      ],
+      "instance_count": 1,
+      "instance_global_ids": [
+        "2xmcLzu1rDTeMzRuNxPDyE"
+      ],
+      "representative_global_id": "2xmcLzu1rDTeMzRuNxPDyE",
+      "maximum_vertex_count": 61095,
+      "maximum_face_count": 119424,
+      "geometry_item_types": [
+        "IfcIndexedPolyCurve",
+        "IfcMappedItem",
+        "IfcPolygonalFaceSet",
+        "IfcPolyline"
+      ],
+      "folder": "output/review/highpoly-types/hima01",
+      "status": "review_ready_pending_approval",
+      "source_strategy": "geometry_derived_simplified_proxy_official_dwg_not_acquired"
+    },
+    {
+      "type_name": "Geberit Duofix Sigma",
+      "type_global_id": "2$Cw4HyDT1lA8dPM$p1ucM",
+      "type_class": "IfcSanitaryTerminalType",
+      "ifc_classes": [
+        "IfcSanitaryTerminal"
+      ],
+      "instance_count": 2,
+      "instance_global_ids": [
+        "3hgNkx97vCTOC2eewCpMNk",
+        "3pvAlH5C14v8uVEJ1LmK8M"
+      ],
+      "representative_global_id": "3hgNkx97vCTOC2eewCpMNk",
+      "maximum_vertex_count": 55204,
+      "maximum_face_count": 65153,
+      "geometry_item_types": [
+        "IfcGeometricCurveSet",
+        "IfcMappedItem",
+        "IfcPolygonalFaceSet",
+        "IfcPolyline"
+      ],
+      "folder": "output/review/highpoly-types/geberit-duofix-sigma-224-212",
+      "status": "review_ready_pending_approval",
+      "source_strategy": "exact_project_selected_224_212_00_2_official_native_dwg_archived"
+    },
+    {
+      "type_name": "Geberit 154.446.KS.1",
+      "type_global_id": "0345Y2zSj6TPFGDpaX3hcn",
+      "type_class": "IfcSanitaryTerminalType",
+      "ifc_classes": [
+        "IfcSanitaryTerminal"
+      ],
+      "instance_count": 1,
+      "instance_global_ids": [
+        "2S2c498tb7$gzdukjhCGVQ"
+      ],
+      "representative_global_id": "2S2c498tb7$gzdukjhCGVQ",
+      "maximum_vertex_count": 22131,
+      "maximum_face_count": 44206,
+      "geometry_item_types": [
+        "IfcGeometricCurveSet",
+        "IfcMappedItem",
+        "IfcPolygonalFaceSet",
+        "IfcPolyline"
+      ],
+      "folder": "output/review/highpoly-types/geberit-154-446-ks-1",
+      "status": "review_ready_pending_approval",
+      "source_strategy": "official_native_dwg_archived"
+    },
+    {
+      "type_name": "Gessi316 54294",
+      "type_global_id": "1bUN13Ecz6PRpaXsNtfiqj",
+      "type_class": "IfcSanitaryTerminalType",
+      "ifc_classes": [
+        "IfcSanitaryTerminal"
+      ],
+      "instance_count": 1,
+      "instance_global_ids": [
+        "2iKOL78$H0N9Yd9$ky3pW4"
+      ],
+      "representative_global_id": "2iKOL78$H0N9Yd9$ky3pW4",
+      "maximum_vertex_count": 24789,
+      "maximum_face_count": 42778,
+      "geometry_item_types": [
+        "IfcBoundingBox",
+        "IfcMappedItem",
+        "IfcPolygonalFaceSet",
+        "IfcPolyline"
+      ],
+      "folder": "output/review/highpoly-types/gessi316-54294",
+      "status": "review_ready_pending_approval",
+      "source_strategy": "official_exact_54294_native_dwg_archived_and_cross_verified"
+    },
+    {
+      "type_name": "BED02",
+      "type_global_id": "1DMZaj_dHBO8015KF4xDYw",
+      "type_class": "IfcFurnitureType",
+      "ifc_classes": [
+        "IfcFurniture"
+      ],
+      "instance_count": 1,
+      "instance_global_ids": [
+        "1i_pqgLv9A7uuV7MjaArBW"
+      ],
+      "representative_global_id": "1i_pqgLv9A7uuV7MjaArBW",
+      "maximum_vertex_count": 19401,
+      "maximum_face_count": 31798,
+      "geometry_item_types": [
+        "IfcMappedItem",
+        "IfcPolygonalFaceSet",
+        "IfcPolyline"
+      ],
+      "folder": "output/review/highpoly-types/bed02",
+      "status": "review_ready_pending_approval",
+      "source_strategy": "official_baxter_identity_archived_exact_cad_login_not_acquired_geometry_derived_proxy"
+    },
+    {
+      "type_name": "BED01",
+      "type_global_id": "2zdX97uDf8WRK7i$VBiYMY",
+      "type_class": "IfcFurnitureType",
+      "ifc_classes": [
+        "IfcFurniture"
+      ],
+      "instance_count": 1,
+      "instance_global_ids": [
+        "3IQBEqO5vDI8Z9k1Ltge_N"
+      ],
+      "representative_global_id": "3IQBEqO5vDI8Z9k1Ltge_N",
+      "maximum_vertex_count": 19750,
+      "maximum_face_count": 29597,
+      "geometry_item_types": [
+        "IfcMappedItem",
+        "IfcPolygonalFaceSet",
+        "IfcPolyline"
+      ],
+      "folder": "output/review/highpoly-types/bed01",
+      "status": "review_ready_pending_approval",
+      "source_strategy": "official_baxter_identity_archived_manufacturer_dimension_conflict_exact_cad_login_not_acquired_geometry_derived_proxy"
+    },
+    {
+      "type_name": "sxb010",
+      "type_global_id": null,
+      "type_class": "IfcBuildingElementProxy",
+      "ifc_classes": [
+        "IfcBuildingElementProxy"
+      ],
+      "instance_count": 1,
+      "instance_global_ids": [
+        "1O9JRXCI56VRUbpuLJy86Z"
+      ],
+      "representative_global_id": "1O9JRXCI56VRUbpuLJy86Z",
+      "maximum_vertex_count": 24959,
+      "maximum_face_count": 20380,
+      "geometry_item_types": [
+        "IfcPolygonalFaceSet",
+        "IfcPolyline"
+      ],
+      "folder": "output/review/highpoly-types/sxb010",
+      "status": "review_ready_pending_approval",
+      "source_strategy": "owner_confirmed_hunter_douglas_25mm_family_direction_official_pdf_only_geometry_derived_semantic_views"
+    },
+    {
+      "type_name": "CHA02",
+      "type_global_id": "25qaYHEgjFGQCX4zZ5PXO5",
+      "type_class": "IfcFurnitureType",
+      "ifc_classes": [
+        "IfcFurniture"
+      ],
+      "instance_count": 2,
+      "instance_global_ids": [
+        "1GkE2YZ316gQw10Ev5DZOp",
+        "3YoxxZCgbF3Ap7gztAKkcs"
+      ],
+      "representative_global_id": "3YoxxZCgbF3Ap7gztAKkcs",
+      "maximum_vertex_count": 14924,
+      "maximum_face_count": 20107,
+      "geometry_item_types": [
+        "IfcMappedItem",
+        "IfcPolygonalFaceSet"
+      ],
+      "folder": "output/review/highpoly-types/cha02",
+      "status": "review_ready_pending_approval",
+      "source_strategy": "exact_roda_orson_002_identity_reserved_area_cad_not_acquired_geometry_derived_proxy"
+    },
+    {
+      "type_name": "SIS04",
+      "type_global_id": "2ztp9Y2k58vB_PFvp3txP7",
+      "type_class": "IfcFurnitureType",
+      "ifc_classes": [
+        "IfcFurniture"
+      ],
+      "instance_count": 1,
+      "instance_global_ids": [
+        "1MzM8Ms2vFo8KEm503j9w2"
+      ],
+      "representative_global_id": "1MzM8Ms2vFo8KEm503j9w2",
+      "maximum_vertex_count": 29892,
+      "maximum_face_count": 16140,
+      "geometry_item_types": [
+        "IfcIndexedPolyCurve",
+        "IfcMappedItem",
+        "IfcPolygonalFaceSet",
+        "IfcPolyline"
+      ],
+      "folder": "output/review/highpoly-types/sis04",
+      "status": "review_ready_pending_approval",
+      "source_strategy": "exact_molteni_sistema_7_wall_unit_identity_near_name_dwg_excluded_geometry_derived_proxy"
+    },
+    {
+      "type_name": "505 UP V1.LP.S",
+      "type_global_id": null,
+      "type_class": "IfcFurniture",
+      "ifc_classes": [
+        "IfcFurniture"
+      ],
+      "instance_count": 1,
+      "instance_global_ids": [
+        "19MpdkWqXC7uhUNhLQgrce"
+      ],
+      "representative_global_id": "19MpdkWqXC7uhUNhLQgrce",
+      "maximum_vertex_count": 29148,
+      "maximum_face_count": 14319,
+      "geometry_item_types": [
+        "IfcIndexedPolyCurve",
+        "IfcPolygonalFaceSet"
+      ],
+      "folder": "output/review/highpoly-types/505-up-v1-lp-s",
+      "status": "review_ready_pending_approval",
+      "source_strategy": "official_molteni_505_up_native_family_dwg_archived_exact_project_configuration_not_matched_geometry_derived_proxy"
+    },
+    {
+      "type_name": "MiamiSoft E09",
+      "type_global_id": "2wSMjhzHDAkPqKQakQLS9I",
+      "type_class": "IfcFurnitureType",
+      "ifc_classes": [
+        "IfcFurniture"
+      ],
+      "instance_count": 1,
+      "instance_global_ids": [
+        "3osoWufdD1mhDDAM6lcix4"
+      ],
+      "representative_global_id": "3osoWufdD1mhDDAM6lcix4",
+      "maximum_vertex_count": 10895,
+      "maximum_face_count": 13899,
+      "geometry_item_types": [
+        "IfcBoundingBox",
+        "IfcMappedItem",
+        "IfcPolygonalFaceSet"
+      ],
+      "folder": "output/review/highpoly-types/miamisoft-e09",
+      "status": "review_ready_pending_approval",
+      "source_strategy": "exact_baxter_miami_soft_e09_right_terminal_vector_references_archived_native_cad_login_not_acquired_geometry_derived_proxy"
+    },
+    {
+      "type_name": "MiamiSoft E07",
+      "type_global_id": "0BAp_OX1HDRuxHD4UaBEy3",
+      "type_class": "IfcFurnitureType",
+      "ifc_classes": [
+        "IfcFurniture"
+      ],
+      "instance_count": 1,
+      "instance_global_ids": [
+        "1G7iO6CfP64PjummX$qTbt"
+      ],
+      "representative_global_id": "1G7iO6CfP64PjummX$qTbt",
+      "maximum_vertex_count": 9211,
+      "maximum_face_count": 13776,
+      "geometry_item_types": [
+        "IfcBoundingBox",
+        "IfcMappedItem",
+        "IfcPolygonalFaceSet"
+      ],
+      "folder": "output/review/highpoly-types/miamisoft-e07",
+      "status": "review_ready_pending_approval",
+      "source_strategy": "exact_baxter_miami_soft_e07_left_dormeuse_vector_references_archived_native_cad_login_not_acquired_geometry_derived_proxy"
+    },
+    {
+      "type_name": "Marilyn 01",
+      "type_global_id": "1iFhyr$Fj2yR5GBCxvzsuh",
+      "type_class": "IfcFurnitureType",
+      "ifc_classes": [
+        "IfcFurniture"
+      ],
+      "instance_count": 1,
+      "instance_global_ids": [
+        "3l2Ji4k2H9oOTDGWYUq7uV"
+      ],
+      "representative_global_id": "3l2Ji4k2H9oOTDGWYUq7uV",
+      "maximum_vertex_count": 20563,
+      "maximum_face_count": 12729,
+      "geometry_item_types": [
+        "IfcMappedItem",
+        "IfcPolygonalFaceSet"
+      ],
+      "folder": "output/review/highpoly-types/marilyn-01",
+      "status": "review_ready_pending_approval",
+      "source_strategy": "exact_baxter_marilyn_bergere_native_dwg_and_3ds_archived_vector_sources_cross_checked_ifc_description_height_conflict_recorded"
+    },
+    {
+      "type_name": "MiamiSoft F03",
+      "type_global_id": "0AE8$sgIXFIPXLGar5gShW",
+      "type_class": "IfcFurnitureType",
+      "ifc_classes": [
+        "IfcFurniture"
+      ],
+      "instance_count": 1,
+      "instance_global_ids": [
+        "1y3lLYK$H9fPbuh1R1vAKX"
+      ],
+      "representative_global_id": "1y3lLYK$H9fPbuh1R1vAKX",
+      "maximum_vertex_count": 6696,
+      "maximum_face_count": 10317,
+      "geometry_item_types": [
+        "IfcBoundingBox",
+        "IfcMappedItem",
+        "IfcPolygonalFaceSet"
+      ],
+      "folder": "output/review/highpoly-types/miamisoft-f03",
+      "status": "review_ready_pending_approval",
+      "source_strategy": "exact_baxter_miami_soft_f03_pouf_vector_references_archived_native_cad_login_not_acquired_geometry_derived_proxy"
+    },
+    {
+      "type_name": "TRAP01",
+      "type_global_id": "1L$J4UrFv9auXWTT2Ys_oH",
+      "type_class": "IfcSanitaryTerminalType",
+      "ifc_classes": [
+        "IfcSanitaryTerminal"
+      ],
+      "instance_count": 1,
+      "instance_global_ids": [
+        "2Ak2ma0lvBEA49UpplzUqi"
+      ],
+      "representative_global_id": "2Ak2ma0lvBEA49UpplzUqi",
+      "maximum_vertex_count": 4541,
+      "maximum_face_count": 9086,
+      "geometry_item_types": [
+        "IfcGeometricCurveSet",
+        "IfcMappedItem",
+        "IfcPolygonalFaceSet"
+      ],
+      "folder": "output/review/highpoly-types/trap01",
+      "status": "review_ready_pending_approval",
+      "source_strategy": "exact_geberit_151_116_11_1_native_dwg_archived_adjustable_default_not_force_fitted_configured_body_proxy"
+    },
+    {
+      "type_name": "Marilyn 02",
+      "type_global_id": "0qTjGYHT13_BUbOzZA_Zbi",
+      "type_class": "IfcFurnitureType",
+      "ifc_classes": [
+        "IfcFurniture"
+      ],
+      "instance_count": 1,
+      "instance_global_ids": [
+        "1THxa7p7n97w$wtLn4THjz"
+      ],
+      "representative_global_id": "1THxa7p7n97w$wtLn4THjz",
+      "maximum_vertex_count": 6611,
+      "maximum_face_count": 8079,
+      "geometry_item_types": [
+        "IfcMappedItem",
+        "IfcPolygonalFaceSet"
+      ],
+      "folder": "output/review/highpoly-types/marilyn-02",
+      "status": "review_ready_pending_approval",
+      "source_strategy": "exact_baxter_marilyn_pouf_80x62x45_native_dwg_and_3ds_archived_vector_sources_cross_checked"
+    },
+    {
+      "type_name": "CHA01",
+      "type_global_id": "1lpAMZua15e9urp1oWIh4P",
+      "type_class": "IfcFurnitureType",
+      "ifc_classes": [
+        "IfcFurniture"
+      ],
+      "instance_count": 2,
+      "instance_global_ids": [
+        "1luHljRzDAhPNXxTDNu7qB",
+        "2tCmGkmFz2_Pg0jRjf3Nup"
+      ],
+      "representative_global_id": "1luHljRzDAhPNXxTDNu7qB",
+      "maximum_vertex_count": 6767,
+      "maximum_face_count": 7515,
+      "geometry_item_types": [
+        "IfcMappedItem",
+        "IfcPolygonalFaceSet"
+      ],
+      "folder": "output/review/highpoly-types/cha01",
+      "status": "review_ready_pending_approval",
+      "source_strategy": "exact_baxter_colette_armchair_57x60x73_vector_references_archived_native_cad_login_not_acquired_geometry_derived_proxy"
+    },
+    {
+      "type_name": "MiamiSoft H01",
+      "type_global_id": "1qWNIXr7jDGRxldsUHtlhx",
+      "type_class": "IfcFurnitureType",
+      "ifc_classes": [
+        "IfcFurniture"
+      ],
+      "instance_count": 2,
+      "instance_global_ids": [
+        "0B8rO47U14sgJ_ydZxqvs6",
+        "0b9rDAHDD2qAIQqZ8m9INg"
+      ],
+      "representative_global_id": "0B8rO47U14sgJ_ydZxqvs6",
+      "maximum_vertex_count": 4671,
+      "maximum_face_count": 7274,
+      "geometry_item_types": [
+        "IfcMappedItem",
+        "IfcPolygonalFaceSet"
+      ],
+      "folder": "output/review/highpoly-types/miamisoft-h01",
+      "status": "review_ready_pending_approval",
+      "source_strategy": "exact_baxter_miami_soft_h01_flexible_cushion_vector_references_archived_native_cad_login_not_acquired_geometry_derived_proxy"
+    },
+    {
+      "type_name": "BS01",
+      "type_global_id": "38oLfIKqXARQwHtyJLiLRP",
+      "type_class": "IfcSanitaryTerminalType",
+      "ifc_classes": [
+        "IfcSanitaryTerminal"
+      ],
+      "instance_count": 1,
+      "instance_global_ids": [
+        "350tdaubr8QP3Cu2YMQZIN"
+      ],
+      "representative_global_id": "350tdaubr8QP3Cu2YMQZIN",
+      "maximum_vertex_count": 5129,
+      "maximum_face_count": 5063,
+      "geometry_item_types": [
+        "IfcMappedItem",
+        "IfcPolygonalFaceSet"
+      ],
+      "folder": "output/review/highpoly-types/falper-sorgente",
+      "status": "completed",
+      "source_strategy": "official_native_dwg"
+    },
+    {
+      "type_name": "Libelle",
+      "type_global_id": "1FudEC16D6iAkSWQC_7G2k",
+      "type_class": "IfcFurnitureType",
+      "ifc_classes": [
+        "IfcFurniture"
+      ],
+      "instance_count": 1,
+      "instance_global_ids": [
+        "2Urz4772T2w8c8KKNtSUY2"
+      ],
+      "representative_global_id": "2Urz4772T2w8c8KKNtSUY2",
+      "maximum_vertex_count": 8953,
+      "maximum_face_count": 5048,
+      "geometry_item_types": [
+        "IfcMappedItem",
+        "IfcPolygonalFaceSet"
+      ],
+      "folder": "output/review/highpoly-types/libelle",
+      "status": "excluded_other_task_do_not_touch",
+      "source_strategy": "out_of_scope_by_user_instruction"
+    },
+    {
+      "type_name": "Geberit 154.154.00",
+      "type_global_id": "3TnKn8Ovn3Qx65cYxp56Fl",
+      "type_class": "IfcSanitaryTerminalType",
+      "ifc_classes": [
+        "IfcSanitaryTerminal"
+      ],
+      "instance_count": 1,
+      "instance_global_ids": [
+        "14EazrLgP8whYZWY_yCuKy"
+      ],
+      "representative_global_id": "14EazrLgP8whYZWY_yCuKy",
+      "maximum_vertex_count": 2404,
+      "maximum_face_count": 4796,
+      "geometry_item_types": [
+        "IfcGeometricCurveSet",
+        "IfcMappedItem",
+        "IfcPolygonalFaceSet"
+      ],
+      "folder": "output/review/highpoly-types/geberit-154-154-00",
+      "status": "review_ready_pending_approval",
+      "source_strategy": "exact_154_154_00_1_identity_native_dwg_404_official_eps_identity_only_geometry_derived_proxy"
+    },
+    {
+      "type_name": "BST03",
+      "type_global_id": "1H0dYxOl555gbdbAoy$fYk",
+      "type_class": "IfcFurnitureType",
+      "ifc_classes": [
+        "IfcFurniture"
+      ],
+      "instance_count": 1,
+      "instance_global_ids": [
+        "1HZoxe$df4cBb4UXXH5J2S"
+      ],
+      "representative_global_id": "1HZoxe$df4cBb4UXXH5J2S",
+      "maximum_vertex_count": 3719,
+      "maximum_face_count": 4239,
+      "geometry_item_types": [
+        "IfcMappedItem",
+        "IfcPolygonalFaceSet"
+      ],
+      "folder": "output/review/highpoly-types/bst03",
+      "status": "review_ready_pending_approval",
+      "source_strategy": "exact_baxter_stone_left_drawer_45_identity_vector_pdf_archived_native_cad_login_not_acquired_geometry_derived_proxy"
+    },
+    {
+      "type_name": "FAU02",
+      "type_global_id": "0kHJM4zvD6uQgoZ6u9zW9R",
+      "type_class": "IfcSanitaryTerminalType",
+      "ifc_classes": [
+        "IfcSanitaryTerminal"
+      ],
+      "instance_count": 1,
+      "instance_global_ids": [
+        "36ZX3QPyD7SvlXsDKMP8rY"
+      ],
+      "representative_global_id": "36ZX3QPyD7SvlXsDKMP8rY",
+      "maximum_vertex_count": 3968,
+      "maximum_face_count": 3710,
+      "geometry_item_types": [
+        "IfcMappedItem",
+        "IfcPolygonalFaceSet"
+      ],
+      "folder": "output/review/highpoly-types/fau02",
+      "status": "review_ready_pending_approval",
+      "source_strategy": "official_Falper_Cilindro_GH2_native_2d_technical_and_3d_DWG_archived_as_nearest_family_candidate_exact_project_match_rejected_geometry_derived_proxy"
+    },
+    {
+      "type_name": "Gessi316 54146",
+      "type_global_id": "08XO3mTUz3HBUuAoz0Le9s",
+      "type_class": "IfcSanitaryTerminalType",
+      "ifc_classes": [
+        "IfcSanitaryTerminal"
+      ],
+      "instance_count": 1,
+      "instance_global_ids": [
+        "04DLh1Jk9Dcu9ibcaE0id8"
+      ],
+      "representative_global_id": "04DLh1Jk9Dcu9ibcaE0id8",
+      "maximum_vertex_count": 10770,
+      "maximum_face_count": 3622,
+      "geometry_item_types": [
+        "IfcMappedItem",
+        "IfcPolygonalFaceSet"
+      ],
+      "folder": "output/review/highpoly-types/gessi316-54146",
+      "status": "review_ready_pending_approval",
+      "source_strategy": "exact_public_official_54146_g000_native_dwg_and_technical_pdf_archived"
+    },
+    {
+      "type_name": "WD03",
+      "type_global_id": "0l3LxR2Lj1egsE94rFSMeK",
+      "type_class": "IfcFurnitureType",
+      "ifc_classes": [
+        "IfcFurniture"
+      ],
+      "instance_count": 1,
+      "instance_global_ids": [
+        "3cmikd9MTB$egM5KQaNgUf"
+      ],
+      "representative_global_id": "3cmikd9MTB$egM5KQaNgUf",
+      "maximum_vertex_count": 3608,
+      "maximum_face_count": 3446,
+      "geometry_item_types": [
+        "IfcIndexedPolyCurve",
+        "IfcMappedItem",
+        "IfcPolygonalFaceSet"
+      ],
+      "folder": "output/review/highpoly-types/wd03",
+      "status": "review_ready_pending_approval",
+      "source_strategy": "poliform_senzafine_official_modular_family_identity_verified_gated_resources_exact_project_native_cad_not_acquired_geometry_derived_proxy"
+    },
+    {
+      "type_name": "MiamiSoft I03",
+      "type_global_id": "14QWF6RTj3ZR_uGJEDRG9B",
+      "type_class": "IfcFurnitureType",
+      "ifc_classes": [
+        "IfcFurniture"
+      ],
+      "instance_count": 1,
+      "instance_global_ids": [
+        "1hdNtfQRPCGfHLfqzdp6w0"
+      ],
+      "representative_global_id": "1hdNtfQRPCGfHLfqzdp6w0",
+      "maximum_vertex_count": 1970,
+      "maximum_face_count": 3216,
+      "geometry_item_types": [
+        "IfcMappedItem",
+        "IfcPolygonalFaceSet"
+      ],
+      "folder": "output/review/highpoly-types/miamisoft-i03",
+      "status": "review_ready_pending_approval",
+      "source_strategy": "exact_baxter_miami_soft_i03_roll_vector_references_archived_native_cad_login_not_acquired_geometry_derived_proxy_ifc_description_conflict_recorded"
+    },
+    {
+      "type_name": "Geberit 146.140",
+      "type_global_id": "0oQ1OORVb9oOryrsmQyox1",
+      "type_class": "IfcSanitaryTerminalType",
+      "ifc_classes": [
+        "IfcSanitaryTerminal"
+      ],
+      "instance_count": 2,
+      "instance_global_ids": [
+        "0UtU7yPb10ku4gsbGoM_sp",
+        "1rhZG98PPCSxaLeMFLTYb9"
+      ],
+      "representative_global_id": "1rhZG98PPCSxaLeMFLTYb9",
+      "maximum_vertex_count": 1803,
+      "maximum_face_count": 3097,
+      "geometry_item_types": [
+        "IfcMappedItem",
+        "IfcPolygonalFaceSet"
+      ],
+      "folder": "output/review/highpoly-types/geberit-146-140",
+      "status": "review_ready_pending_approval",
+      "source_strategy": "official_native_dwg_archived"
+    },
+    {
+      "type_name": "Gessi316 54145",
+      "type_global_id": "2IQZheitD2wPt6lF3ELfTs",
+      "type_class": "IfcSanitaryTerminalType",
+      "ifc_classes": [
+        "IfcSanitaryTerminal"
+      ],
+      "instance_count": 1,
+      "instance_global_ids": [
+        "3jT4sCgpHC98VSIUdGUNYH"
+      ],
+      "representative_global_id": "3jT4sCgpHC98VSIUdGUNYH",
+      "maximum_vertex_count": 10634,
+      "maximum_face_count": 2903,
+      "geometry_item_types": [
+        "IfcBoundingBox",
+        "IfcMappedItem",
+        "IfcPolygonalFaceSet"
+      ],
+      "folder": "output/review/highpoly-types/gessi316-54145",
+      "status": "review_ready_pending_approval",
+      "source_strategy": "exact_public_official_54145_g000_native_dwg_and_technical_pdf_archived"
+    },
+    {
+      "type_name": "STREET-H",
+      "type_global_id": "2yjeYV3aTArx4G3zDvadjf",
+      "type_class": "IfcSanitaryTerminalType",
+      "ifc_classes": [
+        "IfcSanitaryTerminal"
+      ],
+      "instance_count": 2,
+      "instance_global_ids": [
+        "2ajpw0I9n1dBypfISg3ejX",
+        "3PRBtW00j1D8r2Or5PTFdh"
+      ],
+      "representative_global_id": "2ajpw0I9n1dBypfISg3ejX",
+      "maximum_vertex_count": 1050,
+      "maximum_face_count": 2116,
+      "geometry_item_types": [
+        "IfcGeometricCurveSet",
+        "IfcMappedItem",
+        "IfcPolygonalFaceSet"
+      ],
+      "folder": "output/review/highpoly-types/street-h",
+      "status": "review_ready_pending_approval",
+      "source_strategy": "antoniolupi_Street_parent_family_official_DXF_archived_and_mechanically_verified_exact_STREET_H_component_match_rejected_geometry_derived_proxy"
+    },
+    {
+      "type_name": "WD02",
+      "type_global_id": "3Xia__Mm57iv5rlzD9v6Yn",
+      "type_class": "IfcFurnitureType",
+      "ifc_classes": [
+        "IfcFurniture"
+      ],
+      "instance_count": 1,
+      "instance_global_ids": [
+        "3yuXF4PtnBHgIXDlmXFJ$7"
+      ],
+      "representative_global_id": "3yuXF4PtnBHgIXDlmXFJ$7",
+      "maximum_vertex_count": 2178,
+      "maximum_face_count": 2000,
+      "geometry_item_types": [
+        "IfcIndexedPolyCurve",
+        "IfcMappedItem",
+        "IfcPolygonalFaceSet"
+      ],
+      "folder": "output/review/highpoly-types/wd02",
+      "status": "review_ready_pending_approval",
+      "source_strategy": "poliform_senzafine_glass_wardrobe_official_family_and_project_registry_identity_verified_gated_resources_exact_project_native_cad_not_acquired_geometry_derived_proxy"
+    },
+    {
+      "type_name": "TAB02",
+      "type_global_id": "07$ZVT0GfEAOX0ntYYymTr",
+      "type_class": "IfcFurnitureType",
+      "ifc_classes": [
+        "IfcFurniture"
+      ],
+      "instance_count": 1,
+      "instance_global_ids": [
+        "2eX84IyLr8_e34nuOoRPLQ"
+      ],
+      "representative_global_id": "2eX84IyLr8_e34nuOoRPLQ",
+      "maximum_vertex_count": 936,
+      "maximum_face_count": 1860,
+      "geometry_item_types": [
+        "IfcMappedItem",
+        "IfcPolygonalFaceSet"
+      ],
+      "folder": "output/review/highpoly-types/tab02",
+      "status": "review_ready_pending_approval",
+      "source_strategy": "exact_roda_bernardo_367_official_catalogue_identity_and_dimensions_archived_reserved_area_native_cad_not_acquired_geometry_derived_proxy"
+    },
+    {
+      "type_name": "BST02",
+      "type_global_id": "1OOnzl9Iv0OOHaA0EOe321",
+      "type_class": "IfcFurnitureType",
+      "ifc_classes": [
+        "IfcFurniture"
+      ],
+      "instance_count": 1,
+      "instance_global_ids": [
+        "3hA0vKpcn44u4Tsx4tqiUz"
+      ],
+      "representative_global_id": "3hA0vKpcn44u4Tsx4tqiUz",
+      "maximum_vertex_count": 1944,
+      "maximum_face_count": 1702,
+      "geometry_item_types": [
+        "IfcBoundingBox",
+        "IfcMappedItem",
+        "IfcPolygonalFaceSet"
+      ],
+      "folder": "output/review/highpoly-types/bst02",
+      "status": "review_ready_pending_approval",
+      "source_strategy": "exact_baxter_beside_55x58x35_official_page_pdf_and_measurement_svg_archived_native_cad_login_not_acquired_geometry_derived_proxy_with_100mm_height_discrepancy"
+    },
+    {
+      "type_name": "STREET",
+      "type_global_id": "3m9kCyM351CxtPQVBlYtiZ",
+      "type_class": "IfcSanitaryTerminalType",
+      "ifc_classes": [
+        "IfcSanitaryTerminal"
+      ],
+      "instance_count": 1,
+      "instance_global_ids": [
+        "1FgLPMw$5B4wBH2ySMkXE1"
+      ],
+      "representative_global_id": "1FgLPMw$5B4wBH2ySMkXE1",
+      "maximum_vertex_count": 1116,
+      "maximum_face_count": 1407,
+      "geometry_item_types": [
+        "IfcBoundingBox",
+        "IfcMappedItem",
+        "IfcPolygonalFaceSet"
+      ],
+      "folder": "output/review/highpoly-types/street",
+      "status": "review_ready_pending_approval",
+      "source_strategy": "antoniolupi_Street_official_family_DXF_archived_domestic_custom_1000x470x250_exact_configuration_absent_geometry_derived_proxy"
+    },
+    {
+      "type_name": "Gessi316 54093",
+      "type_global_id": "1N6dRlBGvEs8EXU8M9hy4X",
+      "type_class": "IfcSanitaryTerminalType",
+      "ifc_classes": [
+        "IfcSanitaryTerminal"
+      ],
+      "instance_count": 1,
+      "instance_global_ids": [
+        "1jM_suNMPAw8_nvZejQSnp"
+      ],
+      "representative_global_id": "1jM_suNMPAw8_nvZejQSnp",
+      "maximum_vertex_count": 2013,
+      "maximum_face_count": 1330,
+      "geometry_item_types": [
+        "IfcMappedItem",
+        "IfcPolygonalFaceSet"
+      ],
+      "folder": "output/review/highpoly-types/gessi316-54093",
+      "status": "review_ready_pending_approval",
+      "source_strategy": "exact_official_54093_g000_native_dwg_with_pdf_api_and_ifc_cross_validation"
+    },
+    {
+      "type_name": "Geberit 154.154.00.1.F",
+      "type_global_id": "1bJFlkL310_e1sYGDT2Y40",
+      "type_class": "IfcSanitaryTerminalType",
+      "ifc_classes": [
+        "IfcSanitaryTerminal"
+      ],
+      "instance_count": 1,
+      "instance_global_ids": [
+        "2jjNIn9gHBYwNSWwlM5T_i"
+      ],
+      "representative_global_id": "2jjNIn9gHBYwNSWwlM5T_i",
+      "maximum_vertex_count": 604,
+      "maximum_face_count": 1212,
+      "geometry_item_types": [
+        "IfcGeometricCurveSet",
+        "IfcMappedItem",
+        "IfcPolygonalFaceSet"
+      ],
+      "folder": "output/review/highpoly-types/geberit-154-154-00-1-f",
+      "status": "review_ready_pending_approval",
+      "source_strategy": "exact_parent_154_154_00_1_official_page_and_EPS_archived_project_dot_F_flange_is_not_separate_manufacturer_article_native_component_CAD_not_published_geometry_derived_proxy"
+    },
+    {
+      "type_name": "Geberit 115.770",
+      "type_global_id": "0Ix$O3sQD6WvCEq22Az1Qg",
+      "type_class": "IfcSanitaryTerminalType",
+      "ifc_classes": [
+        "IfcSanitaryTerminal"
+      ],
+      "instance_count": 2,
+      "instance_global_ids": [
+        "2gFgcOYEXEaQWAzcKulTFt",
+        "2lDPsdQevFSfeOThtjSlPG"
+      ],
+      "representative_global_id": "2gFgcOYEXEaQWAzcKulTFt",
+      "maximum_vertex_count": 597,
+      "maximum_face_count": 1187,
+      "geometry_item_types": [
+        "IfcGeometricCurveSet",
+        "IfcMappedItem",
+        "IfcPolygonalFaceSet"
+      ],
+      "folder": "output/review/highpoly-types/geberit-115-770",
+      "status": "review_ready_pending_approval",
+      "source_strategy": "exact_115_770_11_5_official_product_page_data_sheet_and_native_G_A_L_DWG_archived_P_DWG_identity_only_formal_IFC_WCSEAT_semantic_error_recorded_not_modified"
+    },
+    {
+      "type_name": "WD01",
+      "type_global_id": "0vf8HbSFv9FfzysXNlGjdx",
+      "type_class": "IfcFurnitureType",
+      "ifc_classes": [
+        "IfcFurniture"
+      ],
+      "instance_count": 1,
+      "instance_global_ids": [
+        "2mPTt7$nvBSAn28I9NWt6T"
+      ],
+      "representative_global_id": "2mPTt7$nvBSAn28I9NWt6T",
+      "maximum_vertex_count": 3350,
+      "maximum_face_count": 1181,
+      "geometry_item_types": [
+        "IfcIndexedPolyCurve",
+        "IfcMappedItem",
+        "IfcPolygonalFaceSet"
+      ],
+      "folder": "output/review/highpoly-types/wd01",
+      "status": "review_ready_pending_approval",
+      "source_strategy": "poliform_Pivot_Senzafine_official_system_identity_and_remote_technical_document_verified_gated_resources_exact_project_native_cad_not_acquired_geometry_derived_proxy"
+    },
+    {
+      "type_name": "Gessi316 54038",
+      "type_global_id": "3WbkJJsCrBKe0vL$_wD4s3",
+      "type_class": "IfcSanitaryTerminalType",
+      "ifc_classes": [
+        "IfcSanitaryTerminal"
+      ],
+      "instance_count": 2,
+      "instance_global_ids": [
+        "1sgpvCENf4xQiaypKWW2JC",
+        "245NU$zZL0d9tYTVwwBdk$"
+      ],
+      "representative_global_id": "245NU$zZL0d9tYTVwwBdk$",
+      "maximum_vertex_count": 1814,
+      "maximum_face_count": 1176,
+      "geometry_item_types": [
+        "IfcMappedItem",
+        "IfcPolygonalFaceSet"
+      ],
+      "folder": "output/review/highpoly-types/gessi316-54038",
+      "status": "review_ready_pending_approval",
+      "source_strategy": "exact_official_54038_native_dwg_with_pdf_api_and_ifc_cross_validation"
+    },
+    {
+      "type_name": "Electric flue check valve",
+      "type_global_id": null,
+      "type_class": "IfcBuildingElementProxy",
+      "ifc_classes": [
+        "IfcBuildingElementProxy"
+      ],
+      "instance_count": 1,
+      "instance_global_ids": [
+        "1faflkXXH6M9cnYPE9Liir"
+      ],
+      "representative_global_id": "1faflkXXH6M9cnYPE9Liir",
+      "maximum_vertex_count": 626,
+      "maximum_face_count": 1040,
+      "geometry_item_types": [
+        "IfcPolygonalFaceSet"
+      ],
+      "folder": "output/review/highpoly-types/electric-flue-check-valve",
+      "status": "review_ready_pending_approval",
+      "source_strategy": "geometry_derived_simplified_proxy_manufacturer_and_model_unresolved_no_exact_official_CAD_match"
+    },
+    {
+      "type_name": "BST01",
+      "type_global_id": "0ZWJNi2GP9KvvQhOX1hwKP",
+      "type_class": "IfcFurnitureType",
+      "ifc_classes": [
+        "IfcFurniture"
+      ],
+      "instance_count": 1,
+      "instance_global_ids": [
+        "3eic1dzkn5heTIn4PhF37v"
+      ],
+      "representative_global_id": "3eic1dzkn5heTIn4PhF37v",
+      "maximum_vertex_count": 3818,
+      "maximum_face_count": 731,
+      "geometry_item_types": [
+        "IfcMappedItem",
+        "IfcPolygonalFaceSet"
+      ],
+      "folder": "output/review/highpoly-types/bst01",
+      "status": "review_ready_pending_approval",
+      "source_strategy": "exact_baxter_ninfea_42x42x45_official_page_pdf_and_both_opening_measurement_svgs_archived_project_opening_side_unresolved_native_cad_login_not_acquired_geometry_derived_proxy"
+    }
+  ],
+  "system_geometry_count": 7,
+  "system_geometry": [
+    {
+      "type_name": "DRA01",
+      "type_global_id": "0g7Vs1P_j5Fehr3zXg2ozd",
+      "type_class": "IfcPipeSegmentType",
+      "ifc_classes": [
+        "IfcPipeSegment"
+      ],
+      "instance_count": 3,
+      "instance_global_ids": [
+        "0V9CnYT0n3GvkLmXhxvv$u",
+        "0YgqsahOH4FvZ_nLwl_Tlf",
+        "2wViHGrwX2hOYCb3MDNb$9"
+      ],
+      "representative_global_id": "2wViHGrwX2hOYCb3MDNb$9",
+      "maximum_vertex_count": 18931,
+      "maximum_face_count": 37926,
+      "geometry_item_types": [
+        "IfcMappedItem",
+        "IfcPolygonalFaceSet",
+        "IfcPolyline"
+      ],
+      "status": "listed_not_product_cad_target",
+      "source_strategy": "system_geometry_not_manufacturer_product_folder"
+    },
+    {
+      "type_name": "Drain Pipe",
+      "type_global_id": null,
+      "type_class": "IfcPipeSegment",
+      "ifc_classes": [
+        "IfcPipeSegment"
+      ],
+      "instance_count": 1,
+      "instance_global_ids": [
+        "10Wm8ivdX7dAVfz4cV8l5Q"
+      ],
+      "representative_global_id": "10Wm8ivdX7dAVfz4cV8l5Q",
+      "maximum_vertex_count": 7776,
+      "maximum_face_count": 7728,
+      "geometry_item_types": [
+        "IfcPolygonalFaceSet"
+      ],
+      "status": "listed_not_product_cad_target",
+      "source_strategy": "system_geometry_not_manufacturer_product_folder"
+    },
+    {
+      "type_name": "Gas",
+      "type_global_id": null,
+      "type_class": "IfcPipeSegment",
+      "ifc_classes": [
+        "IfcPipeSegment"
+      ],
+      "instance_count": 1,
+      "instance_global_ids": [
+        "1hZRB0eOX8OA8rcjke67P0"
+      ],
+      "representative_global_id": "1hZRB0eOX8OA8rcjke67P0",
+      "maximum_vertex_count": 5760,
+      "maximum_face_count": 5724,
+      "geometry_item_types": [
+        "IfcPolygonalFaceSet"
+      ],
+      "status": "listed_not_product_cad_target",
+      "source_strategy": "system_geometry_not_manufacturer_product_folder"
+    },
+    {
+      "type_name": "Liquid",
+      "type_global_id": null,
+      "type_class": "IfcPipeSegment",
+      "ifc_classes": [
+        "IfcPipeSegment"
+      ],
+      "instance_count": 1,
+      "instance_global_ids": [
+        "0hHnbLj0X4jPDz4o3QJo1l"
+      ],
+      "representative_global_id": "0hHnbLj0X4jPDz4o3QJo1l",
+      "maximum_vertex_count": 5472,
+      "maximum_face_count": 5436,
+      "geometry_item_types": [
+        "IfcPolygonalFaceSet"
+      ],
+      "status": "listed_not_product_cad_target",
+      "source_strategy": "system_geometry_not_manufacturer_product_folder"
+    },
+    {
+      "type_name": "Gas Living Room",
+      "type_global_id": null,
+      "type_class": "IfcPipeSegment",
+      "ifc_classes": [
+        "IfcPipeSegment"
+      ],
+      "instance_count": 1,
+      "instance_global_ids": [
+        "0f2ZLauDH8lRnYj6oervDm"
+      ],
+      "representative_global_id": "0f2ZLauDH8lRnYj6oervDm",
+      "maximum_vertex_count": 2448,
+      "maximum_face_count": 2436,
+      "geometry_item_types": [
+        "IfcPolygonalFaceSet"
+      ],
+      "status": "listed_not_product_cad_target",
+      "source_strategy": "system_geometry_not_manufacturer_product_folder"
+    },
+    {
+      "type_name": "Liquid Living Room",
+      "type_global_id": null,
+      "type_class": "IfcPipeSegment",
+      "ifc_classes": [
+        "IfcPipeSegment"
+      ],
+      "instance_count": 1,
+      "instance_global_ids": [
+        "0Ik2RcgGbFOhdYTJPgh5AQ"
+      ],
+      "representative_global_id": "0Ik2RcgGbFOhdYTJPgh5AQ",
+      "maximum_vertex_count": 2304,
+      "maximum_face_count": 2292,
+      "geometry_item_types": [
+        "IfcPolygonalFaceSet"
+      ],
+      "status": "listed_not_product_cad_target",
+      "source_strategy": "system_geometry_not_manufacturer_product_folder"
+    },
+    {
+      "type_name": "TEE01",
+      "type_global_id": "3ra1x17G16vfz99F05oYgt",
+      "type_class": "IfcPipeSegmentType",
+      "ifc_classes": [
+        "IfcPipeSegment"
+      ],
+      "instance_count": 2,
+      "instance_global_ids": [
+        "01yasJOHDC6vunuQzfSKru",
+        "11Yew7g9DB48FGKv9gAfVx"
+      ],
+      "representative_global_id": "01yasJOHDC6vunuQzfSKru",
+      "maximum_vertex_count": 608,
+      "maximum_face_count": 1088,
+      "geometry_item_types": [
+        "IfcBoundingBox",
+        "IfcMappedItem",
+        "IfcPolygonalFaceSet"
+      ],
+      "status": "listed_not_product_cad_target",
+      "source_strategy": "system_geometry_not_manufacturer_product_folder"
+    }
+  ]
+}
