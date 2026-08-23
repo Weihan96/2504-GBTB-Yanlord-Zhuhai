@@ -1,0 +1,191 @@
+{
+  "schema_version": 1,
+  "generated_at": "2026-08-22T23:59:30.526465+00:00",
+  "generator": "pipeline/scripts/geberit_154_154_00_review.py",
+  "formal_ifc": "2504 GBTB Yanlord Zhuhai.ifc",
+  "formal_ifc_sha256": "7a50b87e8f48a7c2bfbaa9f1dabdfca7155fa684b2325c66aa1ae15c8ab0a25c",
+  "formal_ifc_sha256_after_generation": "7a50b87e8f48a7c2bfbaa9f1dabdfca7155fa684b2325c66aa1ae15c8ab0a25c",
+  "formal_ifc_bytes_unchanged": true,
+  "profile_register": "output/review/highpoly-types/geberit-154-154-00/profile.json",
+  "profile_register_sha256": "936de431ffd40388f6022eecf52abea962dfbf31e5d54374040170a3cd2e59a3",
+  "profile_key": "geberit-154-154-00",
+  "display_name": "Geberit CleanLine installation set 154.154.00.1 / project type 154.154.00",
+  "ifc_type_name": "Geberit 154.154.00",
+  "ifc_type_description": "Installation set for CleanLine shower channel, for screed height at inlet 90–220 mm",
+  "article_number": "154.154.00.1",
+  "representative_global_id": "14EazrLgP8whYZWY_yCuKy",
+  "registered_instance_global_ids": [
+    "14EazrLgP8whYZWY_yCuKy"
+  ],
+  "geometry_product_count": 1,
+  "whole_model_render": false,
+  "mesh_vertex_count": 2390,
+  "mesh_face_count": 4768,
+  "bounds_mm": {
+    "minimum": [
+      -355.591496,
+      -65.0,
+      -64.740021
+    ],
+    "maximum": [
+      6.108528,
+      65.0,
+      25.259995
+    ],
+    "size": [
+      361.700024,
+      130.0,
+      90.000015
+    ]
+  },
+  "source_kind": "geometry_derived_simplified_proxy",
+  "source_label_zh": "基于原始高模几何生成的简化图纸表达",
+  "drawing_source": {
+    "source_kind": "geometry_derived_simplified_proxy",
+    "source_label_zh": "基于原始高模几何生成的简化图纸表达",
+    "source_label_en": "simplified drawing representation derived from the original high-poly geometry",
+    "official_cad_used": false,
+    "third_party_cad_used": false,
+    "official_source_access_record": "output/review/highpoly-types/geberit-154-154-00/official-source/source-access-record.json",
+    "official_source_access_record_sha256": "58d4d2791ba4d39b56a3cf5a0de3f0b23b4a47f80828f6781434d81d42d84022",
+    "official_product_cad_status": "official_page_cadDrawings_empty_and_native_dwg_urls_404"
+  },
+  "official_reference": {
+    "source_id": "GEBERIT-154-154-00-1-OFFICIAL-IDENTITY-001",
+    "source_kind": "manufacturer_product_page_and_vector_eps_identity_dimension_evidence_only",
+    "manufacturer": "Geberit",
+    "family": "CleanLine shower channel installation set",
+    "article_number": "154.154.00.1",
+    "scope": "exact manufacturer family and article identity plus standard dimensions; not a project shop drawing and not CAD geometry",
+    "product_page": "https://catalog.geberit.co.uk/en-GB/product/PRO_199058",
+    "source_access_record": "output/review/highpoly-types/geberit-154-154-00/official-source/source-access-record.json",
+    "official_product_cad_status": "official_page_cadDrawings_empty_and_native_dwg_urls_404",
+    "official_vector_eps_archived": true,
+    "official_product_cad_used": false
+  },
+  "official_identity_evidence_only": true,
+  "dimension_cross_check": {
+    "official_dimensions_mm": {
+      "L": 300,
+      "L1": 358,
+      "B": 130,
+      "H": 90,
+      "H1_range": [
+        90,
+        220
+      ],
+      "h": 42
+    },
+    "project_ifc_body_local_xyz_mm": [
+      361.700024,
+      130.0,
+      90.000015
+    ],
+    "compared_dimensions": [
+      {
+        "semantic": "overall_length_L1",
+        "official_mm": 358,
+        "ifc_mm": 361.700024,
+        "absolute_delta_mm": 3.700024,
+        "tolerance_mm": 5.0,
+        "pass": true
+      },
+      {
+        "semantic": "body_width_B",
+        "official_mm": 130,
+        "ifc_mm": 130.0,
+        "absolute_delta_mm": 0.0,
+        "tolerance_mm": 1.0,
+        "pass": true
+      },
+      {
+        "semantic": "body_height_H",
+        "official_mm": 90,
+        "ifc_mm": 90.000015,
+        "absolute_delta_mm": 1.5e-05,
+        "tolerance_mm": 1.0,
+        "pass": true
+      }
+    ],
+    "note": "The IFC protective-body envelope extends 3.700024 mm beyond the official L1 schematic dimension; this remains within the review tolerance and is not a fabrication-opening instruction.",
+    "pass": true
+  },
+  "official_cad_acquired": false,
+  "official_cad_used": false,
+  "third_party_cad_used": false,
+  "blue_line_present": false,
+  "official_source_access_record": "output/review/highpoly-types/geberit-154-154-00/official-source/source-access-record.json",
+  "official_source_access_record_sha256": "58d4d2791ba4d39b56a3cf5a0de3f0b23b4a47f80828f6781434d81d42d84022",
+  "candidate_representations": "output/review/highpoly-types/geberit-154-154-00/candidate-representations.json",
+  "candidate_representations_sha256": "3f694131a4954827ab14bef3a2c7a578a55beb414272aa44135b45c4cf7992a5",
+  "review_status": "visual_review_pending",
+  "approved_for_drawing_ifc": false,
+  "derived_ifc_write_allowed": false,
+  "formal_ifc_write": "not performed",
+  "views": [
+    {
+      "view": "plan",
+      "svg": "output/review/highpoly-types/geberit-154-154-00/plan.svg",
+      "svg_sha256": "7ee401b769ec33f65aacf5ea1f0cb260b19e1a68cb38425a921e8acf2a34f8d9",
+      "projection_axes": [
+        0,
+        1
+      ],
+      "raw_edge_count": 7152,
+      "displayed_raw_edge_count": 894,
+      "silhouette_path_count": 1,
+      "drawing_line_source_kind": "geometry_derived_simplified_proxy",
+      "drawing_line_source_label_zh": "基于原始高模几何生成的简化图纸表达",
+      "official_cad_path_count": 0,
+      "blue_line_present": false
+    },
+    {
+      "view": "front",
+      "svg": "output/review/highpoly-types/geberit-154-154-00/front.svg",
+      "svg_sha256": "00536f62c7887bc25ccca6572a8b4a50d6720aae38161cc37b47ef19cfab9599",
+      "projection_axes": [
+        0,
+        2
+      ],
+      "raw_edge_count": 7152,
+      "displayed_raw_edge_count": 894,
+      "silhouette_path_count": 3,
+      "drawing_line_source_kind": "geometry_derived_simplified_proxy",
+      "drawing_line_source_label_zh": "基于原始高模几何生成的简化图纸表达",
+      "official_cad_path_count": 0,
+      "blue_line_present": false
+    },
+    {
+      "view": "side",
+      "svg": "output/review/highpoly-types/geberit-154-154-00/side.svg",
+      "svg_sha256": "5667870c8c9f8ebc42014cd8c87ea912c824ee108241989ec38ab13c75d0edcb",
+      "projection_axes": [
+        1,
+        2
+      ],
+      "raw_edge_count": 7152,
+      "displayed_raw_edge_count": 894,
+      "silhouette_path_count": 1,
+      "drawing_line_source_kind": "geometry_derived_simplified_proxy",
+      "drawing_line_source_label_zh": "基于原始高模几何生成的简化图纸表达",
+      "official_cad_path_count": 0,
+      "blue_line_present": false
+    }
+  ],
+  "pass": true,
+  "project_context": {
+    "manifest": "output/review/highpoly-types/geberit-154-154-00/project-context-manifest.json",
+    "manifest_sha256": "5c565a327e90c71f9e67d6f1f781b1e7cf2dc222c41117b4274a2366330bdbcb",
+    "walls_and_surrounding_project_elements_retained": true,
+    "overlay_top_layer_with_white_mask": true,
+    "pass": true
+  },
+  "bonsai_review": {
+    "manifest": "output/review/highpoly-types/geberit-154-154-00/bonsai-review-manifest.json",
+    "manifest_sha256": "25fec0d83ffb79d10699096ecc02304655b8cbad4ee562e9ae3a3d1b0f73ee40",
+    "mode": "actual_bonsai_ifc_body_camera_render",
+    "saved_active_representation": "Body",
+    "saved_camera_count": 4,
+    "pass": true
+  }
+}

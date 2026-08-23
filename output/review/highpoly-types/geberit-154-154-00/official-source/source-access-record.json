@@ -1,0 +1,109 @@
+{
+  "schema_version": 1,
+  "manufacturer": "Geberit",
+  "family": "CleanLine shower channel installation set",
+  "project_ifc_type_name": "Geberit 154.154.00",
+  "project_ifc_type_description": "Installation set for CleanLine shower channel, for screed height at inlet 90–220 mm",
+  "resolved_article_number": "154.154.00.1",
+  "research_date": "2026-08-23",
+  "official_identity_sources": [
+    {
+      "kind": "manufacturer_product_page",
+      "url": "https://catalog.geberit.co.uk/en-GB/product/PRO_199058",
+      "local_path": "output/review/highpoly-types/geberit-154-154-00/official-source/geberit-154-154-00-1-product-page.html",
+      "sha256": "234eb0fb1ecaec45c1a1113e5b1fac918cbb6bb9c3a7b11664a84550cfdd6435",
+      "identity_observation": "The official page resolves PRO_199058 to article 154.154.00.1 and the same CleanLine installation-set description carried by the project IFC type."
+    },
+    {
+      "kind": "manufacturer_vector_eps_top_view",
+      "url": "https://cdn.data.geberit.com/eps/99/04/DAS_199904.eps",
+      "local_path": "output/review/highpoly-types/geberit-154-154-00/official-source/DAS_199904-top-view.eps",
+      "sha256": "3c238df45acfd43d819565106cebe0133049b6500fc012b6a4a31cbb05137291",
+      "preview_path": "output/review/highpoly-types/geberit-154-154-00/official-source/DAS_199904-top-view-preview.png",
+      "preview_sha256": "4c0d229bc2581a7af834c45ccdbd72d390c68659fbdd92711aece130bc3045df",
+      "visual_check": "Top view visually inspected; dimension callouts and outlet geometry agree with the exact installation set."
+    },
+    {
+      "kind": "manufacturer_vector_eps_front_view",
+      "url": "https://cdn.data.geberit.com/eps/99/02/DAS_199902.eps",
+      "local_path": "output/review/highpoly-types/geberit-154-154-00/official-source/DAS_199902-front-view.eps",
+      "sha256": "8114001caff7c8552563c219b1b3923340db00a18c8de174ce9b061d409c10ac",
+      "preview_path": "output/review/highpoly-types/geberit-154-154-00/official-source/DAS_199902-front-view-preview.png",
+      "preview_sha256": "31c1bc59bb1e5bb068585d8ae585e367002ae5dc1835745f3e01630fd1b21236",
+      "visual_check": "Front view visually inspected; L, L1, H, H1 and h callouts are present."
+    },
+    {
+      "kind": "manufacturer_vector_eps_perspective",
+      "url": "https://cdn.data.geberit.com/eps/99/00/DAS_199900.eps",
+      "local_path": "output/review/highpoly-types/geberit-154-154-00/official-source/DAS_199900-perspective.eps",
+      "sha256": "cee509e98b933d5857df6a5b7179eca7abbd79d859c9913132818d5f28031c84",
+      "preview_path": "output/review/highpoly-types/geberit-154-154-00/official-source/DAS_199900-perspective-preview.png",
+      "preview_sha256": "124273d87c62b77e097cb066ff51d85ddc1f5ea68341f3862423db86b6714406",
+      "visual_check": "Perspective drawing visually inspected and matches the installation-set body, flange and outlet arrangement."
+    }
+  ],
+  "official_product_cad": {
+    "published_access_surface": "official Geberit product page embedded article data",
+    "cad_drawings_field": "undefined",
+    "native_dwg_url_pattern_checked": "https://cdn.data.geberit.com/cad/154.154.00.1_{A,G,L,P}.dwg",
+    "native_dwg_http_statuses": {
+      "A": 404,
+      "G": 404,
+      "L": 404,
+      "P": 404
+    },
+    "acquired": false,
+    "local_cad_files": [],
+    "official_vector_eps_archived": true,
+    "official_vector_eps_used_as_cad_geometry": false,
+    "reason": "The exact official article page publishes product imagery and vector EPS technical views but no cadDrawings payload. The standard Geberit A/G/L/P native-DWG URLs all returned 404. EPS files are retained only as exact identity and standard-dimension evidence; no third-party CAD was substituted."
+  },
+  "dimension_cross_check": {
+    "official_dimensions_mm": {
+      "L": 300,
+      "L1": 358,
+      "B": 130,
+      "H": 90,
+      "H1_range": [90, 220],
+      "h": 42
+    },
+    "project_ifc_body_local_xyz_mm": [361.700024, 130.0, 90.000015],
+    "compared_dimensions": [
+      {
+        "semantic": "overall_length_L1",
+        "official_mm": 358,
+        "ifc_mm": 361.700024,
+        "absolute_delta_mm": 3.700024,
+        "tolerance_mm": 5.0,
+        "pass": true
+      },
+      {
+        "semantic": "body_width_B",
+        "official_mm": 130,
+        "ifc_mm": 130.0,
+        "absolute_delta_mm": 0.0,
+        "tolerance_mm": 1.0,
+        "pass": true
+      },
+      {
+        "semantic": "body_height_H",
+        "official_mm": 90,
+        "ifc_mm": 90.000015,
+        "absolute_delta_mm": 0.000015,
+        "tolerance_mm": 1.0,
+        "pass": true
+      }
+    ],
+    "note": "The IFC protective-body envelope extends 3.700024 mm beyond the official L1 schematic dimension; this remains within the review tolerance and is not a fabrication-opening instruction.",
+    "pass": true
+  },
+  "drawing_geometry_source": {
+    "source_kind": "geometry_derived_simplified_proxy",
+    "source_label_zh": "基于原始高模几何生成的简化图纸表达",
+    "source_label_en": "simplified drawing representation derived from the original high-poly geometry",
+    "official_cad_used": false,
+    "third_party_cad_used": false
+  },
+  "scope": "exact manufacturer article identity and standard dimensions; not a project shop drawing and not official CAD geometry",
+  "pass": true
+}

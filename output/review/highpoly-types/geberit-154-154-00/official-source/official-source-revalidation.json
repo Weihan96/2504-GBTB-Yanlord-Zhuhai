@@ -1,0 +1,116 @@
+{
+  "schema_version": 1,
+  "checked_at": "2026-08-23T16:18:51.228327+00:00",
+  "manufacturer": "Geberit",
+  "family": "CleanLine shower channel installation set",
+  "article_number": "154.154.00.1",
+  "method": "fresh official product-page, article-API, native-DWG and EPS requests with exact identity and SHA-256 checks",
+  "product_page": {
+    "url": "https://catalog.geberit.co.uk/en-GB/product/PRO_199058",
+    "http_status": 200,
+    "content_type": "text/html; charset=utf-8",
+    "downloaded_byte_count": 1104806,
+    "downloaded_sha256": "781c698e637452b6895b751d45fdf194047e375f4270660c7da7bdd6bb290cce",
+    "archived_local_path": "output/review/highpoly-types/geberit-154-154-00/official-source/geberit-154-154-00-1-product-page.html",
+    "archived_byte_count": 1104806,
+    "archived_sha256": "234eb0fb1ecaec45c1a1113e5b1fac918cbb6bb9c3a7b11664a84550cfdd6435",
+    "downloaded_exact_article_with_cadDrawings_undefined": true,
+    "archived_exact_article_with_cadDrawings_undefined": true,
+    "pass": true
+  },
+  "article_api": {
+    "url": "https://api.prd.mbp.geberit.com/product-data/v3/articles/154.154.00.1?locale=en-GB&brand=GEBERIT",
+    "http_status": 401,
+    "content_type": "application/json",
+    "response_byte_count": 152,
+    "response_sha256": "c90468927fb778dd15b9da44a4dfec94fa8544d9746a59183f1bd413f87ac52a",
+    "anonymous_access_available": false,
+    "note": "The exact article API currently requires authorization; this status is not used to infer CAD availability.",
+    "pass": true
+  },
+  "native_dwg_results": {
+    "A": {
+      "url": "https://cdn.data.geberit.com/cad/154.154.00.1_A.dwg",
+      "http_status": 404,
+      "content_type": "application/xml",
+      "response_byte_count": 215,
+      "response_sha256": "f98f17102d84111625edba69275bf9f28cc99a93ca348ca540393dc70ffb21d5",
+      "native_dwg_acquired": false,
+      "pass": true
+    },
+    "G": {
+      "url": "https://cdn.data.geberit.com/cad/154.154.00.1_G.dwg",
+      "http_status": 404,
+      "content_type": "application/xml",
+      "response_byte_count": 215,
+      "response_sha256": "55d3e18fbcf8ddb5ad6d5db7df69e7b5f08d71a664afe3f53c4747a86808789e",
+      "native_dwg_acquired": false,
+      "pass": true
+    },
+    "L": {
+      "url": "https://cdn.data.geberit.com/cad/154.154.00.1_L.dwg",
+      "http_status": 404,
+      "content_type": "application/xml",
+      "response_byte_count": 215,
+      "response_sha256": "7a3422d9aa3c9645b1e8e5eae6b26ada4119c7294c45ffa413880cd15e006cc4",
+      "native_dwg_acquired": false,
+      "pass": true
+    },
+    "P": {
+      "url": "https://cdn.data.geberit.com/cad/154.154.00.1_P.dwg",
+      "http_status": 404,
+      "content_type": "application/xml",
+      "response_byte_count": 215,
+      "response_sha256": "eae84e0919ca7009b5ea39ab73794125d6f0debb94993f3b60b7ee02a64d87c9",
+      "native_dwg_acquired": false,
+      "pass": true
+    }
+  },
+  "official_eps_results": {
+    "perspective": {
+      "url": "https://cdn.data.geberit.com/eps/99/00/DAS_199900.eps",
+      "local_path": "output/review/highpoly-types/geberit-154-154-00/official-source/DAS_199900-perspective.eps",
+      "http_status": 200,
+      "content_type": "application/postscript",
+      "expected_sha256": "cee509e98b933d5857df6a5b7179eca7abbd79d859c9913132818d5f28031c84",
+      "downloaded_sha256": "cee509e98b933d5857df6a5b7179eca7abbd79d859c9913132818d5f28031c84",
+      "local_sha256": "cee509e98b933d5857df6a5b7179eca7abbd79d859c9913132818d5f28031c84",
+      "downloaded_bytes_match_local_archive": true,
+      "role": "official vector identity and dimension evidence only; not CAD geometry",
+      "pass": true
+    },
+    "front": {
+      "url": "https://cdn.data.geberit.com/eps/99/02/DAS_199902.eps",
+      "local_path": "output/review/highpoly-types/geberit-154-154-00/official-source/DAS_199902-front-view.eps",
+      "http_status": 200,
+      "content_type": "application/postscript",
+      "expected_sha256": "8114001caff7c8552563c219b1b3923340db00a18c8de174ce9b061d409c10ac",
+      "downloaded_sha256": "8114001caff7c8552563c219b1b3923340db00a18c8de174ce9b061d409c10ac",
+      "local_sha256": "8114001caff7c8552563c219b1b3923340db00a18c8de174ce9b061d409c10ac",
+      "downloaded_bytes_match_local_archive": true,
+      "role": "official vector identity and dimension evidence only; not CAD geometry",
+      "pass": true
+    },
+    "top": {
+      "url": "https://cdn.data.geberit.com/eps/99/04/DAS_199904.eps",
+      "local_path": "output/review/highpoly-types/geberit-154-154-00/official-source/DAS_199904-top-view.eps",
+      "http_status": 200,
+      "content_type": "application/postscript",
+      "expected_sha256": "3c238df45acfd43d819565106cebe0133049b6500fc012b6a4a31cbb05137291",
+      "downloaded_sha256": "3c238df45acfd43d819565106cebe0133049b6500fc012b6a4a31cbb05137291",
+      "local_sha256": "3c238df45acfd43d819565106cebe0133049b6500fc012b6a4a31cbb05137291",
+      "downloaded_bytes_match_local_archive": true,
+      "role": "official vector identity and dimension evidence only; not CAD geometry",
+      "pass": true
+    }
+  },
+  "native_dwg_acquired": false,
+  "official_eps_used_as_cad_geometry": false,
+  "third_party_cad_used": false,
+  "drawing_geometry_source": {
+    "source_kind": "geometry_derived_simplified_proxy",
+    "source_label_zh": "基于原始高模几何生成的简化图纸表达"
+  },
+  "scope": "exact manufacturer article identity and dimensions; not a project shop drawing and not official CAD geometry",
+  "pass": true
+}

@@ -1,0 +1,141 @@
+{
+  "schema_version": 1,
+  "generator": "pipeline/scripts/render_geberit_154_154_00_bonsai_review.py",
+  "mode": "actual_bonsai_ifc_body_camera_render",
+  "representative_global_id": "14EazrLgP8whYZWY_yCuKy",
+  "geometry_product_count": 1,
+  "whole_model_render": false,
+  "formal_ifc": "2504 GBTB Yanlord Zhuhai.ifc",
+  "formal_ifc_sha256": "7a50b87e8f48a7c2bfbaa9f1dabdfca7155fa684b2325c66aa1ae15c8ab0a25c",
+  "formal_ifc_bytes_unchanged": true,
+  "isolated_ifc": "output/review/highpoly-types/geberit-154-154-00/Geberit-154-154-00-1-bonsai-isolated.ifc",
+  "isolated_ifc_sha256": "1345bd89faf1e74a4864576beeac7333351e6c441f129f57c0aa0dc743db74d9",
+  "bonsai_session": {
+    "path": "output/review/highpoly-types/geberit-154-154-00/Geberit-154-154-00-1-bonsai-review.blend",
+    "sha256": "fc8fda38a60e180bc4aa736e558a61520382a62417c5ed8a3798100d2ccfece4",
+    "saved_active_representation": "Body",
+    "saved_camera_count": 4,
+    "saved_camera_names": [
+      "GEBERIT_154_154_00_1_CAM_FRONT",
+      "GEBERIT_154_154_00_1_CAM_ISO",
+      "GEBERIT_154_154_00_1_CAM_PLAN",
+      "GEBERIT_154_154_00_1_CAM_SIDE"
+    ],
+    "ifc_definition_id": 4872,
+    "ifc_context_identifier": "Body",
+    "object_name": "IfcSanitaryTerminal/SanitaryTerminal",
+    "object_bounds_m": {
+      "minimum": [
+        -6.170591354,
+        0.88499999,
+        -0.124740019
+      ],
+      "maximum": [
+        -5.808891296,
+        1.014999986,
+        -0.034740005
+      ]
+    },
+    "local_axis_extents_m": {
+      "x": 0.361700058,
+      "y": 0.130000114,
+      "z": 0.090000018
+    },
+    "local_axes_world": [
+      [
+        1.0,
+        0.0,
+        0.0
+      ],
+      [
+        0.0,
+        1.0,
+        0.0
+      ],
+      [
+        0.0,
+        0.0,
+        1.0
+      ]
+    ]
+  },
+  "renders": [
+    {
+      "view": "plan",
+      "camera": "GEBERIT_154_154_00_1_CAM_PLAN",
+      "camera_type": "ORTHO",
+      "camera_axis_basis": "IFC product local axes",
+      "camera_ortho_scale_m": 0.426806509495,
+      "projected_width_m": 0.361700057983,
+      "projected_height_m": 0.130000114441,
+      "image_aspect": 1.4,
+      "framing_margin_factor": 1.18,
+      "ortho_scale_quantization_safety_factor": 1.000001,
+      "render_operation": "bpy.ops.render.render(write_still=True)",
+      "path": "output/review/highpoly-types/geberit-154-154-00/bonsai-camera-plan.png",
+      "sha256": "4ab90988116c37366d2c3cfa242e7036b696280d6d38af295bf8f352b6f4caae",
+      "resolution": [
+        1400,
+        1000
+      ]
+    },
+    {
+      "view": "front",
+      "camera": "GEBERIT_154_154_00_1_CAM_FRONT",
+      "camera_type": "ORTHO",
+      "camera_axis_basis": "IFC product local axes",
+      "camera_ortho_scale_m": 0.426806509495,
+      "projected_width_m": 0.361700057983,
+      "projected_height_m": 0.090000039657,
+      "image_aspect": 1.4,
+      "framing_margin_factor": 1.18,
+      "ortho_scale_quantization_safety_factor": 1.000001,
+      "render_operation": "bpy.ops.render.render(write_still=True)",
+      "path": "output/review/highpoly-types/geberit-154-154-00/bonsai-camera-front-elevation.png",
+      "sha256": "013a7ba89073aef738a6239786d089f82ff61587ade0ef619610738d3aa58bbc",
+      "resolution": [
+        1400,
+        1000
+      ]
+    },
+    {
+      "view": "side",
+      "camera": "GEBERIT_154_154_00_1_CAM_SIDE",
+      "camera_type": "ORTHO",
+      "camera_axis_basis": "IFC product local axes",
+      "camera_ortho_scale_m": 0.153400301933,
+      "projected_width_m": 0.130000130251,
+      "projected_height_m": 0.090000034288,
+      "image_aspect": 1.4,
+      "framing_margin_factor": 1.18,
+      "ortho_scale_quantization_safety_factor": 1.000001,
+      "render_operation": "bpy.ops.render.render(write_still=True)",
+      "path": "output/review/highpoly-types/geberit-154-154-00/bonsai-camera-side-elevation.png",
+      "sha256": "70beafef2491734556a695393a99fca8b322636ef6be5d237bb8df4cc75d1e91",
+      "resolution": [
+        1400,
+        1000
+      ]
+    },
+    {
+      "view": "iso",
+      "camera": "GEBERIT_154_154_00_1_CAM_ISO",
+      "camera_type": "ORTHO",
+      "camera_axis_basis": "IFC product local axes",
+      "camera_ortho_scale_m": 0.453012645245,
+      "projected_width_m": 0.347684545898,
+      "projected_height_m": 0.274220451713,
+      "image_aspect": 1.4,
+      "framing_margin_factor": 1.18,
+      "ortho_scale_quantization_safety_factor": 1.000001,
+      "render_operation": "bpy.ops.render.render(write_still=True)",
+      "path": "output/review/highpoly-types/geberit-154-154-00/bonsai-camera-iso.png",
+      "sha256": "a52b18623af6a534a252268e0bd3d124c9a01f915726341b1ff45a77539dd30b",
+      "resolution": [
+        1400,
+        1000
+      ]
+    }
+  ],
+  "pass": true
+}
