@@ -1,0 +1,48 @@
+{
+  "schema_version": 1,
+  "formal_ifc_sha256": "7a50b87e8f48a7c2bfbaa9f1dabdfca7155fa684b2325c66aa1ae15c8ab0a25c",
+  "profiles": {
+    "fau02": {
+      "display_name": "Falper floor-mounted basin spout / project FAU02",
+      "ifc_type_name": "FAU02",
+      "representative_global_id": "36ZX3QPyD7SvlXsDKMP8rY",
+      "expected_instance_global_ids": ["36ZX3QPyD7SvlXsDKMP8rY"],
+      "profile_source": "isolated_highpoly_projection; official_falper_cilindro_GH2_2d_technical_dwg_3d_dwg_and_pdf_archived_as_nearest_family_candidate; exact_project_article_rejected_by_mechanical_dimension_gate",
+      "silhouette_simplify_mm": 0.18,
+      "semantic_sections": {"plan": [], "front": [], "side": []},
+      "required_semantics": [
+        "floor_mounted_basin_spout",
+        "short_horizontal_neck_and_angled_outlet",
+        "round_stem_and_floor_flange",
+        "official_GH2_native_CAD_archived_but_not_used_as_project_representation",
+        "exact_project_article_unresolved_due_to_dimension_mismatch"
+      ],
+      "drawing_source": {
+        "source_kind": "geometry_derived_simplified_proxy",
+        "source_label_zh": "基于原始高模几何生成的简化图纸表达",
+        "source_label_en": "simplified drawing representation derived from the original high-poly geometry",
+        "official_cad_acquired": true,
+        "official_cad_used": false,
+        "official_cad_used_as_representation": false,
+        "third_party_cad_used": false
+      },
+      "official_reference": {
+        "source_id": "FALPER-CILINDRO-GH2-FAU02-NEAREST-FAMILY-CANDIDATE-001",
+        "source_kind": "manufacturer_native_2d_technical_dwg_3d_dwg_and_pdf_nearest_family_candidate_only",
+        "manufacturer": "Falper",
+        "family": "Cilindro",
+        "nearest_official_candidate": "GH2",
+        "project_type_code": "FAU02",
+        "scope": "official Falper Cilindro GH2 nearest family candidate only; project FAU02 exact article is not mechanically established; GH2 CAD is not used as representation and is not a project shop drawing",
+        "product_page": "https://falper.it/rubinetteria-cilindro/",
+        "technical_dwg_zip": "https://falper.it/wp-content/uploads/2025/11/Rubinetti-cilindro-Scheda-tecnica-DWG.zip",
+        "autocad_2d_zip": "https://falper.it/wp-content/uploads/2025/11/Rubinetti-cilindro-Autocad-2D.zip",
+        "autocad_3d_zip": "https://falper.it/wp-content/uploads/2025/11/Rubinetti-cilindro-Autocad-3D.zip",
+        "technical_pdf_zip": "https://falper.it/wp-content/uploads/2025/11/Rubinetti-cilindro-Scheda-tecnica-PDF.zip",
+        "source_access_record": "output/review/highpoly-types/fau02/official-source/source-access-record.json",
+        "official_cad_acquired": true,
+        "official_cad_used_as_representation": false
+      }
+    }
+  }
+}

@@ -1,0 +1,58 @@
+{
+  "schema_version": 1,
+  "manufacturer": "Falper",
+  "project_ifc_type_name": "FAU02",
+  "project_ifc_type_description": "Falper SORGENTE Faucet",
+  "representative_global_id": "36ZX3QPyD7SvlXsDKMP8rY",
+  "nearest_official_candidate": {
+    "family": "Cilindro",
+    "article": "GH2",
+    "selection_basis": [
+      "floor-mounted round stem",
+      "short horizontal neck",
+      "angled cylindrical outlet",
+      "round floor flange"
+    ]
+  },
+  "project_body_measurements_mm": {
+    "overall_bbox_minimum": [-49.246151, -49.240383, -8.0],
+    "overall_bbox_maximum": [179.551544, 49.240383, 1093.285645],
+    "overall_bbox_size": [228.797695, 98.480766, 1101.285645],
+    "height_above_floor_reference": 1093.285645,
+    "stem_diameter_from_body_bbox": 19.3304,
+    "floor_flange_diameter_from_body_bbox": 98.492302,
+    "model_view_polygonal_face_set_count": 3
+  },
+  "official_GH2_published_measurements_mm": {
+    "overall_height": 1128.0,
+    "outlet_height": 999.0,
+    "stem_diameter": 22.0,
+    "floor_flange_diameter": 115.0,
+    "horizontal_neck_dimension": 155.0,
+    "angled_outlet_length": 145.0,
+    "source": "Falper-Cilindro-GH2-technical-sheet.pdf"
+  },
+  "mechanical_deltas": {
+    "height_mm": -34.714355,
+    "height_percent": -3.077514,
+    "stem_diameter_mm": -2.6696,
+    "stem_diameter_percent": -12.134545,
+    "floor_flange_diameter_mm": -16.507698,
+    "floor_flange_diameter_percent": -14.35452
+  },
+  "native_source_cross_checks": {
+    "autocad_2d_GH2_sha256": "e3824d70a7fd0fd16decfc4960c7b5210098de01031f385776878955062adf98",
+    "technical_dwg_GH2_sha256": "e3824d70a7fd0fd16decfc4960c7b5210098de01031f385776878955062adf98",
+    "autocad_2d_equals_technical_dwg": true,
+    "autocad_3d_GH2_sha256": "6e98520e1c0f503e5db2b5e28e758d6a983e390ef6bcfa3525b53dcd15cc2a13",
+    "autocad_3d_entity_type": "3DSOLID",
+    "autocad_3d_solid_count": 4,
+    "project_model_view_item_type": "IfcPolygonalFaceSet",
+    "project_model_view_item_count": 3
+  },
+  "exact_project_configuration_match": false,
+  "identity_status": "nearest_official_family_candidate_not_exact_project_article",
+  "official_CAD_used_as_representation": false,
+  "drawing_geometry_source": "geometry_derived_simplified_proxy",
+  "conclusion": "GH2 is archived as the nearest official Falper family candidate, but the independent height, stem-diameter and flange-diameter mismatches exceed the exact-match gate. The project FAU02 linework must be derived from its actual IFC Body, with no official blue line."
+}

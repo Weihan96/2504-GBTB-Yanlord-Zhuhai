@@ -1,0 +1,107 @@
+{
+  "schema_version": 1,
+  "generator": "pipeline/scripts/render_fau02_project_context.py",
+  "source_kind": "geometry_derived_simplified_proxy",
+  "source_label_zh": "基于原始高模几何生成的简化图纸表达",
+  "candidate_source_kind": "geometry_derived_simplified_proxy",
+  "candidate_source_label_zh": "基于原始高模几何生成的简化图纸表达",
+  "official_cad_acquired": true,
+  "official_cad_exact_project_configuration_match": false,
+  "official_cad_used": false,
+  "third_party_cad_used": false,
+  "blue_line_present": false,
+  "project_context_retained": true,
+  "walls_and_surrounding_project_elements_retained": true,
+  "furniture_retained_in_elevations": true,
+  "existing_actual_ifc_projection_retained": true,
+  "overlay_top_layer_with_white_mask": false,
+  "top_layer_substitution_performed": false,
+  "occlusion_retained": true,
+  "reason_no_top_layer_substitution": "GH2 failed the exact-project match gate; duplicating a full silhouette on top would erase valid basin, wall and furniture occlusion before human approval",
+  "separate_candidate_views": {
+    "plan": "output/review/highpoly-types/fau02/plan.svg",
+    "front": "output/review/highpoly-types/fau02/front.svg",
+    "side": "output/review/highpoly-types/fau02/side.svg"
+  },
+  "views": [
+    {
+      "view": "plan",
+      "source": "drawings/FFL PLAN.svg",
+      "output": "output/review/highpoly-types/fau02/project-context-furniture-plan.svg",
+      "output_sha256": "b4bf18cd6fce2836961ff07925016444a6903314f0e33aedcd8df692d819c25d",
+      "review_crop": "output/review/highpoly-types/fau02/project-context-furniture-plan-review.svg",
+      "review_crop_sha256": "10ef587b13519cc58f48fa3ff0c7b7c13b8ec5c0e70619b64d924f84835cdbcb",
+      "review_preview": "output/review/highpoly-types/fau02/project-context-furniture-plan-review-preview.png",
+      "review_preview_sha256": "1475180b8786f0d658b6b4a2ef1d845a66c26bcd763ea9d15135606fc37164ea",
+      "existing_project_projection": {
+        "ifc_guid": "36ZX3QPyD7SvlXsDKMP8rY",
+        "geometry_source": "actual_project_IFC_representation",
+        "visible_projection_bbox_svg_units": [
+          [
+            190.819296,
+            154.815762
+          ],
+          [
+            194.404052,
+            157.999998
+          ]
+        ],
+        "visibility_note": "actual IFC plan projection retained with basin/floor-plan occlusion",
+        "occlusion_retained": true
+      }
+    },
+    {
+      "view": "front",
+      "source": "drawings/elevations/native/EL-P02-B-PUBLIC-PX.svg",
+      "output": "output/review/highpoly-types/fau02/project-context-front-elevation.svg",
+      "output_sha256": "fd071ffe5f4d1d7b1e6c1ad13383abf9f01fdcdef44ae2ce4057465560ec16c9",
+      "review_crop": "output/review/highpoly-types/fau02/project-context-front-elevation-review.svg",
+      "review_crop_sha256": "5b0b9844a588c99b694a86360bc5c6094ef07b52fc0e78460d9fa85ef6e15875",
+      "review_preview": "output/review/highpoly-types/fau02/project-context-front-elevation-review-preview.png",
+      "review_preview_sha256": "826f1bdaeb0c56400dae781c37638b0a4f6dc5e72c5d7f0cebe10b8606fc3663",
+      "existing_project_projection": {
+        "ifc_guid": "36ZX3QPyD7SvlXsDKMP8rY",
+        "geometry_source": "actual_project_IFC_representation",
+        "visible_projection_bbox_svg_units": [
+          [
+            111.359612,
+            59.615083
+          ],
+          [
+            117.334213,
+            96.324606
+          ]
+        ],
+        "visibility_note": "actual IFC elevation projection retained with wall and furniture occlusion",
+        "occlusion_retained": true
+      }
+    },
+    {
+      "view": "side",
+      "source": "drawings/elevations/native/EL-P01-02-LIVING-SOUTH-NY.svg",
+      "output": "output/review/highpoly-types/fau02/project-context-side-elevation.svg",
+      "output_sha256": "302d2ba8e99e414456b3c6be98a8e13d284095d6eef2ddaa805d264f6cb0a0e8",
+      "review_crop": "output/review/highpoly-types/fau02/project-context-side-elevation-review.svg",
+      "review_crop_sha256": "18b39fc43bc5da7702c124c0ff9319e53bb26bd06795d48204e2ca04db6bb179",
+      "review_preview": "output/review/highpoly-types/fau02/project-context-side-elevation-review-preview.png",
+      "review_preview_sha256": "bb927f4a33419025fff01751d685cd77db353cbffb65b53ef5bba5192c5c7dc4",
+      "existing_project_projection": {
+        "ifc_guid": "36ZX3QPyD7SvlXsDKMP8rY",
+        "geometry_source": "actual_project_IFC_representation",
+        "visible_projection_bbox_svg_units": [
+          [
+            154.16421,
+            59.634649
+          ],
+          [
+            158.634518,
+            96.344172
+          ]
+        ],
+        "visibility_note": "actual IFC elevation projection retained with wall and furniture occlusion",
+        "occlusion_retained": true
+      }
+    }
+  ],
+  "pass": true
+}

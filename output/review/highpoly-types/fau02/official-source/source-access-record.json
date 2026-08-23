@@ -1,0 +1,99 @@
+{
+  "schema_version": 1,
+  "manufacturer": "Falper",
+  "project_ifc_type_name": "FAU02",
+  "project_ifc_type_description": "Falper SORGENTE Faucet",
+  "representative_global_id": "36ZX3QPyD7SvlXsDKMP8rY",
+  "manufacturer_product_page": "https://falper.it/rubinetteria-cilindro/",
+  "nearest_official_family_candidate": {
+    "family": "Cilindro",
+    "article": "GH2",
+    "exact_project_configuration_match": false,
+    "match_analysis": "output/review/highpoly-types/fau02/official-source/cad-match-analysis.json"
+  },
+  "official_archive_sources": {
+    "technical_pdf_zip": {
+      "url": "https://falper.it/wp-content/uploads/2025/11/Rubinetti-cilindro-Scheda-tecnica-PDF.zip",
+      "sha256": "b46de4ce5c31884ed5ef309b6ef542066563d82ec58079fe70b5ee6849b8a1b3"
+    },
+    "technical_dwg_zip": {
+      "url": "https://falper.it/wp-content/uploads/2025/11/Rubinetti-cilindro-Scheda-tecnica-DWG.zip",
+      "sha256": "58a459d3d118091177e04c398b4f98d4825a29da0993cebe8fdb7448548cb360"
+    },
+    "autocad_2d_zip": {
+      "url": "https://falper.it/wp-content/uploads/2025/11/Rubinetti-cilindro-Autocad-2D.zip",
+      "sha256": "b6cadb0a4be4fe58048b04dadd103a9c853daaa859f073d645d846792ba0cc79"
+    },
+    "autocad_3d_zip": {
+      "url": "https://falper.it/wp-content/uploads/2025/11/Rubinetti-cilindro-Autocad-3D.zip",
+      "sha256": "350eb28a96a7847753efa988dae311e8767a3fbe2c7adef9750019d8feb72430"
+    }
+  },
+  "archived_files": [
+    {
+      "role": "official_product_page_snapshot",
+      "local_path": "output/review/highpoly-types/fau02/official-source/falper-cilindro-official-product-page.html",
+      "sha256": "b8069ff53c62d3c7224502a0c16601bdc90337ca996333827c67a344c3be02f8"
+    },
+    {
+      "role": "official_GH2_native_2d_and_technical_dwg",
+      "local_path": "output/review/highpoly-types/fau02/official-source/Falper-Cilindro-GH2-2D.dwg",
+      "sha256": "e3824d70a7fd0fd16decfc4960c7b5210098de01031f385776878955062adf98"
+    },
+    {
+      "role": "official_GH2_native_3d_dwg",
+      "local_path": "output/review/highpoly-types/fau02/official-source/Falper-Cilindro-GH2-3D.dwg",
+      "sha256": "6e98520e1c0f503e5db2b5e28e758d6a983e390ef6bcfa3525b53dcd15cc2a13"
+    },
+    {
+      "role": "official_GH2_technical_sheet_pdf",
+      "local_path": "output/review/highpoly-types/fau02/official-source/Falper-Cilindro-GH2-technical-sheet.pdf",
+      "sha256": "ff4a0bb0724621b62bf6d268744e8bc1320c683ca724684dfda0bc16d8618076"
+    },
+    {
+      "role": "native_DWG_parser_reference_SVG_not_representation",
+      "local_path": "output/review/highpoly-types/fau02/official-source/Falper-Cilindro-GH2-native-dwg-reference.svg",
+      "sha256": "946a963a74e37c63b3f2b3278bd999678e887bddfaff8c5909d6697ad70615e0"
+    }
+  ],
+  "official_identity_sources": [
+    {
+      "role": "official_product_page_snapshot",
+      "local_path": "output/review/highpoly-types/fau02/official-source/falper-cilindro-official-product-page.html",
+      "sha256": "b8069ff53c62d3c7224502a0c16601bdc90337ca996333827c67a344c3be02f8"
+    },
+    {
+      "role": "official_GH2_native_2d_and_technical_dwg_nearest_candidate_only",
+      "local_path": "output/review/highpoly-types/fau02/official-source/Falper-Cilindro-GH2-2D.dwg",
+      "sha256": "e3824d70a7fd0fd16decfc4960c7b5210098de01031f385776878955062adf98"
+    },
+    {
+      "role": "official_GH2_native_3d_dwg_nearest_candidate_only",
+      "local_path": "output/review/highpoly-types/fau02/official-source/Falper-Cilindro-GH2-3D.dwg",
+      "sha256": "6e98520e1c0f503e5db2b5e28e758d6a983e390ef6bcfa3525b53dcd15cc2a13"
+    },
+    {
+      "role": "official_GH2_technical_sheet_identity_and_dimension_evidence",
+      "local_path": "output/review/highpoly-types/fau02/official-source/Falper-Cilindro-GH2-technical-sheet.pdf",
+      "sha256": "ff4a0bb0724621b62bf6d268744e8bc1320c683ca724684dfda0bc16d8618076"
+    }
+  ],
+  "official_product_cad": {
+    "acquired": true,
+    "nearest_candidate_article": "GH2",
+    "exact_project_configuration_match": false,
+    "used_as_representation": false,
+    "third_party_cad_used": false
+  },
+  "drawing_geometry_source": {
+    "source_kind": "geometry_derived_simplified_proxy",
+    "source_label_zh": "基于原始高模几何生成的简化图纸表达",
+    "source_label_en": "simplified drawing representation derived from the original high-poly geometry",
+    "official_cad_acquired": true,
+    "official_cad_used": false,
+    "third_party_cad_used": false
+  },
+  "scope": "official Falper Cilindro GH2 nearest family candidate only; project FAU02 exact article is not mechanically established; GH2 CAD is not used as representation and is not a project shop drawing",
+  "retrieved_at": "2026-08-23",
+  "pass": true
+}

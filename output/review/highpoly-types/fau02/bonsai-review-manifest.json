@@ -1,0 +1,143 @@
+{
+  "schema_version": 1,
+  "generator": "pipeline/scripts/render_fau02_bonsai_review.py",
+  "mode": "actual_bonsai_ifc_body_camera_render",
+  "representative_global_id": "36ZX3QPyD7SvlXsDKMP8rY",
+  "geometry_product_count": 1,
+  "whole_model_render": false,
+  "formal_ifc": "2504 GBTB Yanlord Zhuhai.ifc",
+  "formal_ifc_sha256": "7a50b87e8f48a7c2bfbaa9f1dabdfca7155fa684b2325c66aa1ae15c8ab0a25c",
+  "formal_ifc_bytes_unchanged": true,
+  "isolated_ifc": "output/review/highpoly-types/fau02/FAU02-bonsai-isolated.ifc",
+  "isolated_ifc_sha256": "af89019a9fc7ebb18bf8b5ad5f04271cd40ccc463a77fb84f582c3acdcfbb264",
+  "bonsai_session": {
+    "path": "output/review/highpoly-types/fau02/FAU02-bonsai-review.blend",
+    "sha256": "f49d36c5eb58f7340a1e0b8b375eb27e79098dc18dd25d71797b5884ed8aab75",
+    "saved_active_representation": "Body",
+    "saved_camera_count": 4,
+    "saved_camera_names": [
+      "FAU02_CAM_FRONT",
+      "FAU02_CAM_ISO",
+      "FAU02_CAM_PLAN",
+      "FAU02_CAM_SIDE"
+    ],
+    "ifc_definition_id": 3622,
+    "ifc_context_identifier": "Body",
+    "ifc_target_view": "MODEL_VIEW",
+    "front_camera_local_y_sign": -1.0,
+    "object_name": "IfcSanitaryTerminal/SanitaryTerminal",
+    "object_bounds_m": {
+      "minimum": [
+        -0.490636349,
+        0.059392061,
+        0.010151566
+      ],
+      "maximum": [
+        -0.259215564,
+        0.29081285,
+        1.111437201
+      ]
+    },
+    "local_axis_extents_m": {
+      "x": 0.228797667,
+      "y": 0.098480783,
+      "z": 1.101285696
+    },
+    "local_axes_world": [
+      [
+        -0.707106769,
+        0.707106769,
+        0.0
+      ],
+      [
+        -0.707106769,
+        -0.707106769,
+        0.0
+      ],
+      [
+        0.0,
+        0.0,
+        1.0
+      ]
+    ]
+  },
+  "renders": [
+    {
+      "view": "plan",
+      "camera": "FAU02_CAM_PLAN",
+      "camera_type": "ORTHO",
+      "camera_axis_basis": "IFC product local axes",
+      "camera_ortho_scale_m": 0.382307559252,
+      "projected_width_m": 0.231420814991,
+      "projected_height_m": 0.231420814991,
+      "image_aspect": 1.4,
+      "framing_margin_factor": 1.18,
+      "ortho_scale_quantization_safety_factor": 1.000001,
+      "render_operation": "bpy.ops.render.render(write_still=True)",
+      "path": "output/review/highpoly-types/fau02/bonsai-camera-plan.png",
+      "sha256": "dc48e699c3cd6d970851f3d1517d0c98a7faa26cba89bf84cdec77a42253a2a6",
+      "resolution": [
+        1400,
+        1000
+      ]
+    },
+    {
+      "view": "front",
+      "camera": "FAU02_CAM_FRONT",
+      "camera_type": "ORTHO",
+      "camera_axis_basis": "IFC product local axes",
+      "camera_ortho_scale_m": 1.81932580471,
+      "projected_width_m": 0.228797716969,
+      "projected_height_m": 1.101285722512,
+      "image_aspect": 1.4,
+      "framing_margin_factor": 1.18,
+      "ortho_scale_quantization_safety_factor": 1.000001,
+      "render_operation": "bpy.ops.render.render(write_still=True)",
+      "path": "output/review/highpoly-types/fau02/bonsai-camera-front-elevation.png",
+      "sha256": "6b256bcc99c3de44121559a3c047d40bf8aa7d5b1f7d2b48790c65d9a29946d3",
+      "resolution": [
+        1400,
+        1000
+      ]
+    },
+    {
+      "view": "side",
+      "camera": "FAU02_CAM_SIDE",
+      "camera_type": "ORTHO",
+      "camera_axis_basis": "IFC product local axes",
+      "camera_ortho_scale_m": 1.81932580471,
+      "projected_width_m": 0.098480826285,
+      "projected_height_m": 1.101285709865,
+      "image_aspect": 1.4,
+      "framing_margin_factor": 1.18,
+      "ortho_scale_quantization_safety_factor": 1.000001,
+      "render_operation": "bpy.ops.render.render(write_still=True)",
+      "path": "output/review/highpoly-types/fau02/bonsai-camera-side-elevation.png",
+      "sha256": "31720f6d5b791d8a78358d6c69491d2080c4ecdcbdd2c068091705e9b4cf0471",
+      "resolution": [
+        1400,
+        1000
+      ]
+    },
+    {
+      "view": "iso",
+      "camera": "FAU02_CAM_ISO",
+      "camera_type": "ORTHO",
+      "camera_axis_basis": "IFC product local axes",
+      "camera_ortho_scale_m": 1.706198573112,
+      "projected_width_m": 0.231420850709,
+      "projected_height_m": 1.032806850451,
+      "image_aspect": 1.4,
+      "framing_margin_factor": 1.18,
+      "ortho_scale_quantization_safety_factor": 1.000001,
+      "render_operation": "bpy.ops.render.render(write_still=True)",
+      "path": "output/review/highpoly-types/fau02/bonsai-camera-iso.png",
+      "sha256": "77062cbfc39d3b40fbfe906b29faeb1bac6f517adface08d84a433ec126fc6de",
+      "resolution": [
+        1400,
+        1000
+      ]
+    }
+  ],
+  "pass": true
+}
