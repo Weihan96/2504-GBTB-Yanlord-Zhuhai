@@ -1,0 +1,80 @@
+{
+  "schema_version": 1,
+  "manufacturer": "Baxter",
+  "family": "Beside",
+  "designer": "Studiopepe",
+  "project_ifc_type_name": "BST02",
+  "project_ifc_type_description": "Beside 55x58xh35",
+  "resolved_variant": "Beside bedside table, 55 x 58 x 35 cm",
+  "research_date": "2026-08-23",
+  "official_identity_sources": [
+    {
+      "kind": "manufacturer_product_page",
+      "url": "https://www.baxter.it/en/products/beside-tables-and-coffee-tables",
+      "local_path": "output/review/highpoly-types/bst02/official-source/baxter-beside-product-page.html",
+      "sha256": "e5282ca8f4bbfbf772b2af8734543bce1a2c9d329afd85a56eb59400bdcc265a",
+      "identity_observation": "The official page identifies Beside by Studiopepe and publishes one bedside-table version at 55 x 58 x 35 cm."
+    },
+    {
+      "kind": "manufacturer_vector_technical_sheet",
+      "url": "https://productsbook.baxter.it/product-pdf/Beside_tavoli-e-tavolini_TechnicalSheet.pdf?code=BESI&kind=indoor&lang=eng&sector=tavoli-e-tavolini",
+      "local_path": "output/review/highpoly-types/bst02/official-source/Baxter_Beside_TechnicalSheet.pdf",
+      "sha256": "7fe22b18589d3c3db07665d267f23cc97dcffc47b6667c07cce76957313b6d3a",
+      "page": 7,
+      "preview_path": "output/review/highpoly-types/bst02/official-source/Baxter_Beside_TechnicalSheet-page-7.png",
+      "preview_sha256": "2c7b427fc54c4141d63e82bbb7cfcafefc014fa5a7c3afc238aff671d2fb9b5a",
+      "required_text_found": ["Bedside table.", "55", "58", "35", "cm"],
+      "visual_check": "Rendered page 7 was visually inspected. It contains dimensioned side, front and plan diagrams and the 55 x 58 x 35 cm size table."
+    },
+    {
+      "kind": "manufacturer_public_measurement_svg",
+      "url": "https://productsbook.baxter.it/models/measurements/BESICOBS55.svg",
+      "local_path": "output/review/highpoly-types/bst02/official-source/BESICOBS55.svg",
+      "sha256": "36bfffecbb33be78c8479676e26dd4de745a7a4cba78efeb888f5eb3bae4ca73",
+      "preview_path": "output/review/highpoly-types/bst02/official-source/BESICOBS55-preview.png",
+      "preview_sha256": "00b5e3973783d3e3880fc4bfe563d3e775ea55e3ba8df9784829e5a9a1afe9e7",
+      "vector_object_audit": {"path_count": 34, "use_count": 45, "group_count": 41},
+      "visual_check": "The official public SVG was visually inspected and shows side, front and plan diagrams labelled 58, 55 and 35 cm. It is retained as identity and nominal-shape evidence, not native CAD representation geometry."
+    }
+  ],
+  "official_product_cad": {
+    "published_access_surface": "Baxter official product page",
+    "authentication_required": true,
+    "download_label": "For the download of 2D, 3D and BIM models",
+    "acquired": false,
+    "exact_project_configuration_match": false,
+    "local_cad_files": [],
+    "official_vector_pdf_archived": true,
+    "official_measurement_svg_archived": true,
+    "official_vector_evidence_used_as_cad_geometry": false,
+    "reason": "The public manufacturer page, PDF and measurement SVG establish exact family identity and nominal dimensions. Native 2D/3D/BIM files require Baxter login and were not acquired; no third-party CAD was substituted."
+  },
+  "dimension_cross_check": {
+    "official_variant_overall_mm": [550.0, 580.0, 350.0],
+    "project_ifc_body_local_xyz_mm": [560.0, 577.889252, 250.0],
+    "absolute_delta_mm": [10.0, 2.110748, 100.0],
+    "tolerance_mm": [15.0, 15.0, 15.0],
+    "pass_by_axis": [true, true, false],
+    "pass": false,
+    "review_required": true,
+    "note": "Plan width and depth agree within tolerance, but the actual MODEL_VIEW Body is 100 mm lower than the official 350 mm height. The Body is not scaled or corrected; the discrepancy remains visible and must be approved or corrected upstream."
+  },
+  "drawing_geometry_source": {
+    "source_kind": "geometry_derived_simplified_proxy",
+    "source_label_zh": "基于原始高模几何生成的简化图纸表达",
+    "source_label_en": "simplified drawing representation derived from the original high-poly geometry",
+    "official_cad_used": false,
+    "official_public_vector_evidence_used_as_cad_geometry": false,
+    "third_party_cad_used": false
+  },
+  "project_identity_evidence": {
+    "furniture_product_register": "pipeline/decisions/furniture-product-register.csv",
+    "equipment_register": "pipeline/decisions/equipment-register.csv",
+    "source_evidence_register": "pipeline/decisions/source-evidence-register.csv",
+    "register_status": "confirmed",
+    "register_confidence": 1.0,
+    "confirmed_variant": "Baxter Beside 55x58xh35"
+  },
+  "scope": "exact Baxter Beside 55 x 58 x 35 cm manufacturer identity and public measurement evidence; native 2D/3D/BIM requires login and was not acquired; public PDF/SVG are not representation CAD geometry or a project shop drawing; the 100 mm project Body height discrepancy is retained",
+  "pass": true
+}
