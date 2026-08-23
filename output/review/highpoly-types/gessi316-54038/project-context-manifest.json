@@ -1,0 +1,178 @@
+{
+  "schema_version": 1,
+  "generator": "pipeline/scripts/render_gessi316_54038_project_context.py",
+  "source_kind": "native_dwg",
+  "source_label_zh": "Gessi 官方精确型号 54038 原生 DWG 图纸表达",
+  "official_cad_used": true,
+  "third_party_cad_used": false,
+  "project_context_retained": true,
+  "walls_and_surrounding_project_elements_retained": true,
+  "overlay_top_layer_with_white_mask": true,
+  "blue_line_present": true,
+  "project_scale_svg_units_per_mm": 0.02,
+  "views": [
+    {
+      "view": "plan",
+      "candidate_view": "plan",
+      "source": "drawings/FFL PLAN.svg",
+      "output": "output/review/highpoly-types/gessi316-54038/project-context-ffl-plan.svg",
+      "output_sha256": "70bacdda5cc36b0dbe79d5d5548de032fd18b86ef7aa661a4a697fe694191a11",
+      "review_crop": "output/review/highpoly-types/gessi316-54038/project-context-ffl-plan-review.svg",
+      "review_crop_sha256": "4a3a5f0388ad37349fdb202c7f619f99850ff527420a1c276dad7f5010043a90",
+      "review_preview": "output/review/highpoly-types/gessi316-54038/project-context-ffl-plan-review-preview.png",
+      "review_preview_sha256": "a4072c932d921fa893cfe55d76c84acd32aac2261556fad29e8db25e056591a3",
+      "overlay": {
+        "ifc_guid": "245NU$zZL0d9tYTVwwBdk$",
+        "source_kind": "native_dwg",
+        "source_label_zh": "Gessi 官方精确型号 54038 原生 DWG 图纸表达",
+        "official_cad_used": true,
+        "third_party_cad_used": false,
+        "source_dwg_sha256": "2c56b532bbbb78e5668050d1a7b52a7d545153a85a05efc377c7a651890897f1",
+        "path_count": 119,
+        "fit": {
+          "rotate_quarter_turns": 1,
+          "alignment_mode": "centre",
+          "flip_projected_y": true,
+          "scale_svg_units_per_mm": 0.02,
+          "target_bbox": [
+            [
+              163.180717,
+              120.550008
+            ],
+            [
+              165.200717,
+              125.850008
+            ]
+          ],
+          "proxy_bbox": [
+            [
+              163.180717,
+              120.550008
+            ],
+            [
+              165.200717,
+              125.850008
+            ]
+          ],
+          "bbox_absolute_delta_svg_units": [
+            0.0,
+            0.0
+          ],
+          "bbox_tolerance_svg_units": 0.08,
+          "uniform_scale_preserved": true,
+          "transformation_mode": "axis_swap_rigid_reflection_and_translation_only",
+          "pass": true
+        }
+      }
+    },
+    {
+      "view": "front",
+      "candidate_view": "side",
+      "source": "drawings/elevations/native/EL-08-31-R17-NY.svg",
+      "output": "output/review/highpoly-types/gessi316-54038/project-context-front-elevation.svg",
+      "output_sha256": "f680c1e63e04e1f80f9b65df567f06207226b110ae63cdd0275f0300ae98af89",
+      "review_crop": "output/review/highpoly-types/gessi316-54038/project-context-front-elevation-review.svg",
+      "review_crop_sha256": "78686b892eadf227ef1d66abbbb96c948bb467f9893a4ef0f6afb7283e674a33",
+      "review_preview": "output/review/highpoly-types/gessi316-54038/project-context-front-elevation-review-preview.png",
+      "review_preview_sha256": "df2be17befe0f56b2f545da33b20068f7556d97835d0e868cfa8336321807705",
+      "overlay": {
+        "ifc_guid": "245NU$zZL0d9tYTVwwBdk$",
+        "source_kind": "native_dwg",
+        "source_label_zh": "Gessi 官方精确型号 54038 原生 DWG 图纸表达",
+        "official_cad_used": true,
+        "third_party_cad_used": false,
+        "source_dwg_sha256": "2c56b532bbbb78e5668050d1a7b52a7d545153a85a05efc377c7a651890897f1",
+        "path_count": 545,
+        "fit": {
+          "rotate_quarter_turns": 0,
+          "alignment_mode": "centre",
+          "flip_projected_y": true,
+          "scale_svg_units_per_mm": 0.02,
+          "target_bbox": [
+            [
+              27.820987,
+              23.630566
+            ],
+            [
+              29.840987,
+              29.022966
+            ]
+          ],
+          "proxy_bbox": [
+            [
+              27.820987,
+              23.630566
+            ],
+            [
+              29.840987,
+              29.022966
+            ]
+          ],
+          "bbox_absolute_delta_svg_units": [
+            0.0,
+            0.0
+          ],
+          "bbox_tolerance_svg_units": 0.08,
+          "uniform_scale_preserved": true,
+          "transformation_mode": "axis_swap_rigid_reflection_and_translation_only",
+          "pass": true
+        }
+      }
+    },
+    {
+      "view": "side",
+      "candidate_view": "front",
+      "source": "drawings/elevations/native/EL-08-32-R17-NX.svg",
+      "output": "output/review/highpoly-types/gessi316-54038/project-context-side-elevation.svg",
+      "output_sha256": "f86c8bcb3e56403f7539e5efa31fd6dabd1cf0e9502acd58a4ad0cba33edb355",
+      "review_crop": "output/review/highpoly-types/gessi316-54038/project-context-side-elevation-review.svg",
+      "review_crop_sha256": "9fd3cacd06bbb5fb0a41a36799f21b1b299695db883a975a0e6d831f42576bc4",
+      "review_preview": "output/review/highpoly-types/gessi316-54038/project-context-side-elevation-review-preview.png",
+      "review_preview_sha256": "db20f39eb6e0880f75d212b7765dc4d990c8390a490a99a6eff8b41dddeb0083",
+      "overlay": {
+        "ifc_guid": "245NU$zZL0d9tYTVwwBdk$",
+        "source_kind": "native_dwg",
+        "source_label_zh": "Gessi 官方精确型号 54038 原生 DWG 图纸表达",
+        "official_cad_used": true,
+        "third_party_cad_used": false,
+        "source_dwg_sha256": "2c56b532bbbb78e5668050d1a7b52a7d545153a85a05efc377c7a651890897f1",
+        "path_count": 328,
+        "fit": {
+          "rotate_quarter_turns": 0,
+          "alignment_mode": "centre",
+          "flip_projected_y": true,
+          "scale_svg_units_per_mm": 0.02,
+          "target_bbox": [
+            [
+              3.179372,
+              23.630566
+            ],
+            [
+              8.479372,
+              29.572766
+            ]
+          ],
+          "proxy_bbox": [
+            [
+              3.179372,
+              23.630566
+            ],
+            [
+              8.479372,
+              29.572766
+            ]
+          ],
+          "bbox_absolute_delta_svg_units": [
+            0.0,
+            0.0
+          ],
+          "bbox_tolerance_svg_units": 0.08,
+          "uniform_scale_preserved": true,
+          "transformation_mode": "axis_swap_rigid_reflection_and_translation_only",
+          "pass": true
+        }
+      }
+    }
+  ],
+  "pass": true
+}

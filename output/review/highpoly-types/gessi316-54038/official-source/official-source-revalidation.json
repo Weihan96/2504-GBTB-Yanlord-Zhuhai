@@ -1,0 +1,126 @@
+{
+  "schema_version": 1,
+  "checked_at": "2026-08-23T14:47:04.057479+00:00",
+  "manufacturer": "Gessi",
+  "family": "Gessi316",
+  "resolved_article_number": "54038",
+  "public_access": {
+    "area_pro_product_page": "https://areapro.gessi.com/en/product/54038",
+    "anonymous_public_api_used": true,
+    "login_or_registration_performed": false,
+    "exact_54038_native_dwg_publicly_downloadable": true
+  },
+  "identity": {
+    "pim_id": "PF54038",
+    "product_id": "54038",
+    "product_name": "BATH MIXER",
+    "product_description": "External parts wall-mounted for shower mixer, two-way, diverter, water outlet, handshower hook",
+    "technical_dimensions": {
+      "Height": "297 mm",
+      "Width": "265 mm",
+      "Depth": "101 mm"
+    },
+    "configured_codes": [
+      "GPF540380A000G000",
+      "GPF540380C072G000",
+      "GPF540380E059G000",
+      "GPF540380P004G000",
+      "GPF540380P006G000",
+      "GPF540380P024G000",
+      "GPF540380P025G000"
+    ]
+  },
+  "api_requests": {
+    "details": {
+      "url": "https://g-ecatalogue-be-prod-we.azurewebsites.net/public/product/GetProductDetails?country=it&language=en&productCode=54038",
+      "http_status": 200,
+      "content_type": "application/json",
+      "bytes": 23207,
+      "sha256": "472aee44654f95a20c4650eef553707b055822298bc43b0e043c9067c4ddcd13"
+    },
+    "attachments": {
+      "url": "https://g-ecatalogue-be-prod-we.azurewebsites.net/public/product/GetProductAttachments?country=it&language=en&productCode=PF54038",
+      "http_status": 200,
+      "content_type": "application/json",
+      "bytes": 127710,
+      "sha256": "4260a558c85016823a15a1c782a22a64fabf2aa6f3ae6e8a2c57d8bbf9bcb1c7"
+    }
+  },
+  "selected_attachments": {
+    "native_2d_dwg_zip": {
+      "attachment_type": "2D Model - DWG",
+      "attachment_type_original": "ZWA",
+      "attachment_name": "GPF5403800000G000_arc.zip",
+      "attachment_url": "https://gessistorage.blob.core.windows.net/zwa/GPF5403800000G000_arc.zip",
+      "download_visible": true,
+      "matching_configured_codes": [
+        "GPF540380A000G000",
+        "GPF540380C072G000",
+        "GPF540380E059G000",
+        "GPF540380E066G000",
+        "GPF540380P004G000",
+        "GPF540380P006G000",
+        "GPF540380P024G000",
+        "GPF540380P025G000",
+        "GPF540380P065G000"
+      ]
+    },
+    "technical_drawing_mm_pdf": {
+      "attachment_type": "Technical Drawing mm - PDF",
+      "attachment_type_original": "ZC4",
+      "attachment_name": "GPF5403800000G000_1.pdf",
+      "attachment_url": "https://gessistorage.blob.core.windows.net/zc4/GPF5403800000G000_1.pdf",
+      "download_visible": true,
+      "matching_configured_codes": [
+        "GPF540380A000G000",
+        "GPF540380C072G000",
+        "GPF540380E059G000",
+        "GPF540380E066G000",
+        "GPF540380P004G000",
+        "GPF540380P006G000",
+        "GPF540380P024G000",
+        "GPF540380P025G000",
+        "GPF540380P065G000"
+      ]
+    }
+  },
+  "downloads": {
+    "native_dwg_zip": {
+      "url": "https://gessistorage.blob.core.windows.net/zwa/GPF5403800000G000_arc.zip",
+      "http_status": 200,
+      "content_type": "application/x-zip-compressed",
+      "bytes": 184529,
+      "sha256": "e6f112fddb2bf5de9143bfddca45c2736550fcda49ea5173fd8167d73e17e39c",
+      "path": "output/review/highpoly-types/gessi316-54038/official-source/GPF5403800000G000_arc.zip",
+      "expected_sha256": "e6f112fddb2bf5de9143bfddca45c2736550fcda49ea5173fd8167d73e17e39c",
+      "pass": true
+    },
+    "technical_pdf": {
+      "url": "https://gessistorage.blob.core.windows.net/zc4/GPF5403800000G000_1.pdf",
+      "http_status": 200,
+      "content_type": "application/pdf",
+      "bytes": 131389,
+      "sha256": "1afcd3d7bf26a249904507a350665e304d2787d3ed74b1c8aa4ecf99360c209c",
+      "path": "output/review/highpoly-types/gessi316-54038/official-source/GPF5403800000G000_1.pdf",
+      "expected_sha256": "1afcd3d7bf26a249904507a350665e304d2787d3ed74b1c8aa4ecf99360c209c",
+      "pass": true
+    }
+  },
+  "zip_member": {
+    "zip_path": "output/review/highpoly-types/gessi316-54038/official-source/GPF5403800000G000_arc.zip",
+    "zip_sha256": "e6f112fddb2bf5de9143bfddca45c2736550fcda49ea5173fd8167d73e17e39c",
+    "member": "GPF5403800000G000_3.dwg",
+    "member_bytes": 547405,
+    "member_sha256": "2c56b532bbbb78e5668050d1a7b52a7d545153a85a05efc377c7a651890897f1",
+    "extracted_path": "output/review/highpoly-types/gessi316-54038/official-source/GPF5403800000G000_3.dwg",
+    "extracted_sha256": "2c56b532bbbb78e5668050d1a7b52a7d545153a85a05efc377c7a651890897f1",
+    "member_matches_extracted_file": true,
+    "pass": true
+  },
+  "drawing_geometry_policy": {
+    "native_dwg_used_for_three_views": "54038 only",
+    "adjacent_gessi_product_cad_used": false,
+    "third_party_cad_used": false
+  },
+  "pass": true
+}

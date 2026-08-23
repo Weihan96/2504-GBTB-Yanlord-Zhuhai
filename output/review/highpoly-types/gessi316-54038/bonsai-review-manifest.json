@@ -1,0 +1,143 @@
+{
+  "schema_version": 1,
+  "generator": "pipeline/scripts/render_gessi316_54038_bonsai_review.py",
+  "mode": "actual_bonsai_ifc_body_camera_render",
+  "representative_global_id": "245NU$zZL0d9tYTVwwBdk$",
+  "geometry_product_count": 1,
+  "whole_model_render": false,
+  "formal_ifc": "2504 GBTB Yanlord Zhuhai.ifc",
+  "formal_ifc_sha256": "7a50b87e8f48a7c2bfbaa9f1dabdfca7155fa684b2325c66aa1ae15c8ab0a25c",
+  "formal_ifc_bytes_unchanged": true,
+  "isolated_ifc": "output/review/highpoly-types/gessi316-54038/Gessi316-54038-bonsai-isolated.ifc",
+  "isolated_ifc_sha256": "0c2bc01290632f5ab4f50942cfd7a3c1cca52757b836fa59c9f126f8b805c8bf",
+  "bonsai_session": {
+    "path": "output/review/highpoly-types/gessi316-54038/Gessi316-54038-bonsai-review.blend",
+    "sha256": "bb8441bf5f9858521a2e909f623f23cb3f340ff7509188e9a974912fe3a7efec",
+    "saved_active_representation": "Body",
+    "saved_camera_count": 4,
+    "saved_camera_names": [
+      "GESSI316_54038_CAM_FRONT",
+      "GESSI316_54038_CAM_ISO",
+      "GESSI316_54038_CAM_PLAN",
+      "GESSI316_54038_CAM_SIDE"
+    ],
+    "ifc_definition_id": 1260,
+    "ifc_context_identifier": "Body",
+    "ifc_target_view": "MODEL_VIEW",
+    "front_camera_local_y_sign": -1.0,
+    "object_name": "IfcSanitaryTerminal/SanitaryTerminal",
+    "object_bounds_m": {
+      "minimum": [
+        -1.839811683,
+        1.707326174,
+        0.756563663
+      ],
+      "maximum": [
+        -1.741116643,
+        1.972673178,
+        1.418471813
+      ]
+    },
+    "local_axis_extents_m": {
+      "x": 0.26534725,
+      "y": 0.098695298,
+      "z": 0.66190815
+    },
+    "local_axes_world": [
+      [
+        7.5e-08,
+        1.0,
+        0.0
+      ],
+      [
+        -1.0,
+        7.5e-08,
+        0.0
+      ],
+      [
+        0.0,
+        0.0,
+        1.0
+      ]
+    ]
+  },
+  "renders": [
+    {
+      "view": "plan",
+      "camera": "GESSI316_54038_CAM_PLAN",
+      "camera_type": "ORTHO",
+      "camera_axis_basis": "IFC product local axes",
+      "camera_ortho_scale_m": 0.438354074955,
+      "projected_width_m": 0.098695278168,
+      "projected_height_m": 0.265347242355,
+      "image_aspect": 1.4,
+      "framing_margin_factor": 1.18,
+      "ortho_scale_quantization_safety_factor": 1.000001,
+      "render_operation": "bpy.ops.render.render(write_still=True)",
+      "path": "output/review/highpoly-types/gessi316-54038/bonsai-camera-plan.png",
+      "sha256": "d4e3e586e5b73a4b0b408cf7348ed47f12322802ccf3605feba3d1ba549df63f",
+      "resolution": [
+        1400,
+        1000
+      ]
+    },
+    {
+      "view": "front",
+      "camera": "GESSI316_54038_CAM_FRONT",
+      "camera_type": "ORTHO",
+      "camera_axis_basis": "IFC product local axes",
+      "camera_ortho_scale_m": 1.093473315239,
+      "projected_width_m": 0.265347249807,
+      "projected_height_m": 0.661908157171,
+      "image_aspect": 1.4,
+      "framing_margin_factor": 1.18,
+      "ortho_scale_quantization_safety_factor": 1.000001,
+      "render_operation": "bpy.ops.render.render(write_still=True)",
+      "path": "output/review/highpoly-types/gessi316-54038/bonsai-camera-front-elevation.png",
+      "sha256": "c9036f7fd7fa5069fa99accaf8a27323975d06d894df1ff1223aec0b9afaedf4",
+      "resolution": [
+        1400,
+        1000
+      ]
+    },
+    {
+      "view": "side",
+      "camera": "GESSI316_54038_CAM_SIDE",
+      "camera_type": "ORTHO",
+      "camera_axis_basis": "IFC product local axes",
+      "camera_ortho_scale_m": 1.093473434448,
+      "projected_width_m": 0.098695374915,
+      "projected_height_m": 0.661908201401,
+      "image_aspect": 1.4,
+      "framing_margin_factor": 1.18,
+      "ortho_scale_quantization_safety_factor": 1.000001,
+      "render_operation": "bpy.ops.render.render(write_still=True)",
+      "path": "output/review/highpoly-types/gessi316-54038/bonsai-camera-side-elevation.png",
+      "sha256": "f0836204ec7b4e9f1370388ac4787e649a550d5e3c3e326bd9c71bb4fe5393ab",
+      "resolution": [
+        1400,
+        1000
+      ]
+    },
+    {
+      "view": "iso",
+      "camera": "GESSI316_54038_CAM_ISO",
+      "camera_type": "ORTHO",
+      "camera_axis_basis": "IFC product local axes",
+      "camera_ortho_scale_m": 1.138337016106,
+      "projected_width_m": 0.257416931572,
+      "projected_height_m": 0.689065281302,
+      "image_aspect": 1.4,
+      "framing_margin_factor": 1.18,
+      "ortho_scale_quantization_safety_factor": 1.000001,
+      "render_operation": "bpy.ops.render.render(write_still=True)",
+      "path": "output/review/highpoly-types/gessi316-54038/bonsai-camera-iso.png",
+      "sha256": "110cafb20db1393baf7db9acb2d5cdd949ff4975cce1b151d4ae8fbccd3167d9",
+      "resolution": [
+        1400,
+        1000
+      ]
+    }
+  ],
+  "pass": true
+}

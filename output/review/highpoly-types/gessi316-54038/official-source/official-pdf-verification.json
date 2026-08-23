@@ -1,0 +1,91 @@
+{
+  "schema_version": 1,
+  "checked_at": "2026-08-23T14:57:11.541353+00:00",
+  "manufacturer": "Gessi",
+  "family": "Gessi316",
+  "article_number": "54038",
+  "pdfs": {
+    "technical": {
+      "kind": "technical",
+      "path": "output/review/highpoly-types/gessi316-54038/official-source/GPF5403800000G000_1.pdf",
+      "sha256": "1afcd3d7bf26a249904507a350665e304d2787d3ed74b1c8aa4ecf99360c209c",
+      "page_count": 1,
+      "verified_page": 1,
+      "required_tokens": [
+        "GESSI 316 54038",
+        "GPF5403800000G000",
+        "265",
+        "101",
+        "L=1500"
+      ],
+      "all_required_tokens_present": true,
+      "extracted_text_sha256": "e888145f03f37c4b4dd3c0414457f4acc40b204c8a6b8e55475b4f53a98be823",
+      "render": "output/review/highpoly-types/gessi316-54038/official-source/verification/GPF5403800000G000_1-page-1.png",
+      "render_sha256": "de19d37697ee0a6405858f4bf165de5227558ce9497f48e5d78043cb8ba2ebfa",
+      "render_dpi": 180,
+      "metadata": {
+        "author": "ITTlab S.r.l.",
+        "creator": "Creo Parametric 10.0",
+        "creation_date": "D:20250930132908+02'00'"
+      },
+      "pass": true
+    },
+    "bathroom_catalogue": {
+      "kind": "bathroom_catalogue",
+      "path": "output/review/highpoly-types/gessi316-54038/official-source/Gessi_Cataloghi_Bathroom.pdf",
+      "sha256": "8f62401e7e33bd1f8a60cfc20ba00996817f935b1a9731e12042e6d7c05e2092",
+      "page_count": 129,
+      "verified_page": 17,
+      "required_tokens": [
+        "54139_54038",
+        "TWO-WAY BUILT-IN SHOWER MIXER"
+      ],
+      "all_required_tokens_present": true,
+      "extracted_text_sha256": "cae972df6de253defad196d37ed6d29614421b2c971025466eeb8b3d4b0905f1",
+      "render": "output/review/highpoly-types/gessi316-54038/official-source/verification/Gessi_Cataloghi_Bathroom-page-17.png",
+      "render_sha256": "220edecc7708629091e725ff6b51420db49562d55aa2355ec80c8a5abd03b7e3",
+      "render_dpi": 180,
+      "metadata": {
+        "author": null,
+        "creator": "Adobe InDesign 18.2 (Macintosh)",
+        "creation_date": "D:20230511093051+02'00'"
+      },
+      "pass": true
+    }
+  },
+  "mechanical_cross_check": {
+    "technical_pdf_title_matches_exact_dwg_basename": true,
+    "technical_pdf_model_code": "54038",
+    "technical_pdf_nominal_width_depth_height_mm": [
+      265.0,
+      101.0,
+      297.0
+    ],
+    "technical_pdf_hose_length_mm": 1500.0,
+    "catalogue_built_in_and_external_combination": "54139_54038",
+    "native_dwg_expected_sha256": "2c56b532bbbb78e5668050d1a7b52a7d545153a85a05efc377c7a651890897f1",
+    "native_dwg_plan_envelope_mm": [
+      265.0,
+      101.0
+    ],
+    "native_dwg_front_fixed_external_parts_envelope_mm": [
+      265.0,
+      297.11
+    ],
+    "absolute_delta_mm": [
+      0.0,
+      0.0,
+      0.11
+    ],
+    "tolerance_mm": 0.5,
+    "pass": true
+  },
+  "visual_review": {
+    "status": "codex_visual_qa_pass",
+    "technical_sheet_observation": "Exact GESSI 316 54038 title, 265 mm plate width, 101 mm depth, handshower, diverter controls and L=1500 hose note are visible.",
+    "catalogue_observation": "Official bathroom catalogue item 26 visibly identifies 54139_54038 as the two-way built-in shower mixer combination.",
+    "native_dwg_observation": "The exact native DWG contains matching plan, front and side orthographic assemblies plus a separate isometric view; only the orthographic windows are extracted.",
+    "human_product_drawing_approval": "pending"
+  },
+  "pass": true
+}

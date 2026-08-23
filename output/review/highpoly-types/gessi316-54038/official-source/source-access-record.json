@@ -1,0 +1,72 @@
+{
+  "schema_version": 2,
+  "manufacturer": "Gessi",
+  "family": "Gessi316",
+  "project_ifc_type_name": "Gessi316 54038",
+  "project_ifc_type_description": "External parts wall-mounted for shower mixer, two-way, diverter, water outlet, handshower hook",
+  "resolved_article_number": "54038",
+  "research_date": "2026-08-23",
+  "official_identity_sources": [
+    {
+      "kind": "manufacturer_public_product_api",
+      "url": "https://g-ecatalogue-be-prod-we.azurewebsites.net/public/product/GetProductDetails?country=it&language=en&productCode=54038",
+      "local_path": "output/review/highpoly-types/gessi316-54038/official-source/gessi316-54038-product-details.json",
+      "sha256": "438032d9b4d93bc97afbb88901157820b34ce2327de803677bfc70b16dc63047",
+      "identity_observation": "Gessi public API resolves PF54038 / 54038 as the exact wall-mounted two-way shower mixer external-parts assembly and publishes 265 x 101 x 297 mm dimensions."
+    },
+    {
+      "kind": "manufacturer_public_attachment_api",
+      "url": "https://g-ecatalogue-be-prod-we.azurewebsites.net/public/product/GetProductAttachments?country=it&language=en&productCode=PF54038",
+      "local_path": "output/review/highpoly-types/gessi316-54038/official-source/gessi316-54038-attachments.json",
+      "sha256": "4c8644fb4186e61fe565c40c9441672ab907f4289c4064152b47748a34c42f15",
+      "identity_observation": "The anonymous official attachment API publishes the exact generic 54038 native 2D DWG ZIP and technical PDF."
+    },
+    {
+      "kind": "manufacturer_bathroom_catalogue",
+      "url": "https://gwebassets.gessi.com/strapi-uploads/assets/Gessi_Cataloghi_Bathroom_bf17b260b2.pdf",
+      "local_path": "output/review/highpoly-types/gessi316-54038/official-source/Gessi_Cataloghi_Bathroom.pdf",
+      "sha256": "8f62401e7e33bd1f8a60cfc20ba00996817f935b1a9731e12042e6d7c05e2092",
+      "identity_observation": "Catalogue page 17 identifies 54139_54038 as the two-way built-in shower mixer combination."
+    },
+    {
+      "kind": "manufacturer_exact_technical_vector_pdf",
+      "url": "https://gessistorage.blob.core.windows.net/zc4/GPF5403800000G000_1.pdf",
+      "local_path": "output/review/highpoly-types/gessi316-54038/official-source/GPF5403800000G000_1.pdf",
+      "sha256": "1afcd3d7bf26a249904507a350665e304d2787d3ed74b1c8aa4ecf99360c209c",
+      "identity_observation": "The exact technical sheet identifies GESSI 316 54038 / GPF5403800000G000 and dimensions 265 x 101 x 297 mm with L=1500 hose."
+    }
+  ],
+  "official_product_cad": {
+    "published_access_surface": "Gessi public product attachment API",
+    "product_route": "https://areapro.gessi.com/en/product/54038",
+    "authentication_required": false,
+    "acquired": true,
+    "exact_project_configuration_match": true,
+    "native_dwg_zip": {"url": "https://gessistorage.blob.core.windows.net/zwa/GPF5403800000G000_arc.zip", "local_path": "output/review/highpoly-types/gessi316-54038/official-source/GPF5403800000G000_arc.zip", "sha256": "e6f112fddb2bf5de9143bfddca45c2736550fcda49ea5173fd8167d73e17e39c"},
+    "native_dwg": {"zip_member": "GPF5403800000G000_3.dwg", "local_path": "output/review/highpoly-types/gessi316-54038/official-source/GPF5403800000G000_3.dwg", "sha256": "2c56b532bbbb78e5668050d1a7b52a7d545153a85a05efc377c7a651890897f1"},
+    "technical_pdf": {"url": "https://gessistorage.blob.core.windows.net/zc4/GPF5403800000G000_1.pdf", "local_path": "output/review/highpoly-types/gessi316-54038/official-source/GPF5403800000G000_1.pdf", "sha256": "1afcd3d7bf26a249904507a350665e304d2787d3ed74b1c8aa4ecf99360c209c"},
+    "official_pdf_vector_used_as_cad_geometry": false
+  },
+  "drawing_geometry_source": {
+    "source_kind": "native_dwg",
+    "source_label_zh": "Gessi 官方精确型号 54038 原生 DWG 图纸表达",
+    "source_label_en": "drawing representation from the exact Gessi 54038 official native DWG",
+    "source_dwg_sha256": "2c56b532bbbb78e5668050d1a7b52a7d545153a85a05efc377c7a651890897f1",
+    "official_cad_used": true,
+    "third_party_cad_used": false
+  },
+  "identity_and_geometry_policy": {"54038_native_dwg_used": true, "adjacent_gessi_product_cad_used": false, "third_party_cad_used": false},
+  "dimension_cross_check": {
+    "official_api_width_depth_height_mm": [265.0, 101.0, 297.0],
+    "native_dwg_plan_envelope_mm": [265.0, 101.0],
+    "native_dwg_front_fixed_external_parts_envelope_mm": [265.0, 297.11],
+    "absolute_delta_mm": [0.0, 0.0, 0.11],
+    "tolerance_mm": 0.5,
+    "pass": true,
+    "ifc_scope_note": "The IFC Body includes the fully modelled hanging 1500 mm flexible hose, while the official orthographic DWG uses a schematic/limited hose depiction. Full vertical-envelope equality is therefore not asserted for front or side."
+  },
+  "source_revalidation": "output/review/highpoly-types/gessi316-54038/official-source/official-source-revalidation.json",
+  "official_pdf_verification": "output/review/highpoly-types/gessi316-54038/official-source/official-pdf-verification.json",
+  "scope": "official Gessi exact 54038 family reference and 54139_54038 article combination; not a project shop drawing",
+  "pass": true
+}
