@@ -1,0 +1,52 @@
+{
+  "schema_version": 1,
+  "formal_ifc_sha256": "7a50b87e8f48a7c2bfbaa9f1dabdfca7155fa684b2325c66aa1ae15c8ab0a25c",
+  "profiles": {
+    "sxb010": {
+  "display_name": "Hunter Douglas 25 mm Venetian blind direction / project sxb010",
+  "ifc_type_name": "sxb010",
+  "representative_global_id": "1O9JRXCI56VRUbpuLJy86Z",
+  "expected_instance_global_ids": [
+    "1O9JRXCI56VRUbpuLJy86Z"
+  ],
+  "profile_source": "isolated_untyped_legacy_proxy_projection; owner-confirmed_hunter_douglas_25mm_family_direction; exact_sku_and_official_project_cad_not_confirmed",
+  "silhouette_simplify_mm": 0.35,
+  "semantic_sections": {
+    "plan": [],
+    "front": [],
+    "side": []
+  },
+  "semantic_view_axes": {
+    "plan": [0, 2],
+    "front": [0, 1],
+    "side": [2, 1]
+  },
+  "required_semantics": [
+    "25_mm_aluminium_venetian_slat_field",
+    "headrail_and_bottom_rail",
+    "ladder_tapes_or_cords",
+    "project_width_height_and_depth_not_official_shop_dimensions"
+  ],
+  "drawing_source": {
+    "source_kind": "geometry_derived_simplified_proxy",
+    "source_label_zh": "基于原始高模几何生成的简化图纸表达",
+    "source_label_en": "simplified drawing representation derived from the original high-poly geometry",
+    "official_cad_used": false,
+    "third_party_cad_used": false
+  },
+  "official_reference": {
+    "source_id": "HUNTER-DOUGLAS-SXB010-FAMILY-DIRECTION-001",
+    "source_kind": "owner_direction_and_manufacturer_family_materials_identity_only",
+    "manufacturer": "Hunter Douglas",
+    "family": "16/25 mm Venetian blinds",
+    "project_object_code": "sxb010",
+    "scope": "owner-confirmed Hunter Douglas 25 mm Venetian blind family and colour direction only; exact SKU, control system, finish code and project shop dimensions pending; not a project shop drawing and not official CAD geometry",
+    "product_page": "https://www.hunterdouglas.cn/product/venetian-blind/16mm-25mm-venetian-blinds",
+    "technical_brochure": "https://www.hunterdouglasdam.eu/m/39189f4b3bd19d3b/original/Brochure_VenetianWoodBlinds_EN.pdf",
+    "source_access_record": "output/review/highpoly-types/sxb010/official-source/source-access-record.json",
+    "official_project_cad_status": "not_published_on_verified_manufacturer_surfaces",
+    "official_cad_used": false
+  }
+    }
+  }
+}

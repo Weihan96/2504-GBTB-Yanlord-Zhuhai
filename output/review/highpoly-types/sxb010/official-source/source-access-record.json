@@ -1,0 +1,98 @@
+{
+  "schema_version": 1,
+  "manufacturer_direction": "Hunter Douglas / 亨特道格拉斯",
+  "family_direction": "25 mm aluminium Venetian blind",
+  "project_object_name": "sxb010",
+  "project_object_global_id": "1O9JRXCI56VRUbpuLJy86Z",
+  "project_object_type_status": "untyped_legacy_ifc_building_element_proxy",
+  "identity_status": "owner_confirmed_family_direction_exact_sku_finish_and_operation_pending",
+  "research_date": "2026-08-23",
+  "owner_direction_evidence": {
+    "source": "stash@{1}:drawings/evidence/OWNER-INT1-全屋窗饰方案-20260818.md",
+    "git_blob_sha1": "1915cc02e5d992571a9a451a52ed4d8ad8216769",
+    "sha256": "319afadd3ec1308eadee50d7422f977621b05d540411620de8c26a25df07f49a",
+    "confirmed_date": "2026-08-18",
+    "confirmed_scope": "W11 kitchen, W01 guest bathroom and W05 primary bathroom use a Hunter Douglas benchmark 25 mm aluminium Venetian blind with matte graphite or grey-black colour direction matching the window frame.",
+    "pending": [
+      "exact Hunter Douglas SKU",
+      "physical colour code and slat sample",
+      "manual or motorised operating system",
+      "operating side",
+      "field-measured shop dimensions"
+    ],
+    "stash_operation": "read_only_git_show_only_no_pop_no_apply"
+  },
+  "official_identity_sources": [
+    {
+      "kind": "manufacturer_china_product_page",
+      "url": "https://www.hunterdouglas.cn/product/venetian-blind/16mm-25mm-venetian-blinds",
+      "local_path": "output/review/highpoly-types/sxb010/official-source/hunter-douglas-cn-16mm-25mm-venetian-blinds.html",
+      "sha256": "11eb522a0aab551b7213c92aa7bd6f7dc3332dd91d3e874cb7043fcde1dc3648",
+      "observation": "Official China page identifies the 16/25 mm family, HD6011 aluminium-magnesium slats, manual and motorised options, and standard manual 25 mm size limits of W 300-2700 mm and H 300-3000 mm."
+    },
+    {
+      "kind": "manufacturer_technical_brochure",
+      "url": "https://www.hunterdouglasdam.eu/m/39189f4b3bd19d3b/original/Brochure_VenetianWoodBlinds_EN.pdf",
+      "local_path": "output/review/highpoly-types/sxb010/official-source/Brochure_VenetianWoodBlinds_EN.pdf",
+      "sha256": "ed4802be4511e93592c1012b03132679b3bdc8eee7e8c2dee89e45d804413f4c",
+      "printed_pages_visually_checked": [2, 3],
+      "pdf_file_pages_visually_checked": [4, 5],
+      "observation": "Official technical brochure shows the 25 mm family at a generic 1000 mm example width and documents a 24.9 x 25.3 mm standard headrail, 21.6 x 12 mm bottom rail and 25 mm slats. The vector diagrams are family technical evidence, not project-size CAD geometry."
+    },
+    {
+      "kind": "manufacturer_product_flyer",
+      "url": "https://www.hunterdouglasdam.eu/m/564d2eaf3633f182/original/Flyer_VenetianBlinds.pdf",
+      "local_path": "output/review/highpoly-types/sxb010/official-source/Flyer_VenetianBlinds.pdf",
+      "sha256": "2d9d8953b93966ad39cd8d1742ca6453ceeaba58d55b2d8d205dce740204a415",
+      "pdf_pages_visually_checked": [1, 2, 3],
+      "observation": "Official flyer confirms the interior Venetian blind family and daylight-control use; it is identity evidence only."
+    },
+    {
+      "kind": "manufacturer_download_catalogue_and_filtered_response",
+      "url": "https://www.hunterdouglasarchitectural.eu/en-eu/downloads/",
+      "local_path": "output/review/highpoly-types/sxb010/official-source/hunter-douglas-eu-downloads.html",
+      "sha256": "fc9bea29cfb4089e06dbd7e01c91488683d876e74c3f6fb186e97baef91fa154",
+      "filtered_response_local_path": "output/review/highpoly-types/sxb010/official-source/hunter-douglas-eu-venetian-download-filter.json",
+      "filtered_response_sha256": "14ce318c4228f4f7cdf71e59e95720ed7530cbf696ece9b9b5877441e75fa233",
+      "filter_product_relation_id": "100963",
+      "filter_product_line": "venetian-blind-int",
+      "observation": "The official filtered download result contains one product with only a Product Flyer PDF and a Technical Brochure PDF. No DWG, DXF or other CAD file is returned."
+    }
+  ],
+  "official_product_cad": {
+    "published_on_china_product_page": false,
+    "official_eu_filtered_download_formats": ["PDF", "PDF"],
+    "acquired": false,
+    "local_cad_files": [],
+    "reason": "No official project-size or exact-SKU DWG is published on the verified manufacturer surfaces. The official 1000 mm technical vector example cannot be scaled or substituted as an 1812 mm project shop drawing."
+  },
+  "dimension_cross_check": {
+    "project_ifc_body_local_axis_bounds_mm": [1811.999559, 1596.075778, 63.393713],
+    "interpreted_project_width_height_depth_mm": [1811.999559, 1596.075778, 63.393713],
+    "official_standard_manual_25mm_width_limits_mm": [300.0, 2700.0],
+    "official_standard_manual_25mm_height_limits_mm": [300.0, 3000.0],
+    "project_width_within_official_limit": true,
+    "project_height_within_official_limit": true,
+    "official_brochure_reference_width_mm": 1000.0,
+    "official_brochure_headrail_mm": [24.9, 25.3],
+    "official_brochure_bottom_rail_mm": [21.6, 12.0],
+    "official_brochure_slat_width_mm": 25.0,
+    "status": "family_and_size_envelope_consistent_exact_product_and_shop_geometry_unconfirmed",
+    "note": "The project Body is consistent with a full-height 25 mm Venetian blind and fits the official standard-manual size envelope. No official source proves this exact object, finish, control type or 1812 x 1596 mm shop geometry, so no fitting or official-blue geometry substitution is permitted."
+  },
+  "semantic_view_mapping": {
+    "plan": {"project_axes": [0, 2], "bonsai_local_camera_file": "bonsai-camera-front-elevation.png"},
+    "front": {"project_axes": [0, 1], "bonsai_local_camera_file": "bonsai-camera-plan.png"},
+    "side": {"project_axes": [2, 1], "bonsai_local_camera_file": "bonsai-camera-side-elevation.png"},
+    "reason": "The legacy proxy is locally oriented with X=width, Y=height and Z=depth; semantic drawing views must not inherit the generic camera filenames."
+  },
+  "drawing_geometry_source": {
+    "source_kind": "geometry_derived_simplified_proxy",
+    "source_label_zh": "基于原始高模几何生成的简化图纸表达",
+    "source_label_en": "simplified drawing representation derived from the original high-poly geometry",
+    "official_cad_used": false,
+    "third_party_cad_used": false
+  },
+  "scope": "owner-confirmed Hunter Douglas 25 mm Venetian blind family and colour direction only; exact SKU, control system, finish code and project shop dimensions pending; not a project shop drawing and not official CAD geometry",
+  "pass": true
+}
