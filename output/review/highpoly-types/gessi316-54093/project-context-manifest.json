@@ -1,0 +1,109 @@
+{
+  "schema_version": 1,
+  "generator": "pipeline/scripts/render_gessi316_54093_project_context.py",
+  "source_kind": "native_dwg",
+  "source_label_zh": "Gessi 官方精确型号 54093 G000 原生 DWG 图纸表达",
+  "official_cad_used": true,
+  "third_party_cad_used": false,
+  "project_context_retained": true,
+  "walls_and_surrounding_project_elements_retained": true,
+  "overlay_top_layer_with_white_mask": true,
+  "blue_line_present": true,
+  "project_scale_svg_units_per_mm": 0.02,
+  "views": [
+    {
+      "view": "plan",
+      "candidate_view": "plan",
+      "source": "drawings/Sanitary Plan.svg",
+      "output": "output/review/highpoly-types/gessi316-54093/project-context-sanitary-plan.svg",
+      "output_sha256": "cdf96efa137db76930c854d00784ed9696c18051ce864609ecce316da1709f8b",
+      "review_crop": "output/review/highpoly-types/gessi316-54093/project-context-sanitary-plan-review.svg",
+      "review_crop_sha256": "09be666a3219434eaf30fd72dfcc38437bdcbf7bdc50488645169abd70cde04c",
+      "review_preview": "output/review/highpoly-types/gessi316-54093/project-context-sanitary-plan-review-preview.png",
+      "review_preview_sha256": "3b5c6d2103d165a1afecb85991cb20c3274d49254324cbc85de444e667f9b526",
+      "overlay": {
+        "ifc_guid": "1jM_suNMPAw8_nvZejQSnp",
+        "source_kind": "native_dwg",
+        "source_label_zh": "Gessi 官方精确型号 54093 G000 原生 DWG 图纸表达",
+        "official_cad_used": true,
+        "third_party_cad_used": false,
+        "source_dwg_sha256": "a9308fc8498d34c8cf2f68fd28aaf90b11e62bfc59424e0a5a3ac7f0d28d5047",
+        "path_count": 7,
+        "fit": {
+          "rotate_quarter_turns": 0,
+          "alignment_mode": "centre",
+          "flip_projected_y": true,
+          "scale_svg_units_per_mm": 0.02,
+          "target_bbox": [
+            [
+              74.174216,
+              214.444118
+            ],
+            [
+              75.153714,
+              218.249747
+            ]
+          ],
+          "proxy_bbox": [
+            [
+              74.16423,
+              214.443809
+            ],
+            [
+              75.1637,
+              218.250056
+            ]
+          ],
+          "bbox_absolute_delta_svg_units": [
+            0.019971,
+            0.000618
+          ],
+          "bbox_tolerance_svg_units": 0.03,
+          "uniform_scale_preserved": true,
+          "transformation_mode": "axis_swap_rigid_reflection_and_translation_only",
+          "pass": true
+        }
+      }
+    }
+  ],
+  "pass": true,
+  "semantic_view_mapping": {
+    "plan": {
+      "candidate_axes": [
+        0,
+        1
+      ],
+      "source": "drawings/Sanitary Plan.svg",
+      "rotate_quarter_turns": 0,
+      "project_direction": "+Z"
+    }
+  },
+  "context_view_scope": {
+    "included": [
+      "plan"
+    ],
+    "excluded": [
+      "front",
+      "side"
+    ],
+    "reason": "The 54093 GlobalId occurs in the clean FFL and Sanitary plan SVGs, but in no native project elevation SVG. Front and side project contexts are therefore not invented; the marker-heavy P-202 candidate is excluded from visual evidence."
+  },
+  "project_projection_note": {
+    "ifc_body_local_xyz_mm": [
+      48.974943,
+      190.281433,
+      273.203123
+    ],
+    "official_api_width_depth_height_mm": [
+      50.0,
+      190.0,
+      273.0
+    ],
+    "official_native_dwg_plan_envelope_mm": [
+      49.973479,
+      190.312335
+    ],
+    "geometry_stretched": false,
+    "native_project_elevation_found": false
+  }
+}

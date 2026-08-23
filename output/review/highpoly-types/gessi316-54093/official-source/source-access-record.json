@@ -1,0 +1,75 @@
+{
+  "schema_version": 2,
+  "manufacturer": "Gessi",
+  "family": "Gessi316 Meccanica",
+  "project_ifc_type_name": "Gessi316 54093",
+  "project_ifc_type_description": "High spout basin",
+  "resolved_article_number": "54093",
+  "resolved_configuration": "G000",
+  "research_date": "2026-08-23",
+  "official_identity_sources": [
+    {
+      "kind": "manufacturer_public_product_api",
+      "url": "https://g-ecatalogue-be-prod-we.azurewebsites.net/public/product/GetProductDetails?country=it&language=en&productCode=54093",
+      "local_path": "output/review/highpoly-types/gessi316-54093/official-source/gessi316-54093-product-details.json",
+      "sha256": "633cbe5e7657ff4c6684aa95a0e279a175ea15bc1ba24a3263a7ef673d07f8bc",
+      "identity_observation": "Gessi public API resolves PF54093 / 54093 as BASIN SPOUT / High spout basin and publishes 50 x 190 x 273 mm dimensions."
+    },
+    {
+      "kind": "manufacturer_public_attachment_api",
+      "url": "https://g-ecatalogue-be-prod-we.azurewebsites.net/public/product/GetProductAttachments?country=it&language=en&productCode=PF54093",
+      "local_path": "output/review/highpoly-types/gessi316-54093/official-source/gessi316-54093-attachments.json",
+      "sha256": "52ad7c7f4c31db580a12357412fd1f9cbe5d1491c7eec4ac556269dac5753d05",
+      "identity_observation": "The anonymous official attachment API publishes exact G000 native 2D DWG and technical PDF files; G001 and A004 variants are explicitly excluded."
+    },
+    {
+      "kind": "manufacturer_exact_technical_vector_pdf",
+      "url": "https://gessistorage.blob.core.windows.net/zc4/GPF5409300000G000_1.pdf",
+      "local_path": "output/review/highpoly-types/gessi316-54093/official-source/GPF5409300000G000_1.pdf",
+      "sha256": "2eb67af1be75093a12ab8bc3a739e5bdd6e4b1c4c544948795c87cb9598515c6",
+      "identity_observation": "The exact sheet identifies GESSI 316 54093 / GPF5409300000G000 and dimensions 50 x 190 x 273 mm with 228 mm outlet height."
+    },
+    {
+      "kind": "manufacturer_bathroom_catalogue",
+      "url": "https://gwebassets.gessi.com/strapi-uploads/assets/Gessi_Cataloghi_Bathroom_bf17b260b2.pdf",
+      "local_path": "output/review/highpoly-types/gessi316-54093/official-source/Gessi_Cataloghi_Bathroom.pdf",
+      "sha256": "8f62401e7e33bd1f8a60cfc20ba00996817f935b1a9731e12042e6d7c05e2092",
+      "identity_observation": "The official bathroom catalogue identifies 54093 as the H 230 mm high counter spout, distinct from 54091."
+    }
+  ],
+  "official_product_cad": {
+    "published_access_surface": "Gessi public product attachment API",
+    "product_route": "https://areapro.gessi.com/en/product/54093",
+    "authentication_required": false,
+    "acquired": true,
+    "exact_project_configuration_match": true,
+    "native_dwg_zip": {"url": "https://gessistorage.blob.core.windows.net/zwa/GPF5409300000G000_arc.zip", "local_path": "output/review/highpoly-types/gessi316-54093/official-source/GPF5409300000G000_arc.zip", "sha256": "615d4747639b6acfa1daca28a894124fef26e74239de89ef68455b92db31d0f9"},
+    "native_dwg": {"zip_member": "GPF5409300000G000_3.dwg", "local_path": "output/review/highpoly-types/gessi316-54093/official-source/GPF5409300000G000_3.dwg", "sha256": "a9308fc8498d34c8cf2f68fd28aaf90b11e62bfc59424e0a5a3ac7f0d28d5047"},
+    "technical_pdf": {"url": "https://gessistorage.blob.core.windows.net/zc4/GPF5409300000G000_1.pdf", "local_path": "output/review/highpoly-types/gessi316-54093/official-source/GPF5409300000G000_1.pdf", "sha256": "2eb67af1be75093a12ab8bc3a739e5bdd6e4b1c4c544948795c87cb9598515c6"},
+    "official_pdf_vector_used_as_cad_geometry": false
+  },
+  "drawing_geometry_source": {
+    "source_kind": "native_dwg",
+    "source_label_zh": "Gessi 官方精确型号 54093 G000 原生 DWG 图纸表达",
+    "source_label_en": "drawing representation from the exact Gessi 54093 G000 official native DWG",
+    "source_dwg_sha256": "a9308fc8498d34c8cf2f68fd28aaf90b11e62bfc59424e0a5a3ac7f0d28d5047",
+    "official_cad_used": true,
+    "third_party_cad_used": false
+  },
+  "identity_and_geometry_policy": {"54093_g000_native_dwg_used": true, "g001_or_a004_variant_cad_used": false, "adjacent_gessi_product_cad_used": false, "third_party_cad_used": false},
+  "dimension_cross_check": {
+    "official_api_width_depth_height_mm": [50.0, 190.0, 273.0],
+    "native_dwg_plan_envelope_mm": [49.973479, 190.312335],
+    "native_dwg_front_envelope_mm": [50.0, 273.210406],
+    "native_dwg_side_envelope_mm": [190.335804, 273.202791],
+    "project_ifc_body_local_xyz_mm": [48.974943, 190.281433, 273.203123],
+    "maximum_official_nominal_delta_mm": 0.335804,
+    "tolerance_mm": 0.5,
+    "pass": true,
+    "geometry_stretched": false
+  },
+  "source_revalidation": "output/review/highpoly-types/gessi316-54093/official-source/official-source-revalidation.json",
+  "official_pdf_verification": "output/review/highpoly-types/gessi316-54093/official-source/official-pdf-verification.json",
+  "scope": "official Gessi exact 54093 G000 family reference; not a project shop drawing",
+  "pass": true
+}

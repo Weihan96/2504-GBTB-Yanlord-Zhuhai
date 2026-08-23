@@ -1,0 +1,40 @@
+{
+  "schema_version": 2,
+  "formal_ifc_sha256": "7a50b87e8f48a7c2bfbaa9f1dabdfca7155fa684b2325c66aa1ae15c8ab0a25c",
+  "profiles": {
+    "gessi316-54093": {
+      "display_name": "Gessi316 Meccanica high counter basin spout / 54093 G000",
+      "ifc_type_name": "Gessi316 54093",
+      "representative_global_id": "1jM_suNMPAw8_nvZejQSnp",
+      "expected_instance_global_ids": ["1jM_suNMPAw8_nvZejQSnp"],
+      "profile_source": "isolated IFC Body projection cross-checked against exact official 54093 G000 native DWG, technical vector PDF and public product API",
+      "silhouette_simplify_mm": 0.35,
+      "semantic_sections": {"plan": [], "front": [], "side": []},
+      "required_semantics": ["single_project_Gessi316_54093_representative", "high_counter_basin_spout_not_54091_medium_variant", "exact_G000_configuration_not_G001_or_A004", "50_mm_width_190_mm_reach_273_mm_height", "actual_IFC_Body_geometry_not_stretched"],
+      "drawing_source": {
+        "source_kind": "native_dwg",
+        "source_label_zh": "Gessi 官方精确型号 54093 G000 原生 DWG 图纸表达",
+        "source_label_en": "drawing representation from the exact Gessi 54093 G000 official native DWG",
+        "source_dwg": "output/review/highpoly-types/gessi316-54093/official-source/GPF5409300000G000_3.dwg",
+        "source_dwg_sha256": "a9308fc8498d34c8cf2f68fd28aaf90b11e62bfc59424e0a5a3ac7f0d28d5047",
+        "official_cad_used": true,
+        "third_party_cad_used": false
+      },
+      "official_reference": {
+        "source_id": "GESSI316-54093-G000-OFFICIAL-NATIVE-DWG-001",
+        "source_kind": "manufacturer_exact_native_dwg",
+        "manufacturer": "Gessi",
+        "family": "Gessi316 Meccanica",
+        "article_number": "54093",
+        "configuration": "G000",
+        "scope": "official Gessi exact 54093 G000 family reference; not a project shop drawing",
+        "product_page": "https://areapro.gessi.com/en/product/54093",
+        "native_dwg_zip": "https://gessistorage.blob.core.windows.net/zwa/GPF5409300000G000_arc.zip",
+        "technical_drawing_pdf": "https://gessistorage.blob.core.windows.net/zc4/GPF5409300000G000_1.pdf",
+        "source_access_record": "output/review/highpoly-types/gessi316-54093/official-source/source-access-record.json",
+        "official_product_cad_status": "public_official_api_exact_54093_g000_native_dwg_acquired",
+        "official_product_cad_used": true
+      }
+    }
+  }
+}

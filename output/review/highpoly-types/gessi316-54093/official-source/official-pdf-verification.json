@@ -1,0 +1,97 @@
+{
+  "schema_version": 1,
+  "checked_at": "2026-08-23T15:23:09.415250+00:00",
+  "manufacturer": "Gessi",
+  "family": "Gessi316 Meccanica",
+  "article_number": "54093",
+  "configuration": "G000",
+  "pdfs": {
+    "technical": {
+      "kind": "technical",
+      "path": "output/review/highpoly-types/gessi316-54093/official-source/GPF5409300000G000_1.pdf",
+      "sha256": "2eb67af1be75093a12ab8bc3a739e5bdd6e4b1c4c544948795c87cb9598515c6",
+      "page_count": 1,
+      "verified_page": 1,
+      "required_tokens": [
+        "GESSI 316 54093",
+        "GPF5409300000G000",
+        "190",
+        "372",
+        "822"
+      ],
+      "all_required_tokens_present": true,
+      "extracted_text_sha256": "de704f72f03e27cf36647f97cd8e788013aedec96deba045bf1c775d66022d3f",
+      "render": "output/review/highpoly-types/gessi316-54093/official-source/verification/GPF5409300000G000_1-page-1.png",
+      "render_sha256": "0c3591ba0131292969a031e39b229a37882725219e6e90a39d53c5c3233a1123",
+      "render_dpi": 180,
+      "metadata": {
+        "author": "ITTlab S.r.l.",
+        "creator": "Creo Parametric 3.0",
+        "creation_date": "D:20190516092846+02'00'"
+      },
+      "pass": true
+    },
+    "bathroom_catalogue": {
+      "kind": "bathroom_catalogue",
+      "path": "output/review/highpoly-types/gessi316-54093/official-source/Gessi_Cataloghi_Bathroom.pdf",
+      "sha256": "8f62401e7e33bd1f8a60cfc20ba00996817f935b1a9731e12042e6d7c05e2092",
+      "page_count": 129,
+      "verified_page": 17,
+      "required_tokens": [
+        "54093",
+        "H 230 MM",
+        "COUNTER SPOUT"
+      ],
+      "all_required_tokens_present": true,
+      "extracted_text_sha256": "cae972df6de253defad196d37ed6d29614421b2c971025466eeb8b3d4b0905f1",
+      "render": "output/review/highpoly-types/gessi316-54093/official-source/verification/Gessi_Cataloghi_Bathroom-page-17.png",
+      "render_sha256": "220edecc7708629091e725ff6b51420db49562d55aa2355ec80c8a5abd03b7e3",
+      "render_dpi": 180,
+      "metadata": {
+        "author": null,
+        "creator": "Adobe InDesign 18.2 (Macintosh)",
+        "creation_date": "D:20230511093051+02'00'"
+      },
+      "pass": true
+    }
+  },
+  "mechanical_cross_check": {
+    "technical_pdf_title_matches_exact_dwg_basename": true,
+    "technical_pdf_model_code": "54093",
+    "technical_pdf_nominal_width_depth_height_mm": [
+      50.0,
+      190.0,
+      273.0
+    ],
+    "technical_pdf_outlet_height_mm": 228.0,
+    "native_dwg_expected_sha256": "a9308fc8498d34c8cf2f68fd28aaf90b11e62bfc59424e0a5a3ac7f0d28d5047",
+    "native_dwg_plan_envelope_mm": [
+      49.973479,
+      190.312335
+    ],
+    "native_dwg_front_envelope_mm": [
+      50.0,
+      273.210406
+    ],
+    "native_dwg_side_envelope_mm": [
+      190.335804,
+      273.202791
+    ],
+    "absolute_delta_mm": [
+      0.026521,
+      0.312335,
+      0.210406,
+      0.335804
+    ],
+    "tolerance_mm": 0.5,
+    "pass": true
+  },
+  "visual_review": {
+    "status": "codex_visual_qa_pass",
+    "technical_sheet_observation": "Exact GESSI 316 54093 / GPF5409300000G000 title and 50 x 190 x 273 mm geometry with 228 mm outlet height are visible.",
+    "catalogue_observation": "The official bathroom catalogue identifies 54093 as the H 230 mm high counter spout.",
+    "native_dwg_observation": "The exact native DWG contains front, side and plan orthographic views plus a separate isometric; only the three orthographic windows are extracted.",
+    "human_product_drawing_approval": "pending"
+  },
+  "pass": true
+}
