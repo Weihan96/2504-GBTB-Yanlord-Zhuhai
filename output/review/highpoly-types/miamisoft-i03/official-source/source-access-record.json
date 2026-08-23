@@ -1,0 +1,109 @@
+{
+  "schema_version": 1,
+  "manufacturer": "Baxter",
+  "family": "Miami Soft",
+  "designer": "Paola Navone",
+  "project_ifc_type_name": "MiamiSoft I03",
+  "project_ifc_type_description": "Roll 108 x Ø27 cm",
+  "resolved_variant": "I03 - roll cushion - 170 x Ø27 cm",
+  "research_date": "2026-08-23",
+  "official_identity_sources": [
+    {
+      "kind": "manufacturer_product_page",
+      "url": "https://www.baxter.it/gb/prodotti/miami-soft-divani-e-poltrone",
+      "local_path": "output/review/highpoly-types/miamisoft-i03/official-source/baxter-miami-soft-product-page.html",
+      "sha256": "a370c4ba4da30d705c05c860f009dd3fd33f64f0293f0a580e6af32daab90524",
+      "identity_observation": "The official page names Miami Soft and Paola Navone, publishes I03 as a 170 x diameter 27 cm roll and links MIAMSORUSI03.svg. It routes native 2D, 3D and BIM downloads through login; the restricted family asset Baxter_MiamiSoft_divano_2D_3D has database id B9C9485C-9716-422D-9C1F7851C7BC9530 and no public native-file URLs."
+    },
+    {
+      "kind": "manufacturer_vector_technical_sheet",
+      "url": "https://dam.baxter.it/m/1e3eaec668311b07/original/Baxter_MiamiSoft_divano_Indoor.pdf",
+      "local_path": "output/review/highpoly-types/miamisoft-i03/official-source/Baxter_MiamiSoft_divano_Indoor.pdf",
+      "sha256": "d7c911474029d1a1dd04844bbdb995e81e59ba4664cad2d20d59b132cca05fac",
+      "page": 8,
+      "preview_path": "output/review/highpoly-types/miamisoft-i03/official-source/Baxter_MiamiSoft_technical-sheet-page-8-preview.png",
+      "preview_sha256": "68aa5631cae81e35bd4518fcefb6b24a2a9420a24bd52b378f3e66d8d2cf3705",
+      "vector_object_audit": {
+        "method": "pdfplumber page 8 vector object audit",
+        "drawing_count": 56,
+        "drawing_item_count": 1856,
+        "word_count": 72,
+        "character_count": 255,
+        "required_text_found": [
+          "I03 - Rullo. Roll.",
+          "170 x Ø27 cm"
+        ],
+        "adjacent_models_excluded": [
+          "I01 - 108 x Ø27 cm",
+          "I02 - 140 x Ø27 cm"
+        ]
+      },
+      "role": "exact I03 model and nominal-dimension evidence only; not native CAD representation geometry"
+    },
+    {
+      "kind": "manufacturer_measurement_svg",
+      "url": "https://productsbook.baxter.it/models/measurements/MIAMSORUSI03.svg",
+      "local_path": "output/review/highpoly-types/miamisoft-i03/official-source/MIAMSORUSI03.svg",
+      "sha256": "2e3c84d02d992387a8afe1d2315e5f87a6eee76b1b04721af94f3b582d607a1f",
+      "vector_object_audit": {
+        "path_count": 22,
+        "use_count": 20,
+        "group_count": 28
+      },
+      "role": "official exact I03 170 x diameter 27 cm roll dimension graphic; identity and mechanical comparison reference only; not native DWG/DXF"
+    }
+  ],
+  "official_product_cad": {
+    "published_access_surface": "Baxter authenticated user downloads",
+    "restricted_asset_name": "Baxter_MiamiSoft_divano_2D_3D",
+    "restricted_asset_database_id": "B9C9485C-9716-422D-9C1F7851C7BC9530",
+    "authentication_required": true,
+    "acquired": false,
+    "exact_project_configuration_match": false,
+    "local_cad_files": [],
+    "third_party_cad_used": false,
+    "official_vector_pdf_archived": true,
+    "official_measurement_svg_archived": true,
+    "official_vector_references_used_as_cad_geometry": false,
+    "reason": "The official public product page exposes the exact I03 vector measurement SVG and technical sheet, but routes native 2D/3D/BIM downloads through login. No account was created, no access control was bypassed and no third-party CAD was substituted."
+  },
+  "dimension_cross_check": {
+    "official_nominal_length_diameter_mm": [
+      1700.0,
+      270.0
+    ],
+    "project_ifc_body_local_xyz_mm": [
+      1711.749878,
+      274.261993,
+      272.80899
+    ],
+    "body_minus_official_length_y_diameter_z_diameter_mm": [
+      11.749878,
+      4.261993,
+      2.80899
+    ],
+    "maximum_absolute_delta_mm": 11.749878,
+    "tolerance_mm": 15.0,
+    "pass": true,
+    "interpretation": "The project Body is 1711.75 mm long with 274.26 x 272.81 mm transverse extents, mechanically matching official I03 1700 x diameter 270 mm within 15 mm. This also disproves the stale project IFC Description value of 108 cm, which corresponds to adjacent official model I01. No candidate geometry is scaled to the catalogue dimensions."
+  },
+  "project_identity_evidence": {
+    "ifc_type_name": "MiamiSoft I03",
+    "ifc_type_description": "Roll 108 x Ø27 cm",
+    "ifc_predefined_type": "SOFA",
+    "container": "LIVING",
+    "exact_model_code_status": "confirmed",
+    "module_status": "confirmed_I03_roll_170cm",
+    "description_status": "conflicts_with_official_I03_and_matches_adjacent_I01_length",
+    "body_geometry_status": "matches_official_I03_within_15mm"
+  },
+  "drawing_geometry_source": {
+    "source_kind": "geometry_derived_simplified_proxy",
+    "source_label_zh": "基于原始高模几何生成的简化图纸表达",
+    "source_label_en": "simplified drawing representation derived from the original high-poly geometry",
+    "official_cad_used": false,
+    "third_party_cad_used": false
+  },
+  "scope": "exact manufacturer family, I03 roll model and nominal dimensions; project IFC Description incorrectly states the I01 108 cm length while type code and Body geometry match I03; authenticated native 2D/3D/BIM not acquired; not a project shop drawing and not official CAD geometry",
+  "pass": true
+}
