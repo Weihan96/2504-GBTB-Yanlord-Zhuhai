@@ -4,6 +4,7 @@
 from __future__ import annotations
 
 import json
+import os
 import re
 from pathlib import Path
 
@@ -125,6 +126,22 @@ def move_to_top(
     return text.replace("</svg>", overlay + "</svg>", 1)
 
 
+def rebase_external_resources(text: str, source: Path, output: Path) -> str:
+    """Keep Bonsai SVG image resources valid after moving the styled drawing."""
+
+    def replace(match: re.Match[str]) -> str:
+        attribute, reference = match.groups()
+        if reference.startswith(("#", "data:", "http://", "https://")):
+            return match.group(0)
+        resolved = (source.parent / reference).resolve()
+        if not resolved.is_file():
+            raise RuntimeError(f"missing Bonsai SVG resource: {resolved}")
+        rebased = Path(os.path.relpath(resolved, output.parent)).as_posix()
+        return f'{attribute}="{rebased}"'
+
+    return re.sub(r'((?:xlink:)?href)="([^"]+)"', replace, text)
+
+
 def main() -> None:
     if sha256(ROOT / "2504 GBTB Yanlord Zhuhai.ifc") != EXPECTED["formal_ifc"]:
         raise RuntimeError("formal IFC bytes changed")
@@ -236,6 +253,7 @@ def main() -> None:
             style_group(group, config["representation"], visible=view != "plan"),
             ifc_supplement,
         )
+        styled = rebase_external_resources(styled, config["svg"], output)
         output.write_text(styled, encoding="utf-8")
         review_record = write_review_crop(output, review, review_box)
         records.append(

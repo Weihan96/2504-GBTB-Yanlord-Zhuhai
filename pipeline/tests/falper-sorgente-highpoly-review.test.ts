@@ -7,7 +7,7 @@ import {
 } from "node:fs";
 import { createHash } from "node:crypto";
 import { tmpdir } from "node:os";
-import { join, resolve } from "node:path";
+import { dirname, join, resolve } from "node:path";
 
 const root = resolve(import.meta.dir, "../..");
 const formalIfc = join(root, "2504 GBTB Yanlord Zhuhai.ifc");
@@ -328,6 +328,12 @@ test("actual Bonsai Drawing cameras select official WFB geometry in project cont
     expect(svg).toContain('data-source-kind="native_dwg"');
     expect(svg).toContain('data-geometry-replaced="false"');
     expect(svg).toContain("stroke:#1677c8");
+    for (const match of svg.matchAll(/(?:xlink:)?href="([^"]+)"/g)) {
+      const reference = match[1];
+      if (!reference.startsWith("#") && !reference.includes(":")) {
+        expect(existsSync(resolve(dirname(join(root, view.styled_svg)), reference))).toBe(true);
+      }
+    }
     if (view.view === "plan") {
       expect(svg).toContain('id="falper-wfb-plan-ifc-representation-supplement"');
       expect(svg).toContain('data-reason="Bonsai hidden-line removal occluded wall-adjacent curve segments"');
