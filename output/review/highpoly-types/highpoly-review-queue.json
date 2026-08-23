@@ -118,7 +118,9 @@
       "writer_exists": true,
       "test": "pipeline/tests/hima01-highpoly-review.test.ts",
       "test_exists": true,
-      "commits": [],
+      "commits": [
+        "89b332f60e92b1cd1ad6348249a573de1a7e11f1"
+      ],
       "commit_gate_pass": true,
       "mechanical_pass": true
     },
@@ -207,7 +209,9 @@
       "writer_exists": true,
       "test": "pipeline/tests/geberit-duofix-sigma-224-212-highpoly-review.test.ts",
       "test_exists": true,
-      "commits": [],
+      "commits": [
+        "ddbb58e041b676601d4d248a62ddfb4a066dc233"
+      ],
       "commit_gate_pass": true,
       "mechanical_pass": true
     },
@@ -296,7 +300,9 @@
       "writer_exists": true,
       "test": "pipeline/tests/geberit-154-446-ks-1-highpoly-review.test.ts",
       "test_exists": true,
-      "commits": [],
+      "commits": [
+        "8d3a2abdb5f1d727dd998fea05273e5955df1ccc"
+      ],
       "commit_gate_pass": true,
       "mechanical_pass": true
     },
@@ -306,26 +312,20 @@
       "status": "review_ready_pending_approval",
       "folder": "output/review/highpoly-types/gessi316-54294",
       "representative_global_id": "2iKOL78$H0N9Yd9$ky3pW4",
-      "source_kind": "geometry_derived_simplified_proxy",
-      "official_cad_used": false,
+      "source_kind": "native_dwg",
+      "official_cad_used": true,
       "drawing_source_gate": {
-        "mode": "geometry_derived_fallback",
-        "source_kind": "geometry_derived_simplified_proxy",
-        "source_label_zh": "基于原始高模几何生成的简化图纸表达",
-        "official_cad_used": false,
+        "mode": "official_native_cad",
+        "source_kind": "native_dwg",
+        "source_label_zh": "Gessi 官方精确型号 54294 原生 DWG 图纸表达",
+        "official_cad_used": true,
         "checks": {
-          "manifest_uses_fallback_kind": true,
-          "manifest_uses_exact_fallback_label": true,
-          "manifest_marks_official_cad_unused": true,
-          "candidate_uses_fallback_kind": true,
-          "candidate_uses_exact_fallback_label": true,
-          "candidate_marks_official_cad_unused": true,
-          "candidate_has_no_project_official_paths": true,
-          "separate_family_references_not_substituted": true,
-          "context_uses_fallback_kind": true,
-          "context_uses_exact_fallback_label": true,
-          "context_marks_official_cad_unused": true,
-          "context_has_no_blue_project_cad_line": true,
+          "manifest_source_is_official_native_cad": true,
+          "candidate_source_is_official_native_cad": true,
+          "candidate_marks_official_cad_used": true,
+          "candidate_has_native_paths_for_all_views": true,
+          "context_source_is_official_native_cad": true,
+          "context_has_blue_official_top_layer": true,
           "source_access_record_exists": true,
           "source_access_record_passes": true
         },
@@ -379,8 +379,8 @@
       "approval": {
         "record": "pipeline/decisions/gessi316-54294-drawing-approval.json",
         "status": "pending",
-        "candidate_manifest_sha256": "5588b12214805f04acc8c3cf02cf845fcd8b7bfd5503c9fec0978155ade2b055",
-        "manifest_sha256": "5588b12214805f04acc8c3cf02cf845fcd8b7bfd5503c9fec0978155ade2b055",
+        "candidate_manifest_sha256": "03355a029a6912b9b34726a2e537c615b71f9adf20dfae5bc49a4f473b2f5ddc",
+        "manifest_sha256": "03355a029a6912b9b34726a2e537c615b71f9adf20dfae5bc49a4f473b2f5ddc",
         "hash_matches": true,
         "write_allowed": false,
         "pass": true
@@ -391,7 +391,9 @@
       "writer_exists": true,
       "test": "pipeline/tests/gessi316-54294-highpoly-review.test.ts",
       "test_exists": true,
-      "commits": [],
+      "commits": [
+        "f22570594cf13a46a1368676e8154d2d1411ddb7"
+      ],
       "commit_gate_pass": true,
       "mechanical_pass": true
     },
@@ -484,7 +486,9 @@
       "writer_exists": true,
       "test": "pipeline/tests/bed02-highpoly-review.test.ts",
       "test_exists": true,
-      "commits": [],
+      "commits": [
+        "1ca117c5c2d8d0f64abe1b6c200685535c1e7cfa"
+      ],
       "commit_gate_pass": true,
       "mechanical_pass": true
     },
@@ -577,7 +581,9 @@
       "writer_exists": true,
       "test": "pipeline/tests/bed01-highpoly-review.test.ts",
       "test_exists": true,
-      "commits": [],
+      "commits": [
+        "285d5fc7d0236782b5a9d403c0c48a4c214e35e0"
+      ],
       "commit_gate_pass": true,
       "mechanical_pass": true
     },
@@ -672,7 +678,9 @@
       "writer_exists": true,
       "test": "pipeline/tests/sxb010-highpoly-review.test.ts",
       "test_exists": true,
-      "commits": [],
+      "commits": [
+        "1c79b8b627c204d73e2a466f6a53dcfb31bdd444"
+      ],
       "commit_gate_pass": true,
       "mechanical_pass": true
     },
@@ -765,7 +773,9 @@
       "writer_exists": true,
       "test": "pipeline/tests/cha02-highpoly-review.test.ts",
       "test_exists": true,
-      "commits": [],
+      "commits": [
+        "179886363c62b07ace2340bb7533185730dec73e"
+      ],
       "commit_gate_pass": true,
       "mechanical_pass": true
     },
@@ -860,7 +870,9 @@
       "writer_exists": true,
       "test": "pipeline/tests/sis04-highpoly-review.test.ts",
       "test_exists": true,
-      "commits": [],
+      "commits": [
+        "641276cc9fd6680bc0a0aa1da5e867dbdaa0ef29"
+      ],
       "commit_gate_pass": true,
       "mechanical_pass": true
     },
@@ -953,7 +965,9 @@
       "writer_exists": true,
       "test": "pipeline/tests/505-up-v1-lp-s-highpoly-review.test.ts",
       "test_exists": true,
-      "commits": [],
+      "commits": [
+        "196e66b565439703152605ac7cb7c5f54042cc40"
+      ],
       "commit_gate_pass": true,
       "mechanical_pass": true
     },
@@ -1047,7 +1061,9 @@
       "writer_exists": true,
       "test": "pipeline/tests/miamisoft-e09-highpoly-review.test.ts",
       "test_exists": true,
-      "commits": [],
+      "commits": [
+        "63c321af1f4416d3871beaa9fdd1503a42ce2f06"
+      ],
       "commit_gate_pass": true,
       "mechanical_pass": true
     },
@@ -1141,7 +1157,9 @@
       "writer_exists": true,
       "test": "pipeline/tests/miamisoft-e07-highpoly-review.test.ts",
       "test_exists": true,
-      "commits": [],
+      "commits": [
+        "749efe2e4146d56ff828c389a4f62040af16bdc3"
+      ],
       "commit_gate_pass": true,
       "mechanical_pass": true
     },
@@ -1230,7 +1248,9 @@
       "writer_exists": true,
       "test": "pipeline/tests/marilyn-01-highpoly-review.test.ts",
       "test_exists": true,
-      "commits": [],
+      "commits": [
+        "9a731ddacae5fb3b1b81c8545219035d2acc1d6e"
+      ],
       "commit_gate_pass": true,
       "mechanical_pass": true
     },
@@ -1324,7 +1344,9 @@
       "writer_exists": true,
       "test": "pipeline/tests/miamisoft-f03-highpoly-review.test.ts",
       "test_exists": true,
-      "commits": [],
+      "commits": [
+        "55ef69434b8582ea8daae660de3eafb6b91ee852"
+      ],
       "commit_gate_pass": true,
       "mechanical_pass": true
     },
@@ -1417,7 +1439,9 @@
       "writer_exists": true,
       "test": "pipeline/tests/trap01-highpoly-review.test.ts",
       "test_exists": true,
-      "commits": [],
+      "commits": [
+        "a41c45ab8f464868801f6a746b45878477ffb72b"
+      ],
       "commit_gate_pass": true,
       "mechanical_pass": true
     },
@@ -1506,7 +1530,9 @@
       "writer_exists": true,
       "test": "pipeline/tests/marilyn-02-highpoly-review.test.ts",
       "test_exists": true,
-      "commits": [],
+      "commits": [
+        "51f8cbfcaf1108e7b381a530577d1170ffbd63f5"
+      ],
       "commit_gate_pass": true,
       "mechanical_pass": true
     },
@@ -1601,7 +1627,9 @@
       "writer_exists": true,
       "test": "pipeline/tests/cha01-highpoly-review.test.ts",
       "test_exists": true,
-      "commits": [],
+      "commits": [
+        "911308f55040f4cf811c07b645481de8ce69cc61"
+      ],
       "commit_gate_pass": true,
       "mechanical_pass": true
     },
@@ -1695,7 +1723,9 @@
       "writer_exists": true,
       "test": "pipeline/tests/miamisoft-h01-highpoly-review.test.ts",
       "test_exists": true,
-      "commits": [],
+      "commits": [
+        "f685220b3bfc77ac210740a765e5d43cc29a4d6c"
+      ],
       "commit_gate_pass": true,
       "mechanical_pass": true
     },
@@ -1781,6 +1811,7 @@
       "test": "pipeline/tests/falper-sorgente-highpoly-review.test.ts",
       "test_exists": true,
       "commits": [
+        "c093bd3a0b00004e5f2aff6321e8220ed181c550",
         "6378582eb8c06f816edb3dcca598618277c00196",
         "567dfb8e61f390fec5ea49691b8f4dee110f59b0"
       ],
@@ -1887,7 +1918,9 @@
       "writer_exists": true,
       "test": "pipeline/tests/geberit-154-154-00-highpoly-review.test.ts",
       "test_exists": true,
-      "commits": [],
+      "commits": [
+        "9fa0f55903e573080f55836b7c8a4bbd3433730c"
+      ],
       "commit_gate_pass": true,
       "mechanical_pass": true
     },
@@ -1980,7 +2013,9 @@
       "writer_exists": true,
       "test": "pipeline/tests/bst03-highpoly-review.test.ts",
       "test_exists": true,
-      "commits": [],
+      "commits": [
+        "4c7274c85aecf83f6347d588b23057b058ea34c9"
+      ],
       "commit_gate_pass": true,
       "mechanical_pass": true
     },
@@ -2075,7 +2110,9 @@
       "writer_exists": true,
       "test": "pipeline/tests/fau02-highpoly-review.test.ts",
       "test_exists": true,
-      "commits": [],
+      "commits": [
+        "239a01556b6929312d0301d554a2f1ff55609bdf"
+      ],
       "commit_gate_pass": true,
       "mechanical_pass": true
     },
@@ -2085,26 +2122,20 @@
       "status": "review_ready_pending_approval",
       "folder": "output/review/highpoly-types/gessi316-54146",
       "representative_global_id": "04DLh1Jk9Dcu9ibcaE0id8",
-      "source_kind": "geometry_derived_simplified_proxy",
-      "official_cad_used": false,
+      "source_kind": "native_dwg",
+      "official_cad_used": true,
       "drawing_source_gate": {
-        "mode": "geometry_derived_fallback",
-        "source_kind": "geometry_derived_simplified_proxy",
-        "source_label_zh": "基于原始高模几何生成的简化图纸表达",
-        "official_cad_used": false,
+        "mode": "official_native_cad",
+        "source_kind": "native_dwg",
+        "source_label_zh": "Gessi 官方精确型号 54146 G000 原生 DWG 图纸表达",
+        "official_cad_used": true,
         "checks": {
-          "manifest_uses_fallback_kind": true,
-          "manifest_uses_exact_fallback_label": true,
-          "manifest_marks_official_cad_unused": true,
-          "candidate_uses_fallback_kind": true,
-          "candidate_uses_exact_fallback_label": true,
-          "candidate_marks_official_cad_unused": true,
-          "candidate_has_no_project_official_paths": true,
-          "separate_family_references_not_substituted": true,
-          "context_uses_fallback_kind": true,
-          "context_uses_exact_fallback_label": true,
-          "context_marks_official_cad_unused": true,
-          "context_has_no_blue_project_cad_line": true,
+          "manifest_source_is_official_native_cad": true,
+          "candidate_source_is_official_native_cad": true,
+          "candidate_marks_official_cad_used": true,
+          "candidate_has_native_paths_for_all_views": true,
+          "context_source_is_official_native_cad": true,
+          "context_has_blue_official_top_layer": true,
           "source_access_record_exists": true,
           "source_access_record_passes": true
         },
@@ -2158,8 +2189,8 @@
       "approval": {
         "record": "pipeline/decisions/gessi316-54146-drawing-approval.json",
         "status": "pending",
-        "candidate_manifest_sha256": "8ccf127adf32172dafb73c5df486972fcff74e3d2d1a4a0cd48283cb8575ac6d",
-        "manifest_sha256": "8ccf127adf32172dafb73c5df486972fcff74e3d2d1a4a0cd48283cb8575ac6d",
+        "candidate_manifest_sha256": "d6a9c44b5e0619f232a11d93345759a1220d113d10c5b8800633b99ea72af40c",
+        "manifest_sha256": "d6a9c44b5e0619f232a11d93345759a1220d113d10c5b8800633b99ea72af40c",
         "hash_matches": true,
         "write_allowed": false,
         "pass": true
@@ -2170,7 +2201,9 @@
       "writer_exists": true,
       "test": "pipeline/tests/gessi316-54146-highpoly-review.test.ts",
       "test_exists": true,
-      "commits": [],
+      "commits": [
+        "8cc6337c0a893c5a8fea659ee2648e97751a1795"
+      ],
       "commit_gate_pass": true,
       "mechanical_pass": true
     },
@@ -2264,7 +2297,9 @@
       "writer_exists": true,
       "test": "pipeline/tests/wd03-highpoly-review.test.ts",
       "test_exists": true,
-      "commits": [],
+      "commits": [
+        "39aeaadd0559bfef41355e2e5d0b74aad08903fb"
+      ],
       "commit_gate_pass": true,
       "mechanical_pass": true
     },
@@ -2358,7 +2393,9 @@
       "writer_exists": true,
       "test": "pipeline/tests/miamisoft-i03-highpoly-review.test.ts",
       "test_exists": true,
-      "commits": [],
+      "commits": [
+        "65ef09c97c83e4625929a1ac0cce60187e99a558"
+      ],
       "commit_gate_pass": true,
       "mechanical_pass": true
     },
@@ -2447,7 +2484,9 @@
       "writer_exists": true,
       "test": "pipeline/tests/geberit-146-140-highpoly-review.test.ts",
       "test_exists": true,
-      "commits": [],
+      "commits": [
+        "50bc2aa7ef32bb7d175ccc2476d9ac708c2e9467"
+      ],
       "commit_gate_pass": true,
       "mechanical_pass": true
     },
@@ -2457,26 +2496,20 @@
       "status": "review_ready_pending_approval",
       "folder": "output/review/highpoly-types/gessi316-54145",
       "representative_global_id": "3jT4sCgpHC98VSIUdGUNYH",
-      "source_kind": "geometry_derived_simplified_proxy",
-      "official_cad_used": false,
+      "source_kind": "native_dwg",
+      "official_cad_used": true,
       "drawing_source_gate": {
-        "mode": "geometry_derived_fallback",
-        "source_kind": "geometry_derived_simplified_proxy",
-        "source_label_zh": "基于原始高模几何生成的简化图纸表达",
-        "official_cad_used": false,
+        "mode": "official_native_cad",
+        "source_kind": "native_dwg",
+        "source_label_zh": "Gessi 官方精确型号 54145 G000 原生 DWG 图纸表达",
+        "official_cad_used": true,
         "checks": {
-          "manifest_uses_fallback_kind": true,
-          "manifest_uses_exact_fallback_label": true,
-          "manifest_marks_official_cad_unused": true,
-          "candidate_uses_fallback_kind": true,
-          "candidate_uses_exact_fallback_label": true,
-          "candidate_marks_official_cad_unused": true,
-          "candidate_has_no_project_official_paths": true,
-          "separate_family_references_not_substituted": true,
-          "context_uses_fallback_kind": true,
-          "context_uses_exact_fallback_label": true,
-          "context_marks_official_cad_unused": true,
-          "context_has_no_blue_project_cad_line": true,
+          "manifest_source_is_official_native_cad": true,
+          "candidate_source_is_official_native_cad": true,
+          "candidate_marks_official_cad_used": true,
+          "candidate_has_native_paths_for_all_views": true,
+          "context_source_is_official_native_cad": true,
+          "context_has_blue_official_top_layer": true,
           "source_access_record_exists": true,
           "source_access_record_passes": true
         },
@@ -2530,8 +2563,8 @@
       "approval": {
         "record": "pipeline/decisions/gessi316-54145-drawing-approval.json",
         "status": "pending",
-        "candidate_manifest_sha256": "9b3a1a460c08748c9cba16b75a2d3b4b219eeccb700a29e1654ab45442ab8064",
-        "manifest_sha256": "9b3a1a460c08748c9cba16b75a2d3b4b219eeccb700a29e1654ab45442ab8064",
+        "candidate_manifest_sha256": "b59f8faac085319d7408adbcf60893c2039754d02e10e52fa3b6d116c041e649",
+        "manifest_sha256": "b59f8faac085319d7408adbcf60893c2039754d02e10e52fa3b6d116c041e649",
         "hash_matches": true,
         "write_allowed": false,
         "pass": true
@@ -2542,7 +2575,9 @@
       "writer_exists": true,
       "test": "pipeline/tests/gessi316-54145-highpoly-review.test.ts",
       "test_exists": true,
-      "commits": [],
+      "commits": [
+        "8e5a3b5d056f52c09d46f70706737c3d09f8f8cb"
+      ],
       "commit_gate_pass": true,
       "mechanical_pass": true
     },
@@ -2635,7 +2670,9 @@
       "writer_exists": true,
       "test": "pipeline/tests/street-h-highpoly-review.test.ts",
       "test_exists": true,
-      "commits": [],
+      "commits": [
+        "49398f529c9af4210688acc438006004afe6de78"
+      ],
       "commit_gate_pass": true,
       "mechanical_pass": true
     },
@@ -2730,7 +2767,9 @@
       "writer_exists": true,
       "test": "pipeline/tests/wd02-highpoly-review.test.ts",
       "test_exists": true,
-      "commits": [],
+      "commits": [
+        "ac850b845dd95a19e3a155afafe68d495eaee0c7"
+      ],
       "commit_gate_pass": true,
       "mechanical_pass": true
     },
@@ -2823,7 +2862,9 @@
       "writer_exists": true,
       "test": "pipeline/tests/tab02-highpoly-review.test.ts",
       "test_exists": true,
-      "commits": [],
+      "commits": [
+        "9cb792839e665868b10fac73fb8a03cedb434f2b"
+      ],
       "commit_gate_pass": true,
       "mechanical_pass": true
     },
@@ -2917,7 +2958,9 @@
       "writer_exists": true,
       "test": "pipeline/tests/bst02-highpoly-review.test.ts",
       "test_exists": true,
-      "commits": [],
+      "commits": [
+        "092f20f69f2a7ce50d1236e7ad57ec3dd86916d6"
+      ],
       "commit_gate_pass": true,
       "mechanical_pass": true
     },
@@ -3010,7 +3053,9 @@
       "writer_exists": true,
       "test": "pipeline/tests/street-highpoly-review.test.ts",
       "test_exists": true,
-      "commits": [],
+      "commits": [
+        "07a4587254a083ed3e7cebefceb7a4311cdcb89e"
+      ],
       "commit_gate_pass": true,
       "mechanical_pass": true
     },
@@ -3020,26 +3065,20 @@
       "status": "review_ready_pending_approval",
       "folder": "output/review/highpoly-types/gessi316-54093",
       "representative_global_id": "1jM_suNMPAw8_nvZejQSnp",
-      "source_kind": "geometry_derived_simplified_proxy",
-      "official_cad_used": false,
+      "source_kind": "native_dwg",
+      "official_cad_used": true,
       "drawing_source_gate": {
-        "mode": "geometry_derived_fallback",
-        "source_kind": "geometry_derived_simplified_proxy",
-        "source_label_zh": "基于原始高模几何生成的简化图纸表达",
-        "official_cad_used": false,
+        "mode": "official_native_cad",
+        "source_kind": "native_dwg",
+        "source_label_zh": "Gessi 官方精确型号 54093 G000 原生 DWG 图纸表达",
+        "official_cad_used": true,
         "checks": {
-          "manifest_uses_fallback_kind": true,
-          "manifest_uses_exact_fallback_label": true,
-          "manifest_marks_official_cad_unused": true,
-          "candidate_uses_fallback_kind": true,
-          "candidate_uses_exact_fallback_label": true,
-          "candidate_marks_official_cad_unused": true,
-          "candidate_has_no_project_official_paths": true,
-          "separate_family_references_not_substituted": true,
-          "context_uses_fallback_kind": true,
-          "context_uses_exact_fallback_label": true,
-          "context_marks_official_cad_unused": true,
-          "context_has_no_blue_project_cad_line": true,
+          "manifest_source_is_official_native_cad": true,
+          "candidate_source_is_official_native_cad": true,
+          "candidate_marks_official_cad_used": true,
+          "candidate_has_native_paths_for_all_views": true,
+          "context_source_is_official_native_cad": true,
+          "context_has_blue_official_top_layer": true,
           "source_access_record_exists": true,
           "source_access_record_passes": true
         },
@@ -3091,8 +3130,8 @@
       "approval": {
         "record": "pipeline/decisions/gessi316-54093-drawing-approval.json",
         "status": "pending",
-        "candidate_manifest_sha256": "8cbe13f18f6c529f9d0b840927cd23c042e8a51f56f3c133c740fb38d3861914",
-        "manifest_sha256": "8cbe13f18f6c529f9d0b840927cd23c042e8a51f56f3c133c740fb38d3861914",
+        "candidate_manifest_sha256": "1da4b700ba78b74398b41c0e8aead0bf8c4c5cf80f2dc9267dcba58b8e75e7db",
+        "manifest_sha256": "1da4b700ba78b74398b41c0e8aead0bf8c4c5cf80f2dc9267dcba58b8e75e7db",
         "hash_matches": true,
         "write_allowed": false,
         "pass": true
@@ -3103,7 +3142,9 @@
       "writer_exists": true,
       "test": "pipeline/tests/gessi316-54093-highpoly-review.test.ts",
       "test_exists": true,
-      "commits": [],
+      "commits": [
+        "e6ff1dc11cfe95108b2a503bb62804ed6276c25f"
+      ],
       "commit_gate_pass": true,
       "mechanical_pass": true
     },
@@ -3198,7 +3239,9 @@
       "writer_exists": true,
       "test": "pipeline/tests/geberit-154-154-00-1-f-highpoly-review.test.ts",
       "test_exists": true,
-      "commits": [],
+      "commits": [
+        "7a52c19d24dab1eaf3e32bc7327d31a06baca234"
+      ],
       "commit_gate_pass": true,
       "mechanical_pass": true
     },
@@ -3287,7 +3330,9 @@
       "writer_exists": true,
       "test": "pipeline/tests/geberit-115-770-highpoly-review.test.ts",
       "test_exists": true,
-      "commits": [],
+      "commits": [
+        "5283895331b7cab515b760aaa328ac88c816f689"
+      ],
       "commit_gate_pass": true,
       "mechanical_pass": true
     },
@@ -3382,7 +3427,9 @@
       "writer_exists": true,
       "test": "pipeline/tests/wd01-highpoly-review.test.ts",
       "test_exists": true,
-      "commits": [],
+      "commits": [
+        "731986f0082030397a27c60436a0fcfec7bee0e4"
+      ],
       "commit_gate_pass": true,
       "mechanical_pass": true
     },
@@ -3392,26 +3439,20 @@
       "status": "review_ready_pending_approval",
       "folder": "output/review/highpoly-types/gessi316-54038",
       "representative_global_id": "245NU$zZL0d9tYTVwwBdk$",
-      "source_kind": "geometry_derived_simplified_proxy",
-      "official_cad_used": false,
+      "source_kind": "native_dwg",
+      "official_cad_used": true,
       "drawing_source_gate": {
-        "mode": "geometry_derived_fallback",
-        "source_kind": "geometry_derived_simplified_proxy",
-        "source_label_zh": "基于原始高模几何生成的简化图纸表达",
-        "official_cad_used": false,
+        "mode": "official_native_cad",
+        "source_kind": "native_dwg",
+        "source_label_zh": "Gessi 官方精确型号 54038 原生 DWG 图纸表达",
+        "official_cad_used": true,
         "checks": {
-          "manifest_uses_fallback_kind": true,
-          "manifest_uses_exact_fallback_label": true,
-          "manifest_marks_official_cad_unused": true,
-          "candidate_uses_fallback_kind": true,
-          "candidate_uses_exact_fallback_label": true,
-          "candidate_marks_official_cad_unused": true,
-          "candidate_has_no_project_official_paths": true,
-          "separate_family_references_not_substituted": true,
-          "context_uses_fallback_kind": true,
-          "context_uses_exact_fallback_label": true,
-          "context_marks_official_cad_unused": true,
-          "context_has_no_blue_project_cad_line": true,
+          "manifest_source_is_official_native_cad": true,
+          "candidate_source_is_official_native_cad": true,
+          "candidate_marks_official_cad_used": true,
+          "candidate_has_native_paths_for_all_views": true,
+          "context_source_is_official_native_cad": true,
+          "context_has_blue_official_top_layer": true,
           "source_access_record_exists": true,
           "source_access_record_passes": true
         },
@@ -3465,8 +3506,8 @@
       "approval": {
         "record": "pipeline/decisions/gessi316-54038-drawing-approval.json",
         "status": "pending",
-        "candidate_manifest_sha256": "af9fedd5a02aba2fc97312d163ca9b097711f0b93ca4ae63ea159db46ab20dd7",
-        "manifest_sha256": "af9fedd5a02aba2fc97312d163ca9b097711f0b93ca4ae63ea159db46ab20dd7",
+        "candidate_manifest_sha256": "d2ab9ba4526db4e75aa34999e00ba69e98041617437c682ff57707c108830665",
+        "manifest_sha256": "d2ab9ba4526db4e75aa34999e00ba69e98041617437c682ff57707c108830665",
         "hash_matches": true,
         "write_allowed": false,
         "pass": true
@@ -3477,7 +3518,9 @@
       "writer_exists": true,
       "test": "pipeline/tests/gessi316-54038-highpoly-review.test.ts",
       "test_exists": true,
-      "commits": [],
+      "commits": [
+        "331b672e002cb7439fb6a331ff3da8efe6f208b0"
+      ],
       "commit_gate_pass": true,
       "mechanical_pass": true
     },
@@ -3571,7 +3614,9 @@
       "writer_exists": true,
       "test": "pipeline/tests/electric-flue-check-valve-highpoly-review.test.ts",
       "test_exists": true,
-      "commits": [],
+      "commits": [
+        "d0942bc0aa61f4620c8d4065e56d2e6a2b1fef13"
+      ],
       "commit_gate_pass": true,
       "mechanical_pass": true
     },
@@ -3666,7 +3711,9 @@
       "writer_exists": true,
       "test": "pipeline/tests/bst01-highpoly-review.test.ts",
       "test_exists": true,
-      "commits": [],
+      "commits": [
+        "a41c9d4230ef1d8f7e067ddbb3e462eda80fc22a"
+      ],
       "commit_gate_pass": true,
       "mechanical_pass": true
     }
@@ -3678,10 +3725,10 @@
     "pending_human_approval_count": 38,
     "excluded_other_task_count": 1,
     "derived_ifc_product_count": 1,
-    "independently_committed_product_count": 1,
+    "independently_committed_product_count": 39,
     "package_mechanical_pass": true,
     "stash_recovery_pass": true,
     "goal_complete": false,
-    "remaining_gate": "Each pending product requires explicit human approval before its derived IFC is written and that product folder is committed."
+    "remaining_gate": "Each pending product requires explicit human approval before its derived IFC is written. Candidate review packages are already committed for worktree-based review."
   }
 }

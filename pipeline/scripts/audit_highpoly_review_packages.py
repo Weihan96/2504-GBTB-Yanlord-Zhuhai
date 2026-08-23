@@ -315,7 +315,10 @@ def audit_product(product: dict[str, Any], formal_hash: str) -> dict[str, Any]:
         ).splitlines()
         if commit
     ]
-    commit_gate_pass = (pending and not commits) or (completed and bool(commits))
+    # Candidate review packages are committed before human review so they can be
+    # opened from a fresh worktree. Approval continues to gate derived IFC
+    # creation, not preservation of the review evidence itself.
+    commit_gate_pass = bool(commits)
 
     formal_hashes = {
         manifest.get("formal_ifc_sha256"),
@@ -549,7 +552,8 @@ def main() -> None:
             "goal_complete": False,
             "remaining_gate": (
                 "Each pending product requires explicit human approval before its "
-                "derived IFC is written and that product folder is committed."
+                "derived IFC is written. Candidate review packages are already "
+                "committed for worktree-based review."
             ),
         },
     }

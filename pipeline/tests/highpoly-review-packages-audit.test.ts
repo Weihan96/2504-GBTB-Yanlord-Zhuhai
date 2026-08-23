@@ -38,7 +38,7 @@ test("all high-poly review packages obey approval, context and commit gates", ()
     pending_human_approval_count: 38,
     excluded_other_task_count: 1,
     derived_ifc_product_count: 1,
-    independently_committed_product_count: 1,
+    independently_committed_product_count: 39,
     package_mechanical_pass: true,
     stash_recovery_pass: true,
     goal_complete: false,
@@ -78,7 +78,8 @@ test("all high-poly review packages obey approval, context and commit gates", ()
     expect(["pending", "visual_review_pending"]).toContain(product.approval.status);
     expect(product.approval.write_allowed).toBe(false);
     expect(product.derived_ifcs).toEqual([]);
-    expect(product.commits).toEqual([]);
+    expect(product.commits.length, product.slug).toBeGreaterThanOrEqual(1);
+    expect(product.commit_gate_pass, product.slug).toBe(true);
     expect(product.drawing_source_gate.pass, product.slug).toBe(true);
   }
 

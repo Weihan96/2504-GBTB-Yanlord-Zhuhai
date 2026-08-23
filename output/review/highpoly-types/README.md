@@ -144,7 +144,7 @@ Gessi 官方 Bathroom 目录在印刷页 30-31（PDF 文件页 17）把 `54139_5
 - [R12 正立面](gessi316-54146/project-context-front-elevation.svg)
 - [R12 侧立面](gessi316-54146/project-context-side-elevation.svg)
 
-Gessi 公共附件 API 已提供精确 `54146 G000` 原生 2D DWG 与技术 PDF；G001、壁装 `54145` 和其他相邻产品均被门禁排除。原生 DWG 的 Plan/Front/Side 分别含 `16/607/660` 条蓝线，三视图包络为 `300.000 × 300.000`、`300.000 × 280.250`、`300.000 × 280.250 mm`；与项目单件 IFC Body `300.000 × 299.945 × 279.371 mm` 的最大投影差为 `0.878759 mm`，未拉伸几何。平面和 R12 两张立面保留原项目墙体、家具与相邻产品，官方蓝线置顶并带白色遮罩；实际 IFC Body 仍由 Bonsai 保存的四台正交相机执行 Blender Render。当前待用户视觉审核，审批文件保持 pending，未写派生 IFC、未提交。
+Gessi 公共附件 API 已提供精确 `54146 G000` 原生 2D DWG 与技术 PDF；G001、壁装 `54145` 和其他相邻产品均被门禁排除。原生 DWG 的 Plan/Front/Side 分别含 `16/607/660` 条蓝线，三视图包络为 `300.000 × 300.000`、`300.000 × 280.250`、`300.000 × 280.250 mm`；与项目单件 IFC Body `300.000 × 299.945 × 279.371 mm` 的最大投影差为 `0.878759 mm`，未拉伸几何。平面和 R12 两张立面保留原项目墙体、家具与相邻产品，官方蓝线置顶并带白色遮罩；实际 IFC Body 仍由 Bonsai 保存的四台正交相机执行 Blender Render。当前待用户视觉审核，审批文件保持 pending，未写派生 IFC；候选审核包已独立提交，可从新工作树继续比对。
 
 ## Gessi316 / 54145 wall-mounted headshower
 
@@ -167,7 +167,7 @@ Gessi 公共附件 API 已提供精确 `54146 G000` 原生 2D DWG 与技术 PDF�
 - [R17 正立面](gessi316-54145/project-context-front-elevation.svg)
 - [R17 侧立面](gessi316-54145/project-context-side-elevation.svg)
 
-Gessi 公共附件 API 已提供精确 `54145 G000` 原生 2D DWG 与技术 PDF；G001 和相邻吊顶型号 `54146` 均被门禁排除。原生 DWG 的 Plan/Front/Side 分别含 `22/615/653` 条蓝线，三视图包络为 `600.000 × 299.993`、`600.000 × 118.950`、`300.000 × 118.921 mm`；与项目单件 IFC Body `599.819 × 299.819 × 119.074 mm` 的最大投影差为 `0.181335 mm`，未拉伸几何。平面和 R17 两张立面保留原项目墙体、家具与相邻产品，官方蓝线置顶并带白色遮罩；实际 IFC Body 仍由 Bonsai 保存的四台正交相机执行 Blender Render。当前待用户视觉审核，审批文件保持 pending，未写派生 IFC、未提交。
+Gessi 公共附件 API 已提供精确 `54145 G000` 原生 2D DWG 与技术 PDF；G001 和相邻吊顶型号 `54146` 均被门禁排除。原生 DWG 的 Plan/Front/Side 分别含 `22/615/653` 条蓝线，三视图包络为 `600.000 × 299.993`、`600.000 × 118.950`、`300.000 × 118.921 mm`；与项目单件 IFC Body `599.819 × 299.819 × 119.074 mm` 的最大投影差为 `0.181335 mm`，未拉伸几何。平面和 R17 两张立面保留原项目墙体、家具与相邻产品，官方蓝线置顶并带白色遮罩；实际 IFC Body 仍由 Bonsai 保存的四台正交相机执行 Blender Render。当前待用户视觉审核，审批文件保持 pending，未写派生 IFC；候选审核包已独立提交，可从新工作树继续比对。
 
 ## Gessi316 Meccanica / 54093 high counter basin spout
 
