@@ -1,0 +1,181 @@
+{
+  "schema_version": 1,
+  "generator": "pipeline/scripts/render_miamisoft_e07_project_context.py",
+  "source_kind": "geometry_derived_simplified_proxy",
+  "source_label_zh": "基于原始高模几何生成的简化图纸表达",
+  "official_cad_used": false,
+  "third_party_cad_used": false,
+  "project_context_retained": true,
+  "walls_and_surrounding_project_elements_retained": true,
+  "overlay_top_layer_with_white_mask": true,
+  "blue_line_present": false,
+  "project_scale_svg_units_per_mm": 0.02,
+  "views": [
+    {
+      "view": "plan",
+      "candidate_view": "plan",
+      "source": "drawings/Furniture Plan.svg",
+      "output": "output/review/highpoly-types/miamisoft-e07/project-context-furniture-plan.svg",
+      "output_sha256": "eb3aa7a67dc63665f630bf4c13db8713580de83fa31a5e90abd6b57d4901c928",
+      "review_crop": "output/review/highpoly-types/miamisoft-e07/project-context-furniture-plan-review.svg",
+      "review_crop_sha256": "b7d0c874921dd560e72b6b3fbf2e8e73d1d62f28c38a834fd6c5891d35e1d61c",
+      "review_preview": "output/review/highpoly-types/miamisoft-e07/project-context-furniture-plan-review-preview.png",
+      "review_preview_sha256": "84a1ed624f4d45848fc34349f665a56876b250740da81ca78e05fabbc6f52234",
+      "overlay": {
+        "ifc_guid": "1G7iO6CfP64PjummX$qTbt",
+        "source_kind": "geometry_derived_simplified_proxy",
+        "source_label_zh": "基于原始高模几何生成的简化图纸表达",
+        "official_cad_used": false,
+        "third_party_cad_used": false,
+        "path_count": 25,
+        "fit": {
+          "rotate_quarter_turns": 1,
+          "alignment_mode": "centre",
+          "flip_projected_y": true,
+          "scale_svg_units_per_mm": 0.02,
+          "target_bbox": [
+            [
+              222.189277,
+              141.20017
+            ],
+            [
+              256.318688,
+              171.161343
+            ]
+          ],
+          "proxy_bbox": [
+            [
+              222.149124,
+              140.742443
+            ],
+            [
+              256.358841,
+              171.619069
+            ]
+          ],
+          "bbox_absolute_delta_svg_units": [
+            0.080306,
+            0.915452
+          ],
+          "bbox_tolerance_svg_units": 1.0,
+          "uniform_scale_preserved": true,
+          "transformation_mode": "axis_swap_rigid_reflection_and_translation_only",
+          "pass": true
+        }
+      }
+    },
+    {
+      "view": "side",
+      "candidate_view": "side",
+      "source": "drawings/elevations/native/EL-01-02-R20-PY.svg",
+      "output": "output/review/highpoly-types/miamisoft-e07/project-context-r20-side-elevation.svg",
+      "output_sha256": "d86ab5a398d0d62c126b84fd8a3c84b4a52f8230acdd8d02ba6d476d36bb4a3f",
+      "review_crop": "output/review/highpoly-types/miamisoft-e07/project-context-r20-side-elevation-review.svg",
+      "review_crop_sha256": "869e7acbcb53305bf62070c3e64c255475c11a09417e871d9b95039d6ae973c8",
+      "review_preview": "output/review/highpoly-types/miamisoft-e07/project-context-r20-side-elevation-review-preview.png",
+      "review_preview_sha256": "5e3d2fb138f0f655a008b6cdd5f06adfbc51e0c3f725c0383e2874f6f6abf94d",
+      "overlay": {
+        "ifc_guid": "1G7iO6CfP64PjummX$qTbt",
+        "source_kind": "geometry_derived_simplified_proxy",
+        "source_label_zh": "基于原始高模几何生成的简化图纸表达",
+        "official_cad_used": false,
+        "third_party_cad_used": false,
+        "path_count": 33,
+        "fit": {
+          "rotate_quarter_turns": 0,
+          "alignment_mode": "centre",
+          "flip_projected_y": true,
+          "scale_svg_units_per_mm": 0.02,
+          "target_bbox": [
+            [
+              29.231794,
+              35.836512
+            ],
+            [
+              63.44151,
+              51.786209
+            ]
+          ],
+          "proxy_bbox": [
+            [
+              29.231793,
+              35.836672
+            ],
+            [
+              63.44151,
+              51.786049
+            ]
+          ],
+          "bbox_absolute_delta_svg_units": [
+            1e-06,
+            0.00032
+          ],
+          "bbox_tolerance_svg_units": 1.0,
+          "uniform_scale_preserved": true,
+          "transformation_mode": "axis_swap_rigid_reflection_and_translation_only",
+          "pass": true
+        }
+      }
+    }
+  ],
+  "pass": true,
+  "semantic_view_mapping": {
+    "plan": {
+      "candidate_axes": [
+        0,
+        1
+      ],
+      "source": "drawings/Furniture Plan.svg",
+      "rotate_quarter_turns": 1,
+      "project_direction": "+Z"
+    },
+    "side": {
+      "candidate_axes": [
+        1,
+        2
+      ],
+      "source": "drawings/elevations/native/EL-01-02-R20-PY.svg",
+      "rotate_quarter_turns": 0,
+      "project_direction": "+Y",
+      "complete_project_projection_group_only": true
+    }
+  },
+  "context_view_scope": {
+    "included": [
+      "plan",
+      "side"
+    ],
+    "excluded": [
+      "front"
+    ],
+    "reason": "The R20 +Y drawing contains a complete YZ side projection. The +/-X product projections are partly occluded or clipped and are not presented as a mechanically complete front context."
+  },
+  "mechanical_side_fit_tolerance_svg_units": 0.08,
+  "mechanical_side_fit_pass": true,
+  "review_annotation_suppression": {
+    "plan": "official-elevation-anchor groups only",
+    "side": "none",
+    "scope": "review crops only; complete project SVGs retain their annotations",
+    "walls_furniture_and_ifc_geometry_removed": false
+  },
+  "review_preview_background": {
+    "plan": "opaque white review-only paper background",
+    "side": "opaque white review-only paper background",
+    "full_project_svgs_remain_transparent": true,
+    "drawing_geometry_changed": false
+  },
+  "project_projection_note": {
+    "official_nominal_mm": [
+      1500.0,
+      1700.0,
+      800.0
+    ],
+    "ifc_body_local_xyz_mm": [
+      1543.831299,
+      1710.48584,
+      797.484863
+    ],
+    "interpretation": "The complete geometry-derived proxy is overlaid at the drawing's native 1:50 scale and centre-aligned; no axis is stretched to force the nominal upholstered envelope.",
+    "geometry_stretched": false
+  }
+}
