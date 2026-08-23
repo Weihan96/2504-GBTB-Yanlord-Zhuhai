@@ -1,0 +1,143 @@
+{
+  "schema_version": 1,
+  "generator": "pipeline/scripts/render_marilyn_01_bonsai_review.py",
+  "mode": "actual_bonsai_ifc_body_camera_render",
+  "representative_global_id": "3l2Ji4k2H9oOTDGWYUq7uV",
+  "geometry_product_count": 1,
+  "whole_model_render": false,
+  "formal_ifc": "2504 GBTB Yanlord Zhuhai.ifc",
+  "formal_ifc_sha256": "7a50b87e8f48a7c2bfbaa9f1dabdfca7155fa684b2325c66aa1ae15c8ab0a25c",
+  "formal_ifc_bytes_unchanged": true,
+  "isolated_ifc": "output/review/highpoly-types/marilyn-01/Baxter-Marilyn-01-bonsai-isolated.ifc",
+  "isolated_ifc_sha256": "f9e61fcd81872234e3268d6377fc52f3fb2fc2cccb82281d5d7c44963bd42500",
+  "bonsai_session": {
+    "path": "output/review/highpoly-types/marilyn-01/Baxter-Marilyn-01-bonsai-review.blend",
+    "sha256": "c7ac0d7b2810084e2b482df8f6ef6d1227492a2be63ec8ed0df40f51a526fee4",
+    "saved_active_representation": "Body",
+    "saved_camera_count": 4,
+    "saved_camera_names": [
+      "BAXTER_MARILYN_01_CAM_FRONT",
+      "BAXTER_MARILYN_01_CAM_ISO",
+      "BAXTER_MARILYN_01_CAM_PLAN",
+      "BAXTER_MARILYN_01_CAM_SIDE"
+    ],
+    "ifc_definition_id": 11535,
+    "ifc_context_identifier": "Body",
+    "ifc_target_view": "MODEL_VIEW",
+    "front_camera_local_y_sign": -1.0,
+    "object_name": "IfcFurniture/Furniture",
+    "object_bounds_m": {
+      "minimum": [
+        4.392775059,
+        1.948114157,
+        0.014074979
+      ],
+      "maximum": [
+        5.269949913,
+        2.962026119,
+        0.984551966
+      ]
+    },
+    "local_axis_extents_m": {
+      "x": 0.877175331,
+      "y": 1.013912201,
+      "z": 0.970477045
+    },
+    "local_axes_world": [
+      [
+        1.0,
+        0.0,
+        0.0
+      ],
+      [
+        0.0,
+        1.0,
+        0.0
+      ],
+      [
+        0.0,
+        0.0,
+        1.0
+      ]
+    ]
+  },
+  "renders": [
+    {
+      "view": "plan",
+      "camera": "BAXTER_MARILYN_01_CAM_PLAN",
+      "camera_type": "ORTHO",
+      "camera_axis_basis": "IFC product local axes",
+      "camera_ortho_scale_m": 1.674984574318,
+      "projected_width_m": 0.877175331116,
+      "projected_height_m": 1.013912200928,
+      "image_aspect": 1.4,
+      "framing_margin_factor": 1.18,
+      "ortho_scale_quantization_safety_factor": 1.000001,
+      "render_operation": "bpy.ops.render.render(write_still=True)",
+      "path": "output/review/highpoly-types/marilyn-01/bonsai-camera-plan.png",
+      "sha256": "12dba0076707ff8d60dabeddc5f561f2b56c7873f5efe15e9bf839e5600896fc",
+      "resolution": [
+        1400,
+        1000
+      ]
+    },
+    {
+      "view": "front",
+      "camera": "BAXTER_MARILYN_01_CAM_FRONT",
+      "camera_type": "ORTHO",
+      "camera_axis_basis": "IFC product local axes",
+      "camera_ortho_scale_m": 1.603229999542,
+      "projected_width_m": 0.877175331116,
+      "projected_height_m": 0.97047720977,
+      "image_aspect": 1.4,
+      "framing_margin_factor": 1.18,
+      "ortho_scale_quantization_safety_factor": 1.000001,
+      "render_operation": "bpy.ops.render.render(write_still=True)",
+      "path": "output/review/highpoly-types/marilyn-01/bonsai-camera-front-elevation.png",
+      "sha256": "daa6f28acb3ea6188d0675d5f2c1403005db312c890ff3edcaf71aaf183dd798",
+      "resolution": [
+        1400,
+        1000
+      ]
+    },
+    {
+      "view": "side",
+      "camera": "BAXTER_MARILYN_01_CAM_SIDE",
+      "camera_type": "ORTHO",
+      "camera_axis_basis": "IFC product local axes",
+      "camera_ortho_scale_m": 1.603229761124,
+      "projected_width_m": 1.01391223927,
+      "projected_height_m": 0.970477082925,
+      "image_aspect": 1.4,
+      "framing_margin_factor": 1.18,
+      "ortho_scale_quantization_safety_factor": 1.000001,
+      "render_operation": "bpy.ops.render.render(write_still=True)",
+      "path": "output/review/highpoly-types/marilyn-01/bonsai-camera-side-elevation.png",
+      "sha256": "caba91f28cd33c49e8529634ca0bef5c9a4bf9a4fcbc41946f858e6c5a997595",
+      "resolution": [
+        1400,
+        1000
+      ]
+    },
+    {
+      "view": "iso",
+      "camera": "BAXTER_MARILYN_01_CAM_ISO",
+      "camera_type": "ORTHO",
+      "camera_axis_basis": "IFC product local axes",
+      "camera_ortho_scale_m": 2.584431648254,
+      "projected_width_m": 1.33720057698,
+      "projected_height_m": 1.564424395561,
+      "image_aspect": 1.4,
+      "framing_margin_factor": 1.18,
+      "ortho_scale_quantization_safety_factor": 1.000001,
+      "render_operation": "bpy.ops.render.render(write_still=True)",
+      "path": "output/review/highpoly-types/marilyn-01/bonsai-camera-iso.png",
+      "sha256": "f6ca40c8c9b7783165e0c51574d4978c7af04618697e2769aaeb6838dc2c6a80",
+      "resolution": [
+        1400,
+        1000
+      ]
+    }
+  ],
+  "pass": true
+}
