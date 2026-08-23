@@ -1,0 +1,175 @@
+{
+  "schema_version": 1,
+  "generated_at": "2026-08-23T00:57:20.648894+00:00",
+  "generator": "pipeline/scripts/cha02_review.py",
+  "formal_ifc": "2504 GBTB Yanlord Zhuhai.ifc",
+  "formal_ifc_sha256": "7a50b87e8f48a7c2bfbaa9f1dabdfca7155fa684b2325c66aa1ae15c8ab0a25c",
+  "formal_ifc_sha256_after_generation": "7a50b87e8f48a7c2bfbaa9f1dabdfca7155fa684b2325c66aa1ae15c8ab0a25c",
+  "formal_ifc_bytes_unchanged": true,
+  "profile_register": "output/review/highpoly-types/cha02/profile.json",
+  "profile_register_sha256": "7868982a6b223a3fc3c9914df6faf559043d828ad80f79aadb805227f2f0490a",
+  "profile_key": "cha02",
+  "display_name": "RODA Orson 002 director lounge chair / project CHA02",
+  "ifc_type_name": "CHA02",
+  "ifc_type_description": "RODA Orson 2",
+  "article_number": "RODA ORSON 002 / CHA02",
+  "representative_global_id": "3YoxxZCgbF3Ap7gztAKkcs",
+  "registered_instance_global_ids": [
+    "1GkE2YZ316gQw10Ev5DZOp",
+    "3YoxxZCgbF3Ap7gztAKkcs"
+  ],
+  "geometry_product_count": 1,
+  "whole_model_render": false,
+  "mesh_vertex_count": 8644,
+  "mesh_face_count": 16997,
+  "bounds_mm": {
+    "minimum": [
+      -329.625031,
+      -302.377228,
+      -0.0
+    ],
+    "maximum": [
+      329.625061,
+      304.464844,
+      777.0
+    ],
+    "size": [
+      659.250092,
+      606.842072,
+      777.0
+    ]
+  },
+  "source_kind": "geometry_derived_simplified_proxy",
+  "source_label_zh": "基于原始高模几何生成的简化图纸表达",
+  "drawing_source": {
+    "source_kind": "geometry_derived_simplified_proxy",
+    "source_label_zh": "基于原始高模几何生成的简化图纸表达",
+    "source_label_en": "simplified drawing representation derived from the original high-poly geometry",
+    "official_cad_used": false,
+    "third_party_cad_used": false,
+    "official_source_access_record": "output/review/highpoly-types/cha02/official-source/source-access-record.json",
+    "official_source_access_record_sha256": "8ef3ffc6db97d169a47d070976b4e989b3a39275e5177530963c15e621ff7cfd",
+    "official_product_cad_status": "reserved_area_authentication_required_not_acquired"
+  },
+  "official_reference": {
+    "source_id": "RODA-ORSON-002-CHA02-OFFICIAL-IDENTITY-001",
+    "source_kind": "manufacturer_product_page_and_fact_sheet_identity_only",
+    "manufacturer": "RODA",
+    "family": "Orson",
+    "model": "ORSON 002",
+    "designer": "Gordon Guillaumier",
+    "project_type_code": "CHA02",
+    "official_width_depth_height_mm": [
+      660,
+      600,
+      780
+    ],
+    "scope": "exact RODA ORSON 002 manufacturer identity and dimensions; official 2D/3D downloads require reserved-area authentication and were not acquired; not a project shop drawing and not official CAD geometry",
+    "product_page": "https://www.rodaonline.com/en/collections/orson/",
+    "fact_sheet": "https://www.rodaonline.com/wp-content/uploads/RODA_ORSON_002_director_lounge_chair.pdf",
+    "source_access_record": "output/review/highpoly-types/cha02/official-source/source-access-record.json",
+    "official_2d_3d_status": "reserved_area_authentication_required_not_acquired",
+    "official_cad_used": false
+  },
+  "official_identity_evidence_only": true,
+  "dimension_cross_check": {
+    "official_model_width_depth_height_mm": [
+      660.0,
+      600.0,
+      780.0
+    ],
+    "project_ifc_body_local_xyz_mm": [
+      659.250092,
+      606.842072,
+      777.0
+    ],
+    "semantic_axis_mapping": "local X=official width; local Y=official depth; local Z=official height",
+    "body_minus_official_mm": [
+      -0.749908,
+      6.842072,
+      -3.0
+    ],
+    "maximum_absolute_delta_mm": 6.842072,
+    "status": "exact_model_geometry_consistent_no_scaling_or_fitting",
+    "note": "The exact model identity is mechanically supported by the IFC type description, ORSON 002 style names, characteristic foldable geometry and sub-7 mm dimensional difference. No proxy geometry is scaled to official dimensions."
+  },
+  "official_cad_acquired": false,
+  "official_cad_exact_project_configuration_match": false,
+  "official_cad_used": false,
+  "third_party_cad_used": false,
+  "blue_line_present": false,
+  "official_source_access_record": "output/review/highpoly-types/cha02/official-source/source-access-record.json",
+  "official_source_access_record_sha256": "8ef3ffc6db97d169a47d070976b4e989b3a39275e5177530963c15e621ff7cfd",
+  "candidate_representations": "output/review/highpoly-types/cha02/candidate-representations.json",
+  "candidate_representations_sha256": "c984dfced989c4ecc0367a87c04c16cf415815995e7668424a6b9cdcd91ab345",
+  "review_status": "visual_review_pending",
+  "approved_for_drawing_ifc": false,
+  "derived_ifc_write_allowed": false,
+  "formal_ifc_write": "not performed",
+  "views": [
+    {
+      "view": "plan",
+      "svg": "output/review/highpoly-types/cha02/plan.svg",
+      "svg_sha256": "7e1b73b8d2c0a5cff9b2eb764e19fda51476b72af092d891795a1b7a61e03650",
+      "projection_axes": [
+        0,
+        1
+      ],
+      "raw_edge_count": 25638,
+      "displayed_raw_edge_count": 987,
+      "silhouette_path_count": 10,
+      "drawing_line_source_kind": "geometry_derived_simplified_proxy",
+      "drawing_line_source_label_zh": "基于原始高模几何生成的简化图纸表达",
+      "official_cad_path_count": 0,
+      "blue_line_present": false
+    },
+    {
+      "view": "front",
+      "svg": "output/review/highpoly-types/cha02/front.svg",
+      "svg_sha256": "4761e530f83e3c7eb935f582d8ca94193488ae940fd72b8e3cfb12d0c40fdcb6",
+      "projection_axes": [
+        0,
+        2
+      ],
+      "raw_edge_count": 25638,
+      "displayed_raw_edge_count": 987,
+      "silhouette_path_count": 34,
+      "drawing_line_source_kind": "geometry_derived_simplified_proxy",
+      "drawing_line_source_label_zh": "基于原始高模几何生成的简化图纸表达",
+      "official_cad_path_count": 0,
+      "blue_line_present": false
+    },
+    {
+      "view": "side",
+      "svg": "output/review/highpoly-types/cha02/side.svg",
+      "svg_sha256": "92302dfb9950007ef927540704f47bc342bf42b4f6e7175aa5b7ecada94079c8",
+      "projection_axes": [
+        1,
+        2
+      ],
+      "raw_edge_count": 25638,
+      "displayed_raw_edge_count": 987,
+      "silhouette_path_count": 7,
+      "drawing_line_source_kind": "geometry_derived_simplified_proxy",
+      "drawing_line_source_label_zh": "基于原始高模几何生成的简化图纸表达",
+      "official_cad_path_count": 0,
+      "blue_line_present": false
+    }
+  ],
+  "pass": true,
+  "project_context": {
+    "manifest": "output/review/highpoly-types/cha02/project-context-manifest.json",
+    "manifest_sha256": "5c1b3d98657d8ef86c74b8f7d18ebd999626881cf662b912452ab5ac08d903a9",
+    "walls_and_surrounding_project_elements_retained": true,
+    "overlay_top_layer_with_white_mask": true,
+    "pass": true
+  },
+  "bonsai_review": {
+    "manifest": "output/review/highpoly-types/cha02/bonsai-review-manifest.json",
+    "manifest_sha256": "dbcc1a45a125c2f98ad4479f809c978ad682a9f16270a17edad2f2d84f0527ff",
+    "mode": "actual_bonsai_ifc_body_camera_render",
+    "saved_active_representation": "Body",
+    "saved_camera_count": 4,
+    "pass": true
+  }
+}

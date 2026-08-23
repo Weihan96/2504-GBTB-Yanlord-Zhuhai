@@ -1,0 +1,81 @@
+{
+  "schema_version": 1,
+  "manufacturer": "RODA",
+  "family": "Orson",
+  "model": "ORSON 002",
+  "product_name": "Director Lounge Chair (foldable)",
+  "designer": "Gordon Guillaumier",
+  "project_type_code": "CHA02",
+  "project_ifc_type_description": "RODA Orson 2",
+  "identity_status": "exact_official_model_confirmed_by_type_description_geometry_dimensions_and_style_names",
+  "research_date": "2026-08-23",
+  "official_identity_sources": [
+    {
+      "kind": "manufacturer_collection_product_page",
+      "url": "https://www.rodaonline.com/en/collections/orson/",
+      "local_path": "output/review/highpoly-types/cha02/official-source/roda-orson-official-product-page.html",
+      "sha256": "8fd0a4a948e28f1a3391779029dce46d3ed5d92dda100aacfd1f03fd4862e7da",
+      "observation": "RODA identifies ORSON 002 as the foldable director lounge chair by Gordon Guillaumier, with teak structure, Batyline net, dimensions 66 x 60 x 78 cm, seat height 37 cm and arm height 58 cm. The same page advertises collection 2D and 3D drawings only through the reserved area."
+    },
+    {
+      "kind": "manufacturer_fact_sheet",
+      "url": "https://www.rodaonline.com/wp-content/uploads/RODA_ORSON_002_director_lounge_chair.pdf",
+      "local_path": "output/review/highpoly-types/cha02/official-source/RODA_ORSON_002_director_lounge_chair.pdf",
+      "sha256": "50aa1c5007d9ebfbb290ddf14b4278659a6b18762ed49ecce35f44b540c8a7d0",
+      "pdf_pages_visually_checked": [1],
+      "observation": "The current official one-page Fact Sheet visually confirms the foldable lounge-chair form, teak structure, Batyline upholstery, 8 kg weight, 660 x 600 x 780 mm dimensions and Sky fabric option. Its small isometric illustration is identity evidence, not native Plan/Front/Side CAD geometry."
+    },
+    {
+      "kind": "manufacturer_reserved_area_login_page",
+      "url": "https://www.rodaonline.com/en/reserved-area/",
+      "local_path": "output/review/highpoly-types/cha02/official-source/roda-reserved-area.html",
+      "sha256": "6e467a3444d3cbafabe7eb8785c612a70159c6f98bd01f21f44bf672bd31bdf0",
+      "observation": "The official reserved area presents an email/password login form. No account was created and no authenticated download was attempted."
+    }
+  ],
+  "project_ifc_identity_evidence": {
+    "ifc_type_name": "CHA02",
+    "ifc_type_global_id": "25qaYHEgjFGQCX4zZ5PXO5",
+    "ifc_type_description": "RODA Orson 2",
+    "representative_global_id": "3YoxxZCgbF3Ap7gztAKkcs",
+    "registered_instance_global_ids": [
+      "1GkE2YZ316gQw10Ev5DZOp",
+      "3YoxxZCgbF3Ap7gztAKkcs"
+    ],
+    "surface_style_names": [
+      "RODA Orson 002 Metal",
+      "RODA Orson 002 Weather Resistant White Coloured Teak",
+      "RODA Orson 002 Batyline Sky"
+    ],
+    "note": "The IFC style names provide project-model configuration evidence. The official Fact Sheet lists teak and Sky Batyline as valid materials, but the style names are not a purchase order or manufacturer shop drawing."
+  },
+  "official_product_cad": {
+    "published_access_surface": "RODA reserved area",
+    "product_page_advertises_2d_drawings": true,
+    "product_page_advertises_3d_drawings": true,
+    "authentication_required": true,
+    "acquired": false,
+    "exact_project_configuration_match": false,
+    "local_cad_files": [],
+    "third_party_cad_used": false,
+    "reason": "RODA routes the collection 2D and 3D downloads to an authenticated reserved area. No manufacturer account was created, and publicly visible third-party DWG files were not substituted."
+  },
+  "dimension_cross_check": {
+    "official_model_width_depth_height_mm": [660.0, 600.0, 780.0],
+    "project_ifc_body_local_xyz_mm": [659.250092, 606.842072, 777.0],
+    "semantic_axis_mapping": "local X=official width; local Y=official depth; local Z=official height",
+    "body_minus_official_mm": [-0.749908, 6.842072, -3.0],
+    "maximum_absolute_delta_mm": 6.842072,
+    "status": "exact_model_geometry_consistent_no_scaling_or_fitting",
+    "note": "The exact model identity is mechanically supported by the IFC type description, ORSON 002 style names, characteristic foldable geometry and sub-7 mm dimensional difference. No proxy geometry is scaled to official dimensions."
+  },
+  "drawing_geometry_source": {
+    "source_kind": "geometry_derived_simplified_proxy",
+    "source_label_zh": "基于原始高模几何生成的简化图纸表达",
+    "source_label_en": "simplified drawing representation derived from the original high-poly geometry",
+    "official_cad_used": false,
+    "third_party_cad_used": false
+  },
+  "scope": "exact RODA ORSON 002 manufacturer identity and dimensions; official 2D/3D downloads require reserved-area authentication and were not acquired; not a project shop drawing and not official CAD geometry",
+  "pass": true
+}

@@ -1,0 +1,137 @@
+{
+  "schema_version": 1,
+  "generator": "pipeline/scripts/render_cha02_bonsai_review.py",
+  "mode": "actual_bonsai_ifc_body_camera_render",
+  "representative_global_id": "3YoxxZCgbF3Ap7gztAKkcs",
+  "geometry_product_count": 1,
+  "whole_model_render": false,
+  "formal_ifc": "2504 GBTB Yanlord Zhuhai.ifc",
+  "formal_ifc_sha256": "7a50b87e8f48a7c2bfbaa9f1dabdfca7155fa684b2325c66aa1ae15c8ab0a25c",
+  "formal_ifc_bytes_unchanged": true,
+  "isolated_ifc": "output/review/highpoly-types/cha02/RODA-Orson-002-CHA02-bonsai-isolated.ifc",
+  "isolated_ifc_sha256": "f45fc2ae2bf24800d687fa9af1f3fa99170828613a14c57b8ef1b5e1e5522335",
+  "bonsai_session": {
+    "path": "output/review/highpoly-types/cha02/RODA-Orson-002-CHA02-bonsai-review.blend",
+    "sha256": "3c971e0f81a9288f890e70be8c43060fc43e0959d6d33aab32f12ba94d0c813c",
+    "saved_active_representation": "Body",
+    "saved_camera_count": 4,
+    "saved_camera_names": [
+      "RODA_ORSON_002_CHA02_CAM_FRONT",
+      "RODA_ORSON_002_CHA02_CAM_ISO",
+      "RODA_ORSON_002_CHA02_CAM_PLAN",
+      "RODA_ORSON_002_CHA02_CAM_SIDE"
+    ],
+    "ifc_definition_id": 17157,
+    "ifc_context_identifier": "Body",
+    "object_name": "IfcFurniture/Furniture",
+    "object_bounds_m": {
+      "minimum": [
+        0.49572891,
+        3.720375061,
+        0.01
+      ],
+      "maximum": [
+        1.102571011,
+        4.37962532,
+        0.787
+      ]
+    },
+    "local_axis_extents_m": {
+      "x": 0.659250305,
+      "y": 0.60684211,
+      "z": 0.77700001
+    },
+    "local_axes_world": [
+      [
+        7.5e-08,
+        1.0,
+        0.0
+      ],
+      [
+        -1.0,
+        7.5e-08,
+        0.0
+      ],
+      [
+        0.0,
+        0.0,
+        1.0
+      ]
+    ]
+  },
+  "renders": [
+    {
+      "view": "plan",
+      "camera": "RODA_ORSON_002_CHA02_CAM_PLAN",
+      "camera_type": "ORTHO",
+      "camera_axis_basis": "IFC product local axes",
+      "camera_ortho_scale_m": 1.089081407,
+      "projected_width_m": 0.60684216,
+      "projected_height_m": 0.659250259,
+      "image_aspect": 1.4,
+      "framing_margin_factor": 1.18,
+      "render_operation": "bpy.ops.render.render(write_still=True)",
+      "path": "output/review/highpoly-types/cha02/bonsai-camera-plan.png",
+      "sha256": "cfbbbc3829019e5974e75be6d6d2e7a7f240c2ba8f0e98f73560a3c2ff0bfe81",
+      "resolution": [
+        1400,
+        1000
+      ]
+    },
+    {
+      "view": "front",
+      "camera": "RODA_ORSON_002_CHA02_CAM_FRONT",
+      "camera_type": "ORTHO",
+      "camera_axis_basis": "IFC product local axes",
+      "camera_ortho_scale_m": 1.283604145,
+      "projected_width_m": 0.659250286,
+      "projected_height_m": 0.777000109,
+      "image_aspect": 1.4,
+      "framing_margin_factor": 1.18,
+      "render_operation": "bpy.ops.render.render(write_still=True)",
+      "path": "output/review/highpoly-types/cha02/bonsai-camera-front-elevation.png",
+      "sha256": "39b06d2f0a2016752e3766679bc60f8ee48e3db4e7c206c64ee090f055af5de1",
+      "resolution": [
+        1400,
+        1000
+      ]
+    },
+    {
+      "view": "side",
+      "camera": "RODA_ORSON_002_CHA02_CAM_SIDE",
+      "camera_type": "ORTHO",
+      "camera_axis_basis": "IFC product local axes",
+      "camera_ortho_scale_m": 1.283604264,
+      "projected_width_m": 0.606842202,
+      "projected_height_m": 0.777000165,
+      "image_aspect": 1.4,
+      "framing_margin_factor": 1.18,
+      "render_operation": "bpy.ops.render.render(write_still=True)",
+      "path": "output/review/highpoly-types/cha02/bonsai-camera-side-elevation.png",
+      "sha256": "3b052a1886abe9f65af0659f042a1b6f0d5067ca35abaa9b6afe3f5e31e2291d",
+      "resolution": [
+        1400,
+        1000
+      ]
+    },
+    {
+      "view": "iso",
+      "camera": "RODA_ORSON_002_CHA02_CAM_ISO",
+      "camera_type": "ORTHO",
+      "camera_axis_basis": "IFC product local axes",
+      "camera_ortho_scale_m": 1.901944041,
+      "projected_width_m": 0.89526264,
+      "projected_height_m": 1.151297867,
+      "image_aspect": 1.4,
+      "framing_margin_factor": 1.18,
+      "render_operation": "bpy.ops.render.render(write_still=True)",
+      "path": "output/review/highpoly-types/cha02/bonsai-camera-iso.png",
+      "sha256": "33e2ba217ff6369adf89040e07f7e6b89d93c3f6419b56b8612907a20aebc20f",
+      "resolution": [
+        1400,
+        1000
+      ]
+    }
+  ],
+  "pass": true
+}
