@@ -1,0 +1,65 @@
+{
+  "schema_version": 1,
+  "checked_on": "2026-08-23",
+  "last_rechecked_on": "2026-08-23",
+  "manufacturer": "Poliform",
+  "family": "Hima",
+  "ifc_type_name": "HIMA01",
+  "ifc_type_description": "Poliform HIMA 3 elements 1m",
+  "official_product_page": "https://www.poliform.it/en/products/hima/",
+  "official_product_page_evidence": {
+    "local_path": "output/review/highpoly-types/hima01/official-source/official-product-page-evidence.json",
+    "sha256": "b97e6d7023c3318dc99fedd1d63561e6a8f48d5b14f0e1797f45271796ec8064",
+    "capture_kind": "timestamped official-page observations and access-attempt record"
+  },
+  "official_technical_sheet": "https://www.poliform.it/assets/pdf/201250-hima-poliform-en-us.pdf",
+  "official_technical_sheet_legacy": "https://www.poliform.it/assets/pdf/200467-hima-poliform-en.pdf",
+  "official_product_identity": {
+    "tipology": "Screen",
+    "designer": "Jean-Marie Massaud",
+    "design_year": 2022,
+    "structure": "Painted metal and rope",
+    "published_configurations": "3-4 elements, 5 elements, 6 elements"
+  },
+  "official_2d_dwg": {
+    "published_on_product_page": true,
+    "published_label": "2D (DWG)",
+    "published_size": "2 MB",
+    "acquired": false,
+    "local_path": null,
+    "sha256": null,
+    "access_status": "published_registration_form_and_captcha_required_not_acquired",
+    "access_note": "The official product page publishes a 2D DWG download, but the resource requires the manufacturer's personal-data registration form and CAPTCHA. No personal data was entered, no form was submitted and Cloudflare verification was not bypassed.",
+    "public_exact_native_dwg_url_located": false,
+    "download_link_behavior": "same-page registration modal; no public native-DWG asset URL exposed"
+  },
+  "official_technical_sheet_archive": {
+    "acquired": false,
+    "local_path": null,
+    "sha256": null,
+    "access_status": "official_url_verified_but_cloudflare_protected_for_direct_archive",
+    "direct_https_status": 403
+  },
+  "official_dimension_cross_check": {
+    "official_publication": "https://www.poliform.it/assets/2022/05/Poliform_News_2022-2.pdf",
+    "technical_data_pages": [126, 127],
+    "published_product_configurations": "folding screens from three to six elements",
+    "published_nominal_height_mm": 1000,
+    "project_ifc_type_description": "Poliform HIMA 3 elements 1m",
+    "project_ifc_body_height_mm": 999,
+    "height_absolute_delta_mm": 1,
+    "height_tolerance_mm": 2,
+    "pass": true,
+    "scope": "identity and nominal dimensions only; the publication is not the source of the candidate linework"
+  },
+  "drawing_geometry_source": {
+    "source_kind": "geometry_derived_simplified_proxy",
+    "source_label_zh": "基于原始高模几何生成的简化图纸表达",
+    "source_label_en": "simplified drawing representation derived from the original high-poly geometry",
+    "official_cad_used": false,
+    "third_party_cad_used": false
+  },
+  "scope": "manufacturer family identity and nominal dimensions only; not official CAD geometry and not a project shop drawing",
+  "review_required": true,
+  "pass": true
+}

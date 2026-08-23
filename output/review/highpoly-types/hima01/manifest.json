@@ -1,0 +1,231 @@
+{
+  "schema_version": 1,
+  "generated_at": "2026-08-23T12:44:19.265196+00:00",
+  "generator": "pipeline/scripts/hima01_review.py",
+  "formal_ifc": "2504 GBTB Yanlord Zhuhai.ifc",
+  "formal_ifc_sha256": "7a50b87e8f48a7c2bfbaa9f1dabdfca7155fa684b2325c66aa1ae15c8ab0a25c",
+  "formal_ifc_sha256_after_generation": "7a50b87e8f48a7c2bfbaa9f1dabdfca7155fa684b2325c66aa1ae15c8ab0a25c",
+  "formal_ifc_bytes_unchanged": true,
+  "profile_register": "output/review/highpoly-types/hima01/profile.json",
+  "profile_register_sha256": "34fef198719831d83f0ed89bca89ca1cef38d8f3a28116c58403f023fc516376",
+  "profile_key": "hima01",
+  "display_name": "Poliform Hima screen / HIMA01 three elements 1000 mm",
+  "ifc_type_name": "HIMA01",
+  "ifc_type_description": "Poliform HIMA 3 elements 1m",
+  "representative_global_id": "2xmcLzu1rDTeMzRuNxPDyE",
+  "registered_instance_global_ids": [
+    "2xmcLzu1rDTeMzRuNxPDyE"
+  ],
+  "geometry_product_count": 1,
+  "whole_model_render": false,
+  "formal_ifc_write": false,
+  "source_kind": "geometry_derived_simplified_proxy",
+  "source_label_zh": "基于原始高模几何生成的简化图纸表达",
+  "source_label_en": "simplified drawing representation derived from the original high-poly geometry",
+  "official_cad_used": false,
+  "third_party_cad_used": false,
+  "blue_line_present": false,
+  "mesh_vertex_count": 61095,
+  "mesh_face_count": 119424,
+  "local_bounds_mm": {
+    "minimum": [
+      -119.60083389282411,
+      -40.741088867189966,
+      -2.0000000009379164
+    ],
+    "maximum": [
+      706.5585289001447,
+      1644.298011779785,
+      997.0
+    ]
+  },
+  "identity_checks": {
+    "ifc_type_description": {
+      "expected": "Poliform HIMA 3 elements 1m",
+      "actual": "Poliform HIMA 3 elements 1m",
+      "pass": true
+    },
+    "screen_element_count": {
+      "method": "connected high-poly frame components with height >950 mm, long horizontal span >700 mm and thickness <40 mm",
+      "expected": 3,
+      "actual": 3,
+      "components": [
+        {
+          "vertex_count": 1805,
+          "minimum_mm": [
+            -73.262879,
+            770.421265,
+            23.0
+          ],
+          "maximum_mm": [
+            -46.402488,
+            1524.578264,
+            986.403076
+          ],
+          "size_mm": [
+            26.860392,
+            754.157,
+            963.403076
+          ],
+          "centre_mm": [
+            -59.832684,
+            1147.499764,
+            504.701538
+          ]
+        },
+        {
+          "vertex_count": 1805,
+          "minimum_mm": [
+            -73.262845,
+            -14.577759,
+            23.0
+          ],
+          "maximum_mm": [
+            -46.402453,
+            739.579102,
+            986.403076
+          ],
+          "size_mm": [
+            26.860392,
+            754.15686,
+            963.403076
+          ],
+          "centre_mm": [
+            -59.832649,
+            362.500671,
+            504.701538
+          ]
+        },
+        {
+          "vertex_count": 1805,
+          "minimum_mm": [
+            -73.761723,
+            1571.099821,
+            23.0
+          ],
+          "maximum_mm": [
+            680.39526,
+            1597.96014,
+            986.403015
+          ],
+          "size_mm": [
+            754.156982,
+            26.860319,
+            963.403015
+          ],
+          "centre_mm": [
+            303.316769,
+            1584.529981,
+            504.701508
+          ]
+        }
+      ],
+      "pass": true
+    },
+    "nominal_height": {
+      "official_nominal_mm": 1000.0,
+      "ifc_body_height_mm": 999.0,
+      "absolute_delta_mm": 1.0,
+      "tolerance_mm": 2.0,
+      "pass": true
+    }
+  },
+  "drawing_source": {
+    "source_kind": "geometry_derived_simplified_proxy",
+    "source_label_zh": "基于原始高模几何生成的简化图纸表达",
+    "source_label_en": "simplified drawing representation derived from the original high-poly geometry",
+    "official_cad_used": false,
+    "third_party_cad_used": false,
+    "official_source_access_record": "output/review/highpoly-types/hima01/official-source/source-access-record.json",
+    "official_source_access_record_sha256": "c440c9217db699ad86dbd6e7d7d9357a798803e307fa0e778855e2dbe8113d0f",
+    "official_product_page_evidence": "output/review/highpoly-types/hima01/official-source/official-product-page-evidence.json",
+    "official_product_page_evidence_sha256": "b97e6d7023c3318dc99fedd1d63561e6a8f48d5b14f0e1797f45271796ec8064",
+    "official_2d_dwg_status": "published_registration_form_and_captcha_required_not_acquired"
+  },
+  "official_reference": {
+    "source_id": "POLIFORM-HIMA-OFFICIAL-IDENTITY-001",
+    "source_kind": "manufacturer_product_page_and_technical_publication_identity_only",
+    "manufacturer": "Poliform",
+    "family": "Hima",
+    "designer": "Jean-Marie Massaud",
+    "design_year": 2022,
+    "scope": "official manufacturer family identity and nominal dimensions, not a project shop drawing and not drawing geometry",
+    "product_page": "https://www.poliform.it/en/products/hima/",
+    "technical_sheet": "https://www.poliform.it/assets/pdf/201250-hima-poliform-en-us.pdf",
+    "technical_sheet_legacy": "https://www.poliform.it/assets/pdf/200467-hima-poliform-en.pdf",
+    "news_2022_technical_publication": "https://www.poliform.it/assets/2022/05/Poliform_News_2022-2.pdf",
+    "source_access_record": "output/review/highpoly-types/hima01/official-source/source-access-record.json",
+    "official_2d_dwg_status": "published_registration_form_and_captcha_required_not_acquired",
+    "official_2d_dwg_used": false
+  },
+  "candidate_representations": "output/review/highpoly-types/hima01/candidate-representations.json",
+  "candidate_representations_sha256": "df93ac07aa4c1170e1d2274ad612733881b145793f232a481cadbe284c362bd9",
+  "views": [
+    {
+      "view": "plan",
+      "svg": "output/review/highpoly-types/hima01/plan.svg",
+      "svg_sha256": "7c05f80b8e3bfcdd00af79c8d5c5f7ac4b0dec5c5415b82cffa356eb53bdbf33",
+      "projection_axes": [
+        0,
+        1
+      ],
+      "raw_edge_count": 180458,
+      "displayed_raw_edge_count": 600,
+      "silhouette_path_count": 8,
+      "drawing_line_source_kind": "geometry_derived_simplified_proxy",
+      "drawing_line_source_label_zh": "基于原始高模几何生成的简化图纸表达",
+      "official_cad_path_count": 0,
+      "blue_line_present": false
+    },
+    {
+      "view": "front",
+      "svg": "output/review/highpoly-types/hima01/front.svg",
+      "svg_sha256": "d95a2d92788b492faa69f369779b00caa2cb7236b35ec0985371f53e886174f9",
+      "projection_axes": [
+        0,
+        2
+      ],
+      "raw_edge_count": 180458,
+      "displayed_raw_edge_count": 600,
+      "silhouette_path_count": 17,
+      "drawing_line_source_kind": "geometry_derived_simplified_proxy",
+      "drawing_line_source_label_zh": "基于原始高模几何生成的简化图纸表达",
+      "official_cad_path_count": 0,
+      "blue_line_present": false
+    },
+    {
+      "view": "side",
+      "svg": "output/review/highpoly-types/hima01/side.svg",
+      "svg_sha256": "5660e0c04c0792df3b9cd2742035dab74f1885e20c6c405fa1dd6580760fc21a",
+      "projection_axes": [
+        1,
+        2
+      ],
+      "raw_edge_count": 180458,
+      "displayed_raw_edge_count": 600,
+      "silhouette_path_count": 27,
+      "drawing_line_source_kind": "geometry_derived_simplified_proxy",
+      "drawing_line_source_label_zh": "基于原始高模几何生成的简化图纸表达",
+      "official_cad_path_count": 0,
+      "blue_line_present": false
+    }
+  ],
+  "review_status": "visual_review_pending",
+  "approved_for_drawing_ifc": false,
+  "pass": true,
+  "project_context": {
+    "manifest": "output/review/highpoly-types/hima01/project-context-manifest.json",
+    "manifest_sha256": "a1aac040e6722b29ff333cb9f1b094a5ca7c1609525f26ce872e92a1df79b45c",
+    "walls_and_surrounding_project_elements_retained": true,
+    "overlay_top_layer_with_white_mask": true,
+    "pass": true
+  },
+  "bonsai_review": {
+    "manifest": "output/review/highpoly-types/hima01/bonsai-review-manifest.json",
+    "manifest_sha256": "279ab6a31b8d2e986bda0ffe3144c2dc1a0fbebc645241c9a5bdd72fbfe29812",
+    "mode": "actual_bonsai_ifc_body_camera_render",
+    "saved_active_representation": "Body",
+    "saved_camera_count": 4,
+    "pass": true
+  }
+}

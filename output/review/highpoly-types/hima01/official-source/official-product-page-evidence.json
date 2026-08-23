@@ -1,0 +1,92 @@
+{
+  "schema_version": 1,
+  "captured_on": "2026-08-23",
+  "last_rechecked_on": "2026-08-23",
+  "manufacturer": "Poliform",
+  "family": "Hima",
+  "official_product_page": "https://www.poliform.it/en/products/hima/",
+  "official_product_page_observations": {
+    "identity": {
+      "tipology": "Screen",
+      "designer": "Jean-Marie Massaud",
+      "design_year": 2022,
+      "structure": "Painted metal and rope",
+      "published_configurations": ["3-4 elements", "5 elements", "6 elements"]
+    },
+    "download_listing": {
+      "label": "2D (DWG)",
+      "published_size": "2 MB",
+      "listed_on_official_page": true,
+      "link_behavior_observed": "same-page registration modal; no public native-DWG asset URL exposed"
+    },
+    "download_access_form": {
+      "heading": "SUBSCRIBE TO DOWNLOAD POLIFORM FILES",
+      "access_period_statement": "Enter the requested data and download all our files for 30 days",
+      "required_personal_data_fields_observed": [
+        "name", "surname", "email", "user type", "country", "city", "postal code",
+        "privacy policy consent", "CAPTCHA"
+      ],
+      "submitted": false,
+      "personal_data_entered": false,
+      "captcha_bypassed": false
+    }
+  },
+  "official_technical_publications": [
+    {
+      "url": "https://www.poliform.it/assets/pdf/201250-hima-poliform-en-us.pdf",
+      "observed_page_count": 4,
+      "identity_observation": "Current official US technical sheet: Hima by Jean-Marie Massaud, 2022; screen; painted metal and rope; dimensions grouped as 3-4, 5 and 6 elements.",
+      "local_archive_acquired": false,
+      "direct_https_status": 403,
+      "access_note": "Public search indexing verified the official PDF contents, while direct archival retrieval returned the manufacturer's Cloudflare challenge."
+    },
+    {
+      "url": "https://www.poliform.it/assets/pdf/200467-hima-poliform-en.pdf",
+      "observed_page_count": 4,
+      "identity_observation": "Hima by Jean-Marie Massaud, 2022; screen; painted metal and rope; dimensions grouped as 3-4, 5 and 6 elements.",
+      "local_archive_acquired": false,
+      "direct_https_status": 403
+    },
+    {
+      "url": "https://www.poliform.it/assets/2022/05/Poliform_News_2022-2.pdf",
+      "technical_data_pages": [126, 127],
+      "identity_observation": "Official Hima technical data publishes folding screens from three to six elements and a 1000 mm height option.",
+      "local_archive_acquired": false
+    }
+  ],
+  "retrieval_attempts": [
+    {
+      "method": "official page browser/index inspection",
+      "result": "product identity, 2D DWG listing and registration form requirements verified"
+    },
+    {
+      "method": "direct HTTPS retrieval of the official product page and technical sheet",
+      "result": "HTTP 403 Cloudflare challenge; no verification bypass attempted"
+    },
+    {
+      "method": "public search for an exact official Hima native-DWG asset URL",
+      "result": "no public official native-DWG URL located"
+    },
+    {
+      "method": "current official page link inspection",
+      "result": "the 2D DWG item resolves to the same-page download modal rather than a native-DWG file URL"
+    },
+    {
+      "method": "direct HTTPS retrieval with a standard browser user agent",
+      "targets": [
+        "https://www.poliform.it/en/products/hima/?action=download",
+        "https://www.poliform.it/assets/pdf/201250-hima-poliform-en-us.pdf",
+        "https://www.poliform.it/assets/pdf/200467-hima-poliform-en.pdf"
+      ],
+      "result": "all three requests returned HTTP 403 Cloudflare challenge pages; no challenge bypass attempted"
+    }
+  ],
+  "drawing_geometry_conclusion": {
+    "official_native_dwg_acquired": false,
+    "official_native_dwg_used": false,
+    "third_party_cad_used": false,
+    "source_kind": "geometry_derived_simplified_proxy",
+    "source_label_zh": "基于原始高模几何生成的简化图纸表达"
+  },
+  "scope": "official manufacturer identity, published download availability and nominal-dimension evidence only; not official CAD geometry and not a project shop drawing"
+}

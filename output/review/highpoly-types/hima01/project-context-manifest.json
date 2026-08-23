@@ -1,0 +1,175 @@
+{
+  "schema_version": 1,
+  "generator": "pipeline/scripts/render_hima01_project_context.py",
+  "source_kind": "geometry_derived_simplified_proxy",
+  "source_label_zh": "基于原始高模几何生成的简化图纸表达",
+  "official_cad_used": false,
+  "third_party_cad_used": false,
+  "project_context_retained": true,
+  "walls_and_surrounding_project_elements_retained": true,
+  "overlay_top_layer_with_white_mask": true,
+  "blue_line_present": false,
+  "project_scale_svg_units_per_mm": 0.02,
+  "views": [
+    {
+      "view": "plan",
+      "candidate_view": "plan",
+      "source": "drawings/Furniture Plan.svg",
+      "output": "output/review/highpoly-types/hima01/project-context-furniture-plan.svg",
+      "output_sha256": "05ed63f910d39b035683fc5e94ead8d05b2b55a4d07c0749019d9f5a4a0ccd42",
+      "review_crop": "output/review/highpoly-types/hima01/project-context-furniture-plan-review.svg",
+      "review_crop_sha256": "42b31e2e2f416db071ebc6b2269bda3ddd723ad1ea58b0c768e159688e78e058",
+      "review_preview": "output/review/highpoly-types/hima01/project-context-furniture-plan-review-preview.png",
+      "review_preview_sha256": "1b637393584f169c63510dbb5618f1d31548bd40aadd8e66a48036a89abe4ad9",
+      "overlay": {
+        "ifc_guid": "2xmcLzu1rDTeMzRuNxPDyE",
+        "source_kind": "geometry_derived_simplified_proxy",
+        "source_label_zh": "基于原始高模几何生成的简化图纸表达",
+        "official_cad_used": false,
+        "third_party_cad_used": false,
+        "path_count": 8,
+        "fit": {
+          "rotate_quarter_turns": 0,
+          "alignment_mode": "minimum",
+          "flip_projected_y": true,
+          "scale_svg_units_per_mm": 0.02,
+          "target_bbox": [
+            [
+              70.367984,
+              224.074037
+            ],
+            [
+              86.891171,
+              257.706096
+            ]
+          ],
+          "proxy_bbox": [
+            [
+              70.367984,
+              224.011259
+            ],
+            [
+              86.885226,
+              257.706096
+            ]
+          ],
+          "bbox_absolute_delta_svg_units": [
+            0.005944,
+            0.062778
+          ],
+          "bbox_tolerance_svg_units": 0.08,
+          "uniform_scale_preserved": true,
+          "transformation_mode": "axis_swap_rigid_reflection_and_translation_only",
+          "pass": true
+        }
+      }
+    },
+    {
+      "view": "front",
+      "candidate_view": "front",
+      "source": "drawings/elevations/native/EL-05-14-R09-PY.svg",
+      "output": "output/review/highpoly-types/hima01/project-context-front-elevation.svg",
+      "output_sha256": "05ac317b5aa458a9a42ad7d9f873eaab025aa53eea791bb7e11c28358b403f71",
+      "review_crop": "output/review/highpoly-types/hima01/project-context-front-elevation-review.svg",
+      "review_crop_sha256": "c17c7d054d9dac762fa782ad99b6e2015e5c2092594e2c2f0c90b587b79ac046",
+      "review_preview": "output/review/highpoly-types/hima01/project-context-front-elevation-review-preview.png",
+      "review_preview_sha256": "0a9ec27d2ad959c6ec4cd97f27b494300011b41c1bf61ce87cf46de6c5eaf264",
+      "overlay": {
+        "ifc_guid": "2xmcLzu1rDTeMzRuNxPDyE",
+        "source_kind": "geometry_derived_simplified_proxy",
+        "source_label_zh": "基于原始高模几何生成的简化图纸表达",
+        "official_cad_used": false,
+        "third_party_cad_used": false,
+        "path_count": 17,
+        "fit": {
+          "rotate_quarter_turns": 0,
+          "alignment_mode": "minimum",
+          "flip_projected_y": true,
+          "scale_svg_units_per_mm": 0.02,
+          "target_bbox": [
+            [
+              20.363846,
+              31.831527
+            ],
+            [
+              36.887033,
+              51.811526
+            ]
+          ],
+          "proxy_bbox": [
+            [
+              20.363846,
+              31.836802
+            ],
+            [
+              36.882592,
+              51.811526
+            ]
+          ],
+          "bbox_absolute_delta_svg_units": [
+            0.004441,
+            0.005276
+          ],
+          "bbox_tolerance_svg_units": 0.08,
+          "uniform_scale_preserved": true,
+          "transformation_mode": "axis_swap_rigid_reflection_and_translation_only",
+          "pass": true
+        }
+      }
+    },
+    {
+      "view": "side",
+      "candidate_view": "side",
+      "source": "drawings/elevations/native/EL-05-17-R09-NX.svg",
+      "output": "output/review/highpoly-types/hima01/project-context-side-elevation.svg",
+      "output_sha256": "d8fc2b1e51a943c9d56ce36a99af67db7e9d4a8de96ed93e1d9143721cf13362",
+      "review_crop": "output/review/highpoly-types/hima01/project-context-side-elevation-review.svg",
+      "review_crop_sha256": "f4bcee32e46bfbbd1ca570263b22e0f167160dfe6fc3fd759604073b69b511ac",
+      "review_preview": "output/review/highpoly-types/hima01/project-context-side-elevation-review-preview.png",
+      "review_preview_sha256": "f0afc84977e265d1bcb4cce2ecc6d1eca70af5da1329cba04697d44a97864466",
+      "overlay": {
+        "ifc_guid": "2xmcLzu1rDTeMzRuNxPDyE",
+        "source_kind": "geometry_derived_simplified_proxy",
+        "source_label_zh": "基于原始高模几何生成的简化图纸表达",
+        "official_cad_used": false,
+        "third_party_cad_used": false,
+        "path_count": 27,
+        "fit": {
+          "rotate_quarter_turns": 0,
+          "alignment_mode": "minimum",
+          "flip_projected_y": true,
+          "scale_svg_units_per_mm": 0.02,
+          "target_bbox": [
+            [
+              13.857379,
+              31.818824
+            ],
+            [
+              47.55816,
+              51.798824
+            ]
+          ],
+          "proxy_bbox": [
+            [
+              13.857379,
+              31.818824
+            ],
+            [
+              47.557529,
+              51.798824
+            ]
+          ],
+          "bbox_absolute_delta_svg_units": [
+            0.000632,
+            0.0
+          ],
+          "bbox_tolerance_svg_units": 0.08,
+          "uniform_scale_preserved": true,
+          "transformation_mode": "axis_swap_rigid_reflection_and_translation_only",
+          "pass": true
+        }
+      }
+    }
+  ],
+  "pass": true
+}

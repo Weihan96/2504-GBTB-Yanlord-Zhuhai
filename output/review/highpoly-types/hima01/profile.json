@@ -1,0 +1,44 @@
+{
+  "schema_version": 1,
+  "formal_ifc_sha256": "7a50b87e8f48a7c2bfbaa9f1dabdfca7155fa684b2325c66aa1ae15c8ab0a25c",
+  "profiles": {
+    "hima01": {
+      "display_name": "Poliform Hima screen / HIMA01 three elements 1000 mm",
+      "ifc_type_name": "HIMA01",
+      "representative_global_id": "2xmcLzu1rDTeMzRuNxPDyE",
+      "expected_instance_global_ids": ["2xmcLzu1rDTeMzRuNxPDyE"],
+      "profile_source": "isolated_highpoly_projection; official_2d_dwg_published_but_registration_form_required_not_acquired",
+      "silhouette_simplify_mm": 1.0,
+      "semantic_sections": {"plan": [], "front": [], "side": []},
+      "required_semantics": [
+        "three_hinged_screen_elements",
+        "1000_mm_nominal_height",
+        "folded_plan_configuration",
+        "painted_metal_frame_and_woven_rope_extent"
+      ],
+      "drawing_source": {
+        "source_kind": "geometry_derived_simplified_proxy",
+        "source_label_zh": "基于原始高模几何生成的简化图纸表达",
+        "source_label_en": "simplified drawing representation derived from the original high-poly geometry",
+        "official_cad_used": false,
+        "third_party_cad_used": false
+      },
+      "official_reference": {
+        "source_id": "POLIFORM-HIMA-OFFICIAL-IDENTITY-001",
+        "source_kind": "manufacturer_product_page_and_technical_publication_identity_only",
+        "manufacturer": "Poliform",
+        "family": "Hima",
+        "designer": "Jean-Marie Massaud",
+        "design_year": 2022,
+        "scope": "official manufacturer family identity and nominal dimensions, not a project shop drawing and not drawing geometry",
+        "product_page": "https://www.poliform.it/en/products/hima/",
+        "technical_sheet": "https://www.poliform.it/assets/pdf/201250-hima-poliform-en-us.pdf",
+        "technical_sheet_legacy": "https://www.poliform.it/assets/pdf/200467-hima-poliform-en.pdf",
+        "news_2022_technical_publication": "https://www.poliform.it/assets/2022/05/Poliform_News_2022-2.pdf",
+        "source_access_record": "output/review/highpoly-types/hima01/official-source/source-access-record.json",
+        "official_2d_dwg_status": "published_registration_form_and_captcha_required_not_acquired",
+        "official_2d_dwg_used": false
+      }
+    }
+  }
+}

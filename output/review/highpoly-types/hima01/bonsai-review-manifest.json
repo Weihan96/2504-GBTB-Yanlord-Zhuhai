@@ -1,0 +1,141 @@
+{
+  "schema_version": 1,
+  "generator": "pipeline/scripts/render_hima01_bonsai_review.py",
+  "mode": "actual_bonsai_ifc_body_camera_render",
+  "representative_global_id": "2xmcLzu1rDTeMzRuNxPDyE",
+  "geometry_product_count": 1,
+  "whole_model_render": false,
+  "formal_ifc": "2504 GBTB Yanlord Zhuhai.ifc",
+  "formal_ifc_sha256": "7a50b87e8f48a7c2bfbaa9f1dabdfca7155fa684b2325c66aa1ae15c8ab0a25c",
+  "formal_ifc_bytes_unchanged": true,
+  "isolated_ifc": "output/review/highpoly-types/hima01/Poliform-Hima-HIMA01-bonsai-isolated.ifc",
+  "isolated_ifc_sha256": "9ce52f623848cbbf173a45e34ffa7b00ce58919ff9c849fe7fb2163195be501e",
+  "bonsai_session": {
+    "path": "output/review/highpoly-types/hima01/Poliform-Hima-HIMA01-bonsai-review.blend",
+    "sha256": "15a2c70bc0fc2453de7e21c7be117b77636c54423ff8ebe650f9b7fd79d984c0",
+    "saved_active_representation": "Body",
+    "saved_camera_count": 4,
+    "saved_camera_names": [
+      "HIMA01_CAM_FRONT",
+      "HIMA01_CAM_ISO",
+      "HIMA01_CAM_PLAN",
+      "HIMA01_CAM_SIDE"
+    ],
+    "ifc_definition_id": 119598,
+    "ifc_context_identifier": "Body",
+    "object_name": "IfcFurniture/Furniture",
+    "object_bounds_m": {
+      "minimum": [
+        -6.481600761,
+        -2.888741255,
+        0.009
+      ],
+      "maximum": [
+        -5.655441284,
+        -1.203702092,
+        1.008000016
+      ]
+    },
+    "local_axis_extents_m": {
+      "x": 0.826159477,
+      "y": 1.685039282,
+      "z": 0.999000072
+    },
+    "local_axes_world": [
+      [
+        1.0,
+        0.0,
+        0.0
+      ],
+      [
+        0.0,
+        1.0,
+        0.0
+      ],
+      [
+        0.0,
+        0.0,
+        1.0
+      ]
+    ]
+  },
+  "renders": [
+    {
+      "view": "plan",
+      "camera": "HIMA01_CAM_PLAN",
+      "camera_type": "ORTHO",
+      "camera_axis_basis": "IFC product local axes",
+      "camera_ortho_scale_m": 2.783687591553,
+      "projected_width_m": 0.826159477234,
+      "projected_height_m": 1.685039281845,
+      "image_aspect": 1.4,
+      "framing_margin_factor": 1.18,
+      "ortho_scale_quantization_safety_factor": 1.000001,
+      "render_operation": "bpy.ops.render.render(write_still=True)",
+      "path": "output/review/highpoly-types/hima01/bonsai-camera-plan.png",
+      "sha256": "27b56e6fade69122090b7850c067918ee24aa57e6fd7ee3233d48c3ae40238d3",
+      "resolution": [
+        1400,
+        1000
+      ]
+    },
+    {
+      "view": "front",
+      "camera": "HIMA01_CAM_FRONT",
+      "camera_type": "ORTHO",
+      "camera_axis_basis": "IFC product local axes",
+      "camera_ortho_scale_m": 1.650350213051,
+      "projected_width_m": 0.826159477234,
+      "projected_height_m": 0.999000347007,
+      "image_aspect": 1.4,
+      "framing_margin_factor": 1.18,
+      "ortho_scale_quantization_safety_factor": 1.000001,
+      "render_operation": "bpy.ops.render.render(write_still=True)",
+      "path": "output/review/highpoly-types/hima01/bonsai-camera-front-elevation.png",
+      "sha256": "b0b2d8adacc615cb2105a7282cd35a3cf8616290a473269c0fd100ad58a2e8ce",
+      "resolution": [
+        1400,
+        1000
+      ]
+    },
+    {
+      "view": "side",
+      "camera": "HIMA01_CAM_SIDE",
+      "camera_type": "ORTHO",
+      "camera_axis_basis": "IFC product local axes",
+      "camera_ortho_scale_m": 1.98834836483,
+      "projected_width_m": 1.685039317958,
+      "projected_height_m": 0.999000108592,
+      "image_aspect": 1.4,
+      "framing_margin_factor": 1.18,
+      "ortho_scale_quantization_safety_factor": 1.000001,
+      "render_operation": "bpy.ops.render.render(write_still=True)",
+      "path": "output/review/highpoly-types/hima01/bonsai-camera-side-elevation.png",
+      "sha256": "0c9991639bc78d91556c30fc3322f98e4f824bd8bceb9cdea185dbe9ce19e1dc",
+      "resolution": [
+        1400,
+        1000
+      ]
+    },
+    {
+      "view": "iso",
+      "camera": "HIMA01_CAM_ISO",
+      "camera_type": "ORTHO",
+      "camera_axis_basis": "IFC product local axes",
+      "camera_ortho_scale_m": 3.041124820709,
+      "projected_width_m": 1.775685785509,
+      "projected_height_m": 1.840872704983,
+      "image_aspect": 1.4,
+      "framing_margin_factor": 1.18,
+      "ortho_scale_quantization_safety_factor": 1.000001,
+      "render_operation": "bpy.ops.render.render(write_still=True)",
+      "path": "output/review/highpoly-types/hima01/bonsai-camera-iso.png",
+      "sha256": "d723ff621047824c35ce546f36044747d768c58d00d5f200fac6fcb915f2be77",
+      "resolution": [
+        1400,
+        1000
+      ]
+    }
+  ],
+  "pass": true
+}
