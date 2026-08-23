@@ -1,0 +1,143 @@
+{
+  "schema_version": 1,
+  "generator": "pipeline/scripts/render_bst01_bonsai_review.py",
+  "mode": "actual_bonsai_ifc_body_camera_render",
+  "representative_global_id": "3eic1dzkn5heTIn4PhF37v",
+  "geometry_product_count": 1,
+  "whole_model_render": false,
+  "formal_ifc": "2504 GBTB Yanlord Zhuhai.ifc",
+  "formal_ifc_sha256": "7a50b87e8f48a7c2bfbaa9f1dabdfca7155fa684b2325c66aa1ae15c8ab0a25c",
+  "formal_ifc_bytes_unchanged": true,
+  "isolated_ifc": "output/review/highpoly-types/bst01/Baxter-Ninfea-BST01-bonsai-isolated.ifc",
+  "isolated_ifc_sha256": "949924b5d395c5f7f0b0f25ceace3ee2bd85bcc6f48c99fca2a496266adfce53",
+  "bonsai_session": {
+    "path": "output/review/highpoly-types/bst01/Baxter-Ninfea-BST01-bonsai-review.blend",
+    "sha256": "6208d13f5d97058696ce506b502465374034fc9586b7eb426ca87861a75b5bc6",
+    "saved_active_representation": "Body",
+    "saved_camera_count": 4,
+    "saved_camera_names": [
+      "BAXTER_NINFEA_BST01_CAM_FRONT",
+      "BAXTER_NINFEA_BST01_CAM_ISO",
+      "BAXTER_NINFEA_BST01_CAM_PLAN",
+      "BAXTER_NINFEA_BST01_CAM_SIDE"
+    ],
+    "ifc_definition_id": 711,
+    "ifc_context_identifier": "Body",
+    "ifc_target_view": "MODEL_VIEW",
+    "front_camera_local_y_sign": -1.0,
+    "object_name": "IfcFurniture/Furniture",
+    "object_bounds_m": {
+      "minimum": [
+        -6.296129704,
+        -1.675997615,
+        0.01
+      ],
+      "maximum": [
+        -5.897097588,
+        -1.276966691,
+        0.459999979
+      ]
+    },
+    "local_axis_extents_m": {
+      "x": 0.399031192,
+      "y": 0.399032623,
+      "z": 0.449999988
+    },
+    "local_axes_world": [
+      [
+        7.5e-08,
+        1.0,
+        0.0
+      ],
+      [
+        -1.0,
+        7.5e-08,
+        0.0
+      ],
+      [
+        0.0,
+        0.0,
+        1.0
+      ]
+    ]
+  },
+  "renders": [
+    {
+      "view": "plan",
+      "camera": "BAXTER_NINFEA_BST01_CAM_PLAN",
+      "camera_type": "ORTHO",
+      "camera_axis_basis": "IFC product local axes",
+      "camera_ortho_scale_m": 0.659200131893,
+      "projected_width_m": 0.399032592773,
+      "projected_height_m": 0.399031162262,
+      "image_aspect": 1.4,
+      "framing_margin_factor": 1.18,
+      "ortho_scale_quantization_safety_factor": 1.000001,
+      "render_operation": "bpy.ops.render.render(write_still=True)",
+      "path": "output/review/highpoly-types/bst01/bonsai-camera-plan.png",
+      "sha256": "f6024d8bb3f1a1e1fce61619ee90996e58d1fb2db31e2e173ebc98146025e88d",
+      "resolution": [
+        1400,
+        1000
+      ]
+    },
+    {
+      "view": "front",
+      "camera": "BAXTER_NINFEA_BST01_CAM_FRONT",
+      "camera_type": "ORTHO",
+      "camera_axis_basis": "IFC product local axes",
+      "camera_ortho_scale_m": 0.743400752544,
+      "projected_width_m": 0.399031192388,
+      "projected_height_m": 0.450000018205,
+      "image_aspect": 1.4,
+      "framing_margin_factor": 1.18,
+      "ortho_scale_quantization_safety_factor": 1.000001,
+      "render_operation": "bpy.ops.render.render(write_still=True)",
+      "path": "output/review/highpoly-types/bst01/bonsai-camera-front-elevation.png",
+      "sha256": "37cb96b6de48cb3da4584b4176e8237c1b33c2490c60bf267d53c54f4911f1ff",
+      "resolution": [
+        1400,
+        1000
+      ]
+    },
+    {
+      "view": "side",
+      "camera": "BAXTER_NINFEA_BST01_CAM_SIDE",
+      "camera_type": "ORTHO",
+      "camera_axis_basis": "IFC product local axes",
+      "camera_ortho_scale_m": 0.743400931358,
+      "projected_width_m": 0.399032720973,
+      "projected_height_m": 0.450000113342,
+      "image_aspect": 1.4,
+      "framing_margin_factor": 1.18,
+      "ortho_scale_quantization_safety_factor": 1.000001,
+      "render_operation": "bpy.ops.render.render(write_still=True)",
+      "path": "output/review/highpoly-types/bst01/bonsai-camera-side-elevation.png",
+      "sha256": "fcd7276fb06937b0c717b458adbc18b55d473e7dab28ad008cbe09d9ff62c05c",
+      "resolution": [
+        1400,
+        1000
+      ]
+    },
+    {
+      "view": "iso",
+      "camera": "BAXTER_NINFEA_BST01_CAM_ISO",
+      "camera_type": "ORTHO",
+      "camera_axis_basis": "IFC product local axes",
+      "camera_ortho_scale_m": 1.145219445229,
+      "projected_width_m": 0.564316276303,
+      "projected_height_m": 0.693231388927,
+      "image_aspect": 1.4,
+      "framing_margin_factor": 1.18,
+      "ortho_scale_quantization_safety_factor": 1.000001,
+      "render_operation": "bpy.ops.render.render(write_still=True)",
+      "path": "output/review/highpoly-types/bst01/bonsai-camera-iso.png",
+      "sha256": "884de949eb35dfbf90f8a2d16d4efdcfe08bf4a1b7250b5becd9dbfc35ca52b5",
+      "resolution": [
+        1400,
+        1000
+      ]
+    }
+  ],
+  "pass": true
+}

@@ -1,0 +1,92 @@
+{
+  "schema_version": 1,
+  "manufacturer": "Baxter",
+  "family": "Ninfea",
+  "designer": "Pietro Russo",
+  "project_ifc_type_name": "BST01",
+  "project_ifc_type_description": "Nifea Comodino diam42xh45",
+  "official_spelling": "Ninfea",
+  "project_description_spelling_note": "The IFC Description spells the family Nifea; the official Baxter family name is Ninfea.",
+  "resolved_variant": "Ninfea bedside-table family, 42 x 42 x 45 cm; opening side unresolved",
+  "research_date": "2026-08-23",
+  "official_identity_sources": [
+    {
+      "kind": "manufacturer_product_page",
+      "url": "https://www.baxter.it/en/products/ninfea-tables-and-coffee-tables",
+      "local_path": "output/review/highpoly-types/bst01/official-source/baxter-ninfea-product-page.html",
+      "sha256": "1884881ba842d3c6cb71f0b844df39baeefc71094700aca8071f07b9d7234d17",
+      "identity_observation": "The official page identifies Ninfea by Pietro Russo and publishes right-opening and left-opening bedside tables, both 42 x 42 x 45 cm."
+    },
+    {
+      "kind": "manufacturer_vector_technical_sheet",
+      "url": "https://productsbook.baxter.it/product-pdf/Ninfea_tavoli-e-tavolini_TechnicalSheet.pdf?code=NINF&kind=indoor&lang=eng&sector=tavoli-e-tavolini",
+      "local_path": "output/review/highpoly-types/bst01/official-source/Baxter_Ninfea_TechnicalSheet.pdf",
+      "sha256": "6cbc56ff5f000e351930a2684a3de62411428a05c5db1d5f8888fb7910a713ec",
+      "page": 7,
+      "preview_path": "output/review/highpoly-types/bst01/official-source/Baxter_Ninfea_TechnicalSheet-page-7.png",
+      "preview_sha256": "56f81875af5ced777f5872d07e64b1bfcc3a0ac8071398ad249b8f9ea3518d3c",
+      "required_text_found": ["Bedside table with r opening.", "Bedside table with l opening.", "42", "42", "45", "cm"],
+      "visual_check": "Rendered page 7 was visually inspected. It publishes separate right- and left-opening bedside-table diagrams and the shared 42 x 42 x 45 cm nominal dimensions."
+    },
+    {
+      "kind": "manufacturer_public_measurement_svg_right_opening",
+      "url": "https://productsbook.baxter.it/models/measurements/NINFCLE40D.svg",
+      "local_path": "output/review/highpoly-types/bst01/official-source/NINFCLE40D-right-opening.svg",
+      "sha256": "54a5ad91dd5189ffac6cdda50e344d2952667d4124bef115bb3d86ba8bc74ac7",
+      "preview_path": "output/review/highpoly-types/bst01/official-source/NINFCLE40D-right-opening-preview.png",
+      "preview_sha256": "f1abdddbc3504ab4401ad9b22b28cf29050ca0db719f4640f005795861abe5c3",
+      "vector_object_audit": {"path_count": 507, "use_count": 66, "group_count": 57},
+      "visual_check": "The official public SVG was visually inspected and is explicitly labelled dx/r for the right-opening variant."
+    },
+    {
+      "kind": "manufacturer_public_measurement_svg_left_opening",
+      "url": "https://productsbook.baxter.it/models/measurements/NINFCLE40S.svg",
+      "local_path": "output/review/highpoly-types/bst01/official-source/NINFCLE40S-left-opening.svg",
+      "sha256": "7dcbffd464a51315d3ab46a433ac5842c0311159560e8aaa3e21144a4b59b3a0",
+      "preview_path": "output/review/highpoly-types/bst01/official-source/NINFCLE40S-left-opening-preview.png",
+      "preview_sha256": "6db9b0d64af5bf37f57924d5b1277868e412487f47623d2021ebcae4523534a8",
+      "vector_object_audit": {"path_count": 507, "use_count": 66, "group_count": 57},
+      "visual_check": "The official public SVG was visually inspected and is explicitly labelled sx/l for the left-opening variant."
+    }
+  ],
+  "official_product_cad": {
+    "published_access_surface": "Baxter official product page",
+    "authentication_required": true,
+    "download_label": "For the download of 2D, 3D and BIM models",
+    "acquired": false,
+    "exact_project_configuration_match": false,
+    "project_opening_side_resolved": false,
+    "local_cad_files": [],
+    "official_vector_pdf_archived": true,
+    "official_left_and_right_measurement_svgs_archived": true,
+    "official_vector_evidence_used_as_cad_geometry": false,
+    "reason": "The public manufacturer page, PDF and both measurement SVGs establish the exact family and nominal dimensions. The project IFC type does not record the opening side, and native 2D/3D/BIM requires Baxter login; no variant was selected or substituted as official CAD geometry."
+  },
+  "dimension_cross_check": {
+    "official_variant_overall_mm": [420.0, 420.0, 450.0],
+    "project_ifc_body_local_xyz_mm": [399.030914, 399.031906, 450.0],
+    "absolute_delta_mm": [20.969086, 20.968094, 0.0],
+    "tolerance_mm": [25.0, 25.0, 10.0],
+    "pass_by_axis": [true, true, true],
+    "pass": true,
+    "note": "The project MODEL_VIEW Body is about 21 mm smaller than the published 420 mm nominal plan envelope on both axes and exactly 450 mm high. The geometry remains unscaled; the difference is retained as a model-versus-catalogue envelope condition."
+  },
+  "drawing_geometry_source": {
+    "source_kind": "geometry_derived_simplified_proxy",
+    "source_label_zh": "基于原始高模几何生成的简化图纸表达",
+    "source_label_en": "simplified drawing representation derived from the original high-poly geometry",
+    "official_cad_used": false,
+    "official_public_vector_evidence_used_as_cad_geometry": false,
+    "third_party_cad_used": false
+  },
+  "project_identity_evidence": {
+    "furniture_product_register": "pipeline/decisions/furniture-product-register.csv",
+    "equipment_register": "pipeline/decisions/equipment-register.csv",
+    "source_evidence_register": "pipeline/decisions/source-evidence-register.csv",
+    "register_status": "confirmed",
+    "register_confidence": 1.0,
+    "confirmed_variant": "Baxter Ninfea bedside-table family; opening side not recorded"
+  },
+  "scope": "exact Baxter Ninfea bedside-table family and nominal 42 x 42 x 45 cm dimensions; official right- and left-opening public vectors both archived because the project type does not record opening side; native 2D/3D/BIM requires login and was not acquired; public PDF/SVG are not representation CAD geometry or a project shop drawing",
+  "pass": true
+}

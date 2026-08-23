@@ -1,0 +1,246 @@
+{
+  "schema_version": 1,
+  "generator": "pipeline/scripts/render_bst01_project_context.py",
+  "source_kind": "geometry_derived_simplified_proxy",
+  "source_label_zh": "基于原始高模几何生成的简化图纸表达",
+  "official_cad_used": false,
+  "third_party_cad_used": false,
+  "project_context_retained": true,
+  "walls_and_surrounding_project_elements_retained": true,
+  "overlay_top_layer_with_white_mask": true,
+  "blue_line_present": false,
+  "project_scale_svg_units_per_mm": 0.02,
+  "views": [
+    {
+      "view": "plan",
+      "candidate_view": "plan",
+      "source": "drawings/Furniture Plan.svg",
+      "output": "output/review/highpoly-types/bst01/project-context-furniture-plan.svg",
+      "output_sha256": "a6d2f98afdb600931c93f961bdd6c58e8614c807c249daac2f389f531a33962e",
+      "review_crop": "output/review/highpoly-types/bst01/project-context-furniture-plan-review.svg",
+      "review_crop_sha256": "b021ae0bbca32850f258b100a13511f1e9b235e41f5be9ae206a544c7d2ef52c",
+      "review_preview": "output/review/highpoly-types/bst01/project-context-furniture-plan-review-preview.png",
+      "review_preview_sha256": "fc6a0ecdb686238309b6826ba61913b687f09e9fd7ac10f267142d2986f3fa27",
+      "overlay": {
+        "ifc_guid": "3eic1dzkn5heTIn4PhF37v",
+        "source_kind": "geometry_derived_simplified_proxy",
+        "source_label_zh": "基于原始高模几何生成的简化图纸表达",
+        "official_cad_used": false,
+        "third_party_cad_used": false,
+        "path_count": 21,
+        "fit": {
+          "rotate_quarter_turns": 1,
+          "alignment_mode": "centre",
+          "flip_projected_y": true,
+          "scale_svg_units_per_mm": 0.02,
+          "target_bbox": [
+            [
+              74.269092,
+              225.747143
+            ],
+            [
+              82.249614,
+              233.727665
+            ]
+          ],
+          "proxy_bbox": [
+            [
+              74.269034,
+              225.747095
+            ],
+            [
+              82.249672,
+              233.727713
+            ]
+          ],
+          "bbox_absolute_delta_svg_units": [
+            0.000116,
+            9.6e-05
+          ],
+          "bbox_tolerance_svg_units": 0.002,
+          "uniform_scale_preserved": true,
+          "transformation_mode": "axis_swap_rigid_reflection_and_translation_only",
+          "pass": true
+        }
+      }
+    },
+    {
+      "view": "front",
+      "candidate_view": "front",
+      "source": "drawings/elevations/native/EL-05-17-R09-NX.svg",
+      "output": "output/review/highpoly-types/bst01/project-context-front-elevation.svg",
+      "output_sha256": "7f12c2af7017eacb5a84b873451546eafa34ea4816e8ac662bdb5a4a0dafa28e",
+      "review_crop": "output/review/highpoly-types/bst01/project-context-front-elevation-review.svg",
+      "review_crop_sha256": "feb3ea42d11c33fd4856b44397366510a04238f0e676070268cfa24e04a6ed26",
+      "review_preview": "output/review/highpoly-types/bst01/project-context-front-elevation-review-preview.png",
+      "review_preview_sha256": "9551bd9f66ab6166e30337bdc55ab23e861bd09003c63e8839d9badc55967bf4",
+      "overlay": {
+        "ifc_guid": "3eic1dzkn5heTIn4PhF37v",
+        "source_kind": "geometry_derived_simplified_proxy",
+        "source_label_zh": "基于原始高模几何生成的简化图纸表达",
+        "official_cad_used": false,
+        "third_party_cad_used": false,
+        "path_count": 1,
+        "fit": {
+          "rotate_quarter_turns": 0,
+          "alignment_mode": "centre",
+          "flip_projected_y": true,
+          "scale_svg_units_per_mm": 0.02,
+          "target_bbox": [
+            [
+              38.112248,
+              42.778824
+            ],
+            [
+              46.092866,
+              51.778824
+            ]
+          ],
+          "proxy_bbox": [
+            [
+              38.112248,
+              42.778824
+            ],
+            [
+              46.092866,
+              51.778824
+            ]
+          ],
+          "bbox_absolute_delta_svg_units": [
+            0.0,
+            0.0
+          ],
+          "bbox_tolerance_svg_units": 0.002,
+          "uniform_scale_preserved": true,
+          "transformation_mode": "axis_swap_rigid_reflection_and_translation_only",
+          "pass": true
+        }
+      }
+    },
+    {
+      "view": "side",
+      "candidate_view": "side",
+      "source": "drawings/elevations/native/EL-05-14-R09-PY.svg",
+      "output": "output/review/highpoly-types/bst01/project-context-side-elevation.svg",
+      "output_sha256": "bd083174f0fe9513f95915651a437ae1d96d478617ab5a9f3667f4e4fe28ce7c",
+      "review_crop": "output/review/highpoly-types/bst01/project-context-side-elevation-review.svg",
+      "review_crop_sha256": "b12f3bb83856ba6d7e16733eb7fc38e096a2506d549895d1271a248ba55c3f70",
+      "review_preview": "output/review/highpoly-types/bst01/project-context-side-elevation-review-preview.png",
+      "review_preview_sha256": "9ad42ebe2e93b73bd84012316fc121c76cb7e4f01c02c13d770278bf20bab1bd",
+      "overlay": {
+        "ifc_guid": "3eic1dzkn5heTIn4PhF37v",
+        "source_kind": "geometry_derived_simplified_proxy",
+        "source_label_zh": "基于原始高模几何生成的简化图纸表达",
+        "official_cad_used": false,
+        "third_party_cad_used": false,
+        "path_count": 5,
+        "fit": {
+          "rotate_quarter_turns": 0,
+          "alignment_mode": "centre",
+          "flip_projected_y": true,
+          "scale_svg_units_per_mm": 0.02,
+          "target_bbox": [
+            [
+              24.073271,
+              42.791526
+            ],
+            [
+              32.053909,
+              51.791526
+            ]
+          ],
+          "proxy_bbox": [
+            [
+              24.073271,
+              42.791526
+            ],
+            [
+              32.053909,
+              51.791526
+            ]
+          ],
+          "bbox_absolute_delta_svg_units": [
+            0.0,
+            0.0
+          ],
+          "bbox_tolerance_svg_units": 0.002,
+          "uniform_scale_preserved": true,
+          "transformation_mode": "axis_swap_rigid_reflection_and_translation_only",
+          "pass": true
+        }
+      }
+    }
+  ],
+  "pass": true,
+  "semantic_view_mapping": {
+    "plan": {
+      "candidate_axes": [
+        0,
+        1
+      ],
+      "source": "drawings/Furniture Plan.svg",
+      "rotate_quarter_turns": 1,
+      "project_direction": "+Z"
+    },
+    "front": {
+      "candidate_axes": [
+        0,
+        2
+      ],
+      "source": "drawings/elevations/native/EL-05-17-R09-NX.svg",
+      "rotate_quarter_turns": 0,
+      "project_direction": "-X world / local front after +90 degree placement"
+    },
+    "side": {
+      "candidate_axes": [
+        1,
+        2
+      ],
+      "source": "drawings/elevations/native/EL-05-14-R09-PY.svg",
+      "rotate_quarter_turns": 0,
+      "project_direction": "+Y world / local side after +90 degree placement"
+    }
+  },
+  "context_view_scope": {
+    "included": [
+      "plan",
+      "front",
+      "side"
+    ],
+    "excluded": [],
+    "reason": "The BST01 GlobalId occurs in Furniture Plan and two native R09 elevations. The object placement is a +90 degree XY rotation, so NX maps local X-Z Front and PY maps local Y-Z Side."
+  },
+  "review_annotation_suppression": {
+    "plan": "official-elevation-anchor groups only",
+    "front": "none",
+    "side": "none",
+    "scope": "review crops only; full project SVGs retain all annotations",
+    "walls_furniture_and_ifc_geometry_removed": false
+  },
+  "project_projection_note": {
+    "project_plan_bbox_mm": [
+      399.026099,
+      399.026099
+    ],
+    "project_front_bbox_mm": [
+      399.030905,
+      449.99999
+    ],
+    "project_side_bbox_mm": [
+      399.031897,
+      449.99999
+    ],
+    "ifc_body_local_xyz_mm": [
+      399.030914,
+      399.031906,
+      450.0
+    ],
+    "official_nominal_mm": [
+      420.0,
+      420.0,
+      450.0
+    ],
+    "geometry_stretched": false,
+    "opening_side_claimed": false
+  }
+}

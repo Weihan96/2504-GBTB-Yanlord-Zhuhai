@@ -1,0 +1,18 @@
+{
+  "schema_version": 1,
+  "formal_ifc_sha256": "7a50b87e8f48a7c2bfbaa9f1dabdfca7155fa684b2325c66aa1ae15c8ab0a25c",
+  "profiles": {
+    "bst01": {
+      "display_name": "Baxter Ninfea bedside table / project BST01",
+      "ifc_type_name": "BST01",
+      "representative_global_id": "3eic1dzkn5heTIn4PhF37v",
+      "expected_instance_global_ids": ["3eic1dzkn5heTIn4PhF37v"],
+      "profile_source": "isolated_highpoly_projection; exact_baxter_ninfea_bedside_table_family_and_420x420x450_dimensions_archived; left_right_opening_variants_both_archived_project_side_unresolved; native_2d_3d_bim_login_required_not_acquired",
+      "silhouette_simplify_mm": 0.5,
+      "semantic_sections": {"plan": [], "front": [], "side": []},
+      "required_semantics": ["single_project_BST01_representative", "official_420x420x450_mm_ninfea_bedside_family_identity", "left_and_right_opening_variants_not_conflated", "actual_IFC_Body_399_031x399_032x450_mm_not_stretched"],
+      "drawing_source": {"source_kind": "geometry_derived_simplified_proxy", "source_label_zh": "基于原始高模几何生成的简化图纸表达", "source_label_en": "simplified drawing representation derived from the original high-poly geometry", "official_cad_used": false, "third_party_cad_used": false},
+      "official_reference": {"source_id": "BAXTER-NINFEA-BST01-OFFICIAL-IDENTITY-001", "source_kind": "manufacturer_product_page_technical_pdf_and_public_left_right_measurement_svgs_identity_only", "manufacturer": "Baxter", "family": "Ninfea", "designer": "Pietro Russo", "project_type_code": "BST01", "official_width_depth_height_mm": [420, 420, 450], "scope": "exact Baxter Ninfea bedside-table family and nominal 42 x 42 x 45 cm dimensions; official right- and left-opening public vectors both archived because the project type does not record opening side; native 2D/3D/BIM requires login and was not acquired; public PDF/SVG are not representation CAD geometry or a project shop drawing", "product_page": "https://www.baxter.it/en/products/ninfea-tables-and-coffee-tables", "source_access_record": "output/review/highpoly-types/bst01/official-source/source-access-record.json", "official_2d_3d_bim_status": "baxter_login_required_not_acquired", "official_cad_used": false}
+    }
+  }
+}
