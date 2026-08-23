@@ -1,0 +1,60 @@
+{
+  "schema_version": 1,
+  "manufacturer": "Baxter",
+  "family": "Viktor",
+  "designer": "Draga & Aurel",
+  "project_type_code": "BED02",
+  "project_ifc_type_description": "VIKTOR 162x234xh106",
+  "identity_status": "manufacturer_family_confirmed_variant_dimension_review_required",
+  "research_date": "2026-08-23",
+  "official_identity_sources": [
+    {
+      "kind": "manufacturer_product_page",
+      "url": "https://www.baxter.it/en/products/viktor-beds",
+      "local_path": "output/review/highpoly-types/bed02/official-source/baxter-viktor-official-product-page.html",
+      "sha256": "c2d4ae34a31626853063c8e7f445029f0b55ea0c1a2ffea5d215f3165ee0f9f8",
+      "observation": "Official Baxter product page identifies Viktor by Draga & Aurel and lists the 160 x 200 cm bed-base version as 172 x 234 x 106 cm overall."
+    },
+    {
+      "kind": "manufacturer_technical_sheet",
+      "url": "https://dam.baxter.it/m/e9f40f5d27de0f5/original/Baxter_Viktor_letto_Indoor.pdf",
+      "local_path": "output/review/highpoly-types/bed02/official-source/Baxter_Viktor_technical-sheet.pdf",
+      "sha256": "b762451b409c057df396735d2bdb90f3ef52b2642cff628b322cf20a927ae7f5",
+      "pdf_page": 3,
+      "observation": "Official technical sheet visually confirms the 172 x 234 x 106 cm overall dimensions and 160 x 200 cm slatted-base variant. Its diagrams are identity and dimension evidence only, not native CAD geometry."
+    },
+    {
+      "kind": "manufacturer_assembly_instructions",
+      "url": "https://dam.baxter.it/m/55b97eeff80c31a9/original/Baxter_AssemblyInstructions_Viktor_bed.pdf",
+      "local_path": "output/review/highpoly-types/bed02/official-source/Baxter_Viktor_assembly-instructions.pdf",
+      "sha256": "d5aeab11bcd2edeeb4274e9459c97af4044ec4049be87c7028ed6f4e5f72a385",
+      "observation": "Official assembly instructions repeat the Viktor 172 x 234 x 106 cm configuration for the 160 x 200 cm bed base."
+    }
+  ],
+  "official_product_cad": {
+    "published_access_surface": "Baxter professional login",
+    "product_page": "https://www.baxter.it/en/products/viktor-beds",
+    "advertised_formats": ["2D", "3D", "BIM"],
+    "authentication_required": true,
+    "acquired": false,
+    "local_cad_files": [],
+    "reason": "The official product page requires login for 2D, 3D and BIM downloads. No account was created and no third-party or visually similar Viktor CAD was substituted."
+  },
+  "dimension_cross_check": {
+    "official_160x200_variant_overall_mm": [1720.0, 2340.0, 1060.0],
+    "project_ifc_description_mm": [1620.0, 2340.0, 1060.0],
+    "project_ifc_body_bounds_mm": [1675.710938, 2404.0177, 1107.145996],
+    "body_minus_official_mm": [-44.289062, 64.0177, 47.145996],
+    "status": "review_required_not_scaled_or_corrected",
+    "note": "The official 160 x 200 cm bed-base variant is 1720 mm wide overall, while the IFC description states 1620 mm and the detailed Body spans 1675.711 mm. The discrepancy is retained and no geometry is anisotropically fitted."
+  },
+  "drawing_geometry_source": {
+    "source_kind": "geometry_derived_simplified_proxy",
+    "source_label_zh": "基于原始高模几何生成的简化图纸表达",
+    "source_label_en": "simplified drawing representation derived from the original high-poly geometry",
+    "official_cad_used": false,
+    "third_party_cad_used": false
+  },
+  "scope": "manufacturer family identity and nominal dimensions only; dimension difference requires review; not a project shop drawing and not drawing geometry",
+  "pass": true
+}

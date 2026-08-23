@@ -1,0 +1,137 @@
+{
+  "schema_version": 1,
+  "generator": "pipeline/scripts/render_bed02_bonsai_review.py",
+  "mode": "actual_bonsai_ifc_body_camera_render",
+  "representative_global_id": "1i_pqgLv9A7uuV7MjaArBW",
+  "geometry_product_count": 1,
+  "whole_model_render": false,
+  "formal_ifc": "2504 GBTB Yanlord Zhuhai.ifc",
+  "formal_ifc_sha256": "7a50b87e8f48a7c2bfbaa9f1dabdfca7155fa684b2325c66aa1ae15c8ab0a25c",
+  "formal_ifc_bytes_unchanged": true,
+  "isolated_ifc": "output/review/highpoly-types/bed02/Baxter-Viktor-BED02-bonsai-isolated.ifc",
+  "isolated_ifc_sha256": "bd2aefb659bb75053716e3f3c431a84fbef6525d631f37fa447d05ff79194169",
+  "bonsai_session": {
+    "path": "output/review/highpoly-types/bed02/Baxter-Viktor-BED02-bonsai-review.blend",
+    "sha256": "0cde0085d29dac971f1fad316922e045806d4d1ef22338309101f4d0b1721c8b",
+    "saved_active_representation": "Body",
+    "saved_camera_count": 4,
+    "saved_camera_names": [
+      "BAXTER_VIKTOR_BED02_CAM_FRONT",
+      "BAXTER_VIKTOR_BED02_CAM_ISO",
+      "BAXTER_VIKTOR_BED02_CAM_PLAN",
+      "BAXTER_VIKTOR_BED02_CAM_SIDE"
+    ],
+    "ifc_definition_id": 31712,
+    "ifc_context_identifier": "Body",
+    "object_name": "IfcFurniture/Furniture",
+    "object_bounds_m": {
+      "minimum": [
+        -4.727516651,
+        1.503719926,
+        0.01
+      ],
+      "maximum": [
+        -2.323498726,
+        3.179430962,
+        1.117146015
+      ]
+    },
+    "local_axis_extents_m": {
+      "x": 1.675711336,
+      "y": 2.404018529,
+      "z": 1.107146025
+    },
+    "local_axes_world": [
+      [
+        7.5e-08,
+        1.0,
+        0.0
+      ],
+      [
+        -1.0,
+        7.5e-08,
+        0.0
+      ],
+      [
+        0.0,
+        0.0,
+        1.0
+      ]
+    ]
+  },
+  "renders": [
+    {
+      "view": "plan",
+      "camera": "BAXTER_VIKTOR_BED02_CAM_PLAN",
+      "camera_type": "ORTHO",
+      "camera_axis_basis": "IFC product local axes",
+      "camera_ortho_scale_m": 2.836741686,
+      "projected_width_m": 2.404018402,
+      "projected_height_m": 1.675711393,
+      "image_aspect": 1.4,
+      "framing_margin_factor": 1.18,
+      "render_operation": "bpy.ops.render.render(write_still=True)",
+      "path": "output/review/highpoly-types/bed02/bonsai-camera-plan.png",
+      "sha256": "fcdc76ff0dcfeb66eff7d7c397a17ce5a928ee2fe7d0f7712fab3209cc718928",
+      "resolution": [
+        1400,
+        1000
+      ]
+    },
+    {
+      "view": "front",
+      "camera": "BAXTER_VIKTOR_BED02_CAM_FRONT",
+      "camera_type": "ORTHO",
+      "camera_axis_basis": "IFC product local axes",
+      "camera_ortho_scale_m": 1.977339387,
+      "projected_width_m": 1.675711336,
+      "projected_height_m": 1.107146206,
+      "image_aspect": 1.4,
+      "framing_margin_factor": 1.18,
+      "render_operation": "bpy.ops.render.render(write_still=True)",
+      "path": "output/review/highpoly-types/bed02/bonsai-camera-front-elevation.png",
+      "sha256": "efe3d7dbc922db4dfb8f94b0ac52a0de5bc9e4c46f7ca138ee7566ddebdcfc75",
+      "resolution": [
+        1400,
+        1000
+      ]
+    },
+    {
+      "view": "side",
+      "camera": "BAXTER_VIKTOR_BED02_CAM_SIDE",
+      "camera_type": "ORTHO",
+      "camera_axis_basis": "IFC product local axes",
+      "camera_ortho_scale_m": 2.836742163,
+      "projected_width_m": 2.404018748,
+      "projected_height_m": 1.107146499,
+      "image_aspect": 1.4,
+      "framing_margin_factor": 1.18,
+      "render_operation": "bpy.ops.render.render(write_still=True)",
+      "path": "output/review/highpoly-types/bed02/bonsai-camera-side-elevation.png",
+      "sha256": "33aa832c9b29f09e66642135e47e285e85ce32945cc01bf0574d56030e8e3b4a",
+      "resolution": [
+        1400,
+        1000
+      ]
+    },
+    {
+      "view": "iso",
+      "camera": "BAXTER_VIKTOR_BED02_CAM_ISO",
+      "camera_type": "ORTHO",
+      "camera_axis_basis": "IFC product local axes",
+      "camera_ortho_scale_m": 4.244852543,
+      "projected_width_m": 2.884804534,
+      "projected_height_m": 2.569523275,
+      "image_aspect": 1.4,
+      "framing_margin_factor": 1.18,
+      "render_operation": "bpy.ops.render.render(write_still=True)",
+      "path": "output/review/highpoly-types/bed02/bonsai-camera-iso.png",
+      "sha256": "8996cd173540cc505eadb7861ca55fe2a094a4a943dfff4003966a4e3cc45fae",
+      "resolution": [
+        1400,
+        1000
+      ]
+    }
+  ],
+  "pass": true
+}

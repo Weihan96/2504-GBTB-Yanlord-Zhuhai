@@ -1,0 +1,164 @@
+{
+  "schema_version": 1,
+  "generated_at": "2026-08-22T20:31:24.278296+00:00",
+  "generator": "pipeline/scripts/bed02_review.py",
+  "formal_ifc": "2504 GBTB Yanlord Zhuhai.ifc",
+  "formal_ifc_sha256": "7a50b87e8f48a7c2bfbaa9f1dabdfca7155fa684b2325c66aa1ae15c8ab0a25c",
+  "formal_ifc_sha256_after_generation": "7a50b87e8f48a7c2bfbaa9f1dabdfca7155fa684b2325c66aa1ae15c8ab0a25c",
+  "formal_ifc_bytes_unchanged": true,
+  "profile_register": "pipeline/decisions/highpoly-drawing-profile-register.json",
+  "profile_register_sha256": "1f9730b7ff1546f02709479a8ef602d24b08321dfcd7d1126a3bcc0ec9e9fa85",
+  "profile_key": "bed02",
+  "display_name": "Baxter Viktor bed / project BED02",
+  "ifc_type_name": "BED02",
+  "ifc_type_description": "VIKTOR 162x234xh106",
+  "article_number": "Baxter Viktor / BED02",
+  "representative_global_id": "1i_pqgLv9A7uuV7MjaArBW",
+  "registered_instance_global_ids": [
+    "1i_pqgLv9A7uuV7MjaArBW"
+  ],
+  "geometry_product_count": 1,
+  "whole_model_render": false,
+  "mesh_vertex_count": 18436,
+  "mesh_face_count": 36314,
+  "bounds_mm": {
+    "minimum": [
+      -837.824158,
+      -1201.839111,
+      0.0
+    ],
+    "maximum": [
+      837.88678,
+      1202.178589,
+      1107.145996
+    ],
+    "size": [
+      1675.710938,
+      2404.0177,
+      1107.145996
+    ]
+  },
+  "source_kind": "geometry_derived_simplified_proxy",
+  "source_label_zh": "基于原始高模几何生成的简化图纸表达",
+  "drawing_source": {
+    "source_kind": "geometry_derived_simplified_proxy",
+    "source_label_zh": "基于原始高模几何生成的简化图纸表达",
+    "source_label_en": "simplified drawing representation derived from the original high-poly geometry",
+    "official_cad_used": false,
+    "third_party_cad_used": false,
+    "official_source_access_record": "output/review/highpoly-types/bed02/official-source/source-access-record.json",
+    "official_source_access_record_sha256": "47eed9c4643b29c0a3ff634f1cabb2da485cd60e5abc1aab45cb9b56bcdf6106",
+    "official_product_cad_status": "manufacturer_login_required_not_acquired"
+  },
+  "official_reference": {
+    "source_id": "BAXTER-VIKTOR-BED-OFFICIAL-IDENTITY-001",
+    "source_kind": "manufacturer_product_page_technical_sheet_and_assembly_instructions_identity_only",
+    "manufacturer": "Baxter",
+    "family": "Viktor",
+    "designer": "Draga & Aurel",
+    "project_type_code": "BED02",
+    "project_ifc_description": "VIKTOR 162x234xh106",
+    "official_160x200_variant_overall_mm": [
+      1720,
+      2340,
+      1060
+    ],
+    "scope": "manufacturer family identity and nominal dimensions only; dimension difference requires review; not a project shop drawing and not drawing geometry",
+    "product_page": "https://www.baxter.it/en/products/viktor-beds",
+    "technical_sheet": "https://dam.baxter.it/m/e9f40f5d27de0f5/original/Baxter_Viktor_letto_Indoor.pdf",
+    "assembly_instructions": "https://dam.baxter.it/m/55b97eeff80c31a9/original/Baxter_AssemblyInstructions_Viktor_bed.pdf",
+    "source_access_record": "output/review/highpoly-types/bed02/official-source/source-access-record.json",
+    "official_2d_3d_bim_status": "manufacturer_login_required_not_acquired",
+    "official_cad_used": false
+  },
+  "official_identity_evidence_only": true,
+  "dimension_cross_check": {
+    "official_160x200_variant_overall_mm": [
+      1720.0,
+      2340.0,
+      1060.0
+    ],
+    "project_ifc_description_mm": [
+      1620.0,
+      2340.0,
+      1060.0
+    ],
+    "project_ifc_body_bounds_mm": [
+      1675.710938,
+      2404.0177,
+      1107.145996
+    ],
+    "body_minus_official_mm": [
+      -44.289062,
+      64.0177,
+      47.145996
+    ],
+    "status": "review_required_not_scaled_or_corrected",
+    "note": "The official 160 x 200 cm bed-base variant is 1720 mm wide overall, while the IFC description states 1620 mm and the detailed Body spans 1675.711 mm. The discrepancy is retained and no geometry is anisotropically fitted."
+  },
+  "official_cad_acquired": false,
+  "official_cad_used": false,
+  "third_party_cad_used": false,
+  "blue_line_present": false,
+  "official_source_access_record": "output/review/highpoly-types/bed02/official-source/source-access-record.json",
+  "official_source_access_record_sha256": "47eed9c4643b29c0a3ff634f1cabb2da485cd60e5abc1aab45cb9b56bcdf6106",
+  "candidate_representations": "output/review/highpoly-types/bed02/candidate-representations.json",
+  "candidate_representations_sha256": "1c98fa9bc95ef787ffb5176d92453710733b0cd65c7180afa997c529fb60cd6a",
+  "review_status": "visual_review_pending",
+  "approved_for_drawing_ifc": false,
+  "derived_ifc_write_allowed": false,
+  "formal_ifc_write": "not performed",
+  "project_context": "output/review/highpoly-types/bed02/project-context-manifest.json",
+  "bonsai_review": "output/review/highpoly-types/bed02/bonsai-review-manifest.json",
+  "views": [
+    {
+      "view": "plan",
+      "svg": "output/review/highpoly-types/bed02/plan.svg",
+      "svg_sha256": "2ced14bb84b263eb0c8a9bb3cd2679a332c97ccf67edf3f14b8c14d7dead4013",
+      "projection_axes": [
+        0,
+        1
+      ],
+      "raw_edge_count": 54743,
+      "displayed_raw_edge_count": 996,
+      "silhouette_path_count": 1,
+      "drawing_line_source_kind": "geometry_derived_simplified_proxy",
+      "drawing_line_source_label_zh": "基于原始高模几何生成的简化图纸表达",
+      "official_cad_path_count": 0,
+      "blue_line_present": false
+    },
+    {
+      "view": "front",
+      "svg": "output/review/highpoly-types/bed02/front.svg",
+      "svg_sha256": "74db6fc753487ffc7b98551b83b0c396a3dfb416337c3b7d08cc49a0d0bcc4cd",
+      "projection_axes": [
+        0,
+        2
+      ],
+      "raw_edge_count": 54743,
+      "displayed_raw_edge_count": 996,
+      "silhouette_path_count": 1,
+      "drawing_line_source_kind": "geometry_derived_simplified_proxy",
+      "drawing_line_source_label_zh": "基于原始高模几何生成的简化图纸表达",
+      "official_cad_path_count": 0,
+      "blue_line_present": false
+    },
+    {
+      "view": "side",
+      "svg": "output/review/highpoly-types/bed02/side.svg",
+      "svg_sha256": "83a9d12d274aa0d275811f9bc3aaf9a0924fd6520f3a83a3728737e64219cca2",
+      "projection_axes": [
+        1,
+        2
+      ],
+      "raw_edge_count": 54743,
+      "displayed_raw_edge_count": 996,
+      "silhouette_path_count": 4,
+      "drawing_line_source_kind": "geometry_derived_simplified_proxy",
+      "drawing_line_source_label_zh": "基于原始高模几何生成的简化图纸表达",
+      "official_cad_path_count": 0,
+      "blue_line_present": false
+    }
+  ],
+  "pass": true
+}
