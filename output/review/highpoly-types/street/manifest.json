@@ -1,0 +1,149 @@
+{
+  "schema_version": 1,
+  "generated_at": "2026-08-23T10:21:47.481453+00:00",
+  "generator": "pipeline/scripts/street_review.py",
+  "formal_ifc": "2504 GBTB Yanlord Zhuhai.ifc",
+  "formal_ifc_sha256": "7a50b87e8f48a7c2bfbaa9f1dabdfca7155fa684b2325c66aa1ae15c8ab0a25c",
+  "formal_ifc_sha256_after_generation": "7a50b87e8f48a7c2bfbaa9f1dabdfca7155fa684b2325c66aa1ae15c8ab0a25c",
+  "formal_ifc_bytes_unchanged": true,
+  "profile_register": "output/review/highpoly-types/street/profile.json",
+  "profile_register_sha256": "8b7e93f6a91a298e0ea28f96e6d31f3c679dcab668705312b71cb740273b2627",
+  "profile_key": "street",
+  "display_name": "antoniolupi Street domestic-custom integrated washbasin top / project STREET",
+  "ifc_type_name": "STREET",
+  "ifc_type_description": "antoniolupi street240 prof. 40 + street4054 prof. 40",
+  "article_number": "project domestic-custom STREET / official Street family",
+  "representative_global_id": "1FgLPMw$5B4wBH2ySMkXE1",
+  "registered_instance_global_ids": [
+    "1FgLPMw$5B4wBH2ySMkXE1"
+  ],
+  "geometry_product_count": 1,
+  "whole_model_render": false,
+  "mesh_vertex_count": 606,
+  "mesh_face_count": 1166,
+  "bounds_mm": {
+    "minimum": [
+      0.0,
+      -465.188465,
+      -155.0
+    ],
+    "maximum": [
+      1000.0,
+      4.811535,
+      95.0
+    ],
+    "size": [
+      1000.0,
+      470.0,
+      250.0
+    ]
+  },
+  "source_kind": "geometry_derived_simplified_proxy",
+  "source_label_zh": "基于原始高模几何生成的简化图纸表达",
+  "drawing_source": {
+    "source_kind": "geometry_derived_simplified_proxy",
+    "source_label_zh": "基于原始高模几何生成的简化图纸表达",
+    "source_label_en": "simplified drawing representation derived from the original high-poly geometry",
+    "official_cad_used": false,
+    "third_party_cad_used": false,
+    "official_source_access_record": "output/review/highpoly-types/street/official-source/source-access-record.json",
+    "official_source_access_record_sha256": "64517a135db1725192d3fe2c09bd2b42695df3d857dca5287192112888ea6823",
+    "official_product_cad_status": "official_family_DXF_acquired_domestic_custom_1000x470x250_configuration_not_present"
+  },
+  "official_reference": {
+    "source_id": "ANTONIOLUPI-STREET-DOMESTIC-CUSTOM-OFFICIAL-FAMILY-001",
+    "source_kind": "manufacturer_product_page_technical_pdf_and_native_dxf_family_evidence",
+    "manufacturer": "antoniolupi",
+    "family": "Street",
+    "project_type": "STREET / domestic-custom integrated washbasin top",
+    "scope": "official Street family evidence; exact domestic-custom 1000 x 470 x 250 mm configuration absent; not a project shop drawing and not representation geometry",
+    "product_page": "https://www.antoniolupi.it/en/products/sinks/street",
+    "official_cad_archive": "output/review/highpoly-types/street/official-source/ANTONIOLUPI-official-Street-2D-CAD.zip",
+    "official_native_dxf": "output/review/highpoly-types/street/official-source/AL_Street.dxf",
+    "configuration_audit": "output/review/highpoly-types/street/official-native-dxf-configuration-audit.json",
+    "source_access_record": "output/review/highpoly-types/street/official-source/source-access-record.json",
+    "official_product_cad_status": "official_family_DXF_acquired_domestic_custom_1000x470x250_configuration_not_present",
+    "official_product_cad_used": false
+  },
+  "official_identity_evidence_only": true,
+  "dimension_cross_check": null,
+  "official_cad_acquired": true,
+  "official_cad_exact_project_configuration_match": false,
+  "official_cad_used": false,
+  "third_party_cad_used": false,
+  "blue_line_present": false,
+  "official_source_access_record": "output/review/highpoly-types/street/official-source/source-access-record.json",
+  "official_source_access_record_sha256": "64517a135db1725192d3fe2c09bd2b42695df3d857dca5287192112888ea6823",
+  "candidate_representations": "output/review/highpoly-types/street/candidate-representations.json",
+  "candidate_representations_sha256": "d56be7c44ccf8404c2b31fcd9977e67bfe0891e32a16d66d2065def2a6221986",
+  "review_status": "visual_review_pending",
+  "approved_for_drawing_ifc": false,
+  "derived_ifc_write_allowed": false,
+  "formal_ifc_write": "not performed",
+  "views": [
+    {
+      "view": "plan",
+      "svg": "output/review/highpoly-types/street/plan.svg",
+      "svg_sha256": "24f81d4d468dab2fe8307402f93218bbb1a202722655615822e91491b7ca1814",
+      "projection_axes": [
+        0,
+        1
+      ],
+      "raw_edge_count": 1756,
+      "displayed_raw_edge_count": 878,
+      "silhouette_path_count": 3,
+      "drawing_line_source_kind": "geometry_derived_simplified_proxy",
+      "drawing_line_source_label_zh": "基于原始高模几何生成的简化图纸表达",
+      "official_cad_path_count": 0,
+      "blue_line_present": false
+    },
+    {
+      "view": "front",
+      "svg": "output/review/highpoly-types/street/front.svg",
+      "svg_sha256": "94e646ea3ede198b107c9b048db28e8521cf3bcdb938f18002dec725e750d5ac",
+      "projection_axes": [
+        0,
+        2
+      ],
+      "raw_edge_count": 1756,
+      "displayed_raw_edge_count": 878,
+      "silhouette_path_count": 1,
+      "drawing_line_source_kind": "geometry_derived_simplified_proxy",
+      "drawing_line_source_label_zh": "基于原始高模几何生成的简化图纸表达",
+      "official_cad_path_count": 0,
+      "blue_line_present": false
+    },
+    {
+      "view": "side",
+      "svg": "output/review/highpoly-types/street/side.svg",
+      "svg_sha256": "b74bfea7f270368c3c84093c091a3daecff08e60a516ede6b61196618c153c7f",
+      "projection_axes": [
+        1,
+        2
+      ],
+      "raw_edge_count": 1756,
+      "displayed_raw_edge_count": 878,
+      "silhouette_path_count": 2,
+      "drawing_line_source_kind": "geometry_derived_simplified_proxy",
+      "drawing_line_source_label_zh": "基于原始高模几何生成的简化图纸表达",
+      "official_cad_path_count": 0,
+      "blue_line_present": false
+    }
+  ],
+  "pass": true,
+  "project_context": {
+    "manifest": "output/review/highpoly-types/street/project-context-manifest.json",
+    "manifest_sha256": "f9b261a415b9287cc77de543c0e1e13a26967c55b4a581fcd7913a34531f4fd9",
+    "walls_and_surrounding_project_elements_retained": true,
+    "overlay_top_layer_with_white_mask": true,
+    "pass": true
+  },
+  "bonsai_review": {
+    "manifest": "output/review/highpoly-types/street/bonsai-review-manifest.json",
+    "manifest_sha256": "6e5fadc28d82b3204c8f5b2a1aa44d3044453703e80b5729ec2e133135016a23",
+    "mode": "actual_bonsai_ifc_body_camera_render",
+    "saved_active_representation": "Body",
+    "saved_camera_count": 4,
+    "pass": true
+  }
+}

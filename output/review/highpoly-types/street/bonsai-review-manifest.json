@@ -1,0 +1,143 @@
+{
+  "schema_version": 1,
+  "generator": "pipeline/scripts/render_street_bonsai_review.py",
+  "mode": "actual_bonsai_ifc_body_camera_render",
+  "representative_global_id": "1FgLPMw$5B4wBH2ySMkXE1",
+  "geometry_product_count": 1,
+  "whole_model_render": false,
+  "formal_ifc": "2504 GBTB Yanlord Zhuhai.ifc",
+  "formal_ifc_sha256": "7a50b87e8f48a7c2bfbaa9f1dabdfca7155fa684b2325c66aa1ae15c8ab0a25c",
+  "formal_ifc_bytes_unchanged": true,
+  "isolated_ifc": "output/review/highpoly-types/street/antoniolupi-Street-bonsai-isolated.ifc",
+  "isolated_ifc_sha256": "81ce017695c6486a79559b90ba922b31607da67fa43238c57dd480e7f7e3e105",
+  "bonsai_session": {
+    "path": "output/review/highpoly-types/street/antoniolupi-Street-bonsai-review.blend",
+    "sha256": "aa1b3710dd023a38fe1a24bc5d64e2f4eab4b18fc5cb65018efc86e14389c1b9",
+    "saved_active_representation": "Body",
+    "saved_camera_count": 4,
+    "saved_camera_names": [
+      "ANTONIOLUPI_STREET_CAM_FRONT",
+      "ANTONIOLUPI_STREET_CAM_ISO",
+      "ANTONIOLUPI_STREET_CAM_PLAN",
+      "ANTONIOLUPI_STREET_CAM_SIDE"
+    ],
+    "ifc_definition_id": 1254,
+    "ifc_context_identifier": "Body",
+    "ifc_target_view": "MODEL_VIEW",
+    "front_camera_local_y_sign": -1.0,
+    "object_name": "IfcSanitaryTerminal/SanitaryTerminal",
+    "object_bounds_m": {
+      "minimum": [
+        -6.496811867,
+        -1.047999978,
+        0.659000039
+      ],
+      "maximum": [
+        -6.0268116,
+        -0.047999978,
+        0.909000039
+      ]
+    },
+    "local_axis_extents_m": {
+      "x": 1.000000155,
+      "y": 0.470001145,
+      "z": 0.250000119
+    },
+    "local_axes_world": [
+      [
+        7.5e-08,
+        1.0,
+        0.0
+      ],
+      [
+        -1.0,
+        7.5e-08,
+        0.0
+      ],
+      [
+        0.0,
+        0.0,
+        1.0
+      ]
+    ]
+  },
+  "renders": [
+    {
+      "view": "plan",
+      "camera": "ANTONIOLUPI_STREET_CAM_PLAN",
+      "camera_type": "ORTHO",
+      "camera_axis_basis": "IFC product local axes",
+      "camera_ortho_scale_m": 1.652001857758,
+      "projected_width_m": 0.470001220703,
+      "projected_height_m": 1.000000119209,
+      "image_aspect": 1.4,
+      "framing_margin_factor": 1.18,
+      "ortho_scale_quantization_safety_factor": 1.000001,
+      "render_operation": "bpy.ops.render.render(write_still=True)",
+      "path": "output/review/highpoly-types/street/bonsai-camera-plan.png",
+      "sha256": "46d2faebad5ddb223904d2918ecc03e82eb1cda9e25b27446c9562afb3f89f7d",
+      "resolution": [
+        1400,
+        1000
+      ]
+    },
+    {
+      "view": "front",
+      "camera": "ANTONIOLUPI_STREET_CAM_FRONT",
+      "camera_type": "ORTHO",
+      "camera_axis_basis": "IFC product local axes",
+      "camera_ortho_scale_m": 1.180001378059,
+      "projected_width_m": 1.000000154655,
+      "projected_height_m": 0.250000199358,
+      "image_aspect": 1.4,
+      "framing_margin_factor": 1.18,
+      "ortho_scale_quantization_safety_factor": 1.000001,
+      "render_operation": "bpy.ops.render.render(write_still=True)",
+      "path": "output/review/highpoly-types/street/bonsai-camera-front-elevation.png",
+      "sha256": "87a8f29de3a170fe4f1c4efa3186d28a0b17dace537a2b84d58475bf1b882807",
+      "resolution": [
+        1400,
+        1000
+      ]
+    },
+    {
+      "view": "side",
+      "camera": "ANTONIOLUPI_STREET_CAM_SIDE",
+      "camera_type": "ORTHO",
+      "camera_axis_basis": "IFC product local axes",
+      "camera_ortho_scale_m": 0.554601848125,
+      "projected_width_m": 0.470001083614,
+      "projected_height_m": 0.250000308275,
+      "image_aspect": 1.4,
+      "framing_margin_factor": 1.18,
+      "ortho_scale_quantization_safety_factor": 1.000001,
+      "render_operation": "bpy.ops.render.render(write_still=True)",
+      "path": "output/review/highpoly-types/street/bonsai-camera-side-elevation.png",
+      "sha256": "35b7edada7f84e1d74758deec64d95d76095d1c6e4d7fab0cbbbf5720b3c67fe",
+      "resolution": [
+        1400,
+        1000
+      ]
+    },
+    {
+      "view": "iso",
+      "camera": "ANTONIOLUPI_STREET_CAM_ISO",
+      "camera_type": "ORTHO",
+      "camera_axis_basis": "IFC product local axes",
+      "camera_ortho_scale_m": 1.328621268272,
+      "projected_width_m": 1.039447819406,
+      "projected_height_m": 0.804249376059,
+      "image_aspect": 1.4,
+      "framing_margin_factor": 1.18,
+      "ortho_scale_quantization_safety_factor": 1.000001,
+      "render_operation": "bpy.ops.render.render(write_still=True)",
+      "path": "output/review/highpoly-types/street/bonsai-camera-iso.png",
+      "sha256": "c4e4187a79a9729c7d291ec26686bd42e356735914d4172f77d74dd476c609d7",
+      "resolution": [
+        1400,
+        1000
+      ]
+    }
+  ],
+  "pass": true
+}
