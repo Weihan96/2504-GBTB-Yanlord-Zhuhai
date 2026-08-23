@@ -1,0 +1,58 @@
+{
+  "schema_version": 1,
+  "formal_ifc_sha256": "7a50b87e8f48a7c2bfbaa9f1dabdfca7155fa684b2325c66aa1ae15c8ab0a25c",
+  "profiles": {
+    "miamisoft-h01": {
+      "display_name": "Baxter Miami Soft H01 cushion",
+      "ifc_type_name": "MiamiSoft H01",
+      "representative_global_id": "0B8rO47U14sgJ_ydZxqvs6",
+      "expected_instance_global_ids": [
+        "0B8rO47U14sgJ_ydZxqvs6",
+        "0b9rDAHDD2qAIQqZ8m9INg"
+      ],
+      "profile_source": "isolated high-poly IFC MODEL_VIEW Body projection; exact Baxter H01 cushion identity and nominal 80 x 80 cm face dimensions verified from the official product page, vector technical sheet and manufacturer measurement SVG; authenticated native 2D/3D/BIM files not acquired",
+      "silhouette_simplify_mm": 0.8,
+      "semantic_sections": {
+        "plan": [],
+        "front": [],
+        "side": []
+      },
+      "required_semantics": [
+        "Baxter Miami Soft manufacturer family",
+        "Paola Navone designer identity",
+        "H01 cushion model",
+        "official nominal 800 x 800 mm flexible cushion face",
+        "actual installed and deformed high-poly Body envelope retained without anisotropic fitting",
+        "manufacturer vector SVG and PDF are identity evidence, not native CAD geometry"
+      ],
+      "instance_scope": {
+        "project_instance_count": 2,
+        "representative_instance_only_for_candidate_and_bonsai_render": true,
+        "reason": "Both project instances share the same H01 type and actual mapped Body geometry; one representative instance is isolated to avoid duplicate high-poly rendering."
+      },
+      "drawing_source": {
+        "source_kind": "geometry_derived_simplified_proxy",
+        "source_label_zh": "基于原始高模几何生成的简化图纸表达",
+        "source_label_en": "simplified drawing representation derived from the original high-poly geometry",
+        "official_cad_used": false,
+        "third_party_cad_used": false
+      },
+      "official_reference": {
+        "source_id": "BAXTER-MIAMI-SOFT-H01-OFFICIAL-IDENTITY-001",
+        "source_kind": "manufacturer_product_page_vector_pdf_and_measurement_svg_identity_reference",
+        "manufacturer": "Baxter",
+        "family": "Miami Soft",
+        "designer": "Paola Navone",
+        "model_code": "H01",
+        "variant": "cushion, 80 x 80 cm",
+        "scope": "exact manufacturer family, H01 cushion model and nominal flexible face dimensions; authenticated native 2D/3D/BIM not acquired; not a project shop drawing and not official CAD geometry",
+        "product_page": "https://www.baxter.it/gb/prodotti/miami-soft-divani-e-poltrone",
+        "technical_sheet": "https://dam.baxter.it/m/1e3eaec668311b07/original/Baxter_MiamiSoft_divano_Indoor.pdf",
+        "measurement_svg": "https://productsbook.baxter.it/models/measurements/MIAMSOCUSH01.svg",
+        "source_access_record": "output/review/highpoly-types/miamisoft-h01/official-source/source-access-record.json",
+        "official_product_cad_status": "manufacturer_login_required_not_acquired",
+        "official_product_cad_used": false
+      }
+    }
+  }
+}
