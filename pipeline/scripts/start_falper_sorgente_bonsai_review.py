@@ -1,7 +1,9 @@
 #!/usr/bin/env python3
-"""Start an isolated interactive Bonsai review session for Falper WFB."""
+"""Render and optionally open an isolated Bonsai review session for Falper WFB."""
 
 import contextlib
+import hashlib
+import json
 from pathlib import Path
 
 import addon_utils
@@ -20,6 +22,7 @@ BLEND = (
     / "output/review/highpoly-types/falper-sorgente/"
     "Falper-Sorgente-WFB-bonsai-review.blend"
 )
+MANIFEST = BLEND.parent / "bonsai-review-manifest.json"
 GLOBAL_ID = "350tdaubr8QP3Cu2YMQZIN"
 CAMERA_RENDERS = {
     "PLAN": "bonsai-camera-plan.png",
@@ -29,9 +32,17 @@ CAMERA_RENDERS = {
 }
 
 
-def render_body_cameras(obj: bpy.types.Object) -> None:
+def sha256(path: Path) -> str:
+    digest = hashlib.sha256()
+    with path.open("rb") as stream:
+        for chunk in iter(lambda: stream.read(1024 * 1024), b""):
+            digest.update(chunk)
+    return digest.hexdigest()
+
+
+def render_body_cameras(obj: bpy.types.Object) -> dict[str, dict[str, object]]:
     for existing in list(bpy.data.objects):
-        if existing.name.startswith("FALPER_CAM_"):
+        if existing.type == "CAMERA":
             bpy.data.objects.remove(existing, do_unlink=True)
 
     scene = bpy.context.scene
@@ -73,6 +84,7 @@ def render_body_cameras(obj: bpy.types.Object) -> None:
         ("SIDE", center + Vector((3.0, 0.0, 0.0)), max(extent.y, extent.z) * 1.18),
         ("ISO", center + Vector((1.8, -1.8, 1.5)), max(extent) * 1.42),
     ]
+    renders: dict[str, dict[str, object]] = {}
     for label, location, scale in jobs:
         camera_data = bpy.data.cameras.new(f"FALPER_CAM_{label}")
         camera = bpy.data.objects.new(f"FALPER_CAM_{label}", camera_data)
@@ -84,6 +96,33 @@ def render_body_cameras(obj: bpy.types.Object) -> None:
         scene.camera = camera
         scene.render.filepath = str(BLEND.parent / CAMERA_RENDERS[label])
         bpy.ops.render.render(write_still=True)
+        renders[label] = {
+            "camera": camera.name,
+            "orthographic_scale_m": round(float(camera.data.ortho_scale), 6),
+            "path": str((BLEND.parent / CAMERA_RENDERS[label]).relative_to(ROOT)),
+            "sha256": sha256(BLEND.parent / CAMERA_RENDERS[label]),
+        }
+    return renders
+
+
+def update_manifest(renders: dict[str, dict[str, object]]) -> None:
+    payload = json.loads(MANIFEST.read_text(encoding="utf-8"))
+    cameras = sorted(obj.name for obj in bpy.data.objects if obj.type == "CAMERA")
+    expected = sorted(f"FALPER_CAM_{label}" for label in CAMERA_RENDERS)
+    if cameras != expected:
+        raise RuntimeError(f"saved camera set does not match Falper review cameras: {cameras}")
+    payload["mode"] = "actual_bonsai_ifc_body_camera_render"
+    payload["bonsai_session"]["sha256"] = sha256(BLEND)
+    payload["bonsai_session"]["saved_camera_count"] = len(cameras)
+    payload["bonsai_session"]["saved_camera_names"] = cameras
+    for manifest_key, render_key in (
+        ("plan", "PLAN"),
+        ("front_elevation", "FRONT"),
+        ("side_elevation", "SIDE"),
+        ("isometric", "ISO"),
+    ):
+        payload["camera_renders"][manifest_key] = renders[render_key]
+    MANIFEST.write_text(json.dumps(payload, indent=2) + "\n", encoding="utf-8")
 
 
 with contextlib.suppress(Exception):
@@ -112,9 +151,13 @@ representation_id = obj.data.BIMMeshProperties.ifc_definition_id
 representation = ifc.by_id(representation_id)
 if representation.ContextOfItems.ContextIdentifier != "Body":
     raise RuntimeError("camera renders must use the actual IFC Body representation")
-render_body_cameras(obj)
+renders = render_body_cameras(obj)
 bpy.ops.wm.save_as_mainfile(filepath=str(BLEND))
-preferences = bpy.context.preferences.addons["bonsai_bridge"].preferences
-preferences.allow_edits = True
-bpy.ops.bonsai_mcp.start_bridge()
-print(f"FALPER_BONSAI_READY {obj.name} {SOURCE}")
+update_manifest(renders)
+if bpy.app.background:
+    print(f"FALPER_BONSAI_RENDERED {obj.name} {SOURCE}")
+else:
+    preferences = bpy.context.preferences.addons["bonsai_bridge"].preferences
+    preferences.allow_edits = True
+    bpy.ops.bonsai_mcp.start_bridge()
+    print(f"FALPER_BONSAI_READY {obj.name} {SOURCE}")

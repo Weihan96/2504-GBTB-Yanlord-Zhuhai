@@ -221,6 +221,7 @@ test("Bonsai evidence distinguishes camera renders from representation selection
     "utf8",
   ));
   expect(manifest.review_status).toBe("approved");
+  expect(manifest.mode).toBe("actual_bonsai_ifc_body_camera_render");
   expect(manifest.geometry_product_count).toBe(1);
   expect(manifest.whole_model_render).toBe(false);
   expect(manifest.bonsai_session.saved_active_representation).toBe("Body");
@@ -235,6 +236,7 @@ test("Bonsai evidence distinguishes camera renders from representation selection
   expect(manifest.camera_renders.render_source).toBe("actual_ifc_body_representation");
   expect(manifest.camera_renders.render_engine).toBe("BLENDER_WORKBENCH");
   expect(manifest.camera_renders.resolution_px).toEqual([1200, 1200]);
+  expect(sha256(join(root, manifest.blend_audit.path))).toBe(manifest.blend_audit.sha256);
   for (const view of ["plan", "front_elevation", "side_elevation", "isometric"]) {
     const render = manifest.camera_renders[view];
     const path = join(root, render.path);
@@ -248,6 +250,42 @@ test("Bonsai evidence distinguishes camera renders from representation selection
   );
   expect(sha256(formalIfc)).toBe(formalHash);
 });
+
+test("saved Bonsai scene contains one IFC Body and exactly four render cameras", () => {
+  const blender = "/Applications/Blender.app/Contents/MacOS/Blender";
+  expect(existsSync(blender)).toBe(true);
+  const temporary = mkdtempSync(join(tmpdir(), "falper-bonsai-blend-"));
+  const auditPath = join(temporary, "audit.json");
+  const run = Bun.spawnSync([
+    blender,
+    "-b",
+    join(root, "output/review/highpoly-types/falper-sorgente/Falper-Sorgente-WFB-bonsai-review.blend"),
+    "--python",
+    join(root, "pipeline/scripts/audit_falper_sorgente_bonsai_blend.py"),
+    "--",
+    "--output",
+    auditPath,
+  ], { cwd: root, stdout: "pipe", stderr: "pipe" });
+  expect(run.exitCode, run.stderr.toString()).toBe(0);
+  const audit = JSON.parse(readFileSync(auditPath, "utf8"));
+  expect(audit.pass).toBe(true);
+  expect(audit.geometry_product_count).toBe(1);
+  expect(audit.whole_model_render).toBe(false);
+  expect(audit.product.global_id).toBe("350tdaubr8QP3Cu2YMQZIN");
+  expect(audit.product.ifc_class).toBe("IfcSanitaryTerminal");
+  expect(audit.representation.context_identifier).toBe("Body");
+  expect(audit.saved_camera_count).toBe(4);
+  expect(audit.cameras.map((camera: any) => camera.name).sort()).toEqual([
+    "FALPER_CAM_FRONT",
+    "FALPER_CAM_ISO",
+    "FALPER_CAM_PLAN",
+    "FALPER_CAM_SIDE",
+  ]);
+  expect(audit.cameras.every((camera: any) => camera.type === "ORTHO")).toBe(true);
+  expect(audit.render_engine).toBe("BLENDER_WORKBENCH");
+  expect(audit.resolution_px).toEqual([1200, 1200]);
+  expect(sha256(formalIfc)).toBe(formalHash);
+}, 30_000);
 
 test("actual Bonsai Drawing cameras select official WFB geometry in project context", () => {
   const directory = join(root, "output/review/highpoly-types/falper-sorgente");

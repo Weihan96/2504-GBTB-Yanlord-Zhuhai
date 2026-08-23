@@ -24,9 +24,15 @@
   },
   "bonsai_session": {
     "path": "output/review/highpoly-types/falper-sorgente/Falper-Sorgente-WFB-bonsai-review.blend",
-    "sha256": "b717a0d0a5db9b17cb06609644ee723542b95170bdb8dc8c5da955a369e62360",
+    "sha256": "b8180b5a06722d143542da1e418130798d8f67746d0f9c9f7ee6d168c1d020a9",
     "saved_active_representation": "Body",
-    "saved_camera_count": 4
+    "saved_camera_count": 4,
+    "saved_camera_names": [
+      "FALPER_CAM_FRONT",
+      "FALPER_CAM_ISO",
+      "FALPER_CAM_PLAN",
+      "FALPER_CAM_SIDE"
+    ]
   },
   "viewport_body_evidence": {
     "isometric": {
@@ -101,28 +107,32 @@
       "camera": "FALPER_CAM_PLAN",
       "orthographic_scale_m": 0.60355,
       "path": "output/review/highpoly-types/falper-sorgente/bonsai-camera-plan.png",
-      "sha256": "f326f3301284cacb470eafd56d07929ce670908f6c0a5ba90f8db526ed032f49"
+      "sha256": "d908a87d8894cc7fcaaddf1c3dc796340cb2c404b9f86b5e2e2e4046decfe42f"
     },
     "front_elevation": {
       "camera": "FALPER_CAM_FRONT",
       "orthographic_scale_m": 1.066256,
       "path": "output/review/highpoly-types/falper-sorgente/bonsai-camera-front-elevation.png",
-      "sha256": "096a22e5b0d0768dc1345cf6f8fa4da3e23238d8329d6d14d8401871f4a47dc5"
+      "sha256": "4c55ee3c1280b604274b365ead9de1be164b8c499c1581b900fd75af1fb88c11"
     },
     "side_elevation": {
       "camera": "FALPER_CAM_SIDE",
       "orthographic_scale_m": 1.066256,
       "path": "output/review/highpoly-types/falper-sorgente/bonsai-camera-side-elevation.png",
-      "sha256": "933cf0b104a73ac3b0a5b9a657d07ce44996bd5f151fd7dd4c9ef826b20380b0"
+      "sha256": "642261b5bc87c94d2a5fc28ef9a32f7630b2b832c858c960975b96cac1f1e4fa"
     },
     "isometric": {
       "camera": "FALPER_CAM_ISO",
       "orthographic_scale_m": 1.283122,
       "path": "output/review/highpoly-types/falper-sorgente/bonsai-camera-iso.png",
-      "sha256": "6c9f009a629a51969b2563050772b52b283c7c3390cc7e9d2f2cb267aaa167e9"
+      "sha256": "af53ea50e4661e5b0678cef4e8d665c149e3029d371bc6af8c68743fb5c27eee"
     }
   },
   "camera_renders_are_render_results": true,
+  "blend_audit": {
+    "path": "output/review/highpoly-types/falper-sorgente/bonsai-blend-audit.json",
+    "sha256": "394c456a301179d8b45670ada90e1ed2c515f6876b3d27170c0afea541754982"
+  },
   "camera_renders_accepted_as_project_context_drawing_evidence": false,
   "camera_renders_acceptance_note": "Isolated Body renders are retained only as geometry diagnostics; user acceptance requires actual IFC Drawing cameras with project walls, furniture and annotations.",
   "project_context_bonsai_drawing_manifest": "output/review/highpoly-types/falper-sorgente/bonsai-project-context-styled/manifest.json",
@@ -142,5 +152,6 @@
   "source_dwg_sha256": "4b3d8900f8ae249d7e9634339f3529d7d38a940dc2d0c909a7e90e31d3946831",
   "proxy_geometry_included_in_drawing_representations": false,
   "counterexample_record": "output/review/highpoly-types/falper-sorgente/INVALIDATED-proxy-contaminated.json",
-  "pass": true
+  "pass": true,
+  "mode": "actual_bonsai_ifc_body_camera_render"
 }

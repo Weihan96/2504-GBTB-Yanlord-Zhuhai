@@ -1,0 +1,71 @@
+{
+  "schema_version": 1,
+  "generator": "pipeline/scripts/audit_falper_sorgente_bonsai_blend.py",
+  "blend": {
+    "path": "output/review/highpoly-types/falper-sorgente/Falper-Sorgente-WFB-bonsai-review.blend",
+    "sha256": "b8180b5a06722d143542da1e418130798d8f67746d0f9c9f7ee6d168c1d020a9"
+  },
+  "isolated_ifc": {
+    "path": "output/review/highpoly-types/falper-sorgente/Falper-Sorgente-WFB-bonsai-isolated.ifc",
+    "sha256": "e87f796d6b4987ab355f8c6c4014ec379f97baa2f09fea67b2da208a8c1f17f2"
+  },
+  "geometry_product_count": 1,
+  "whole_model_render": false,
+  "product": {
+    "object_name": "IfcSanitaryTerminal/SanitaryTerminal",
+    "ifc_definition_id": 9546,
+    "ifc_class": "IfcSanitaryTerminal",
+    "global_id": "350tdaubr8QP3Cu2YMQZIN"
+  },
+  "representation": {
+    "ifc_definition_id": 4924,
+    "context_identifier": "Body"
+  },
+  "cameras": [
+    {
+      "name": "FALPER_CAM_FRONT",
+      "type": "ORTHO",
+      "orthographic_scale_m": 1.066256
+    },
+    {
+      "name": "FALPER_CAM_ISO",
+      "type": "ORTHO",
+      "orthographic_scale_m": 1.283122
+    },
+    {
+      "name": "FALPER_CAM_PLAN",
+      "type": "ORTHO",
+      "orthographic_scale_m": 0.60355
+    },
+    {
+      "name": "FALPER_CAM_SIDE",
+      "type": "ORTHO",
+      "orthographic_scale_m": 1.066256
+    }
+  ],
+  "saved_camera_count": 4,
+  "render_engine": "BLENDER_WORKBENCH",
+  "resolution_px": [
+    1200,
+    1200
+  ],
+  "renders": {
+    "plan": {
+      "path": "output/review/highpoly-types/falper-sorgente/bonsai-camera-plan.png",
+      "sha256": "d908a87d8894cc7fcaaddf1c3dc796340cb2c404b9f86b5e2e2e4046decfe42f"
+    },
+    "front_elevation": {
+      "path": "output/review/highpoly-types/falper-sorgente/bonsai-camera-front-elevation.png",
+      "sha256": "4c55ee3c1280b604274b365ead9de1be164b8c499c1581b900fd75af1fb88c11"
+    },
+    "side_elevation": {
+      "path": "output/review/highpoly-types/falper-sorgente/bonsai-camera-side-elevation.png",
+      "sha256": "642261b5bc87c94d2a5fc28ef9a32f7630b2b832c858c960975b96cac1f1e4fa"
+    },
+    "isometric": {
+      "path": "output/review/highpoly-types/falper-sorgente/bonsai-camera-iso.png",
+      "sha256": "af53ea50e4661e5b0678cef4e8d665c149e3029d371bc6af8c68743fb5c27eee"
+    }
+  },
+  "pass": true
+}
