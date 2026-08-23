@@ -1,0 +1,99 @@
+{
+  "schema_version": 1,
+  "generator": "pipeline/scripts/render_trap01_project_context.py",
+  "source_kind": "geometry_derived_simplified_proxy",
+  "source_label_zh": "基于原始高模几何生成的简化图纸表达",
+  "official_cad_used": false,
+  "official_cad_acquired": true,
+  "official_cad_used_as_representation": false,
+  "blue_line_present": false,
+  "third_party_cad_used": false,
+  "project_context_retained": true,
+  "walls_and_surrounding_project_elements_retained": true,
+  "overlay_top_layer_with_white_mask": true,
+  "blue_product_cad_line_present": false,
+  "project_scale_svg_units_per_mm": 0.02,
+  "semantic_view_mapping": {
+    "plan": {
+      "candidate_axes": [
+        0,
+        1
+      ],
+      "source": "drawings/Sanitary Plan.svg",
+      "project_direction": "+Z"
+    }
+  },
+  "context_view_scope": {
+    "included": [
+      "plan"
+    ],
+    "excluded": [
+      "front",
+      "side"
+    ],
+    "reason": "TRAP01 appears in the sanitary plan, but no native project elevation SVG contains its GlobalId. Project elevations are not invented."
+  },
+  "review_annotation_suppression": {
+    "plan": "official-elevation-anchor groups only",
+    "scope": "review crop only",
+    "walls_furniture_and_ifc_geometry_removed": false
+  },
+  "views": [
+    {
+      "view": "plan",
+      "candidate_view": "plan",
+      "source": "drawings/Sanitary Plan.svg",
+      "output": "output/review/highpoly-types/trap01/project-context-sanitary-plan.svg",
+      "output_sha256": "224faf83cfa178e225a0abafb66886b4877c849541fd7d2af9abd2eb80441950",
+      "review_crop": "output/review/highpoly-types/trap01/project-context-sanitary-plan-review.svg",
+      "review_crop_sha256": "12c78fb83c61da9a353471b3a266123f13927ca33f1159196251c779592eda4d",
+      "review_preview": "output/review/highpoly-types/trap01/project-context-sanitary-plan-review-preview.png",
+      "review_preview_sha256": "1abef92711873484b955f6dee49d9d46ca86952a77f7f593e36b1f1f32d11acc",
+      "overlay": {
+        "ifc_guid": "2Ak2ma0lvBEA49UpplzUqi",
+        "source_kind": "geometry_derived_simplified_proxy",
+        "source_label_zh": "基于原始高模几何生成的简化图纸表达",
+        "official_cad_acquired": true,
+        "official_cad_used_as_representation": false,
+        "third_party_cad_used": false,
+        "path_count": 16,
+        "full_configured_proxy_bbox": [
+          [
+            71.043768,
+            210.23454
+          ],
+          [
+            76.093819,
+            211.76536
+          ]
+        ],
+        "fixed_project_scale_preserved": true,
+        "geometry_scaled_or_stretched": false,
+        "mechanical_translation": {
+          "method": "exact_quantized_project_hidden-line_edge_vectors_matched_to_isolated_IFC_Body_XY_edges",
+          "project_visible_segment_count": 613,
+          "matching_edge_vote_count": 853,
+          "translation_svg_units": [
+            71.64,
+            210.999997
+          ],
+          "scale_svg_units_per_mm": 0.02,
+          "flip_projected_y": true,
+          "original_visible_projection_bbox": [
+            [
+              72.4,
+              210.234541
+            ],
+            [
+              76.09382,
+              211.76536
+            ]
+          ],
+          "original_projection_is_occluded": true,
+          "pass": true
+        }
+      }
+    }
+  ],
+  "pass": true
+}

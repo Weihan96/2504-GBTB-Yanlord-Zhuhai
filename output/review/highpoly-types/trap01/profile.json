@@ -1,0 +1,23 @@
+{
+  "schema_version": 2,
+  "formal_ifc_sha256": "7a50b87e8f48a7c2bfbaa9f1dabdfca7155fa684b2325c66aa1ae15c8ab0a25c",
+  "profiles": {
+    "trap01": {
+      "display_name": "Geberit space-saving dip tube trap 151.116.11.1 / project TRAP01",
+      "ifc_type_name": "TRAP01",
+      "representative_global_id": "2Ak2ma0lvBEA49UpplzUqi",
+      "expected_instance_global_ids": ["2Ak2ma0lvBEA49UpplzUqi"],
+      "silhouette_simplify_mm": 0.18,
+      "required_semantics": ["space_saving_horizontal_outlet_trap", "d32_fixed_body_width", "adjustable_horizontal_and_vertical_tubes", "configured_project_instance_not_default_full_extension", "official_family_CAD_archived_but_not_force_fitted"],
+      "drawing_source": {
+        "source_kind": "geometry_derived_simplified_proxy",
+        "source_label_zh": "基于原始高模几何生成的简化图纸表达",
+        "source_label_en": "simplified drawing representation derived from the original high-poly geometry",
+        "configuration_note": "The proxy preserves the shortened project installation configuration; it does not force-fit the official default family extension.",
+        "official_cad_acquired": true,
+        "official_cad_used_as_representation": false,
+        "third_party_cad_used": false
+      }
+    }
+  }
+}

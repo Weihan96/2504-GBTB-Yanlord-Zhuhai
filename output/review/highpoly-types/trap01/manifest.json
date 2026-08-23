@@ -1,0 +1,236 @@
+{
+  "schema_version": 1,
+  "generated_at": "2026-08-23T12:05:51.794371+00:00",
+  "generator": "pipeline/scripts/trap01_review.py",
+  "formal_ifc": "2504 GBTB Yanlord Zhuhai.ifc",
+  "formal_ifc_sha256": "7a50b87e8f48a7c2bfbaa9f1dabdfca7155fa684b2325c66aa1ae15c8ab0a25c",
+  "formal_ifc_sha256_after_generation": "7a50b87e8f48a7c2bfbaa9f1dabdfca7155fa684b2325c66aa1ae15c8ab0a25c",
+  "formal_ifc_bytes_unchanged": true,
+  "profile_key": "trap01",
+  "display_name": "Geberit space-saving dip tube trap 151.116.11.1 / project TRAP01",
+  "ifc_type_name": "TRAP01",
+  "ifc_type_description": "Space Saving Dip Tube Trap",
+  "representative_global_id": "2Ak2ma0lvBEA49UpplzUqi",
+  "registered_instance_global_ids": [
+    "2Ak2ma0lvBEA49UpplzUqi"
+  ],
+  "geometry_product_count": 1,
+  "whole_model_render": false,
+  "source_kind": "geometry_derived_simplified_proxy",
+  "source_label_zh": "基于原始高模几何生成的简化图纸表达",
+  "source_label_en": "simplified drawing representation derived from the original high-poly geometry",
+  "configuration_note": "The proxy preserves the shortened project installation configuration; it does not force-fit the official default family extension.",
+  "official_cad_acquired": true,
+  "official_cad_used": false,
+  "official_cad_used_as_representation": false,
+  "third_party_cad_used": false,
+  "blue_line_present": false,
+  "mesh_vertex_count": 4536,
+  "mesh_face_count": 9079,
+  "bounds_mm": {
+    "minimum": [
+      -29.811604,
+      -38.268143,
+      -80.499954
+    ],
+    "maximum": [
+      222.690975,
+      38.272831,
+      111.440025
+    ],
+    "size": [
+      252.502579,
+      76.540974,
+      191.93998
+    ]
+  },
+  "drawing_source": {
+    "source_kind": "geometry_derived_simplified_proxy",
+    "source_label_zh": "基于原始高模几何生成的简化图纸表达",
+    "source_label_en": "simplified drawing representation derived from the original high-poly geometry",
+    "configuration_note": "The proxy preserves the shortened project installation configuration; it does not force-fit the official default family extension.",
+    "official_cad_acquired": true,
+    "official_cad_used_as_representation": false,
+    "third_party_cad_used": false,
+    "official_source_access_record": "output/review/highpoly-types/trap01/official-source/source-access-record.json",
+    "official_source_access_record_sha256": "875deb7f912af6d07693100099afb08589a75f992df4641cdbc8235f91f5c067",
+    "official_native_dwg_linework": "output/review/highpoly-types/trap01/official-native-dwg-linework.json",
+    "official_native_dwg_linework_sha256": "3279df2a67948d846d05098104f75f44d5801a54eda95788f79c2526e9e4c0f1"
+  },
+  "article_resolution": {
+    "project_ifc_body_local_xyz_mm": [
+      252.502579,
+      76.540974,
+      191.93998
+    ],
+    "selected_151_116_fixed_body_width_mm": 76.541707,
+    "selected_fixed_width_absolute_delta_mm": 0.000733,
+    "excluded_151_117_default_CAD_width_mm": 60.000387,
+    "selection_tolerance_mm": 0.02,
+    "selected_article_pass": true,
+    "excluded_alternative": "151.117.11.1 / d40",
+    "interpretation": "The project Body fixed width matches official 151.116.11.1 d32 CAD within 0.001 mm and mechanically excludes the 151.117.11.1 d40 alternative."
+  },
+  "configuration_cross_check": {
+    "official_default_family_full_envelope_by_view_mm": {
+      "plan": [
+        412.031909,
+        76.53077
+      ],
+      "front": [
+        435.5,
+        399.94
+      ],
+      "side": [
+        76.541707,
+        399.94
+      ]
+    },
+    "project_configured_body_by_view_mm": {
+      "plan": [
+        252.502579,
+        76.540974
+      ],
+      "front": [
+        252.502579,
+        191.93998
+      ],
+      "side": [
+        76.540974,
+        191.93998
+      ]
+    },
+    "official_adjustment_ranges_mm": {
+      "horizontal_extension": [
+        0,
+        252
+      ],
+      "h": [
+        85,
+        334
+      ]
+    },
+    "project_instance_is_shortened_configuration": true,
+    "official_default_family_paths_used_as_project_representation": false,
+    "geometry_scaled_or_stretched_to_match": false,
+    "pass": true
+  },
+  "candidate_representations": "output/review/highpoly-types/trap01/candidate-representations.json",
+  "candidate_representations_sha256": "f5e202bcbceb107994c0ac7c1fc19aac0fa398d93e7d3ca008bf85d0c822c5c5",
+  "views": [
+    {
+      "view": "plan",
+      "svg": "output/review/highpoly-types/trap01/plan.svg",
+      "svg_sha256": "7b5dece64376e21ea4ccb9f9682218873efb955ee9f6a6ea668818319c314a85",
+      "preview": "output/review/highpoly-types/trap01/plan-preview.png",
+      "preview_sha256": "36cdf749b6d4675e67eb979f99c8675ef008437b923a0eb65dbd35581dd28188",
+      "projection_axes": [
+        0,
+        1
+      ],
+      "raw_edge_count": 13614,
+      "displayed_raw_edge_count": 592,
+      "silhouette_path_count": 16,
+      "candidate_drawing_line_source_kind": "geometry_derived_simplified_proxy",
+      "official_family_native_dwg_path_count": 92,
+      "blue_line_present_as_separate_family_reference": true,
+      "blue_line_used_as_project_representation": false,
+      "comparison": {
+        "native_dwg_code": "G",
+        "source_dwg_sha256": "af55992e60aa1d84c9834da995f6ef8269593f43f46a6311cdf3e2e59530dd3f",
+        "project_configured_size_mm": [
+          252.502579,
+          76.540974
+        ],
+        "official_default_size_mm": [
+          412.031909,
+          76.53077
+        ],
+        "geometry_scaled_or_stretched": false,
+        "official_default_family_paths_used_as_project_representation": false
+      }
+    },
+    {
+      "view": "front",
+      "svg": "output/review/highpoly-types/trap01/front.svg",
+      "svg_sha256": "9a46b7f6cb206fa06f539c7b1d686966d025d346bde59da01f8228c1c6c44387",
+      "preview": "output/review/highpoly-types/trap01/front-preview.png",
+      "preview_sha256": "f1f8cfe636e20179b5a240cb95b0be5a0190a09970d2c0df6c82921d6805a82d",
+      "projection_axes": [
+        0,
+        2
+      ],
+      "raw_edge_count": 13614,
+      "displayed_raw_edge_count": 592,
+      "silhouette_path_count": 1,
+      "candidate_drawing_line_source_kind": "geometry_derived_simplified_proxy",
+      "official_family_native_dwg_path_count": 77,
+      "blue_line_present_as_separate_family_reference": true,
+      "blue_line_used_as_project_representation": false,
+      "comparison": {
+        "native_dwg_code": "L",
+        "source_dwg_sha256": "761eec37c809fc4319e9beaba6eaf472e19eefcbd16adf2815a4644d0a36fdc8",
+        "project_configured_size_mm": [
+          252.502579,
+          191.93998
+        ],
+        "official_default_size_mm": [
+          435.5,
+          399.94
+        ],
+        "geometry_scaled_or_stretched": false,
+        "official_default_family_paths_used_as_project_representation": false
+      }
+    },
+    {
+      "view": "side",
+      "svg": "output/review/highpoly-types/trap01/side.svg",
+      "svg_sha256": "1c4871fc72c3504c42d422edf4d22eae912b340557234121c7807f108ffcdcc7",
+      "preview": "output/review/highpoly-types/trap01/side-preview.png",
+      "preview_sha256": "bcd1d8e20798c34bf0b16e0685a5bff584d92cc36d06d21f8f38aea5c1e14410",
+      "projection_axes": [
+        1,
+        2
+      ],
+      "raw_edge_count": 13614,
+      "displayed_raw_edge_count": 592,
+      "silhouette_path_count": 8,
+      "candidate_drawing_line_source_kind": "geometry_derived_simplified_proxy",
+      "official_family_native_dwg_path_count": 117,
+      "blue_line_present_as_separate_family_reference": true,
+      "blue_line_used_as_project_representation": false,
+      "comparison": {
+        "native_dwg_code": "A",
+        "source_dwg_sha256": "01fa50da7cf39c6a6ab2a89339d1e4523270cb0943e8dce148f3d471f1a4fff2",
+        "project_configured_size_mm": [
+          76.540974,
+          191.93998
+        ],
+        "official_default_size_mm": [
+          76.541707,
+          399.94
+        ],
+        "geometry_scaled_or_stretched": false,
+        "official_default_family_paths_used_as_project_representation": false
+      }
+    }
+  ],
+  "review_status": "visual_review_pending",
+  "approved_for_drawing_ifc": false,
+  "derived_ifc_write_allowed": false,
+  "formal_ifc_write": "not performed",
+  "scope": "exact Geberit 151.116.11.1 adjustable family reference; project instance is a shortened installation configuration; not a project shop drawing",
+  "pass": true,
+  "project_context": {
+    "manifest": "output/review/highpoly-types/trap01/project-context-manifest.json",
+    "manifest_sha256": "97ecb08f4c208a60af9e99b357b582190f2d4d7e928ea1ca50f3ace41c6e4669",
+    "mode": null,
+    "pass": true
+  },
+  "bonsai_review": {
+    "manifest": "output/review/highpoly-types/trap01/bonsai-review-manifest.json",
+    "manifest_sha256": "e051a0c29ee8587ba4f551c072e90e3334201937f63f9bee2a58cdc059aacf9c",
+    "mode": "actual_bonsai_ifc_body_camera_render",
+    "pass": true
+  }
+}

@@ -1,0 +1,96 @@
+{
+  "schema_version": 1,
+  "manufacturer": "Geberit",
+  "family": "dip tube trap for washbasin, space-saving model, horizontal outlet",
+  "project_ifc_type_name": "TRAP01",
+  "project_ifc_type_description": "Space Saving Dip Tube Trap",
+  "resolved_article": "151.116.11.1",
+  "resolved_article_description": "d=32 mm, G=1 1/4 inch, white alpine, horizontal outlet",
+  "research_date": "2026-08-23",
+  "official_sources": [
+    {
+      "kind": "manufacturer_product_page",
+      "url": "https://catalog.geberit.us/en-US/product/PRO_185224",
+      "local_path": "output/review/highpoly-types/trap01/official-source/geberit-PRO_185224-product-page.html",
+      "sha256": "566b4286b131cba21435fbb94e22ac46845886a6cc354750bd9340a2e0cd7864",
+      "role": "exact family, article table, technical attributes and direct native CAD links"
+    },
+    {
+      "kind": "manufacturer_product_data_sheet",
+      "url": "https://catalog.geberit.us/api/pdf/product?brand=geberit&locale=en-US&productId=PRO_185224",
+      "local_path": "output/review/highpoly-types/trap01/official-source/Geberit-PRO_185224-product-data-sheet.pdf",
+      "sha256": "e331a53269493b86908611c1ab2f5d05c401aff2530c464546342a1dece0d06b",
+      "page": 1,
+      "preview_path": "output/review/highpoly-types/trap01/official-source/Geberit-PRO_185224-product-data-sheet-page-1-preview.png",
+      "preview_sha256": "4e7fc7eb2e674aa9fb03c15baf9c3f842dd6eebabc74c105501d15eb7410475f",
+      "vector_object_audit": {"drawing_count": 55, "drawing_item_count": 391, "word_count": 142, "character_count": 785},
+      "required_text_found": ["151.116.11.1", "32", "11.2", "8.5-33.4", "horizontal", "151.117.11.1", "40"],
+      "role": "article selection, adjustment ranges and visual identity evidence; not representation geometry"
+    },
+    {
+      "kind": "manufacturer_installation_instructions",
+      "url": "https://cdn.data.geberit.com/documents/966.798.00.0_02_20160324085259.pdf",
+      "local_path": "output/review/highpoly-types/trap01/official-source/966.798.00.0-installation-instructions.pdf",
+      "sha256": "edbf40f45788262b056f4d1d366731c0242cd523b70a97215f00091a0ebe5e9a",
+      "page_count": 2,
+      "preview_path": "output/review/highpoly-types/trap01/official-source/966.798.00.0-installation-page-1-preview.png",
+      "preview_sha256": "8385b10b9d6872e718ff9efa7fe8fc8e136caab342932f25be531944b7bae697",
+      "page_2_text_audit": {"word_count": 65, "character_count": 329, "required_text_found": ["113-365", "0-252", "32", "40", "85-334"]},
+      "role": "manufacturer adjustment-range evidence; not representation geometry"
+    },
+    {
+      "kind": "manufacturer_maintenance_manual",
+      "url": "https://cdn.data.geberit.com/documents/969.459.00.0_00_20190429132827.pdf",
+      "local_path": "output/review/highpoly-types/trap01/official-source/969.459.00.0-maintenance-manual.pdf",
+      "sha256": "1bbafe09d372ba2c52058fb1a795c98086d85f6fb30625b36670e23dd7da6edf",
+      "page_count": 4,
+      "role": "manufacturer product construction and service identity evidence only"
+    }
+  ],
+  "native_cad_selection": {
+    "article_number": "151.116.11.1",
+    "source_kind": "native_dwg",
+    "codes": {"G": "plan", "L": "front", "A": "side", "P": "official 3D identity"},
+    "sha256": {
+      "G": "af55992e60aa1d84c9834da995f6ef8269593f43f46a6311cdf3e2e59530dd3f",
+      "L": "761eec37c809fc4319e9beaba6eaf472e19eefcbd16adf2815a4644d0a36fdc8",
+      "A": "01fa50da7cf39c6a6ab2a89339d1e4523270cb0943e8dce148f3d471f1a4fff2",
+      "P": "c99cee2a0c9ae94b3a5535db4973982795eba64cedc5da135d5ca8f12264a8e1"
+    },
+    "path_counts": {"plan": 92, "front": 77, "side": 117},
+    "official_cad_acquired": true,
+    "third_party_cad_used": false,
+    "pass": true
+  },
+  "article_resolution": {
+    "project_ifc_body_local_xyz_mm": [252.502579, 76.540974, 191.93998],
+    "selected_151_116_fixed_body_width_mm": 76.541707,
+    "selected_fixed_width_absolute_delta_mm": 0.000733,
+    "excluded_151_117_default_CAD_width_mm": 60.000387,
+    "selection_tolerance_mm": 0.02,
+    "selected_article_pass": true,
+    "excluded_alternative": "151.117.11.1 / d40",
+    "interpretation": "The project Body fixed width matches official 151.116.11.1 d32 CAD within 0.001 mm and mechanically excludes the 151.117.11.1 d40 alternative."
+  },
+  "configuration_cross_check": {
+    "official_default_family_full_envelope_by_view_mm": {"plan": [412.031909, 76.53077], "front": [435.5, 399.94], "side": [76.541707, 399.94]},
+    "project_configured_body_by_view_mm": {"plan": [252.502579, 76.540974], "front": [252.502579, 191.93998], "side": [76.540974, 191.93998]},
+    "official_adjustment_ranges_mm": {"horizontal_extension": [0, 252], "h": [85, 334]},
+    "project_instance_is_shortened_configuration": true,
+    "official_default_family_paths_used_as_project_representation": false,
+    "geometry_scaled_or_stretched_to_match": false,
+    "pass": true
+  },
+  "drawing_geometry_source": {
+    "source_kind": "geometry_derived_simplified_proxy",
+    "source_label_zh": "基于原始高模几何生成的简化图纸表达",
+    "source_label_en": "simplified drawing representation derived from the original high-poly geometry",
+    "configuration_note": "The proxy preserves the shortened project installation configuration; it does not force-fit the official default family extension.",
+    "official_cad_acquired": true,
+    "official_cad_used_as_representation": false,
+    "official_cad_role": "exact article identity, adjustable-family envelope and fixed-width cross-check",
+    "third_party_cad_used": false
+  },
+  "scope": "exact Geberit 151.116.11.1 adjustable family reference; project instance is a shortened installation configuration; not a project shop drawing",
+  "pass": true
+}

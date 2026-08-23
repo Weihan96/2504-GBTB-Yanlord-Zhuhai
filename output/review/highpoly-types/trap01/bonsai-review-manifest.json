@@ -1,0 +1,143 @@
+{
+  "schema_version": 1,
+  "generator": "pipeline/scripts/render_trap01_bonsai_review.py",
+  "mode": "actual_bonsai_ifc_body_camera_render",
+  "representative_global_id": "2Ak2ma0lvBEA49UpplzUqi",
+  "geometry_product_count": 1,
+  "whole_model_render": false,
+  "formal_ifc": "2504 GBTB Yanlord Zhuhai.ifc",
+  "formal_ifc_sha256": "7a50b87e8f48a7c2bfbaa9f1dabdfca7155fa684b2325c66aa1ae15c8ab0a25c",
+  "formal_ifc_bytes_unchanged": true,
+  "isolated_ifc": "output/review/highpoly-types/trap01/Geberit-151.116.11.1-TRAP01-bonsai-isolated.ifc",
+  "isolated_ifc_sha256": "1c495a80894b8a1f54050a51532b85c8c3f076e6e1f28a3093a81ca2e8acdd48",
+  "bonsai_session": {
+    "path": "output/review/highpoly-types/trap01/Geberit-151.116.11.1-TRAP01-bonsai-review.blend",
+    "sha256": "c8df05ac75a34039f59020e5dd3c26a6d0e5029fb8257240bba52415b563d65b",
+    "saved_active_representation": "Body",
+    "saved_camera_count": 4,
+    "saved_camera_names": [
+      "GEBERIT_TRAP01_151_116_11_1_CAM_FRONT",
+      "GEBERIT_TRAP01_151_116_11_1_CAM_ISO",
+      "GEBERIT_TRAP01_151_116_11_1_CAM_PLAN",
+      "GEBERIT_TRAP01_151_116_11_1_CAM_SIDE"
+    ],
+    "ifc_definition_id": 9166,
+    "ifc_context_identifier": "Body",
+    "ifc_target_view": "MODEL_VIEW",
+    "front_camera_local_y_sign": -1.0,
+    "object_name": "IfcSanitaryTerminal/SanitaryTerminal",
+    "object_bounds_m": {
+      "minimum": [
+        -6.447811604,
+        -0.588268161,
+        0.515500069
+      ],
+      "maximum": [
+        -6.195309162,
+        -0.511727154,
+        0.707440019
+      ]
+    },
+    "local_axis_extents_m": {
+      "x": 0.252502441,
+      "y": 0.076541066,
+      "z": 0.19193995
+    },
+    "local_axes_world": [
+      [
+        1.0,
+        0.0,
+        0.0
+      ],
+      [
+        0.0,
+        1.0,
+        0.0
+      ],
+      [
+        0.0,
+        0.0,
+        1.0
+      ]
+    ]
+  },
+  "renders": [
+    {
+      "view": "plan",
+      "camera": "GEBERIT_TRAP01_151_116_11_1_CAM_PLAN",
+      "camera_type": "ORTHO",
+      "camera_axis_basis": "IFC product local axes",
+      "camera_ortho_scale_m": 0.297953188419,
+      "projected_width_m": 0.252502441406,
+      "projected_height_m": 0.07654106617,
+      "image_aspect": 1.4,
+      "framing_margin_factor": 1.18,
+      "ortho_scale_quantization_safety_factor": 1.000001,
+      "render_operation": "bpy.ops.render.render(write_still=True)",
+      "path": "output/review/highpoly-types/trap01/bonsai-camera-plan.png",
+      "sha256": "88580ee2910ce560b343d7f4c7af11208a29ae9842d7e92286fee7b1d78a4ac4",
+      "resolution": [
+        1400,
+        1000
+      ]
+    },
+    {
+      "view": "front",
+      "camera": "GEBERIT_TRAP01_151_116_11_1_CAM_FRONT",
+      "camera_type": "ORTHO",
+      "camera_axis_basis": "IFC product local axes",
+      "camera_ortho_scale_m": 0.317085146904,
+      "projected_width_m": 0.252502441406,
+      "projected_height_m": 0.191939962459,
+      "image_aspect": 1.4,
+      "framing_margin_factor": 1.18,
+      "ortho_scale_quantization_safety_factor": 1.000001,
+      "render_operation": "bpy.ops.render.render(write_still=True)",
+      "path": "output/review/highpoly-types/trap01/bonsai-camera-front-elevation.png",
+      "sha256": "dbf09f75a7caf254762d9f975e1c9c75aa48e889d3f1c5c9c56f0087641ae5ea",
+      "resolution": [
+        1400,
+        1000
+      ]
+    },
+    {
+      "view": "side",
+      "camera": "GEBERIT_TRAP01_151_116_11_1_CAM_SIDE",
+      "camera_type": "ORTHO",
+      "camera_axis_basis": "IFC product local axes",
+      "camera_ortho_scale_m": 0.317085146904,
+      "projected_width_m": 0.076541077207,
+      "projected_height_m": 0.191939961027,
+      "image_aspect": 1.4,
+      "framing_margin_factor": 1.18,
+      "ortho_scale_quantization_safety_factor": 1.000001,
+      "render_operation": "bpy.ops.render.render(write_still=True)",
+      "path": "output/review/highpoly-types/trap01/bonsai-camera-side-elevation.png",
+      "sha256": "bbf5cfb6768db21c41803c75d46d4a295c39e260f7a1276487c0d1b991409489",
+      "resolution": [
+        1400,
+        1000
+      ]
+    },
+    {
+      "view": "iso",
+      "camera": "GEBERIT_TRAP01_151_116_11_1_CAM_ISO",
+      "camera_type": "ORTHO",
+      "camera_axis_basis": "IFC product local axes",
+      "camera_ortho_scale_m": 0.480814725161,
+      "projected_width_m": 0.23266892387,
+      "projected_height_m": 0.291049782187,
+      "image_aspect": 1.4,
+      "framing_margin_factor": 1.18,
+      "ortho_scale_quantization_safety_factor": 1.000001,
+      "render_operation": "bpy.ops.render.render(write_still=True)",
+      "path": "output/review/highpoly-types/trap01/bonsai-camera-iso.png",
+      "sha256": "85429321781f6168a05d7247267e8482d3c74cd149cfe8243edfee5ebedaa1b9",
+      "resolution": [
+        1400,
+        1000
+      ]
+    }
+  ],
+  "pass": true
+}
