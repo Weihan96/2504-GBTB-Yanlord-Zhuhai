@@ -1,0 +1,99 @@
+{
+  "schema_version": 1,
+  "checked_at": "2026-08-23T15:42:59.710705+00:00",
+  "manufacturer": "Gessi",
+  "family": "Gessi316 Meccanica",
+  "article_number": "54145",
+  "configuration": "G000",
+  "pdfs": {
+    "technical": {
+      "kind": "technical",
+      "path": "output/review/highpoly-types/gessi316-54145/official-source/GPF5414500000G000_1.pdf",
+      "sha256": "148a16717193cbc066d0314c6d5369492ed582da0f026dbbe6a58d06f8279025",
+      "page_count": 1,
+      "verified_page": 1,
+      "required_tokens": [
+        "GESSI 316 54145",
+        "GPF5414500000G000",
+        "600",
+        "500",
+        "450",
+        "511"
+      ],
+      "all_required_tokens_present": true,
+      "extracted_text_sha256": "99e4170a2dbf96a1f9ba7a5a577db30e199abbc5e6c1b60962852161df9201c3",
+      "render": "output/review/highpoly-types/gessi316-54145/official-source/verification/GPF5414500000G000_1-page-1.png",
+      "render_sha256": "ec2446b808af90e2bd5fa49f6a6af1ec3cc032347f02fc7505429e0a5bc37c30",
+      "render_dpi": 180,
+      "metadata": {
+        "author": "ITTlab S.r.l.",
+        "creator": "Creo Parametric 10.0",
+        "creation_date": "D:20241002080308+02'00'"
+      },
+      "pass": true
+    },
+    "collection_catalogue": {
+      "kind": "collection_catalogue",
+      "path": "output/review/highpoly-types/gessi316-54145/official-source/MAGAZINE_GESSI_316_2026.pdf",
+      "sha256": "b9c905bbdf91c9c0f4b779865376c732af741a4a199cfab7e973c21ba6caeb8d",
+      "page_count": 21,
+      "verified_page": 19,
+      "required_tokens": [
+        "94. 54145",
+        "WALL-MOUNTED ADJUSTABLE",
+        "95. 54146",
+        "CEILING-MOUNTED ADJUSTABLE"
+      ],
+      "all_required_tokens_present": true,
+      "extracted_text_sha256": "41c226b07f8bda03264a12d827c97566cae9ead49916d8601dbb00c4ccf0865b",
+      "render": "output/review/highpoly-types/gessi316-54145/official-source/verification/MAGAZINE_GESSI_316_2026-page-19.png",
+      "render_sha256": "9ac61be56ffbb8125d45725ea77604e9f8e0e0d5966c81e4ba47401befd6a164",
+      "render_dpi": 180,
+      "metadata": {
+        "author": null,
+        "creator": "Adobe InDesign 21.0 (Windows)",
+        "creation_date": "D:20260202125658+01'00'"
+      },
+      "pass": true
+    }
+  },
+  "mechanical_cross_check": {
+    "technical_pdf_title_matches_exact_dwg_basename": true,
+    "technical_pdf_model_code": "54145",
+    "technical_pdf_nominal_width_depth_height_mm": [
+      300.0,
+      600.0,
+      115.0
+    ],
+    "technical_pdf_showerhead_diameter_mm": 300.0,
+    "native_dwg_expected_sha256": "9978b68468a61875acb0736aab45a62a98efadfd6be61d347e7ecaa94e08fd09",
+    "native_dwg_plan_envelope_mm": [
+      600.0,
+      299.993081
+    ],
+    "native_dwg_front_envelope_mm": [
+      600.0,
+      118.95
+    ],
+    "native_dwg_side_envelope_mm": [
+      300.0,
+      118.9206
+    ],
+    "project_ifc_body_local_xyz_mm": [
+      599.818665,
+      299.818832,
+      119.07444
+    ],
+    "maximum_ifc_projection_delta_mm": 0.181335,
+    "tolerance_mm": 0.5,
+    "pass": true
+  },
+  "visual_review": {
+    "status": "codex_visual_qa_pass",
+    "technical_sheet_observation": "Exact GESSI 316 54145 / GPF5414500000G000 title, Ø300 showerhead, 600 mm overall reach, 500/450 mm arm datums and 115 mm nominal height are visible.",
+    "catalogue_observation": "Official catalogue item 94 identifies 54145 as wall-mounted adjustable; adjacent item 95 identifies 54146 as ceiling-mounted and is excluded.",
+    "native_dwg_observation": "The exact G000 native DWG partitions into three orthographic views; all 1290 eligible paths are consumed once, and G001 is excluded.",
+    "human_product_drawing_approval": "pending"
+  },
+  "pass": true
+}
