@@ -1,0 +1,78 @@
+{
+  "schema_version": 1,
+  "captured_on": "2026-08-23",
+  "manufacturer": "Poliform",
+  "family": "Senzafine Wardrobe",
+  "project_type_code": "WD02",
+  "project_ifc_description": "Poliform Glass Wardrobe",
+  "official_product_page": "https://www.poliform.it/en/products/senzafine-wardrobe/",
+  "official_product_page_observations": {
+    "identity": {
+      "product_name": "Senzafine Wardrobe",
+      "type": "Wardrobe",
+      "structure": "Melamine-faced particle board",
+      "system_character": "modular wardrobe system designed for customised architectural compositions",
+      "published_components": [
+        "side frames",
+        "back panels",
+        "tops",
+        "bases",
+        "shelves",
+        "hinged, sliding, coplanar or external-drawer opening solutions"
+      ]
+    },
+    "technical_catalog": {
+      "listed_on_official_page": true,
+      "public_product_page_labels_it_as": "Technical Catalog",
+      "protected_catalog_route": "https://www.poliform.it/it/technical-catalog/"
+    },
+    "resource_download_access": {
+      "heading": "SUBSCRIBE TO DOWNLOAD POLIFORM FILES",
+      "access_period_statement": "Enter the requested data and download all our files for 30 days",
+      "required_personal_data_fields_observed": [
+        "name",
+        "surname",
+        "email",
+        "company",
+        "user type",
+        "country",
+        "street address",
+        "state",
+        "city",
+        "postal code",
+        "privacy policy consent",
+        "CAPTCHA"
+      ],
+      "submitted": false,
+      "personal_data_entered": false,
+      "captcha_bypassed": false
+    },
+    "public_page_cad_wording": {
+      "dwg_label_observed": false,
+      "cad_label_observed": false,
+      "interpretation": "The public page exposes a gated generic resource-download area but does not identify an exact WD02 glass-wardrobe/native-DWG asset in its public text."
+    }
+  },
+  "retrieval_attempts": [
+    {
+      "method": "official page browser/index inspection",
+      "result": "manufacturer, Senzafine wardrobe-system identity, modular configuration scope and gated resource-download requirements verified"
+    },
+    {
+      "method": "direct HTTPS retrieval of the official product page and current official night-collection PDF",
+      "result": "HTTP 403 Cloudflare response; no verification bypass attempted and no response body archived as manufacturer evidence"
+    },
+    {
+      "method": "public official-domain search for an exact WD02 or exact project-configuration native CAD asset",
+      "result": "no public exact native-DWG URL located"
+    }
+  ],
+  "drawing_geometry_conclusion": {
+    "official_native_dwg_acquired": false,
+    "official_native_dwg_used": false,
+    "third_party_cad_used": false,
+    "source_kind": "geometry_derived_simplified_proxy",
+    "source_label_zh": "基于原始高模几何生成的简化图纸表达"
+  },
+  "scope": "official manufacturer and Senzafine modular wardrobe-family identity only; not an exact project configuration, not official CAD geometry and not a project shop drawing"
+}

@@ -1,0 +1,86 @@
+{
+  "schema_version": 1,
+  "checked_on": "2026-08-23",
+  "manufacturer": "Poliform",
+  "family": "Senzafine Wardrobe",
+  "project_type_code": "WD02",
+  "ifc_type_name": "WD02",
+  "ifc_type_description": "Poliform Glass Wardrobe",
+  "official_product_page": "https://www.poliform.it/en/products/senzafine-wardrobe/",
+  "official_technical_catalog_route": "https://www.poliform.it/it/technical-catalog/",
+  "official_identity_sources": [
+    {
+      "source_kind": "timestamped_official_page_observation_record",
+      "url": "https://www.poliform.it/en/products/senzafine-wardrobe/",
+      "local_path": "output/review/highpoly-types/wd02/official-source/official-product-page-evidence.json",
+      "sha256": "134d4b84547e3843ed83ed07756ffd191ab369be15f37742aaba6eefc3a9a034",
+      "scope": "manufacturer, Senzafine wardrobe-family identity, modular-system character and download-access boundary only"
+    }
+  ],
+  "official_product_identity": {
+    "product_name": "Senzafine Wardrobe",
+    "type": "Wardrobe",
+    "structure": "Melamine-faced particle board",
+    "modular_system": true,
+    "customised_compositions_supported": true,
+    "project_ifc_type_description_exactly_names_manufacturer_and_family": false,
+    "project_register_explicitly_maps_WD02_to_Senzafine": true
+  },
+  "project_registry_evidence": [
+    {
+      "local_path": "pipeline/decisions/furniture-product-register.csv",
+      "sha256": "7401550c6879fe9605146f29000bf1f4e30541324f3b77cff7d56eb1a42d6f44",
+      "selector": "type_name=WD02",
+      "recorded_identity": "Poliform / Senzafine / modular_wardrobe_system / confirmed"
+    },
+    {
+      "local_path": "pipeline/decisions/source-evidence-register.csv",
+      "sha256": "57991773ccdc06a3a3db979f532a0bf1d91accedc39a8d867809ad8c38a3fd42",
+      "selector": "source_id=FUR-SRC-WD02",
+      "recorded_identity": "verified_official_source / Poliform / Senzafine"
+    }
+  ],
+  "official_product_cad": {
+    "public_page_has_gated_generic_resource_download_area": true,
+    "registration_form_and_captcha_required": true,
+    "public_exact_native_dwg_url_located": false,
+    "acquired": false,
+    "local_cad_files": [],
+    "sha256": null,
+    "exact_project_configuration_match": false,
+    "status": "gated_resource_download_no_public_exact_WD02_asset_located_not_acquired",
+    "note": "No personal data was entered, no form was submitted and CAPTCHA or Cloudflare verification was not bypassed. No third-party CAD was substituted."
+  },
+  "dimension_cross_check": {
+    "project_ifc_body_bounds_mm": [
+      600.0,
+      628.406189,
+      2392.752686
+    ],
+    "official_family_is_modular_and_customisable": true,
+    "public_exact_project_configuration_dimensions_located": false,
+    "exact_dimension_match_claimed": false,
+    "geometry_scaled_to_catalogue_example": false,
+    "status": "official_family_identity_only_exact_project_configuration_not_proven",
+    "scope": "The project Body envelope is recorded mechanically; it is not treated as an official manufacturing or fabrication dimension."
+  },
+  "project_identity_cross_check": {
+    "representative_global_id": "3yuXF4PtnBHgIXDlmXFJ$7",
+    "type_global_id": "3Xia__Mm57iv5rlzD9v6Yn",
+    "project_ifc_type_name": "WD02",
+    "project_ifc_type_description": "Poliform Glass Wardrobe",
+    "instance_count": 1,
+    "container": "LIVING",
+    "pass": true
+  },
+  "drawing_geometry_source": {
+    "source_kind": "geometry_derived_simplified_proxy",
+    "source_label_zh": "基于原始高模几何生成的简化图纸表达",
+    "source_label_en": "simplified drawing representation derived from the original high-poly geometry",
+    "official_cad_used": false,
+    "third_party_cad_used": false
+  },
+  "scope": "official manufacturer and Senzafine modular wardrobe-family identity only; not an exact project configuration, not official CAD geometry and not a project shop drawing",
+  "review_required": true,
+  "pass": true
+}

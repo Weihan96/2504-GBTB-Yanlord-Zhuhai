@@ -1,0 +1,46 @@
+{
+  "schema_version": 1,
+  "formal_ifc_sha256": "7a50b87e8f48a7c2bfbaa9f1dabdfca7155fa684b2325c66aa1ae15c8ab0a25c",
+  "profiles": {
+    "wd02": {
+      "display_name": "Poliform Senzafine glass wardrobe / project WD02",
+      "ifc_type_name": "WD02",
+      "representative_global_id": "3yuXF4PtnBHgIXDlmXFJ$7",
+      "expected_instance_global_ids": [
+        "3yuXF4PtnBHgIXDlmXFJ$7"
+      ],
+      "profile_source": "isolated_highpoly_projection; official_family_identity_verified; exact_native_cad_not_acquired",
+      "silhouette_simplify_mm": 1.0,
+      "semantic_sections": {
+        "plan": [],
+        "front": [],
+        "side": []
+      },
+      "required_semantics": [
+        "single_project_WD02_representative",
+        "full_height_modular_wardrobe_envelope",
+        "front_door_and_internal_division_linework",
+        "project_configuration_not_substituted_by_catalogue_example"
+      ],
+      "drawing_source": {
+        "source_kind": "geometry_derived_simplified_proxy",
+        "source_label_zh": "基于原始高模几何生成的简化图纸表达",
+        "source_label_en": "simplified drawing representation derived from the original high-poly geometry",
+        "official_cad_used": false,
+        "third_party_cad_used": false
+      },
+      "official_reference": {
+        "source_id": "POLIFORM-SENZAFINE-WD02-OFFICIAL-IDENTITY-001",
+        "source_kind": "manufacturer_product_page_family_identity_only",
+        "manufacturer": "Poliform",
+        "family": "Senzafine Wardrobe",
+        "scope": "official manufacturer and modular wardrobe-family identity only; not an exact project configuration, not a project shop drawing and not drawing geometry",
+        "product_page": "https://www.poliform.it/en/products/senzafine-wardrobe/",
+        "technical_catalog_route": "https://www.poliform.it/it/technical-catalog/",
+        "source_access_record": "output/review/highpoly-types/wd02/official-source/source-access-record.json",
+        "official_native_cad_status": "gated_resource_download_no_public_exact_WD02_asset_located_not_acquired",
+        "official_native_cad_used": false
+      }
+    }
+  }
+}
