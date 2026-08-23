@@ -1,0 +1,48 @@
+{
+  "schema_version": 1,
+  "formal_ifc_sha256": "7a50b87e8f48a7c2bfbaa9f1dabdfca7155fa684b2325c66aa1ae15c8ab0a25c",
+  "profiles": {
+    "sis04": {
+      "display_name": "Molteni&C Sistema 7 Wall Unit 4 Doors / SIS04",
+      "ifc_type_name": "SIS04",
+      "representative_global_id": "1MzM8Ms2vFo8KEm503j9w2",
+      "expected_instance_global_ids": [
+        "1MzM8Ms2vFo8KEm503j9w2"
+      ],
+      "profile_source": "formal_ifc_type_description_and_body_geometry_cross_checked_against_molteni_official_product_and_kitchen_catalogue",
+      "silhouette_simplify_mm": 0.35,
+      "semantic_sections": {
+        "plan": [],
+        "front": [],
+        "side": []
+      },
+      "required_semantics": [
+        "1960_mm_class_wall_unit_width_and_722_mm_height",
+        "four_door_sistema_7_wall_unit_configuration",
+        "project_body_depth_envelope_not_manufacturer_fabrication_depth",
+        "not_a_project_shop_drawing"
+      ],
+      "drawing_source": {
+        "source_kind": "geometry_derived_simplified_proxy",
+        "source_label_zh": "基于原始高模几何生成的简化图纸表达",
+        "source_label_en": "simplified drawing representation derived from the original high-poly geometry",
+        "official_cad_used": false,
+        "third_party_cad_used": false
+      },
+      "official_reference": {
+        "source_id": "MOLTENI-SISTEMA7-WALL-UNIT-SIS04-001",
+        "source_kind": "manufacturer_identity_and_dimensions_only",
+        "manufacturer": "Molteni&C",
+        "family": "Sistema 7",
+        "product": "Sistema 7 Wall Unit",
+        "project_type_code": "SIS04",
+        "scope": "exact Molteni&C Sistema 7 Wall Unit family identity and standard dimensions; project IFC configuration is labelled 4 Doors; exact official CAD not acquired; not a project shop drawing",
+        "product_page": "https://www.molteni.it/ap/product/sistema-7-wall-unit",
+        "official_catalogue": "https://www.molteni.it/en/download/document/3c1c2c00b23e4dbb8ab7c89fa68936d8008a7a56",
+        "source_access_record": "output/review/highpoly-types/sis04/official-source/source-access-record.json",
+        "official_product_cad_status": "exact_wall_unit_native_cad_not_acquired",
+        "official_cad_used": false
+      }
+    }
+  }
+}

@@ -1,0 +1,141 @@
+{
+  "schema_version": 1,
+  "generator": "pipeline/scripts/render_sis04_bonsai_review.py",
+  "mode": "actual_bonsai_ifc_body_camera_render",
+  "representative_global_id": "1MzM8Ms2vFo8KEm503j9w2",
+  "geometry_product_count": 1,
+  "whole_model_render": false,
+  "formal_ifc": "2504 GBTB Yanlord Zhuhai.ifc",
+  "formal_ifc_sha256": "7a50b87e8f48a7c2bfbaa9f1dabdfca7155fa684b2325c66aa1ae15c8ab0a25c",
+  "formal_ifc_bytes_unchanged": true,
+  "isolated_ifc": "output/review/highpoly-types/sis04/sis04-bonsai-isolated.ifc",
+  "isolated_ifc_sha256": "c77569be3cd08b39f5b6626b8a6f3efa0f91304b53252cff0449777a7362955a",
+  "bonsai_session": {
+    "path": "output/review/highpoly-types/sis04/sis04-bonsai-review.blend",
+    "sha256": "0fff27c0a62fe805de5ab0a2c61b2b306a50969164c58cf6b77092e05db71764",
+    "saved_active_representation": "Body",
+    "saved_camera_count": 4,
+    "saved_camera_names": [
+      "SIS04_CAM_FRONT",
+      "SIS04_CAM_ISO",
+      "SIS04_CAM_PLAN",
+      "SIS04_CAM_SIDE"
+    ],
+    "ifc_definition_id": 29820,
+    "ifc_context_identifier": "Body",
+    "object_name": "IfcFurniture/Furniture",
+    "object_bounds_m": {
+      "minimum": [
+        2.661194324,
+        -5.797713757,
+        1.661008596
+      ],
+      "maximum": [
+        3.030194521,
+        -3.835739374,
+        2.382999659
+      ]
+    },
+    "local_axis_extents_m": {
+      "x": 1.961974649,
+      "y": 0.369000287,
+      "z": 0.721991062
+    },
+    "local_axes_world": [
+      [
+        7.5e-08,
+        -1.0,
+        0.0
+      ],
+      [
+        1.0,
+        7.5e-08,
+        0.0
+      ],
+      [
+        0.0,
+        0.0,
+        1.0
+      ]
+    ]
+  },
+  "renders": [
+    {
+      "view": "plan",
+      "camera": "SIS04_CAM_PLAN",
+      "camera_type": "ORTHO",
+      "camera_axis_basis": "IFC product local axes",
+      "camera_ortho_scale_m": 3.241185426712,
+      "projected_width_m": 0.369000434875,
+      "projected_height_m": 1.961974620819,
+      "image_aspect": 1.4,
+      "framing_margin_factor": 1.18,
+      "ortho_scale_quantization_safety_factor": 1.000001,
+      "render_operation": "bpy.ops.render.render(write_still=True)",
+      "path": "output/review/highpoly-types/sis04/bonsai-camera-plan.png",
+      "sha256": "5fab9cad5430226af178aa09d96fbaae2483aaef262a9e58569061d885d99819",
+      "resolution": [
+        1400,
+        1000
+      ]
+    },
+    {
+      "view": "front",
+      "camera": "SIS04_CAM_FRONT",
+      "camera_type": "ORTHO",
+      "camera_axis_basis": "IFC product local axes",
+      "camera_ortho_scale_m": 2.315132379532,
+      "projected_width_m": 1.961974648678,
+      "projected_height_m": 0.721991090023,
+      "image_aspect": 1.4,
+      "framing_margin_factor": 1.18,
+      "ortho_scale_quantization_safety_factor": 1.000001,
+      "render_operation": "bpy.ops.render.render(write_still=True)",
+      "path": "output/review/highpoly-types/sis04/bonsai-camera-front-elevation.png",
+      "sha256": "3c3bb0be7d0068bd966366361c3651bcfe5192f57f801759a36226e3b65177d4",
+      "resolution": [
+        1400,
+        1000
+      ]
+    },
+    {
+      "view": "side",
+      "camera": "SIS04_CAM_SIDE",
+      "camera_type": "ORTHO",
+      "camera_axis_basis": "IFC product local axes",
+      "camera_ortho_scale_m": 1.192730903625,
+      "projected_width_m": 0.369000276271,
+      "projected_height_m": 0.721991381811,
+      "image_aspect": 1.4,
+      "framing_margin_factor": 1.18,
+      "ortho_scale_quantization_safety_factor": 1.000001,
+      "render_operation": "bpy.ops.render.render(write_still=True)",
+      "path": "output/review/highpoly-types/sis04/bonsai-camera-side-elevation.png",
+      "sha256": "63b49af0ed6a13d5afd9bf1130758807c003a54af67dfd36418c5c545547a69a",
+      "resolution": [
+        1400,
+        1000
+      ]
+    },
+    {
+      "view": "iso",
+      "camera": "SIS04_CAM_ISO",
+      "camera_type": "ORTHO",
+      "camera_axis_basis": "IFC product local axes",
+      "camera_ortho_scale_m": 2.545932531357,
+      "projected_width_m": 1.64824727866,
+      "projected_height_m": 1.54111982882,
+      "image_aspect": 1.4,
+      "framing_margin_factor": 1.18,
+      "ortho_scale_quantization_safety_factor": 1.000001,
+      "render_operation": "bpy.ops.render.render(write_still=True)",
+      "path": "output/review/highpoly-types/sis04/bonsai-camera-iso.png",
+      "sha256": "9384119466857bddf4da6c279de077056e3c3e2c0c5c7e6a020fc222ebfc0e65",
+      "resolution": [
+        1400,
+        1000
+      ]
+    }
+  ],
+  "pass": true
+}

@@ -1,0 +1,178 @@
+{
+  "schema_version": 1,
+  "generated_at": "2026-08-22T23:39:53.303761+00:00",
+  "generator": "pipeline/scripts/sis04_review.py",
+  "formal_ifc": "2504 GBTB Yanlord Zhuhai.ifc",
+  "formal_ifc_sha256": "7a50b87e8f48a7c2bfbaa9f1dabdfca7155fa684b2325c66aa1ae15c8ab0a25c",
+  "formal_ifc_sha256_after_generation": "7a50b87e8f48a7c2bfbaa9f1dabdfca7155fa684b2325c66aa1ae15c8ab0a25c",
+  "formal_ifc_bytes_unchanged": true,
+  "profile_register": "output/review/highpoly-types/sis04/profile.json",
+  "profile_register_sha256": "af6564b6e679433581a9b86f23af115bf0cb56b25cea7dc08ee41be6e0255ca9",
+  "profile_key": "sis04",
+  "display_name": "Molteni&C Sistema 7 Wall Unit 4 Doors / SIS04",
+  "ifc_type_name": "SIS04",
+  "ifc_type_description": "Sistema 7 Wall Unit 4 Doors",
+  "article_number": "Sistema 7 Wall Unit 4 Doors / SIS04",
+  "representative_global_id": "1MzM8Ms2vFo8KEm503j9w2",
+  "registered_instance_global_ids": [
+    "1MzM8Ms2vFo8KEm503j9w2"
+  ],
+  "geometry_product_count": 1,
+  "whole_model_render": false,
+  "mesh_vertex_count": 29040,
+  "mesh_face_count": 15538,
+  "bounds_mm": {
+    "minimum": [
+      -1785.260395,
+      -6.805498,
+      -15.991419
+    ],
+    "maximum": [
+      176.714153,
+      362.194502,
+      705.999609
+    ],
+    "size": [
+      1961.974548,
+      369.0,
+      721.991028
+    ]
+  },
+  "source_kind": "geometry_derived_simplified_proxy",
+  "source_label_zh": "基于原始高模几何生成的简化图纸表达",
+  "drawing_source": {
+    "source_kind": "geometry_derived_simplified_proxy",
+    "source_label_zh": "基于原始高模几何生成的简化图纸表达",
+    "source_label_en": "simplified drawing representation derived from the original high-poly geometry",
+    "official_cad_used": false,
+    "third_party_cad_used": false,
+    "official_source_access_record": "output/review/highpoly-types/sis04/official-source/source-access-record.json",
+    "official_source_access_record_sha256": "308fc8b79cd9628704e7598678c8140f7d9e6d88dba22b5657c63626a2d71aa0",
+    "official_product_cad_status": "exact_wall_unit_native_cad_not_acquired"
+  },
+  "official_reference": {
+    "source_id": "MOLTENI-SISTEMA7-WALL-UNIT-SIS04-001",
+    "source_kind": "manufacturer_identity_and_dimensions_only",
+    "manufacturer": "Molteni&C",
+    "family": "Sistema 7",
+    "product": "Sistema 7 Wall Unit",
+    "project_type_code": "SIS04",
+    "scope": "exact Molteni&C Sistema 7 Wall Unit family identity and standard dimensions; project IFC configuration is labelled 4 Doors; exact official CAD not acquired; not a project shop drawing",
+    "product_page": "https://www.molteni.it/ap/product/sistema-7-wall-unit",
+    "official_catalogue": "https://www.molteni.it/en/download/document/3c1c2c00b23e4dbb8ab7c89fa68936d8008a7a56",
+    "source_access_record": "output/review/highpoly-types/sis04/official-source/source-access-record.json",
+    "official_product_cad_status": "exact_wall_unit_native_cad_not_acquired",
+    "official_cad_used": false
+  },
+  "official_identity_evidence_only": true,
+  "dimension_cross_check": {
+    "official_standard_widths_mm": [
+      980.0,
+      1960.0
+    ],
+    "official_standard_heights_mm": [
+      722.0,
+      1083.0
+    ],
+    "official_nominal_depth_mm": 331.0,
+    "project_ifc_body_local_xyz_mm": [
+      1961.974548,
+      369.0,
+      721.991028
+    ],
+    "semantic_axis_mapping": "local X=official width; local Y=project Body depth envelope; local Z=official height",
+    "selected_official_width_height_depth_mm": [
+      1960.0,
+      722.0,
+      331.0
+    ],
+    "body_minus_selected_official_mm": [
+      1.974548,
+      -0.008972,
+      38.0
+    ],
+    "width_height_maximum_absolute_delta_mm": 1.974548,
+    "project_body_depth_excess_mm": 38.0,
+    "status": "exact_family_and_wall_unit_size_class_consistent_project_depth_is_not_fabrication_dimension",
+    "pass": true,
+    "note": "Width and height mechanically match the official 1960 x 722 mm standard size class. The 369 mm project Body depth envelope is 38 mm above the 331 mm catalogue depth and remains project-model geometry only; no fabrication inference or scaling is permitted."
+  },
+  "official_cad_acquired": false,
+  "official_cad_used": false,
+  "third_party_cad_used": false,
+  "blue_line_present": false,
+  "official_source_access_record": "output/review/highpoly-types/sis04/official-source/source-access-record.json",
+  "official_source_access_record_sha256": "308fc8b79cd9628704e7598678c8140f7d9e6d88dba22b5657c63626a2d71aa0",
+  "candidate_representations": "output/review/highpoly-types/sis04/candidate-representations.json",
+  "candidate_representations_sha256": "767ccac045afdf8d82eec4494cb87d0d2592b496d2ac0881361f95e9ee1b750c",
+  "review_status": "visual_review_pending",
+  "approved_for_drawing_ifc": false,
+  "derived_ifc_write_allowed": false,
+  "formal_ifc_write": "not performed",
+  "views": [
+    {
+      "view": "plan",
+      "svg": "output/review/highpoly-types/sis04/plan.svg",
+      "svg_sha256": "4000991edba4e6dc2118efa93e9754e6544df4201d012a57e383843ae8ef8c5d",
+      "projection_axes": [
+        0,
+        1
+      ],
+      "raw_edge_count": 37842,
+      "displayed_raw_edge_count": 996,
+      "silhouette_path_count": 4,
+      "drawing_line_source_kind": "geometry_derived_simplified_proxy",
+      "drawing_line_source_label_zh": "基于原始高模几何生成的简化图纸表达",
+      "official_cad_path_count": 0,
+      "blue_line_present": false
+    },
+    {
+      "view": "front",
+      "svg": "output/review/highpoly-types/sis04/front.svg",
+      "svg_sha256": "27d620605abb0d209bb4a7f48577742be326c2c1c51a53812d270942ecd9c86a",
+      "projection_axes": [
+        0,
+        2
+      ],
+      "raw_edge_count": 37842,
+      "displayed_raw_edge_count": 996,
+      "silhouette_path_count": 4,
+      "drawing_line_source_kind": "geometry_derived_simplified_proxy",
+      "drawing_line_source_label_zh": "基于原始高模几何生成的简化图纸表达",
+      "official_cad_path_count": 0,
+      "blue_line_present": false
+    },
+    {
+      "view": "side",
+      "svg": "output/review/highpoly-types/sis04/side.svg",
+      "svg_sha256": "adc06ff81039d5e53b4871e4198145dea84cd3600a8db5859d73111cdd6eff43",
+      "projection_axes": [
+        1,
+        2
+      ],
+      "raw_edge_count": 37842,
+      "displayed_raw_edge_count": 996,
+      "silhouette_path_count": 1,
+      "drawing_line_source_kind": "geometry_derived_simplified_proxy",
+      "drawing_line_source_label_zh": "基于原始高模几何生成的简化图纸表达",
+      "official_cad_path_count": 0,
+      "blue_line_present": false
+    }
+  ],
+  "pass": true,
+  "project_context": {
+    "manifest": "output/review/highpoly-types/sis04/project-context-manifest.json",
+    "manifest_sha256": "95500c81f1c1b40f9f798f09917d83b108aa5a051aaab29f452368ed8aaa6fe1",
+    "walls_and_surrounding_project_elements_retained": true,
+    "overlay_top_layer_with_white_mask": true,
+    "pass": true
+  },
+  "bonsai_review": {
+    "manifest": "output/review/highpoly-types/sis04/bonsai-review-manifest.json",
+    "manifest_sha256": "cf6ddf077e734441a43bbb1a14fbd85ba3a18eacb7f22907f26c58fb6cee9849",
+    "mode": "actual_bonsai_ifc_body_camera_render",
+    "saved_active_representation": "Body",
+    "saved_camera_count": 4,
+    "pass": true
+  }
+}
