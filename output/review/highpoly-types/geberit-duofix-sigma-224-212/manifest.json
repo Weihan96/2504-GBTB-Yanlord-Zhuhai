@@ -1,0 +1,293 @@
+{
+  "schema_version": 1,
+  "generated_at": "2026-08-23T13:15:03.318029+00:00",
+  "generator": "pipeline/scripts/geberit_duofix_sigma_224_212_review.py",
+  "formal_ifc": "2504 GBTB Yanlord Zhuhai.ifc",
+  "formal_ifc_sha256": "7a50b87e8f48a7c2bfbaa9f1dabdfca7155fa684b2325c66aa1ae15c8ab0a25c",
+  "formal_ifc_sha256_after_generation": "7a50b87e8f48a7c2bfbaa9f1dabdfca7155fa684b2325c66aa1ae15c8ab0a25c",
+  "formal_ifc_bytes_unchanged": true,
+  "profile_register": "output/review/highpoly-types/geberit-duofix-sigma-224-212/profile.json",
+  "profile_register_sha256": "fd0b9609bd6a0742527177e3dd81f526e1f7b121e063bbc907c453f20afd86fb",
+  "profile_key": "geberit-duofix-sigma-224-212",
+  "display_name": "Geberit Duofix Sigma concealed cistern frame / 224.212.00.2",
+  "ifc_type_name": "Geberit Duofix Sigma",
+  "representative_global_id": "3hgNkx97vCTOC2eewCpMNk",
+  "registered_instance_global_ids": [
+    "3hgNkx97vCTOC2eewCpMNk",
+    "3pvAlH5C14v8uVEJ1LmK8M"
+  ],
+  "geometry_product_count": 1,
+  "whole_model_render": false,
+  "formal_ifc_write": false,
+  "source_kind": "native_dwg",
+  "source_label_zh": "基于 Geberit 精确型号原生 DWG 的官方图纸表达",
+  "source_label_en": "official drawing representation from exact Geberit article native DWG",
+  "official_cad_acquired": true,
+  "official_cad_exact_project_configuration_match": true,
+  "official_cad_used": true,
+  "third_party_cad_used": false,
+  "blue_line_present": true,
+  "representation_geometry_source": "official_native_dwg_paths_mm",
+  "simplified_proxy_comparison_included": true,
+  "mesh_vertex_count": 54817,
+  "mesh_face_count": 65141,
+  "local_bounds_mm": {
+    "minimum": [
+      -358.411010742188,
+      -167.386322498321,
+      -1013.0000000000001
+    ],
+    "maximum": [
+      142.00000000000003,
+      154.297027111054,
+      201.98828124999991
+    ]
+  },
+  "official_reference": {
+    "source_id": "GEBERIT-DUOFIX-SIGMA-224-212-00-2-NATIVE-DWG-001",
+    "source_kind": "native_dwg",
+    "manufacturer": "Geberit",
+    "article_number": "224.212.00.2",
+    "scope": "official manufacturer exact article family reference, not a project shop drawing",
+    "official_catalogue": "https://cdn-geberit-country-sg.prod.web.geberit.com/_assets/local-media/brochures/2025-nsea-sanitary-and-bathroom-catalogue-web.pdf",
+    "local_catalogue_extract": "output/review/highpoly-types/geberit-duofix-sigma-224-212/official-source/geberit-224212-catalogue-page11.pdf",
+    "local_catalogue_extract_sha256": "8c3a17569e6fa53d9a769ab584fed79a865118c4a27018facd619b4a5cc5cdd3",
+    "project_received_box_label": "output/review/highpoly-types/geberit-duofix-sigma-224-212/official-source/project-received-224212-box-label.jpg",
+    "project_received_box_label_sha256": "522952db10076af64be712e2843033dd69747428c15bf1c5a9085a82db840fa0",
+    "catalogue_status": "Geberit 2025 NSEA catalogue exact article 224.212.00.2; B=50 cm, H=112 cm, T=12 cm",
+    "linework_path": "output/review/highpoly-types/geberit-duofix-sigma-224-212/official-native-dwg-linework.json",
+    "official_source_revalidation": {
+      "path": "output/review/highpoly-types/geberit-duofix-sigma-224-212/official-source/official-source-revalidation.json",
+      "sha256": "1412830e4015a2ebc1d06891964a6d921f95bfcbca708d444f9c187444625e8d",
+      "checked_at": "2026-08-23T13:14:29.594082+00:00",
+      "catalogue_downloaded_pdf_sha256": "5d3c95dded1153d23bcad6608ff8c46e6af8bb2e80bbf6f71add335aeb342b10",
+      "catalogue_page_render_matches_local_extract": true,
+      "pass": true
+    },
+    "view_mapping": {
+      "plan": "G",
+      "front": "A",
+      "side": "L"
+    },
+    "linework_sha256": "2994211232be676481a5962fff2881a7f1f7436f47076eb4438387d6130f1aa1",
+    "official_sources": {
+      "A": {
+        "path": "output/review/highpoly-types/geberit-duofix-sigma-224-212/official-source/224.212.00.2_A.dwg",
+        "url": "https://cdn.data.geberit.com/cad/224.212.00.2_A.dwg",
+        "sha256": "f06952ac7bf91f0a0037ae85644df3df0938d549322cbfb59b7dfd9be01939d4"
+      },
+      "G": {
+        "path": "output/review/highpoly-types/geberit-duofix-sigma-224-212/official-source/224.212.00.2_G.dwg",
+        "url": "https://cdn.data.geberit.com/cad/224.212.00.2_G.dwg",
+        "sha256": "841dd3c72d594cfd2c7f921b84f10a2305ab9957b531771662fb7f03eff97207"
+      },
+      "L": {
+        "path": "output/review/highpoly-types/geberit-duofix-sigma-224-212/official-source/224.212.00.2_L.dwg",
+        "url": "https://cdn.data.geberit.com/cad/224.212.00.2_L.dwg",
+        "sha256": "e6a26c660ae9cd4fc8cb4b1effadcea38a4794b66523f0fea2c02c5e02b77f25"
+      },
+      "P": {
+        "path": "output/review/highpoly-types/geberit-duofix-sigma-224-212/official-source/224.212.00.2_P.dwg",
+        "url": "https://cdn.data.geberit.com/cad/224.212.00.2_P.dwg",
+        "sha256": "5c92a663de35357a4bf0ff7eb0838bc5e178030afe7d769ead5632f50821652f"
+      }
+    },
+    "mechanical_cross_checks": {
+      "plan": {
+        "comparison": "native_dwg_full_plan_contour_vs_ifc_body_footprint",
+        "official_size_mm": [
+          500.0,
+          336.5
+        ],
+        "ifc_body_size_mm": [
+          500.411011,
+          321.68335
+        ],
+        "absolute_delta_mm": [
+          0.411011,
+          14.81665
+        ],
+        "width_tolerance_mm": 1.0,
+        "depth_tolerance_mm": 20.0,
+        "note": "The exact official G contour includes approximately 14.8 mm more installation depth than the current IFC Body envelope; width identity remains within 1 mm.",
+        "pass": true
+      },
+      "front": {
+        "comparison": "native_dwg_front_contour_vs_ifc_body_width_height",
+        "official_size_mm": [
+          500.0,
+          1215.000112
+        ],
+        "ifc_body_size_mm": [
+          500.411011,
+          1214.988281
+        ],
+        "absolute_delta_mm": [
+          0.411011,
+          0.011831
+        ],
+        "tolerance_mm": 1.0,
+        "pass": true
+      },
+      "side": {
+        "comparison": "native_dwg_side_contour_vs_ifc_body_depth_height",
+        "official_size_mm": [
+          336.5,
+          1215.0
+        ],
+        "ifc_body_size_mm": [
+          321.68335,
+          1214.988281
+        ],
+        "absolute_delta_mm": [
+          14.81665,
+          0.011719
+        ],
+        "depth_tolerance_mm": 20.0,
+        "height_tolerance_mm": 1.0,
+        "note": "The exact official L contour includes the same installation-depth extent recorded in the G view; height identity remains within 1 mm.",
+        "pass": true
+      }
+    },
+    "received_box_label": {
+      "path": "output/review/highpoly-types/geberit-duofix-sigma-224-212/official-source/project-received-224212-box-label.jpg",
+      "sha256": "522952db10076af64be712e2843033dd69747428c15bf1c5a9085a82db840fa0",
+      "scope": "project received-product identity evidence for one of two IFC family instances"
+    },
+    "nominal_dimensions_mm": {
+      "width": 500.0,
+      "height": 1120.0,
+      "cistern_depth": 120.0
+    }
+  },
+  "candidate_representations": "output/review/highpoly-types/geberit-duofix-sigma-224-212/candidate-representations.json",
+  "candidate_representations_sha256": "f9362d8f20890c11ef9ab87cd5470a88b0a614229c3c58302377dc9aa0d6e83a",
+  "official_source_access_record": "output/review/highpoly-types/geberit-duofix-sigma-224-212/official-source/source-access-record.json",
+  "official_source_access_record_sha256": "934e37f0db585d1ceeea648e6b47c8777f3f0a997b6a721e0e3411cad1307a09",
+  "views": [
+    {
+      "view": "plan",
+      "svg": "output/review/highpoly-types/geberit-duofix-sigma-224-212/plan.svg",
+      "svg_sha256": "79f2bf615065040b0c9af11d9979f3cfef4c68ae8dec99bd9705ac0328acbe98",
+      "projection_axes": [
+        0,
+        1
+      ],
+      "raw_edge_count": 118416,
+      "displayed_raw_edge_count": 599,
+      "silhouette_path_count": 16,
+      "official_reference_path_count": 253,
+      "blue_line_source_kind": "native_dwg",
+      "blue_line_article_number": "224.212.00.2",
+      "blue_line_native_dwg_code": "G",
+      "blue_line_native_dwg_sha256": "841dd3c72d594cfd2c7f921b84f10a2305ab9957b531771662fb7f03eff97207",
+      "mechanical_cross_check": {
+        "comparison": "native_dwg_full_plan_contour_vs_ifc_body_footprint",
+        "official_size_mm": [
+          500.0,
+          336.5
+        ],
+        "ifc_body_size_mm": [
+          500.411011,
+          321.68335
+        ],
+        "absolute_delta_mm": [
+          0.411011,
+          14.81665
+        ],
+        "width_tolerance_mm": 1.0,
+        "depth_tolerance_mm": 20.0,
+        "note": "The exact official G contour includes approximately 14.8 mm more installation depth than the current IFC Body envelope; width identity remains within 1 mm.",
+        "pass": true
+      }
+    },
+    {
+      "view": "front",
+      "svg": "output/review/highpoly-types/geberit-duofix-sigma-224-212/front.svg",
+      "svg_sha256": "de03e36c8d58a4847b623abe1df8d6ff42db720685abd87ae59a5afa38e4470b",
+      "projection_axes": [
+        0,
+        2
+      ],
+      "raw_edge_count": 118416,
+      "displayed_raw_edge_count": 599,
+      "silhouette_path_count": 26,
+      "official_reference_path_count": 790,
+      "blue_line_source_kind": "native_dwg",
+      "blue_line_article_number": "224.212.00.2",
+      "blue_line_native_dwg_code": "A",
+      "blue_line_native_dwg_sha256": "f06952ac7bf91f0a0037ae85644df3df0938d549322cbfb59b7dfd9be01939d4",
+      "mechanical_cross_check": {
+        "comparison": "native_dwg_front_contour_vs_ifc_body_width_height",
+        "official_size_mm": [
+          500.0,
+          1215.000112
+        ],
+        "ifc_body_size_mm": [
+          500.411011,
+          1214.988281
+        ],
+        "absolute_delta_mm": [
+          0.411011,
+          0.011831
+        ],
+        "tolerance_mm": 1.0,
+        "pass": true
+      }
+    },
+    {
+      "view": "side",
+      "svg": "output/review/highpoly-types/geberit-duofix-sigma-224-212/side.svg",
+      "svg_sha256": "6dcbb22051907af7cfd0d37146a1081ab5ccaf7b61692f585a95df07460539fe",
+      "projection_axes": [
+        1,
+        2
+      ],
+      "raw_edge_count": 118416,
+      "displayed_raw_edge_count": 599,
+      "silhouette_path_count": 2,
+      "official_reference_path_count": 225,
+      "blue_line_source_kind": "native_dwg",
+      "blue_line_article_number": "224.212.00.2",
+      "blue_line_native_dwg_code": "L",
+      "blue_line_native_dwg_sha256": "e6a26c660ae9cd4fc8cb4b1effadcea38a4794b66523f0fea2c02c5e02b77f25",
+      "mechanical_cross_check": {
+        "comparison": "native_dwg_side_contour_vs_ifc_body_depth_height",
+        "official_size_mm": [
+          336.5,
+          1215.0
+        ],
+        "ifc_body_size_mm": [
+          321.68335,
+          1214.988281
+        ],
+        "absolute_delta_mm": [
+          14.81665,
+          0.011719
+        ],
+        "depth_tolerance_mm": 20.0,
+        "height_tolerance_mm": 1.0,
+        "note": "The exact official L contour includes the same installation-depth extent recorded in the G view; height identity remains within 1 mm.",
+        "pass": true
+      }
+    }
+  ],
+  "review_status": "visual_review_pending",
+  "approved_for_drawing_ifc": false,
+  "pass": true,
+  "project_context": {
+    "manifest": "output/review/highpoly-types/geberit-duofix-sigma-224-212/project-context-manifest.json",
+    "manifest_sha256": "8bb67af2e1475991f002b722bf9a0ddf683951b43eea00c476c835872192c557",
+    "walls_and_surrounding_project_elements_retained": true,
+    "blue_line_top_layer_with_white_mask": true,
+    "pass": true
+  },
+  "bonsai_review": {
+    "manifest": "output/review/highpoly-types/geberit-duofix-sigma-224-212/bonsai-review-manifest.json",
+    "manifest_sha256": "0a98fcbfac56320cd7a0b36ac2b4eff6285f59a6a46365c3a331e3093e81efb9",
+    "mode": "actual_bonsai_ifc_body_camera_render",
+    "saved_active_representation": "Body",
+    "saved_camera_count": 4,
+    "pass": true
+  }
+}

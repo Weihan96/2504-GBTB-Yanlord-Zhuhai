@@ -1,0 +1,40 @@
+{
+  "schema_version": 1,
+  "formal_ifc_sha256": "7a50b87e8f48a7c2bfbaa9f1dabdfca7155fa684b2325c66aa1ae15c8ab0a25c",
+  "profiles": {
+    "geberit-duofix-sigma-224-212": {
+      "display_name": "Geberit Duofix Sigma concealed cistern frame / 224.212.00.2",
+      "ifc_type_name": "Geberit Duofix Sigma",
+      "representative_global_id": "3hgNkx97vCTOC2eewCpMNk",
+      "expected_instance_global_ids": [
+        "3hgNkx97vCTOC2eewCpMNk",
+        "3pvAlH5C14v8uVEJ1LmK8M"
+      ],
+      "profile_source": "isolated_highpoly_projection_with_exact_project_selected_224_212_00_2_native_dwg",
+      "silhouette_simplify_mm": 0.8,
+      "semantic_sections": {"plan": [], "front": [], "side": []},
+      "required_semantics": [
+        "500_mm_frame_width",
+        "Sigma_12_cm_concealed_cistern",
+        "1120_mm_nominal_frame_height_with_adjustable_feet",
+        "WC_threaded_rods_and_connection_geometry"
+      ],
+      "official_reference": {
+        "source_id": "GEBERIT-DUOFIX-SIGMA-224-212-00-2-NATIVE-DWG-001",
+        "source_kind": "native_dwg",
+        "manufacturer": "Geberit",
+        "article_number": "224.212.00.2",
+        "scope": "official manufacturer exact article family reference, not a project shop drawing",
+        "official_catalogue": "https://cdn-geberit-country-sg.prod.web.geberit.com/_assets/local-media/brochures/2025-nsea-sanitary-and-bathroom-catalogue-web.pdf",
+        "local_catalogue_extract": "output/review/highpoly-types/geberit-duofix-sigma-224-212/official-source/geberit-224212-catalogue-page11.pdf",
+        "local_catalogue_extract_sha256": "8c3a17569e6fa53d9a769ab584fed79a865118c4a27018facd619b4a5cc5cdd3",
+        "project_received_box_label": "output/review/highpoly-types/geberit-duofix-sigma-224-212/official-source/project-received-224212-box-label.jpg",
+        "project_received_box_label_sha256": "522952db10076af64be712e2843033dd69747428c15bf1c5a9085a82db840fa0",
+        "catalogue_status": "Geberit 2025 NSEA catalogue exact article 224.212.00.2; B=50 cm, H=112 cm, T=12 cm",
+        "linework_path": "output/review/highpoly-types/geberit-duofix-sigma-224-212/official-native-dwg-linework.json",
+        "official_source_revalidation": "output/review/highpoly-types/geberit-duofix-sigma-224-212/official-source/official-source-revalidation.json",
+        "view_mapping": {"plan": "G", "front": "A", "side": "L"}
+      }
+    }
+  }
+}
