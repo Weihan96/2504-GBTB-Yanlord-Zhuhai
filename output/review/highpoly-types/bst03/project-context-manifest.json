@@ -1,0 +1,102 @@
+{
+  "schema_version": 1,
+  "generator": "pipeline/scripts/render_bst03_project_context.py",
+  "source_kind": "geometry_derived_simplified_proxy",
+  "source_label_zh": "基于原始高模几何生成的简化图纸表达",
+  "official_cad_used": false,
+  "third_party_cad_used": false,
+  "project_context_retained": true,
+  "walls_and_surrounding_project_elements_retained": true,
+  "overlay_top_layer_with_white_mask": true,
+  "blue_line_present": false,
+  "project_scale_svg_units_per_mm": 0.02,
+  "views": [
+    {
+      "view": "plan",
+      "candidate_view": "plan",
+      "source": "drawings/Furniture Plan.svg",
+      "output": "output/review/highpoly-types/bst03/project-context-furniture-plan.svg",
+      "output_sha256": "224cba5c7eab53e8476638ca2fe2b8d01f08aa2e4a172017cd4f9ef6d9877afd",
+      "review_crop": "output/review/highpoly-types/bst03/project-context-furniture-plan-review.svg",
+      "review_crop_sha256": "a22bc09478bf840485ffd9aa088b5d303257944e5dc4147c5e48bab881b8f4d3",
+      "review_preview": "output/review/highpoly-types/bst03/project-context-furniture-plan-review-preview.png",
+      "review_preview_sha256": "19e850d1e3b85b26fb96fe015a1bebf4a5b2dbb917ddcad8e1f9b1ae75425827",
+      "overlay": {
+        "ifc_guid": "1HZoxe$df4cBb4UXXH5J2S",
+        "source_kind": "geometry_derived_simplified_proxy",
+        "source_label_zh": "基于原始高模几何生成的简化图纸表达",
+        "official_cad_used": false,
+        "third_party_cad_used": false,
+        "path_count": 1,
+        "fit": {
+          "rotate_quarter_turns": 1,
+          "alignment_mode": "centre",
+          "flip_projected_y": true,
+          "scale_svg_units_per_mm": 0.02,
+          "target_bbox": [
+            [
+              106.503875,
+              170.499998
+            ],
+            [
+              115.503875,
+              179.499998
+            ]
+          ],
+          "proxy_bbox": [
+            [
+              106.379075,
+              170.375388
+            ],
+            [
+              115.628675,
+              179.624608
+            ]
+          ],
+          "bbox_absolute_delta_svg_units": [
+            0.2496,
+            0.24922
+          ],
+          "bbox_tolerance_svg_units": 0.3,
+          "uniform_scale_preserved": true,
+          "transformation_mode": "axis_swap_rigid_reflection_and_translation_only",
+          "pass": true
+        }
+      }
+    }
+  ],
+  "pass": true,
+  "semantic_view_mapping": {
+    "plan": {
+      "candidate_axes": [
+        0,
+        1
+      ],
+      "source": "drawings/Furniture Plan.svg",
+      "rotate_quarter_turns": 1,
+      "project_direction": "+Z"
+    }
+  },
+  "review_annotation_suppression": {
+    "plan": "official-elevation-anchor groups only",
+    "scope": "review crop only; full project SVG retains all annotations",
+    "walls_furniture_and_ifc_geometry_removed": false
+  },
+  "review_preview_background": {
+    "plan": "opaque white review-only HTML paper background",
+    "full_project_svg_remains_transparent": true,
+    "drawing_geometry_changed": false
+  },
+  "project_projection_note": {
+    "original_project_bbox_mm": [
+      450.0,
+      450.0
+    ],
+    "ifc_body_plan_bbox_mm": [
+      462.460968,
+      462.47998
+    ],
+    "interpretation": "The project plan uses the nominal 450 mm catalogue footprint. The overlay preserves the complete high-poly Body envelope at uniform 1:50 scale and aligns it to the original projection centre.",
+    "geometry_stretched": false
+  }
+}

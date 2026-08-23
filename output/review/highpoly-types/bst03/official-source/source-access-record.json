@@ -1,0 +1,95 @@
+{
+  "schema_version": 1,
+  "manufacturer": "Baxter",
+  "family": "Stone",
+  "designer": "Federico Peri",
+  "project_ifc_type_name": "BST03",
+  "project_ifc_type_description": "Stone Bedside Table with Drawer D45",
+  "resolved_variant": "freestanding bedside table with L drawer, 45 x 45 x 46 cm",
+  "research_date": "2026-08-23",
+  "official_identity_sources": [
+    {
+      "kind": "manufacturer_product_page",
+      "url": "https://www.baxter.it/en/products/stone-beds",
+      "local_path": "output/review/highpoly-types/bst03/official-source/baxter-stone-product-page.html",
+      "sha256": "7720a7e95efc32cbf19250aab74d7fc2cd9341ac5e283251464bd86eadc830d5",
+      "identity_observation": "The official Stone page lists a FREESTANDING BEDSIDE TABLE WITH L DRAWER in a 45 x 45 x 46 cm version and identifies Federico Peri as designer."
+    },
+    {
+      "kind": "manufacturer_vector_technical_sheet",
+      "url": "https://dam.baxter.it/m/e4f4056bc7c6088/original/Baxter_Stone_letto_Indoor.pdf",
+      "local_path": "output/review/highpoly-types/bst03/official-source/Baxter_Stone_letto_Indoor.pdf",
+      "sha256": "e76414969a3f6065bd45cab0e39694733587c1accc4858ba6d782aa40541d96f",
+      "page": 10,
+      "preview_path": "output/review/highpoly-types/bst03/official-source/Baxter_Stone_technical-sheet-page-10-preview.png",
+      "preview_sha256": "0ce396bd23b98400d2eb289e57f52b462fedc5416a8c41c8d5aaa4ed949327e6",
+      "vector_object_audit": {
+        "line_count": 810,
+        "curve_count": 75,
+        "rect_count": 63,
+        "char_count": 1860,
+        "required_text_found": [
+          "Freestanding night table with r/l drawer.",
+          "Ø45 h46 cm",
+          "sx/l",
+          "dx/r"
+        ]
+      },
+      "visual_check": "Rendered page 10 was visually inspected. It publishes dimensioned front, side and plan diagrams for both left- and right-drawer variants, including the 45 cm version."
+    }
+  ],
+  "official_product_cad": {
+    "published_access_surface": "Baxter official product page",
+    "authentication_required": true,
+    "download_label": "For the download of 2D, 3D and BIM models",
+    "acquired": false,
+    "local_cad_files": [],
+    "official_vector_pdf_archived": true,
+    "official_vector_pdf_used_as_cad_geometry": false,
+    "reason": "The public manufacturer page and technical sheet establish the exact family, left-drawer variant, standard dimensions and view identity. Native 2D/3D/BIM files require Baxter login and were not acquired; the vector PDF remains identity and dimension evidence only, and no third-party CAD was substituted."
+  },
+  "dimension_cross_check": {
+    "official_variant_overall_mm": [
+      450.0,
+      450.0,
+      460.0
+    ],
+    "project_ifc_body_local_xyz_mm": [
+      462.460968,
+      462.47998,
+      466.218994
+    ],
+    "absolute_delta_mm": [
+      12.460968,
+      12.47998,
+      6.218994
+    ],
+    "tolerance_mm": [
+      15.0,
+      15.0,
+      10.0
+    ],
+    "pass_by_axis": [
+      true,
+      true,
+      true
+    ],
+    "note": "The high-poly leather, rounded perimeter and handle envelope extend beyond the nominal catalogue dimensions. The Body is not scaled or corrected, and this envelope is not a fabrication dimension.",
+    "pass": true
+  },
+  "drawing_geometry_source": {
+    "source_kind": "geometry_derived_simplified_proxy",
+    "source_label_zh": "基于原始高模几何生成的简化图纸表达",
+    "source_label_en": "simplified drawing representation derived from the original high-poly geometry",
+    "official_cad_used": false,
+    "third_party_cad_used": false
+  },
+  "project_identity_evidence": {
+    "furniture_product_register": "pipeline/decisions/furniture-product-register.csv",
+    "register_status": "confirmed",
+    "register_confidence": 1.0,
+    "confirmed_variant": "freestanding_bedside_table_with_L_drawer"
+  },
+  "scope": "exact manufacturer family, left-drawer variant and nominal dimensions; not a project shop drawing and not official CAD geometry",
+  "pass": true
+}

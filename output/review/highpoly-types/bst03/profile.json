@@ -1,0 +1,51 @@
+{
+  "schema_version": 1,
+  "formal_ifc_sha256": "7a50b87e8f48a7c2bfbaa9f1dabdfca7155fa684b2325c66aa1ae15c8ab0a25c",
+  "profiles": {
+    "bst03": {
+      "display_name": "Baxter Stone freestanding bedside table with L drawer / project BST03",
+      "ifc_type_name": "BST03",
+      "representative_global_id": "1HZoxe$df4cBb4UXXH5J2S",
+      "expected_instance_global_ids": [
+        "1HZoxe$df4cBb4UXXH5J2S"
+      ],
+      "profile_source": "isolated high-poly IFC Body projection; exact Baxter product page and technical sheet archived; official 2D/3D/BIM login required and exact CAD not acquired",
+      "silhouette_simplify_mm": 0.35,
+      "semantic_sections": {
+        "plan": [],
+        "front": [],
+        "side": []
+      },
+      "required_semantics": [
+        "Stone family",
+        "freestanding bedside table",
+        "left drawer",
+        "45 x 45 x 46 cm nominal version",
+        "loose furniture, not shop drawing",
+        "drawer direction retained in actual Body projection and source metadata, not invented as simplified linework"
+      ],
+      "drawing_source": {
+        "source_kind": "geometry_derived_simplified_proxy",
+        "source_label_zh": "基于原始高模几何生成的简化图纸表达",
+        "source_label_en": "simplified drawing representation derived from the original high-poly geometry",
+        "official_cad_used": false,
+        "third_party_cad_used": false
+      },
+      "official_reference": {
+        "source_id": "BAXTER-STONE-BST03-OFFICIAL-IDENTITY-001",
+        "source_kind": "manufacturer_product_page_and_vector_technical_sheet_identity_dimension_evidence_only",
+        "manufacturer": "Baxter",
+        "family": "Stone",
+        "variant": "freestanding bedside table with L drawer, 45 x 45 x 46 cm",
+        "designer": "Federico Peri",
+        "scope": "exact manufacturer family, left-drawer variant and nominal dimensions; not a project shop drawing and not official CAD geometry",
+        "product_page": "https://www.baxter.it/en/products/stone-beds",
+        "technical_sheet": "https://dam.baxter.it/m/e4f4056bc7c6088/original/Baxter_Stone_letto_Indoor.pdf",
+        "source_access_record": "output/review/highpoly-types/bst03/official-source/source-access-record.json",
+        "official_product_cad_status": "manufacturer_login_required_not_acquired",
+        "official_vector_pdf_archived": true,
+        "official_product_cad_used": false
+      }
+    }
+  }
+}
