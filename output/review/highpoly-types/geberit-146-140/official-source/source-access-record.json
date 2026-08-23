@@ -1,0 +1,66 @@
+{
+  "schema_version": 1,
+  "checked_on": "2026-08-23",
+  "manufacturer": "Geberit",
+  "family": "AquaClean Sela wall-hung WC",
+  "article_number": "146.140.11.1",
+  "current_replacement_article_number": "146.220.11.1",
+  "replacement_cad_used": false,
+  "ifc_type_name": "Geberit 146.140",
+  "source_kind": "native_dwg",
+  "source_label_zh": "Geberit 官方归档原生 DWG 图纸表达",
+  "source_label_en": "drawing representation from archived Geberit official native DWG",
+  "official_cad_acquired": true,
+  "official_cad_product_family_match": true,
+  "official_cad_used": true,
+  "third_party_cad_used": false,
+  "blue_line_present": true,
+  "representation_geometry_source": "official_native_dwg_paths_mm",
+  "official_product_page": "https://catalog.international.geberit.com/en-GB/product/PRO_942494",
+  "official_product_page_archive": {
+    "path": "output/review/highpoly-types/geberit-146-140/official-source/geberit-aquaclean-sela-product-page.html",
+    "sha256": "8d2faaecf4e8b4e1aef578609cd21bf10fb44015cf8c916a318ebcad7bd0f157"
+  },
+  "current_catalog_status": "AquaClean Sela family page; current 146.220.11.1 replaces legacy 146.140.11.1",
+  "official_native_dwg": {
+    "A": {
+      "path": "output/review/highpoly-types/geberit-146-140/official-source/146.140.11.1_A.dwg",
+      "url": "https://cdn.data.geberit.com/cad/146.140.11.1_A.dwg",
+      "sha256": "8e7f2ec11311e77e8625c908d13586379fb8def19e6f65320ce61b15b2515172"
+    },
+    "G": {
+      "path": "output/review/highpoly-types/geberit-146-140/official-source/146.140.11.1_G.dwg",
+      "url": "https://cdn.data.geberit.com/cad/146.140.11.1_G.dwg",
+      "sha256": "f6253efd2d736ef8fa0830455692f96c0f61b057a597f38ddc0544e3c9de5c0c"
+    },
+    "L": {
+      "path": "output/review/highpoly-types/geberit-146-140/official-source/146.140.11.1_L.dwg",
+      "url": "https://cdn.data.geberit.com/cad/146.140.11.1_L.dwg",
+      "sha256": "e3c29b0f1778de7f3178a6dd6a2261dc3e7d46942e9c81e7a9943308204e9233"
+    },
+    "P": {
+      "path": "output/review/highpoly-types/geberit-146-140/official-source/146.140.11.1_P.dwg",
+      "url": "https://cdn.data.geberit.com/cad/146.140.11.1_P.dwg",
+      "sha256": "229eea526831ff08de65125b3c10cbf3ea9380310a5fd674b74a77634cde7669"
+    }
+  },
+  "official_cdn_revalidation": {
+    "path": "output/review/highpoly-types/geberit-146-140/official-source/official-cdn-revalidation.json",
+    "sha256": "89cda541a783c18f65fca8d71f0e08a19052f9ab52773771c35cda3825c8894f",
+    "checked_at": "2026-08-23T12:51:00.640324+00:00",
+    "all_declared_urls_accessible": true,
+    "all_downloaded_bytes_match_local_archive": true,
+    "pass": true
+  },
+  "drawing_view_mapping": {
+    "plan": "G",
+    "front": "A",
+    "side": "L"
+  },
+  "official_3d_identity_only": {
+    "code": "P",
+    "used_as_plan_or_elevation_geometry": false
+  },
+  "scope": "official manufacturer product-family reference, not a project shop drawing",
+  "pass": true
+}

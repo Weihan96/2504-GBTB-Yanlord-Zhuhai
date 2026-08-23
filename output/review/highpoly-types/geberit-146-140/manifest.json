@@ -1,0 +1,282 @@
+{
+  "schema_version": 2,
+  "generated_at": "2026-08-23T12:51:32.663338+00:00",
+  "generator": "pipeline/scripts/geberit_146_140_review.py",
+  "formal_ifc": "2504 GBTB Yanlord Zhuhai.ifc",
+  "formal_ifc_sha256": "7a50b87e8f48a7c2bfbaa9f1dabdfca7155fa684b2325c66aa1ae15c8ab0a25c",
+  "formal_ifc_sha256_after_generation": "7a50b87e8f48a7c2bfbaa9f1dabdfca7155fa684b2325c66aa1ae15c8ab0a25c",
+  "formal_ifc_bytes_unchanged": true,
+  "profile_register": "output/review/highpoly-types/geberit-146-140/profile.json",
+  "profile_register_sha256": "df550baeb5b2f07940f905f4a17f2183e8b9f7009a11abca717fa21b8ed3312c",
+  "profile_key": "geberit-146-140",
+  "display_name": "Geberit 146.140 / AquaClean Sela wall-hung WC",
+  "ifc_type_name": "Geberit 146.140",
+  "representative_global_id": "1rhZG98PPCSxaLeMFLTYb9",
+  "registered_instance_global_ids": [
+    "0UtU7yPb10ku4gsbGoM_sp",
+    "1rhZG98PPCSxaLeMFLTYb9"
+  ],
+  "geometry_product_count": 1,
+  "whole_model_render": false,
+  "formal_ifc_write": false,
+  "source_kind": "native_dwg",
+  "source_label_zh": "Geberit 官方归档原生 DWG 图纸表达",
+  "source_label_en": "drawing representation from archived Geberit official native DWG",
+  "official_cad_acquired": true,
+  "official_cad_product_family_match": true,
+  "official_cad_used": true,
+  "third_party_cad_used": false,
+  "blue_line_present": true,
+  "representation_geometry_source": "official_native_dwg_paths_mm",
+  "simplified_proxy_comparison_included": true,
+  "mesh_vertex_count": 1381,
+  "mesh_face_count": 2761,
+  "local_bounds_mm": {
+    "minimum": [
+      -192.85757446288602,
+      -530.6420140266414,
+      -265.452896118164
+    ],
+    "maximum": [
+      192.85668945313,
+      47.112014293670704,
+      178.78204345703102
+    ]
+  },
+  "required_semantics": [
+    "ceramic_outer_silhouette",
+    "seat_or_rim_line",
+    "rear_wall_contact",
+    "suspended_underside"
+  ],
+  "official_reference": {
+    "source_id": "GEBERIT-AQUACLEAN-SELA-146-140-NATIVE-DWG-001",
+    "source_kind": "native_dwg",
+    "manufacturer": "Geberit",
+    "article_number": "146.140.11.1",
+    "scope": "official manufacturer product-family reference, not a project shop drawing",
+    "product_page": "https://catalog.international.geberit.com/en-GB/product/PRO_942494",
+    "product_page_archive": "output/review/highpoly-types/geberit-146-140/official-source/geberit-aquaclean-sela-product-page.html",
+    "product_page_archive_sha256": "8d2faaecf4e8b4e1aef578609cd21bf10fb44015cf8c916a318ebcad7bd0f157",
+    "current_catalog_status": "AquaClean Sela family page; current 146.220.11.1 replaces legacy 146.140.11.1",
+    "linework_path": "output/review/highpoly-types/geberit-146-140/official-native-dwg-linework.json",
+    "official_cdn_revalidation": {
+      "path": "output/review/highpoly-types/geberit-146-140/official-source/official-cdn-revalidation.json",
+      "sha256": "89cda541a783c18f65fca8d71f0e08a19052f9ab52773771c35cda3825c8894f",
+      "checked_at": "2026-08-23T12:51:00.640324+00:00",
+      "pass": true
+    },
+    "view_mapping": {
+      "plan": "G",
+      "front": "A",
+      "side": "L"
+    },
+    "linework_sha256": "5cd5fbc296380d683dd2562b79a6009e27f475e4fb338fba1fae2813bcc6b880",
+    "official_sources": {
+      "A": {
+        "path": "output/review/highpoly-types/geberit-146-140/official-source/146.140.11.1_A.dwg",
+        "url": "https://cdn.data.geberit.com/cad/146.140.11.1_A.dwg",
+        "sha256": "8e7f2ec11311e77e8625c908d13586379fb8def19e6f65320ce61b15b2515172"
+      },
+      "G": {
+        "path": "output/review/highpoly-types/geberit-146-140/official-source/146.140.11.1_G.dwg",
+        "url": "https://cdn.data.geberit.com/cad/146.140.11.1_G.dwg",
+        "sha256": "f6253efd2d736ef8fa0830455692f96c0f61b057a597f38ddc0544e3c9de5c0c"
+      },
+      "L": {
+        "path": "output/review/highpoly-types/geberit-146-140/official-source/146.140.11.1_L.dwg",
+        "url": "https://cdn.data.geberit.com/cad/146.140.11.1_L.dwg",
+        "sha256": "e3c29b0f1778de7f3178a6dd6a2261dc3e7d46942e9c81e7a9943308204e9233"
+      },
+      "P": {
+        "path": "output/review/highpoly-types/geberit-146-140/official-source/146.140.11.1_P.dwg",
+        "url": "https://cdn.data.geberit.com/cad/146.140.11.1_P.dwg",
+        "sha256": "229eea526831ff08de65125b3c10cbf3ea9380310a5fd674b74a77634cde7669"
+      }
+    },
+    "dimension_cross_checks": {
+      "plan": {
+        "official_native_dwg_size_mm": [
+          385.714292,
+          577.769159
+        ],
+        "ifc_body_size_mm": [
+          385.714264,
+          577.754028
+        ],
+        "absolute_delta_mm": [
+          2.8e-05,
+          0.015131
+        ],
+        "tolerance_mm": 0.1,
+        "pass": true
+      },
+      "front": {
+        "official_native_dwg_size_mm": [
+          385.714292,
+          444.234945
+        ],
+        "ifc_body_size_mm": [
+          385.714264,
+          444.23494
+        ],
+        "absolute_delta_mm": [
+          2.8e-05,
+          5e-06
+        ],
+        "tolerance_mm": 0.1,
+        "pass": true
+      },
+      "side": {
+        "official_native_dwg_size_mm": [
+          577.769159,
+          444.234945
+        ],
+        "ifc_body_size_mm": [
+          577.754028,
+          444.23494
+        ],
+        "absolute_delta_mm": [
+          0.015131,
+          5e-06
+        ],
+        "tolerance_mm": 0.1,
+        "pass": true
+      }
+    }
+  },
+  "candidate_representations": "output/review/highpoly-types/geberit-146-140/candidate-representations.json",
+  "candidate_representations_sha256": "d48eb6dd2adb0107dc9830a4411066947a529fe09f8435d0fbae3ec7e5030101",
+  "official_source_access_record": "output/review/highpoly-types/geberit-146-140/official-source/source-access-record.json",
+  "official_source_access_record_sha256": "0195a6d2899adfb219164d477b89a186bc6c4dc8a9c7941715b6bc7fabb9feab",
+  "project_context": "output/review/highpoly-types/geberit-146-140/project-context-manifest.json",
+  "bonsai_review": "output/review/highpoly-types/geberit-146-140/bonsai-review-manifest.json",
+  "views": [
+    {
+      "view": "plan",
+      "svg": "output/review/highpoly-types/geberit-146-140/plan.svg",
+      "svg_sha256": "ea899d8db14d69d3378bde22d4d7c8e20300f265035769b1a615c5903e2164fd",
+      "projection_axes": [
+        0,
+        1
+      ],
+      "raw_edge_count": 4139,
+      "displayed_raw_edge_count": 592,
+      "silhouette_path_count": 1,
+      "semantic_path_count": 67,
+      "semantic_sections": [
+        {
+          "axis": "z",
+          "fraction": 0.58,
+          "label": "bowl_body",
+          "plane_mm": -7.796631,
+          "path_count": 36
+        },
+        {
+          "axis": "z",
+          "fraction": 0.72,
+          "label": "seat_rim",
+          "plane_mm": 54.39626,
+          "path_count": 31
+        }
+      ],
+      "official_reference_path_count": 50,
+      "official_reference_source_point_count": 1900,
+      "blue_line_source_kind": "native_dwg",
+      "blue_line_article_number": "146.140.11.1",
+      "blue_line_native_dwg_code": "G",
+      "blue_line_native_dwg_sha256": "f6253efd2d736ef8fa0830455692f96c0f61b057a597f38ddc0544e3c9de5c0c",
+      "dimension_cross_check": {
+        "official_native_dwg_size_mm": [
+          385.714292,
+          577.769159
+        ],
+        "ifc_body_size_mm": [
+          385.714264,
+          577.754028
+        ],
+        "absolute_delta_mm": [
+          2.8e-05,
+          0.015131
+        ],
+        "tolerance_mm": 0.1,
+        "pass": true
+      }
+    },
+    {
+      "view": "front",
+      "svg": "output/review/highpoly-types/geberit-146-140/front.svg",
+      "svg_sha256": "8e26e5f915394491c55731d88b710c1689c4df7b578e5486074e130984b0c99c",
+      "projection_axes": [
+        0,
+        2
+      ],
+      "raw_edge_count": 4139,
+      "displayed_raw_edge_count": 592,
+      "silhouette_path_count": 1,
+      "semantic_path_count": 0,
+      "semantic_sections": [],
+      "official_reference_path_count": 82,
+      "official_reference_source_point_count": 4139,
+      "blue_line_source_kind": "native_dwg",
+      "blue_line_article_number": "146.140.11.1",
+      "blue_line_native_dwg_code": "A",
+      "blue_line_native_dwg_sha256": "8e7f2ec11311e77e8625c908d13586379fb8def19e6f65320ce61b15b2515172",
+      "dimension_cross_check": {
+        "official_native_dwg_size_mm": [
+          385.714292,
+          444.234945
+        ],
+        "ifc_body_size_mm": [
+          385.714264,
+          444.23494
+        ],
+        "absolute_delta_mm": [
+          2.8e-05,
+          5e-06
+        ],
+        "tolerance_mm": 0.1,
+        "pass": true
+      }
+    },
+    {
+      "view": "side",
+      "svg": "output/review/highpoly-types/geberit-146-140/side.svg",
+      "svg_sha256": "88960ea852851c6cfaa2b937bb40a63d0e9ce95d1c3b61a9ef6c7b075699d878",
+      "projection_axes": [
+        1,
+        2
+      ],
+      "raw_edge_count": 4139,
+      "displayed_raw_edge_count": 592,
+      "silhouette_path_count": 2,
+      "semantic_path_count": 0,
+      "semantic_sections": [],
+      "official_reference_path_count": 65,
+      "official_reference_source_point_count": 3527,
+      "blue_line_source_kind": "native_dwg",
+      "blue_line_article_number": "146.140.11.1",
+      "blue_line_native_dwg_code": "L",
+      "blue_line_native_dwg_sha256": "e3c29b0f1778de7f3178a6dd6a2261dc3e7d46942e9c81e7a9943308204e9233",
+      "dimension_cross_check": {
+        "official_native_dwg_size_mm": [
+          577.769159,
+          444.234945
+        ],
+        "ifc_body_size_mm": [
+          577.754028,
+          444.23494
+        ],
+        "absolute_delta_mm": [
+          0.015131,
+          5e-06
+        ],
+        "tolerance_mm": 0.1,
+        "pass": true
+      }
+    }
+  ],
+  "review_status": "visual_review_pending",
+  "approved_for_drawing_ifc": false,
+  "pass": true
+}

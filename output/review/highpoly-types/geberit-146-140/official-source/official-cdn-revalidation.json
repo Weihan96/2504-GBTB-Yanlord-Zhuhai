@@ -1,0 +1,70 @@
+{
+  "schema_version": 1,
+  "checked_at": "2026-08-23T12:51:00.640324+00:00",
+  "manufacturer": "Geberit",
+  "article_number": "146.140.11.1",
+  "method": "fresh HTTPS download from each declared official CDN URL, SHA-256 verification and byte-for-byte local archive comparison",
+  "drawing_view_mapping": {
+    "plan": "G",
+    "front": "A",
+    "side": "L"
+  },
+  "identity_only_code": "P",
+  "results": {
+    "A": {
+      "url": "https://cdn.data.geberit.com/cad/146.140.11.1_A.dwg",
+      "local_path": "output/review/highpoly-types/geberit-146-140/official-source/146.140.11.1_A.dwg",
+      "http_status": 200,
+      "content_type": "application/octet-stream",
+      "downloaded_byte_count": 84572,
+      "local_byte_count": 84572,
+      "expected_sha256": "8e7f2ec11311e77e8625c908d13586379fb8def19e6f65320ce61b15b2515172",
+      "downloaded_sha256": "8e7f2ec11311e77e8625c908d13586379fb8def19e6f65320ce61b15b2515172",
+      "local_sha256": "8e7f2ec11311e77e8625c908d13586379fb8def19e6f65320ce61b15b2515172",
+      "downloaded_bytes_match_local_archive": true,
+      "pass": true
+    },
+    "G": {
+      "url": "https://cdn.data.geberit.com/cad/146.140.11.1_G.dwg",
+      "local_path": "output/review/highpoly-types/geberit-146-140/official-source/146.140.11.1_G.dwg",
+      "http_status": 200,
+      "content_type": "application/octet-stream",
+      "downloaded_byte_count": 75998,
+      "local_byte_count": 75998,
+      "expected_sha256": "f6253efd2d736ef8fa0830455692f96c0f61b057a597f38ddc0544e3c9de5c0c",
+      "downloaded_sha256": "f6253efd2d736ef8fa0830455692f96c0f61b057a597f38ddc0544e3c9de5c0c",
+      "local_sha256": "f6253efd2d736ef8fa0830455692f96c0f61b057a597f38ddc0544e3c9de5c0c",
+      "downloaded_bytes_match_local_archive": true,
+      "pass": true
+    },
+    "L": {
+      "url": "https://cdn.data.geberit.com/cad/146.140.11.1_L.dwg",
+      "local_path": "output/review/highpoly-types/geberit-146-140/official-source/146.140.11.1_L.dwg",
+      "http_status": 200,
+      "content_type": "application/octet-stream",
+      "downloaded_byte_count": 81513,
+      "local_byte_count": 81513,
+      "expected_sha256": "e3c29b0f1778de7f3178a6dd6a2261dc3e7d46942e9c81e7a9943308204e9233",
+      "downloaded_sha256": "e3c29b0f1778de7f3178a6dd6a2261dc3e7d46942e9c81e7a9943308204e9233",
+      "local_sha256": "e3c29b0f1778de7f3178a6dd6a2261dc3e7d46942e9c81e7a9943308204e9233",
+      "downloaded_bytes_match_local_archive": true,
+      "pass": true
+    },
+    "P": {
+      "url": "https://cdn.data.geberit.com/cad/146.140.11.1_P.dwg",
+      "local_path": "output/review/highpoly-types/geberit-146-140/official-source/146.140.11.1_P.dwg",
+      "http_status": 200,
+      "content_type": "application/octet-stream",
+      "downloaded_byte_count": 2028518,
+      "local_byte_count": 2028518,
+      "expected_sha256": "229eea526831ff08de65125b3c10cbf3ea9380310a5fd674b74a77634cde7669",
+      "downloaded_sha256": "229eea526831ff08de65125b3c10cbf3ea9380310a5fd674b74a77634cde7669",
+      "local_sha256": "229eea526831ff08de65125b3c10cbf3ea9380310a5fd674b74a77634cde7669",
+      "downloaded_bytes_match_local_archive": true,
+      "pass": true
+    }
+  },
+  "all_declared_urls_accessible": true,
+  "all_downloaded_bytes_match_local_archive": true,
+  "pass": true
+}
