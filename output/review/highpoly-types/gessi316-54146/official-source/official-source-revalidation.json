@@ -1,0 +1,129 @@
+{
+  "schema_version": 1,
+  "checked_at": "2026-08-23T15:58:55.258325+00:00",
+  "manufacturer": "Gessi",
+  "family": "Gessi316 Meccanica",
+  "resolved_article_number": "54146",
+  "public_access": {
+    "area_pro_product_page": "https://areapro.gessi.com/en/product/54146",
+    "anonymous_public_api_used": true,
+    "login_or_registration_performed": false,
+    "exact_54146_g000_native_dwg_publicly_downloadable": true
+  },
+  "identity": {
+    "pim_id": "PF54146",
+    "product_id": "54146",
+    "product_name": "SHOWERHEAD",
+    "product_description": "Ceiling-mounted adjustable headshower.",
+    "technical_dimensions": {
+      "Height": "276 mm",
+      "Width": "300 mm",
+      "Depth": "300 mm",
+      "Showerhead size": "Ø300"
+    },
+    "configured_codes": [
+      "GPF541460A000G000",
+      "GPF541460C072G000",
+      "GPF541460E059G000",
+      "GPF541460P004G000",
+      "GPF541460P006G000",
+      "GPF541460P024G000",
+      "GPF541460P025G000"
+    ]
+  },
+  "api_requests": {
+    "details": {
+      "url": "https://g-ecatalogue-be-prod-we.azurewebsites.net/public/product/GetProductDetails?country=it&language=en&productCode=54146",
+      "http_status": 200,
+      "content_type": "application/json",
+      "bytes": 20605,
+      "sha256": "73d6f381a08743f30b483e96f1212c784df4cac6e0ae300cf43aedfbda23df4c"
+    },
+    "attachments": {
+      "url": "https://g-ecatalogue-be-prod-we.azurewebsites.net/public/product/GetProductAttachments?country=it&language=en&productCode=PF54146",
+      "http_status": 200,
+      "content_type": "application/json",
+      "bytes": 58150,
+      "sha256": "ad1bdb1fda746f893048de89f9aaba3834d7f88f36500bc4549b05abfa5a0fc2"
+    }
+  },
+  "selected_attachments": {
+    "native_2d_dwg_zip": {
+      "attachment_type": "2D Model - DWG",
+      "attachment_type_original": "ZWA",
+      "attachment_name": "GPF5414600000G000_arc.zip",
+      "attachment_url": "https://gessistorage.blob.core.windows.net/zwa/GPF5414600000G000_arc.zip",
+      "download_visible": true,
+      "matching_configured_codes": [
+        "GPF541460A000G000",
+        "GPF541460C072G000",
+        "GPF541460E059G000",
+        "GPF541460E066G000",
+        "GPF541460P004G000",
+        "GPF541460P006G000",
+        "GPF541460P024G000",
+        "GPF541460P025G000",
+        "GPF541460P065G000"
+      ]
+    },
+    "technical_drawing_mm_pdf": {
+      "attachment_type": "Technical Drawing mm - PDF",
+      "attachment_type_original": "ZC4",
+      "attachment_name": "GPF5414600000G000_1.pdf",
+      "attachment_url": "https://gessistorage.blob.core.windows.net/zc4/GPF5414600000G000_1.pdf",
+      "download_visible": true,
+      "matching_configured_codes": [
+        "GPF541460A000G000",
+        "GPF541460C072G000",
+        "GPF541460E059G000",
+        "GPF541460E066G000",
+        "GPF541460P004G000",
+        "GPF541460P006G000",
+        "GPF541460P024G000",
+        "GPF541460P025G000",
+        "GPF541460P065G000"
+      ]
+    }
+  },
+  "downloads": {
+    "native_dwg_zip": {
+      "url": "https://gessistorage.blob.core.windows.net/zwa/GPF5414600000G000_arc.zip",
+      "http_status": 200,
+      "content_type": "application/x-zip-compressed",
+      "bytes": 49602,
+      "sha256": "aaf9964d57674a03b7e7a8f9eb647df84af74bab1b575c9bad306d83bd40237e",
+      "path": "output/review/highpoly-types/gessi316-54146/official-source/GPF5414600000G000_arc.zip",
+      "expected_sha256": "aaf9964d57674a03b7e7a8f9eb647df84af74bab1b575c9bad306d83bd40237e",
+      "pass": true
+    },
+    "technical_pdf": {
+      "url": "https://gessistorage.blob.core.windows.net/zc4/GPF5414600000G000_1.pdf",
+      "http_status": 200,
+      "content_type": "application/pdf",
+      "bytes": 323066,
+      "sha256": "ee7909886b1181306902d0a0e146b73f938bf96e3e12e8f1ba27ded996b2b8ce",
+      "path": "output/review/highpoly-types/gessi316-54146/official-source/GPF5414600000G000_1.pdf",
+      "expected_sha256": "ee7909886b1181306902d0a0e146b73f938bf96e3e12e8f1ba27ded996b2b8ce",
+      "pass": true
+    }
+  },
+  "zip_member": {
+    "zip_path": "output/review/highpoly-types/gessi316-54146/official-source/GPF5414600000G000_arc.zip",
+    "zip_sha256": "aaf9964d57674a03b7e7a8f9eb647df84af74bab1b575c9bad306d83bd40237e",
+    "member": "GPF5414600000G000_3.dwg",
+    "member_bytes": 222869,
+    "member_sha256": "c8ddb90f61565d5273a32574f777812bbb1d9ef33e2b98479f1e7c381e69950d",
+    "extracted_path": "output/review/highpoly-types/gessi316-54146/official-source/GPF5414600000G000_3.dwg",
+    "extracted_sha256": "c8ddb90f61565d5273a32574f777812bbb1d9ef33e2b98479f1e7c381e69950d",
+    "member_matches_extracted_file": true,
+    "pass": true
+  },
+  "drawing_geometry_policy": {
+    "native_dwg_used_for_three_views": "54146 G000 only",
+    "g001_variant_cad_used": false,
+    "wall_mounted_54145_cad_used": false,
+    "adjacent_gessi_product_cad_used": false,
+    "third_party_cad_used": false
+  },
+  "pass": true
+}

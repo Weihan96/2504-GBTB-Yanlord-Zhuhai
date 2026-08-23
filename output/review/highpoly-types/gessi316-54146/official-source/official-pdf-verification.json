@@ -1,0 +1,88 @@
+{
+  "schema_version": 1,
+  "checked_at": "2026-08-23T16:02:14.093046+00:00",
+  "manufacturer": "Gessi",
+  "family": "Gessi316 Meccanica",
+  "article_number": "54146",
+  "configuration": "G000",
+  "pdfs": {
+    "technical": {
+      "kind": "technical",
+      "path": "output/review/highpoly-types/gessi316-54146/official-source/GPF5414600000G000_1.pdf",
+      "sha256": "ee7909886b1181306902d0a0e146b73f938bf96e3e12e8f1ba27ded996b2b8ce",
+      "page_count": 1,
+      "verified_page": 1,
+      "required_tokens": [
+        "GESSI 316 54146",
+        "GPF5414600000G000",
+        "672",
+        "G1/2\"",
+        "62"
+      ],
+      "all_required_tokens_present": true,
+      "extracted_text_sha256": "83b7bfded4fe0610bbd0a8d119c92077a207ea7614cabc5b9115a82f4e28fed7",
+      "render": "output/review/highpoly-types/gessi316-54146/official-source/verification/GPF5414600000G000_1-page-1.png",
+      "render_sha256": "3ca33b1fa963addeba659c78e9754643d107e84db844cda2ab5a2fcb0b8eb25f",
+      "render_dpi": 180,
+      "pass": true
+    },
+    "collection_catalogue": {
+      "kind": "collection_catalogue",
+      "path": "output/review/highpoly-types/gessi316-54146/official-source/MAGAZINE_GESSI_316_2026.pdf",
+      "sha256": "b9c905bbdf91c9c0f4b779865376c732af741a4a199cfab7e973c21ba6caeb8d",
+      "page_count": 21,
+      "verified_page": 19,
+      "required_tokens": [
+        "94. 54145",
+        "WALL-MOUNTED ADJUSTABLE",
+        "95. 54146",
+        "CEILING-MOUNTED ADJUSTABLE"
+      ],
+      "all_required_tokens_present": true,
+      "extracted_text_sha256": "41c226b07f8bda03264a12d827c97566cae9ead49916d8601dbb00c4ccf0865b",
+      "render": "output/review/highpoly-types/gessi316-54146/official-source/verification/MAGAZINE_GESSI_316_2026-page-19.png",
+      "render_sha256": "9ac61be56ffbb8125d45725ea77604e9f8e0e0d5966c81e4ba47401befd6a164",
+      "render_dpi": 180,
+      "pass": true
+    }
+  },
+  "mechanical_cross_check": {
+    "technical_pdf_title_matches_exact_dwg_basename": true,
+    "technical_pdf_model_code": "54146",
+    "technical_pdf_nominal_width_depth_height_mm": [
+      300.0,
+      300.0,
+      276.0
+    ],
+    "technical_pdf_showerhead_diameter_mm": 300.0,
+    "native_dwg_expected_sha256": "c8ddb90f61565d5273a32574f777812bbb1d9ef33e2b98479f1e7c381e69950d",
+    "native_dwg_plan_envelope_mm": [
+      300.0,
+      300.0
+    ],
+    "native_dwg_front_envelope_mm": [
+      300.0,
+      280.25
+    ],
+    "native_dwg_side_envelope_mm": [
+      300.0,
+      280.25
+    ],
+    "project_ifc_body_local_xyz_mm": [
+      300.0,
+      299.944916,
+      279.371241
+    ],
+    "maximum_ifc_projection_delta_mm": 0.878759,
+    "tolerance_mm": 1.0,
+    "pass": true
+  },
+  "visual_review": {
+    "status": "codex_visual_qa_pass",
+    "technical_sheet_observation": "Exact GESSI 316 54146 / GPF5414600000G000 title, Ø300 showerhead, 276 mm nominal height, Ø30 arm and ceiling connection are visible.",
+    "catalogue_observation": "Official catalogue item 95 identifies 54146 as ceiling-mounted adjustable; wall-mounted item 94 / 54145 is excluded.",
+    "native_dwg_observation": "The exact G000 native DWG partitions into three orthographic views; all 1283 eligible paths are consumed once, and G001 is excluded.",
+    "human_product_drawing_approval": "pending"
+  },
+  "pass": true
+}

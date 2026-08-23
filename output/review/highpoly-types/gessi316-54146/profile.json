@@ -1,0 +1,46 @@
+{
+  "schema_version": 2,
+  "formal_ifc_sha256": "7a50b87e8f48a7c2bfbaa9f1dabdfca7155fa684b2325c66aa1ae15c8ab0a25c",
+  "profiles": {
+    "gessi316-54146": {
+      "display_name": "Gessi316 Meccanica ceiling-mounted adjustable headshower / 54146 G000",
+      "ifc_type_name": "Gessi316 54146",
+      "representative_global_id": "04DLh1Jk9Dcu9ibcaE0id8",
+      "expected_instance_global_ids": ["04DLh1Jk9Dcu9ibcaE0id8"],
+      "profile_source": "isolated IFC Body projection cross-checked against exact official 54146 G000 native DWG, technical vector PDF and public product API",
+      "silhouette_simplify_mm": 0.35,
+      "semantic_sections": {"plan": [], "front": [], "side": []},
+      "required_semantics": [
+        "single_project_Gessi316_54146_representative",
+        "ceiling_mounted_adjustable_headshower_not_wall_mounted_54145",
+        "exact_G000_configuration_not_G001",
+        "300_mm_round_head_276_mm_nominal_height",
+        "actual_IFC_Body_geometry_not_stretched"
+      ],
+      "drawing_source": {
+        "source_kind": "native_dwg",
+        "source_label_zh": "Gessi 官方精确型号 54146 G000 原生 DWG 图纸表达",
+        "source_label_en": "drawing representation from the exact Gessi 54146 G000 official native DWG",
+        "source_dwg": "output/review/highpoly-types/gessi316-54146/official-source/GPF5414600000G000_3.dwg",
+        "source_dwg_sha256": "c8ddb90f61565d5273a32574f777812bbb1d9ef33e2b98479f1e7c381e69950d",
+        "official_cad_used": true,
+        "third_party_cad_used": false
+      },
+      "official_reference": {
+        "source_id": "GESSI316-54146-G000-OFFICIAL-NATIVE-DWG-001",
+        "source_kind": "manufacturer_exact_native_dwg",
+        "manufacturer": "Gessi",
+        "family": "Gessi316 Meccanica",
+        "article_number": "54146",
+        "configuration": "G000",
+        "scope": "official Gessi exact 54146 G000 family reference; not a project shop drawing",
+        "product_page": "https://areapro.gessi.com/en/product/54146",
+        "native_dwg_zip": "https://gessistorage.blob.core.windows.net/zwa/GPF5414600000G000_arc.zip",
+        "technical_drawing_pdf": "https://gessistorage.blob.core.windows.net/zc4/GPF5414600000G000_1.pdf",
+        "source_access_record": "output/review/highpoly-types/gessi316-54146/official-source/source-access-record.json",
+        "official_product_cad_status": "public_official_api_exact_54146_g000_native_dwg_acquired",
+        "official_product_cad_used": true
+      }
+    }
+  }
+}

@@ -1,0 +1,95 @@
+{
+  "schema_version": 2,
+  "manufacturer": "Gessi",
+  "family": "Gessi316 Meccanica",
+  "project_ifc_type_name": "Gessi316 54146",
+  "project_ifc_type_description": "Ceiling-mounted adjustable headshower Ø300",
+  "resolved_article_number": "54146",
+  "resolved_configuration": "G000",
+  "research_date": "2026-08-24",
+  "official_identity_sources": [
+    {
+      "kind": "manufacturer_public_product_api",
+      "url": "https://g-ecatalogue-be-prod-we.azurewebsites.net/public/product/GetProductDetails?country=it&language=en&productCode=54146",
+      "local_path": "output/review/highpoly-types/gessi316-54146/official-source/gessi316-54146-product-details.json",
+      "sha256": "5f0f3280a5202bda3fd55a92e0c09dfbde8c5cee9052917e4d9f87018ff35324",
+      "identity_observation": "Gessi public API resolves PF54146 / 54146 as SHOWERHEAD / Ceiling-mounted adjustable headshower and publishes 300 x 300 x 276 mm dimensions with a Ø300 head."
+    },
+    {
+      "kind": "manufacturer_public_attachment_api",
+      "url": "https://g-ecatalogue-be-prod-we.azurewebsites.net/public/product/GetProductAttachments?country=it&language=en&productCode=PF54146",
+      "local_path": "output/review/highpoly-types/gessi316-54146/official-source/gessi316-54146-attachments.json",
+      "sha256": "3e294caef0b55b960415d83c37cfbde3480d10cd5a55c5209a3f2098a9df3a1e",
+      "identity_observation": "The anonymous official attachment API publishes exact G000 native 2D DWG and technical PDF files; G001 is explicitly excluded."
+    },
+    {
+      "kind": "manufacturer_exact_technical_vector_pdf",
+      "url": "https://gessistorage.blob.core.windows.net/zc4/GPF5414600000G000_1.pdf",
+      "local_path": "output/review/highpoly-types/gessi316-54146/official-source/GPF5414600000G000_1.pdf",
+      "sha256": "ee7909886b1181306902d0a0e146b73f938bf96e3e12e8f1ba27ded996b2b8ce",
+      "identity_observation": "The exact sheet identifies GESSI 316 54146 / GPF5414600000G000, Ø300, 276 mm nominal height, Ø30 arm and ceiling connection."
+    },
+    {
+      "kind": "manufacturer_collection_catalogue",
+      "url": "https://gwebassets.gessi.com/strapi-uploads/assets/MAGAZINE_GESSI_316_2026_d8f9138389.pdf",
+      "local_path": "output/review/highpoly-types/gessi316-54146/official-source/MAGAZINE_GESSI_316_2026.pdf",
+      "sha256": "b9c905bbdf91c9c0f4b779865376c732af741a4a199cfab7e973c21ba6caeb8d",
+      "pdf_page": 19,
+      "identity_observation": "Item 95 identifies 54146 as ceiling-mounted adjustable; wall-mounted item 94 / 54145 is not substituted."
+    }
+  ],
+  "official_product_cad": {
+    "published_access_surface": "Gessi public product attachment API",
+    "product_route": "https://areapro.gessi.com/en/product/54146",
+    "authentication_required": false,
+    "acquired": true,
+    "exact_project_configuration_match": true,
+    "native_dwg_zip": {
+      "url": "https://gessistorage.blob.core.windows.net/zwa/GPF5414600000G000_arc.zip",
+      "local_path": "output/review/highpoly-types/gessi316-54146/official-source/GPF5414600000G000_arc.zip",
+      "sha256": "aaf9964d57674a03b7e7a8f9eb647df84af74bab1b575c9bad306d83bd40237e"
+    },
+    "native_dwg": {
+      "zip_member": "GPF5414600000G000_3.dwg",
+      "local_path": "output/review/highpoly-types/gessi316-54146/official-source/GPF5414600000G000_3.dwg",
+      "sha256": "c8ddb90f61565d5273a32574f777812bbb1d9ef33e2b98479f1e7c381e69950d"
+    },
+    "technical_pdf": {
+      "url": "https://gessistorage.blob.core.windows.net/zc4/GPF5414600000G000_1.pdf",
+      "local_path": "output/review/highpoly-types/gessi316-54146/official-source/GPF5414600000G000_1.pdf",
+      "sha256": "ee7909886b1181306902d0a0e146b73f938bf96e3e12e8f1ba27ded996b2b8ce"
+    },
+    "official_pdf_vector_used_as_cad_geometry": false
+  },
+  "drawing_geometry_source": {
+    "source_kind": "native_dwg",
+    "source_label_zh": "Gessi 官方精确型号 54146 G000 原生 DWG 图纸表达",
+    "source_label_en": "drawing representation from the exact Gessi 54146 G000 official native DWG",
+    "source_dwg_sha256": "c8ddb90f61565d5273a32574f777812bbb1d9ef33e2b98479f1e7c381e69950d",
+    "official_cad_used": true,
+    "third_party_cad_used": false
+  },
+  "identity_and_geometry_policy": {
+    "54146_g000_native_dwg_used": true,
+    "g001_variant_cad_used": false,
+    "wall_mounted_54145_cad_used": false,
+    "adjacent_gessi_product_cad_used": false,
+    "third_party_cad_used": false
+  },
+  "dimension_cross_check": {
+    "official_api_width_depth_height_mm": [300.0, 300.0, 276.0],
+    "native_dwg_plan_envelope_mm": [300.0, 300.0],
+    "native_dwg_front_envelope_mm": [300.0, 280.25],
+    "native_dwg_side_envelope_mm": [300.0, 280.25],
+    "project_ifc_body_local_xyz_mm": [300.0, 299.944916, 279.371241],
+    "maximum_ifc_projection_delta_mm": 0.878759,
+    "tolerance_mm": 1.0,
+    "pass": true,
+    "geometry_stretched": false,
+    "nominal_height_note": "The technical 276 mm datum is not treated as the complete spray/nozzle envelope."
+  },
+  "source_revalidation": "output/review/highpoly-types/gessi316-54146/official-source/official-source-revalidation.json",
+  "official_pdf_verification": "output/review/highpoly-types/gessi316-54146/official-source/official-pdf-verification.json",
+  "scope": "official Gessi exact 54146 G000 family reference; not a project shop drawing",
+  "pass": true
+}

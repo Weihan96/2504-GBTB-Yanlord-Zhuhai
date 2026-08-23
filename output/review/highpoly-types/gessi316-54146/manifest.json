@@ -1,0 +1,246 @@
+{
+  "schema_version": 2,
+  "generated_at": "2026-08-23T16:05:26.220523+00:00",
+  "generator": "pipeline/scripts/gessi316_54146_review.py",
+  "formal_ifc": "2504 GBTB Yanlord Zhuhai.ifc",
+  "formal_ifc_sha256": "7a50b87e8f48a7c2bfbaa9f1dabdfca7155fa684b2325c66aa1ae15c8ab0a25c",
+  "formal_ifc_sha256_after_generation": "7a50b87e8f48a7c2bfbaa9f1dabdfca7155fa684b2325c66aa1ae15c8ab0a25c",
+  "formal_ifc_bytes_unchanged": true,
+  "profile_register": "output/review/highpoly-types/gessi316-54146/profile.json",
+  "profile_register_sha256": "ba0669a11cfdcad02ddefa5984fd47f63301cac009408057707ce029d8a4d098",
+  "profile_key": "gessi316-54146",
+  "display_name": "Gessi316 Meccanica ceiling-mounted adjustable headshower / 54146 G000",
+  "ifc_type_name": "Gessi316 54146",
+  "ifc_type_description": "Ceiling-mounted adjustable headshower Ø300",
+  "article_number": "54146",
+  "drawing_product_code": "54146",
+  "representative_global_id": "04DLh1Jk9Dcu9ibcaE0id8",
+  "registered_instance_global_ids": [
+    "04DLh1Jk9Dcu9ibcaE0id8"
+  ],
+  "geometry_product_count": 1,
+  "whole_model_render": false,
+  "mesh_vertex_count": 5284,
+  "mesh_face_count": 7812,
+  "bounds_mm": {
+    "minimum": [
+      -150.0,
+      -149.972458,
+      -4.474878
+    ],
+    "maximum": [
+      150.0,
+      149.972458,
+      274.896362
+    ],
+    "size": [
+      300.0,
+      299.944916,
+      279.371241
+    ]
+  },
+  "source_kind": "native_dwg",
+  "source_label_zh": "Gessi 官方精确型号 54146 G000 原生 DWG 图纸表达",
+  "drawing_source": {
+    "source_kind": "native_dwg",
+    "source_label_zh": "Gessi 官方精确型号 54146 G000 原生 DWG 图纸表达",
+    "source_label_en": "drawing representation from the exact Gessi 54146 G000 official native DWG",
+    "official_cad_used": true,
+    "third_party_cad_used": false,
+    "official_source_access_record": "output/review/highpoly-types/gessi316-54146/official-source/source-access-record.json",
+    "official_source_access_record_sha256": "110738bf4f1b6af07bc31a24be64c24e6bb6c68c496e800643a6a6e77d58fafa",
+    "official_product_cad_status": "public_official_api_exact_54146_g000_native_dwg_acquired",
+    "source_dwg": "output/review/highpoly-types/gessi316-54146/official-source/GPF5414600000G000_3.dwg",
+    "source_dwg_sha256": "c8ddb90f61565d5273a32574f777812bbb1d9ef33e2b98479f1e7c381e69950d"
+  },
+  "official_reference": {
+    "source_id": "GESSI316-54146-G000-OFFICIAL-NATIVE-DWG-001",
+    "source_kind": "manufacturer_exact_native_dwg",
+    "manufacturer": "Gessi",
+    "family": "Gessi316 Meccanica",
+    "article_number": "54146",
+    "configuration": "G000",
+    "scope": "official Gessi exact 54146 G000 family reference; not a project shop drawing",
+    "product_page": "https://areapro.gessi.com/en/product/54146",
+    "native_dwg_zip": "https://gessistorage.blob.core.windows.net/zwa/GPF5414600000G000_arc.zip",
+    "technical_drawing_pdf": "https://gessistorage.blob.core.windows.net/zc4/GPF5414600000G000_1.pdf",
+    "source_access_record": "output/review/highpoly-types/gessi316-54146/official-source/source-access-record.json",
+    "official_product_cad_status": "public_official_api_exact_54146_g000_native_dwg_acquired",
+    "official_product_cad_used": true
+  },
+  "official_identity_evidence_only": false,
+  "dimension_cross_check": {
+    "official_api_width_depth_height_mm": [
+      300.0,
+      300.0,
+      276.0
+    ],
+    "native_dwg_plan_envelope_mm": [
+      300.0,
+      300.0
+    ],
+    "native_dwg_front_envelope_mm": [
+      300.0,
+      280.25
+    ],
+    "native_dwg_side_envelope_mm": [
+      300.0,
+      280.25
+    ],
+    "project_ifc_body_local_xyz_mm": [
+      300.0,
+      299.944916,
+      279.371241
+    ],
+    "maximum_ifc_projection_delta_mm": 0.878759,
+    "tolerance_mm": 1.0,
+    "pass": true,
+    "geometry_stretched": false,
+    "nominal_height_note": "The technical 276 mm datum is not treated as the complete spray/nozzle envelope."
+  },
+  "official_cad_acquired": true,
+  "official_cad_exact_project_configuration_match": true,
+  "official_cad_used": true,
+  "third_party_cad_used": false,
+  "g001_variant_cad_used": false,
+  "blue_line_present": true,
+  "white_mask_present": true,
+  "official_native_dwg_linework": "output/review/highpoly-types/gessi316-54146/official-native-dwg-linework.json",
+  "official_native_dwg_linework_sha256": "82cacf3b6bed08cc63bb2ab32c25fc3d126166b71f2a87312356bd27f8696d37",
+  "official_pdf_verification": "output/review/highpoly-types/gessi316-54146/official-source/official-pdf-verification.json",
+  "official_pdf_verification_sha256": "1862e3a58a7152e6ee9ca6d3d7104e6f2bed0bdaee187053ce2913855297fd21",
+  "official_source_revalidation": "output/review/highpoly-types/gessi316-54146/official-source/official-source-revalidation.json",
+  "official_source_revalidation_sha256": "f3007ba760ba5f37e1deb09059bc5b27dcb6be2c8b440c81fcaaeec477ad8e9f",
+  "official_source_access_record": "output/review/highpoly-types/gessi316-54146/official-source/source-access-record.json",
+  "official_source_access_record_sha256": "110738bf4f1b6af07bc31a24be64c24e6bb6c68c496e800643a6a6e77d58fafa",
+  "candidate_representations": "output/review/highpoly-types/gessi316-54146/candidate-representations.json",
+  "candidate_representations_sha256": "05d63a25d920a1a2a35ab24fd91a0115d0d944f3020aa565d7bd10bd6d7f76a9",
+  "review_status": "visual_review_pending",
+  "approved_for_drawing_ifc": false,
+  "derived_ifc_write_allowed": false,
+  "formal_ifc_write": "not performed",
+  "scope": "official Gessi exact 54146 G000 family reference; not a project shop drawing",
+  "views": [
+    {
+      "view": "plan",
+      "svg": "output/review/highpoly-types/gessi316-54146/plan.svg",
+      "svg_sha256": "2f66003fa986b82413256da2480eed7a9193ee33809da120e40d15828caf428d",
+      "projection_axes": [
+        0,
+        1
+      ],
+      "raw_edge_count": 12945,
+      "displayed_raw_edge_count": 996,
+      "silhouette_path_count": 1,
+      "drawing_line_source_kind": "native_dwg",
+      "drawing_line_source_label_zh": "Gessi 官方精确型号 54146 G000 原生 DWG 图纸表达",
+      "official_cad_path_count": 16,
+      "blue_line_present": true,
+      "white_mask_present": true,
+      "ifc_dwg_compatibility": {
+        "ifc_body_projection_size_mm": [
+          300.0,
+          299.944916
+        ],
+        "official_native_dwg_size_mm": [
+          300.0,
+          300.0
+        ],
+        "absolute_delta_mm": [
+          0.0,
+          0.055084
+        ],
+        "tolerance_mm": 1.0,
+        "configuration": "G000",
+        "all_projection_axes_compared": true,
+        "pass": true
+      }
+    },
+    {
+      "view": "front",
+      "svg": "output/review/highpoly-types/gessi316-54146/front.svg",
+      "svg_sha256": "546a3a745eac411319a3621aaf00ce2eb4697221877fa91d6fd4f2eb0a085089",
+      "projection_axes": [
+        0,
+        2
+      ],
+      "raw_edge_count": 12945,
+      "displayed_raw_edge_count": 996,
+      "silhouette_path_count": 20,
+      "drawing_line_source_kind": "native_dwg",
+      "drawing_line_source_label_zh": "Gessi 官方精确型号 54146 G000 原生 DWG 图纸表达",
+      "official_cad_path_count": 607,
+      "blue_line_present": true,
+      "white_mask_present": true,
+      "ifc_dwg_compatibility": {
+        "ifc_body_projection_size_mm": [
+          300.0,
+          279.371241
+        ],
+        "official_native_dwg_size_mm": [
+          300.0,
+          280.25
+        ],
+        "absolute_delta_mm": [
+          0.0,
+          0.878759
+        ],
+        "tolerance_mm": 1.0,
+        "configuration": "G000",
+        "all_projection_axes_compared": true,
+        "pass": true
+      }
+    },
+    {
+      "view": "side",
+      "svg": "output/review/highpoly-types/gessi316-54146/side.svg",
+      "svg_sha256": "86d4608b7a6e3a53cd07d3be72753a25e9b2ee301abae0d8d76dcad7bfc24f30",
+      "projection_axes": [
+        1,
+        2
+      ],
+      "raw_edge_count": 12945,
+      "displayed_raw_edge_count": 996,
+      "silhouette_path_count": 23,
+      "drawing_line_source_kind": "native_dwg",
+      "drawing_line_source_label_zh": "Gessi 官方精确型号 54146 G000 原生 DWG 图纸表达",
+      "official_cad_path_count": 660,
+      "blue_line_present": true,
+      "white_mask_present": true,
+      "ifc_dwg_compatibility": {
+        "ifc_body_projection_size_mm": [
+          299.944916,
+          279.371241
+        ],
+        "official_native_dwg_size_mm": [
+          300.0,
+          280.25
+        ],
+        "absolute_delta_mm": [
+          0.055084,
+          0.878759
+        ],
+        "tolerance_mm": 1.0,
+        "configuration": "G000",
+        "all_projection_axes_compared": true,
+        "pass": true
+      }
+    }
+  ],
+  "pass": true,
+  "project_context": {
+    "manifest": "output/review/highpoly-types/gessi316-54146/project-context-manifest.json",
+    "manifest_sha256": "41bcb3b76b0bb777bdc2bbf3c12933486bc057c1b4bf44f9015127d1acf4d172",
+    "walls_and_surrounding_project_elements_retained": true,
+    "overlay_top_layer_with_white_mask": true,
+    "pass": true
+  },
+  "bonsai_review": {
+    "manifest": "output/review/highpoly-types/gessi316-54146/bonsai-review-manifest.json",
+    "manifest_sha256": "7a0c5375349f76f0977df27029e66d4c69d33d1f03564a81921dac01ba0bf10b",
+    "mode": "actual_bonsai_ifc_body_camera_render",
+    "saved_active_representation": "Body",
+    "saved_camera_count": 4,
+    "pass": true
+  }
+}
