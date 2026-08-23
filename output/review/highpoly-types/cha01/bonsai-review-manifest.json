@@ -1,0 +1,143 @@
+{
+  "schema_version": 1,
+  "generator": "pipeline/scripts/render_cha01_bonsai_review.py",
+  "mode": "actual_bonsai_ifc_body_camera_render",
+  "representative_global_id": "1luHljRzDAhPNXxTDNu7qB",
+  "geometry_product_count": 1,
+  "whole_model_render": false,
+  "formal_ifc": "2504 GBTB Yanlord Zhuhai.ifc",
+  "formal_ifc_sha256": "7a50b87e8f48a7c2bfbaa9f1dabdfca7155fa684b2325c66aa1ae15c8ab0a25c",
+  "formal_ifc_bytes_unchanged": true,
+  "isolated_ifc": "output/review/highpoly-types/cha01/Baxter-Colette-CHA01-bonsai-isolated.ifc",
+  "isolated_ifc_sha256": "9e772961231e40010afc03a7e22679ae5ae90c0900d8822050ea2e26d42bcea3",
+  "bonsai_session": {
+    "path": "output/review/highpoly-types/cha01/Baxter-Colette-CHA01-bonsai-review.blend",
+    "sha256": "840d38ea7165c182ccbe9e6fc826a54b93040d6c3f9376943a9f7d6f47ceee4f",
+    "saved_active_representation": "Body",
+    "saved_camera_count": 4,
+    "saved_camera_names": [
+      "BAXTER_COLETTE_CHA01_CAM_FRONT",
+      "BAXTER_COLETTE_CHA01_CAM_ISO",
+      "BAXTER_COLETTE_CHA01_CAM_PLAN",
+      "BAXTER_COLETTE_CHA01_CAM_SIDE"
+    ],
+    "ifc_definition_id": 7620,
+    "ifc_context_identifier": "Body",
+    "ifc_target_view": "MODEL_VIEW",
+    "front_camera_local_y_sign": -1.0,
+    "object_name": "IfcFurniture/Furniture",
+    "object_bounds_m": {
+      "minimum": [
+        -2.136927605,
+        -2.722438574,
+        0.0
+      ],
+      "maximum": [
+        -1.543444514,
+        -2.153972387,
+        0.734464943
+      ]
+    },
+    "local_axis_extents_m": {
+      "x": 0.568466231,
+      "y": 0.593483167,
+      "z": 0.734464943
+    },
+    "local_axes_world": [
+      [
+        7.5e-08,
+        1.0,
+        0.0
+      ],
+      [
+        -1.0,
+        7.5e-08,
+        0.0
+      ],
+      [
+        0.0,
+        0.0,
+        1.0
+      ]
+    ]
+  },
+  "renders": [
+    {
+      "view": "plan",
+      "camera": "BAXTER_COLETTE_CHA01_CAM_PLAN",
+      "camera_type": "ORTHO",
+      "camera_axis_basis": "IFC product local axes",
+      "camera_ortho_scale_m": 0.939107060432,
+      "projected_width_m": 0.59348320961,
+      "projected_height_m": 0.568466186523,
+      "image_aspect": 1.4,
+      "framing_margin_factor": 1.18,
+      "ortho_scale_quantization_safety_factor": 1.000001,
+      "render_operation": "bpy.ops.render.render(write_still=True)",
+      "path": "output/review/highpoly-types/cha01/bonsai-camera-plan.png",
+      "sha256": "1d65ade76afa00d2f4d437f78d2f5e6cd071314269dee4188f889348cb7edd68",
+      "resolution": [
+        1400,
+        1000
+      ]
+    },
+    {
+      "view": "front",
+      "camera": "BAXTER_COLETTE_CHA01_CAM_FRONT",
+      "camera_type": "ORTHO",
+      "camera_axis_basis": "IFC product local axes",
+      "camera_ortho_scale_m": 1.213337421417,
+      "projected_width_m": 0.56846623133,
+      "projected_height_m": 0.734464988216,
+      "image_aspect": 1.4,
+      "framing_margin_factor": 1.18,
+      "ortho_scale_quantization_safety_factor": 1.000001,
+      "render_operation": "bpy.ops.render.render(write_still=True)",
+      "path": "output/review/highpoly-types/cha01/bonsai-camera-front-elevation.png",
+      "sha256": "19813be39b3cd7a51c8f1b350dfb0673d71e8765dcd767e4b240d7706ccc1627",
+      "resolution": [
+        1400,
+        1000
+      ]
+    },
+    {
+      "view": "side",
+      "camera": "BAXTER_COLETTE_CHA01_CAM_SIDE",
+      "camera_type": "ORTHO",
+      "camera_axis_basis": "IFC product local axes",
+      "camera_ortho_scale_m": 1.213337540627,
+      "projected_width_m": 0.593483190207,
+      "projected_height_m": 0.734465089705,
+      "image_aspect": 1.4,
+      "framing_margin_factor": 1.18,
+      "ortho_scale_quantization_safety_factor": 1.000001,
+      "render_operation": "bpy.ops.render.render(write_still=True)",
+      "path": "output/review/highpoly-types/cha01/bonsai-camera-side-elevation.png",
+      "sha256": "3582a306fc7efa41799d897918a8f58e7f47852618c07eb0a98cacc9c524e2ba",
+      "resolution": [
+        1400,
+        1000
+      ]
+    },
+    {
+      "view": "iso",
+      "camera": "BAXTER_COLETTE_CHA01_CAM_ISO",
+      "camera_type": "ORTHO",
+      "camera_axis_basis": "IFC product local axes",
+      "camera_ortho_scale_m": 1.774335503578,
+      "projected_width_m": 0.821622315444,
+      "projected_height_m": 1.074051916599,
+      "image_aspect": 1.4,
+      "framing_margin_factor": 1.18,
+      "ortho_scale_quantization_safety_factor": 1.000001,
+      "render_operation": "bpy.ops.render.render(write_still=True)",
+      "path": "output/review/highpoly-types/cha01/bonsai-camera-iso.png",
+      "sha256": "fb07a42bd00b99aaeeb4ca8a6b0d356fa3e01e3297f30ef3a626571913468e25",
+      "resolution": [
+        1400,
+        1000
+      ]
+    }
+  ],
+  "pass": true
+}

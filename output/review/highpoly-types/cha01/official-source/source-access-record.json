@@ -1,0 +1,94 @@
+{
+  "schema_version": 1,
+  "manufacturer": "Baxter",
+  "family": "Colette",
+  "model": "Armchair / Poltroncina 57 x 60 x 73 cm",
+  "designer": "Roberto Lazzeroni",
+  "project_type_code": "CHA01",
+  "project_ifc_type_description": "Baxter Colette",
+  "identity_status": "exact_official_armchair_confirmed_by_type_description_body_dimensions_style_names_product_page_measurement_svg_and_vector_pdfs",
+  "research_date": "2026-08-23",
+  "official_identity_sources": [
+    {
+      "kind": "manufacturer_product_page",
+      "url": "https://www.baxter.it/en/products/colette-chairs",
+      "local_path": "output/review/highpoly-types/cha01/official-source/baxter-colette-product-page.html",
+      "sha256": "7aa860785daff5f259c8eeadea793d46d71fba90e964d573d6d481f35de57b9b",
+      "observation": "Baxter identifies Colette as a Roberto Lazzeroni chair collection and lists the armchair at 57 x 60 x 73 cm. The page routes 2D, 3D and BIM downloads through login."
+    },
+    {
+      "kind": "manufacturer_current_technical_sheet",
+      "url": "https://productsbook.baxter.it/product-pdf/Colette_sedie_TechnicalSheet.pdf?code=COLE&kind=indoor&lang=eng&sector=sedie",
+      "local_path": "output/review/highpoly-types/cha01/official-source/Baxter_Colette_current-technical-sheet.pdf",
+      "sha256": "6f22cfa8feeb4b1cece737a1123f22dce6674cd39659b630ea5f88b6ab1c8239",
+      "preview_path": "output/review/highpoly-types/cha01/official-source/Baxter_Colette_current-technical-sheet-page-37-preview.png",
+      "preview_sha256": "7b9c94987d7de04f6d2f19e1d9406b733d50baafddf273d3397cc4376f45d823",
+      "pdf_page_count": 40,
+      "exact_variant_page": 37,
+      "vector_object_audit": {"drawing_count": 615, "line_count": 202, "curve_count": 289, "word_count": 179, "character_count": 957},
+      "observation": "Current official page 37 visually and textually lists Armchair 57 x 60 x 73 cm. Its miniature coloured drawing is identity and dimension evidence only, not native CAD representation linework."
+    },
+    {
+      "kind": "manufacturer_stable_vector_technical_sheet",
+      "url": "https://dam.baxter.it/m/3b8ed18c6647c201/original/Baxter_Colette_sedia_Indoor.pdf",
+      "local_path": "output/review/highpoly-types/cha01/official-source/Baxter_Colette_sedia_Indoor.pdf",
+      "sha256": "6e179cedc5689addbdcaffbd015fed45cbd811b5dfd6d03d9afc84734c8c4a5c",
+      "preview_path": "output/review/highpoly-types/cha01/official-source/Baxter_Colette_technical-sheet-page-6-preview.png",
+      "preview_sha256": "b552095147e8f6362032c7cd643d017c164ec2d4bc9a864c72aff98251f452a3",
+      "pdf_page_count": 6,
+      "exact_variant_page": 6,
+      "vector_object_audit": {"line_count": 1270, "curve_count": 950, "word_count": 369, "character_count": 1550},
+      "observation": "Stable official page 6 lists Poltroncina / Little armchair 57 x 60 x 73 cm and the complete family variants. The miniature vectors are not used as CAD geometry."
+    },
+    {
+      "kind": "manufacturer_exact_measurement_svg",
+      "url": "https://productsbook.baxter.it/models/measurements/COLEPOCO57.svg",
+      "local_path": "output/review/highpoly-types/cha01/official-source/COLEPOCO57.svg",
+      "sha256": "637678ebd969fdb7600b11bf185fb7ebeb18d079c69eec42d591047bd22d0cb6",
+      "vector_object_audit": {"path_count": 94, "use_count": 54, "group_count": 52},
+      "observation": "The exact manufacturer measurement SVG code COLEPOCO57 confirms the 57 cm Colette armchair identity and dimensions; it is not used as Plan/Front/Side CAD representation geometry."
+    }
+  ],
+  "project_ifc_identity_evidence": {
+    "ifc_type_name": "CHA01",
+    "ifc_type_global_id": "1lpAMZua15e9urp1oWIh4P",
+    "ifc_type_description": "Baxter Colette",
+    "representative_global_id": "1luHljRzDAhPNXxTDNu7qB",
+    "registered_instance_global_ids": ["1luHljRzDAhPNXxTDNu7qB", "2tCmGkmFz2_Pg0jRjf3Nup"],
+    "surface_style_names": ["Colette Bo.Hemian Rice", "Dark fine wood texture seamless 04236", "Kashmir Myrtille", "MetalBrassCast005_1K"],
+    "note": "The type description and Colette-named surface style provide project-model identity evidence; style names are not purchase or shop-drawing evidence."
+  },
+  "official_product_cad": {
+    "published_access_surface": "Baxter account login",
+    "product_page_advertises_2d_drawings": true,
+    "product_page_advertises_3d_models": true,
+    "product_page_advertises_bim_models": true,
+    "authentication_required": true,
+    "login_url": "https://www.baxter.it/en/user/login",
+    "login_page_local_path": "output/review/highpoly-types/cha01/official-source/baxter-login-page.html",
+    "login_page_sha256": "a40f10c226066c93c534522d8306ec225f6231ad16fbf33732c98f8af2472976",
+    "acquired": false,
+    "exact_project_configuration_match": false,
+    "local_cad_files": [],
+    "third_party_cad_used": false,
+    "reason": "Baxter routes 2D, 3D and BIM downloads to an authenticated login. No account was created and no third-party Colette CAD was substituted."
+  },
+  "dimension_cross_check": {
+    "official_model_width_depth_height_mm": [570.0, 600.0, 730.0],
+    "project_ifc_body_local_xyz_mm": [568.466003, 593.482941, 734.464966],
+    "semantic_axis_mapping": "local X=official width; local Y=official depth; local Z=official height",
+    "body_minus_official_mm": [-1.533997, -6.517059, 4.464966],
+    "maximum_absolute_delta_mm": 6.517059,
+    "status": "exact_model_geometry_consistent_no_scaling_or_fitting",
+    "note": "Exact identity is mechanically supported by the Baxter Colette type description, Colette surface style, characteristic armchair geometry and sub-7 mm maximum dimensional difference."
+  },
+  "drawing_geometry_source": {
+    "source_kind": "geometry_derived_simplified_proxy",
+    "source_label_zh": "基于原始高模几何生成的简化图纸表达",
+    "source_label_en": "simplified drawing representation derived from the original high-poly geometry",
+    "official_cad_used": false,
+    "third_party_cad_used": false
+  },
+  "scope": "exact Baxter Colette armchair 57 x 60 x 73 cm manufacturer identity; authenticated 2D/3D/BIM not acquired; technical PDFs and measurement SVG are identity evidence only; not a project shop drawing or official CAD geometry",
+  "pass": true
+}

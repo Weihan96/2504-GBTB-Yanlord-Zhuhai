@@ -1,0 +1,428 @@
+{
+  "schema_version": 1,
+  "generator": "pipeline/scripts/render_cha01_project_context.py",
+  "source_kind": "geometry_derived_simplified_proxy",
+  "source_label_zh": "基于原始高模几何生成的简化图纸表达",
+  "official_cad_used": false,
+  "third_party_cad_used": false,
+  "project_context_retained": true,
+  "walls_and_surrounding_project_elements_retained": true,
+  "overlay_top_layer_with_white_mask": true,
+  "blue_line_present": false,
+  "project_scale_svg_units_per_mm": 0.02,
+  "original_project_cha01_projections_replaced_in_review_copy": true,
+  "replacement_reason": "Furniture Plan uses a stale narrow CHA01 PLAN_VIEW; R07 projections may be occluded. Only the two CHA01 groups are suppressed and replaced by fixed-scale actual Body proxies.",
+  "review_annotation_suppression": {
+    "plan": "official-elevation-anchor groups only",
+    "front": "noninteger residual-error diagnostic highlights only",
+    "side": "noninteger residual-error diagnostic highlights only",
+    "scope": "review crops only; complete project SVGs retain their annotations",
+    "walls_furniture_and_ifc_geometry_removed": false
+  },
+  "review_preview_background": {
+    "plan": "opaque white review-only paper background",
+    "front": "opaque white review-only paper background",
+    "side": "opaque white review-only paper background",
+    "full_project_svgs_remain_transparent": true,
+    "drawing_geometry_changed": false
+  },
+  "views": [
+    {
+      "view": "plan",
+      "candidate_view": "plan",
+      "project_direction": "+Z",
+      "source": "drawings/Furniture Plan.svg",
+      "output": "output/review/highpoly-types/cha01/project-context-furniture-plan.svg",
+      "output_sha256": "9fb47d2610109a24a3caeaa16d283e784557d3d0fddb24f4a4fef5c4dd18b44b",
+      "review_crop": "output/review/highpoly-types/cha01/project-context-furniture-plan-review.svg",
+      "review_crop_sha256": "ea47121340c54d369f502ccfd9707f682d644ed62fd07cb90cbae87d7ac5838c",
+      "review_preview": "output/review/highpoly-types/cha01/project-context-furniture-plan-review-preview.png",
+      "review_preview_sha256": "e838d1d053e19beda1e4d22df442fdf935e99371b0cb0f684358ce463fcca092",
+      "suppressed_original_projection_group_ids": [
+        "product-6fe11bed-6fd3-4aad-95e1-edd357e07d0b",
+        "product-b733042e-c0ff-42f9-9a80-b5bb690d7e33"
+      ],
+      "overlays": [
+        {
+          "view": "plan",
+          "ifc_guid": "1luHljRzDAhPNXxTDNu7qB",
+          "source_kind": "geometry_derived_simplified_proxy",
+          "source_label_zh": "基于原始高模几何生成的简化图纸表达",
+          "official_cad_used": false,
+          "third_party_cad_used": false,
+          "path_count": 1,
+          "project_projection_group_candidate_count": 1,
+          "selected_project_projection_is_largest_group": true,
+          "original_project_projection_suppressed_in_review_copy": true,
+          "path": "M 159.414950,254.104485 L 158.827450,253.868165 L 158.143070,253.502884 L 157.662531,253.174204 L 157.578677,253.098970 L 157.479469,253.094084 L 157.424309,253.074004 L 157.378189,253.037044 L 157.322489,252.939084 L 157.312858,252.856427 L 157.035031,252.544404 L 156.680231,252.019844 L 156.373371,251.406744 L 156.161332,250.822844 L 156.027592,250.244344 L 155.917571,249.429784 L 155.886012,248.790844 L 155.917272,248.098284 L 156.030393,247.266964 L 156.164092,246.695564 L 156.376293,246.114344 L 156.683054,245.503305 L 157.037673,244.980345 L 157.313020,244.674399 L 157.322492,244.589125 L 157.344832,244.537045 L 157.424312,244.454205 L 157.479472,244.434125 L 157.579011,244.429266 L 157.661073,244.355345 L 158.138394,244.028265 L 158.824573,243.661285 L 159.414074,243.424106 L 159.949974,243.265966 L 160.480873,243.161606 L 161.084794,243.092166 L 161.631053,243.079446 L 162.011353,243.108886 L 162.253653,243.144106 L 162.902933,243.296187 L 163.551493,243.538267 L 163.872733,243.734187 L 163.983638,243.824178 L 164.096793,243.778967 L 164.968052,243.992887 L 165.286232,244.118828 L 165.795561,244.387559 L 165.998952,244.215228 L 166.186132,244.124548 L 166.355272,244.091148 L 166.411132,244.097808 L 166.511392,244.151728 L 166.571132,244.249628 L 166.579872,244.307848 L 166.563752,244.417488 L 166.519472,244.533848 L 166.442271,244.653328 L 166.346606,244.760994 L 166.563212,244.932988 L 166.830092,245.251528 L 167.154952,245.790328 L 167.411552,246.380208 L 167.593892,246.988328 L 167.693231,247.585488 L 167.755671,248.452988 L 167.741991,249.360488 L 167.693230,249.942728 L 167.593890,250.539888 L 167.411550,251.148008 L 167.154949,251.737888 L 166.825450,252.283807 L 166.567830,252.590947 L 166.346943,252.767590 L 166.442271,252.874887 L 166.546689,253.052508 L 166.579869,253.220367 L 166.546669,253.332687 L 166.511389,253.376487 L 166.411129,253.430407 L 166.355269,253.437067 L 166.246509,253.420647 L 166.122271,253.377667 L 165.998949,253.312987 L 165.795500,253.140606 L 165.648810,253.228167 L 165.144669,253.473607 L 164.627550,253.625387 L 164.088450,253.753866 L 163.983251,253.704671 L 163.871750,253.794626 L 163.543730,253.993706 L 163.003850,254.201066 L 162.478550,254.342185 L 162.094890,254.411865 L 161.634790,254.448766 L 161.065110,254.435846 L 160.486870,254.367605 L 159.953550,254.263185 L 159.414950,254.104485 Z",
+          "fit": {
+            "rotate_quarter_turns": 1,
+            "mirror_projected_x": false,
+            "alignment_mode": "centre",
+            "flip_projected_y": true,
+            "scale_svg_units_per_mm": 0.02,
+            "nearest_rms_svg_units": 1.142284,
+            "target_bbox": [
+              [
+                157.197707,
+                243.064106
+              ],
+              [
+                166.443976,
+                254.464106
+              ]
+            ],
+            "proxy_bbox": [
+              [
+                155.886012,
+                243.079446
+              ],
+              [
+                167.755671,
+                254.448766
+              ]
+            ],
+            "target_bbox_size_svg_units": [
+              9.24627,
+              11.4
+            ],
+            "proxy_bbox_size_svg_units": [
+              11.869659,
+              11.36932
+            ],
+            "bbox_absolute_delta_svg_units": [
+              2.623389,
+              0.03068
+            ],
+            "uniform_scale_preserved": true,
+            "geometry_stretched": false,
+            "transformation_mode": "rigid_view_orientation_reflection_translation_and_native_1_50_scale_only",
+            "pass": true
+          }
+        },
+        {
+          "view": "plan",
+          "ifc_guid": "2tCmGkmFz2_Pg0jRjf3Nup",
+          "source_kind": "geometry_derived_simplified_proxy",
+          "source_label_zh": "基于原始高模几何生成的简化图纸表达",
+          "official_cad_used": false,
+          "third_party_cad_used": false,
+          "path_count": 1,
+          "project_projection_group_candidate_count": 1,
+          "selected_project_projection_is_largest_group": true,
+          "original_project_projection_suppressed_in_review_copy": true,
+          "path": "M 159.414950,240.104487 L 158.827450,239.868166 L 158.143070,239.502886 L 157.662531,239.174206 L 157.578677,239.098972 L 157.479469,239.094086 L 157.424309,239.074006 L 157.378189,239.037046 L 157.322489,238.939086 L 157.312858,238.856429 L 157.035031,238.544406 L 156.680231,238.019846 L 156.373371,237.406746 L 156.161332,236.822846 L 156.027592,236.244346 L 155.917571,235.429786 L 155.886012,234.790846 L 155.917272,234.098286 L 156.030393,233.266966 L 156.164092,232.695566 L 156.376293,232.114346 L 156.683054,231.503306 L 157.037673,230.980346 L 157.313020,230.674401 L 157.322492,230.589127 L 157.344832,230.537046 L 157.424312,230.454206 L 157.479472,230.434126 L 157.579011,230.429268 L 157.661073,230.355346 L 158.138394,230.028267 L 158.824573,229.661287 L 159.414074,229.424108 L 159.949974,229.265968 L 160.480873,229.161608 L 161.084794,229.092168 L 161.631053,229.079448 L 162.011353,229.108888 L 162.253653,229.144108 L 162.902933,229.296189 L 163.551493,229.538269 L 163.872733,229.734189 L 163.983638,229.824180 L 164.096793,229.778969 L 164.968052,229.992889 L 165.286232,230.118829 L 165.795561,230.387561 L 165.998952,230.215230 L 166.186132,230.124550 L 166.355272,230.091149 L 166.411132,230.097810 L 166.511392,230.151730 L 166.571132,230.249630 L 166.579872,230.307850 L 166.563752,230.417489 L 166.519472,230.533850 L 166.442271,230.653330 L 166.346606,230.760996 L 166.563212,230.932989 L 166.830092,231.251529 L 167.154952,231.790330 L 167.411552,232.380210 L 167.593892,232.988330 L 167.693231,233.585490 L 167.755671,234.452990 L 167.741991,235.360490 L 167.693230,235.942730 L 167.593890,236.539890 L 167.411550,237.148009 L 167.154949,237.737890 L 166.825450,238.283809 L 166.567830,238.590949 L 166.346943,238.767592 L 166.442271,238.874889 L 166.546689,239.052509 L 166.579869,239.220369 L 166.546669,239.332689 L 166.511389,239.376489 L 166.411129,239.430409 L 166.355269,239.437069 L 166.246509,239.420649 L 166.122271,239.377669 L 165.998949,239.312989 L 165.795500,239.140608 L 165.648810,239.228169 L 165.144669,239.473609 L 164.627550,239.625388 L 164.088450,239.753868 L 163.983251,239.704672 L 163.871750,239.794628 L 163.543730,239.993708 L 163.003850,240.201068 L 162.478550,240.342187 L 162.094890,240.411867 L 161.634790,240.448768 L 161.065110,240.435848 L 160.486870,240.367607 L 159.953550,240.263187 L 159.414950,240.104487 Z",
+          "fit": {
+            "rotate_quarter_turns": 1,
+            "mirror_projected_x": false,
+            "alignment_mode": "centre",
+            "flip_projected_y": true,
+            "scale_svg_units_per_mm": 0.02,
+            "nearest_rms_svg_units": 1.142284,
+            "target_bbox": [
+              [
+                157.197707,
+                229.064108
+              ],
+              [
+                166.443976,
+                240.464108
+              ]
+            ],
+            "proxy_bbox": [
+              [
+                155.886012,
+                229.079448
+              ],
+              [
+                167.755671,
+                240.448768
+              ]
+            ],
+            "target_bbox_size_svg_units": [
+              9.24627,
+              11.4
+            ],
+            "proxy_bbox_size_svg_units": [
+              11.869659,
+              11.36932
+            ],
+            "bbox_absolute_delta_svg_units": [
+              2.623389,
+              0.03068
+            ],
+            "uniform_scale_preserved": true,
+            "geometry_stretched": false,
+            "transformation_mode": "rigid_view_orientation_reflection_translation_and_native_1_50_scale_only",
+            "pass": true
+          }
+        }
+      ]
+    },
+    {
+      "view": "front",
+      "candidate_view": "front",
+      "project_direction": "-X",
+      "source": "drawings/elevations/native/EL-04-13-R07-NX.svg",
+      "output": "output/review/highpoly-types/cha01/project-context-r07-front-elevation.svg",
+      "output_sha256": "00ae98f6069716dbe91a8573f4d5f94a713acb20578fd16281bc836cb5284c11",
+      "review_crop": "output/review/highpoly-types/cha01/project-context-r07-front-elevation-review.svg",
+      "review_crop_sha256": "52e89a77a69ab5ae2cdc77cb5e298cb6c6110eddbeeec802633f4facdda58a0e",
+      "review_preview": "output/review/highpoly-types/cha01/project-context-r07-front-elevation-review-preview.png",
+      "review_preview_sha256": "1a53bb985be0094d1b1e4ce04795c4e3f6876ef1586fe72573cfc7971a74b3e7",
+      "suppressed_original_projection_group_ids": [
+        "product-6fe11bed-6fd3-4aad-95e1-edd357e07d0b",
+        "product-b733042e-c0ff-42f9-9a80-b5bb690d7e33"
+      ],
+      "overlays": [
+        {
+          "view": "front",
+          "ifc_guid": "1luHljRzDAhPNXxTDNu7qB",
+          "source_kind": "geometry_derived_simplified_proxy",
+          "source_label_zh": "基于原始高模几何生成的简化图纸表达",
+          "official_cad_used": false,
+          "third_party_cad_used": false,
+          "path_count": 6,
+          "project_projection_group_candidate_count": 2,
+          "selected_project_projection_is_largest_group": true,
+          "original_project_projection_suppressed_in_review_copy": true,
+          "path": "M 45.038713,38.037664 L 45.079693,37.918005 L 45.158153,37.830905 L 45.278293,37.774165 L 45.783853,37.596685 L 46.649714,37.450744 L 47.639154,37.349305 L 48.907054,37.298164 L 51.306834,37.289524 L 53.235614,37.320525 L 53.971994,37.367525 L 54.744753,37.450744 L 55.610613,37.596685 L 56.116173,37.774165 L 56.236312,37.830905 L 56.295273,37.884444 L 56.337812,37.960464 L 56.355812,38.037885 L 56.381892,38.537084 L 56.356552,38.890684 L 55.981991,41.870544 L 55.839571,42.891404 L 55.736771,43.548705 L 55.636431,44.008304 L 55.503271,44.411644 L 55.426571,44.488524 L 55.215292,44.559024 L 54.823773,44.587244 L 54.227669,44.587203 L 55.123979,50.396329 L 55.155810,50.409444 L 55.366930,51.900964 L 55.239136,51.909564 L 55.238870,51.946744 L 55.211750,51.975684 L 55.096411,51.978824 L 54.957570,51.977644 L 54.925411,51.946744 L 54.925203,51.917221 L 54.890101,51.917215 L 54.889893,51.946743 L 54.861393,51.975883 L 54.614613,51.977643 L 54.587573,51.966243 L 54.576206,51.917335 L 54.352214,51.917263 L 54.324833,51.902803 L 54.037993,50.418824 L 54.062673,50.392563 L 53.040199,45.450138 L 50.762455,45.442931 L 48.354363,45.450137 L 47.332573,50.388464 L 47.329741,50.403155 L 47.356474,50.418824 L 47.069634,51.902803 L 47.042254,51.917263 L 46.818261,51.917335 L 46.806894,51.966243 L 46.779854,51.977643 L 46.542234,51.978103 L 46.515734,51.966243 L 46.504366,51.917215 L 46.469259,51.917221 L 46.469051,51.946744 L 46.441931,51.975684 L 46.298051,51.978824 L 46.182711,51.975684 L 46.155591,51.946744 L 46.155326,51.909564 L 46.027531,51.900964 L 46.238651,50.409444 L 46.270482,50.396329 L 47.166955,44.586155 L 46.579093,44.587324 L 46.227332,44.567464 L 46.030972,44.517824 L 45.953712,44.480104 L 45.891172,44.413044 L 45.833552,44.268704 L 45.716792,43.826804 L 45.563572,42.956124 L 45.357452,41.453904 L 45.032532,38.777304 L 45.012572,38.540865 L 45.038713,38.037664 Z M 55.689134,43.698396 L 55.689134,43.698396 L 55.689134,43.698396 L 55.689134,43.698396 L 55.689134,43.698396 Z M 55.650436,43.662927 L 55.650436,43.662927 L 55.650436,43.662927 L 55.650436,43.662927 L 55.650436,43.662927 Z M 55.636178,37.710724 L 55.636780,37.711247 L 55.636780,37.711247 L 55.636178,37.710724 L 55.636178,37.710724 Z M 50.696815,37.381717 L 50.697232,37.400644 L 50.696815,37.381717 L 50.696815,37.381717 Z M 50.696848,37.493797 L 50.696848,37.493797 L 50.697232,37.491844 L 50.696848,37.493797 Z",
+          "fit": {
+            "rotate_quarter_turns": 0,
+            "mirror_projected_x": false,
+            "alignment_mode": "baseline_centre",
+            "flip_projected_y": true,
+            "scale_svg_units_per_mm": 0.02,
+            "nearest_rms_svg_units": 0.298536,
+            "target_bbox": [
+              [
+                45.012572,
+                37.838824
+              ],
+              [
+                56.381892,
+                51.978824
+              ]
+            ],
+            "proxy_bbox": [
+              [
+                45.012572,
+                37.289524
+              ],
+              [
+                56.381892,
+                51.978824
+              ]
+            ],
+            "target_bbox_size_svg_units": [
+              11.36932,
+              14.14
+            ],
+            "proxy_bbox_size_svg_units": [
+              11.36932,
+              14.689299
+            ],
+            "bbox_absolute_delta_svg_units": [
+              0.0,
+              0.5493
+            ],
+            "uniform_scale_preserved": true,
+            "geometry_stretched": false,
+            "transformation_mode": "rigid_view_orientation_reflection_translation_and_native_1_50_scale_only",
+            "pass": true
+          }
+        },
+        {
+          "view": "front",
+          "ifc_guid": "2tCmGkmFz2_Pg0jRjf3Nup",
+          "source_kind": "geometry_derived_simplified_proxy",
+          "source_label_zh": "基于原始高模几何生成的简化图纸表达",
+          "official_cad_used": false,
+          "third_party_cad_used": false,
+          "path_count": 6,
+          "project_projection_group_candidate_count": 2,
+          "selected_project_projection_is_largest_group": true,
+          "original_project_projection_suppressed_in_review_copy": true,
+          "path": "M 59.038711,38.037664 L 59.079691,37.918005 L 59.158151,37.830905 L 59.278291,37.774165 L 59.783852,37.596685 L 60.649712,37.450744 L 61.639152,37.349305 L 62.907052,37.298164 L 65.306832,37.289524 L 67.235612,37.320525 L 67.971992,37.367525 L 68.744751,37.450744 L 69.610611,37.596685 L 70.116171,37.774165 L 70.236311,37.830905 L 70.295271,37.884444 L 70.337810,37.960464 L 70.355810,38.037885 L 70.381890,38.537084 L 70.356550,38.890684 L 69.981989,41.870544 L 69.839569,42.891404 L 69.736769,43.548705 L 69.636430,44.008304 L 69.503270,44.411644 L 69.426570,44.488524 L 69.215290,44.559024 L 68.823771,44.587244 L 68.227667,44.587203 L 69.123977,50.396329 L 69.155809,50.409444 L 69.366929,51.900964 L 69.239134,51.909564 L 69.238869,51.946744 L 69.211749,51.975684 L 69.096409,51.978824 L 68.957569,51.977644 L 68.925409,51.946744 L 68.925201,51.917221 L 68.890100,51.917215 L 68.889892,51.946743 L 68.861391,51.975883 L 68.614612,51.977643 L 68.587572,51.966243 L 68.576204,51.917335 L 68.352212,51.917263 L 68.324832,51.902803 L 68.037991,50.418824 L 68.062671,50.392563 L 67.040198,45.450138 L 64.762453,45.442931 L 62.354361,45.450137 L 61.332572,50.388464 L 61.329739,50.403155 L 61.356472,50.418824 L 61.069632,51.902803 L 61.042252,51.917263 L 60.818259,51.917335 L 60.806892,51.966243 L 60.779852,51.977643 L 60.542232,51.978103 L 60.515732,51.966243 L 60.504364,51.917215 L 60.469257,51.917221 L 60.469049,51.946744 L 60.441929,51.975684 L 60.298049,51.978824 L 60.182709,51.975684 L 60.155589,51.946744 L 60.155324,51.909564 L 60.027529,51.900964 L 60.238649,50.409444 L 60.270480,50.396329 L 61.166953,44.586155 L 60.579091,44.587324 L 60.227330,44.567464 L 60.030970,44.517824 L 59.953710,44.480104 L 59.891170,44.413044 L 59.833550,44.268704 L 59.716790,43.826804 L 59.563570,42.956124 L 59.357450,41.453904 L 59.032531,38.777304 L 59.012570,38.540865 L 59.038711,38.037664 Z M 69.689132,43.698396 L 69.689132,43.698396 L 69.689132,43.698396 L 69.689132,43.698396 L 69.689132,43.698396 Z M 69.650435,43.662927 L 69.650435,43.662927 L 69.650435,43.662927 L 69.650435,43.662927 L 69.650435,43.662927 Z M 69.636176,37.710724 L 69.636778,37.711247 L 69.636778,37.711247 L 69.636176,37.710724 L 69.636176,37.710724 Z M 64.696813,37.381717 L 64.697230,37.400644 L 64.696813,37.381717 L 64.696813,37.381717 Z M 64.696846,37.493797 L 64.696846,37.493797 L 64.697230,37.491844 L 64.696846,37.493797 Z",
+          "fit": {
+            "rotate_quarter_turns": 0,
+            "mirror_projected_x": false,
+            "alignment_mode": "baseline_centre",
+            "flip_projected_y": true,
+            "scale_svg_units_per_mm": 0.02,
+            "nearest_rms_svg_units": 0.298536,
+            "target_bbox": [
+              [
+                59.012571,
+                37.838824
+              ],
+              [
+                70.38189,
+                51.978824
+              ]
+            ],
+            "proxy_bbox": [
+              [
+                59.01257,
+                37.289524
+              ],
+              [
+                70.38189,
+                51.978824
+              ]
+            ],
+            "target_bbox_size_svg_units": [
+              11.36932,
+              14.14
+            ],
+            "proxy_bbox_size_svg_units": [
+              11.36932,
+              14.689299
+            ],
+            "bbox_absolute_delta_svg_units": [
+              0.0,
+              0.5493
+            ],
+            "uniform_scale_preserved": true,
+            "geometry_stretched": false,
+            "transformation_mode": "rigid_view_orientation_reflection_translation_and_native_1_50_scale_only",
+            "pass": true
+          }
+        }
+      ]
+    },
+    {
+      "view": "side",
+      "candidate_view": "side",
+      "project_direction": "+Y",
+      "source": "drawings/elevations/native/EL-04-10-R07-PY.svg",
+      "output": "output/review/highpoly-types/cha01/project-context-r07-side-elevation.svg",
+      "output_sha256": "6d1f23749fc55b1e6604214ac918e7808f346bc57cc9c2fa689f9aa266899b60",
+      "review_crop": "output/review/highpoly-types/cha01/project-context-r07-side-elevation-review.svg",
+      "review_crop_sha256": "1f55fca83c5e6b384246ef45678f0ad7d5bbcd8209bea62b86488d80e0e21465",
+      "review_preview": "output/review/highpoly-types/cha01/project-context-r07-side-elevation-review-preview.png",
+      "review_preview_sha256": "6f45c4e1ca1fdd81c9d8ca5ad9216be7484c010da06cd02d9d26dd5b97bd11b8",
+      "suppressed_original_projection_group_ids": [
+        "product-6fe11bed-6fd3-4aad-95e1-edd357e07d0b",
+        "product-b733042e-c0ff-42f9-9a80-b5bb690d7e33"
+      ],
+      "overlays": [
+        {
+          "view": "side",
+          "ifc_guid": "1luHljRzDAhPNXxTDNu7qB",
+          "source_kind": "geometry_derived_simplified_proxy",
+          "source_label_zh": "基于原始高模几何生成的简化图纸表达",
+          "official_cad_used": false,
+          "third_party_cad_used": false,
+          "path_count": 4,
+          "project_projection_group_candidate_count": 1,
+          "selected_project_projection_is_largest_group": true,
+          "original_project_projection_suppressed_in_review_copy": true,
+          "path": "M 28.400969,43.284642 L 28.396789,43.224442 L 28.315548,43.197000 L 28.222029,43.108742 L 27.819069,42.926523 L 27.401848,42.764582 L 26.511468,42.558462 L 25.827549,42.505302 L 24.505078,42.464737 L 24.223691,41.479741 L 24.052747,40.950143 L 23.629571,39.771261 L 23.443571,39.355082 L 23.233191,38.986101 L 23.003511,38.674103 L 22.757031,38.421981 L 22.500851,38.229762 L 22.236091,38.092782 L 21.814771,37.942861 L 21.270631,37.815983 L 19.811411,37.617863 L 18.432371,37.471921 L 17.158609,37.319342 L 17.005330,37.310702 L 16.673730,37.355363 L 16.663810,37.391043 L 16.692279,37.426664 L 16.626810,37.513021 L 16.593850,37.648842 L 16.595250,37.953742 L 16.712490,38.949182 L 17.262989,42.707962 L 17.404569,43.579741 L 17.517409,44.097161 L 17.574149,44.277141 L 17.658469,44.398961 L 17.775549,44.488662 L 17.904049,44.550941 L 18.055409,44.589281 L 19.264542,44.605406 L 18.285264,50.417283 L 18.253287,50.430061 L 18.022408,51.921521 L 18.179967,51.932063 L 18.180188,51.967921 L 18.211888,51.999041 L 18.329690,52.000001 L 18.458110,51.998761 L 18.489270,51.967921 L 18.489451,51.938492 L 18.714670,51.938561 L 18.742870,51.924441 L 19.041010,50.440521 L 19.014314,50.424919 L 20.080572,45.466203 L 21.151817,45.462594 L 25.233272,45.465177 L 26.291567,50.422182 L 26.265327,50.440682 L 26.561547,51.924502 L 26.588787,51.938422 L 26.844085,51.938382 L 26.844267,51.967922 L 26.875426,51.998762 L 27.108770,52.000001 L 27.142170,51.987422 L 27.153582,51.930207 L 27.284550,51.921682 L 27.055350,50.430262 L 27.023364,50.417498 L 26.037370,44.524522 L 26.013045,44.509594 L 26.452808,44.521882 L 27.535049,44.514822 L 27.784168,44.474622 L 27.912789,44.426583 L 28.044289,44.333462 L 28.286388,44.078043 L 28.430108,43.818402 L 28.463509,43.615303 L 28.432369,43.395302 L 28.396609,43.301643 L 28.379481,43.291788 L 28.400969,43.284642 Z M 16.908570,37.440602 L 16.711717,37.422390 L 16.850108,37.433162 L 17.226380,37.480813 L 16.908570,37.440602 Z M 22.257390,45.459022 L 22.257390,45.459022 L 22.257390,45.459022 L 22.257390,45.459022 L 22.257390,45.459022 Z M 24.716826,44.499984 L 24.718269,44.501503 L 24.716089,44.501503 L 24.716826,44.499984 Z",
+          "fit": {
+            "rotate_quarter_turns": 0,
+            "mirror_projected_x": true,
+            "alignment_mode": "baseline_centre",
+            "flip_projected_y": true,
+            "scale_svg_units_per_mm": 0.02,
+            "nearest_rms_svg_units": 0.1298,
+            "target_bbox": [
+              [
+                16.59385,
+                37.310702
+              ],
+              [
+                28.463509,
+                52.000001
+              ]
+            ],
+            "proxy_bbox": [
+              [
+                16.59385,
+                37.310702
+              ],
+              [
+                28.463509,
+                52.000001
+              ]
+            ],
+            "target_bbox_size_svg_units": [
+              11.869659,
+              14.689299
+            ],
+            "proxy_bbox_size_svg_units": [
+              11.869659,
+              14.689299
+            ],
+            "bbox_absolute_delta_svg_units": [
+              0.0,
+              0.0
+            ],
+            "uniform_scale_preserved": true,
+            "geometry_stretched": false,
+            "transformation_mode": "rigid_view_orientation_reflection_translation_and_native_1_50_scale_only",
+            "pass": true
+          }
+        },
+        {
+          "view": "side",
+          "ifc_guid": "2tCmGkmFz2_Pg0jRjf3Nup",
+          "source_kind": "geometry_derived_simplified_proxy",
+          "source_label_zh": "基于原始高模几何生成的简化图纸表达",
+          "official_cad_used": false,
+          "third_party_cad_used": false,
+          "path_count": 4,
+          "project_projection_group_candidate_count": 1,
+          "selected_project_projection_is_largest_group": true,
+          "original_project_projection_suppressed_in_review_copy": true,
+          "path": "M 28.400969,43.284642 L 28.396789,43.224442 L 28.315548,43.197000 L 28.222029,43.108742 L 27.819069,42.926523 L 27.401848,42.764582 L 26.511468,42.558462 L 25.827549,42.505302 L 24.505078,42.464737 L 24.223691,41.479741 L 24.052747,40.950143 L 23.629571,39.771261 L 23.443571,39.355082 L 23.233191,38.986101 L 23.003511,38.674103 L 22.757031,38.421981 L 22.500851,38.229762 L 22.236091,38.092782 L 21.814771,37.942861 L 21.270631,37.815983 L 19.811411,37.617863 L 18.432371,37.471921 L 17.158609,37.319342 L 17.005330,37.310702 L 16.673730,37.355363 L 16.663810,37.391043 L 16.692279,37.426664 L 16.626810,37.513021 L 16.593850,37.648842 L 16.595250,37.953742 L 16.712490,38.949182 L 17.262989,42.707962 L 17.404569,43.579741 L 17.517409,44.097161 L 17.574149,44.277141 L 17.658469,44.398961 L 17.775549,44.488662 L 17.904049,44.550941 L 18.055409,44.589281 L 19.264542,44.605406 L 18.285264,50.417283 L 18.253287,50.430061 L 18.022408,51.921521 L 18.179967,51.932063 L 18.180188,51.967921 L 18.211888,51.999041 L 18.329690,52.000001 L 18.458110,51.998761 L 18.489270,51.967921 L 18.489451,51.938492 L 18.714670,51.938561 L 18.742870,51.924441 L 19.041010,50.440521 L 19.014314,50.424919 L 20.080572,45.466203 L 21.151817,45.462594 L 25.233272,45.465177 L 26.291567,50.422182 L 26.265327,50.440682 L 26.561547,51.924502 L 26.588787,51.938422 L 26.844085,51.938382 L 26.844267,51.967922 L 26.875426,51.998762 L 27.108770,52.000001 L 27.142170,51.987422 L 27.153582,51.930207 L 27.284550,51.921682 L 27.055350,50.430262 L 27.023364,50.417498 L 26.037370,44.524522 L 26.013045,44.509594 L 26.452808,44.521882 L 27.535049,44.514822 L 27.784168,44.474622 L 27.912789,44.426583 L 28.044289,44.333462 L 28.286388,44.078043 L 28.430108,43.818402 L 28.463509,43.615303 L 28.432369,43.395302 L 28.396609,43.301643 L 28.379481,43.291788 L 28.400969,43.284642 Z M 16.908570,37.440602 L 16.711717,37.422390 L 16.850108,37.433162 L 17.226380,37.480813 L 16.908570,37.440602 Z M 22.257390,45.459022 L 22.257390,45.459022 L 22.257390,45.459022 L 22.257390,45.459022 L 22.257390,45.459022 Z M 24.716826,44.499984 L 24.718269,44.501503 L 24.716089,44.501503 L 24.716826,44.499984 Z",
+          "fit": {
+            "rotate_quarter_turns": 0,
+            "mirror_projected_x": true,
+            "alignment_mode": "baseline_centre",
+            "flip_projected_y": true,
+            "scale_svg_units_per_mm": 0.02,
+            "nearest_rms_svg_units": 0.1298,
+            "target_bbox": [
+              [
+                16.59385,
+                37.310702
+              ],
+              [
+                28.463509,
+                52.000001
+              ]
+            ],
+            "proxy_bbox": [
+              [
+                16.59385,
+                37.310702
+              ],
+              [
+                28.463509,
+                52.000001
+              ]
+            ],
+            "target_bbox_size_svg_units": [
+              11.869659,
+              14.689299
+            ],
+            "proxy_bbox_size_svg_units": [
+              11.869659,
+              14.689299
+            ],
+            "bbox_absolute_delta_svg_units": [
+              0.0,
+              0.0
+            ],
+            "uniform_scale_preserved": true,
+            "geometry_stretched": false,
+            "transformation_mode": "rigid_view_orientation_reflection_translation_and_native_1_50_scale_only",
+            "pass": true
+          }
+        }
+      ]
+    }
+  ],
+  "pass": true
+}

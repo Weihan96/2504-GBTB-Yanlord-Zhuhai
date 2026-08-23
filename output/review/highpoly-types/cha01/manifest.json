@@ -1,0 +1,176 @@
+{
+  "schema_version": 1,
+  "generated_at": "2026-08-23T04:30:36.779636+00:00",
+  "generator": "pipeline/scripts/cha01_review.py",
+  "formal_ifc": "2504 GBTB Yanlord Zhuhai.ifc",
+  "formal_ifc_sha256": "7a50b87e8f48a7c2bfbaa9f1dabdfca7155fa684b2325c66aa1ae15c8ab0a25c",
+  "formal_ifc_sha256_after_generation": "7a50b87e8f48a7c2bfbaa9f1dabdfca7155fa684b2325c66aa1ae15c8ab0a25c",
+  "formal_ifc_bytes_unchanged": true,
+  "profile_register": "output/review/highpoly-types/cha01/profile.json",
+  "profile_register_sha256": "3451522815c1e9170cdddc1d9918482eddd5474b7585d57f8095f50245258641",
+  "profile_key": "cha01",
+  "display_name": "Baxter Colette armchair 57 x 60 x 73 cm / project CHA01",
+  "ifc_type_name": "CHA01",
+  "ifc_type_description": "Baxter Colette",
+  "article_number": "Baxter Colette armchair 57 x 60 x 73 cm / CHA01",
+  "representative_global_id": "1luHljRzDAhPNXxTDNu7qB",
+  "registered_instance_global_ids": [
+    "1luHljRzDAhPNXxTDNu7qB",
+    "2tCmGkmFz2_Pg0jRjf3Nup"
+  ],
+  "geometry_product_count": 1,
+  "whole_model_render": false,
+  "mesh_vertex_count": 4734,
+  "mesh_face_count": 8452,
+  "bounds_mm": {
+    "minimum": [
+      -284.233002,
+      -296.670013,
+      0.0
+    ],
+    "maximum": [
+      284.233002,
+      296.812927,
+      734.464966
+    ],
+    "size": [
+      568.466003,
+      593.482941,
+      734.464966
+    ]
+  },
+  "source_kind": "geometry_derived_simplified_proxy",
+  "source_label_zh": "基于原始高模几何生成的简化图纸表达",
+  "drawing_source": {
+    "source_kind": "geometry_derived_simplified_proxy",
+    "source_label_zh": "基于原始高模几何生成的简化图纸表达",
+    "source_label_en": "simplified drawing representation derived from the original high-poly geometry",
+    "official_cad_used": false,
+    "third_party_cad_used": false,
+    "official_source_access_record": "output/review/highpoly-types/cha01/official-source/source-access-record.json",
+    "official_source_access_record_sha256": "3e826d9cd6f6d5d8f9bdd6eebe7f4849d3ca5e15b4ccbd6eead34d1ad951712e",
+    "official_product_cad_status": "baxter_login_required_not_acquired"
+  },
+  "official_reference": {
+    "source_id": "BAXTER-COLETTE-ARMCHAIR-CHA01-OFFICIAL-IDENTITY-001",
+    "source_kind": "manufacturer_product_page_vector_technical_pdfs_and_measurement_svg_identity_only",
+    "manufacturer": "Baxter",
+    "family": "Colette",
+    "model": "Armchair / Poltroncina 57 x 60 x 73 cm",
+    "designer": "Roberto Lazzeroni",
+    "project_type_code": "CHA01",
+    "official_width_depth_height_mm": [
+      570,
+      600,
+      730
+    ],
+    "scope": "exact Baxter Colette armchair 57 x 60 x 73 cm manufacturer identity; authenticated 2D/3D/BIM not acquired; technical PDFs and measurement SVG are identity evidence only; not a project shop drawing or official CAD geometry",
+    "product_page": "https://www.baxter.it/en/products/colette-chairs",
+    "technical_sheet": "https://productsbook.baxter.it/product-pdf/Colette_sedie_TechnicalSheet.pdf?code=COLE&kind=indoor&lang=eng&sector=sedie",
+    "measurement_svg": "https://productsbook.baxter.it/models/measurements/COLEPOCO57.svg",
+    "source_access_record": "output/review/highpoly-types/cha01/official-source/source-access-record.json",
+    "official_2d_3d_bim_status": "baxter_login_required_not_acquired",
+    "official_cad_used": false
+  },
+  "official_identity_evidence_only": true,
+  "dimension_cross_check": {
+    "official_model_width_depth_height_mm": [
+      570.0,
+      600.0,
+      730.0
+    ],
+    "project_ifc_body_local_xyz_mm": [
+      568.466003,
+      593.482941,
+      734.464966
+    ],
+    "semantic_axis_mapping": "local X=official width; local Y=official depth; local Z=official height",
+    "body_minus_official_mm": [
+      -1.533997,
+      -6.517059,
+      4.464966
+    ],
+    "maximum_absolute_delta_mm": 6.517059,
+    "status": "exact_model_geometry_consistent_no_scaling_or_fitting",
+    "note": "Exact identity is mechanically supported by the Baxter Colette type description, Colette surface style, characteristic armchair geometry and sub-7 mm maximum dimensional difference."
+  },
+  "official_cad_acquired": false,
+  "official_cad_exact_project_configuration_match": false,
+  "official_cad_used": false,
+  "third_party_cad_used": false,
+  "blue_line_present": false,
+  "official_source_access_record": "output/review/highpoly-types/cha01/official-source/source-access-record.json",
+  "official_source_access_record_sha256": "3e826d9cd6f6d5d8f9bdd6eebe7f4849d3ca5e15b4ccbd6eead34d1ad951712e",
+  "candidate_representations": "output/review/highpoly-types/cha01/candidate-representations.json",
+  "candidate_representations_sha256": "1038c6df9871464ce361f5e4be2a1a1f85f1278bfa6c51e1814845bb6c2d9590",
+  "review_status": "visual_review_pending",
+  "approved_for_drawing_ifc": false,
+  "derived_ifc_write_allowed": false,
+  "formal_ifc_write": "not performed",
+  "views": [
+    {
+      "view": "plan",
+      "svg": "output/review/highpoly-types/cha01/plan.svg",
+      "svg_sha256": "fe0ca8dfada7dd6245c6435ee9a4f68dc3dc91690c5495c4afbc992151cc62fb",
+      "projection_axes": [
+        0,
+        1
+      ],
+      "raw_edge_count": 13166,
+      "displayed_raw_edge_count": 941,
+      "silhouette_path_count": 1,
+      "drawing_line_source_kind": "geometry_derived_simplified_proxy",
+      "drawing_line_source_label_zh": "基于原始高模几何生成的简化图纸表达",
+      "official_cad_path_count": 0,
+      "blue_line_present": false
+    },
+    {
+      "view": "front",
+      "svg": "output/review/highpoly-types/cha01/front.svg",
+      "svg_sha256": "5b01c7c70247beba2dbf5196aaffe7950fc83923f2b9d54df4d9bd77d805a87c",
+      "projection_axes": [
+        0,
+        2
+      ],
+      "raw_edge_count": 13166,
+      "displayed_raw_edge_count": 941,
+      "silhouette_path_count": 6,
+      "drawing_line_source_kind": "geometry_derived_simplified_proxy",
+      "drawing_line_source_label_zh": "基于原始高模几何生成的简化图纸表达",
+      "official_cad_path_count": 0,
+      "blue_line_present": false
+    },
+    {
+      "view": "side",
+      "svg": "output/review/highpoly-types/cha01/side.svg",
+      "svg_sha256": "88b752b903caf349c27d77e92dec8d501d46375a059babc1c2f0040f3aec549d",
+      "projection_axes": [
+        1,
+        2
+      ],
+      "raw_edge_count": 13166,
+      "displayed_raw_edge_count": 941,
+      "silhouette_path_count": 4,
+      "drawing_line_source_kind": "geometry_derived_simplified_proxy",
+      "drawing_line_source_label_zh": "基于原始高模几何生成的简化图纸表达",
+      "official_cad_path_count": 0,
+      "blue_line_present": false
+    }
+  ],
+  "pass": true,
+  "project_context": {
+    "manifest": "output/review/highpoly-types/cha01/project-context-manifest.json",
+    "manifest_sha256": "b5d31eb3e923eb33b41714170dd494af222fbe35d2032403c4b750b18e60fa27",
+    "walls_and_surrounding_project_elements_retained": true,
+    "overlay_top_layer_with_white_mask": true,
+    "pass": true
+  },
+  "bonsai_review": {
+    "manifest": "output/review/highpoly-types/cha01/bonsai-review-manifest.json",
+    "manifest_sha256": "6a19e414588abe4e11170296fa0b508904356b0fa45a5e7365bd006d09ebda37",
+    "mode": "actual_bonsai_ifc_body_camera_render",
+    "saved_active_representation": "Body",
+    "saved_camera_count": 4,
+    "pass": true
+  }
+}

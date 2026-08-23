@@ -1,0 +1,45 @@
+{
+  "schema_version": 1,
+  "formal_ifc_sha256": "7a50b87e8f48a7c2bfbaa9f1dabdfca7155fa684b2325c66aa1ae15c8ab0a25c",
+  "profiles": {
+    "cha01": {
+      "display_name": "Baxter Colette armchair 57 x 60 x 73 cm / project CHA01",
+      "ifc_type_name": "CHA01",
+      "representative_global_id": "1luHljRzDAhPNXxTDNu7qB",
+      "expected_instance_global_ids": ["1luHljRzDAhPNXxTDNu7qB", "2tCmGkmFz2_Pg0jRjf3Nup"],
+      "profile_source": "isolated_highpoly_projection; exact_baxter_colette_armchair_identity_dimensions_measurement_svg_and_vector_pdf_archived; authenticated_native_2d_3d_bim_not_acquired",
+      "silhouette_simplify_mm": 0.45,
+      "semantic_sections": {"plan": [], "front": [], "side": []},
+      "required_semantics": [
+        "upholstered_little_armchair_shell",
+        "wengé_stained_ash_four_leg_base",
+        "official_570x600x730_mm_identity",
+        "two_project_instances_share_one_type_and_mapped_body"
+      ],
+      "drawing_source": {
+        "source_kind": "geometry_derived_simplified_proxy",
+        "source_label_zh": "基于原始高模几何生成的简化图纸表达",
+        "source_label_en": "simplified drawing representation derived from the original high-poly geometry",
+        "official_cad_used": false,
+        "third_party_cad_used": false
+      },
+      "official_reference": {
+        "source_id": "BAXTER-COLETTE-ARMCHAIR-CHA01-OFFICIAL-IDENTITY-001",
+        "source_kind": "manufacturer_product_page_vector_technical_pdfs_and_measurement_svg_identity_only",
+        "manufacturer": "Baxter",
+        "family": "Colette",
+        "model": "Armchair / Poltroncina 57 x 60 x 73 cm",
+        "designer": "Roberto Lazzeroni",
+        "project_type_code": "CHA01",
+        "official_width_depth_height_mm": [570, 600, 730],
+        "scope": "exact Baxter Colette armchair 57 x 60 x 73 cm manufacturer identity; authenticated 2D/3D/BIM not acquired; technical PDFs and measurement SVG are identity evidence only; not a project shop drawing or official CAD geometry",
+        "product_page": "https://www.baxter.it/en/products/colette-chairs",
+        "technical_sheet": "https://productsbook.baxter.it/product-pdf/Colette_sedie_TechnicalSheet.pdf?code=COLE&kind=indoor&lang=eng&sector=sedie",
+        "measurement_svg": "https://productsbook.baxter.it/models/measurements/COLEPOCO57.svg",
+        "source_access_record": "output/review/highpoly-types/cha01/official-source/source-access-record.json",
+        "official_2d_3d_bim_status": "baxter_login_required_not_acquired",
+        "official_cad_used": false
+      }
+    }
+  }
+}
