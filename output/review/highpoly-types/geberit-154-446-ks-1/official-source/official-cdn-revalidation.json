@@ -1,0 +1,72 @@
+{
+  "schema_version": 1,
+  "checked_at": "2026-08-23T13:03:25.437513+00:00",
+  "manufacturer": "Geberit",
+  "article_number": "154.446.KS.1",
+  "replacement_article_number": "154.446.KS.2",
+  "replacement_cad_used": false,
+  "method": "fresh HTTPS download from each exact archived-article official CDN URL, SHA-256 verification and byte-for-byte local archive comparison",
+  "drawing_view_mapping": {
+    "plan": "G",
+    "front": "A",
+    "side": "L"
+  },
+  "identity_only_code": "P",
+  "results": {
+    "A": {
+      "url": "https://cdn.data.geberit.com/cad/154.446.KS.1_A.dwg",
+      "local_path": "output/review/highpoly-types/geberit-154-446-ks-1/official-source/154.446.KS.1_A.dwg",
+      "http_status": 200,
+      "content_type": "application/octet-stream",
+      "downloaded_byte_count": 291180,
+      "local_byte_count": 291180,
+      "expected_sha256": "de09a6bbf99ecbe3c832cbee7ac9d398e95b927246f274643b513bfe960586c3",
+      "downloaded_sha256": "de09a6bbf99ecbe3c832cbee7ac9d398e95b927246f274643b513bfe960586c3",
+      "local_sha256": "de09a6bbf99ecbe3c832cbee7ac9d398e95b927246f274643b513bfe960586c3",
+      "downloaded_bytes_match_local_archive": true,
+      "pass": true
+    },
+    "G": {
+      "url": "https://cdn.data.geberit.com/cad/154.446.KS.1_G.dwg",
+      "local_path": "output/review/highpoly-types/geberit-154-446-ks-1/official-source/154.446.KS.1_G.dwg",
+      "http_status": 200,
+      "content_type": "application/octet-stream",
+      "downloaded_byte_count": 298570,
+      "local_byte_count": 298570,
+      "expected_sha256": "bc41f8db7c7989de9d9089374e03c3b9deea94e2634bbb0f9418cad982b4b6e4",
+      "downloaded_sha256": "bc41f8db7c7989de9d9089374e03c3b9deea94e2634bbb0f9418cad982b4b6e4",
+      "local_sha256": "bc41f8db7c7989de9d9089374e03c3b9deea94e2634bbb0f9418cad982b4b6e4",
+      "downloaded_bytes_match_local_archive": true,
+      "pass": true
+    },
+    "L": {
+      "url": "https://cdn.data.geberit.com/cad/154.446.KS.1_L.dwg",
+      "local_path": "output/review/highpoly-types/geberit-154-446-ks-1/official-source/154.446.KS.1_L.dwg",
+      "http_status": 200,
+      "content_type": "application/octet-stream",
+      "downloaded_byte_count": 304638,
+      "local_byte_count": 304638,
+      "expected_sha256": "dedb47964cc69310bd9af3982379c428c8b20494b7588296aedc5d07380e3421",
+      "downloaded_sha256": "dedb47964cc69310bd9af3982379c428c8b20494b7588296aedc5d07380e3421",
+      "local_sha256": "dedb47964cc69310bd9af3982379c428c8b20494b7588296aedc5d07380e3421",
+      "downloaded_bytes_match_local_archive": true,
+      "pass": true
+    },
+    "P": {
+      "url": "https://cdn.data.geberit.com/cad/154.446.KS.1_P.dwg",
+      "local_path": "output/review/highpoly-types/geberit-154-446-ks-1/official-source/154.446.KS.1_P.dwg",
+      "http_status": 200,
+      "content_type": "application/octet-stream",
+      "downloaded_byte_count": 2428946,
+      "local_byte_count": 2428946,
+      "expected_sha256": "46e1d9fe9b7afda6f4a72970a5e35d7bc0935c2bdc890ccca232f0b0896a8e82",
+      "downloaded_sha256": "46e1d9fe9b7afda6f4a72970a5e35d7bc0935c2bdc890ccca232f0b0896a8e82",
+      "local_sha256": "46e1d9fe9b7afda6f4a72970a5e35d7bc0935c2bdc890ccca232f0b0896a8e82",
+      "downloaded_bytes_match_local_archive": true,
+      "pass": true
+    }
+  },
+  "all_declared_urls_accessible": true,
+  "all_downloaded_bytes_match_local_archive": true,
+  "pass": true
+}

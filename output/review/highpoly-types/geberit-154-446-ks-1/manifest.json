@@ -1,0 +1,271 @@
+{
+  "schema_version": 1,
+  "generated_at": "2026-08-23T13:03:51.811579+00:00",
+  "generator": "pipeline/scripts/geberit_154_446_ks_1_review.py",
+  "formal_ifc": "2504 GBTB Yanlord Zhuhai.ifc",
+  "formal_ifc_sha256": "7a50b87e8f48a7c2bfbaa9f1dabdfca7155fa684b2325c66aa1ae15c8ab0a25c",
+  "formal_ifc_sha256_after_generation": "7a50b87e8f48a7c2bfbaa9f1dabdfca7155fa684b2325c66aa1ae15c8ab0a25c",
+  "formal_ifc_bytes_unchanged": true,
+  "profile_register": "output/review/highpoly-types/geberit-154-446-ks-1/profile.json",
+  "profile_register_sha256": "a135970c6eef5ebe4a88b43c7d18b592cf5769f4ee2162d1f970c8e787f769f4",
+  "profile_key": "geberit-154-446-ks-1",
+  "display_name": "Geberit CleanLine50 shower channel / 154.446.KS.1",
+  "ifc_type_name": "Geberit 154.446.KS.1",
+  "representative_global_id": "2S2c498tb7$gzdukjhCGVQ",
+  "registered_instance_global_ids": [
+    "2S2c498tb7$gzdukjhCGVQ"
+  ],
+  "geometry_product_count": 1,
+  "whole_model_render": false,
+  "formal_ifc_write": false,
+  "source_kind": "native_dwg",
+  "source_label_zh": "Geberit 官方归档原生 DWG 图纸表达",
+  "source_label_en": "drawing representation from archived Geberit official native DWG",
+  "official_cad_acquired": true,
+  "official_cad_exact_archived_article_match": true,
+  "official_cad_used": true,
+  "third_party_cad_used": false,
+  "blue_line_present": true,
+  "representation_geometry_source": "official_native_dwg_paths_mm",
+  "simplified_proxy_comparison_included": true,
+  "mesh_vertex_count": 22127,
+  "mesh_face_count": 44158,
+  "local_bounds_mm": {
+    "minimum": [
+      0.0,
+      -25.258136749268502,
+      -50.4999961853027
+    ],
+    "maximum": [
+      900.0,
+      49.7304992675772,
+      0.0
+    ]
+  },
+  "official_reference": {
+    "source_id": "GEBERIT-CLEANLINE50-154-446-KS-1-NATIVE-DWG-001",
+    "source_kind": "native_dwg",
+    "manufacturer": "Geberit",
+    "article_number": "154.446.KS.1",
+    "replacement_article_number": "154.446.KS.2",
+    "replacement_cad_used": false,
+    "scope": "official manufacturer exact archived article reference, not a project shop drawing",
+    "product_page": "https://catalog.geberit-global.com/en-XB/product/PRO_4702328",
+    "product_page_archive": "output/review/highpoly-types/geberit-154-446-ks-1/official-source/geberit-cleanline50-product-page.html",
+    "product_page_archive_sha256": "cf4578d1f1d60078c683548281f22e30fb71608f7d4413a21c840bde212fa02f",
+    "current_catalog_status": "CleanLine50 family page; current 154.446.KS.2 replaces legacy 154.446.KS.1",
+    "linework_path": "output/review/highpoly-types/geberit-154-446-ks-1/official-native-dwg-linework.json",
+    "official_cdn_revalidation": {
+      "path": "output/review/highpoly-types/geberit-154-446-ks-1/official-source/official-cdn-revalidation.json",
+      "sha256": "fb5e208e2b79e5bc1ddab316bcd60cae2e32510480d4107754d3a0922502b2e8",
+      "checked_at": "2026-08-23T13:03:25.437513+00:00",
+      "replacement_cad_used": false,
+      "pass": true
+    },
+    "view_mapping": {
+      "plan": "G",
+      "front": "A",
+      "side": "L"
+    },
+    "linework_sha256": "22111429c77d492928248ef7289e792849dcafdc980c359bc5b55be2981c335d",
+    "official_sources": {
+      "A": {
+        "path": "output/review/highpoly-types/geberit-154-446-ks-1/official-source/154.446.KS.1_A.dwg",
+        "url": "https://cdn.data.geberit.com/cad/154.446.KS.1_A.dwg",
+        "sha256": "de09a6bbf99ecbe3c832cbee7ac9d398e95b927246f274643b513bfe960586c3"
+      },
+      "G": {
+        "path": "output/review/highpoly-types/geberit-154-446-ks-1/official-source/154.446.KS.1_G.dwg",
+        "url": "https://cdn.data.geberit.com/cad/154.446.KS.1_G.dwg",
+        "sha256": "bc41f8db7c7989de9d9089374e03c3b9deea94e2634bbb0f9418cad982b4b6e4"
+      },
+      "L": {
+        "path": "output/review/highpoly-types/geberit-154-446-ks-1/official-source/154.446.KS.1_L.dwg",
+        "url": "https://cdn.data.geberit.com/cad/154.446.KS.1_L.dwg",
+        "sha256": "dedb47964cc69310bd9af3982379c428c8b20494b7588296aedc5d07380e3421"
+      },
+      "P": {
+        "path": "output/review/highpoly-types/geberit-154-446-ks-1/official-source/154.446.KS.1_P.dwg",
+        "url": "https://cdn.data.geberit.com/cad/154.446.KS.1_P.dwg",
+        "sha256": "46e1d9fe9b7afda6f4a72970a5e35d7bc0935c2bdc890ccca232f0b0896a8e82"
+      }
+    },
+    "mechanical_cross_checks": {
+      "plan": {
+        "comparison": "native_dwg_header_footprint_vs_ifc_body_footprint",
+        "official_size_mm": [
+          900.15007,
+          74.878463
+        ],
+        "ifc_body_size_mm": [
+          900.0,
+          74.988636
+        ],
+        "absolute_delta_mm": [
+          0.15007,
+          0.110173
+        ],
+        "tolerance_mm": 0.2,
+        "pass": true
+      },
+      "front": {
+        "comparison": "native_dwg_visible_contour_vs_ifc_body_length_height",
+        "official_size_mm": [
+          900.0,
+          50.500059
+        ],
+        "ifc_body_size_mm": [
+          900.0,
+          50.499996
+        ],
+        "absolute_delta_mm": [
+          0.0,
+          6.3e-05
+        ],
+        "tolerance_mm": 0.2,
+        "pass": true
+      },
+      "side": {
+        "comparison": "native_dwg_visible_side_contour_height_vs_ifc_body_height",
+        "official_visible_contour_size_mm": [
+          53.4,
+          50.5
+        ],
+        "ifc_body_size_mm": [
+          74.988636,
+          50.499996
+        ],
+        "visible_width_difference_mm": 21.588636,
+        "height_absolute_delta_mm": 4e-06,
+        "tolerance_mm": 0.2,
+        "note": "The official L contour depicts the visible 53.4 mm channel component; the IFC Body includes the wider concealed ancillary geometry recorded by the G-view header footprint.",
+        "pass": true
+      }
+    }
+  },
+  "candidate_representations": "output/review/highpoly-types/geberit-154-446-ks-1/candidate-representations.json",
+  "candidate_representations_sha256": "524b0def5d242226b36b46216179aefb7834d1bb18400a62570c937ffde66c97",
+  "official_source_access_record": "output/review/highpoly-types/geberit-154-446-ks-1/official-source/source-access-record.json",
+  "official_source_access_record_sha256": "9af4b21de19759cc48e9325da843542ddc44baedadc9948bd1b5769a4611d61c",
+  "views": [
+    {
+      "view": "plan",
+      "svg": "output/review/highpoly-types/geberit-154-446-ks-1/plan.svg",
+      "svg_sha256": "18285742e2fd6f42bfe78260acd634ab6ab3c824ffd6a1df91f3ad8319f4aea9",
+      "projection_axes": [
+        0,
+        1
+      ],
+      "raw_edge_count": 66287,
+      "displayed_raw_edge_count": 598,
+      "silhouette_path_count": 5,
+      "official_reference_path_count": 122,
+      "blue_line_source_kind": "native_dwg",
+      "blue_line_article_number": "154.446.KS.1",
+      "blue_line_native_dwg_code": "G",
+      "blue_line_native_dwg_sha256": "bc41f8db7c7989de9d9089374e03c3b9deea94e2634bbb0f9418cad982b4b6e4",
+      "mechanical_cross_check": {
+        "comparison": "native_dwg_header_footprint_vs_ifc_body_footprint",
+        "official_size_mm": [
+          900.15007,
+          74.878463
+        ],
+        "ifc_body_size_mm": [
+          900.0,
+          74.988636
+        ],
+        "absolute_delta_mm": [
+          0.15007,
+          0.110173
+        ],
+        "tolerance_mm": 0.2,
+        "pass": true
+      }
+    },
+    {
+      "view": "front",
+      "svg": "output/review/highpoly-types/geberit-154-446-ks-1/front.svg",
+      "svg_sha256": "fd83b6c082e072b2846197556ce5474148c7e2e4c6d4c2fbe2f15677b89867ab",
+      "projection_axes": [
+        0,
+        2
+      ],
+      "raw_edge_count": 66287,
+      "displayed_raw_edge_count": 598,
+      "silhouette_path_count": 1,
+      "official_reference_path_count": 118,
+      "blue_line_source_kind": "native_dwg",
+      "blue_line_article_number": "154.446.KS.1",
+      "blue_line_native_dwg_code": "A",
+      "blue_line_native_dwg_sha256": "de09a6bbf99ecbe3c832cbee7ac9d398e95b927246f274643b513bfe960586c3",
+      "mechanical_cross_check": {
+        "comparison": "native_dwg_visible_contour_vs_ifc_body_length_height",
+        "official_size_mm": [
+          900.0,
+          50.500059
+        ],
+        "ifc_body_size_mm": [
+          900.0,
+          50.499996
+        ],
+        "absolute_delta_mm": [
+          0.0,
+          6.3e-05
+        ],
+        "tolerance_mm": 0.2,
+        "pass": true
+      }
+    },
+    {
+      "view": "side",
+      "svg": "output/review/highpoly-types/geberit-154-446-ks-1/side.svg",
+      "svg_sha256": "98f4438d069541e284a390465a6381a3e70e2602cf47fbf85f18e7e064a2f97c",
+      "projection_axes": [
+        1,
+        2
+      ],
+      "raw_edge_count": 66287,
+      "displayed_raw_edge_count": 598,
+      "silhouette_path_count": 34,
+      "official_reference_path_count": 176,
+      "blue_line_source_kind": "native_dwg",
+      "blue_line_article_number": "154.446.KS.1",
+      "blue_line_native_dwg_code": "L",
+      "blue_line_native_dwg_sha256": "dedb47964cc69310bd9af3982379c428c8b20494b7588296aedc5d07380e3421",
+      "mechanical_cross_check": {
+        "comparison": "native_dwg_visible_side_contour_height_vs_ifc_body_height",
+        "official_visible_contour_size_mm": [
+          53.4,
+          50.5
+        ],
+        "ifc_body_size_mm": [
+          74.988636,
+          50.499996
+        ],
+        "visible_width_difference_mm": 21.588636,
+        "height_absolute_delta_mm": 4e-06,
+        "tolerance_mm": 0.2,
+        "note": "The official L contour depicts the visible 53.4 mm channel component; the IFC Body includes the wider concealed ancillary geometry recorded by the G-view header footprint.",
+        "pass": true
+      }
+    }
+  ],
+  "review_status": "visual_review_pending",
+  "approved_for_drawing_ifc": false,
+  "pass": true,
+  "project_context": {
+    "manifest": "output/review/highpoly-types/geberit-154-446-ks-1/project-context-manifest.json",
+    "manifest_sha256": "e38f2c2468bfc9e8fe8cb47a53945b63d2a8c34ffd5f24e36b8339102d901aa5",
+    "walls_and_surrounding_project_elements_retained": true,
+    "blue_line_top_layer_with_white_mask": true,
+    "pass": true
+  },
+  "bonsai_review": {
+    "manifest": "output/review/highpoly-types/geberit-154-446-ks-1/bonsai-review-manifest.json",
+    "manifest_sha256": "5c0d089c0eb81b24d5e7c5a8b19f9216035a43bf35d199786604baa31450ddfc",
+    "mode": "actual_bonsai_ifc_body_camera_render",
+    "saved_active_representation": "Body",
+    "saved_camera_count": 4,
+    "pass": true
+  }
+}

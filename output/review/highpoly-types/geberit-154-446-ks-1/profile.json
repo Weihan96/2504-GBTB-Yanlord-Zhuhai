@@ -1,0 +1,37 @@
+{
+  "schema_version": 1,
+  "formal_ifc_sha256": "7a50b87e8f48a7c2bfbaa9f1dabdfca7155fa684b2325c66aa1ae15c8ab0a25c",
+  "profiles": {
+    "geberit-154-446-ks-1": {
+      "display_name": "Geberit CleanLine50 shower channel / 154.446.KS.1",
+      "ifc_type_name": "Geberit 154.446.KS.1",
+      "representative_global_id": "2S2c498tb7$gzdukjhCGVQ",
+      "expected_instance_global_ids": ["2S2c498tb7$gzdukjhCGVQ"],
+      "profile_source": "isolated_highpoly_projection_with_exact_archived_154_446_ks_1_native_dwg",
+      "silhouette_simplify_mm": 0.35,
+      "semantic_sections": {"plan": [], "front": [], "side": []},
+      "required_semantics": [
+        "900_mm_channel_length",
+        "channel_outer_silhouette",
+        "removable_grate_and_inlet",
+        "finished_floor_interface"
+      ],
+      "official_reference": {
+        "source_id": "GEBERIT-CLEANLINE50-154-446-KS-1-NATIVE-DWG-001",
+        "source_kind": "native_dwg",
+        "manufacturer": "Geberit",
+        "article_number": "154.446.KS.1",
+        "replacement_article_number": "154.446.KS.2",
+        "replacement_cad_used": false,
+        "scope": "official manufacturer exact archived article reference, not a project shop drawing",
+        "product_page": "https://catalog.geberit-global.com/en-XB/product/PRO_4702328",
+        "product_page_archive": "output/review/highpoly-types/geberit-154-446-ks-1/official-source/geberit-cleanline50-product-page.html",
+        "product_page_archive_sha256": "cf4578d1f1d60078c683548281f22e30fb71608f7d4413a21c840bde212fa02f",
+        "current_catalog_status": "CleanLine50 family page; current 154.446.KS.2 replaces legacy 154.446.KS.1",
+        "linework_path": "output/review/highpoly-types/geberit-154-446-ks-1/official-native-dwg-linework.json",
+        "official_cdn_revalidation": "output/review/highpoly-types/geberit-154-446-ks-1/official-source/official-cdn-revalidation.json",
+        "view_mapping": {"plan": "G", "front": "A", "side": "L"}
+      }
+    }
+  }
+}
