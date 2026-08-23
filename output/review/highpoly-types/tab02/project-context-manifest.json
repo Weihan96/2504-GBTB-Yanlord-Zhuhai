@@ -1,0 +1,112 @@
+{
+  "schema_version": 1,
+  "generator": "pipeline/scripts/render_tab02_project_context.py",
+  "source_kind": "geometry_derived_simplified_proxy",
+  "source_label_zh": "基于原始高模几何生成的简化图纸表达",
+  "official_cad_used": false,
+  "third_party_cad_used": false,
+  "project_context_retained": true,
+  "walls_and_surrounding_project_elements_retained": true,
+  "overlay_top_layer_with_white_mask": true,
+  "blue_line_present": false,
+  "project_scale_svg_units_per_mm": 0.02,
+  "views": [
+    {
+      "view": "plan",
+      "candidate_view": "plan",
+      "source": "drawings/Furniture Plan.svg",
+      "output": "output/review/highpoly-types/tab02/project-context-furniture-plan.svg",
+      "output_sha256": "c13e27ce90b78fee51665f5bdb81b19bb1561899791de49cdc61238b92764bd2",
+      "review_crop": "output/review/highpoly-types/tab02/project-context-furniture-plan-review.svg",
+      "review_crop_sha256": "84095df244b2cf025166fc1171ccbe7ae7ed09d4690bba703d22671e335fcb10",
+      "review_preview": "output/review/highpoly-types/tab02/project-context-furniture-plan-review-preview.png",
+      "review_preview_sha256": "17a6143df871a30123ec1197637123d50d1daa1ce4e1843f628177e8eacae9d2",
+      "overlay": {
+        "ifc_guid": "2eX84IyLr8_e34nuOoRPLQ",
+        "source_kind": "geometry_derived_simplified_proxy",
+        "source_label_zh": "基于原始高模几何生成的简化图纸表达",
+        "official_cad_used": false,
+        "third_party_cad_used": false,
+        "path_count": 1,
+        "fit": {
+          "rotate_quarter_turns": 0,
+          "alignment_mode": "centre",
+          "flip_projected_y": true,
+          "scale_svg_units_per_mm": 0.02,
+          "target_bbox": [
+            [
+              228.516645,
+              112.600269
+            ],
+            [
+              238.516644,
+              122.600269
+            ]
+          ],
+          "proxy_bbox": [
+            [
+              228.516645,
+              112.600269
+            ],
+            [
+              238.516645,
+              122.600269
+            ]
+          ],
+          "bbox_absolute_delta_svg_units": [
+            0.0,
+            0.0
+          ],
+          "bbox_tolerance_svg_units": 0.02,
+          "uniform_scale_preserved": true,
+          "transformation_mode": "axis_swap_rigid_reflection_and_translation_only",
+          "pass": true
+        }
+      }
+    }
+  ],
+  "pass": true,
+  "semantic_view_mapping": {
+    "plan": {
+      "candidate_axes": [
+        0,
+        1
+      ],
+      "source": "drawings/Furniture Plan.svg",
+      "rotate_quarter_turns": 0,
+      "project_direction": "+Z"
+    }
+  },
+  "context_view_scope": {
+    "included": [
+      "plan"
+    ],
+    "excluded": [
+      "front",
+      "side"
+    ],
+    "reason": "The TAB02 representative has an actual projection group in Furniture Plan.svg and none in the native project elevation SVGs; project elevations are not invented."
+  },
+  "review_annotation_suppression": {
+    "plan": "official-elevation-anchor groups only",
+    "scope": "review crop only; full project SVG retains all annotations",
+    "walls_furniture_and_ifc_geometry_removed": false
+  },
+  "review_preview_background": {
+    "plan": "opaque white review-only HTML paper background",
+    "full_project_svg_remains_transparent": true,
+    "drawing_geometry_changed": false
+  },
+  "project_projection_note": {
+    "original_project_bbox_mm": [
+      500.0,
+      500.0
+    ],
+    "ifc_body_plan_bbox_mm": [
+      500.0,
+      500.0
+    ],
+    "interpretation": "The project plan and complete MODEL_VIEW Body share the exact official 500 x 500 mm footprint. The overlay keeps uniform 1:50 scale and aligns by centre without stretching.",
+    "geometry_stretched": false
+  }
+}

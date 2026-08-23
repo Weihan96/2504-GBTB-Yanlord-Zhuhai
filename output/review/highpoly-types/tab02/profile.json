@@ -1,0 +1,48 @@
+{
+  "schema_version": 1,
+  "formal_ifc_sha256": "7a50b87e8f48a7c2bfbaa9f1dabdfca7155fa684b2325c66aa1ae15c8ab0a25c",
+  "profiles": {
+    "tab02": {
+      "display_name": "RODA Bernardo 367 side table / project TAB02",
+      "ifc_type_name": "TAB02",
+      "representative_global_id": "2eX84IyLr8_e34nuOoRPLQ",
+      "expected_instance_global_ids": ["2eX84IyLr8_e34nuOoRPLQ"],
+      "profile_source": "isolated_highpoly_projection; exact_roda_bernardo_367_identity_and_dimensions_archived; official_2d_3d_reserved_area_authentication_required_not_acquired",
+      "silhouette_simplify_mm": 0.5,
+      "semantic_sections": {
+        "plan": [],
+        "front": [],
+        "side": []
+      },
+      "required_semantics": [
+        "square_500_mm_top",
+        "central_stainless_steel_pedestal",
+        "Simplon_stone_base_diameter_300_mm",
+        "official_500x500x670_mm_identity_without_geometry_fitting"
+      ],
+      "drawing_source": {
+        "source_kind": "geometry_derived_simplified_proxy",
+        "source_label_zh": "基于原始高模几何生成的简化图纸表达",
+        "source_label_en": "simplified drawing representation derived from the original high-poly geometry",
+        "official_cad_used": false,
+        "third_party_cad_used": false
+      },
+      "official_reference": {
+        "source_id": "RODA-BERNARDO-367-TAB02-OFFICIAL-IDENTITY-001",
+        "source_kind": "manufacturer_collection_page_and_catalogue_identity_only",
+        "manufacturer": "RODA",
+        "family": "Bernardo",
+        "model": "BERNARDO 367",
+        "designer": "Rodolfo Dordoni",
+        "project_type_code": "TAB02",
+        "official_width_depth_height_mm": [500, 500, 670],
+        "scope": "exact RODA BERNARDO 367 manufacturer identity and public-catalogue dimensions; official 2D/3D downloads require reserved-area authentication and were not acquired; not a project shop drawing and not official CAD geometry",
+        "product_page": "https://www.rodaonline.com/en/collections/bernardo/",
+        "catalogue": "https://www.rodaonline.com/wp-content/uploads/RODA_CATALOGUE_2024.pdf",
+        "source_access_record": "output/review/highpoly-types/tab02/official-source/source-access-record.json",
+        "official_2d_3d_status": "reserved_area_authentication_required_not_acquired",
+        "official_cad_used": false
+      }
+    }
+  }
+}

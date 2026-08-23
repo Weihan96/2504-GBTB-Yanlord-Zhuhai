@@ -1,0 +1,71 @@
+{
+  "schema_version": 1,
+  "manufacturer": "RODA",
+  "family": "Bernardo",
+  "model": "BERNARDO 367",
+  "product_name": "Side table",
+  "designer": "Rodolfo Dordoni",
+  "project_type_code": "TAB02",
+  "project_ifc_type_description": "Bernardo 367",
+  "identity_status": "exact_official_model_confirmed_by_type_description_surface_styles_and_dimensions",
+  "research_date": "2026-08-23",
+  "official_identity_sources": [
+    {
+      "kind": "manufacturer_collection_product_page",
+      "url": "https://www.rodaonline.com/en/collections/bernardo/",
+      "local_path": "output/review/highpoly-types/tab02/official-source/roda-bernardo-official-product-page.html",
+      "sha256": "8f04c1ddaa757b07a0d4cc62b419990fb10e22c073c62b889247a303d96c2318",
+      "observation": "The current RODA Bernardo collection page confirms the manufacturer, family, Rodolfo Dordoni design, white Simplon-stone base and painted stainless-steel structure. It routes collection 2D and 3D drawings to the authenticated reserved area. The current public page lists 353 and 354 rather than the discontinued 367, so it is family and access-boundary evidence only."
+    },
+    {
+      "kind": "manufacturer_catalogue_exact_model_extract",
+      "url": "https://www.rodaonline.com/wp-content/uploads/RODA_CATALOGUE_2024.pdf",
+      "local_path": "output/review/highpoly-types/tab02/official-source/RODA-official-Bernardo-367-catalogue-extract.pdf",
+      "sha256": "e4e58ccefd17c9fb50942b992c75d5018c0d30ef2e3f309dab4590c16aff32d1",
+      "source_full_download_sha256": "af04cbf5ad7e6ae9f8c6b4ee96d6e36f66e18c932cad996669cb18f6e44e3ae3",
+      "source_pdf_physical_pages": [28, 192],
+      "printed_pages": ["050-051", "378-379"],
+      "pdf_pages_visually_checked": [1, 2],
+      "observation": "RODA Catalogue 2024 explicitly labels BERNARDO 367, shows the square-top pedestal table, and specifies W 50 x D 50 x H 67 cm with a 30 cm diameter by 4 cm stone base. The extract is identity and dimensional evidence, not native Plan/Front/Side CAD geometry."
+    }
+  ],
+  "project_ifc_identity_evidence": {
+    "ifc_type_name": "TAB02",
+    "ifc_type_global_id": "07$ZVT0GfEAOX0ntYYymTr",
+    "ifc_type_description": "Bernardo 367",
+    "representative_global_id": "2eX84IyLr8_e34nuOoRPLQ",
+    "registered_instance_global_ids": ["2eX84IyLr8_e34nuOoRPLQ"],
+    "surface_style_names": ["Bernardo_serizzo", "Bernardo Metal milk"],
+    "note": "The exact type description, Bernardo-named stone and milk-metal styles, table topology and exact catalogue envelope identify the model. These IFC labels are project-model evidence, not a purchase order or manufacturer shop drawing."
+  },
+  "official_product_cad": {
+    "published_access_surface": "RODA reserved area",
+    "product_page_advertises_2d_drawings": true,
+    "product_page_advertises_3d_drawings": true,
+    "authentication_required": true,
+    "acquired": false,
+    "exact_project_configuration_match": false,
+    "local_cad_files": [],
+    "third_party_cad_used": false,
+    "reason": "RODA routes Bernardo collection 2D and 3D downloads to its authenticated reserved area. No manufacturer account was created and no third-party CAD was substituted."
+  },
+  "dimension_cross_check": {
+    "official_model_width_depth_height_mm": [500.0, 500.0, 670.0],
+    "official_base_diameter_height_mm": [300.0, 40.0],
+    "project_ifc_body_local_xyz_mm": [500.0, 500.0, 670.0],
+    "semantic_axis_mapping": "local X=official width; local Y=official depth; local Z=official height",
+    "body_minus_official_mm": [0.0, 0.0, 0.0],
+    "maximum_absolute_delta_mm": 0.0,
+    "status": "exact_model_geometry_consistent_no_scaling_or_fitting",
+    "note": "The isolated IFC Body envelope exactly matches the official BERNARDO 367 catalogue dimensions. No proxy geometry is scaled or force-fitted to the catalogue."
+  },
+  "drawing_geometry_source": {
+    "source_kind": "geometry_derived_simplified_proxy",
+    "source_label_zh": "基于原始高模几何生成的简化图纸表达",
+    "source_label_en": "simplified drawing representation derived from the original high-poly geometry",
+    "official_cad_used": false,
+    "third_party_cad_used": false
+  },
+  "scope": "exact RODA BERNARDO 367 manufacturer identity and public-catalogue dimensions; official 2D/3D downloads require reserved-area authentication and were not acquired; not a project shop drawing and not official CAD geometry",
+  "pass": true
+}
