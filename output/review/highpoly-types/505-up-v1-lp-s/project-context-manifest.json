@@ -1,0 +1,112 @@
+{
+  "schema_version": 1,
+  "generator": "pipeline/scripts/render_505_up_v1_lp_s_project_context.py",
+  "source_kind": "geometry_derived_simplified_proxy",
+  "source_label_zh": "基于原始高模几何生成的简化图纸表达",
+  "official_cad_used": false,
+  "third_party_cad_used": false,
+  "project_context_retained": true,
+  "walls_and_surrounding_project_elements_retained": true,
+  "overlay_top_layer_with_white_mask": true,
+  "blue_line_present": false,
+  "project_scale_svg_units_per_mm": 0.02,
+  "views": [
+    {
+      "view": "plan",
+      "candidate_view": "plan",
+      "source": "drawings/Furniture Plan.svg",
+      "output": "output/review/highpoly-types/505-up-v1-lp-s/project-context-furniture-plan.svg",
+      "output_sha256": "1c21f94b60e9749ede551b128b293e79cbf80a50d7838b5a91c3b30d07bc674f",
+      "review_crop": "output/review/highpoly-types/505-up-v1-lp-s/project-context-furniture-plan-review.svg",
+      "review_crop_sha256": "23dbd703624d5540ce40be830e18e75e6af89571837778edef729985323ca4d3",
+      "review_preview": "output/review/highpoly-types/505-up-v1-lp-s/project-context-furniture-plan-review-preview.png",
+      "review_preview_sha256": "4cfd8472360e69935becb190b6e092c28006097a102fb34ff16ac8eecc499bbb",
+      "overlay": {
+        "ifc_guid": "19MpdkWqXC7uhUNhLQgrce",
+        "source_kind": "geometry_derived_simplified_proxy",
+        "source_label_zh": "基于原始高模几何生成的简化图纸表达",
+        "official_cad_used": false,
+        "third_party_cad_used": false,
+        "path_count": 19,
+        "fit": {
+          "rotate_quarter_turns": 0,
+          "alignment_mode": "centre",
+          "flip_projected_y": true,
+          "scale_svg_units_per_mm": 0.02,
+          "target_bbox": [
+            [
+              256.103617,
+              219.270008
+            ],
+            [
+              314.343616,
+              227.999997
+            ]
+          ],
+          "proxy_bbox": [
+            [
+              256.106475,
+              219.270008
+            ],
+            [
+              314.340757,
+              227.999997
+            ]
+          ],
+          "bbox_absolute_delta_svg_units": [
+            0.005716,
+            0.0
+          ],
+          "bbox_tolerance_svg_units": 0.1,
+          "uniform_scale_preserved": true,
+          "transformation_mode": "axis_swap_rigid_reflection_and_translation_only",
+          "pass": true
+        }
+      }
+    }
+  ],
+  "pass": true,
+  "semantic_view_mapping": {
+    "plan": {
+      "candidate_axes": [
+        0,
+        1
+      ],
+      "source": "drawings/Furniture Plan.svg",
+      "rotate_quarter_turns": 0,
+      "project_direction": "+Z"
+    }
+  },
+  "context_view_scope": {
+    "included": [
+      "plan"
+    ],
+    "excluded": [
+      "front",
+      "side"
+    ],
+    "reason": "The representative occurs in Furniture Plan.svg, but no native project elevation SVG contains this IFC GlobalId; no elevation context was invented."
+  },
+  "review_annotation_suppression": {
+    "plan": "official-elevation-anchor groups only",
+    "scope": "review crop only; the complete project SVG retains its annotations",
+    "walls_furniture_and_ifc_geometry_removed": false
+  },
+  "review_preview_background": {
+    "plan": "opaque white review-only paper background",
+    "full_project_svg_remains_transparent": true,
+    "drawing_geometry_changed": false
+  },
+  "project_projection_note": {
+    "original_project_bbox_mm": [
+      2911.999935,
+      436.499441
+    ],
+    "ifc_body_plan_bbox_mm": [
+      2911.714112,
+      436.499451
+    ],
+    "interpretation": "The complete geometry-derived proxy is overlaid at the drawing's native 1:50 scale and aligned to the original 505 UP projection centre.",
+    "geometry_stretched": false
+  }
+}

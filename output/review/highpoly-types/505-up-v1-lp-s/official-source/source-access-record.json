@@ -1,0 +1,157 @@
+{
+  "schema_version": 1,
+  "manufacturer": "Molteni&C",
+  "family": "505 UP System",
+  "designer": "Nicola Gallizia",
+  "project_ifc_type_name": "505 UP V1.LP.S",
+  "project_ifc_type_description": null,
+  "resolved_variant": "manufacturer family confirmed; project-specific V1.LP.S composition not resolved to a published catalogue composition",
+  "research_date": "2026-08-23",
+  "official_identity_sources": [
+    {
+      "kind": "manufacturer_product_page",
+      "url": "https://www.molteni.it/en/ap/product/505-up-system",
+      "local_path": "output/review/highpoly-types/505-up-v1-lp-s/official-source/molteni-505-up-system-product-page.html",
+      "sha256": "a4b23477cc9bbfa07e143de29436314aad9af2aa21724f450fb2cbccef5ec8b4",
+      "identity_observation": "The official product metadata names the 505 UP living system and Nicola Gallizia. The download section lists a private-labelled DWG 2D 505 UP SYSTEM collection."
+    },
+    {
+      "kind": "manufacturer_native_family_dwg",
+      "url": "https://res.cloudinary.com/molteni/raw/upload/v1766397289/2021_2D_505-UP_Living-Systems_Indoor.dwg?_s=public-apps",
+      "local_path": "output/review/highpoly-types/505-up-v1-lp-s/official-source/2021_2D_505-UP_Living-Systems_Indoor.dwg",
+      "sha256": "dfe4a6bcd655a3ed19343813a4aba8e139b847cafe8ea69b47623a6e1e71add3",
+      "bytes": 797984,
+      "dwg_version": "AutoCAD 2018/2019/2020",
+      "role": "official 2021 505 UP family technical-library CAD; family and catalogue composition evidence only"
+    },
+    {
+      "kind": "manufacturer_native_family_dwg",
+      "url": "https://res.cloudinary.com/molteni/raw/upload/v1764598453/2021_2D_505-UP-Sistem_Living-Systems_Indoor_Inspiring-Solution.dwg?_s=public-apps",
+      "local_path": "output/review/highpoly-types/505-up-v1-lp-s/official-source/2021_2D_505-UP-System_Living-Systems_Indoor-Inspiring-Solution.dwg",
+      "sha256": "1e7988d5c7f00522736144fbecde1814032e5673af8cd13a47979e4347231646",
+      "bytes": 380744,
+      "dwg_version": "AutoCAD 2018/2019/2020",
+      "role": "official 505 UP inspiring-solution CAD; published composition comparison evidence only"
+    },
+    {
+      "kind": "manufacturer_public_collection_asset_index",
+      "url": "https://console.cloudinary.com/console/api/v1/collections/public/molteni/a8d135c32d8cbaa0513b2eae24638fb4/search?max_results=36&expression=&sort_by=created_at%20desc",
+      "local_path": "output/review/highpoly-types/505-up-v1-lp-s/official-source/molteni-505-up-system-dwg-collection-assets.json",
+      "sha256": "32df25b68ef36d3b7312decffcf96084a262e4b09c38b144175604e7d85ac95b",
+      "asset_count": 2
+    }
+  ],
+  "official_product_cad": {
+    "published_access_surface": "Molteni&C official product page linked Cloudinary collection",
+    "authentication_required": false,
+    "page_permission_label": "Private",
+    "public_collection_read_access": true,
+    "acquired": true,
+    "local_cad_files": [
+      "output/review/highpoly-types/505-up-v1-lp-s/official-source/2021_2D_505-UP_Living-Systems_Indoor.dwg",
+      "output/review/highpoly-types/505-up-v1-lp-s/official-source/2021_2D_505-UP-System_Living-Systems_Indoor-Inspiring-Solution.dwg"
+    ],
+    "exact_project_configuration_match": false,
+    "official_cad_used_as_candidate_geometry": false,
+    "reason": "Both native DWGs are official 505 UP family sources. Mechanical dimension and layout review found no published catalogue composition matching the isolated project's 2912 x 436.5 x 2380 mm Body together with its left slatted bay, large central opening and right display niche. The family CAD is archived and shown separately, but it is not rearranged or falsely overlaid as the project-specific representation."
+  },
+  "native_dwg_conversion_audit": {
+    "converter": "GNU LibreDWG dwg2dxf",
+    "verified_dxf_files": [
+      {
+        "source_dwg_sha256": "dfe4a6bcd655a3ed19343813a4aba8e139b847cafe8ea69b47623a6e1e71add3",
+        "path": "output/review/highpoly-types/505-up-v1-lp-s/official-source/2021_2D_505-UP_Living-Systems_Indoor.verified-conversion.dxf",
+        "sha256": "7e4b167709da141de57f3621f4a3481a3d1a48dc20ad24a5b4bb07e3b265a5b7"
+      },
+      {
+        "source_dwg_sha256": "1e7988d5c7f00522736144fbecde1814032e5673af8cd13a47979e4347231646",
+        "path": "output/review/highpoly-types/505-up-v1-lp-s/official-source/2021_2D_505-UP-System_Living-Systems_Indoor-Inspiring-Solution.verified-conversion.dxf",
+        "sha256": "8ba552f24ae6740b0ada34da5b90580da942c2b16f99f554838171684534ef53"
+      }
+    ],
+    "official_reference_svgs": [
+      {
+        "path": "output/review/highpoly-types/505-up-v1-lp-s/official-source/molteni-505-up-technical-library-full-preview.svg",
+        "sha256": "0e5cbde9ac65e541d1342564d8ceaa4b016da49196e425dae123ce4cc47425ec"
+      },
+      {
+        "path": "output/review/highpoly-types/505-up-v1-lp-s/official-source/molteni-505-up-inspiring-solution-full-preview.svg",
+        "sha256": "f42fed3a2a1ce2d2a02ed84d3406bca143550f4be2ec88ab4441a51cf4ccdcac"
+      }
+    ]
+  },
+  "configuration_cross_check": {
+    "project_ifc_body_local_xyz_mm": [
+      2912.000539,
+      436.499596,
+      2380.000152
+    ],
+    "official_2912_mm_catalogue_candidates": [
+      {
+        "source": "2021 inspiring solutions",
+        "configuration": "07",
+        "published_width_mm": 2912,
+        "published_height_mm": 2769,
+        "layout_match": false
+      },
+      {
+        "source": "2021 inspiring solutions",
+        "configuration": "15",
+        "published_width_mm": 2912,
+        "published_height_mm": 2385,
+        "layout_match": false
+      },
+      {
+        "source": "2021 inspiring solutions",
+        "configuration": "16",
+        "published_width_mm": 2912,
+        "published_height_mm": 2385,
+        "layout_match": false
+      },
+      {
+        "source": "2021 smart solutions",
+        "configuration": "18",
+        "published_width_mm": 2912,
+        "published_height_mm": 854,
+        "layout_match": false
+      },
+      {
+        "source": "2021 smart solutions",
+        "configuration": "24",
+        "published_width_mm": 2912,
+        "published_height_mm": 470,
+        "layout_match": false
+      }
+    ],
+    "required_project_features": [
+      "left vertical slatted bay",
+      "large central open bay",
+      "right framed display niche",
+      "continuous low base cabinets"
+    ],
+    "exact_match_count": 0,
+    "pass": true
+  },
+  "project_identity_evidence": {
+    "ifc_name": "505 UP V1.LP.S",
+    "ifc_predefined_type": "FILECABINET",
+    "container": "LIVING",
+    "body_style_names": [
+      "/LACCATO LUCIDO.001",
+      "/Laccato opaco D.007",
+      "/Laccato opaco M.003",
+      "/PELTRO.012"
+    ],
+    "family_identity_status": "confirmed",
+    "project_suffix_status": "unverified_project_or_asset_composition_suffix"
+  },
+  "drawing_geometry_source": {
+    "source_kind": "geometry_derived_simplified_proxy",
+    "source_label_zh": "基于原始高模几何生成的简化图纸表达",
+    "source_label_en": "simplified drawing representation derived from the original high-poly geometry",
+    "official_cad_used": false,
+    "third_party_cad_used": false
+  },
+  "scope": "exact manufacturer family and native family CAD; project-specific V1.LP.S composition is not mechanically matched to an official catalogue composition and is not a project shop drawing",
+  "pass": true
+}

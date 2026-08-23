@@ -1,0 +1,143 @@
+{
+  "schema_version": 1,
+  "generator": "pipeline/scripts/render_505_up_v1_lp_s_bonsai_review.py",
+  "mode": "actual_bonsai_ifc_body_camera_render",
+  "representative_global_id": "19MpdkWqXC7uhUNhLQgrce",
+  "geometry_product_count": 1,
+  "whole_model_render": false,
+  "formal_ifc": "2504 GBTB Yanlord Zhuhai.ifc",
+  "formal_ifc_sha256": "7a50b87e8f48a7c2bfbaa9f1dabdfca7155fa684b2325c66aa1ae15c8ab0a25c",
+  "formal_ifc_bytes_unchanged": true,
+  "isolated_ifc": "output/review/highpoly-types/505-up-v1-lp-s/Molteni-505-UP-V1-LP-S-bonsai-isolated.ifc",
+  "isolated_ifc_sha256": "64a077e642553decf72f92d2704d084dc1a218a532d7a5902199c3f7d91d41b6",
+  "bonsai_session": {
+    "path": "output/review/highpoly-types/505-up-v1-lp-s/Molteni-505-UP-V1-LP-S-bonsai-review.blend",
+    "sha256": "6720cc8fd4e242c76ecee014f8030f4ccb87cad04e52fcfb2d52765b0c49604f",
+    "saved_active_representation": "Body",
+    "saved_camera_count": 4,
+    "saved_camera_names": [
+      "MOLTENI_505_UP_V1_LP_S_CAM_FRONT",
+      "MOLTENI_505_UP_V1_LP_S_CAM_ISO",
+      "MOLTENI_505_UP_V1_LP_S_CAM_PLAN",
+      "MOLTENI_505_UP_V1_LP_S_CAM_SIDE"
+    ],
+    "ifc_definition_id": 14384,
+    "ifc_context_identifier": "Body",
+    "ifc_target_view": "MODEL_VIEW",
+    "front_camera_local_y_sign": 1.0,
+    "object_name": "IfcFurniture/505 UP V1.LP.S",
+    "object_bounds_m": {
+      "minimum": [
+        2.805181026,
+        -1.399999976,
+        -3.62e-07
+      ],
+      "maximum": [
+        5.717181206,
+        -0.9635005,
+        2.380000114
+      ]
+    },
+    "local_axis_extents_m": {
+      "x": 2.912000539,
+      "y": 0.436499596,
+      "z": 2.380000152
+    },
+    "local_axes_world": [
+      [
+        -1.0,
+        0.0,
+        1.51e-07
+      ],
+      [
+        0.0,
+        1.0,
+        0.0
+      ],
+      [
+        -1.51e-07,
+        0.0,
+        -1.0
+      ]
+    ]
+  },
+  "renders": [
+    {
+      "view": "plan",
+      "camera": "MOLTENI_505_UP_V1_LP_S_CAM_PLAN",
+      "camera_type": "ORTHO",
+      "camera_axis_basis": "IFC product local axes",
+      "camera_ortho_scale_m": 3.436165094376,
+      "projected_width_m": 2.912001488686,
+      "projected_height_m": 0.436505509211,
+      "image_aspect": 1.4,
+      "framing_margin_factor": 1.18,
+      "ortho_scale_quantization_safety_factor": 1.000001,
+      "render_operation": "bpy.ops.render.render(write_still=True)",
+      "path": "output/review/highpoly-types/505-up-v1-lp-s/bonsai-camera-plan.png",
+      "sha256": "0032b146d9fa455f688cfe0b9af979c6a7aa155fd156591851e283de3d034107",
+      "resolution": [
+        1400,
+        1000
+      ]
+    },
+    {
+      "view": "front",
+      "camera": "MOLTENI_505_UP_V1_LP_S_CAM_FRONT",
+      "camera_type": "ORTHO",
+      "camera_axis_basis": "IFC product local axes",
+      "camera_ortho_scale_m": 3.931764364243,
+      "projected_width_m": 2.91200060457,
+      "projected_height_m": 2.380000222693,
+      "image_aspect": 1.4,
+      "framing_margin_factor": 1.18,
+      "ortho_scale_quantization_safety_factor": 1.000001,
+      "render_operation": "bpy.ops.render.render(write_still=True)",
+      "path": "output/review/highpoly-types/505-up-v1-lp-s/bonsai-camera-front-elevation.png",
+      "sha256": "5b8f48345842ea102cc80a9fa023404dee5170f763839c16c39adb816e797593",
+      "resolution": [
+        1400,
+        1000
+      ]
+    },
+    {
+      "view": "side",
+      "camera": "MOLTENI_505_UP_V1_LP_S_CAM_SIDE",
+      "camera_type": "ORTHO",
+      "camera_axis_basis": "IFC product local axes",
+      "camera_ortho_scale_m": 3.931764602661,
+      "projected_width_m": 0.436500140997,
+      "projected_height_m": 2.380000384437,
+      "image_aspect": 1.4,
+      "framing_margin_factor": 1.18,
+      "ortho_scale_quantization_safety_factor": 1.000001,
+      "render_operation": "bpy.ops.render.render(write_still=True)",
+      "path": "output/review/highpoly-types/505-up-v1-lp-s/bonsai-camera-side-elevation.png",
+      "sha256": "d7ef11b92525a46004f99ab6a7d822a1bd1ba496a46663f1f31ddc945818db11",
+      "resolution": [
+        1400,
+        1000
+      ]
+    },
+    {
+      "view": "iso",
+      "camera": "MOLTENI_505_UP_V1_LP_S_CAM_ISO",
+      "camera_type": "ORTHO",
+      "camera_axis_basis": "IFC product local axes",
+      "camera_ortho_scale_m": 5.468589305878,
+      "projected_width_m": 2.36774762782,
+      "projected_height_m": 3.310280635953,
+      "image_aspect": 1.4,
+      "framing_margin_factor": 1.18,
+      "ortho_scale_quantization_safety_factor": 1.000001,
+      "render_operation": "bpy.ops.render.render(write_still=True)",
+      "path": "output/review/highpoly-types/505-up-v1-lp-s/bonsai-camera-iso.png",
+      "sha256": "25fe4766d719d0ef0f60218494accac4d6d49e9f7d84efe2082e5fda8044443b",
+      "resolution": [
+        1400,
+        1000
+      ]
+    }
+  ],
+  "pass": true
+}
