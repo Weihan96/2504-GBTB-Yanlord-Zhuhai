@@ -1,0 +1,46 @@
+{
+  "schema_version": 1,
+  "formal_ifc_sha256": "7a50b87e8f48a7c2bfbaa9f1dabdfca7155fa684b2325c66aa1ae15c8ab0a25c",
+  "profiles": {
+    "miamisoft-f03": {
+      "display_name": "Baxter Miami Soft F03 pouf",
+      "ifc_type_name": "MiamiSoft F03",
+      "representative_global_id": "1y3lLYK$H9fPbuh1R1vAKX",
+      "expected_instance_global_ids": ["1y3lLYK$H9fPbuh1R1vAKX"],
+      "profile_source": "isolated high-poly IFC MODEL_VIEW Body projection; exact Baxter F03 pouf identity and nominal dimensions verified from the official product page, vector technical sheet and manufacturer measurement SVG; authenticated native 2D/3D/BIM files not acquired",
+      "silhouette_simplify_mm": 1.2,
+      "semantic_sections": {"plan": [], "front": [], "side": []},
+      "required_semantics": [
+        "Baxter Miami Soft manufacturer family",
+        "Paola Navone designer identity",
+        "F03 pouf module",
+        "official nominal 1700 x 1080 x 400 mm",
+        "actual high-poly Body envelope retained without anisotropic fitting",
+        "manufacturer vector SVG and PDF are identity evidence, not native CAD geometry"
+      ],
+      "drawing_source": {
+        "source_kind": "geometry_derived_simplified_proxy",
+        "source_label_zh": "基于原始高模几何生成的简化图纸表达",
+        "source_label_en": "simplified drawing representation derived from the original high-poly geometry",
+        "official_cad_used": false,
+        "third_party_cad_used": false
+      },
+      "official_reference": {
+        "source_id": "BAXTER-MIAMI-SOFT-F03-OFFICIAL-IDENTITY-001",
+        "source_kind": "manufacturer_product_page_vector_pdf_and_measurement_svg_identity_reference",
+        "manufacturer": "Baxter",
+        "family": "Miami Soft",
+        "designer": "Paola Navone",
+        "model_code": "F03",
+        "variant": "pouf, 170 x 108 h40 cm",
+        "scope": "exact manufacturer family, F03 pouf model and nominal dimensions; authenticated native 2D/3D/BIM not acquired; not a project shop drawing and not official CAD geometry",
+        "product_page": "https://www.baxter.it/gb/prodotti/miami-soft-divani-e-poltrone",
+        "technical_sheet": "https://dam.baxter.it/m/1e3eaec668311b07/original/Baxter_MiamiSoft_divano_Indoor.pdf",
+        "measurement_svg": "https://productsbook.baxter.it/models/measurements/MIAMSOPSF03C.svg",
+        "source_access_record": "output/review/highpoly-types/miamisoft-f03/official-source/source-access-record.json",
+        "official_product_cad_status": "manufacturer_login_required_not_acquired",
+        "official_product_cad_used": false
+      }
+    }
+  }
+}

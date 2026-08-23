@@ -1,0 +1,170 @@
+{
+  "schema_version": 1,
+  "generated_at": "2026-08-23T01:45:15.931094+00:00",
+  "generator": "pipeline/scripts/miamisoft_f03_review.py",
+  "formal_ifc": "2504 GBTB Yanlord Zhuhai.ifc",
+  "formal_ifc_sha256": "7a50b87e8f48a7c2bfbaa9f1dabdfca7155fa684b2325c66aa1ae15c8ab0a25c",
+  "formal_ifc_sha256_after_generation": "7a50b87e8f48a7c2bfbaa9f1dabdfca7155fa684b2325c66aa1ae15c8ab0a25c",
+  "formal_ifc_bytes_unchanged": true,
+  "profile_register": "output/review/highpoly-types/miamisoft-f03/profile.json",
+  "profile_register_sha256": "03e915c9eb3a5bbbaff611af2691d6636a53a78f25bc0f81fa2d76cf568491e1",
+  "profile_key": "miamisoft-f03",
+  "display_name": "Baxter Miami Soft F03 pouf",
+  "ifc_type_name": "MiamiSoft F03",
+  "ifc_type_description": "Pouf 170 x 108 h40 cm",
+  "article_number": "Baxter Miami Soft F03 pouf",
+  "representative_global_id": "1y3lLYK$H9fPbuh1R1vAKX",
+  "registered_instance_global_ids": [
+    "1y3lLYK$H9fPbuh1R1vAKX"
+  ],
+  "geometry_product_count": 1,
+  "whole_model_render": false,
+  "mesh_vertex_count": 5924,
+  "mesh_face_count": 10959,
+  "bounds_mm": {
+    "minimum": [
+      -873.79303,
+      -551.59021,
+      0.0
+    ],
+    "maximum": [
+      873.745972,
+      551.569702,
+      464.938965
+    ],
+    "size": [
+      1747.539001,
+      1103.159912,
+      464.938965
+    ]
+  },
+  "source_kind": "geometry_derived_simplified_proxy",
+  "source_label_zh": "基于原始高模几何生成的简化图纸表达",
+  "drawing_source": {
+    "source_kind": "geometry_derived_simplified_proxy",
+    "source_label_zh": "基于原始高模几何生成的简化图纸表达",
+    "source_label_en": "simplified drawing representation derived from the original high-poly geometry",
+    "official_cad_used": false,
+    "third_party_cad_used": false,
+    "official_source_access_record": "output/review/highpoly-types/miamisoft-f03/official-source/source-access-record.json",
+    "official_source_access_record_sha256": "7efeba5c7408b6e68f71db1db63ea202f2827f198a6fada9075d3136abfedee8",
+    "official_product_cad_status": "manufacturer_login_required_not_acquired_exact_vector_references_archived"
+  },
+  "official_reference": {
+    "source_id": "BAXTER-MIAMI-SOFT-F03-OFFICIAL-IDENTITY-001",
+    "source_kind": "manufacturer_product_page_vector_pdf_and_measurement_svg_identity_reference",
+    "manufacturer": "Baxter",
+    "family": "Miami Soft",
+    "designer": "Paola Navone",
+    "model_code": "F03",
+    "variant": "pouf, 170 x 108 h40 cm",
+    "scope": "exact manufacturer family, F03 pouf model and nominal dimensions; authenticated native 2D/3D/BIM not acquired; not a project shop drawing and not official CAD geometry",
+    "product_page": "https://www.baxter.it/gb/prodotti/miami-soft-divani-e-poltrone",
+    "technical_sheet": "https://dam.baxter.it/m/1e3eaec668311b07/original/Baxter_MiamiSoft_divano_Indoor.pdf",
+    "measurement_svg": "https://productsbook.baxter.it/models/measurements/MIAMSOPSF03C.svg",
+    "source_access_record": "output/review/highpoly-types/miamisoft-f03/official-source/source-access-record.json",
+    "official_product_cad_status": "manufacturer_login_required_not_acquired",
+    "official_product_cad_used": false
+  },
+  "official_identity_evidence_only": true,
+  "dimension_cross_check": {
+    "official_nominal_width_depth_height_mm": [
+      1700.0,
+      1080.0,
+      400.0
+    ],
+    "project_ifc_body_local_xyz_mm": [
+      1747.539001,
+      1103.159912,
+      464.938965
+    ],
+    "body_minus_official_nominal_mm": [
+      47.539001,
+      23.159912,
+      64.938965
+    ],
+    "maximum_absolute_delta_mm": 64.938965,
+    "tolerance_mm": 70.0,
+    "pass": true,
+    "interpretation": "The upholstered high-poly envelope exceeds the manufacturer nominal width, depth and height by 47.5 mm, 23.2 mm and 64.9 mm. The larger height delta is explicitly retained as the soft cushion envelope; no candidate geometry is scaled to force the 400 mm nominal height."
+  },
+  "official_cad_acquired": false,
+  "official_cad_exact_project_configuration_match": false,
+  "official_cad_used": false,
+  "third_party_cad_used": false,
+  "blue_line_present": false,
+  "official_source_access_record": "output/review/highpoly-types/miamisoft-f03/official-source/source-access-record.json",
+  "official_source_access_record_sha256": "7efeba5c7408b6e68f71db1db63ea202f2827f198a6fada9075d3136abfedee8",
+  "candidate_representations": "output/review/highpoly-types/miamisoft-f03/candidate-representations.json",
+  "candidate_representations_sha256": "f3aa02e1400811544fca43217168fb774ce1667186c8e71405d61225afb297e3",
+  "review_status": "visual_review_pending",
+  "approved_for_drawing_ifc": false,
+  "derived_ifc_write_allowed": false,
+  "formal_ifc_write": "not performed",
+  "views": [
+    {
+      "view": "plan",
+      "svg": "output/review/highpoly-types/miamisoft-f03/plan.svg",
+      "svg_sha256": "a5f2fa4215b0fdbc80c7b07ef9801bdaeabf9ef92acca04a6a453073fc88fd01",
+      "projection_axes": [
+        0,
+        1
+      ],
+      "raw_edge_count": 16876,
+      "displayed_raw_edge_count": 993,
+      "silhouette_path_count": 29,
+      "drawing_line_source_kind": "geometry_derived_simplified_proxy",
+      "drawing_line_source_label_zh": "基于原始高模几何生成的简化图纸表达",
+      "official_cad_path_count": 0,
+      "blue_line_present": false
+    },
+    {
+      "view": "front",
+      "svg": "output/review/highpoly-types/miamisoft-f03/front.svg",
+      "svg_sha256": "59b25f013adbecbb428fe490ec82559c2305703cda0d04b7c4b42985137ed953",
+      "projection_axes": [
+        0,
+        2
+      ],
+      "raw_edge_count": 16876,
+      "displayed_raw_edge_count": 993,
+      "silhouette_path_count": 20,
+      "drawing_line_source_kind": "geometry_derived_simplified_proxy",
+      "drawing_line_source_label_zh": "基于原始高模几何生成的简化图纸表达",
+      "official_cad_path_count": 0,
+      "blue_line_present": false
+    },
+    {
+      "view": "side",
+      "svg": "output/review/highpoly-types/miamisoft-f03/side.svg",
+      "svg_sha256": "af40178cce3ff069d727ea8ff1e15ecde88ba80dd32324c420af2c22fc68ca65",
+      "projection_axes": [
+        1,
+        2
+      ],
+      "raw_edge_count": 16876,
+      "displayed_raw_edge_count": 993,
+      "silhouette_path_count": 28,
+      "drawing_line_source_kind": "geometry_derived_simplified_proxy",
+      "drawing_line_source_label_zh": "基于原始高模几何生成的简化图纸表达",
+      "official_cad_path_count": 0,
+      "blue_line_present": false
+    }
+  ],
+  "pass": true,
+  "project_context": {
+    "manifest": "output/review/highpoly-types/miamisoft-f03/project-context-manifest.json",
+    "manifest_sha256": "401cec49af699d11ae4d884038309ecb12a50d510a0250f30f7d157d96ed1c52",
+    "walls_and_surrounding_project_elements_retained": true,
+    "overlay_top_layer_with_white_mask": true,
+    "pass": true
+  },
+  "bonsai_review": {
+    "manifest": "output/review/highpoly-types/miamisoft-f03/bonsai-review-manifest.json",
+    "manifest_sha256": "f3bb3781cef6e5d9ef5585b3b12d6ae995f15b5329c7b6b50d0d361172d96e8c",
+    "mode": "actual_bonsai_ifc_body_camera_render",
+    "saved_active_representation": "Body",
+    "saved_camera_count": 4,
+    "pass": true
+  }
+}
