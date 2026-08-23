@@ -1,0 +1,253 @@
+{
+  "schema_version": 2,
+  "generated_at": "2026-08-23T14:35:08.856339+00:00",
+  "generator": "pipeline/scripts/gessi316_54294_review.py",
+  "formal_ifc": "2504 GBTB Yanlord Zhuhai.ifc",
+  "formal_ifc_sha256": "7a50b87e8f48a7c2bfbaa9f1dabdfca7155fa684b2325c66aa1ae15c8ab0a25c",
+  "formal_ifc_sha256_after_generation": "7a50b87e8f48a7c2bfbaa9f1dabdfca7155fa684b2325c66aa1ae15c8ab0a25c",
+  "formal_ifc_bytes_unchanged": true,
+  "profile_register": "output/review/highpoly-types/gessi316-54294/profile.json",
+  "profile_register_sha256": "9cd93cd78c8085f66dbc98aa63e56a88fc6dba331577f37ebafbcf78d242cd7f",
+  "profile_key": "gessi316-54294",
+  "display_name": "Gessi316 Meccanica three-hole wall-mounted basin group / 45089_54294",
+  "ifc_type_name": "Gessi316 54294",
+  "ifc_type_description": "External parts three-holes basin mixer with long spout, without waste.",
+  "article_number": "45089_54294",
+  "drawing_product_code": "54294",
+  "representative_global_id": "2iKOL78$H0N9Yd9$ky3pW4",
+  "registered_instance_global_ids": [
+    "2iKOL78$H0N9Yd9$ky3pW4"
+  ],
+  "geometry_product_count": 1,
+  "whole_model_render": false,
+  "mesh_vertex_count": 21299,
+  "mesh_face_count": 41570,
+  "bounds_mm": {
+    "minimum": [
+      -69.455978,
+      -193.05135,
+      -17.340641
+    ],
+    "maximum": [
+      289.455658,
+      9.816093,
+      50.0
+    ],
+    "size": [
+      358.911636,
+      202.867443,
+      67.340641
+    ]
+  },
+  "source_kind": "native_dwg",
+  "source_label_zh": "Gessi 官方精确型号 54294 原生 DWG 图纸表达",
+  "drawing_source": {
+    "source_kind": "native_dwg",
+    "source_label_zh": "Gessi 官方精确型号 54294 原生 DWG 图纸表达",
+    "source_label_en": "drawing representation from the exact Gessi 54294 official native DWG",
+    "official_cad_used": true,
+    "third_party_cad_used": false,
+    "official_source_access_record": "output/review/highpoly-types/gessi316-54294/official-source/source-access-record.json",
+    "official_source_access_record_sha256": "e5c973813216c9ccc30cb3b2203d990959198fa5fb9118cba49dbc97f786d679",
+    "official_product_cad_status": "public_official_api_exact_54294_native_dwg_acquired",
+    "source_dwg": "output/review/highpoly-types/gessi316-54294/official-source/GPF5429400000G000_3.dwg",
+    "source_dwg_sha256": "dfe8bcf7e100c14187c387b75a35e3fe7f718c61595fadf66adfe92ca7648ff4"
+  },
+  "official_reference": {
+    "source_id": "GESSI316-45089-54294-OFFICIAL-NATIVE-DWG-001",
+    "source_kind": "manufacturer_exact_public_native_dwg",
+    "manufacturer": "Gessi",
+    "family": "Gessi316 Meccanica",
+    "article_number": "45089_54294",
+    "drawing_product_code": "54294",
+    "scope": "official Gessi exact 54294 family reference and 45089_54294 article combination; not a project shop drawing",
+    "product_page": "https://areapro.gessi.com/en/product/54294",
+    "official_catalogue": "https://gwebassets.gessi.com/strapi-uploads/assets/MAGAZINE_GESSI_316_2026_d8f9138389.pdf",
+    "native_dwg": "output/review/highpoly-types/gessi316-54294/official-source/GPF5429400000G000_3.dwg",
+    "native_dwg_sha256": "dfe8bcf7e100c14187c387b75a35e3fe7f718c61595fadf66adfe92ca7648ff4",
+    "technical_pdf": "output/review/highpoly-types/gessi316-54294/official-source/GPF5429400000G000_1.pdf",
+    "source_access_record": "output/review/highpoly-types/gessi316-54294/official-source/source-access-record.json",
+    "official_product_cad_status": "public_official_api_exact_54294_native_dwg_acquired",
+    "official_product_cad_used": true,
+    "companion_45089_dwg_used_as_54294_geometry": false
+  },
+  "official_identity_evidence_only": false,
+  "dimension_cross_check": {
+    "official_api_width_depth_height_mm": [
+      362.0,
+      210.0,
+      68.0
+    ],
+    "native_dwg_plan_envelope_mm": [
+      361.7,
+      209.812412
+    ],
+    "native_dwg_plan_absolute_delta_mm": [
+      0.3,
+      0.187588
+    ],
+    "ifc_body_size_mm": [
+      358.911636,
+      202.867443,
+      67.340641
+    ],
+    "native_dwg_vs_ifc_plan_envelope_absolute_delta_mm": [
+      2.788364,
+      6.944969
+    ],
+    "native_dwg_vs_ifc_front_envelope_absolute_delta_mm": [
+      2.788364,
+      4.209336
+    ],
+    "native_dwg_vs_ifc_side_full_envelope_absolute_delta_mm": [
+      25.763878,
+      4.211117
+    ],
+    "plan_tolerance_mm": 8.0,
+    "front_tolerance_mm": 5.0,
+    "side_full_envelope_tolerance_mm": 30.0,
+    "pass": true
+  },
+  "official_cad_acquired": true,
+  "official_cad_exact_project_configuration_match": true,
+  "official_cad_used": true,
+  "third_party_cad_used": false,
+  "companion_45089_dwg_used_as_54294_geometry": false,
+  "blue_line_present": true,
+  "white_mask_present": true,
+  "official_native_dwg_linework": "output/review/highpoly-types/gessi316-54294/official-native-dwg-linework.json",
+  "official_native_dwg_linework_sha256": "58d7ec62ec1b2fbe7adf418593f1d2015540e6965f2f69ee89c3b762a46b1898",
+  "official_pdf_verification": "output/review/highpoly-types/gessi316-54294/official-source/official-pdf-verification.json",
+  "official_pdf_verification_sha256": "971d4626b1730daf7419cead34daca9b0bbf9ac7b5253298c9feca41baa576b0",
+  "official_source_revalidation": "output/review/highpoly-types/gessi316-54294/official-source/official-source-revalidation.json",
+  "official_source_revalidation_sha256": "5057cee1729fd2b1be058f3343170d5c5d5cb96f1f3a0379e6a7bb5eddeb324d",
+  "official_source_access_record": "output/review/highpoly-types/gessi316-54294/official-source/source-access-record.json",
+  "official_source_access_record_sha256": "e5c973813216c9ccc30cb3b2203d990959198fa5fb9118cba49dbc97f786d679",
+  "candidate_representations": "output/review/highpoly-types/gessi316-54294/candidate-representations.json",
+  "candidate_representations_sha256": "0762098f1facc657735c7c5f5c037d2ae6f5479b4624d0bacfe6950fa37630b8",
+  "review_status": "visual_review_pending",
+  "approved_for_drawing_ifc": false,
+  "derived_ifc_write_allowed": false,
+  "formal_ifc_write": "not performed",
+  "scope": "official Gessi exact 54294 family reference and 45089_54294 article combination; not a project shop drawing",
+  "views": [
+    {
+      "view": "plan",
+      "svg": "output/review/highpoly-types/gessi316-54294/plan.svg",
+      "svg_sha256": "124f9c04adc9cf30da1f9fc6825cee7bab2686d6808d22984817f6efd8cee9e2",
+      "projection_axes": [
+        0,
+        1
+      ],
+      "raw_edge_count": 62861,
+      "displayed_raw_edge_count": 998,
+      "silhouette_path_count": 20,
+      "drawing_line_source_kind": "native_dwg",
+      "drawing_line_source_label_zh": "Gessi 官方精确型号 54294 原生 DWG 图纸表达",
+      "official_cad_path_count": 1481,
+      "blue_line_present": true,
+      "white_mask_present": true,
+      "ifc_dwg_compatibility": {
+        "ifc_body_projection_size_mm": [
+          358.911636,
+          202.867443
+        ],
+        "official_native_dwg_size_mm": [
+          361.7,
+          209.812412
+        ],
+        "absolute_delta_mm": [
+          2.788364,
+          6.944969
+        ],
+        "tolerance_mm": 8.0,
+        "side_full_envelope_note": null,
+        "pass": true
+      }
+    },
+    {
+      "view": "front",
+      "svg": "output/review/highpoly-types/gessi316-54294/front.svg",
+      "svg_sha256": "1f8c12796f9b824cf1dc554a000bac33b73ab53b644f317985b24f6fde6e2858",
+      "projection_axes": [
+        0,
+        2
+      ],
+      "raw_edge_count": 62861,
+      "displayed_raw_edge_count": 998,
+      "silhouette_path_count": 20,
+      "drawing_line_source_kind": "native_dwg",
+      "drawing_line_source_label_zh": "Gessi 官方精确型号 54294 原生 DWG 图纸表达",
+      "official_cad_path_count": 1099,
+      "blue_line_present": true,
+      "white_mask_present": true,
+      "ifc_dwg_compatibility": {
+        "ifc_body_projection_size_mm": [
+          358.911636,
+          67.340641
+        ],
+        "official_native_dwg_size_mm": [
+          361.7,
+          71.549977
+        ],
+        "absolute_delta_mm": [
+          2.788364,
+          4.209336
+        ],
+        "tolerance_mm": 5.0,
+        "side_full_envelope_note": null,
+        "pass": true
+      }
+    },
+    {
+      "view": "side",
+      "svg": "output/review/highpoly-types/gessi316-54294/side.svg",
+      "svg_sha256": "3f64f5a861d5c259004fb89b52bfb4716da8272a40337625a28345b949bdfadf",
+      "projection_axes": [
+        1,
+        2
+      ],
+      "raw_edge_count": 62861,
+      "displayed_raw_edge_count": 998,
+      "silhouette_path_count": 4,
+      "drawing_line_source_kind": "native_dwg",
+      "drawing_line_source_label_zh": "Gessi 官方精确型号 54294 原生 DWG 图纸表达",
+      "official_cad_path_count": 745,
+      "blue_line_present": true,
+      "white_mask_present": true,
+      "ifc_dwg_compatibility": {
+        "ifc_body_projection_size_mm": [
+          202.867443,
+          67.340641
+        ],
+        "official_native_dwg_size_mm": [
+          228.631321,
+          71.551758
+        ],
+        "absolute_delta_mm": [
+          25.763878,
+          4.211117
+        ],
+        "tolerance_mm": 30.0,
+        "side_full_envelope_note": "The official side envelope includes the published wall trim and full adjustable spout reach.",
+        "pass": true
+      }
+    }
+  ],
+  "pass": true,
+  "project_context": {
+    "manifest": "output/review/highpoly-types/gessi316-54294/project-context-manifest.json",
+    "manifest_sha256": "b8ff2130721612391e3ab5177fc3aabb96fc569ae2c1a6338f3bcdd909a22466",
+    "walls_and_surrounding_project_elements_retained": true,
+    "overlay_top_layer_with_white_mask": true,
+    "pass": true
+  },
+  "bonsai_review": {
+    "manifest": "output/review/highpoly-types/gessi316-54294/bonsai-review-manifest.json",
+    "manifest_sha256": "ccb0947cf4b68651d0d2af936718d6c81157236544d8b8a597c93b11d1d53fce",
+    "mode": "actual_bonsai_ifc_body_camera_render",
+    "saved_active_representation": "Body",
+    "saved_camera_count": 4,
+    "pass": true
+  }
+}

@@ -1,0 +1,111 @@
+{
+  "schema_version": 2,
+  "manufacturer": "Gessi",
+  "family": "Gessi316 Meccanica",
+  "project_ifc_type_name": "Gessi316 54294",
+  "project_ifc_type_description": "External parts three-holes basin mixer with long spout, without waste.",
+  "resolved_article_number": "45089_54294",
+  "external_visible_product_code": "54294",
+  "companion_built_in_product_code": "45089",
+  "research_date": "2026-08-23",
+  "official_identity_sources": [
+    {
+      "kind": "manufacturer_product_page",
+      "url": "https://www.gessi.com/it/rubinetteria-accessori-bagno/gessi316",
+      "local_path": "output/review/highpoly-types/gessi316-54294/official-source/gessi316-official-product-page.html",
+      "sha256": "a7edea46d7c1af80a01d10aaa9f59fcc493255abbd2f5a1b8568536cb1016c35"
+    },
+    {
+      "kind": "manufacturer_public_product_api",
+      "url": "https://g-ecatalogue-be-prod-we.azurewebsites.net/public/product/GetProductDetails?country=it&language=en&productCode=54294",
+      "local_path": "output/review/highpoly-types/gessi316-54294/official-source/gessi316-54294-product-details.json",
+      "sha256": "c6a8163abbedb11496ab31f59906a34e733a5f26d02b75c9d69d32c252f65216",
+      "identity_observation": "PF54294 / WASHBASIN GROUP / exact 54294 description and 362 x 210 x 68 mm dimensions."
+    },
+    {
+      "kind": "manufacturer_catalogue",
+      "url": "https://gwebassets.gessi.com/strapi-uploads/assets/MAGAZINE_GESSI_316_2026_d8f9138389.pdf",
+      "local_path": "output/review/highpoly-types/gessi316-54294/official-source/MAGAZINE_GESSI_316_2026.pdf",
+      "sha256": "b9c905bbdf91c9c0f4b779865376c732af741a4a199cfab7e973c21ba6caeb8d",
+      "pdf_page": 18,
+      "catalogue_page": 34,
+      "identity_observation": "Meccanica item 64 lists 45089_54294 as a three-hole wall-mounted basin group with long spout, without waste."
+    },
+    {
+      "kind": "manufacturer_regional_catalogue",
+      "url": "https://gwebassets.gessi.com/strapi-uploads/assets/Bathroom_Digest_Cina_Hong_Kong_c0ef1d4cd3.pdf",
+      "local_path": "output/review/highpoly-types/gessi316-54294/official-source/Bathroom_Digest_Cina_Hong_Kong.pdf",
+      "sha256": "454744ca5ca7a21ee8b9f1c2d34389f448585d3b30a5ba244660e6f0372cc510",
+      "pdf_page": 17,
+      "identity_observation": "The official regional catalogue maps built-in 45089 variants to Meccanica 54292 / 54294 external parts."
+    }
+  ],
+  "official_product_cad": {
+    "published_access_surface": "Gessi Area Pro anonymous public product and attachment APIs",
+    "area_pro_product_page": "https://areapro.gessi.com/en/product/54294",
+    "attachments_api": "https://g-ecatalogue-be-prod-we.azurewebsites.net/public/product/GetProductAttachments?country=it&language=en&productCode=PF54294",
+    "authentication_required": false,
+    "login_or_registration_performed": false,
+    "acquired": true,
+    "exact_project_configuration_match": true,
+    "drawing_product_code": "54294",
+    "native_dwg_zip": {
+      "url": "https://gessistorage.blob.core.windows.net/zwa/GPF5429400000G000_arc.zip",
+      "local_path": "output/review/highpoly-types/gessi316-54294/official-source/GPF5429400000G000_arc.zip",
+      "sha256": "fad0d98e94a83bb488b5f0703472862d628759f21700c1a87c3af343f4c1bdb9"
+    },
+    "native_dwg": {
+      "zip_member": "GPF5429400000G000_3.dwg",
+      "local_path": "output/review/highpoly-types/gessi316-54294/official-source/GPF5429400000G000_3.dwg",
+      "sha256": "dfe8bcf7e100c14187c387b75a35e3fe7f718c61595fadf66adfe92ca7648ff4"
+    },
+    "technical_vector_pdf": {
+      "url": "https://gessistorage.blob.core.windows.net/zc4/GPF5429400000G000_1.pdf",
+      "local_path": "output/review/highpoly-types/gessi316-54294/official-source/GPF5429400000G000_1.pdf",
+      "sha256": "82058bb27752f27e6fc92029783d67c15fd443befcd393f7d572fd0147a581e3"
+    },
+    "public_source_revalidation": "output/review/highpoly-types/gessi316-54294/official-source/official-source-revalidation.json",
+    "pdf_verification": "output/review/highpoly-types/gessi316-54294/official-source/official-pdf-verification.json",
+    "local_cad_files": [
+      "output/review/highpoly-types/gessi316-54294/official-source/GPF5429400000G000_3.dwg"
+    ]
+  },
+  "companion_product_cad": {
+    "product_code": "45089",
+    "identity": "Watertight built-in part for three-hole basin mixer",
+    "native_dwg": "output/review/highpoly-types/gessi316-54294/official-source/GPF4508920000G000_4.dwg",
+    "native_dwg_sha256": "861f9a73ce4e454e3fec753c2495bcbe0e3d9f320d2b110d678790426ebd2e6c",
+    "used_as_54294_drawing_geometry": false,
+    "purpose": "article-combination identity evidence only"
+  },
+  "drawing_geometry_source": {
+    "source_kind": "native_dwg",
+    "source_label_zh": "Gessi 官方精确型号 54294 原生 DWG 图纸表达",
+    "source_label_en": "drawing representation from the exact Gessi 54294 official native DWG",
+    "official_cad_used": true,
+    "third_party_cad_used": false,
+    "adjacent_product_cad_used": false,
+    "source_dwg_sha256": "dfe8bcf7e100c14187c387b75a35e3fe7f718c61595fadf66adfe92ca7648ff4"
+  },
+  "dimension_cross_check": {
+    "official_api_width_depth_height_mm": [362.0, 210.0, 68.0],
+    "native_dwg_plan_envelope_mm": [361.7, 209.812412],
+    "native_dwg_plan_absolute_delta_mm": [0.3, 0.187588],
+    "ifc_body_size_mm": [358.911636, 202.867443, 67.340641],
+    "native_dwg_vs_ifc_plan_envelope_absolute_delta_mm": [2.788364, 6.944969],
+    "native_dwg_vs_ifc_front_envelope_absolute_delta_mm": [2.788364, 4.209336],
+    "native_dwg_vs_ifc_side_full_envelope_absolute_delta_mm": [25.763878, 4.211117],
+    "plan_tolerance_mm": 8.0,
+    "front_tolerance_mm": 5.0,
+    "side_full_envelope_tolerance_mm": 30.0,
+    "pass": true
+  },
+  "scope": "official Gessi exact 54294 family reference and 45089_54294 article combination; not a project shop drawing",
+  "identity_and_geometry_policy": {
+    "54294_native_dwg_used_for_three_views": true,
+    "45089_companion_dwg_used_as_54294_geometry": false,
+    "adjacent_gessi_product_cad_used": false,
+    "third_party_cad_used": false
+  },
+  "pass": true
+}

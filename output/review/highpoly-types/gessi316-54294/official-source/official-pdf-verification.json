@@ -1,0 +1,117 @@
+{
+  "schema_version": 1,
+  "checked_at": "2026-08-23T14:32:25.207600+00:00",
+  "manufacturer": "Gessi",
+  "family": "Gessi316 Meccanica",
+  "article_number": "45089_54294",
+  "drawing_product_code": "54294",
+  "pdfs": {
+    "technical": {
+      "kind": "technical",
+      "path": "output/review/highpoly-types/gessi316-54294/official-source/GPF5429400000G000_1.pdf",
+      "sha256": "82058bb27752f27e6fc92029783d67c15fd443befcd393f7d572fd0147a581e3",
+      "page_count": 1,
+      "verified_page": 1,
+      "required_tokens": [
+        "GESSI 316 54294",
+        "GPF5429400000G000",
+        "362",
+        "210-190",
+        "201-181"
+      ],
+      "all_required_tokens_present": true,
+      "extracted_text_sha256": "3aad76ffff867bd82763f528e2dc1ddafd68f3e27cb05e5e631f2577745673de",
+      "render": "output/review/highpoly-types/gessi316-54294/official-source/verification/GPF5429400000G000_1-page-1.png",
+      "render_sha256": "f61a64ea2c6c81c706a18ff09f8d86157b283313aa292b360992b191e6560a54",
+      "render_dpi": 180,
+      "metadata": {
+        "author": "ITTlab S.r.l.",
+        "creator": "Creo Parametric 7.0",
+        "creation_date": "D:20211203080527+01'00'"
+      },
+      "pass": true
+    },
+    "gessi316_catalogue": {
+      "kind": "gessi316_catalogue",
+      "path": "output/review/highpoly-types/gessi316-54294/official-source/MAGAZINE_GESSI_316_2026.pdf",
+      "sha256": "b9c905bbdf91c9c0f4b779865376c732af741a4a199cfab7e973c21ba6caeb8d",
+      "page_count": 21,
+      "verified_page": 18,
+      "required_tokens": [
+        "45089_54294",
+        "THREE-HOLES WALL-MOUNTED",
+        "LONG SPOUT"
+      ],
+      "all_required_tokens_present": true,
+      "extracted_text_sha256": "0b07289b9ff95bc3a186581865f72ff88912be4bcbda5cd64c3dee10d42dfef5",
+      "render": "output/review/highpoly-types/gessi316-54294/official-source/verification/MAGAZINE_GESSI_316_2026-page-18.png",
+      "render_sha256": "90b68db472fe831dd82453fcd8117c3e0b57f4b49ab46cfec66fc17717b39852",
+      "render_dpi": 180,
+      "metadata": {
+        "author": null,
+        "creator": "Adobe InDesign 21.0 (Windows)",
+        "creation_date": "D:20260202125658+01'00'"
+      },
+      "pass": true
+    },
+    "regional_catalogue": {
+      "kind": "regional_catalogue",
+      "path": "output/review/highpoly-types/gessi316-54294/official-source/Bathroom_Digest_Cina_Hong_Kong.pdf",
+      "sha256": "454744ca5ca7a21ee8b9f1c2d34389f448585d3b30a5ba244660e6f0372cc510",
+      "page_count": 129,
+      "verified_page": 17,
+      "required_tokens": [
+        "45089_54094",
+        "MECCANICA 54292 / 54294"
+      ],
+      "all_required_tokens_present": true,
+      "extracted_text_sha256": "2534221743b503d8a69b576d476ef6b59cd03c4b9b4f2f401b0ededfee33b264",
+      "render": "output/review/highpoly-types/gessi316-54294/official-source/verification/Bathroom_Digest_Cina_Hong_Kong-page-17.png",
+      "render_sha256": "d9b602d0e9580e81fb027e48cb7f2e14aee9a872365393d393264905b6d37b17",
+      "render_dpi": 180,
+      "metadata": {
+        "author": null,
+        "creator": "Adobe InDesign 18.0 (Macintosh)",
+        "creation_date": "D:20230630145933+02'00'"
+      },
+      "pass": true
+    }
+  },
+  "mechanical_cross_check": {
+    "technical_pdf_title_matches_exact_dwg_basename": true,
+    "technical_pdf_model_code": "54294",
+    "technical_pdf_nominal_width_mm": 362.0,
+    "technical_pdf_depth_range_mm": [
+      190.0,
+      210.0
+    ],
+    "technical_pdf_spout_range_mm": [
+      181.0,
+      201.0
+    ],
+    "catalogue_article_combination": "45089_54294",
+    "regional_catalogue_external_product_options": [
+      "54292",
+      "54294"
+    ],
+    "native_dwg_expected_sha256": "dfe8bcf7e100c14187c387b75a35e3fe7f718c61595fadf66adfe92ca7648ff4",
+    "native_dwg_plan_envelope_mm": [
+      361.7,
+      209.812412
+    ],
+    "native_dwg_plan_vs_pdf_nominal_absolute_delta_mm": [
+      0.3,
+      0.187588
+    ],
+    "tolerance_mm": 0.5,
+    "pass": true
+  },
+  "visual_review": {
+    "status": "codex_visual_qa_pass",
+    "technical_sheet_observation": "Exact GESSI 316 54294 title, three external wall-mounted elements, side spout, and 362 / 210-190 / 68 mm dimensions are legible.",
+    "gessi316_catalogue_observation": "Item 64 visibly identifies 45089_54294 as the three-hole wall-mounted basin group with long spout.",
+    "regional_catalogue_observation": "The regional spread visibly maps built-in 45089 variants to MECCANICA 54292 / 54294 external parts.",
+    "human_product_drawing_approval": "pending"
+  },
+  "pass": true
+}

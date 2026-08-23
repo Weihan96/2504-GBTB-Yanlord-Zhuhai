@@ -1,0 +1,182 @@
+{
+  "schema_version": 1,
+  "checked_at": "2026-08-23T14:32:12.736786+00:00",
+  "manufacturer": "Gessi",
+  "family": "Gessi316 Meccanica",
+  "resolved_article_number": "45089_54294",
+  "external_visible_product_code": "54294",
+  "companion_built_in_product_code": "45089",
+  "public_access": {
+    "catalogue_page": "https://www.gessi.com/us/catalogs",
+    "area_pro_product_page": "https://areapro.gessi.com/en/product/54294",
+    "anonymous_public_api_used": true,
+    "login_or_registration_performed": false,
+    "exact_54294_native_dwg_publicly_downloadable": true
+  },
+  "identity": {
+    "54294": {
+      "pim_id": "PF54294",
+      "product_name": "WASHBASIN GROUP",
+      "product_description": "External parts three-holes basin mixer with long spout, without waste.",
+      "technical_dimensions": {
+        "Height": "68 mm",
+        "Width": "362 mm",
+        "Depth": "210 mm"
+      }
+    },
+    "45089": {
+      "pim_id": "PF45089",
+      "product_name": "WASHBASIN MIXER",
+      "product_description": "Watertight built-in part for three-hole basin mixer"
+    }
+  },
+  "api_requests": {
+    "54294_details": {
+      "url": "https://g-ecatalogue-be-prod-we.azurewebsites.net/public/product/GetProductDetails?country=it&language=en&productCode=54294",
+      "http_status": 200,
+      "content_type": "application/json",
+      "bytes": 16496,
+      "sha256": "889f1a29848044b24312f77ead38e22e8d777a13f2fe2653c801357b5a68f8f4"
+    },
+    "54294_attachments": {
+      "url": "https://g-ecatalogue-be-prod-we.azurewebsites.net/public/product/GetProductAttachments?country=it&language=en&productCode=PF54294",
+      "http_status": 200,
+      "content_type": "application/json",
+      "bytes": 101078,
+      "sha256": "17c64ec8fa1956bf26b77c1c69e00dea5e42fa61e10a26d65f4f8be66ea31e9e"
+    },
+    "45089_details": {
+      "url": "https://g-ecatalogue-be-prod-we.azurewebsites.net/public/product/GetProductDetails?country=it&language=en&productCode=45089",
+      "http_status": 200,
+      "content_type": "application/json",
+      "bytes": 6964,
+      "sha256": "b1340af800332bd8ae5102dd9f5ceb38e20d989827a307dc065ac0dc83283855"
+    },
+    "45089_attachments": {
+      "url": "https://g-ecatalogue-be-prod-we.azurewebsites.net/public/product/GetProductAttachments?country=it&language=en&productCode=PF45089",
+      "http_status": 200,
+      "content_type": "application/json",
+      "bytes": 10089,
+      "sha256": "5eab6aab181a08f311cf31130ce745b88aeeeff4c0e1a8cea2f1f6263aad8845"
+    }
+  },
+  "selected_attachments": {
+    "54294_native_2d_dwg_zip": {
+      "attachment_type": "2D Model - DWG",
+      "attachment_type_original": "ZWA",
+      "attachment_name": "GPF5429400000G000_arc.zip",
+      "attachment_url": "https://gessistorage.blob.core.windows.net/zwa/GPF5429400000G000_arc.zip",
+      "download_visible": true,
+      "matching_configured_codes": [
+        "GPF542940A000G000",
+        "GPF542940C072G000",
+        "GPF542940E059G000",
+        "GPF542940E066G000",
+        "GPF542940P004G000",
+        "GPF542940P006G000",
+        "GPF542940P024G000",
+        "GPF542940P025G000",
+        "GPF542940P065G000"
+      ]
+    },
+    "54294_technical_drawing_mm_pdf": {
+      "attachment_type": "Technical Drawing mm - PDF",
+      "attachment_type_original": "ZC4",
+      "attachment_name": "GPF5429400000G000_1.pdf",
+      "attachment_url": "https://gessistorage.blob.core.windows.net/zc4/GPF5429400000G000_1.pdf",
+      "download_visible": true,
+      "matching_configured_codes": [
+        "GPF542940A000G000",
+        "GPF542940C072G000",
+        "GPF542940E059G000",
+        "GPF542940E066G000",
+        "GPF542940P004G000",
+        "GPF542940P006G000",
+        "GPF542940P024G000",
+        "GPF542940P025G000",
+        "GPF542940P065G000"
+      ]
+    },
+    "45089_native_2d_dwg_zip": {
+      "attachment_type": "2D Model - DWG",
+      "attachment_type_original": "ZWA",
+      "attachment_name": "GPF4508920000G000_arc.zip",
+      "attachment_url": "https://gessistorage.blob.core.windows.net/zwa/GPF4508920000G000_arc.zip",
+      "download_visible": true,
+      "matching_configured_codes": [
+        "GPF450892G001G000"
+      ]
+    }
+  },
+  "downloads": {
+    "54294_zip": {
+      "url": "https://gessistorage.blob.core.windows.net/zwa/GPF5429400000G000_arc.zip",
+      "http_status": 200,
+      "content_type": "application/x-zip-compressed",
+      "bytes": 215657,
+      "path": "output/review/highpoly-types/gessi316-54294/official-source/GPF5429400000G000_arc.zip",
+      "expected_sha256": "fad0d98e94a83bb488b5f0703472862d628759f21700c1a87c3af343f4c1bdb9",
+      "downloaded_sha256": "fad0d98e94a83bb488b5f0703472862d628759f21700c1a87c3af343f4c1bdb9",
+      "local_sha256": "fad0d98e94a83bb488b5f0703472862d628759f21700c1a87c3af343f4c1bdb9",
+      "downloaded_bytes_match_local_archive": true,
+      "pass": true
+    },
+    "54294_pdf": {
+      "url": "https://gessistorage.blob.core.windows.net/zc4/GPF5429400000G000_1.pdf",
+      "http_status": 200,
+      "content_type": "application/pdf",
+      "bytes": 130107,
+      "path": "output/review/highpoly-types/gessi316-54294/official-source/GPF5429400000G000_1.pdf",
+      "expected_sha256": "82058bb27752f27e6fc92029783d67c15fd443befcd393f7d572fd0147a581e3",
+      "downloaded_sha256": "82058bb27752f27e6fc92029783d67c15fd443befcd393f7d572fd0147a581e3",
+      "local_sha256": "82058bb27752f27e6fc92029783d67c15fd443befcd393f7d572fd0147a581e3",
+      "downloaded_bytes_match_local_archive": true,
+      "pass": true
+    },
+    "45089_zip": {
+      "url": "https://gessistorage.blob.core.windows.net/zwa/GPF4508920000G000_arc.zip",
+      "http_status": 200,
+      "content_type": "application/x-zip-compressed",
+      "bytes": 277447,
+      "path": "output/review/highpoly-types/gessi316-54294/official-source/GPF4508920000G000_arc.zip",
+      "expected_sha256": "b1dfbd7b379f359f969be51193d9bcc61f24a354a9c7935d72011170ff60fc30",
+      "downloaded_sha256": "b1dfbd7b379f359f969be51193d9bcc61f24a354a9c7935d72011170ff60fc30",
+      "local_sha256": "b1dfbd7b379f359f969be51193d9bcc61f24a354a9c7935d72011170ff60fc30",
+      "downloaded_bytes_match_local_archive": true,
+      "pass": true
+    }
+  },
+  "zip_members": {
+    "54294": {
+      "zip_path": "output/review/highpoly-types/gessi316-54294/official-source/GPF5429400000G000_arc.zip",
+      "zip_sha256": "fad0d98e94a83bb488b5f0703472862d628759f21700c1a87c3af343f4c1bdb9",
+      "member": "GPF5429400000G000_3.dwg",
+      "member_bytes": 639178,
+      "member_sha256": "dfe8bcf7e100c14187c387b75a35e3fe7f718c61595fadf66adfe92ca7648ff4",
+      "extracted_path": "output/review/highpoly-types/gessi316-54294/official-source/GPF5429400000G000_3.dwg",
+      "extracted_sha256": "dfe8bcf7e100c14187c387b75a35e3fe7f718c61595fadf66adfe92ca7648ff4",
+      "member_matches_extracted_file": true,
+      "pass": true
+    },
+    "45089": {
+      "zip_path": "output/review/highpoly-types/gessi316-54294/official-source/GPF4508920000G000_arc.zip",
+      "zip_sha256": "b1dfbd7b379f359f969be51193d9bcc61f24a354a9c7935d72011170ff60fc30",
+      "member": "GPF4508920000G000_4.dwg",
+      "member_bytes": 690866,
+      "member_sha256": "861f9a73ce4e454e3fec753c2495bcbe0e3d9f320d2b110d678790426ebd2e6c",
+      "extracted_path": "output/review/highpoly-types/gessi316-54294/official-source/GPF4508920000G000_4.dwg",
+      "extracted_sha256": "861f9a73ce4e454e3fec753c2495bcbe0e3d9f320d2b110d678790426ebd2e6c",
+      "member_matches_extracted_file": true,
+      "pass": true
+    }
+  },
+  "drawing_geometry_policy": {
+    "native_dwg_used_for_three_views": "54294 only",
+    "companion_45089_dwg_used_as_54294_geometry": false,
+    "adjacent_gessi_product_cad_used": false,
+    "third_party_cad_used": false
+  },
+  "all_downloaded_bytes_match_local_archive": true,
+  "all_zip_members_match_extracted_files": true,
+  "pass": true
+}
