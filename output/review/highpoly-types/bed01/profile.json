@@ -1,0 +1,45 @@
+{
+  "schema_version": 2,
+  "formal_ifc_sha256": "7a50b87e8f48a7c2bfbaa9f1dabdfca7155fa684b2325c66aa1ae15c8ab0a25c",
+  "profiles": {
+    "bed01": {
+      "display_name": "Baxter Casablanca bed / project BED01",
+      "ifc_type_name": "BED01",
+      "representative_global_id": "3IQBEqO5vDI8Z9k1Ltge_N",
+      "expected_instance_global_ids": ["3IQBEqO5vDI8Z9k1Ltge_N"],
+      "profile_source": "isolated_highpoly_projection; official_baxter_identity_and_dimensions_archived; official_2d_3d_bim_login_required_not_acquired",
+      "silhouette_simplify_mm": 2.0,
+      "semantic_sections": {"plan": [], "front": [], "side": []},
+      "required_semantics": [
+        "two_folded_goose_down_headboard_cushions",
+        "upholstered_bed_frame",
+        "walnut_stained_beech_feet",
+        "manufacturer_dimension_conflict_retained_for_review"
+      ],
+      "drawing_source": {
+        "source_kind": "geometry_derived_simplified_proxy",
+        "source_label_zh": "基于原始高模几何生成的简化图纸表达",
+        "source_label_en": "simplified drawing representation derived from the original high-poly geometry",
+        "official_cad_used": false,
+        "third_party_cad_used": false
+      },
+      "official_reference": {
+        "source_id": "BAXTER-CASABLANCA-BED-OFFICIAL-IDENTITY-001",
+        "source_kind": "manufacturer_product_page_and_technical_sheet_identity_only",
+        "manufacturer": "Baxter",
+        "family": "Casablanca",
+        "designer": "Paola Navone",
+        "project_type_code": "BED01",
+        "project_ifc_description": "Casablanca 180",
+        "official_product_page_180x200_variant_overall_mm": [2100, 2520, 900],
+        "official_technical_sheet_180x200_variant_overall_mm": [2200, 2520, 900],
+        "scope": "manufacturer family and 180 x 200 cm variant identity only; manufacturer dimension conflict requires review; not a project shop drawing and not drawing geometry",
+        "product_page": "https://www.baxter.it/en/products/casablanca-beds",
+        "technical_sheet": "https://dam.baxter.it/m/394e8cfc516bb3a/original/Baxter_Casablanca_letto_Indoor.pdf",
+        "source_access_record": "output/review/highpoly-types/bed01/official-source/source-access-record.json",
+        "official_2d_3d_bim_status": "manufacturer_login_required_not_acquired",
+        "official_cad_used": false
+      }
+    }
+  }
+}

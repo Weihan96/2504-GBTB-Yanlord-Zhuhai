@@ -1,0 +1,173 @@
+{
+  "schema_version": 1,
+  "generated_at": "2026-08-22T20:41:23.002396+00:00",
+  "generator": "pipeline/scripts/bed01_review.py",
+  "formal_ifc": "2504 GBTB Yanlord Zhuhai.ifc",
+  "formal_ifc_sha256": "7a50b87e8f48a7c2bfbaa9f1dabdfca7155fa684b2325c66aa1ae15c8ab0a25c",
+  "formal_ifc_sha256_after_generation": "7a50b87e8f48a7c2bfbaa9f1dabdfca7155fa684b2325c66aa1ae15c8ab0a25c",
+  "formal_ifc_bytes_unchanged": true,
+  "profile_register": "pipeline/decisions/highpoly-drawing-profile-register.json",
+  "profile_register_sha256": "2cf2fb28a2df5cd6dd64fffc5835fe7b0caf0f43e3288c49c6c8ee68330b1291",
+  "profile_key": "bed01",
+  "display_name": "Baxter Casablanca bed / project BED01",
+  "ifc_type_name": "BED01",
+  "ifc_type_description": "Casablanca 180",
+  "article_number": "Baxter Casablanca 180 / BED01",
+  "representative_global_id": "3IQBEqO5vDI8Z9k1Ltge_N",
+  "registered_instance_global_ids": [
+    "3IQBEqO5vDI8Z9k1Ltge_N"
+  ],
+  "geometry_product_count": 1,
+  "whole_model_render": false,
+  "mesh_vertex_count": 15349,
+  "mesh_face_count": 29772,
+  "bounds_mm": {
+    "minimum": [
+      -1132.12793,
+      -1279.692017,
+      0.310961
+    ],
+    "maximum": [
+      1132.03894,
+      1259.109985,
+      947.578918
+    ],
+    "size": [
+      2264.16687,
+      2538.802002,
+      947.267957
+    ]
+  },
+  "source_kind": "geometry_derived_simplified_proxy",
+  "source_label_zh": "基于原始高模几何生成的简化图纸表达",
+  "drawing_source": {
+    "source_kind": "geometry_derived_simplified_proxy",
+    "source_label_zh": "基于原始高模几何生成的简化图纸表达",
+    "source_label_en": "simplified drawing representation derived from the original high-poly geometry",
+    "official_cad_used": false,
+    "third_party_cad_used": false,
+    "official_source_access_record": "output/review/highpoly-types/bed01/official-source/source-access-record.json",
+    "official_source_access_record_sha256": "e0193b5284e14580c44451a319f75f5c72c10741b51aef18b33b39a7922b5af9",
+    "official_product_cad_status": "manufacturer_login_required_not_acquired"
+  },
+  "official_reference": {
+    "source_id": "BAXTER-CASABLANCA-BED-OFFICIAL-IDENTITY-001",
+    "source_kind": "manufacturer_product_page_and_technical_sheet_identity_only",
+    "manufacturer": "Baxter",
+    "family": "Casablanca",
+    "designer": "Paola Navone",
+    "project_type_code": "BED01",
+    "project_ifc_description": "Casablanca 180",
+    "official_product_page_180x200_variant_overall_mm": [
+      2100,
+      2520,
+      900
+    ],
+    "official_technical_sheet_180x200_variant_overall_mm": [
+      2200,
+      2520,
+      900
+    ],
+    "scope": "manufacturer family and 180 x 200 cm variant identity only; manufacturer dimension conflict requires review; not a project shop drawing and not drawing geometry",
+    "product_page": "https://www.baxter.it/en/products/casablanca-beds",
+    "technical_sheet": "https://dam.baxter.it/m/394e8cfc516bb3a/original/Baxter_Casablanca_letto_Indoor.pdf",
+    "source_access_record": "output/review/highpoly-types/bed01/official-source/source-access-record.json",
+    "official_2d_3d_bim_status": "manufacturer_login_required_not_acquired",
+    "official_cad_used": false
+  },
+  "official_identity_evidence_only": true,
+  "dimension_cross_check": {
+    "official_product_page_180x200_variant_overall_mm": [
+      2100.0,
+      2520.0,
+      900.0
+    ],
+    "official_technical_sheet_180x200_variant_overall_mm": [
+      2200.0,
+      2520.0,
+      900.0
+    ],
+    "project_ifc_body_bounds_mm": [
+      2264.16687,
+      2538.802002,
+      947.267957
+    ],
+    "body_minus_product_page_mm": [
+      164.16687,
+      18.802002,
+      47.267957
+    ],
+    "body_minus_technical_sheet_mm": [
+      64.16687,
+      18.802002,
+      47.267957
+    ],
+    "status": "manufacturer_sources_disagree_review_required_not_scaled_or_corrected",
+    "note": "The current official product page and the archived official technical sheet disagree by 100 mm in overall width for the 180 x 200 cm bed-base version. The detailed IFC Body is closer to the technical sheet but does not exactly match either source. The conflict is retained and no geometry is anisotropically fitted."
+  },
+  "official_cad_acquired": false,
+  "official_cad_used": false,
+  "third_party_cad_used": false,
+  "blue_line_present": false,
+  "official_source_access_record": "output/review/highpoly-types/bed01/official-source/source-access-record.json",
+  "official_source_access_record_sha256": "e0193b5284e14580c44451a319f75f5c72c10741b51aef18b33b39a7922b5af9",
+  "candidate_representations": "output/review/highpoly-types/bed01/candidate-representations.json",
+  "candidate_representations_sha256": "2134cc6a2882b3ba22091b782284956c5a854623af95871acf058a057477f210",
+  "review_status": "visual_review_pending",
+  "approved_for_drawing_ifc": false,
+  "derived_ifc_write_allowed": false,
+  "formal_ifc_write": "not performed",
+  "project_context": "output/review/highpoly-types/bed01/project-context-manifest.json",
+  "bonsai_review": "output/review/highpoly-types/bed01/bonsai-review-manifest.json",
+  "views": [
+    {
+      "view": "plan",
+      "svg": "output/review/highpoly-types/bed01/plan.svg",
+      "svg_sha256": "6da6e943f736230573715468a24e52691461bbf2df5b2a6ed255198c47fd938f",
+      "projection_axes": [
+        0,
+        1
+      ],
+      "raw_edge_count": 45119,
+      "displayed_raw_edge_count": 981,
+      "silhouette_path_count": 3,
+      "drawing_line_source_kind": "geometry_derived_simplified_proxy",
+      "drawing_line_source_label_zh": "基于原始高模几何生成的简化图纸表达",
+      "official_cad_path_count": 0,
+      "blue_line_present": false
+    },
+    {
+      "view": "front",
+      "svg": "output/review/highpoly-types/bed01/front.svg",
+      "svg_sha256": "6a72e8ced190a5fd20eb768cd3a4096e53a544c216f89d691b61a766fb65a260",
+      "projection_axes": [
+        0,
+        2
+      ],
+      "raw_edge_count": 45119,
+      "displayed_raw_edge_count": 981,
+      "silhouette_path_count": 7,
+      "drawing_line_source_kind": "geometry_derived_simplified_proxy",
+      "drawing_line_source_label_zh": "基于原始高模几何生成的简化图纸表达",
+      "official_cad_path_count": 0,
+      "blue_line_present": false
+    },
+    {
+      "view": "side",
+      "svg": "output/review/highpoly-types/bed01/side.svg",
+      "svg_sha256": "100f3b9ef80ed3c681ffb0c3e4e6439ebd2a65e339209804f791fba5e69a5910",
+      "projection_axes": [
+        1,
+        2
+      ],
+      "raw_edge_count": 45119,
+      "displayed_raw_edge_count": 981,
+      "silhouette_path_count": 4,
+      "drawing_line_source_kind": "geometry_derived_simplified_proxy",
+      "drawing_line_source_label_zh": "基于原始高模几何生成的简化图纸表达",
+      "official_cad_path_count": 0,
+      "blue_line_present": false
+    }
+  ],
+  "pass": true
+}

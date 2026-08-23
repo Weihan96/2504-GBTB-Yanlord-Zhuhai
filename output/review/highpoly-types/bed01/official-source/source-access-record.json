@@ -1,0 +1,54 @@
+{
+  "schema_version": 1,
+  "manufacturer": "Baxter",
+  "family": "Casablanca",
+  "designer": "Paola Navone",
+  "project_type_code": "BED01",
+  "project_ifc_type_description": "Casablanca 180",
+  "identity_status": "manufacturer_family_and_180x200_variant_confirmed_dimension_conflict_review_required",
+  "research_date": "2026-08-23",
+  "official_identity_sources": [
+    {
+      "kind": "manufacturer_product_page",
+      "url": "https://www.baxter.it/en/products/casablanca-beds",
+      "local_path": "output/review/highpoly-types/bed01/official-source/baxter-casablanca-official-product-page.html",
+      "sha256": "881b9ef3d037094f4be09b20e847bdb5d63e2f89b80ba53143a751fb5c092754",
+      "observation": "Official Baxter product page identifies Casablanca by Paola Navone and currently lists the 180 x 200 cm bed-base version as 210 x 252 x 90 cm overall."
+    },
+    {
+      "kind": "manufacturer_technical_sheet",
+      "url": "https://dam.baxter.it/m/394e8cfc516bb3a/original/Baxter_Casablanca_letto_Indoor.pdf",
+      "local_path": "output/review/highpoly-types/bed01/official-source/Baxter_Casablanca_technical-sheet.pdf",
+      "sha256": "22d32eba8a881688b98872ede9b4c9b33493a7a5800b009d978581bd7438d363",
+      "pdf_page": 4,
+      "observation": "Official technical sheet visually identifies the 180 x 200 cm slatted-base version as 220 x 252 x 90 cm overall. Its dimension diagrams are identity and dimension evidence only, not native CAD geometry."
+    }
+  ],
+  "official_product_cad": {
+    "published_access_surface": "Baxter professional login",
+    "product_page": "https://www.baxter.it/en/products/casablanca-beds",
+    "advertised_formats": ["2D", "3D", "BIM"],
+    "authentication_required": true,
+    "acquired": false,
+    "local_cad_files": [],
+    "reason": "The official product page requires login for 2D, 3D and BIM downloads. No account was created and no third-party or visually similar Casablanca CAD was substituted."
+  },
+  "dimension_cross_check": {
+    "official_product_page_180x200_variant_overall_mm": [2100.0, 2520.0, 900.0],
+    "official_technical_sheet_180x200_variant_overall_mm": [2200.0, 2520.0, 900.0],
+    "project_ifc_body_bounds_mm": [2264.16687, 2538.802002, 947.267957],
+    "body_minus_product_page_mm": [164.16687, 18.802002, 47.267957],
+    "body_minus_technical_sheet_mm": [64.16687, 18.802002, 47.267957],
+    "status": "manufacturer_sources_disagree_review_required_not_scaled_or_corrected",
+    "note": "The current official product page and the archived official technical sheet disagree by 100 mm in overall width for the 180 x 200 cm bed-base version. The detailed IFC Body is closer to the technical sheet but does not exactly match either source. The conflict is retained and no geometry is anisotropically fitted."
+  },
+  "drawing_geometry_source": {
+    "source_kind": "geometry_derived_simplified_proxy",
+    "source_label_zh": "基于原始高模几何生成的简化图纸表达",
+    "source_label_en": "simplified drawing representation derived from the original high-poly geometry",
+    "official_cad_used": false,
+    "third_party_cad_used": false
+  },
+  "scope": "manufacturer family and 180 x 200 cm variant identity only; manufacturer dimension conflict requires review; not a project shop drawing and not drawing geometry",
+  "pass": true
+}

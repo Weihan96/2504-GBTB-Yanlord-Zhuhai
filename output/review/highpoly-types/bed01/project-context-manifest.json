@@ -1,0 +1,65 @@
+{
+  "schema_version": 1,
+  "generator": "pipeline/scripts/render_bed01_project_context.py",
+  "source_kind": "geometry_derived_simplified_proxy",
+  "source_label_zh": "基于原始高模几何生成的简化图纸表达",
+  "official_cad_used": false,
+  "third_party_cad_used": false,
+  "project_context_retained": true,
+  "walls_and_surrounding_project_elements_retained": true,
+  "overlay_top_layer_with_white_mask": true,
+  "blue_line_present": false,
+  "project_scale_svg_units_per_mm": 0.02,
+  "views": [
+    {
+      "view": "plan",
+      "candidate_view": "plan",
+      "source": "drawings/Furniture Plan.svg",
+      "output": "output/review/highpoly-types/bed01/project-context-furniture-plan.svg",
+      "output_sha256": "adcf5a9aeda9c372ee45153c29cf13533827d222eb66858f56f97afe7c26b6a3",
+      "review_crop": "output/review/highpoly-types/bed01/project-context-furniture-plan-review.svg",
+      "review_crop_sha256": "22cef65cc142fec3303f90dedb7ef9c56e7ffc7403c73d7e4cb76f753676554d",
+      "overlay": {
+        "ifc_guid": "3IQBEqO5vDI8Z9k1Ltge_N",
+        "source_kind": "geometry_derived_simplified_proxy",
+        "source_label_zh": "基于原始高模几何生成的简化图纸表达",
+        "official_cad_used": false,
+        "third_party_cad_used": false,
+        "path_count": 3,
+        "fit": {
+          "rotate_quarter_turns": 1,
+          "alignment_mode": "centre",
+          "flip_projected_y": true,
+          "scale_svg_units_per_mm": 0.02,
+          "target_bbox": [
+            [
+              70.490188,
+              232.775175
+            ],
+            [
+              119.517316,
+              277.224832
+            ]
+          ],
+          "proxy_bbox": [
+            [
+              69.615732,
+              232.358335
+            ],
+            [
+              120.391772,
+              277.641672
+            ]
+          ],
+          "bbox_absolute_delta_svg_units": [
+            1.748912,
+            0.83368
+          ],
+          "bbox_tolerance_svg_units": 1.8,
+          "pass": true
+        }
+      }
+    }
+  ],
+  "pass": true
+}
