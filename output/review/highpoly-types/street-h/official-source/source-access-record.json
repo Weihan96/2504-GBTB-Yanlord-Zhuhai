@@ -1,0 +1,119 @@
+{
+  "schema_version": 1,
+  "checked_on": "2026-08-23",
+  "manufacturer": "antoniolupi",
+  "family": "Street",
+  "project_type_code": "STREET-H",
+  "ifc_type_name": "STREET-H",
+  "ifc_type_description": "Sink holder",
+  "official_product_page": "https://www.antoniolupi.it/en/products/sinks/street",
+  "official_identity_sources": [
+    {
+      "source_kind": "timestamped_official_page_observation_record",
+      "url": "https://www.antoniolupi.it/en/products/sinks/street",
+      "local_path": "output/review/highpoly-types/street-h/official-source/official-product-page-evidence.json",
+      "sha256": "6db178b9bb6a405ebdc54401b73d1ff510e9a9c0dc27f1c18c85807579f499d0",
+      "scope": "manufacturer, Street family identity, Rosso Levanto material availability and official download labels"
+    },
+    {
+      "source_kind": "official_product_catalogue_extract",
+      "url": "https://www.antoniolupi.it/uploads/2024/6/5/catalogo_street_web_1717588253479.pdf",
+      "local_path": "output/review/highpoly-types/street-h/official-source/ANTONIOLUPI-official-Street-LevantoRed-extract.pdf",
+      "sha256": "6dd192c3da88c955c2357fc9a7e1e97442838f43393e4b343376d8b5dbacc2da",
+      "scope": "Street family, modular composition and Rosso Levanto material evidence"
+    },
+    {
+      "source_kind": "official_technical_data_sheet",
+      "url": "https://www.antoniolupi.it/uploads/2025/11/27/street_st_web_1764249905846.pdf",
+      "local_path": "output/review/highpoly-types/street-h/official-source/ANTONIOLUPI-official-Street-technical.pdf",
+      "sha256": "0b883bbf6df617331cc2408da4860b31160af67a6b6924b3caaee0ec389d2946",
+      "pdf_page": 1,
+      "scope": "complete STREET240 + STREET4045/STREET4054 top geometry and dimension boundary"
+    }
+  ],
+  "project_registry_evidence": [
+    {
+      "local_path": "pipeline/decisions/equipment-register.csv",
+      "sha256": "e45ac497759211ebb2179c3c79b41dbc89a98293a4599f983838cfbb9f00f95a",
+      "selector": "equipment_id=SAN-017",
+      "recorded_identity": "antoniolupi / Street integrated basin components / IFC type STREET-H"
+    },
+    {
+      "local_path": "pipeline/decisions/source-evidence-register.csv",
+      "sha256": "57991773ccdc06a3a3db979f532a0bf1d91accedc39a8d867809ad8c38a3fd42",
+      "selector": "source_id=ANTONIOLUPI-STREET-CAD-001",
+      "recorded_identity": "verified official Street family 2D CAD archive"
+    },
+    {
+      "local_path": "pipeline/decisions/int1-existing-review.csv",
+      "sha256": "c567da98daf1e1c67c61f3214a08b499cda94895b7fc43c77da2c16c52e7cf3a",
+      "selector": "GlobalId=2ajpw0I9n1dBypfISg3ejX or 3PRBtW00j1D8r2Or5PTFdh",
+      "recorded_identity": "two BATHM STREET-H Sink holder subcomponents associated with SAN-017"
+    }
+  ],
+  "official_product_cad": {
+    "archive_url": "https://www.antoniolupi.it/en/products/sinks/street",
+    "archive_local_path": "output/review/highpoly-types/street-h/official-source/ANTONIOLUPI-official-Street-2D-CAD.zip",
+    "archive_sha256": "36161ac81bade86b7ec0419c0d9cf0c49d52ae0ecb9dced39006b9eddcb10e62",
+    "native_dxf_local_path": "output/review/highpoly-types/street-h/official-source/AL_Street.dxf",
+    "native_dxf_sha256": "72b0a893545c4d9ff2a1d3fc79b7618eb10c00c651533eed36071e4130277c7e",
+    "native_dxf_linework": "output/review/highpoly-types/street-h/official-native-dxf-linework.json",
+    "native_dxf_linework_sha256": "6cc9b56a02811757a5ecbfb18b39b0e02640c10150db3e8ad97e1c39e35f47f0",
+    "acquired": true,
+    "exact_parent_family_cluster_located": true,
+    "exact_project_component_match": false,
+    "exact_project_configuration_match": false,
+    "official_parent_paths_used_as_project_representation": false,
+    "local_cad_files": [
+      "output/review/highpoly-types/street-h/official-source/AL_Street.dxf"
+    ],
+    "status": "official_complete_parent_top_dxf_acquired_STREET_H_component_match_rejected"
+  },
+  "cad_pdf_cross_check": {
+    "dxf_cluster_label": "street240 prof. 40 + street4054 prof. 40",
+    "technical_pdf_page": 1,
+    "dxf_native_bounds_drawing_units": {
+      "plan": [108.0, 40.0],
+      "front": [108.0, 25.0]
+    },
+    "technical_pdf_complete_top_bounds_mm": {
+      "plan": [1080.0, 400.0],
+      "front": [1080.0, 250.0]
+    },
+    "resolved_dxf_drawing_units_to_mm": 10.0,
+    "exact_bounds_match_after_documented_unit_resolution": true,
+    "side_view_present_in_selected_dxf_cluster": false,
+    "pass": true
+  },
+  "project_identity_cross_check": {
+    "representative_global_id": "2ajpw0I9n1dBypfISg3ejX",
+    "second_instance_global_id": "3PRBtW00j1D8r2Or5PTFdh",
+    "type_global_id": "2yjeYV3aTArx4G3zDvadjf",
+    "project_ifc_type_name": "STREET-H",
+    "project_ifc_type_description": "Sink holder",
+    "instance_count": 2,
+    "container": "BATHM",
+    "project_ifc_body_bounds_mm": [300.0, 150.0, 100.0],
+    "pass": true
+  },
+  "dimension_cross_check": {
+    "project_ifc_body_bounds_mm": [300.0, 150.0, 100.0],
+    "official_complete_top_minimum_bounds_mm": [1080.0, 400.0, 250.0],
+    "exact_dimension_match_claimed": false,
+    "geometry_scaled_to_official_parent_top": false,
+    "status": "parent_family_complete_top_is_not_the_project_STREET_H_subcomponent",
+    "pass": true
+  },
+  "drawing_geometry_source": {
+    "source_kind": "geometry_derived_simplified_proxy",
+    "source_label_zh": "基于原始高模几何生成的简化图纸表达",
+    "source_label_en": "simplified drawing representation derived from the original high-poly geometry",
+    "official_cad_acquired": true,
+    "official_cad_used": false,
+    "official_parent_family_cad_archived_as_rejected_reference": true,
+    "third_party_cad_used": false
+  },
+  "scope": "official complete antoniolupi Street family-top CAD evidence only; the project STREET-H type is an isolated repeated sink-holder subcomponent, not the complete catalogue top and not a project shop drawing",
+  "review_required": true,
+  "pass": true
+}

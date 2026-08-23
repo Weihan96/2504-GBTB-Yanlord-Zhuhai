@@ -1,0 +1,118 @@
+{
+  "schema_version": 1,
+  "generator": "pipeline/scripts/render_street_h_project_context.py",
+  "source_kind": "geometry_derived_simplified_proxy",
+  "source_label_zh": "基于原始高模几何生成的简化图纸表达",
+  "official_cad_used": false,
+  "third_party_cad_used": false,
+  "project_context_retained": true,
+  "walls_and_surrounding_project_elements_retained": true,
+  "overlay_top_layer_with_white_mask": true,
+  "blue_line_present": false,
+  "project_scale_svg_units_per_mm": 0.02,
+  "views": [
+    {
+      "view": "plan",
+      "candidate_view": "plan",
+      "source": "drawings/Sanitary Plan.svg",
+      "output": "output/review/highpoly-types/street-h/project-context-sanitary-plan.svg",
+      "output_sha256": "203914c1212ea8471ce5f6a0629b5df8a4c4b4e422289001daab5a3bd34a4f96",
+      "review_crop": "output/review/highpoly-types/street-h/project-context-sanitary-plan-review.svg",
+      "review_crop_sha256": "c3c6dfbbfff485a0144c195df331167b6187e38a5b73df2ee1f920b35616b9a5",
+      "review_preview": "output/review/highpoly-types/street-h/project-context-sanitary-plan-review-preview.png",
+      "review_preview_sha256": "3b4cfbc6e4c10a98f186cef977eae7442f012a245578373706355c8c875ff022",
+      "overlay": {
+        "ifc_guid": "2ajpw0I9n1dBypfISg3ejX",
+        "source_kind": "geometry_derived_simplified_proxy",
+        "source_label_zh": "基于原始高模几何生成的简化图纸表达",
+        "official_cad_used": false,
+        "third_party_cad_used": false,
+        "path_count": 1,
+        "fit": {
+          "rotate_quarter_turns": 0,
+          "alignment_mode": "centre",
+          "flip_projected_y": true,
+          "scale_svg_units_per_mm": 0.02,
+          "target_bbox": [
+            [
+              70.403752,
+              201.399997
+            ],
+            [
+              76.063963,
+              203.959997
+            ]
+          ],
+          "proxy_bbox": [
+            [
+              70.233858,
+              201.179997
+            ],
+            [
+              76.233858,
+              204.179997
+            ]
+          ],
+          "bbox_absolute_delta_svg_units": [
+            0.339789,
+            0.44
+          ],
+          "bbox_tolerance_svg_units": 0.5,
+          "uniform_scale_preserved": true,
+          "transformation_mode": "axis_swap_rigid_reflection_and_translation_only",
+          "pass": true
+        },
+        "official_cad_acquired": true,
+        "official_parent_family_cad_archived_as_rejected_reference": true,
+        "official_parent_family_paths_used_as_project_representation": false
+      }
+    }
+  ],
+  "pass": true,
+  "official_cad_acquired": true,
+  "official_parent_family_cad_archived_as_rejected_reference": true,
+  "official_parent_family_paths_used_as_project_representation": false,
+  "semantic_view_mapping": {
+    "plan": {
+      "candidate_axes": [
+        0,
+        1
+      ],
+      "source": "drawings/Sanitary Plan.svg",
+      "rotate_quarter_turns": 0,
+      "project_direction": "+Z"
+    }
+  },
+  "context_view_scope": {
+    "included": [
+      "plan"
+    ],
+    "excluded": [
+      "front",
+      "side"
+    ],
+    "reason": "The representative STREET-H GlobalId has one actual projection group in Sanitary Plan.svg and none in the native project elevation SVGs; project elevations are not invented."
+  },
+  "project_projection_note": {
+    "original_visible_projection_bbox_mm": [
+      283.010559,
+      128.0
+    ],
+    "complete_ifc_body_plan_bbox_mm": [
+      300.0,
+      150.0
+    ],
+    "interpretation": "The original PLAN_VIEW projection is smaller than the complete MODEL_VIEW Body envelope. The review overlay preserves the complete Body at uniform project scale and aligns it to the original projection centre.",
+    "geometry_stretched": false
+  },
+  "review_annotation_suppression": {
+    "plan": "official-elevation-anchor groups only",
+    "scope": "derived review crop only; complete original project SVG remains unchanged",
+    "walls_furniture_and_ifc_geometry_removed": false
+  },
+  "review_preview_background": {
+    "plan": "opaque white review-only paper background",
+    "full_project_svg_remains_transparent": true,
+    "drawing_geometry_changed": false
+  }
+}

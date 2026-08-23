@@ -1,0 +1,42 @@
+{
+  "schema_version": 1,
+  "observed_on": "2026-08-23",
+  "manufacturer": "antoniolupi",
+  "family": "Street",
+  "official_product_page": "https://www.antoniolupi.it/en/products/sinks/street",
+  "official_product_page_observations": {
+    "designer": "AL Studio",
+    "product_character": "tailored modular sink top, available within a niche, against a wall, with furniture or suspended",
+    "material_observation": "Rosso Levanto marble is explicitly shown as a Street material expression",
+    "download_labels_observed": [
+      "Technical Data Sheets",
+      "STREET 2D Models",
+      "STREET Product Sheets",
+      "STREET Manuals"
+    ]
+  },
+  "official_technical_sheet_observations": {
+    "local_path": "output/review/highpoly-types/street-h/official-source/ANTONIOLUPI-official-Street-technical.pdf",
+    "sha256": "0b883bbf6df617331cc2408da4860b31160af67a6b6924b3caaee0ec389d2946",
+    "pdf_page": 1,
+    "article": "STREET240 prof. 40 + STREET4045/STREET4054 prof. 40",
+    "material": "Marble as per antoniolupi samples or Moodlight",
+    "overflow": "NO",
+    "complete_top_dimensions_mm": {
+      "minimum_length": 1080,
+      "maximum_length": 2340,
+      "depth": 400,
+      "height": 250,
+      "integrated_basin_width_options": [450, 540]
+    },
+    "scope": "complete configurable Street top, not the isolated project STREET-H sink-holder subcomponent"
+  },
+  "drawing_geometry_conclusion": {
+    "official_2d_cad_archive_acquired": true,
+    "exact_STREET240_plus_STREET4054_family_cluster_located": true,
+    "exact_project_STREET_H_subcomponent_cad_located": false,
+    "official_parent_family_paths_used_as_STREET_H_representation": false,
+    "reason": "The official DXF cluster represents the complete configurable sink top. The IFC type STREET-H is a repeated 300 x 150 x 100 mm sink-holder subcomponent and is not an antoniolupi catalogue article or complete Street top."
+  },
+  "pass": true
+}

@@ -1,0 +1,51 @@
+{
+  "schema_version": 1,
+  "formal_ifc_sha256": "7a50b87e8f48a7c2bfbaa9f1dabdfca7155fa684b2325c66aa1ae15c8ab0a25c",
+  "profiles": {
+    "street-h": {
+      "display_name": "antoniolupi Street sink-holder subcomponent / project STREET-H",
+      "ifc_type_name": "STREET-H",
+      "representative_global_id": "2ajpw0I9n1dBypfISg3ejX",
+      "expected_instance_global_ids": [
+        "2ajpw0I9n1dBypfISg3ejX",
+        "3PRBtW00j1D8r2Or5PTFdh"
+      ],
+      "profile_source": "isolated_highpoly_projection; project_registry_maps_STREET_H_to_antoniolupi_Street_parent; official_complete_parent_top_DXF_archived_and_rejected_as_component_representation",
+      "silhouette_simplify_mm": 0.35,
+      "semantic_sections": {
+        "plan": [],
+        "front": [],
+        "side": []
+      },
+      "required_semantics": [
+        "one_representative_of_two_identical_STREET_H_instances",
+        "300_x_150_x_100_mm_project_component_envelope",
+        "official_parent_Street_top_not_substituted",
+        "no_blue_line_in_project_representation"
+      ],
+      "drawing_source": {
+        "source_kind": "geometry_derived_simplified_proxy",
+        "source_label_zh": "基于原始高模几何生成的简化图纸表达",
+        "source_label_en": "simplified drawing representation derived from the original high-poly geometry",
+        "official_cad_acquired": true,
+        "official_cad_used": false,
+        "official_parent_family_cad_archived_as_rejected_reference": true,
+        "third_party_cad_used": false
+      },
+      "official_reference": {
+        "source_id": "ANTONIOLUPI-STREET-H-OFFICIAL-PARENT-FAMILY-001",
+        "source_kind": "manufacturer_product_page_technical_pdf_and_native_dxf_parent_family_evidence",
+        "manufacturer": "antoniolupi",
+        "family": "Street",
+        "project_component": "STREET-H / Sink holder",
+        "scope": "complete Street parent-top family identity and geometry evidence only; not exact STREET-H component CAD, not a project shop drawing and not representation geometry",
+        "product_page": "https://www.antoniolupi.it/en/products/sinks/street",
+        "official_cad_archive": "output/review/highpoly-types/street-h/official-source/ANTONIOLUPI-official-Street-2D-CAD.zip",
+        "official_native_dxf": "output/review/highpoly-types/street-h/official-source/AL_Street.dxf",
+        "source_access_record": "output/review/highpoly-types/street-h/official-source/source-access-record.json",
+        "official_product_cad_status": "official_complete_parent_top_dxf_acquired_STREET_H_component_match_rejected",
+        "official_product_cad_used": false
+      }
+    }
+  }
+}
