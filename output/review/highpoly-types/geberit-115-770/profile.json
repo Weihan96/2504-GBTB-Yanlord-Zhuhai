@@ -1,0 +1,62 @@
+{
+  "schema_version": 1,
+  "formal_ifc_sha256": "7a50b87e8f48a7c2bfbaa9f1dabdfca7155fa684b2325c66aa1ae15c8ab0a25c",
+  "profiles": {
+    "geberit-115-770": {
+      "display_name": "Geberit Sigma01 / 115.770.11.5 dual-flush actuator plate",
+      "ifc_type_name": "Geberit 115.770",
+      "representative_global_id": "2gFgcOYEXEaQWAzcKulTFt",
+      "expected_instance_global_ids": [
+        "2gFgcOYEXEaQWAzcKulTFt",
+        "2lDPsdQevFSfeOThtjSlPG"
+      ],
+      "profile_source": "isolated_highpoly_projection_with_exact_official_115_770_11_5_native_dwg",
+      "silhouette_simplify_mm": 0.25,
+      "semantic_sections": {
+        "plan": [],
+        "front": [],
+        "side": []
+      },
+      "required_semantics": [
+        "rectangular_actuator_plate_outer_silhouette",
+        "two_circular_flush_buttons",
+        "wall_contact_depth",
+        "semantic_correction_flush_plate_not_wcseat"
+      ],
+      "formal_ifc_semantic_issue": {
+        "stored_predefined_type": "WCSEAT",
+        "correct_product_kind": "dual_flush_actuator_plate",
+        "formal_ifc_modified": false
+      },
+      "drawing_source": {
+        "source_kind": "native_dwg",
+        "source_label_zh": "基于 Geberit 精确型号原生 DWG 的官方图纸表达",
+        "source_label_en": "official drawing representation from exact Geberit article native DWG",
+        "official_cad_used": true,
+        "third_party_cad_used": false
+      },
+      "official_reference": {
+        "source_id": "GEBERIT-SIGMA01-115-770-11-5-NATIVE-DWG-001",
+        "source_kind": "native_dwg",
+        "manufacturer": "Geberit",
+        "family": "Sigma01",
+        "article_number": "115.770.11.5",
+        "scope": "official manufacturer exact-article reference, not a project shop drawing",
+        "product_page": "https://catalog.kz.geberit.com/ru-KZ/product/PRO_100555",
+        "product_page_archive": "output/review/highpoly-types/geberit-115-770/official-source/geberit-sigma01-product-page.html",
+        "product_page_archive_sha256": "46ed8825fcc0dae55300ecd458bd4969163f026d68e0ed81ba37c39c3180a0d3",
+        "current_catalog_status": "current Sigma01 exact article 115.770.11.5, white glossy, dual flush",
+        "official_pdf": "output/review/highpoly-types/geberit-115-770/official-source/GEB-official-115770-Sigma01.pdf",
+        "official_pdf_sha256": "7157e54465bbf7b735868f42787833179184b174e2d7717443cd759e94089cd2",
+        "linework_path": "output/review/highpoly-types/geberit-115-770/official-native-dwg-linework.json",
+        "official_cdn_revalidation": "output/review/highpoly-types/geberit-115-770/official-source/official-cdn-revalidation.json",
+        "official_dimensions_mm": [246, 13, 164],
+        "view_mapping": {
+          "plan": "G",
+          "front": "A",
+          "side": "L"
+        }
+      }
+    }
+  }
+}

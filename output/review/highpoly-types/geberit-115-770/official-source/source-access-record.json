@@ -1,0 +1,72 @@
+{
+  "schema_version": 1,
+  "checked_on": "2026-08-23",
+  "manufacturer": "Geberit",
+  "family": "Sigma01 dual-flush actuator plate",
+  "article_number": "115.770.11.5",
+  "ifc_type_name": "Geberit 115.770",
+  "source_kind": "native_dwg",
+  "source_label_zh": "基于 Geberit 精确型号原生 DWG 的官方图纸表达",
+  "source_label_en": "official drawing representation from exact Geberit article native DWG",
+  "official_cad_acquired": true,
+  "official_cad_exact_article_match": true,
+  "official_cad_used": true,
+  "third_party_cad_used": false,
+  "blue_line_present": true,
+  "representation_geometry_source": "official_native_dwg_paths_mm",
+  "official_product_page": "https://catalog.kz.geberit.com/ru-KZ/product/PRO_100555",
+  "official_product_page_archive": {
+    "path": "output/review/highpoly-types/geberit-115-770/official-source/geberit-sigma01-product-page.html",
+    "sha256": "46ed8825fcc0dae55300ecd458bd4969163f026d68e0ed81ba37c39c3180a0d3"
+  },
+  "official_pdf": {
+    "path": "output/review/highpoly-types/geberit-115-770/official-source/GEB-official-115770-Sigma01.pdf",
+    "sha256": "7157e54465bbf7b735868f42787833179184b174e2d7717443cd759e94089cd2"
+  },
+  "official_native_dwg": {
+    "A": {
+      "path": "output/review/highpoly-types/geberit-115-770/official-source/115.770.11.5_A.dwg",
+      "url": "https://cdn.data.geberit.com/cad/115.770.11.5_A.dwg",
+      "sha256": "88c292a019ee91e0872baebf4a74237803193662d4f2150141cb1772cef1bd8a"
+    },
+    "G": {
+      "path": "output/review/highpoly-types/geberit-115-770/official-source/115.770.11.5_G.dwg",
+      "url": "https://cdn.data.geberit.com/cad/115.770.11.5_G.dwg",
+      "sha256": "1c0e5dd30db431dbf0f890311af8fa745b84aff6f2284c5dd04addc91b07e70a"
+    },
+    "L": {
+      "path": "output/review/highpoly-types/geberit-115-770/official-source/115.770.11.5_L.dwg",
+      "url": "https://cdn.data.geberit.com/cad/115.770.11.5_L.dwg",
+      "sha256": "0f55d3204f94637ce6fe544847e045ba7a0768f1abe8cec94b6763bf2a2220ad"
+    },
+    "P": {
+      "path": "output/review/highpoly-types/geberit-115-770/official-source/115.770.11.5_P.dwg",
+      "url": "https://cdn.data.geberit.com/cad/115.770.11.5_P.dwg",
+      "sha256": "a90f58e350d4e2122e1b3c61e16e36a13d83edbba15ffbb4f1d7c2f18b86e8db"
+    }
+  },
+  "official_cdn_revalidation": {
+    "path": "output/review/highpoly-types/geberit-115-770/official-source/official-cdn-revalidation.json",
+    "sha256": "64804456f89205a4d1e5e89220d7852806fcc21392969ca9b310880f4fd5e82a",
+    "checked_at": "2026-08-23T12:57:37.863599+00:00",
+    "all_declared_urls_accessible": true,
+    "all_downloaded_bytes_match_local_archive": true,
+    "pass": true
+  },
+  "drawing_view_mapping": {
+    "plan": "G",
+    "front": "A",
+    "side": "L"
+  },
+  "official_3d_identity_only": {
+    "code": "P",
+    "used_as_plan_or_elevation_geometry": false
+  },
+  "scope": "official manufacturer exact-article reference, not a project shop drawing",
+  "formal_ifc_semantic_issue": {
+    "stored_predefined_type": "WCSEAT",
+    "correct_product_kind": "dual_flush_actuator_plate",
+    "formal_ifc_modified": false
+  },
+  "pass": true
+}

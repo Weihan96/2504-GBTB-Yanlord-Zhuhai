@@ -1,0 +1,71 @@
+{
+  "schema_version": 1,
+  "checked_at": "2026-08-23T12:57:37.863599+00:00",
+  "manufacturer": "Geberit",
+  "family": "Sigma01 dual-flush actuator plate",
+  "article_number": "115.770.11.5",
+  "method": "fresh HTTPS download from each declared official CDN URL, SHA-256 verification and byte-for-byte local archive comparison",
+  "drawing_view_mapping": {
+    "plan": "G",
+    "front": "A",
+    "side": "L"
+  },
+  "identity_only_code": "P",
+  "results": {
+    "A": {
+      "url": "https://cdn.data.geberit.com/cad/115.770.11.5_A.dwg",
+      "local_path": "output/review/highpoly-types/geberit-115-770/official-source/115.770.11.5_A.dwg",
+      "http_status": 200,
+      "content_type": "application/octet-stream",
+      "downloaded_byte_count": 222958,
+      "local_byte_count": 222958,
+      "expected_sha256": "88c292a019ee91e0872baebf4a74237803193662d4f2150141cb1772cef1bd8a",
+      "downloaded_sha256": "88c292a019ee91e0872baebf4a74237803193662d4f2150141cb1772cef1bd8a",
+      "local_sha256": "88c292a019ee91e0872baebf4a74237803193662d4f2150141cb1772cef1bd8a",
+      "downloaded_bytes_match_local_archive": true,
+      "pass": true
+    },
+    "G": {
+      "url": "https://cdn.data.geberit.com/cad/115.770.11.5_G.dwg",
+      "local_path": "output/review/highpoly-types/geberit-115-770/official-source/115.770.11.5_G.dwg",
+      "http_status": 200,
+      "content_type": "application/octet-stream",
+      "downloaded_byte_count": 221759,
+      "local_byte_count": 221759,
+      "expected_sha256": "1c0e5dd30db431dbf0f890311af8fa745b84aff6f2284c5dd04addc91b07e70a",
+      "downloaded_sha256": "1c0e5dd30db431dbf0f890311af8fa745b84aff6f2284c5dd04addc91b07e70a",
+      "local_sha256": "1c0e5dd30db431dbf0f890311af8fa745b84aff6f2284c5dd04addc91b07e70a",
+      "downloaded_bytes_match_local_archive": true,
+      "pass": true
+    },
+    "L": {
+      "url": "https://cdn.data.geberit.com/cad/115.770.11.5_L.dwg",
+      "local_path": "output/review/highpoly-types/geberit-115-770/official-source/115.770.11.5_L.dwg",
+      "http_status": 200,
+      "content_type": "application/octet-stream",
+      "downloaded_byte_count": 221555,
+      "local_byte_count": 221555,
+      "expected_sha256": "0f55d3204f94637ce6fe544847e045ba7a0768f1abe8cec94b6763bf2a2220ad",
+      "downloaded_sha256": "0f55d3204f94637ce6fe544847e045ba7a0768f1abe8cec94b6763bf2a2220ad",
+      "local_sha256": "0f55d3204f94637ce6fe544847e045ba7a0768f1abe8cec94b6763bf2a2220ad",
+      "downloaded_bytes_match_local_archive": true,
+      "pass": true
+    },
+    "P": {
+      "url": "https://cdn.data.geberit.com/cad/115.770.11.5_P.dwg",
+      "local_path": "output/review/highpoly-types/geberit-115-770/official-source/115.770.11.5_P.dwg",
+      "http_status": 200,
+      "content_type": "application/octet-stream",
+      "downloaded_byte_count": 155407,
+      "local_byte_count": 155407,
+      "expected_sha256": "a90f58e350d4e2122e1b3c61e16e36a13d83edbba15ffbb4f1d7c2f18b86e8db",
+      "downloaded_sha256": "a90f58e350d4e2122e1b3c61e16e36a13d83edbba15ffbb4f1d7c2f18b86e8db",
+      "local_sha256": "a90f58e350d4e2122e1b3c61e16e36a13d83edbba15ffbb4f1d7c2f18b86e8db",
+      "downloaded_bytes_match_local_archive": true,
+      "pass": true
+    }
+  },
+  "all_declared_urls_accessible": true,
+  "all_downloaded_bytes_match_local_archive": true,
+  "pass": true
+}

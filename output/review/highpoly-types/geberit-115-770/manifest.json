@@ -1,0 +1,280 @@
+{
+  "schema_version": 2,
+  "generated_at": "2026-08-23T12:57:40.995875+00:00",
+  "generator": "pipeline/scripts/geberit_115_770_review.py",
+  "formal_ifc": "2504 GBTB Yanlord Zhuhai.ifc",
+  "formal_ifc_sha256": "7a50b87e8f48a7c2bfbaa9f1dabdfca7155fa684b2325c66aa1ae15c8ab0a25c",
+  "formal_ifc_sha256_after_generation": "7a50b87e8f48a7c2bfbaa9f1dabdfca7155fa684b2325c66aa1ae15c8ab0a25c",
+  "formal_ifc_bytes_unchanged": true,
+  "profile_register": "output/review/highpoly-types/geberit-115-770/profile.json",
+  "profile_register_sha256": "41e3fe2de15f804d70a76322cbce677ccc910f8509708d2304ba1454e4a70fb8",
+  "profile_key": "geberit-115-770",
+  "display_name": "Geberit Sigma01 / 115.770.11.5 dual-flush actuator plate",
+  "ifc_type_name": "Geberit 115.770",
+  "representative_global_id": "2gFgcOYEXEaQWAzcKulTFt",
+  "registered_instance_global_ids": [
+    "2gFgcOYEXEaQWAzcKulTFt",
+    "2lDPsdQevFSfeOThtjSlPG"
+  ],
+  "geometry_product_count": 1,
+  "whole_model_render": false,
+  "formal_ifc_write": false,
+  "source_kind": "native_dwg",
+  "source_label_zh": "基于 Geberit 精确型号原生 DWG 的官方图纸表达",
+  "source_label_en": "official drawing representation from exact Geberit article native DWG",
+  "official_cad_acquired": true,
+  "official_cad_exact_article_match": true,
+  "official_cad_used": true,
+  "third_party_cad_used": false,
+  "blue_line_present": true,
+  "representation_geometry_source": "official_native_dwg_paths_mm",
+  "simplified_proxy_comparison_included": true,
+  "mesh_vertex_count": 597,
+  "mesh_face_count": 1187,
+  "local_bounds_mm": {
+    "minimum": [
+      -127.0,
+      -12.445110321044888,
+      -85.0897827148439
+    ],
+    "maximum": [
+      127.0,
+      0.0,
+      85.08978271484402
+    ]
+  },
+  "required_semantics": [
+    "rectangular_actuator_plate_outer_silhouette",
+    "two_circular_flush_buttons",
+    "wall_contact_depth",
+    "semantic_correction_flush_plate_not_wcseat"
+  ],
+  "formal_ifc_semantic_issue": {
+    "stored_predefined_type": "WCSEAT",
+    "correct_product_kind": "dual_flush_actuator_plate",
+    "formal_ifc_modified": false
+  },
+  "official_reference": {
+    "source_id": "GEBERIT-SIGMA01-115-770-11-5-NATIVE-DWG-001",
+    "source_kind": "native_dwg",
+    "manufacturer": "Geberit",
+    "family": "Sigma01",
+    "article_number": "115.770.11.5",
+    "scope": "official manufacturer exact-article reference, not a project shop drawing",
+    "product_page": "https://catalog.kz.geberit.com/ru-KZ/product/PRO_100555",
+    "product_page_archive": "output/review/highpoly-types/geberit-115-770/official-source/geberit-sigma01-product-page.html",
+    "product_page_archive_sha256": "46ed8825fcc0dae55300ecd458bd4969163f026d68e0ed81ba37c39c3180a0d3",
+    "current_catalog_status": "current Sigma01 exact article 115.770.11.5, white glossy, dual flush",
+    "official_pdf": "output/review/highpoly-types/geberit-115-770/official-source/GEB-official-115770-Sigma01.pdf",
+    "official_pdf_sha256": "7157e54465bbf7b735868f42787833179184b174e2d7717443cd759e94089cd2",
+    "linework_path": "output/review/highpoly-types/geberit-115-770/official-native-dwg-linework.json",
+    "official_cdn_revalidation": {
+      "path": "output/review/highpoly-types/geberit-115-770/official-source/official-cdn-revalidation.json",
+      "sha256": "64804456f89205a4d1e5e89220d7852806fcc21392969ca9b310880f4fd5e82a",
+      "checked_at": "2026-08-23T12:57:37.863599+00:00",
+      "pass": true
+    },
+    "official_dimensions_mm": [
+      246,
+      13,
+      164
+    ],
+    "view_mapping": {
+      "plan": "G",
+      "front": "A",
+      "side": "L"
+    },
+    "linework_sha256": "050c85ad9de662e7599f23e2c8dcb0a929aad92542b9a715904020a82b6e3245",
+    "official_sources": {
+      "A": {
+        "path": "output/review/highpoly-types/geberit-115-770/official-source/115.770.11.5_A.dwg",
+        "url": "https://cdn.data.geberit.com/cad/115.770.11.5_A.dwg",
+        "sha256": "88c292a019ee91e0872baebf4a74237803193662d4f2150141cb1772cef1bd8a"
+      },
+      "G": {
+        "path": "output/review/highpoly-types/geberit-115-770/official-source/115.770.11.5_G.dwg",
+        "url": "https://cdn.data.geberit.com/cad/115.770.11.5_G.dwg",
+        "sha256": "1c0e5dd30db431dbf0f890311af8fa745b84aff6f2284c5dd04addc91b07e70a"
+      },
+      "L": {
+        "path": "output/review/highpoly-types/geberit-115-770/official-source/115.770.11.5_L.dwg",
+        "url": "https://cdn.data.geberit.com/cad/115.770.11.5_L.dwg",
+        "sha256": "0f55d3204f94637ce6fe544847e045ba7a0768f1abe8cec94b6763bf2a2220ad"
+      },
+      "P": {
+        "path": "output/review/highpoly-types/geberit-115-770/official-source/115.770.11.5_P.dwg",
+        "url": "https://cdn.data.geberit.com/cad/115.770.11.5_P.dwg",
+        "sha256": "a90f58e350d4e2122e1b3c61e16e36a13d83edbba15ffbb4f1d7c2f18b86e8db"
+      }
+    },
+    "dimension_cross_checks": {
+      "plan": {
+        "official_native_dwg_size_mm": [
+          245.12,
+          12.01
+        ],
+        "ifc_body_size_mm": [
+          254.0,
+          12.44511
+        ],
+        "absolute_delta_mm": [
+          8.88,
+          0.43511
+        ],
+        "tolerance_mm": 10.0,
+        "pass": true
+      },
+      "front": {
+        "official_native_dwg_size_mm": [
+          245.12,
+          164.23
+        ],
+        "ifc_body_size_mm": [
+          254.0,
+          170.179565
+        ],
+        "absolute_delta_mm": [
+          8.88,
+          5.949565
+        ],
+        "tolerance_mm": 10.0,
+        "pass": true
+      },
+      "side": {
+        "official_native_dwg_size_mm": [
+          12.01,
+          164.23
+        ],
+        "ifc_body_size_mm": [
+          12.44511,
+          170.179565
+        ],
+        "absolute_delta_mm": [
+          0.43511,
+          5.949565
+        ],
+        "tolerance_mm": 10.0,
+        "pass": true
+      }
+    }
+  },
+  "candidate_representations": "output/review/highpoly-types/geberit-115-770/candidate-representations.json",
+  "candidate_representations_sha256": "92accd9acae0586c144b9250f400fa894e6ef93f30f0d4c75e7643566346f9ff",
+  "official_source_access_record": "output/review/highpoly-types/geberit-115-770/official-source/source-access-record.json",
+  "official_source_access_record_sha256": "2f324b14fbf974aa856f51edc2fe51103f963451c351ddd38209479ed81b1175",
+  "project_context": "output/review/highpoly-types/geberit-115-770/project-context-manifest.json",
+  "bonsai_review": "output/review/highpoly-types/geberit-115-770/bonsai-review-manifest.json",
+  "views": [
+    {
+      "view": "plan",
+      "svg": "output/review/highpoly-types/geberit-115-770/plan.svg",
+      "svg_sha256": "9dfcaab708943639e6c4d4e5b6c285e222e7a884678dbbe46a3cc4f8d4148533",
+      "projection_axes": [
+        0,
+        1
+      ],
+      "raw_edge_count": 1780,
+      "displayed_raw_edge_count": 594,
+      "silhouette_path_count": 1,
+      "semantic_path_count": 0,
+      "semantic_sections": [],
+      "official_reference_path_count": 13,
+      "official_reference_source_point_count": 57,
+      "blue_line_source_kind": "native_dwg",
+      "blue_line_article_number": "115.770.11.5",
+      "blue_line_native_dwg_code": "G",
+      "blue_line_native_dwg_sha256": "1c0e5dd30db431dbf0f890311af8fa745b84aff6f2284c5dd04addc91b07e70a",
+      "dimension_cross_check": {
+        "official_native_dwg_size_mm": [
+          245.12,
+          12.01
+        ],
+        "ifc_body_size_mm": [
+          254.0,
+          12.44511
+        ],
+        "absolute_delta_mm": [
+          8.88,
+          0.43511
+        ],
+        "tolerance_mm": 10.0,
+        "pass": true
+      }
+    },
+    {
+      "view": "front",
+      "svg": "output/review/highpoly-types/geberit-115-770/front.svg",
+      "svg_sha256": "d47b12709d562ed90782c881578f8b81f9a787fda59d221608bf43589a9a4190",
+      "projection_axes": [
+        0,
+        2
+      ],
+      "raw_edge_count": 1780,
+      "displayed_raw_edge_count": 594,
+      "silhouette_path_count": 1,
+      "semantic_path_count": 0,
+      "semantic_sections": [],
+      "official_reference_path_count": 19,
+      "official_reference_source_point_count": 671,
+      "blue_line_source_kind": "native_dwg",
+      "blue_line_article_number": "115.770.11.5",
+      "blue_line_native_dwg_code": "A",
+      "blue_line_native_dwg_sha256": "88c292a019ee91e0872baebf4a74237803193662d4f2150141cb1772cef1bd8a",
+      "dimension_cross_check": {
+        "official_native_dwg_size_mm": [
+          245.12,
+          164.23
+        ],
+        "ifc_body_size_mm": [
+          254.0,
+          170.179565
+        ],
+        "absolute_delta_mm": [
+          8.88,
+          5.949565
+        ],
+        "tolerance_mm": 10.0,
+        "pass": true
+      }
+    },
+    {
+      "view": "side",
+      "svg": "output/review/highpoly-types/geberit-115-770/side.svg",
+      "svg_sha256": "39c7b9fe8719b049bee0b5a36d403b91adc29aef48d9fc327c0f0c6db36b8031",
+      "projection_axes": [
+        1,
+        2
+      ],
+      "raw_edge_count": 1780,
+      "displayed_raw_edge_count": 594,
+      "silhouette_path_count": 3,
+      "semantic_path_count": 0,
+      "semantic_sections": [],
+      "official_reference_path_count": 11,
+      "official_reference_source_point_count": 22,
+      "blue_line_source_kind": "native_dwg",
+      "blue_line_article_number": "115.770.11.5",
+      "blue_line_native_dwg_code": "L",
+      "blue_line_native_dwg_sha256": "0f55d3204f94637ce6fe544847e045ba7a0768f1abe8cec94b6763bf2a2220ad",
+      "dimension_cross_check": {
+        "official_native_dwg_size_mm": [
+          12.01,
+          164.23
+        ],
+        "ifc_body_size_mm": [
+          12.44511,
+          170.179565
+        ],
+        "absolute_delta_mm": [
+          0.43511,
+          5.949565
+        ],
+        "tolerance_mm": 10.0,
+        "pass": true
+      }
+    }
+  ],
+  "review_status": "visual_review_pending",
+  "approved_for_drawing_ifc": false,
+  "pass": true
+}
