@@ -1,0 +1,165 @@
+{
+  "schema_version": 1,
+  "generator": "pipeline/scripts/render_wd03_project_context.py",
+  "source_kind": "geometry_derived_simplified_proxy",
+  "source_label_zh": "基于原始高模几何生成的简化图纸表达",
+  "official_cad_used": false,
+  "third_party_cad_used": false,
+  "project_context_retained": true,
+  "walls_and_surrounding_project_elements_retained": true,
+  "overlay_top_layer_with_white_mask": true,
+  "blue_line_present": false,
+  "project_scale_svg_units_per_mm": 0.02,
+  "views": [
+    {
+      "view": "plan",
+      "candidate_view": "plan",
+      "source": "drawings/Furniture Plan.svg",
+      "output": "output/review/highpoly-types/wd03/project-context-furniture-plan.svg",
+      "output_sha256": "a7413f1252dfb31e9e4b709eb30c0a7c29099a1cbadb4e4c33efb31e10cef5a0",
+      "review_crop": "output/review/highpoly-types/wd03/project-context-furniture-plan-review.svg",
+      "review_crop_sha256": "8b8ab5e92342dc04c4b45933ae38d9a5a6b5d4804b3dabce450818b0dc70335b",
+      "review_preview": "output/review/highpoly-types/wd03/project-context-furniture-plan-review-preview.png",
+      "review_preview_sha256": "19bc5441de317923c99e627e318afcc93eee263f67c8ebecd46e7a562febebde",
+      "overlay": {
+        "ifc_guid": "3cmikd9MTB$egM5KQaNgUf",
+        "source_kind": "geometry_derived_simplified_proxy",
+        "source_label_zh": "基于原始高模几何生成的简化图纸表达",
+        "official_cad_used": false,
+        "third_party_cad_used": false,
+        "path_count": 3,
+        "fit": {
+          "rotate_quarter_turns": 0,
+          "alignment_mode": "centre",
+          "flip_projected_y": true,
+          "scale_svg_units_per_mm": 0.02,
+          "target_bbox": [
+            [
+              106.400259,
+              183.835146
+            ],
+            [
+              132.659508,
+              195.547926
+            ]
+          ],
+          "proxy_bbox": [
+            [
+              106.405276,
+              183.835182
+            ],
+            [
+              132.65449,
+              195.54789
+            ]
+          ],
+          "bbox_absolute_delta_svg_units": [
+            0.010035,
+            7.1e-05
+          ],
+          "bbox_tolerance_svg_units": 0.4,
+          "uniform_scale_preserved": true,
+          "transformation_mode": "axis_swap_rigid_reflection_and_translation_only",
+          "pass": true
+        }
+      }
+    },
+    {
+      "view": "side",
+      "candidate_view": "side",
+      "source": "drawings/elevations/native/EL-01-01-R14-PY.svg",
+      "output": "output/review/highpoly-types/wd03/project-context-side-elevation.svg",
+      "output_sha256": "d0353ef1ae20d1b9af2db2980ab535e5f6f3d9b863278b8c108e0116ecb03d86",
+      "review_crop": "output/review/highpoly-types/wd03/project-context-side-elevation-review.svg",
+      "review_crop_sha256": "b07713bfd63b42fe1293334d7b22f3badb08b205c307ba1f5f073e709ae25ae0",
+      "review_preview": "output/review/highpoly-types/wd03/project-context-side-elevation-review-preview.png",
+      "review_preview_sha256": "f16e632e6313e3eedf6161279313169911bda8ff2763836a0720fe3f96623dda",
+      "overlay": {
+        "ifc_guid": "3cmikd9MTB$egM5KQaNgUf",
+        "source_kind": "geometry_derived_simplified_proxy",
+        "source_label_zh": "基于原始高模几何生成的简化图纸表达",
+        "official_cad_used": false,
+        "third_party_cad_used": false,
+        "path_count": 6,
+        "fit": {
+          "rotate_quarter_turns": 0,
+          "alignment_mode": "centre",
+          "flip_projected_y": true,
+          "scale_svg_units_per_mm": 0.02,
+          "target_bbox": [
+            [
+              0.0,
+              4.21
+            ],
+            [
+              11.371,
+              52.0
+            ]
+          ],
+          "proxy_bbox": [
+            [
+              -0.170876,
+              4.209999
+            ],
+            [
+              11.541876,
+              52.000001
+            ]
+          ],
+          "bbox_absolute_delta_svg_units": [
+            0.341752,
+            2e-06
+          ],
+          "bbox_tolerance_svg_units": 0.4,
+          "uniform_scale_preserved": true,
+          "transformation_mode": "axis_swap_rigid_reflection_and_translation_only",
+          "pass": true
+        }
+      }
+    }
+  ],
+  "pass": true,
+  "semantic_view_mapping": {
+    "plan": {
+      "candidate_axes": [
+        0,
+        1
+      ],
+      "source": "drawings/Furniture Plan.svg",
+      "rotate_quarter_turns": 0,
+      "project_direction": "+Z"
+    },
+    "side": {
+      "candidate_axes": [
+        1,
+        2
+      ],
+      "source": "drawings/elevations/native/EL-01-01-R14-PY.svg",
+      "rotate_quarter_turns": 0,
+      "project_direction": "R14 native elevation side-oriented project diagnostic bbox",
+      "target_geometry_kind": "same-GlobalId diagnostic bounding rectangle; original project projection group absent"
+    }
+  },
+  "context_view_scope": {
+    "included": [
+      "plan",
+      "side"
+    ],
+    "excluded": [
+      "front"
+    ],
+    "reason": "Furniture Plan.svg contains the actual WD03 projection. EL-01-01-R14-PY.svg retains only a same-GlobalId diagnostic bbox whose dimensions map to the WD03 side projection. No native project front-elevation SVG contains the product projection, so no front context was invented."
+  },
+  "review_annotation_suppression": {
+    "plan": "official-elevation-anchor groups only",
+    "side": "none",
+    "scope": "review crop only; complete project SVGs retain their annotations",
+    "walls_furniture_and_ifc_geometry_removed": false
+  },
+  "review_preview_background": {
+    "plan": "opaque white review-only paper background",
+    "side": "opaque white review-only paper background",
+    "full_project_svg_remains_transparent": true,
+    "drawing_geometry_changed": false
+  }
+}

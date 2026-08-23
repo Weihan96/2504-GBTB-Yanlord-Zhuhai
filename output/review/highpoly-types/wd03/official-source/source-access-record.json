@@ -1,0 +1,71 @@
+{
+  "schema_version": 1,
+  "checked_on": "2026-08-23",
+  "manufacturer": "Poliform",
+  "family": "Senzafine Wardrobe",
+  "project_type_code": "WD03",
+  "ifc_type_name": "WD03",
+  "ifc_type_description": "Poliform SENZAFINE",
+  "official_product_page": "https://www.poliform.it/en/products/senzafine-wardrobe/",
+  "official_technical_catalog_route": "https://www.poliform.it/it/technical-catalog/",
+  "official_identity_sources": [
+    {
+      "source_kind": "timestamped_official_page_observation_record",
+      "url": "https://www.poliform.it/en/products/senzafine-wardrobe/",
+      "local_path": "output/review/highpoly-types/wd03/official-source/official-product-page-evidence.json",
+      "sha256": "8000ecdac17af50902c3467fdac2023f47e45d7f60b1007ec5789c59074d0f81",
+      "scope": "manufacturer, Senzafine wardrobe-family identity, modular-system character and download-access boundary only"
+    }
+  ],
+  "official_product_identity": {
+    "product_name": "Senzafine Wardrobe",
+    "type": "Wardrobe",
+    "structure": "Melamine-faced particle board",
+    "modular_system": true,
+    "customised_compositions_supported": true,
+    "project_ifc_type_description_exactly_names_manufacturer_and_family": true
+  },
+  "official_product_cad": {
+    "public_page_has_gated_generic_resource_download_area": true,
+    "registration_form_and_captcha_required": true,
+    "public_exact_native_dwg_url_located": false,
+    "acquired": false,
+    "local_cad_files": [],
+    "sha256": null,
+    "exact_project_configuration_match": false,
+    "status": "gated_resource_download_no_public_exact_WD03_asset_located_not_acquired",
+    "note": "No personal data was entered, no form was submitted and CAPTCHA or Cloudflare verification was not bypassed. No third-party CAD was substituted."
+  },
+  "dimension_cross_check": {
+    "project_ifc_body_bounds_mm": [
+      1312.963501,
+      585.639038,
+      2389.500094
+    ],
+    "official_family_is_modular_and_customisable": true,
+    "public_exact_project_configuration_dimensions_located": false,
+    "exact_dimension_match_claimed": false,
+    "geometry_scaled_to_catalogue_example": false,
+    "status": "official_family_identity_only_exact_project_configuration_not_proven",
+    "scope": "The project Body envelope is recorded mechanically; it is not treated as an official manufacturing or fabrication dimension."
+  },
+  "project_identity_cross_check": {
+    "representative_global_id": "3cmikd9MTB$egM5KQaNgUf",
+    "type_global_id": "0l3LxR2Lj1egsE94rFSMeK",
+    "project_ifc_type_name": "WD03",
+    "project_ifc_type_description": "Poliform SENZAFINE",
+    "instance_count": 1,
+    "container": "BEDG",
+    "pass": true
+  },
+  "drawing_geometry_source": {
+    "source_kind": "geometry_derived_simplified_proxy",
+    "source_label_zh": "基于原始高模几何生成的简化图纸表达",
+    "source_label_en": "simplified drawing representation derived from the original high-poly geometry",
+    "official_cad_used": false,
+    "third_party_cad_used": false
+  },
+  "scope": "official manufacturer and Senzafine modular wardrobe-family identity only; not an exact project configuration, not official CAD geometry and not a project shop drawing",
+  "review_required": true,
+  "pass": true
+}

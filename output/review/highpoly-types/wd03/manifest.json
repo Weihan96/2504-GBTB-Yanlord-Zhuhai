@@ -1,0 +1,158 @@
+{
+  "schema_version": 1,
+  "generated_at": "2026-08-23T06:28:27.572114+00:00",
+  "generator": "pipeline/scripts/wd03_review.py",
+  "formal_ifc": "2504 GBTB Yanlord Zhuhai.ifc",
+  "formal_ifc_sha256": "7a50b87e8f48a7c2bfbaa9f1dabdfca7155fa684b2325c66aa1ae15c8ab0a25c",
+  "formal_ifc_sha256_after_generation": "7a50b87e8f48a7c2bfbaa9f1dabdfca7155fa684b2325c66aa1ae15c8ab0a25c",
+  "formal_ifc_bytes_unchanged": true,
+  "profile_register": "output/review/highpoly-types/wd03/profile.json",
+  "profile_register_sha256": "a77a502c2aed8b4f98544b7481e848b69e6aa9de3f1eca615222c7788e7b8cf5",
+  "profile_key": "wd03",
+  "display_name": "Poliform Senzafine wardrobe / project WD03",
+  "ifc_type_name": "WD03",
+  "ifc_type_description": "Poliform SENZAFINE",
+  "article_number": "Poliform Senzafine / project WD03",
+  "representative_global_id": "3cmikd9MTB$egM5KQaNgUf",
+  "registered_instance_global_ids": [
+    "3cmikd9MTB$egM5KQaNgUf"
+  ],
+  "geometry_product_count": 1,
+  "whole_model_render": false,
+  "mesh_vertex_count": 3608,
+  "mesh_face_count": 7148,
+  "bounds_mm": {
+    "minimum": [
+      -1225.975433,
+      -280.24262,
+      -2365.000093
+    ],
+    "maximum": [
+      86.988068,
+      305.396418,
+      24.5
+    ],
+    "size": [
+      1312.963501,
+      585.639038,
+      2389.500094
+    ]
+  },
+  "source_kind": "geometry_derived_simplified_proxy",
+  "source_label_zh": "基于原始高模几何生成的简化图纸表达",
+  "drawing_source": {
+    "source_kind": "geometry_derived_simplified_proxy",
+    "source_label_zh": "基于原始高模几何生成的简化图纸表达",
+    "source_label_en": "simplified drawing representation derived from the original high-poly geometry",
+    "official_cad_used": false,
+    "third_party_cad_used": false,
+    "official_source_access_record": "output/review/highpoly-types/wd03/official-source/source-access-record.json",
+    "official_source_access_record_sha256": "f7e55a5d2edd5467bf5b2180a0ec72de2e6cfee5328a223d7f5964abef71732c",
+    "official_product_cad_status": "gated_resource_download_no_public_exact_WD03_asset_located_not_acquired"
+  },
+  "official_reference": {
+    "source_id": "POLIFORM-SENZAFINE-WD03-OFFICIAL-IDENTITY-001",
+    "source_kind": "manufacturer_product_page_family_identity_only",
+    "manufacturer": "Poliform",
+    "family": "Senzafine Wardrobe",
+    "scope": "official manufacturer and modular wardrobe-family identity only; not an exact project configuration, not a project shop drawing and not drawing geometry",
+    "product_page": "https://www.poliform.it/en/products/senzafine-wardrobe/",
+    "technical_catalog_route": "https://www.poliform.it/it/technical-catalog/",
+    "source_access_record": "output/review/highpoly-types/wd03/official-source/source-access-record.json",
+    "official_native_cad_status": "gated_resource_download_no_public_exact_WD03_asset_located_not_acquired",
+    "official_native_cad_used": false
+  },
+  "official_identity_evidence_only": true,
+  "dimension_cross_check": {
+    "project_ifc_body_bounds_mm": [
+      1312.963501,
+      585.639038,
+      2389.500094
+    ],
+    "official_family_is_modular_and_customisable": true,
+    "public_exact_project_configuration_dimensions_located": false,
+    "exact_dimension_match_claimed": false,
+    "geometry_scaled_to_catalogue_example": false,
+    "status": "official_family_identity_only_exact_project_configuration_not_proven",
+    "scope": "The project Body envelope is recorded mechanically; it is not treated as an official manufacturing or fabrication dimension."
+  },
+  "official_cad_acquired": false,
+  "official_cad_exact_project_configuration_match": false,
+  "official_cad_used": false,
+  "third_party_cad_used": false,
+  "blue_line_present": false,
+  "official_source_access_record": "output/review/highpoly-types/wd03/official-source/source-access-record.json",
+  "official_source_access_record_sha256": "f7e55a5d2edd5467bf5b2180a0ec72de2e6cfee5328a223d7f5964abef71732c",
+  "candidate_representations": "output/review/highpoly-types/wd03/candidate-representations.json",
+  "candidate_representations_sha256": "b55eeadb2702e54e74590f29e1b1d594d0b0fac93b74667abfffb475296c2b83",
+  "review_status": "visual_review_pending",
+  "approved_for_drawing_ifc": false,
+  "derived_ifc_write_allowed": false,
+  "formal_ifc_write": "not performed",
+  "views": [
+    {
+      "view": "plan",
+      "svg": "output/review/highpoly-types/wd03/plan.svg",
+      "svg_sha256": "46e23a398f78a4133d78305782e408c54f4a2863b4dfd0f1b56caef793368b08",
+      "projection_axes": [
+        0,
+        1
+      ],
+      "raw_edge_count": 10722,
+      "displayed_raw_edge_count": 975,
+      "silhouette_path_count": 3,
+      "drawing_line_source_kind": "geometry_derived_simplified_proxy",
+      "drawing_line_source_label_zh": "基于原始高模几何生成的简化图纸表达",
+      "official_cad_path_count": 0,
+      "blue_line_present": false
+    },
+    {
+      "view": "front",
+      "svg": "output/review/highpoly-types/wd03/front.svg",
+      "svg_sha256": "beee41cdca4bf08331427c0ad57c5fd56920da2fe76f506fb264136223b05c0e",
+      "projection_axes": [
+        0,
+        2
+      ],
+      "raw_edge_count": 10722,
+      "displayed_raw_edge_count": 975,
+      "silhouette_path_count": 2,
+      "drawing_line_source_kind": "geometry_derived_simplified_proxy",
+      "drawing_line_source_label_zh": "基于原始高模几何生成的简化图纸表达",
+      "official_cad_path_count": 0,
+      "blue_line_present": false
+    },
+    {
+      "view": "side",
+      "svg": "output/review/highpoly-types/wd03/side.svg",
+      "svg_sha256": "7436ad070b8d03391facd0449230e5cf0f01f062817e040f5aa3c5b064d3b222",
+      "projection_axes": [
+        1,
+        2
+      ],
+      "raw_edge_count": 10722,
+      "displayed_raw_edge_count": 975,
+      "silhouette_path_count": 6,
+      "drawing_line_source_kind": "geometry_derived_simplified_proxy",
+      "drawing_line_source_label_zh": "基于原始高模几何生成的简化图纸表达",
+      "official_cad_path_count": 0,
+      "blue_line_present": false
+    }
+  ],
+  "pass": true,
+  "project_context": {
+    "manifest": "output/review/highpoly-types/wd03/project-context-manifest.json",
+    "manifest_sha256": "ba4f48165c54452217b50429ff835528d9c382637a89479bc26151fea139db50",
+    "walls_and_surrounding_project_elements_retained": true,
+    "overlay_top_layer_with_white_mask": true,
+    "pass": true
+  },
+  "bonsai_review": {
+    "manifest": "output/review/highpoly-types/wd03/bonsai-review-manifest.json",
+    "manifest_sha256": "d90bae50f270817b0ebbb5e267bcf639ac6dd0afd6c0127e63c54aaf51925a13",
+    "mode": "actual_bonsai_ifc_body_camera_render",
+    "saved_active_representation": "Body",
+    "saved_camera_count": 4,
+    "pass": true
+  }
+}
