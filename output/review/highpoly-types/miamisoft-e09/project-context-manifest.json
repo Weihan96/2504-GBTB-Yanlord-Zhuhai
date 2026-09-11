@@ -1,145 +1,23 @@
 {
-  "schema_version": 1,
+  "schema_version": 2,
   "generator": "pipeline/scripts/render_miamisoft_e09_project_context.py",
-  "source_kind": "geometry_derived_simplified_proxy",
-  "source_label_zh": "基于原始高模几何生成的简化图纸表达",
-  "official_cad_used": false,
+  "artifact_kind": "review_only_project_context_overlay",
+  "not_bonsai_scene_drawing_svg": true,
+  "ifc_write_performed": false,
+  "derived_ifc_write_allowed": false,
+  "formal_ifc_write_allowed": false,
+  "formal_ifc_sha256": "7a50b87e8f48a7c2bfbaa9f1dabdfca7155fa684b2325c66aa1ae15c8ab0a25c",
+  "formal_ifc_bytes_unchanged": true,
+  "source_kind": "native_dwg",
+  "source_label_zh": "Baxter 官方 Miami Soft E09 原生二维 DWG 项目上下文审核蓝线",
+  "official_cad_used": true,
   "third_party_cad_used": false,
+  "blue_line_present": true,
   "project_context_retained": true,
   "walls_and_surrounding_project_elements_retained": true,
-  "overlay_top_layer_with_white_mask": true,
-  "blue_line_present": false,
-  "project_scale_svg_units_per_mm": 0.02,
-  "views": [
-    {
-      "view": "plan",
-      "candidate_view": "plan",
-      "source": "drawings/Furniture Plan.svg",
-      "output": "output/review/highpoly-types/miamisoft-e09/project-context-furniture-plan.svg",
-      "output_sha256": "287acf4785d079cc10a8be764b028d98daacbdfc34741d0cdd8d992e7fa97c6e",
-      "review_crop": "output/review/highpoly-types/miamisoft-e09/project-context-furniture-plan-review.svg",
-      "review_crop_sha256": "b3887cfdf71a55f2fbcbcaf8d7f2ff52293074a81db1db9b3ac073912f549b5c",
-      "review_preview": "output/review/highpoly-types/miamisoft-e09/project-context-furniture-plan-review-preview.png",
-      "review_preview_sha256": "f2dfc9d580f14a193e744163dc7f92f3eed41b35c8ab15f77ee4198fcc94affa",
-      "overlay": {
-        "ifc_guid": "3osoWufdD1mhDDAM6lcix4",
-        "source_kind": "geometry_derived_simplified_proxy",
-        "source_label_zh": "基于原始高模几何生成的简化图纸表达",
-        "official_cad_used": false,
-        "third_party_cad_used": false,
-        "path_count": 25,
-        "fit": {
-          "rotate_quarter_turns": 1,
-          "alignment_mode": "centre",
-          "flip_projected_y": true,
-          "scale_svg_units_per_mm": 0.02,
-          "target_bbox": [
-            [
-              234.599568,
-              172.131263
-            ],
-            [
-              256.12918,
-              198.34021
-            ]
-          ],
-          "proxy_bbox": [
-            [
-              233.916833,
-              171.805997
-            ],
-            [
-              256.811916,
-              198.665477
-            ]
-          ],
-          "bbox_absolute_delta_svg_units": [
-            1.36547,
-            0.650533
-          ],
-          "bbox_tolerance_svg_units": 1.5,
-          "uniform_scale_preserved": true,
-          "transformation_mode": "axis_swap_rigid_reflection_and_translation_only",
-          "pass": true
-        }
-      }
-    },
-    {
-      "view": "side",
-      "candidate_view": "side",
-      "source": "drawings/elevations/native/EL-01-02-R20-PY.svg",
-      "output": "output/review/highpoly-types/miamisoft-e09/project-context-r20-side-elevation.svg",
-      "output_sha256": "6a017ce9b347a1c2185313a0de0094afa081c1e088759379096037bc1e052d55",
-      "review_crop": "output/review/highpoly-types/miamisoft-e09/project-context-r20-side-elevation-review.svg",
-      "review_crop_sha256": "f87cbad0ee402d688838b5a3f1ad2649c1a2da9751c986e53d95a7ecced083be",
-      "review_preview": "output/review/highpoly-types/miamisoft-e09/project-context-r20-side-elevation-review-preview.png",
-      "review_preview_sha256": "9ac254b7fe9491cfa352f2810d9cdc9afabf003aa1a25ef0861c81494c6356e3",
-      "overlay": {
-        "ifc_guid": "3osoWufdD1mhDDAM6lcix4",
-        "source_kind": "geometry_derived_simplified_proxy",
-        "source_label_zh": "基于原始高模几何生成的简化图纸表达",
-        "official_cad_used": false,
-        "third_party_cad_used": false,
-        "path_count": 35,
-        "fit": {
-          "rotate_quarter_turns": 0,
-          "alignment_mode": "centre",
-          "flip_projected_y": true,
-          "scale_svg_units_per_mm": 0.02,
-          "target_bbox": [
-            [
-              39.967187,
-              35.836611
-            ],
-            [
-              62.862269,
-              51.786209
-            ]
-          ],
-          "proxy_bbox": [
-            [
-              39.967187,
-              35.836611
-            ],
-            [
-              62.86227,
-              51.786209
-            ]
-          ],
-          "bbox_absolute_delta_svg_units": [
-            1e-06,
-            0.0
-          ],
-          "bbox_tolerance_svg_units": 1.5,
-          "uniform_scale_preserved": true,
-          "transformation_mode": "axis_swap_rigid_reflection_and_translation_only",
-          "pass": true
-        }
-      }
-    }
-  ],
-  "pass": true,
-  "semantic_view_mapping": {
-    "plan": {
-      "candidate_axes": [
-        0,
-        1
-      ],
-      "source": "drawings/Furniture Plan.svg",
-      "rotate_quarter_turns": 1,
-      "project_direction": "+Z"
-    },
-    "side": {
-      "candidate_axes": [
-        1,
-        2
-      ],
-      "source": "drawings/elevations/native/EL-01-02-R20-PY.svg",
-      "rotate_quarter_turns": 0,
-      "project_direction": "+Y",
-      "complete_project_projection_group_only": true
-    }
-  },
+  "overlay_top_layer_with_white_mask": false,
+  "geometry_scale": 1.0,
+  "alignment_by_bbox_fit": false,
   "context_view_scope": {
     "included": [
       "plan",
@@ -148,34 +26,298 @@
     "excluded": [
       "front"
     ],
-    "reason": "The R20 +Y drawing contains a complete YZ side projection. The +/-X product projections are partly occluded or clipped and are not presented as a mechanically complete front context."
+    "reason": "Only Furniture Plan and the complete R20 +Y side projection are available as mechanically complete project contexts; no front context is invented."
   },
-  "mechanical_side_fit_tolerance_svg_units": 0.08,
-  "mechanical_side_fit_pass": true,
+  "provider_pre_state": {
+    "provider": "bonsai_mcp",
+    "online": true,
+    "ifc_schema": "IFC4",
+    "project_name": "My Project",
+    "query_only": true,
+    "provider_mutation_used": false
+  },
+  "course_evidence": {
+    "lesson": "085000 Underlay / Linework / Annotation",
+    "source": "research/bonsai-course/lessons/085000/README.md (indexed course evidence)",
+    "fact": "The drawing workflow separates Underlay, Linework and Annotation and requires visual inspection after SVG generation.",
+    "current_version_adaptation": "Review-only analogue: project context is light-grey underlay, current Body is lighter-grey comparison, and official native DWG is blue linework; generated SVG and PNG are visually inspected."
+  },
   "review_annotation_suppression": {
-    "plan": "official-elevation-anchor groups only",
+    "plan": "official-elevation-anchor groups only in review crop",
     "side": "none",
-    "scope": "review crops only; complete project SVGs retain their annotations",
-    "walls_furniture_and_ifc_geometry_removed": false
+    "full_project_svgs_keep_original_annotations": true
   },
-  "review_preview_background": {
-    "plan": "opaque white review-only paper background",
-    "side": "opaque white review-only paper background",
-    "full_project_svgs_remain_transparent": true,
-    "drawing_geometry_changed": false
-  },
-  "project_projection_note": {
-    "official_nominal_mm": [
-      1300.0,
-      1080.0,
-      800.0
-    ],
-    "ifc_body_local_xyz_mm": [
-      1343.172913,
-      1144.75415,
-      797.479919
-    ],
-    "interpretation": "The complete geometry-derived proxy is overlaid at the drawing's native 1:50 scale and centre-aligned; no axis is stretched to force the nominal upholstered envelope.",
-    "geometry_stretched": false
-  }
+  "views": [
+    {
+      "view": "plan",
+      "candidate_view": "plan",
+      "source": "drawings/Furniture Plan.svg",
+      "source_sha256": "36323f6ba86a3d59f73e1895bea5e8f9eb9e26e5cdfa968891d95b73ac6dbad8",
+      "output": "output/review/highpoly-types/miamisoft-e09/project-context-furniture-plan.svg",
+      "output_sha256": "3514fef40ae27bee6d4bbe4e4382676ab44885053a967615304e903883d25083",
+      "review_crop": "output/review/highpoly-types/miamisoft-e09/project-context-furniture-plan-review.svg",
+      "review_crop_sha256": "80e98c5e2771e65ed024182422f2139b2aaa3343835dba2667c6941918e3d521",
+      "review_preview": "output/review/highpoly-types/miamisoft-e09/project-context-furniture-plan-review-preview.png",
+      "review_preview_sha256": "9facf8b7e62b492b30428c0c6cd240f14ea24a6d88bdad8fb09b907b28d5253d",
+      "overlay": {
+        "ifc_guid": "3osoWufdD1mhDDAM6lcix4",
+        "source_kind": "native_dwg",
+        "official_cad_used": true,
+        "third_party_cad_used": false,
+        "source_dwg_sha256": "efc3315feed0a2dac8938aebbd7336856dabba6721395e4520783c39ba0cc51a",
+        "source_path_count": 64,
+        "source_path_semantic_sha256": "d820eaf8c4f637d597be8eb9ad5afaeec715c1226eef959e297cf22ccc65ea0a",
+        "blue_line_present": true,
+        "stroke": "#1677c8",
+        "uniform_geometry_scale": 1.0,
+        "recorded_view_direction_reflection_x": false,
+        "reflection_already_applied_in_candidate": false,
+        "additional_reflection_applied_in_project_context": false,
+        "alignment_by_bbox_fit": false,
+        "rigid_world_placement_only": true,
+        "paper_scale_svg_units_per_mm": 0.02,
+        "local_axes": [
+          0,
+          1
+        ],
+        "object_placement_matrix_mm": [
+          [
+            0.0,
+            1.0,
+            0.0,
+            2287.878274918
+          ],
+          [
+            -1.0,
+            0.0,
+            0.0,
+            803.948163986
+          ],
+          [
+            0.0,
+            0.0,
+            1.0,
+            10.0
+          ],
+          [
+            0.0,
+            0.0,
+            0.0,
+            1.0
+          ]
+        ],
+        "drawing_camera_placement_matrix_mm": [
+          [
+            1.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          [
+            0.0,
+            1.0,
+            0.0,
+            0.0
+          ],
+          [
+            0.0,
+            0.0,
+            1.0,
+            1700.0
+          ],
+          [
+            0.0,
+            0.0,
+            0.0,
+            1.0
+          ]
+        ],
+        "drawing_camera_inverse_matrix": [
+          [
+            1.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          [
+            0.0,
+            1.0,
+            0.0,
+            0.0
+          ],
+          [
+            0.0,
+            0.0,
+            1.0,
+            -1700.0
+          ],
+          [
+            0.0,
+            0.0,
+            0.0,
+            1.0
+          ]
+        ],
+        "project_viewbox": [
+          0.0,
+          0.0,
+          400.0,
+          400.0
+        ],
+        "project_svg_bounds": [
+          [
+            234.068975,
+            172.118175
+          ],
+          [
+            255.598954,
+            198.111335
+          ]
+        ],
+        "within_project_viewbox": true,
+        "no_clipping": true
+      },
+      "project_context_style": {
+        "surrounding_project_elements": "light_grey",
+        "actual_ifc_body": "lighter_grey",
+        "official_native_dwg": "blue"
+      }
+    },
+    {
+      "view": "side",
+      "candidate_view": "side",
+      "source": "drawings/elevations/native/EL-01-02-R20-PY.svg",
+      "source_sha256": "d9e2ca4722572d9cd6619fe2de720c7732650a0ce26b4be5f836b65276baaa20",
+      "output": "output/review/highpoly-types/miamisoft-e09/project-context-r20-side-elevation.svg",
+      "output_sha256": "dc6af065db2685c76d0f298e0b958eb1af0e1dabc29c0cd499034e454b85cdc4",
+      "review_crop": "output/review/highpoly-types/miamisoft-e09/project-context-r20-side-elevation-review.svg",
+      "review_crop_sha256": "09c0b90e2c6b13b9e1c9825c5cd8002f3c3d35693e450535b42693fb9ffd89b2",
+      "review_preview": "output/review/highpoly-types/miamisoft-e09/project-context-r20-side-elevation-review-preview.png",
+      "review_preview_sha256": "d6b056ac09b3ae62453e961ed6593324f1e47557886410bd216ed2ef1345c61f",
+      "overlay": {
+        "ifc_guid": "3osoWufdD1mhDDAM6lcix4",
+        "source_kind": "native_dwg",
+        "official_cad_used": true,
+        "third_party_cad_used": false,
+        "source_dwg_sha256": "efc3315feed0a2dac8938aebbd7336856dabba6721395e4520783c39ba0cc51a",
+        "source_path_count": 85,
+        "source_path_semantic_sha256": "3a026cb5f0fc1c247a3c7aadc2cf1b72c2654c0a50dce8650492dafba08efcb5",
+        "blue_line_present": true,
+        "stroke": "#1677c8",
+        "uniform_geometry_scale": 1.0,
+        "recorded_view_direction_reflection_x": true,
+        "reflection_already_applied_in_candidate": true,
+        "additional_reflection_applied_in_project_context": false,
+        "alignment_by_bbox_fit": false,
+        "rigid_world_placement_only": true,
+        "paper_scale_svg_units_per_mm": 0.02,
+        "local_axes": [
+          1,
+          2
+        ],
+        "object_placement_matrix_mm": [
+          [
+            0.0,
+            1.0,
+            0.0,
+            2287.878274918
+          ],
+          [
+            -1.0,
+            0.0,
+            0.0,
+            803.948163986
+          ],
+          [
+            0.0,
+            0.0,
+            1.0,
+            10.0
+          ],
+          [
+            0.0,
+            0.0,
+            0.0,
+            1.0
+          ]
+        ],
+        "drawing_camera_placement_matrix_mm": [
+          [
+            1.0,
+            0.0,
+            0.0,
+            1820.961952209
+          ],
+          [
+            0.0,
+            0.0,
+            -1.0,
+            626.980006695
+          ],
+          [
+            0.0,
+            1.0,
+            0.0,
+            1250.0
+          ],
+          [
+            0.0,
+            0.0,
+            0.0,
+            1.0
+          ]
+        ],
+        "drawing_camera_inverse_matrix": [
+          [
+            1.0,
+            0.0,
+            0.0,
+            -1820.961952209
+          ],
+          [
+            0.0,
+            0.0,
+            1.0,
+            -1250.0
+          ],
+          [
+            -0.0,
+            -1.0,
+            -0.0,
+            626.980006695
+          ],
+          [
+            0.0,
+            0.0,
+            0.0,
+            1.0
+          ]
+        ],
+        "project_viewbox": [
+          0.0,
+          0.0,
+          86.000003815,
+          53.972416187
+        ],
+        "project_svg_bounds": [
+          [
+            40.382471,
+            35.786258
+          ],
+          [
+            62.446984,
+            51.786208
+          ]
+        ],
+        "within_project_viewbox": true,
+        "no_clipping": true
+      },
+      "project_context_style": {
+        "surrounding_project_elements": "light_grey",
+        "actual_ifc_body": "lighter_grey",
+        "official_native_dwg": "blue"
+      }
+    }
+  ],
+  "pass": true
 }

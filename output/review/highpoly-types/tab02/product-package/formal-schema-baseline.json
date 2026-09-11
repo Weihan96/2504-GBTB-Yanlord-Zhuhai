@@ -1,0 +1,1645 @@
+{
+  "formal_sha256": "7a50b87e8f48a7c2bfbaa9f1dabdfca7155fa684b2325c66aa1ae15c8ab0a25c",
+  "errors": [
+    {
+      "key": [
+        "",
+        "On instance: #STEP=IfcApplication(#STEP,'0.8.4','Bonsai','Bonsai-0.8.4') ^^^^^^^ ^^^^^^^^ Rule IfcApplication.UR2: The combination of attributes ApplicationFullName and Version should be unique Violated by: #STEP=IfcApplication(#STEP,'0.8.4','Bonsai','Bonsai-0.8.4') ^^^^^^^ ^^^^^^^^ ",
+        "93964e591a8333ed455b7528986baf836eb046e430d2817f24f0c704bb80060c"
+      ],
+      "count": 3
+    },
+    {
+      "key": [
+        "",
+        "On instance: #STEP=IfcApplication(#STEP,'0.8.4','Bonsai','Bonsai-0.8.4') ^^^^^^^^^^^^^^ Rule IfcApplication.UR1: The attribute ApplicationIdentifier should be unique Violated by: #STEP=IfcApplication(#STEP,'0.8.4','Bonsai','Bonsai-0.8.4') ^^^^^^^^^^^^^^ ",
+        "93964e591a8333ed455b7528986baf836eb046e430d2817f24f0c704bb80060c"
+      ],
+      "count": 3
+    },
+    {
+      "key": [
+        "",
+        "On instance: #STEP=IfcApplication($,'0.8.3','Bonsai','Bonsai-0.8.3') ^^^^^^^ ^^^^^^^^ Rule IfcApplication.UR2: The combination of attributes ApplicationFullName and Version should be unique Violated by: #STEP=IfcApplication($,'0.8.3','Bonsai','Bonsai-0.8.3') ^^^^^^^ ^^^^^^^^ ",
+        "79b495fd89a6c41e4125fd6fbe0cf09dd816977d3033f6eaf663e71eecede8bd"
+      ],
+      "count": 130
+    },
+    {
+      "key": [
+        "",
+        "On instance: #STEP=IfcApplication($,'0.8.3','Bonsai','Bonsai-0.8.3') ^^^^^^^^^^^^^^ Rule IfcApplication.UR1: The attribute ApplicationIdentifier should be unique Violated by: #STEP=IfcApplication($,'0.8.3','Bonsai','Bonsai-0.8.3') ^^^^^^^^^^^^^^ ",
+        "79b495fd89a6c41e4125fd6fbe0cf09dd816977d3033f6eaf663e71eecede8bd"
+      ],
+      "count": 130
+    },
+    {
+      "key": [
+        "CoordList",
+        "With attribute: <attribute CoordList: <list [1:?] of <list [3:3] of <type IfcLengthMeasure: <real>>>>> Value: (-629.989624023438, 650.0) Not valid ",
+        "a3b4c75d1e35e5fa4e5fbf85b67b393e021bb8f7c8246b023744e4bb430b5f04"
+      ],
+      "count": 1
+    },
+    {
+      "key": [
+        "CoordList",
+        "With attribute: <attribute CoordList: <list [1:?] of <list [3:3] of <type IfcLengthMeasure: <real>>>>> Value: (-700.302124023438, 1070.0) Not valid ",
+        "d822392e3c03efd2fb64cc6666c9041261e1b0fc1aa5ae64204ea8e1bacc79fd"
+      ],
+      "count": 1
+    },
+    {
+      "key": [
+        "IfcApplication.ApplicationDeveloper",
+        "Attribute not optional",
+        "79b495fd89a6c41e4125fd6fbe0cf09dd816977d3033f6eaf663e71eecede8bd"
+      ],
+      "count": 131
+    },
+    {
+      "key": [
+        "IfcGeometricRepresentationContext.WorldCoordinateSystem",
+        "Attribute not optional",
+        "29edbeb6aae0b385236794808f959cdfefb751a6c2b8e8954128f617b9383037"
+      ],
+      "count": 1
+    },
+    {
+      "key": [
+        "IfcMaterialProfileSet.MaterialProfiles",
+        "Attribute not optional",
+        "010db7dff98f7f0de4c72d75a51353456d82f2922142284d504e2473c699b725"
+      ],
+      "count": 1
+    },
+    {
+      "key": [
+        "IfcProductDefinitionShape.ShapeOfProduct",
+        "With inverse: ShapeOfProduct : SET [1:?] OF IfcProduct FOR Representation Value: () Not valid ",
+        "018754e002baf50e488a0597eb9b3534265592185e6332d924124f5dfebb9969"
+      ],
+      "count": 1
+    },
+    {
+      "key": [
+        "IfcProductDefinitionShape.ShapeOfProduct",
+        "With inverse: ShapeOfProduct : SET [1:?] OF IfcProduct FOR Representation Value: () Not valid ",
+        "01a901b78dcfbdc464ec50f3c2ae62739a9b2f1ad00a1a87dd2a39d4044b67ce"
+      ],
+      "count": 1
+    },
+    {
+      "key": [
+        "IfcProductDefinitionShape.ShapeOfProduct",
+        "With inverse: ShapeOfProduct : SET [1:?] OF IfcProduct FOR Representation Value: () Not valid ",
+        "01bc0500601529098dfb2b4da140db3cb779a2e1b974779c625aa63e46920b01"
+      ],
+      "count": 2
+    },
+    {
+      "key": [
+        "IfcProductDefinitionShape.ShapeOfProduct",
+        "With inverse: ShapeOfProduct : SET [1:?] OF IfcProduct FOR Representation Value: () Not valid ",
+        "05294599b5432104dc3231269778e56e06e2270510426b7bf81227e7d75a8bf6"
+      ],
+      "count": 3
+    },
+    {
+      "key": [
+        "IfcProductDefinitionShape.ShapeOfProduct",
+        "With inverse: ShapeOfProduct : SET [1:?] OF IfcProduct FOR Representation Value: () Not valid ",
+        "068ab7e02f8c87a13b771b91fb7e1119d99d72b9c5937c833d620147991dc430"
+      ],
+      "count": 1
+    },
+    {
+      "key": [
+        "IfcProductDefinitionShape.ShapeOfProduct",
+        "With inverse: ShapeOfProduct : SET [1:?] OF IfcProduct FOR Representation Value: () Not valid ",
+        "09514313dffe97ff40972990b4c382f8c36ed5b631a10e646e730ecc214e74e4"
+      ],
+      "count": 3
+    },
+    {
+      "key": [
+        "IfcProductDefinitionShape.ShapeOfProduct",
+        "With inverse: ShapeOfProduct : SET [1:?] OF IfcProduct FOR Representation Value: () Not valid ",
+        "0e65480d0f2b654c02be5a9a526fda0782c4429cfb2ac2696cb27b1ba929873f"
+      ],
+      "count": 1
+    },
+    {
+      "key": [
+        "IfcProductDefinitionShape.ShapeOfProduct",
+        "With inverse: ShapeOfProduct : SET [1:?] OF IfcProduct FOR Representation Value: () Not valid ",
+        "12bf0b25c22071345950342613d3bf40cd578a3e05e8bb09f20aef947f4af958"
+      ],
+      "count": 3
+    },
+    {
+      "key": [
+        "IfcProductDefinitionShape.ShapeOfProduct",
+        "With inverse: ShapeOfProduct : SET [1:?] OF IfcProduct FOR Representation Value: () Not valid ",
+        "135a381decdfb9eb7cfed7dd6b8dc582d66e87830433c8978701600ce364f6c0"
+      ],
+      "count": 1
+    },
+    {
+      "key": [
+        "IfcProductDefinitionShape.ShapeOfProduct",
+        "With inverse: ShapeOfProduct : SET [1:?] OF IfcProduct FOR Representation Value: () Not valid ",
+        "146cd5d39e20f72f7f3332497b79a61a587bfd3681cc63bcc3221af213b5b7ff"
+      ],
+      "count": 1
+    },
+    {
+      "key": [
+        "IfcProductDefinitionShape.ShapeOfProduct",
+        "With inverse: ShapeOfProduct : SET [1:?] OF IfcProduct FOR Representation Value: () Not valid ",
+        "17444a7e75039181eff737c9ae2eeb07c26c2b7011560a412b7e0e9e91705a90"
+      ],
+      "count": 1
+    },
+    {
+      "key": [
+        "IfcProductDefinitionShape.ShapeOfProduct",
+        "With inverse: ShapeOfProduct : SET [1:?] OF IfcProduct FOR Representation Value: () Not valid ",
+        "1d0f54da3fbcb9356dbfd1793748a8d9a26ce04b525be0ec12c6cf3a921d5aa9"
+      ],
+      "count": 1
+    },
+    {
+      "key": [
+        "IfcProductDefinitionShape.ShapeOfProduct",
+        "With inverse: ShapeOfProduct : SET [1:?] OF IfcProduct FOR Representation Value: () Not valid ",
+        "1eace447a677ca21337e953a4cd9bc7d3a4f518d258f5a047b5f1f85218f0922"
+      ],
+      "count": 1
+    },
+    {
+      "key": [
+        "IfcProductDefinitionShape.ShapeOfProduct",
+        "With inverse: ShapeOfProduct : SET [1:?] OF IfcProduct FOR Representation Value: () Not valid ",
+        "1ecdbf54e11f50953e20a899597b885b775e20ee2d50d21d7b64347a52b2c411"
+      ],
+      "count": 1
+    },
+    {
+      "key": [
+        "IfcProductDefinitionShape.ShapeOfProduct",
+        "With inverse: ShapeOfProduct : SET [1:?] OF IfcProduct FOR Representation Value: () Not valid ",
+        "1ff9331cdaede3322baef1c31f4fd7ea34e355d780cb2f3045d2b9e238c7cc1a"
+      ],
+      "count": 2
+    },
+    {
+      "key": [
+        "IfcProductDefinitionShape.ShapeOfProduct",
+        "With inverse: ShapeOfProduct : SET [1:?] OF IfcProduct FOR Representation Value: () Not valid ",
+        "200cde736d2f0e86e6b9dd27a43ec6ee473920de93ec99aa683fd92c269bcd5e"
+      ],
+      "count": 2
+    },
+    {
+      "key": [
+        "IfcProductDefinitionShape.ShapeOfProduct",
+        "With inverse: ShapeOfProduct : SET [1:?] OF IfcProduct FOR Representation Value: () Not valid ",
+        "228321ec3a3b708e113b4ab79690b334445383c7e684efd7fe60663ec59144a3"
+      ],
+      "count": 1
+    },
+    {
+      "key": [
+        "IfcProductDefinitionShape.ShapeOfProduct",
+        "With inverse: ShapeOfProduct : SET [1:?] OF IfcProduct FOR Representation Value: () Not valid ",
+        "2379a0c5afbb54226a595332072b84390af4ef78a1ad87300bf70feea297c198"
+      ],
+      "count": 1
+    },
+    {
+      "key": [
+        "IfcProductDefinitionShape.ShapeOfProduct",
+        "With inverse: ShapeOfProduct : SET [1:?] OF IfcProduct FOR Representation Value: () Not valid ",
+        "27987c95d48545776bad2bd1e91138cccfa0422518c77b07ac73b93ad889256c"
+      ],
+      "count": 3
+    },
+    {
+      "key": [
+        "IfcProductDefinitionShape.ShapeOfProduct",
+        "With inverse: ShapeOfProduct : SET [1:?] OF IfcProduct FOR Representation Value: () Not valid ",
+        "29ada4339d86dad3d8609fa5677ee40e45906c74a1aa27906ea29d5bb8cd7295"
+      ],
+      "count": 1
+    },
+    {
+      "key": [
+        "IfcProductDefinitionShape.ShapeOfProduct",
+        "With inverse: ShapeOfProduct : SET [1:?] OF IfcProduct FOR Representation Value: () Not valid ",
+        "2a5c204f4c6d260af7c1db46d722b4f29860d06408f48e4e80fd3e5fc63ff55f"
+      ],
+      "count": 2
+    },
+    {
+      "key": [
+        "IfcProductDefinitionShape.ShapeOfProduct",
+        "With inverse: ShapeOfProduct : SET [1:?] OF IfcProduct FOR Representation Value: () Not valid ",
+        "2b7bcff324f6ccb4539cd6dce9a96629a5c09cf83c3d1da9ffb5a73b5f4dc41c"
+      ],
+      "count": 2
+    },
+    {
+      "key": [
+        "IfcProductDefinitionShape.ShapeOfProduct",
+        "With inverse: ShapeOfProduct : SET [1:?] OF IfcProduct FOR Representation Value: () Not valid ",
+        "3157183389bf468e6c8cb6eea0d08d49213dca12f70ae6561bbc1d7ad15b7c0f"
+      ],
+      "count": 1
+    },
+    {
+      "key": [
+        "IfcProductDefinitionShape.ShapeOfProduct",
+        "With inverse: ShapeOfProduct : SET [1:?] OF IfcProduct FOR Representation Value: () Not valid ",
+        "34e9dd7abdb932d08a8c28322ddd0aa098c0d82a1a483ed439bf6a3d98fea36a"
+      ],
+      "count": 1
+    },
+    {
+      "key": [
+        "IfcProductDefinitionShape.ShapeOfProduct",
+        "With inverse: ShapeOfProduct : SET [1:?] OF IfcProduct FOR Representation Value: () Not valid ",
+        "3602a5bdb209c126c44facf3fc936468cdd48d0f8129e1a7149da33fcafc53d6"
+      ],
+      "count": 3
+    },
+    {
+      "key": [
+        "IfcProductDefinitionShape.ShapeOfProduct",
+        "With inverse: ShapeOfProduct : SET [1:?] OF IfcProduct FOR Representation Value: () Not valid ",
+        "369700d5eb5a2d757b15380bc927c62daa71e014060952505783d39c04c79149"
+      ],
+      "count": 1
+    },
+    {
+      "key": [
+        "IfcProductDefinitionShape.ShapeOfProduct",
+        "With inverse: ShapeOfProduct : SET [1:?] OF IfcProduct FOR Representation Value: () Not valid ",
+        "3d03ae5ccc66f008ae19f7da34362f293c7b9fa555bcff1215eda05b25138caf"
+      ],
+      "count": 1
+    },
+    {
+      "key": [
+        "IfcProductDefinitionShape.ShapeOfProduct",
+        "With inverse: ShapeOfProduct : SET [1:?] OF IfcProduct FOR Representation Value: () Not valid ",
+        "3f229472c0c05178362657f79aee58854a53c4a75d14feeb939a69140a66b1fd"
+      ],
+      "count": 1
+    },
+    {
+      "key": [
+        "IfcProductDefinitionShape.ShapeOfProduct",
+        "With inverse: ShapeOfProduct : SET [1:?] OF IfcProduct FOR Representation Value: () Not valid ",
+        "3f41b4975069456dcf09908771ce0eaf42730cf4e415b9b2a10d6ad8e3060da1"
+      ],
+      "count": 1
+    },
+    {
+      "key": [
+        "IfcProductDefinitionShape.ShapeOfProduct",
+        "With inverse: ShapeOfProduct : SET [1:?] OF IfcProduct FOR Representation Value: () Not valid ",
+        "42d54a3bfa7a76f2b6e62416f104aada6a80f733add81795e7994b514bdef7ba"
+      ],
+      "count": 2
+    },
+    {
+      "key": [
+        "IfcProductDefinitionShape.ShapeOfProduct",
+        "With inverse: ShapeOfProduct : SET [1:?] OF IfcProduct FOR Representation Value: () Not valid ",
+        "447b6b9bf23369041bf2a0bfb849dd4493b84599b249620f7f6e3d0482e83744"
+      ],
+      "count": 2
+    },
+    {
+      "key": [
+        "IfcProductDefinitionShape.ShapeOfProduct",
+        "With inverse: ShapeOfProduct : SET [1:?] OF IfcProduct FOR Representation Value: () Not valid ",
+        "465c4b710609a68b9b1fb923a7e637c7b58519e4c121bac8c43bd3ba8f815e6d"
+      ],
+      "count": 1
+    },
+    {
+      "key": [
+        "IfcProductDefinitionShape.ShapeOfProduct",
+        "With inverse: ShapeOfProduct : SET [1:?] OF IfcProduct FOR Representation Value: () Not valid ",
+        "466ea5c843a180cda615c3a2a4a103d289332bd232b0eaeaa8d20a534e8c70e9"
+      ],
+      "count": 2
+    },
+    {
+      "key": [
+        "IfcProductDefinitionShape.ShapeOfProduct",
+        "With inverse: ShapeOfProduct : SET [1:?] OF IfcProduct FOR Representation Value: () Not valid ",
+        "4a0dd22fae6e544470f3dfaa9c2ab5a358d6e77a0c411f83714831679faedb42"
+      ],
+      "count": 4
+    },
+    {
+      "key": [
+        "IfcProductDefinitionShape.ShapeOfProduct",
+        "With inverse: ShapeOfProduct : SET [1:?] OF IfcProduct FOR Representation Value: () Not valid ",
+        "4fe4ae5affc3726887d56d15cd195ae029929090046be93075cb620444e5d89e"
+      ],
+      "count": 1
+    },
+    {
+      "key": [
+        "IfcProductDefinitionShape.ShapeOfProduct",
+        "With inverse: ShapeOfProduct : SET [1:?] OF IfcProduct FOR Representation Value: () Not valid ",
+        "5f200aa8c16dae63e095f8707bc2fb782fbd577a5201860c474a6593cb385d23"
+      ],
+      "count": 1
+    },
+    {
+      "key": [
+        "IfcProductDefinitionShape.ShapeOfProduct",
+        "With inverse: ShapeOfProduct : SET [1:?] OF IfcProduct FOR Representation Value: () Not valid ",
+        "62a4065473acde23fd84cf3b4d29838fe8a2a839a4055297c9a30996e3e83c47"
+      ],
+      "count": 1
+    },
+    {
+      "key": [
+        "IfcProductDefinitionShape.ShapeOfProduct",
+        "With inverse: ShapeOfProduct : SET [1:?] OF IfcProduct FOR Representation Value: () Not valid ",
+        "63571de14ab5f8cc2d2647c0adb0c4e3892b31dbf40deddbf04fe5919734275d"
+      ],
+      "count": 1
+    },
+    {
+      "key": [
+        "IfcProductDefinitionShape.ShapeOfProduct",
+        "With inverse: ShapeOfProduct : SET [1:?] OF IfcProduct FOR Representation Value: () Not valid ",
+        "63c6ae113ff5d9eab647c3906fe45fbc84b8bf25d26c2dcb45b1a0335bd1aadc"
+      ],
+      "count": 2
+    },
+    {
+      "key": [
+        "IfcProductDefinitionShape.ShapeOfProduct",
+        "With inverse: ShapeOfProduct : SET [1:?] OF IfcProduct FOR Representation Value: () Not valid ",
+        "69415a0b554cb14feb1ae8690e3adbf33ed0e3237c4c4ae8de2b90b5e4b0175d"
+      ],
+      "count": 1
+    },
+    {
+      "key": [
+        "IfcProductDefinitionShape.ShapeOfProduct",
+        "With inverse: ShapeOfProduct : SET [1:?] OF IfcProduct FOR Representation Value: () Not valid ",
+        "6acc2c190b347d285de6a63e7a241cc44cbc1694569d9210b9dea690de9a3354"
+      ],
+      "count": 2
+    },
+    {
+      "key": [
+        "IfcProductDefinitionShape.ShapeOfProduct",
+        "With inverse: ShapeOfProduct : SET [1:?] OF IfcProduct FOR Representation Value: () Not valid ",
+        "6d51a316a6cb08b59903d7d1f4ca63fe5757f51aa6070dae506a1c7fb39a7251"
+      ],
+      "count": 1
+    },
+    {
+      "key": [
+        "IfcProductDefinitionShape.ShapeOfProduct",
+        "With inverse: ShapeOfProduct : SET [1:?] OF IfcProduct FOR Representation Value: () Not valid ",
+        "6d6985ecef48553e98d96cdff63cf1d8958acfa8aaeab012a59b71d7a2082885"
+      ],
+      "count": 2
+    },
+    {
+      "key": [
+        "IfcProductDefinitionShape.ShapeOfProduct",
+        "With inverse: ShapeOfProduct : SET [1:?] OF IfcProduct FOR Representation Value: () Not valid ",
+        "79a95adb7103fb64280db0ffff6b0d405a76fbdaaeaba6c50c9fcd1f0af88c93"
+      ],
+      "count": 3
+    },
+    {
+      "key": [
+        "IfcProductDefinitionShape.ShapeOfProduct",
+        "With inverse: ShapeOfProduct : SET [1:?] OF IfcProduct FOR Representation Value: () Not valid ",
+        "7df0ea8e92fe5fd18ee1ed6a25d48e0764d2034fbd85fe735371394abb1bff06"
+      ],
+      "count": 2
+    },
+    {
+      "key": [
+        "IfcProductDefinitionShape.ShapeOfProduct",
+        "With inverse: ShapeOfProduct : SET [1:?] OF IfcProduct FOR Representation Value: () Not valid ",
+        "7f1c2f5480252962f5fdad095ef76bcd5079f3e0b69934b69bfed4af972850e0"
+      ],
+      "count": 2
+    },
+    {
+      "key": [
+        "IfcProductDefinitionShape.ShapeOfProduct",
+        "With inverse: ShapeOfProduct : SET [1:?] OF IfcProduct FOR Representation Value: () Not valid ",
+        "84524efebd44bf5ea2d9a024a6b3b9cf23f6af8ed11a0e9398fbeb7b81d7bedd"
+      ],
+      "count": 3
+    },
+    {
+      "key": [
+        "IfcProductDefinitionShape.ShapeOfProduct",
+        "With inverse: ShapeOfProduct : SET [1:?] OF IfcProduct FOR Representation Value: () Not valid ",
+        "8555b3e187db014200902c52e9ccf5a54601b952427da8da1ddfe9186ffc4569"
+      ],
+      "count": 1
+    },
+    {
+      "key": [
+        "IfcProductDefinitionShape.ShapeOfProduct",
+        "With inverse: ShapeOfProduct : SET [1:?] OF IfcProduct FOR Representation Value: () Not valid ",
+        "88004b830a5b44f52ade2bca72c09e38bb6aeae0821dcfb194f2df459da90fdc"
+      ],
+      "count": 1
+    },
+    {
+      "key": [
+        "IfcProductDefinitionShape.ShapeOfProduct",
+        "With inverse: ShapeOfProduct : SET [1:?] OF IfcProduct FOR Representation Value: () Not valid ",
+        "8aad4775846a33926c924fec739d985b3ff2aa77cc71a20a7eaf5676b107b885"
+      ],
+      "count": 1
+    },
+    {
+      "key": [
+        "IfcProductDefinitionShape.ShapeOfProduct",
+        "With inverse: ShapeOfProduct : SET [1:?] OF IfcProduct FOR Representation Value: () Not valid ",
+        "90b0471cd93c7410a107e9339c477f3f8afad6f9e23cb215027e34513b4a5937"
+      ],
+      "count": 1
+    },
+    {
+      "key": [
+        "IfcProductDefinitionShape.ShapeOfProduct",
+        "With inverse: ShapeOfProduct : SET [1:?] OF IfcProduct FOR Representation Value: () Not valid ",
+        "9a90c5682faa7da6d9f4ce7713f9678e924932c2534a67aba83f608b05d05d77"
+      ],
+      "count": 1
+    },
+    {
+      "key": [
+        "IfcProductDefinitionShape.ShapeOfProduct",
+        "With inverse: ShapeOfProduct : SET [1:?] OF IfcProduct FOR Representation Value: () Not valid ",
+        "9c12d46a19df197695101d40a54fd376c4fed6122e1e93a7a3133555e86ff627"
+      ],
+      "count": 1
+    },
+    {
+      "key": [
+        "IfcProductDefinitionShape.ShapeOfProduct",
+        "With inverse: ShapeOfProduct : SET [1:?] OF IfcProduct FOR Representation Value: () Not valid ",
+        "9cc786184a3cb04672aa4a32e27ee08ce18182c67da639ab7869b069666066ab"
+      ],
+      "count": 1
+    },
+    {
+      "key": [
+        "IfcProductDefinitionShape.ShapeOfProduct",
+        "With inverse: ShapeOfProduct : SET [1:?] OF IfcProduct FOR Representation Value: () Not valid ",
+        "9e6c84eced166fa67d02b10a2b324b911c95b5209ecd72ecbc7ab7d8196e6851"
+      ],
+      "count": 1
+    },
+    {
+      "key": [
+        "IfcProductDefinitionShape.ShapeOfProduct",
+        "With inverse: ShapeOfProduct : SET [1:?] OF IfcProduct FOR Representation Value: () Not valid ",
+        "9f373d4117407bd269863be0df5a65996606963aa795796a5c3452e9dc74a032"
+      ],
+      "count": 1
+    },
+    {
+      "key": [
+        "IfcProductDefinitionShape.ShapeOfProduct",
+        "With inverse: ShapeOfProduct : SET [1:?] OF IfcProduct FOR Representation Value: () Not valid ",
+        "a48eb4003ed087cf5ebbaca079d830bf74dd5320a374fb0177211b26a84e6494"
+      ],
+      "count": 1
+    },
+    {
+      "key": [
+        "IfcProductDefinitionShape.ShapeOfProduct",
+        "With inverse: ShapeOfProduct : SET [1:?] OF IfcProduct FOR Representation Value: () Not valid ",
+        "a602a012a6781c91407c931d773d248aa4c5445ebac498deada907c98280812c"
+      ],
+      "count": 1
+    },
+    {
+      "key": [
+        "IfcProductDefinitionShape.ShapeOfProduct",
+        "With inverse: ShapeOfProduct : SET [1:?] OF IfcProduct FOR Representation Value: () Not valid ",
+        "a6b639c265737284396bd14ebd6e6e2f413dc5e380134e1ec3cb5555759df423"
+      ],
+      "count": 1
+    },
+    {
+      "key": [
+        "IfcProductDefinitionShape.ShapeOfProduct",
+        "With inverse: ShapeOfProduct : SET [1:?] OF IfcProduct FOR Representation Value: () Not valid ",
+        "a810b5c759b4044cca7ec8a758de7fa2d1ad31abea15b4d82f11a9b8bbc35ecf"
+      ],
+      "count": 1
+    },
+    {
+      "key": [
+        "IfcProductDefinitionShape.ShapeOfProduct",
+        "With inverse: ShapeOfProduct : SET [1:?] OF IfcProduct FOR Representation Value: () Not valid ",
+        "a87735fa7254556dfe1506112301dc0ea4da6478b5e5551df9265f5cefb099fb"
+      ],
+      "count": 1
+    },
+    {
+      "key": [
+        "IfcProductDefinitionShape.ShapeOfProduct",
+        "With inverse: ShapeOfProduct : SET [1:?] OF IfcProduct FOR Representation Value: () Not valid ",
+        "a90d836a7eeac4c68df5fb36badac955548406deefc7bb1f3a28e6bd39041287"
+      ],
+      "count": 1
+    },
+    {
+      "key": [
+        "IfcProductDefinitionShape.ShapeOfProduct",
+        "With inverse: ShapeOfProduct : SET [1:?] OF IfcProduct FOR Representation Value: () Not valid ",
+        "abfad80001c28aed730467be1020a6a3757a787da7b876ee8f47b1bacec063ad"
+      ],
+      "count": 1
+    },
+    {
+      "key": [
+        "IfcProductDefinitionShape.ShapeOfProduct",
+        "With inverse: ShapeOfProduct : SET [1:?] OF IfcProduct FOR Representation Value: () Not valid ",
+        "acedd199bf53ede8f6a47076a0ad3e3103a94643206a6603fdb4bc84688c6bfd"
+      ],
+      "count": 1
+    },
+    {
+      "key": [
+        "IfcProductDefinitionShape.ShapeOfProduct",
+        "With inverse: ShapeOfProduct : SET [1:?] OF IfcProduct FOR Representation Value: () Not valid ",
+        "b45dd9ac04a8bc5bdc2b5004ee3f3ba58ce5843d2caa79c5ca7e574a299435c7"
+      ],
+      "count": 3
+    },
+    {
+      "key": [
+        "IfcProductDefinitionShape.ShapeOfProduct",
+        "With inverse: ShapeOfProduct : SET [1:?] OF IfcProduct FOR Representation Value: () Not valid ",
+        "b4e39b77199cc4af4152fb597b3f5f3e11522f2adf0d59419805ed3b15bb4a36"
+      ],
+      "count": 1
+    },
+    {
+      "key": [
+        "IfcProductDefinitionShape.ShapeOfProduct",
+        "With inverse: ShapeOfProduct : SET [1:?] OF IfcProduct FOR Representation Value: () Not valid ",
+        "b4f1d0ff33dd13071d54a49d0d4d6b7eb3cd9e53098e9c0617ac2ee29ad3c3fd"
+      ],
+      "count": 2
+    },
+    {
+      "key": [
+        "IfcProductDefinitionShape.ShapeOfProduct",
+        "With inverse: ShapeOfProduct : SET [1:?] OF IfcProduct FOR Representation Value: () Not valid ",
+        "bb3eb61d74cc72a0f217221ef67e31ff3fd5ea13696fd5fbefe19b52f1f29165"
+      ],
+      "count": 1
+    },
+    {
+      "key": [
+        "IfcProductDefinitionShape.ShapeOfProduct",
+        "With inverse: ShapeOfProduct : SET [1:?] OF IfcProduct FOR Representation Value: () Not valid ",
+        "bb99de0882c711bd795e7471cd4ce79b7ed8c95f4630044df136467356cf572d"
+      ],
+      "count": 1
+    },
+    {
+      "key": [
+        "IfcProductDefinitionShape.ShapeOfProduct",
+        "With inverse: ShapeOfProduct : SET [1:?] OF IfcProduct FOR Representation Value: () Not valid ",
+        "bba998b96c5b57d1cd1c896eff706874c7d48a1e7d10604c5637fc2a48006539"
+      ],
+      "count": 1
+    },
+    {
+      "key": [
+        "IfcProductDefinitionShape.ShapeOfProduct",
+        "With inverse: ShapeOfProduct : SET [1:?] OF IfcProduct FOR Representation Value: () Not valid ",
+        "bea7b0cb5680b10705e24f1f52b5c4b53ad4419bc3dccd47355a06cd2458fc02"
+      ],
+      "count": 4
+    },
+    {
+      "key": [
+        "IfcProductDefinitionShape.ShapeOfProduct",
+        "With inverse: ShapeOfProduct : SET [1:?] OF IfcProduct FOR Representation Value: () Not valid ",
+        "bf7116adc64a275c3a56a14f7aa1bf7b5b789123941bd30a8a04ef79fb6a5f9e"
+      ],
+      "count": 2
+    },
+    {
+      "key": [
+        "IfcProductDefinitionShape.ShapeOfProduct",
+        "With inverse: ShapeOfProduct : SET [1:?] OF IfcProduct FOR Representation Value: () Not valid ",
+        "c02b3383be1a6e5dc1ce2b27a21a149418d6ec4e86d464aff65e36b4de8130ef"
+      ],
+      "count": 1
+    },
+    {
+      "key": [
+        "IfcProductDefinitionShape.ShapeOfProduct",
+        "With inverse: ShapeOfProduct : SET [1:?] OF IfcProduct FOR Representation Value: () Not valid ",
+        "c591729912103ae9945074ea99eeb7fa5c4899d30932073d232fb3f5fa579f91"
+      ],
+      "count": 2
+    },
+    {
+      "key": [
+        "IfcProductDefinitionShape.ShapeOfProduct",
+        "With inverse: ShapeOfProduct : SET [1:?] OF IfcProduct FOR Representation Value: () Not valid ",
+        "c621be1087dcf38b2286bfd94deb418e1ac1b3e396d86fe520733ab7532c2783"
+      ],
+      "count": 2
+    },
+    {
+      "key": [
+        "IfcProductDefinitionShape.ShapeOfProduct",
+        "With inverse: ShapeOfProduct : SET [1:?] OF IfcProduct FOR Representation Value: () Not valid ",
+        "c67c4b38c4ad64a08e23176e4c22f679113225e5b9f2bfe2259d63e95a8eab93"
+      ],
+      "count": 1
+    },
+    {
+      "key": [
+        "IfcProductDefinitionShape.ShapeOfProduct",
+        "With inverse: ShapeOfProduct : SET [1:?] OF IfcProduct FOR Representation Value: () Not valid ",
+        "c8025432e2468e6fdc109940230f3e213c68b3a9c639c15f03743b9593a10bba"
+      ],
+      "count": 1
+    },
+    {
+      "key": [
+        "IfcProductDefinitionShape.ShapeOfProduct",
+        "With inverse: ShapeOfProduct : SET [1:?] OF IfcProduct FOR Representation Value: () Not valid ",
+        "d0780863b1fb06db3f5ce4c229ae8f93adb743cf902212886d57a5779a68df3f"
+      ],
+      "count": 1
+    },
+    {
+      "key": [
+        "IfcProductDefinitionShape.ShapeOfProduct",
+        "With inverse: ShapeOfProduct : SET [1:?] OF IfcProduct FOR Representation Value: () Not valid ",
+        "d0791c6aba54244c0f8f1bded8b32adcc28b3a5cae55affaa9f1d71e7eea8b62"
+      ],
+      "count": 1
+    },
+    {
+      "key": [
+        "IfcProductDefinitionShape.ShapeOfProduct",
+        "With inverse: ShapeOfProduct : SET [1:?] OF IfcProduct FOR Representation Value: () Not valid ",
+        "d28adffd70a6d29ed6cef2f4d4b2dc2f263a0611e5d9ca148f97af40088dca21"
+      ],
+      "count": 2
+    },
+    {
+      "key": [
+        "IfcProductDefinitionShape.ShapeOfProduct",
+        "With inverse: ShapeOfProduct : SET [1:?] OF IfcProduct FOR Representation Value: () Not valid ",
+        "d66ceca1234c2dbdf92b389833fc026934e7adf44db9c38b2294281f7f763a40"
+      ],
+      "count": 1
+    },
+    {
+      "key": [
+        "IfcProductDefinitionShape.ShapeOfProduct",
+        "With inverse: ShapeOfProduct : SET [1:?] OF IfcProduct FOR Representation Value: () Not valid ",
+        "ded70ea699e5b3c76e443b607a00ff20b5126d1773396818a16c4ab45a569d62"
+      ],
+      "count": 1
+    },
+    {
+      "key": [
+        "IfcProductDefinitionShape.ShapeOfProduct",
+        "With inverse: ShapeOfProduct : SET [1:?] OF IfcProduct FOR Representation Value: () Not valid ",
+        "dfda21e950fb724d531b857beada3ccfac466f12917037c0fa6a0ca415049f02"
+      ],
+      "count": 3
+    },
+    {
+      "key": [
+        "IfcProductDefinitionShape.ShapeOfProduct",
+        "With inverse: ShapeOfProduct : SET [1:?] OF IfcProduct FOR Representation Value: () Not valid ",
+        "e0c7d5514754b23c89e87216c8d162d1661aad66f2c038b5209f917cefeac403"
+      ],
+      "count": 1
+    },
+    {
+      "key": [
+        "IfcProductDefinitionShape.ShapeOfProduct",
+        "With inverse: ShapeOfProduct : SET [1:?] OF IfcProduct FOR Representation Value: () Not valid ",
+        "e3cfa7e6d2863db225869d9a616d142d897debb0b95dcf2da45207bb0a0371f8"
+      ],
+      "count": 1
+    },
+    {
+      "key": [
+        "IfcProductDefinitionShape.ShapeOfProduct",
+        "With inverse: ShapeOfProduct : SET [1:?] OF IfcProduct FOR Representation Value: () Not valid ",
+        "eaae41ad17901f080e82e61b0cef6555c387fb5b9115cea3e793a35af1a9a415"
+      ],
+      "count": 2
+    },
+    {
+      "key": [
+        "IfcProductDefinitionShape.ShapeOfProduct",
+        "With inverse: ShapeOfProduct : SET [1:?] OF IfcProduct FOR Representation Value: () Not valid ",
+        "eac46894702c6bc6c98c85c25c485d99107c702ea694b307f694504731d7dfd6"
+      ],
+      "count": 1
+    },
+    {
+      "key": [
+        "IfcProductDefinitionShape.ShapeOfProduct",
+        "With inverse: ShapeOfProduct : SET [1:?] OF IfcProduct FOR Representation Value: () Not valid ",
+        "efff7453c9e8d92e6f810096444519594747f3617f17b61c832f4c6af0f5fcee"
+      ],
+      "count": 1
+    },
+    {
+      "key": [
+        "IfcProductDefinitionShape.ShapeOfProduct",
+        "With inverse: ShapeOfProduct : SET [1:?] OF IfcProduct FOR Representation Value: () Not valid ",
+        "f6a2bccea019848b2a4ca6dbd7aa0d6c7efffc209befc6fa44be3291b8fb6183"
+      ],
+      "count": 1
+    },
+    {
+      "key": [
+        "IfcProductDefinitionShape.ShapeOfProduct",
+        "With inverse: ShapeOfProduct : SET [1:?] OF IfcProduct FOR Representation Value: () Not valid ",
+        "fc4a485b559e2bab972ae913a79744cf8a90eabc797d3e97d68f7117aaf4bc2b"
+      ],
+      "count": 3
+    },
+    {
+      "key": [
+        "IfcProductDefinitionShape.ShapeOfProduct",
+        "With inverse: ShapeOfProduct : SET [1:?] OF IfcProduct FOR Representation Value: () Not valid ",
+        "ff5fa7ae87201d2b26d2d0c5d076e75a06411297d259592efdd797efebff69c5"
+      ],
+      "count": 1
+    },
+    {
+      "key": [
+        "IfcShapeAspect.ProductDefinitional",
+        "Attribute not optional",
+        "00a939b0ab9e3325410bcb13c6ca9da2944633dee0ffd05939f4487674b74d2c"
+      ],
+      "count": 1
+    },
+    {
+      "key": [
+        "IfcShapeAspect.ProductDefinitional",
+        "Attribute not optional",
+        "05a743ce5d7af7d00bf4fc4ccf896e7b35172c70fa0944959aa7f71f8abb6237"
+      ],
+      "count": 1
+    },
+    {
+      "key": [
+        "IfcShapeAspect.ProductDefinitional",
+        "Attribute not optional",
+        "09ab953c291d43885cf3352491e0807b6a3de4fe7357f89b485a0ae5a8b6ba21"
+      ],
+      "count": 1
+    },
+    {
+      "key": [
+        "IfcShapeAspect.ProductDefinitional",
+        "Attribute not optional",
+        "0a48ac7f69575fccae94cf7fcf5632c667038baf9deecfbd84f41b7eebc52867"
+      ],
+      "count": 1
+    },
+    {
+      "key": [
+        "IfcShapeAspect.ProductDefinitional",
+        "Attribute not optional",
+        "0bd9c3604d3a68d3ebce9ea17b39b49dc5d31d5d82b32a06e7bd2666196cbe0e"
+      ],
+      "count": 1
+    },
+    {
+      "key": [
+        "IfcShapeAspect.ProductDefinitional",
+        "Attribute not optional",
+        "0f481ab965edacc222b6c133612ed2a2e770fbb967c40fd2e47b1c0dcd179907"
+      ],
+      "count": 1
+    },
+    {
+      "key": [
+        "IfcShapeAspect.ProductDefinitional",
+        "Attribute not optional",
+        "1336ee4ef1ebf98f50ba960782351ea7cf927c515f04fdf23d2e9c4e30f7a5b0"
+      ],
+      "count": 1
+    },
+    {
+      "key": [
+        "IfcShapeAspect.ProductDefinitional",
+        "Attribute not optional",
+        "1861bcf14d448020f5356050be7f70372dd21108abdaec07f1be3ff6a813cdc2"
+      ],
+      "count": 1
+    },
+    {
+      "key": [
+        "IfcShapeAspect.ProductDefinitional",
+        "Attribute not optional",
+        "1a2cd5f7449eaa31791b3d094ae25ab7c9e21df1514341503fc19c1de3f51b6a"
+      ],
+      "count": 1
+    },
+    {
+      "key": [
+        "IfcShapeAspect.ProductDefinitional",
+        "Attribute not optional",
+        "1a67f4e4f32b39edb7b1a8355a2d679a3702bf3abdb4aa0ddfcc9fe594aeada0"
+      ],
+      "count": 1
+    },
+    {
+      "key": [
+        "IfcShapeAspect.ProductDefinitional",
+        "Attribute not optional",
+        "1aa32cf38c56ef19b4b76ed51e103ac21d593b2195373b90a451bc8368a4720e"
+      ],
+      "count": 1
+    },
+    {
+      "key": [
+        "IfcShapeAspect.ProductDefinitional",
+        "Attribute not optional",
+        "26be5acf287a56b1571ca20cb9cefbd1ff235e0283bf6c459c71da3a3590d8d5"
+      ],
+      "count": 1
+    },
+    {
+      "key": [
+        "IfcShapeAspect.ProductDefinitional",
+        "Attribute not optional",
+        "2724f0b36d8da09e78517790df218e30951a3e57c40cd6a5ec93d566782882dd"
+      ],
+      "count": 1
+    },
+    {
+      "key": [
+        "IfcShapeAspect.ProductDefinitional",
+        "Attribute not optional",
+        "2a421b253814116a9e6a07f8293d0e4772f96451c71710fe1e20aeabd07fc929"
+      ],
+      "count": 1
+    },
+    {
+      "key": [
+        "IfcShapeAspect.ProductDefinitional",
+        "Attribute not optional",
+        "2f2e65a81a691bc0fe75dfc81b4f6e2de41311bef62d56fc76dea3479ee3bdff"
+      ],
+      "count": 1
+    },
+    {
+      "key": [
+        "IfcShapeAspect.ProductDefinitional",
+        "Attribute not optional",
+        "32255da6fcfdb0a0f971fa140eba5d066bbbf418378520dfe587ca06bb7a14ad"
+      ],
+      "count": 1
+    },
+    {
+      "key": [
+        "IfcShapeAspect.ProductDefinitional",
+        "Attribute not optional",
+        "336c452154f65b8e8483b4762394fab0d88a4807455921f9d698492e331784df"
+      ],
+      "count": 1
+    },
+    {
+      "key": [
+        "IfcShapeAspect.ProductDefinitional",
+        "Attribute not optional",
+        "398be577c5ad33e6b8694f32721004faa62363c23b4f8698970de78641aecd74"
+      ],
+      "count": 1
+    },
+    {
+      "key": [
+        "IfcShapeAspect.ProductDefinitional",
+        "Attribute not optional",
+        "3b04af0e07bb801f26c6b86c5f26257bc471f947c42f39d24951e3a480b2d8e8"
+      ],
+      "count": 1
+    },
+    {
+      "key": [
+        "IfcShapeAspect.ProductDefinitional",
+        "Attribute not optional",
+        "3c0ed43bfd0aa13cfe16a4bb73935c3ed927a9c2a1b07fd078c2f1176c554793"
+      ],
+      "count": 1
+    },
+    {
+      "key": [
+        "IfcShapeAspect.ProductDefinitional",
+        "Attribute not optional",
+        "3cd0389e3a326361d504b535ce8d8229b66099b16c18b5e97e2dca4435d5681c"
+      ],
+      "count": 1
+    },
+    {
+      "key": [
+        "IfcShapeAspect.ProductDefinitional",
+        "Attribute not optional",
+        "3d545ee751ff221d72d6cc9cdbbfd050d80d9446a2c73d6f843c2b347728ee34"
+      ],
+      "count": 1
+    },
+    {
+      "key": [
+        "IfcShapeAspect.ProductDefinitional",
+        "Attribute not optional",
+        "4187f5f9e862853f66ed50fcc952666af410d266b90ff3fde8ffe85ef8c8cc44"
+      ],
+      "count": 1
+    },
+    {
+      "key": [
+        "IfcShapeAspect.ProductDefinitional",
+        "Attribute not optional",
+        "418aef3fba11bc661d56c5bebead546634cedea78c74e6f426850291a28dc715"
+      ],
+      "count": 1
+    },
+    {
+      "key": [
+        "IfcShapeAspect.ProductDefinitional",
+        "Attribute not optional",
+        "4256c0e35f29a67f0f76ca9b272a8a8d6d7711ebebdf6af2b50355843e179525"
+      ],
+      "count": 1
+    },
+    {
+      "key": [
+        "IfcShapeAspect.ProductDefinitional",
+        "Attribute not optional",
+        "45b3b0feef4adfb8cbf17cecb19f24a8e602578452ba81caab19edad85eca348"
+      ],
+      "count": 1
+    },
+    {
+      "key": [
+        "IfcShapeAspect.ProductDefinitional",
+        "Attribute not optional",
+        "49b2487d6e2de41548c4223f6dc92a3d5a7d18044c11c79dd057c37958a8148f"
+      ],
+      "count": 1
+    },
+    {
+      "key": [
+        "IfcShapeAspect.ProductDefinitional",
+        "Attribute not optional",
+        "4a9fa5a781c9f9b2829f777c604d30549df2a2486879812553c775ce76ff5c52"
+      ],
+      "count": 1
+    },
+    {
+      "key": [
+        "IfcShapeAspect.ProductDefinitional",
+        "Attribute not optional",
+        "4e96465f23bad23dbf4b97b36af8184a13987bfa0d294143458bb8f50f4dca83"
+      ],
+      "count": 1
+    },
+    {
+      "key": [
+        "IfcShapeAspect.ProductDefinitional",
+        "Attribute not optional",
+        "4fa65318bbcfe2c760370d426b2b3f7ab9c21a7e8fddbdaf7fd3c4caaa84537e"
+      ],
+      "count": 1
+    },
+    {
+      "key": [
+        "IfcShapeAspect.ProductDefinitional",
+        "Attribute not optional",
+        "5124345147e4fa1a63070eed8f6dcd1e972321cb5d4a223ccce9862e54378dc5"
+      ],
+      "count": 1
+    },
+    {
+      "key": [
+        "IfcShapeAspect.ProductDefinitional",
+        "Attribute not optional",
+        "520661e728c20c3662b4a331c30e32146478e01debf94f672de1b6fdd1c233a2"
+      ],
+      "count": 1
+    },
+    {
+      "key": [
+        "IfcShapeAspect.ProductDefinitional",
+        "Attribute not optional",
+        "531137d22cafc15dd29efdc4f29b97c8604edee40ddbe59f2dd68e6a5a319982"
+      ],
+      "count": 1
+    },
+    {
+      "key": [
+        "IfcShapeAspect.ProductDefinitional",
+        "Attribute not optional",
+        "557345b00ef72d0901645fa775646935b142442eea650bbf7849859bcfda1767"
+      ],
+      "count": 1
+    },
+    {
+      "key": [
+        "IfcShapeAspect.ProductDefinitional",
+        "Attribute not optional",
+        "56905ffb82a33a4ff72a03853fbccbf27056fb63f6602ce53bd0b277f2fdb2d8"
+      ],
+      "count": 1
+    },
+    {
+      "key": [
+        "IfcShapeAspect.ProductDefinitional",
+        "Attribute not optional",
+        "56fff1aadc11d439da980015ce7f0887702ec13c44a2a19054947e314c3be9b2"
+      ],
+      "count": 1
+    },
+    {
+      "key": [
+        "IfcShapeAspect.ProductDefinitional",
+        "Attribute not optional",
+        "5aec32a7b7ed5f98db8a04c2dbbbe9b5c1a5038c0949ed28dac211571ac096ac"
+      ],
+      "count": 1
+    },
+    {
+      "key": [
+        "IfcShapeAspect.ProductDefinitional",
+        "Attribute not optional",
+        "5bf1d06855efc193456fa8d4e8b2ae94334ae4f72d29b231c132f0927547a223"
+      ],
+      "count": 1
+    },
+    {
+      "key": [
+        "IfcShapeAspect.ProductDefinitional",
+        "Attribute not optional",
+        "5c492c16f10398c2c7c67e502edc477cd41d1197154688b732ad683aaf052c54"
+      ],
+      "count": 1
+    },
+    {
+      "key": [
+        "IfcShapeAspect.ProductDefinitional",
+        "Attribute not optional",
+        "5cbeb329201cd58ddc4b6afd491f8e33b8a4c8c785b24bfd4c6e6a3d6af9f3b4"
+      ],
+      "count": 1
+    },
+    {
+      "key": [
+        "IfcShapeAspect.ProductDefinitional",
+        "Attribute not optional",
+        "60f98ab37202bfccc461a8f49c054c01c2dea391195db50afddf4ac5bca91433"
+      ],
+      "count": 1
+    },
+    {
+      "key": [
+        "IfcShapeAspect.ProductDefinitional",
+        "Attribute not optional",
+        "61474ff7712837c6a9b10db54dfbfd70e23c1f2e21c7f425c475d4ef98ad54cd"
+      ],
+      "count": 1
+    },
+    {
+      "key": [
+        "IfcShapeAspect.ProductDefinitional",
+        "Attribute not optional",
+        "6d5661620443076849d5f35f59447873b79a8e3944442a07b72ab744fcc5d6f0"
+      ],
+      "count": 1
+    },
+    {
+      "key": [
+        "IfcShapeAspect.ProductDefinitional",
+        "Attribute not optional",
+        "6f54f351333c37d1fe43d9b4d65efbf609940afb004eff1065a09a7c3b7c1594"
+      ],
+      "count": 1
+    },
+    {
+      "key": [
+        "IfcShapeAspect.ProductDefinitional",
+        "Attribute not optional",
+        "6fa2e545a39acf19f73272a89b36ee3f9af2bf754c597482a5c4713ba2d22b50"
+      ],
+      "count": 1
+    },
+    {
+      "key": [
+        "IfcShapeAspect.ProductDefinitional",
+        "Attribute not optional",
+        "6fd0c390a94f204df3f2ff5dfe921afb918f53756db22d20afbfca5ec3611148"
+      ],
+      "count": 1
+    },
+    {
+      "key": [
+        "IfcShapeAspect.ProductDefinitional",
+        "Attribute not optional",
+        "7d06219e31d35109ba18c9154eb2de82479a711b7fa541d65e244f730f195be7"
+      ],
+      "count": 1
+    },
+    {
+      "key": [
+        "IfcShapeAspect.ProductDefinitional",
+        "Attribute not optional",
+        "8026759012fdbc812931789de12b161692e9c170b3e9d67267124f82e9eac26f"
+      ],
+      "count": 1
+    },
+    {
+      "key": [
+        "IfcShapeAspect.ProductDefinitional",
+        "Attribute not optional",
+        "8160165c6c9d41fa63ae577ba0204052622e2f4defbe92d5833b56ed97814db1"
+      ],
+      "count": 1
+    },
+    {
+      "key": [
+        "IfcShapeAspect.ProductDefinitional",
+        "Attribute not optional",
+        "82bb4e0caaf2ce96347bb274310be306b6d0d881968f96436469daa12b130288"
+      ],
+      "count": 1
+    },
+    {
+      "key": [
+        "IfcShapeAspect.ProductDefinitional",
+        "Attribute not optional",
+        "83fa7055703ae18a232730c678c3d567b4423bd5fe894c387f6272845103a3b9"
+      ],
+      "count": 1
+    },
+    {
+      "key": [
+        "IfcShapeAspect.ProductDefinitional",
+        "Attribute not optional",
+        "87094c330d376248f459cf02eed4051a83ab042e67add9655e2eb2fde7368c77"
+      ],
+      "count": 1
+    },
+    {
+      "key": [
+        "IfcShapeAspect.ProductDefinitional",
+        "Attribute not optional",
+        "8a8d8bd24748019045d4e441f72bcd36e20651a73cdfea87bed7e08da506b2af"
+      ],
+      "count": 1
+    },
+    {
+      "key": [
+        "IfcShapeAspect.ProductDefinitional",
+        "Attribute not optional",
+        "8c48538786223d32c67b43e076f8f1d02ce241aabf251c497b332f39f0ebd948"
+      ],
+      "count": 1
+    },
+    {
+      "key": [
+        "IfcShapeAspect.ProductDefinitional",
+        "Attribute not optional",
+        "8c913a8cb98ada822d214b1be2f7675f7a79ade54fed71baba8e1122b84123d6"
+      ],
+      "count": 1
+    },
+    {
+      "key": [
+        "IfcShapeAspect.ProductDefinitional",
+        "Attribute not optional",
+        "8c959b69fc7eda1cb5b80b893627ea6b4ece2f7c37776eed618f8ef50eeee1b5"
+      ],
+      "count": 1
+    },
+    {
+      "key": [
+        "IfcShapeAspect.ProductDefinitional",
+        "Attribute not optional",
+        "94dd41c3ed8d1f7775a001ff993e53b25dd107f69d2da4a4db7b2ad4ec9d6bba"
+      ],
+      "count": 1
+    },
+    {
+      "key": [
+        "IfcShapeAspect.ProductDefinitional",
+        "Attribute not optional",
+        "9f2d4b2090cdcfdfde8dbc383c987b8741300d3afe2768527838181e8e5a100a"
+      ],
+      "count": 1
+    },
+    {
+      "key": [
+        "IfcShapeAspect.ProductDefinitional",
+        "Attribute not optional",
+        "a12784d108c031a0688f64261f0df12bb3c83aea52037b71f6e0f9a5fc5158a2"
+      ],
+      "count": 1
+    },
+    {
+      "key": [
+        "IfcShapeAspect.ProductDefinitional",
+        "Attribute not optional",
+        "a25957a8b318ead4cc81a3c48bbf2b33b1bd65f592de06655111e89ca598bdea"
+      ],
+      "count": 1
+    },
+    {
+      "key": [
+        "IfcShapeAspect.ProductDefinitional",
+        "Attribute not optional",
+        "a27fb229f07836a2ebc84c70b8354e8c0487cb635c9970a291aae60e509c6e2e"
+      ],
+      "count": 1
+    },
+    {
+      "key": [
+        "IfcShapeAspect.ProductDefinitional",
+        "Attribute not optional",
+        "a58e2298b6660a04efef8e864a7c00ef9f994827d161136a721a9ce7f86f6549"
+      ],
+      "count": 1
+    },
+    {
+      "key": [
+        "IfcShapeAspect.ProductDefinitional",
+        "Attribute not optional",
+        "a5e157cc16448564fa45a6797bbce1c8fd9a07f1b7107faf83f71655202b562b"
+      ],
+      "count": 1
+    },
+    {
+      "key": [
+        "IfcShapeAspect.ProductDefinitional",
+        "Attribute not optional",
+        "a5ffdea66a9b29d2089177e2002a28b1263cd179afaea8debcdf367b3875c32d"
+      ],
+      "count": 1
+    },
+    {
+      "key": [
+        "IfcShapeAspect.ProductDefinitional",
+        "Attribute not optional",
+        "a7f99c24e928835e258c33c31b2c92d2c8ca6d4d79e106f0048591a52429c298"
+      ],
+      "count": 1
+    },
+    {
+      "key": [
+        "IfcShapeAspect.ProductDefinitional",
+        "Attribute not optional",
+        "af7f0d96998e14fcff46abf16843aceb1669a0e474e1a7bfdc6c5941b9abc2fb"
+      ],
+      "count": 1
+    },
+    {
+      "key": [
+        "IfcShapeAspect.ProductDefinitional",
+        "Attribute not optional",
+        "b58d617646eda94ca460548811514d8a7ffc75d41270cfc3a905dc8d5c581268"
+      ],
+      "count": 1
+    },
+    {
+      "key": [
+        "IfcShapeAspect.ProductDefinitional",
+        "Attribute not optional",
+        "b6b5b593e6857becdf16f5af56c62f51d503f707a362c4bd4c757b7c9512b31e"
+      ],
+      "count": 1
+    },
+    {
+      "key": [
+        "IfcShapeAspect.ProductDefinitional",
+        "Attribute not optional",
+        "b77c85e953ce6501842db9e5adc6068287de3a51d6a2a67ff60368871704798a"
+      ],
+      "count": 1
+    },
+    {
+      "key": [
+        "IfcShapeAspect.ProductDefinitional",
+        "Attribute not optional",
+        "bac10f06b7e1d75053fdcb14a87fa143a00377d8b2f9b32eb5602e6959ea83b3"
+      ],
+      "count": 1
+    },
+    {
+      "key": [
+        "IfcShapeAspect.ProductDefinitional",
+        "Attribute not optional",
+        "bd3e44f67b6092242d4025db751ba8315f9840aafb46e8a11e883f1ec239b401"
+      ],
+      "count": 1
+    },
+    {
+      "key": [
+        "IfcShapeAspect.ProductDefinitional",
+        "Attribute not optional",
+        "c1123df627f11a22e5fc80806c5ed66f765923e2469e1ff186ac746a1702234e"
+      ],
+      "count": 1
+    },
+    {
+      "key": [
+        "IfcShapeAspect.ProductDefinitional",
+        "Attribute not optional",
+        "c1498a281ad4a9dffa0e8ad1f283c43dc71b32fe32ed865f9414f076275d8b9e"
+      ],
+      "count": 1
+    },
+    {
+      "key": [
+        "IfcShapeAspect.ProductDefinitional",
+        "Attribute not optional",
+        "c731f76098809a7aba207fa55cf9509917f348aa8b322f44c94959515ce3fe88"
+      ],
+      "count": 1
+    },
+    {
+      "key": [
+        "IfcShapeAspect.ProductDefinitional",
+        "Attribute not optional",
+        "cb5e244d5165886559b2cc08a2309878b650a0939e6de7898725e4bd60636567"
+      ],
+      "count": 1
+    },
+    {
+      "key": [
+        "IfcShapeAspect.ProductDefinitional",
+        "Attribute not optional",
+        "cb70dc1331930296357a995ccb5d6204ebf98ac087331f894d87a2c7b06791e5"
+      ],
+      "count": 1
+    },
+    {
+      "key": [
+        "IfcShapeAspect.ProductDefinitional",
+        "Attribute not optional",
+        "cbc6563f829ea09c880b42551823b13ccef680cb07d503ab07990f007a0e916e"
+      ],
+      "count": 1
+    },
+    {
+      "key": [
+        "IfcShapeAspect.ProductDefinitional",
+        "Attribute not optional",
+        "cd5d1b6352c493f12a14d3885c3239b7cc68401da3f073935511cf495a6f1a33"
+      ],
+      "count": 1
+    },
+    {
+      "key": [
+        "IfcShapeAspect.ProductDefinitional",
+        "Attribute not optional",
+        "cef499a239a3869a8ecf438fd02c965d5c1af053a65209ecca2667293f02f290"
+      ],
+      "count": 1
+    },
+    {
+      "key": [
+        "IfcShapeAspect.ProductDefinitional",
+        "Attribute not optional",
+        "cf0f3d756a15ef8ebf68db1f8aa5465954014ad1ea0bd98e495cb8fa3aeb121b"
+      ],
+      "count": 1
+    },
+    {
+      "key": [
+        "IfcShapeAspect.ProductDefinitional",
+        "Attribute not optional",
+        "d13a47232af60d009075edfbd14ca6b860f2165ee561c73060d7d57e2de5729a"
+      ],
+      "count": 1
+    },
+    {
+      "key": [
+        "IfcShapeAspect.ProductDefinitional",
+        "Attribute not optional",
+        "d39413d087dd38d9b86ecdcd419c763defc23d4a37e62e9d9f788991ffff78f1"
+      ],
+      "count": 1
+    },
+    {
+      "key": [
+        "IfcShapeAspect.ProductDefinitional",
+        "Attribute not optional",
+        "d83590ef6019eec140e6e37ad2b34ae7233a5ef0daecc923617e383972ad0ec4"
+      ],
+      "count": 1
+    },
+    {
+      "key": [
+        "IfcShapeAspect.ProductDefinitional",
+        "Attribute not optional",
+        "d8d99c13b10baaaa7b5c5191a48ffbc4c117e3e956b1ad0dd0deb30adb94b4e2"
+      ],
+      "count": 1
+    },
+    {
+      "key": [
+        "IfcShapeAspect.ProductDefinitional",
+        "Attribute not optional",
+        "d9c017ffd790ffef61dc065fddfa1421c4a9dbb9c74ca78902bcd5d4108176ed"
+      ],
+      "count": 1
+    },
+    {
+      "key": [
+        "IfcShapeAspect.ProductDefinitional",
+        "Attribute not optional",
+        "dd31b4372379648deb0864fd8d5706014ced2d779c9b8690e7e588262160493e"
+      ],
+      "count": 1
+    },
+    {
+      "key": [
+        "IfcShapeAspect.ProductDefinitional",
+        "Attribute not optional",
+        "df712a5357e94e4a011d38bbaca68d20b1d550936f86b92a40e55ddfe96e17cf"
+      ],
+      "count": 1
+    },
+    {
+      "key": [
+        "IfcShapeAspect.ProductDefinitional",
+        "Attribute not optional",
+        "e375d5d0551bfba807e0aa677b05e79e273bfedbb50a856a5bd43c7032cfdcda"
+      ],
+      "count": 1
+    },
+    {
+      "key": [
+        "IfcShapeAspect.ProductDefinitional",
+        "Attribute not optional",
+        "e523441260c1959fda3fa45bf6538bfada791cf794abc9088fdd17355bb5b961"
+      ],
+      "count": 1
+    },
+    {
+      "key": [
+        "IfcShapeAspect.ProductDefinitional",
+        "Attribute not optional",
+        "e6c6613a3827a6e30e010888f821ff24d0e473f5bfd340c9c4036dad173483f8"
+      ],
+      "count": 1
+    },
+    {
+      "key": [
+        "IfcShapeAspect.ProductDefinitional",
+        "Attribute not optional",
+        "e7359bf1b3bfb58e15830650438c35f3df6565ecc889010b3bdf0c7fd2b52bf5"
+      ],
+      "count": 1
+    },
+    {
+      "key": [
+        "IfcShapeAspect.ProductDefinitional",
+        "Attribute not optional",
+        "ee99d3553c58ac4b226ef2249f845fbf931225369f59e56cc1e3ccc7634c40e1"
+      ],
+      "count": 1
+    },
+    {
+      "key": [
+        "IfcShapeAspect.ProductDefinitional",
+        "Attribute not optional",
+        "ef44ea47d3f4a8941535d166df897e6131792dec12974c99208852adc2b206eb"
+      ],
+      "count": 1
+    },
+    {
+      "key": [
+        "IfcShapeAspect.ProductDefinitional",
+        "Attribute not optional",
+        "efc7397c8975751c0ffa57670d185ee5a6aab0bc833155e31fbaaf992d6d418b"
+      ],
+      "count": 1
+    },
+    {
+      "key": [
+        "IfcShapeAspect.ProductDefinitional",
+        "Attribute not optional",
+        "f02f5c9c52780ea0acabbacbfa6b3968d7e1c70511638d2eecffba8f4837e680"
+      ],
+      "count": 1
+    },
+    {
+      "key": [
+        "IfcShapeAspect.ProductDefinitional",
+        "Attribute not optional",
+        "f1c047625dd31925375d0b455c1372e9b8891a77d36fee2c30195b17aef7ca19"
+      ],
+      "count": 1
+    },
+    {
+      "key": [
+        "IfcShapeAspect.ProductDefinitional",
+        "Attribute not optional",
+        "f28d5f9b9ec594a4070e6445de905fe4c80df655f81a98b3f5fdc0a644324475"
+      ],
+      "count": 1
+    },
+    {
+      "key": [
+        "IfcShapeAspect.ProductDefinitional",
+        "Attribute not optional",
+        "f419a608a6eebc2f466fcc6626825b0af721aec715e3ade46ad1adc780e367b7"
+      ],
+      "count": 1
+    },
+    {
+      "key": [
+        "IfcShapeAspect.ProductDefinitional",
+        "Attribute not optional",
+        "f4409c80b4acf8d09d5cb2ebc5f1070792706d153ccb45b142ec475d654d37f6"
+      ],
+      "count": 1
+    },
+    {
+      "key": [
+        "IfcShapeAspect.ProductDefinitional",
+        "Attribute not optional",
+        "f4f3be055ed42d4fae0d334b5148377372775653f174364c2aab80065d6971ae"
+      ],
+      "count": 1
+    },
+    {
+      "key": [
+        "IfcShapeAspect.ProductDefinitional",
+        "Attribute not optional",
+        "f4f7fd3ceea489bddc76ef9f48287b7ecbb72f5140f019d8836e4433b2b1e023"
+      ],
+      "count": 1
+    },
+    {
+      "key": [
+        "IfcShapeAspect.ProductDefinitional",
+        "Attribute not optional",
+        "fb8882f2be3decb4e7e0d5a399155064b88883ccd2e0de9a1b048950392b6579"
+      ],
+      "count": 1
+    },
+    {
+      "key": [
+        "IfcShapeAspect.ProductDefinitional",
+        "Attribute not optional",
+        "fc48c72faa95d2298324f72417992cf4f01633db83891bfd7c765f482c605240"
+      ],
+      "count": 1
+    },
+    {
+      "key": [
+        "IfcShapeAspect.ProductDefinitional",
+        "Attribute not optional",
+        "fed3bd9b535021e4d11c58f2042aafc434c2df65d1d9e961d9859dcf72cfdfa4"
+      ],
+      "count": 1
+    },
+    {
+      "key": [
+        "IfcShapeAspect.ProductDefinitional",
+        "Attribute not optional",
+        "ff6020a00d28c4599d3080a7b706cbf7030ec97d551a82fba8174eb56692fedd"
+      ],
+      "count": 1
+    }
+  ]
+}

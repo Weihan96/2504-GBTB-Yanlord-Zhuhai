@@ -1,0 +1,800 @@
+{
+  "schema_version": 1,
+  "generated_at": "2026-08-25T17:50:08.815654+00:00",
+  "task": "Bonsai Create Drawing for approved Baxter Casablanca native 2D DWG linework in the actual master-bedroom context",
+  "workflow": [
+    "inspect",
+    "plan",
+    "execute",
+    "persist",
+    "reload",
+    "verify"
+  ],
+  "provider": {
+    "preferred": "bonsai-mcp 1.1.0",
+    "status": "unsupported",
+    "reason": "Blender bridge 127.0.0.1:9878 connection refused",
+    "fallback": "local Blender 4.5.3 LTS with installed Bonsai/IfcOpenShell 0.8.4"
+  },
+  "course_evidence": {
+    "query": "085000 Create Drawing SVG persistent IFC annotation linework",
+    "top_lesson": "085000 Introduction to Drawings",
+    "timestamps": [
+      "01:59 Create Drawing",
+      "02:06 Drawing created",
+      "02:13 SVG in browser"
+    ],
+    "course_fact": "Create Drawing generates or refreshes SVG after Drawing camera, scale, depth and filters are configured.",
+    "source_files_packaged": false,
+    "source_files_note": "The installed skill contains indexed lesson records but not the referenced private source Markdown or screenshots.",
+    "current_version_inference": "The recorded workflow was adapted to Blender 4.5.3 LTS and Bonsai/IfcOpenShell 0.8.4 using semantic Drawing state and bpy.ops.bim.create_drawing."
+  },
+  "formal_ifc": "/Users/jiaxinchen/.codex/worktrees/3a80/2504 GBTB Yanlord Zhuhai/2504 GBTB Yanlord Zhuhai.ifc",
+  "formal_ifc_sha256": "7a50b87e8f48a7c2bfbaa9f1dabdfca7155fa684b2325c66aa1ae15c8ab0a25c",
+  "formal_ifc_bytes_unchanged": true,
+  "derived_ifc": "/Users/jiaxinchen/.codex/worktrees/3a80/2504 GBTB Yanlord Zhuhai/output/review/highpoly-types/bed01/Baxter-Casablanca-BED01-derived-drawing.ifc",
+  "derived_ifc_sha256_before": "7a50b87e8f48a7c2bfbaa9f1dabdfca7155fa684b2325c66aa1ae15c8ab0a25c",
+  "derived_ifc_sha256_after": "17e2718e32face14524b2e565bb96c1d345c6ca28d750f01e9fd2796f161c020",
+  "save_boundary": "one BED01 product-level full-project IFC copy under the BED01 review package",
+  "approval_record": "/Users/jiaxinchen/.codex/worktrees/3a80/2504 GBTB Yanlord Zhuhai/pipeline/decisions/bed01-drawing-approval.json",
+  "approval_record_sha256": "fe35cfd71d66f48a5134ebf5b3829b83d8333e76760610757d1e6e45757a4fd3",
+  "source_kind": "native_dwg_review_reference",
+  "source_label_zh": "Baxter Casablanca 官方独立 2D DWG 原生蓝线",
+  "source_dwg_sha256": "ab697db9c27448c62a9a77537d7cc4b6286577c335328113d703184be28d9c4a",
+  "source_scale": 1.0,
+  "superseded_acis_candidate_excluded": true,
+  "target": {
+    "global_id": "3IQBEqO5vDI8Z9k1Ltge_N",
+    "ifc_class": "IfcFurniture",
+    "type_name": "BED01",
+    "world_bbox_m": [
+      [
+        -6.5089216232299805,
+        -3.8821280002593994,
+        0.010310960933566093
+      ],
+      [
+        -3.9701194763183594,
+        -1.6179609298706055,
+        0.9575788974761963
+      ]
+    ],
+    "target_include_count_before_suppression": 1,
+    "target_include_count_after_suppression": 0
+  },
+  "room": {
+    "global_id": "3gHz6U6BfFXgV6PnRzfOf$",
+    "name": "主卧",
+    "bbox_m": [
+      [
+        -6.599999904632568,
+        -4.5,
+        0.0
+      ],
+      [
+        -2.4000000953674316,
+        -1.2000000476837158,
+        2.799999952316284
+      ]
+    ]
+  },
+  "context": {
+    "project_context_retained": true,
+    "include_count": 45,
+    "include_global_ids": [
+      "03OacQglf1hPVDW2843CGf",
+      "05LSYayab3n9CDi01pw9K$",
+      "0BC11AXkL2zQOj3oLaM5Dl",
+      "0FvgLct_j8OOSR$V6GRYQR",
+      "0G_rbqpMHE28Txkf09jW3_",
+      "0NceTy0sf698hakEZZpJ39",
+      "0YVlVSQ8P8FB9NhuRYt0uz",
+      "0e0XOb$L18ZBVYJiQJrQ1p",
+      "0vMU_9TZXEV8GPr46AYxhu",
+      "0wbKH$_Qr2_A4hpKs0PLXw",
+      "11c$NwzxL9hASgCgwDxM$w",
+      "16YUCivpTC1gRXeEoBiQST",
+      "1C2NYt_qT35P4jTGTCHJyh",
+      "1GT_8LA1P1AQ20xisLLbMN",
+      "1QCSyTMrb3BvW2Ouv8UyeY",
+      "1ctPQ0Vy1A7eZAunjbq1uO",
+      "1haxNPS0P1FxP1VZiCTIFV",
+      "1yuWIPQdP3uuPJnZhwUAcx",
+      "1zX6DiGXjV2PeHHkTz230u",
+      "20OvdI9drEWeTGJOdyw6OF",
+      "2AaE1g$kT9yuXagzwxD3_j",
+      "2HNrakrjbCTuX3CgB2ORBO",
+      "2IZwo0dYv0p8B0RhP1oOtT",
+      "2LN3hvkNfE$P7IVE0GkeKc",
+      "2LllTjikT8uOVBSGR0c1a7",
+      "2QL0HI22bBP9QJHhfY1YLK",
+      "2Rr8WvEy591Pj6dg4T6RQK",
+      "2_vcnNErPCixD2MSQiqhdi",
+      "2aUf8NrRbDDBArs_VeQQMg",
+      "2d7INBILP9MAErwI3Hx2WT",
+      "2h9qweA7rDCujcqn7p6kcK",
+      "2mPTt7$nvBSAn28I9NWt6T",
+      "2xmcLzu1rDTeMzRuNxPDyE",
+      "34MraFd1nFsep2QMO2kY48",
+      "37DwA_fpXSARFOa60IfK8k",
+      "3BCFVt2qzDKggYI_ZPNxK4",
+      "3BwA5Rnkf4Bf3v3vTmeWTw",
+      "3Eh7dTLw90qhldpeLi9n6B",
+      "3IOZ8Z$$5DH9cGih34wZt$",
+      "3ZKyTiBc1ECxQi0UR8K1Ke",
+      "3eic1dzkn5heTIn4PhF37v",
+      "3hA0vKpcn44u4Tsx4tqiUz",
+      "3jha5L04zBjh0$pMl_tHLy",
+      "3oAf0JDwfAShSvvBwPp47s",
+      "3zt_jFdvz7LQEYlyf51mVi"
+    ],
+    "include_ifc_class_counts": {
+      "IfcBeam": 1,
+      "IfcBuildingElementProxy": 3,
+      "IfcCovering": 13,
+      "IfcFurniture": 5,
+      "IfcLightFixture": 7,
+      "IfcSlab": 4,
+      "IfcWall": 12
+    },
+    "context_colour": "#a3abb3"
+  },
+  "views": [
+    {
+      "view": "plan",
+      "drawing": {
+        "global_id": "3hNc8sU3P4SAWS_7x79cO$",
+        "name": "BED01-MASTER-BEDROOM-PLAN",
+        "object_type": "DRAWING",
+        "epset_drawing": {
+          "TargetView": "PLAN_VIEW",
+          "Scale": "1/25",
+          "HumanScale": "1:25",
+          "HasUnderlay": false,
+          "HasLinework": true,
+          "HasAnnotation": true,
+          "GlobalReferencing": true,
+          "Stylesheet": "drawings/assets/default.css",
+          "Markers": "drawings/assets/markers.svg",
+          "Symbols": "drawings/assets/symbols.svg",
+          "Patterns": "drawings/assets/patterns.svg",
+          "ShadingStyles": "drawings/assets/shading_styles.json",
+          "CurrentShadingStyle": "Blender Default",
+          "DPI": 300,
+          "LineworkMode": "OPENCASCADE",
+          "FillMode": "NONE",
+          "CutMode": "BISECT",
+          "Include": "03OacQglf1hPVDW2843CGf,05LSYayab3n9CDi01pw9K$,0BC11AXkL2zQOj3oLaM5Dl,0FvgLct_j8OOSR$V6GRYQR,0G_rbqpMHE28Txkf09jW3_,0NceTy0sf698hakEZZpJ39,0YVlVSQ8P8FB9NhuRYt0uz,0e0XOb$L18ZBVYJiQJrQ1p,0vMU_9TZXEV8GPr46AYxhu,0wbKH$_Qr2_A4hpKs0PLXw,11c$NwzxL9hASgCgwDxM$w,16YUCivpTC1gRXeEoBiQST,1C2NYt_qT35P4jTGTCHJyh,1GT_8LA1P1AQ20xisLLbMN,1QCSyTMrb3BvW2Ouv8UyeY,1ctPQ0Vy1A7eZAunjbq1uO,1haxNPS0P1FxP1VZiCTIFV,1yuWIPQdP3uuPJnZhwUAcx,1zX6DiGXjV2PeHHkTz230u,20OvdI9drEWeTGJOdyw6OF,2AaE1g$kT9yuXagzwxD3_j,2HNrakrjbCTuX3CgB2ORBO,2IZwo0dYv0p8B0RhP1oOtT,2LN3hvkNfE$P7IVE0GkeKc,2LllTjikT8uOVBSGR0c1a7,2QL0HI22bBP9QJHhfY1YLK,2Rr8WvEy591Pj6dg4T6RQK,2_vcnNErPCixD2MSQiqhdi,2aUf8NrRbDDBArs_VeQQMg,2d7INBILP9MAErwI3Hx2WT,2h9qweA7rDCujcqn7p6kcK,2mPTt7$nvBSAn28I9NWt6T,2xmcLzu1rDTeMzRuNxPDyE,34MraFd1nFsep2QMO2kY48,37DwA_fpXSARFOa60IfK8k,3BCFVt2qzDKggYI_ZPNxK4,3BwA5Rnkf4Bf3v3vTmeWTw,3Eh7dTLw90qhldpeLi9n6B,3IOZ8Z$$5DH9cGih34wZt$,3ZKyTiBc1ECxQi0UR8K1Ke,3eic1dzkn5heTIn4PhF37v,3hA0vKpcn44u4Tsx4tqiUz,3jha5L04zBjh0$pMl_tHLy,3oAf0JDwfAShSvvBwPp47s,3zt_jFdvz7LQEYlyf51mVi",
+          "id": 2445906
+        }
+      },
+      "linework_annotation": {
+        "global_id": "3b7hYRzxP3AhCvSyCqdRN4",
+        "name": "Baxter Casablanca official native 2D DWG / plan",
+        "epset_annotation": {
+          "Classes": "review-target-bed01 official-native-dwg",
+          "TargetGlobalId": "3IQBEqO5vDI8Z9k1Ltge_N",
+          "SourceKind": "native_dwg_review_reference",
+          "SourceLabelZh": "Baxter Casablanca 官方独立 2D DWG 原生蓝线",
+          "SourceDwgSha256": "ab697db9c27448c62a9a77537d7cc4b6286577c335328113d703184be28d9c4a",
+          "OfficialNative2dDwg": true,
+          "SourceScale": 1.0,
+          "AlignmentMode": "translation_only",
+          "TranslationMillimetres": "-1061.371061,-1271.170252",
+          "ViewDirectionReflectionX": false,
+          "SupersededAcisCandidateExcluded": true,
+          "IfcCurveStyleColour": "#1677c8",
+          "id": 2447836
+        },
+        "ifc_curve_style_persisted": true,
+        "ifc_curve_style_colour": "#1677c8",
+        "drawing_group_association_persisted": true,
+        "drawing_group_assignment_global_id": "2zqiLEKuT25hlbs8UruWRs"
+      },
+      "review_path_count": 25,
+      "persisted_review_path_count": 25,
+      "review_edge_count": 1824,
+      "persisted_coordinate_bounds_mm": [
+        [
+          -1061.371061,
+          -1271.170252,
+          0.0
+        ],
+        [
+          1061.282072,
+          1250.588219,
+          0.0
+        ]
+      ],
+      "expected_coordinate_bounds_mm": [
+        [
+          -1061.371061,
+          -1271.170252,
+          0.0
+        ],
+        [
+          1061.2820719999997,
+          1250.5882190000002,
+          0.0
+        ]
+      ],
+      "persisted_coordinate_residual_mm": 2.2737367544323206e-13,
+      "alignment": {
+        "mode": "translation_only",
+        "view_direction_reflection_x": false,
+        "translation_mm": [
+          -1061.371061,
+          -1271.170252
+        ],
+        "anchor": "projection_centre_to_projection_centre",
+        "uniform_scale": 1.0,
+        "anisotropic_scale_used": false,
+        "source_geometry_deformed": false,
+        "source_bounds_before_alignment_mm": {
+          "minimum": [
+            0.0,
+            0.0
+          ],
+          "maximum": [
+            2122.653133,
+            2521.758471
+          ],
+          "size": [
+            2122.653133,
+            2521.758471
+          ]
+        },
+        "project_proxy_bounds_mm": {
+          "minimum": [
+            -1132.12793,
+            -1279.692017
+          ],
+          "maximum": [
+            1132.03894,
+            1259.109985
+          ],
+          "size": [
+            2264.16687,
+            2538.802002
+          ]
+        }
+      },
+      "camera": {
+        "type": "ORTHO",
+        "width_m": 4.799999809265136,
+        "height_m": 3.8999999523162843,
+        "clip_start_m": 0.0020000000949949026,
+        "clip_end_m": 1.5,
+        "resolution": [
+          2267,
+          1842
+        ]
+      },
+      "create_drawing": {
+        "operator": "bpy.ops.bim.create_drawing",
+        "arguments": {
+          "print_all": false,
+          "open_viewer": false,
+          "sync": false
+        },
+        "result": [
+          "FINISHED"
+        ],
+        "linework_mode": "OPENCASCADE",
+        "target_view": "PLAN_VIEW"
+      },
+      "svg": {
+        "path": "/Users/jiaxinchen/.codex/worktrees/3a80/2504 GBTB Yanlord Zhuhai/output/review/highpoly-types/bed01/bonsai-drawings/master-bedroom/BED01-MASTER-BEDROOM-PLAN.svg",
+        "bytes": 1253737,
+        "sha256": "e1ac3cc72697f65003f50e9fac59a13ad638781e1bd3fb01bb0f595c6547c15e",
+        "bonsai_generated_sha256_before_review_style": "06f95395836f0a8a928d2eb2ed1ab711bb096c841aa077e5f2e9c1ba83ee0893",
+        "annotation_group_count": 1824,
+        "blue_geometry_element_count": 1824,
+        "grey_context_geometry_element_count": 1898,
+        "post_style_only": true,
+        "root_tag": "svg",
+        "width": "191.9999885559082mm",
+        "height": "156.0052840405747mm",
+        "viewBox": "0 0 191.9999885559082 156.0052840405747",
+        "data_scale": "1:25",
+        "geometry_element_count": 3722,
+        "projection_group_count": 32,
+        "class_counts": {
+          "05LSYayab3n9CDi01pw9K$": 2,
+          "1GT_8LA1P1AQ20xisLLbMN": 2,
+          "1haxNPS0P1FxP1VZiCTIFV": 2,
+          "1yuWIPQdP3uuPJnZhwUAcx": 2,
+          "1zX6DiGXjV2PeHHkTz230u": 1,
+          "37DwA_fpXSARFOa60IfK8k": 1,
+          "3IOZ8Z$$5DH9cGih34wZt$": 2,
+          "3jha5L04zBjh0$pMl_tHLy": 2,
+          "GlobalId-3b7hYRzxP3AhCvSyCqdRN4": 1824,
+          "IfcAnnotation": 1824,
+          "IfcBuildingElementProxy": 4,
+          "IfcCovering": 25,
+          "IfcFurniture": 5,
+          "IfcMaterialLayer": 12,
+          "IfcSlab": 2,
+          "IfcSpace": 7,
+          "IfcWall": 24,
+          "PredefinedType-LINEWORK": 1824,
+          "annotation": 27,
+          "cut": 28,
+          "large": 1,
+          "layer-material-Aircrete": 1,
+          "layer-material-Concrete": 4,
+          "layer-material-Unknown": 1,
+          "layer-material-WhiteWall": 6,
+          "layer-material-category-Architectural": 11,
+          "material-": 2,
+          "material-BBF01": 5,
+          "material-BWW01": 2,
+          "material-FLR180": 2,
+          "material-ThermoOak": 4,
+          "material-WAL170": 3,
+          "material-WAL200B": 6,
+          "material-WAL200S": 3,
+          "material-WAL400B": 6,
+          "material-WW20": 18,
+          "material-null": 16,
+          "official-native-dwg": 1824,
+          "projection": 32,
+          "regular": 6,
+          "review-target-bed01": 1824,
+          "scale-25": 1,
+          "section": 1,
+          "stair": 1,
+          "target-view-PLANVIEW": 1
+        },
+        "target_ifc_projection_group_count": 0,
+        "review_annotation_geometry_count": 1824,
+        "blue_style_count": 1824,
+        "grey_style_count": 1898
+      },
+      "linework_cache": {
+        "path": "/Users/jiaxinchen/.codex/worktrees/3a80/2504 GBTB Yanlord Zhuhai/output/review/highpoly-types/bed01/bonsai-drawings/master-bedroom/cache/BED01-MASTER-BEDROOM-PLAN-linework.svg",
+        "bytes": 192335,
+        "sha256": "5af287714ea371731087f4e2d04c3fa05d64381fbcc2cde743c3f12a9c3a9ca4"
+      }
+    },
+    {
+      "view": "front",
+      "drawing": {
+        "global_id": "0tfdKZduT8wBOtb6o50zp8",
+        "name": "BED01-MASTER-BEDROOM-FRONT",
+        "object_type": "DRAWING",
+        "epset_drawing": {
+          "TargetView": "ELEVATION_VIEW",
+          "Scale": "1/25",
+          "HumanScale": "1:25",
+          "HasUnderlay": false,
+          "HasLinework": true,
+          "HasAnnotation": true,
+          "GlobalReferencing": true,
+          "Stylesheet": "drawings/assets/default.css",
+          "Markers": "drawings/assets/markers.svg",
+          "Symbols": "drawings/assets/symbols.svg",
+          "Patterns": "drawings/assets/patterns.svg",
+          "ShadingStyles": "drawings/assets/shading_styles.json",
+          "CurrentShadingStyle": "Blender Default",
+          "DPI": 300,
+          "LineworkMode": "OPENCASCADE",
+          "FillMode": "NONE",
+          "CutMode": "BISECT",
+          "Include": "03OacQglf1hPVDW2843CGf,05LSYayab3n9CDi01pw9K$,0BC11AXkL2zQOj3oLaM5Dl,0FvgLct_j8OOSR$V6GRYQR,0G_rbqpMHE28Txkf09jW3_,0NceTy0sf698hakEZZpJ39,0YVlVSQ8P8FB9NhuRYt0uz,0e0XOb$L18ZBVYJiQJrQ1p,0vMU_9TZXEV8GPr46AYxhu,0wbKH$_Qr2_A4hpKs0PLXw,11c$NwzxL9hASgCgwDxM$w,16YUCivpTC1gRXeEoBiQST,1C2NYt_qT35P4jTGTCHJyh,1GT_8LA1P1AQ20xisLLbMN,1QCSyTMrb3BvW2Ouv8UyeY,1ctPQ0Vy1A7eZAunjbq1uO,1haxNPS0P1FxP1VZiCTIFV,1yuWIPQdP3uuPJnZhwUAcx,1zX6DiGXjV2PeHHkTz230u,20OvdI9drEWeTGJOdyw6OF,2AaE1g$kT9yuXagzwxD3_j,2HNrakrjbCTuX3CgB2ORBO,2IZwo0dYv0p8B0RhP1oOtT,2LN3hvkNfE$P7IVE0GkeKc,2LllTjikT8uOVBSGR0c1a7,2QL0HI22bBP9QJHhfY1YLK,2Rr8WvEy591Pj6dg4T6RQK,2_vcnNErPCixD2MSQiqhdi,2aUf8NrRbDDBArs_VeQQMg,2d7INBILP9MAErwI3Hx2WT,2h9qweA7rDCujcqn7p6kcK,2mPTt7$nvBSAn28I9NWt6T,2xmcLzu1rDTeMzRuNxPDyE,34MraFd1nFsep2QMO2kY48,37DwA_fpXSARFOa60IfK8k,3BCFVt2qzDKggYI_ZPNxK4,3BwA5Rnkf4Bf3v3vTmeWTw,3Eh7dTLw90qhldpeLi9n6B,3IOZ8Z$$5DH9cGih34wZt$,3ZKyTiBc1ECxQi0UR8K1Ke,3eic1dzkn5heTIn4PhF37v,3hA0vKpcn44u4Tsx4tqiUz,3jha5L04zBjh0$pMl_tHLy,3oAf0JDwfAShSvvBwPp47s,3zt_jFdvz7LQEYlyf51mVi",
+          "id": 2447869
+        }
+      },
+      "linework_annotation": {
+        "global_id": "2wV_pSXMjBNxToWMgH03uU",
+        "name": "Baxter Casablanca official native 2D DWG / front",
+        "epset_annotation": {
+          "Classes": "review-target-bed01 official-native-dwg",
+          "TargetGlobalId": "3IQBEqO5vDI8Z9k1Ltge_N",
+          "SourceKind": "native_dwg_review_reference",
+          "SourceLabelZh": "Baxter Casablanca 官方独立 2D DWG 原生蓝线",
+          "SourceDwgSha256": "ab697db9c27448c62a9a77537d7cc4b6286577c335328113d703184be28d9c4a",
+          "OfficialNative2dDwg": true,
+          "SourceScale": 1.0,
+          "AlignmentMode": "translation_only",
+          "TranslationMillimetres": "-1057.248869,0.310961",
+          "ViewDirectionReflectionX": false,
+          "SupersededAcisCandidateExcluded": true,
+          "IfcCurveStyleColour": "#1677c8",
+          "id": 2449681
+        },
+        "ifc_curve_style_persisted": true,
+        "ifc_curve_style_colour": "#1677c8",
+        "drawing_group_association_persisted": true,
+        "drawing_group_assignment_global_id": "3QO6gG7dz3BxrBTRNcjhZV"
+      },
+      "review_path_count": 22,
+      "persisted_review_path_count": 22,
+      "review_edge_count": 1717,
+      "persisted_coordinate_bounds_mm": [
+        [
+          -1057.248869,
+          0.0,
+          0.310961
+        ],
+        [
+          1057.159879,
+          0.0,
+          895.236306
+        ]
+      ],
+      "expected_coordinate_bounds_mm": [
+        [
+          -1057.248869,
+          0.0,
+          0.310961
+        ],
+        [
+          1057.1598789999998,
+          0.0,
+          895.236306
+        ]
+      ],
+      "persisted_coordinate_residual_mm": 2.2737367544323206e-13,
+      "alignment": {
+        "mode": "translation_only",
+        "view_direction_reflection_x": false,
+        "translation_mm": [
+          -1057.248869,
+          0.310961
+        ],
+        "anchor": "horizontal_centre_and_finished_bottom",
+        "uniform_scale": 1.0,
+        "anisotropic_scale_used": false,
+        "source_geometry_deformed": false,
+        "source_bounds_before_alignment_mm": {
+          "minimum": [
+            0.0,
+            0.0
+          ],
+          "maximum": [
+            2114.408748,
+            894.925345
+          ],
+          "size": [
+            2114.408748,
+            894.925345
+          ]
+        },
+        "project_proxy_bounds_mm": {
+          "minimum": [
+            -1132.12793,
+            0.310961
+          ],
+          "maximum": [
+            1132.03894,
+            947.578918
+          ],
+          "size": [
+            2264.16687,
+            947.267957
+          ]
+        }
+      },
+      "camera": {
+        "type": "ORTHO",
+        "width_m": 3.8999999523162843,
+        "height_m": 3.6,
+        "clip_start_m": 0.0020000000949949026,
+        "clip_end_m": 4.9999998092651365,
+        "resolution": [
+          1842,
+          1700
+        ]
+      },
+      "create_drawing": {
+        "operator": "bpy.ops.bim.create_drawing",
+        "arguments": {
+          "print_all": false,
+          "open_viewer": false,
+          "sync": false
+        },
+        "result": [
+          "FINISHED"
+        ],
+        "linework_mode": "OPENCASCADE",
+        "target_view": "ELEVATION_VIEW"
+      },
+      "svg": {
+        "path": "/Users/jiaxinchen/.codex/worktrees/3a80/2504 GBTB Yanlord Zhuhai/output/review/highpoly-types/bed01/bonsai-drawings/master-bedroom/BED01-MASTER-BEDROOM-FRONT.svg",
+        "bytes": 986425,
+        "sha256": "5deb7ef11e55baf17859234d6358be8a19f2b290e85870183d183a1d398b3615",
+        "bonsai_generated_sha256_before_review_style": "6ea8efac8d0fedd7be412fa78c81bc18a602a8bfdadcc89d1e5b9f7801e143b9",
+        "annotation_group_count": 1717,
+        "blue_geometry_element_count": 1717,
+        "grey_context_geometry_element_count": 654,
+        "post_style_only": true,
+        "root_tag": "svg",
+        "width": "155.9999942779541mm",
+        "height": "143.9739360871455mm",
+        "viewBox": "0 0 155.9999942779541 143.9739360871455",
+        "data_scale": "1:25",
+        "geometry_element_count": 2371,
+        "projection_group_count": 28,
+        "class_counts": {
+          "0G_rbqpMHE28Txkf09jW3_": 2,
+          "0vMU_9TZXEV8GPr46AYxhu": 1,
+          "2_vcnNErPCixD2MSQiqhdi": 2,
+          "34MraFd1nFsep2QMO2kY48": 1,
+          "GlobalId-2wV_pSXMjBNxToWMgH03uU": 1717,
+          "IfcAnnotation": 1717,
+          "IfcBeam": 1,
+          "IfcBuildingElementProxy": 3,
+          "IfcCovering": 13,
+          "IfcFurniture": 2,
+          "IfcMaterialLayer": 3,
+          "IfcSlab": 8,
+          "IfcSpace": 3,
+          "IfcWall": 11,
+          "PredefinedType-LINEWORK": 1717,
+          "annotation": 27,
+          "cut": 10,
+          "large": 1,
+          "layer-material-Aircrete": 2,
+          "layer-material-WhiteWall": 1,
+          "layer-material-category-Architectural": 3,
+          "material-": 3,
+          "material-BB": 1,
+          "material-BBF01": 4,
+          "material-BWW01": 5,
+          "material-FLR180": 8,
+          "material-ThermoOak": 2,
+          "material-WAL170": 1,
+          "material-WAL200B": 1,
+          "material-WAL200S": 1,
+          "material-WAL400B": 1,
+          "material-WW20": 6,
+          "material-null": 8,
+          "official-native-dwg": 1717,
+          "projection": 28,
+          "regular": 6,
+          "review-target-bed01": 1717,
+          "scale-25": 1,
+          "section": 1,
+          "stair": 1,
+          "target-view-ELEVATIONVIEW": 1
+        },
+        "target_ifc_projection_group_count": 0,
+        "review_annotation_geometry_count": 1717,
+        "blue_style_count": 1717,
+        "grey_style_count": 654
+      },
+      "linework_cache": {
+        "path": "/Users/jiaxinchen/.codex/worktrees/3a80/2504 GBTB Yanlord Zhuhai/output/review/highpoly-types/bed01/bonsai-drawings/master-bedroom/cache/BED01-MASTER-BEDROOM-FRONT-linework.svg",
+        "bytes": 62014,
+        "sha256": "ac36f780c8e817898b025c3105d4c11666933284b4a84b758fc38d001eee0f1a"
+      }
+    },
+    {
+      "view": "side",
+      "drawing": {
+        "global_id": "1t8HIKtmjCkQzwDjLQkOak",
+        "name": "BED01-MASTER-BEDROOM-SIDE",
+        "object_type": "DRAWING",
+        "epset_drawing": {
+          "TargetView": "ELEVATION_VIEW",
+          "Scale": "1/25",
+          "HumanScale": "1:25",
+          "HasUnderlay": false,
+          "HasLinework": true,
+          "HasAnnotation": true,
+          "GlobalReferencing": true,
+          "Stylesheet": "drawings/assets/default.css",
+          "Markers": "drawings/assets/markers.svg",
+          "Symbols": "drawings/assets/symbols.svg",
+          "Patterns": "drawings/assets/patterns.svg",
+          "ShadingStyles": "drawings/assets/shading_styles.json",
+          "CurrentShadingStyle": "Blender Default",
+          "DPI": 300,
+          "LineworkMode": "OPENCASCADE",
+          "FillMode": "NONE",
+          "CutMode": "BISECT",
+          "Include": "03OacQglf1hPVDW2843CGf,05LSYayab3n9CDi01pw9K$,0BC11AXkL2zQOj3oLaM5Dl,0FvgLct_j8OOSR$V6GRYQR,0G_rbqpMHE28Txkf09jW3_,0NceTy0sf698hakEZZpJ39,0YVlVSQ8P8FB9NhuRYt0uz,0e0XOb$L18ZBVYJiQJrQ1p,0vMU_9TZXEV8GPr46AYxhu,0wbKH$_Qr2_A4hpKs0PLXw,11c$NwzxL9hASgCgwDxM$w,16YUCivpTC1gRXeEoBiQST,1C2NYt_qT35P4jTGTCHJyh,1GT_8LA1P1AQ20xisLLbMN,1QCSyTMrb3BvW2Ouv8UyeY,1ctPQ0Vy1A7eZAunjbq1uO,1haxNPS0P1FxP1VZiCTIFV,1yuWIPQdP3uuPJnZhwUAcx,1zX6DiGXjV2PeHHkTz230u,20OvdI9drEWeTGJOdyw6OF,2AaE1g$kT9yuXagzwxD3_j,2HNrakrjbCTuX3CgB2ORBO,2IZwo0dYv0p8B0RhP1oOtT,2LN3hvkNfE$P7IVE0GkeKc,2LllTjikT8uOVBSGR0c1a7,2QL0HI22bBP9QJHhfY1YLK,2Rr8WvEy591Pj6dg4T6RQK,2_vcnNErPCixD2MSQiqhdi,2aUf8NrRbDDBArs_VeQQMg,2d7INBILP9MAErwI3Hx2WT,2h9qweA7rDCujcqn7p6kcK,2mPTt7$nvBSAn28I9NWt6T,2xmcLzu1rDTeMzRuNxPDyE,34MraFd1nFsep2QMO2kY48,37DwA_fpXSARFOa60IfK8k,3BCFVt2qzDKggYI_ZPNxK4,3BwA5Rnkf4Bf3v3vTmeWTw,3Eh7dTLw90qhldpeLi9n6B,3IOZ8Z$$5DH9cGih34wZt$,3ZKyTiBc1ECxQi0UR8K1Ke,3eic1dzkn5heTIn4PhF37v,3hA0vKpcn44u4Tsx4tqiUz,3jha5L04zBjh0$pMl_tHLy,3oAf0JDwfAShSvvBwPp47s,3zt_jFdvz7LQEYlyf51mVi",
+          "id": 2449719
+        }
+      },
+      "linework_annotation": {
+        "global_id": "3SbTuIHMX4OOO0JgbtDgsQ",
+        "name": "Baxter Casablanca official native 2D DWG / side",
+        "epset_annotation": {
+          "Classes": "review-target-bed01 official-native-dwg",
+          "TargetGlobalId": "3IQBEqO5vDI8Z9k1Ltge_N",
+          "SourceKind": "native_dwg_review_reference",
+          "SourceLabelZh": "Baxter Casablanca 官方独立 2D DWG 原生蓝线",
+          "SourceDwgSha256": "ab697db9c27448c62a9a77537d7cc4b6286577c335328113d703184be28d9c4a",
+          "OfficialNative2dDwg": true,
+          "SourceScale": 1.0,
+          "AlignmentMode": "rigid_reflection_and_translation_only",
+          "TranslationMillimetres": "-1268.962217,0.310961",
+          "ViewDirectionReflectionX": true,
+          "SupersededAcisCandidateExcluded": true,
+          "IfcCurveStyleColour": "#1677c8",
+          "id": 2451854
+        },
+        "ifc_curve_style_persisted": true,
+        "ifc_curve_style_colour": "#1677c8",
+        "drawing_group_association_persisted": true,
+        "drawing_group_assignment_global_id": "29k1YVOf915BcEAcYOO15x"
+      },
+      "review_path_count": 36,
+      "persisted_review_path_count": 36,
+      "review_edge_count": 2012,
+      "persisted_coordinate_bounds_mm": [
+        [
+          0.0,
+          -1268.962217,
+          0.310961
+        ],
+        [
+          0.0,
+          1248.380185,
+          884.653907
+        ]
+      ],
+      "expected_coordinate_bounds_mm": [
+        [
+          0.0,
+          -1268.962217,
+          0.310961
+        ],
+        [
+          0.0,
+          1248.3801850000002,
+          884.653907
+        ]
+      ],
+      "persisted_coordinate_residual_mm": 2.2737367544323206e-13,
+      "alignment": {
+        "mode": "rigid_reflection_and_translation_only",
+        "view_direction_reflection_x": true,
+        "translation_mm": [
+          -1268.962217,
+          0.310961
+        ],
+        "anchor": "horizontal_centre_and_finished_bottom",
+        "uniform_scale": 1.0,
+        "anisotropic_scale_used": false,
+        "source_geometry_deformed": false,
+        "source_bounds_before_alignment_mm": {
+          "minimum": [
+            0.0,
+            0.0
+          ],
+          "maximum": [
+            2517.342402,
+            884.342946
+          ],
+          "size": [
+            2517.342402,
+            884.342946
+          ]
+        },
+        "project_proxy_bounds_mm": {
+          "minimum": [
+            -1279.692017,
+            0.310961
+          ],
+          "maximum": [
+            1259.109985,
+            947.070923
+          ],
+          "size": [
+            2538.802002,
+            946.759962
+          ]
+        }
+      },
+      "camera": {
+        "type": "ORTHO",
+        "width_m": 4.799999809265136,
+        "height_m": 3.6,
+        "clip_start_m": 0.0020000000949949026,
+        "clip_end_m": 4.099999952316284,
+        "resolution": [
+          2267,
+          1700
+        ]
+      },
+      "create_drawing": {
+        "operator": "bpy.ops.bim.create_drawing",
+        "arguments": {
+          "print_all": false,
+          "open_viewer": false,
+          "sync": false
+        },
+        "result": [
+          "FINISHED"
+        ],
+        "linework_mode": "OPENCASCADE",
+        "target_view": "ELEVATION_VIEW"
+      },
+      "svg": {
+        "path": "/Users/jiaxinchen/.codex/worktrees/3a80/2504 GBTB Yanlord Zhuhai/output/review/highpoly-types/bed01/bonsai-drawings/master-bedroom/BED01-MASTER-BEDROOM-SIDE.svg",
+        "bytes": 1059041,
+        "sha256": "390ebb668c47f717e174ed1ce134398c8d41423bce37826c290eb453958d6b2c",
+        "bonsai_generated_sha256_before_review_style": "18ebe06e57980cefbbf519736bca3c183c3fdf1261aec8306e90b9b3ceca670b",
+        "annotation_group_count": 2012,
+        "blue_geometry_element_count": 2012,
+        "grey_context_geometry_element_count": 302,
+        "post_style_only": true,
+        "root_tag": "svg",
+        "width": "191.9999885559082mm",
+        "height": "143.97881806133387mm",
+        "viewBox": "0 0 191.9999885559082 143.97881806133387",
+        "data_scale": "1:25",
+        "geometry_element_count": 2314,
+        "projection_group_count": 27,
+        "class_counts": {
+          "0vMU_9TZXEV8GPr46AYxhu": 1,
+          "1GT_8LA1P1AQ20xisLLbMN": 2,
+          "2IZwo0dYv0p8B0RhP1oOtT": 1,
+          "2QL0HI22bBP9QJHhfY1YLK": 1,
+          "34MraFd1nFsep2QMO2kY48": 1,
+          "GlobalId-3SbTuIHMX4OOO0JgbtDgsQ": 2012,
+          "IfcAnnotation": 2012,
+          "IfcBuildingElementProxy": 3,
+          "IfcCovering": 16,
+          "IfcFurniture": 3,
+          "IfcMaterialLayer": 4,
+          "IfcSlab": 3,
+          "IfcSpace": 2,
+          "IfcWall": 15,
+          "PredefinedType-LINEWORK": 2012,
+          "annotation": 27,
+          "cut": 13,
+          "large": 1,
+          "layer-material-Concrete": 1,
+          "layer-material-WhiteWall": 3,
+          "layer-material-category-Architectural": 4,
+          "material-": 2,
+          "material-BBF01": 3,
+          "material-BWW01": 8,
+          "material-FLR180": 3,
+          "material-ThermoOak": 2,
+          "material-WAL170": 1,
+          "material-WAL200S": 1,
+          "material-WAL400B": 4,
+          "material-WW20": 11,
+          "material-null": 7,
+          "official-native-dwg": 2012,
+          "projection": 27,
+          "regular": 6,
+          "review-target-bed01": 2012,
+          "scale-25": 1,
+          "section": 1,
+          "stair": 1,
+          "target-view-ELEVATIONVIEW": 1
+        },
+        "target_ifc_projection_group_count": 0,
+        "review_annotation_geometry_count": 2012,
+        "blue_style_count": 2012,
+        "grey_style_count": 302
+      },
+      "linework_cache": {
+        "path": "/Users/jiaxinchen/.codex/worktrees/3a80/2504 GBTB Yanlord Zhuhai/output/review/highpoly-types/bed01/bonsai-drawings/master-bedroom/cache/BED01-MASTER-BEDROOM-SIDE-linework.svg",
+        "bytes": 25350,
+        "sha256": "c44b9a79c026523e1b2172e8515e9517ca5e2366dcab0a1ec36506d38bdbcfea"
+      }
+    }
+  ],
+  "persistence": {
+    "method": "model.write to temporary then atomic replace; bpy.ops.bim.load_project reload",
+    "reload_result": [
+      "FINISHED"
+    ],
+    "post_reload_drawing_count": 3,
+    "post_reload_annotation_count": 3
+  },
+  "versions": {
+    "blender": "4.5.3 LTS",
+    "ifcopenshell": "0.8.4",
+    "ifc_schema": "IFC4",
+    "bonsai_generator": "Bonsai 0.8.4 bim.create_drawing"
+  },
+  "pass": true
+}

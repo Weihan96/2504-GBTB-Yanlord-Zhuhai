@@ -1,0 +1,9557 @@
+{
+  "schema_version": 1,
+  "target_global_id": "2Ak2ma0lvBEA49UpplzUqi",
+  "views": {
+    "plan": {
+      "annotation_guid": "2wMANTAEP4WRRf8Kz4nQhG",
+      "drawing_guid": "3EZt1DKnH8sQoOeH8BbH5y"
+    },
+    "front": {
+      "annotation_guid": "1eBrRf2_5BN9iGp9_AkRa2",
+      "drawing_guid": "0oZNWYRa1BxwCLs0yWOQAj"
+    },
+    "side": {
+      "annotation_guid": "3KI_E9ncXERQwoWAJcOxeI",
+      "drawing_guid": "1YeH3d8DzB4hLiD2Rj4Zua"
+    }
+  },
+  "format": "scoped-ifc-scene-dependency-graph",
+  "body_geometry_included": false,
+  "linework_geometry_included": false,
+  "pure_view_representations": {
+    "plan": {
+      "representation_identifier": "ApprovedPlan",
+      "content_fingerprint": "83331d1d51f92b6702659cf7ae65cec0af29fde966b1e36c1e113cf4ffc97a86",
+      "source_annotation_guid": "2wMANTAEP4WRRf8Kz4nQhG"
+    },
+    "front": {
+      "representation_identifier": "ApprovedFront",
+      "content_fingerprint": "56e60529e250259e9dfaec29b3fcf21e92b16efc81f72800f7757279f72df55f",
+      "source_annotation_guid": "1eBrRf2_5BN9iGp9_AkRa2"
+    },
+    "side": {
+      "representation_identifier": "ApprovedSide",
+      "content_fingerprint": "5483b7df3aba00df174b040d9e20486928e90ff975c625578bb906c8b4117943",
+      "source_annotation_guid": "3KI_E9ncXERQwoWAJcOxeI"
+    }
+  },
+  "runtime_inputs": [
+    "pure_product_ifc",
+    "scene_recipe_json",
+    "formal_project_temporary_copy"
+  ],
+  "graph": {
+    "schema": "IFC4",
+    "entities": [
+      {
+        "id": 512,
+        "type": "IfcPropertySingleValue",
+        "attributes": [
+          "SourceKind",
+          null,
+          {
+            "inline": "IfcLabel",
+            "values": [
+              "native_dwg_configured_installation"
+            ]
+          },
+          null
+        ]
+      },
+      {
+        "id": 513,
+        "type": "IfcPropertySingleValue",
+        "attributes": [
+          "SourceLabelZh",
+          null,
+          {
+            "inline": "IfcLabel",
+            "values": [
+              "基于官方原生DWG固定接头刚性移位及直管长度调整的二维安装细节表达"
+            ]
+          },
+          null
+        ]
+      },
+      {
+        "id": 514,
+        "type": "IfcPropertySingleValue",
+        "attributes": [
+          "LineRole",
+          null,
+          {
+            "inline": "IfcLabel",
+            "values": [
+              "current-installed-internal-detail"
+            ]
+          },
+          null
+        ]
+      },
+      {
+        "id": 515,
+        "type": "IfcPropertySingleValue",
+        "attributes": [
+          "IfcCurveStyleColour",
+          null,
+          {
+            "inline": "IfcLabel",
+            "values": [
+              "#1677c8"
+            ]
+          },
+          null
+        ]
+      },
+      {
+        "id": 516,
+        "type": "IfcPropertySingleValue",
+        "attributes": [
+          "ReferenceExtensionDisplayed",
+          null,
+          {
+            "inline": "IfcBoolean",
+            "values": [
+              false
+            ]
+          },
+          null
+        ]
+      },
+      {
+        "id": 517,
+        "type": "IfcPropertySingleValue",
+        "attributes": [
+          "BlueDashedReferenceExcluded",
+          null,
+          {
+            "inline": "IfcBoolean",
+            "values": [
+              true
+            ]
+          },
+          null
+        ]
+      },
+      {
+        "id": 448,
+        "type": "IfcPropertySingleValue",
+        "attributes": [
+          "CandidateRepresentationsSha256",
+          null,
+          {
+            "inline": "IfcText",
+            "values": [
+              "1c2ed03833e585307436e19a5f6346c4e6aae0ceb8beec60c8c2451d0ccad201"
+            ]
+          },
+          null
+        ]
+      },
+      {
+        "id": 449,
+        "type": "IfcPropertySingleValue",
+        "attributes": [
+          "SourceAccessRecord",
+          null,
+          {
+            "inline": "IfcText",
+            "values": [
+              "output/review/highpoly-types/trap01/official-source/source-access-record.json"
+            ]
+          },
+          null
+        ]
+      },
+      {
+        "id": 450,
+        "type": "IfcPropertySingleValue",
+        "attributes": [
+          "SourceAccessRecordSha256",
+          null,
+          {
+            "inline": "IfcText",
+            "values": [
+              "ac6cfe70847e017778f46112b5d494fe21f71b7572ba4c1d8423123582a0cfc0"
+            ]
+          },
+          null
+        ]
+      },
+      {
+        "id": 451,
+        "type": "IfcPropertySingleValue",
+        "attributes": [
+          "OfficialNativeDwgSha256",
+          null,
+          {
+            "inline": "IfcText",
+            "values": [
+              "{\"A\": \"01fa50da7cf39c6a6ab2a89339d1e4523270cb0943e8dce148f3d471f1a4fff2\", \"G\": \"af55992e60aa1d84c9834da995f6ef8269593f43f46a6311cdf3e2e59530dd3f\", \"L\": \"761eec37c809fc4319e9beaba6eaf472e19eefcbd16adf2815a4644d0a36fdc8\", \"P\": \"c99cee2a0c9ae94b3a5535db4973982795eba64cedc5da135d5ca8f12264a8e1\"}"
+            ]
+          },
+          null
+        ]
+      },
+      {
+        "id": 452,
+        "type": "IfcPropertySingleValue",
+        "attributes": [
+          "PlanPathCount",
+          null,
+          {
+            "inline": "IfcText",
+            "values": [
+              "16"
+            ]
+          },
+          null
+        ]
+      },
+      {
+        "id": 453,
+        "type": "IfcPropertySingleValue",
+        "attributes": [
+          "FrontPathCount",
+          null,
+          {
+            "inline": "IfcText",
+            "values": [
+              "1"
+            ]
+          },
+          null
+        ]
+      },
+      {
+        "id": 454,
+        "type": "IfcPropertySingleValue",
+        "attributes": [
+          "SidePathCount",
+          null,
+          {
+            "inline": "IfcText",
+            "values": [
+              "8"
+            ]
+          },
+          null
+        ]
+      },
+      {
+        "id": 455,
+        "type": "IfcPropertySingleValue",
+        "attributes": [
+          "ProjectIFCBodyLocalXYZMm",
+          null,
+          {
+            "inline": "IfcText",
+            "values": [
+              "[252.502579, 76.540974, 191.93998]"
+            ]
+          },
+          null
+        ]
+      },
+      {
+        "id": 456,
+        "type": "IfcPropertySingleValue",
+        "attributes": [
+          "SelectedArticleFixedWidthDeltaMm",
+          null,
+          {
+            "inline": "IfcText",
+            "values": [
+              "0.000733"
+            ]
+          },
+          null
+        ]
+      },
+      {
+        "id": 457,
+        "type": "IfcPropertySingleValue",
+        "attributes": [
+          "ExcludedAlternativeArticle",
+          null,
+          {
+            "inline": "IfcText",
+            "values": [
+              "151.117.11.1 / d40"
+            ]
+          },
+          null
+        ]
+      },
+      {
+        "id": 458,
+        "type": "IfcPropertySingleValue",
+        "attributes": [
+          "DrawingComponentModel",
+          null,
+          {
+            "inline": "IfcText",
+            "values": [
+              "fixed_body + horizontal_adjustable + vertical_adjustable"
+            ]
+          },
+          null
+        ]
+      },
+      {
+        "id": 459,
+        "type": "IfcPropertySingleValue",
+        "attributes": [
+          "HorizontalInstalledLengthMm",
+          null,
+          {
+            "inline": "IfcText",
+            "values": [
+              "113.402666"
+            ]
+          },
+          null
+        ]
+      },
+      {
+        "id": 460,
+        "type": "IfcPropertySingleValue",
+        "attributes": [
+          "HorizontalAdjustmentRangeMm",
+          null,
+          {
+            "inline": "IfcText",
+            "values": [
+              "0-252"
+            ]
+          },
+          null
+        ]
+      },
+      {
+        "id": 461,
+        "type": "IfcPropertySingleValue",
+        "attributes": [
+          "VerticalInstalledHMm",
+          null,
+          {
+            "inline": "IfcText",
+            "values": [
+              "191.939979"
+            ]
+          },
+          null
+        ]
+      },
+      {
+        "id": 462,
+        "type": "IfcPropertySingleValue",
+        "attributes": [
+          "VerticalAdjustmentRangeMm",
+          null,
+          {
+            "inline": "IfcText",
+            "values": [
+              "85-334"
+            ]
+          },
+          null
+        ]
+      },
+      {
+        "id": 463,
+        "type": "IfcPropertySingleValue",
+        "attributes": [
+          "BlueSolidSemantics",
+          null,
+          {
+            "inline": "IfcText",
+            "values": [
+              "official native DWG linework retained within the current configured range"
+            ]
+          },
+          null
+        ]
+      },
+      {
+        "id": 464,
+        "type": "IfcPropertySingleValue",
+        "attributes": [
+          "BlueDashedSemantics",
+          null,
+          {
+            "inline": "IfcText",
+            "values": [
+              "official adjustable-family excess beyond the current configured endpoint; reference only, not installed project geometry"
+            ]
+          },
+          null
+        ]
+      },
+      {
+        "id": 465,
+        "type": "IfcPropertySingleValue",
+        "attributes": [
+          "ReferenceExtensionDisplayedInSceneByDefault",
+          null,
+          {
+            "inline": "IfcText",
+            "values": [
+              "false"
+            ]
+          },
+          null
+        ]
+      },
+      {
+        "id": 466,
+        "type": "IfcRelAssociatesDocument",
+        "attributes": [
+          "06D0SvmKf4FhMuI91geEZo",
+          {
+            "ref": 48
+          },
+          "Geberit official L native DWG association",
+          "exact Geberit 151.116.11.1 adjustable family reference; project instance is a shortened installation configuration; not a project shop drawing",
+          [
+            {
+              "ref": 47
+            }
+          ],
+          {
+            "ref": 467
+          }
+        ]
+      },
+      {
+        "id": 467,
+        "type": "IfcDocumentReference",
+        "attributes": [
+          "output/review/highpoly-types/trap01/official-source/151.116.11.1_L.dwg",
+          "GEBERIT-151-116-11-1-TRAP01-OFFICIAL-L-DWG",
+          "Geberit official L native DWG",
+          "SHA-256 761eec37c809fc4319e9beaba6eaf472e19eefcbd16adf2815a4644d0a36fdc8; adjustable-family reference only; not representation geometry; exact Geberit 151.116.11.1 adjustable family reference; project instance is a shortened installation configuration; not a project shop drawing",
+          null
+        ]
+      },
+      {
+        "id": 468,
+        "type": "IfcRelAssociatesDocument",
+        "attributes": [
+          "3EnbwS8rP9f8dtNZgCjOlJ",
+          {
+            "ref": 48
+          },
+          "Geberit official P native DWG association",
+          "exact Geberit 151.116.11.1 adjustable family reference; project instance is a shortened installation configuration; not a project shop drawing",
+          [
+            {
+              "ref": 47
+            }
+          ],
+          {
+            "ref": 469
+          }
+        ]
+      },
+      {
+        "id": 469,
+        "type": "IfcDocumentReference",
+        "attributes": [
+          "output/review/highpoly-types/trap01/official-source/151.116.11.1_P.dwg",
+          "GEBERIT-151-116-11-1-TRAP01-OFFICIAL-P-DWG",
+          "Geberit official P native DWG",
+          "SHA-256 c99cee2a0c9ae94b3a5535db4973982795eba64cedc5da135d5ca8f12264a8e1; adjustable-family reference only; not representation geometry; exact Geberit 151.116.11.1 adjustable family reference; project instance is a shortened installation configuration; not a project shop drawing",
+          null
+        ]
+      },
+      {
+        "id": 470,
+        "type": "IfcRelAssociatesDocument",
+        "attributes": [
+          "2dSmQjwHX8PfTeqzaxU8wb",
+          {
+            "ref": 48
+          },
+          "Geberit official Geberit-PRO_185224-product-data-sheet.pdf association",
+          "exact Geberit 151.116.11.1 adjustable family reference; project instance is a shortened installation configuration; not a project shop drawing",
+          [
+            {
+              "ref": 47
+            }
+          ],
+          {
+            "ref": 471
+          }
+        ]
+      },
+      {
+        "id": 471,
+        "type": "IfcDocumentReference",
+        "attributes": [
+          "output/review/highpoly-types/trap01/official-source/Geberit-PRO_185224-product-data-sheet.pdf",
+          "GEBERIT-151-116-11-1-TRAP01-PRODUCT-DATA-SHEET",
+          "Geberit official Geberit-PRO_185224-product-data-sheet.pdf",
+          "SHA-256 e331a53269493b86908611c1ab2f5d05c401aff2530c464546342a1dece0d06b; identity and configuration evidence only; exact Geberit 151.116.11.1 adjustable family reference; project instance is a shortened installation configuration; not a project shop drawing",
+          null
+        ]
+      },
+      {
+        "id": 472,
+        "type": "IfcRelAssociatesDocument",
+        "attributes": [
+          "14wicJr2f0kQXw7YlE8OhK",
+          {
+            "ref": 48
+          },
+          "Geberit official geberit-PRO_185224-product-page.html association",
+          "exact Geberit 151.116.11.1 adjustable family reference; project instance is a shortened installation configuration; not a project shop drawing",
+          [
+            {
+              "ref": 47
+            }
+          ],
+          {
+            "ref": 473
+          }
+        ]
+      },
+      {
+        "id": 473,
+        "type": "IfcDocumentReference",
+        "attributes": [
+          "output/review/highpoly-types/trap01/official-source/geberit-PRO_185224-product-page.html",
+          "GEBERIT-151-116-11-1-TRAP01-PRODUCT-PAGE-ARCHIVE",
+          "Geberit official geberit-PRO_185224-product-page.html",
+          "SHA-256 566b4286b131cba21435fbb94e22ac46845886a6cc354750bd9340a2e0cd7864; identity and configuration evidence only; exact Geberit 151.116.11.1 adjustable family reference; project instance is a shortened installation configuration; not a project shop drawing",
+          null
+        ]
+      },
+      {
+        "id": 474,
+        "type": "IfcRelAssociatesDocument",
+        "attributes": [
+          "1BNyWhMHn4h9wI1XNHj$j8",
+          {
+            "ref": 48
+          },
+          "Geberit official 969.459.00.0-maintenance-manual.pdf association",
+          "exact Geberit 151.116.11.1 adjustable family reference; project instance is a shortened installation configuration; not a project shop drawing",
+          [
+            {
+              "ref": 47
+            }
+          ],
+          {
+            "ref": 475
+          }
+        ]
+      },
+      {
+        "id": 475,
+        "type": "IfcDocumentReference",
+        "attributes": [
+          "output/review/highpoly-types/trap01/official-source/969.459.00.0-maintenance-manual.pdf",
+          "GEBERIT-151-116-11-1-TRAP01-MAINTENANCE-MANUAL",
+          "Geberit official 969.459.00.0-maintenance-manual.pdf",
+          "SHA-256 1bbafe09d372ba2c52058fb1a795c98086d85f6fb30625b36670e23dd7da6edf; identity and configuration evidence only; exact Geberit 151.116.11.1 adjustable family reference; project instance is a shortened installation configuration; not a project shop drawing",
+          null
+        ]
+      },
+      {
+        "id": 476,
+        "type": "IfcRelDefinesByProperties",
+        "attributes": [
+          "20SAnFsvbFjvrpW7HGm0Z1",
+          {
+            "ref": 48
+          },
+          "Pset_Trap01AdjustableConfiguration assignment",
+          null,
+          [
+            {
+              "ref": 47
+            }
+          ],
+          {
+            "ref": 477
+          }
+        ]
+      },
+      {
+        "id": 477,
+        "type": "IfcPropertySet",
+        "attributes": [
+          "3I4G7jIyX90uWRJxxhAJn9",
+          {
+            "ref": 48
+          },
+          "Pset_Trap01AdjustableConfiguration",
+          "TRAP01 approved current configuration and independent horizontal/vertical adjustment parameters",
+          [
+            {
+              "ref": 478
+            },
+            {
+              "ref": 479
+            },
+            {
+              "ref": 480
+            },
+            {
+              "ref": 481
+            },
+            {
+              "ref": 482
+            },
+            {
+              "ref": 483
+            },
+            {
+              "ref": 484
+            },
+            {
+              "ref": 485
+            },
+            {
+              "ref": 486
+            },
+            {
+              "ref": 487
+            },
+            {
+              "ref": 488
+            },
+            {
+              "ref": 489
+            }
+          ]
+        ]
+      },
+      {
+        "id": 478,
+        "type": "IfcPropertySingleValue",
+        "attributes": [
+          "ComponentGroupGlobalId",
+          null,
+          {
+            "inline": "IfcText",
+            "values": [
+              "1ha3HZYKXBXAY4g343S01c"
+            ]
+          },
+          null
+        ]
+      },
+      {
+        "id": 479,
+        "type": "IfcPropertySingleValue",
+        "attributes": [
+          "FixedBodyGlobalId",
+          null,
+          {
+            "inline": "IfcText",
+            "values": [
+              "2oBEAgLj90IvrLncW33Hxe"
+            ]
+          },
+          null
+        ]
+      },
+      {
+        "id": 480,
+        "type": "IfcPropertySingleValue",
+        "attributes": [
+          "HorizontalAdjustableGlobalId",
+          null,
+          {
+            "inline": "IfcText",
+            "values": [
+              "1i90gVNCL5jBENkmiRt$gm"
+            ]
+          },
+          null
+        ]
+      },
+      {
+        "id": 481,
+        "type": "IfcPropertySingleValue",
+        "attributes": [
+          "VerticalAdjustableGlobalId",
+          null,
+          {
+            "inline": "IfcText",
+            "values": [
+              "1O5mM7VGLEFPeKu3Z9ZLEY"
+            ]
+          },
+          null
+        ]
+      },
+      {
+        "id": 482,
+        "type": "IfcPropertySingleValue",
+        "attributes": [
+          "HorizontalInstalledLengthMm",
+          null,
+          {
+            "inline": "IfcText",
+            "values": [
+              "113.402666"
+            ]
+          },
+          null
+        ]
+      },
+      {
+        "id": 483,
+        "type": "IfcPropertySingleValue",
+        "attributes": [
+          "HorizontalMinimumMm",
+          null,
+          {
+            "inline": "IfcText",
+            "values": [
+              "0.0"
+            ]
+          },
+          null
+        ]
+      },
+      {
+        "id": 484,
+        "type": "IfcPropertySingleValue",
+        "attributes": [
+          "HorizontalMaximumMm",
+          null,
+          {
+            "inline": "IfcText",
+            "values": [
+              "252.0"
+            ]
+          },
+          null
+        ]
+      },
+      {
+        "id": 485,
+        "type": "IfcPropertySingleValue",
+        "attributes": [
+          "VerticalInstalledHMm",
+          null,
+          {
+            "inline": "IfcText",
+            "values": [
+              "191.939979"
+            ]
+          },
+          null
+        ]
+      },
+      {
+        "id": 486,
+        "type": "IfcPropertySingleValue",
+        "attributes": [
+          "VerticalMinimumHMm",
+          null,
+          {
+            "inline": "IfcText",
+            "values": [
+              "85.0"
+            ]
+          },
+          null
+        ]
+      },
+      {
+        "id": 487,
+        "type": "IfcPropertySingleValue",
+        "attributes": [
+          "VerticalMaximumHMm",
+          null,
+          {
+            "inline": "IfcText",
+            "values": [
+              "334.0"
+            ]
+          },
+          null
+        ]
+      },
+      {
+        "id": 488,
+        "type": "IfcPropertySingleValue",
+        "attributes": [
+          "BlueDashedSemantics",
+          null,
+          {
+            "inline": "IfcText",
+            "values": [
+              "official adjustable-family excess beyond the current configured endpoint; reference only, not installed project geometry"
+            ]
+          },
+          null
+        ]
+      },
+      {
+        "id": 489,
+        "type": "IfcPropertySingleValue",
+        "attributes": [
+          "ReferenceExtensionDisplayedInSceneByDefault",
+          null,
+          {
+            "inline": "IfcText",
+            "values": [
+              "false"
+            ]
+          },
+          null
+        ]
+      },
+      {
+        "id": 490,
+        "type": "IfcRelAssociatesDocument",
+        "attributes": [
+          "3UplVVkFjFrQWnPadIbxjq",
+          {
+            "ref": 48
+          },
+          "Geberit official 966.798.00.0-installation-instructions.pdf association",
+          "exact Geberit 151.116.11.1 adjustable family reference; project instance is a shortened installation configuration; not a project shop drawing",
+          [
+            {
+              "ref": 47
+            }
+          ],
+          {
+            "ref": 491
+          }
+        ]
+      },
+      {
+        "id": 491,
+        "type": "IfcDocumentReference",
+        "attributes": [
+          "output/review/highpoly-types/trap01/official-source/966.798.00.0-installation-instructions.pdf",
+          "GEBERIT-151-116-11-1-TRAP01-INSTALLATION-INSTRUCTIONS",
+          "Geberit official 966.798.00.0-installation-instructions.pdf",
+          "SHA-256 edbf40f45788262b056f4d1d366731c0242cd523b70a97215f00091a0ebe5e9a; identity and configuration evidence only; exact Geberit 151.116.11.1 adjustable family reference; project instance is a shortened installation configuration; not a project shop drawing",
+          null
+        ]
+      },
+      {
+        "id": 492,
+        "type": "IfcRelAssociatesDocument",
+        "attributes": [
+          "028xQkAcr0Yge1giGOnEzu",
+          {
+            "ref": 48
+          },
+          "Geberit official product page association",
+          "exact Geberit 151.116.11.1 adjustable family reference; project instance is a shortened installation configuration; not a project shop drawing",
+          [
+            {
+              "ref": 47
+            }
+          ],
+          {
+            "ref": 493
+          }
+        ]
+      },
+      {
+        "id": 493,
+        "type": "IfcDocumentReference",
+        "attributes": [
+          "https://catalog.geberit.us/en-US/product/PRO_185224",
+          "GEBERIT-151-116-11-1-TRAP01-OFFICIAL-PRODUCT-PAGE",
+          "Geberit official product page",
+          "Exact family and article identity, attributes and native CAD links; exact Geberit 151.116.11.1 adjustable family reference; project instance is a shortened installation configuration; not a project shop drawing",
+          null
+        ]
+      },
+      {
+        "id": 494,
+        "type": "IfcRelDefinesByProperties",
+        "attributes": [
+          "3bo6ZXAfn92xlCTdXDiHJq",
+          {
+            "ref": 495
+          },
+          null,
+          null,
+          [
+            {
+              "ref": 74
+            }
+          ],
+          {
+            "ref": 496
+          }
+        ]
+      },
+      {
+        "id": 495,
+        "type": "IfcOwnerHistory",
+        "attributes": [
+          {
+            "ref": 24
+          },
+          {
+            "ref": 56
+          },
+          "READWRITE",
+          "ADDED",
+          1788609842,
+          {
+            "ref": 24
+          },
+          {
+            "ref": 56
+          },
+          1788609842
+        ]
+      },
+      {
+        "id": 496,
+        "type": "IfcPropertySet",
+        "attributes": [
+          "2LSc1F2BT95wOEeqMTvn0B",
+          {
+            "ref": 497
+          },
+          "EPset_Annotation",
+          null,
+          [
+            {
+              "ref": 498
+            },
+            {
+              "ref": 499
+            },
+            {
+              "ref": 500
+            },
+            {
+              "ref": 501
+            },
+            {
+              "ref": 502
+            },
+            {
+              "ref": 503
+            },
+            {
+              "ref": 504
+            },
+            {
+              "ref": 505
+            }
+          ]
+        ]
+      },
+      {
+        "id": 497,
+        "type": "IfcOwnerHistory",
+        "attributes": [
+          {
+            "ref": 24
+          },
+          {
+            "ref": 56
+          },
+          "READWRITE",
+          "ADDED",
+          1788609842,
+          {
+            "ref": 24
+          },
+          {
+            "ref": 56
+          },
+          1788609842
+        ]
+      },
+      {
+        "id": 498,
+        "type": "IfcPropertySingleValue",
+        "attributes": [
+          "Classes",
+          null,
+          {
+            "inline": "IfcLabel",
+            "values": [
+              "review-target-trap01 current-installed cabinet-internal-detail"
+            ]
+          },
+          null
+        ]
+      },
+      {
+        "id": 499,
+        "type": "IfcPropertySingleValue",
+        "attributes": [
+          "TargetGlobalId",
+          null,
+          {
+            "inline": "IfcLabel",
+            "values": [
+              "2Ak2ma0lvBEA49UpplzUqi"
+            ]
+          },
+          null
+        ]
+      },
+      {
+        "id": 500,
+        "type": "IfcPropertySingleValue",
+        "attributes": [
+          "SourceKind",
+          null,
+          {
+            "inline": "IfcLabel",
+            "values": [
+              "native_dwg_configured_installation"
+            ]
+          },
+          null
+        ]
+      },
+      {
+        "id": 501,
+        "type": "IfcPropertySingleValue",
+        "attributes": [
+          "SourceLabelZh",
+          null,
+          {
+            "inline": "IfcLabel",
+            "values": [
+              "基于官方原生DWG固定接头刚性移位及直管长度调整的二维安装细节表达"
+            ]
+          },
+          null
+        ]
+      },
+      {
+        "id": 502,
+        "type": "IfcPropertySingleValue",
+        "attributes": [
+          "LineRole",
+          null,
+          {
+            "inline": "IfcLabel",
+            "values": [
+              "current-installed-internal-detail"
+            ]
+          },
+          null
+        ]
+      },
+      {
+        "id": 503,
+        "type": "IfcPropertySingleValue",
+        "attributes": [
+          "IfcCurveStyleColour",
+          null,
+          {
+            "inline": "IfcLabel",
+            "values": [
+              "#1677c8"
+            ]
+          },
+          null
+        ]
+      },
+      {
+        "id": 504,
+        "type": "IfcPropertySingleValue",
+        "attributes": [
+          "ReferenceExtensionDisplayed",
+          null,
+          {
+            "inline": "IfcBoolean",
+            "values": [
+              false
+            ]
+          },
+          null
+        ]
+      },
+      {
+        "id": 505,
+        "type": "IfcPropertySingleValue",
+        "attributes": [
+          "BlueDashedReferenceExcluded",
+          null,
+          {
+            "inline": "IfcBoolean",
+            "values": [
+              true
+            ]
+          },
+          null
+        ]
+      },
+      {
+        "id": 506,
+        "type": "IfcRelDefinesByProperties",
+        "attributes": [
+          "0Zd5GH21HE$eUBloYj$_p2",
+          {
+            "ref": 507
+          },
+          null,
+          null,
+          [
+            {
+              "ref": 118
+            }
+          ],
+          {
+            "ref": 508
+          }
+        ]
+      },
+      {
+        "id": 507,
+        "type": "IfcOwnerHistory",
+        "attributes": [
+          {
+            "ref": 24
+          },
+          {
+            "ref": 56
+          },
+          "READWRITE",
+          "ADDED",
+          1788609846,
+          {
+            "ref": 24
+          },
+          {
+            "ref": 56
+          },
+          1788609846
+        ]
+      },
+      {
+        "id": 508,
+        "type": "IfcPropertySet",
+        "attributes": [
+          "3z6Q9yrYH11B9bMI7igATr",
+          {
+            "ref": 509
+          },
+          "EPset_Annotation",
+          null,
+          [
+            {
+              "ref": 510
+            },
+            {
+              "ref": 511
+            },
+            {
+              "ref": 512
+            },
+            {
+              "ref": 513
+            },
+            {
+              "ref": 514
+            },
+            {
+              "ref": 515
+            },
+            {
+              "ref": 516
+            },
+            {
+              "ref": 517
+            }
+          ]
+        ]
+      },
+      {
+        "id": 509,
+        "type": "IfcOwnerHistory",
+        "attributes": [
+          {
+            "ref": 24
+          },
+          {
+            "ref": 56
+          },
+          "READWRITE",
+          "ADDED",
+          1788609846,
+          {
+            "ref": 24
+          },
+          {
+            "ref": 56
+          },
+          1788609846
+        ]
+      },
+      {
+        "id": 510,
+        "type": "IfcPropertySingleValue",
+        "attributes": [
+          "Classes",
+          null,
+          {
+            "inline": "IfcLabel",
+            "values": [
+              "review-target-trap01 current-installed cabinet-internal-detail"
+            ]
+          },
+          null
+        ]
+      },
+      {
+        "id": 511,
+        "type": "IfcPropertySingleValue",
+        "attributes": [
+          "TargetGlobalId",
+          null,
+          {
+            "inline": "IfcLabel",
+            "values": [
+              "2Ak2ma0lvBEA49UpplzUqi"
+            ]
+          },
+          null
+        ]
+      },
+      {
+        "id": 320,
+        "type": "IfcOwnerHistory",
+        "attributes": [
+          {
+            "ref": 24
+          },
+          {
+            "ref": 56
+          },
+          "READWRITE",
+          "ADDED",
+          1788609843,
+          {
+            "ref": 24
+          },
+          {
+            "ref": 56
+          },
+          1788609843
+        ]
+      },
+      {
+        "id": 321,
+        "type": "IfcDocumentReference",
+        "attributes": [
+          "bonsai-drawings/cabinet-official-detail-v4/TRAP01-OFFICIAL-DETAIL-V4-FRONT.svg",
+          "X",
+          null,
+          null,
+          {
+            "ref": 263
+          }
+        ]
+      },
+      {
+        "id": 322,
+        "type": "IfcRelDefinesByProperties",
+        "attributes": [
+          "3ftLbZ4uLEYQ7GDzLOxFDg",
+          {
+            "ref": 323
+          },
+          null,
+          null,
+          [
+            {
+              "ref": 81
+            }
+          ],
+          {
+            "ref": 324
+          }
+        ]
+      },
+      {
+        "id": 323,
+        "type": "IfcOwnerHistory",
+        "attributes": [
+          {
+            "ref": 24
+          },
+          {
+            "ref": 56
+          },
+          "READWRITE",
+          "ADDED",
+          1788609843,
+          {
+            "ref": 24
+          },
+          {
+            "ref": 56
+          },
+          1788609843
+        ]
+      },
+      {
+        "id": 324,
+        "type": "IfcPropertySet",
+        "attributes": [
+          "1AGfrxTaP3ruuYMDLgjFiZ",
+          {
+            "ref": 325
+          },
+          "EPset_Drawing",
+          null,
+          [
+            {
+              "ref": 326
+            },
+            {
+              "ref": 327
+            },
+            {
+              "ref": 328
+            },
+            {
+              "ref": 329
+            },
+            {
+              "ref": 330
+            },
+            {
+              "ref": 331
+            },
+            {
+              "ref": 332
+            },
+            {
+              "ref": 333
+            },
+            {
+              "ref": 334
+            },
+            {
+              "ref": 335
+            },
+            {
+              "ref": 336
+            },
+            {
+              "ref": 337
+            },
+            {
+              "ref": 338
+            },
+            {
+              "ref": 339
+            },
+            {
+              "ref": 340
+            },
+            {
+              "ref": 341
+            },
+            {
+              "ref": 342
+            },
+            {
+              "ref": 343
+            },
+            {
+              "ref": 344
+            }
+          ]
+        ]
+      },
+      {
+        "id": 325,
+        "type": "IfcOwnerHistory",
+        "attributes": [
+          {
+            "ref": 24
+          },
+          {
+            "ref": 56
+          },
+          "READWRITE",
+          "ADDED",
+          1788609843,
+          {
+            "ref": 24
+          },
+          {
+            "ref": 56
+          },
+          1788609843
+        ]
+      },
+      {
+        "id": 326,
+        "type": "IfcPropertySingleValue",
+        "attributes": [
+          "TargetView",
+          null,
+          {
+            "inline": "IfcLabel",
+            "values": [
+              "ELEVATION_VIEW"
+            ]
+          },
+          null
+        ]
+      },
+      {
+        "id": 327,
+        "type": "IfcPropertySingleValue",
+        "attributes": [
+          "Scale",
+          null,
+          {
+            "inline": "IfcLabel",
+            "values": [
+              "1/5"
+            ]
+          },
+          null
+        ]
+      },
+      {
+        "id": 328,
+        "type": "IfcPropertySingleValue",
+        "attributes": [
+          "HumanScale",
+          null,
+          {
+            "inline": "IfcLabel",
+            "values": [
+              "1:5"
+            ]
+          },
+          null
+        ]
+      },
+      {
+        "id": 329,
+        "type": "IfcPropertySingleValue",
+        "attributes": [
+          "HasUnderlay",
+          null,
+          {
+            "inline": "IfcBoolean",
+            "values": [
+              false
+            ]
+          },
+          null
+        ]
+      },
+      {
+        "id": 330,
+        "type": "IfcPropertySingleValue",
+        "attributes": [
+          "HasLinework",
+          null,
+          {
+            "inline": "IfcBoolean",
+            "values": [
+              true
+            ]
+          },
+          null
+        ]
+      },
+      {
+        "id": 331,
+        "type": "IfcPropertySingleValue",
+        "attributes": [
+          "HasAnnotation",
+          null,
+          {
+            "inline": "IfcBoolean",
+            "values": [
+              true
+            ]
+          },
+          null
+        ]
+      },
+      {
+        "id": 332,
+        "type": "IfcPropertySingleValue",
+        "attributes": [
+          "GlobalReferencing",
+          null,
+          {
+            "inline": "IfcBoolean",
+            "values": [
+              true
+            ]
+          },
+          null
+        ]
+      },
+      {
+        "id": 333,
+        "type": "IfcPropertySingleValue",
+        "attributes": [
+          "Stylesheet",
+          null,
+          {
+            "inline": "IfcText",
+            "values": [
+              "drawings/assets/default.css"
+            ]
+          },
+          null
+        ]
+      },
+      {
+        "id": 334,
+        "type": "IfcPropertySingleValue",
+        "attributes": [
+          "Markers",
+          null,
+          {
+            "inline": "IfcText",
+            "values": [
+              "drawings/assets/markers.svg"
+            ]
+          },
+          null
+        ]
+      },
+      {
+        "id": 335,
+        "type": "IfcPropertySingleValue",
+        "attributes": [
+          "Symbols",
+          null,
+          {
+            "inline": "IfcText",
+            "values": [
+              "drawings/assets/symbols.svg"
+            ]
+          },
+          null
+        ]
+      },
+      {
+        "id": 336,
+        "type": "IfcPropertySingleValue",
+        "attributes": [
+          "Patterns",
+          null,
+          {
+            "inline": "IfcText",
+            "values": [
+              "drawings/assets/patterns.svg"
+            ]
+          },
+          null
+        ]
+      },
+      {
+        "id": 337,
+        "type": "IfcPropertySingleValue",
+        "attributes": [
+          "ShadingStyles",
+          null,
+          {
+            "inline": "IfcText",
+            "values": [
+              "drawings/assets/shading_styles.json"
+            ]
+          },
+          null
+        ]
+      },
+      {
+        "id": 338,
+        "type": "IfcPropertySingleValue",
+        "attributes": [
+          "CurrentShadingStyle",
+          null,
+          {
+            "inline": "IfcLabel",
+            "values": [
+              "Blender Default"
+            ]
+          },
+          null
+        ]
+      },
+      {
+        "id": 339,
+        "type": "IfcPropertySingleValue",
+        "attributes": [
+          "DPI",
+          null,
+          {
+            "inline": "IfcInteger",
+            "values": [
+              300
+            ]
+          },
+          null
+        ]
+      },
+      {
+        "id": 340,
+        "type": "IfcPropertySingleValue",
+        "attributes": [
+          "LineworkMode",
+          null,
+          {
+            "inline": "IfcLabel",
+            "values": [
+              "OPENCASCADE"
+            ]
+          },
+          null
+        ]
+      },
+      {
+        "id": 341,
+        "type": "IfcPropertySingleValue",
+        "attributes": [
+          "FillMode",
+          null,
+          {
+            "inline": "IfcLabel",
+            "values": [
+              "NONE"
+            ]
+          },
+          null
+        ]
+      },
+      {
+        "id": 342,
+        "type": "IfcPropertySingleValue",
+        "attributes": [
+          "CutMode",
+          null,
+          {
+            "inline": "IfcLabel",
+            "values": [
+              "BISECT"
+            ]
+          },
+          null
+        ]
+      },
+      {
+        "id": 343,
+        "type": "IfcPropertySingleValue",
+        "attributes": [
+          "Include",
+          null,
+          {
+            "inline": "IfcText",
+            "values": [
+              "0e0XOb$L18ZBVYJiQJrQ1p,3WekjaeUn1qfL6oR1KYD_2,3ty1lUpQfD3fY1yf0Dxo53,05LSYayab3n9CDi01pw9K$,2amSzxJIb9ceddTJOslmHk,3jha5L04zBjh0$pMl_tHLy,04rs0EDjn2EvxytEQSxWRB,0nlHIdaVrV7xIKsYXraYCa,37DwA_fpXSARFOa60IfK8k,1jM_suNMPAw8_nvZejQSnp,1u997JrDbByeKqbJ6ku8GF,2ajpw0I9n1dBypfISg3ejX,3PRBtW00j1D8r2Or5PTFdh"
+            ]
+          },
+          null
+        ]
+      },
+      {
+        "id": 344,
+        "type": "IfcPropertySingleValue",
+        "attributes": [
+          "Exclude",
+          null,
+          {
+            "inline": "IfcText",
+            "values": [
+              "1FgLPMw$5B4wBH2ySMkXE1,2YnGmmoYbF28Vy25$aNKT8,3OVQygdDn17huGOgJJFTOY"
+            ]
+          },
+          null
+        ]
+      },
+      {
+        "id": 345,
+        "type": "IfcRelContainedInSpatialStructure",
+        "attributes": [
+          "0qRSQZ3uL6X89uxhyCoSlg",
+          {
+            "ref": 346
+          },
+          null,
+          null,
+          [
+            {
+              "ref": 47
+            }
+          ],
+          {
+            "ref": 40
+          }
+        ]
+      },
+      {
+        "id": 346,
+        "type": "IfcOwnerHistory",
+        "attributes": [
+          {
+            "ref": 24
+          },
+          {
+            "ref": 27
+          },
+          "READWRITE",
+          "MODIFIED",
+          1769702605,
+          {
+            "ref": 24
+          },
+          {
+            "ref": 56
+          },
+          1762419206
+        ]
+      },
+      {
+        "id": 347,
+        "type": "IfcRelDefinesByProperties",
+        "attributes": [
+          "1Mio6OJLr99vXU3WGEUOlF",
+          {
+            "ref": 348
+          },
+          null,
+          null,
+          [
+            {
+              "ref": 96
+            }
+          ],
+          {
+            "ref": 349
+          }
+        ]
+      },
+      {
+        "id": 348,
+        "type": "IfcOwnerHistory",
+        "attributes": [
+          {
+            "ref": 24
+          },
+          {
+            "ref": 56
+          },
+          "READWRITE",
+          "ADDED",
+          1788609844,
+          {
+            "ref": 24
+          },
+          {
+            "ref": 56
+          },
+          1788609844
+        ]
+      },
+      {
+        "id": 349,
+        "type": "IfcPropertySet",
+        "attributes": [
+          "3ZEXUI_qHDxxUPTbdf9dnM",
+          {
+            "ref": 350
+          },
+          "EPset_Annotation",
+          null,
+          [
+            {
+              "ref": 351
+            },
+            {
+              "ref": 352
+            },
+            {
+              "ref": 353
+            },
+            {
+              "ref": 354
+            },
+            {
+              "ref": 355
+            },
+            {
+              "ref": 356
+            },
+            {
+              "ref": 357
+            },
+            {
+              "ref": 358
+            }
+          ]
+        ]
+      },
+      {
+        "id": 350,
+        "type": "IfcOwnerHistory",
+        "attributes": [
+          {
+            "ref": 24
+          },
+          {
+            "ref": 56
+          },
+          "READWRITE",
+          "ADDED",
+          1788609844,
+          {
+            "ref": 24
+          },
+          {
+            "ref": 56
+          },
+          1788609844
+        ]
+      },
+      {
+        "id": 351,
+        "type": "IfcPropertySingleValue",
+        "attributes": [
+          "Classes",
+          null,
+          {
+            "inline": "IfcLabel",
+            "values": [
+              "review-target-trap01 current-installed cabinet-internal-detail"
+            ]
+          },
+          null
+        ]
+      },
+      {
+        "id": 352,
+        "type": "IfcPropertySingleValue",
+        "attributes": [
+          "TargetGlobalId",
+          null,
+          {
+            "inline": "IfcLabel",
+            "values": [
+              "2Ak2ma0lvBEA49UpplzUqi"
+            ]
+          },
+          null
+        ]
+      },
+      {
+        "id": 353,
+        "type": "IfcPropertySingleValue",
+        "attributes": [
+          "SourceKind",
+          null,
+          {
+            "inline": "IfcLabel",
+            "values": [
+              "native_dwg_configured_installation"
+            ]
+          },
+          null
+        ]
+      },
+      {
+        "id": 354,
+        "type": "IfcPropertySingleValue",
+        "attributes": [
+          "SourceLabelZh",
+          null,
+          {
+            "inline": "IfcLabel",
+            "values": [
+              "基于官方原生DWG固定接头刚性移位及直管长度调整的二维安装细节表达"
+            ]
+          },
+          null
+        ]
+      },
+      {
+        "id": 355,
+        "type": "IfcPropertySingleValue",
+        "attributes": [
+          "LineRole",
+          null,
+          {
+            "inline": "IfcLabel",
+            "values": [
+              "current-installed-internal-detail"
+            ]
+          },
+          null
+        ]
+      },
+      {
+        "id": 356,
+        "type": "IfcPropertySingleValue",
+        "attributes": [
+          "IfcCurveStyleColour",
+          null,
+          {
+            "inline": "IfcLabel",
+            "values": [
+              "#1677c8"
+            ]
+          },
+          null
+        ]
+      },
+      {
+        "id": 357,
+        "type": "IfcPropertySingleValue",
+        "attributes": [
+          "ReferenceExtensionDisplayed",
+          null,
+          {
+            "inline": "IfcBoolean",
+            "values": [
+              false
+            ]
+          },
+          null
+        ]
+      },
+      {
+        "id": 358,
+        "type": "IfcPropertySingleValue",
+        "attributes": [
+          "BlueDashedReferenceExcluded",
+          null,
+          {
+            "inline": "IfcBoolean",
+            "values": [
+              true
+            ]
+          },
+          null
+        ]
+      },
+      {
+        "id": 359,
+        "type": "IfcRelDefinesByProperties",
+        "attributes": [
+          "3ZG7QyL$z3Xf$zmbr0B71n",
+          {
+            "ref": 360
+          },
+          null,
+          null,
+          [
+            {
+              "ref": 54
+            }
+          ],
+          {
+            "ref": 361
+          }
+        ]
+      },
+      {
+        "id": 360,
+        "type": "IfcOwnerHistory",
+        "attributes": [
+          {
+            "ref": 24
+          },
+          {
+            "ref": 56
+          },
+          "READWRITE",
+          "ADDED",
+          1788609841,
+          {
+            "ref": 24
+          },
+          {
+            "ref": 56
+          },
+          1788609841
+        ]
+      },
+      {
+        "id": 361,
+        "type": "IfcPropertySet",
+        "attributes": [
+          "0rBLgYAAPE6fbKgjyIhcf_",
+          {
+            "ref": 362
+          },
+          "EPset_Drawing",
+          null,
+          [
+            {
+              "ref": 363
+            },
+            {
+              "ref": 364
+            },
+            {
+              "ref": 365
+            },
+            {
+              "ref": 366
+            },
+            {
+              "ref": 367
+            },
+            {
+              "ref": 368
+            },
+            {
+              "ref": 369
+            },
+            {
+              "ref": 370
+            },
+            {
+              "ref": 371
+            },
+            {
+              "ref": 372
+            },
+            {
+              "ref": 373
+            },
+            {
+              "ref": 374
+            },
+            {
+              "ref": 375
+            },
+            {
+              "ref": 376
+            },
+            {
+              "ref": 377
+            },
+            {
+              "ref": 378
+            },
+            {
+              "ref": 379
+            },
+            {
+              "ref": 380
+            },
+            {
+              "ref": 381
+            }
+          ]
+        ]
+      },
+      {
+        "id": 362,
+        "type": "IfcOwnerHistory",
+        "attributes": [
+          {
+            "ref": 24
+          },
+          {
+            "ref": 56
+          },
+          "READWRITE",
+          "ADDED",
+          1788609841,
+          {
+            "ref": 24
+          },
+          {
+            "ref": 56
+          },
+          1788609841
+        ]
+      },
+      {
+        "id": 363,
+        "type": "IfcPropertySingleValue",
+        "attributes": [
+          "TargetView",
+          null,
+          {
+            "inline": "IfcLabel",
+            "values": [
+              "PLAN_VIEW"
+            ]
+          },
+          null
+        ]
+      },
+      {
+        "id": 364,
+        "type": "IfcPropertySingleValue",
+        "attributes": [
+          "Scale",
+          null,
+          {
+            "inline": "IfcLabel",
+            "values": [
+              "1/5"
+            ]
+          },
+          null
+        ]
+      },
+      {
+        "id": 365,
+        "type": "IfcPropertySingleValue",
+        "attributes": [
+          "HumanScale",
+          null,
+          {
+            "inline": "IfcLabel",
+            "values": [
+              "1:5"
+            ]
+          },
+          null
+        ]
+      },
+      {
+        "id": 366,
+        "type": "IfcPropertySingleValue",
+        "attributes": [
+          "HasUnderlay",
+          null,
+          {
+            "inline": "IfcBoolean",
+            "values": [
+              false
+            ]
+          },
+          null
+        ]
+      },
+      {
+        "id": 367,
+        "type": "IfcPropertySingleValue",
+        "attributes": [
+          "HasLinework",
+          null,
+          {
+            "inline": "IfcBoolean",
+            "values": [
+              true
+            ]
+          },
+          null
+        ]
+      },
+      {
+        "id": 368,
+        "type": "IfcPropertySingleValue",
+        "attributes": [
+          "HasAnnotation",
+          null,
+          {
+            "inline": "IfcBoolean",
+            "values": [
+              true
+            ]
+          },
+          null
+        ]
+      },
+      {
+        "id": 369,
+        "type": "IfcPropertySingleValue",
+        "attributes": [
+          "GlobalReferencing",
+          null,
+          {
+            "inline": "IfcBoolean",
+            "values": [
+              true
+            ]
+          },
+          null
+        ]
+      },
+      {
+        "id": 370,
+        "type": "IfcPropertySingleValue",
+        "attributes": [
+          "Stylesheet",
+          null,
+          {
+            "inline": "IfcText",
+            "values": [
+              "drawings/assets/default.css"
+            ]
+          },
+          null
+        ]
+      },
+      {
+        "id": 371,
+        "type": "IfcPropertySingleValue",
+        "attributes": [
+          "Markers",
+          null,
+          {
+            "inline": "IfcText",
+            "values": [
+              "drawings/assets/markers.svg"
+            ]
+          },
+          null
+        ]
+      },
+      {
+        "id": 372,
+        "type": "IfcPropertySingleValue",
+        "attributes": [
+          "Symbols",
+          null,
+          {
+            "inline": "IfcText",
+            "values": [
+              "drawings/assets/symbols.svg"
+            ]
+          },
+          null
+        ]
+      },
+      {
+        "id": 373,
+        "type": "IfcPropertySingleValue",
+        "attributes": [
+          "Patterns",
+          null,
+          {
+            "inline": "IfcText",
+            "values": [
+              "drawings/assets/patterns.svg"
+            ]
+          },
+          null
+        ]
+      },
+      {
+        "id": 374,
+        "type": "IfcPropertySingleValue",
+        "attributes": [
+          "ShadingStyles",
+          null,
+          {
+            "inline": "IfcText",
+            "values": [
+              "drawings/assets/shading_styles.json"
+            ]
+          },
+          null
+        ]
+      },
+      {
+        "id": 375,
+        "type": "IfcPropertySingleValue",
+        "attributes": [
+          "CurrentShadingStyle",
+          null,
+          {
+            "inline": "IfcLabel",
+            "values": [
+              "Blender Default"
+            ]
+          },
+          null
+        ]
+      },
+      {
+        "id": 376,
+        "type": "IfcPropertySingleValue",
+        "attributes": [
+          "DPI",
+          null,
+          {
+            "inline": "IfcInteger",
+            "values": [
+              300
+            ]
+          },
+          null
+        ]
+      },
+      {
+        "id": 377,
+        "type": "IfcPropertySingleValue",
+        "attributes": [
+          "LineworkMode",
+          null,
+          {
+            "inline": "IfcLabel",
+            "values": [
+              "OPENCASCADE"
+            ]
+          },
+          null
+        ]
+      },
+      {
+        "id": 378,
+        "type": "IfcPropertySingleValue",
+        "attributes": [
+          "FillMode",
+          null,
+          {
+            "inline": "IfcLabel",
+            "values": [
+              "NONE"
+            ]
+          },
+          null
+        ]
+      },
+      {
+        "id": 379,
+        "type": "IfcPropertySingleValue",
+        "attributes": [
+          "CutMode",
+          null,
+          {
+            "inline": "IfcLabel",
+            "values": [
+              "BISECT"
+            ]
+          },
+          null
+        ]
+      },
+      {
+        "id": 380,
+        "type": "IfcPropertySingleValue",
+        "attributes": [
+          "Include",
+          null,
+          {
+            "inline": "IfcText",
+            "values": [
+              "0e0XOb$L18ZBVYJiQJrQ1p,3WekjaeUn1qfL6oR1KYD_2,3ty1lUpQfD3fY1yf0Dxo53,05LSYayab3n9CDi01pw9K$,2amSzxJIb9ceddTJOslmHk,3jha5L04zBjh0$pMl_tHLy,04rs0EDjn2EvxytEQSxWRB,0nlHIdaVrV7xIKsYXraYCa,37DwA_fpXSARFOa60IfK8k,1jM_suNMPAw8_nvZejQSnp,1u997JrDbByeKqbJ6ku8GF,2ajpw0I9n1dBypfISg3ejX,3PRBtW00j1D8r2Or5PTFdh"
+            ]
+          },
+          null
+        ]
+      },
+      {
+        "id": 381,
+        "type": "IfcPropertySingleValue",
+        "attributes": [
+          "Exclude",
+          null,
+          {
+            "inline": "IfcText",
+            "values": [
+              "1FgLPMw$5B4wBH2ySMkXE1,2YnGmmoYbF28Vy25$aNKT8,3OVQygdDn17huGOgJJFTOY"
+            ]
+          },
+          null
+        ]
+      },
+      {
+        "id": 382,
+        "type": "IfcRelAssignsToGroup",
+        "attributes": [
+          "232_3JP61ESRpgjULjK4wQ",
+          {
+            "ref": 383
+          },
+          null,
+          null,
+          [
+            {
+              "ref": 74
+            },
+            {
+              "ref": 54
+            }
+          ],
+          null,
+          {
+            "ref": 72
+          }
+        ]
+      },
+      {
+        "id": 383,
+        "type": "IfcOwnerHistory",
+        "attributes": [
+          {
+            "ref": 24
+          },
+          {
+            "ref": 56
+          },
+          "READWRITE",
+          "MODIFIED",
+          1788609842,
+          {
+            "ref": 24
+          },
+          {
+            "ref": 56
+          },
+          1788609841
+        ]
+      },
+      {
+        "id": 256,
+        "type": "IfcOwnerHistory",
+        "attributes": [
+          {
+            "ref": 24
+          },
+          {
+            "ref": 56
+          },
+          "READWRITE",
+          "ADDED",
+          1786516900,
+          {
+            "ref": 24
+          },
+          {
+            "ref": 56
+          },
+          1786516900
+        ]
+      },
+      {
+        "id": 257,
+        "type": "IfcDocumentInformation",
+        "attributes": [
+          "X",
+          "EL-P02-A-PUBLIC-NX",
+          null,
+          null,
+          null,
+          null,
+          "DRAWING",
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null
+        ]
+      },
+      {
+        "id": 258,
+        "type": "IfcRelAssociatesDocument",
+        "attributes": [
+          "033yDu$evBSg13LyHpmu1x",
+          {
+            "ref": 259
+          },
+          null,
+          null,
+          [
+            {
+              "ref": 1
+            }
+          ],
+          {
+            "ref": 260
+          }
+        ]
+      },
+      {
+        "id": 259,
+        "type": "IfcOwnerHistory",
+        "attributes": [
+          {
+            "ref": 24
+          },
+          {
+            "ref": 56
+          },
+          "READWRITE",
+          "ADDED",
+          1786467612,
+          {
+            "ref": 24
+          },
+          {
+            "ref": 56
+          },
+          1786467612
+        ]
+      },
+      {
+        "id": 260,
+        "type": "IfcDocumentInformation",
+        "attributes": [
+          "X",
+          "EL-06-19-R12-PY",
+          null,
+          null,
+          null,
+          null,
+          "DRAWING",
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null
+        ]
+      },
+      {
+        "id": 261,
+        "type": "IfcRelAssociatesDocument",
+        "attributes": [
+          "24g9XX4oL7EhT8uL2cn5Ua",
+          {
+            "ref": 262
+          },
+          null,
+          null,
+          [
+            {
+              "ref": 1
+            }
+          ],
+          {
+            "ref": 263
+          }
+        ]
+      },
+      {
+        "id": 262,
+        "type": "IfcOwnerHistory",
+        "attributes": [
+          {
+            "ref": 24
+          },
+          {
+            "ref": 56
+          },
+          "READWRITE",
+          "ADDED",
+          1788609843,
+          {
+            "ref": 24
+          },
+          {
+            "ref": 56
+          },
+          1788609843
+        ]
+      },
+      {
+        "id": 263,
+        "type": "IfcDocumentInformation",
+        "attributes": [
+          "X",
+          "TRAP01-OFFICIAL-DETAIL-V4-FRONT",
+          null,
+          null,
+          null,
+          null,
+          "DRAWING",
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null
+        ]
+      },
+      {
+        "id": 264,
+        "type": "IfcRelAssociatesDocument",
+        "attributes": [
+          "0SLRuQgaL4MgSuVxwrWsY1",
+          {
+            "ref": 265
+          },
+          null,
+          null,
+          [
+            {
+              "ref": 1
+            }
+          ],
+          {
+            "ref": 266
+          }
+        ]
+      },
+      {
+        "id": 265,
+        "type": "IfcOwnerHistory",
+        "attributes": [
+          {
+            "ref": 24
+          },
+          {
+            "ref": 56
+          },
+          "READWRITE",
+          "ADDED",
+          1786466377,
+          {
+            "ref": 24
+          },
+          {
+            "ref": 56
+          },
+          1786466377
+        ]
+      },
+      {
+        "id": 266,
+        "type": "IfcDocumentInformation",
+        "attributes": [
+          "X",
+          "EL-01-02-R20-PY",
+          null,
+          null,
+          null,
+          null,
+          "DRAWING",
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null
+        ]
+      },
+      {
+        "id": 267,
+        "type": "IfcRelAssociatesDocument",
+        "attributes": [
+          "171Q0s0$v0ruqiw31FMCaJ",
+          {
+            "ref": 268
+          },
+          null,
+          null,
+          [
+            {
+              "ref": 1
+            }
+          ],
+          {
+            "ref": 269
+          }
+        ]
+      },
+      {
+        "id": 268,
+        "type": "IfcOwnerHistory",
+        "attributes": [
+          {
+            "ref": 24
+          },
+          {
+            "ref": 56
+          },
+          "READWRITE",
+          "ADDED",
+          1786466775,
+          {
+            "ref": 24
+          },
+          {
+            "ref": 56
+          },
+          1786466775
+        ]
+      },
+      {
+        "id": 269,
+        "type": "IfcDocumentInformation",
+        "attributes": [
+          "X",
+          "EL-03-07-R04-PX",
+          null,
+          null,
+          null,
+          null,
+          "DRAWING",
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null
+        ]
+      },
+      {
+        "id": 270,
+        "type": "IfcRelAssociatesDocument",
+        "attributes": [
+          "1QSzzzB_TCZAYei1osZ58b",
+          {
+            "ref": 271
+          },
+          null,
+          null,
+          [
+            {
+              "ref": 1
+            }
+          ],
+          {
+            "ref": 272
+          }
+        ]
+      },
+      {
+        "id": 271,
+        "type": "IfcOwnerHistory",
+        "attributes": [
+          {
+            "ref": 24
+          },
+          {
+            "ref": 56
+          },
+          "READWRITE",
+          "ADDED",
+          1786466816,
+          {
+            "ref": 24
+          },
+          {
+            "ref": 56
+          },
+          1786466816
+        ]
+      },
+      {
+        "id": 272,
+        "type": "IfcDocumentInformation",
+        "attributes": [
+          "X",
+          "EL-03-08-R04-NY",
+          null,
+          null,
+          null,
+          null,
+          "DRAWING",
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null
+        ]
+      },
+      {
+        "id": 273,
+        "type": "IfcRelAssociatesDocument",
+        "attributes": [
+          "1ZT46kCRHFzBrLt6aiKaI5",
+          {
+            "ref": 274
+          },
+          null,
+          null,
+          [
+            {
+              "ref": 1
+            }
+          ],
+          {
+            "ref": 275
+          }
+        ]
+      },
+      {
+        "id": 274,
+        "type": "IfcOwnerHistory",
+        "attributes": [
+          {
+            "ref": 24
+          },
+          {
+            "ref": 56
+          },
+          "READWRITE",
+          "ADDED",
+          1786466860,
+          {
+            "ref": 24
+          },
+          {
+            "ref": 56
+          },
+          1786466860
+        ]
+      },
+      {
+        "id": 275,
+        "type": "IfcDocumentInformation",
+        "attributes": [
+          "X",
+          "EL-03-09-R04-NX",
+          null,
+          null,
+          null,
+          null,
+          "DRAWING",
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null
+        ]
+      },
+      {
+        "id": 276,
+        "type": "IfcRelAssociatesDocument",
+        "attributes": [
+          "2y$fIXlNbD4e4xlmpRMpwf",
+          {
+            "ref": 277
+          },
+          null,
+          null,
+          [
+            {
+              "ref": 1
+            }
+          ],
+          {
+            "ref": 278
+          }
+        ]
+      },
+      {
+        "id": 277,
+        "type": "IfcOwnerHistory",
+        "attributes": [
+          {
+            "ref": 24
+          },
+          {
+            "ref": 56
+          },
+          "READWRITE",
+          "ADDED",
+          1786467815,
+          {
+            "ref": 24
+          },
+          {
+            "ref": 56
+          },
+          1786467815
+        ]
+      },
+      {
+        "id": 278,
+        "type": "IfcDocumentInformation",
+        "attributes": [
+          "X",
+          "EL-08-32-R17-NX",
+          null,
+          null,
+          null,
+          null,
+          "DRAWING",
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null
+        ]
+      },
+      {
+        "id": 279,
+        "type": "IfcRelAssociatesDocument",
+        "attributes": [
+          "1Dek2PGErDERDCpDBzK7xY",
+          {
+            "ref": 280
+          },
+          null,
+          null,
+          [
+            {
+              "ref": 1
+            }
+          ],
+          {
+            "ref": 281
+          }
+        ]
+      },
+      {
+        "id": 280,
+        "type": "IfcOwnerHistory",
+        "attributes": [
+          {
+            "ref": 24
+          },
+          {
+            "ref": 56
+          },
+          "READWRITE",
+          "ADDED",
+          1786467142,
+          {
+            "ref": 24
+          },
+          {
+            "ref": 56
+          },
+          1786467142
+        ]
+      },
+      {
+        "id": 281,
+        "type": "IfcDocumentInformation",
+        "attributes": [
+          "X",
+          "EL-04-10-R07-PY",
+          null,
+          null,
+          null,
+          null,
+          "DRAWING",
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null
+        ]
+      },
+      {
+        "id": 282,
+        "type": "IfcRelAssociatesDocument",
+        "attributes": [
+          "3jDka_a4v5sxqgfkeiwtTJ",
+          {
+            "ref": 283
+          },
+          null,
+          null,
+          [
+            {
+              "ref": 1
+            }
+          ],
+          {
+            "ref": 284
+          }
+        ]
+      },
+      {
+        "id": 283,
+        "type": "IfcOwnerHistory",
+        "attributes": [
+          {
+            "ref": 24
+          },
+          {
+            "ref": 56
+          },
+          "READWRITE",
+          "ADDED",
+          1786467822,
+          {
+            "ref": 24
+          },
+          {
+            "ref": 56
+          },
+          1786467822
+        ]
+      },
+      {
+        "id": 284,
+        "type": "IfcDocumentInformation",
+        "attributes": [
+          "X",
+          "EL-09-33-R22-PY",
+          null,
+          null,
+          null,
+          null,
+          "DRAWING",
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null
+        ]
+      },
+      {
+        "id": 285,
+        "type": "IfcRelAssociatesDocument",
+        "attributes": [
+          "1P$oNuoqP0ygdIlnu6pdgu",
+          {
+            "ref": 286
+          },
+          null,
+          null,
+          [
+            {
+              "ref": 1
+            }
+          ],
+          {
+            "ref": 287
+          }
+        ]
+      },
+      {
+        "id": 286,
+        "type": "IfcOwnerHistory",
+        "attributes": [
+          {
+            "ref": 24
+          },
+          {
+            "ref": 56
+          },
+          "READWRITE",
+          "ADDED",
+          1786467808,
+          {
+            "ref": 24
+          },
+          {
+            "ref": 56
+          },
+          1786467808
+        ]
+      },
+      {
+        "id": 287,
+        "type": "IfcDocumentInformation",
+        "attributes": [
+          "X",
+          "EL-08-31-R17-NY",
+          null,
+          null,
+          null,
+          null,
+          "DRAWING",
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null
+        ]
+      },
+      {
+        "id": 288,
+        "type": "IfcRelAssociatesDocument",
+        "attributes": [
+          "18z7$lAOj0xQ0u_HC1395y",
+          {
+            "ref": 289
+          },
+          null,
+          null,
+          [
+            {
+              "ref": 1
+            }
+          ],
+          {
+            "ref": 290
+          }
+        ]
+      },
+      {
+        "id": 289,
+        "type": "IfcOwnerHistory",
+        "attributes": [
+          {
+            "ref": 24
+          },
+          {
+            "ref": 56
+          },
+          "READWRITE",
+          "ADDED",
+          1788001422,
+          {
+            "ref": 24
+          },
+          {
+            "ref": 56
+          },
+          1788001422
+        ]
+      },
+      {
+        "id": 290,
+        "type": "IfcDocumentInformation",
+        "attributes": [
+          "X",
+          "TRAP01-CABINET-INTERNAL-DETAIL-FRONT",
+          null,
+          null,
+          null,
+          null,
+          "DRAWING",
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null
+        ]
+      },
+      {
+        "id": 291,
+        "type": "IfcRelAssociatesDocument",
+        "attributes": [
+          "0rHrAesFzCxBfa2FvDZjZf",
+          {
+            "ref": 292
+          },
+          null,
+          null,
+          [
+            {
+              "ref": 1
+            }
+          ],
+          {
+            "ref": 293
+          }
+        ]
+      },
+      {
+        "id": 292,
+        "type": "IfcOwnerHistory",
+        "attributes": [
+          {
+            "ref": 24
+          },
+          {
+            "ref": 56
+          },
+          "READWRITE",
+          "ADDED",
+          1786467631,
+          {
+            "ref": 24
+          },
+          {
+            "ref": 56
+          },
+          1786467631
+        ]
+      },
+      {
+        "id": 293,
+        "type": "IfcDocumentInformation",
+        "attributes": [
+          "X",
+          "EL-06-22-R12-NX",
+          null,
+          null,
+          null,
+          null,
+          "DRAWING",
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null
+        ]
+      },
+      {
+        "id": 294,
+        "type": "IfcRelAssociatesDocument",
+        "attributes": [
+          "3AN9u8qe9AEQ9PMu$mZ1LN",
+          {
+            "ref": 295
+          },
+          null,
+          null,
+          [
+            {
+              "ref": 1
+            }
+          ],
+          {
+            "ref": 296
+          }
+        ]
+      },
+      {
+        "id": 295,
+        "type": "IfcOwnerHistory",
+        "attributes": [
+          {
+            "ref": 24
+          },
+          {
+            "ref": 56
+          },
+          "READWRITE",
+          "ADDED",
+          1788001420,
+          {
+            "ref": 24
+          },
+          {
+            "ref": 56
+          },
+          1788001420
+        ]
+      },
+      {
+        "id": 296,
+        "type": "IfcDocumentInformation",
+        "attributes": [
+          "X",
+          "TRAP01-CABINET-INTERNAL-DETAIL-PLAN",
+          null,
+          null,
+          null,
+          null,
+          "DRAWING",
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null
+        ]
+      },
+      {
+        "id": 297,
+        "type": "IfcRelAssociatesDocument",
+        "attributes": [
+          "3giH9RUoT1E9D5Uq3geeVH",
+          {
+            "ref": 298
+          },
+          null,
+          null,
+          [
+            {
+              "ref": 1
+            }
+          ],
+          {
+            "ref": 299
+          }
+        ]
+      },
+      {
+        "id": 298,
+        "type": "IfcOwnerHistory",
+        "attributes": [
+          {
+            "ref": 24
+          },
+          {
+            "ref": 56
+          },
+          "READWRITE",
+          "ADDED",
+          1770189208,
+          {
+            "ref": 24
+          },
+          {
+            "ref": 56
+          },
+          1770189208
+        ]
+      },
+      {
+        "id": 299,
+        "type": "IfcDocumentInformation",
+        "attributes": [
+          "X",
+          "Wall Plan",
+          null,
+          null,
+          null,
+          null,
+          "DRAWING",
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null
+        ]
+      },
+      {
+        "id": 300,
+        "type": "IfcRelAssociatesDocument",
+        "attributes": [
+          "2XJDJTOiTFFPFwJ6J5ZcgJ",
+          {
+            "ref": 301
+          },
+          null,
+          null,
+          [
+            {
+              "ref": 1
+            }
+          ],
+          {
+            "ref": 302
+          }
+        ]
+      },
+      {
+        "id": 301,
+        "type": "IfcOwnerHistory",
+        "attributes": [
+          {
+            "ref": 24
+          },
+          {
+            "ref": 56
+          },
+          "READWRITE",
+          "ADDED",
+          1787848364,
+          {
+            "ref": 24
+          },
+          {
+            "ref": 56
+          },
+          1787848364
+        ]
+      },
+      {
+        "id": 302,
+        "type": "IfcDocumentInformation",
+        "attributes": [
+          "X",
+          "TRAP01-PROJECT-CONTEXT-SIDE",
+          null,
+          null,
+          null,
+          null,
+          "DRAWING",
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null
+        ]
+      },
+      {
+        "id": 303,
+        "type": "IfcRelAssociatesDocument",
+        "attributes": [
+          "09OMG_T5PD7upYZsfXLDNJ",
+          {
+            "ref": 304
+          },
+          null,
+          null,
+          [
+            {
+              "ref": 1
+            }
+          ],
+          {
+            "ref": 305
+          }
+        ]
+      },
+      {
+        "id": 304,
+        "type": "IfcOwnerHistory",
+        "attributes": [
+          {
+            "ref": 24
+          },
+          {
+            "ref": 56
+          },
+          "READWRITE",
+          "ADDED",
+          1786467243,
+          {
+            "ref": 24
+          },
+          {
+            "ref": 56
+          },
+          1786467243
+        ]
+      },
+      {
+        "id": 305,
+        "type": "IfcDocumentInformation",
+        "attributes": [
+          "X",
+          "EL-04-12-R07-NY",
+          null,
+          null,
+          null,
+          null,
+          "DRAWING",
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null
+        ]
+      },
+      {
+        "id": 306,
+        "type": "IfcRelAssociatesDocument",
+        "attributes": [
+          "3$Q9GN2cD82Oryt$5kHsOz",
+          {
+            "ref": 307
+          },
+          null,
+          null,
+          [
+            {
+              "ref": 1
+            }
+          ],
+          {
+            "ref": 308
+          }
+        ]
+      },
+      {
+        "id": 307,
+        "type": "IfcOwnerHistory",
+        "attributes": [
+          {
+            "ref": 24
+          },
+          {
+            "ref": 56
+          },
+          "READWRITE",
+          "ADDED",
+          1786467750,
+          {
+            "ref": 24
+          },
+          {
+            "ref": 56
+          },
+          1786467750
+        ]
+      },
+      {
+        "id": 308,
+        "type": "IfcDocumentInformation",
+        "attributes": [
+          "X",
+          "EL-08-29-R17-PX",
+          null,
+          null,
+          null,
+          null,
+          "DRAWING",
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null
+        ]
+      },
+      {
+        "id": 309,
+        "type": "IfcRelAssociatesDocument",
+        "attributes": [
+          "2sHislgG95QAgiD1C7jrVO",
+          {
+            "ref": 310
+          },
+          null,
+          null,
+          [
+            {
+              "ref": 1
+            }
+          ],
+          {
+            "ref": 311
+          }
+        ]
+      },
+      {
+        "id": 310,
+        "type": "IfcOwnerHistory",
+        "attributes": [
+          {
+            "ref": 24
+          },
+          {
+            "ref": 56
+          },
+          "READWRITE",
+          "ADDED",
+          1786467756,
+          {
+            "ref": 24
+          },
+          {
+            "ref": 56
+          },
+          1786467756
+        ]
+      },
+      {
+        "id": 311,
+        "type": "IfcDocumentInformation",
+        "attributes": [
+          "X",
+          "EL-08-30-R16-NY",
+          null,
+          null,
+          null,
+          null,
+          "DRAWING",
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null
+        ]
+      },
+      {
+        "id": 312,
+        "type": "IfcRelAggregates",
+        "attributes": [
+          "1lQDpO8o1BexUkJXGGEYsR",
+          null,
+          null,
+          null,
+          {
+            "ref": 16
+          },
+          [
+            {
+              "ref": 22
+            }
+          ]
+        ]
+      },
+      {
+        "id": 313,
+        "type": "IfcRelAggregates",
+        "attributes": [
+          "3Zmam45Nb6lQyVxwxSi5RE",
+          {
+            "ref": 314
+          },
+          null,
+          null,
+          {
+            "ref": 22
+          },
+          [
+            {
+              "ref": 33
+            }
+          ]
+        ]
+      },
+      {
+        "id": 314,
+        "type": "IfcOwnerHistory",
+        "attributes": [
+          {
+            "ref": 24
+          },
+          {
+            "ref": 27
+          },
+          "READWRITE",
+          "MODIFIED",
+          1765977108,
+          {
+            "ref": 24
+          },
+          {
+            "ref": 56
+          },
+          1759986538
+        ]
+      },
+      {
+        "id": 315,
+        "type": "IfcRelAggregates",
+        "attributes": [
+          "1Bxkz1G7P4ufjHQUqdsU67",
+          {
+            "ref": 316
+          },
+          null,
+          null,
+          {
+            "ref": 33
+          },
+          [
+            {
+              "ref": 40
+            }
+          ]
+        ]
+      },
+      {
+        "id": 316,
+        "type": "IfcOwnerHistory",
+        "attributes": [
+          {
+            "ref": 24
+          },
+          {
+            "ref": 27
+          },
+          "READWRITE",
+          "MODIFIED",
+          1768115645,
+          {
+            "ref": 24
+          },
+          {
+            "ref": 56
+          },
+          1762412096
+        ]
+      },
+      {
+        "id": 317,
+        "type": "IfcRelAssignsToGroup",
+        "attributes": [
+          "2bX6Ft_nnEmQE$dhA00rYX",
+          {
+            "ref": 318
+          },
+          null,
+          null,
+          [
+            {
+              "ref": 81
+            },
+            {
+              "ref": 96
+            }
+          ],
+          null,
+          {
+            "ref": 94
+          }
+        ]
+      },
+      {
+        "id": 318,
+        "type": "IfcOwnerHistory",
+        "attributes": [
+          {
+            "ref": 24
+          },
+          {
+            "ref": 56
+          },
+          "READWRITE",
+          "MODIFIED",
+          1788609844,
+          {
+            "ref": 24
+          },
+          {
+            "ref": 56
+          },
+          1788609843
+        ]
+      },
+      {
+        "id": 319,
+        "type": "IfcRelAssociatesDocument",
+        "attributes": [
+          "1L6qiGrGj2GR73cCOvuDUh",
+          {
+            "ref": 320
+          },
+          null,
+          null,
+          [
+            {
+              "ref": 81
+            }
+          ],
+          {
+            "ref": 321
+          }
+        ]
+      },
+      {
+        "id": 192,
+        "type": "IfcRelAssociatesDocument",
+        "attributes": [
+          "326QAmjnP89eeN0qf2j_ET",
+          {
+            "ref": 193
+          },
+          null,
+          null,
+          [
+            {
+              "ref": 1
+            }
+          ],
+          {
+            "ref": 194
+          }
+        ]
+      },
+      {
+        "id": 193,
+        "type": "IfcOwnerHistory",
+        "attributes": [
+          {
+            "ref": 24
+          },
+          {
+            "ref": 56
+          },
+          "READWRITE",
+          "ADDED",
+          1786467692,
+          {
+            "ref": 24
+          },
+          {
+            "ref": 56
+          },
+          1786467692
+        ]
+      },
+      {
+        "id": 194,
+        "type": "IfcDocumentInformation",
+        "attributes": [
+          "X",
+          "EL-07-26-R15-NX",
+          null,
+          null,
+          null,
+          null,
+          "DRAWING",
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null
+        ]
+      },
+      {
+        "id": 195,
+        "type": "IfcRelAssociatesDocument",
+        "attributes": [
+          "1vgNfNNTP2XuPn82GBoPEx",
+          {
+            "ref": 196
+          },
+          null,
+          null,
+          [
+            {
+              "ref": 1
+            }
+          ],
+          {
+            "ref": 197
+          }
+        ]
+      },
+      {
+        "id": 196,
+        "type": "IfcOwnerHistory",
+        "attributes": [
+          {
+            "ref": 24
+          },
+          {
+            "ref": 56
+          },
+          "READWRITE",
+          "ADDED",
+          1786467557,
+          {
+            "ref": 24
+          },
+          {
+            "ref": 56
+          },
+          1786467557
+        ]
+      },
+      {
+        "id": 197,
+        "type": "IfcDocumentInformation",
+        "attributes": [
+          "X",
+          "EL-05-17-R09-NX",
+          null,
+          null,
+          null,
+          null,
+          "DRAWING",
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null
+        ]
+      },
+      {
+        "id": 198,
+        "type": "IfcRelAssociatesDocument",
+        "attributes": [
+          "3msXiumGv5IgGTLw$2ZH7A",
+          {
+            "ref": 199
+          },
+          null,
+          null,
+          [
+            {
+              "ref": 1
+            }
+          ],
+          {
+            "ref": 200
+          }
+        ]
+      },
+      {
+        "id": 199,
+        "type": "IfcOwnerHistory",
+        "attributes": [
+          {
+            "ref": 24
+          },
+          {
+            "ref": 56
+          },
+          "READWRITE",
+          "ADDED",
+          1786467548,
+          {
+            "ref": 24
+          },
+          {
+            "ref": 56
+          },
+          1786467548
+        ]
+      },
+      {
+        "id": 200,
+        "type": "IfcDocumentInformation",
+        "attributes": [
+          "X",
+          "EL-05-15-R09-PX",
+          null,
+          null,
+          null,
+          null,
+          "DRAWING",
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null
+        ]
+      },
+      {
+        "id": 201,
+        "type": "IfcRelAssociatesDocument",
+        "attributes": [
+          "0XND7cHsf3b9OMBlYb4NG8",
+          {
+            "ref": 202
+          },
+          null,
+          null,
+          [
+            {
+              "ref": 1
+            }
+          ],
+          {
+            "ref": 203
+          }
+        ]
+      },
+      {
+        "id": 202,
+        "type": "IfcOwnerHistory",
+        "attributes": [
+          {
+            "ref": 24
+          },
+          {
+            "ref": 56
+          },
+          "READWRITE",
+          "ADDED",
+          1788002076,
+          {
+            "ref": 24
+          },
+          {
+            "ref": 56
+          },
+          1788002076
+        ]
+      },
+      {
+        "id": 203,
+        "type": "IfcDocumentInformation",
+        "attributes": [
+          "X",
+          "TRAP01-CABINET-INTERNAL-DETAIL-V2-FRONT",
+          null,
+          null,
+          null,
+          null,
+          "DRAWING",
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null
+        ]
+      },
+      {
+        "id": 204,
+        "type": "IfcRelAssociatesDocument",
+        "attributes": [
+          "2fo8k85oH5HBeSOn_56OjM",
+          {
+            "ref": 205
+          },
+          null,
+          null,
+          [
+            {
+              "ref": 1
+            }
+          ],
+          {
+            "ref": 206
+          }
+        ]
+      },
+      {
+        "id": 205,
+        "type": "IfcOwnerHistory",
+        "attributes": [
+          {
+            "ref": 24
+          },
+          {
+            "ref": 56
+          },
+          "READWRITE",
+          "ADDED",
+          1786466724,
+          {
+            "ref": 24
+          },
+          {
+            "ref": 56
+          },
+          1786466724
+        ]
+      },
+      {
+        "id": 206,
+        "type": "IfcDocumentInformation",
+        "attributes": [
+          "X",
+          "EL-03-06-R04-PY",
+          null,
+          null,
+          null,
+          null,
+          "DRAWING",
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null
+        ]
+      },
+      {
+        "id": 207,
+        "type": "IfcRelAssociatesDocument",
+        "attributes": [
+          "3z7uL88ob9KhogLKbZhgAt",
+          {
+            "ref": 208
+          },
+          null,
+          null,
+          [
+            {
+              "ref": 1
+            }
+          ],
+          {
+            "ref": 209
+          }
+        ]
+      },
+      {
+        "id": 208,
+        "type": "IfcOwnerHistory",
+        "attributes": [
+          {
+            "ref": 24
+          },
+          {
+            "ref": 56
+          },
+          "READWRITE",
+          "ADDED",
+          1788002075,
+          {
+            "ref": 24
+          },
+          {
+            "ref": 56
+          },
+          1788002075
+        ]
+      },
+      {
+        "id": 209,
+        "type": "IfcDocumentInformation",
+        "attributes": [
+          "X",
+          "TRAP01-CABINET-INTERNAL-DETAIL-V2-PLAN",
+          null,
+          null,
+          null,
+          null,
+          "DRAWING",
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null
+        ]
+      },
+      {
+        "id": 210,
+        "type": "IfcRelAssociatesDocument",
+        "attributes": [
+          "1DlFjmUPz2TOwoKRagjnpu",
+          {
+            "ref": 211
+          },
+          null,
+          null,
+          [
+            {
+              "ref": 1
+            }
+          ],
+          {
+            "ref": 212
+          }
+        ]
+      },
+      {
+        "id": 211,
+        "type": "IfcOwnerHistory",
+        "attributes": [
+          {
+            "ref": 24
+          },
+          {
+            "ref": 56
+          },
+          "READWRITE",
+          "ADDED",
+          1786516877,
+          {
+            "ref": 24
+          },
+          {
+            "ref": 56
+          },
+          1786516877
+        ]
+      },
+      {
+        "id": 212,
+        "type": "IfcDocumentInformation",
+        "attributes": [
+          "X",
+          "EL-P01-03-DINING-NORTH-PY",
+          null,
+          null,
+          null,
+          null,
+          "DRAWING",
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null
+        ]
+      },
+      {
+        "id": 213,
+        "type": "IfcRelAssociatesDocument",
+        "attributes": [
+          "0qG5EvF4PBy80FnHeEpRjZ",
+          {
+            "ref": 214
+          },
+          null,
+          null,
+          [
+            {
+              "ref": 1
+            }
+          ],
+          {
+            "ref": 215
+          }
+        ]
+      },
+      {
+        "id": 214,
+        "type": "IfcOwnerHistory",
+        "attributes": [
+          {
+            "ref": 24
+          },
+          {
+            "ref": 56
+          },
+          "READWRITE",
+          "ADDED",
+          1786466590,
+          {
+            "ref": 24
+          },
+          {
+            "ref": 56
+          },
+          1786466590
+        ]
+      },
+      {
+        "id": 215,
+        "type": "IfcDocumentInformation",
+        "attributes": [
+          "X",
+          "EL-02-05-R20-NX",
+          null,
+          null,
+          null,
+          null,
+          "DRAWING",
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null
+        ]
+      },
+      {
+        "id": 216,
+        "type": "IfcRelAssociatesDocument",
+        "attributes": [
+          "3DbRoIx912WgOVHkNwBm3_",
+          {
+            "ref": 217
+          },
+          null,
+          null,
+          [
+            {
+              "ref": 1
+            }
+          ],
+          {
+            "ref": 218
+          }
+        ]
+      },
+      {
+        "id": 217,
+        "type": "IfcOwnerHistory",
+        "attributes": [
+          {
+            "ref": 24
+          },
+          {
+            "ref": 56
+          },
+          "READWRITE",
+          "ADDED",
+          1787848356,
+          {
+            "ref": 24
+          },
+          {
+            "ref": 56
+          },
+          1787848356
+        ]
+      },
+      {
+        "id": 218,
+        "type": "IfcDocumentInformation",
+        "attributes": [
+          "X",
+          "TRAP01-PROJECT-CONTEXT-FRONT",
+          null,
+          null,
+          null,
+          null,
+          "DRAWING",
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null
+        ]
+      },
+      {
+        "id": 219,
+        "type": "IfcRelAssociatesDocument",
+        "attributes": [
+          "3PnJSPR7963wgSzJfIu2GK",
+          {
+            "ref": 220
+          },
+          null,
+          null,
+          [
+            {
+              "ref": 1
+            }
+          ],
+          {
+            "ref": 221
+          }
+        ]
+      },
+      {
+        "id": 220,
+        "type": "IfcOwnerHistory",
+        "attributes": [
+          {
+            "ref": 24
+          },
+          {
+            "ref": 56
+          },
+          "READWRITE",
+          "ADDED",
+          1786516866,
+          {
+            "ref": 24
+          },
+          {
+            "ref": 56
+          },
+          1786516866
+        ]
+      },
+      {
+        "id": 221,
+        "type": "IfcDocumentInformation",
+        "attributes": [
+          "X",
+          "EL-P01-02-LIVING-SOUTH-NY",
+          null,
+          null,
+          null,
+          null,
+          "DRAWING",
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null
+        ]
+      },
+      {
+        "id": 222,
+        "type": "IfcRelAssociatesDocument",
+        "attributes": [
+          "1ZHdh7I9n16w4lvnO2E9dC",
+          {
+            "ref": 223
+          },
+          null,
+          null,
+          [
+            {
+              "ref": 1
+            }
+          ],
+          {
+            "ref": 224
+          }
+        ]
+      },
+      {
+        "id": 223,
+        "type": "IfcOwnerHistory",
+        "attributes": [
+          {
+            "ref": 24
+          },
+          {
+            "ref": 56
+          },
+          "READWRITE",
+          "ADDED",
+          1786467561,
+          {
+            "ref": 24
+          },
+          {
+            "ref": 56
+          },
+          1786467561
+        ]
+      },
+      {
+        "id": 224,
+        "type": "IfcDocumentInformation",
+        "attributes": [
+          "X",
+          "EL-06-18-R13-PY",
+          null,
+          null,
+          null,
+          null,
+          "DRAWING",
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null
+        ]
+      },
+      {
+        "id": 225,
+        "type": "IfcRelAssociatesDocument",
+        "attributes": [
+          "25H1U$xdD42fP4Ox2bsnML",
+          {
+            "ref": 226
+          },
+          null,
+          null,
+          [
+            {
+              "ref": 1
+            }
+          ],
+          {
+            "ref": 227
+          }
+        ]
+      },
+      {
+        "id": 226,
+        "type": "IfcOwnerHistory",
+        "attributes": [
+          {
+            "ref": 24
+          },
+          {
+            "ref": 56
+          },
+          "READWRITE",
+          "ADDED",
+          1786466286,
+          {
+            "ref": 24
+          },
+          {
+            "ref": 56
+          },
+          1786466286
+        ]
+      },
+      {
+        "id": 227,
+        "type": "IfcDocumentInformation",
+        "attributes": [
+          "X",
+          "EL-01-01-R14-PY",
+          null,
+          null,
+          null,
+          null,
+          "DRAWING",
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null
+        ]
+      },
+      {
+        "id": 228,
+        "type": "IfcRelAssociatesDocument",
+        "attributes": [
+          "0Wncn9Rp53ofGHDRsBYlaI",
+          {
+            "ref": 229
+          },
+          null,
+          null,
+          [
+            {
+              "ref": 1
+            }
+          ],
+          {
+            "ref": 230
+          }
+        ]
+      },
+      {
+        "id": 229,
+        "type": "IfcOwnerHistory",
+        "attributes": [
+          {
+            "ref": 24
+          },
+          {
+            "ref": 56
+          },
+          "READWRITE",
+          "ADDED",
+          1786516896,
+          {
+            "ref": 24
+          },
+          {
+            "ref": 56
+          },
+          1786516896
+        ]
+      },
+      {
+        "id": 230,
+        "type": "IfcDocumentInformation",
+        "attributes": [
+          "X",
+          "EL-P01-06-MIDDLE-KITCHEN-WEST-NX",
+          null,
+          null,
+          null,
+          null,
+          "DRAWING",
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null
+        ]
+      },
+      {
+        "id": 231,
+        "type": "IfcRelAssociatesDocument",
+        "attributes": [
+          "1S7ovJfULDDR$unHGmF_fD",
+          {
+            "ref": 232
+          },
+          null,
+          null,
+          [
+            {
+              "ref": 1
+            }
+          ],
+          {
+            "ref": 233
+          }
+        ]
+      },
+      {
+        "id": 232,
+        "type": "IfcOwnerHistory",
+        "attributes": [
+          {
+            "ref": 24
+          },
+          {
+            "ref": 56
+          },
+          "READWRITE",
+          "ADDED",
+          1770362686,
+          {
+            "ref": 24
+          },
+          {
+            "ref": 56
+          },
+          1770362686
+        ]
+      },
+      {
+        "id": 233,
+        "type": "IfcDocumentInformation",
+        "attributes": [
+          "X",
+          "Sanitary Plan",
+          null,
+          null,
+          null,
+          null,
+          "DRAWING",
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null
+        ]
+      },
+      {
+        "id": 234,
+        "type": "IfcRelAssociatesDocument",
+        "attributes": [
+          "3sLq3LAdj87PDTP5kjgkI7",
+          {
+            "ref": 235
+          },
+          null,
+          null,
+          [
+            {
+              "ref": 1
+            }
+          ],
+          {
+            "ref": 236
+          }
+        ]
+      },
+      {
+        "id": 235,
+        "type": "IfcOwnerHistory",
+        "attributes": [
+          {
+            "ref": 24
+          },
+          {
+            "ref": 56
+          },
+          "READWRITE",
+          "ADDED",
+          1786467744,
+          {
+            "ref": 24
+          },
+          {
+            "ref": 56
+          },
+          1786467744
+        ]
+      },
+      {
+        "id": 236,
+        "type": "IfcDocumentInformation",
+        "attributes": [
+          "X",
+          "EL-08-28-R17-PY",
+          null,
+          null,
+          null,
+          null,
+          "DRAWING",
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null
+        ]
+      },
+      {
+        "id": 237,
+        "type": "IfcRelAssociatesDocument",
+        "attributes": [
+          "1vtgaHodzAe9E_Cg6ztKa1",
+          {
+            "ref": 238
+          },
+          null,
+          null,
+          [
+            {
+              "ref": 1
+            }
+          ],
+          {
+            "ref": 239
+          }
+        ]
+      },
+      {
+        "id": 238,
+        "type": "IfcOwnerHistory",
+        "attributes": [
+          {
+            "ref": 24
+          },
+          {
+            "ref": 56
+          },
+          "READWRITE",
+          "ADDED",
+          1786516889,
+          {
+            "ref": 24
+          },
+          {
+            "ref": 56
+          },
+          1786516889
+        ]
+      },
+      {
+        "id": 239,
+        "type": "IfcDocumentInformation",
+        "attributes": [
+          "X",
+          "EL-P01-05-WEST-KITCHEN-WEST-NX",
+          null,
+          null,
+          null,
+          null,
+          "DRAWING",
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null
+        ]
+      },
+      {
+        "id": 240,
+        "type": "IfcRelAssociatesDocument",
+        "attributes": [
+          "3xh4X4Drj2rPBz6ydnJ8Qy",
+          {
+            "ref": 241
+          },
+          null,
+          null,
+          [
+            {
+              "ref": 1
+            }
+          ],
+          {
+            "ref": 242
+          }
+        ]
+      },
+      {
+        "id": 241,
+        "type": "IfcOwnerHistory",
+        "attributes": [
+          {
+            "ref": 24
+          },
+          {
+            "ref": 56
+          },
+          "READWRITE",
+          "ADDED",
+          1788002078,
+          {
+            "ref": 24
+          },
+          {
+            "ref": 56
+          },
+          1788002078
+        ]
+      },
+      {
+        "id": 242,
+        "type": "IfcDocumentInformation",
+        "attributes": [
+          "X",
+          "TRAP01-CABINET-INTERNAL-DETAIL-V2-SIDE",
+          null,
+          null,
+          null,
+          null,
+          "DRAWING",
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null
+        ]
+      },
+      {
+        "id": 243,
+        "type": "IfcRelAssociatesDocument",
+        "attributes": [
+          "15i$5L$B95UOoApdVZYoKM",
+          {
+            "ref": 244
+          },
+          null,
+          null,
+          [
+            {
+              "ref": 1
+            }
+          ],
+          {
+            "ref": 245
+          }
+        ]
+      },
+      {
+        "id": 244,
+        "type": "IfcOwnerHistory",
+        "attributes": [
+          {
+            "ref": 24
+          },
+          {
+            "ref": 56
+          },
+          "READWRITE",
+          "ADDED",
+          1786466220,
+          {
+            "ref": 24
+          },
+          {
+            "ref": 56
+          },
+          1786466220
+        ]
+      },
+      {
+        "id": 245,
+        "type": "IfcDocumentInformation",
+        "attributes": [
+          "X",
+          "EL-01-03-R20-PX",
+          null,
+          null,
+          null,
+          null,
+          "DRAWING",
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null
+        ]
+      },
+      {
+        "id": 246,
+        "type": "IfcRelAssociatesDocument",
+        "attributes": [
+          "0aPsGJGFDB3eGmdFs_AfV2",
+          {
+            "ref": 247
+          },
+          null,
+          null,
+          [
+            {
+              "ref": 1
+            }
+          ],
+          {
+            "ref": 248
+          }
+        ]
+      },
+      {
+        "id": 247,
+        "type": "IfcOwnerHistory",
+        "attributes": [
+          {
+            "ref": 24
+          },
+          {
+            "ref": 56
+          },
+          "READWRITE",
+          "ADDED",
+          1770474701,
+          {
+            "ref": 24
+          },
+          {
+            "ref": 56
+          },
+          1770474701
+        ]
+      },
+      {
+        "id": 248,
+        "type": "IfcDocumentInformation",
+        "attributes": [
+          "X",
+          "Furniture Plan",
+          null,
+          null,
+          null,
+          null,
+          "DRAWING",
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null
+        ]
+      },
+      {
+        "id": 249,
+        "type": "IfcRelAssociatesDocument",
+        "attributes": [
+          "1hEeUNpgH769A_AJV8AGL7",
+          {
+            "ref": 250
+          },
+          null,
+          null,
+          [
+            {
+              "ref": 1
+            }
+          ],
+          {
+            "ref": 251
+          }
+        ]
+      },
+      {
+        "id": 250,
+        "type": "IfcOwnerHistory",
+        "attributes": [
+          {
+            "ref": 24
+          },
+          {
+            "ref": 56
+          },
+          "READWRITE",
+          "ADDED",
+          1786516884,
+          {
+            "ref": 24
+          },
+          {
+            "ref": 56
+          },
+          1786516884
+        ]
+      },
+      {
+        "id": 251,
+        "type": "IfcDocumentInformation",
+        "attributes": [
+          "X",
+          "EL-P01-04-DINING-EAST-PX",
+          null,
+          null,
+          null,
+          null,
+          "DRAWING",
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null
+        ]
+      },
+      {
+        "id": 252,
+        "type": "IfcRelAssociatesDocument",
+        "attributes": [
+          "3Gp6QRlZn9GO5i1aV$OPNL",
+          {
+            "ref": 253
+          },
+          null,
+          null,
+          [
+            {
+              "ref": 1
+            }
+          ],
+          {
+            "ref": 254
+          }
+        ]
+      },
+      {
+        "id": 253,
+        "type": "IfcOwnerHistory",
+        "attributes": [
+          {
+            "ref": 24
+          },
+          {
+            "ref": 56
+          },
+          "READWRITE",
+          "ADDED",
+          1786516919,
+          {
+            "ref": 24
+          },
+          {
+            "ref": 56
+          },
+          1786516919
+        ]
+      },
+      {
+        "id": 254,
+        "type": "IfcDocumentInformation",
+        "attributes": [
+          "X",
+          "EL-P02-B-PUBLIC-PX",
+          null,
+          null,
+          null,
+          null,
+          "DRAWING",
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null
+        ]
+      },
+      {
+        "id": 255,
+        "type": "IfcRelAssociatesDocument",
+        "attributes": [
+          "0B$phm3w5Bfx4AccWBkNsf",
+          {
+            "ref": 256
+          },
+          null,
+          null,
+          [
+            {
+              "ref": 1
+            }
+          ],
+          {
+            "ref": 257
+          }
+        ]
+      },
+      {
+        "id": 128,
+        "type": "IfcRelAssociatesDocument",
+        "attributes": [
+          "2QlY8QPK58GghvkRQPHV7I",
+          {
+            "ref": 129
+          },
+          null,
+          null,
+          [
+            {
+              "ref": 1
+            }
+          ],
+          {
+            "ref": 130
+          }
+        ]
+      },
+      {
+        "id": 129,
+        "type": "IfcOwnerHistory",
+        "attributes": [
+          {
+            "ref": 24
+          },
+          {
+            "ref": 56
+          },
+          "READWRITE",
+          "ADDED",
+          1786467680,
+          {
+            "ref": 24
+          },
+          {
+            "ref": 56
+          },
+          1786467680
+        ]
+      },
+      {
+        "id": 130,
+        "type": "IfcDocumentInformation",
+        "attributes": [
+          "X",
+          "EL-07-23-R15-PY",
+          null,
+          null,
+          null,
+          null,
+          "DRAWING",
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null
+        ]
+      },
+      {
+        "id": 131,
+        "type": "IfcRelAssociatesDocument",
+        "attributes": [
+          "1kVwrge4X17By_bl8JzzxL",
+          {
+            "ref": 132
+          },
+          null,
+          null,
+          [
+            {
+              "ref": 1
+            }
+          ],
+          {
+            "ref": 133
+          }
+        ]
+      },
+      {
+        "id": 132,
+        "type": "IfcOwnerHistory",
+        "attributes": [
+          {
+            "ref": 24
+          },
+          {
+            "ref": 56
+          },
+          "READWRITE",
+          "ADDED",
+          1788001425,
+          {
+            "ref": 24
+          },
+          {
+            "ref": 56
+          },
+          1788001425
+        ]
+      },
+      {
+        "id": 133,
+        "type": "IfcDocumentInformation",
+        "attributes": [
+          "X",
+          "TRAP01-CABINET-INTERNAL-DETAIL-SIDE",
+          null,
+          null,
+          null,
+          null,
+          "DRAWING",
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null
+        ]
+      },
+      {
+        "id": 134,
+        "type": "IfcRelAssociatesDocument",
+        "attributes": [
+          "2qFzpsHRX1k9Qkpqcz4k3G",
+          {
+            "ref": 135
+          },
+          null,
+          null,
+          [
+            {
+              "ref": 1
+            }
+          ],
+          {
+            "ref": 136
+          }
+        ]
+      },
+      {
+        "id": 135,
+        "type": "IfcOwnerHistory",
+        "attributes": [
+          {
+            "ref": 24
+          },
+          {
+            "ref": 56
+          },
+          "READWRITE",
+          "ADDED",
+          1786467616,
+          {
+            "ref": 24
+          },
+          {
+            "ref": 56
+          },
+          1786467616
+        ]
+      },
+      {
+        "id": 136,
+        "type": "IfcDocumentInformation",
+        "attributes": [
+          "X",
+          "EL-06-20-R12-NY",
+          null,
+          null,
+          null,
+          null,
+          "DRAWING",
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null
+        ]
+      },
+      {
+        "id": 137,
+        "type": "IfcRelAssociatesDocument",
+        "attributes": [
+          "35o6EXmxL3PgozJzeDmoq$",
+          {
+            "ref": 138
+          },
+          null,
+          null,
+          [
+            {
+              "ref": 1
+            }
+          ],
+          {
+            "ref": 139
+          }
+        ]
+      },
+      {
+        "id": 138,
+        "type": "IfcOwnerHistory",
+        "attributes": [
+          {
+            "ref": 24
+          },
+          {
+            "ref": 56
+          },
+          "READWRITE",
+          "ADDED",
+          1770280538,
+          {
+            "ref": 24
+          },
+          {
+            "ref": 56
+          },
+          1770280538
+        ]
+      },
+      {
+        "id": 139,
+        "type": "IfcDocumentInformation",
+        "attributes": [
+          "X",
+          "Wall Finish Plan",
+          null,
+          null,
+          null,
+          null,
+          "DRAWING",
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null
+        ]
+      },
+      {
+        "id": 140,
+        "type": "IfcRelAssociatesDocument",
+        "attributes": [
+          "3JAVbaJIX1lA5ifz2dNCKz",
+          {
+            "ref": 141
+          },
+          null,
+          null,
+          [
+            {
+              "ref": 1
+            }
+          ],
+          {
+            "ref": 142
+          }
+        ]
+      },
+      {
+        "id": 141,
+        "type": "IfcOwnerHistory",
+        "attributes": [
+          {
+            "ref": 24
+          },
+          {
+            "ref": 56
+          },
+          "READWRITE",
+          "ADDED",
+          1786466382,
+          {
+            "ref": 24
+          },
+          {
+            "ref": 56
+          },
+          1786466382
+        ]
+      },
+      {
+        "id": 142,
+        "type": "IfcDocumentInformation",
+        "attributes": [
+          "X",
+          "EL-02-04-R20-NY",
+          null,
+          null,
+          null,
+          null,
+          "DRAWING",
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null
+        ]
+      },
+      {
+        "id": 143,
+        "type": "IfcRelAssociatesDocument",
+        "attributes": [
+          "13JFuPSG11B8CXdWMXY9D2",
+          {
+            "ref": 144
+          },
+          null,
+          null,
+          [
+            {
+              "ref": 1
+            }
+          ],
+          {
+            "ref": 145
+          }
+        ]
+      },
+      {
+        "id": 144,
+        "type": "IfcOwnerHistory",
+        "attributes": [
+          {
+            "ref": 24
+          },
+          {
+            "ref": 56
+          },
+          "READWRITE",
+          "ADDED",
+          1786467622,
+          {
+            "ref": 24
+          },
+          {
+            "ref": 56
+          },
+          1786467622
+        ]
+      },
+      {
+        "id": 145,
+        "type": "IfcDocumentInformation",
+        "attributes": [
+          "X",
+          "EL-06-21-R12-PX",
+          null,
+          null,
+          null,
+          null,
+          "DRAWING",
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null
+        ]
+      },
+      {
+        "id": 146,
+        "type": "IfcRelAssociatesDocument",
+        "attributes": [
+          "0emDbQ26z8deCI2RhgXBW0",
+          {
+            "ref": 147
+          },
+          null,
+          null,
+          [
+            {
+              "ref": 1
+            }
+          ],
+          {
+            "ref": 148
+          }
+        ]
+      },
+      {
+        "id": 147,
+        "type": "IfcOwnerHistory",
+        "attributes": [
+          {
+            "ref": 24
+          },
+          {
+            "ref": 56
+          },
+          "READWRITE",
+          "ADDED",
+          1786467252,
+          {
+            "ref": 24
+          },
+          {
+            "ref": 56
+          },
+          1786467252
+        ]
+      },
+      {
+        "id": 148,
+        "type": "IfcDocumentInformation",
+        "attributes": [
+          "X",
+          "EL-04-13-R07-NX",
+          null,
+          null,
+          null,
+          null,
+          "DRAWING",
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null
+        ]
+      },
+      {
+        "id": 149,
+        "type": "IfcRelAggregates",
+        "attributes": [
+          "0OOJ_sFpP6rAKuHzrpuKFE",
+          null,
+          null,
+          null,
+          {
+            "ref": 1
+          },
+          [
+            {
+              "ref": 16
+            }
+          ]
+        ]
+      },
+      {
+        "id": 150,
+        "type": "IfcRelAssociatesDocument",
+        "attributes": [
+          "2Vs2T$3JzAhuGgCwuQdMwP",
+          {
+            "ref": 151
+          },
+          null,
+          null,
+          [
+            {
+              "ref": 1
+            }
+          ],
+          {
+            "ref": 152
+          }
+        ]
+      },
+      {
+        "id": 151,
+        "type": "IfcOwnerHistory",
+        "attributes": [
+          {
+            "ref": 24
+          },
+          {
+            "ref": 56
+          },
+          "READWRITE",
+          "ADDED",
+          1786467264,
+          {
+            "ref": 24
+          },
+          {
+            "ref": 56
+          },
+          1786467264
+        ]
+      },
+      {
+        "id": 152,
+        "type": "IfcDocumentInformation",
+        "attributes": [
+          "X",
+          "EL-05-14-R09-PY",
+          null,
+          null,
+          null,
+          null,
+          "DRAWING",
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null
+        ]
+      },
+      {
+        "id": 153,
+        "type": "IfcRelAssociatesDocument",
+        "attributes": [
+          "1bLtaiJYn4Kv8a7$BiY7mf",
+          {
+            "ref": 154
+          },
+          null,
+          null,
+          [
+            {
+              "ref": 1
+            }
+          ],
+          {
+            "ref": 155
+          }
+        ]
+      },
+      {
+        "id": 154,
+        "type": "IfcOwnerHistory",
+        "attributes": [
+          {
+            "ref": 24
+          },
+          {
+            "ref": 56
+          },
+          "READWRITE",
+          "ADDED",
+          1786467229,
+          {
+            "ref": 24
+          },
+          {
+            "ref": 56
+          },
+          1786467229
+        ]
+      },
+      {
+        "id": 155,
+        "type": "IfcDocumentInformation",
+        "attributes": [
+          "X",
+          "EL-04-11-R07-PX",
+          null,
+          null,
+          null,
+          null,
+          "DRAWING",
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null
+        ]
+      },
+      {
+        "id": 156,
+        "type": "IfcRelAssociatesDocument",
+        "attributes": [
+          "2DVL2dxCfA2R95m3XQdLvg",
+          {
+            "ref": 157
+          },
+          null,
+          null,
+          [
+            {
+              "ref": 1
+            }
+          ],
+          {
+            "ref": 158
+          }
+        ]
+      },
+      {
+        "id": 157,
+        "type": "IfcOwnerHistory",
+        "attributes": [
+          {
+            "ref": 24
+          },
+          {
+            "ref": 56
+          },
+          "READWRITE",
+          "ADDED",
+          1787848353,
+          {
+            "ref": 24
+          },
+          {
+            "ref": 56
+          },
+          1787848353
+        ]
+      },
+      {
+        "id": 158,
+        "type": "IfcDocumentInformation",
+        "attributes": [
+          "X",
+          "TRAP01-PROJECT-CONTEXT-PLAN",
+          null,
+          null,
+          null,
+          null,
+          "DRAWING",
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null
+        ]
+      },
+      {
+        "id": 159,
+        "type": "IfcRelAssociatesDocument",
+        "attributes": [
+          "1148GKOEDBJP9PFBKdlFdq",
+          {
+            "ref": 160
+          },
+          null,
+          null,
+          [
+            {
+              "ref": 1
+            }
+          ],
+          {
+            "ref": 161
+          }
+        ]
+      },
+      {
+        "id": 160,
+        "type": "IfcOwnerHistory",
+        "attributes": [
+          {
+            "ref": 24
+          },
+          {
+            "ref": 56
+          },
+          "READWRITE",
+          "ADDED",
+          1788609846,
+          {
+            "ref": 24
+          },
+          {
+            "ref": 56
+          },
+          1788609846
+        ]
+      },
+      {
+        "id": 161,
+        "type": "IfcDocumentInformation",
+        "attributes": [
+          "X",
+          "TRAP01-OFFICIAL-DETAIL-V4-SIDE",
+          null,
+          null,
+          null,
+          null,
+          "DRAWING",
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null
+        ]
+      },
+      {
+        "id": 162,
+        "type": "IfcRelAssociatesDocument",
+        "attributes": [
+          "3AGhNLFO50NfYJKkt51kwn",
+          {
+            "ref": 163
+          },
+          null,
+          null,
+          [
+            {
+              "ref": 1
+            }
+          ],
+          {
+            "ref": 164
+          }
+        ]
+      },
+      {
+        "id": 163,
+        "type": "IfcOwnerHistory",
+        "attributes": [
+          {
+            "ref": 24
+          },
+          {
+            "ref": 56
+          },
+          "READWRITE",
+          "ADDED",
+          1768975613,
+          {
+            "ref": 24
+          },
+          {
+            "ref": 56
+          },
+          1768975613
+        ]
+      },
+      {
+        "id": 164,
+        "type": "IfcDocumentInformation",
+        "attributes": [
+          "X",
+          "BBIM_Cost_Documents",
+          "Bonsai internal document containing references to cost CSV files",
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null
+        ]
+      },
+      {
+        "id": 165,
+        "type": "IfcRelAssociatesDocument",
+        "attributes": [
+          "2TQy4svKnE2gtijQ6v1Tos",
+          {
+            "ref": 166
+          },
+          null,
+          null,
+          [
+            {
+              "ref": 1
+            }
+          ],
+          {
+            "ref": 167
+          }
+        ]
+      },
+      {
+        "id": 166,
+        "type": "IfcOwnerHistory",
+        "attributes": [
+          {
+            "ref": 24
+          },
+          {
+            "ref": 56
+          },
+          "READWRITE",
+          "ADDED",
+          1786467831,
+          {
+            "ref": 24
+          },
+          {
+            "ref": 56
+          },
+          1786467831
+        ]
+      },
+      {
+        "id": 167,
+        "type": "IfcDocumentInformation",
+        "attributes": [
+          "X",
+          "EL-09-34-R22-PX",
+          null,
+          null,
+          null,
+          null,
+          "DRAWING",
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null
+        ]
+      },
+      {
+        "id": 168,
+        "type": "IfcRelAssociatesDocument",
+        "attributes": [
+          "2svXnx48bCPwoXiPysf$NL",
+          {
+            "ref": 169
+          },
+          null,
+          null,
+          [
+            {
+              "ref": 1
+            }
+          ],
+          {
+            "ref": 170
+          }
+        ]
+      },
+      {
+        "id": 169,
+        "type": "IfcOwnerHistory",
+        "attributes": [
+          {
+            "ref": 24
+          },
+          {
+            "ref": 56
+          },
+          "READWRITE",
+          "ADDED",
+          1786467893,
+          {
+            "ref": 24
+          },
+          {
+            "ref": 56
+          },
+          1786467893
+        ]
+      },
+      {
+        "id": 170,
+        "type": "IfcDocumentInformation",
+        "attributes": [
+          "X",
+          "EL-09-35-R22-NY",
+          null,
+          null,
+          null,
+          null,
+          "DRAWING",
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null
+        ]
+      },
+      {
+        "id": 171,
+        "type": "IfcRelAssociatesDocument",
+        "attributes": [
+          "18m7bOp2bDYxH81E7P$a5Q",
+          {
+            "ref": 172
+          },
+          null,
+          null,
+          [
+            {
+              "ref": 1
+            }
+          ],
+          {
+            "ref": 173
+          }
+        ]
+      },
+      {
+        "id": 172,
+        "type": "IfcOwnerHistory",
+        "attributes": [
+          {
+            "ref": 24
+          },
+          {
+            "ref": 56
+          },
+          "READWRITE",
+          "ADDED",
+          1788609841,
+          {
+            "ref": 24
+          },
+          {
+            "ref": 56
+          },
+          1788609841
+        ]
+      },
+      {
+        "id": 173,
+        "type": "IfcDocumentInformation",
+        "attributes": [
+          "X",
+          "TRAP01-OFFICIAL-DETAIL-V4-PLAN",
+          null,
+          null,
+          null,
+          null,
+          "DRAWING",
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null
+        ]
+      },
+      {
+        "id": 174,
+        "type": "IfcRelAssociatesDocument",
+        "attributes": [
+          "0zE89mnf54JfwmvLIMaDl6",
+          {
+            "ref": 175
+          },
+          null,
+          null,
+          [
+            {
+              "ref": 1
+            }
+          ],
+          {
+            "ref": 176
+          }
+        ]
+      },
+      {
+        "id": 175,
+        "type": "IfcOwnerHistory",
+        "attributes": [
+          {
+            "ref": 24
+          },
+          {
+            "ref": 56
+          },
+          "READWRITE",
+          "ADDED",
+          1786467903,
+          {
+            "ref": 24
+          },
+          {
+            "ref": 56
+          },
+          1786467903
+        ]
+      },
+      {
+        "id": 176,
+        "type": "IfcDocumentInformation",
+        "attributes": [
+          "X",
+          "EL-09-36-R22-NX",
+          null,
+          null,
+          null,
+          null,
+          "DRAWING",
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null
+        ]
+      },
+      {
+        "id": 177,
+        "type": "IfcRelAssociatesDocument",
+        "attributes": [
+          "0TrCATNUnDywFM5tdyqrcN",
+          {
+            "ref": 178
+          },
+          null,
+          null,
+          [
+            {
+              "ref": 1
+            }
+          ],
+          {
+            "ref": 179
+          }
+        ]
+      },
+      {
+        "id": 178,
+        "type": "IfcOwnerHistory",
+        "attributes": [
+          {
+            "ref": 24
+          },
+          {
+            "ref": 56
+          },
+          "READWRITE",
+          "ADDED",
+          1786467740,
+          {
+            "ref": 24
+          },
+          {
+            "ref": 56
+          },
+          1786467740
+        ]
+      },
+      {
+        "id": 179,
+        "type": "IfcDocumentInformation",
+        "attributes": [
+          "X",
+          "EL-08-27-R18-PY",
+          null,
+          null,
+          null,
+          null,
+          "DRAWING",
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null
+        ]
+      },
+      {
+        "id": 180,
+        "type": "IfcRelAssociatesDocument",
+        "attributes": [
+          "0nUegiyGXCEBvFUHiYg_8w",
+          {
+            "ref": 181
+          },
+          null,
+          null,
+          [
+            {
+              "ref": 1
+            }
+          ],
+          {
+            "ref": 182
+          }
+        ]
+      },
+      {
+        "id": 181,
+        "type": "IfcOwnerHistory",
+        "attributes": [
+          {
+            "ref": 24
+          },
+          {
+            "ref": 56
+          },
+          "READWRITE",
+          "ADDED",
+          1786467684,
+          {
+            "ref": 24
+          },
+          {
+            "ref": 56
+          },
+          1786467684
+        ]
+      },
+      {
+        "id": 182,
+        "type": "IfcDocumentInformation",
+        "attributes": [
+          "X",
+          "EL-07-24-R15-PX",
+          null,
+          null,
+          null,
+          null,
+          "DRAWING",
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null
+        ]
+      },
+      {
+        "id": 183,
+        "type": "IfcRelAssociatesDocument",
+        "attributes": [
+          "0QD6vus5f5BggqStsJa1Us",
+          {
+            "ref": 184
+          },
+          null,
+          null,
+          [
+            {
+              "ref": 1
+            }
+          ],
+          {
+            "ref": 185
+          }
+        ]
+      },
+      {
+        "id": 184,
+        "type": "IfcOwnerHistory",
+        "attributes": [
+          {
+            "ref": 24
+          },
+          {
+            "ref": 56
+          },
+          "READWRITE",
+          "ADDED",
+          1786516863,
+          {
+            "ref": 24
+          },
+          {
+            "ref": 56
+          },
+          1786516863
+        ]
+      },
+      {
+        "id": 185,
+        "type": "IfcDocumentInformation",
+        "attributes": [
+          "X",
+          "EL-P01-01-LIVING-WEST-NX",
+          null,
+          null,
+          null,
+          null,
+          "DRAWING",
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null
+        ]
+      },
+      {
+        "id": 186,
+        "type": "IfcRelAssociatesDocument",
+        "attributes": [
+          "2HK9Nz2jb9kRV7woST6jTn",
+          {
+            "ref": 187
+          },
+          null,
+          null,
+          [
+            {
+              "ref": 1
+            }
+          ],
+          {
+            "ref": 188
+          }
+        ]
+      },
+      {
+        "id": 187,
+        "type": "IfcOwnerHistory",
+        "attributes": [
+          {
+            "ref": 24
+          },
+          {
+            "ref": 56
+          },
+          "READWRITE",
+          "ADDED",
+          1786467688,
+          {
+            "ref": 24
+          },
+          {
+            "ref": 56
+          },
+          1786467688
+        ]
+      },
+      {
+        "id": 188,
+        "type": "IfcDocumentInformation",
+        "attributes": [
+          "X",
+          "EL-07-25-R15-NY",
+          null,
+          null,
+          null,
+          null,
+          "DRAWING",
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null
+        ]
+      },
+      {
+        "id": 189,
+        "type": "IfcRelAssociatesDocument",
+        "attributes": [
+          "1OxvnkTRf23AJUE_VjJ_uL",
+          {
+            "ref": 190
+          },
+          null,
+          null,
+          [
+            {
+              "ref": 1
+            }
+          ],
+          {
+            "ref": 191
+          }
+        ]
+      },
+      {
+        "id": 190,
+        "type": "IfcOwnerHistory",
+        "attributes": [
+          {
+            "ref": 24
+          },
+          {
+            "ref": 56
+          },
+          "READWRITE",
+          "ADDED",
+          1786467552,
+          {
+            "ref": 24
+          },
+          {
+            "ref": 56
+          },
+          1786467552
+        ]
+      },
+      {
+        "id": 191,
+        "type": "IfcDocumentInformation",
+        "attributes": [
+          "X",
+          "EL-05-16-R09-NY",
+          null,
+          null,
+          null,
+          null,
+          "DRAWING",
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null
+        ]
+      },
+      {
+        "id": 64,
+        "type": "IfcDirection",
+        "attributes": [
+          [
+            1.0,
+            0.0,
+            0.0
+          ]
+        ]
+      },
+      {
+        "id": 65,
+        "type": "IfcProductDefinitionShape",
+        "attributes": [
+          null,
+          null,
+          [
+            {
+              "ref": 66
+            }
+          ]
+        ]
+      },
+      {
+        "id": 66,
+        "type": "IfcShapeRepresentation",
+        "attributes": [
+          {
+            "ref": 67
+          },
+          "Body",
+          "CSG",
+          [
+            {
+              "ref": 68
+            }
+          ]
+        ]
+      },
+      {
+        "id": 67,
+        "type": "IfcGeometricRepresentationSubContext",
+        "attributes": [
+          "Body",
+          "Model",
+          null,
+          null,
+          null,
+          null,
+          {
+            "ref": 2
+          },
+          null,
+          "MODEL_VIEW",
+          null
+        ]
+      },
+      {
+        "id": 68,
+        "type": "IfcCsgSolid",
+        "attributes": [
+          {
+            "ref": 69
+          }
+        ]
+      },
+      {
+        "id": 69,
+        "type": "IfcBlock",
+        "attributes": [
+          {
+            "ref": 70
+          },
+          899.999976158142,
+          800.04703762952,
+          720.000028610229
+        ]
+      },
+      {
+        "id": 70,
+        "type": "IfcAxis2Placement3D",
+        "attributes": [
+          {
+            "ref": 71
+          },
+          null,
+          null
+        ]
+      },
+      {
+        "id": 71,
+        "type": "IfcCartesianPoint",
+        "attributes": [
+          [
+            -449.999988079071,
+            -400.02351881476,
+            -720.000028610229
+          ]
+        ]
+      },
+      {
+        "id": 72,
+        "type": "IfcGroup",
+        "attributes": [
+          "1efKRtJ2DAtedK7xuJTI5C",
+          {
+            "ref": 73
+          },
+          "TRAP01-OFFICIAL-DETAIL-V4-PLAN",
+          null,
+          "DRAWING"
+        ]
+      },
+      {
+        "id": 73,
+        "type": "IfcOwnerHistory",
+        "attributes": [
+          {
+            "ref": 24
+          },
+          {
+            "ref": 56
+          },
+          "READWRITE",
+          "MODIFIED",
+          1788609841,
+          {
+            "ref": 24
+          },
+          {
+            "ref": 56
+          },
+          1788609841
+        ]
+      },
+      {
+        "id": 74,
+        "type": "IfcAnnotation",
+        "attributes": [
+          "2wMANTAEP4WRRf8Kz4nQhG",
+          {
+            "ref": 75
+          },
+          "TRAP01 configured official 2D details / plan",
+          "基于官方原生DWG固定接头刚性移位及直管长度调整的二维安装细节表达; fixed geometry is not scaled; adjustable excess is reference-only and omitted from this scene.",
+          "LINEWORK",
+          {
+            "ref": 76
+          },
+          null
+        ]
+      },
+      {
+        "id": 75,
+        "type": "IfcOwnerHistory",
+        "attributes": [
+          {
+            "ref": 24
+          },
+          {
+            "ref": 56
+          },
+          "READWRITE",
+          "MODIFIED",
+          1788609850,
+          {
+            "ref": 24
+          },
+          {
+            "ref": 56
+          },
+          1788609842
+        ]
+      },
+      {
+        "id": 76,
+        "type": "IfcLocalPlacement",
+        "attributes": [
+          null,
+          {
+            "ref": 77
+          }
+        ]
+      },
+      {
+        "id": 77,
+        "type": "IfcAxis2Placement3D",
+        "attributes": [
+          {
+            "ref": 78
+          },
+          {
+            "ref": 79
+          },
+          {
+            "ref": 80
+          }
+        ]
+      },
+      {
+        "id": 78,
+        "type": "IfcCartesianPoint",
+        "attributes": [
+          [
+            -6418.00022125244,
+            -550.000011920929,
+            596.000015735626
+          ]
+        ]
+      },
+      {
+        "id": 79,
+        "type": "IfcDirection",
+        "attributes": [
+          [
+            0.0,
+            0.0,
+            1.0
+          ]
+        ]
+      },
+      {
+        "id": 80,
+        "type": "IfcDirection",
+        "attributes": [
+          [
+            1.0,
+            0.0,
+            0.0
+          ]
+        ]
+      },
+      {
+        "id": 81,
+        "type": "IfcAnnotation",
+        "attributes": [
+          "0oZNWYRa1BxwCLs0yWOQAj",
+          {
+            "ref": 82
+          },
+          "TRAP01-OFFICIAL-DETAIL-V4-FRONT",
+          "Bonsai native orthographic cabinet-internal detail / TRAP01 current installed configuration / occluding basin, vanity volume and low partition excluded",
+          "DRAWING",
+          {
+            "ref": 83
+          },
+          {
+            "ref": 88
+          }
+        ]
+      },
+      {
+        "id": 82,
+        "type": "IfcOwnerHistory",
+        "attributes": [
+          {
+            "ref": 24
+          },
+          {
+            "ref": 56
+          },
+          "READWRITE",
+          "MODIFIED",
+          1788609843,
+          {
+            "ref": 24
+          },
+          {
+            "ref": 56
+          },
+          1788609843
+        ]
+      },
+      {
+        "id": 83,
+        "type": "IfcLocalPlacement",
+        "attributes": [
+          null,
+          {
+            "ref": 84
+          }
+        ]
+      },
+      {
+        "id": 84,
+        "type": "IfcAxis2Placement3D",
+        "attributes": [
+          {
+            "ref": 85
+          },
+          {
+            "ref": 86
+          },
+          {
+            "ref": 87
+          }
+        ]
+      },
+      {
+        "id": 85,
+        "type": "IfcCartesianPoint",
+        "attributes": [
+          [
+            -5771.56019210815,
+            -549.997687339783,
+            611.47004365921
+          ]
+        ]
+      },
+      {
+        "id": 86,
+        "type": "IfcDirection",
+        "attributes": [
+          [
+            1.0,
+            0.0,
+            0.0
+          ]
+        ]
+      },
+      {
+        "id": 87,
+        "type": "IfcDirection",
+        "attributes": [
+          [
+            0.0,
+            1.0,
+            0.0
+          ]
+        ]
+      },
+      {
+        "id": 88,
+        "type": "IfcProductDefinitionShape",
+        "attributes": [
+          null,
+          null,
+          [
+            {
+              "ref": 89
+            }
+          ]
+        ]
+      },
+      {
+        "id": 89,
+        "type": "IfcShapeRepresentation",
+        "attributes": [
+          {
+            "ref": 67
+          },
+          "Body",
+          "CSG",
+          [
+            {
+              "ref": 90
+            }
+          ]
+        ]
+      },
+      {
+        "id": 90,
+        "type": "IfcCsgSolid",
+        "attributes": [
+          {
+            "ref": 91
+          }
+        ]
+      },
+      {
+        "id": 91,
+        "type": "IfcBlock",
+        "attributes": [
+          {
+            "ref": 92
+          },
+          800.000011920929,
+          800.000011920929,
+          949.999988079071
+        ]
+      },
+      {
+        "id": 92,
+        "type": "IfcAxis2Placement3D",
+        "attributes": [
+          {
+            "ref": 93
+          },
+          null,
+          null
+        ]
+      },
+      {
+        "id": 93,
+        "type": "IfcCartesianPoint",
+        "attributes": [
+          [
+            -400.000005960464,
+            -400.000005960464,
+            -949.999988079071
+          ]
+        ]
+      },
+      {
+        "id": 94,
+        "type": "IfcGroup",
+        "attributes": [
+          "0XgA4qjJPDowDtvIhjcnYE",
+          {
+            "ref": 95
+          },
+          "TRAP01-OFFICIAL-DETAIL-V4-FRONT",
+          null,
+          "DRAWING"
+        ]
+      },
+      {
+        "id": 95,
+        "type": "IfcOwnerHistory",
+        "attributes": [
+          {
+            "ref": 24
+          },
+          {
+            "ref": 56
+          },
+          "READWRITE",
+          "MODIFIED",
+          1788609843,
+          {
+            "ref": 24
+          },
+          {
+            "ref": 56
+          },
+          1788609843
+        ]
+      },
+      {
+        "id": 96,
+        "type": "IfcAnnotation",
+        "attributes": [
+          "1eBrRf2_5BN9iGp9_AkRa2",
+          {
+            "ref": 97
+          },
+          "TRAP01 configured official 2D details / front",
+          "基于官方原生DWG固定接头刚性移位及直管长度调整的二维安装细节表达; fixed geometry is not scaled; adjustable excess is reference-only and omitted from this scene.",
+          "LINEWORK",
+          {
+            "ref": 98
+          },
+          null
+        ]
+      },
+      {
+        "id": 97,
+        "type": "IfcOwnerHistory",
+        "attributes": [
+          {
+            "ref": 24
+          },
+          {
+            "ref": 56
+          },
+          "READWRITE",
+          "MODIFIED",
+          1788609850,
+          {
+            "ref": 24
+          },
+          {
+            "ref": 56
+          },
+          1788609844
+        ]
+      },
+      {
+        "id": 98,
+        "type": "IfcLocalPlacement",
+        "attributes": [
+          null,
+          {
+            "ref": 99
+          }
+        ]
+      },
+      {
+        "id": 99,
+        "type": "IfcAxis2Placement3D",
+        "attributes": [
+          {
+            "ref": 100
+          },
+          {
+            "ref": 101
+          },
+          {
+            "ref": 102
+          }
+        ]
+      },
+      {
+        "id": 100,
+        "type": "IfcCartesianPoint",
+        "attributes": [
+          [
+            -6418.00022125244,
+            -550.000011920929,
+            596.000015735626
+          ]
+        ]
+      },
+      {
+        "id": 101,
+        "type": "IfcDirection",
+        "attributes": [
+          [
+            0.0,
+            0.0,
+            1.0
+          ]
+        ]
+      },
+      {
+        "id": 102,
+        "type": "IfcDirection",
+        "attributes": [
+          [
+            1.0,
+            0.0,
+            0.0
+          ]
+        ]
+      },
+      {
+        "id": 103,
+        "type": "IfcAnnotation",
+        "attributes": [
+          "1YeH3d8DzB4hLiD2Rj4Zua",
+          {
+            "ref": 104
+          },
+          "TRAP01-OFFICIAL-DETAIL-V4-SIDE",
+          "Bonsai native orthographic cabinet-internal detail / TRAP01 current installed configuration / occluding basin, vanity volume and low partition excluded",
+          "DRAWING",
+          {
+            "ref": 105
+          },
+          {
+            "ref": 110
+          }
+        ]
+      },
+      {
+        "id": 104,
+        "type": "IfcOwnerHistory",
+        "attributes": [
+          {
+            "ref": 24
+          },
+          {
+            "ref": 56
+          },
+          "READWRITE",
+          "MODIFIED",
+          1788609846,
+          {
+            "ref": 24
+          },
+          {
+            "ref": 56
+          },
+          1788609846
+        ]
+      },
+      {
+        "id": 105,
+        "type": "IfcLocalPlacement",
+        "attributes": [
+          null,
+          {
+            "ref": 106
+          }
+        ]
+      },
+      {
+        "id": 106,
+        "type": "IfcAxis2Placement3D",
+        "attributes": [
+          {
+            "ref": 107
+          },
+          {
+            "ref": 108
+          },
+          {
+            "ref": 109
+          }
+        ]
+      },
+      {
+        "id": 107,
+        "type": "IfcCartesianPoint",
+        "attributes": [
+          [
+            -6321.56038284302,
+            -1099.99763965607,
+            611.47004365921
+          ]
+        ]
+      },
+      {
+        "id": 108,
+        "type": "IfcDirection",
+        "attributes": [
+          [
+            0.0,
+            -1.0,
+            0.0
+          ]
+        ]
+      },
+      {
+        "id": 109,
+        "type": "IfcDirection",
+        "attributes": [
+          [
+            1.0,
+            0.0,
+            0.0
+          ]
+        ]
+      },
+      {
+        "id": 110,
+        "type": "IfcProductDefinitionShape",
+        "attributes": [
+          null,
+          null,
+          [
+            {
+              "ref": 111
+            }
+          ]
+        ]
+      },
+      {
+        "id": 111,
+        "type": "IfcShapeRepresentation",
+        "attributes": [
+          {
+            "ref": 67
+          },
+          "Body",
+          "CSG",
+          [
+            {
+              "ref": 112
+            }
+          ]
+        ]
+      },
+      {
+        "id": 112,
+        "type": "IfcCsgSolid",
+        "attributes": [
+          {
+            "ref": 113
+          }
+        ]
+      },
+      {
+        "id": 113,
+        "type": "IfcBlock",
+        "attributes": [
+          {
+            "ref": 114
+          },
+          899.999976158142,
+          800.04703762952,
+          949.999988079071
+        ]
+      },
+      {
+        "id": 114,
+        "type": "IfcAxis2Placement3D",
+        "attributes": [
+          {
+            "ref": 115
+          },
+          null,
+          null
+        ]
+      },
+      {
+        "id": 115,
+        "type": "IfcCartesianPoint",
+        "attributes": [
+          [
+            -449.999988079071,
+            -400.02351881476,
+            -949.999988079071
+          ]
+        ]
+      },
+      {
+        "id": 116,
+        "type": "IfcGroup",
+        "attributes": [
+          "0NJkcI9GXBUOpeUzMyYjVL",
+          {
+            "ref": 117
+          },
+          "TRAP01-OFFICIAL-DETAIL-V4-SIDE",
+          null,
+          "DRAWING"
+        ]
+      },
+      {
+        "id": 117,
+        "type": "IfcOwnerHistory",
+        "attributes": [
+          {
+            "ref": 24
+          },
+          {
+            "ref": 56
+          },
+          "READWRITE",
+          "MODIFIED",
+          1788609846,
+          {
+            "ref": 24
+          },
+          {
+            "ref": 56
+          },
+          1788609846
+        ]
+      },
+      {
+        "id": 118,
+        "type": "IfcAnnotation",
+        "attributes": [
+          "3KI_E9ncXERQwoWAJcOxeI",
+          {
+            "ref": 119
+          },
+          "TRAP01 configured official 2D details / side",
+          "基于官方原生DWG固定接头刚性移位及直管长度调整的二维安装细节表达; fixed geometry is not scaled; adjustable excess is reference-only and omitted from this scene.",
+          "LINEWORK",
+          {
+            "ref": 120
+          },
+          null
+        ]
+      },
+      {
+        "id": 119,
+        "type": "IfcOwnerHistory",
+        "attributes": [
+          {
+            "ref": 24
+          },
+          {
+            "ref": 56
+          },
+          "READWRITE",
+          "MODIFIED",
+          1788609850,
+          {
+            "ref": 24
+          },
+          {
+            "ref": 56
+          },
+          1788609846
+        ]
+      },
+      {
+        "id": 120,
+        "type": "IfcLocalPlacement",
+        "attributes": [
+          null,
+          {
+            "ref": 121
+          }
+        ]
+      },
+      {
+        "id": 121,
+        "type": "IfcAxis2Placement3D",
+        "attributes": [
+          {
+            "ref": 122
+          },
+          {
+            "ref": 123
+          },
+          {
+            "ref": 124
+          }
+        ]
+      },
+      {
+        "id": 122,
+        "type": "IfcCartesianPoint",
+        "attributes": [
+          [
+            -6418.00022125244,
+            -550.000011920929,
+            596.000015735626
+          ]
+        ]
+      },
+      {
+        "id": 123,
+        "type": "IfcDirection",
+        "attributes": [
+          [
+            0.0,
+            0.0,
+            1.0
+          ]
+        ]
+      },
+      {
+        "id": 124,
+        "type": "IfcDirection",
+        "attributes": [
+          [
+            1.0,
+            0.0,
+            0.0
+          ]
+        ]
+      },
+      {
+        "id": 125,
+        "type": "IfcRelAssociatesDocument",
+        "attributes": [
+          "0jqo_RDlTBSRT352IetPxW",
+          {
+            "ref": 126
+          },
+          null,
+          null,
+          [
+            {
+              "ref": 1
+            }
+          ],
+          {
+            "ref": 127
+          }
+        ]
+      },
+      {
+        "id": 126,
+        "type": "IfcOwnerHistory",
+        "attributes": [
+          {
+            "ref": 24
+          },
+          {
+            "ref": 56
+          },
+          "READWRITE",
+          "ADDED",
+          1785423587,
+          {
+            "ref": 24
+          },
+          {
+            "ref": 56
+          },
+          1785423587
+        ]
+      },
+      {
+        "id": 127,
+        "type": "IfcDocumentInformation",
+        "attributes": [
+          "X",
+          "FFL PLAN",
+          null,
+          null,
+          null,
+          null,
+          "DRAWING",
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null
+        ]
+      },
+      {
+        "id": 1,
+        "type": "IfcProject",
+        "attributes": [
+          "3hFmn2ED14Ofwsj$DzZ0HC",
+          null,
+          "My Project",
+          null,
+          null,
+          null,
+          null,
+          [
+            {
+              "ref": 2
+            },
+            {
+              "ref": 7
+            }
+          ],
+          {
+            "ref": 8
+          }
+        ]
+      },
+      {
+        "id": 2,
+        "type": "IfcGeometricRepresentationContext",
+        "attributes": [
+          null,
+          "Model",
+          3,
+          1e-05,
+          {
+            "ref": 3
+          },
+          null
+        ]
+      },
+      {
+        "id": 3,
+        "type": "IfcAxis2Placement3D",
+        "attributes": [
+          {
+            "ref": 4
+          },
+          {
+            "ref": 5
+          },
+          {
+            "ref": 6
+          }
+        ]
+      },
+      {
+        "id": 4,
+        "type": "IfcCartesianPoint",
+        "attributes": [
+          [
+            0.0,
+            0.0,
+            0.0
+          ]
+        ]
+      },
+      {
+        "id": 5,
+        "type": "IfcDirection",
+        "attributes": [
+          [
+            0.0,
+            0.0,
+            1.0
+          ]
+        ]
+      },
+      {
+        "id": 6,
+        "type": "IfcDirection",
+        "attributes": [
+          [
+            1.0,
+            0.0,
+            0.0
+          ]
+        ]
+      },
+      {
+        "id": 7,
+        "type": "IfcGeometricRepresentationContext",
+        "attributes": [
+          null,
+          "Plan",
+          2,
+          1e-05,
+          null,
+          null
+        ]
+      },
+      {
+        "id": 8,
+        "type": "IfcUnitAssignment",
+        "attributes": [
+          [
+            {
+              "ref": 9
+            },
+            {
+              "ref": 10
+            },
+            {
+              "ref": 11
+            },
+            {
+              "ref": 15
+            }
+          ]
+        ]
+      },
+      {
+        "id": 9,
+        "type": "IfcSIUnit",
+        "attributes": [
+          null,
+          "VOLUMEUNIT",
+          null,
+          "CUBIC_METRE"
+        ]
+      },
+      {
+        "id": 10,
+        "type": "IfcSIUnit",
+        "attributes": [
+          null,
+          "LENGTHUNIT",
+          "MILLI",
+          "METRE"
+        ]
+      },
+      {
+        "id": 11,
+        "type": "IfcConversionBasedUnit",
+        "attributes": [
+          {
+            "ref": 12
+          },
+          "PLANEANGLEUNIT",
+          "degree",
+          {
+            "ref": 13
+          }
+        ]
+      },
+      {
+        "id": 12,
+        "type": "IfcDimensionalExponents",
+        "attributes": [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ]
+      },
+      {
+        "id": 13,
+        "type": "IfcMeasureWithUnit",
+        "attributes": [
+          {
+            "inline": "IfcReal",
+            "values": [
+              0.0174532925199433
+            ]
+          },
+          {
+            "ref": 14
+          }
+        ]
+      },
+      {
+        "id": 14,
+        "type": "IfcSIUnit",
+        "attributes": [
+          null,
+          "PLANEANGLEUNIT",
+          null,
+          "RADIAN"
+        ]
+      },
+      {
+        "id": 15,
+        "type": "IfcSIUnit",
+        "attributes": [
+          null,
+          "AREAUNIT",
+          null,
+          "SQUARE_METRE"
+        ]
+      },
+      {
+        "id": 16,
+        "type": "IfcSite",
+        "attributes": [
+          "3iWnpcHW54tQCcUMk_yOsj",
+          null,
+          "My Site",
+          null,
+          null,
+          {
+            "ref": 17
+          },
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null
+        ]
+      },
+      {
+        "id": 17,
+        "type": "IfcLocalPlacement",
+        "attributes": [
+          null,
+          {
+            "ref": 18
+          }
+        ]
+      },
+      {
+        "id": 18,
+        "type": "IfcAxis2Placement3D",
+        "attributes": [
+          {
+            "ref": 19
+          },
+          {
+            "ref": 20
+          },
+          {
+            "ref": 21
+          }
+        ]
+      },
+      {
+        "id": 19,
+        "type": "IfcCartesianPoint",
+        "attributes": [
+          [
+            0.0,
+            0.0,
+            0.0
+          ]
+        ]
+      },
+      {
+        "id": 20,
+        "type": "IfcDirection",
+        "attributes": [
+          [
+            0.0,
+            0.0,
+            1.0
+          ]
+        ]
+      },
+      {
+        "id": 21,
+        "type": "IfcDirection",
+        "attributes": [
+          [
+            1.0,
+            0.0,
+            0.0
+          ]
+        ]
+      },
+      {
+        "id": 22,
+        "type": "IfcBuilding",
+        "attributes": [
+          "0aVVbcf_9A9x07_Nod0gAP",
+          {
+            "ref": 23
+          },
+          "My Building",
+          null,
+          null,
+          {
+            "ref": 28
+          },
+          null,
+          null,
+          null,
+          null,
+          null,
+          null
+        ]
+      },
+      {
+        "id": 23,
+        "type": "IfcOwnerHistory",
+        "attributes": [
+          {
+            "ref": 24
+          },
+          {
+            "ref": 27
+          },
+          "READWRITE",
+          "ADDED",
+          1759986564,
+          {
+            "ref": 24
+          },
+          {
+            "ref": 27
+          },
+          1759986564
+        ]
+      },
+      {
+        "id": 24,
+        "type": "IfcPersonAndOrganization",
+        "attributes": [
+          {
+            "ref": 25
+          },
+          {
+            "ref": 26
+          },
+          null
+        ]
+      },
+      {
+        "id": 25,
+        "type": "IfcPerson",
+        "attributes": [
+          null,
+          "",
+          "ryan@openingdesign.com",
+          null,
+          null,
+          null,
+          null,
+          null
+        ]
+      },
+      {
+        "id": 26,
+        "type": "IfcOrganization",
+        "attributes": [
+          null,
+          "",
+          "",
+          null,
+          null
+        ]
+      },
+      {
+        "id": 27,
+        "type": "IfcApplication",
+        "attributes": [
+          null,
+          "0.8.3",
+          "Bonsai",
+          "Bonsai-0.8.3"
+        ]
+      },
+      {
+        "id": 28,
+        "type": "IfcLocalPlacement",
+        "attributes": [
+          {
+            "ref": 17
+          },
+          {
+            "ref": 29
+          }
+        ]
+      },
+      {
+        "id": 29,
+        "type": "IfcAxis2Placement3D",
+        "attributes": [
+          {
+            "ref": 30
+          },
+          {
+            "ref": 31
+          },
+          {
+            "ref": 32
+          }
+        ]
+      },
+      {
+        "id": 30,
+        "type": "IfcCartesianPoint",
+        "attributes": [
+          [
+            0.0,
+            0.0,
+            0.0
+          ]
+        ]
+      },
+      {
+        "id": 31,
+        "type": "IfcDirection",
+        "attributes": [
+          [
+            0.0,
+            0.0,
+            1.0
+          ]
+        ]
+      },
+      {
+        "id": 32,
+        "type": "IfcDirection",
+        "attributes": [
+          [
+            1.0,
+            0.0,
+            0.0
+          ]
+        ]
+      },
+      {
+        "id": 33,
+        "type": "IfcBuildingStorey",
+        "attributes": [
+          "1VjEk5I8XFmfiAYaLk_F_7",
+          {
+            "ref": 34
+          },
+          "FUR",
+          null,
+          null,
+          {
+            "ref": 35
+          },
+          null,
+          null,
+          null,
+          null
+        ]
+      },
+      {
+        "id": 34,
+        "type": "IfcOwnerHistory",
+        "attributes": [
+          {
+            "ref": 24
+          },
+          {
+            "ref": 27
+          },
+          "READWRITE",
+          "MODIFIED",
+          1761750327,
+          {
+            "ref": 24
+          },
+          {
+            "ref": 27
+          },
+          1761750327
+        ]
+      },
+      {
+        "id": 35,
+        "type": "IfcLocalPlacement",
+        "attributes": [
+          {
+            "ref": 28
+          },
+          {
+            "ref": 36
+          }
+        ]
+      },
+      {
+        "id": 36,
+        "type": "IfcAxis2Placement3D",
+        "attributes": [
+          {
+            "ref": 37
+          },
+          {
+            "ref": 38
+          },
+          {
+            "ref": 39
+          }
+        ]
+      },
+      {
+        "id": 37,
+        "type": "IfcCartesianPoint",
+        "attributes": [
+          [
+            0.0,
+            0.0,
+            0.0
+          ]
+        ]
+      },
+      {
+        "id": 38,
+        "type": "IfcDirection",
+        "attributes": [
+          [
+            0.0,
+            0.0,
+            1.0
+          ]
+        ]
+      },
+      {
+        "id": 39,
+        "type": "IfcDirection",
+        "attributes": [
+          [
+            1.0,
+            0.0,
+            0.0
+          ]
+        ]
+      },
+      {
+        "id": 40,
+        "type": "IfcBuildingStorey",
+        "attributes": [
+          "0HiMVAajv8xAARS233qDTe",
+          {
+            "ref": 41
+          },
+          "BATHM",
+          null,
+          null,
+          {
+            "ref": 42
+          },
+          null,
+          null,
+          null,
+          null
+        ]
+      },
+      {
+        "id": 41,
+        "type": "IfcOwnerHistory",
+        "attributes": [
+          {
+            "ref": 24
+          },
+          {
+            "ref": 27
+          },
+          "READWRITE",
+          "MODIFIED",
+          1762419167,
+          {
+            "ref": 24
+          },
+          {
+            "ref": 27
+          },
+          1762419167
+        ]
+      },
+      {
+        "id": 42,
+        "type": "IfcLocalPlacement",
+        "attributes": [
+          {
+            "ref": 35
+          },
+          {
+            "ref": 43
+          }
+        ]
+      },
+      {
+        "id": 43,
+        "type": "IfcAxis2Placement3D",
+        "attributes": [
+          {
+            "ref": 44
+          },
+          {
+            "ref": 45
+          },
+          {
+            "ref": 46
+          }
+        ]
+      },
+      {
+        "id": 44,
+        "type": "IfcCartesianPoint",
+        "attributes": [
+          [
+            0.0,
+            0.0,
+            0.0
+          ]
+        ]
+      },
+      {
+        "id": 45,
+        "type": "IfcDirection",
+        "attributes": [
+          [
+            0.0,
+            0.0,
+            1.0
+          ]
+        ]
+      },
+      {
+        "id": 46,
+        "type": "IfcDirection",
+        "attributes": [
+          [
+            1.0,
+            0.0,
+            0.0
+          ]
+        ]
+      },
+      {
+        "id": 47,
+        "type": "IfcSanitaryTerminal",
+        "attributes": [
+          "2Ak2ma0lvBEA49UpplzUqi",
+          {
+            "ref": 48
+          },
+          "SanitaryTerminal",
+          null,
+          null,
+          {
+            "ref": 49
+          },
+          null,
+          null,
+          null
+        ]
+      },
+      {
+        "id": 48,
+        "type": "IfcOwnerHistory",
+        "attributes": [
+          {
+            "ref": 24
+          },
+          {
+            "ref": 27
+          },
+          "READWRITE",
+          "MODIFIED",
+          1785964834,
+          {
+            "ref": 24
+          },
+          {
+            "ref": 27
+          },
+          1762498103
+        ]
+      },
+      {
+        "id": 49,
+        "type": "IfcLocalPlacement",
+        "attributes": [
+          {
+            "ref": 42
+          },
+          {
+            "ref": 50
+          }
+        ]
+      },
+      {
+        "id": 50,
+        "type": "IfcAxis2Placement3D",
+        "attributes": [
+          {
+            "ref": 51
+          },
+          {
+            "ref": 52
+          },
+          {
+            "ref": 53
+          }
+        ]
+      },
+      {
+        "id": 51,
+        "type": "IfcCartesianPoint",
+        "attributes": [
+          [
+            -6418.0,
+            -550.0,
+            596.0
+          ]
+        ]
+      },
+      {
+        "id": 52,
+        "type": "IfcDirection",
+        "attributes": [
+          [
+            0.0,
+            0.0,
+            1.0
+          ]
+        ]
+      },
+      {
+        "id": 53,
+        "type": "IfcDirection",
+        "attributes": [
+          [
+            1.0,
+            0.0,
+            0.0
+          ]
+        ]
+      },
+      {
+        "id": 54,
+        "type": "IfcAnnotation",
+        "attributes": [
+          "3EZt1DKnH8sQoOeH8BbH5y",
+          {
+            "ref": 55
+          },
+          "TRAP01-OFFICIAL-DETAIL-V4-PLAN",
+          "Bonsai native orthographic cabinet-internal detail / TRAP01 current installed configuration / occluding basin, vanity volume and low partition excluded",
+          "DRAWING",
+          {
+            "ref": 60
+          },
+          {
+            "ref": 65
+          }
+        ]
+      },
+      {
+        "id": 55,
+        "type": "IfcOwnerHistory",
+        "attributes": [
+          {
+            "ref": 24
+          },
+          {
+            "ref": 56
+          },
+          "READWRITE",
+          "MODIFIED",
+          1788609842,
+          {
+            "ref": 24
+          },
+          {
+            "ref": 56
+          },
+          1788609841
+        ]
+      },
+      {
+        "id": 56,
+        "type": "IfcApplication",
+        "attributes": [
+          {
+            "ref": 57
+          },
+          "0.8.4",
+          "Bonsai",
+          "Bonsai-0.8.4"
+        ]
+      },
+      {
+        "id": 57,
+        "type": "IfcOrganization",
+        "attributes": [
+          "IfcOpenShell",
+          "IfcOpenShell",
+          "IfcOpenShell is an open source software library that helps users and software developers to work with IFC data.",
+          [
+            {
+              "ref": 58
+            }
+          ],
+          [
+            {
+              "ref": 59
+            }
+          ]
+        ]
+      },
+      {
+        "id": 58,
+        "type": "IfcActorRole",
+        "attributes": [
+          "USERDEFINED",
+          "CONTRIBUTOR",
+          null
+        ]
+      },
+      {
+        "id": 59,
+        "type": "IfcTelecomAddress",
+        "attributes": [
+          "USERDEFINED",
+          null,
+          "WEBPAGE",
+          null,
+          null,
+          null,
+          null,
+          "https://ifcopenshell.org",
+          null
+        ]
+      },
+      {
+        "id": 60,
+        "type": "IfcLocalPlacement",
+        "attributes": [
+          null,
+          {
+            "ref": 61
+          }
+        ]
+      },
+      {
+        "id": 61,
+        "type": "IfcAxis2Placement3D",
+        "attributes": [
+          {
+            "ref": 62
+          },
+          {
+            "ref": 63
+          },
+          {
+            "ref": 64
+          }
+        ]
+      },
+      {
+        "id": 62,
+        "type": "IfcCartesianPoint",
+        "attributes": [
+          [
+            -6321.56038284302,
+            -549.997687339783,
+            980.000019073486
+          ]
+        ]
+      },
+      {
+        "id": 63,
+        "type": "IfcDirection",
+        "attributes": [
+          [
+            0.0,
+            0.0,
+            1.0
+          ]
+        ]
+      },
+      {
+        "id": 384,
+        "type": "IfcRelAssociatesDocument",
+        "attributes": [
+          "3OjS9BW2v8Cv9H0z0_KCJ7",
+          {
+            "ref": 385
+          },
+          null,
+          null,
+          [
+            {
+              "ref": 54
+            }
+          ],
+          {
+            "ref": 386
+          }
+        ]
+      },
+      {
+        "id": 385,
+        "type": "IfcOwnerHistory",
+        "attributes": [
+          {
+            "ref": 24
+          },
+          {
+            "ref": 56
+          },
+          "READWRITE",
+          "ADDED",
+          1788609841,
+          {
+            "ref": 24
+          },
+          {
+            "ref": 56
+          },
+          1788609841
+        ]
+      },
+      {
+        "id": 386,
+        "type": "IfcDocumentReference",
+        "attributes": [
+          "bonsai-drawings/cabinet-official-detail-v4/TRAP01-OFFICIAL-DETAIL-V4-PLAN.svg",
+          "X",
+          null,
+          null,
+          {
+            "ref": 173
+          }
+        ]
+      },
+      {
+        "id": 387,
+        "type": "IfcRelDefinesByProperties",
+        "attributes": [
+          "01nR4m9W544egpaz8BhFt6",
+          {
+            "ref": 388
+          },
+          null,
+          null,
+          [
+            {
+              "ref": 103
+            }
+          ],
+          {
+            "ref": 389
+          }
+        ]
+      },
+      {
+        "id": 388,
+        "type": "IfcOwnerHistory",
+        "attributes": [
+          {
+            "ref": 24
+          },
+          {
+            "ref": 56
+          },
+          "READWRITE",
+          "ADDED",
+          1788609846,
+          {
+            "ref": 24
+          },
+          {
+            "ref": 56
+          },
+          1788609846
+        ]
+      },
+      {
+        "id": 389,
+        "type": "IfcPropertySet",
+        "attributes": [
+          "1puDgyHHDCERHvPNfifx7b",
+          {
+            "ref": 390
+          },
+          "EPset_Drawing",
+          null,
+          [
+            {
+              "ref": 391
+            },
+            {
+              "ref": 392
+            },
+            {
+              "ref": 393
+            },
+            {
+              "ref": 394
+            },
+            {
+              "ref": 395
+            },
+            {
+              "ref": 396
+            },
+            {
+              "ref": 397
+            },
+            {
+              "ref": 398
+            },
+            {
+              "ref": 399
+            },
+            {
+              "ref": 400
+            },
+            {
+              "ref": 401
+            },
+            {
+              "ref": 402
+            },
+            {
+              "ref": 403
+            },
+            {
+              "ref": 404
+            },
+            {
+              "ref": 405
+            },
+            {
+              "ref": 406
+            },
+            {
+              "ref": 407
+            },
+            {
+              "ref": 408
+            },
+            {
+              "ref": 409
+            }
+          ]
+        ]
+      },
+      {
+        "id": 390,
+        "type": "IfcOwnerHistory",
+        "attributes": [
+          {
+            "ref": 24
+          },
+          {
+            "ref": 56
+          },
+          "READWRITE",
+          "ADDED",
+          1788609846,
+          {
+            "ref": 24
+          },
+          {
+            "ref": 56
+          },
+          1788609846
+        ]
+      },
+      {
+        "id": 391,
+        "type": "IfcPropertySingleValue",
+        "attributes": [
+          "TargetView",
+          null,
+          {
+            "inline": "IfcLabel",
+            "values": [
+              "ELEVATION_VIEW"
+            ]
+          },
+          null
+        ]
+      },
+      {
+        "id": 392,
+        "type": "IfcPropertySingleValue",
+        "attributes": [
+          "Scale",
+          null,
+          {
+            "inline": "IfcLabel",
+            "values": [
+              "1/5"
+            ]
+          },
+          null
+        ]
+      },
+      {
+        "id": 393,
+        "type": "IfcPropertySingleValue",
+        "attributes": [
+          "HumanScale",
+          null,
+          {
+            "inline": "IfcLabel",
+            "values": [
+              "1:5"
+            ]
+          },
+          null
+        ]
+      },
+      {
+        "id": 394,
+        "type": "IfcPropertySingleValue",
+        "attributes": [
+          "HasUnderlay",
+          null,
+          {
+            "inline": "IfcBoolean",
+            "values": [
+              false
+            ]
+          },
+          null
+        ]
+      },
+      {
+        "id": 395,
+        "type": "IfcPropertySingleValue",
+        "attributes": [
+          "HasLinework",
+          null,
+          {
+            "inline": "IfcBoolean",
+            "values": [
+              true
+            ]
+          },
+          null
+        ]
+      },
+      {
+        "id": 396,
+        "type": "IfcPropertySingleValue",
+        "attributes": [
+          "HasAnnotation",
+          null,
+          {
+            "inline": "IfcBoolean",
+            "values": [
+              true
+            ]
+          },
+          null
+        ]
+      },
+      {
+        "id": 397,
+        "type": "IfcPropertySingleValue",
+        "attributes": [
+          "GlobalReferencing",
+          null,
+          {
+            "inline": "IfcBoolean",
+            "values": [
+              true
+            ]
+          },
+          null
+        ]
+      },
+      {
+        "id": 398,
+        "type": "IfcPropertySingleValue",
+        "attributes": [
+          "Stylesheet",
+          null,
+          {
+            "inline": "IfcText",
+            "values": [
+              "drawings/assets/default.css"
+            ]
+          },
+          null
+        ]
+      },
+      {
+        "id": 399,
+        "type": "IfcPropertySingleValue",
+        "attributes": [
+          "Markers",
+          null,
+          {
+            "inline": "IfcText",
+            "values": [
+              "drawings/assets/markers.svg"
+            ]
+          },
+          null
+        ]
+      },
+      {
+        "id": 400,
+        "type": "IfcPropertySingleValue",
+        "attributes": [
+          "Symbols",
+          null,
+          {
+            "inline": "IfcText",
+            "values": [
+              "drawings/assets/symbols.svg"
+            ]
+          },
+          null
+        ]
+      },
+      {
+        "id": 401,
+        "type": "IfcPropertySingleValue",
+        "attributes": [
+          "Patterns",
+          null,
+          {
+            "inline": "IfcText",
+            "values": [
+              "drawings/assets/patterns.svg"
+            ]
+          },
+          null
+        ]
+      },
+      {
+        "id": 402,
+        "type": "IfcPropertySingleValue",
+        "attributes": [
+          "ShadingStyles",
+          null,
+          {
+            "inline": "IfcText",
+            "values": [
+              "drawings/assets/shading_styles.json"
+            ]
+          },
+          null
+        ]
+      },
+      {
+        "id": 403,
+        "type": "IfcPropertySingleValue",
+        "attributes": [
+          "CurrentShadingStyle",
+          null,
+          {
+            "inline": "IfcLabel",
+            "values": [
+              "Blender Default"
+            ]
+          },
+          null
+        ]
+      },
+      {
+        "id": 404,
+        "type": "IfcPropertySingleValue",
+        "attributes": [
+          "DPI",
+          null,
+          {
+            "inline": "IfcInteger",
+            "values": [
+              300
+            ]
+          },
+          null
+        ]
+      },
+      {
+        "id": 405,
+        "type": "IfcPropertySingleValue",
+        "attributes": [
+          "LineworkMode",
+          null,
+          {
+            "inline": "IfcLabel",
+            "values": [
+              "OPENCASCADE"
+            ]
+          },
+          null
+        ]
+      },
+      {
+        "id": 406,
+        "type": "IfcPropertySingleValue",
+        "attributes": [
+          "FillMode",
+          null,
+          {
+            "inline": "IfcLabel",
+            "values": [
+              "NONE"
+            ]
+          },
+          null
+        ]
+      },
+      {
+        "id": 407,
+        "type": "IfcPropertySingleValue",
+        "attributes": [
+          "CutMode",
+          null,
+          {
+            "inline": "IfcLabel",
+            "values": [
+              "BISECT"
+            ]
+          },
+          null
+        ]
+      },
+      {
+        "id": 408,
+        "type": "IfcPropertySingleValue",
+        "attributes": [
+          "Include",
+          null,
+          {
+            "inline": "IfcText",
+            "values": [
+              "0e0XOb$L18ZBVYJiQJrQ1p,3WekjaeUn1qfL6oR1KYD_2,3ty1lUpQfD3fY1yf0Dxo53,05LSYayab3n9CDi01pw9K$,2amSzxJIb9ceddTJOslmHk,3jha5L04zBjh0$pMl_tHLy,04rs0EDjn2EvxytEQSxWRB,0nlHIdaVrV7xIKsYXraYCa,37DwA_fpXSARFOa60IfK8k,1jM_suNMPAw8_nvZejQSnp,1u997JrDbByeKqbJ6ku8GF,2ajpw0I9n1dBypfISg3ejX,3PRBtW00j1D8r2Or5PTFdh"
+            ]
+          },
+          null
+        ]
+      },
+      {
+        "id": 409,
+        "type": "IfcPropertySingleValue",
+        "attributes": [
+          "Exclude",
+          null,
+          {
+            "inline": "IfcText",
+            "values": [
+              "1FgLPMw$5B4wBH2ySMkXE1,2YnGmmoYbF28Vy25$aNKT8,3OVQygdDn17huGOgJJFTOY"
+            ]
+          },
+          null
+        ]
+      },
+      {
+        "id": 410,
+        "type": "IfcRelAssociatesDocument",
+        "attributes": [
+          "1eTQjkb5v7tupeGaVBlJla",
+          {
+            "ref": 411
+          },
+          null,
+          null,
+          [
+            {
+              "ref": 103
+            }
+          ],
+          {
+            "ref": 412
+          }
+        ]
+      },
+      {
+        "id": 411,
+        "type": "IfcOwnerHistory",
+        "attributes": [
+          {
+            "ref": 24
+          },
+          {
+            "ref": 56
+          },
+          "READWRITE",
+          "ADDED",
+          1788609846,
+          {
+            "ref": 24
+          },
+          {
+            "ref": 56
+          },
+          1788609846
+        ]
+      },
+      {
+        "id": 412,
+        "type": "IfcDocumentReference",
+        "attributes": [
+          "bonsai-drawings/cabinet-official-detail-v4/TRAP01-OFFICIAL-DETAIL-V4-SIDE.svg",
+          "X",
+          null,
+          null,
+          {
+            "ref": 161
+          }
+        ]
+      },
+      {
+        "id": 413,
+        "type": "IfcRelAssignsToGroup",
+        "attributes": [
+          "02utSJJ9T1VvQdbV0aUDXj",
+          {
+            "ref": 414
+          },
+          null,
+          null,
+          [
+            {
+              "ref": 103
+            },
+            {
+              "ref": 118
+            }
+          ],
+          null,
+          {
+            "ref": 116
+          }
+        ]
+      },
+      {
+        "id": 414,
+        "type": "IfcOwnerHistory",
+        "attributes": [
+          {
+            "ref": 24
+          },
+          {
+            "ref": 56
+          },
+          "READWRITE",
+          "MODIFIED",
+          1788609846,
+          {
+            "ref": 24
+          },
+          {
+            "ref": 56
+          },
+          1788609846
+        ]
+      },
+      {
+        "id": 415,
+        "type": "IfcRelAssociatesDocument",
+        "attributes": [
+          "3$IgW1CeH6wBGeKuVsPSAc",
+          {
+            "ref": 48
+          },
+          "TRAP01 official-source access record association",
+          "exact Geberit 151.116.11.1 adjustable family reference; project instance is a shortened installation configuration; not a project shop drawing",
+          [
+            {
+              "ref": 47
+            }
+          ],
+          {
+            "ref": 416
+          }
+        ]
+      },
+      {
+        "id": 416,
+        "type": "IfcDocumentReference",
+        "attributes": [
+          "output/review/highpoly-types/trap01/official-source/source-access-record.json",
+          "GEBERIT-151-116-11-1-TRAP01-SOURCE-ACCESS-RECORD",
+          "TRAP01 official-source access record",
+          "SHA-256 ac6cfe70847e017778f46112b5d494fe21f71b7572ba4c1d8423123582a0cfc0; article selection and configured-instance limitation; exact Geberit 151.116.11.1 adjustable family reference; project instance is a shortened installation configuration; not a project shop drawing",
+          null
+        ]
+      },
+      {
+        "id": 417,
+        "type": "IfcRelAssociatesDocument",
+        "attributes": [
+          "2VyLvojlbDXxwE$81hYPBq",
+          {
+            "ref": 48
+          },
+          "TRAP01 native-DWG linework register association",
+          "exact Geberit 151.116.11.1 adjustable family reference; project instance is a shortened installation configuration; not a project shop drawing",
+          [
+            {
+              "ref": 47
+            }
+          ],
+          {
+            "ref": 418
+          }
+        ]
+      },
+      {
+        "id": 418,
+        "type": "IfcDocumentReference",
+        "attributes": [
+          "output/review/highpoly-types/trap01/official-native-dwg-linework.json",
+          "GEBERIT-151-116-11-1-TRAP01-NATIVE-DWG-LINEWORK",
+          "TRAP01 native-DWG linework register",
+          "SHA-256 3279df2a67948d846d05098104f75f44d5801a54eda95788f79c2526e9e4c0f1; family reference only; exact Geberit 151.116.11.1 adjustable family reference; project instance is a shortened installation configuration; not a project shop drawing",
+          null
+        ]
+      },
+      {
+        "id": 419,
+        "type": "IfcRelAssociatesDocument",
+        "attributes": [
+          "0m3NQSrQbEA9Ui0t_2eyC$",
+          {
+            "ref": 48
+          },
+          "Geberit official G native DWG association",
+          "exact Geberit 151.116.11.1 adjustable family reference; project instance is a shortened installation configuration; not a project shop drawing",
+          [
+            {
+              "ref": 47
+            }
+          ],
+          {
+            "ref": 420
+          }
+        ]
+      },
+      {
+        "id": 420,
+        "type": "IfcDocumentReference",
+        "attributes": [
+          "output/review/highpoly-types/trap01/official-source/151.116.11.1_G.dwg",
+          "GEBERIT-151-116-11-1-TRAP01-OFFICIAL-G-DWG",
+          "Geberit official G native DWG",
+          "SHA-256 af55992e60aa1d84c9834da995f6ef8269593f43f46a6311cdf3e2e59530dd3f; adjustable-family reference only; not representation geometry; exact Geberit 151.116.11.1 adjustable family reference; project instance is a shortened installation configuration; not a project shop drawing",
+          null
+        ]
+      },
+      {
+        "id": 421,
+        "type": "IfcRelAssociatesDocument",
+        "attributes": [
+          "3jEOqGPZT4vPBygvR_qVSS",
+          {
+            "ref": 48
+          },
+          "Geberit official A native DWG association",
+          "exact Geberit 151.116.11.1 adjustable family reference; project instance is a shortened installation configuration; not a project shop drawing",
+          [
+            {
+              "ref": 47
+            }
+          ],
+          {
+            "ref": 422
+          }
+        ]
+      },
+      {
+        "id": 422,
+        "type": "IfcDocumentReference",
+        "attributes": [
+          "output/review/highpoly-types/trap01/official-source/151.116.11.1_A.dwg",
+          "GEBERIT-151-116-11-1-TRAP01-OFFICIAL-A-DWG",
+          "Geberit official A native DWG",
+          "SHA-256 01fa50da7cf39c6a6ab2a89339d1e4523270cb0943e8dce148f3d471f1a4fff2; adjustable-family reference only; not representation geometry; exact Geberit 151.116.11.1 adjustable family reference; project instance is a shortened installation configuration; not a project shop drawing",
+          null
+        ]
+      },
+      {
+        "id": 423,
+        "type": "IfcRelDefinesByProperties",
+        "attributes": [
+          "0JAbc7ZkjDyggfTdWYerMl",
+          {
+            "ref": 48
+          },
+          "TRAP01 drawing source properties",
+          null,
+          [
+            {
+              "ref": 47
+            }
+          ],
+          {
+            "ref": 424
+          }
+        ]
+      },
+      {
+        "id": 424,
+        "type": "IfcPropertySet",
+        "attributes": [
+          "17B9S236vF7xVzU2XtVj1Z",
+          {
+            "ref": 48
+          },
+          "Pset_Trap01DrawingSource",
+          "Mechanically verifiable configured Body drawing source, official CAD evidence and human approval",
+          [
+            {
+              "ref": 425
+            },
+            {
+              "ref": 426
+            },
+            {
+              "ref": 427
+            },
+            {
+              "ref": 428
+            },
+            {
+              "ref": 429
+            },
+            {
+              "ref": 430
+            },
+            {
+              "ref": 431
+            },
+            {
+              "ref": 432
+            },
+            {
+              "ref": 433
+            },
+            {
+              "ref": 434
+            },
+            {
+              "ref": 435
+            },
+            {
+              "ref": 436
+            },
+            {
+              "ref": 437
+            },
+            {
+              "ref": 438
+            },
+            {
+              "ref": 439
+            },
+            {
+              "ref": 440
+            },
+            {
+              "ref": 441
+            },
+            {
+              "ref": 442
+            },
+            {
+              "ref": 443
+            },
+            {
+              "ref": 444
+            },
+            {
+              "ref": 445
+            },
+            {
+              "ref": 446
+            },
+            {
+              "ref": 447
+            },
+            {
+              "ref": 448
+            },
+            {
+              "ref": 449
+            },
+            {
+              "ref": 450
+            },
+            {
+              "ref": 451
+            },
+            {
+              "ref": 452
+            },
+            {
+              "ref": 453
+            },
+            {
+              "ref": 454
+            },
+            {
+              "ref": 455
+            },
+            {
+              "ref": 456
+            },
+            {
+              "ref": 457
+            },
+            {
+              "ref": 458
+            },
+            {
+              "ref": 459
+            },
+            {
+              "ref": 460
+            },
+            {
+              "ref": 461
+            },
+            {
+              "ref": 462
+            },
+            {
+              "ref": 463
+            },
+            {
+              "ref": 464
+            },
+            {
+              "ref": 465
+            }
+          ]
+        ]
+      },
+      {
+        "id": 425,
+        "type": "IfcPropertySingleValue",
+        "attributes": [
+          "SourceKind",
+          null,
+          {
+            "inline": "IfcText",
+            "values": [
+              "geometry_derived_simplified_proxy"
+            ]
+          },
+          null
+        ]
+      },
+      {
+        "id": 426,
+        "type": "IfcPropertySingleValue",
+        "attributes": [
+          "SourceLabelZh",
+          null,
+          {
+            "inline": "IfcText",
+            "values": [
+              "基于原始高模几何生成的简化图纸表达"
+            ]
+          },
+          null
+        ]
+      },
+      {
+        "id": 427,
+        "type": "IfcPropertySingleValue",
+        "attributes": [
+          "Manufacturer",
+          null,
+          {
+            "inline": "IfcText",
+            "values": [
+              "Geberit"
+            ]
+          },
+          null
+        ]
+      },
+      {
+        "id": 428,
+        "type": "IfcPropertySingleValue",
+        "attributes": [
+          "Family",
+          null,
+          {
+            "inline": "IfcText",
+            "values": [
+              "dip tube trap for washbasin, space-saving model, horizontal outlet"
+            ]
+          },
+          null
+        ]
+      },
+      {
+        "id": 429,
+        "type": "IfcPropertySingleValue",
+        "attributes": [
+          "ArticleNumber",
+          null,
+          {
+            "inline": "IfcText",
+            "values": [
+              "151.116.11.1"
+            ]
+          },
+          null
+        ]
+      },
+      {
+        "id": 430,
+        "type": "IfcPropertySingleValue",
+        "attributes": [
+          "ProjectIFCTypeName",
+          null,
+          {
+            "inline": "IfcText",
+            "values": [
+              "TRAP01"
+            ]
+          },
+          null
+        ]
+      },
+      {
+        "id": 431,
+        "type": "IfcPropertySingleValue",
+        "attributes": [
+          "SourceProductPage",
+          null,
+          {
+            "inline": "IfcText",
+            "values": [
+              "https://catalog.geberit.us/en-US/product/PRO_185224"
+            ]
+          },
+          null
+        ]
+      },
+      {
+        "id": 432,
+        "type": "IfcPropertySingleValue",
+        "attributes": [
+          "OfficialCadAcquired",
+          null,
+          {
+            "inline": "IfcText",
+            "values": [
+              "true"
+            ]
+          },
+          null
+        ]
+      },
+      {
+        "id": 433,
+        "type": "IfcPropertySingleValue",
+        "attributes": [
+          "OfficialCadUsed",
+          null,
+          {
+            "inline": "IfcText",
+            "values": [
+              "false"
+            ]
+          },
+          null
+        ]
+      },
+      {
+        "id": 434,
+        "type": "IfcPropertySingleValue",
+        "attributes": [
+          "OfficialCadRole",
+          null,
+          {
+            "inline": "IfcText",
+            "values": [
+              "exact article identity, fixed-width cross-check and 1:1 solid/dashed adjustable review overlay; excluded from installed representation geometry"
+            ]
+          },
+          null
+        ]
+      },
+      {
+        "id": 435,
+        "type": "IfcPropertySingleValue",
+        "attributes": [
+          "ProjectConfiguration",
+          null,
+          {
+            "inline": "IfcText",
+            "values": [
+              "shortened installed configuration represented from isolated IFC Body"
+            ]
+          },
+          null
+        ]
+      },
+      {
+        "id": 436,
+        "type": "IfcPropertySingleValue",
+        "attributes": [
+          "GeometryScaledOrStretched",
+          null,
+          {
+            "inline": "IfcText",
+            "values": [
+              "false"
+            ]
+          },
+          null
+        ]
+      },
+      {
+        "id": 437,
+        "type": "IfcPropertySingleValue",
+        "attributes": [
+          "ThirdPartyCadUsed",
+          null,
+          {
+            "inline": "IfcText",
+            "values": [
+              "false"
+            ]
+          },
+          null
+        ]
+      },
+      {
+        "id": 438,
+        "type": "IfcPropertySingleValue",
+        "attributes": [
+          "EvidenceScope",
+          null,
+          {
+            "inline": "IfcText",
+            "values": [
+              "exact Geberit 151.116.11.1 adjustable family reference; project instance is a shortened installation configuration; not a project shop drawing"
+            ]
+          },
+          null
+        ]
+      },
+      {
+        "id": 439,
+        "type": "IfcPropertySingleValue",
+        "attributes": [
+          "ReviewStatus",
+          null,
+          {
+            "inline": "IfcText",
+            "values": [
+              "APPROVED"
+            ]
+          },
+          null
+        ]
+      },
+      {
+        "id": 440,
+        "type": "IfcPropertySingleValue",
+        "attributes": [
+          "Reviewer",
+          null,
+          {
+            "inline": "IfcText",
+            "values": [
+              "project_owner"
+            ]
+          },
+          null
+        ]
+      },
+      {
+        "id": 441,
+        "type": "IfcPropertySingleValue",
+        "attributes": [
+          "ReviewDate",
+          null,
+          {
+            "inline": "IfcText",
+            "values": [
+              "2026-08-28"
+            ]
+          },
+          null
+        ]
+      },
+      {
+        "id": 442,
+        "type": "IfcPropertySingleValue",
+        "attributes": [
+          "ApprovalEvidence",
+          null,
+          {
+            "inline": "IfcText",
+            "values": [
+              "Current Codex task user approval on 2026-08-28: 这个样式方便后期调整吗？如果方便的话可以通过，让子代理先写入"
+            ]
+          },
+          null
+        ]
+      },
+      {
+        "id": 443,
+        "type": "IfcPropertySingleValue",
+        "attributes": [
+          "ApprovedCandidateManifestSha256",
+          null,
+          {
+            "inline": "IfcText",
+            "values": [
+              "e5fe6d830c10515e14c848e42c8a03aceaa08746efc0ba0be32d2d644d4edb82"
+            ]
+          },
+          null
+        ]
+      },
+      {
+        "id": 444,
+        "type": "IfcPropertySingleValue",
+        "attributes": [
+          "ApprovedRepresentationIdentifiers",
+          null,
+          {
+            "inline": "IfcText",
+            "values": [
+              "Trap01Plan;Trap01Front;Trap01Side"
+            ]
+          },
+          null
+        ]
+      },
+      {
+        "id": 445,
+        "type": "IfcPropertySingleValue",
+        "attributes": [
+          "RepresentationGeometrySource",
+          null,
+          {
+            "inline": "IfcText",
+            "values": [
+              "proxy_paths_mm derived from the configured isolated representative IFC Body"
+            ]
+          },
+          null
+        ]
+      },
+      {
+        "id": 446,
+        "type": "IfcPropertySingleValue",
+        "attributes": [
+          "OfficialCadGeometryIncluded",
+          null,
+          {
+            "inline": "IfcText",
+            "values": [
+              "false"
+            ]
+          },
+          null
+        ]
+      },
+      {
+        "id": 447,
+        "type": "IfcPropertySingleValue",
+        "attributes": [
+          "CandidateRepresentations",
+          null,
+          {
+            "inline": "IfcText",
+            "values": [
+              "output/review/highpoly-types/trap01/candidate-representations.json"
+            ]
+          },
+          null
+        ]
+      }
+    ]
+  },
+  "trap01_line_semantics": {
+    "blue_solid": "complete official native 2D paths; rigid joints repositioned and straight pipes shortened to configured envelope",
+    "blue_dashed": "official adjustable excess reference only; kept in audit, omitted from installed scene",
+    "grey": "retained project context"
+  },
+  "trap01_blue_dashed_reference_policy": "Source v4 IFC contains no dashed reference annotation. Reference excess paths and adjustment parameters stay in this external audit; approved installed scenes omit them."
+}

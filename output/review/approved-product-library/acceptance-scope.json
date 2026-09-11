@@ -1,0 +1,18 @@
+{
+  "schema_version": 1,
+  "date": "2026-09-08",
+  "count_policy": "实际逐产品验收记录，不固定为34",
+  "whole_product_accepted": ["bed01", "wd03", "trap01", "miamisoft-e09", "wd02", "sxb010", "gessi316-54294", "geberit-duofix-sigma-224-212"],
+  "single_product_accepted_scene_not_final": ["hima01", "geberit-154-446-ks-1", "bed02", "gessi316-54145", "street-h", "tab02", "falper-sorgente"],
+  "partial_or_scene_acceptance_pending": ["gessi316-54146", "505-up-v1-lp-s", "geberit-146-140", "marilyn-01"],
+  "not_accepted_or_skipped": ["cha02", "sis04", "miamisoft-e07", "miamisoft-f03", "marilyn-02", "cha01", "miamisoft-h01", "geberit-154-154-00", "bst03", "fau02", "miamisoft-i03", "bst02", "street", "gessi316-54093", "geberit-154-154-00-1-f", "geberit-115-770", "wd01", "gessi316-54038", "electric-flue-check-valve", "bst01"],
+  "excluded_other_task": ["Libelle"],
+  "evidence_policy": "较新单项批准记录覆盖旧 completion ledger；单品批准不伪装为场景终验",
+  "approval_directory": "../../../pipeline/decisions",
+  "notes": [
+    "STREET-H 仅指支撑子构件，不是 STREET 整体台盆。",
+    "Duofix 队列代表 GlobalId 与最终主卫实例不同：库使用最终批准主卫实例 3pvAlH5C14v8uVEJ1LmK8M。",
+    "Falper 现存 isolated IFC 已有三视图；旧 corrected 完整 IFC 缺失，且没有最终场景批准。",
+    "不读取、修改或应用任何 stash。"
+  ]
+}

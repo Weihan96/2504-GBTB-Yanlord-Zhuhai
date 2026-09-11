@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Approval-gated derived IFC writer for exact Gessi316 54146 G000 DWG linework."""
+"""Approval-gated derived IFC writer for the approved Gessi316 54146 review line."""
 
 from pathlib import Path
 
@@ -19,14 +19,15 @@ CATALOGUE = "https://gwebassets.gessi.com/strapi-uploads/assets/MAGAZINE_GESSI_3
 SOURCE_DWG_SHA256 = "c8ddb90f61565d5273a32574f777812bbb1d9ef33e2b98479f1e7c381e69950d"
 TECHNICAL_DRAWING_NUMBER = "GPF5414600000G000"
 PRODUCT_DIR = ROOT / "output/review/highpoly-types/gessi316-54146"
-EXPECTED_PATH_COUNTS = {"plan": 16, "front": 607, "side": 660}
+EXPECTED_PATH_COUNTS = {"plan": 16, "front": 104, "side": 116}
+ORIGINAL_PATH_COUNTS = {"plan": 16, "front": 607, "side": 660}
 
 shared.REPRESENTATIVE_GLOBAL_ID = "04DLh1Jk9Dcu9ibcaE0id8"
 shared.IFC_TYPE_NAME = "Gessi316 54146"
 shared.PROFILE_KEY = "gessi316-54146"
 shared.SCOPE = SCOPE
-shared.SOURCE_KIND = "native_dwg"
-shared.SOURCE_LABEL_ZH = "Gessi 官方精确型号 54146 G000 原生 DWG 图纸表达"
+shared.SOURCE_KIND = "native_dwg_review_simplification"
+shared.SOURCE_LABEL_ZH = "基于官方 Gessi 54146 G000 原生 DWG 轮廓的简化蓝线审核表达"
 shared.OFFICIAL_CAD_USED = True
 shared.OFFICIAL_CAD_GEOMETRY_INCLUDED = True
 shared.CLOSE_REPRESENTATION_PATHS = False
@@ -67,6 +68,8 @@ def candidate_paths(candidate: dict, access: dict) -> dict:
         or candidate.get("third_party_cad_used") is not False
         or candidate.get("formal_ifc_write_allowed") is not False
         or candidate.get("review_status") != "visual_review_pending"
+        or candidate.get("unaltered_official_cad_used_as_review_representation") is not False
+        or candidate.get("original_official_cad_evidence_preserved") is not True
     ):
         raise RuntimeError("pending Gessi316 54146 candidate source gate failed")
     product_cad = access.get("official_product_cad", {})
@@ -81,7 +84,7 @@ def candidate_paths(candidate: dict, access: dict) -> dict:
         or product_cad.get("native_dwg", {}).get("sha256") != SOURCE_DWG_SHA256
         or cross_check.get("maximum_ifc_projection_delta_mm") != 0.878759
         or cross_check.get("pass") is not True
-        or drawing_source.get("source_kind") != shared.SOURCE_KIND
+        or drawing_source.get("source_kind") != "native_dwg"
         or drawing_source.get("source_dwg_sha256") != SOURCE_DWG_SHA256
         or drawing_source.get("official_cad_used") is not True
         or drawing_source.get("third_party_cad_used") is not False
@@ -91,11 +94,21 @@ def candidate_paths(candidate: dict, access: dict) -> dict:
     paths = {}
     for view in shared.REQUIRED_VIEWS:
         item = candidate.get("views", {}).get(view, {})
-        if item.get("source_kind") != shared.SOURCE_KIND or item.get("source_dwg_sha256") != SOURCE_DWG_SHA256:
-            raise RuntimeError(f"Gessi316 54146 {view} must use exact G000 native DWG paths")
-        paths[view] = item.get("official_native_dwg_paths_mm", [])
+        audit = item.get("handle_line_texture_simplification", {})
+        if (
+            item.get("source_kind") != shared.SOURCE_KIND
+            or item.get("source_dwg_sha256") != SOURCE_DWG_SHA256
+            or item.get("unaltered_official_dwg") is not False
+            or item.get("original_official_native_dwg_path_count") != ORIGINAL_PATH_COUNTS[view]
+            or audit.get("envelope_delta_mm") != [0.0, 0.0]
+            or audit.get("centre_delta_mm") != [0.0, 0.0]
+            or audit.get("installation_axis_preserved") is not True
+            or audit.get("pass") is not True
+        ):
+            raise RuntimeError(f"Gessi316 54146 {view} approved review-simplification gate failed")
+        paths[view] = item.get("review_simplified_official_outline_paths_mm", [])
         if len(paths[view]) != EXPECTED_PATH_COUNTS[view]:
-            raise RuntimeError(f"Gessi316 54146 {view} native-DWG path-count gate failed")
+            raise RuntimeError(f"Gessi316 54146 {view} review path-count gate failed")
     return paths
 
 
@@ -117,7 +130,7 @@ def add_document_associations(model, product, product_type, access_path: Path):
             "GESSI316-54146-OFFICIAL-NATIVE-DWG-ZIP",
             DWG_ZIP,
             "Gessi exact 54146 G000 native 2D DWG ZIP",
-            "Contains GPF5414600000G000_3.dwg, the exact source of approved Plan and Elevation linework",
+            "Contains GPF5414600000G000_3.dwg, whose outline is the source of the approved simplified blue review linework",
         ),
         (
             "GESSI316-54146-OFFICIAL-TECHNICAL-PDF",
@@ -179,7 +192,9 @@ def add_source_pset(model, product, product_type, approval, manifest_hash, candi
         "SourceDwgSha256": SOURCE_DWG_SHA256,
         "OfficialProductCadStatus": "public_official_api_exact_54146_g000_native_dwg_acquired",
         "OfficialCadUsed": "true",
-        "OfficialVectorEvidenceUsedAsCadGeometry": "false",
+        "OfficialVectorEvidenceUsedAsCadGeometry": "true",
+        "UnalteredOfficialDwgUsedAsRepresentation": "false",
+        "OriginalOfficialDwgEvidencePreserved": "true",
         "ThirdPartyCadUsed": "false",
         "ExcludedVariant": "G001",
         "ExcludedAdjacentProduct": "54145 wall-mounted adjustable headshower",
@@ -190,7 +205,7 @@ def add_source_pset(model, product, product_type, approval, manifest_hash, candi
         "ApprovalEvidence": approval["approval_evidence"],
         "ApprovedCandidateManifestSha256": manifest_hash,
         "ApprovedRepresentationIdentifiers": "Gessi54146Plan;Gessi54146Front;Gessi54146Side",
-        "RepresentationGeometrySource": "official_native_dwg_paths_mm extracted from GPF5414600000G000_3.dwg",
+        "RepresentationGeometrySource": "review_simplified_official_outline_paths_mm based on GPF5414600000G000_3.dwg",
         "OfficialCadGeometryIncluded": "true",
         "CandidateRepresentations": relative(candidate_path),
         "CandidateRepresentationsSha256": sha256(candidate_path),
@@ -222,7 +237,7 @@ def add_source_pset(model, product, product_type, approval, manifest_hash, candi
         GlobalId=ifcopenshell.guid.new(),
         OwnerHistory=product.OwnerHistory,
         Name=shared.PSET_NAME,
-        Description="Mechanically verifiable exact Gessi316 54146 G000 native-DWG source and human approval",
+        Description="Mechanically verifiable Gessi316 54146 G000 official-outline review simplification and human approval",
         HasProperties=properties,
     )
     model.create_entity(

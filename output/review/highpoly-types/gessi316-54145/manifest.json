@@ -1,6 +1,6 @@
 {
   "schema_version": 2,
-  "generated_at": "2026-08-23T15:52:29.330129+00:00",
+  "generated_at": "2026-08-29T11:02:05.252021+00:00",
   "generator": "pipeline/scripts/gessi316_54145_review.py",
   "formal_ifc": "2504 GBTB Yanlord Zhuhai.ifc",
   "formal_ifc_sha256": "7a50b87e8f48a7c2bfbaa9f1dabdfca7155fa684b2325c66aa1ae15c8ab0a25c",
@@ -22,6 +22,17 @@
   "whole_model_render": false,
   "mesh_vertex_count": 5254,
   "mesh_face_count": 7802,
+  "original_mesh_vertex_count": 5254,
+  "original_mesh_face_count": 7802,
+  "review_only_geometry_simplification": {
+    "mode": "actual_ifc_body_unchanged_for_review",
+    "original_vertex_count": 5254,
+    "original_face_count": 7802,
+    "review_vertex_count": 5254,
+    "review_face_count": 7802,
+    "formal_ifc_modified": false,
+    "pass": true
+  },
   "bounds_mm": {
     "minimum": [
       -5.874874,
@@ -39,12 +50,17 @@
       119.07444
     ]
   },
-  "source_kind": "native_dwg",
-  "source_label_zh": "Gessi 官方精确型号 54145 G000 原生 DWG 图纸表达",
+  "source_kind": "native_dwg_review_simplification",
+  "source_label_zh": "基于官方54145 G000原生DWG轮廓的简化蓝线审核表达",
+  "original_source_kind": "native_dwg",
+  "original_source_label_zh": "Gessi 官方精确型号 54145 G000 原生 DWG 图纸表达",
   "drawing_source": {
-    "source_kind": "native_dwg",
-    "source_label_zh": "Gessi 官方精确型号 54145 G000 原生 DWG 图纸表达",
-    "source_label_en": "drawing representation from the exact Gessi 54145 G000 official native DWG",
+    "source_kind": "native_dwg_review_simplification",
+    "source_label_zh": "基于官方54145 G000原生DWG轮廓的简化蓝线审核表达",
+    "source_label_en": "simplified blue review representation based on the official Gessi 54145 G000 native-DWG outline",
+    "original_source_kind": "native_dwg",
+    "original_source_label_zh": "Gessi 官方精确型号 54145 G000 原生 DWG 图纸表达",
+    "original_source_label_en": "drawing representation from the exact Gessi 54145 G000 official native DWG",
     "official_cad_used": true,
     "third_party_cad_used": false,
     "official_source_access_record": "output/review/highpoly-types/gessi316-54145/official-source/source-access-record.json",
@@ -101,12 +117,14 @@
   "official_cad_acquired": true,
   "official_cad_exact_project_configuration_match": true,
   "official_cad_used": true,
+  "unaltered_official_cad_used_as_review_representation": false,
+  "original_official_cad_evidence_preserved": true,
   "third_party_cad_used": false,
   "g001_variant_cad_used": false,
   "blue_line_present": true,
   "white_mask_present": true,
   "official_native_dwg_linework": "output/review/highpoly-types/gessi316-54145/official-native-dwg-linework.json",
-  "official_native_dwg_linework_sha256": "e1edbc538740af10f0cf5348ba1547376f7d75f0ba770d7e454df13f93d91f32",
+  "official_native_dwg_linework_sha256": "0571c53c696a22de2629c7b67d822c570f20dc74babd2bdfd9adaa63631e9d98",
   "official_pdf_verification": "output/review/highpoly-types/gessi316-54145/official-source/official-pdf-verification.json",
   "official_pdf_verification_sha256": "c607a79ab40cfd7706113705a1e2545807734969d6fe4411614053fff2922cac",
   "official_source_revalidation": "output/review/highpoly-types/gessi316-54145/official-source/official-source-revalidation.json",
@@ -114,7 +132,7 @@
   "official_source_access_record": "output/review/highpoly-types/gessi316-54145/official-source/source-access-record.json",
   "official_source_access_record_sha256": "79c245cd589ffc8c45ef021c11d2e693a3fbc2467b994acb3d40fdaf9e01e422",
   "candidate_representations": "output/review/highpoly-types/gessi316-54145/candidate-representations.json",
-  "candidate_representations_sha256": "3ef0d847e2f348279a7fe68f3d3588b8815d0eedea22d188f5534e71c57f99f1",
+  "candidate_representations_sha256": "4ac60293a1cb17484b2651837cdd85d1e30ec6b47f43c6c61d55f81ca7e43737",
   "review_status": "visual_review_pending",
   "approved_for_drawing_ifc": false,
   "derived_ifc_write_allowed": false,
@@ -124,7 +142,7 @@
     {
       "view": "plan",
       "svg": "output/review/highpoly-types/gessi316-54145/plan.svg",
-      "svg_sha256": "ea3455e986eb47d1734396183fb8b0be13a61d62cc1bdffb81c00bb9439255db",
+      "svg_sha256": "10ea76093178a7ccd586a0ee2942d6533c5473c079e66ae56a069fc1421456fc",
       "projection_axes": [
         0,
         1
@@ -132,9 +150,43 @@
       "raw_edge_count": 12903,
       "displayed_raw_edge_count": 993,
       "silhouette_path_count": 1,
-      "drawing_line_source_kind": "native_dwg",
-      "drawing_line_source_label_zh": "Gessi 官方精确型号 54145 G000 原生 DWG 图纸表达",
-      "official_cad_path_count": 22,
+      "drawing_line_source_kind": "native_dwg_review_simplification",
+      "drawing_line_source_label_zh": "基于官方54145 G000原生DWG轮廓的简化蓝线审核表达",
+      "review_simplified_path_count": 22,
+      "original_official_cad_path_count": 22,
+      "original_official_evidence_svg": "output/review/highpoly-types/gessi316-54145/official-original-plan.svg",
+      "original_official_evidence_svg_sha256": "e7b353c97ae0333903df74808b9045d8bebb672a02556d0647205e504862b8c2",
+      "handle_line_texture_simplification": {
+        "mode": "official_54145_outline_based_fine_spray_detail_simplification",
+        "classification": "sub_8mm_paths_in_lower_10_25mm_spray_face_band",
+        "original_path_count": 22,
+        "original_node_count": 505,
+        "original_segment_count": 483,
+        "removed_fine_spray_nozzle_detail_path_count": 0,
+        "removed_fine_spray_nozzle_detail_node_count": 0,
+        "replacement_overall_spray_tip_datum_path_count": 0,
+        "review_path_count": 22,
+        "review_node_count": 505,
+        "review_segment_count": 483,
+        "review_texture_detail_path_count": 0,
+        "envelope_delta_mm": [
+          0.0,
+          0.0
+        ],
+        "centre_delta_mm": [
+          0.0,
+          0.0
+        ],
+        "installation_axis_preserved": true,
+        "wall_anchor_preserved": true,
+        "arm_reach_600mm_preserved": true,
+        "ball_joint_preserved": true,
+        "spray_face_diameter_endpoints_preserved": true,
+        "overall_spray_tip_datum_preserved": true,
+        "scale_applied": false,
+        "unaltered_official_dwg": false,
+        "pass": true
+      },
       "blue_line_present": true,
       "white_mask_present": true,
       "ifc_dwg_compatibility": {
@@ -154,12 +206,17 @@
         "configuration": "G000",
         "all_projection_axes_compared": true,
         "pass": true
+      },
+      "translation_alignment": {
+        "mode": "project_centre_and_minimum_depth_translation_only",
+        "scale_applied": false,
+        "reflection_applied": false
       }
     },
     {
       "view": "front",
       "svg": "output/review/highpoly-types/gessi316-54145/front.svg",
-      "svg_sha256": "181cc2ad1592b5bf29155b66c314dbcb80da2f16d3ad3d9b47593a4153a1e34d",
+      "svg_sha256": "c0754040ff24b5dfd6f7310f6d6f293993df79e3d81a6cf6195f8935c4cc8caf",
       "projection_axes": [
         0,
         2
@@ -167,9 +224,43 @@
       "raw_edge_count": 12903,
       "displayed_raw_edge_count": 993,
       "silhouette_path_count": 3,
-      "drawing_line_source_kind": "native_dwg",
-      "drawing_line_source_label_zh": "Gessi 官方精确型号 54145 G000 原生 DWG 图纸表达",
-      "official_cad_path_count": 615,
+      "drawing_line_source_kind": "native_dwg_review_simplification",
+      "drawing_line_source_label_zh": "基于官方54145 G000原生DWG轮廓的简化蓝线审核表达",
+      "review_simplified_path_count": 112,
+      "original_official_cad_path_count": 615,
+      "original_official_evidence_svg": "output/review/highpoly-types/gessi316-54145/official-original-front.svg",
+      "original_official_evidence_svg_sha256": "8bbecbd97118c116f548a35f74c86112883ad0ff9e0554f4106e23814ea76a4b",
+      "handle_line_texture_simplification": {
+        "mode": "official_54145_outline_based_fine_spray_detail_simplification",
+        "classification": "sub_8mm_paths_in_lower_10_25mm_spray_face_band",
+        "original_path_count": 615,
+        "original_node_count": 6334,
+        "original_segment_count": 5719,
+        "removed_fine_spray_nozzle_detail_path_count": 504,
+        "removed_fine_spray_nozzle_detail_node_count": 4164,
+        "replacement_overall_spray_tip_datum_path_count": 1,
+        "review_path_count": 112,
+        "review_node_count": 2172,
+        "review_segment_count": 2060,
+        "review_texture_detail_path_count": 0,
+        "envelope_delta_mm": [
+          0.0,
+          0.0
+        ],
+        "centre_delta_mm": [
+          0.0,
+          0.0
+        ],
+        "installation_axis_preserved": true,
+        "wall_anchor_preserved": true,
+        "arm_reach_600mm_preserved": true,
+        "ball_joint_preserved": true,
+        "spray_face_diameter_endpoints_preserved": true,
+        "overall_spray_tip_datum_preserved": true,
+        "scale_applied": false,
+        "unaltered_official_dwg": false,
+        "pass": true
+      },
       "blue_line_present": true,
       "white_mask_present": true,
       "ifc_dwg_compatibility": {
@@ -189,12 +280,17 @@
         "configuration": "G000",
         "all_projection_axes_compared": true,
         "pass": true
+      },
+      "translation_alignment": {
+        "mode": "project_centre_and_top_elevation_translation_only",
+        "scale_applied": false,
+        "reflection_applied": false
       }
     },
     {
       "view": "side",
       "svg": "output/review/highpoly-types/gessi316-54145/side.svg",
-      "svg_sha256": "1ff21b396e60df1bb02bde1c886d26d9dd7ab329130274d9ae268b7ae2aa42da",
+      "svg_sha256": "2a20ed977917999d5b18df70339771b5dc0775c69db83281d186a740d276762a",
       "projection_axes": [
         1,
         2
@@ -202,9 +298,43 @@
       "raw_edge_count": 12903,
       "displayed_raw_edge_count": 993,
       "silhouette_path_count": 5,
-      "drawing_line_source_kind": "native_dwg",
-      "drawing_line_source_label_zh": "Gessi 官方精确型号 54145 G000 原生 DWG 图纸表达",
-      "official_cad_path_count": 653,
+      "drawing_line_source_kind": "native_dwg_review_simplification",
+      "drawing_line_source_label_zh": "基于官方54145 G000原生DWG轮廓的简化蓝线审核表达",
+      "review_simplified_path_count": 109,
+      "original_official_cad_path_count": 653,
+      "original_official_evidence_svg": "output/review/highpoly-types/gessi316-54145/official-original-side.svg",
+      "original_official_evidence_svg_sha256": "c3d897d5a1b17a183df94c4531e85240810e0d03e011c05a9b1962a63a4511ec",
+      "handle_line_texture_simplification": {
+        "mode": "official_54145_outline_based_fine_spray_detail_simplification",
+        "classification": "sub_8mm_paths_in_lower_10_25mm_spray_face_band",
+        "original_path_count": 653,
+        "original_node_count": 7274,
+        "original_segment_count": 6621,
+        "removed_fine_spray_nozzle_detail_path_count": 545,
+        "removed_fine_spray_nozzle_detail_node_count": 4602,
+        "replacement_overall_spray_tip_datum_path_count": 1,
+        "review_path_count": 109,
+        "review_node_count": 2674,
+        "review_segment_count": 2565,
+        "review_texture_detail_path_count": 0,
+        "envelope_delta_mm": [
+          0.0,
+          0.0
+        ],
+        "centre_delta_mm": [
+          0.0,
+          0.0
+        ],
+        "installation_axis_preserved": true,
+        "wall_anchor_preserved": true,
+        "arm_reach_600mm_preserved": true,
+        "ball_joint_preserved": true,
+        "spray_face_diameter_endpoints_preserved": true,
+        "overall_spray_tip_datum_preserved": true,
+        "scale_applied": false,
+        "unaltered_official_dwg": false,
+        "pass": true
+      },
       "blue_line_present": true,
       "white_mask_present": true,
       "ifc_dwg_compatibility": {
@@ -224,13 +354,21 @@
         "configuration": "G000",
         "all_projection_axes_compared": true,
         "pass": true
+      },
+      "translation_alignment": {
+        "mode": "source_axes_swap_plus_vertical_reflection_then_project_translation",
+        "scale_applied": false,
+        "horizontal_reflection_applied": false,
+        "vertical_reflection_applied": true,
+        "wall_arm_above_downward_spray_face": true,
+        "camera_cross_check": "matches actual IFC Body side camera and Front vertical order"
       }
     }
   ],
   "pass": true,
   "project_context": {
     "manifest": "output/review/highpoly-types/gessi316-54145/project-context-manifest.json",
-    "manifest_sha256": "0d57e5145a188f1b28eed93fc625a4870349a4abe47181964cfd9965915a3e14",
+    "manifest_sha256": "784bde604c1f7b0fcd8abf55360a496c81241f51c629a55a61dfca439dd05700",
     "walls_and_surrounding_project_elements_retained": true,
     "overlay_top_layer_with_white_mask": true,
     "pass": true
@@ -242,5 +380,7 @@
     "saved_active_representation": "Body",
     "saved_camera_count": 4,
     "pass": true
-  }
+  },
+  "line_simplification_audit": "output/review/highpoly-types/gessi316-54145/line-simplification-audit.json",
+  "line_simplification_audit_sha256": "f12b583bfca2eeb69d385183f8f7cfe9557ccc459c3f08912b53d478422fb775"
 }

@@ -1,0 +1,447 @@
+{
+  "schema_version": 1,
+  "generated_at": "2026-08-27T16:33:08.043571+00:00",
+  "task": "approved TRAP01 componentised derived IFC plus Bonsai Create Drawing Plan/Front/Side in actual project context",
+  "courseEvidence": {
+    "source_path": "/Users/jiaxinchen/.codex/plugins/cache/personal/bonsai-course-operator/0.1.1/evals/course-index.json",
+    "lesson": "085000 Introduction to Drawings",
+    "timestamps": [
+      "01:59 Create Drawing",
+      "02:06 Drawing created",
+      "02:13 SVG inspection"
+    ],
+    "course_fact": "Create Drawing generates or refreshes SVG after Drawing camera, scale, depth and filters are configured.",
+    "current_inference": "Bonsai 0.8.4 semantic Drawing state and bpy.ops.bim.create_drawing were used in Blender 4.5.3 LTS."
+  },
+  "plan": [
+    "inspect approved derived IFC",
+    "create three scoped Drawings",
+    "add current-installed black LINEWORK",
+    "run native Create Drawing",
+    "persist",
+    "reload",
+    "inspect SVG and duplicate state"
+  ],
+  "preState": {
+    "derived_ifc": "/Users/jiaxinchen/.codex/worktrees/3a80/2504 GBTB Yanlord Zhuhai/output/review/highpoly-types/trap01/Geberit-151.116.11.1-TRAP01-derived-drawing.ifc",
+    "derived_ifc_sha256": "305adce1f1c8f1f91c105ed612e8123d60df5e6f1b0c244ca47345fc443f5649",
+    "formal_ifc_sha256": "7a50b87e8f48a7c2bfbaa9f1dabdfca7155fa684b2325c66aa1ae15c8ab0a25c",
+    "component_count": 3,
+    "drawing_count": 0
+  },
+  "execution": {
+    "provider": "public bonsai-mcp b0e67b1",
+    "bridge": "127.0.0.1:9878",
+    "capability": "execute_blender_code",
+    "generator": "bpy.ops.bim.create_drawing",
+    "linework_mode": "OPENCASCADE"
+  },
+  "persistence": {
+    "method": "model.write to temporary then atomic replace; bpy.ops.bim.load_project reload; bpy.ops.wm.save_as_mainfile",
+    "reload_result": [
+      "FINISHED"
+    ]
+  },
+  "postState": {
+    "derived_ifc": "/Users/jiaxinchen/.codex/worktrees/3a80/2504 GBTB Yanlord Zhuhai/output/review/highpoly-types/trap01/Geberit-151.116.11.1-TRAP01-derived-drawing.ifc",
+    "derived_ifc_sha256": "755cfc5cbb55a60472fc7e874d6702d128ff89b8930cf31ea3bc3abeeb9205d3",
+    "formal_ifc_sha256": "7a50b87e8f48a7c2bfbaa9f1dabdfca7155fa684b2325c66aa1ae15c8ab0a25c",
+    "component_count": 3,
+    "drawing_count": 3,
+    "current_linework_annotation_count": 3
+  },
+  "outputs": {
+    "views": [
+      {
+        "view": "plan",
+        "drawing": {
+          "global_id": "18qXOM_hj0SQoBWznncnJK",
+          "name": "TRAP01-PROJECT-CONTEXT-PLAN"
+        },
+        "current_annotation_global_id": "2Ndfxg1gn4tRY_xJPpnW39",
+        "path_count": 16,
+        "persisted_path_count": 16,
+        "edge_count": 133,
+        "camera": {
+          "type": "ORTHO",
+          "width_m": 3.6,
+          "height_m": 3.6,
+          "clip_start_m": 0.0020000000949949026,
+          "clip_end_m": 1.5,
+          "matrix_world": [
+            [
+              1.0,
+              0.0,
+              0.0,
+              -6.321560382843018
+            ],
+            [
+              0.0,
+              1.0,
+              0.0,
+              -0.5499976873397827
+            ],
+            [
+              0.0,
+              0.0,
+              1.0,
+              1.2000000476837158
+            ],
+            [
+              0.0,
+              0.0,
+              0.0,
+              1.0
+            ]
+          ],
+          "resolution": [
+            1000,
+            1000
+          ]
+        },
+        "create_drawing": {
+          "operator": "bpy.ops.bim.create_drawing",
+          "arguments": {
+            "print_all": false,
+            "open_viewer": false,
+            "sync": false
+          },
+          "result": [
+            "FINISHED"
+          ],
+          "linework_mode": "OPENCASCADE",
+          "target_view": "PLAN_VIEW"
+        },
+        "svg": {
+          "path": "/Users/jiaxinchen/.codex/worktrees/3a80/2504 GBTB Yanlord Zhuhai/output/review/highpoly-types/trap01/bonsai-drawings/project-context/TRAP01-PROJECT-CONTEXT-PLAN.svg",
+          "bytes": 1400199,
+          "sha256": "e3233e3cfb51c88bb9be1aef3557fa9b2ebfb2005e2a7c3290dbff3664ce0700",
+          "bonsai_generated_sha256_before_review_style": "95b97b1d6f9ced03b41dfbb97e0c37031ff996a8a808183a07d5e14422d2004a",
+          "current_black_geometry_count": 133,
+          "grey_context_geometry_count": 7362,
+          "blue_dashed_reference_displayed": false,
+          "post_style_only": true,
+          "root_tag": "svg",
+          "data_scale": "1:25",
+          "width": "143.99999618530273mm",
+          "height": "143.99999618530273mm",
+          "view_box": "0 0 143.99999618530273 143.99999618530273",
+          "geometry_element_count": 7495,
+          "projection_group_count": 44,
+          "target_ifc_body_group_count": 0,
+          "current_annotation_group_count": 1,
+          "adjustable_component_reference_group_count": 0,
+          "no_target_or_annotation_duplicate": true,
+          "external_reference_count": 0
+        },
+        "linework_cache": {
+          "path": "/Users/jiaxinchen/.codex/worktrees/3a80/2504 GBTB Yanlord Zhuhai/output/review/highpoly-types/trap01/bonsai-drawings/project-context/cache/TRAP01-PROJECT-CONTEXT-PLAN-linework.svg",
+          "bytes": 746796,
+          "sha256": "e05e2bdef141ac2bebaa7047c2b7e77cc6718f418754d28d9ba9fc717d480382"
+        }
+      },
+      {
+        "view": "front",
+        "drawing": {
+          "global_id": "3hhrnpjAD4YwWEu1cEZGCo",
+          "name": "TRAP01-PROJECT-CONTEXT-FRONT"
+        },
+        "current_annotation_global_id": "2_XCFWgz180OVuUpj6cl3M",
+        "path_count": 1,
+        "persisted_path_count": 1,
+        "edge_count": 79,
+        "camera": {
+          "type": "ORTHO",
+          "width_m": 3.6,
+          "height_m": 3.6,
+          "clip_start_m": 0.0020000000949949026,
+          "clip_end_m": 3.8,
+          "matrix_world": [
+            [
+              -4.371138828673793e-08,
+              4.371138828673793e-08,
+              1.0,
+              -4.471560478210449
+            ],
+            [
+              1.0,
+              1.910685676922942e-15,
+              4.371138828673793e-08,
+              -0.5499976873397827
+            ],
+            [
+              0.0,
+              1.0,
+              -4.371138828673793e-08,
+              1.2000000476837158
+            ],
+            [
+              0.0,
+              0.0,
+              0.0,
+              1.0
+            ]
+          ],
+          "resolution": [
+            1000,
+            1000
+          ]
+        },
+        "create_drawing": {
+          "operator": "bpy.ops.bim.create_drawing",
+          "arguments": {
+            "print_all": false,
+            "open_viewer": false,
+            "sync": false
+          },
+          "result": [
+            "FINISHED"
+          ],
+          "linework_mode": "OPENCASCADE",
+          "target_view": "ELEVATION_VIEW"
+        },
+        "svg": {
+          "path": "/Users/jiaxinchen/.codex/worktrees/3a80/2504 GBTB Yanlord Zhuhai/output/review/highpoly-types/trap01/bonsai-drawings/project-context/TRAP01-PROJECT-CONTEXT-FRONT.svg",
+          "bytes": 466507,
+          "sha256": "37860377cd88fdd2c93684f6febb0a3895a756811841b6ba91e3b86d37a835b3",
+          "bonsai_generated_sha256_before_review_style": "ce194ce17e2c75cba1a4f0c8f294b301aca8a3aa89aa07099b0d97b69af7a632",
+          "current_black_geometry_count": 79,
+          "grey_context_geometry_count": 2092,
+          "blue_dashed_reference_displayed": false,
+          "post_style_only": true,
+          "root_tag": "svg",
+          "data_scale": "1:25",
+          "width": "143.99999618530273mm",
+          "height": "143.99999618530273mm",
+          "view_box": "0 0 143.99999618530273 143.99999618530273",
+          "geometry_element_count": 2171,
+          "projection_group_count": 34,
+          "target_ifc_body_group_count": 0,
+          "current_annotation_group_count": 1,
+          "adjustable_component_reference_group_count": 0,
+          "no_target_or_annotation_duplicate": true,
+          "external_reference_count": 0
+        },
+        "linework_cache": {
+          "path": "/Users/jiaxinchen/.codex/worktrees/3a80/2504 GBTB Yanlord Zhuhai/output/review/highpoly-types/trap01/bonsai-drawings/project-context/cache/TRAP01-PROJECT-CONTEXT-FRONT-linework.svg",
+          "bytes": 207970,
+          "sha256": "0d525c1610a0a5138311c54ede54c004cd17915b6a952b37932e2822070b58a4"
+        }
+      },
+      {
+        "view": "side",
+        "drawing": {
+          "global_id": "0coRwv5cfEpw8F8OuRUF3u",
+          "name": "TRAP01-PROJECT-CONTEXT-SIDE"
+        },
+        "current_annotation_global_id": "30iL1xKwPFqv7IdT$GmL0V",
+        "path_count": 8,
+        "persisted_path_count": 8,
+        "edge_count": 98,
+        "camera": {
+          "type": "ORTHO",
+          "width_m": 3.6,
+          "height_m": 3.6,
+          "clip_start_m": 0.0020000000949949026,
+          "clip_end_m": 3.8,
+          "matrix_world": [
+            [
+              1.0,
+              0.0,
+              0.0,
+              -6.321560382843018
+            ],
+            [
+              0.0,
+              7.549790126404332e-08,
+              -1.0,
+              -2.3999977111816406
+            ],
+            [
+              0.0,
+              1.0,
+              7.549790126404332e-08,
+              1.2000000476837158
+            ],
+            [
+              0.0,
+              0.0,
+              0.0,
+              1.0
+            ]
+          ],
+          "resolution": [
+            1000,
+            1000
+          ]
+        },
+        "create_drawing": {
+          "operator": "bpy.ops.bim.create_drawing",
+          "arguments": {
+            "print_all": false,
+            "open_viewer": false,
+            "sync": false
+          },
+          "result": [
+            "FINISHED"
+          ],
+          "linework_mode": "OPENCASCADE",
+          "target_view": "ELEVATION_VIEW"
+        },
+        "svg": {
+          "path": "/Users/jiaxinchen/.codex/worktrees/3a80/2504 GBTB Yanlord Zhuhai/output/review/highpoly-types/trap01/bonsai-drawings/project-context/TRAP01-PROJECT-CONTEXT-SIDE.svg",
+          "bytes": 669959,
+          "sha256": "1e84f22f2788f7f7167676d0eb40c0e036a67ef8cc17e26cbccd9f29d2595bef",
+          "bonsai_generated_sha256_before_review_style": "423d6e538f7ade821ee68f98f326c4ff27256b7807765b20a67ac342659656bd",
+          "current_black_geometry_count": 98,
+          "grey_context_geometry_count": 3242,
+          "blue_dashed_reference_displayed": false,
+          "post_style_only": true,
+          "root_tag": "svg",
+          "data_scale": "1:25",
+          "width": "143.99999618530273mm",
+          "height": "143.99999618530273mm",
+          "view_box": "0 0 143.99999618530273 143.99999618530273",
+          "geometry_element_count": 3340,
+          "projection_group_count": 36,
+          "target_ifc_body_group_count": 0,
+          "current_annotation_group_count": 1,
+          "adjustable_component_reference_group_count": 0,
+          "no_target_or_annotation_duplicate": true,
+          "external_reference_count": 0
+        },
+        "linework_cache": {
+          "path": "/Users/jiaxinchen/.codex/worktrees/3a80/2504 GBTB Yanlord Zhuhai/output/review/highpoly-types/trap01/bonsai-drawings/project-context/cache/TRAP01-PROJECT-CONTEXT-SIDE-linework.svg",
+          "bytes": 323133,
+          "sha256": "5961b2cfc6af217c002ff5233b677da201a0bd0e80c39272744c2c6579bc4cb2"
+        }
+      }
+    ],
+    "session_blend": {
+      "path": "/Users/jiaxinchen/.codex/worktrees/3a80/2504 GBTB Yanlord Zhuhai/output/review/highpoly-types/trap01/Geberit-151.116.11.1-TRAP01-project-drawings.blend",
+      "bytes": 524853571,
+      "sha256": "a6d3e6da6990ed98e578443a911e6ee360ca3b4d601b44935a6cdad7a034740b"
+    }
+  },
+  "visual": {
+    "preview_manifest": "/Users/jiaxinchen/.codex/worktrees/3a80/2504 GBTB Yanlord Zhuhai/output/review/highpoly-types/trap01/TRAP01-project-drawing-manifest.json",
+    "blue_dashed_reference_displayed": false
+  },
+  "target": {
+    "global_id": "2Ak2ma0lvBEA49UpplzUqi",
+    "world_bbox_m": [
+      [
+        -6.447811603546143,
+        -0.5882681608200073,
+        0.5155000686645508
+      ],
+      [
+        -6.195309162139893,
+        -0.5117271542549133,
+        0.7074400186538696
+      ]
+    ],
+    "world_centre_m": [
+      -6.321560382843018,
+      -0.5499976575374603,
+      0.6114700436592102
+    ]
+  },
+  "context": {
+    "project_context_retained": true,
+    "include_count": 56,
+    "include_ifc_class_counts": {
+      "IfcBeam": 2,
+      "IfcCovering": 13,
+      "IfcDoor": 2,
+      "IfcFlowSegment": 1,
+      "IfcFurniture": 2,
+      "IfcLightFixture": 4,
+      "IfcSanitaryTerminal": 14,
+      "IfcSlab": 5,
+      "IfcWall": 13
+    },
+    "actual_target_body_suppressed_from_drawing_include": true,
+    "current_installed_linework_inserted_once": true
+  },
+  "adjustable_components": {
+    "fixed_body": {
+      "global_id": "2oBEAgLj90IvrLncW33Hxe",
+      "pset": {
+        "ComponentRole": "fixed_body",
+        "Adjustable": "false",
+        "AdjustmentAxis": "FIXED_BODY_SPINE",
+        "InterfacePointMm": "[53.471272, 0.0, -80.499954]",
+        "InstalledEndpointMm": "[53.471272, 0.0, 41.0]",
+        "InstalledLengthMm": "121.499954",
+        "MinimumLengthMm": "121.499954",
+        "MaximumLengthMm": "121.499954",
+        "OfficialDefaultOverflowMm": "0.0",
+        "CurrentInstalledLineSemantics": "black current project configuration",
+        "BlueSolidSemantics": "official native DWG linework retained within the current configured range",
+        "BlueDashedSemantics": "official adjustable-family excess beyond the current configured endpoint; reference only, not installed project geometry",
+        "DisplayedInSceneByDefault": "true",
+        "ReferenceExtensionDisplayedInSceneByDefault": "false",
+        "ParameterUpdateStrategy": "update InstalledLengthMm and InstalledEndpointMm, then regenerate dependent Plan/Front/Side drawing representations",
+        "id": 2446348
+      }
+    },
+    "horizontal_adjustable": {
+      "global_id": "1i90gVNCL5jBENkmiRt$gm",
+      "pset": {
+        "ComponentRole": "horizontal_adjustable",
+        "Adjustable": "true",
+        "AdjustmentAxis": "LOCAL_X",
+        "InterfacePointMm": "[109.288309, 0.0, 94.0]",
+        "InstalledEndpointMm": "[222.690975, 0.0, 94.0]",
+        "InstalledLengthMm": "113.402666",
+        "MinimumLengthMm": "0.0",
+        "MaximumLengthMm": "252.0",
+        "OfficialDefaultOverflowMm": "159.52933",
+        "CurrentInstalledLineSemantics": "black current project configuration",
+        "BlueSolidSemantics": "official native DWG linework retained within the current configured range",
+        "BlueDashedSemantics": "official adjustable-family excess beyond the current configured endpoint; reference only, not installed project geometry",
+        "DisplayedInSceneByDefault": "true",
+        "ReferenceExtensionDisplayedInSceneByDefault": "false",
+        "ParameterUpdateStrategy": "update InstalledLengthMm and InstalledEndpointMm, then regenerate dependent Plan/Front/Side drawing representations",
+        "id": 2446375
+      }
+    },
+    "vertical_adjustable": {
+      "global_id": "1O5mM7VGLEFPeKu3Z9ZLEY",
+      "pset": {
+        "ComponentRole": "vertical_adjustable",
+        "Adjustable": "true",
+        "AdjustmentAxis": "LOCAL_Z",
+        "InterfacePointMm": "[53.471272, 0.0, -80.499954]",
+        "InstalledEndpointMm": "[53.471272, 0.0, 111.440025]",
+        "InstalledLengthMm": "191.939979",
+        "MinimumLengthMm": "85.0",
+        "MaximumLengthMm": "334.0",
+        "OfficialDefaultOverflowMm": "208.00002",
+        "CurrentInstalledLineSemantics": "black current project configuration",
+        "BlueSolidSemantics": "official native DWG linework retained within the current configured range",
+        "BlueDashedSemantics": "official adjustable-family excess beyond the current configured endpoint; reference only, not installed project geometry",
+        "DisplayedInSceneByDefault": "true",
+        "ReferenceExtensionDisplayedInSceneByDefault": "false",
+        "ParameterUpdateStrategy": "update InstalledLengthMm and InstalledEndpointMm, then regenerate dependent Plan/Front/Side drawing representations",
+        "id": 2446402
+      }
+    }
+  },
+  "versions": {
+    "blender": "4.5.3 LTS",
+    "bonsai": "0.8.4",
+    "ifcopenshell": "0.8.4"
+  },
+  "tests": {
+    "all_create_drawing_finished": true,
+    "all_target_body_projection_counts_zero": true,
+    "all_current_annotation_counts_one": true,
+    "all_component_reference_counts_zero": true,
+    "blue_dashed_reference_displayed": false
+  },
+  "formal_ifc_bytes_unchanged": true,
+  "verdict": "pass",
+  "pass": true
+}

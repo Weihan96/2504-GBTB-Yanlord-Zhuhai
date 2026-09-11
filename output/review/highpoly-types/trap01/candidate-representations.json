@@ -15,7 +15,8 @@
   "official_cad_family_reference_archived": true,
   "third_party_cad_used": false,
   "formal_ifc_write_allowed": false,
-  "blue_line_present": false,
+  "blue_line_present": true,
+  "blue_line_role": "1:1 official adjustable-family review overlay only; dashed excess is not project actual geometry",
   "review_status": "visual_review_pending",
   "scope": "exact Geberit 151.116.11.1 adjustable family reference; project instance is a shortened installation configuration; not a project shop drawing",
   "views": {
@@ -10162,6 +10163,52 @@
           ]
         ]
       ],
+      "adjustable_overlay": {
+        "alignment_method": "translation_only_from_fixed_body_and_connection_axis_datums",
+        "anchor": "left outlet datum plus fixed-body centre axis",
+        "translation_mm": [
+          -29.811604,
+          -38.263041
+        ],
+        "scale": 1.0,
+        "reflection": false,
+        "configured_bounds_mm": {
+          "minimum": [
+            -29.811604,
+            -38.268143
+          ],
+          "maximum": [
+            222.690975,
+            38.272831
+          ]
+        },
+        "aligned_official_bounds_mm": {
+          "minimum": [
+            -29.811604,
+            -38.263041
+          ],
+          "maximum": [
+            382.220305,
+            38.267729
+          ]
+        },
+        "independent_configured_limits": {
+          "horizontal_x_max_mm": 222.690975,
+          "vertical_z_max_mm": null
+        },
+        "clipped_extension_mm": {
+          "horizontal": 159.52933,
+          "vertical": 0.0
+        },
+        "source_path_count": 92,
+        "retained_solid_fragment_count": 86,
+        "clipped_dashed_fragment_count": 8,
+        "retained_solid_length_mm": 1173.135615,
+        "clipped_dashed_length_mm": 320.544294,
+        "horizontal_and_vertical_classified_independently": true,
+        "geometry_scaled_or_stretched": false,
+        "pass": true
+      },
       "official_family_native_dwg_code": "G",
       "official_family_native_dwg_sha256": "af55992e60aa1d84c9834da995f6ef8269593f43f46a6311cdf3e2e59530dd3f",
       "official_family_paths_used_as_project_representation": false,
@@ -20154,6 +20201,52 @@
           ]
         ]
       ],
+      "adjustable_overlay": {
+        "alignment_method": "translation_only_from_fixed_body_and_connection_axis_datums",
+        "anchor": "lower outlet datum in X/Z",
+        "translation_mm": [
+          -29.811604,
+          -80.499954
+        ],
+        "scale": 1.0,
+        "reflection": false,
+        "configured_bounds_mm": {
+          "minimum": [
+            -29.811604,
+            -80.499954
+          ],
+          "maximum": [
+            222.690975,
+            111.440025
+          ]
+        },
+        "aligned_official_bounds_mm": {
+          "minimum": [
+            -29.811604,
+            -80.499954
+          ],
+          "maximum": [
+            405.688396,
+            319.440046
+          ]
+        },
+        "independent_configured_limits": {
+          "horizontal_x_max_mm": 222.690975,
+          "vertical_z_max_mm": 111.440025
+        },
+        "clipped_extension_mm": {
+          "horizontal": 182.997421,
+          "vertical": 208.00002
+        },
+        "source_path_count": 77,
+        "retained_solid_fragment_count": 53,
+        "clipped_dashed_fragment_count": 26,
+        "retained_solid_length_mm": 852.612842,
+        "clipped_dashed_length_mm": 1222.44002,
+        "horizontal_and_vertical_classified_independently": true,
+        "geometry_scaled_or_stretched": false,
+        "pass": true
+      },
       "official_family_native_dwg_code": "L",
       "official_family_native_dwg_sha256": "761eec37c809fc4319e9beaba6eaf472e19eefcbd16adf2815a4644d0a36fdc8",
       "official_family_paths_used_as_project_representation": false,
@@ -31640,6 +31733,52 @@
           ]
         ]
       ],
+      "adjustable_overlay": {
+        "alignment_method": "translation_only_from_fixed_body_and_connection_axis_datums",
+        "anchor": "fixed-body centre axis plus lower outlet datum",
+        "translation_mm": [
+          -38.268509,
+          -80.499954
+        ],
+        "scale": 1.0,
+        "reflection": false,
+        "configured_bounds_mm": {
+          "minimum": [
+            -38.268143,
+            -80.499954
+          ],
+          "maximum": [
+            38.272831,
+            111.440025
+          ]
+        },
+        "aligned_official_bounds_mm": {
+          "minimum": [
+            -38.268509,
+            -80.499954
+          ],
+          "maximum": [
+            38.273198,
+            319.440046
+          ]
+        },
+        "independent_configured_limits": {
+          "horizontal_x_max_mm": null,
+          "vertical_z_max_mm": 111.440025
+        },
+        "clipped_extension_mm": {
+          "horizontal": 0.0,
+          "vertical": 208.00002
+        },
+        "source_path_count": 117,
+        "retained_solid_fragment_count": 94,
+        "clipped_dashed_fragment_count": 25,
+        "retained_solid_length_mm": 967.685417,
+        "clipped_dashed_length_mm": 866.187435,
+        "horizontal_and_vertical_classified_independently": true,
+        "geometry_scaled_or_stretched": false,
+        "pass": true
+      },
       "official_family_native_dwg_code": "A",
       "official_family_native_dwg_sha256": "01fa50da7cf39c6a6ab2a89339d1e4523270cb0943e8dce148f3d471f1a4fff2",
       "official_family_paths_used_as_project_representation": false,

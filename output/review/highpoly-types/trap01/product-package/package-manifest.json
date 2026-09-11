@@ -1,0 +1,153 @@
+{
+  "schema_version": 1,
+  "profile_key": "trap01",
+  "status": "complete_verified",
+  "target_global_id": "2Ak2ma0lvBEA49UpplzUqi",
+  "persistent_ifc": {
+    "path": "/Users/jiaxinchen/.codex/worktrees/3a80/2504 GBTB Yanlord Zhuhai/output/review/highpoly-types/trap01/product-package/TRAP01-product.ifc",
+    "bytes": 1466932,
+    "sha256": "83e3b5252665ccfcf20d6e56b205b199767ba0bdf243a36c71258b93f00322bc"
+  },
+  "scene_recipe": {
+    "path": "/Users/jiaxinchen/.codex/worktrees/3a80/2504 GBTB Yanlord Zhuhai/output/review/highpoly-types/trap01/product-package/scene-recipe.json",
+    "bytes": 184187,
+    "sha256": "e5bb0242ac5b4d54e2577ccbc9ee5bd89176d3d52a8e0ba9777afd1ed8eecbfe"
+  },
+  "pure_boundary": "one product Body + approved official v4 Plan/Front/Side + necessary coordinate/unit/property/style dependencies; zero annotations, drawing cameras, scene filters or other product geometry",
+  "source_kind": "native_dwg_configured_installation",
+  "source_label_zh": "基于官方原生DWG固定接头刚性移位及直管长度调整的二维安装细节表达",
+  "approval": {
+    "path": "/Users/jiaxinchen/.codex/worktrees/3a80/2504 GBTB Yanlord Zhuhai/pipeline/decisions/trap01-drawing-approval.json",
+    "bytes": 2594,
+    "sha256": "56f56b917a741a2a0dac35b760dfdca5f56fc8c0b9736cd4a7eb2c4282191b69"
+  },
+  "approval_scope": "official-detail-v4 full installed detail, not old proxy outlines",
+  "source_audit": {
+    "path": "/Users/jiaxinchen/.codex/worktrees/3a80/2504 GBTB Yanlord Zhuhai/output/review/highpoly-types/trap01/product-package/source-audit.json",
+    "bytes": 872310,
+    "sha256": "c4ddedaff9b4de25981453873474ee127886626ff09b65db511394e515f456a4"
+  },
+  "line_semantics": {
+    "blue_solid": "complete official native 2D paths; rigid joints repositioned and straight pipes shortened to configured envelope",
+    "blue_dashed": "official adjustable excess reference only; kept in audit, omitted from installed scene",
+    "grey": "retained project context"
+  },
+  "dashed_reference_policy": "Source v4 IFC contains no dashed reference annotation. Reference excess paths and adjustment parameters stay in this external audit; approved installed scenes omit them.",
+  "legacy_full_project_ifc": {
+    "path": "/Users/jiaxinchen/.codex/worktrees/3a80/2504 GBTB Yanlord Zhuhai/output/review/highpoly-types/trap01/Geberit-151.116.11.1-TRAP01-official-detail-v4.ifc",
+    "bytes": 88023267,
+    "sha256": "e0f5955d96f7d4bf73dd9e34f9da05b634262def0f32ca5c76b3976f3eb99dbb"
+  },
+  "size_reduction_percent": 98.33347244427999,
+  "scene_outputs": [
+    {
+      "view": "plan",
+      "approved_svg": {
+        "path": "output/review/highpoly-types/trap01/bonsai-drawings/cabinet-official-detail-v4/TRAP01-OFFICIAL-DETAIL-V4-PLAN.svg",
+        "bytes": 886282,
+        "sha256": "a560dc282ca2ca849cd4070305a7b68ba17b1441f732c23f4ed6052adc469706"
+      },
+      "new_svg": {
+        "path": "/Users/jiaxinchen/.codex/worktrees/3a80/2504 GBTB Yanlord Zhuhai/output/review/highpoly-types/trap01/product-package/TRAP01-SCENE-PLAN.svg",
+        "bytes": 867810,
+        "sha256": "6ece2b3f556cb2493fdf7c4d7210fbf80818bc724ea520078484ed21669b4809"
+      },
+      "preview": {
+        "path": "/Users/jiaxinchen/.codex/worktrees/3a80/2504 GBTB Yanlord Zhuhai/output/review/highpoly-types/trap01/product-package/TRAP01-SCENE-PLAN.png",
+        "bytes": 46194,
+        "sha256": "fbe180519df5aeba1035699d73deabe0efcd2a432eade737fe7eafee7f7a5052"
+      },
+      "annotation_guid": "2wMANTAEP4WRRf8Kz4nQhG",
+      "old_line_segments": 2454,
+      "new_line_segments": 2374,
+      "maximum_world_linework_error_mm": 0.000589922422043772,
+      "tolerance_mm": 0.01,
+      "segment_count_note": "Native Bonsai output consolidates sub-0.01 mm segments; pure IFC geometry fingerprint remains exact. Compare physical line geometry, not serialization segment count."
+    },
+    {
+      "view": "front",
+      "approved_svg": {
+        "path": "output/review/highpoly-types/trap01/bonsai-drawings/cabinet-official-detail-v4/TRAP01-OFFICIAL-DETAIL-V4-FRONT.svg",
+        "bytes": 995368,
+        "sha256": "9dc827ae599c16b7dc8e804979095640fc4ecb10961c7750bc599dd044eeca6e"
+      },
+      "new_svg": {
+        "path": "/Users/jiaxinchen/.codex/worktrees/3a80/2504 GBTB Yanlord Zhuhai/output/review/highpoly-types/trap01/product-package/TRAP01-SCENE-FRONT.svg",
+        "bytes": 936951,
+        "sha256": "0f42f82b1b3f4a70f5346b230ad436ab08a38213c403cb911ae53af34b56490b"
+      },
+      "preview": {
+        "path": "/Users/jiaxinchen/.codex/worktrees/3a80/2504 GBTB Yanlord Zhuhai/output/review/highpoly-types/trap01/product-package/TRAP01-SCENE-FRONT.png",
+        "bytes": 37402,
+        "sha256": "1ee184562d31b6171bc27b873114fa46c4ecebc54c2bf31f2b066d8789eb6175"
+      },
+      "annotation_guid": "1eBrRf2_5BN9iGp9_AkRa2",
+      "old_line_segments": 2582,
+      "new_line_segments": 2346,
+      "maximum_world_linework_error_mm": 0.0016657734158095285,
+      "tolerance_mm": 0.01,
+      "segment_count_note": "Native Bonsai output consolidates sub-0.01 mm segments; pure IFC geometry fingerprint remains exact. Compare physical line geometry, not serialization segment count."
+    },
+    {
+      "view": "side",
+      "approved_svg": {
+        "path": "output/review/highpoly-types/trap01/bonsai-drawings/cabinet-official-detail-v4/TRAP01-OFFICIAL-DETAIL-V4-SIDE.svg",
+        "bytes": 778951,
+        "sha256": "ffe425ae8310fdb61095696d90363df5db7fe315dbb4d1d9f2bdaca3fcfbcb0b"
+      },
+      "new_svg": {
+        "path": "/Users/jiaxinchen/.codex/worktrees/3a80/2504 GBTB Yanlord Zhuhai/output/review/highpoly-types/trap01/product-package/TRAP01-SCENE-SIDE.svg",
+        "bytes": 780598,
+        "sha256": "fe8d607c351be0522efbdebd4f52fa27392f47c18f5fd57881f43006aee3a951"
+      },
+      "preview": {
+        "path": "/Users/jiaxinchen/.codex/worktrees/3a80/2504 GBTB Yanlord Zhuhai/output/review/highpoly-types/trap01/product-package/TRAP01-SCENE-SIDE.png",
+        "bytes": 26045,
+        "sha256": "13b55e5854be9b251ee865412006d7b16a2c4736ba84b78eaad64d88ba2319d6"
+      },
+      "annotation_guid": "3KI_E9ncXERQwoWAJcOxeI",
+      "old_line_segments": 2298,
+      "new_line_segments": 2280,
+      "maximum_world_linework_error_mm": 0.0002593638321265547,
+      "tolerance_mm": 0.01,
+      "segment_count_note": "Native Bonsai output consolidates sub-0.01 mm segments; pure IFC geometry fingerprint remains exact. Compare physical line geometry, not serialization segment count."
+    }
+  ],
+  "validation_record": "validation.json",
+  "cleanup_proposal": "cleanup-proposal.json",
+  "formal_authoritative_ifc_write_allowed": false,
+  "formal_ifc_sha256": "7a50b87e8f48a7c2bfbaa9f1dabdfca7155fa684b2325c66aa1ae15c8ab0a25c",
+  "legacy_copy_retained": true,
+  "visual": {
+    "inspected_by": "TRAP01 migration subagent",
+    "method": "Opened all three regenerated PNGs and the cleanly reloaded pure-IFC Bonsai viewport image with view_image",
+    "plan": "Complete blue installed assembly visible: left straight outlet, central joint and concentric distal inlet circles; gray project context retained; no cabinet occluder covers product.",
+    "front": "Complete blue end-on assembly visible from upper collar to lower trap bowl and support tabs; gray context retained.",
+    "side": "Complete blue curved upper inlet tube, coupling, outlet and lower trap body visible; not substituted by a generic silhouette.",
+    "pure_body": "Only the selected TRAP01 3D product is visible after public bridge clear-and-reload; complete upper elbow and lower body fit the view.",
+    "scene_previews": [
+      {
+        "path": "/Users/jiaxinchen/.codex/worktrees/3a80/2504 GBTB Yanlord Zhuhai/output/review/highpoly-types/trap01/product-package/TRAP01-SCENE-PLAN.png",
+        "bytes": 46194,
+        "sha256": "fbe180519df5aeba1035699d73deabe0efcd2a432eade737fe7eafee7f7a5052"
+      },
+      {
+        "path": "/Users/jiaxinchen/.codex/worktrees/3a80/2504 GBTB Yanlord Zhuhai/output/review/highpoly-types/trap01/product-package/TRAP01-SCENE-FRONT.png",
+        "bytes": 37402,
+        "sha256": "1ee184562d31b6171bc27b873114fa46c4ecebc54c2bf31f2b066d8789eb6175"
+      },
+      {
+        "path": "/Users/jiaxinchen/.codex/worktrees/3a80/2504 GBTB Yanlord Zhuhai/output/review/highpoly-types/trap01/product-package/TRAP01-SCENE-SIDE.png",
+        "bytes": 26045,
+        "sha256": "13b55e5854be9b251ee865412006d7b16a2c4736ba84b78eaad64d88ba2319d6"
+      }
+    ],
+    "pure_viewport": {
+      "path": "/Users/jiaxinchen/.codex/worktrees/3a80/2504 GBTB Yanlord Zhuhai/output/review/highpoly-types/trap01/product-package/TRAP01-pure-bonsai-3d.jpg",
+      "bytes": 38115,
+      "sha256": "d26f2be2e3bd6a4ee9799de4559599cf6ecdeaaecef947a124a3021975c67169"
+    },
+    "pass": true
+  },
+  "validation_sha256": "69fe7bd28c447be9aa6d96dc29c1938ca18767c0311715356b9a747150a2ec5e"
+}

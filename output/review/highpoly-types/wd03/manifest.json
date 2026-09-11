@@ -1,7 +1,7 @@
 {
   "schema_version": 1,
-  "generated_at": "2026-08-23T06:28:27.572114+00:00",
-  "generator": "pipeline/scripts/wd03_review.py",
+  "generated_at": "2026-08-27T16:27:16.210096+00:00",
+  "generator": "pipeline/scripts/wd03_semantic_review.py",
   "formal_ifc": "2504 GBTB Yanlord Zhuhai.ifc",
   "formal_ifc_sha256": "7a50b87e8f48a7c2bfbaa9f1dabdfca7155fa684b2325c66aa1ae15c8ab0a25c",
   "formal_ifc_sha256_after_generation": "7a50b87e8f48a7c2bfbaa9f1dabdfca7155fa684b2325c66aa1ae15c8ab0a25c",
@@ -47,8 +47,8 @@
     "official_cad_used": false,
     "third_party_cad_used": false,
     "official_source_access_record": "output/review/highpoly-types/wd03/official-source/source-access-record.json",
-    "official_source_access_record_sha256": "f7e55a5d2edd5467bf5b2180a0ec72de2e6cfee5328a223d7f5964abef71732c",
-    "official_product_cad_status": "gated_resource_download_no_public_exact_WD03_asset_located_not_acquired"
+    "official_source_access_record_sha256": "70d0c8765cd6b45e4f984002f348cb3c3cff85ba360134b831c5ae8e58a798d9",
+    "official_product_cad_status": "no_product_page_dwg_published_and_separate_reserved_area_not_authenticated_not_acquired"
   },
   "official_reference": {
     "source_id": "POLIFORM-SENZAFINE-WD03-OFFICIAL-IDENTITY-001",
@@ -59,7 +59,7 @@
     "product_page": "https://www.poliform.it/en/products/senzafine-wardrobe/",
     "technical_catalog_route": "https://www.poliform.it/it/technical-catalog/",
     "source_access_record": "output/review/highpoly-types/wd03/official-source/source-access-record.json",
-    "official_native_cad_status": "gated_resource_download_no_public_exact_WD03_asset_located_not_acquired",
+    "official_native_cad_status": "no_product_page_dwg_published_and_separate_reserved_area_not_authenticated_not_acquired",
     "official_native_cad_used": false
   },
   "official_identity_evidence_only": true,
@@ -82,9 +82,9 @@
   "third_party_cad_used": false,
   "blue_line_present": false,
   "official_source_access_record": "output/review/highpoly-types/wd03/official-source/source-access-record.json",
-  "official_source_access_record_sha256": "f7e55a5d2edd5467bf5b2180a0ec72de2e6cfee5328a223d7f5964abef71732c",
+  "official_source_access_record_sha256": "70d0c8765cd6b45e4f984002f348cb3c3cff85ba360134b831c5ae8e58a798d9",
   "candidate_representations": "output/review/highpoly-types/wd03/candidate-representations.json",
-  "candidate_representations_sha256": "b55eeadb2702e54e74590f29e1b1d594d0b0fac93b74667abfffb475296c2b83",
+  "candidate_representations_sha256": "2a613484994475387ac85ad1e3383ede06fb3cdff0837f8f471cd641c00159e8",
   "review_status": "visual_review_pending",
   "approved_for_drawing_ifc": false,
   "derived_ifc_write_allowed": false,
@@ -93,58 +93,74 @@
     {
       "view": "plan",
       "svg": "output/review/highpoly-types/wd03/plan.svg",
-      "svg_sha256": "46e23a398f78a4133d78305782e408c54f4a2863b4dfd0f1b56caef793368b08",
+      "svg_sha256": "493d527555679a7b16c4a0e1893b271105de0f76b69fb084fa69556b34e0d786",
+      "preview": "output/review/highpoly-types/wd03/plan-preview.png",
+      "preview_sha256": "7fc0736c53441e51565aa2a6d052f72d4de419ea4fffeb543b753d897dd16c0f",
       "projection_axes": [
         0,
         1
       ],
       "raw_edge_count": 10722,
       "displayed_raw_edge_count": 975,
-      "silhouette_path_count": 3,
+      "silhouette_path_count": 5,
+      "semantic_path_count": 5,
+      "internal_semantic_path_count": 4,
       "drawing_line_source_kind": "geometry_derived_simplified_proxy",
       "drawing_line_source_label_zh": "基于原始高模几何生成的简化图纸表达",
       "official_cad_path_count": 0,
-      "blue_line_present": false
+      "blue_line_present": false,
+      "every_internal_line_has_two_different_semantics_or_real_occlusion": true
     },
     {
       "view": "front",
       "svg": "output/review/highpoly-types/wd03/front.svg",
-      "svg_sha256": "beee41cdca4bf08331427c0ad57c5fd56920da2fe76f506fb264136223b05c0e",
+      "svg_sha256": "287af4c363d5c75016f8d4bb7f4db13b21257964040afb8165bf8e6c8d067997",
+      "preview": "output/review/highpoly-types/wd03/front-preview.png",
+      "preview_sha256": "8e5fd40487177be21815e7a167fb57b01272b7871534200337940ba85894a8fa",
       "projection_axes": [
         0,
         2
       ],
       "raw_edge_count": 10722,
       "displayed_raw_edge_count": 975,
-      "silhouette_path_count": 2,
+      "silhouette_path_count": 9,
+      "semantic_path_count": 9,
+      "internal_semantic_path_count": 8,
       "drawing_line_source_kind": "geometry_derived_simplified_proxy",
       "drawing_line_source_label_zh": "基于原始高模几何生成的简化图纸表达",
       "official_cad_path_count": 0,
-      "blue_line_present": false
+      "blue_line_present": false,
+      "every_internal_line_has_two_different_semantics_or_real_occlusion": true
     },
     {
       "view": "side",
       "svg": "output/review/highpoly-types/wd03/side.svg",
-      "svg_sha256": "7436ad070b8d03391facd0449230e5cf0f01f062817e040f5aa3c5b064d3b222",
+      "svg_sha256": "ccb3662105122f86e3c963df8531fea711c7ab42424ef3b3bd71a176a44d5e23",
+      "preview": "output/review/highpoly-types/wd03/side-preview.png",
+      "preview_sha256": "e0751d49a0989db5d9e93e98ef534848b5bc6b65951df43444557b6ed86a1510",
       "projection_axes": [
         1,
         2
       ],
       "raw_edge_count": 10722,
       "displayed_raw_edge_count": 975,
-      "silhouette_path_count": 6,
+      "silhouette_path_count": 3,
+      "semantic_path_count": 3,
+      "internal_semantic_path_count": 2,
       "drawing_line_source_kind": "geometry_derived_simplified_proxy",
       "drawing_line_source_label_zh": "基于原始高模几何生成的简化图纸表达",
       "official_cad_path_count": 0,
-      "blue_line_present": false
+      "blue_line_present": false,
+      "every_internal_line_has_two_different_semantics_or_real_occlusion": true
     }
   ],
   "pass": true,
   "project_context": {
     "manifest": "output/review/highpoly-types/wd03/project-context-manifest.json",
-    "manifest_sha256": "ba4f48165c54452217b50429ff835528d9c382637a89479bc26151fea139db50",
+    "manifest_sha256": "1b05850c3d36333ca75990a12115114cc6599ed378cac643415d13f1552c71e0",
     "walls_and_surrounding_project_elements_retained": true,
     "overlay_top_layer_with_white_mask": true,
+    "semantic_black_line_overlay": true,
     "pass": true
   },
   "bonsai_review": {
@@ -154,5 +170,19 @@
     "saved_active_representation": "Body",
     "saved_camera_count": 4,
     "pass": true
-  }
+  },
+  "semantic_segmentation": {
+    "path": "output/review/highpoly-types/wd03/wd03-semantic-segmentation.json",
+    "sha256": "8ac70e0a7a4de80c9318383400791ffb32aa868baefdf5d90b23b3075ffe8390",
+    "representation_item_count": 25,
+    "classified_component_count": 25,
+    "meaningless_coplanar_internal_line_count": 0,
+    "every_internal_line_has_two_different_semantics_or_real_occlusion": true,
+    "catalogue_geometry_used": false,
+    "pass": true
+  },
+  "review_contact_sheet": "output/review/highpoly-types/wd03/review-contact-sheet.png",
+  "review_contact_sheet_sha256": "e5e7ae518a3e92d087bb3c9d27c56bee4e4fd0902cb281279e38c005213174ca",
+  "semantic_diagnostic_contact_sheet": "output/review/highpoly-types/wd03/wd03-semantic-diagnostic-contact-sheet.png",
+  "semantic_diagnostic_contact_sheet_sha256": "1ed62c863be0a2135f0baa5510be7b714bf177de599dbe73196fcd5cc5589842"
 }

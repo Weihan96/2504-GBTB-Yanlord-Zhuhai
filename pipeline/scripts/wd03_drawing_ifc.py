@@ -15,7 +15,7 @@ PRODUCT_PAGE = "https://www.poliform.it/en/products/senzafine-wardrobe/"
 TECHNICAL_CATALOG_ROUTE = "https://www.poliform.it/it/technical-catalog/"
 PRODUCT_DIR = ROOT / "output/review/highpoly-types/wd03"
 PAGE_EVIDENCE = PRODUCT_DIR / "official-source/official-product-page-evidence.json"
-EXPECTED_PATH_COUNTS = {"plan": 3, "front": 2, "side": 6}
+EXPECTED_PATH_COUNTS = {"plan": 5, "front": 9, "side": 3}
 
 shared.REPRESENTATIVE_GLOBAL_ID = "3cmikd9MTB$egM5KQaNgUf"
 shared.IFC_TYPE_NAME = "WD03"
@@ -55,7 +55,11 @@ def candidate_paths(candidate: dict, access: dict) -> dict:
     dimensions = access.get("dimension_cross_check", {})
     evidence = access.get("official_identity_sources", [])
     if (
-        cad.get("registration_form_and_captcha_required") is not True
+        cad.get("product_page_checked_in_active_30_day_download_session") is not True
+        or cad.get("product_page_native_dwg_listed") is not False
+        or cad.get("product_page_file_url_entries") != []
+        or cad.get("technical_catalog_access_status") != "protected_page_no_catalog_content_exposed"
+        or cad.get("reserved_area_access_status") != "separate_login_required_not_authenticated"
         or cad.get("public_exact_native_dwg_url_located") is not False
         or cad.get("acquired") is not False
         or cad.get("local_cad_files") != []

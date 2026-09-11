@@ -1,0 +1,226 @@
+{
+  "schema_version": 1,
+  "mode": "actual_bonsai_create_drawing_project_context",
+  "formal_ifc_sha256": "7a50b87e8f48a7c2bfbaa9f1dabdfca7155fa684b2325c66aa1ae15c8ab0a25c",
+  "formal_ifc_bytes_unchanged": true,
+  "derived_ifc": {
+    "path": "output/review/highpoly-types/trap01/Geberit-151.116.11.1-TRAP01-derived-drawing.ifc",
+    "bytes": 87504510,
+    "sha256": "d9c5d35bc29c39e07a79efc5d330e8f3c211d7e1936c4ad6de26e21b0b197c2c"
+  },
+  "create_drawing_evidence": {
+    "path": "output/review/highpoly-types/trap01/bonsai-drawings/project-context/TRAP01-create-drawing-evidence.json",
+    "bytes": 16667,
+    "sha256": "c0e6121134b99e23b21f4de971cf416b8d4af07568b282f3de5bd47c110cb34a"
+  },
+  "component_model_pass": true,
+  "current_installation_only": true,
+  "blue_dashed_reference_displayed": false,
+  "no_duplicate_target_or_annotation": true,
+  "views": [
+    {
+      "view": "plan",
+      "drawing_global_id": "18qXOM_hj0SQoBWznncnJK",
+      "current_annotation_global_id": "2Ndfxg1gn4tRY_xJPpnW39",
+      "svg": {
+        "path": "output/review/highpoly-types/trap01/bonsai-drawings/project-context/TRAP01-PROJECT-CONTEXT-PLAN.svg",
+        "bytes": 1400199,
+        "sha256": "e3233e3cfb51c88bb9be1aef3557fa9b2ebfb2005e2a7c3290dbff3664ce0700"
+      },
+      "page_pdf": {
+        "path": "output/review/highpoly-types/trap01/bonsai-drawings/project-context/TRAP01-PROJECT-CONTEXT-PLAN.pdf",
+        "bytes": 58605,
+        "sha256": "d28f0f0440d3c08029b604c7b89d582f9b78895d9ad895df147adf54d14bc27b"
+      },
+      "preview": {
+        "path": "output/review/highpoly-types/trap01/trap01-project-drawing-plan.png",
+        "bytes": 44076,
+        "sha256": "36ac338e2835bd17a73876ebe20aefa0c48ab500f5b2862f45c4aff4bd39b4d3"
+      },
+      "visual": {
+        "width": 1530,
+        "height": 1980,
+        "black_pixel_count": 403,
+        "grey_context_pixel_count": 32105,
+        "blue_pixel_count": 0,
+        "black_present": true,
+        "grey_context_present": true,
+        "blue_dashed_reference_absent": true,
+        "pass": true
+      },
+      "svg_validation": {
+        "path": "/Users/jiaxinchen/.codex/worktrees/3a80/2504 GBTB Yanlord Zhuhai/output/review/highpoly-types/trap01/bonsai-drawings/project-context/TRAP01-PROJECT-CONTEXT-PLAN.svg",
+        "bytes": 1400199,
+        "sha256": "e3233e3cfb51c88bb9be1aef3557fa9b2ebfb2005e2a7c3290dbff3664ce0700",
+        "bonsai_generated_sha256_before_review_style": "95b97b1d6f9ced03b41dfbb97e0c37031ff996a8a808183a07d5e14422d2004a",
+        "current_black_geometry_count": 133,
+        "grey_context_geometry_count": 7362,
+        "blue_dashed_reference_displayed": false,
+        "post_style_only": true,
+        "root_tag": "svg",
+        "data_scale": "1:25",
+        "width": "143.99999618530273mm",
+        "height": "143.99999618530273mm",
+        "view_box": "0 0 143.99999618530273 143.99999618530273",
+        "geometry_element_count": 7495,
+        "projection_group_count": 44,
+        "target_ifc_body_group_count": 0,
+        "current_annotation_group_count": 1,
+        "adjustable_component_reference_group_count": 0,
+        "no_target_or_annotation_duplicate": true,
+        "external_reference_count": 0
+      },
+      "create_drawing": {
+        "operator": "bpy.ops.bim.create_drawing",
+        "arguments": {
+          "print_all": false,
+          "open_viewer": false,
+          "sync": false
+        },
+        "result": [
+          "FINISHED"
+        ],
+        "linework_mode": "OPENCASCADE",
+        "target_view": "PLAN_VIEW"
+      }
+    },
+    {
+      "view": "front",
+      "drawing_global_id": "3hhrnpjAD4YwWEu1cEZGCo",
+      "current_annotation_global_id": "2_XCFWgz180OVuUpj6cl3M",
+      "svg": {
+        "path": "output/review/highpoly-types/trap01/bonsai-drawings/project-context/TRAP01-PROJECT-CONTEXT-FRONT.svg",
+        "bytes": 466507,
+        "sha256": "37860377cd88fdd2c93684f6febb0a3895a756811841b6ba91e3b86d37a835b3"
+      },
+      "page_pdf": {
+        "path": "output/review/highpoly-types/trap01/bonsai-drawings/project-context/TRAP01-PROJECT-CONTEXT-FRONT.pdf",
+        "bytes": 15494,
+        "sha256": "e105eb8fdae156839c8736dcb444b15a564315d4aa5873e98eb3b2318bc3ccb9"
+      },
+      "preview": {
+        "path": "output/review/highpoly-types/trap01/trap01-project-drawing-front.png",
+        "bytes": 19070,
+        "sha256": "60bea4a0711aa1a2d84646bceb4b01c5f5e193318db659d5a9ad034481c893fa"
+      },
+      "visual": {
+        "width": 1530,
+        "height": 1980,
+        "black_pixel_count": 169,
+        "grey_context_pixel_count": 37002,
+        "blue_pixel_count": 0,
+        "black_present": true,
+        "grey_context_present": true,
+        "blue_dashed_reference_absent": true,
+        "pass": true
+      },
+      "svg_validation": {
+        "path": "/Users/jiaxinchen/.codex/worktrees/3a80/2504 GBTB Yanlord Zhuhai/output/review/highpoly-types/trap01/bonsai-drawings/project-context/TRAP01-PROJECT-CONTEXT-FRONT.svg",
+        "bytes": 466507,
+        "sha256": "37860377cd88fdd2c93684f6febb0a3895a756811841b6ba91e3b86d37a835b3",
+        "bonsai_generated_sha256_before_review_style": "ce194ce17e2c75cba1a4f0c8f294b301aca8a3aa89aa07099b0d97b69af7a632",
+        "current_black_geometry_count": 79,
+        "grey_context_geometry_count": 2092,
+        "blue_dashed_reference_displayed": false,
+        "post_style_only": true,
+        "root_tag": "svg",
+        "data_scale": "1:25",
+        "width": "143.99999618530273mm",
+        "height": "143.99999618530273mm",
+        "view_box": "0 0 143.99999618530273 143.99999618530273",
+        "geometry_element_count": 2171,
+        "projection_group_count": 34,
+        "target_ifc_body_group_count": 0,
+        "current_annotation_group_count": 1,
+        "adjustable_component_reference_group_count": 0,
+        "no_target_or_annotation_duplicate": true,
+        "external_reference_count": 0
+      },
+      "create_drawing": {
+        "operator": "bpy.ops.bim.create_drawing",
+        "arguments": {
+          "print_all": false,
+          "open_viewer": false,
+          "sync": false
+        },
+        "result": [
+          "FINISHED"
+        ],
+        "linework_mode": "OPENCASCADE",
+        "target_view": "ELEVATION_VIEW"
+      }
+    },
+    {
+      "view": "side",
+      "drawing_global_id": "0coRwv5cfEpw8F8OuRUF3u",
+      "current_annotation_global_id": "30iL1xKwPFqv7IdT$GmL0V",
+      "svg": {
+        "path": "output/review/highpoly-types/trap01/bonsai-drawings/project-context/TRAP01-PROJECT-CONTEXT-SIDE.svg",
+        "bytes": 669959,
+        "sha256": "1e84f22f2788f7f7167676d0eb40c0e036a67ef8cc17e26cbccd9f29d2595bef"
+      },
+      "page_pdf": {
+        "path": "output/review/highpoly-types/trap01/bonsai-drawings/project-context/TRAP01-PROJECT-CONTEXT-SIDE.pdf",
+        "bytes": 21509,
+        "sha256": "235d04573dbdd691e3e806a99db0a7527e9aa484b54d57866feebe5976476f84"
+      },
+      "preview": {
+        "path": "output/review/highpoly-types/trap01/trap01-project-drawing-side.png",
+        "bytes": 20517,
+        "sha256": "388ded28d7a55594b7deaa0ed18b6575f096d7d4d1e23ee27b9769637d42d689"
+      },
+      "visual": {
+        "width": 1530,
+        "height": 1980,
+        "black_pixel_count": 112,
+        "grey_context_pixel_count": 40080,
+        "blue_pixel_count": 0,
+        "black_present": true,
+        "grey_context_present": true,
+        "blue_dashed_reference_absent": true,
+        "pass": true
+      },
+      "svg_validation": {
+        "path": "/Users/jiaxinchen/.codex/worktrees/3a80/2504 GBTB Yanlord Zhuhai/output/review/highpoly-types/trap01/bonsai-drawings/project-context/TRAP01-PROJECT-CONTEXT-SIDE.svg",
+        "bytes": 669959,
+        "sha256": "1e84f22f2788f7f7167676d0eb40c0e036a67ef8cc17e26cbccd9f29d2595bef",
+        "bonsai_generated_sha256_before_review_style": "423d6e538f7ade821ee68f98f326c4ff27256b7807765b20a67ac342659656bd",
+        "current_black_geometry_count": 98,
+        "grey_context_geometry_count": 3242,
+        "blue_dashed_reference_displayed": false,
+        "post_style_only": true,
+        "root_tag": "svg",
+        "data_scale": "1:25",
+        "width": "143.99999618530273mm",
+        "height": "143.99999618530273mm",
+        "view_box": "0 0 143.99999618530273 143.99999618530273",
+        "geometry_element_count": 3340,
+        "projection_group_count": 36,
+        "target_ifc_body_group_count": 0,
+        "current_annotation_group_count": 1,
+        "adjustable_component_reference_group_count": 0,
+        "no_target_or_annotation_duplicate": true,
+        "external_reference_count": 0
+      },
+      "create_drawing": {
+        "operator": "bpy.ops.bim.create_drawing",
+        "arguments": {
+          "print_all": false,
+          "open_viewer": false,
+          "sync": false
+        },
+        "result": [
+          "FINISHED"
+        ],
+        "linework_mode": "OPENCASCADE",
+        "target_view": "ELEVATION_VIEW"
+      }
+    }
+  ],
+  "combined_pdf": {
+    "path": "output/review/highpoly-types/trap01/Geberit-151.116.11.1-TRAP01-project-drawings.pdf",
+    "bytes": 94038,
+    "sha256": "7ffc71d726c957f201bdca6da7343819ec96e39a145a3e8df32672e9144c1fb6"
+  },
+  "pass": true
+}

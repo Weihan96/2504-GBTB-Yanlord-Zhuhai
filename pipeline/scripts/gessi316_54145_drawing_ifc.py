@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Approval-gated derived IFC writer for exact Gessi316 54145 G000 DWG linework."""
+"""Approval-gated derived IFC writer for the approved Gessi316 54145 review line."""
 
 from pathlib import Path
 
@@ -21,14 +21,15 @@ TECHNICAL_DRAWING_NUMBER = "GPF5414500000G000"
 PRODUCT_DIR = ROOT / "output/review/highpoly-types/gessi316-54145"
 SOURCE_DIR = PRODUCT_DIR / "official-source"
 COLLECTION_CATALOGUE_ARCHIVE = SOURCE_DIR / "MAGAZINE_GESSI_316_2026.pdf"
-EXPECTED_PATH_COUNTS = {"plan": 22, "front": 615, "side": 653}
+EXPECTED_PATH_COUNTS = {"plan": 22, "front": 112, "side": 109}
+ORIGINAL_PATH_COUNTS = {"plan": 22, "front": 615, "side": 653}
 
 shared.REPRESENTATIVE_GLOBAL_ID = "3jT4sCgpHC98VSIUdGUNYH"
 shared.IFC_TYPE_NAME = "Gessi316 54145"
 shared.PROFILE_KEY = "gessi316-54145"
 shared.SCOPE = SCOPE
-shared.SOURCE_KIND = "native_dwg"
-shared.SOURCE_LABEL_ZH = "Gessi 官方精确型号 54145 G000 原生 DWG 图纸表达"
+shared.SOURCE_KIND = "native_dwg_review_simplification"
+shared.SOURCE_LABEL_ZH = "基于官方54145 G000原生DWG轮廓的简化蓝线审核表达"
 shared.OFFICIAL_CAD_USED = True
 shared.OFFICIAL_CAD_GEOMETRY_INCLUDED = True
 shared.CLOSE_REPRESENTATION_PATHS = False
@@ -67,6 +68,8 @@ def candidate_paths(candidate: dict, access: dict) -> dict:
         or candidate.get("third_party_cad_used") is not False
         or candidate.get("formal_ifc_write_allowed") is not False
         or candidate.get("review_status") != "visual_review_pending"
+        or candidate.get("unaltered_official_cad_used_as_review_representation") is not False
+        or candidate.get("original_official_cad_evidence_preserved") is not True
     ):
         raise RuntimeError("pending Gessi316 54145 candidate source gate failed")
     product_cad = access.get("official_product_cad", {})
@@ -82,7 +85,7 @@ def candidate_paths(candidate: dict, access: dict) -> dict:
         or product_cad.get("native_dwg", {}).get("sha256") != SOURCE_DWG_SHA256
         or cross_check.get("maximum_ifc_projection_delta_mm") != 0.181335
         or cross_check.get("pass") is not True
-        or drawing_source.get("source_kind") != shared.SOURCE_KIND
+        or drawing_source.get("source_kind") != "native_dwg"
         or drawing_source.get("source_dwg_sha256") != SOURCE_DWG_SHA256
         or drawing_source.get("official_cad_used") is not True
         or drawing_source.get("third_party_cad_used") is not False
@@ -91,11 +94,23 @@ def candidate_paths(candidate: dict, access: dict) -> dict:
     paths = {}
     for view in shared.REQUIRED_VIEWS:
         item = candidate.get("views", {}).get(view, {})
-        if item.get("source_kind") != shared.SOURCE_KIND or item.get("source_dwg_sha256") != SOURCE_DWG_SHA256:
-            raise RuntimeError(f"Gessi316 54145 {view} must use exact G000 native DWG paths")
-        paths[view] = item.get("official_native_dwg_paths_mm", [])
+        audit = item.get("handle_line_texture_simplification", {})
+        if (
+            item.get("source_kind") != shared.SOURCE_KIND
+            or item.get("source_dwg_sha256") != SOURCE_DWG_SHA256
+            or item.get("unaltered_official_dwg") is not False
+            or item.get("original_official_native_dwg_path_count") != ORIGINAL_PATH_COUNTS[view]
+            or audit.get("envelope_delta_mm") != [0.0, 0.0]
+            or audit.get("centre_delta_mm") != [0.0, 0.0]
+            or audit.get("installation_axis_preserved") is not True
+            or audit.get("wall_anchor_preserved") is not True
+            or audit.get("arm_reach_600mm_preserved") is not True
+            or audit.get("pass") is not True
+        ):
+            raise RuntimeError(f"Gessi316 54145 {view} approved review-simplification gate failed")
+        paths[view] = item.get("review_simplified_official_outline_paths_mm", [])
         if len(paths[view]) != EXPECTED_PATH_COUNTS[view]:
-            raise RuntimeError(f"Gessi316 54145 {view} native-DWG path-count gate failed")
+            raise RuntimeError(f"Gessi316 54145 {view} review path-count gate failed")
     return paths
 
 
@@ -143,7 +158,9 @@ def add_source_pset(model, product, product_type, approval, manifest_hash, candi
         "SourceDwgSha256": SOURCE_DWG_SHA256,
         "OfficialProductCadStatus": "public_official_api_exact_54145_g000_native_dwg_acquired",
         "OfficialCadUsed": "true",
-        "OfficialVectorEvidenceUsedAsCadGeometry": "false",
+        "OfficialVectorEvidenceUsedAsCadGeometry": "true",
+        "UnalteredOfficialDwgUsedAsRepresentation": "false",
+        "OriginalOfficialDwgEvidencePreserved": "true",
         "ThirdPartyCadUsed": "false",
         "ExcludedVariant": "G001",
         "ExcludedAdjacentProduct": "54146 ceiling-mounted adjustable headshower",
@@ -154,16 +171,16 @@ def add_source_pset(model, product, product_type, approval, manifest_hash, candi
         "ApprovalEvidence": approval["approval_evidence"],
         "ApprovedCandidateManifestSha256": manifest_hash,
         "ApprovedRepresentationIdentifiers": "Gessi54145Plan;Gessi54145Front;Gessi54145Side",
-        "RepresentationGeometrySource": "official_native_dwg_paths_mm extracted from GPF5414500000G000_3.dwg",
+        "RepresentationGeometrySource": "review_simplified_official_outline_paths_mm based on GPF5414500000G000_3.dwg",
         "OfficialCadGeometryIncluded": "true",
         "CandidateRepresentations": relative(candidate_path),
         "CandidateRepresentationsSha256": sha256(candidate_path),
         "SourceAccessRecord": relative(access_path),
         "SourceAccessRecordSha256": sha256(access_path),
         "CollectionCatalogueArchiveSha256": sha256(COLLECTION_CATALOGUE_ARCHIVE),
-        "PlanPathCount": "22",
-        "FrontPathCount": "615",
-        "SidePathCount": "653",
+        "PlanPathCount": str(EXPECTED_PATH_COUNTS["plan"]),
+        "FrontPathCount": str(EXPECTED_PATH_COUNTS["front"]),
+        "SidePathCount": str(EXPECTED_PATH_COUNTS["side"]),
         "OfficialWidthDepthHeightMm": "300;600;115",
         "ProjectBodyLocalXyzMm": "599.818665;299.818832;119.07444",
         "OfficialNativeDwgPlanEnvelopeMm": "600;299.993081",
@@ -181,7 +198,7 @@ def add_source_pset(model, product, product_type, approval, manifest_hash, candi
         GlobalId=ifcopenshell.guid.new(),
         OwnerHistory=product.OwnerHistory,
         Name=shared.PSET_NAME,
-        Description="Mechanically verifiable exact Gessi316 54145 G000 native-DWG source and human approval",
+        Description="Mechanically verifiable Gessi316 54145 G000 official-outline review simplification and human approval",
         HasProperties=properties,
     )
     model.create_entity(

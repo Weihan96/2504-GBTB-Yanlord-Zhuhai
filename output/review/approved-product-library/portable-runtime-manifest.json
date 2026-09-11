@@ -1,0 +1,1838 @@
+{
+  "status": "pass",
+  "version": "0.8.3",
+  "files": [
+    {
+      "path": "README.md",
+      "bytes": 3351,
+      "sha256": "627571848439a624e812cc26556b32897616a054d04920ab8f2a282a03b91adc"
+    },
+    {
+      "path": "addon/highpoly_review_library/__init__.py",
+      "bytes": 18019,
+      "sha256": "047089a72b914bb6fe1dad59fc7d9011cb176ea178f9d7986caef182781bb3ff"
+    },
+    {
+      "path": "addon/highpoly_review_library/asset_cards.py",
+      "bytes": 2588,
+      "sha256": "712259290a8ca6cf1a938ba92910d772235bc3c88f23904163a0d9931dc49a13"
+    },
+    {
+      "path": "addon/highpoly_review_library/asset_ui.py",
+      "bytes": 4154,
+      "sha256": "d9e9236dba1f3f7034652b04a7d00d0a7b234e88183586986d5fd44a300a7891"
+    },
+    {
+      "path": "addon/highpoly_review_library/body_views.py",
+      "bytes": 3175,
+      "sha256": "85eed0baed06c1ae5d6c2037e188d63e9dc03e51b1bd91cccb06c97d1af2b199"
+    },
+    {
+      "path": "addon/highpoly_review_library/catalog_rules.py",
+      "bytes": 2331,
+      "sha256": "cec4349160780e996a5590b1a356a4cacf4b69380ce2c9fd962c38f33d073424"
+    },
+    {
+      "path": "addon/highpoly_review_library/drawing_integration.py",
+      "bytes": 4920,
+      "sha256": "4aad85c741df77870f1fcf9f5aa6153f00647af4fff9ab3bf3e070f3f7bb385c"
+    },
+    {
+      "path": "addon/highpoly_review_library/ifc_asset.py",
+      "bytes": 4263,
+      "sha256": "abb662ca80e1d78b6ff82c613be55b50d86e4ebbe6bc0dd574ddbdfd7a13b6e3"
+    },
+    {
+      "path": "addon/highpoly_review_library/loading_feedback.py",
+      "bytes": 3443,
+      "sha256": "98acd5510027b4daff9c19ad737d369d367f49b05f12635214a195c073fa2782"
+    },
+    {
+      "path": "addon/highpoly_review_library/native_assets.py",
+      "bytes": 15272,
+      "sha256": "3dac44b8cb18a03fc5e83a1bb97086cdb38f5f3422c6dbf2a8498c9d1a819ae2"
+    },
+    {
+      "path": "approvals/505-up-v1-lp-s.json",
+      "bytes": 6628,
+      "sha256": "95f088d1c6f29dfb35effe8a03ab76e5eae7fa2509b60cb625ace7f6b20537ee"
+    },
+    {
+      "path": "approvals/bed01.json",
+      "bytes": 2530,
+      "sha256": "a18266a2aa8f37ef47bebe6c9bf28d0060aa97f40f042746bbe3505778f11687"
+    },
+    {
+      "path": "approvals/bed02.json",
+      "bytes": 1323,
+      "sha256": "1e4a48c605dd0cab0f9fd0513100287f918f466ce02ac4b17ccfd7d3a303b348"
+    },
+    {
+      "path": "approvals/bst01.json",
+      "bytes": 730,
+      "sha256": "ad5a71c35568067bd202a455360bb0f4dac0729257b85138720054da76fb3c80"
+    },
+    {
+      "path": "approvals/bst02.json",
+      "bytes": 879,
+      "sha256": "a04a7d4d3986dd686fd4ac99ba44aab1699a610adf92ba917dca6eb4834dd914"
+    },
+    {
+      "path": "approvals/bst03.json",
+      "bytes": 529,
+      "sha256": "e3de8d392e7f9fed82d874897c8b5c19ff208bb52317a2cbc05a87613bfbec19"
+    },
+    {
+      "path": "approvals/cha01.json",
+      "bytes": 623,
+      "sha256": "043a1f4c2856d5124fad10d33ca6c19e8939d9f4017a7f25a165e56df7b32c72"
+    },
+    {
+      "path": "approvals/cha02.json",
+      "bytes": 997,
+      "sha256": "7b238e6e2aea1dbed8b342f2a71b1f5011a7f59ff0250096cd318fae39802423"
+    },
+    {
+      "path": "approvals/electric-flue-check-valve.json",
+      "bytes": 613,
+      "sha256": "6525d74a11bb016235110c32d1e80980759f8df17b6f0d9f8df8a19a6be332c5"
+    },
+    {
+      "path": "approvals/falper-sorgente.json",
+      "bytes": 738,
+      "sha256": "04f3c33cf2420fb38d0fde8e218633e407ce945d8af0fbc409e103a4d3a4bbce"
+    },
+    {
+      "path": "approvals/fau02.json",
+      "bytes": 594,
+      "sha256": "b3b8a1b3729e9021b489a0e6e88e28e06c351e446229c144b1b58e720cac24db"
+    },
+    {
+      "path": "approvals/geberit-115-770.json",
+      "bytes": 595,
+      "sha256": "4a53f62caba7b521ae30c366abdd0d4d4dded463615d006f6c654900d8fb2514"
+    },
+    {
+      "path": "approvals/geberit-146-140.json",
+      "bytes": 1921,
+      "sha256": "e28f18d89cb539d2aeac0ddb6893ed8a801ba8bdbda6ea5036aeb9bdc53e2182"
+    },
+    {
+      "path": "approvals/geberit-154-154-00-1-f.json",
+      "bytes": 1060,
+      "sha256": "e7e40a77530404c03e219041e4ab0685c596db9f69c6fdb810e80edd8df2d530"
+    },
+    {
+      "path": "approvals/geberit-154-154-00.json",
+      "bytes": 545,
+      "sha256": "3b93892fd1f09aec197271963a0f53131446900602bcf76d10ea638fc9c5384e"
+    },
+    {
+      "path": "approvals/geberit-154-446-ks-1.json",
+      "bytes": 962,
+      "sha256": "4e8731e14771064bdcda791a8dcd35d3b1845f1d570cce0e315bd772a26d0001"
+    },
+    {
+      "path": "approvals/geberit-duofix-sigma-224-212.json",
+      "bytes": 1023,
+      "sha256": "69b90641c148da4540af5d3ea0faecedd6b64467c619d8be01e446a6b8507752"
+    },
+    {
+      "path": "approvals/gessi316-54038.json",
+      "bytes": 521,
+      "sha256": "0ce947f7bc161ec022fb3a665b9fc75758dbde57a4611f568b13b05beb2aede4"
+    },
+    {
+      "path": "approvals/gessi316-54093.json",
+      "bytes": 899,
+      "sha256": "96068dd3b33b6e2aeb4f71f079bdc1fc23d8dc97c790dfd80b49ecb37f915d60"
+    },
+    {
+      "path": "approvals/gessi316-54145.json",
+      "bytes": 1167,
+      "sha256": "32e093739085616e4cfe3aeeff2bbe662331e5fc6293548885b8a50fb4ba19be"
+    },
+    {
+      "path": "approvals/gessi316-54146.json",
+      "bytes": 1288,
+      "sha256": "088f9d81f4e6d297e9227dcc5fb953b0ee93b8acab0c4d0c7c3f23329d6ec1f4"
+    },
+    {
+      "path": "approvals/gessi316-54294.json",
+      "bytes": 2730,
+      "sha256": "d8162000ae7fec45515a74488fbbd3adf848bb72b5bc325eaaa9b02cd805b3e5"
+    },
+    {
+      "path": "approvals/hima01.json",
+      "bytes": 1269,
+      "sha256": "e4e08a7d361beb5cb77dc407c2955608e463ea3439f270e64f6129b954289db3"
+    },
+    {
+      "path": "approvals/marilyn-01.json",
+      "bytes": 832,
+      "sha256": "d0e52f927866906db227a275d9e7a7842144a563a7dd1073ef00151e0553aa1b"
+    },
+    {
+      "path": "approvals/marilyn-02.json",
+      "bytes": 519,
+      "sha256": "96d71fa82b9019db7f81ca862bd3c4c1023e5b9483934a8c30792ca37dba097f"
+    },
+    {
+      "path": "approvals/miamisoft-e07.json",
+      "bytes": 589,
+      "sha256": "00fe59df633110bfd10089e16307b696b758e370bad25bca32230f35fd4374e8"
+    },
+    {
+      "path": "approvals/miamisoft-e09.json",
+      "bytes": 1858,
+      "sha256": "70e89130beb6af87cf4ae4bcd241ed2ce6e8a16b3b27267c8e98afcb8c2b4bd7"
+    },
+    {
+      "path": "approvals/miamisoft-f03.json",
+      "bytes": 585,
+      "sha256": "3f725caf2a0db1114abe4363a62909b4f7ed938ee51303af8c466991b9e7209f"
+    },
+    {
+      "path": "approvals/miamisoft-h01.json",
+      "bytes": 602,
+      "sha256": "89acea045021e6c755ea3ea49ccf196ebfe345ceea3b9930ff7bbb14b318ce5d"
+    },
+    {
+      "path": "approvals/miamisoft-i03.json",
+      "bytes": 695,
+      "sha256": "26aa3ea46623b59df2309c64400d604362bdd41ca58b2a4e6c606bcaebf245ef"
+    },
+    {
+      "path": "approvals/sis04.json",
+      "bytes": 585,
+      "sha256": "13f2b6c2300f5dde4cb56ebdc76ec473b7cfbf0cb93bc9152bb7497567781235"
+    },
+    {
+      "path": "approvals/street-h.json",
+      "bytes": 1292,
+      "sha256": "e4b090be45ee0e2e82ab603967d745503cccd2ccfa1ceae12ee2664f330e6f94"
+    },
+    {
+      "path": "approvals/street.json",
+      "bytes": 1119,
+      "sha256": "6f3cdc55d591b94af2698d730cb1646cbe3c03c38b5d0bd30e19f1e16a2a9637"
+    },
+    {
+      "path": "approvals/sxb010.json",
+      "bytes": 3348,
+      "sha256": "5f394c9b4af386d7169c2df7b42d625896e521605dfc99f03519dfe36205ae94"
+    },
+    {
+      "path": "approvals/tab02.json",
+      "bytes": 1225,
+      "sha256": "47aaf3acdec9ab3dbb1304c51945d876f17daf776e43e950c4f7144c34b51157"
+    },
+    {
+      "path": "approvals/trap01.json",
+      "bytes": 2594,
+      "sha256": "56f56b917a741a2a0dac35b760dfdca5f56fc8c0b9736cd4a7eb2c4282191b69"
+    },
+    {
+      "path": "approvals/wd01.json",
+      "bytes": 1113,
+      "sha256": "c168aa15cbc083842c7c7192bb48167f48f08902040e792f0bbbfba1bf736aed"
+    },
+    {
+      "path": "approvals/wd02.json",
+      "bytes": 2854,
+      "sha256": "8b213bf95e9d6ad27c88c8854fa2e7b9bf07a0998eb164255647fcd62c8f8507"
+    },
+    {
+      "path": "approvals/wd03.json",
+      "bytes": 3290,
+      "sha256": "1f86e4777ceae9cf1eff280c7e34c8dec77d033d9b946a913e8f3aaa78edf105"
+    },
+    {
+      "path": "catalog.json",
+      "bytes": 132751,
+      "sha256": "2b5f86a10cf2ecc4daaeee08c899c575c602a3a33ccf5454d9f2d603651ed460"
+    },
+    {
+      "path": "ifc/505-up-v1-lp-s.ifc",
+      "bytes": 1259421,
+      "sha256": "15c5e9333c9d29a50e61bc412162d047d60a37f04089b2e9006704d6d522606a"
+    },
+    {
+      "path": "ifc/Materials.blend",
+      "bytes": 78556256,
+      "sha256": "cbf3bc06f8a2472d5b24bfe08082e12f35dd496b7845032c9a5e1974f5f3c2b7"
+    },
+    {
+      "path": "ifc/bed01.ifc",
+      "bytes": 2897110,
+      "sha256": "466aaee93a28658a4a08be21bd901b3ae2ab1e5096f5f1d06b5b6d2feac3d972"
+    },
+    {
+      "path": "ifc/bed02.ifc",
+      "bytes": 10478072,
+      "sha256": "f0fb7b0a0724d19e74435349d2f79ec48674c652d2b2c65ecd3078cfba355ee7"
+    },
+    {
+      "path": "ifc/bst01.ifc",
+      "bytes": 9808758,
+      "sha256": "dc81c6fbb8d503070fb66a60f71a3ed2a2b38711a5ba4380e06aaaa25e896e65"
+    },
+    {
+      "path": "ifc/bst02.ifc",
+      "bytes": 9740347,
+      "sha256": "5b712fcfe8ef408ce62c938d8f0bd9dd303ae1f079cfe5aa37692c8788ff65b4"
+    },
+    {
+      "path": "ifc/bst03.ifc",
+      "bytes": 7867964,
+      "sha256": "cbe1451a38eda9938f1766b9b95414f7896e9eb9f34ffe566253a4efdcacd6a7"
+    },
+    {
+      "path": "ifc/cha01.ifc",
+      "bytes": 8484683,
+      "sha256": "09a4e37cab7e98aeb257bef10d59c47a2210ef392741a882611124763f25ab0d"
+    },
+    {
+      "path": "ifc/cha02.ifc",
+      "bytes": 1678476,
+      "sha256": "89ed2af926918e5ed9c5cb7c13af107f182c729fc6ac57ecef7175d1fe9a8341"
+    },
+    {
+      "path": "ifc/electric-flue-check-valve.ifc",
+      "bytes": 120524,
+      "sha256": "b9b706e2e077efc24bbd1817310ed53015a25396f2778b92705a93ce3ec1fafe"
+    },
+    {
+      "path": "ifc/falper-sorgente.ifc",
+      "bytes": 821078,
+      "sha256": "c59511a22e07e11a0961d951e5fbc324c07c0ec884f779e8111079da730341ae"
+    },
+    {
+      "path": "ifc/fau02.ifc",
+      "bytes": 624919,
+      "sha256": "3457a23398482e84f816053fb4bc00033e644d3e0cec38c3f5fbe0cee7bde883"
+    },
+    {
+      "path": "ifc/geberit-115-770.ifc",
+      "bytes": 154362,
+      "sha256": "1f4ba5fda753b800d05b734044d13479c952ffbbdfde694e27a5ed223fd1637f"
+    },
+    {
+      "path": "ifc/geberit-146-140.ifc",
+      "bytes": 844921,
+      "sha256": "2c307ee743ddd9f5e170545092584115bc0f44beb16be9d475eb9ac043ec54a3"
+    },
+    {
+      "path": "ifc/geberit-154-154-00-1-f.ifc",
+      "bytes": 499969,
+      "sha256": "bf5b16a19cf6fe39245e32a1d8d88ae2bad71c91a4a1206e64364aab47aca6da"
+    },
+    {
+      "path": "ifc/geberit-154-154-00.ifc",
+      "bytes": 495101,
+      "sha256": "5202a5607f6b134bcaacf547262f6b47ae70dc581f193cb8761109f7462b4cd2"
+    },
+    {
+      "path": "ifc/geberit-154-446-ks-1.ifc",
+      "bytes": 4009818,
+      "sha256": "e1c14248c2b968c6ff52ec96c062b3c77ec725a6c501c205817f175cb3861111"
+    },
+    {
+      "path": "ifc/geberit-duofix-sigma-224-212.ifc",
+      "bytes": 7629659,
+      "sha256": "8b9414b77f8e5f2fc9e7400e2d70e5e058c17404ea8c5ab9494db746e3d6e50b"
+    },
+    {
+      "path": "ifc/gessi316-54038.ifc",
+      "bytes": 9517311,
+      "sha256": "09b7f56085015a7e3c43dd4ed2c5440cfe17a4297a9416aeef81968b8f4ea0f2"
+    },
+    {
+      "path": "ifc/gessi316-54093.ifc",
+      "bytes": 8101442,
+      "sha256": "f8d0f0058b46918b94a49e205e6b7ca48830d59d30325ffb80b3877c3c1e4d38"
+    },
+    {
+      "path": "ifc/gessi316-54145.ifc",
+      "bytes": 790353,
+      "sha256": "3bf6766c1c230c221a7eec45dce7fcc23a57ecad5766ed38e244843a9d8c0825"
+    },
+    {
+      "path": "ifc/gessi316-54146.ifc",
+      "bytes": 7975489,
+      "sha256": "f9d7faa6ccd186dc4be1b4d317ce98675e2d860ec8e3f6e0fab29ee2b57d20ad"
+    },
+    {
+      "path": "ifc/gessi316-54294.ifc",
+      "bytes": 8563383,
+      "sha256": "7405c23abc795ae6e9ed1e22123b119c8909b9ea29d0389d2868351eddd9002b"
+    },
+    {
+      "path": "ifc/hima01.ifc",
+      "bytes": 9745244,
+      "sha256": "0b45c43e81c4cabad3d4fb71ade9ef2aaf6a2895833d3590029941909b4826eb"
+    },
+    {
+      "path": "ifc/marilyn-01.ifc",
+      "bytes": 2776827,
+      "sha256": "3b0ed35abc8511c29f7d5c9d156cfef28ca81c59357a7c7aaf141d86aa6f9a54"
+    },
+    {
+      "path": "ifc/marilyn-02.ifc",
+      "bytes": 2630228,
+      "sha256": "3d693afed35f6ad2bf52f80b923c3fbb84d58165a8ea28d3530fdf491c5f7103"
+    },
+    {
+      "path": "ifc/miamisoft-e07.ifc",
+      "bytes": 4389729,
+      "sha256": "ffb1fbceb0ca652b5da672cd0650a5da279fa76815e03bd2767549437cfaed14"
+    },
+    {
+      "path": "ifc/miamisoft-e09.ifc",
+      "bytes": 4676132,
+      "sha256": "da8122761e2906015c720c1962f03cb4c7e6e45e9c346149ff51cb53c1aeef1d"
+    },
+    {
+      "path": "ifc/miamisoft-f03.ifc",
+      "bytes": 4380443,
+      "sha256": "0d4b70856c9e0797df64fcfaf519b0e980a9e3a8d13e37d7cf17bb3035ebec3f"
+    },
+    {
+      "path": "ifc/miamisoft-h01.ifc",
+      "bytes": 4372633,
+      "sha256": "d8f34a9ed0ee4efd7a19f8e36313094e7489ad5c3b4b1b0a2c1e5e6a59fe6b10"
+    },
+    {
+      "path": "ifc/miamisoft-i03.ifc",
+      "bytes": 4368176,
+      "sha256": "3490c70ef3451c08eb89814260ef28179598a53b4b7ff348ac129b70d0ce05a5"
+    },
+    {
+      "path": "ifc/sis04.ifc",
+      "bytes": 3488651,
+      "sha256": "80c3ef97fbeb2a3912109b5b5ca752e489403079a8f1e7a2997dfd83d3b0c315"
+    },
+    {
+      "path": "ifc/street-h.ifc",
+      "bytes": 159541,
+      "sha256": "7afc729d220634c4987933cc356fc075d8d6645ad3b3d1d6ef0552ff6e2e2445"
+    },
+    {
+      "path": "ifc/street.ifc",
+      "bytes": 688213,
+      "sha256": "1b9b941f778ae97be81577f88bfab4ab2f765a5931ec9517b32f765beb3c549b"
+    },
+    {
+      "path": "ifc/sxb010.ifc",
+      "bytes": 2537255,
+      "sha256": "53ed48945afbad4f93befc0c199bf89579f71473536f1243294eb0a81376abf0"
+    },
+    {
+      "path": "ifc/tab02.ifc",
+      "bytes": 151649,
+      "sha256": "e9171b4e843ef83be7e25b4a5feb22768bd37fdf4715736dbf5a7aa3fb4734e4"
+    },
+    {
+      "path": "ifc/trap01.ifc",
+      "bytes": 1426558,
+      "sha256": "c01c3d5f94384784ca5c4357c5507f3c8aae795a7924a25676b983f4b30fea7b"
+    },
+    {
+      "path": "ifc/wd01.ifc",
+      "bytes": 9073489,
+      "sha256": "5962afb324476a878a8c144f48a06b127c99b3a197140e889724e43bcfd9ceb3"
+    },
+    {
+      "path": "ifc/wd02.ifc",
+      "bytes": 348845,
+      "sha256": "5e19a26503943a8f8e9265a022587754ef7d32725b30f0555a203fba193b0686"
+    },
+    {
+      "path": "ifc/wd03.ifc",
+      "bytes": 406393,
+      "sha256": "65c8327df7e2f985b95c44131cb1d690974f02c3cacb9f9392ff4167db66f95e"
+    },
+    {
+      "path": "native-assets/placements.json",
+      "bytes": 29183,
+      "sha256": "4b3d14c7a410c9bf5f5cf460097bda13169485e08e17d59b709361b668e5d5c2"
+    },
+    {
+      "path": "open_library.py",
+      "bytes": 1014,
+      "sha256": "0b3908bd5c82041e45bd3cc7e0872ba1d962ca9153d25a40ae8a47436609dee3"
+    },
+    {
+      "path": "previews/505-up-v1-lp-s/front.png",
+      "bytes": 32738,
+      "sha256": "ddf9d2c7a1c1a03b759d2e0bd2a5f7085413da8dd0262b1a68525f263d0cd069"
+    },
+    {
+      "path": "previews/505-up-v1-lp-s/front.svg",
+      "bytes": 116205,
+      "sha256": "afdaccf92868c0e7337f9c95b9dd97fe7d0aa344dd017587cbf20f2af467ce7e"
+    },
+    {
+      "path": "previews/505-up-v1-lp-s/iso.png",
+      "bytes": 36557,
+      "sha256": "488064a1b8c4adbbc6d034caad24c3d83c4897b5591f1a75a837d3a345e83cc9"
+    },
+    {
+      "path": "previews/505-up-v1-lp-s/plan.png",
+      "bytes": 12393,
+      "sha256": "9def2306f64ae4e353bd53e1d0c177ca76b31352f8ca0ca7412af874465da291"
+    },
+    {
+      "path": "previews/505-up-v1-lp-s/plan.svg",
+      "bytes": 96168,
+      "sha256": "f3ebe0ed00f357a61ff2c86ff844723c506323fedc6e932ca1937ee9df94ad8e"
+    },
+    {
+      "path": "previews/505-up-v1-lp-s/side.png",
+      "bytes": 16759,
+      "sha256": "9b28aa93477eadfc742bcfec31234796fbefade417bc0705f9ec4f26eea77ff9"
+    },
+    {
+      "path": "previews/505-up-v1-lp-s/side.svg",
+      "bytes": 99007,
+      "sha256": "e2365942885027e3c2561a71d9ebbc49d0a2528e6264097917a4cf53b9ce1437"
+    },
+    {
+      "path": "previews/bed01/front.png",
+      "bytes": 46187,
+      "sha256": "14b9c87b685c56d5b8e6684157ff098aefeec8e11526daf76f7554ced349d5b7"
+    },
+    {
+      "path": "previews/bed01/front.svg",
+      "bytes": 261004,
+      "sha256": "58e518687dd7c700ffe763a60397dd4cfdb9afb3d8abc787825fa2c2b7a4a600"
+    },
+    {
+      "path": "previews/bed01/iso.png",
+      "bytes": 70312,
+      "sha256": "c3b0bc19b628319244e21a3100e4ff41d7a0698df28bb772ff718080d63b7706"
+    },
+    {
+      "path": "previews/bed01/plan.png",
+      "bytes": 36540,
+      "sha256": "1f6a30e58d4f5d7e6a00ab5e0b36a8ec683d49307eda45e2b06048f5432cd508"
+    },
+    {
+      "path": "previews/bed01/plan.svg",
+      "bytes": 272239,
+      "sha256": "a066d79a6d40b477f0d74f995e90918a61555f3e536cdc1d1614a504ec08a8ca"
+    },
+    {
+      "path": "previews/bed01/side.png",
+      "bytes": 35920,
+      "sha256": "53e189398e8a176c03fdc69d70cb8c3e0624589abf1a9410e38c1887fe1f9e43"
+    },
+    {
+      "path": "previews/bed01/side.svg",
+      "bytes": 285118,
+      "sha256": "a33aaf441d2e88df99b3a8c59e9cd1649d0bfc5654919206e6f1b731a780ca45"
+    },
+    {
+      "path": "previews/bed02/front.png",
+      "bytes": 20605,
+      "sha256": "b4726cb1faecca648c0ea2c98f3ce52879e731ab842afefb439a30a1c164b091"
+    },
+    {
+      "path": "previews/bed02/front.svg",
+      "bytes": 118374,
+      "sha256": "b12923749f9c051e85583f644a0c291999ea863e09e63d7edf21ded18c985cc2"
+    },
+    {
+      "path": "previews/bed02/iso.png",
+      "bytes": 73580,
+      "sha256": "c11fba2f2b1a61e338d1995a14314a8fe5d3837e978001480cd888adeae90bd0"
+    },
+    {
+      "path": "previews/bed02/plan.png",
+      "bytes": 23402,
+      "sha256": "6a9331ecccba8c504c94e6f7635baa9d3303110e7b3047f24713e275e59796e8"
+    },
+    {
+      "path": "previews/bed02/plan.svg",
+      "bytes": 112985,
+      "sha256": "26cfffa236189cd3cef5d4f9e01b31bb90f86a14595f1ebd3459c80b863661ac"
+    },
+    {
+      "path": "previews/bed02/side.png",
+      "bytes": 33877,
+      "sha256": "ce491e14b5a9b12e3171a28176812a95995e66f278182a3412548a51bab020f4"
+    },
+    {
+      "path": "previews/bed02/side.svg",
+      "bytes": 184823,
+      "sha256": "f512fc485ecff1d6936ebb123163dcd34ecb7efb7d7ee1aa0843b0542dbe68a4"
+    },
+    {
+      "path": "previews/bst01/front.png",
+      "bytes": 13154,
+      "sha256": "1826c009ae071f0e5f1ecc80e94089ee2f30eda5a412656e3d31d92b58e693c2"
+    },
+    {
+      "path": "previews/bst01/front.svg",
+      "bytes": 88523,
+      "sha256": "114888067504984ff2538693fcce36c0e4058c0c187dd0dffe8a6247f6ff8149"
+    },
+    {
+      "path": "previews/bst01/iso.png",
+      "bytes": 32448,
+      "sha256": "3474edaa006189708778e4a08563f0bf35526f4336062f68d0f3d18b088c1499"
+    },
+    {
+      "path": "previews/bst01/plan.png",
+      "bytes": 60859,
+      "sha256": "e669098ddb515fe0faf799bd52f1f2b6f43dd85b68783ad18b2f97fd5525806b"
+    },
+    {
+      "path": "previews/bst01/plan.svg",
+      "bytes": 101830,
+      "sha256": "b9582e05fc256118f96ceb11da80ea8fcfafd85b868fe12b02a5a5e48795c02b"
+    },
+    {
+      "path": "previews/bst01/side.png",
+      "bytes": 13500,
+      "sha256": "9923f83ea95fc0101638b48a9f48885b7c0fd8a041894afdf8169f4a38a2800c"
+    },
+    {
+      "path": "previews/bst01/side.svg",
+      "bytes": 88824,
+      "sha256": "05bebf49acc52ed98737f3748fc83a6acb0cf29a16bfe871cf91db293597283a"
+    },
+    {
+      "path": "previews/bst02/front.png",
+      "bytes": 14901,
+      "sha256": "06ae446bf4917901f482d6003324966b471b3310458aa933427c26f8e5541e3a"
+    },
+    {
+      "path": "previews/bst02/front.svg",
+      "bytes": 89305,
+      "sha256": "9b60ea53ed14c6411caa5ab0b4dbc66af595f44dd2ea6872e3f7208e576befc0"
+    },
+    {
+      "path": "previews/bst02/iso.png",
+      "bytes": 33949,
+      "sha256": "9238dce2f59f3c3aa8b14a9198937f9e25cd7444349087c55cfca8a6517c7512"
+    },
+    {
+      "path": "previews/bst02/plan.png",
+      "bytes": 40783,
+      "sha256": "85cb258aef4cce380fc4bf991cbdb4ecc846dd089b25393eeff2698ae3d2c425"
+    },
+    {
+      "path": "previews/bst02/plan.svg",
+      "bytes": 100801,
+      "sha256": "1de9e892ade829be262c07f2b5badf714b20a193bc39afa362eb53a6de22c923"
+    },
+    {
+      "path": "previews/bst02/side.png",
+      "bytes": 12261,
+      "sha256": "c0bd26113059a1cab0f5e2c7ff3bfbca06f06ce7e04bbb7c24acbd7da543c3da"
+    },
+    {
+      "path": "previews/bst02/side.svg",
+      "bytes": 89233,
+      "sha256": "403e333989e66ef3a9baa85805b64a71daebe072ef62d16001bd59a25514efd1"
+    },
+    {
+      "path": "previews/bst03/front.png",
+      "bytes": 28284,
+      "sha256": "ae8051f14a292468fa7f0a17d3dfc886a2c0be5be45fe2d7f6017f658cd86ee9"
+    },
+    {
+      "path": "previews/bst03/front.svg",
+      "bytes": 96645,
+      "sha256": "d600e06ca94f3e4e20dd8ab0bed9cb44c03e308f65858050649efa3571fbc9bf"
+    },
+    {
+      "path": "previews/bst03/iso.png",
+      "bytes": 31852,
+      "sha256": "6460528fecc74b69854dd927e31a9a4bead8af8daafda3f6b8d65b2787f9b0c5"
+    },
+    {
+      "path": "previews/bst03/plan.png",
+      "bytes": 39112,
+      "sha256": "35da9e9c21472eb31170ba625d12265e9a9228c57a06092312a76a1bf5b66abf"
+    },
+    {
+      "path": "previews/bst03/plan.svg",
+      "bytes": 97762,
+      "sha256": "ccd276ffcc8db2c9e347de9fcf8a69b91ddf92a874142ae3dd06ae57420f9942"
+    },
+    {
+      "path": "previews/bst03/side.png",
+      "bytes": 24103,
+      "sha256": "dd2ad3f7c0942e858f89ec02a82eced5155caaebc73d7d826891feb3b25d9046"
+    },
+    {
+      "path": "previews/bst03/side.svg",
+      "bytes": 94293,
+      "sha256": "09ee7f8cf17b50a16c9246933fbee82da11a7fd9a4394e7a7c2068f68282493b"
+    },
+    {
+      "path": "previews/cha01/front.png",
+      "bytes": 47109,
+      "sha256": "fb83d611134d1e60fcffa96f79f16d368061b29f31096fbe8d69fa2f3ac70029"
+    },
+    {
+      "path": "previews/cha01/front.svg",
+      "bytes": 95922,
+      "sha256": "039ac044702663ebf77ca5165a2821a6ad83657335225fb1382621a61aa27733"
+    },
+    {
+      "path": "previews/cha01/iso.png",
+      "bytes": 34530,
+      "sha256": "2ba71d8b879124bea9b52f8d3b381f2f4d4245c27fe003244e9157ede2952ad6"
+    },
+    {
+      "path": "previews/cha01/plan.png",
+      "bytes": 41858,
+      "sha256": "0bd6ccbe6a71cb797279137edc4940440ea04ab3cbcbc97004d7cd9c97dd67e7"
+    },
+    {
+      "path": "previews/cha01/plan.svg",
+      "bytes": 97249,
+      "sha256": "dba3e08d9ce64dbb3cc46929b373bed8c9de119339a1546d389bf93d0e59cbc8"
+    },
+    {
+      "path": "previews/cha01/side.png",
+      "bytes": 48553,
+      "sha256": "61b383a4771ccd0bcedfb774f6f21088653e15fdaef90e8692fbc293bbbe7069"
+    },
+    {
+      "path": "previews/cha01/side.svg",
+      "bytes": 96440,
+      "sha256": "647fa85d12cc51ebd93bb3e8197ca330e4144baa8a41e535007de4855cbf7471"
+    },
+    {
+      "path": "previews/cha02/front.png",
+      "bytes": 46217,
+      "sha256": "efd10d7e908d1af0189ad1b217177278c04b13051dba8637c5f505b002fb187f"
+    },
+    {
+      "path": "previews/cha02/front.svg",
+      "bytes": 109128,
+      "sha256": "fcea3a616b9ebd5c57ca45a3158f4e169d6025b694d5d1eb44f254a63b9d315f"
+    },
+    {
+      "path": "previews/cha02/iso.png",
+      "bytes": 33564,
+      "sha256": "922128da11b01ebc7e89fbe3cfbc0d447ac53a4fa97454f322d695be5f76dffa"
+    },
+    {
+      "path": "previews/cha02/plan.png",
+      "bytes": 20704,
+      "sha256": "a2887c7959abe56670cff3b6852ab11b08c43c6460db193cf9ff35ae43a25326"
+    },
+    {
+      "path": "previews/cha02/plan.svg",
+      "bytes": 95842,
+      "sha256": "5d437b83f699c3075f90774a5031f2d8dd37d519aecc422f95427c6816d2c983"
+    },
+    {
+      "path": "previews/cha02/side.png",
+      "bytes": 28235,
+      "sha256": "c32988ee0dc2c0076c070d832eaf23bdf961d667662856321456c85a816b4b25"
+    },
+    {
+      "path": "previews/cha02/side.svg",
+      "bytes": 93914,
+      "sha256": "591e8f5b233406d1c0c863bac955877e723b330358b91c9c2855b4f829c1a80e"
+    },
+    {
+      "path": "previews/electric-flue-check-valve/front.png",
+      "bytes": 18884,
+      "sha256": "6698e9ad1883b9e6135658877e383a77d208a4f3589d88bf925f137ec061db98"
+    },
+    {
+      "path": "previews/electric-flue-check-valve/front.svg",
+      "bytes": 89682,
+      "sha256": "d707725939510ed4f49bda4651df66fbb61c74cd456582a6f2e186b0d5bfd88d"
+    },
+    {
+      "path": "previews/electric-flue-check-valve/iso.png",
+      "bytes": 34910,
+      "sha256": "935309808400a991f90498de6362cf16c3f0bf5284449173581013106c2d18b5"
+    },
+    {
+      "path": "previews/electric-flue-check-valve/plan.png",
+      "bytes": 18647,
+      "sha256": "b40d2803e20ee3d3ca11876a678e2e3fade7d1c83af155098180f15ed1f6c886"
+    },
+    {
+      "path": "previews/electric-flue-check-valve/plan.svg",
+      "bytes": 90597,
+      "sha256": "17db24e54f925a50dfaf9f4cbd9d09a2322bbb45b91b4933766dde8ddceeaf31"
+    },
+    {
+      "path": "previews/electric-flue-check-valve/side.png",
+      "bytes": 21011,
+      "sha256": "16269c522a6c4a7f332df6ddc8974c83450025775111a6bf8f489d73fa39de1d"
+    },
+    {
+      "path": "previews/electric-flue-check-valve/side.svg",
+      "bytes": 90701,
+      "sha256": "1a41010042d0cbbf040c88ecf7afeb91d2ce12d7270a57f0b40042e0f29b0f55"
+    },
+    {
+      "path": "previews/falper-sorgente/front.png",
+      "bytes": 34864,
+      "sha256": "a737e0a335f9a0843dccaa3ae0320de9e346c660111c242ad7257b53ae948d3b"
+    },
+    {
+      "path": "previews/falper-sorgente/front.svg",
+      "bytes": 161451,
+      "sha256": "08c605952e01607f385fc63f40a20cbc42f890b3203f7d822bcdfdd3221b35fd"
+    },
+    {
+      "path": "previews/falper-sorgente/iso.png",
+      "bytes": 59957,
+      "sha256": "763dec291bf34a01aeefbd77560b7a0ca9d9da9579370df75e4ab9116c19058d"
+    },
+    {
+      "path": "previews/falper-sorgente/plan.png",
+      "bytes": 98150,
+      "sha256": "9d2a5adc131665aca07af0afe33fe9290330883d0600be01d0c307ee95a21a6a"
+    },
+    {
+      "path": "previews/falper-sorgente/plan.svg",
+      "bytes": 217382,
+      "sha256": "319efde3dc5ac1cc947258754b6ddca2304b049a2231d03dd020744d163e9350"
+    },
+    {
+      "path": "previews/falper-sorgente/side.png",
+      "bytes": 34852,
+      "sha256": "89c782cfe58ba16680720d3ced6d0b91042f7e6e7e492e34276a7ac43e0f6202"
+    },
+    {
+      "path": "previews/falper-sorgente/side.svg",
+      "bytes": 161461,
+      "sha256": "bb0aae19bd1bab454d81ae6f5faf89f3c6948b73c892320af39a058fb1d9e414"
+    },
+    {
+      "path": "previews/fau02/front.png",
+      "bytes": 18266,
+      "sha256": "e2e73e90fcc38fe823342141bfdd8313fe69e7a0958a21b2888cb03f02fec016"
+    },
+    {
+      "path": "previews/fau02/front.svg",
+      "bytes": 93404,
+      "sha256": "df2d905fdfec1e57d5571207c0c08191afd298994d865610005e087638937999"
+    },
+    {
+      "path": "previews/fau02/iso.png",
+      "bytes": 22738,
+      "sha256": "fbb62f74ca452fb6f1dd917707e2ecee04c7df613ffef6739c3318b73e362200"
+    },
+    {
+      "path": "previews/fau02/plan.png",
+      "bytes": 29251,
+      "sha256": "cb46623c3342377b5e2f1551665bd1291e9cf4133038f076de296faed002c226"
+    },
+    {
+      "path": "previews/fau02/plan.svg",
+      "bytes": 92282,
+      "sha256": "90a80d44b7e192563cd147972fac1744979fed57e844aef1a5730ddb436972b5"
+    },
+    {
+      "path": "previews/fau02/side.png",
+      "bytes": 12586,
+      "sha256": "89e3f428db6223b22b9268d0296714f5de7e9ee508292fb0e391831985423702"
+    },
+    {
+      "path": "previews/fau02/side.svg",
+      "bytes": 89949,
+      "sha256": "925ed339e02eb139fa2ff64f7ae720635c2bd08574637736599bc2d2f0f713da"
+    },
+    {
+      "path": "previews/geberit-115-770/front.png",
+      "bytes": 47952,
+      "sha256": "46784dc65feb54ad96fbe7c97cebcd7f282fab356bd1549d2ee305c54c8ac244"
+    },
+    {
+      "path": "previews/geberit-115-770/front.svg",
+      "bytes": 146255,
+      "sha256": "ec627997f4295fb97a862df070981cd976304a0eb82f1f24ebe998791f3b7649"
+    },
+    {
+      "path": "previews/geberit-115-770/iso.png",
+      "bytes": 42555,
+      "sha256": "bae9d7224afdb7d8a24442604f00797ba31896cc42f60c500f625a5298150477"
+    },
+    {
+      "path": "previews/geberit-115-770/plan.png",
+      "bytes": 10737,
+      "sha256": "6e8bc2fe64ccbaf144459308c40ec36af34d3d052f324cf431b961dc589f9250"
+    },
+    {
+      "path": "previews/geberit-115-770/plan.svg",
+      "bytes": 88838,
+      "sha256": "7bbb4041357557a44e8b2503bac79e87ae1e40318ee580bbc0ed03157165a172"
+    },
+    {
+      "path": "previews/geberit-115-770/side.png",
+      "bytes": 10246,
+      "sha256": "06f3740dd0bc9bb5313466eaa6b8276781dc2aa8c402fe07111274d185ba14ba"
+    },
+    {
+      "path": "previews/geberit-115-770/side.svg",
+      "bytes": 88446,
+      "sha256": "074d4dec7c6152f9772f27d4ab583c6c49b4fc8f5487170482b0c674012ce494"
+    },
+    {
+      "path": "previews/geberit-146-140/front.png",
+      "bytes": 45019,
+      "sha256": "2d5a2fcc67df5124fcd97cc265dd2a7e0307917fcc88c93af69750b9ad9f3e5e"
+    },
+    {
+      "path": "previews/geberit-146-140/front.svg",
+      "bytes": 387858,
+      "sha256": "70a7c7fafefde4126a74a799c59f9ad5e2e14483e0db413a5392afd530aaba52"
+    },
+    {
+      "path": "previews/geberit-146-140/iso.png",
+      "bytes": 47357,
+      "sha256": "8087a033753450aa66a1126941de5bde71e4a26952c7ffbabd7cabfbd91d72ae"
+    },
+    {
+      "path": "previews/geberit-146-140/plan.png",
+      "bytes": 62468,
+      "sha256": "5d018dc19a667f548927af148b9661b607b093a996b9dfc03f7e55d135aca7d3"
+    },
+    {
+      "path": "previews/geberit-146-140/plan.svg",
+      "bytes": 257809,
+      "sha256": "20c402599f62adaeabafff6768d2bdbd7063d77a0bade1b88fa284160df1c7d2"
+    },
+    {
+      "path": "previews/geberit-146-140/side.png",
+      "bytes": 45839,
+      "sha256": "0fcbdafd3b26ac68a6b5e295114220735f09b46485e6f94bb23b823dc60f26b5"
+    },
+    {
+      "path": "previews/geberit-146-140/side.svg",
+      "bytes": 300428,
+      "sha256": "d6524648129c3b318f0ac5b3b878e0779a5b73feb41ce891350e6609b511a3a6"
+    },
+    {
+      "path": "previews/geberit-154-154-00/front.png",
+      "bytes": 12166,
+      "sha256": "a5bc739760d71e61facdb8004277f9638757b5d82d6265bdd5f24a3c6b710671"
+    },
+    {
+      "path": "previews/geberit-154-154-00/front.svg",
+      "bytes": 90267,
+      "sha256": "176325d1c1c3797feb13a7d420ed53bcf245f770a51fe47d91cb8cb90a40a124"
+    },
+    {
+      "path": "previews/geberit-154-154-00/iso.png",
+      "bytes": 33635,
+      "sha256": "123266c032436f23603b34502d9f14facde1a7f1351a5eafd97b8aa00fef49be"
+    },
+    {
+      "path": "previews/geberit-154-154-00/plan.png",
+      "bytes": 11549,
+      "sha256": "109ec3c61dffbc154bd3b23e89c019bb4849415725afa2b8a5aa698790dec6ee"
+    },
+    {
+      "path": "previews/geberit-154-154-00/plan.svg",
+      "bytes": 88747,
+      "sha256": "dac5f77788e2c5c3335526df1267ae9ab88456b6ec17b50abf7ca8d87521ec0d"
+    },
+    {
+      "path": "previews/geberit-154-154-00/side.png",
+      "bytes": 11191,
+      "sha256": "0f0bb52bef6509eb09e7e529a01972bfe8d71c013cec2b6eef58f77ca1e0b1f4"
+    },
+    {
+      "path": "previews/geberit-154-154-00/side.svg",
+      "bytes": 87722,
+      "sha256": "e1d69e1720670b43857173a20be9cfdc2d82e736b0034ed713993c11f961da8f"
+    },
+    {
+      "path": "previews/geberit-154-154-00-1-f/front.png",
+      "bytes": 12847,
+      "sha256": "ca25e0847790c86634beb491d7b6a52df54bcdfcf79f0bbe45fcfe5ec3204fd7"
+    },
+    {
+      "path": "previews/geberit-154-154-00-1-f/front.svg",
+      "bytes": 88555,
+      "sha256": "2d7c0b5297b08fa999a2ebf4b3cfb29a2851067f1e9057278d47bfeebe9393b9"
+    },
+    {
+      "path": "previews/geberit-154-154-00-1-f/iso.png",
+      "bytes": 32434,
+      "sha256": "a1bfbda6b9d1b74e05c854205c47eed4093f991bc31b061ae1d2b3bc836c388b"
+    },
+    {
+      "path": "previews/geberit-154-154-00-1-f/plan.png",
+      "bytes": 24930,
+      "sha256": "87d89113b51166800d73153ae73bbbc515ce38891fea9f92f7f9669e09d5916a"
+    },
+    {
+      "path": "previews/geberit-154-154-00-1-f/plan.svg",
+      "bytes": 92195,
+      "sha256": "ff8987caf8fd9ab353a0f375a56fe55b68bba931a92f152081a3887b5b2fc928"
+    },
+    {
+      "path": "previews/geberit-154-154-00-1-f/side.png",
+      "bytes": 17863,
+      "sha256": "4cc2fefc6cefdc35a6e07dea1265a8ce50fe20b0227a522505b00973c52ce44c"
+    },
+    {
+      "path": "previews/geberit-154-154-00-1-f/side.svg",
+      "bytes": 89366,
+      "sha256": "b2acac43d7249c76568b61cb67a113a1e5a4e269989d7d26b4cd08b8783aa2d5"
+    },
+    {
+      "path": "previews/geberit-154-446-ks-1/front.png",
+      "bytes": 10732,
+      "sha256": "6172fdbf0695b7dfd0dc6a4d4c0767e0607197a3598898e3525758e358690e0c"
+    },
+    {
+      "path": "previews/geberit-154-446-ks-1/front.svg",
+      "bytes": 120676,
+      "sha256": "64dafe83da6b0529b8d0332728ce0adf6314e35ee3e64a24e3cd9ee305d04fc4"
+    },
+    {
+      "path": "previews/geberit-154-446-ks-1/iso.png",
+      "bytes": 47664,
+      "sha256": "3876f738ceea9694a983ca7b8a5d79d8a3ea0d823b864721be18a9da5edd3dbe"
+    },
+    {
+      "path": "previews/geberit-154-446-ks-1/plan.png",
+      "bytes": 13012,
+      "sha256": "2cdc943be59ad59b403d09e8c1b7f88c523515c6eec9dc7f360a293eb4ad70c9"
+    },
+    {
+      "path": "previews/geberit-154-446-ks-1/plan.svg",
+      "bytes": 195344,
+      "sha256": "f4290fcbda62b3d9c3a50982b49c15bf654ea4cd587e1bc54ec58ce6ab4a02c3"
+    },
+    {
+      "path": "previews/geberit-154-446-ks-1/side.png",
+      "bytes": 14067,
+      "sha256": "399fe6c1d2cc62c77cc44f2a24d5a25832b5081250f4f46b8f8e79dcaa1d86fe"
+    },
+    {
+      "path": "previews/geberit-154-446-ks-1/side.svg",
+      "bytes": 214471,
+      "sha256": "046e9796e80d2a4138ed3013166549325d6e88a3ac75d962c90a87ffd7c6624e"
+    },
+    {
+      "path": "previews/geberit-duofix-sigma-224-212/front.png",
+      "bytes": 58685,
+      "sha256": "5ad8a361bdf0b0ae06c5e557529bb220b7bf9c56168faafe63f35ee21990fc85"
+    },
+    {
+      "path": "previews/geberit-duofix-sigma-224-212/front.svg",
+      "bytes": 882976,
+      "sha256": "f1dae201101bb79a82fd156e14fb4c442ed4ebfb1be577a998293d9d48b2f3d9"
+    },
+    {
+      "path": "previews/geberit-duofix-sigma-224-212/iso.png",
+      "bytes": 58810,
+      "sha256": "e15e31da187bc1722db01087cbc6d169205d69d9836d610851a1a45a81c103de"
+    },
+    {
+      "path": "previews/geberit-duofix-sigma-224-212/plan.png",
+      "bytes": 37119,
+      "sha256": "08388a11da5bee1d7ad6be14e8c82e139c9c7fdd8eddc1baac6e2f393ed71f65"
+    },
+    {
+      "path": "previews/geberit-duofix-sigma-224-212/plan.svg",
+      "bytes": 464200,
+      "sha256": "34742ec0e240236a166d3d5587236d26bc031fae75f6e064e4554f6c01754df3"
+    },
+    {
+      "path": "previews/geberit-duofix-sigma-224-212/side.png",
+      "bytes": 24390,
+      "sha256": "f9c6d2aca46e3c0e875297bd2d7530eade096e99520bfdca813b9abe9df4a132"
+    },
+    {
+      "path": "previews/geberit-duofix-sigma-224-212/side.svg",
+      "bytes": 369784,
+      "sha256": "c5c118c2759cd3385fcf78522270a66649b60441b446a3d6272f4a53d2424482"
+    },
+    {
+      "path": "previews/gessi316-54038/front.png",
+      "bytes": 19231,
+      "sha256": "ace9c27f026bd3ea37256e9665191339680775a0c08309bd4abaca18371f5248"
+    },
+    {
+      "path": "previews/gessi316-54038/front.svg",
+      "bytes": 1658209,
+      "sha256": "5e7bf6b7b8a9b682e831d3c25508fa8c8739cf1059e423a406b79216eafcc8ac"
+    },
+    {
+      "path": "previews/gessi316-54038/iso.png",
+      "bytes": 25641,
+      "sha256": "5cc9e2a9938e06ff4cfea9d7d5f6a804e227009a985d45d29a195c5ed3c589b2"
+    },
+    {
+      "path": "previews/gessi316-54038/plan.png",
+      "bytes": 21384,
+      "sha256": "c5b5973329a08660d582ebda76718b37ce8f53a7e6e9141556be61b6e8d284d8"
+    },
+    {
+      "path": "previews/gessi316-54038/plan.svg",
+      "bytes": 229257,
+      "sha256": "2bbbeeda0446d13e87264e34d38408783a9056264fefb090e9fb19e45d1513e5"
+    },
+    {
+      "path": "previews/gessi316-54038/side.png",
+      "bytes": 13601,
+      "sha256": "ff1258110ab203bc16c625e9a0ce7d11d5a39cbf559281c4aad9a78ef78d454e"
+    },
+    {
+      "path": "previews/gessi316-54038/side.svg",
+      "bytes": 750613,
+      "sha256": "0406c674e4067d50e8ee4fa3e93fb02ec5987589af02797f13aa0770b4db04b3"
+    },
+    {
+      "path": "previews/gessi316-54093/front.png",
+      "bytes": 14313,
+      "sha256": "4b5c12f131cc95a7e49fa9d74f9781c14bf3d70010209aef24d45efb9b7a2517"
+    },
+    {
+      "path": "previews/gessi316-54093/front.svg",
+      "bytes": 469804,
+      "sha256": "886a1a651bba5ba5b7beda53b83ea228096b4f652e33f4bf5f85d81fb2c47dd5"
+    },
+    {
+      "path": "previews/gessi316-54093/iso.png",
+      "bytes": 26110,
+      "sha256": "b83adc4a2cd63d98b69f8cd420bfad45371e8c9c5c8aa5a543e8cf9358ac2c18"
+    },
+    {
+      "path": "previews/gessi316-54093/plan.png",
+      "bytes": 22854,
+      "sha256": "46faa60f47ef5743d7a54823ca3565ab772a545310ff32e96f47aaf4e35b1683"
+    },
+    {
+      "path": "previews/gessi316-54093/plan.svg",
+      "bytes": 118580,
+      "sha256": "62dc8a33fede5886be466f94a390a8858429d7e315b5ac792421f49a312e72f4"
+    },
+    {
+      "path": "previews/gessi316-54093/side.png",
+      "bytes": 27244,
+      "sha256": "7db7b1f40aff182123c39cc816dacb7830af26ed6e42d7df47a304b3da66fe72"
+    },
+    {
+      "path": "previews/gessi316-54093/side.svg",
+      "bytes": 95544,
+      "sha256": "c2e407fe031713561c83ae9523d022f50b75dc0f3d99d078f5bfb11962fcfeb2"
+    },
+    {
+      "path": "previews/gessi316-54145/front.png",
+      "bytes": 12008,
+      "sha256": "eb845ed324400c5ed3fa3f046f8d2357399ca7aaf888e85f9c4eecbdaa44d51a"
+    },
+    {
+      "path": "previews/gessi316-54145/front.svg",
+      "bytes": 175172,
+      "sha256": "8417acdc15505d54919f262f3ac08eb8d24d62bb687b659036ec0dd00078137e"
+    },
+    {
+      "path": "previews/gessi316-54145/iso.png",
+      "bytes": 55311,
+      "sha256": "266d4c56db1d42dbc94d051b2185c0dc5fe3d18ced3626e6b8d00fc38777f78d"
+    },
+    {
+      "path": "previews/gessi316-54145/plan.png",
+      "bytes": 31877,
+      "sha256": "9f465508c5f6f8dd503b1fea695af843ba4462ad10814cfa35d20d00b40f2b2b"
+    },
+    {
+      "path": "previews/gessi316-54145/plan.svg",
+      "bytes": 136348,
+      "sha256": "4a3dc66cebdbb79d9a37b7b043f8512fb88d9b8250d63dc8b255aa7fe0dbb870"
+    },
+    {
+      "path": "previews/gessi316-54145/side.png",
+      "bytes": 25781,
+      "sha256": "01370d3e358889e6c76b5b7a2041d2e46b876029c19d1d41e40f2f38b905f91d"
+    },
+    {
+      "path": "previews/gessi316-54145/side.svg",
+      "bytes": 247541,
+      "sha256": "b6fc28933ae6f50018b644f502cd3a2ba8ac41af5115d139c5a8d333ee96483d"
+    },
+    {
+      "path": "previews/gessi316-54146/front.png",
+      "bytes": 12901,
+      "sha256": "4cdcc622fe5f8693f58d73ae746952abc07041f88a3543181ce9f862ed9e2406"
+    },
+    {
+      "path": "previews/gessi316-54146/front.svg",
+      "bytes": 173770,
+      "sha256": "e15776bb75392787bf20c33642f2f3610d704f97fd7460d0712b7e946da0c32f"
+    },
+    {
+      "path": "previews/gessi316-54146/iso.png",
+      "bytes": 28594,
+      "sha256": "5dec16b5a4cc59f5ee0cb52acbad5f7f675da1dbde56c48f4683ee0fe482f2c8"
+    },
+    {
+      "path": "previews/gessi316-54146/plan.png",
+      "bytes": 43989,
+      "sha256": "4528b6038a998644b05b18999af6b6b5e93c074a032ca8bc31b972a9b01e9088"
+    },
+    {
+      "path": "previews/gessi316-54146/plan.svg",
+      "bytes": 203025,
+      "sha256": "72fded25c548db39de05f142716d8c4f0cebae7b6b90939b9e0ed133b2bbec58"
+    },
+    {
+      "path": "previews/gessi316-54146/side.png",
+      "bytes": 14785,
+      "sha256": "a15bb76c8b6af06eebc84ab8fb66ae90c25abcb1bc43b37b7a6c23688921e858"
+    },
+    {
+      "path": "previews/gessi316-54146/side.svg",
+      "bytes": 220733,
+      "sha256": "c8edfade3e555f72e831dc98ff42aba93162957cf39ea6f2151bb63afe7df136"
+    },
+    {
+      "path": "previews/gessi316-54294/front.png",
+      "bytes": 35996,
+      "sha256": "806557927d357ab28406d84af09263df7f4cd787abaeab2c4d5285620d556e56"
+    },
+    {
+      "path": "previews/gessi316-54294/front.svg",
+      "bytes": 835702,
+      "sha256": "e763030c46cbc10f51de94dc97108d81de14520e7bca82a7baf5ec274dc6e07f"
+    },
+    {
+      "path": "previews/gessi316-54294/iso.png",
+      "bytes": 50962,
+      "sha256": "1f5b4cd344cc1e78b060b5639c8b867a81e947bd84b16be46b03f454394d0d28"
+    },
+    {
+      "path": "previews/gessi316-54294/plan.png",
+      "bytes": 15013,
+      "sha256": "9441ebb6d12272291fc38878f68ab29c2699c7bb506ccc45408125d0c80b023b"
+    },
+    {
+      "path": "previews/gessi316-54294/plan.svg",
+      "bytes": 160606,
+      "sha256": "90c8092132c45ddea2e890d494072965b27674a8514b28e68dc7f42e4904fded"
+    },
+    {
+      "path": "previews/gessi316-54294/side.png",
+      "bytes": 21684,
+      "sha256": "f238ace06c016f598182cca2caa615191f69a87c6e997f6433c5ea6a224be596"
+    },
+    {
+      "path": "previews/gessi316-54294/side.svg",
+      "bytes": 126452,
+      "sha256": "1755fcbeace2e173c72731c83735c101fd43b69df5ab9ed931c1aa0ea24f3a01"
+    },
+    {
+      "path": "previews/hima01/front.png",
+      "bytes": 15953,
+      "sha256": "f237d3f65ca0460dfef3bac35e9c1aafbd0468520410337c314d14d5c573a443"
+    },
+    {
+      "path": "previews/hima01/front.svg",
+      "bytes": 93294,
+      "sha256": "5bc2d7d5223b3f6467fdb447be4d5190899b81786223526025a5f8244404b2e7"
+    },
+    {
+      "path": "previews/hima01/iso.png",
+      "bytes": 56400,
+      "sha256": "c8c8db1a06326da6570bd1927a8339520feb7bc513f533bd5dddcf50f6cb2141"
+    },
+    {
+      "path": "previews/hima01/plan.png",
+      "bytes": 21533,
+      "sha256": "d4a7e73297c0e50cae1a1448d210666b28beb5872228d2bed1c43a7480d06b64"
+    },
+    {
+      "path": "previews/hima01/plan.svg",
+      "bytes": 96564,
+      "sha256": "c2a0be5f31a762c25fbeff45bfe02896f42c21c03113119e450f480ebb066cd8"
+    },
+    {
+      "path": "previews/hima01/side.png",
+      "bytes": 29404,
+      "sha256": "946954695a212dca7fd99c9569954245a45e5041dc26153da3a7794bcbc1cbe5"
+    },
+    {
+      "path": "previews/hima01/side.svg",
+      "bytes": 101636,
+      "sha256": "3cb7eb61c6ed79352a9fc66cd4838a4e2d1808049ee9916e593637ddf6e79821"
+    },
+    {
+      "path": "previews/marilyn-01/front.png",
+      "bytes": 85565,
+      "sha256": "4a4a744198f93651ba858332e46d53855eb9c774dc250dba86405e6a64768dd9"
+    },
+    {
+      "path": "previews/marilyn-01/front.svg",
+      "bytes": 426703,
+      "sha256": "255cbc6acae34724f8cf4b379e414cb0dbd66e6692ef18e74f5fd8880b3400d2"
+    },
+    {
+      "path": "previews/marilyn-01/iso.png",
+      "bytes": 37670,
+      "sha256": "2b46cccdc6b6b151a2da5e1a25e6d87ed1a4aaadc601a021494fc179d247f064"
+    },
+    {
+      "path": "previews/marilyn-01/plan.png",
+      "bytes": 87439,
+      "sha256": "0f85493248394e820a063edb016a4ef76cd6d1e0296f40e983ea60c95d66b377"
+    },
+    {
+      "path": "previews/marilyn-01/plan.svg",
+      "bytes": 331928,
+      "sha256": "854397400effa18af1ddfe76588dd2234e2e605c793a5239bae74e62e2927957"
+    },
+    {
+      "path": "previews/marilyn-01/side.png",
+      "bytes": 71706,
+      "sha256": "542784cf24f0af65c46077764ed89d45f6778cab1d2f9d14c16b5e2654e23e7e"
+    },
+    {
+      "path": "previews/marilyn-01/side.svg",
+      "bytes": 420283,
+      "sha256": "b1e04ae1f95b75ef4c1d312f2cf1044033b377aec531445474ab129dbfa1b4a3"
+    },
+    {
+      "path": "previews/marilyn-02/front.png",
+      "bytes": 57718,
+      "sha256": "f2cd4e44d5bd1f82df332e5d6d9031251ade396d7e01ccf1d70150339e32ac7c"
+    },
+    {
+      "path": "previews/marilyn-02/front.svg",
+      "bytes": 302409,
+      "sha256": "4c6dc922bccb10341ccfafa747a068c02e2bbbc55e10dc88f8ed2ccf1f9de202"
+    },
+    {
+      "path": "previews/marilyn-02/iso.png",
+      "bytes": 38408,
+      "sha256": "5912e1e5001b7454141ce2a3f01afa5893a748cd09b4afda49efd90f4f41fea9"
+    },
+    {
+      "path": "previews/marilyn-02/plan.png",
+      "bytes": 75094,
+      "sha256": "5e44c65ba2a8f9a49b3c5dd9b900c306de48643a219a8c33085a4ed038a37bee"
+    },
+    {
+      "path": "previews/marilyn-02/plan.svg",
+      "bytes": 153217,
+      "sha256": "81f42473b0b7609f0d78c8f28e450f00962b0dea88e10588305517a7f72191e3"
+    },
+    {
+      "path": "previews/marilyn-02/side.png",
+      "bytes": 43038,
+      "sha256": "67f023132d54d077b911eb6268a76932494c95846c3d7eab67061fd050011623"
+    },
+    {
+      "path": "previews/marilyn-02/side.svg",
+      "bytes": 228888,
+      "sha256": "fb927839fa63b01ab5c3f61c90ce6e356c7c721c0983fb032e1d5e8e2426ddba"
+    },
+    {
+      "path": "previews/miamisoft-e07/front.png",
+      "bytes": 41795,
+      "sha256": "6208aee2baca3835fd9e143832d9d7b82368e5be97d89aab763625cc206bd4a7"
+    },
+    {
+      "path": "previews/miamisoft-e07/front.svg",
+      "bytes": 101326,
+      "sha256": "98483b2a41db552f554223d807335e5de4ca5da6d491bb932d7d99c3b423a285"
+    },
+    {
+      "path": "previews/miamisoft-e07/iso.png",
+      "bytes": 43569,
+      "sha256": "9a6d16a976f61f547c3c89ef8a060ccc88811536ca78a9aaf08d38108a07fb96"
+    },
+    {
+      "path": "previews/miamisoft-e07/plan.png",
+      "bytes": 40972,
+      "sha256": "383ef998911b35d408177cbf09126a27eb3db67a9ee15455a2812ea80dadb00a"
+    },
+    {
+      "path": "previews/miamisoft-e07/plan.svg",
+      "bytes": 100297,
+      "sha256": "3fb2f033ac121d2148bde0042123e0af67f011515ad58e1e2c3b81e5563522cf"
+    },
+    {
+      "path": "previews/miamisoft-e07/side.png",
+      "bytes": 38511,
+      "sha256": "33abc7ec70dbba3175e5b93140a64f06f3ada82500a4786d6131a8866504ee33"
+    },
+    {
+      "path": "previews/miamisoft-e07/side.svg",
+      "bytes": 100635,
+      "sha256": "2e895f99abf8a284d536635c5c1b2e65ae6d6feb600434f5dd29ecbb14c5b937"
+    },
+    {
+      "path": "previews/miamisoft-e09/front.png",
+      "bytes": 67194,
+      "sha256": "875bee9a205673cfc4cbcaa036150263c91cdcb3011c18776822b799421aac92"
+    },
+    {
+      "path": "previews/miamisoft-e09/front.svg",
+      "bytes": 272285,
+      "sha256": "d12eee6879d8df869cd4f1fd14442b44c3d13a76a9add49092eb7b60340c71cb"
+    },
+    {
+      "path": "previews/miamisoft-e09/iso.png",
+      "bytes": 69646,
+      "sha256": "2fbeff114808cb1d4b168e22762339a1f6ab0289a3d2b5d922d93ba564e45599"
+    },
+    {
+      "path": "previews/miamisoft-e09/plan.png",
+      "bytes": 73815,
+      "sha256": "bff530166e849cb631a6392539939bbe73ef8186793594d623a33e41003a11cf"
+    },
+    {
+      "path": "previews/miamisoft-e09/plan.svg",
+      "bytes": 235379,
+      "sha256": "87a15b5bca509528c8c200b9f43c6a0bfa24fdd907f056d2e0a963a5fc0a7dc3"
+    },
+    {
+      "path": "previews/miamisoft-e09/side.png",
+      "bytes": 70547,
+      "sha256": "92270a84a218a762b6f665d80656a02d6bd65280d571eb306790641d726e1d7f"
+    },
+    {
+      "path": "previews/miamisoft-e09/side.svg",
+      "bytes": 243925,
+      "sha256": "bd90907c2d5c73ac573c3ab6c7d51164df38d59fdc71fb01dcaf19e1158ba116"
+    },
+    {
+      "path": "previews/miamisoft-f03/front.png",
+      "bytes": 27638,
+      "sha256": "0d33026270d0c9c0c66fb8a49d9347da4a7923470f55923f52697f6c7ef5392c"
+    },
+    {
+      "path": "previews/miamisoft-f03/front.svg",
+      "bytes": 99307,
+      "sha256": "012bf6ff0b053640e2f1a2c92128e3b58015aecd5ac7ee3ae80ed7381bb37e12"
+    },
+    {
+      "path": "previews/miamisoft-f03/iso.png",
+      "bytes": 45590,
+      "sha256": "6fd9bdea838f420a1873ed0f36e7c0ed033dc44079cb40c14d85f522183b4eed"
+    },
+    {
+      "path": "previews/miamisoft-f03/plan.png",
+      "bytes": 30964,
+      "sha256": "8456c0cd90edd8d6839354b1d5ca11011aa1166c8870da6ef16ede55c2f0d09c"
+    },
+    {
+      "path": "previews/miamisoft-f03/plan.svg",
+      "bytes": 94211,
+      "sha256": "f42ee64914d39928b2088b020f73c87219dba413eb6c5f11d0895f76a4cf198a"
+    },
+    {
+      "path": "previews/miamisoft-f03/side.png",
+      "bytes": 37743,
+      "sha256": "ee29529de7ed35c7dfe2e0141ed1534725275d6422046d543aa81f9881db5081"
+    },
+    {
+      "path": "previews/miamisoft-f03/side.svg",
+      "bytes": 100099,
+      "sha256": "99da7d60222b1777b0ab0fe2c54b9efcf946f986fc1c0b875701459a87b1095d"
+    },
+    {
+      "path": "previews/miamisoft-h01/front.png",
+      "bytes": 39885,
+      "sha256": "d45ca9701c14cf1212ec4de79de1e752eef1ea4cd387ebe7127a36c89137edb1"
+    },
+    {
+      "path": "previews/miamisoft-h01/front.svg",
+      "bytes": 97676,
+      "sha256": "d8580efbd76323fa7c52584ebd9fae4350a5c9111b04664bc7f270c75c094c39"
+    },
+    {
+      "path": "previews/miamisoft-h01/iso.png",
+      "bytes": 43902,
+      "sha256": "3959c26c7ece9add0e33f0cccaeff056a5c62f9555b445d3085b8eea9198ce71"
+    },
+    {
+      "path": "previews/miamisoft-h01/plan.png",
+      "bytes": 40577,
+      "sha256": "2b18e90a4f21016c0aa37df102b051056b64625407ccf6649f9c98272cc07241"
+    },
+    {
+      "path": "previews/miamisoft-h01/plan.svg",
+      "bytes": 96446,
+      "sha256": "f6c1ee4a3c38c48ab6a4de58e52e60983924ea967b93d65e71b915e028ac93b7"
+    },
+    {
+      "path": "previews/miamisoft-h01/side.png",
+      "bytes": 40185,
+      "sha256": "49c8b00f6483c3a8ae8f4eda8e1ce53e8f729dfaf8b1ef281528a5b957c0c082"
+    },
+    {
+      "path": "previews/miamisoft-h01/side.svg",
+      "bytes": 94312,
+      "sha256": "851243266714031b9456c92b2b4489712b7c1d2ca3aa9b2455ff5f41406d3612"
+    },
+    {
+      "path": "previews/miamisoft-i03/front.png",
+      "bytes": 22942,
+      "sha256": "eb8003bf7629c17ebee09ec184b990c3ae9834ace0898317dc674a9283c53195"
+    },
+    {
+      "path": "previews/miamisoft-i03/front.svg",
+      "bytes": 95025,
+      "sha256": "fd8752dfa8c527ee8ccf8f2fee3f93b02ce991587b44958b8aef2c6961d59273"
+    },
+    {
+      "path": "previews/miamisoft-i03/iso.png",
+      "bytes": 37769,
+      "sha256": "d9949fc8edd655888b5ce7b919e245b47a5cc420c7a93ed11cead4bb5d01127d"
+    },
+    {
+      "path": "previews/miamisoft-i03/plan.png",
+      "bytes": 34272,
+      "sha256": "4068300f5404950dbbef6e8bf843a239e8e2a9d1979858adced44f85e7e88436"
+    },
+    {
+      "path": "previews/miamisoft-i03/plan.svg",
+      "bytes": 97042,
+      "sha256": "afdb7bbfd8d02f839b9b50936645610c4525318de51870a3de027631d9a42390"
+    },
+    {
+      "path": "previews/miamisoft-i03/side.png",
+      "bytes": 34316,
+      "sha256": "e875a482e204122aefe162777cf42766f27b2a63d3e9342a90c8122df56b3ef1"
+    },
+    {
+      "path": "previews/miamisoft-i03/side.svg",
+      "bytes": 91575,
+      "sha256": "7a46dc9b492b12b57a0a0c20545a2d95897a9f808085b3b58c16e5c161b0277f"
+    },
+    {
+      "path": "previews/sis04/front.png",
+      "bytes": 10411,
+      "sha256": "7832d7c6328eccd6079b64c827f6861211190df0a3137d35ca888884d30fc228"
+    },
+    {
+      "path": "previews/sis04/front.svg",
+      "bytes": 88319,
+      "sha256": "69f7136cfb87c245452e579d08fe91a82c1f577c87dafc042ae32297ba5c7f79"
+    },
+    {
+      "path": "previews/sis04/iso.png",
+      "bytes": 39611,
+      "sha256": "09533f776b1a0b9ac2a9542685b8404a6a408c6cf2e5ea010d2179f6a93096b2"
+    },
+    {
+      "path": "previews/sis04/plan.png",
+      "bytes": 24060,
+      "sha256": "c763b7a3c4b121af9f706278e63fc0c5eae5578a2f9f9e7e167ce0e0b4dde5f7"
+    },
+    {
+      "path": "previews/sis04/plan.svg",
+      "bytes": 120202,
+      "sha256": "0045793a012b3165212df5d757d7ff0745104ac236cd777ce423c6db90690d9a"
+    },
+    {
+      "path": "previews/sis04/side.png",
+      "bytes": 12730,
+      "sha256": "2cc2e4d9f9df690de39788dcc9211ffea7433e9f8ea8f515ba0a3b59a9514587"
+    },
+    {
+      "path": "previews/sis04/side.svg",
+      "bytes": 88520,
+      "sha256": "00e1f76da0f4a3db8dcf4d61570982cdacadc26281c4b7062cd3eb7c799064bd"
+    },
+    {
+      "path": "previews/street/front.png",
+      "bytes": 10183,
+      "sha256": "0c4b4d4d29134cb1b6e7a8b9cd9eadd68dd32e9288bc9398a4f7d21e333ef260"
+    },
+    {
+      "path": "previews/street/front.svg",
+      "bytes": 87724,
+      "sha256": "e672a5aa6d1a37d7d3ace89b08c94ea3012e78e4497c375b2ca634adeb11f893"
+    },
+    {
+      "path": "previews/street/iso.png",
+      "bytes": 33993,
+      "sha256": "d20c67f85bcd1f0c46c0101bae165d7e2d99a79d5cad99c4ee322e45b4ece928"
+    },
+    {
+      "path": "previews/street/plan.png",
+      "bytes": 16608,
+      "sha256": "72e1a30b48b07ed2e91db0db2c59a5c8d737993201960b4937e7d967bfda542e"
+    },
+    {
+      "path": "previews/street/plan.svg",
+      "bytes": 94217,
+      "sha256": "b1dc392886e52422dfcad299622583dabbd32347b329ef559c2422c1be6ce22a"
+    },
+    {
+      "path": "previews/street/side.png",
+      "bytes": 13591,
+      "sha256": "5b10f6c0f4960afd456ae50d0084ff26b2da894b8114df171838d274ac3aef7f"
+    },
+    {
+      "path": "previews/street/side.svg",
+      "bytes": 89142,
+      "sha256": "35d323d2874feda78f5cb8ced31d1220ff2b72c6db8de7324967d60e11a07d89"
+    },
+    {
+      "path": "previews/street-h/front.png",
+      "bytes": 16573,
+      "sha256": "3582619bce206ed93b73f97273d1614eb440ed5f380043a2bd8d66bd060cbc25"
+    },
+    {
+      "path": "previews/street-h/front.svg",
+      "bytes": 87825,
+      "sha256": "a879baaf1a19824606466dc179b5af4628c70e62972c0570264a974c14a8d852"
+    },
+    {
+      "path": "previews/street-h/iso.png",
+      "bytes": 56670,
+      "sha256": "f365c9bd108eafa03d686bc1adc09930ba15e98497ec9003015a42744e8fad41"
+    },
+    {
+      "path": "previews/street-h/plan.png",
+      "bytes": 11241,
+      "sha256": "a176aad466c66f2cda385a674bcef1893b75bc9dac0c09b301de44d84fa508fa"
+    },
+    {
+      "path": "previews/street-h/plan.svg",
+      "bytes": 87717,
+      "sha256": "866ff2b85d84e05649331f43cf301da9dab8121f0c3166e410b44bcafe224cda"
+    },
+    {
+      "path": "previews/street-h/side.png",
+      "bytes": 13024,
+      "sha256": "0aca16e364b65bad17e42f6d0771cb420d3f9facbc5b72d5e9d8fd82a1b9e53f"
+    },
+    {
+      "path": "previews/street-h/side.svg",
+      "bytes": 90971,
+      "sha256": "891f74e4f45b6e0158caf6098db560b738a620b8f260a3060d64f9938b690ca5"
+    },
+    {
+      "path": "previews/sxb010/front.png",
+      "bytes": 22164,
+      "sha256": "1a6ec5fcd6aa8ea2c36157bf7528afe6c46a63a129d089afa3cc2671bd860162"
+    },
+    {
+      "path": "previews/sxb010/front.svg",
+      "bytes": 93423,
+      "sha256": "99295e189c042cb3f525b8a02e9cd2b7838d0277310dfab0ba12ff404b317843"
+    },
+    {
+      "path": "previews/sxb010/iso.png",
+      "bytes": 79933,
+      "sha256": "7c0ea8fea560478b75707a62edc56d939d07659728e06e7dd42279103aea60dc"
+    },
+    {
+      "path": "previews/sxb010/plan.png",
+      "bytes": 9196,
+      "sha256": "e0863a8af2e93d8e003643cb39d62dd53eee2ea52f5acabe9d3f5d16d6926ce5"
+    },
+    {
+      "path": "previews/sxb010/plan.svg",
+      "bytes": 88119,
+      "sha256": "9c25b7be583a40d0f72bc53900ec7420a4532481cce589e49fd3a01e37cd13fa"
+    },
+    {
+      "path": "previews/sxb010/side.png",
+      "bytes": 46227,
+      "sha256": "abdccf88da97f2b53c7efe8b595d960d1a82eca05b6f56d4f271c4bad56e603b"
+    },
+    {
+      "path": "previews/sxb010/side.svg",
+      "bytes": 93222,
+      "sha256": "2c6b6f929e10596e1f671fc4a9ade71e668ce607d903eb87b7e310656b569637"
+    },
+    {
+      "path": "previews/tab02/front.png",
+      "bytes": 11619,
+      "sha256": "2d77aff56d55173c2becd64d3e190355b79cba5809888df18aa90edec496ede4"
+    },
+    {
+      "path": "previews/tab02/front.svg",
+      "bytes": 89538,
+      "sha256": "9033ad45c8c192ee6a47accf0fc8afbefb02f1ff680c8ea24b47fb32d2a63050"
+    },
+    {
+      "path": "previews/tab02/iso.png",
+      "bytes": 58060,
+      "sha256": "3c3683ee02d71e352c13c533737837cbdff65177360b911f58bdfbab653dfbc7"
+    },
+    {
+      "path": "previews/tab02/plan.png",
+      "bytes": 18828,
+      "sha256": "44f1ce24067d286bc17eb1c948c3a23744fa694e989bf8f291de329130368585"
+    },
+    {
+      "path": "previews/tab02/plan.svg",
+      "bytes": 93802,
+      "sha256": "cd930743ec10a06b08a4d05a83e428f62efde4bcd8c349ab9590a938b7ba2949"
+    },
+    {
+      "path": "previews/tab02/side.png",
+      "bytes": 11619,
+      "sha256": "f2ef4d17d3b33f59fae64d99f5c504f0e1ec7692cec6ec9f304c92b8ad99d92a"
+    },
+    {
+      "path": "previews/tab02/side.svg",
+      "bytes": 89537,
+      "sha256": "c6ceaa02752e8d20efc8424c671adf4f4e304c2cd85a5b6921a64a2a01678e55"
+    },
+    {
+      "path": "previews/trap01/front.png",
+      "bytes": 37824,
+      "sha256": "cfd9782adfea696e0748cca27d6067073102a56b7ffab4df9084c47f326fee25"
+    },
+    {
+      "path": "previews/trap01/front.svg",
+      "bytes": 251551,
+      "sha256": "fbabc6932a6d26c27e8f8ecc9ec79d1bcc1d75632eaf4746de1bd9efd28b3d6a"
+    },
+    {
+      "path": "previews/trap01/iso.png",
+      "bytes": 52556,
+      "sha256": "538e3bcebc475def9b1ee78ee78eac81dd32d873ae036b42335b19d2f4b41413"
+    },
+    {
+      "path": "previews/trap01/plan.png",
+      "bytes": 29276,
+      "sha256": "aec430f31441582651483b46efda50dd3dfd9b59d4a43ed12da91385365d0255"
+    },
+    {
+      "path": "previews/trap01/plan.svg",
+      "bytes": 264569,
+      "sha256": "d226beb3a98f6de9260ff3a892e74979c3abaf98e5edaab389eca4385f70caee"
+    },
+    {
+      "path": "previews/trap01/side.png",
+      "bytes": 22188,
+      "sha256": "568f9f8fb5ebca84c8ca57e32596eb7d8c2d31220ee8b86f4d2267e161f4251c"
+    },
+    {
+      "path": "previews/trap01/side.svg",
+      "bytes": 247874,
+      "sha256": "53748234ab21189a2cbf9e45cc34d8f3291bb3cbafb7a0e7dc49882d4c317eda"
+    },
+    {
+      "path": "previews/wd01/front.png",
+      "bytes": 13751,
+      "sha256": "195d256e6e2fd4966491cf7b59d5f909cd869a08332d685006094bcb59498390"
+    },
+    {
+      "path": "previews/wd01/front.svg",
+      "bytes": 88617,
+      "sha256": "bc446e6041c7175fc0d33310dfd652bbd1bf136c0dbb5afaf605d087417d028f"
+    },
+    {
+      "path": "previews/wd01/iso.png",
+      "bytes": 28158,
+      "sha256": "11bd3f873f91ede9f13ee22dd3585d07078bc91ce5281f735cf626b106e08be5"
+    },
+    {
+      "path": "previews/wd01/plan.png",
+      "bytes": 19035,
+      "sha256": "7fa2ac00cbba15cff0e8f2ad795b569683dd62c40341c27aa336e48728bce178"
+    },
+    {
+      "path": "previews/wd01/plan.svg",
+      "bytes": 91757,
+      "sha256": "28eb6d94bd58e19e141f83ff2603ab05bd143042e5692555fe80ed4cedbf588d"
+    },
+    {
+      "path": "previews/wd01/side.png",
+      "bytes": 17857,
+      "sha256": "93caaf57b01e23864e0f5d3c6fe8e6b635e618e8f52c8a4088dc8e5e670e7715"
+    },
+    {
+      "path": "previews/wd01/side.svg",
+      "bytes": 90854,
+      "sha256": "20b0b7fabb73d5970ebbd8ccdbfa985199fe0eb17ff5198e3a88b9728462c582"
+    },
+    {
+      "path": "previews/wd02/front.png",
+      "bytes": 16768,
+      "sha256": "b31746ba5a66735bfa701a01f9f4c43a57baa41636afe3d3fa1db2a294df6760"
+    },
+    {
+      "path": "previews/wd02/front.svg",
+      "bytes": 122009,
+      "sha256": "f57e6a540c782f809038f44e8dff327dfe611b8ae6d10429875db9d544d94b19"
+    },
+    {
+      "path": "previews/wd02/iso.png",
+      "bytes": 55426,
+      "sha256": "454183b914710fdd7def864050f50884ff1c5239c26691c4306c5c40c2280164"
+    },
+    {
+      "path": "previews/wd02/plan.png",
+      "bytes": 16337,
+      "sha256": "57436d852f99099d4da9f92f529584befab77fcc6b540a4e12c85ec7952735b0"
+    },
+    {
+      "path": "previews/wd02/plan.svg",
+      "bytes": 97658,
+      "sha256": "e82c1a58e798b99d433394393e20297e096291c03f1b69b1c0da5138fdd8670b"
+    },
+    {
+      "path": "previews/wd02/side.png",
+      "bytes": 14437,
+      "sha256": "83682c752a0a93464d4d95638a5b00013968bc97d1ed0d8d3bdc79d3208561b8"
+    },
+    {
+      "path": "previews/wd02/side.svg",
+      "bytes": 92183,
+      "sha256": "1cc7dcef21b9787eb9ca659e6a5a9f25c03c3c3c85a751a0bc7842f08b4a74a7"
+    },
+    {
+      "path": "previews/wd03/front.png",
+      "bytes": 13777,
+      "sha256": "552d7510ffa42aadc158f833882da0f26d3be8e574b031b9b715b8fa75f1bac8"
+    },
+    {
+      "path": "previews/wd03/front.svg",
+      "bytes": 88531,
+      "sha256": "549d69811845912a23687dc8421012c19df3a4e1fc9e175a557ba47d1cf10312"
+    },
+    {
+      "path": "previews/wd03/iso.png",
+      "bytes": 61562,
+      "sha256": "36e70bf46794a598810e8b24488fdea04691e56c9bba2fc4cfcd43682c9a5067"
+    },
+    {
+      "path": "previews/wd03/plan.png",
+      "bytes": 11691,
+      "sha256": "49e59ae6379a188ce3af843586d8723adbf7bfa718d6521a6b4facd5d2c5b97a"
+    },
+    {
+      "path": "previews/wd03/plan.svg",
+      "bytes": 87697,
+      "sha256": "e939aece93b32b86ea5b0b0ffa715c7832cb2400d7994f185b010c79d497c4f4"
+    },
+    {
+      "path": "previews/wd03/side.png",
+      "bytes": 14097,
+      "sha256": "ab4b60401adbb9a51faa90541bcd040ebc5387cdaef4e8069811264fb2d3922b"
+    },
+    {
+      "path": "previews/wd03/side.svg",
+      "bytes": 88520,
+      "sha256": "69d5676adefefcf68650db54e6c891e103d81709887bf200e02fe744a0d88067"
+    }
+  ],
+  "count": 365,
+  "bytes": 262793895,
+  "review_categories": {
+    "partial": 11,
+    "approved": 8,
+    "pending": 20
+  }
+}

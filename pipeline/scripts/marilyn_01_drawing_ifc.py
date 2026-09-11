@@ -24,7 +24,7 @@ SOURCE_LABEL_ZH = "基于 Baxter 精确型号原生 DWG 的官方图纸表达"
 SCOPE = "exact Baxter Marilyn bergere 86 x 100 x 94 cm family CAD reference; not a project shop drawing"
 FORMAL_SHA256 = "7a50b87e8f48a7c2bfbaa9f1dabdfca7155fa684b2325c66aa1ae15c8ab0a25c"
 DWG_SHA256 = "cb9825eecab7c78ee28e7668e933c2fe413395a63bf75f3afab8cc4959864724"
-EXPECTED_PATH_COUNTS = {"plan": 24, "front": 68, "side": 54}
+EXPECTED_PATH_COUNTS = {"plan": 44, "front": 96, "side": 78}
 REQUIRED_VIEWS = set(EXPECTED_PATH_COUNTS)
 REPRESENTATIONS = {
     "plan": ("Marilyn01Plan", "PLAN_VIEW"),
@@ -172,7 +172,7 @@ def document_records(access_path: Path, linework_path: Path):
         ("BAXTER-MARILYN-01-MATTE-MEASUREMENT-SVG", MATTE_SVG, "Baxter official matte bergere measurement SVG", f"Archived SHA-256 {sha256(source / 'MARIPBMN86.svg')}"),
         ("BAXTER-MARILYN-01-GLOSSY-MEASUREMENT-SVG", GLOSSY_SVG, "Baxter official glossy bergere measurement SVG", f"Archived SHA-256 {sha256(source / 'MARIPBML86.svg')}"),
         ("BAXTER-MARILYN-01-SOURCE-ACCESS-RECORD", relative(access_path), "Baxter Marilyn source access record", f"SHA-256 {sha256(access_path)}"),
-        ("BAXTER-MARILYN-01-NATIVE-LINEWORK-REGISTER", relative(linework_path), "Baxter Marilyn native-DWG linework register", f"SHA-256 {sha256(linework_path)}; path counts 24/68/54"),
+        ("BAXTER-MARILYN-01-NATIVE-LINEWORK-REGISTER", relative(linework_path), "Baxter Marilyn native-DWG linework register", f"SHA-256 {sha256(linework_path)}; OCS-corrected path counts 44/96/78"),
     )
 
 

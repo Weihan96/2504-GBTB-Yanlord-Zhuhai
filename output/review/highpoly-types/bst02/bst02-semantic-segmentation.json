@@ -1,0 +1,1141 @@
+{
+  "schema_version": 1,
+  "generated_at": "2026-09-07T05:02:07.304638+00:00",
+  "representative_global_id": "3hA0vKpcn44u4Tsx4tqiUz",
+  "source_kind": "geometry_derived_simplified_proxy",
+  "source_label_zh": "基于原始高模几何生成的简化图纸表达",
+  "isolated_ifc": "output/review/highpoly-types/bst02/Baxter-Beside-BST02-bonsai-isolated.ifc",
+  "isolated_ifc_sha256": "6e33dd34e8fee72e43a989f9d779cb97aba9fb5a532d2ffc3759de4283a40e03",
+  "representation_item_count": 2,
+  "connected_component_count": 3,
+  "mesh_vertex_count": 780,
+  "mesh_face_count": 1418,
+  "components": [
+    {
+      "semantic": "vertical_handle",
+      "item_ids": [
+        83
+      ],
+      "vertex_count": 12,
+      "face_count": 18,
+      "minimum_mm": [
+        27.4447841644287,
+        -297.889251708984,
+        0.0
+      ],
+      "maximum_mm": [
+        42.920654296875,
+        -276.969421386719,
+        220.0
+      ],
+      "size_mm": [
+        15.4758701324463,
+        20.919830322265,
+        220.0
+      ],
+      "segmentation": "edge-connected triangle component inside actual IfcPolygonalFaceSet"
+    },
+    {
+      "semantic": "cylindrical_cabinet_body",
+      "item_ids": [
+        1484
+      ],
+      "vertex_count": 256,
+      "face_count": 506,
+      "minimum_mm": [
+        -280.0,
+        -280.0,
+        0.0
+      ],
+      "maximum_mm": [
+        280.0,
+        280.0,
+        220.0
+      ],
+      "size_mm": [
+        560.0,
+        560.0,
+        220.0
+      ],
+      "segmentation": "edge-connected triangle component inside actual IfcPolygonalFaceSet"
+    },
+    {
+      "semantic": "stepped_top_cap",
+      "item_ids": [
+        1484
+      ],
+      "vertex_count": 512,
+      "face_count": 894,
+      "minimum_mm": [
+        -280.0,
+        -280.0,
+        220.0
+      ],
+      "maximum_mm": [
+        280.0,
+        280.0,
+        250.0
+      ],
+      "size_mm": [
+        560.0,
+        560.0,
+        30.0
+      ],
+      "segmentation": "edge-connected triangle component inside actual IfcPolygonalFaceSet"
+    }
+  ],
+  "views": {
+    "plan": [
+      {
+        "id": "plan.stepped_top_cap.0",
+        "component": "stepped_top_cap",
+        "kind": "visible_component_boundary",
+        "path_mm": [
+          [
+            -275.877676,
+            -47.869341
+          ],
+          [
+            -277.894248,
+            -34.275008
+          ],
+          [
+            -279.241319,
+            -20.598096
+          ],
+          [
+            -279.915665,
+            -6.871555
+          ],
+          [
+            -279.915648,
+            6.871528
+          ],
+          [
+            -279.241321,
+            20.59806
+          ],
+          [
+            -277.894273,
+            34.274961
+          ],
+          [
+            -275.877735,
+            47.869311
+          ],
+          [
+            -273.196581,
+            61.348328
+          ],
+          [
+            -269.857304,
+            74.679553
+          ],
+          [
+            -265.867893,
+            87.830867
+          ],
+          [
+            -261.237975,
+            100.7706
+          ],
+          [
+            -255.978687,
+            113.467534
+          ],
+          [
+            -250.102803,
+            125.891149
+          ],
+          [
+            -243.62432,
+            138.011469
+          ],
+          [
+            -236.558972,
+            149.799294
+          ],
+          [
+            -228.922631,
+            161.235112
+          ],
+          [
+            -220.73699,
+            172.264843
+          ],
+          [
+            -212.018467,
+            182.888367
+          ],
+          [
+            -202.789167,
+            193.071314
+          ],
+          [
+            -193.071332,
+            202.789166
+          ],
+          [
+            -182.88838,
+            212.018461
+          ],
+          [
+            -172.264824,
+            220.736961
+          ],
+          [
+            -161.226294,
+            228.923722
+          ],
+          [
+            -149.799336,
+            236.55897
+          ],
+          [
+            -138.01148,
+            243.624301
+          ],
+          [
+            -125.891168,
+            250.102758
+          ],
+          [
+            -113.46759,
+            255.978695
+          ],
+          [
+            -100.779489,
+            261.239023
+          ],
+          [
+            -87.830895,
+            265.867835
+          ],
+          [
+            -74.679582,
+            269.857237
+          ],
+          [
+            -61.348358,
+            273.196574
+          ],
+          [
+            -47.869341,
+            275.877676
+          ],
+          [
+            -34.275008,
+            277.894248
+          ],
+          [
+            -20.598096,
+            279.241319
+          ],
+          [
+            -6.871555,
+            279.915665
+          ],
+          [
+            6.871528,
+            279.915648
+          ],
+          [
+            20.59806,
+            279.241321
+          ],
+          [
+            34.274961,
+            277.894273
+          ],
+          [
+            47.869311,
+            275.877735
+          ],
+          [
+            61.348328,
+            273.196581
+          ],
+          [
+            74.679553,
+            269.857304
+          ],
+          [
+            87.830867,
+            265.867893
+          ],
+          [
+            100.7706,
+            261.237975
+          ],
+          [
+            113.467534,
+            255.978687
+          ],
+          [
+            125.891149,
+            250.102803
+          ],
+          [
+            138.011469,
+            243.62432
+          ],
+          [
+            149.799294,
+            236.558972
+          ],
+          [
+            161.235112,
+            228.922631
+          ],
+          [
+            172.264843,
+            220.73699
+          ],
+          [
+            182.888367,
+            212.018467
+          ],
+          [
+            193.071314,
+            202.789167
+          ],
+          [
+            202.789166,
+            193.071332
+          ],
+          [
+            212.018461,
+            182.88838
+          ],
+          [
+            220.736961,
+            172.264824
+          ],
+          [
+            228.923722,
+            161.226294
+          ],
+          [
+            236.55897,
+            149.799336
+          ],
+          [
+            243.624301,
+            138.01148
+          ],
+          [
+            250.102758,
+            125.891168
+          ],
+          [
+            255.978695,
+            113.46759
+          ],
+          [
+            261.239023,
+            100.779489
+          ],
+          [
+            265.867835,
+            87.830895
+          ],
+          [
+            269.857237,
+            74.679582
+          ],
+          [
+            273.196574,
+            61.348358
+          ],
+          [
+            275.877676,
+            47.869341
+          ],
+          [
+            277.894248,
+            34.275008
+          ],
+          [
+            279.241319,
+            20.598096
+          ],
+          [
+            279.915665,
+            6.871555
+          ],
+          [
+            279.915648,
+            -6.871528
+          ],
+          [
+            279.241321,
+            -20.59806
+          ],
+          [
+            277.894273,
+            -34.274961
+          ],
+          [
+            275.877735,
+            -47.869311
+          ],
+          [
+            273.196581,
+            -61.348328
+          ],
+          [
+            269.857304,
+            -74.679553
+          ],
+          [
+            265.867893,
+            -87.830867
+          ],
+          [
+            261.237975,
+            -100.7706
+          ],
+          [
+            255.978687,
+            -113.467534
+          ],
+          [
+            250.102803,
+            -125.891149
+          ],
+          [
+            243.62432,
+            -138.011469
+          ],
+          [
+            236.558972,
+            -149.799294
+          ],
+          [
+            228.922631,
+            -161.235112
+          ],
+          [
+            220.73699,
+            -172.264843
+          ],
+          [
+            212.018467,
+            -182.888367
+          ],
+          [
+            202.789167,
+            -193.071314
+          ],
+          [
+            193.071332,
+            -202.789166
+          ],
+          [
+            182.88838,
+            -212.018461
+          ],
+          [
+            172.264824,
+            -220.736961
+          ],
+          [
+            161.226294,
+            -228.923722
+          ],
+          [
+            149.799336,
+            -236.55897
+          ],
+          [
+            138.01148,
+            -243.624301
+          ],
+          [
+            125.891168,
+            -250.102758
+          ],
+          [
+            113.46759,
+            -255.978695
+          ],
+          [
+            100.779489,
+            -261.239023
+          ],
+          [
+            87.830895,
+            -265.867835
+          ],
+          [
+            74.679582,
+            -269.857237
+          ],
+          [
+            61.348358,
+            -273.196574
+          ],
+          [
+            47.869341,
+            -275.877676
+          ],
+          [
+            34.275008,
+            -277.894248
+          ],
+          [
+            20.598096,
+            -279.241319
+          ],
+          [
+            6.871555,
+            -279.915665
+          ],
+          [
+            -6.871528,
+            -279.915648
+          ],
+          [
+            -20.59806,
+            -279.241321
+          ],
+          [
+            -34.274961,
+            -277.894273
+          ],
+          [
+            -47.869311,
+            -275.877735
+          ],
+          [
+            -61.348328,
+            -273.196581
+          ],
+          [
+            -74.679553,
+            -269.857304
+          ],
+          [
+            -87.830867,
+            -265.867893
+          ],
+          [
+            -100.7706,
+            -261.237975
+          ],
+          [
+            -113.467534,
+            -255.978687
+          ],
+          [
+            -125.891149,
+            -250.102803
+          ],
+          [
+            -138.011469,
+            -243.62432
+          ],
+          [
+            -149.799294,
+            -236.558972
+          ],
+          [
+            -161.235112,
+            -228.922631
+          ],
+          [
+            -172.264843,
+            -220.73699
+          ],
+          [
+            -182.888367,
+            -212.018467
+          ],
+          [
+            -193.071314,
+            -202.789167
+          ],
+          [
+            -202.789166,
+            -193.071332
+          ],
+          [
+            -212.018461,
+            -182.88838
+          ],
+          [
+            -220.736961,
+            -172.264824
+          ],
+          [
+            -228.923722,
+            -161.226294
+          ],
+          [
+            -236.55897,
+            -149.799336
+          ],
+          [
+            -243.624301,
+            -138.01148
+          ],
+          [
+            -250.102758,
+            -125.891168
+          ],
+          [
+            -255.978695,
+            -113.46759
+          ],
+          [
+            -261.239023,
+            -100.779489
+          ],
+          [
+            -265.867835,
+            -87.830895
+          ],
+          [
+            -269.857237,
+            -74.679582
+          ],
+          [
+            -273.196574,
+            -61.348358
+          ],
+          [
+            -275.877676,
+            -47.869341
+          ]
+        ],
+        "closed": true,
+        "projection_boundary_error_mm": 0.05
+      },
+      {
+        "id": "plan.vertical_handle.0",
+        "component": "vertical_handle",
+        "kind": "visible_component_boundary",
+        "path_mm": [
+          [
+            6.871555,
+            -279.915665
+          ],
+          [
+            6.871538,
+            -294.915646
+          ],
+          [
+            1.871532,
+            -299.915627
+          ],
+          [
+            -1.871553,
+            -299.915655
+          ],
+          [
+            -6.871544,
+            -294.915629
+          ],
+          [
+            -6.871528,
+            -279.915648
+          ]
+        ],
+        "closed": false,
+        "projection_boundary_error_mm": 0.05
+      }
+    ],
+    "front": [
+      {
+        "id": "front.vertical_handle.0",
+        "component": "vertical_handle",
+        "kind": "visible_component_boundary",
+        "path_mm": [
+          [
+            -6.871544,
+            0.0
+          ],
+          [
+            -6.871544,
+            220.0
+          ],
+          [
+            6.871555,
+            220.0
+          ],
+          [
+            6.871555,
+            0.0
+          ],
+          [
+            -6.871544,
+            0.0
+          ]
+        ],
+        "closed": true,
+        "projection_boundary_error_mm": 0.05
+      },
+      {
+        "id": "front.stepped_top_cap.0",
+        "component": "stepped_top_cap",
+        "kind": "visible_component_boundary",
+        "path_mm": [
+          [
+            -6.871544,
+            220.0
+          ],
+          [
+            -256.364429,
+            220.0
+          ],
+          [
+            -265.919873,
+            220.0
+          ],
+          [
+            -265.919873,
+            230.0
+          ],
+          [
+            -279.915665,
+            230.0
+          ],
+          [
+            -279.915665,
+            250.0
+          ],
+          [
+            279.915665,
+            250.0
+          ],
+          [
+            279.915665,
+            230.0
+          ],
+          [
+            265.919873,
+            230.0
+          ],
+          [
+            265.919873,
+            220.0
+          ],
+          [
+            6.871555,
+            220.0
+          ]
+        ],
+        "closed": false,
+        "projection_boundary_error_mm": 0.05
+      },
+      {
+        "id": "front.cylindrical_cabinet_body.0",
+        "component": "cylindrical_cabinet_body",
+        "kind": "visible_component_boundary",
+        "path_mm": [
+          [
+            -6.871544,
+            0.0
+          ],
+          [
+            -279.915665,
+            0.0
+          ],
+          [
+            -279.915665,
+            220.0
+          ],
+          [
+            -265.919873,
+            220.0
+          ]
+        ],
+        "closed": false,
+        "projection_boundary_error_mm": 0.05
+      },
+      {
+        "id": "front.cylindrical_cabinet_body.1",
+        "component": "cylindrical_cabinet_body",
+        "kind": "visible_component_boundary",
+        "path_mm": [
+          [
+            265.919873,
+            220.0
+          ],
+          [
+            279.915665,
+            220.0
+          ],
+          [
+            279.915665,
+            0.0
+          ],
+          [
+            6.871555,
+            0.0
+          ]
+        ],
+        "closed": false,
+        "projection_boundary_error_mm": 0.05
+      },
+      {
+        "id": "front.stepped_top_cap.depth_seam",
+        "component": "stepped_top_cap",
+        "kind": "visible_depth_discontinuity",
+        "path_mm": [
+          [
+            -265.919873,
+            230
+          ],
+          [
+            265.919873,
+            230
+          ]
+        ],
+        "closed": false,
+        "evidence": "Actual radius-266 collar meets radius-280 cap at z=230; cap front surface is 14 mm nearer.",
+        "projection_boundary_error_mm": 0
+      }
+    ],
+    "side": [
+      {
+        "id": "side.stepped_top_cap.0",
+        "component": "stepped_top_cap",
+        "kind": "visible_component_boundary",
+        "path_mm": [
+          [
+            -273.196574,
+            230.0
+          ],
+          [
+            -279.915665,
+            230.0
+          ],
+          [
+            -279.915665,
+            250.0
+          ],
+          [
+            279.915665,
+            250.0
+          ],
+          [
+            279.915665,
+            230.0
+          ],
+          [
+            265.919873,
+            230.0
+          ],
+          [
+            265.919873,
+            220.0
+          ],
+          [
+            -265.919873,
+            220.0
+          ],
+          [
+            -265.919873,
+            230.0
+          ],
+          [
+            -273.196574,
+            230.0
+          ]
+        ],
+        "closed": true,
+        "projection_boundary_error_mm": 0.05
+      },
+      {
+        "id": "side.cylindrical_cabinet_body.0",
+        "component": "cylindrical_cabinet_body",
+        "kind": "visible_component_boundary",
+        "path_mm": [
+          [
+            265.919873,
+            220.0
+          ],
+          [
+            279.915665,
+            220.0
+          ],
+          [
+            279.915665,
+            0.0
+          ],
+          [
+            -279.915665,
+            0.0
+          ],
+          [
+            -279.915665,
+            220.0
+          ],
+          [
+            -279.241321,
+            220.0
+          ],
+          [
+            -265.919873,
+            220.0
+          ]
+        ],
+        "closed": false,
+        "projection_boundary_error_mm": 0.05
+      },
+      {
+        "id": "side.vertical_handle.0",
+        "component": "vertical_handle",
+        "kind": "visible_component_boundary",
+        "path_mm": [
+          [
+            -279.915665,
+            0.0
+          ],
+          [
+            -294.915646,
+            0.0
+          ],
+          [
+            -299.915655,
+            5.0
+          ],
+          [
+            -299.915655,
+            215.0
+          ],
+          [
+            -294.915646,
+            220.0
+          ],
+          [
+            -279.915665,
+            220.0
+          ]
+        ],
+        "closed": false,
+        "projection_boundary_error_mm": 0.05
+      },
+      {
+        "id": "side.stepped_top_cap.depth_seam",
+        "component": "stepped_top_cap",
+        "kind": "visible_depth_discontinuity",
+        "path_mm": [
+          [
+            -265.919873,
+            230
+          ],
+          [
+            265.919873,
+            230
+          ]
+        ],
+        "closed": false,
+        "evidence": "Actual radius-266 collar meets radius-280 cap at z=230; cap front surface is 14 mm nearer.",
+        "projection_boundary_error_mm": 0
+      }
+    ]
+  },
+  "visibility": {
+    "plan": {
+      "front_to_back_components": [
+        "stepped_top_cap",
+        "vertical_handle",
+        "cylindrical_cabinet_body"
+      ],
+      "fully_hidden_components": [
+        "cylindrical_cabinet_body"
+      ],
+      "rule": "Subtract nearer opaque component projections from farther component boundaries; deduplicate shared contact edges.",
+      "total_visible_length_mm": 1807.0019386939232,
+      "individual_component_projection_areas_mm2": {
+        "vertical_handle": 249.8614244824642,
+        "cylindrical_cabinet_body": 246202.37766575898,
+        "stepped_top_cap": 246202.3776657589
+      }
+    },
+    "front": {
+      "front_to_back_components": [
+        "vertical_handle",
+        "stepped_top_cap",
+        "cylindrical_cabinet_body"
+      ],
+      "fully_hidden_components": [],
+      "rule": "Subtract nearer opaque component projections from farther component boundaries; deduplicate shared contact edges.",
+      "total_visible_length_mm": 3179.32532,
+      "individual_component_projection_areas_mm2": {
+        "vertical_handle": 3023.48178,
+        "cylindrical_cabinet_body": 123162.89259999999,
+        "stepped_top_cap": 16515.02406
+      }
+    },
+    "side": {
+      "front_to_back_components": [
+        "stepped_top_cap",
+        "cylindrical_cabinet_body",
+        "vertical_handle"
+      ],
+      "fully_hidden_components": [],
+      "rule": "Subtract nearer opaque component projections from farther component boundaries; deduplicate shared contact edges.",
+      "total_visible_length_mm": 2993.467430351658,
+      "individual_component_projection_areas_mm2": {
+        "vertical_handle": 4375.001495000008,
+        "cylindrical_cabinet_body": 123162.89259999996,
+        "stepped_top_cap": 16515.024059999996
+      }
+    }
+  },
+  "coordinate_frame": "Handle-aligned review XYZ in mm; actual IFC placement remains unchanged. Plan +Z, Front -Y, Side -X.",
+  "orientation_audit": {
+    "review_rotation_z_degrees": -7.031244116545077,
+    "handle_centre_original_mm": [
+      35.69275792439778,
+      -289.3894805908203
+    ],
+    "handle_centre_aligned_mm": [
+      0.0,
+      -291.582311611789
+    ],
+    "method": "Mean of the 12 handle vertices relative to the cylindrical axis at local (0,0).",
+    "project_context_uses_original_local_projection": true,
+    "ifc_placement_modified": false
+  },
+  "base_audit": {
+    "official_measurement_svg": "official-source/BESICOBS55.svg",
+    "official_measurement_svg_sha256": "36bfffecbb33be78c8479676e26dd4de745a7a4cba78efeb888f5eb3bae4ca73",
+    "observation": "Official front and side show an inset bottom plinth. Actual IFC contains only three connected components and no separate plinth below the cylinder at z=0.",
+    "conclusion": "Official dimension SVG and user local GLB both show a base. GLB Base is diameter475 x height30 mm; project Body has no base. Therefore the 100 mm height difference is not solely a missing base. Candidate remains actual Body only pending choice about upstream model repair.",
+    "invented_base_added": false,
+    "requires_upstream_geometry_correction": true,
+    "local_asset_path": "/Users/jiaxinchen/Documents/Projects/仁恒-滨海湾/Blender文件/assets/Baxter Models/Imported/Beside/3D/Beside_55x58xh35.glb",
+    "local_asset_sha256": "3f007cba998d2aacb41ffcde71d50b37714fa04bd31da8bd284556ab639219df",
+    "local_asset_provenance": "User local imported Baxter model; official-download origin not independently verified.",
+    "local_asset_components": [
+      {
+        "name": "Base",
+        "bounds": [
+          {
+            "minimum": [
+              -23.75,
+              -23.75,
+              -1.4542681142838297e-15
+            ],
+            "maximum": [
+              23.75,
+              23.75,
+              3
+            ]
+          }
+        ]
+      },
+      {
+        "name": "Top",
+        "bounds": [
+          {
+            "minimum": [
+              -27.5,
+              -27.5,
+              33.5
+            ],
+            "maximum": [
+              27.5,
+              27.5,
+              35
+            ]
+          }
+        ]
+      },
+      {
+        "name": "Leath",
+        "bounds": [
+          {
+            "minimum": [
+              -27.494186401367188,
+              -27.5,
+              3
+            ],
+            "maximum": [
+              27.494186401367188,
+              4.51695009321639e-14,
+              33.5
+            ]
+          }
+        ]
+      },
+      {
+        "name": "Leath1",
+        "bounds": [
+          {
+            "minimum": [
+              -27.494186401367188,
+              -27.5,
+              3
+            ],
+            "maximum": [
+              27.494186401367188,
+              4.5169502361532e-14,
+              33.5
+            ]
+          }
+        ]
+      },
+      {
+        "name": "Leather_ba",
+        "bounds": [
+          {
+            "minimum": [
+              -25.5,
+              -25.5,
+              3
+            ],
+            "maximum": [
+              25.5,
+              25.5,
+              4.5
+            ]
+          }
+        ]
+      },
+      {
+        "name": "Handle",
+        "bounds": [
+          {
+            "minimum": [
+              -1.399999976158142,
+              -30.030092239379883,
+              3
+            ],
+            "maximum": [
+              1.399999976158142,
+              -27.230093002319336,
+              33.5
+            ]
+          }
+        ]
+      }
+    ],
+    "base_in_local_asset_mm": {
+      "diameter": 475,
+      "height": 30,
+      "minimum_z": 0,
+      "maximum_z": 30
+    },
+    "units_evidence": "Local asset overall height 35 matches official 350 mm, hence listed mesh coordinates interpreted as centimetres."
+  },
+  "semantic_notes": [
+    "220 mm cylindrical body; no separately modelled doors, drawers, base or hinges.",
+    "Top cap contains a 10 mm recessed collar at z=220..230, radius 266 mm, and a 20 mm top at z=230..250, radius 280 mm.",
+    "The circular opaque top occludes all internal triangulation and most of the handle; only its external protrusion is shown in Plan.",
+    "Side: body occludes the part of the handle within the body projection; Front: handle is closer than body.",
+    "Open component edge paths end at genuine occlusion or shared contact; combined outside contour is closed."
+  ],
+  "unsupported_invented_features": [],
+  "meaningless_coplanar_internal_lines": 0,
+  "actual_height_mm": 250,
+  "official_family_height_mm": 350,
+  "height_discrepancy_mm": 100,
+  "review_status": "visual_review_pending",
+  "derived_ifc_write_allowed": false,
+  "formal_ifc_write_allowed": false
+}

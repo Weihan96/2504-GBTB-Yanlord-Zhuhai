@@ -1,0 +1,120 @@
+{
+  "schema_version": 1,
+  "generator": "pipeline/scripts/render_geberit_duofix_sigma_224_212_main_bathroom.py",
+  "mode": "actual_bonsai_derived_ifc_main_bathroom_context_camera_render",
+  "formal_ifc": "2504 GBTB Yanlord Zhuhai.ifc",
+  "formal_ifc_sha256": "7a50b87e8f48a7c2bfbaa9f1dabdfca7155fa684b2325c66aa1ae15c8ab0a25c",
+  "formal_ifc_bytes_unchanged": true,
+  "derived_ifc": "output/review/highpoly-types/geberit-duofix-sigma-224-212/Geberit-Duofix-Sigma-224-212-derived-drawing.ifc",
+  "derived_ifc_sha256": "c1a0d6af0ef0897fb6a53c3b70dd2a8ae35d8a63deca06bbc9379e3decbe8897",
+  "derived_report": "output/review/highpoly-types/geberit-duofix-sigma-224-212/Geberit-Duofix-Sigma-224-212-derived-drawing-report.json",
+  "derived_report_sha256": "1f0b6883df3608141db3fdaf1c5ecd3b12d579f5b85659bcad1e917f083e39ac",
+  "persisted_drawing_representation_identifiers": [
+    "Duofix224212Front",
+    "Duofix224212Plan",
+    "Duofix224212Side"
+  ],
+  "target_global_id": "3pvAlH5C14v8uVEJ1LmK8M",
+  "target_ifc_class": "IfcSanitaryTerminal",
+  "target_type_name": "Geberit Duofix Sigma",
+  "room_global_id": "3a4COIs5X7lgDirMBDT4Vs",
+  "room_name": "主卫湿区",
+  "room_bbox_m": {
+    "minimum": [
+      -6.6,
+      0.1,
+      0.0
+    ],
+    "maximum": [
+      -4.8,
+      2.7,
+      2.8
+    ]
+  },
+  "project_context_retained": true,
+  "visible_context_object_count": 84,
+  "visible_context_ifc_classes": {
+    "IfcBeam": 2,
+    "IfcBuildingElementProxy": 6,
+    "IfcCovering": 28,
+    "IfcDoor": 2,
+    "IfcFlowSegment": 5,
+    "IfcFurniture": 3,
+    "IfcSanitaryTerminal": 14,
+    "IfcSlab": 7,
+    "IfcWall": 17
+  },
+  "target_highlight_color": "blue",
+  "context_color": "light_grey",
+  "saved_bonsai_session": {
+    "path": "output/review/highpoly-types/geberit-duofix-sigma-224-212/Geberit-Duofix-Sigma-224-212-main-bathroom-context.blend",
+    "sha256": "a6b153d74ed89fb4cfc6d3b405a106e82127ab53c754643df7a7ddb83a290b37",
+    "bytes": 524329684,
+    "camera_count": 3
+  },
+  "renders": [
+    {
+      "view": "plan",
+      "path": "output/review/highpoly-types/geberit-duofix-sigma-224-212/main-bathroom-bonsai-plan.png",
+      "sha256": "8f062afd56eb294bda380417d7ad028dac460526e1c5448d8237365d6249f3e5",
+      "bytes": 1544830,
+      "camera": "GEBERIT_DUOFIX_224_212_MAIN_BATH_PLAN",
+      "camera_type": "ORTHO",
+      "view_direction_world": [
+        0.0,
+        0.0,
+        1.0
+      ],
+      "camera_axis_basis": "main-bathroom Duofix instance local axes",
+      "resolution": [
+        1500,
+        1100
+      ],
+      "render_operation": "bpy.ops.render.render(write_still=True)",
+      "foreground_structural_objects_hidden": 0
+    },
+    {
+      "view": "front",
+      "path": "output/review/highpoly-types/geberit-duofix-sigma-224-212/main-bathroom-bonsai-front-elevation.png",
+      "sha256": "c703bc3acb85d864dd977a8b9c4d5a12e395f07b08e19febee15175341620b12",
+      "bytes": 1660740,
+      "camera": "GEBERIT_DUOFIX_224_212_MAIN_BATH_FRONT",
+      "camera_type": "ORTHO",
+      "view_direction_world": [
+        1.0,
+        -0.0,
+        -0.0
+      ],
+      "camera_axis_basis": "main-bathroom Duofix instance local axes",
+      "resolution": [
+        1500,
+        1100
+      ],
+      "render_operation": "bpy.ops.render.render(write_still=True)",
+      "foreground_structural_objects_hidden": 42
+    },
+    {
+      "view": "side",
+      "path": "output/review/highpoly-types/geberit-duofix-sigma-224-212/main-bathroom-bonsai-side-elevation.png",
+      "sha256": "069a0627249da709756f3a5df68340d50eaa061d9920f35ee5b609249e1821de",
+      "bytes": 1460540,
+      "camera": "GEBERIT_DUOFIX_224_212_MAIN_BATH_SIDE",
+      "camera_type": "ORTHO",
+      "view_direction_world": [
+        -0.0,
+        -1.0,
+        -0.0
+      ],
+      "camera_axis_basis": "main-bathroom Duofix instance local axes",
+      "resolution": [
+        1500,
+        1100
+      ],
+      "render_operation": "bpy.ops.render.render(write_still=True)",
+      "foreground_structural_objects_hidden": 40
+    }
+  ],
+  "blender_version": "4.5.3 LTS",
+  "ifc_schema": "IFC4",
+  "pass": true
+}

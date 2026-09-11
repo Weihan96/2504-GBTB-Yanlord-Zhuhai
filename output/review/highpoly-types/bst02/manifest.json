@@ -1,7 +1,7 @@
 {
   "schema_version": 1,
-  "generated_at": "2026-08-23T08:20:40.136099+00:00",
-  "generator": "pipeline/scripts/bst02_review.py",
+  "generated_at": "2026-09-07T05:02:07.304638+00:00",
+  "generator": "pipeline/scripts/bst02_semantic_review.py",
   "formal_ifc": "2504 GBTB Yanlord Zhuhai.ifc",
   "formal_ifc_sha256": "7a50b87e8f48a7c2bfbaa9f1dabdfca7155fa684b2325c66aa1ae15c8ab0a25c",
   "formal_ifc_sha256_after_generation": "7a50b87e8f48a7c2bfbaa9f1dabdfca7155fa684b2325c66aa1ae15c8ab0a25c",
@@ -109,7 +109,7 @@
   "official_source_access_record": "output/review/highpoly-types/bst02/official-source/source-access-record.json",
   "official_source_access_record_sha256": "ee8f6212b74c1b9e195a5038a691b02c4e14c52c7a2f78f7fbf88ef67e66fd1d",
   "candidate_representations": "output/review/highpoly-types/bst02/candidate-representations.json",
-  "candidate_representations_sha256": "d1924e72602abae9a61d5956e7adbce00ce29603390a2f7fb63d59d5aeae779e",
+  "candidate_representations_sha256": "a1f15c5ae89d6e403bc4fb0fc08d4c964ed305ae0af6b572b7dc269da73b0387",
   "review_status": "visual_review_pending",
   "approved_for_drawing_ifc": false,
   "derived_ifc_write_allowed": false,
@@ -118,14 +118,15 @@
     {
       "view": "plan",
       "svg": "output/review/highpoly-types/bst02/plan.svg",
-      "svg_sha256": "f7ebf76302cfc365539d0340dcdf7a4abef0154b34afbbe62697c9840027a976",
+      "svg_sha256": "5c273a73903621a9651d50b1c3bc71665df010561d63e7ce70797a74144cf671",
+      "preview": "output/review/highpoly-types/bst02/plan-preview.png",
+      "body_comparison": "output/review/highpoly-types/bst02/plan-body-comparison.svg",
       "projection_axes": [
         0,
         1
       ],
-      "raw_edge_count": 2195,
-      "displayed_raw_edge_count": 732,
-      "silhouette_path_count": 6,
+      "silhouette_path_count": 2,
+      "semantic_path_count": 2,
       "drawing_line_source_kind": "geometry_derived_simplified_proxy",
       "drawing_line_source_label_zh": "基于原始高模几何生成的简化图纸表达",
       "official_cad_path_count": 0,
@@ -134,14 +135,15 @@
     {
       "view": "front",
       "svg": "output/review/highpoly-types/bst02/front.svg",
-      "svg_sha256": "97b35cad3743095f21e31b2c8958d1e65c159e855591a41831279e38f09629dd",
+      "svg_sha256": "7d5df639f2dc94b6b4a0cf5a6300512ce8931035ccb7a3689916769b43e1a036",
+      "preview": "output/review/highpoly-types/bst02/front-preview.png",
+      "body_comparison": "output/review/highpoly-types/bst02/front-body-comparison.svg",
       "projection_axes": [
         0,
         2
       ],
-      "raw_edge_count": 2195,
-      "displayed_raw_edge_count": 732,
-      "silhouette_path_count": 1,
+      "silhouette_path_count": 5,
+      "semantic_path_count": 5,
       "drawing_line_source_kind": "geometry_derived_simplified_proxy",
       "drawing_line_source_label_zh": "基于原始高模几何生成的简化图纸表达",
       "official_cad_path_count": 0,
@@ -150,14 +152,15 @@
     {
       "view": "side",
       "svg": "output/review/highpoly-types/bst02/side.svg",
-      "svg_sha256": "25d70a2d73a6b87debe9bbb17ee2c04d87ef845be5b65008b976962e1b636102",
+      "svg_sha256": "c1a1b7a29dbc279031d44a535a4fd33227af0cb7e0bd1aae4e0c19bd60dc7b31",
+      "preview": "output/review/highpoly-types/bst02/side-preview.png",
+      "body_comparison": "output/review/highpoly-types/bst02/side-body-comparison.svg",
       "projection_axes": [
         1,
         2
       ],
-      "raw_edge_count": 2195,
-      "displayed_raw_edge_count": 732,
-      "silhouette_path_count": 1,
+      "silhouette_path_count": 4,
+      "semantic_path_count": 4,
       "drawing_line_source_kind": "geometry_derived_simplified_proxy",
       "drawing_line_source_label_zh": "基于原始高模几何生成的简化图纸表达",
       "official_cad_path_count": 0,
@@ -167,7 +170,7 @@
   "pass": true,
   "project_context": {
     "manifest": "output/review/highpoly-types/bst02/project-context-manifest.json",
-    "manifest_sha256": "14d5f5c941f525ac9d17dafdbd5fed674ba23239df88cb01f0767addcfe99cf7",
+    "manifest_sha256": "ff4256c01f930ced05112e32ac8e6025a9bdfbf79f6f2dcf919a43b20b16ea6d",
     "walls_and_surrounding_project_elements_retained": true,
     "overlay_top_layer_with_white_mask": true,
     "pass": true
@@ -179,5 +182,13 @@
     "saved_active_representation": "Body",
     "saved_camera_count": 4,
     "pass": true
-  }
+  },
+  "semantic_segmentation": {
+    "path": "output/review/highpoly-types/bst02/bst02-semantic-segmentation.json",
+    "sha256": "044c2938b8341c800215f759f6cc37621788cc500a55bdfba66640fd4623b70d",
+    "classified_component_count": 3
+  },
+  "semantic_contact_sheet": "output/review/highpoly-types/bst02/semantic-contact-sheet.png",
+  "review_contact_sheet": "output/review/highpoly-types/bst02/review-contact-sheet.png",
+  "review_contact_sheet_sha256": "83b6ff0d4aad183e8909bbd1dc6adee527ad706ddb0a714f87ec7d1579241bc5"
 }

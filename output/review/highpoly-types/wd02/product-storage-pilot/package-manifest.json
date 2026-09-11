@@ -1,0 +1,122 @@
+{
+  "schema_version": 1,
+  "profile_key": "wd02",
+  "status": "pilot_validated",
+  "persistent_ifc": {
+    "path": "/Users/jiaxinchen/.codex/worktrees/3a80/2504 GBTB Yanlord Zhuhai/output/review/highpoly-types/wd02/product-storage-pilot/WD02-product.ifc",
+    "bytes": 407142,
+    "sha256": "d36fe4f2b00230bfb41eddd4b940a9f2b98ebcc422013dd788bf4343ac52253e"
+  },
+  "represented_physical_elements": 1,
+  "representative_global_id": "3yuXF4PtnBHgIXDlmXFJ$7",
+  "unit_scale_to_m": 0.001,
+  "product_placement_project_units": [
+    [
+      0.0,
+      1.0,
+      0.0,
+      5897.0
+    ],
+    [
+      -1.0,
+      0.0,
+      0.0,
+      896.0
+    ],
+    [
+      0.0,
+      0.0,
+      1.0,
+      48.0
+    ],
+    [
+      0.0,
+      0.0,
+      0.0,
+      1.0
+    ]
+  ],
+  "coordinate_policy": "retain project coordinates; never center or rotate package",
+  "source_kind": "geometry_derived_simplified_proxy",
+  "source_label_zh": "基于原始高模几何生成的简化图纸表达",
+  "approval_record": {
+    "path": "/Users/jiaxinchen/.codex/worktrees/3a80/2504 GBTB Yanlord Zhuhai/pipeline/decisions/wd02-drawing-approval.json",
+    "bytes": 2854,
+    "sha256": "8b213bf95e9d6ad27c88c8854fa2e7b9bf07a0998eb164255647fcd62c8f8507"
+  },
+  "source_records": [
+    {
+      "path": "/Users/jiaxinchen/.codex/worktrees/3a80/2504 GBTB Yanlord Zhuhai/output/review/highpoly-types/wd02/official-source/source-access-record.json",
+      "bytes": 4409,
+      "sha256": "42db2d7d8a7bafa5ca32c27936ec0e57641a2884f06c967a3b17bbb7de02e149"
+    },
+    {
+      "path": "/Users/jiaxinchen/.codex/worktrees/3a80/2504 GBTB Yanlord Zhuhai/output/review/highpoly-types/wd02/official-source/official-product-page-evidence.json",
+      "bytes": 3070,
+      "sha256": "134d4b84547e3843ed83ed07756ffd191ab369be15f37742aaba6eefc3a9a034"
+    }
+  ],
+  "scene_recipe": {
+    "matching": "existing GlobalId + identical Body + identical placement + identical units",
+    "body_append": false,
+    "repeat_attachment": "idempotent",
+    "save_target": "unique temporary project copy only",
+    "drawing": "Bonsai Create Drawing"
+  },
+  "formal_ifc_sha256": "7a50b87e8f48a7c2bfbaa9f1dabdfca7155fa684b2325c66aa1ae15c8ab0a25c",
+  "formal_authoritative_ifc_write_allowed": false,
+  "scene_outputs": [
+    {
+      "view": "plan",
+      "max_linework_hausdorff_error_world_mm": 0.000762939453125,
+      "tolerance_mm": 0.01,
+      "svg": {
+        "path": "/Users/jiaxinchen/.codex/worktrees/3a80/2504 GBTB Yanlord Zhuhai/output/review/highpoly-types/wd02/product-storage-pilot/WD02-SCENE-PLAN.svg",
+        "bytes": 272245,
+        "sha256": "4b57eecfaec228697dda5797ec84557d9b299b63c76e5010bb086468bda70315"
+      },
+      "preview": {
+        "path": "/Users/jiaxinchen/.codex/worktrees/3a80/2504 GBTB Yanlord Zhuhai/output/review/highpoly-types/wd02/product-storage-pilot/WD02-SCENE-PLAN.png",
+        "bytes": 61615,
+        "sha256": "9d39b6b66c7edfc3b93d37e1ed768ee9a4cf9d654391119a26a9513582d8ca3c"
+      },
+      "document_reference_resolves": true
+    },
+    {
+      "view": "front",
+      "max_linework_hausdorff_error_world_mm": 0.000286102294921875,
+      "tolerance_mm": 0.01,
+      "svg": {
+        "path": "/Users/jiaxinchen/.codex/worktrees/3a80/2504 GBTB Yanlord Zhuhai/output/review/highpoly-types/wd02/product-storage-pilot/WD02-SCENE-FRONT.svg",
+        "bytes": 770423,
+        "sha256": "52279b83c86f408237bc85b3001e6c07ef5fb43d75dc321e2ea87963989b1bda"
+      },
+      "preview": {
+        "path": "/Users/jiaxinchen/.codex/worktrees/3a80/2504 GBTB Yanlord Zhuhai/output/review/highpoly-types/wd02/product-storage-pilot/WD02-SCENE-FRONT.png",
+        "bytes": 111921,
+        "sha256": "2a27dd289bb2030a367eb863d2ce52aabbf040793ac64ce358d5dd3876080d40"
+      },
+      "document_reference_resolves": true
+    },
+    {
+      "view": "side",
+      "max_linework_hausdorff_error_world_mm": 0.0,
+      "tolerance_mm": 0.01,
+      "svg": {
+        "path": "/Users/jiaxinchen/.codex/worktrees/3a80/2504 GBTB Yanlord Zhuhai/output/review/highpoly-types/wd02/product-storage-pilot/WD02-SCENE-SIDE.svg",
+        "bytes": 1152126,
+        "sha256": "d52038dd7a652831481d2aca8744c1c89668de12b25fb242d33b7efcf11a73fc"
+      },
+      "preview": {
+        "path": "/Users/jiaxinchen/.codex/worktrees/3a80/2504 GBTB Yanlord Zhuhai/output/review/highpoly-types/wd02/product-storage-pilot/WD02-SCENE-SIDE.png",
+        "bytes": 84516,
+        "sha256": "4fc70868795af5a383d29ea34cc34fa729e83b4b06213484fe6a86ff188af8c8"
+      },
+      "document_reference_resolves": true
+    }
+  ],
+  "validation_record": "validation.json",
+  "cleanup_proposal": "cleanup-proposal.json",
+  "legacy_copy_retained": true,
+  "batch_conversion_started": false
+}

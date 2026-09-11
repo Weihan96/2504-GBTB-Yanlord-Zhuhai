@@ -202,7 +202,7 @@ test("Bonsai evidence is an actual camera render of the IFC Body", () => {
   expect(sha256(join(root, evidence.isolated_ifc))).toBe(evidence.isolated_ifc_sha256);
 });
 
-test("unapproved Geberit candidate cannot write a derived drawing IFC", () => {
+test("approved Geberit candidate keeps the formal IFC write gate closed", () => {
   const candidate = JSON.parse(readFileSync(join(product, "candidate-representations.json"), "utf8"));
   expect(candidate).toMatchObject({
     source_kind: "native_dwg",
@@ -215,11 +215,18 @@ test("unapproved Geberit candidate cannot write a derived drawing IFC", () => {
   });
   expect(candidate.formal_ifc_write_allowed).toBeFalse();
   expect(candidate.review_status).toBe("visual_review_pending");
-  expect(existsSync(join(product, "Geberit-146-140-derived-drawing.ifc"))).toBeFalse();
+  const approval = JSON.parse(
+    readFileSync(join(root, "pipeline/decisions/geberit-146-140-drawing-approval.json"), "utf8"),
+  );
+  expect(approval.status).toBe("approved");
+  expect(approval.derived_ifc_write_allowed).toBeTrue();
+  expect(approval.formal_authoritative_ifc_write_allowed).toBeFalse();
+  expect(approval.candidate_manifest_sha256).toBe(sha256(join(product, "manifest.json")));
+  expect(existsSync(join(product, "Geberit-146-140-derived-drawing.ifc"))).toBeTrue();
   expect(sha256(formal)).toBe(formalHash);
 });
 
-test("writer rejects both missing apply and the pending approval record", () => {
+test("writer rejects both missing apply and a pending approval fixture", () => {
   const temporary = mkdtempSync(join(tmpdir(), "geberit-146140-gate-"));
   const output = join(temporary, "forbidden.ifc");
   const script = join(root, "pipeline/scripts/geberit_146_140_drawing_ifc.py");
@@ -227,8 +234,8 @@ test("writer rejects both missing apply and the pending approval record", () => 
     readFileSync(join(root, "pipeline/decisions/geberit-146-140-drawing-approval.json"), "utf8"),
   );
   const manifest = join(product, "manifest.json");
-  expect(approval.status).toBe("pending");
-  expect(approval.derived_ifc_write_allowed).toBeFalse();
+  expect(approval.status).toBe("approved");
+  expect(approval.derived_ifc_write_allowed).toBeTrue();
   expect(approval.candidate_manifest_sha256).toBe(sha256(manifest));
 
   const withoutApply = Bun.spawnSync(["python3", script, "--input", formal, "--output", output], {
@@ -239,8 +246,24 @@ test("writer rejects both missing apply and the pending approval record", () => 
   expect(withoutApply.stderr.toString()).toContain("IFC write requires the explicit --apply flag");
   expect(existsSync(output)).toBeFalse();
 
+  const pendingApprovalPath = join(temporary, "pending-approval.json");
+  writeFileSync(pendingApprovalPath, JSON.stringify({
+    ...approval,
+    status: "pending",
+    reviewer: null,
+    review_date: null,
+    approved_views: [],
+    derived_ifc_write_allowed: false,
+    approval_evidence: null,
+  }, null, 2));
   const pendingApproval = Bun.spawnSync(
-    ["python3", script, "--input", formal, "--output", output, "--apply"],
+    [
+      "python3", script,
+      "--input", formal,
+      "--approval", pendingApprovalPath,
+      "--output", output,
+      "--apply",
+    ],
     { cwd: root, stderr: "pipe" },
   );
   expect(pendingApproval.exitCode).not.toBe(0);
@@ -248,6 +271,40 @@ test("writer rejects both missing apply and the pending approval record", () => 
   expect(existsSync(output)).toBeFalse();
   expect(sha256(formal)).toBe(formalHash);
   rmSync(temporary, { recursive: true, force: true });
+});
+
+test("approved scene Drawings persist once without Body or sibling duplication", () => {
+  const evidencePath = join(
+    product,
+    "bonsai-drawings/wc/GEBERIT-146-140-create-drawing-evidence.json",
+  );
+  const evidence = JSON.parse(readFileSync(evidencePath, "utf8"));
+  expect(evidence.verdict).toBe("pass");
+  expect(evidence.formal_ifc_bytes_unchanged).toBeTrue();
+  expect(evidence.postState.approved_product_representation_path_counts).toEqual({
+    Geberit146140Plan: 50,
+    Geberit146140Front: 82,
+    Geberit146140Side: 65,
+  });
+  expect(evidence.tests).toMatchObject({
+    all_create_drawing_finished: true,
+    all_body_and_sibling_duplicates_absent: true,
+    all_path_counts_persisted: true,
+    formal_ifc_unchanged: true,
+  });
+  expect(evidence.outputs.views.map((view: any) => view.view)).toEqual([
+    "plan",
+    "front",
+    "side",
+  ]);
+  for (const view of evidence.outputs.views) {
+    expect(view.create_drawing.operator).toBe("bpy.ops.bim.create_drawing");
+    expect(view.create_drawing.result).toEqual(["FINISHED"]);
+    expect(view.path_count).toBe(view.persisted_path_count);
+    expect(view.svg.no_body_annotation_or_instance_duplicate).toBeTrue();
+    expect(sha256(view.svg.path)).toBe(view.svg.sha256);
+  }
+  expect(sha256(formal)).toBe(formalHash);
 });
 
 test("a scoped temporary approval writes verified native-DWG representations and source associations", () => {

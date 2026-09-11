@@ -9,12 +9,32 @@
       "expected_instance_global_ids": [
         "3cmikd9MTB$egM5KQaNgUf"
       ],
-      "profile_source": "isolated_highpoly_projection; official_family_identity_verified; exact_native_cad_not_acquired",
+      "profile_source": "isolated_highpoly_component_semantics; official_family_identity_verified; exact_native_cad_not_acquired",
       "silhouette_simplify_mm": 1.0,
       "semantic_sections": {
-        "plan": [],
-        "front": [],
-        "side": []
+        "plan": [
+          "plan.outer_envelope",
+          "plan.left_side_cap",
+          "plan.right_side_cap",
+          "plan.back_to_top_deck",
+          "plan.top_deck_to_front_edge"
+        ],
+        "front": [
+          "front.outer_envelope",
+          "front.left_side_panel",
+          "front.right_side_panel",
+          "front.top_deck_lower_edge",
+          "front.middle_shelf_upper_edge",
+          "front.middle_shelf_lower_edge",
+          "front.bottom_deck_upper_edge",
+          "front.upper_clothes_rail",
+          "front.lower_clothes_rail"
+        ],
+        "side": [
+          "side.outer_side_panel",
+          "side.upper_open_door_panel",
+          "side.lower_open_door_panel"
+        ]
       },
       "required_semantics": [
         "single_project_WD03_representative",
@@ -40,7 +60,9 @@
         "source_access_record": "output/review/highpoly-types/wd03/official-source/source-access-record.json",
         "official_native_cad_status": "gated_resource_download_no_public_exact_WD03_asset_located_not_acquired",
         "official_native_cad_used": false
-      }
+      },
+      "semantic_audit": "output/review/highpoly-types/wd03/wd03-semantic-segmentation.json",
+      "catalogue_geometry_used": false
     }
   }
 }

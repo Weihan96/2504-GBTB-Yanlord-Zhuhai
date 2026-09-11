@@ -1,0 +1,203 @@
+{
+  "schema_version": 1,
+  "generated_at": "2026-08-25T06:31:31.876986+00:00",
+  "generator": "pipeline/scripts/generate_official_dwg_family_review_packages.py",
+  "product_slug": "hima01",
+  "display_name": "Poliform HIMA PVA11 / HIMA01",
+  "representative_global_id": "2xmcLzu1rDTeMzRuNxPDyE",
+  "formal_ifc_sha256": "7a50b87e8f48a7c2bfbaa9f1dabdfca7155fa684b2325c66aa1ae15c8ab0a25c",
+  "formal_ifc_bytes_unchanged": true,
+  "source_dwg": "output/review/highpoly-types/hima01/official-source/official-download/Poliform-HIMA-screen.dwg",
+  "source_dwg_absolute_path": "/Users/jiaxinchen/.codex/worktrees/3a80/2504 GBTB Yanlord Zhuhai/output/review/highpoly-types/hima01/official-source/official-download/Poliform-HIMA-screen.dwg",
+  "source_dwg_sha256": "f0e1b980aa102f3e06fe602f9e7a9b40db45d76e45200c08e4b8b4a0eec1d523",
+  "official_download_url": "https://s3.poliform.it/2025/09/Poliform-HIMA-screen.dwg",
+  "configuration": "PVA11 / 3 elements / 2330 x 115 x 1000 mm",
+  "reference_role": "official_pva11_family_and_height_reference_not_exact_project_folded_pose",
+  "scope": "Official PVA11 three-element, 1000 mm-high family reference.",
+  "fit_note": "The project Body height agrees, but its folded pose is not the published straight PVA11 arrangement; no pose deformation or scaling applied.",
+  "official_dwg_review_reference": "output/review/highpoly-types/hima01/official-dwg-review-reference.json",
+  "official_dwg_review_reference_sha256": "5bc6287082219038526e70bd80ba3ea51123ca37c01c2fdd62dfe5a4ee35741a",
+  "primary_candidate_source_kind": "geometry_derived_simplified_proxy",
+  "primary_candidate_source_label_zh": "基于原始高模几何生成的简化图纸表达",
+  "primary_candidate_replaced": false,
+  "official_reference_used_as_primary_candidate": false,
+  "third_party_cad_used": false,
+  "derived_ifc_write_performed": false,
+  "formal_authoritative_ifc_write_performed": false,
+  "bounds_mm": {
+    "minimum": [
+      -119.600834,
+      -40.741089,
+      -2.0
+    ],
+    "maximum": [
+      706.558529,
+      1644.298012,
+      997.0
+    ],
+    "size": [
+      826.159363,
+      1685.039101,
+      999.0
+    ]
+  },
+  "views": [
+    {
+      "view": "plan",
+      "svg": "output/review/highpoly-types/hima01/official-dwg-plan.svg",
+      "svg_sha256": "85122b3fac2218ae8d1c3d144a059873df312406b8594077775f11fb325deb8f",
+      "official_reference_geometry_kind": "native_dwg_2d_linework",
+      "official_reference_path_count": 10,
+      "blue_stroke_style": "solid",
+      "alignment": {
+        "mode": "translation_only",
+        "view_direction_reflection_x": false,
+        "translation_mm": [
+          -865.123578,
+          741.926864
+        ],
+        "anchor": "projection_centre_to_projection_centre",
+        "uniform_scale": 1.0,
+        "anisotropic_scale_used": false,
+        "source_geometry_deformed": false,
+        "source_bounds_before_alignment_mm": {
+          "minimum": [
+            0.0,
+            0.0
+          ],
+          "maximum": [
+            2316.90761,
+            120.000435
+          ],
+          "size": [
+            2316.90761,
+            120.000435
+          ]
+        },
+        "project_proxy_bounds_mm": {
+          "minimum": [
+            -119.600834,
+            -40.443848
+          ],
+          "maximum": [
+            706.261288,
+            1644.298012
+          ],
+          "size": [
+            825.862122,
+            1684.74186
+          ]
+        }
+      },
+      "primary_candidate_source_kind": "geometry_derived_simplified_proxy",
+      "primary_candidate_replaced": false
+    },
+    {
+      "view": "front",
+      "svg": "output/review/highpoly-types/hima01/official-dwg-front.svg",
+      "svg_sha256": "0d254cec63c8e288bf55e3f3d198969e454230442205a2df346c7a277d57a0af",
+      "official_reference_geometry_kind": "native_dwg_2d_linework",
+      "official_reference_path_count": 35,
+      "blue_stroke_style": "solid",
+      "alignment": {
+        "mode": "translation_only",
+        "view_direction_reflection_x": false,
+        "translation_mm": [
+          -865.819229,
+          -1.965814
+        ],
+        "anchor": "horizontal_centre_and_finished_bottom",
+        "uniform_scale": 1.0,
+        "anisotropic_scale_used": false,
+        "source_geometry_deformed": false,
+        "source_bounds_before_alignment_mm": {
+          "minimum": [
+            0.0,
+            0.0
+          ],
+          "maximum": [
+            2318.374106,
+            999.99994
+          ],
+          "size": [
+            2318.374106,
+            999.99994
+          ]
+        },
+        "project_proxy_bounds_mm": {
+          "minimum": [
+            -119.600834,
+            -1.965814
+          ],
+          "maximum": [
+            706.336483,
+            996.770386
+          ],
+          "size": [
+            825.937317,
+            998.7362
+          ]
+        }
+      },
+      "primary_candidate_source_kind": "geometry_derived_simplified_proxy",
+      "primary_candidate_replaced": false
+    },
+    {
+      "view": "side",
+      "svg": "output/review/highpoly-types/hima01/official-dwg-side.svg",
+      "svg_sha256": "91ebbafe54ba27a8354d19f69c37d858021d71a7220136a37a9f03f56af02dbf",
+      "official_reference_geometry_kind": "native_dwg_dimension_envelope_not_dedicated_2d_view",
+      "official_reference_path_count": 1,
+      "blue_stroke_style": "dashed",
+      "alignment": {
+        "mode": "translation_only",
+        "view_direction_reflection_x": false,
+        "translation_mm": [
+          744.266193,
+          -2.0
+        ],
+        "anchor": "horizontal_centre_and_finished_bottom",
+        "uniform_scale": 1.0,
+        "anisotropic_scale_used": false,
+        "source_geometry_deformed": false,
+        "source_bounds_before_alignment_mm": {
+          "minimum": [
+            0.0,
+            0.0
+          ],
+          "maximum": [
+            115.0,
+            1000.0
+          ],
+          "size": [
+            115.0,
+            1000.0
+          ]
+        },
+        "project_proxy_bounds_mm": {
+          "minimum": [
+            -40.737549,
+            -2.0
+          ],
+          "maximum": [
+            1644.269936,
+            997.0
+          ],
+          "size": [
+            1685.007485,
+            999.0
+          ]
+        }
+      },
+      "primary_candidate_source_kind": "geometry_derived_simplified_proxy",
+      "primary_candidate_replaced": false
+    }
+  ],
+  "pass": true,
+  "index": "output/review/highpoly-types/hima01/official-dwg-review-index.html",
+  "index_sha256": "73b83005f76e73b959fd7798785e225e9717ca39b0b60b30cef633a367804d48",
+  "contact_sheet_html": "output/review/highpoly-types/hima01/official-dwg-review-contact-sheet.html",
+  "contact_sheet_html_sha256": "386a0184df5cc3912db6109030fca88a19ff1c58f307ff8b2f9afcc658be2fa9",
+  "contact_sheet_png": "output/review/highpoly-types/hima01/official-dwg-review-contact-sheet.png",
+  "contact_sheet_png_sha256": "4f1709d4889fa69609376fa77698d0c5ef5fdee8ce12d4acce461f9090a3ad31"
+}

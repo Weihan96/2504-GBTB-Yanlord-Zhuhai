@@ -32,8 +32,8 @@ shared.CONTEXT_VIEWS = (
 original_add_overlay = shared.add_overlay
 
 
-def add_overlay(source, target, view, path):
-    original_add_overlay(source, target, view, path)
+def add_overlay(source, target, view, path, proxy_bbox=None):
+    original_add_overlay(source, target, view, path, proxy_bbox)
     content = target.read_text(encoding="utf-8")
     content = re.sub(
         r'<g id="noninteger-highlights"[^>]*>.*?</g>',

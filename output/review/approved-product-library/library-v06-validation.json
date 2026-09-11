@@ -1,0 +1,68 @@
+{
+  "version": "0.6.0",
+  "status": "body_packages_and_native_insertion_verified",
+  "products": 39,
+  "body_representations_per_product": 4,
+  "annotation_representations": 0,
+  "approval_categories": {
+    "partial": 11,
+    "approved": 8,
+    "pending": 20
+  },
+  "course_evidence": {
+    "mode": "embedded-course-index",
+    "lesson": "109000",
+    "timestamp": "00:27",
+    "screenshot_sha256": "34540cf996d3ed68b6158f3bd5f4caf7f68d77008b098fc90f9cb435b56204d0",
+    "fact": "Product drawing representation uses Body; Annotation2D is a RepresentationType, not an Annotation context"
+  },
+  "native_bonsai_create_drawing": true,
+  "direction_adapter_required": true,
+  "visual_checks": [
+    "/Users/jiaxinchen/.codex/worktrees/3a80/2504 GBTB Yanlord Zhuhai/output/review/approved-product-library/body-view-gessi316-54294-bisect-validation.json",
+    "/Users/jiaxinchen/.codex/worktrees/3a80/2504 GBTB Yanlord Zhuhai/output/review/approved-product-library/body-view-wd03-opencascade-validation.json",
+    "/Users/jiaxinchen/.codex/worktrees/3a80/2504 GBTB Yanlord Zhuhai/output/review/approved-product-library/body-view-cha02-opencascade-validation.json"
+  ],
+  "automated_unit_tests": 25,
+  "native_insertions_saved_and_reloaded": 40,
+  "formal_sha256_unchanged": "7a50b87e8f48a7c2bfbaa9f1dabdfca7155fa684b2325c66aa1ae15c8ab0a25c",
+  "protected_index_sha256": "2d4f1c5ae18f3415abe7ce9c38b118bee3b7efd00c76890b821d5b96a2687f4e",
+  "old_packages_retained": true,
+  "source_approval_categories_unchanged": true,
+  "new_changes_staged": false,
+  "remaining": "User acceptance of representation UI, physical drag and green loading feedback; old files not deleted",
+  "live_production_release": {
+    "status": "pass",
+    "pid": 81962,
+    "fixture": "/var/folders/rz/d8p6s4y50ws53rd150nm2s3r0000gn/T/body-library-acceptance-xkf5z27_/library-review.ifc",
+    "fixture_sha256_unchanged": "eb13ce52a2f0cf91be5a8154a2bd9c76222253c245bea05d0ad8fba4e6a55604",
+    "version": [
+      0,
+      6,
+      0
+    ],
+    "catalog_products": 39,
+    "production_release_stages": [
+      0.0,
+      0.05,
+      0.25,
+      0.5,
+      0.65,
+      0.85,
+      0.95,
+      1.0
+    ],
+    "outputs": [
+      "/Users/jiaxinchen/.codex/worktrees/3a80/2504 GBTB Yanlord Zhuhai/output/review/approved-product-library/body-library-loading-25.png",
+      "/Users/jiaxinchen/.codex/worktrees/3a80/2504 GBTB Yanlord Zhuhai/output/review/approved-product-library/body-library-loading-65.png",
+      "/Users/jiaxinchen/.codex/worktrees/3a80/2504 GBTB Yanlord Zhuhai/output/review/approved-product-library/body-library-loading-100.png"
+    ],
+    "created_instance_guid": "1wtia1CB54L9CQn63XIrlH",
+    "four_bodies_verified": true,
+    "success_cleanup": true,
+    "cancel_no_mutation": true,
+    "physical_mouse_acceptance": "pending_user",
+    "saved": false,
+    "new_test_instance": "in memory only; native Undo can remove it"
+  }
+}

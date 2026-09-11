@@ -79,6 +79,8 @@
     "project_instance_is_shortened_configuration": true,
     "official_default_family_paths_used_as_project_representation": false,
     "geometry_scaled_or_stretched_to_match": false,
+    "review_overlay_rule": "Translate the exact native DWG onto the current shortened black proxy using fixed-body and connection-axis datums at 1:1. Keep official linework within the current horizontal/vertical endpoints solid blue; render only the independently classified adjustable excess beyond those endpoints dashed blue.",
+    "blue_dashed_semantics": "official adjustable-family default/extended excess beyond this project configuration; not installed project geometry and not an exact project shop drawing",
     "pass": true
   },
   "drawing_geometry_source": {
@@ -88,7 +90,7 @@
     "configuration_note": "The proxy preserves the shortened project installation configuration; it does not force-fit the official default family extension.",
     "official_cad_acquired": true,
     "official_cad_used_as_representation": false,
-    "official_cad_role": "exact article identity, adjustable-family envelope and fixed-width cross-check",
+    "official_cad_role": "exact article identity, fixed-width cross-check, and 1:1 review overlay; blue dashed excess is not project representation geometry",
     "third_party_cad_used": false
   },
   "scope": "exact Geberit 151.116.11.1 adjustable family reference; project instance is a shortened installation configuration; not a project shop drawing",

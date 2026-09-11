@@ -1,0 +1,272 @@
+{
+  "verdict": "technical_pass",
+  "product": "marilyn-02",
+  "source_sha256": "3d693afed35f6ad2bf52f80b923c3fbb84d58165a8ea28d3530fdf491c5f7103",
+  "drawings": [
+    {
+      "role": "Plan",
+      "guid": "38tB6zMxL4EeMFAb3z9hiw",
+      "svg": "/Users/jiaxinchen/.codex/worktrees/3a80/2504 GBTB Yanlord Zhuhai/output/review/approved-product-library/portable-validation/marilyn-02/plan.svg",
+      "sha256": "81f42473b0b7609f0d78c8f28e450f00962b0dea88e10588305517a7f72191e3",
+      "bytes": 153217,
+      "target_geometry_nodes": 649,
+      "selected": [
+        {
+          "global_id": "0_4KtfDmX48fSxxapOnu$E",
+          "target_view": "PLAN_VIEW",
+          "role": "Plan",
+          "representation_id": 6099,
+          "old_body_or_annotation_emitted": false
+        }
+      ]
+    },
+    {
+      "role": "Front",
+      "guid": "25HKUdwIf7qh97aJij1e39",
+      "svg": "/Users/jiaxinchen/.codex/worktrees/3a80/2504 GBTB Yanlord Zhuhai/output/review/approved-product-library/portable-validation/marilyn-02/front.svg",
+      "sha256": "4c6dc922bccb10341ccfafa747a068c02e2bbbc55e10dc88f8ed2ccf1f9de202",
+      "bytes": 302409,
+      "target_geometry_nodes": 2118,
+      "selected": [
+        {
+          "global_id": "0_4KtfDmX48fSxxapOnu$E",
+          "target_view": "ELEVATION_VIEW",
+          "role": "Front",
+          "representation_id": 9687,
+          "old_body_or_annotation_emitted": false
+        }
+      ]
+    },
+    {
+      "role": "Side",
+      "guid": "12mMYPaXH9JuhJnLQHpeQ_",
+      "svg": "/Users/jiaxinchen/.codex/worktrees/3a80/2504 GBTB Yanlord Zhuhai/output/review/approved-product-library/portable-validation/marilyn-02/side.svg",
+      "sha256": "fb927839fa63b01ab5c3f61c90ce6e356c7c721c0983fb032e1d5e8e2426ddba",
+      "bytes": 228888,
+      "target_geometry_nodes": 1394,
+      "selected": [
+        {
+          "global_id": "0_4KtfDmX48fSxxapOnu$E",
+          "target_view": "ELEVATION_VIEW",
+          "role": "Side",
+          "representation_id": 13070,
+          "old_body_or_annotation_emitted": false
+        }
+      ]
+    }
+  ],
+  "temporary_fixture": "/private/var/folders/rz/d8p6s4y50ws53rd150nm2s3r0000gn/T/portable-library-isolation-ns4hkq7o/results/marilyn-02/test.ifc",
+  "provider_persistence": {
+    "saved": true,
+    "output_path": "/private/var/folders/rz/d8p6s4y50ws53rd150nm2s3r0000gn/T/portable-library-isolation-ns4hkq7o/results/marilyn-02/test.ifc",
+    "in_place": false,
+    "method": "bonsai.bim.export_ifc.IfcExporter",
+    "reloaded": true
+  },
+  "generator": "Bonsai Create Drawing / OpenCASCADE + BISECT",
+  "old_repository_read_denied_by_OS": true,
+  "catalog_products_loaded": 39,
+  "native_insert": true,
+  "disk_unchanged_until_save": true,
+  "unique_product_and_object": true,
+  "reloaded": true,
+  "loading_stages": [
+    0.05,
+    0.25,
+    0.5,
+    0.65,
+    0.85,
+    0.95
+  ],
+  "texture_dependencies": [
+    {
+      "name": "FabricVelourPlain001_AO_1K_METALNESS_png",
+      "packed": true
+    },
+    {
+      "name": "FabricVelourPlain001_BUMP16_1K_METALNESS_png",
+      "packed": true
+    },
+    {
+      "name": "FabricVelourPlain001_COL_1K_METALNESS_png",
+      "packed": true
+    },
+    {
+      "name": "FabricVelourPlain001_DISP16_1K_METALNESS_png",
+      "packed": true
+    },
+    {
+      "name": "FabricVelourPlain001_METALNESS_1K_METALNESS_png",
+      "packed": true
+    },
+    {
+      "name": "FabricVelourPlain001_NRM_1K_METALNESS_png",
+      "packed": true
+    },
+    {
+      "name": "FabricVelourPlain001_ROUGHNESS_1K_METALNESS_png",
+      "packed": true
+    },
+    {
+      "name": "FabricVelourPlain001_AO_1K_METALNESS_png.002",
+      "packed": true
+    },
+    {
+      "name": "FabricVelourPlain001_BUMP16_1K_METALNESS_png.002",
+      "packed": true
+    },
+    {
+      "name": "FabricVelourPlain001_COL_1K_METALNESS_png.002",
+      "packed": true
+    },
+    {
+      "name": "FabricVelourPlain001_DISP16_1K_METALNESS_png.002",
+      "packed": true
+    },
+    {
+      "name": "FabricVelourPlain001_METALNESS_1K_METALNESS_png.002",
+      "packed": true
+    },
+    {
+      "name": "FabricVelourPlain001_NRM_1K_METALNESS_png.002",
+      "packed": true
+    },
+    {
+      "name": "FabricVelourPlain001_ROUGHNESS_1K_METALNESS_png.002",
+      "packed": true
+    },
+    {
+      "name": "PlasticABS001_BUMP16_1K_png",
+      "packed": true
+    },
+    {
+      "name": "PlasticABS001_COL_1K_png",
+      "packed": true
+    },
+    {
+      "name": "PlasticABS001_DISP16_1K_png",
+      "packed": true
+    },
+    {
+      "name": "PlasticABS001_GLOSS_1K_png",
+      "packed": true
+    },
+    {
+      "name": "PlasticABS001_NRM_1K_png",
+      "packed": true
+    },
+    {
+      "name": "PlasticABS001_REFL_1K_png",
+      "packed": true
+    },
+    {
+      "name": "FabricVelourPlain001_AO_1K_METALNESS_png.001",
+      "packed": true
+    },
+    {
+      "name": "FabricVelourPlain001_BUMP16_1K_METALNESS_png.001",
+      "packed": true
+    },
+    {
+      "name": "FabricVelourPlain001_COL_1K_METALNESS_png.001",
+      "packed": true
+    },
+    {
+      "name": "FabricVelourPlain001_DISP16_1K_METALNESS_png.001",
+      "packed": true
+    },
+    {
+      "name": "FabricVelourPlain001_METALNESS_1K_METALNESS_png.001",
+      "packed": true
+    },
+    {
+      "name": "FabricVelourPlain001_NRM_1K_METALNESS_png.001",
+      "packed": true
+    },
+    {
+      "name": "FabricVelourPlain001_ROUGHNESS_1K_METALNESS_png.001",
+      "packed": true
+    },
+    {
+      "name": "PlasticABS001_BUMP16_1K_png.001",
+      "packed": true
+    },
+    {
+      "name": "PlasticABS001_COL_1K_png.001",
+      "packed": true
+    },
+    {
+      "name": "PlasticABS001_DISP16_1K_png.001",
+      "packed": true
+    },
+    {
+      "name": "PlasticABS001_GLOSS_1K_png.001",
+      "packed": true
+    },
+    {
+      "name": "PlasticABS001_NRM_1K_png.001",
+      "packed": true
+    },
+    {
+      "name": "PlasticABS001_REFL_1K_png.001",
+      "packed": true
+    },
+    {
+      "name": "FabricVelourPlain001_AO_1K_METALNESS_png.003",
+      "packed": true
+    },
+    {
+      "name": "FabricVelourPlain001_BUMP16_1K_METALNESS_png.003",
+      "packed": true
+    },
+    {
+      "name": "FabricVelourPlain001_COL_1K_METALNESS_png.003",
+      "packed": true
+    },
+    {
+      "name": "FabricVelourPlain001_DISP16_1K_METALNESS_png.003",
+      "packed": true
+    },
+    {
+      "name": "FabricVelourPlain001_METALNESS_1K_METALNESS_png.003",
+      "packed": true
+    },
+    {
+      "name": "FabricVelourPlain001_NRM_1K_METALNESS_png.003",
+      "packed": true
+    },
+    {
+      "name": "FabricVelourPlain001_ROUGHNESS_1K_METALNESS_png.003",
+      "packed": true
+    }
+  ],
+  "global_id_changed_on_insert": true,
+  "placement_m": [
+    [
+      1.0,
+      0.0,
+      0.0,
+      1.99992144107819
+    ],
+    [
+      0.0,
+      1.0,
+      0.0,
+      3.00003838539124
+    ],
+    [
+      0.0,
+      0.0,
+      1.0,
+      -2.09791069210041e-05
+    ],
+    [
+      0.0,
+      0.0,
+      0.0,
+      1.0
+    ]
+  ],
+  "worker_log": "/Users/jiaxinchen/.codex/worktrees/3a80/2504 GBTB Yanlord Zhuhai/output/review/approved-product-library/portable-validation/marilyn-02/worker.log",
+  "visual_inspection": "portable-raster-validation.json; original design approval unchanged"
+}

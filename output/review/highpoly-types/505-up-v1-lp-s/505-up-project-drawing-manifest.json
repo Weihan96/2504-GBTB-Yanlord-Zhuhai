@@ -1,0 +1,144 @@
+{
+  "schema_version": 1,
+  "generated_at": "2026-08-27T03:10:00+08:00",
+  "profile_key": "505-up-v1-lp-s",
+  "product": "Molteni&C 505 UP System / project 505 UP V1.LP.S",
+  "representative_global_id": "19MpdkWqXC7uhUNhLQgrce",
+  "project_space": {
+    "global_id": "36NNomu9TDP9xkhh6D2l8K",
+    "name": "玄关"
+  },
+  "approval": {
+    "status": "revision_pending_review",
+    "approval_evidence": "先黑色的505，下一个吧",
+    "derived_ifc_write_authorization_evidence": "505 必须写入 IFC",
+    "source_kind": "geometry_derived_simplified_proxy",
+    "source_label_zh": "基于原始高模几何生成的简化图纸表达",
+    "official_cad_used": false,
+    "blue_official_atomic_component_composition_selected": false,
+    "derived_ifc_write_allowed": true,
+    "formal_authoritative_ifc_write_allowed": false,
+    "record": "pipeline/decisions/505-up-v1-lp-s-drawing-approval.json",
+    "record_sha256": "fed9e880a862c67af1b482dce6a630a61ac5ad1b90583a5adbd241ebf66bb31f",
+    "pending_reapproval_views": ["plan"]
+  },
+  "formal_ifc": {
+    "path": "2504 GBTB Yanlord Zhuhai.ifc",
+    "sha256": "7a50b87e8f48a7c2bfbaa9f1dabdfca7155fa684b2325c66aa1ae15c8ab0a25c",
+    "bytes_unchanged": true
+  },
+  "derived_ifc": {
+    "path": "output/review/highpoly-types/505-up-v1-lp-s/505-up-v1-lp-s-derived-drawing.ifc",
+    "sha256": "a49d1b9d2859fe596761ecc70c845cf888022f32c988a71946e8bfa4b0338417",
+    "bytes": 87400984,
+    "write_report": "output/review/highpoly-types/505-up-v1-lp-s/derived-drawing-write-report.json",
+    "write_report_sha256": "0577c7388099eb6c2ce6ae1fab8b353180216e23f29e27a64c75c2322e9a6318"
+  },
+  "bonsai_session": {
+    "ifc": "output/review/highpoly-types/505-up-v1-lp-s/505-up-v1-lp-s-bonsai-drawing-session.ifc",
+    "ifc_sha256": "b8e9c5825225bd5f1df3a5ca5b5c9d0945e29acc9f1435c1e4dc98c3525b7687",
+    "ifc_bytes": 87581273,
+    "blend": "output/review/highpoly-types/505-up-v1-lp-s/Molteni-505-UP-V1-LP-S-project-drawings.blend",
+    "blend_sha256": "b210b0d63a0cd0a5327cd41506c92d11d5f47735289b584dfd4f0841ffd183d6",
+    "blend_bytes": 524833690,
+    "provider": "bonsai-mcp",
+    "operator": "bpy.ops.bim.create_drawing",
+    "evidence": "output/review/highpoly-types/505-up-v1-lp-s/505-UP-ENTRANCE-create-drawing-evidence.json",
+    "evidence_sha256": "7ade2cf8180584d95621af867191a8350b2e97f10f67339ab4bfa723765f3654"
+  },
+  "views": [
+    {
+      "view": "plan",
+      "target_view": "PLAN_VIEW",
+      "path_count": 20,
+      "target_body_projection_group_count": 0,
+      "svg": "output/review/highpoly-types/505-up-v1-lp-s/project-drawings/MOLTENI-505-UP-ENTRANCE-PLAN.svg",
+      "svg_sha256": "f67a0a3867e105e6ffc2a4507ba07f40d233c72142d46c5c06e2c9555ccf29d5",
+      "rendered_pdf_page": "output/review/highpoly-types/505-up-v1-lp-s/project-drawings/rendered/pdf-page-1.png",
+      "rendered_pdf_page_sha256": "e4d2e88c62eabfd3ab418ad860ea233baaa10bac82e830deba1e826f85da424e"
+    },
+    {
+      "view": "front",
+      "target_view": "ELEVATION_VIEW",
+      "path_count": 281,
+      "target_body_projection_group_count": 0,
+      "svg": "output/review/highpoly-types/505-up-v1-lp-s/project-drawings/MOLTENI-505-UP-ENTRANCE-FRONT.svg",
+      "svg_sha256": "85331ec1c29c42e053f06dce7fcf58a68f4cba8d594cb0044d28c0af1a6f10bf",
+      "rendered_pdf_page": "output/review/highpoly-types/505-up-v1-lp-s/project-drawings/rendered/pdf-page-2.png",
+      "rendered_pdf_page_sha256": "8ff7aa9aab8ae33789f9b504ebbea63cbbf9910f75f08a8c581be08fd37361d9"
+    },
+    {
+      "view": "side",
+      "target_view": "ELEVATION_VIEW",
+      "path_count": 93,
+      "target_body_projection_group_count": 0,
+      "svg": "output/review/highpoly-types/505-up-v1-lp-s/project-drawings/MOLTENI-505-UP-ENTRANCE-SIDE.svg",
+      "svg_sha256": "e5c16902267f3ba56157230aca3ff7b234b446f7e47b5a7b7cecc248c3643c84",
+      "rendered_pdf_page": "output/review/highpoly-types/505-up-v1-lp-s/project-drawings/rendered/pdf-page-3.png",
+      "rendered_pdf_page_sha256": "3879b3ae748a515d5d935192217afe30a23ab1c662c48e5eeb17e5857eff26f3"
+    }
+  ],
+  "merged_pdf": {
+    "path": "output/pdf/molteni-505-up-entrance-bonsai-three-views.pdf",
+    "sha256": "24b456ec0f6c6e849b9dfe8b835501da579a9ce414b69b5e56263414f164facd",
+    "bytes": 85477,
+    "pages": 3,
+    "source": "final Bonsai SVG outputs; no Blender viewport screenshots"
+  },
+  "reload_verification": {
+    "drawing_count": 3,
+    "linework_annotation_count": 3,
+    "path_counts": {
+      "plan": 20,
+      "front": 281,
+      "side": 93
+    },
+    "coordinate_residual_mm": 0.0,
+    "body_double_projection_removed": true
+  },
+  "plan_component_semantics": {
+    "method": "connected_components_then_display_main_envelope_intersection",
+    "connected_component_count": 38,
+    "cover_plate_component_count": 2,
+    "right_slat_component_count": 14,
+    "display_component_root_vertex_index": 7269,
+    "display_component_size_mm": [609.999786, 420.462246, 766.000244],
+    "interface_path_mm": [[-446.18847, 320.0], [163.643711, 320.0]],
+    "interface_closed": false,
+    "full_display_footprint_added": false,
+    "plan_path_count": 20,
+    "pass": true
+  },
+  "front_orientation_revision": {
+    "method": "product_world_axes_plus_room_facing_component_depth_plus_camera_basis",
+    "view_direction_world": [-0.000000151, -1.0, -0.000000075],
+    "local_x_screen_dot": 1.0,
+    "persisted_rotation_residual": 0.000000151,
+    "pass": true
+  },
+  "plan_front_revision": {
+    "operator": "bpy.ops.bim.create_drawing",
+    "results": {"plan": ["FINISHED"], "front": ["FINISHED"]},
+    "side_svg_bytes_unchanged": true,
+    "target_body_projection_group_counts": {"plan": 0, "front": 0}
+  },
+  "revision_audit": {
+    "path": "output/review/highpoly-types/505-up-v1-lp-s/505-up-plan-front-revision-audit.json",
+    "sha256": "e4574cf716b2535d7c8de9956ce11efe2a71c469d58ee4995ba973931a985133",
+    "review_status": "revision_pending_review"
+  },
+  "plan_visibility_diagnostic": {
+    "status": "current_plan_rejected_diagnostic_only",
+    "audit": "output/review/highpoly-types/505-up-v1-lp-s/505-up-plan-visibility-semantics.json",
+    "audit_sha256": "c5fd7afac8669227b9b465c4b5a459755ed86fe2dc3c707ebf039fbbf7a307cc",
+    "component_svg": "output/review/highpoly-types/505-up-v1-lp-s/505-up-plan-component-visibility-diagnostic.svg",
+    "component_svg_sha256": "a05cc13387a538f268fe79a281650bec56b6b11833da5a826361eb18451f4100",
+    "depth_svg": "output/review/highpoly-types/505-up-v1-lp-s/505-up-plan-depth-visibility-diagnostic.svg",
+    "depth_svg_sha256": "9b858352d7159467031d44f2bc8b2a66f7c0417cebea7ad9b7dd65041187d720",
+    "final_plan_updated": false,
+    "derived_ifc_updated": false,
+    "bonsai_session_updated": false,
+    "front_status": "approved_and_frozen"
+  },
+  "pass": true
+}

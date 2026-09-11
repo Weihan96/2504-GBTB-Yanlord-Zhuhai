@@ -71,16 +71,16 @@
   "official_identity_evidence_only": false,
   "dimension_cross_check": {
     "official_api_width_depth_height_mm": [
-      50.0,
-      190.0,
-      273.0
+      50,
+      190,
+      273
     ],
     "native_dwg_plan_envelope_mm": [
       49.973479,
       190.312335
     ],
     "native_dwg_front_envelope_mm": [
-      50.0,
+      50,
       273.210406
     ],
     "native_dwg_side_envelope_mm": [
@@ -113,7 +113,7 @@
   "official_source_access_record": "output/review/highpoly-types/gessi316-54093/official-source/source-access-record.json",
   "official_source_access_record_sha256": "5680f1af0f71ec6e43c38cadae875d3a447c36b4b50f5221ae591351562380bf",
   "candidate_representations": "output/review/highpoly-types/gessi316-54093/candidate-representations.json",
-  "candidate_representations_sha256": "60425311e6c5b37dd722bd8646fe5081e96ea76b265d8e255c2e344232b361d9",
+  "candidate_representations_sha256": "c5e9c24aabbbf548b953476c1788976969d8f32a32a36b35f0c4f66a5fd9c03a",
   "review_status": "visual_review_pending",
   "approved_for_drawing_ifc": false,
   "derived_ifc_write_allowed": false,
@@ -123,7 +123,7 @@
     {
       "view": "plan",
       "svg": "output/review/highpoly-types/gessi316-54093/plan.svg",
-      "svg_sha256": "ee17bb6f9a3217b7ae3ebfa22073edd59867eaff87db6eec84cea60947342a76",
+      "svg_sha256": "ebf2575b4f48bedf92231ecefc5a33a03600773dcc4183575482876e8c5e30a0",
       "projection_axes": [
         0,
         1
@@ -149,7 +149,7 @@
           0.998536,
           0.030902
         ],
-        "tolerance_mm": 2.0,
+        "tolerance_mm": 2,
         "configuration": "G000",
         "all_projection_axes_compared": true,
         "pass": true
@@ -177,14 +177,14 @@
           273.203123
         ],
         "official_native_dwg_size_mm": [
-          50.0,
+          50,
           273.210406
         ],
         "absolute_delta_mm": [
           1.025057,
           0.007283
         ],
-        "tolerance_mm": 2.0,
+        "tolerance_mm": 2,
         "configuration": "G000",
         "all_projection_axes_compared": true,
         "pass": true
@@ -219,7 +219,7 @@
           0.054371,
           0.000332
         ],
-        "tolerance_mm": 2.0,
+        "tolerance_mm": 2,
         "configuration": "G000",
         "all_projection_axes_compared": true,
         "pass": true
@@ -229,7 +229,7 @@
   "pass": true,
   "project_context": {
     "manifest": "output/review/highpoly-types/gessi316-54093/project-context-manifest.json",
-    "manifest_sha256": "7080a7ccae4ade5dbe4dfb83fb4cd5781b65985424865934229185f34bcec000",
+    "manifest_sha256": "b20f9d04aba816996efaf9410fddddb9e24593168c0f32863b500369fff7bf31",
     "walls_and_surrounding_project_elements_retained": true,
     "overlay_top_layer_with_white_mask": true,
     "pass": true
@@ -241,5 +241,9 @@
     "saved_active_representation": "Body",
     "saved_camera_count": 4,
     "pass": true
+  },
+  "plan_direction_correction": {
+    "audit": "output/review/highpoly-types/gessi316-54093/plan-direction-correction-audit.json",
+    "status": "corrected_pending_review"
   }
 }

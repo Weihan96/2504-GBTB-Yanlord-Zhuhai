@@ -4,6 +4,7 @@
 from __future__ import annotations
 
 import argparse
+import hashlib
 import json
 import re
 import shutil
@@ -155,15 +156,28 @@ def svg_path(paths, transform):
     return " ".join(commands)
 
 
-def add_overlay(source: Path, target: Path, view: str, official_path: str, mask_path: str):
+def canonical_paths_sha256(paths) -> str:
+    payload = json.dumps(paths, ensure_ascii=False, separators=(",", ":"))
+    return hashlib.sha256(payload.encode("utf-8")).hexdigest()
+
+
+def add_overlay(source: Path, target: Path, view: str, official_path: str, proxy_path: str):
     content = source.read_text(encoding="utf-8")
     product_pattern = re.compile(rf'<g(?=[^>]*\bifc:guid="{re.escape(GLOBAL_ID)}")(?=[^>]*\bclass="[^"]*\bprojection\b[^"]*")')
-    content, hidden_count = product_pattern.subn('<g style="display:none" data-review-replaced-by="official-native-dwg"', content)
-    if hidden_count < 1:
+    content, retained_count = product_pattern.subn('<g data-review-actual-ifc="true"', content)
+    if retained_count < 1:
         raise RuntimeError(f"Marilyn project projection missing from {source}")
-    group = f'''<g id="{OVERLAY_ID_PREFIX}-{view}-{GLOBAL_ID}" class="official-native-dwg project-context-overlay" data-source-kind="{SOURCE_KIND}" data-source-label-zh="{SOURCE_LABEL_ZH}" data-source-sha256="{SOURCE_DWG_SHA256}" data-official-cad-used="true" data-third-party-cad-used="false" data-ifc-guid="{GLOBAL_ID}" fill="none" stroke-linecap="round" stroke-linejoin="round">
-  <path class="official-native-dwg-mask" d="{mask_path}" fill="#ffffff" fill-rule="evenodd" stroke="#ffffff" stroke-width="0.18"/>
-  <path class="official-native-dwg-blue" d="{official_path}" stroke="{BLUE}" stroke-width="0.064"/>
+    # Keep the actual project Body projection visible in grey, then draw the
+    # exact same black proxy and blue native-DWG paths used by the isolated
+    # candidate. A narrow white halo improves legibility without erasing the
+    # actual projection or making the context look like a different product.
+    group = f'''<style id="{OVERLAY_ID_PREFIX}-{view}-actual-style">
+g[data-review-actual-ifc="true"] path {{ stroke:#aeb8c4 !important; stroke-width:0.018 !important; fill:none !important; opacity:0.28 !important; }}
+</style>
+<g id="{OVERLAY_ID_PREFIX}-{view}-{GLOBAL_ID}" class="official-native-dwg project-context-overlay" data-source-kind="{SOURCE_KIND}" data-source-label-zh="{SOURCE_LABEL_ZH}" data-source-sha256="{SOURCE_DWG_SHA256}" data-official-cad-used="true" data-third-party-cad-used="false" data-ifc-guid="{GLOBAL_ID}" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path class="candidate-proxy-halo" d="{proxy_path}" fill="none" stroke="#ffffff" stroke-width="0.068"/>
+  <path class="candidate-proxy-black" d="{proxy_path}" fill="none" stroke="#111111" stroke-width="0.026"/>
+  <path class="official-native-dwg-blue" d="{official_path}" stroke="{BLUE}" stroke-width="0.038"/>
 </g>'''
     if "</svg>" not in content:
         raise RuntimeError(f"invalid project SVG: {source}")
@@ -243,9 +257,9 @@ def main():
             "centre" if view == "plan" else "baseline_centre",
         )
         overlay_path = svg_path(paths, transform)
-        mask_path = svg_path(proxy_paths, transform)
+        proxy_path = svg_path(proxy_paths, transform)
         target = output / filename
-        add_overlay(source, target, view, overlay_path, mask_path)
+        add_overlay(source, target, view, overlay_path, proxy_path)
         crop = output / filename.replace(".svg", "-review.svg")
         write_review_crop(target, crop, fit["target_bbox"], *crop_padding)
         preview = output / filename.replace(".svg", "-review-preview.png")
@@ -268,6 +282,18 @@ def main():
                 "third_party_cad_used": False,
                 "source_dwg_sha256": SOURCE_DWG_SHA256,
                 "path_count": len(paths),
+                "proxy_path_count": len(proxy_paths),
+                "actual_ifc_projection_retained": True,
+                "single_product_morphology": {
+                    "candidate_source": relative(CANDIDATE),
+                    "official_paths_sha256": canonical_paths_sha256(paths),
+                    "proxy_paths_sha256": canonical_paths_sha256(proxy_paths),
+                    "context_uses_same_ordered_official_paths": True,
+                    "context_uses_same_ordered_proxy_paths": True,
+                    "resampled": False,
+                    "scaled_to_force_fit": False,
+                    "pass": True,
+                },
                 "fit": fit,
             },
         })
@@ -280,12 +306,19 @@ def main():
         "third_party_cad_used": False,
         "project_context_retained": True,
         "walls_and_surrounding_project_elements_retained": True,
-        "overlay_top_layer_with_white_mask": True,
+        "actual_ifc_projection_retained": True,
+        "proxy_overlay_present": True,
+        "overlay_top_layer_with_white_halo": True,
+        "overlay_top_layer_with_white_mask": False,
         "blue_line_present": True,
         "source_dwg_sha256": SOURCE_DWG_SHA256,
         "project_scale_svg_units_per_mm": PROJECT_SCALE_SVG_UNITS_PER_MM,
         "views": records,
-        "pass": all(record["overlay"]["fit"]["pass"] for record in records),
+        "pass": all(
+            record["overlay"]["fit"]["pass"]
+            and record["overlay"]["single_product_morphology"]["pass"]
+            for record in records
+        ),
     }
     target = output / "project-context-manifest.json"
     write_json(target, manifest)

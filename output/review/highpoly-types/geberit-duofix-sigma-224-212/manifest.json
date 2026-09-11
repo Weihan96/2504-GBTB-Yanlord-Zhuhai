@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "generated_at": "2026-08-23T13:15:03.318029+00:00",
+  "generated_at": "2026-08-24T09:27:57.630012+00:00",
   "generator": "pipeline/scripts/geberit_duofix_sigma_224_212_review.py",
   "formal_ifc": "2504 GBTB Yanlord Zhuhai.ifc",
   "formal_ifc_sha256": "7a50b87e8f48a7c2bfbaa9f1dabdfca7155fa684b2325c66aa1ae15c8ab0a25c",
@@ -146,7 +146,15 @@
         "depth_tolerance_mm": 20.0,
         "height_tolerance_mm": 1.0,
         "note": "The exact official L contour includes the same installation-depth extent recorded in the G view; height identity remains within 1 mm.",
-        "pass": true
+        "pass": true,
+        "handedness": {
+          "comparison": "asymmetric_path_centroids_share_left_view_handedness",
+          "view_direction": "left_side_local_negative_x",
+          "proxy_horizontal_centroid_offset_mm": -30.189968,
+          "official_horizontal_centroid_offset_mm": -66.786804,
+          "same_horizontal_side": true,
+          "pass": true
+        }
       }
     },
     "received_box_label": {
@@ -161,9 +169,9 @@
     }
   },
   "candidate_representations": "output/review/highpoly-types/geberit-duofix-sigma-224-212/candidate-representations.json",
-  "candidate_representations_sha256": "f9362d8f20890c11ef9ab87cd5470a88b0a614229c3c58302377dc9aa0d6e83a",
+  "candidate_representations_sha256": "b24bf7e43613e753a2af13ca6b41c3dfbe79359fefe7c96939fbe3f0791b3022",
   "official_source_access_record": "output/review/highpoly-types/geberit-duofix-sigma-224-212/official-source/source-access-record.json",
-  "official_source_access_record_sha256": "934e37f0db585d1ceeea648e6b47c8777f3f0a997b6a721e0e3411cad1307a09",
+  "official_source_access_record_sha256": "0f100704af6d05c07d57d883d5f7d747663ad3296099d5327bb8c88eae92c112",
   "views": [
     {
       "view": "plan",
@@ -181,6 +189,7 @@
       "blue_line_article_number": "224.212.00.2",
       "blue_line_native_dwg_code": "G",
       "blue_line_native_dwg_sha256": "841dd3c72d594cfd2c7f921b84f10a2305ab9957b531771662fb7f03eff97207",
+      "view_direction": "PLAN / XY",
       "mechanical_cross_check": {
         "comparison": "native_dwg_full_plan_contour_vs_ifc_body_footprint",
         "official_size_mm": [
@@ -217,6 +226,7 @@
       "blue_line_article_number": "224.212.00.2",
       "blue_line_native_dwg_code": "A",
       "blue_line_native_dwg_sha256": "f06952ac7bf91f0a0037ae85644df3df0938d549322cbfb59b7dfd9be01939d4",
+      "view_direction": "FRONT / XZ",
       "mechanical_cross_check": {
         "comparison": "native_dwg_front_contour_vs_ifc_body_width_height",
         "official_size_mm": [
@@ -238,7 +248,7 @@
     {
       "view": "side",
       "svg": "output/review/highpoly-types/geberit-duofix-sigma-224-212/side.svg",
-      "svg_sha256": "6dcbb22051907af7cfd0d37146a1081ab5ccaf7b61692f585a95df07460539fe",
+      "svg_sha256": "762192c2e3fcae6f9b14183e8b26c452d7b0bfaaf7f368d2a057e6fdf940c24d",
       "projection_axes": [
         1,
         2
@@ -251,6 +261,7 @@
       "blue_line_article_number": "224.212.00.2",
       "blue_line_native_dwg_code": "L",
       "blue_line_native_dwg_sha256": "e6a26c660ae9cd4fc8cb4b1effadcea38a4794b66523f0fea2c02c5e02b77f25",
+      "view_direction": "left_side_local_negative_x",
       "mechanical_cross_check": {
         "comparison": "native_dwg_side_contour_vs_ifc_body_depth_height",
         "official_size_mm": [
@@ -268,7 +279,15 @@
         "depth_tolerance_mm": 20.0,
         "height_tolerance_mm": 1.0,
         "note": "The exact official L contour includes the same installation-depth extent recorded in the G view; height identity remains within 1 mm.",
-        "pass": true
+        "pass": true,
+        "handedness": {
+          "comparison": "asymmetric_path_centroids_share_left_view_handedness",
+          "view_direction": "left_side_local_negative_x",
+          "proxy_horizontal_centroid_offset_mm": -30.189968,
+          "official_horizontal_centroid_offset_mm": -66.786804,
+          "same_horizontal_side": true,
+          "pass": true
+        }
       }
     }
   ],
@@ -284,7 +303,7 @@
   },
   "bonsai_review": {
     "manifest": "output/review/highpoly-types/geberit-duofix-sigma-224-212/bonsai-review-manifest.json",
-    "manifest_sha256": "0a98fcbfac56320cd7a0b36ac2b4eff6285f59a6a46365c3a331e3093e81efb9",
+    "manifest_sha256": "2b28fcd03ce21a37daf3e35b556399d108662507345642595d2d6874986bbc0d",
     "mode": "actual_bonsai_ifc_body_camera_render",
     "saved_active_representation": "Body",
     "saved_camera_count": 4,

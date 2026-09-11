@@ -1,0 +1,16 @@
+ISO-10303-21;
+HEADER;
+FILE_DESCRIPTION(('ViewDefinition [CoordinationView]'),'2;1');
+FILE_NAME('','2026-09-10T14:50:00',(''),(''),'IfcOpenShell 0.8.4-e8eb5e4','IfcOpenShell 0.8.4-e8eb5e4','');
+FILE_SCHEMA(('IFC4'));
+ENDSEC;
+DATA;
+#1=IFCPROJECT('2iJIatKerAi9IFaxa2IlQJ',$,'IFC card drag test',$,$,$,$,$,#5);
+#2=IFCSIUNIT(*,.LENGTHUNIT.,.MILLI.,.METRE.);
+#3=IFCSIUNIT(*,.AREAUNIT.,$,.SQUARE_METRE.);
+#4=IFCSIUNIT(*,.VOLUMEUNIT.,$,.CUBIC_METRE.);
+#5=IFCUNITASSIGNMENT((#3,#4,#2));
+#6=IFCBUILDINGSTOREY('0iBfaUhwjEawA$6YNDDlSl',$,'Test storey',$,$,$,$,$,$,$);
+#7=IFCRELAGGREGATES('0k_LMlWOX5guYqKZaSjszA',$,$,$,#1,(#6));
+ENDSEC;
+END-ISO-10303-21;

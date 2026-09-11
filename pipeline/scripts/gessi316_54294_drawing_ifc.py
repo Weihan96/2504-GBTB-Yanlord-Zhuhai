@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Approval-gated derived IFC writer for exact Gessi 54294 native-DWG linework."""
+"""Approval-gated writer for the de-textured official-outline review linework."""
 
 from pathlib import Path
 
@@ -26,13 +26,15 @@ SOURCE_ZIP = OFFICIAL_SOURCE_DIR / "GPF5429400000G000_arc.zip"
 TECHNICAL_PDF = OFFICIAL_SOURCE_DIR / "GPF5429400000G000_1.pdf"
 SOURCE_REVALIDATION = OFFICIAL_SOURCE_DIR / "official-source-revalidation.json"
 PDF_VERIFICATION = OFFICIAL_SOURCE_DIR / "official-pdf-verification.json"
-EXPECTED_PATH_COUNTS = {"plan": 1481, "front": 1099, "side": 745}
+ORIGINAL_SOURCE_KIND = "native_dwg"
+ORIGINAL_EXPECTED_PATH_COUNTS = {"plan": 1481, "front": 1099, "side": 745}
+EXPECTED_PATH_COUNTS = {"plan": 69, "front": 1099, "side": 35}
 
 shared.REPRESENTATIVE_GLOBAL_ID = "2iKOL78$H0N9Yd9$ky3pW4"
 shared.IFC_TYPE_NAME = "Gessi316 54294"
 shared.PROFILE_KEY = "gessi316-54294"
-shared.SOURCE_KIND = "native_dwg"
-shared.SOURCE_LABEL_ZH = "Gessi 官方精确型号 54294 原生 DWG 图纸表达"
+shared.SOURCE_KIND = "native_dwg_review_simplification"
+shared.SOURCE_LABEL_ZH = "基于官方 Gessi 54294 原生 DWG 轮廓的去纹审核简化表达"
 shared.SCOPE = SCOPE
 shared.REPRESENTATIONS = {
     "plan": ("Gessi54294Plan", "PLAN_VIEW"),
@@ -49,7 +51,7 @@ shared.PSET_NAME = "Pset_Gessi31654294DrawingSource"
 shared.DOCUMENT_ID_PREFIX = "GESSI316-45089-54294-"
 shared.CLOSE_REPRESENTATION_PATHS = False
 shared.OFFICIAL_CAD_USED = True
-shared.OFFICIAL_CAD_GEOMETRY_INCLUDED = True
+shared.OFFICIAL_CAD_GEOMETRY_INCLUDED = False
 
 shared_require_approval = shared.require_approval
 
@@ -82,11 +84,12 @@ def candidate_paths(candidate: dict, access: dict) -> dict:
     if (
         official.get("authentication_required") is not False
         or official.get("acquired") is not True
-        or official.get("exact_project_configuration_match") is not True
+        or official.get("exact_article_match") is not True
+        or official.get("exact_project_configuration_match") is not False
         or official.get("native_dwg", {}).get("sha256") != SOURCE_DWG_SHA256
         or official.get("native_dwg_zip", {}).get("sha256") != SOURCE_ZIP_SHA256
         or official.get("technical_vector_pdf", {}).get("sha256") != TECHNICAL_PDF_SHA256
-        or drawing_source.get("source_kind") != shared.SOURCE_KIND
+        or drawing_source.get("source_kind") != ORIGINAL_SOURCE_KIND
         or drawing_source.get("source_dwg_sha256") != SOURCE_DWG_SHA256
         or drawing_source.get("official_cad_used") is not True
         or drawing_source.get("third_party_cad_used") is not False
@@ -106,12 +109,15 @@ def candidate_paths(candidate: dict, access: dict) -> dict:
         if (
             item.get("source_kind") != shared.SOURCE_KIND
             or item.get("source_dwg_sha256") != SOURCE_DWG_SHA256
-            or item.get("official_native_dwg_path_count") != EXPECTED_PATH_COUNTS[view]
+            or item.get("review_simplified_official_outline_path_count") != EXPECTED_PATH_COUNTS[view]
+            or item.get("original_official_native_dwg_path_count") != ORIGINAL_EXPECTED_PATH_COUNTS[view]
+            or item.get("unaltered_official_dwg") is not False
+            or item.get("handle_line_texture_simplification", {}).get("review_texture_detail_path_count") != 0
         ):
-            raise RuntimeError(f"Gessi {view} official native-DWG identity gate failed")
-        paths[view] = item.get("official_native_dwg_paths_mm", [])
+            raise RuntimeError(f"Gessi {view} review-simplified native-DWG outline gate failed")
+        paths[view] = item.get("review_simplified_official_outline_paths_mm", [])
         if len(paths[view]) != EXPECTED_PATH_COUNTS[view]:
-            raise RuntimeError(f"Gessi {view} official native-DWG path-count gate failed")
+            raise RuntimeError(f"Gessi {view} review-simplified path-count gate failed")
     return paths
 
 
@@ -139,7 +145,7 @@ def add_source_pset(model, product, product_type, approval, manifest_hash, candi
     values = {
         "SourceKind": shared.SOURCE_KIND,
         "SourceLabelZh": shared.SOURCE_LABEL_ZH,
-        "SourceLabelEn": "drawing representation from the exact Gessi 54294 official native DWG",
+        "SourceLabelEn": "de-textured review simplification based on the official Gessi 54294 native-DWG outline",
         "Manufacturer": "Gessi",
         "Family": "Gessi316 Meccanica",
         "ArticleNumber": "45089_54294",
@@ -155,6 +161,14 @@ def add_source_pset(model, product, product_type, approval, manifest_hash, candi
         "SourceTechnicalPdfSha256": TECHNICAL_PDF_SHA256,
         "SourceCatalogue": CATALOGUE,
         "OfficialCadUsed": "true",
+        "UnalteredOfficialCadUsedAsRepresentation": "false",
+        "OriginalOfficialCadEvidencePreserved": "true",
+        "OfficialCadExactArticleMatch": "true",
+        "OfficialCadExactProjectAdjustableSettingMatch": "false",
+        "OfficialDwgAdjustableDepthSettingMm": "210",
+        "ProjectBodyWallToOutletReachMm": "202.846329",
+        "ReviewedProxyWallToOutletReachMm": "209.812362",
+        "ActualProjectBodyGeometryModified": "false",
         "ThirdPartyCadUsed": "false",
         "AdjacentProductCadUsed": "false",
         "Companion45089DwgUsedAs54294Geometry": "false",
@@ -165,8 +179,8 @@ def add_source_pset(model, product, product_type, approval, manifest_hash, candi
         "ApprovalEvidence": approval["approval_evidence"],
         "ApprovedCandidateManifestSha256": manifest_hash,
         "ApprovedRepresentationIdentifiers": "Gessi54294Plan;Gessi54294Front;Gessi54294Side",
-        "RepresentationGeometrySource": "official_native_dwg_paths_mm from GPF5429400000G000_3.dwg",
-        "OfficialCadGeometryIncluded": "true",
+        "RepresentationGeometrySource": "review_simplified_official_outline_paths_mm based on GPF5429400000G000_3.dwg",
+        "OfficialCadGeometryIncluded": "false",
         "CandidateRepresentations": relative(candidate_path),
         "CandidateRepresentationsSha256": sha256(candidate_path),
         "SourceAccessRecord": relative(access_path),

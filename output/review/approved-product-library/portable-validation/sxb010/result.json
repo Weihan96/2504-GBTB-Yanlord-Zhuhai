@@ -1,0 +1,111 @@
+{
+  "verdict": "technical_pass",
+  "product": "sxb010",
+  "source_sha256": "53ed48945afbad4f93befc0c199bf89579f71473536f1243294eb0a81376abf0",
+  "drawings": [
+    {
+      "role": "Plan",
+      "guid": "0X1EmzhFLEcAOFkfVlGDZF",
+      "svg": "/Users/jiaxinchen/.codex/worktrees/3a80/2504 GBTB Yanlord Zhuhai/output/review/approved-product-library/portable-validation/sxb010/plan.svg",
+      "sha256": "9c25b7be583a40d0f72bc53900ec7420a4532481cce589e49fd3a01e37cd13fa",
+      "bytes": 88119,
+      "target_geometry_nodes": 8,
+      "selected": [
+        {
+          "global_id": "2vxbTbEQH9f8yYdvb9LAcx",
+          "target_view": "PLAN_VIEW",
+          "role": "Plan",
+          "representation_id": 20560,
+          "old_body_or_annotation_emitted": false
+        }
+      ]
+    },
+    {
+      "role": "Front",
+      "guid": "3gGHOkm8H16gjpaSwXvY5y",
+      "svg": "/Users/jiaxinchen/.codex/worktrees/3a80/2504 GBTB Yanlord Zhuhai/output/review/approved-product-library/portable-validation/sxb010/front.svg",
+      "sha256": "99295e189c042cb3f525b8a02e9cd2b7838d0277310dfab0ba12ff404b317843",
+      "bytes": 93423,
+      "target_geometry_nodes": 60,
+      "selected": [
+        {
+          "global_id": "2vxbTbEQH9f8yYdvb9LAcx",
+          "target_view": "ELEVATION_VIEW",
+          "role": "Front",
+          "representation_id": 20725,
+          "old_body_or_annotation_emitted": false
+        }
+      ]
+    },
+    {
+      "role": "Side",
+      "guid": "1Uhp6Dvt57hBnyjz_jecQC",
+      "svg": "/Users/jiaxinchen/.codex/worktrees/3a80/2504 GBTB Yanlord Zhuhai/output/review/approved-product-library/portable-validation/sxb010/side.svg",
+      "sha256": "2c6b6f929e10596e1f671fc4a9ade71e668ce607d903eb87b7e310656b569637",
+      "bytes": 93222,
+      "target_geometry_nodes": 58,
+      "selected": [
+        {
+          "global_id": "2vxbTbEQH9f8yYdvb9LAcx",
+          "target_view": "ELEVATION_VIEW",
+          "role": "Side",
+          "representation_id": 20896,
+          "old_body_or_annotation_emitted": false
+        }
+      ]
+    }
+  ],
+  "temporary_fixture": "/private/var/folders/rz/d8p6s4y50ws53rd150nm2s3r0000gn/T/portable-library-isolation-ns4hkq7o/results/sxb010/test.ifc",
+  "provider_persistence": {
+    "saved": true,
+    "output_path": "/private/var/folders/rz/d8p6s4y50ws53rd150nm2s3r0000gn/T/portable-library-isolation-ns4hkq7o/results/sxb010/test.ifc",
+    "in_place": false,
+    "method": "bonsai.bim.export_ifc.IfcExporter",
+    "reloaded": true
+  },
+  "generator": "Bonsai Create Drawing / OpenCASCADE + BISECT",
+  "old_repository_read_denied_by_OS": true,
+  "catalog_products_loaded": 39,
+  "native_insert": true,
+  "disk_unchanged_until_save": true,
+  "unique_product_and_object": true,
+  "reloaded": true,
+  "loading_stages": [
+    0.05,
+    0.25,
+    0.5,
+    0.65,
+    0.85,
+    0.95
+  ],
+  "texture_dependencies": [],
+  "global_id_changed_on_insert": true,
+  "placement_m": [
+    [
+      -0.9999999999999886,
+      0.0,
+      -1.5099580252808492e-07,
+      0.539421558380127
+    ],
+    [
+      -1.5099580252808492e-07,
+      0.0,
+      0.9999999999999886,
+      0.111055850982666
+    ],
+    [
+      0.0,
+      1.0,
+      0.0,
+      -0.803773999214172
+    ],
+    [
+      0.0,
+      0.0,
+      0.0,
+      1.0
+    ]
+  ],
+  "worker_log": "/Users/jiaxinchen/.codex/worktrees/3a80/2504 GBTB Yanlord Zhuhai/output/review/approved-product-library/portable-validation/sxb010/worker.log",
+  "visual_inspection": "portable-raster-validation.json; original design approval unchanged"
+}

@@ -1,0 +1,398 @@
+{
+  "schema_version": 1,
+  "generated_at": "2026-09-07T05:02:55.573397+00:00",
+  "task": "approved Geberit AquaClean Sela 146.140 product-level derived IFC plus Bonsai Create Drawing Plan/Front/Side in actual WC context",
+  "courseEvidence": {
+    "mode": "embedded-course-index",
+    "source_path": "/Users/jiaxinchen/.codex/plugins/cache/personal/bonsai-course-operator/0.1.1+codex.20260827111347/skills/operate-bonsai-from-course/evals/course-index.json",
+    "lesson": "085000 Introduction to Drawings",
+    "timestamps": [
+      "01:59 Create Drawing",
+      "02:06 Drawing created",
+      "02:13 SVG inspection"
+    ],
+    "course_fact": "Create Drawing generates or refreshes SVG after Drawing camera, scale, depth and filters are configured.",
+    "current_inference": "Bonsai 0.8.4 semantic Drawing state and bpy.ops.bim.create_drawing were used in Blender 4.5.3 LTS."
+  },
+  "plan": [
+    "inspect approved derived IFC",
+    "scope representative WC instance and project context",
+    "create three Drawings",
+    "insert exact official LINEWORK once",
+    "run native Create Drawing",
+    "persist and reload",
+    "inspect SVG structure and duplicate state"
+  ],
+  "preState": {
+    "derived_ifc": "/Users/jiaxinchen/.codex/worktrees/3a80/2504 GBTB Yanlord Zhuhai/output/review/highpoly-types/geberit-146-140/Geberit-146-140-derived-drawing.ifc",
+    "derived_ifc_sha256": "8babf753316b46853d2991d233213f67545c0d623a6d0f9fbab0ac6211038420",
+    "formal_ifc_sha256": "7a50b87e8f48a7c2bfbaa9f1dabdfca7155fa684b2325c66aa1ae15c8ab0a25c",
+    "drawing_count": 0,
+    "representative_global_id": "1rhZG98PPCSxaLeMFLTYb9",
+    "sibling_global_id": "0UtU7yPb10ku4gsbGoM_sp"
+  },
+  "execution": {
+    "provider": "public bonsai-mcp b0e67b1 contract; direct Blender GUI adapter because bridge was initially unreachable",
+    "bridge_preflight": "127.0.0.1:9878 connection refused",
+    "capability": "execute_blender_code adapter",
+    "generator": "bpy.ops.bim.create_drawing",
+    "linework_mode": "OPENCASCADE"
+  },
+  "persistence": {
+    "saved": true,
+    "output_path": "/Users/jiaxinchen/.codex/worktrees/3a80/2504 GBTB Yanlord Zhuhai/output/review/highpoly-types/geberit-146-140/Geberit-146-140-derived-drawing.ifc",
+    "in_place": false,
+    "method": "bonsai.bim.export_ifc.IfcExporter",
+    "reloaded": true
+  },
+  "postState": {
+    "derived_ifc": "/Users/jiaxinchen/.codex/worktrees/3a80/2504 GBTB Yanlord Zhuhai/output/review/highpoly-types/geberit-146-140/Geberit-146-140-derived-drawing.ifc",
+    "derived_ifc_sha256": "e0932b4c342705546ff6896a95fd416778eed8e72bf3e7f175aae4e38f021b78",
+    "formal_ifc_sha256": "7a50b87e8f48a7c2bfbaa9f1dabdfca7155fa684b2325c66aa1ae15c8ab0a25c",
+    "drawing_count": 3,
+    "official_linework_annotation_count": 3,
+    "approved_product_representation_path_counts": {
+      "Geberit146140Plan": 50,
+      "Geberit146140Front": 82,
+      "Geberit146140Side": 65
+    }
+  },
+  "outputs": {
+    "views": [
+      {
+        "view": "plan",
+        "drawing": {
+          "global_id": "3zEA9RR9nAFA3crqWD5IbX",
+          "name": "GEBERIT-146-140-WC-PLAN"
+        },
+        "official_annotation_global_id": "2Jj07UMoHB9QdjEcw3_zoe",
+        "path_count": 50,
+        "persisted_path_count": 50,
+        "edge_count": 1850,
+        "camera": {
+          "type": "ORTHO",
+          "width_m": 3.8000000000000003,
+          "height_m": 3.8,
+          "clip_start_m": 0.0020000000949949026,
+          "clip_end_m": 1.5,
+          "matrix_world": [
+            [
+              1.0,
+              0.0,
+              0.0,
+              -0.8067650198936462
+            ],
+            [
+              0.0,
+              1.0,
+              0.0,
+              2.7680001258850098
+            ],
+            [
+              0.0,
+              0.0,
+              1.0,
+              1.2000000476837158
+            ],
+            [
+              0.0,
+              0.0,
+              0.0,
+              1.0
+            ]
+          ],
+          "resolution": [
+            1000,
+            1000
+          ]
+        },
+        "create_drawing": {
+          "operator": "bpy.ops.bim.create_drawing",
+          "arguments": {
+            "print_all": false,
+            "open_viewer": false,
+            "sync": false
+          },
+          "result": [
+            "FINISHED"
+          ],
+          "linework_mode": "OPENCASCADE",
+          "target_view": "PLAN_VIEW"
+        },
+        "svg": {
+          "path": "/Users/jiaxinchen/.codex/worktrees/3a80/2504 GBTB Yanlord Zhuhai/output/review/highpoly-types/geberit-146-140/bonsai-drawings/wc/GEBERIT-146-140-WC-PLAN.svg",
+          "bytes": 1465861,
+          "sha256": "4dc6165676850a32b223c9868a706b5825d52ee32b8af64168c01178a67132cb",
+          "bonsai_generated_sha256_before_review_style": "beab13b97bd4fde3fcb9dfdb3c770a867a5047b462bcb5e6844833c337bfc3fb",
+          "blue_official_geometry_count": 1850,
+          "grey_context_geometry_count": 4778,
+          "post_style_only": true,
+          "root_tag": "svg",
+          "data_scale": "1:25",
+          "width": "151.99999809265137mm",
+          "height": "151.99999809265137mm",
+          "view_box": "0 0 151.99999809265137 151.99999809265137",
+          "geometry_element_count": 6628,
+          "projection_group_count": 68,
+          "representative_body_present": false,
+          "sibling_product_present": false,
+          "official_annotation_present": true,
+          "no_body_annotation_or_instance_duplicate": true,
+          "external_reference_count": 0
+        },
+        "linework_cache": {
+          "path": "/Users/jiaxinchen/.codex/worktrees/3a80/2504 GBTB Yanlord Zhuhai/output/review/highpoly-types/geberit-146-140/bonsai-drawings/wc/cache/GEBERIT-146-140-WC-PLAN-linework.svg",
+          "bytes": 500509,
+          "sha256": "96517993256c1f4cd92ca683fbb32100f56e37e9c8079b01ced3d3d8ca2e9218"
+        }
+      },
+      {
+        "view": "front",
+        "drawing": {
+          "global_id": "1fs0QqJUjD0QT3pDWC6CB_",
+          "name": "GEBERIT-146-140-WC-FRONT"
+        },
+        "official_annotation_global_id": "0n9ldIxH1Dxw6sWsa6Zaa6",
+        "path_count": 82,
+        "persisted_path_count": 82,
+        "edge_count": 4057,
+        "camera": {
+          "type": "ORTHO",
+          "width_m": 3.8,
+          "height_m": 3.6,
+          "clip_start_m": 0.0020000000949949026,
+          "clip_end_m": 4.0,
+          "matrix_world": [
+            [
+              0.0,
+              0.0,
+              -1.0,
+              -2.606765031814575
+            ],
+            [
+              -1.0,
+              0.0,
+              0.0,
+              2.7680001258850098
+            ],
+            [
+              0.0,
+              1.0,
+              0.0,
+              1.2000000476837158
+            ],
+            [
+              0.0,
+              0.0,
+              0.0,
+              1.0
+            ]
+          ],
+          "resolution": [
+            1795,
+            1700
+          ]
+        },
+        "create_drawing": {
+          "operator": "bpy.ops.bim.create_drawing",
+          "arguments": {
+            "print_all": false,
+            "open_viewer": false,
+            "sync": false
+          },
+          "result": [
+            "FINISHED"
+          ],
+          "linework_mode": "OPENCASCADE",
+          "target_view": "ELEVATION_VIEW"
+        },
+        "svg": {
+          "path": "/Users/jiaxinchen/.codex/worktrees/3a80/2504 GBTB Yanlord Zhuhai/output/review/highpoly-types/geberit-146-140/bonsai-drawings/wc/GEBERIT-146-140-WC-FRONT.svg",
+          "bytes": 2315232,
+          "sha256": "620acb19b046b5a1e09b4d5be7c97540e468d852aa9584cd6dbff56ebbc775d6",
+          "bonsai_generated_sha256_before_review_style": "968f0bf4c462042515c511e070f59d93e5788df3b4e31c2538df0de0a4adcaf4",
+          "blue_official_geometry_count": 3903,
+          "grey_context_geometry_count": 6257,
+          "post_style_only": true,
+          "root_tag": "svg",
+          "data_scale": "1:25",
+          "width": "151.99999809265137mm",
+          "height": "143.95542994847204mm",
+          "view_box": "0 0 151.99999809265137 143.95542994847204",
+          "geometry_element_count": 10160,
+          "projection_group_count": 33,
+          "representative_body_present": false,
+          "sibling_product_present": false,
+          "official_annotation_present": true,
+          "no_body_annotation_or_instance_duplicate": true,
+          "external_reference_count": 0
+        },
+        "linework_cache": {
+          "path": "/Users/jiaxinchen/.codex/worktrees/3a80/2504 GBTB Yanlord Zhuhai/output/review/highpoly-types/geberit-146-140/bonsai-drawings/wc/cache/GEBERIT-146-140-WC-FRONT-linework.svg",
+          "bytes": 629542,
+          "sha256": "e1ebcba465e8d8f5d01d995d49f2af7e0ff6f9962d17b7404f68b911ff98d3df"
+        }
+      },
+      {
+        "view": "side",
+        "drawing": {
+          "global_id": "3yJoAxLcf5bPM4AkpQJRNC",
+          "name": "GEBERIT-146-140-WC-SIDE"
+        },
+        "official_annotation_global_id": "0WJ8Mg0NvDFPMCFI8FfqYn",
+        "path_count": 65,
+        "persisted_path_count": 65,
+        "edge_count": 3462,
+        "camera": {
+          "type": "ORTHO",
+          "width_m": 3.8000000000000003,
+          "height_m": 3.6,
+          "clip_start_m": 0.0020000000949949026,
+          "clip_end_m": 4.0,
+          "matrix_world": [
+            [
+              1.0,
+              0.0,
+              0.0,
+              -0.8067650198936462
+            ],
+            [
+              0.0,
+              7.549790126404332e-08,
+              -1.0,
+              0.8180002570152283
+            ],
+            [
+              0.0,
+              1.0,
+              7.549790126404332e-08,
+              1.2000000476837158
+            ],
+            [
+              0.0,
+              0.0,
+              0.0,
+              1.0
+            ]
+          ],
+          "resolution": [
+            1795,
+            1700
+          ]
+        },
+        "create_drawing": {
+          "operator": "bpy.ops.bim.create_drawing",
+          "arguments": {
+            "print_all": false,
+            "open_viewer": false,
+            "sync": false
+          },
+          "result": [
+            "FINISHED"
+          ],
+          "linework_mode": "OPENCASCADE",
+          "target_view": "ELEVATION_VIEW"
+        },
+        "svg": {
+          "path": "/Users/jiaxinchen/.codex/worktrees/3a80/2504 GBTB Yanlord Zhuhai/output/review/highpoly-types/geberit-146-140/bonsai-drawings/wc/GEBERIT-146-140-WC-SIDE.svg",
+          "bytes": 1413406,
+          "sha256": "8a1d8b203f39ab64d2a070a73f119eb7dcd1de0c9509b2d7ad23b2a2ae04dd93",
+          "bonsai_generated_sha256_before_review_style": "5852b5f3b9817d86a437c1448d6f82b8efec09955faea3f7e480126c3ddf6fc6",
+          "blue_official_geometry_count": 3462,
+          "grey_context_geometry_count": 1802,
+          "post_style_only": true,
+          "root_tag": "svg",
+          "data_scale": "1:25",
+          "width": "151.99999809265137mm",
+          "height": "143.95542994847204mm",
+          "view_box": "0 0 151.99999809265137 143.95542994847204",
+          "geometry_element_count": 5264,
+          "projection_group_count": 54,
+          "representative_body_present": false,
+          "sibling_product_present": false,
+          "official_annotation_present": true,
+          "no_body_annotation_or_instance_duplicate": true,
+          "external_reference_count": 0
+        },
+        "linework_cache": {
+          "path": "/Users/jiaxinchen/.codex/worktrees/3a80/2504 GBTB Yanlord Zhuhai/output/review/highpoly-types/geberit-146-140/bonsai-drawings/wc/cache/GEBERIT-146-140-WC-SIDE-linework.svg",
+          "bytes": 184126,
+          "sha256": "0d00566c48136d1ac6528496803108459d55a2c4e152e11fc2f79060ac3b786e"
+        }
+      }
+    ],
+    "session_blend": {
+      "path": "/Users/jiaxinchen/.codex/worktrees/3a80/2504 GBTB Yanlord Zhuhai/output/review/highpoly-types/geberit-146-140/Geberit-146-140-WC-project-drawings.blend",
+      "bytes": 526539262,
+      "sha256": "0db2021cbc844bff170ea06d65208c275186d5df2707c2ad203d81db50bdc059"
+    }
+  },
+  "visual": {
+    "preview_manifest": "/Users/jiaxinchen/.codex/worktrees/3a80/2504 GBTB Yanlord Zhuhai/output/review/highpoly-types/geberit-146-140/Geberit-146-140-WC-drawing-manifest.json",
+    "representative_body_displayed": false,
+    "sibling_instance_displayed": false,
+    "official_annotation_displayed_once_per_view": true
+  },
+  "target": {
+    "global_id": "1rhZG98PPCSxaLeMFLTYb9",
+    "world_bbox_m": [
+      [
+        -1.09564208984375,
+        2.5751430988311768,
+        0.07154712080955505
+      ],
+      [
+        -0.5178879499435425,
+        2.960857391357422,
+        0.5157820582389832
+      ]
+    ],
+    "world_centre_m": [
+      -0.8067650198936462,
+      2.7680002450942993,
+      0.2936645895242691
+    ],
+    "same_type_instances_in_crop_before_filter": [
+      "1rhZG98PPCSxaLeMFLTYb9"
+    ]
+  },
+  "context": {
+    "project_context_retained": true,
+    "include_count": 81,
+    "include_ifc_class_counts": {
+      "IfcBeam": 1,
+      "IfcBuildingElementProxy": 3,
+      "IfcCovering": 30,
+      "IfcDoor": 3,
+      "IfcFlowSegment": 2,
+      "IfcFurniture": 1,
+      "IfcLightFixture": 5,
+      "IfcPipeSegment": 4,
+      "IfcSanitaryTerminal": 4,
+      "IfcSlab": 8,
+      "IfcWall": 18,
+      "IfcWasteTerminal": 1,
+      "IfcWindow": 1
+    },
+    "representative_body_suppressed_from_drawing_include": true,
+    "sibling_product_suppressed_from_drawing_include": true,
+    "official_linework_inserted_once": true
+  },
+  "versions": {
+    "blender": "4.5.3 LTS",
+    "bonsai": "0.8.4",
+    "ifcopenshell": "0.8.4",
+    "ifc_schema": "IFC4"
+  },
+  "tests": {
+    "all_create_drawing_finished": true,
+    "all_body_and_sibling_duplicates_absent": true,
+    "all_path_counts_persisted": true,
+    "formal_ifc_unchanged": true
+  },
+  "formal_ifc_bytes_unchanged": true,
+  "verdict": "pass",
+  "pass": true,
+  "latest_revision": "2026-09-07 shared-3D-registration and room-facing Front",
+  "latest_validation_evidence": "/Users/jiaxinchen/.codex/worktrees/3a80/2504 GBTB Yanlord Zhuhai/output/review/highpoly-types/geberit-146-140/registered-3d-2026-09-07/evidence.json"
+}

@@ -1,0 +1,280 @@
+{
+  "schema_version": 1,
+  "profile_key": "hima01",
+  "display_name": "Poliform Hima HIMA01",
+  "status": "complete",
+  "target_global_id": "2xmcLzu1rDTeMzRuNxPDyE",
+  "persistent_ifc": {
+    "path": "/Users/jiaxinchen/.codex/worktrees/3a80/2504 GBTB Yanlord Zhuhai/output/review/highpoly-types/hima01/product-package/HIMA01-product.ifc",
+    "bytes": 9772557,
+    "sha256": "4014d7423520f9a133994c67644cd893c9a8db804364e11cfab479188849bbc0"
+  },
+  "scene_recipe": {
+    "path": "/Users/jiaxinchen/.codex/worktrees/3a80/2504 GBTB Yanlord Zhuhai/output/review/highpoly-types/hima01/product-package/scene-recipe.json",
+    "bytes": 91343,
+    "sha256": "06b33f7f9ff27f833b0305aea136f027066e75193970609731d665b44c869ff2"
+  },
+  "source_kind": "geometry_derived_simplified_proxy",
+  "source_label_zh": "基于原始高模几何生成的简化图纸表达",
+  "official_download_url": "https://s3.poliform.it/2025/09/Poliform-HIMA-screen.dwg",
+  "approval_record": {
+    "path": "/Users/jiaxinchen/.codex/worktrees/3a80/2504 GBTB Yanlord Zhuhai/pipeline/decisions/hima01-drawing-approval.json",
+    "bytes": 1269,
+    "sha256": "e4e08a7d361beb5cb77dc407c2955608e463ea3439f270e64f6129b954289db3"
+  },
+  "migration_authorization": {
+    "path": "/Users/jiaxinchen/.codex/worktrees/3a80/2504 GBTB Yanlord Zhuhai/output/review/approved-product-library/migration-authorization.json",
+    "bytes": 1189,
+    "sha256": "be266f18465023b1c2436d1585bb59290504b0b66ba03d822cc5fb7d148ee4ee"
+  },
+  "single_product_approval_status": "approved",
+  "scene_approval_status": "pending",
+  "approval_label_zh": "单品已通过、场景待验收",
+  "formal_write_allowed": false,
+  "formal_sha256": "7a50b87e8f48a7c2bfbaa9f1dabdfca7155fa684b2325c66aa1ae15c8ab0a25c",
+  "geometry": {
+    "physical_products": 1,
+    "body_representation_count": 3,
+    "original_body_preserved": true,
+    "discarded_box_representation_count": 0,
+    "approved_views": [
+      "plan",
+      "front",
+      "side"
+    ],
+    "annotations": 0,
+    "groups": 0,
+    "drawing_cameras": 0,
+    "spatial_geometry": 0,
+    "units_to_m": 0.001,
+    "placement_matrix_project_units": [
+      [
+        1.0,
+        0.0,
+        0.0,
+        -6362.0
+      ],
+      [
+        0.0,
+        1.0,
+        0.0,
+        -2848.0
+      ],
+      [
+        0.0,
+        0.0,
+        1.0,
+        11.0
+      ],
+      [
+        0.0,
+        0.0,
+        0.0,
+        1.0
+      ]
+    ]
+  },
+  "scene_outputs": [
+    {
+      "view": "plan",
+      "path_count": 8,
+      "approved_coordinates_exact": true,
+      "generated_scene_absolute_error_mm": 0.0003927320095120761,
+      "camera_screen_up_world_z": 0.0,
+      "svg": {
+        "path": "/Users/jiaxinchen/.codex/worktrees/3a80/2504 GBTB Yanlord Zhuhai/output/review/highpoly-types/hima01/product-package/HIMA01-SCENE-PLAN.svg",
+        "bytes": 442120,
+        "sha256": "18b801052db3ecc1faa9ff4b12f3a4543ce5a04f238af30cda2c6eb5fa16b131"
+      },
+      "preview": {
+        "path": "/Users/jiaxinchen/.codex/worktrees/3a80/2504 GBTB Yanlord Zhuhai/output/review/highpoly-types/hima01/product-package/HIMA01-SCENE-PLAN.png",
+        "bytes": 57310,
+        "sha256": "fba89187b4ad0828776561282434169ad4ceb49fc8c115f40ab46fca0435ed64"
+      },
+      "single_product_svg": {
+        "path": "/Users/jiaxinchen/.codex/worktrees/3a80/2504 GBTB Yanlord Zhuhai/output/review/highpoly-types/hima01/product-package/HIMA01-SINGLE-PLAN.svg",
+        "bytes": 38639,
+        "sha256": "f2c0b62212c8f4f5905d5a85ff04c8e738cca0e1b52f910d2ce10fa31ac4162b"
+      },
+      "single_product_thumbnail": {
+        "path": "/Users/jiaxinchen/.codex/worktrees/3a80/2504 GBTB Yanlord Zhuhai/output/review/highpoly-types/hima01/product-package/HIMA01-SINGLE-PLAN.png",
+        "bytes": 13719,
+        "sha256": "5375579b098fd95e432a06ef22d6270a212945b0ec63f22ba24c5dbeaaefa5d9"
+      },
+      "local_bounds_mm": [
+        [
+          -119.600834,
+          -40.443848
+        ],
+        [
+          706.261288,
+          1644.298012
+        ]
+      ]
+    },
+    {
+      "view": "front",
+      "path_count": 17,
+      "approved_coordinates_exact": true,
+      "generated_scene_absolute_error_mm": 0.00040817445897324583,
+      "camera_screen_up_world_z": 1.0,
+      "svg": {
+        "path": "/Users/jiaxinchen/.codex/worktrees/3a80/2504 GBTB Yanlord Zhuhai/output/review/highpoly-types/hima01/product-package/HIMA01-SCENE-FRONT.svg",
+        "bytes": 199896,
+        "sha256": "ad34da91d3a9d195408286a8b7df31bfe4dc79136beb80c35fde31e6c01c6f60"
+      },
+      "preview": {
+        "path": "/Users/jiaxinchen/.codex/worktrees/3a80/2504 GBTB Yanlord Zhuhai/output/review/highpoly-types/hima01/product-package/HIMA01-SCENE-FRONT.png",
+        "bytes": 14116,
+        "sha256": "05ff04569f1c728ec17697883ac8f5b2adb03a83e483241f4cd4887b32b6a386"
+      },
+      "single_product_svg": {
+        "path": "/Users/jiaxinchen/.codex/worktrees/3a80/2504 GBTB Yanlord Zhuhai/output/review/highpoly-types/hima01/product-package/HIMA01-SINGLE-FRONT.svg",
+        "bytes": 34493,
+        "sha256": "dbd9cb2448905e326ce8177f0edaa4293ab8a823eba1bcddc943727f33be43cd"
+      },
+      "single_product_thumbnail": {
+        "path": "/Users/jiaxinchen/.codex/worktrees/3a80/2504 GBTB Yanlord Zhuhai/output/review/highpoly-types/hima01/product-package/HIMA01-SINGLE-FRONT.png",
+        "bytes": 7852,
+        "sha256": "513af155a5f4a49fd25386450040afcb2bd2f9b2813ea7e0895b52e79e7c0a8b"
+      },
+      "local_bounds_mm": [
+        [
+          -119.600834,
+          -1.965814
+        ],
+        [
+          706.336483,
+          996.770386
+        ]
+      ]
+    },
+    {
+      "view": "side",
+      "path_count": 27,
+      "approved_coordinates_exact": true,
+      "generated_scene_absolute_error_mm": 0.00036525855951858574,
+      "camera_screen_up_world_z": 1.0,
+      "svg": {
+        "path": "/Users/jiaxinchen/.codex/worktrees/3a80/2504 GBTB Yanlord Zhuhai/output/review/highpoly-types/hima01/product-package/HIMA01-SCENE-SIDE.svg",
+        "bytes": 312821,
+        "sha256": "4c2b6f91c12ca69f4f48b3bd59e96d32867e3693a89063595e28dcacff6e11f6"
+      },
+      "preview": {
+        "path": "/Users/jiaxinchen/.codex/worktrees/3a80/2504 GBTB Yanlord Zhuhai/output/review/highpoly-types/hima01/product-package/HIMA01-SCENE-SIDE.png",
+        "bytes": 19666,
+        "sha256": "de03a6279364ae7934dcb305d51a6539518710b7bf027be00fb8298a594d32aa"
+      },
+      "single_product_svg": {
+        "path": "/Users/jiaxinchen/.codex/worktrees/3a80/2504 GBTB Yanlord Zhuhai/output/review/highpoly-types/hima01/product-package/HIMA01-SINGLE-SIDE.svg",
+        "bytes": 70094,
+        "sha256": "32181a58a85da02a55c32dffd643fbf0568f4921cb41a8c8ac8b90602a288b08"
+      },
+      "single_product_thumbnail": {
+        "path": "/Users/jiaxinchen/.codex/worktrees/3a80/2504 GBTB Yanlord Zhuhai/output/review/highpoly-types/hima01/product-package/HIMA01-SINGLE-SIDE.png",
+        "bytes": 11529,
+        "sha256": "75233283dbccc62972bb7b897d67097533185907d1d953feacf80c87deeb3d9e"
+      },
+      "local_bounds_mm": [
+        [
+          -40.737549,
+          -2.0
+        ],
+        [
+          1644.269936,
+          997.0
+        ]
+      ]
+    }
+  ],
+  "single_product_views": {
+    "plan": {
+      "path": "/Users/jiaxinchen/.codex/worktrees/3a80/2504 GBTB Yanlord Zhuhai/output/review/highpoly-types/hima01/product-package/HIMA01-SINGLE-PLAN.svg",
+      "bytes": 38639,
+      "sha256": "f2c0b62212c8f4f5905d5a85ff04c8e738cca0e1b52f910d2ce10fa31ac4162b"
+    },
+    "front": {
+      "path": "/Users/jiaxinchen/.codex/worktrees/3a80/2504 GBTB Yanlord Zhuhai/output/review/highpoly-types/hima01/product-package/HIMA01-SINGLE-FRONT.svg",
+      "bytes": 34493,
+      "sha256": "dbd9cb2448905e326ce8177f0edaa4293ab8a823eba1bcddc943727f33be43cd"
+    },
+    "side": {
+      "path": "/Users/jiaxinchen/.codex/worktrees/3a80/2504 GBTB Yanlord Zhuhai/output/review/highpoly-types/hima01/product-package/HIMA01-SINGLE-SIDE.svg",
+      "bytes": 70094,
+      "sha256": "32181a58a85da02a55c32dffd643fbf0568f4921cb41a8c8ac8b90602a288b08"
+    }
+  },
+  "library_previews": {
+    "plan": {
+      "path": "/Users/jiaxinchen/.codex/worktrees/3a80/2504 GBTB Yanlord Zhuhai/output/review/highpoly-types/hima01/product-package/HIMA01-SINGLE-PLAN.png",
+      "bytes": 13719,
+      "sha256": "5375579b098fd95e432a06ef22d6270a212945b0ec63f22ba24c5dbeaaefa5d9"
+    },
+    "front": {
+      "path": "/Users/jiaxinchen/.codex/worktrees/3a80/2504 GBTB Yanlord Zhuhai/output/review/highpoly-types/hima01/product-package/HIMA01-SINGLE-FRONT.png",
+      "bytes": 7852,
+      "sha256": "513af155a5f4a49fd25386450040afcb2bd2f9b2813ea7e0895b52e79e7c0a8b"
+    },
+    "side": {
+      "path": "/Users/jiaxinchen/.codex/worktrees/3a80/2504 GBTB Yanlord Zhuhai/output/review/highpoly-types/hima01/product-package/HIMA01-SINGLE-SIDE.png",
+      "bytes": 11529,
+      "sha256": "75233283dbccc62972bb7b897d67097533185907d1d953feacf80c87deeb3d9e"
+    },
+    "iso": {
+      "path": "/Users/jiaxinchen/.codex/worktrees/3a80/2504 GBTB Yanlord Zhuhai/output/review/highpoly-types/hima01/bonsai-camera-iso.png",
+      "bytes": 986891,
+      "sha256": "d723ff621047824c35ce546f36044747d768c58d00d5f200fac6fcb915f2be77"
+    }
+  },
+  "external_style_dependencies": [
+    {
+      "source": {
+        "path": "/Users/jiaxinchen/.codex/worktrees/3a80/2504 GBTB Yanlord Zhuhai/Materials.blend",
+        "bytes": 5496522,
+        "sha256": "18a1e92531bc56c3938a16c64189bc61da83354529c22a9c4d63f0f05cfd69a2"
+      },
+      "packaged": {
+        "path": "/Users/jiaxinchen/.codex/worktrees/3a80/2504 GBTB Yanlord Zhuhai/output/review/highpoly-types/hima01/product-package/Materials.blend",
+        "bytes": 5496522,
+        "sha256": "18a1e92531bc56c3938a16c64189bc61da83354529c22a9c4d63f0f05cfd69a2"
+      },
+      "location": "Materials.blend"
+    }
+  ],
+  "validation": "validation.json",
+  "known_limitations": [
+    "Approved folded screen geometry-derived simplified black outlines; official PVA11 DWG is unfolded family reference only.",
+    "New real Bonsai scene SVGs are technical migration checks awaiting human scene approval."
+  ],
+  "preview_provenance": {
+    "2d": "Product GlobalId annotation LINEWORK cropped from verified real Bonsai Scene SVG; display-only framing; elevations preserve world +Z up.",
+    "3d": "Existing actual IFC Body camera render; all three original Body representations preserved"
+  },
+  "validation_verdict": "pass",
+  "official_cad_used": false,
+  "source_reference_only": {
+    "path": "/Users/jiaxinchen/.codex/worktrees/3a80/2504 GBTB Yanlord Zhuhai/output/review/highpoly-types/hima01/official-source/official-download/Poliform-HIMA-screen.dwg",
+    "bytes": 2308598,
+    "sha256": "f0e1b980aa102f3e06fe602f9e7a9b40db45d76e45200c08e4b8b4a0eec1d523"
+  },
+  "reference_scope": "Official PVA11 DWG: family and unfolded-state reference only, excluded from all approved black linework",
+  "fresh_pure_session": {
+    "scene_name": "🔍 逐个审核高模图纸候选",
+    "task_title_available": true,
+    "scene_renamed": true,
+    "pid": 82407,
+    "ifc": "/Users/jiaxinchen/.codex/worktrees/3a80/2504 GBTB Yanlord Zhuhai/output/review/highpoly-types/hima01/product-package/HIMA01-product.ifc",
+    "sha256": "4014d7423520f9a133994c67644cd893c9a8db804364e11cfab479188849bbc0",
+    "blend_saved": false,
+    "has_blend_warning": false,
+    "blender_version": "4.5.3 LTS",
+    "log": "/var/folders/rz/d8p6s4y50ws53rd150nm2s3r0000gn/T/codex-task-blender-501/224a5e5ad40d59271bf9-1788841464803.log",
+    "owner_task_id": "01a075a7-e948-7bd1-a27e-6ff542ea187c-hima01-migration",
+    "bridge_port": 9894
+  },
+  "contact_sheet": {
+    "path": "/Users/jiaxinchen/.codex/worktrees/3a80/2504 GBTB Yanlord Zhuhai/output/review/highpoly-types/hima01/product-package/HIMA01-review-contact-sheet.png",
+    "bytes": 93577,
+    "sha256": "c95627e204e4f237927909e193e7089c6f5466baea3fac992e2627c99da4cca8"
+  }
+}

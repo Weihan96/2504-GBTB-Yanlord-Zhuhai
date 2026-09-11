@@ -15,15 +15,19 @@ function sha256(path: string) {
   return createHash("sha256").update(readFileSync(path)).digest("hex");
 }
 
-test("official Baxter identity is archived while CAD and dimension differences remain explicit", () => {
+test("official Baxter identity and family CAD are archived while dimension differences remain explicit", () => {
   const access = JSON.parse(readFileSync(join(product, "official-source/source-access-record.json"), "utf8"));
   expect(access.manufacturer).toBe("Baxter");
   expect(access.family).toBe("Viktor");
   expect(access.designer).toBe("Draga & Aurel");
   expect(access.project_type_code).toBe("BED02");
   expect(access.official_product_cad.authentication_required).toBeTrue();
-  expect(access.official_product_cad.acquired).toBeFalse();
-  expect(access.official_product_cad.local_cad_files).toEqual([]);
+  expect(access.official_product_cad.acquired).toBeTrue();
+  expect(access.official_product_cad.local_cad_files).toHaveLength(1);
+  expect(access.official_product_cad.local_cad_files[0]).toMatchObject({
+    path: "output/review/highpoly-types/bed02/official-source/official-download/Viktor_Letto.dwg",
+    sha256: "3f0676a004f3e744779093188d75d58238153332d9d1810f28821cafc79a9bbd",
+  });
   expect(access.drawing_geometry_source).toMatchObject({
     source_kind: sourceKind,
     source_label_zh: sourceLabelZh,
@@ -50,7 +54,7 @@ test("official Baxter identity is archived while CAD and dimension differences r
   }
 });
 
-test("single-instance BED02 review has three geometry-derived views and zero blue CAD paths", () => {
+test("single-instance BED02 primary review stays geometry-derived while blue CAD remains a supplement", () => {
   const manifest = JSON.parse(readFileSync(join(product, "manifest.json"), "utf8"));
   const candidate = JSON.parse(readFileSync(join(product, "candidate-representations.json"), "utf8"));
   const inventory = JSON.parse(readFileSync(join(root, "pipeline/decisions/highpoly-product-inventory.json"), "utf8"));
@@ -63,6 +67,8 @@ test("single-instance BED02 review has three geometry-derived views and zero blu
   expect(manifest.whole_model_render).toBeFalse();
   expect(manifest.formal_ifc_bytes_unchanged).toBeTrue();
   expect(manifest.article_number).toBe("Baxter Viktor / BED02");
+  expect(manifest.blue_line_present).toBeTrue();
+  expect(manifest.blue_line_role).toBe("official_native_dwg_review_reference_only_not_primary_candidate");
   expect(candidate.source_kind).toBe(sourceKind);
   expect(candidate.source_label_zh).toBe(sourceLabelZh);
   expect(candidate.official_cad_used).toBeFalse();
@@ -153,7 +159,8 @@ test("BED02 writer rejects missing apply and the pending human approval record",
   const manifest = join(product, "manifest.json");
   expect(approval.status).toBe("pending");
   expect(approval.derived_ifc_write_allowed).toBeFalse();
-  expect(approval.candidate_manifest_sha256).toBe(sha256(manifest));
+  // The corrected review supplement must not refresh or open the pending write gate.
+  expect(approval.candidate_manifest_sha256).not.toBe(sha256(manifest));
 
   const withoutApply = Bun.spawnSync(["python3", script, "--input", formal, "--output", output], {
     cwd: root,

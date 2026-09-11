@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "generated_at": "2026-08-23T13:03:51.811579+00:00",
+  "generated_at": "2026-08-24T10:01:05.070792+00:00",
   "generator": "pipeline/scripts/geberit_154_446_ks_1_review.py",
   "formal_ifc": "2504 GBTB Yanlord Zhuhai.ifc",
   "formal_ifc_sha256": "7a50b87e8f48a7c2bfbaa9f1dabdfca7155fa684b2325c66aa1ae15c8ab0a25c",
@@ -137,14 +137,33 @@
         ],
         "visible_width_difference_mm": 21.588636,
         "height_absolute_delta_mm": 4e-06,
+        "horizontal_alignment": {
+          "mode": "native_dwg_origin_to_ifc_primary_channel_axis",
+          "ifc_primary_channel_bounds_y_mm": [
+            -2.758846,
+            27.241154
+          ],
+          "ifc_primary_channel_axis_y_mm": 12.241154,
+          "native_dwg_origin_x_mm": 0.0,
+          "applied_translation_mm": 12.241154,
+          "previous_contour_center_translation_mm": 17.736181,
+          "horizontal_offset_correction_mm": -5.495028,
+          "aligned_official_visible_bounds_y_mm": [
+            -19.958846,
+            33.441154
+          ],
+          "axis_alignment_absolute_delta_mm": 0.0,
+          "tolerance_mm": 0.01,
+          "pass": true
+        },
         "tolerance_mm": 0.2,
-        "note": "The official L contour depicts the visible 53.4 mm channel component; the IFC Body includes the wider concealed ancillary geometry recorded by the G-view header footprint.",
+        "note": "The official L contour depicts the visible 53.4 mm channel component; its native x=0 datum is aligned to the primary IFC channel axis. The IFC Body includes wider concealed ancillary geometry recorded by the G-view header footprint.",
         "pass": true
       }
     }
   },
   "candidate_representations": "output/review/highpoly-types/geberit-154-446-ks-1/candidate-representations.json",
-  "candidate_representations_sha256": "524b0def5d242226b36b46216179aefb7834d1bb18400a62570c937ffde66c97",
+  "candidate_representations_sha256": "f86f364d35ee1359ce187075a7024b945c8b3551925027886ff7e4f9587aa6a0",
   "official_source_access_record": "output/review/highpoly-types/geberit-154-446-ks-1/official-source/source-access-record.json",
   "official_source_access_record_sha256": "9af4b21de19759cc48e9325da843542ddc44baedadc9948bd1b5769a4611d61c",
   "views": [
@@ -219,7 +238,7 @@
     {
       "view": "side",
       "svg": "output/review/highpoly-types/geberit-154-446-ks-1/side.svg",
-      "svg_sha256": "98f4438d069541e284a390465a6381a3e70e2602cf47fbf85f18e7e064a2f97c",
+      "svg_sha256": "5086371adc1d35b00a2cd4450308fbd3a23675a8e1fef66e12c1481976d800fe",
       "projection_axes": [
         1,
         2
@@ -244,8 +263,27 @@
         ],
         "visible_width_difference_mm": 21.588636,
         "height_absolute_delta_mm": 4e-06,
+        "horizontal_alignment": {
+          "mode": "native_dwg_origin_to_ifc_primary_channel_axis",
+          "ifc_primary_channel_bounds_y_mm": [
+            -2.758846,
+            27.241154
+          ],
+          "ifc_primary_channel_axis_y_mm": 12.241154,
+          "native_dwg_origin_x_mm": 0.0,
+          "applied_translation_mm": 12.241154,
+          "previous_contour_center_translation_mm": 17.736181,
+          "horizontal_offset_correction_mm": -5.495028,
+          "aligned_official_visible_bounds_y_mm": [
+            -19.958846,
+            33.441154
+          ],
+          "axis_alignment_absolute_delta_mm": 0.0,
+          "tolerance_mm": 0.01,
+          "pass": true
+        },
         "tolerance_mm": 0.2,
-        "note": "The official L contour depicts the visible 53.4 mm channel component; the IFC Body includes the wider concealed ancillary geometry recorded by the G-view header footprint.",
+        "note": "The official L contour depicts the visible 53.4 mm channel component; its native x=0 datum is aligned to the primary IFC channel axis. The IFC Body includes wider concealed ancillary geometry recorded by the G-view header footprint.",
         "pass": true
       }
     }
@@ -255,7 +293,7 @@
   "pass": true,
   "project_context": {
     "manifest": "output/review/highpoly-types/geberit-154-446-ks-1/project-context-manifest.json",
-    "manifest_sha256": "e38f2c2468bfc9e8fe8cb47a53945b63d2a8c34ffd5f24e36b8339102d901aa5",
+    "manifest_sha256": "a5cfee2d9819b219bf99c72ec53cd0a7a0ef110c6cb5064ad3cac6a699d2955f",
     "walls_and_surrounding_project_elements_retained": true,
     "blue_line_top_layer_with_white_mask": true,
     "pass": true

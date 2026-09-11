@@ -33,6 +33,10 @@ OFFICIAL_SOURCE_KINDS = {
     "official_native_dwg",
     "official_native_dxf",
 }
+OFFICIAL_OUTLINE_REVIEW_SIMPLIFICATION_KINDS = {
+    "native_dwg_review_simplification",
+    "native_dxf_review_simplification",
+}
 
 
 def sha256(path: Path) -> str:
@@ -131,6 +135,36 @@ def source_provenance_gate(
             "official_source_manifest_exists": falper_source.is_file(),
         }
         mode = "approved_official_native_cad"
+    elif source_kind in OFFICIAL_OUTLINE_REVIEW_SIMPLIFICATION_KINDS:
+        original_paths_present = bool(views) and all(
+            bool(
+                view.get("original_official_native_dwg_paths_mm")
+                or view.get("original_official_native_dxf_paths_mm")
+            )
+            for view in views
+        )
+        review_paths_present = bool(views) and all(
+            bool(view.get("review_simplified_official_outline_paths_mm"))
+            for view in views
+        )
+        context_blue = bool(
+            context.get("blue_line_present") is True
+            or context.get("blue_line_top_layer_with_white_mask") is True
+        )
+        checks = {
+            "manifest_source_is_explicit_official_outline_review_simplification": source_kind in OFFICIAL_OUTLINE_REVIEW_SIMPLIFICATION_KINDS,
+            "candidate_source_is_explicit_official_outline_review_simplification": candidate.get("source_kind") in OFFICIAL_OUTLINE_REVIEW_SIMPLIFICATION_KINDS,
+            "candidate_marks_official_cad_used": candidate.get("official_cad_used") is True,
+            "candidate_marks_unaltered_official_cad_unused_as_review_representation": candidate.get("unaltered_official_cad_used_as_review_representation") is False,
+            "candidate_preserves_original_official_cad_evidence": candidate.get("original_official_cad_evidence_preserved") is True,
+            "candidate_has_original_native_paths_for_all_views": original_paths_present,
+            "candidate_has_review_simplified_paths_for_all_views": review_paths_present,
+            "context_uses_explicit_official_outline_review_simplification": context.get("source_kind") in OFFICIAL_OUTLINE_REVIEW_SIMPLIFICATION_KINDS,
+            "context_has_blue_review_top_layer": context_blue,
+            "source_access_record_exists": access_path.is_file(),
+            "source_access_record_passes": access.get("pass") is True,
+        }
+        mode = "official_native_cad_outline_review_simplification"
     elif official_cad_used:
         official_paths_present = bool(views) and all(
             bool(view.get("official_native_dwg_paths_mm") or view.get("official_native_dxf_paths_mm"))

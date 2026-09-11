@@ -1,0 +1,930 @@
+{
+  "official_coordinate_comparison": {
+    "plan": {
+      "paths": 5,
+      "points": 1285,
+      "max_coordinate_error_mm": 5.684341886080802e-14,
+      "tolerance_mm": 1e-09,
+      "approved_representation": "FalperWFBPlan",
+      "all_points_compared": true
+    },
+    "front": {
+      "paths": 4,
+      "points": 1542,
+      "max_coordinate_error_mm": 5.684341886080802e-14,
+      "tolerance_mm": 1e-09,
+      "approved_representation": "FalperWFBFront",
+      "all_points_compared": true
+    },
+    "side": {
+      "paths": 4,
+      "points": 1542,
+      "max_coordinate_error_mm": 5.684341886080802e-14,
+      "tolerance_mm": 1e-09,
+      "approved_representation": "FalperWFBSide",
+      "all_points_compared": true
+    }
+  },
+  "protected_files": [
+    {
+      "path": "/Users/jiaxinchen/.codex/worktrees/3a80/2504 GBTB Yanlord Zhuhai/2504 GBTB Yanlord Zhuhai.ifc",
+      "bytes": 87322517,
+      "sha256": "7a50b87e8f48a7c2bfbaa9f1dabdfca7155fa684b2325c66aa1ae15c8ab0a25c"
+    },
+    {
+      "path": "/Users/jiaxinchen/.codex/worktrees/3a80/2504 GBTB Yanlord Zhuhai/output/review/highpoly-types/falper-sorgente/Falper-Sorgente-WFB-bonsai-isolated.ifc",
+      "bytes": 820307,
+      "sha256": "e87f796d6b4987ab355f8c6c4014ec379f97baa2f09fea67b2da208a8c1f17f2"
+    },
+    {
+      "path": "/Users/jiaxinchen/.codex/worktrees/3a80/2504 GBTB Yanlord Zhuhai/pipeline/decisions/falper-sorgente-drawing-approval.json",
+      "bytes": 738,
+      "sha256": "04f3c33cf2420fb38d0fde8e218633e407ce945d8af0fbc409e103a4d3a4bbce"
+    },
+    {
+      "path": "/Users/jiaxinchen/.codex/worktrees/3a80/2504 GBTB Yanlord Zhuhai/pipeline/decisions/falper-sorgente-official-dwg-linework.json",
+      "bytes": 499968,
+      "sha256": "2c66da0f96e123f8152afede2ecea0384965361c258320860c8da635f7a224ca"
+    },
+    {
+      "path": "/Users/jiaxinchen/.codex/worktrees/3a80/2504 GBTB Yanlord Zhuhai/output/review/highpoly-types/falper-sorgente/derived-ifc-corrected-manifest.json",
+      "bytes": 2275,
+      "sha256": "584c5a9ad584246c79254b2761f3c06fa7770292accc3df9cd58e5d3bf240508"
+    },
+    {
+      "path": "/Users/jiaxinchen/.codex/worktrees/3a80/2504 GBTB Yanlord Zhuhai/output/review/highpoly-types/falper-sorgente/manifest.json",
+      "bytes": 5386,
+      "sha256": "39bffa9024bebe4ea665b55853cfae5675cad2c6cbbbe2af18d25939a830c86a"
+    },
+    {
+      "path": "/Users/jiaxinchen/.codex/worktrees/3a80/2504 GBTB Yanlord Zhuhai/output/review/highpoly-types/falper-sorgente/INVALIDATED-proxy-contaminated.json",
+      "bytes": 1200,
+      "sha256": "f2dd2053b9c2486a1b63e870c7c82e970812ba68de0b612f38f085445319ce70"
+    },
+    {
+      "path": "/Users/jiaxinchen/.codex/worktrees/3a80/2504 GBTB Yanlord Zhuhai/drawings/evidence/FALPER-official-Sorgente-WFB-2D.dwg",
+      "bytes": 138579,
+      "sha256": "4b3d8900f8ae249d7e9634339f3529d7d38a940dc2d0c909a7e90e31d3946831"
+    }
+  ],
+  "formal_sha256_before": "7a50b87e8f48a7c2bfbaa9f1dabdfca7155fa684b2325c66aa1ae15c8ab0a25c",
+  "source_dwg": {
+    "path": "/Users/jiaxinchen/.codex/worktrees/3a80/2504 GBTB Yanlord Zhuhai/drawings/evidence/FALPER-official-Sorgente-WFB-2D.dwg",
+    "bytes": 138579,
+    "sha256": "4b3d8900f8ae249d7e9634339f3529d7d38a940dc2d0c909a7e90e31d3946831"
+  },
+  "approval_record": {
+    "path": "/Users/jiaxinchen/.codex/worktrees/3a80/2504 GBTB Yanlord Zhuhai/pipeline/decisions/falper-sorgente-drawing-approval.json",
+    "bytes": 738,
+    "sha256": "04f3c33cf2420fb38d0fde8e218633e407ce945d8af0fbc409e103a4d3a4bbce"
+  },
+  "corrected_manifest": {
+    "path": "/Users/jiaxinchen/.codex/worktrees/3a80/2504 GBTB Yanlord Zhuhai/output/review/highpoly-types/falper-sorgente/derived-ifc-corrected-manifest.json",
+    "bytes": 2275,
+    "sha256": "584c5a9ad584246c79254b2761f3c06fa7770292accc3df9cd58e5d3bf240508"
+  },
+  "official_download_url": "https://falper.it/wp-content/uploads/2025/11/Lavabi-Freestanding-Autocad-2D.zip",
+  "product_url": "https://falper.it/en/freestanding-washbasins/",
+  "invalidated_source_used": false,
+  "legacy_corrected_full_ifc_missing": true,
+  "approval_status": "approved",
+  "scene_approval_status": "pending",
+  "label_zh": "单品已通过、场景待验收",
+  "formal_write_allowed": false,
+  "cleanup_performed": false,
+  "product": "falper-sorgente",
+  "target_guid": "350tdaubr8QP3Cu2YMQZIN",
+  "verdict": "pass",
+  "extraction": {
+    "target_global_id": "350tdaubr8QP3Cu2YMQZIN",
+    "body_unchanged": true,
+    "body_representation_count": 2,
+    "placement_matrix_project_units": [
+      [
+        1.0,
+        0.0,
+        0.0,
+        -549.821317195892
+      ],
+      [
+        0.0,
+        1.0,
+        0.0,
+        350.0
+      ],
+      [
+        0.0,
+        0.0,
+        1.0,
+        18.0767327547073
+      ],
+      [
+        0.0,
+        0.0,
+        0.0,
+        1.0
+      ]
+    ],
+    "views": {
+      "plan": {
+        "representation_identifier": "FalperWFBPlan",
+        "content_fingerprint": "306e3df6bdbd8e227de613f86bb17bc8da80a1694793c946dab623c9ce592389",
+        "source_annotation_guid": "3YElnDEWH0y8fZ3KgbQECx",
+        "scene_context_fingerprint": "06181ce9d72f5b79bc93ba3360e0eca28aece92aea804376617ada931caad99e"
+      },
+      "front": {
+        "representation_identifier": "FalperWFBFront",
+        "content_fingerprint": "7e0b94764cf42c06e2f6490c5bd2465412d3bdd840429586a2020ef6d602791e",
+        "source_annotation_guid": "26Aqyzik9DGwBCj3QLgi5r",
+        "scene_context_fingerprint": "811e0c4e9e4cdc4b5c157deafa151427d3c2b314222e6955ec7d994a15c4d786"
+      },
+      "side": {
+        "representation_identifier": "FalperWFBSide",
+        "content_fingerprint": "e1dd58d71a54007e2446f23e3b7c5ba360a8e9fa2b355457bec09860e3d26816",
+        "source_annotation_guid": "1XnHq4wyb3c9Bckdqr98Tx",
+        "scene_context_fingerprint": "811e0c4e9e4cdc4b5c157deafa151427d3c2b314222e6955ec7d994a15c4d786"
+      }
+    },
+    "ifc_annotation_count": 0,
+    "ifc_group_count": 0,
+    "represented_products": 1,
+    "spatial_geometry_count": 0,
+    "scene_settings_in_ifc": false,
+    "inherited_schema_repairs": [
+      {
+        "entity": 7,
+        "attribute": "WorldCoordinateSystem",
+        "old": null,
+        "new": "explicit 2D identity origin",
+        "basis": "source Model WCS identity; approved SVG registration verified independently"
+      },
+      {
+        "entity": 21,
+        "attribute": "ApplicationDeveloper",
+        "old": null,
+        "new": "explicit unspecified placeholder; no invented author identity"
+      }
+    ]
+  },
+  "views": [
+    {
+      "view": "plan",
+      "drawing_guid": "2pT8ZtU_L10vZ2GQbSWXLD",
+      "annotation_guid": "3YElnDEWH0y8fZ3KgbQECx",
+      "representation_identifier": "FalperWFBPlan"
+    },
+    {
+      "view": "front",
+      "drawing_guid": "3hwm9XXPv0r8BBLUaYS7r3",
+      "annotation_guid": "26Aqyzik9DGwBCj3QLgi5r",
+      "representation_identifier": "FalperWFBFront"
+    },
+    {
+      "view": "side",
+      "drawing_guid": "3v_JGo4_vEaxFLMWs6nTEg",
+      "annotation_guid": "1XnHq4wyb3c9Bckdqr98Tx",
+      "representation_identifier": "FalperWFBSide"
+    }
+  ],
+  "pure_pre_bonsai": {
+    "body": "3881a62e55a8099bbf86f916234859f3c899a830f56bd1da945eed4e84f5ace3",
+    "representations": "f3983904df4ecebce04f3338e11b864242b10bcc198d139f219263a175e4a95a",
+    "placement": [
+      [
+        1.0,
+        0.0,
+        0.0,
+        -549.821317195892
+      ],
+      [
+        0.0,
+        1.0,
+        0.0,
+        350.0
+      ],
+      [
+        0.0,
+        0.0,
+        1.0,
+        18.0767327547073
+      ],
+      [
+        0.0,
+        0.0,
+        0.0,
+        1.0
+      ]
+    ],
+    "physical_elements": [
+      "350tdaubr8QP3Cu2YMQZIN"
+    ],
+    "annotation_count": 0,
+    "group_count": 0,
+    "drawing_pset_count": 0,
+    "unit_scale_to_m": 0.001
+  },
+  "necessary_external_style_dependencies": [
+    {
+      "source": {
+        "path": "/Users/jiaxinchen/.codex/worktrees/3a80/2504 GBTB Yanlord Zhuhai/Materials.blend",
+        "bytes": 5496522,
+        "sha256": "18a1e92531bc56c3938a16c64189bc61da83354529c22a9c4d63f0f05cfd69a2"
+      },
+      "packaged": {
+        "path": "/Users/jiaxinchen/.codex/worktrees/3a80/2504 GBTB Yanlord Zhuhai/output/review/highpoly-types/falper-sorgente/product-package/Materials.blend",
+        "bytes": 5496522,
+        "sha256": "18a1e92531bc56c3938a16c64189bc61da83354529c22a9c4d63f0f05cfd69a2"
+      }
+    }
+  ],
+  "single_product": {
+    "path": "/Users/jiaxinchen/.codex/worktrees/3a80/2504 GBTB Yanlord Zhuhai/output/review/highpoly-types/falper-sorgente/product-package/FALPER-WFB-product.ifc",
+    "bytes": 821139,
+    "sha256": "ec6029ad7a4a67449d5a9e6030b531dcf9e9ed8273843420415b289a8431cd57"
+  },
+  "scene_recipe": {
+    "path": "/Users/jiaxinchen/.codex/worktrees/3a80/2504 GBTB Yanlord Zhuhai/output/review/highpoly-types/falper-sorgente/product-package/scene-recipe.json",
+    "bytes": 94812,
+    "sha256": "59c503d28d5b9ac7a15c94cfbf637d07dbb1e0f89d1ee1fa63a886b3bf1bbb86"
+  },
+  "scene_context_guids": [
+    "3DNT0yqe1EMRpVglm_yCZ4",
+    "0WdsBKMo545Ryicomy6Mqg",
+    "1Yr_JdSGn8XOs804Vwoetk",
+    "2VVDWezmbEmQh$5mczGb4m",
+    "30YXVJrQjBEgTfH5xSTneR",
+    "2UhljZvyHBM9jCYFR8xcyl",
+    "1QkVJsQDf6keIyddhN5Dmc",
+    "2jK2g2$tb18Qu3jsAzqyh_",
+    "06wFwLoDD6ie5iCTnc_yad",
+    "3mlT3vP4P1MwwtT7Mb20tc",
+    "3oxgGk27D4pRhha6_X05df",
+    "1cudaM$BT1GAKD9EEg4nqS",
+    "0rwOcjvjn5WBdoq4bxiHSk",
+    "02JiVqnyTDXQ1GpfLPCpMl",
+    "11c$NwzxL9hASgCgwDxM$w",
+    "1Lj_LXp3z7tQDMYUGoTsFc",
+    "3L$xQZHiz7b8ws7de1jiZN",
+    "2uYGzJR3f1QO6LmO9Nq3Mf",
+    "0AN5MRpZ16dRCAg1l5TOyz",
+    "1To6gRjrf2nBU5GQuuD8FV",
+    "3xKBbA2CT9mfby2$MODnzM",
+    "3ARl_CqPrCWQrA6_$W073W",
+    "1UixnpnQb97wuNAGrTmMJd",
+    "3qo2s5gKPA$8hNQznuTTCf",
+    "0MVn0S2GP0IuDnXI2x_0wg",
+    "1Yf7cK9MTAoBRvfK3BluSI",
+    "3ZKyTiBc1ECxQi0UR8K1Ke",
+    "1mI2ClWgr6xwhxkjkIkFbV",
+    "0IlFpdzSbD_9sqRVW8SpPi",
+    "2vTSinfYHC$8prkGP7LD7X",
+    "0s2tcnZmP23Qpz4zXZ$Vd0",
+    "0mnFDiYfj6fxQBaWFizjUS",
+    "2_vcnNErPCixD2MSQiqhdi",
+    "2MZOWmnIX7KA3Wfnp2HxoF",
+    "0wbKH$_Qr2_A4hpKs0PLXw",
+    "1fAJA2jj59uhEyVVcR7EM7",
+    "1cmuG50mj3cggtIH5tZHic",
+    "02eX$Z5WrDuuxw1IlnwVss",
+    "2T92129$LE0Pve_Pv6F9Sx",
+    "0G_rbqpMHE28Txkf09jW3_",
+    "3ty1lUpQfD3fY1yf0Dxo53",
+    "05LSYayab3n9CDi01pw9K$",
+    "1yuWIPQdP3uuPJnZhwUAcx",
+    "1vyfckSCz8Fww8vTAKGqom",
+    "24AqfsAbz9a9uOPQhRX75e",
+    "3Iwtjib290RgoxOZXiXjY_",
+    "18eimQPoDDKg_QKo2uX5el",
+    "3IOZ8Z$$5DH9cGih34wZt$",
+    "0nNkP2k99BqQJilK0$E7fQ",
+    "1oa6zGXK1CeuV$1tRZM9Ob",
+    "3wW32FPxv45Ac3yhuS2W5U",
+    "0jLabLY_9C18Pu7tVszuIs",
+    "21rLg3DBL3dupCGoi2RsUf",
+    "1aQiUP$CH5uhQBoEX8NjwK",
+    "2amSzxJIb9ceddTJOslmHk",
+    "0$9uFhN9v7tw5pryslitkb",
+    "3VgMpCodXEA9ViTVPIQmcR",
+    "0hKdvAZkn1TejLgJhK_vDp",
+    "1AxFP7vkD30Q3ZdxDr_l4l",
+    "2NAJrrSQb2twKjQ2V6lQI6",
+    "322GWgwy5EpfjZYxs3LRoD",
+    "28l5JUTGT3r8kMzEzzSngn",
+    "0a6glteMX7_x6fU36rB7Xa",
+    "3uxUxvIOTAHOul$htmNuGA",
+    "3W8L7rd6vBx9Y_wSLIYlqb",
+    "3pq6QdkHHDZR3RR1nYivCC",
+    "21vcsFmEvC2xpOEhH31C0E",
+    "2Hzb2UxozCF9TjOK5nW1XC",
+    "1q9EfwGKLByPI32Mi7AhWS",
+    "3NM8wlQfDDFB3rAZF1Mq_N",
+    "1kB9zQpv94vO1NObylFPcP",
+    "3KxJ$jTjT69vr2qwa3swbL",
+    "34MraFd1nFsep2QMO2kY48",
+    "2IZwo0dYv0p8B0RhP1oOtT",
+    "0qZZv8B9b9SQk3mAPTXSfP",
+    "3s$BGbHSj8hxQSeUdUDGfx",
+    "3gksf1Sxz5TRfXh5l$12xr",
+    "3TV2zkQdH3QRCAFhe47WOL",
+    "3JyOUPuivAwvLvV8DSz6CD",
+    "0vMU_9TZXEV8GPr46AYxhu",
+    "122leYIbHFFBi0YE3uzZDV",
+    "3hKNxGFpT1NPjsqhFgHhOQ",
+    "24TAYXjcD4EQjzT1RbeRjW",
+    "0LbcMYbS508RMhWL3dk51Z",
+    "2KjLxctsH7ShdaODr66Wg0",
+    "2QL0HI22bBP9QJHhfY1YLK",
+    "0WeXy0Nt55NxHgOrArxZd8",
+    "3kCjg_sZ1EF85Nip_y67gy",
+    "1YQyOdKDnFiOaH$X4tK5dp",
+    "2QGNuB0B16IeBRoltmvWce",
+    "2D8TYZqFD9ou0OP0wZWxih",
+    "1qTZAO3FXD8uU5_b8nP56O",
+    "37ZsdMPsnFCwBzj_WFlAfy",
+    "3Ks3Ov9p5EJ93H8eLBmiyy",
+    "2XslZd4419P8dGGPeAflZX",
+    "3qz3zPw_r7nf0mYn_Jv805",
+    "26tBNOs75EH9eZKZJlkRH3",
+    "1haxNPS0P1FxP1VZiCTIFV",
+    "2WAa5VUzT7ROWsWFxg38yH",
+    "1AEziWa0DAR8TEFYF8unFF",
+    "1ZVH2UdTP3dRvnG0LRbYIR",
+    "1Jfv0e_IDCLRJN$vloEl97",
+    "3DDP4nbdn6AApndIK6kkR4",
+    "15OpJLVNT1KBzxIDjBV7yp",
+    "1NPW7kpY90ofCA3b1oDHTr",
+    "0ekISWRMjETQVsONKhC0oM",
+    "0rj$xpoALDGQ3T1Tw9NAOA",
+    "3q92bI3TT78eG2hJbura4B",
+    "1KEHQ8njvClveqqoC3Ygq$",
+    "2cAQkZskLDv8hZ_cW77VS1",
+    "0jhVMe5nn9b8xNJphVwucj",
+    "3I1CMx2brDHRAqSOCI6eq6",
+    "3tvnsnioX7PQZ7u8kENvQd",
+    "26z2GfGaTA$RfZRO_HdeCI",
+    "2OyR0O$o90F9hKvgkw30Em",
+    "27xkga6Qr2v8HW65geRw7i",
+    "2h_R7XgCnEihwQ9xO2qxEJ",
+    "1W_SysTb9CJQGS7TZtcqax",
+    "1GT_8LA1P1AQ20xisLLbMN",
+    "23tK4hWyjBMvcAx0XfRa09",
+    "2TMU7718r0mAuJUNlb2SYn",
+    "18Qhf59crDCAy$scVOCK92",
+    "3OVQygdDn17huGOgJJFTOY",
+    "3jha5L04zBjh0$pMl_tHLy",
+    "04rs0EDjn2EvxytEQSxWRB",
+    "2nUpG$tzj0vR6tg5N9FJJ_",
+    "2Ca2tGerPBj8kvUTjlUtDl",
+    "3pAfMJYxPBlwR30CstZ4kK",
+    "0nlHIdaVrV7xIKsYXraYCa",
+    "37DwA_fpXSARFOa60IfK8k",
+    "28axnJOc1KaeA2jTdv5tk4",
+    "1s0ElI6BnG6xHZgQ37OOHr",
+    "0LGnQmHPDT5P1L4FD30GWT",
+    "11VsxE48XUhxS_l7yPUfeN",
+    "3Q5pOfhDvQsfsYufTtPS8u",
+    "1zX6DiGXjV2PeHHkTz230u",
+    "04rQahsKnVWAQm005VLUaQ",
+    "18mq2JXA1GaOLupE0pkNjZ",
+    "12lp8aIu9LTeewHdYAmHs2",
+    "1fwAQpF8TIaxJWoTVaZPyU",
+    "3gUd_KnZLPiQfFIw6FQwN8",
+    "10Wm8ivdX7dAVfz4cV8l5Q",
+    "0YgqsahOH4FvZ_nLwl_Tlf",
+    "06GpMzzWj1XQobAhD35cgU",
+    "0WP_ZkBqnB2P0aAfYeeBF9",
+    "3Itc2u2Yz5d9C0mXWYxzY$",
+    "1v_uB54DzEbARv3GX9zvoY",
+    "2wueiwazb6xBf0SUqSVhTB",
+    "19lEsYZcTBBR2TBnN2QWv6",
+    "1cgYaMV$HEIQTGmbjnIe3j",
+    "2S3yKtNmb9ShDjnra4juRS",
+    "0xmmL9dVP4rhlwSfwPEU0D",
+    "0GVPxjL8j96u92n6m17Gnb",
+    "36ZX3QPyD7SvlXsDKMP8rY",
+    "245NU$zZL0d9tYTVwwBdk$",
+    "3jT4sCgpHC98VSIUdGUNYH",
+    "1YxMx6s0r3ZPPohkRKXWbl",
+    "1PrWPEGF52deATqDqovfvh",
+    "22JsDd6sHC$PPQKBNQOW0y",
+    "2XVxPKYhfB79rI5US7KTf3",
+    "1yCfq0IHT57uClZRdyfIiK",
+    "2TnJnAuDb3cOoTeFLK4HdD",
+    "0GVA0pu6f1gh1ddVc58IqT",
+    "1QViGm50D1TP6oyZyAwSTP",
+    "2qk0nafof6XRl4CYcn5yQ2",
+    "0SCRXea81EcvS5088$VF9k",
+    "1XMusZjHr3ox9YBUbJg9rv",
+    "2KrNi9gT90MupPWHCfJwcn",
+    "3Hu_Yj575AZ9mo4zIVCeEV",
+    "0lLJUrXuv0NvoVpmTH07ON",
+    "29N1WkcE1DMgvzDDD4hCtn",
+    "3$SiLlObL89vfb3X4Vct$_",
+    "2pNehS5uj5IhnlCwSOPYW6",
+    "0ZXn49sxb5x82rCoYqoXKq",
+    "3qgu$TepT0J8Yat7ZQ90Mf",
+    "2oHWzdjkr8X8Yt0Gd2e3RQ",
+    "1JVGu2xtb1ZhGElhvSmyd$",
+    "3k2aFe_p5Ah8HJEqWUBB7F",
+    "3ERXx822H9jOPo6CetKX9r",
+    "0DOeKdT3DE9f2LMR_x$G7q",
+    "2NKrigWuPDpupK6upmd9Dz",
+    "0_Z2u7PpD6YBNKxya8tJEG",
+    "0V0NtkKUf6e8cPnz9if4Rv",
+    "3XQ9jj4jfDG9Rg2EDD46a6",
+    "0S8zkx4QD5pOrOIATVrtId",
+    "2wRzC7tFj8ifz6bI$YLdEX",
+    "1_EX1UWfL8ShcGm5BI1UPc",
+    "04F4qmHTP7TOvbpiQ7gZBJ",
+    "3qtF1s43PBgeiIIRR7DBba",
+    "0faD6FNAT40OGcq7Rvm_OW",
+    "3EVE8lqaz1jeLbHne5O4Sa",
+    "1MkgtBdKX3UvuzU7PXlhDC",
+    "3C5$uQhr52FBB2yYZovxCU",
+    "1MhvaabjjDYvl9DUE8AD7q",
+    "1Rn79Gplf7gwfEamngx4os",
+    "1gSxUUTXL7y87dIHf$ZbJi",
+    "0BF_v4sJzAd82iwqnjr39d",
+    "2ALgYzh_f8HPzZ9WJEBwoT",
+    "0ai2GGtAb858ZQ8rgk5Moi",
+    "2FQeCPllj1lQSKesOcZ6gb",
+    "1VtlgAcvv5tgFQq214xt1X",
+    "1LvkybbzX3ogJudDFQ2PEr",
+    "2O2esK8Ez5u906$714eyPh",
+    "0WhqLsotv7M9F0Aiia8dj1",
+    "3Kii7FN5H7deUEEvpV01lO",
+    "3X5VY_8un1ru2RXNTTD2Th",
+    "032u35G4b48gGJPZSrsaqp",
+    "1aUqD0p_P2GhhQhY7m5ILX",
+    "0Rh0$eFG57rw9zS8mjpCdK",
+    "1WPOiANMXEufdVxm0kIswl",
+    "33IuE0PNf6wwF_s16J4MvV",
+    "3AzpGQNhr4FhCAFXPEkaJn",
+    "0_eLd9WVfFLvk6I8goe8it",
+    "2LCZDONiLBShgK9CpOImZJ",
+    "2iD0$qLLb7cu7T$dATAC4E",
+    "0mchShss58$fvULZmouuUH",
+    "2KV8sWa1DC9RDyHYIRPBOP",
+    "1QPmeve6fEIhNrBYMdD2sJ",
+    "2Zjq0wICPAYAr4RNJLeesH",
+    "3vRIKiKbL9nAvF_CZkYkxA",
+    "2qhynM3rf33AQqbI129k2v",
+    "1JMXCthV161Ay1zyyjMeYY",
+    "3EaO22qXv38wM47SaLX1Yk",
+    "3DC1GDi6j01O$a9IjXU81p",
+    "03OxzOyN12ff3jkuUtjJPD",
+    "0tM_AFFsLCsfwouf4rVzw9",
+    "0pXVcnUbz8VQurx0yCzZMi"
+  ],
+  "new_camera_scope": "Product surroundings within 2.2m square, original project coordinates",
+  "courseEvidence": {
+    "mode": "embedded-course-index",
+    "lesson": "085000",
+    "timestamps": [
+      "01:59 Create Drawing",
+      "02:13 SVG"
+    ],
+    "course_fact": "Drawing camera, scale, depth and filters govern regenerated SVG; validate persisted output.",
+    "raw_source_available": false,
+    "source": "research/bonsai-course/lessons/085000",
+    "source_sha256": "85287cd1d85ea280d6c37f8ec4c6e29c32c950f6950b6f5c31ee981f6d93d04c",
+    "screenshots": [
+      {
+        "timestamp": "01:59",
+        "path": "research/bonsai-course/lessons/085000/screenshots/085000-01m59s-create-drawing-button.png",
+        "sha256": "a86279d39cef0f85feb9c37d5f823556e41e1f6e1ebd1cc634e564c3ebfd24b4"
+      },
+      {
+        "timestamp": "02:13",
+        "path": "research/bonsai-course/lessons/085000/screenshots/085000-02m13s-svg-in-browser.png",
+        "sha256": "d559033d0259bd3cf3192b3ccbcb9b8bb8607d206c5e8c5b9e8a402d62771d62"
+      }
+    ],
+    "screen_observation_claimed": false
+  },
+  "temporary_project_directory": "/var/folders/rz/d8p6s4y50ws53rd150nm2s3r0000gn/T/falper-pure-package-scene-ankf662i",
+  "runtime_inputs": [
+    "/Users/jiaxinchen/.codex/worktrees/3a80/2504 GBTB Yanlord Zhuhai/output/review/highpoly-types/falper-sorgente/product-package/FALPER-WFB-product.ifc",
+    "/Users/jiaxinchen/.codex/worktrees/3a80/2504 GBTB Yanlord Zhuhai/output/review/highpoly-types/falper-sorgente/product-package/scene-recipe.json",
+    "/Users/jiaxinchen/.codex/worktrees/3a80/2504 GBTB Yanlord Zhuhai/2504 GBTB Yanlord Zhuhai.ifc"
+  ],
+  "legacy_ifc_used_for_runtime": false,
+  "provider": {
+    "version": [
+      1,
+      1,
+      0
+    ],
+    "port": 9893,
+    "blender": "4.5.3 LTS",
+    "ifcopenshell": "0.8.4",
+    "bridge_source": {
+      "path": "/Users/jiaxinchen/Library/Application Support/Blender/4.5/scripts/addons/bonsai_bridge.py",
+      "bytes": 80520,
+      "sha256": "5902c69c146aff5f53d627b6151fdc53725433a044b96c199f7720a3dbccbd75"
+    }
+  },
+  "product_bonsai_save_reload": {
+    "saved": true,
+    "output_path": "/Users/jiaxinchen/.codex/worktrees/3a80/2504 GBTB Yanlord Zhuhai/output/review/highpoly-types/falper-sorgente/product-package/FALPER-WFB-product.ifc",
+    "in_place": false,
+    "method": "bonsai.bim.export_ifc.IfcExporter",
+    "reloaded": true
+  },
+  "pure_saved_reloaded": true,
+  "attachment": {
+    "physical_element_count_before": 714,
+    "physical_element_count_after": 714,
+    "target_instances": 1,
+    "target_body_copied": false,
+    "target_body_unchanged": true,
+    "target_placement_error_project_units": 0,
+    "linework_geometry_source": "pure_product_ifc_representations"
+  },
+  "second_attachment_created_entities": 0,
+  "formal_sha256_after": "7a50b87e8f48a7c2bfbaa9f1dabdfca7155fa684b2325c66aa1ae15c8ab0a25c",
+  "resolved_attempt_errors": [
+    "Traceback (most recent call last):\n  File \"/Users/jiaxinchen/.codex/worktrees/3a80/2504 GBTB Yanlord Zhuhai/output/review/highpoly-types/falper-sorgente/product-package/migrate_falper.py\", line 219, in scene\n    props=tool.Drawing.get_document_props()\n    ^^^^^^^^^^^^^^^\n  File \"/Users/jiaxinchen/.codex/worktrees/3a80/2504 GBTB Yanlord Zhuhai/pipeline/scripts/review_product_package.py\", line 26, in record\n    return {\"path\": str(path), \"bytes\": path.stat().st_size, \"sha256\": sha256(path)}\n                                        ^^^^^^^^^^^\n  File \"/Applications/Blender.app/Contents/Resources/4.5/python/lib/python3.11/pathlib.py\", line 1013, in stat\n    return os.stat(self, follow_symlinks=follow_symlinks)\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nFileNotFoundError: [Errno 2] No such file or directory: '/Users/jiaxinchen/.codex/worktrees/3a80/2504 GBTB Yanlord Zhuhai/output/review/highpoly-types/falper-sorgente/product-package/FALPER-WFB-SCENE-PLAN.svg'\n"
+  ],
+  "previous_temporary_attempts": [
+    "/var/folders/rz/d8p6s4y50ws53rd150nm2s3r0000gn/T/falper-pure-package-scene-8_f7l9r2"
+  ],
+  "scene_outputs": [
+    {
+      "view": "plan",
+      "svg": {
+        "path": "/Users/jiaxinchen/.codex/worktrees/3a80/2504 GBTB Yanlord Zhuhai/output/review/highpoly-types/falper-sorgente/product-package/FALPER-WFB-SCENE-PLAN.svg",
+        "bytes": 640776,
+        "sha256": "e38a14dc7daa4882966a456ced7987a771d5f2a149757f003681993afea56033"
+      },
+      "raw_bonsai_svg": {
+        "path": "/Users/jiaxinchen/.codex/worktrees/3a80/2504 GBTB Yanlord Zhuhai/output/review/highpoly-types/falper-sorgente/product-package/FALPER-WFB-SCENE-PLAN.svg",
+        "bytes": 486683,
+        "sha256": "cd8e13e1f7c84080b45cb6fde899662b007e0147355efa920f2f257f58acf7f0"
+      },
+      "styles": {
+        "blue_geometry": 1280,
+        "grey_context_geometry": 1513,
+        "style_only": true
+      },
+      "operator": "bpy.ops.bim.create_drawing",
+      "result": [
+        "FINISHED"
+      ]
+    },
+    {
+      "view": "front",
+      "svg": {
+        "path": "/Users/jiaxinchen/.codex/worktrees/3a80/2504 GBTB Yanlord Zhuhai/output/review/highpoly-types/falper-sorgente/product-package/FALPER-WFB-SCENE-FRONT.svg",
+        "bytes": 1464205,
+        "sha256": "72d362d1fb0ff65f927b6b2f1ff202c2f42125a4f77eac338b27c22fab0bbe48"
+      },
+      "raw_bonsai_svg": {
+        "path": "/Users/jiaxinchen/.codex/worktrees/3a80/2504 GBTB Yanlord Zhuhai/output/review/highpoly-types/falper-sorgente/product-package/FALPER-WFB-SCENE-FRONT.svg",
+        "bytes": 1032607,
+        "sha256": "074bc15323367724dc43c7cf2661b16964590b0eb463948b14b2d0c669b87ade"
+      },
+      "styles": {
+        "blue_geometry": 1538,
+        "grey_context_geometry": 6227,
+        "style_only": true
+      },
+      "operator": "bpy.ops.bim.create_drawing",
+      "result": [
+        "FINISHED"
+      ]
+    },
+    {
+      "view": "side",
+      "svg": {
+        "path": "/Users/jiaxinchen/.codex/worktrees/3a80/2504 GBTB Yanlord Zhuhai/output/review/highpoly-types/falper-sorgente/product-package/FALPER-WFB-SCENE-SIDE.svg",
+        "bytes": 1093684,
+        "sha256": "47f3fe4e768a775fef3ed4b0a8a8fc09ba676f2d684da2e0a0249588bddf7e13"
+      },
+      "raw_bonsai_svg": {
+        "path": "/Users/jiaxinchen/.codex/worktrees/3a80/2504 GBTB Yanlord Zhuhai/output/review/highpoly-types/falper-sorgente/product-package/FALPER-WFB-SCENE-SIDE.svg",
+        "bytes": 785017,
+        "sha256": "ac1ec3afd4b002fe20e90371b539850a3f239516aff359ce6562d0339e5a8838"
+      },
+      "styles": {
+        "blue_geometry": 1538,
+        "grey_context_geometry": 4031,
+        "style_only": true
+      },
+      "operator": "bpy.ops.bim.create_drawing",
+      "result": [
+        "FINISHED"
+      ]
+    }
+  ],
+  "temporary_bonsai_save_reload": {
+    "saved": true,
+    "output_path": "/var/folders/rz/d8p6s4y50ws53rd150nm2s3r0000gn/T/falper-pure-package-scene-ankf662i/scene.ifc",
+    "in_place": false,
+    "method": "bonsai.bim.export_ifc.IfcExporter",
+    "reloaded": true
+  },
+  "scene_saved_reloaded": true,
+  "all_formal_bodies_unchanged": true,
+  "all_formal_placements_unchanged": true,
+  "formal_physical_elements": 714,
+  "target_instances": 1,
+  "temporary_project": {
+    "path": "/var/folders/rz/d8p6s4y50ws53rd150nm2s3r0000gn/T/falper-pure-package-scene-ankf662i/scene.ifc",
+    "bytes": 87950606,
+    "sha256": "c8e865970ab94411acc6f28e178d5ea35b4f3caa6323e452a93e4788215f35dd"
+  },
+  "packaged_source_evidence": [
+    {
+      "source": {
+        "path": "/Users/jiaxinchen/.codex/worktrees/3a80/2504 GBTB Yanlord Zhuhai/drawings/evidence/FALPER-official-Sorgente-WFB-2D.dwg",
+        "bytes": 138579,
+        "sha256": "4b3d8900f8ae249d7e9634339f3529d7d38a940dc2d0c909a7e90e31d3946831"
+      },
+      "packaged": {
+        "path": "/Users/jiaxinchen/.codex/worktrees/3a80/2504 GBTB Yanlord Zhuhai/output/review/highpoly-types/falper-sorgente/product-package/source-evidence/FALPER-official-Sorgente-WFB-2D.dwg",
+        "bytes": 138579,
+        "sha256": "4b3d8900f8ae249d7e9634339f3529d7d38a940dc2d0c909a7e90e31d3946831"
+      }
+    },
+    {
+      "source": {
+        "path": "/Users/jiaxinchen/.codex/worktrees/3a80/2504 GBTB Yanlord Zhuhai/pipeline/decisions/falper-sorgente-drawing-approval.json",
+        "bytes": 738,
+        "sha256": "04f3c33cf2420fb38d0fde8e218633e407ce945d8af0fbc409e103a4d3a4bbce"
+      },
+      "packaged": {
+        "path": "/Users/jiaxinchen/.codex/worktrees/3a80/2504 GBTB Yanlord Zhuhai/output/review/highpoly-types/falper-sorgente/product-package/source-evidence/falper-sorgente-drawing-approval.json",
+        "bytes": 738,
+        "sha256": "04f3c33cf2420fb38d0fde8e218633e407ce945d8af0fbc409e103a4d3a4bbce"
+      }
+    },
+    {
+      "source": {
+        "path": "/Users/jiaxinchen/.codex/worktrees/3a80/2504 GBTB Yanlord Zhuhai/pipeline/decisions/falper-sorgente-official-dwg-linework.json",
+        "bytes": 499968,
+        "sha256": "2c66da0f96e123f8152afede2ecea0384965361c258320860c8da635f7a224ca"
+      },
+      "packaged": {
+        "path": "/Users/jiaxinchen/.codex/worktrees/3a80/2504 GBTB Yanlord Zhuhai/output/review/highpoly-types/falper-sorgente/product-package/source-evidence/falper-sorgente-official-dwg-linework.json",
+        "bytes": 499968,
+        "sha256": "2c66da0f96e123f8152afede2ecea0384965361c258320860c8da635f7a224ca"
+      }
+    },
+    {
+      "source": {
+        "path": "/Users/jiaxinchen/.codex/worktrees/3a80/2504 GBTB Yanlord Zhuhai/output/review/highpoly-types/falper-sorgente/derived-ifc-corrected-manifest.json",
+        "bytes": 2275,
+        "sha256": "584c5a9ad584246c79254b2761f3c06fa7770292accc3df9cd58e5d3bf240508"
+      },
+      "packaged": {
+        "path": "/Users/jiaxinchen/.codex/worktrees/3a80/2504 GBTB Yanlord Zhuhai/output/review/highpoly-types/falper-sorgente/product-package/source-evidence/derived-ifc-corrected-manifest.json",
+        "bytes": 2275,
+        "sha256": "584c5a9ad584246c79254b2761f3c06fa7770292accc3df9cd58e5d3bf240508"
+      }
+    },
+    {
+      "source": {
+        "path": "/Users/jiaxinchen/.codex/worktrees/3a80/2504 GBTB Yanlord Zhuhai/output/review/highpoly-types/falper-sorgente/INVALIDATED-proxy-contaminated.json",
+        "bytes": 1200,
+        "sha256": "f2dd2053b9c2486a1b63e870c7c82e970812ba68de0b612f38f085445319ce70"
+      },
+      "packaged": {
+        "path": "/Users/jiaxinchen/.codex/worktrees/3a80/2504 GBTB Yanlord Zhuhai/output/review/highpoly-types/falper-sorgente/product-package/source-evidence/INVALIDATED-proxy-contaminated.json",
+        "bytes": 1200,
+        "sha256": "f2dd2053b9c2486a1b63e870c7c82e970812ba68de0b612f38f085445319ce70"
+      }
+    }
+  ],
+  "independent_validation": {
+    "schema_errors": 0,
+    "protected_files_unchanged": true,
+    "approved_representation_projection": [
+      {
+        "view": "plan",
+        "svg": {
+          "path": "/Users/jiaxinchen/.codex/worktrees/3a80/2504 GBTB Yanlord Zhuhai/output/review/highpoly-types/falper-sorgente/product-package/FALPER-WFB-SCENE-PLAN.svg",
+          "bytes": 640776,
+          "sha256": "e38a14dc7daa4882966a456ced7987a771d5f2a149757f003681993afea56033"
+        },
+        "preview": {
+          "path": "/Users/jiaxinchen/.codex/worktrees/3a80/2504 GBTB Yanlord Zhuhai/output/review/highpoly-types/falper-sorgente/product-package/FALPER-WFB-SCENE-PLAN.png",
+          "bytes": 53132,
+          "sha256": "0b01c92c01d40d11cb8cca9d6d40c22425aeb087d3b9b69aaefa9e7143110616"
+        },
+        "annotation_line_count": 1280,
+        "line_registration_error_world_mm": 0.0001541987144237627,
+        "camera_matrix_project_units": [
+          [
+            1.0,
+            0.0,
+            0.0,
+            -550.000011920929
+          ],
+          [
+            0.0,
+            1.0,
+            0.0,
+            349.999994039536
+          ],
+          [
+            0.0,
+            0.0,
+            1.0,
+            1200.00004768372
+          ],
+          [
+            0.0,
+            0.0,
+            0.0,
+            1.0
+          ]
+        ],
+        "camera_world_positive_z": [
+          0.0,
+          0.0,
+          1.0
+        ]
+      },
+      {
+        "view": "front",
+        "svg": {
+          "path": "/Users/jiaxinchen/.codex/worktrees/3a80/2504 GBTB Yanlord Zhuhai/output/review/highpoly-types/falper-sorgente/product-package/FALPER-WFB-SCENE-FRONT.svg",
+          "bytes": 1464205,
+          "sha256": "72d362d1fb0ff65f927b6b2f1ff202c2f42125a4f77eac338b27c22fab0bbe48"
+        },
+        "preview": {
+          "path": "/Users/jiaxinchen/.codex/worktrees/3a80/2504 GBTB Yanlord Zhuhai/output/review/highpoly-types/falper-sorgente/product-package/FALPER-WFB-SCENE-FRONT.png",
+          "bytes": 30232,
+          "sha256": "bdadda7422127a929a0a3c6333b224bd022249a78c0dd21589b21a895485492a"
+        },
+        "annotation_line_count": 1538,
+        "line_registration_error_world_mm": 0.00029964587590810106,
+        "camera_matrix_project_units": [
+          [
+            1.0,
+            0.0,
+            0.0,
+            -550.000011920929
+          ],
+          [
+            0.0,
+            7.549790126404311e-08,
+            -0.9999999999999972,
+            -1100.00002384186
+          ],
+          [
+            0.0,
+            0.9999999999999972,
+            7.549790126404311e-08,
+            1200.00004768372
+          ],
+          [
+            0.0,
+            0.0,
+            0.0,
+            1.0
+          ]
+        ],
+        "camera_world_positive_z": [
+          0.0,
+          -0.9999999999999972,
+          7.549790126404311e-08
+        ]
+      },
+      {
+        "view": "side",
+        "svg": {
+          "path": "/Users/jiaxinchen/.codex/worktrees/3a80/2504 GBTB Yanlord Zhuhai/output/review/highpoly-types/falper-sorgente/product-package/FALPER-WFB-SCENE-SIDE.svg",
+          "bytes": 1093684,
+          "sha256": "47f3fe4e768a775fef3ed4b0a8a8fc09ba676f2d684da2e0a0249588bddf7e13"
+        },
+        "preview": {
+          "path": "/Users/jiaxinchen/.codex/worktrees/3a80/2504 GBTB Yanlord Zhuhai/output/review/highpoly-types/falper-sorgente/product-package/FALPER-WFB-SCENE-SIDE.png",
+          "bytes": 34670,
+          "sha256": "215c7c15b53612d5856d59b05520c13006287de5d7497e9400f8ec7fe0fcb805"
+        },
+        "annotation_line_count": 1538,
+        "line_registration_error_world_mm": 0.00029424939645093177,
+        "camera_matrix_project_units": [
+          [
+            -4.371138828673791e-08,
+            4.371138828673777e-08,
+            0.9999999999999981,
+            899.999976158142
+          ],
+          [
+            0.9999999999999991,
+            1.910685465953964e-15,
+            4.371138828673781e-08,
+            349.999994039536
+          ],
+          [
+            0.0,
+            0.9999999999999991,
+            -4.371138828673781e-08,
+            1200.00004768372
+          ],
+          [
+            0.0,
+            0.0,
+            0.0,
+            1.0
+          ]
+        ],
+        "camera_world_positive_z": [
+          0.9999999999999981,
+          4.371138828673781e-08,
+          -4.371138828673781e-08
+        ]
+      }
+    ]
+  },
+  "provider_commit": "b0e67b1fb14ef5af93c4f747cb554b38511a844e",
+  "provider_bridge_sha256": "5902c69c146aff5f53d627b6151fdc53725433a044b96c199f7720a3dbccbd75",
+  "status": "complete",
+  "validation_verdict": "pass",
+  "visual": {
+    "status": "pass",
+    "checked_by": [
+      "migration_agent",
+      "main_agent"
+    ],
+    "checks": [
+      "Three PNGs show complete official blue product lines and readable wall/floor/adjacent component context.",
+      "No historical Drawing symbols, grid references, IfcSpace shapes or embedded raster images remain.",
+      "Technical review does not constitute user scene acceptance."
+    ],
+    "images": [
+      {
+        "path": "/Users/jiaxinchen/.codex/worktrees/3a80/2504 GBTB Yanlord Zhuhai/output/review/highpoly-types/falper-sorgente/product-package/FALPER-WFB-SCENE-PLAN.png",
+        "bytes": 53132,
+        "sha256": "0b01c92c01d40d11cb8cca9d6d40c22425aeb087d3b9b69aaefa9e7143110616"
+      },
+      {
+        "path": "/Users/jiaxinchen/.codex/worktrees/3a80/2504 GBTB Yanlord Zhuhai/output/review/highpoly-types/falper-sorgente/product-package/FALPER-WFB-SCENE-FRONT.png",
+        "bytes": 30232,
+        "sha256": "bdadda7422127a929a0a3c6333b224bd022249a78c0dd21589b21a895485492a"
+      },
+      {
+        "path": "/Users/jiaxinchen/.codex/worktrees/3a80/2504 GBTB Yanlord Zhuhai/output/review/highpoly-types/falper-sorgente/product-package/FALPER-WFB-SCENE-SIDE.png",
+        "bytes": 34670,
+        "sha256": "215c7c15b53612d5856d59b05520c13006287de5d7497e9400f8ec7fe0fcb805"
+      }
+    ]
+  },
+  "fresh_session": {
+    "pid": 80741,
+    "ifc": "/Users/jiaxinchen/.codex/worktrees/3a80/2504 GBTB Yanlord Zhuhai/output/review/highpoly-types/falper-sorgente/product-package/FALPER-WFB-product.ifc",
+    "scene_name": "🔍 逐个审核高模图纸候选",
+    "blend_saved": false,
+    "has_blend_warning": false,
+    "pure_state": {
+      "body": "3881a62e55a8099bbf86f916234859f3c899a830f56bd1da945eed4e84f5ace3",
+      "representations": "f3983904df4ecebce04f3338e11b864242b10bcc198d139f219263a175e4a95a",
+      "placement": [
+        [
+          1.0,
+          0.0,
+          0.0,
+          -549.821317195892
+        ],
+        [
+          0.0,
+          1.0,
+          0.0,
+          350.0
+        ],
+        [
+          0.0,
+          0.0,
+          1.0,
+          18.0767327547073
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "physical_elements": [
+        "350tdaubr8QP3Cu2YMQZIN"
+      ],
+      "annotation_count": 0,
+      "group_count": 0,
+      "drawing_pset_count": 0,
+      "unit_scale_to_m": 0.001
+    },
+    "visible_meshes": [
+      "IfcSanitaryTerminal/SanitaryTerminal"
+    ]
+  },
+  "worktree_split": {
+    "protected_staged_baseline_modified": false,
+    "new_unstaged_scope": "/Users/jiaxinchen/.codex/worktrees/3a80/2504 GBTB Yanlord Zhuhai/output/review/highpoly-types/falper-sorgente/product-package",
+    "overlapping_tracked_files": [],
+    "stage_commit_stash_performed": false
+  },
+  "reference_filter_policy": "Explicitly exclude historical Drawing, Annotation, Grid and Storey references; retain target LINEWORK and physical context."
+}

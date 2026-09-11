@@ -1,0 +1,1850 @@
+{
+  "schema_version": 1,
+  "profile_key": "miamisoft-e09",
+  "manufacturer": "Baxter",
+  "family": "Miami Soft",
+  "model_code": "E09",
+  "variant": "dx/r - right terminal module - 130 x 108 h70/80 cm",
+  "source_kind": "native_dwg",
+  "source_geometry_kind": "native_dwg_2d_linework",
+  "official_product_page": "https://www.baxter.it/gb/prodotti/miami-soft-divani-e-poltrone",
+  "official_api_url": "https://www.baxter.it/api/catalog/get_pdp_drawings?baxterId=MIAMSO&outdoor=false&indoor=true&open_air=false&settore=divani-e-poltrone",
+  "official_download_url": "https://dam.baxter.it/asset/b9c9485c-9716-422d-9c1f-7851c7bc9530/Baxter_MiamiSoft_Sofa_2D_3D.zip",
+  "restricted_asset_name": "Baxter_MiamiSoft_Sofa_2D_3D",
+  "known_catalog_asset_alias": "Baxter_MiamiSoft_divano_2D_3D",
+  "restricted_asset_database_id": "B9C9485C-9716-422D-9C1F7851C7BC9530",
+  "source_archive": "output/review/highpoly-types/miamisoft-e09/official-source/official-download/Baxter_MiamiSoft_Sofa_2D_3D.zip",
+  "source_archive_sha256": "f422e836ed7d666616340d696af93002fac6c9deff5c9e4a714ea9b8e1cbafd8",
+  "source_archive_inventory": "output/review/highpoly-types/miamisoft-e09/official-source/official-download/archive-inventory.json",
+  "source_archive_inventory_sha256": "9545530fe9c322fa02dd8ddc6643d17b6c77b4990f49943e95c83170446cb291",
+  "source_dwg": "output/review/highpoly-types/miamisoft-e09/official-source/official-download/Miami Soft_Divano_Abaco.dwg",
+  "source_dwg_sha256": "efc3315feed0a2dac8938aebbd7336856dabba6721395e4520783c39ba0cc51a",
+  "source_dwg_format": "AutoCAD 2018/2019/2020 DWG",
+  "autocad_source_screenshots": [
+    "output/review/highpoly-types/miamisoft-e09/official-source/autocad-miami-soft-e09-three-view.png",
+    "output/review/highpoly-types/miamisoft-e09/official-source/autocad-miami-soft-full-modelspace.png"
+  ],
+  "autocad_source_screenshot_sha256": {
+    "e09_three_view": "6d36293a9b7e75f4c77afe176dbeb194304489dc0dcfbd84caf767b5de1a85a4",
+    "full_modelspace": "7a9310390275f579ddfba8c3913a9a16d93743d088d2cd368a69b723488b4ed2"
+  },
+  "mechanical_extraction": {
+    "converter": "LibreDWG dwg2dxf",
+    "reader": "ezdxf 1.4.4",
+    "curve_flattening_distance_mm": 0.5,
+    "selection_method": "entity-centre inside exact E09 view rectangles after AutoCAD visual localization",
+    "geometry_layers_included": [
+      "_ARREDO",
+      "_CUSCINO SEDUTA",
+      "_PIEDINI",
+      "_RULLO"
+    ],
+    "annotation_layers_excluded": [
+      "_QUOTE",
+      "TESTO",
+      "LINEA"
+    ],
+    "view_selection_boxes_dwg_mm": {
+      "plan": [
+        13700.0,
+        25000.0,
+        15900.0,
+        27400.0
+      ],
+      "front": [
+        13700.0,
+        27800.0,
+        15900.0,
+        29200.0
+      ],
+      "side": [
+        11500.0,
+        27800.0,
+        13700.0,
+        29200.0
+      ]
+    },
+    "view_path_counts": {
+      "plan": 64,
+      "front": 130,
+      "side": 85
+    },
+    "view_bounds_dwg_mm": {
+      "plan": {
+        "minimum": [
+          14114.291725,
+          26058.856192
+        ],
+        "maximum": [
+          15413.949714,
+          27135.355155
+        ],
+        "size": [
+          1299.657989,
+          1076.498963
+        ],
+        "centre": [
+          14764.120719,
+          26597.105674
+        ]
+      },
+      "front": {
+        "minimum": [
+          14115.358033,
+          28100.266624
+        ],
+        "maximum": [
+          15413.949714,
+          28900.266624
+        ],
+        "size": [
+          1298.591681,
+          800.0
+        ],
+        "centre": [
+          14764.653873,
+          28500.266624
+        ]
+      },
+      "side": {
+        "minimum": [
+          11912.193542,
+          28100.266624
+        ],
+        "maximum": [
+          13015.419199,
+          28900.264142
+        ],
+        "size": [
+          1103.225657,
+          799.997518
+        ],
+        "centre": [
+          12463.806371,
+          28500.265383
+        ]
+      }
+    },
+    "per_path_source_entity_records": {
+      "plan": [
+        {
+          "source_entity_type": "INSERT",
+          "source_entity_handle": "FF89",
+          "source_layer": "_ARREDO"
+        },
+        {
+          "source_entity_type": "INSERT",
+          "source_entity_handle": "FF89",
+          "source_layer": "_ARREDO"
+        },
+        {
+          "source_entity_type": "INSERT",
+          "source_entity_handle": "FF89",
+          "source_layer": "_ARREDO"
+        },
+        {
+          "source_entity_type": "INSERT",
+          "source_entity_handle": "FF89",
+          "source_layer": "_ARREDO"
+        },
+        {
+          "source_entity_type": "INSERT",
+          "source_entity_handle": "FF89",
+          "source_layer": "_ARREDO"
+        },
+        {
+          "source_entity_type": "INSERT",
+          "source_entity_handle": "FF89",
+          "source_layer": "_ARREDO"
+        },
+        {
+          "source_entity_type": "INSERT",
+          "source_entity_handle": "FF89",
+          "source_layer": "_ARREDO"
+        },
+        {
+          "source_entity_type": "INSERT",
+          "source_entity_handle": "FF89",
+          "source_layer": "_ARREDO"
+        },
+        {
+          "source_entity_type": "INSERT",
+          "source_entity_handle": "FF8A",
+          "source_layer": "_ARREDO"
+        },
+        {
+          "source_entity_type": "INSERT",
+          "source_entity_handle": "FF8A",
+          "source_layer": "_ARREDO"
+        },
+        {
+          "source_entity_type": "INSERT",
+          "source_entity_handle": "FF8A",
+          "source_layer": "_ARREDO"
+        },
+        {
+          "source_entity_type": "INSERT",
+          "source_entity_handle": "FF8A",
+          "source_layer": "_ARREDO"
+        },
+        {
+          "source_entity_type": "INSERT",
+          "source_entity_handle": "FF8A",
+          "source_layer": "_ARREDO"
+        },
+        {
+          "source_entity_type": "INSERT",
+          "source_entity_handle": "FF8A",
+          "source_layer": "_ARREDO"
+        },
+        {
+          "source_entity_type": "INSERT",
+          "source_entity_handle": "FF8A",
+          "source_layer": "_ARREDO"
+        },
+        {
+          "source_entity_type": "INSERT",
+          "source_entity_handle": "FF8A",
+          "source_layer": "_ARREDO"
+        },
+        {
+          "source_entity_type": "INSERT",
+          "source_entity_handle": "FF8A",
+          "source_layer": "_ARREDO"
+        },
+        {
+          "source_entity_type": "INSERT",
+          "source_entity_handle": "FF8A",
+          "source_layer": "_ARREDO"
+        },
+        {
+          "source_entity_type": "INSERT",
+          "source_entity_handle": "FF8A",
+          "source_layer": "_ARREDO"
+        },
+        {
+          "source_entity_type": "INSERT",
+          "source_entity_handle": "FF8A",
+          "source_layer": "_ARREDO"
+        },
+        {
+          "source_entity_type": "INSERT",
+          "source_entity_handle": "FF8A",
+          "source_layer": "_ARREDO"
+        },
+        {
+          "source_entity_type": "INSERT",
+          "source_entity_handle": "FF8A",
+          "source_layer": "_ARREDO"
+        },
+        {
+          "source_entity_type": "INSERT",
+          "source_entity_handle": "FF8A",
+          "source_layer": "_ARREDO"
+        },
+        {
+          "source_entity_type": "INSERT",
+          "source_entity_handle": "FF8A",
+          "source_layer": "_ARREDO"
+        },
+        {
+          "source_entity_type": "INSERT",
+          "source_entity_handle": "FF8A",
+          "source_layer": "_ARREDO"
+        },
+        {
+          "source_entity_type": "INSERT",
+          "source_entity_handle": "FF8A",
+          "source_layer": "_ARREDO"
+        },
+        {
+          "source_entity_type": "INSERT",
+          "source_entity_handle": "FF8A",
+          "source_layer": "_ARREDO"
+        },
+        {
+          "source_entity_type": "INSERT",
+          "source_entity_handle": "FF8A",
+          "source_layer": "_ARREDO"
+        },
+        {
+          "source_entity_type": "INSERT",
+          "source_entity_handle": "FF8A",
+          "source_layer": "_ARREDO"
+        },
+        {
+          "source_entity_type": "INSERT",
+          "source_entity_handle": "FF8A",
+          "source_layer": "_ARREDO"
+        },
+        {
+          "source_entity_type": "INSERT",
+          "source_entity_handle": "FF8A",
+          "source_layer": "_ARREDO"
+        },
+        {
+          "source_entity_type": "INSERT",
+          "source_entity_handle": "FF8A",
+          "source_layer": "_ARREDO"
+        },
+        {
+          "source_entity_type": "INSERT",
+          "source_entity_handle": "FF8A",
+          "source_layer": "_ARREDO"
+        },
+        {
+          "source_entity_type": "INSERT",
+          "source_entity_handle": "FF8A",
+          "source_layer": "_ARREDO"
+        },
+        {
+          "source_entity_type": "INSERT",
+          "source_entity_handle": "FF8A",
+          "source_layer": "_ARREDO"
+        },
+        {
+          "source_entity_type": "INSERT",
+          "source_entity_handle": "FF8A",
+          "source_layer": "_ARREDO"
+        },
+        {
+          "source_entity_type": "INSERT",
+          "source_entity_handle": "FF8A",
+          "source_layer": "_ARREDO"
+        },
+        {
+          "source_entity_type": "INSERT",
+          "source_entity_handle": "FF8A",
+          "source_layer": "_ARREDO"
+        },
+        {
+          "source_entity_type": "INSERT",
+          "source_entity_handle": "FF8A",
+          "source_layer": "_ARREDO"
+        },
+        {
+          "source_entity_type": "INSERT",
+          "source_entity_handle": "FF8A",
+          "source_layer": "_ARREDO"
+        },
+        {
+          "source_entity_type": "INSERT",
+          "source_entity_handle": "FF8A",
+          "source_layer": "_ARREDO"
+        },
+        {
+          "source_entity_type": "INSERT",
+          "source_entity_handle": "FF8A",
+          "source_layer": "_ARREDO"
+        },
+        {
+          "source_entity_type": "INSERT",
+          "source_entity_handle": "FF8A",
+          "source_layer": "_ARREDO"
+        },
+        {
+          "source_entity_type": "INSERT",
+          "source_entity_handle": "FF8A",
+          "source_layer": "_ARREDO"
+        },
+        {
+          "source_entity_type": "INSERT",
+          "source_entity_handle": "FF8A",
+          "source_layer": "_ARREDO"
+        },
+        {
+          "source_entity_type": "INSERT",
+          "source_entity_handle": "FF8A",
+          "source_layer": "_ARREDO"
+        },
+        {
+          "source_entity_type": "INSERT",
+          "source_entity_handle": "FF8A",
+          "source_layer": "_ARREDO"
+        },
+        {
+          "source_entity_type": "INSERT",
+          "source_entity_handle": "FF8A",
+          "source_layer": "_ARREDO"
+        },
+        {
+          "source_entity_type": "INSERT",
+          "source_entity_handle": "FF8A",
+          "source_layer": "_ARREDO"
+        },
+        {
+          "source_entity_type": "INSERT",
+          "source_entity_handle": "FF8A",
+          "source_layer": "_ARREDO"
+        },
+        {
+          "source_entity_type": "INSERT",
+          "source_entity_handle": "FF8A",
+          "source_layer": "_ARREDO"
+        },
+        {
+          "source_entity_type": "INSERT",
+          "source_entity_handle": "FF8A",
+          "source_layer": "_ARREDO"
+        },
+        {
+          "source_entity_type": "INSERT",
+          "source_entity_handle": "FF8A",
+          "source_layer": "_ARREDO"
+        },
+        {
+          "source_entity_type": "INSERT",
+          "source_entity_handle": "FF8A",
+          "source_layer": "_ARREDO"
+        },
+        {
+          "source_entity_type": "INSERT",
+          "source_entity_handle": "FF8A",
+          "source_layer": "_ARREDO"
+        },
+        {
+          "source_entity_type": "INSERT",
+          "source_entity_handle": "FF8A",
+          "source_layer": "_ARREDO"
+        },
+        {
+          "source_entity_type": "INSERT",
+          "source_entity_handle": "FF8A",
+          "source_layer": "_ARREDO"
+        },
+        {
+          "source_entity_type": "INSERT",
+          "source_entity_handle": "FF8A",
+          "source_layer": "_ARREDO"
+        },
+        {
+          "source_entity_type": "INSERT",
+          "source_entity_handle": "FF8A",
+          "source_layer": "_ARREDO"
+        },
+        {
+          "source_entity_type": "INSERT",
+          "source_entity_handle": "FF8A",
+          "source_layer": "_ARREDO"
+        },
+        {
+          "source_entity_type": "INSERT",
+          "source_entity_handle": "FF8A",
+          "source_layer": "_ARREDO"
+        },
+        {
+          "source_entity_type": "INSERT",
+          "source_entity_handle": "FF8A",
+          "source_layer": "_ARREDO"
+        },
+        {
+          "source_entity_type": "INSERT",
+          "source_entity_handle": "FF8A",
+          "source_layer": "_ARREDO"
+        },
+        {
+          "source_entity_type": "LWPOLYLINE",
+          "source_entity_handle": "11374",
+          "source_layer": "_ARREDO"
+        }
+      ],
+      "front": [
+        {
+          "source_entity_type": "LINE",
+          "source_entity_handle": "10818",
+          "source_layer": "_ARREDO"
+        },
+        {
+          "source_entity_type": "LINE",
+          "source_entity_handle": "10819",
+          "source_layer": "_ARREDO"
+        },
+        {
+          "source_entity_type": "LINE",
+          "source_entity_handle": "1081A",
+          "source_layer": "_ARREDO"
+        },
+        {
+          "source_entity_type": "LINE",
+          "source_entity_handle": "1081B",
+          "source_layer": "_ARREDO"
+        },
+        {
+          "source_entity_type": "LINE",
+          "source_entity_handle": "1081C",
+          "source_layer": "_ARREDO"
+        },
+        {
+          "source_entity_type": "LINE",
+          "source_entity_handle": "1081D",
+          "source_layer": "_ARREDO"
+        },
+        {
+          "source_entity_type": "LINE",
+          "source_entity_handle": "1081E",
+          "source_layer": "_ARREDO"
+        },
+        {
+          "source_entity_type": "ELLIPSE",
+          "source_entity_handle": "1081F",
+          "source_layer": "_ARREDO"
+        },
+        {
+          "source_entity_type": "ELLIPSE",
+          "source_entity_handle": "10820",
+          "source_layer": "_ARREDO"
+        },
+        {
+          "source_entity_type": "ELLIPSE",
+          "source_entity_handle": "10821",
+          "source_layer": "_ARREDO"
+        },
+        {
+          "source_entity_type": "LINE",
+          "source_entity_handle": "10822",
+          "source_layer": "_ARREDO"
+        },
+        {
+          "source_entity_type": "LINE",
+          "source_entity_handle": "10823",
+          "source_layer": "_ARREDO"
+        },
+        {
+          "source_entity_type": "SPLINE",
+          "source_entity_handle": "10824",
+          "source_layer": "_CUSCINO SEDUTA"
+        },
+        {
+          "source_entity_type": "SPLINE",
+          "source_entity_handle": "10825",
+          "source_layer": "_CUSCINO SEDUTA"
+        },
+        {
+          "source_entity_type": "SPLINE",
+          "source_entity_handle": "10826",
+          "source_layer": "_CUSCINO SEDUTA"
+        },
+        {
+          "source_entity_type": "SPLINE",
+          "source_entity_handle": "10827",
+          "source_layer": "_CUSCINO SEDUTA"
+        },
+        {
+          "source_entity_type": "SPLINE",
+          "source_entity_handle": "10828",
+          "source_layer": "_CUSCINO SEDUTA"
+        },
+        {
+          "source_entity_type": "SPLINE",
+          "source_entity_handle": "10829",
+          "source_layer": "_CUSCINO SEDUTA"
+        },
+        {
+          "source_entity_type": "SPLINE",
+          "source_entity_handle": "1082A",
+          "source_layer": "_CUSCINO SEDUTA"
+        },
+        {
+          "source_entity_type": "SPLINE",
+          "source_entity_handle": "1082B",
+          "source_layer": "_CUSCINO SEDUTA"
+        },
+        {
+          "source_entity_type": "SPLINE",
+          "source_entity_handle": "1082C",
+          "source_layer": "_CUSCINO SEDUTA"
+        },
+        {
+          "source_entity_type": "SPLINE",
+          "source_entity_handle": "1082D",
+          "source_layer": "_CUSCINO SEDUTA"
+        },
+        {
+          "source_entity_type": "SPLINE",
+          "source_entity_handle": "1082E",
+          "source_layer": "_CUSCINO SEDUTA"
+        },
+        {
+          "source_entity_type": "SPLINE",
+          "source_entity_handle": "1082F",
+          "source_layer": "_CUSCINO SEDUTA"
+        },
+        {
+          "source_entity_type": "SPLINE",
+          "source_entity_handle": "10830",
+          "source_layer": "_CUSCINO SEDUTA"
+        },
+        {
+          "source_entity_type": "SPLINE",
+          "source_entity_handle": "10831",
+          "source_layer": "_CUSCINO SEDUTA"
+        },
+        {
+          "source_entity_type": "SPLINE",
+          "source_entity_handle": "10832",
+          "source_layer": "_CUSCINO SEDUTA"
+        },
+        {
+          "source_entity_type": "SPLINE",
+          "source_entity_handle": "10833",
+          "source_layer": "_CUSCINO SEDUTA"
+        },
+        {
+          "source_entity_type": "SPLINE",
+          "source_entity_handle": "10834",
+          "source_layer": "_CUSCINO SEDUTA"
+        },
+        {
+          "source_entity_type": "SPLINE",
+          "source_entity_handle": "10835",
+          "source_layer": "_CUSCINO SEDUTA"
+        },
+        {
+          "source_entity_type": "SPLINE",
+          "source_entity_handle": "10836",
+          "source_layer": "_CUSCINO SEDUTA"
+        },
+        {
+          "source_entity_type": "SPLINE",
+          "source_entity_handle": "10837",
+          "source_layer": "_CUSCINO SEDUTA"
+        },
+        {
+          "source_entity_type": "SPLINE",
+          "source_entity_handle": "10838",
+          "source_layer": "_CUSCINO SEDUTA"
+        },
+        {
+          "source_entity_type": "SPLINE",
+          "source_entity_handle": "10839",
+          "source_layer": "_CUSCINO SEDUTA"
+        },
+        {
+          "source_entity_type": "SPLINE",
+          "source_entity_handle": "1083A",
+          "source_layer": "_CUSCINO SEDUTA"
+        },
+        {
+          "source_entity_type": "SPLINE",
+          "source_entity_handle": "1083B",
+          "source_layer": "_CUSCINO SEDUTA"
+        },
+        {
+          "source_entity_type": "SPLINE",
+          "source_entity_handle": "1083C",
+          "source_layer": "_CUSCINO SEDUTA"
+        },
+        {
+          "source_entity_type": "SPLINE",
+          "source_entity_handle": "1083D",
+          "source_layer": "_CUSCINO SEDUTA"
+        },
+        {
+          "source_entity_type": "SPLINE",
+          "source_entity_handle": "1083E",
+          "source_layer": "_CUSCINO SEDUTA"
+        },
+        {
+          "source_entity_type": "SPLINE",
+          "source_entity_handle": "1083F",
+          "source_layer": "_CUSCINO SEDUTA"
+        },
+        {
+          "source_entity_type": "SPLINE",
+          "source_entity_handle": "10840",
+          "source_layer": "_CUSCINO SEDUTA"
+        },
+        {
+          "source_entity_type": "SPLINE",
+          "source_entity_handle": "10841",
+          "source_layer": "_CUSCINO SEDUTA"
+        },
+        {
+          "source_entity_type": "SPLINE",
+          "source_entity_handle": "10842",
+          "source_layer": "_CUSCINO SEDUTA"
+        },
+        {
+          "source_entity_type": "SPLINE",
+          "source_entity_handle": "10843",
+          "source_layer": "_CUSCINO SEDUTA"
+        },
+        {
+          "source_entity_type": "SPLINE",
+          "source_entity_handle": "10844",
+          "source_layer": "_CUSCINO SEDUTA"
+        },
+        {
+          "source_entity_type": "SPLINE",
+          "source_entity_handle": "10845",
+          "source_layer": "_CUSCINO SEDUTA"
+        },
+        {
+          "source_entity_type": "SPLINE",
+          "source_entity_handle": "10846",
+          "source_layer": "_CUSCINO SEDUTA"
+        },
+        {
+          "source_entity_type": "SPLINE",
+          "source_entity_handle": "10847",
+          "source_layer": "_CUSCINO SEDUTA"
+        },
+        {
+          "source_entity_type": "SPLINE",
+          "source_entity_handle": "10848",
+          "source_layer": "_CUSCINO SEDUTA"
+        },
+        {
+          "source_entity_type": "SPLINE",
+          "source_entity_handle": "10849",
+          "source_layer": "_CUSCINO SEDUTA"
+        },
+        {
+          "source_entity_type": "SPLINE",
+          "source_entity_handle": "1084A",
+          "source_layer": "_CUSCINO SEDUTA"
+        },
+        {
+          "source_entity_type": "SPLINE",
+          "source_entity_handle": "1084B",
+          "source_layer": "_CUSCINO SEDUTA"
+        },
+        {
+          "source_entity_type": "SPLINE",
+          "source_entity_handle": "1084C",
+          "source_layer": "_CUSCINO SEDUTA"
+        },
+        {
+          "source_entity_type": "SPLINE",
+          "source_entity_handle": "1084D",
+          "source_layer": "_CUSCINO SEDUTA"
+        },
+        {
+          "source_entity_type": "SPLINE",
+          "source_entity_handle": "1084E",
+          "source_layer": "_CUSCINO SEDUTA"
+        },
+        {
+          "source_entity_type": "SPLINE",
+          "source_entity_handle": "1084F",
+          "source_layer": "_CUSCINO SEDUTA"
+        },
+        {
+          "source_entity_type": "SPLINE",
+          "source_entity_handle": "10850",
+          "source_layer": "_CUSCINO SEDUTA"
+        },
+        {
+          "source_entity_type": "SPLINE",
+          "source_entity_handle": "10851",
+          "source_layer": "_CUSCINO SEDUTA"
+        },
+        {
+          "source_entity_type": "SPLINE",
+          "source_entity_handle": "10852",
+          "source_layer": "_CUSCINO SEDUTA"
+        },
+        {
+          "source_entity_type": "SPLINE",
+          "source_entity_handle": "10853",
+          "source_layer": "_CUSCINO SEDUTA"
+        },
+        {
+          "source_entity_type": "SPLINE",
+          "source_entity_handle": "10854",
+          "source_layer": "_CUSCINO SEDUTA"
+        },
+        {
+          "source_entity_type": "SPLINE",
+          "source_entity_handle": "10855",
+          "source_layer": "_CUSCINO SEDUTA"
+        },
+        {
+          "source_entity_type": "SPLINE",
+          "source_entity_handle": "10856",
+          "source_layer": "_CUSCINO SEDUTA"
+        },
+        {
+          "source_entity_type": "SPLINE",
+          "source_entity_handle": "10857",
+          "source_layer": "_CUSCINO SEDUTA"
+        },
+        {
+          "source_entity_type": "SPLINE",
+          "source_entity_handle": "10858",
+          "source_layer": "_CUSCINO SEDUTA"
+        },
+        {
+          "source_entity_type": "SPLINE",
+          "source_entity_handle": "10859",
+          "source_layer": "_CUSCINO SEDUTA"
+        },
+        {
+          "source_entity_type": "SPLINE",
+          "source_entity_handle": "1085A",
+          "source_layer": "_CUSCINO SEDUTA"
+        },
+        {
+          "source_entity_type": "SPLINE",
+          "source_entity_handle": "1085B",
+          "source_layer": "_CUSCINO SEDUTA"
+        },
+        {
+          "source_entity_type": "SPLINE",
+          "source_entity_handle": "1085C",
+          "source_layer": "_CUSCINO SEDUTA"
+        },
+        {
+          "source_entity_type": "SPLINE",
+          "source_entity_handle": "1085D",
+          "source_layer": "_CUSCINO SEDUTA"
+        },
+        {
+          "source_entity_type": "SPLINE",
+          "source_entity_handle": "1085E",
+          "source_layer": "_CUSCINO SEDUTA"
+        },
+        {
+          "source_entity_type": "SPLINE",
+          "source_entity_handle": "1085F",
+          "source_layer": "_CUSCINO SEDUTA"
+        },
+        {
+          "source_entity_type": "SPLINE",
+          "source_entity_handle": "10860",
+          "source_layer": "_CUSCINO SEDUTA"
+        },
+        {
+          "source_entity_type": "SPLINE",
+          "source_entity_handle": "10861",
+          "source_layer": "_CUSCINO SEDUTA"
+        },
+        {
+          "source_entity_type": "SPLINE",
+          "source_entity_handle": "10862",
+          "source_layer": "_CUSCINO SEDUTA"
+        },
+        {
+          "source_entity_type": "SPLINE",
+          "source_entity_handle": "10863",
+          "source_layer": "_CUSCINO SEDUTA"
+        },
+        {
+          "source_entity_type": "SPLINE",
+          "source_entity_handle": "10864",
+          "source_layer": "_CUSCINO SEDUTA"
+        },
+        {
+          "source_entity_type": "SPLINE",
+          "source_entity_handle": "10865",
+          "source_layer": "_CUSCINO SEDUTA"
+        },
+        {
+          "source_entity_type": "SPLINE",
+          "source_entity_handle": "10866",
+          "source_layer": "_CUSCINO SEDUTA"
+        },
+        {
+          "source_entity_type": "SPLINE",
+          "source_entity_handle": "10867",
+          "source_layer": "_CUSCINO SEDUTA"
+        },
+        {
+          "source_entity_type": "SPLINE",
+          "source_entity_handle": "10868",
+          "source_layer": "_CUSCINO SEDUTA"
+        },
+        {
+          "source_entity_type": "SPLINE",
+          "source_entity_handle": "10869",
+          "source_layer": "_CUSCINO SEDUTA"
+        },
+        {
+          "source_entity_type": "SPLINE",
+          "source_entity_handle": "1086A",
+          "source_layer": "_CUSCINO SEDUTA"
+        },
+        {
+          "source_entity_type": "SPLINE",
+          "source_entity_handle": "1086B",
+          "source_layer": "_CUSCINO SEDUTA"
+        },
+        {
+          "source_entity_type": "SPLINE",
+          "source_entity_handle": "1086C",
+          "source_layer": "_CUSCINO SEDUTA"
+        },
+        {
+          "source_entity_type": "LINE",
+          "source_entity_handle": "1086D",
+          "source_layer": "_CUSCINO SEDUTA"
+        },
+        {
+          "source_entity_type": "SPLINE",
+          "source_entity_handle": "1086E",
+          "source_layer": "_RULLO"
+        },
+        {
+          "source_entity_type": "LINE",
+          "source_entity_handle": "1086F",
+          "source_layer": "_ARREDO"
+        },
+        {
+          "source_entity_type": "LWPOLYLINE",
+          "source_entity_handle": "10870",
+          "source_layer": "_RULLO"
+        },
+        {
+          "source_entity_type": "SPLINE",
+          "source_entity_handle": "10871",
+          "source_layer": "_RULLO"
+        },
+        {
+          "source_entity_type": "SPLINE",
+          "source_entity_handle": "10872",
+          "source_layer": "_RULLO"
+        },
+        {
+          "source_entity_type": "SPLINE",
+          "source_entity_handle": "10873",
+          "source_layer": "_RULLO"
+        },
+        {
+          "source_entity_type": "SPLINE",
+          "source_entity_handle": "10874",
+          "source_layer": "_RULLO"
+        },
+        {
+          "source_entity_type": "SPLINE",
+          "source_entity_handle": "10875",
+          "source_layer": "_RULLO"
+        },
+        {
+          "source_entity_type": "SPLINE",
+          "source_entity_handle": "10876",
+          "source_layer": "_RULLO"
+        },
+        {
+          "source_entity_type": "SPLINE",
+          "source_entity_handle": "10877",
+          "source_layer": "_RULLO"
+        },
+        {
+          "source_entity_type": "ELLIPSE",
+          "source_entity_handle": "10878",
+          "source_layer": "_RULLO"
+        },
+        {
+          "source_entity_type": "SPLINE",
+          "source_entity_handle": "10879",
+          "source_layer": "_RULLO"
+        },
+        {
+          "source_entity_type": "SPLINE",
+          "source_entity_handle": "1087A",
+          "source_layer": "_RULLO"
+        },
+        {
+          "source_entity_type": "ELLIPSE",
+          "source_entity_handle": "1087B",
+          "source_layer": "_RULLO"
+        },
+        {
+          "source_entity_type": "SPLINE",
+          "source_entity_handle": "1087C",
+          "source_layer": "_RULLO"
+        },
+        {
+          "source_entity_type": "SPLINE",
+          "source_entity_handle": "1087D",
+          "source_layer": "_RULLO"
+        },
+        {
+          "source_entity_type": "SPLINE",
+          "source_entity_handle": "1087E",
+          "source_layer": "_RULLO"
+        },
+        {
+          "source_entity_type": "SPLINE",
+          "source_entity_handle": "1087F",
+          "source_layer": "_RULLO"
+        },
+        {
+          "source_entity_type": "SPLINE",
+          "source_entity_handle": "10880",
+          "source_layer": "_RULLO"
+        },
+        {
+          "source_entity_type": "SPLINE",
+          "source_entity_handle": "10881",
+          "source_layer": "_RULLO"
+        },
+        {
+          "source_entity_type": "SPLINE",
+          "source_entity_handle": "10882",
+          "source_layer": "_RULLO"
+        },
+        {
+          "source_entity_type": "SPLINE",
+          "source_entity_handle": "10883",
+          "source_layer": "_RULLO"
+        },
+        {
+          "source_entity_type": "SPLINE",
+          "source_entity_handle": "10884",
+          "source_layer": "_RULLO"
+        },
+        {
+          "source_entity_type": "SPLINE",
+          "source_entity_handle": "10885",
+          "source_layer": "_RULLO"
+        },
+        {
+          "source_entity_type": "SPLINE",
+          "source_entity_handle": "10886",
+          "source_layer": "_RULLO"
+        },
+        {
+          "source_entity_type": "SPLINE",
+          "source_entity_handle": "10887",
+          "source_layer": "_RULLO"
+        },
+        {
+          "source_entity_type": "SPLINE",
+          "source_entity_handle": "10888",
+          "source_layer": "_RULLO"
+        },
+        {
+          "source_entity_type": "SPLINE",
+          "source_entity_handle": "10889",
+          "source_layer": "_RULLO"
+        },
+        {
+          "source_entity_type": "SPLINE",
+          "source_entity_handle": "1088A",
+          "source_layer": "_RULLO"
+        },
+        {
+          "source_entity_type": "LINE",
+          "source_entity_handle": "1088B",
+          "source_layer": "_ARREDO"
+        },
+        {
+          "source_entity_type": "LWPOLYLINE",
+          "source_entity_handle": "1088C",
+          "source_layer": "_ARREDO"
+        },
+        {
+          "source_entity_type": "LWPOLYLINE",
+          "source_entity_handle": "11352",
+          "source_layer": "_ARREDO"
+        },
+        {
+          "source_entity_type": "INSERT",
+          "source_entity_handle": "11399",
+          "source_layer": "_ARREDO"
+        },
+        {
+          "source_entity_type": "INSERT",
+          "source_entity_handle": "11399",
+          "source_layer": "_ARREDO"
+        },
+        {
+          "source_entity_type": "INSERT",
+          "source_entity_handle": "11399",
+          "source_layer": "_ARREDO"
+        },
+        {
+          "source_entity_type": "INSERT",
+          "source_entity_handle": "11399",
+          "source_layer": "_ARREDO"
+        },
+        {
+          "source_entity_type": "INSERT",
+          "source_entity_handle": "11399",
+          "source_layer": "_ARREDO"
+        },
+        {
+          "source_entity_type": "INSERT",
+          "source_entity_handle": "11399",
+          "source_layer": "_ARREDO"
+        },
+        {
+          "source_entity_type": "INSERT",
+          "source_entity_handle": "1139A",
+          "source_layer": "_ARREDO"
+        },
+        {
+          "source_entity_type": "INSERT",
+          "source_entity_handle": "1139A",
+          "source_layer": "_ARREDO"
+        },
+        {
+          "source_entity_type": "INSERT",
+          "source_entity_handle": "1139A",
+          "source_layer": "_ARREDO"
+        },
+        {
+          "source_entity_type": "INSERT",
+          "source_entity_handle": "1139A",
+          "source_layer": "_ARREDO"
+        },
+        {
+          "source_entity_type": "INSERT",
+          "source_entity_handle": "1139A",
+          "source_layer": "_ARREDO"
+        },
+        {
+          "source_entity_type": "INSERT",
+          "source_entity_handle": "1139A",
+          "source_layer": "_ARREDO"
+        }
+      ],
+      "side": [
+        {
+          "source_entity_type": "LINE",
+          "source_entity_handle": "11115",
+          "source_layer": "_ARREDO"
+        },
+        {
+          "source_entity_type": "LINE",
+          "source_entity_handle": "11116",
+          "source_layer": "_ARREDO"
+        },
+        {
+          "source_entity_type": "LINE",
+          "source_entity_handle": "11117",
+          "source_layer": "_ARREDO"
+        },
+        {
+          "source_entity_type": "LINE",
+          "source_entity_handle": "11118",
+          "source_layer": "_ARREDO"
+        },
+        {
+          "source_entity_type": "LINE",
+          "source_entity_handle": "11119",
+          "source_layer": "_ARREDO"
+        },
+        {
+          "source_entity_type": "ELLIPSE",
+          "source_entity_handle": "1111A",
+          "source_layer": "_ARREDO"
+        },
+        {
+          "source_entity_type": "CIRCLE",
+          "source_entity_handle": "1111B",
+          "source_layer": "_RULLO"
+        },
+        {
+          "source_entity_type": "SPLINE",
+          "source_entity_handle": "1111C",
+          "source_layer": "_CUSCINO SEDUTA"
+        },
+        {
+          "source_entity_type": "SPLINE",
+          "source_entity_handle": "1111D",
+          "source_layer": "_CUSCINO SEDUTA"
+        },
+        {
+          "source_entity_type": "SPLINE",
+          "source_entity_handle": "1111E",
+          "source_layer": "_CUSCINO SEDUTA"
+        },
+        {
+          "source_entity_type": "SPLINE",
+          "source_entity_handle": "1111F",
+          "source_layer": "_CUSCINO SEDUTA"
+        },
+        {
+          "source_entity_type": "SPLINE",
+          "source_entity_handle": "11120",
+          "source_layer": "_CUSCINO SEDUTA"
+        },
+        {
+          "source_entity_type": "SPLINE",
+          "source_entity_handle": "11121",
+          "source_layer": "_CUSCINO SEDUTA"
+        },
+        {
+          "source_entity_type": "SPLINE",
+          "source_entity_handle": "11122",
+          "source_layer": "_CUSCINO SEDUTA"
+        },
+        {
+          "source_entity_type": "SPLINE",
+          "source_entity_handle": "11123",
+          "source_layer": "_CUSCINO SEDUTA"
+        },
+        {
+          "source_entity_type": "SPLINE",
+          "source_entity_handle": "11124",
+          "source_layer": "_CUSCINO SEDUTA"
+        },
+        {
+          "source_entity_type": "SPLINE",
+          "source_entity_handle": "11125",
+          "source_layer": "_CUSCINO SEDUTA"
+        },
+        {
+          "source_entity_type": "SPLINE",
+          "source_entity_handle": "11126",
+          "source_layer": "_CUSCINO SEDUTA"
+        },
+        {
+          "source_entity_type": "SPLINE",
+          "source_entity_handle": "11127",
+          "source_layer": "_CUSCINO SEDUTA"
+        },
+        {
+          "source_entity_type": "SPLINE",
+          "source_entity_handle": "11128",
+          "source_layer": "_CUSCINO SEDUTA"
+        },
+        {
+          "source_entity_type": "SPLINE",
+          "source_entity_handle": "11129",
+          "source_layer": "_CUSCINO SEDUTA"
+        },
+        {
+          "source_entity_type": "SPLINE",
+          "source_entity_handle": "1112A",
+          "source_layer": "_CUSCINO SEDUTA"
+        },
+        {
+          "source_entity_type": "SPLINE",
+          "source_entity_handle": "1112B",
+          "source_layer": "_CUSCINO SEDUTA"
+        },
+        {
+          "source_entity_type": "SPLINE",
+          "source_entity_handle": "1112C",
+          "source_layer": "_CUSCINO SEDUTA"
+        },
+        {
+          "source_entity_type": "SPLINE",
+          "source_entity_handle": "1112D",
+          "source_layer": "_CUSCINO SEDUTA"
+        },
+        {
+          "source_entity_type": "SPLINE",
+          "source_entity_handle": "1112E",
+          "source_layer": "_CUSCINO SEDUTA"
+        },
+        {
+          "source_entity_type": "SPLINE",
+          "source_entity_handle": "1112F",
+          "source_layer": "_CUSCINO SEDUTA"
+        },
+        {
+          "source_entity_type": "SPLINE",
+          "source_entity_handle": "11130",
+          "source_layer": "_CUSCINO SEDUTA"
+        },
+        {
+          "source_entity_type": "SPLINE",
+          "source_entity_handle": "11131",
+          "source_layer": "_CUSCINO SEDUTA"
+        },
+        {
+          "source_entity_type": "SPLINE",
+          "source_entity_handle": "11132",
+          "source_layer": "_CUSCINO SEDUTA"
+        },
+        {
+          "source_entity_type": "SPLINE",
+          "source_entity_handle": "11133",
+          "source_layer": "_CUSCINO SEDUTA"
+        },
+        {
+          "source_entity_type": "SPLINE",
+          "source_entity_handle": "11134",
+          "source_layer": "_CUSCINO SEDUTA"
+        },
+        {
+          "source_entity_type": "SPLINE",
+          "source_entity_handle": "11135",
+          "source_layer": "_CUSCINO SEDUTA"
+        },
+        {
+          "source_entity_type": "SPLINE",
+          "source_entity_handle": "11136",
+          "source_layer": "_CUSCINO SEDUTA"
+        },
+        {
+          "source_entity_type": "SPLINE",
+          "source_entity_handle": "11137",
+          "source_layer": "_CUSCINO SEDUTA"
+        },
+        {
+          "source_entity_type": "SPLINE",
+          "source_entity_handle": "11138",
+          "source_layer": "_CUSCINO SEDUTA"
+        },
+        {
+          "source_entity_type": "SPLINE",
+          "source_entity_handle": "11139",
+          "source_layer": "_CUSCINO SEDUTA"
+        },
+        {
+          "source_entity_type": "SPLINE",
+          "source_entity_handle": "1113A",
+          "source_layer": "_CUSCINO SEDUTA"
+        },
+        {
+          "source_entity_type": "SPLINE",
+          "source_entity_handle": "1113B",
+          "source_layer": "_CUSCINO SEDUTA"
+        },
+        {
+          "source_entity_type": "SPLINE",
+          "source_entity_handle": "1113C",
+          "source_layer": "_CUSCINO SEDUTA"
+        },
+        {
+          "source_entity_type": "SPLINE",
+          "source_entity_handle": "1113D",
+          "source_layer": "_CUSCINO SEDUTA"
+        },
+        {
+          "source_entity_type": "SPLINE",
+          "source_entity_handle": "1113E",
+          "source_layer": "_CUSCINO SEDUTA"
+        },
+        {
+          "source_entity_type": "SPLINE",
+          "source_entity_handle": "1113F",
+          "source_layer": "_CUSCINO SEDUTA"
+        },
+        {
+          "source_entity_type": "SPLINE",
+          "source_entity_handle": "11140",
+          "source_layer": "_CUSCINO SEDUTA"
+        },
+        {
+          "source_entity_type": "SPLINE",
+          "source_entity_handle": "11141",
+          "source_layer": "_CUSCINO SEDUTA"
+        },
+        {
+          "source_entity_type": "SPLINE",
+          "source_entity_handle": "11142",
+          "source_layer": "_CUSCINO SEDUTA"
+        },
+        {
+          "source_entity_type": "SPLINE",
+          "source_entity_handle": "11143",
+          "source_layer": "_CUSCINO SEDUTA"
+        },
+        {
+          "source_entity_type": "SPLINE",
+          "source_entity_handle": "11144",
+          "source_layer": "_CUSCINO SEDUTA"
+        },
+        {
+          "source_entity_type": "SPLINE",
+          "source_entity_handle": "11145",
+          "source_layer": "_CUSCINO SEDUTA"
+        },
+        {
+          "source_entity_type": "SPLINE",
+          "source_entity_handle": "11146",
+          "source_layer": "_CUSCINO SEDUTA"
+        },
+        {
+          "source_entity_type": "SPLINE",
+          "source_entity_handle": "11147",
+          "source_layer": "_CUSCINO SEDUTA"
+        },
+        {
+          "source_entity_type": "SPLINE",
+          "source_entity_handle": "11148",
+          "source_layer": "_CUSCINO SEDUTA"
+        },
+        {
+          "source_entity_type": "SPLINE",
+          "source_entity_handle": "11149",
+          "source_layer": "_CUSCINO SEDUTA"
+        },
+        {
+          "source_entity_type": "SPLINE",
+          "source_entity_handle": "1114A",
+          "source_layer": "_CUSCINO SEDUTA"
+        },
+        {
+          "source_entity_type": "SPLINE",
+          "source_entity_handle": "1114B",
+          "source_layer": "_CUSCINO SEDUTA"
+        },
+        {
+          "source_entity_type": "SPLINE",
+          "source_entity_handle": "1114C",
+          "source_layer": "_CUSCINO SEDUTA"
+        },
+        {
+          "source_entity_type": "SPLINE",
+          "source_entity_handle": "1114D",
+          "source_layer": "_CUSCINO SEDUTA"
+        },
+        {
+          "source_entity_type": "SPLINE",
+          "source_entity_handle": "1114E",
+          "source_layer": "_CUSCINO SEDUTA"
+        },
+        {
+          "source_entity_type": "SPLINE",
+          "source_entity_handle": "1114F",
+          "source_layer": "_CUSCINO SEDUTA"
+        },
+        {
+          "source_entity_type": "SPLINE",
+          "source_entity_handle": "11150",
+          "source_layer": "_CUSCINO SEDUTA"
+        },
+        {
+          "source_entity_type": "SPLINE",
+          "source_entity_handle": "11151",
+          "source_layer": "_CUSCINO SEDUTA"
+        },
+        {
+          "source_entity_type": "SPLINE",
+          "source_entity_handle": "11152",
+          "source_layer": "_CUSCINO SEDUTA"
+        },
+        {
+          "source_entity_type": "SPLINE",
+          "source_entity_handle": "11153",
+          "source_layer": "_CUSCINO SEDUTA"
+        },
+        {
+          "source_entity_type": "SPLINE",
+          "source_entity_handle": "11154",
+          "source_layer": "_CUSCINO SEDUTA"
+        },
+        {
+          "source_entity_type": "SPLINE",
+          "source_entity_handle": "11155",
+          "source_layer": "_CUSCINO SEDUTA"
+        },
+        {
+          "source_entity_type": "SPLINE",
+          "source_entity_handle": "11156",
+          "source_layer": "_CUSCINO SEDUTA"
+        },
+        {
+          "source_entity_type": "LINE",
+          "source_entity_handle": "11157",
+          "source_layer": "_CUSCINO SEDUTA"
+        },
+        {
+          "source_entity_type": "LWPOLYLINE",
+          "source_entity_handle": "11158",
+          "source_layer": "_ARREDO"
+        },
+        {
+          "source_entity_type": "LWPOLYLINE",
+          "source_entity_handle": "11159",
+          "source_layer": "_ARREDO"
+        },
+        {
+          "source_entity_type": "ELLIPSE",
+          "source_entity_handle": "1115A",
+          "source_layer": "_ARREDO"
+        },
+        {
+          "source_entity_type": "CIRCLE",
+          "source_entity_handle": "1115B",
+          "source_layer": "_RULLO"
+        },
+        {
+          "source_entity_type": "ARC",
+          "source_entity_handle": "1115C",
+          "source_layer": "_ARREDO"
+        },
+        {
+          "source_entity_type": "LWPOLYLINE",
+          "source_entity_handle": "1115D",
+          "source_layer": "_ARREDO"
+        },
+        {
+          "source_entity_type": "INSERT",
+          "source_entity_handle": "113C7",
+          "source_layer": "_ARREDO"
+        },
+        {
+          "source_entity_type": "INSERT",
+          "source_entity_handle": "113C7",
+          "source_layer": "_ARREDO"
+        },
+        {
+          "source_entity_type": "INSERT",
+          "source_entity_handle": "113C7",
+          "source_layer": "_ARREDO"
+        },
+        {
+          "source_entity_type": "INSERT",
+          "source_entity_handle": "113C7",
+          "source_layer": "_ARREDO"
+        },
+        {
+          "source_entity_type": "INSERT",
+          "source_entity_handle": "113C7",
+          "source_layer": "_ARREDO"
+        },
+        {
+          "source_entity_type": "INSERT",
+          "source_entity_handle": "113C7",
+          "source_layer": "_ARREDO"
+        },
+        {
+          "source_entity_type": "INSERT",
+          "source_entity_handle": "113C8",
+          "source_layer": "_ARREDO"
+        },
+        {
+          "source_entity_type": "INSERT",
+          "source_entity_handle": "113C8",
+          "source_layer": "_ARREDO"
+        },
+        {
+          "source_entity_type": "INSERT",
+          "source_entity_handle": "113C8",
+          "source_layer": "_ARREDO"
+        },
+        {
+          "source_entity_type": "INSERT",
+          "source_entity_handle": "113C8",
+          "source_layer": "_ARREDO"
+        },
+        {
+          "source_entity_type": "INSERT",
+          "source_entity_handle": "113C8",
+          "source_layer": "_ARREDO"
+        },
+        {
+          "source_entity_type": "INSERT",
+          "source_entity_handle": "113C8",
+          "source_layer": "_ARREDO"
+        }
+      ]
+    }
+  },
+  "alignment": {
+    "plan": {
+      "mode": "translation_only",
+      "view_direction_reflection_x": false,
+      "reflection_reason": null,
+      "translation_mm": [
+        -14704.434806,
+        -26643.285728
+      ],
+      "anchor": "projection_centre_to_projection_centre",
+      "uniform_scale": 1.0,
+      "anisotropic_scale_used": false,
+      "source_geometry_deformed": false,
+      "source_bounds_before_alignment_mm": {
+        "minimum": [
+          14114.291725,
+          26058.856192
+        ],
+        "maximum": [
+          15413.949714,
+          27135.355155
+        ],
+        "size": [
+          1299.657989,
+          1076.498963
+        ],
+        "centre": [
+          14764.120719,
+          26597.105674
+        ]
+      },
+      "source_bounds_after_view_direction_mm": {
+        "minimum": [
+          14114.291725,
+          26058.856192
+        ],
+        "maximum": [
+          15413.949714,
+          27135.355155
+        ],
+        "size": [
+          1299.657989,
+          1076.498963
+        ],
+        "centre": [
+          14764.120719,
+          26597.105674
+        ]
+      },
+      "aligned_official_bounds_mm": {
+        "minimum": [
+          -590.143081,
+          -584.429536
+        ],
+        "maximum": [
+          709.514908,
+          492.069427
+        ],
+        "size": [
+          1299.657989,
+          1076.498963
+        ],
+        "centre": [
+          59.685913,
+          -46.180054
+        ]
+      },
+      "project_proxy_bounds_mm": {
+        "minimum": [
+          -590.143081,
+          -584.429536
+        ],
+        "maximum": [
+          709.514908,
+          492.069427
+        ],
+        "size": [
+          1299.657989,
+          1076.498963
+        ],
+        "centre": [
+          59.685913,
+          -46.180054
+        ]
+      },
+      "official_minus_proxy_envelope_mm": [
+        0.0,
+        0.0
+      ]
+    },
+    "front": {
+      "mode": "translation_only",
+      "view_direction_reflection_x": false,
+      "reflection_reason": null,
+      "translation_mm": [
+        -14704.967959,
+        -28100.266624
+      ],
+      "anchor": "horizontal_centre_and_finished_bottom",
+      "uniform_scale": 1.0,
+      "anisotropic_scale_used": false,
+      "source_geometry_deformed": false,
+      "source_bounds_before_alignment_mm": {
+        "minimum": [
+          14115.358033,
+          28100.266624
+        ],
+        "maximum": [
+          15413.949714,
+          28900.266624
+        ],
+        "size": [
+          1298.591681,
+          800.0
+        ],
+        "centre": [
+          14764.653873,
+          28500.266624
+        ]
+      },
+      "source_bounds_after_view_direction_mm": {
+        "minimum": [
+          14115.358033,
+          28100.266624
+        ],
+        "maximum": [
+          15413.949714,
+          28900.266624
+        ],
+        "size": [
+          1298.591681,
+          800.0
+        ],
+        "centre": [
+          14764.653873,
+          28500.266624
+        ]
+      },
+      "aligned_official_bounds_mm": {
+        "minimum": [
+          -589.609926,
+          0.0
+        ],
+        "maximum": [
+          708.981755,
+          800.0
+        ],
+        "size": [
+          1298.591681,
+          800.0
+        ],
+        "centre": [
+          59.685915,
+          400.0
+        ]
+      },
+      "project_proxy_bounds_mm": {
+        "minimum": [
+          -589.609927,
+          0.0
+        ],
+        "maximum": [
+          708.981754,
+          800.0
+        ],
+        "size": [
+          1298.591681,
+          800.0
+        ],
+        "centre": [
+          59.685914,
+          400.0
+        ]
+      },
+      "official_minus_proxy_envelope_mm": [
+        0.0,
+        0.0
+      ]
+    },
+    "side": {
+      "mode": "view_direction_reflection_and_translation_only",
+      "view_direction_reflection_x": true,
+      "reflection_reason": "Official left-looking side is reflected to the project right-side review direction; this does not alter size.",
+      "translation_mm": [
+        -12509.986424,
+        -28100.266624
+      ],
+      "anchor": "horizontal_centre_and_finished_bottom",
+      "uniform_scale": 1.0,
+      "anisotropic_scale_used": false,
+      "source_geometry_deformed": false,
+      "source_bounds_before_alignment_mm": {
+        "minimum": [
+          11912.193542,
+          28100.266624
+        ],
+        "maximum": [
+          13015.419199,
+          28900.264142
+        ],
+        "size": [
+          1103.225657,
+          799.997518
+        ],
+        "centre": [
+          12463.806371,
+          28500.265383
+        ]
+      },
+      "source_bounds_after_view_direction_mm": {
+        "minimum": [
+          11912.193543,
+          28100.266624
+        ],
+        "maximum": [
+          13015.4192,
+          28900.264142
+        ],
+        "size": [
+          1103.225657,
+          799.997518
+        ],
+        "centre": [
+          12463.806371,
+          28500.265383
+        ]
+      },
+      "aligned_official_bounds_mm": {
+        "minimum": [
+          -597.792881,
+          0.0
+        ],
+        "maximum": [
+          505.432776,
+          799.997518
+        ],
+        "size": [
+          1103.225657,
+          799.997518
+        ],
+        "centre": [
+          -46.180052,
+          399.998759
+        ]
+      },
+      "project_proxy_bounds_mm": {
+        "minimum": [
+          -597.792882,
+          0.0
+        ],
+        "maximum": [
+          505.432775,
+          799.997518
+        ],
+        "size": [
+          1103.225657,
+          799.997518
+        ],
+        "centre": [
+          -46.180053,
+          399.998759
+        ]
+      },
+      "official_minus_proxy_envelope_mm": [
+        0.0,
+        0.0
+      ]
+    }
+  },
+  "official_identity_text_mechanically_located": {
+    "insertion_point_dwg_mm": [
+      14169.291,
+      24660.779
+    ],
+    "text": [
+      "E09",
+      "TERMINAL MODULE R",
+      "width 130",
+      "depth 108",
+      "height 70/80",
+      "seat h. 40"
+    ]
+  },
+  "exact_project_configuration_match": true,
+  "third_party_cad_used": false,
+  "review_status": "approved_for_product_level_derived_ifc",
+  "derived_ifc_write_allowed": true,
+  "formal_authoritative_ifc_write_allowed": false,
+  "pass": true,
+  "plan_geometry_derived_proxy_overlay": {
+    "source_kind": "geometry_derived_simplified_proxy",
+    "source_revision": "139d9ec178889e4f6bc0b81095b9bc79f33b3b79",
+    "source_candidate": "output/review/highpoly-types/miamisoft-e09/candidate-representations.json",
+    "source_candidate_sha256": "bfd6da993c754be473ee0296bd356ba7597c2918fac1e4372445268a3b90f305",
+    "path_count": 25,
+    "role": "black comparison layer only",
+    "recomputed": false,
+    "official_blue_paths_reused_as_black": false,
+    "actual_body_path_bytes_unchanged": true,
+    "official_blue_path_bytes_unchanged": true
+  },
+  "project_context_official_dwg_overlay": {
+    "manifest": "output/review/highpoly-types/miamisoft-e09/project-context-manifest.json",
+    "manifest_sha256": "6000a070ae5ec958356e89e4a5377101d34e33c9a78df08ebd48440b551f728d",
+    "views": [
+      "plan",
+      "side"
+    ],
+    "source_kind": "native_dwg",
+    "blue_line_present": true,
+    "uniform_geometry_scale": 1.0,
+    "alignment_by_bbox_fit": false,
+    "representative_global_id": "3osoWufdD1mhDDAM6lcix4",
+    "artifact_kind": "review_only_project_context_overlay",
+    "not_bonsai_scene_drawing_svg": true,
+    "ifc_write_performed": false,
+    "pass": true
+  }
+}

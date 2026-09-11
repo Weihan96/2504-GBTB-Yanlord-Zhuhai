@@ -1,0 +1,102 @@
+{
+  "schema_version": 1,
+  "recorded_on": "2026-09-05",
+  "scope": "Completion of explicitly accepted product review subtasks, not approval of all project work or new IFC write permissions.",
+  "agent_observation": "No old child agents remained live before new WD02, WD03 Front and Marilyn follow-ups were dispatched. No close operation was needed for the completed old agents.",
+  "completed": [
+    {
+      "product": "bed01",
+      "scope": "Casablanca scene SVG and previously authorized derived IFC",
+      "user_evidence": "通过，可以写入ifc",
+      "status": "complete",
+      "old_agent_state": "not_running"
+    },
+    {
+      "product": "miamisoft-e09",
+      "scope": "Miami E09 scene SVG and previously authorized derived IFC",
+      "user_evidence": "通过，可以关闭负责它的子代理了",
+      "status": "complete",
+      "old_agent_state": "not_running"
+    },
+    {
+      "product": "sxb010",
+      "scope": "Hunter curtain scene SVG review",
+      "user_evidence": "窗帘批准",
+      "status": "complete",
+      "old_agent_state": "not_running"
+    },
+    {
+      "product": "gessi316-54294",
+      "scope": "Main-bathroom scene SVG review with corrected finished-wall visibility",
+      "user_evidence": "原来如此，批准通过。",
+      "status": "complete",
+      "old_agent_state": "not_running"
+    },
+    {
+      "product": "geberit-duofix-sigma-224-212",
+      "scope": "Duofix scene SVG review",
+      "user_evidence": "通过",
+      "status": "complete",
+      "old_agent_state": "not_running"
+    },
+    {
+      "product": "gessi316-54145",
+      "scope": "Corrected orientation and simplified single-product SVG review only",
+      "user_evidence": "批准。",
+      "status": "complete",
+      "old_agent_state": "not_running"
+    },
+    {
+      "product": "wd03",
+      "scope": "Semantic drawing IFC and scene SVG with window-to-bed Front camera",
+      "user_evidence": "非常好，验证通过. 请完成收尾工作并关闭子代理。",
+      "status": "complete",
+      "old_agent_state": "not_running",
+      "approval_date": "2026-09-06"
+    }
+  ],
+  "not_complete": [
+    {
+      "product": "geberit-146-140",
+      "status": "origin_audit_delivered_front_direction_issue_and_installation_datums_unresolved"
+    },
+    {
+      "product": "gessi316-54146",
+      "status": "scene_svg_files_present_pending_user_review"
+    },
+    {
+      "product": "wd02",
+      "status": "single_product_approved_scene_drawings_in_progress"
+    },
+    {
+      "product": "marilyn-01",
+      "status": "side_base_closure_and_official_screenshot_revision_in_progress"
+    },
+    {
+      "product": "trap01",
+      "status": "official_2d_detail_v4_delivered_pending_user_review"
+    },
+    {
+      "product": "505-up-v1-lp-s",
+      "status": "semantic_plan_single_product_approved_scene_update_pending"
+    },
+    {
+      "product": "bed02",
+      "status": "official_blue_single_product_approved_no_scene_delivery"
+    },
+    {
+      "product": "sis04",
+      "status": "official_front_configuration_and_side_evidence_correction_unresolved"
+    },
+    {
+      "product": "tab02",
+      "status": "semantic_single_product_delivered_pending_user_review"
+    },
+    {
+      "product": "bst02",
+      "status": "semantic_reconstruction_in_progress"
+    }
+  ],
+  "ifc_write_permissions_changed_by_this_record": false,
+  "last_updated_on": "2026-09-06"
+}

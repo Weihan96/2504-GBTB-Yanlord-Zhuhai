@@ -1,0 +1,387 @@
+{
+  "schema_version": 1,
+  "generated_at": "2026-08-25T06:30:52.678318+00:00",
+  "generator": "pipeline/scripts/extract_official_dwg_family_review_references.py",
+  "manufacturer": "Molteni&C",
+  "family": "Sistema 7 Wall Unit",
+  "configuration": "1962 x 370 x 722 mm / project 4 Doors",
+  "reference_role": "exact_official_wall_unit_configuration_reference",
+  "source_kind": "native_dwg_review_reference",
+  "source_dwg": "output/review/highpoly-types/sis04/official-source/official-download/0000_2D_Sistema-7_Wall-Units_Kitchens.dwg",
+  "source_dwg_absolute_path": "/Users/jiaxinchen/.codex/worktrees/3a80/2504 GBTB Yanlord Zhuhai/output/review/highpoly-types/sis04/official-source/official-download/0000_2D_Sistema-7_Wall-Units_Kitchens.dwg",
+  "source_dwg_sha256": "77f240f65f1ab68a168b363b18f8294122ec913259f93745a01d19d534678263",
+  "official_download_url": "https://res.cloudinary.com/molteni/raw/upload/v1752749168/0000_2D_Sistema-7_Wall-Units_Kitchens.dwg",
+  "third_party_cad_used": false,
+  "source_geometry_scaled": false,
+  "source_geometry_anisotropically_fitted": false,
+  "primary_candidate_replaced": false,
+  "note": "The native Plan paths are selected from the exact 1962 x 370 mm group. The DWG does not provide a dedicated closed Front/Side path set for the selected project pose; those SVG views therefore use dashed dimension envelopes from the same DWG and say so explicitly. Catalogue depth 331 mm is internal; 370 mm is the DWG overall depth.",
+  "views": {
+    "plan": {
+      "geometry_kind": "native_dwg_2d_linework",
+      "paths_mm": [
+        [
+          [
+            0.0,
+            370.0
+          ],
+          [
+            10.0,
+            370.0
+          ],
+          [
+            10.0,
+            0.0
+          ],
+          [
+            0.0,
+            0.0
+          ],
+          [
+            0.0,
+            370.0
+          ]
+        ],
+        [
+          [
+            1972.0,
+            370.0
+          ],
+          [
+            1982.0,
+            370.0
+          ],
+          [
+            1982.0,
+            0.0
+          ],
+          [
+            1972.0,
+            0.0
+          ],
+          [
+            1972.0,
+            370.0
+          ]
+        ],
+        [
+          [
+            10.0,
+            370.0
+          ],
+          [
+            40.0,
+            370.0
+          ],
+          [
+            40.0,
+            39.0
+          ],
+          [
+            10.0,
+            39.0
+          ],
+          [
+            10.0,
+            370.0
+          ]
+        ],
+        [
+          [
+            1942.0,
+            370.0
+          ],
+          [
+            1972.0,
+            370.0
+          ],
+          [
+            1972.0,
+            39.0
+          ],
+          [
+            1942.0,
+            39.0
+          ],
+          [
+            1942.0,
+            370.0
+          ]
+        ],
+        [
+          [
+            40.0,
+            365.680153
+          ],
+          [
+            1942.0,
+            365.680153
+          ],
+          [
+            1942.0,
+            359.000008
+          ],
+          [
+            40.0,
+            359.000008
+          ],
+          [
+            40.0,
+            365.680153
+          ]
+        ],
+        [
+          [
+            10.0,
+            370.0
+          ],
+          [
+            1972.0,
+            370.0
+          ],
+          [
+            1972.0,
+            39.0
+          ],
+          [
+            10.0,
+            39.0
+          ],
+          [
+            10.0,
+            370.0
+          ]
+        ],
+        [
+          [
+            1482.0,
+            35.0
+          ],
+          [
+            1972.0,
+            35.0
+          ],
+          [
+            1972.0,
+            0.0
+          ],
+          [
+            1482.0,
+            0.0
+          ],
+          [
+            1482.0,
+            35.0
+          ]
+        ],
+        [
+          [
+            1481.25,
+            0.0
+          ],
+          [
+            991.25,
+            0.0
+          ],
+          [
+            991.25,
+            35.0
+          ],
+          [
+            1481.25,
+            35.0
+          ],
+          [
+            1481.25,
+            0.0
+          ]
+        ],
+        [
+          [
+            500.75,
+            35.0
+          ],
+          [
+            990.75,
+            35.0
+          ],
+          [
+            990.75,
+            0.0
+          ],
+          [
+            500.75,
+            0.0
+          ],
+          [
+            500.75,
+            35.0
+          ]
+        ],
+        [
+          [
+            500.0,
+            0.0
+          ],
+          [
+            10.0,
+            0.0
+          ],
+          [
+            10.0,
+            35.0
+          ],
+          [
+            500.0,
+            35.0
+          ],
+          [
+            500.0,
+            0.0
+          ]
+        ],
+        [
+          [
+            10.0,
+            39.0
+          ],
+          [
+            213.055963,
+            295.225904
+          ],
+          [
+            1377.018744,
+            370.0
+          ],
+          [
+            10.0,
+            370.0
+          ],
+          [
+            10.0,
+            39.0
+          ]
+        ]
+      ],
+      "path_count": 11,
+      "bounds_mm": {
+        "minimum": [
+          0.0,
+          0.0
+        ],
+        "maximum": [
+          1982.0,
+          370.0
+        ],
+        "size": [
+          1982.0,
+          370.0
+        ]
+      },
+      "selection_box_source_coordinates": [
+        -7735.945,
+        2835.027,
+        -5753.943,
+        3205.029
+      ],
+      "selection_rule": "path_bbox_fully_contained_in_exact_configuration_envelope",
+      "blue_stroke_style": "solid",
+      "dedicated_native_2d_view_present": true,
+      "reflect_x_for_project_view_direction": false,
+      "source_scaled": false
+    },
+    "front": {
+      "geometry_kind": "native_dwg_dimension_envelope_not_dedicated_2d_view",
+      "paths_mm": [
+        [
+          [
+            0.0,
+            0.0
+          ],
+          [
+            1962.0,
+            0.0
+          ],
+          [
+            1962.0,
+            722.0
+          ],
+          [
+            0.0,
+            722.0
+          ],
+          [
+            0.0,
+            0.0
+          ]
+        ]
+      ],
+      "path_count": 1,
+      "bounds_mm": {
+        "minimum": [
+          0.0,
+          0.0
+        ],
+        "maximum": [
+          1962.0,
+          722.0
+        ],
+        "size": [
+          1962.0,
+          722.0
+        ]
+      },
+      "blue_stroke_style": "dashed",
+      "dedicated_native_2d_view_present": false,
+      "source_scaled": false
+    },
+    "side": {
+      "geometry_kind": "native_dwg_dimension_envelope_not_dedicated_2d_view",
+      "paths_mm": [
+        [
+          [
+            0.0,
+            0.0
+          ],
+          [
+            370.0,
+            0.0
+          ],
+          [
+            370.0,
+            722.0
+          ],
+          [
+            0.0,
+            722.0
+          ],
+          [
+            0.0,
+            0.0
+          ]
+        ]
+      ],
+      "path_count": 1,
+      "bounds_mm": {
+        "minimum": [
+          0.0,
+          0.0
+        ],
+        "maximum": [
+          370.0,
+          722.0
+        ],
+        "size": [
+          370.0,
+          722.0
+        ]
+      },
+      "blue_stroke_style": "dashed",
+      "dedicated_native_2d_view_present": false,
+      "source_scaled": false
+    }
+  },
+  "formal_ifc_sha256": "7a50b87e8f48a7c2bfbaa9f1dabdfca7155fa684b2325c66aa1ae15c8ab0a25c",
+  "formal_ifc_bytes_unchanged": true,
+  "pass": true
+}

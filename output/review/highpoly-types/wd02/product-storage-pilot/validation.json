@@ -1,0 +1,462 @@
+{
+  "task": "WD02 persistent product IFC / temporary scene pilot",
+  "stage": "bonsai_roundtrip_and_scene_complete",
+  "courseEvidence": {
+    "mode": "embedded-course-index",
+    "lesson": "085000",
+    "timestamps": [
+      "01:59 Create Drawing",
+      "02:13 SVG"
+    ]
+  },
+  "preState": {
+    "protected_files": [
+      {
+        "path": "/Users/jiaxinchen/.codex/worktrees/3a80/2504 GBTB Yanlord Zhuhai/2504 GBTB Yanlord Zhuhai.ifc",
+        "bytes": 87322517,
+        "sha256": "7a50b87e8f48a7c2bfbaa9f1dabdfca7155fa684b2325c66aa1ae15c8ab0a25c"
+      },
+      {
+        "path": "/Users/jiaxinchen/.codex/worktrees/3a80/2504 GBTB Yanlord Zhuhai/output/review/highpoly-types/wd02/Poliform-Senzafine-WD02-derived-drawing.ifc",
+        "bytes": 87424583,
+        "sha256": "c4abdcdc29c51071a0d180ddbb0f42243808b6a3b76fffbacac4c24d10861824"
+      },
+      {
+        "path": "/Users/jiaxinchen/.codex/worktrees/3a80/2504 GBTB Yanlord Zhuhai/pipeline/decisions/wd02-drawing-approval.json",
+        "bytes": 2854,
+        "sha256": "8b213bf95e9d6ad27c88c8854fa2e7b9bf07a0998eb164255647fcd62c8f8507"
+      },
+      {
+        "path": "/Users/jiaxinchen/.codex/worktrees/3a80/2504 GBTB Yanlord Zhuhai/output/review/highpoly-types/wd02/bonsai-drawings/wardrobe/WD02-WARDROBE-create-drawing-evidence.json",
+        "bytes": 14556,
+        "sha256": "ef1e5ed439020fec3fdb9b4f90d89ace5e1a198a297d6e2220cd7ad71da7dfbd"
+      },
+      {
+        "path": "/Users/jiaxinchen/.codex/worktrees/3a80/2504 GBTB Yanlord Zhuhai/output/review/highpoly-types/wd02/candidate-representations.json",
+        "bytes": 62402,
+        "sha256": "b143d12be063a667e3c3749c5b350a73ecde8c2f5691667bac8e093af4579b3e"
+      },
+      {
+        "path": "/Users/jiaxinchen/.codex/worktrees/3a80/2504 GBTB Yanlord Zhuhai/output/review/highpoly-types/wd02/plan.svg",
+        "bytes": 39777,
+        "sha256": "4a1a6f75a4ba89e0c93940dbe8a209bad75db8d8b426dae56f65610180da8a2d"
+      },
+      {
+        "path": "/Users/jiaxinchen/.codex/worktrees/3a80/2504 GBTB Yanlord Zhuhai/output/review/highpoly-types/wd02/front.svg",
+        "bytes": 53423,
+        "sha256": "3e4cf03d0d3613a2e0e40808e803bc6fa1e70f351e1a640024129d7d0cd8c169"
+      },
+      {
+        "path": "/Users/jiaxinchen/.codex/worktrees/3a80/2504 GBTB Yanlord Zhuhai/output/review/highpoly-types/wd02/side.svg",
+        "bytes": 35557,
+        "sha256": "d688510fabe29d71affacfb4a070cd1f5b0cf15ca9fadeca94831cee4476b520"
+      },
+      {
+        "path": "/Users/jiaxinchen/.codex/worktrees/3a80/2504 GBTB Yanlord Zhuhai/output/review/highpoly-types/wd02/official-source/source-access-record.json",
+        "bytes": 4409,
+        "sha256": "42db2d7d8a7bafa5ca32c27936ec0e57641a2884f06c967a3b17bbb7de02e149"
+      },
+      {
+        "path": "/Users/jiaxinchen/.codex/worktrees/3a80/2504 GBTB Yanlord Zhuhai/output/review/highpoly-types/wd02/official-source/official-product-page-evidence.json",
+        "bytes": 3070,
+        "sha256": "134d4b84547e3843ed83ed07756ffd191ab369be15f37742aaba6eefc3a9a034"
+      }
+    ],
+    "formal_sha256": "7a50b87e8f48a7c2bfbaa9f1dabdfca7155fa684b2325c66aa1ae15c8ab0a25c"
+  },
+  "extraction": {
+    "represented_physical_elements": 1,
+    "body_unchanged": true,
+    "all_representations_unchanged": true,
+    "placement_matrix": [
+      [
+        0.0,
+        1.0,
+        0.0,
+        5897.0
+      ],
+      [
+        -1.0,
+        0.0,
+        0.0,
+        896.0
+      ],
+      [
+        0.0,
+        0.0,
+        1.0,
+        48.0
+      ],
+      [
+        0.0,
+        0.0,
+        0.0,
+        1.0
+      ]
+    ],
+    "placement_error_project_units": 0,
+    "rotation_error": 0,
+    "unit_scale_to_m": 0.001,
+    "properties_type_and_container_preserved": true,
+    "duplicate_global_ids": 0,
+    "annotations": [
+      "0CbCn0Bnb9y9e9BKXoo$F3",
+      "348teTzYn7Awf_EAZG5ixx",
+      "24LOE_EgPDFw9mr4n9XXY5",
+      "3IK7R0L652bhKZha0rJqAk",
+      "1v9IyCjEb6P8PWPVoGIEot",
+      "03p7H5ZOjDiwf1q7_KYhYP"
+    ]
+  },
+  "single_product": {
+    "path": "/Users/jiaxinchen/.codex/worktrees/3a80/2504 GBTB Yanlord Zhuhai/output/review/highpoly-types/wd02/product-storage-pilot/WD02-product.ifc",
+    "bytes": 407142,
+    "sha256": "d36fe4f2b00230bfb41eddd4b940a9f2b98ebcc422013dd788bf4343ac52253e"
+  },
+  "legacy_full_project": {
+    "path": "/Users/jiaxinchen/.codex/worktrees/3a80/2504 GBTB Yanlord Zhuhai/output/review/highpoly-types/wd02/Poliform-Senzafine-WD02-derived-drawing.ifc",
+    "bytes": 87424583,
+    "sha256": "c4abdcdc29c51071a0d180ddbb0f42243808b6a3b76fffbacac4c24d10861824"
+  },
+  "formal_write_allowed": false,
+  "batch_conversion_started": false,
+  "cleanup_performed": false,
+  "verdict": "pass",
+  "visual": {
+    "status": "inspected_by_primary_agent",
+    "views": ["plan", "front", "side"],
+    "observations": [
+      "Plan retains the approved top and door boundary against grey wall context.",
+      "Front retains the upper shelf, rail and lower drawer stack; the complete wardrobe fits the drawing.",
+      "Side retains the approved opaque panel outline; grey context remains visible as in the approved scene.",
+      "Latest SVG-derived previews were inspected after the final Bonsai run; no viewport screenshot substituted for scene SVG."
+    ]
+  },
+  "temporary_project_directory": "/var/folders/rz/d8p6s4y50ws53rd150nm2s3r0000gn/T/wd02-review-scene-an72fpzz",
+  "temporary_project_ifc": "/var/folders/rz/d8p6s4y50ws53rd150nm2s3r0000gn/T/wd02-review-scene-an72fpzz/scene.ifc",
+  "provider": {
+    "adapter": "installed public bonsai-mcp handlers",
+    "version": [
+      1,
+      1,
+      0
+    ],
+    "blender": "4.5.3 LTS",
+    "ifcopenshell": "0.8.4",
+    "bridge_file": "/Users/jiaxinchen/Library/Application Support/Blender/4.5/scripts/addons/bonsai_bridge.py",
+    "bridge_sha256": "5902c69c146aff5f53d627b6151fdc53725433a044b96c199f7720a3dbccbd75"
+  },
+  "product_bonsai_save_reload": {
+    "saved": true,
+    "output_path": "/Users/jiaxinchen/.codex/worktrees/3a80/2504 GBTB Yanlord Zhuhai/output/review/highpoly-types/wd02/product-storage-pilot/WD02-product.ifc",
+    "in_place": false,
+    "method": "bonsai.bim.export_ifc.IfcExporter",
+    "reloaded": true
+  },
+  "product_bonsai_roundtrip": {
+    "represented_physical_elements": 1,
+    "body_unchanged": true,
+    "all_representations_unchanged": true,
+    "placement_matrix": [
+      [
+        0.0,
+        1.0,
+        0.0,
+        5897.0
+      ],
+      [
+        -1.0,
+        0.0,
+        0.0,
+        896.0
+      ],
+      [
+        0.0,
+        0.0,
+        1.0,
+        48.0
+      ],
+      [
+        0.0,
+        0.0,
+        0.0,
+        1.0
+      ]
+    ],
+    "placement_error_project_units": 0,
+    "rotation_error": 0,
+    "unit_scale_to_m": 0.001,
+    "properties_type_and_container_preserved": true,
+    "duplicate_global_ids": 0,
+    "styles_preserved": true,
+    "georeferencing_preserved": true,
+    "annotations": [
+      "0CbCn0Bnb9y9e9BKXoo$F3",
+      "348teTzYn7Awf_EAZG5ixx",
+      "24LOE_EgPDFw9mr4n9XXY5",
+      "3IK7R0L652bhKZha0rJqAk",
+      "1v9IyCjEb6P8PWPVoGIEot",
+      "03p7H5ZOjDiwf1q7_KYhYP"
+    ]
+  },
+  "attachment": {
+    "physical_element_count_before": 714,
+    "physical_element_count_after": 714,
+    "target_instances": 1,
+    "target_body_copied": false,
+    "target_body_unchanged": true,
+    "target_placement_error_project_units": 0,
+    "second_attachment_created_entities": 0,
+    "all_formal_bodies_unchanged": true
+  },
+  "temporary_bonsai_save_reload": {
+    "saved": true,
+    "output_path": "/var/folders/rz/d8p6s4y50ws53rd150nm2s3r0000gn/T/wd02-review-scene-an72fpzz/scene.ifc",
+    "in_place": false,
+    "method": "bonsai.bim.export_ifc.IfcExporter",
+    "reloaded": true
+  },
+  "scene_outputs": [
+    {
+      "view": "plan",
+      "drawing_global_id": "0CbCn0Bnb9y9e9BKXoo$F3",
+      "annotation_global_id": "348teTzYn7Awf_EAZG5ixx",
+      "svg": {
+        "path": "/Users/jiaxinchen/.codex/worktrees/3a80/2504 GBTB Yanlord Zhuhai/output/review/highpoly-types/wd02/product-storage-pilot/WD02-SCENE-PLAN.svg",
+        "bytes": 272245,
+        "sha256": "4b57eecfaec228697dda5797ec84557d9b299b63c76e5010bb086468bda70315"
+      },
+      "inspection": {
+        "root_tag": "svg",
+        "width": "120.0mm",
+        "height": "120.0mm",
+        "view_box": "0 0 120.0 120.0",
+        "geometry_element_count": 1054,
+        "projection_group_count": 9,
+        "semantic_black_geometry_count": 105,
+        "grey_context_geometry_count": 949,
+        "representative_body_present": false,
+        "target_body_projection_count": 0,
+        "semantic_annotation_present": true,
+        "no_body_annotation_duplicate": true,
+        "bonsai_generated_sha256_before_review_style": "957bae1d7dba39ed96fb2e62e8a4d6bec24a127eb69cfc94de9b5d6533c48a4b",
+        "post_style_only": true
+      },
+      "generator": "bpy.ops.bim.create_drawing"
+    },
+    {
+      "view": "front",
+      "drawing_global_id": "24LOE_EgPDFw9mr4n9XXY5",
+      "annotation_global_id": "3IK7R0L652bhKZha0rJqAk",
+      "svg": {
+        "path": "/Users/jiaxinchen/.codex/worktrees/3a80/2504 GBTB Yanlord Zhuhai/output/review/highpoly-types/wd02/product-storage-pilot/WD02-SCENE-FRONT.svg",
+        "bytes": 770423,
+        "sha256": "52279b83c86f408237bc85b3001e6c07ef5fb43d75dc321e2ea87963989b1bda"
+      },
+      "inspection": {
+        "root_tag": "svg",
+        "width": "95.97882340239974mm",
+        "height": "128.00000190734863mm",
+        "view_box": "0 0 95.97882340239974 128.00000190734863",
+        "geometry_element_count": 3699,
+        "projection_group_count": 21,
+        "semantic_black_geometry_count": 346,
+        "grey_context_geometry_count": 3353,
+        "representative_body_present": false,
+        "target_body_projection_count": 0,
+        "semantic_annotation_present": true,
+        "no_body_annotation_duplicate": true,
+        "bonsai_generated_sha256_before_review_style": "90fa18d2b32e6ead9cdecaa6024a4e8b09a83b862c755ddd6859b0abb7fd882e",
+        "post_style_only": true
+      },
+      "generator": "bpy.ops.bim.create_drawing"
+    },
+    {
+      "view": "side",
+      "drawing_global_id": "1v9IyCjEb6P8PWPVoGIEot",
+      "annotation_global_id": "03p7H5ZOjDiwf1q7_KYhYP",
+      "svg": {
+        "path": "/Users/jiaxinchen/.codex/worktrees/3a80/2504 GBTB Yanlord Zhuhai/output/review/highpoly-types/wd02/product-storage-pilot/WD02-SCENE-SIDE.svg",
+        "bytes": 1152126,
+        "sha256": "d52038dd7a652831481d2aca8744c1c89668de12b25fb242d33b7efcf11a73fc"
+      },
+      "inspection": {
+        "root_tag": "svg",
+        "width": "95.97882340239974mm",
+        "height": "128.00000190734863mm",
+        "view_box": "0 0 95.97882340239974 128.00000190734863",
+        "geometry_element_count": 6101,
+        "projection_group_count": 19,
+        "semantic_black_geometry_count": 48,
+        "grey_context_geometry_count": 6053,
+        "representative_body_present": false,
+        "target_body_projection_count": 0,
+        "semantic_annotation_present": true,
+        "no_body_annotation_duplicate": true,
+        "bonsai_generated_sha256_before_review_style": "55912517ba095938bc97f9d9aa522abe946ff799cedb05a9e4635a7c8124b176",
+        "post_style_only": true
+      },
+      "generator": "bpy.ops.bim.create_drawing"
+    }
+  ],
+  "temporary_project": {
+    "path": "/var/folders/rz/d8p6s4y50ws53rd150nm2s3r0000gn/T/wd02-review-scene-an72fpzz/scene.ifc",
+    "bytes": 87490184,
+    "sha256": "64740b8f320586fab621daf56f1180aa6179d065750ae15f846641678f01b31f"
+  },
+  "scene_reload_verified": true,
+  "formal_sha256_after": "7a50b87e8f48a7c2bfbaa9f1dabdfca7155fa684b2325c66aa1ae15c8ab0a25c",
+  "protected_files_unchanged": true,
+  "previous_temporary_attempts": [
+    {
+      "path": "/var/folders/rz/d8p6s4y50ws53rd150nm2s3r0000gn/T/wd02-review-scene-kbnh2fvt/scene.ifc",
+      "retained_for_cleanup_confirmation": true
+    },
+    {
+      "path": "/var/folders/rz/d8p6s4y50ws53rd150nm2s3r0000gn/T/wd02-review-scene-hvgyal18/scene.ifc",
+      "retained_for_cleanup_confirmation": true
+    },
+    {
+      "path": "/var/folders/rz/d8p6s4y50ws53rd150nm2s3r0000gn/T/wd02-review-scene-24kx88d2/scene.ifc",
+      "retained_for_cleanup_confirmation": true
+    }
+  ],
+  "temporary_external_style_resources": [
+    {
+      "location": "Materials.blend",
+      "source": {
+        "path": "/Users/jiaxinchen/.codex/worktrees/3a80/2504 GBTB Yanlord Zhuhai/Materials.blend",
+        "bytes": 5496522,
+        "sha256": "18a1e92531bc56c3938a16c64189bc61da83354529c22a9c4d63f0f05cfd69a2"
+      },
+      "temporary_copy": "/var/folders/rz/d8p6s4y50ws53rd150nm2s3r0000gn/T/wd02-review-scene-an72fpzz/Materials.blend"
+    },
+    {
+      "location": "OD_Textures/Materials.blend",
+      "status": "already_missing_at_formal_source",
+      "blocks_2d_linework": false
+    }
+  ],
+  "inherited_schema_repairs": [
+    {
+      "entity": 7,
+      "attribute": "WorldCoordinateSystem",
+      "old": null,
+      "new": "explicit 2D identity origin",
+      "basis": "source Model WCS identity; approved SVG registration verified independently"
+    },
+    {
+      "entity": 27,
+      "attribute": "ApplicationDeveloper",
+      "old": null,
+      "new": "explicit unspecified placeholder; no invented author identity"
+    }
+  ],
+  "resolved_attempt_errors": [
+    "Traceback (most recent call last):\n  File \"/Users/jiaxinchen/.codex/worktrees/3a80/2504 GBTB Yanlord Zhuhai/pipeline/scripts/pilot_wd02_product_storage.py\", line 111, in scene\n    report[\"product_bonsai_roundtrip\"] = pkg.validate(source, package, GUID, annotation_guids())\n                                         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/Users/jiaxinchen/.codex/worktrees/3a80/2504 GBTB Yanlord Zhuhai/pipeline/scripts/review_product_package.py\", line 215, in validate\n    assert fingerprint(a.Representation) == fingerprint(b.Representation), \"Representation drift\"\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nAssertionError: Representation drift\n"
+  ],
+  "independent_validation": {
+    "represented_physical_elements": 1,
+    "body_unchanged": true,
+    "all_representations_unchanged": true,
+    "placement_matrix": [
+      [
+        0.0,
+        1.0,
+        0.0,
+        5897.0
+      ],
+      [
+        -1.0,
+        0.0,
+        0.0,
+        896.0
+      ],
+      [
+        0.0,
+        0.0,
+        1.0,
+        48.0
+      ],
+      [
+        0.0,
+        0.0,
+        0.0,
+        1.0
+      ]
+    ],
+    "placement_error_project_units": 0,
+    "rotation_error": 0,
+    "unit_scale_to_m": 0.001,
+    "properties_type_and_container_preserved": true,
+    "duplicate_global_ids": 0,
+    "styles_preserved": true,
+    "georeferencing_preserved": true,
+    "annotations": [
+      "0CbCn0Bnb9y9e9BKXoo$F3",
+      "348teTzYn7Awf_EAZG5ixx",
+      "24LOE_EgPDFw9mr4n9XXY5",
+      "3IK7R0L652bhKZha0rJqAk",
+      "1v9IyCjEb6P8PWPVoGIEot",
+      "03p7H5ZOjDiwf1q7_KYhYP"
+    ],
+    "ifc_schema_validation_errors": 0
+  },
+  "approved_scene_comparison": [
+    {
+      "view": "plan",
+      "max_linework_hausdorff_error_world_mm": 0.000762939453125,
+      "tolerance_mm": 0.01,
+      "svg": {
+        "path": "/Users/jiaxinchen/.codex/worktrees/3a80/2504 GBTB Yanlord Zhuhai/output/review/highpoly-types/wd02/product-storage-pilot/WD02-SCENE-PLAN.svg",
+        "bytes": 272245,
+        "sha256": "4b57eecfaec228697dda5797ec84557d9b299b63c76e5010bb086468bda70315"
+      },
+      "preview": {
+        "path": "/Users/jiaxinchen/.codex/worktrees/3a80/2504 GBTB Yanlord Zhuhai/output/review/highpoly-types/wd02/product-storage-pilot/WD02-SCENE-PLAN.png",
+        "bytes": 61615,
+        "sha256": "9d39b6b66c7edfc3b93d37e1ed768ee9a4cf9d654391119a26a9513582d8ca3c"
+      },
+      "document_reference_resolves": true
+    },
+    {
+      "view": "front",
+      "max_linework_hausdorff_error_world_mm": 0.000286102294921875,
+      "tolerance_mm": 0.01,
+      "svg": {
+        "path": "/Users/jiaxinchen/.codex/worktrees/3a80/2504 GBTB Yanlord Zhuhai/output/review/highpoly-types/wd02/product-storage-pilot/WD02-SCENE-FRONT.svg",
+        "bytes": 770423,
+        "sha256": "52279b83c86f408237bc85b3001e6c07ef5fb43d75dc321e2ea87963989b1bda"
+      },
+      "preview": {
+        "path": "/Users/jiaxinchen/.codex/worktrees/3a80/2504 GBTB Yanlord Zhuhai/output/review/highpoly-types/wd02/product-storage-pilot/WD02-SCENE-FRONT.png",
+        "bytes": 111921,
+        "sha256": "2a27dd289bb2030a367eb863d2ce52aabbf040793ac64ce358d5dd3876080d40"
+      },
+      "document_reference_resolves": true
+    },
+    {
+      "view": "side",
+      "max_linework_hausdorff_error_world_mm": 0.0,
+      "tolerance_mm": 0.01,
+      "svg": {
+        "path": "/Users/jiaxinchen/.codex/worktrees/3a80/2504 GBTB Yanlord Zhuhai/output/review/highpoly-types/wd02/product-storage-pilot/WD02-SCENE-SIDE.svg",
+        "bytes": 1152126,
+        "sha256": "d52038dd7a652831481d2aca8744c1c89668de12b25fb242d33b7efcf11a73fc"
+      },
+      "preview": {
+        "path": "/Users/jiaxinchen/.codex/worktrees/3a80/2504 GBTB Yanlord Zhuhai/output/review/highpoly-types/wd02/product-storage-pilot/WD02-SCENE-SIDE.png",
+        "bytes": 84516,
+        "sha256": "4fc70868795af5a383d29ea34cc34fa729e83b4b06213484fe6a86ff188af8c8"
+      },
+      "document_reference_resolves": true
+    }
+  ],
+  "formal_sha256_after_independent_validation": "7a50b87e8f48a7c2bfbaa9f1dabdfca7155fa684b2325c66aa1ae15c8ab0a25c",
+  "known_limitations": [
+    "Pilot only: one physical product without nested parts/openings/ports; unsupported relationship scopes stop extraction.",
+    "OD_Textures/Materials.blend is absent at the formal source, not lost by packaging; current 2D Create Drawing does not use it.",
+    "Second bridge call exceeded its response deadline; do not infer failure/success from transport. Disk report, reload queries and independent verification confirmed completion.",
+    "Old full-project IFC and Blend remain until explicit cleanup approval. No batch migration yet."
+  ]
+}

@@ -1,0 +1,1416 @@
+{
+  "schema_version": 1,
+  "review_status": "engineering_review_pending",
+  "source_mode": "module_composed_official_component_candidate",
+  "official_complete_shop_drawing": false,
+  "formal_ifc_write": "not_performed",
+  "formal_ifc_sha256_before": "7a50b87e8f48a7c2bfbaa9f1dabdfca7155fa684b2325c66aa1ae15c8ab0a25c",
+  "formal_ifc_sha256_after": "7a50b87e8f48a7c2bfbaa9f1dabdfca7155fa684b2325c66aa1ae15c8ab0a25c",
+  "formal_ifc_unchanged": true,
+  "sources": {
+    "datasheet": {
+      "url": "https://res.cloudinary.com/molteni/image/upload/v1760457000/2021_DS_505-UP-System_Living-Systems_Indoor_EN.pdf",
+      "path": "output/review/highpoly-types/505-up-v1-lp-s/official-source/2021_DS_505-UP-System_Living-Systems_Indoor_EN.pdf",
+      "sha256": "6df90e8b77c428b01fbda98525397952600dc56000e1a38673152c632544966b",
+      "pages": 31
+    },
+    "native_dwg": {
+      "url": "https://res.cloudinary.com/molteni/raw/upload/v1766397289/2021_2D_505-UP_Living-Systems_Indoor.dwg?_s=public-apps",
+      "path": "output/review/highpoly-types/505-up-v1-lp-s/official-source/2021_2D_505-UP_Living-Systems_Indoor.dwg",
+      "sha256": "dfe4a6bcd655a3ed19343813a4aba8e139b847cafe8ea69b47623a6e1e71add3"
+    }
+  },
+  "datasheet_rules": {
+    "horizontal_module_widths_mm": [
+      320,
+      480,
+      640,
+      960,
+      1280,
+      1440,
+      1920
+    ],
+    "vertical_pitch_mm": 384,
+    "available_floor_heights_mm": [
+      465,
+      849,
+      1233,
+      1617,
+      2001,
+      2385,
+      2769
+    ],
+    "floor_clearance_mm": 5,
+    "plinth_mm": 76,
+    "structural_panel_mm": 32,
+    "back_panel_mm": 16,
+    "central_divider_options_mm": [
+      10,
+      12,
+      32
+    ],
+    "structure_depths_mm": [
+      320,
+      400
+    ],
+    "display_position_pitch_mm": 160,
+    "maximum_unsupported_clear_width_mm": 960,
+    "open_display_atoms": [
+      {
+        "width_mm": 928,
+        "height_mm": 384,
+        "depth_mm": 500
+      },
+      {
+        "width_mm": 1248,
+        "height_mm": 384,
+        "depth_mm": 500
+      },
+      {
+        "width_mm": 608,
+        "height_mm": 768,
+        "depth_mm": 500
+      }
+    ],
+    "large_module_requires_central_divider": true,
+    "display_in_w960_or_larger_requires_reinforced_shelves": true
+  },
+  "composition": {
+    "schema_version": 1,
+    "composition_id": "project-505-up-v1-lp-s",
+    "label": "module-composed official-component candidate",
+    "representative_global_id": "19MpdkWqXC7uhUNhLQgrce",
+    "project_envelope_mm": [
+      2912,
+      436.499451,
+      2380
+    ],
+    "body_height_mm": 2380,
+    "floor_clearance_mm": 0,
+    "plinth_mm": 76,
+    "vertical_modules": 6,
+    "end_panel_mm": 32,
+    "columns": [
+      {
+        "id": "left-w640",
+        "module_width_mm": 640,
+        "clear_width_mm": 608,
+        "depth_mm": 320,
+        "x_mm": 0,
+        "feature": "project_vertical_grille",
+        "official_component_match": "unresolved"
+      },
+      {
+        "id": "centre-w1280",
+        "module_width_mm": 1280,
+        "clear_width_mm": 1248,
+        "depth_mm": 320,
+        "x_mm": 640,
+        "feature": "h3_open_tv_compartment",
+        "official_component_match": "datasheet_rule_exact"
+      },
+      {
+        "id": "right-w960",
+        "module_width_mm": 960,
+        "clear_width_mm": 928,
+        "depth_mm": 320,
+        "x_mm": 1920,
+        "feature": "w608_h768_protruding_open_display",
+        "official_component_match": "native_dwg_atom_front_only"
+      }
+    ],
+    "official_component_instances": [
+      {
+        "atom": "native-dwg-block-154738-w608-h768",
+        "column": "right-w960",
+        "translation_mm": [
+          1952,
+          844
+        ],
+        "scale": [
+          1,
+          1
+        ],
+        "rotation_degrees": 0,
+        "project_depth_mm": 420.462,
+        "official_depth_mm": 500
+      }
+    ],
+    "ifc_write_allowed": false
+  },
+  "native_dwg_atom": {
+    "source_dwg": "output/review/highpoly-types/505-up-v1-lp-s/official-source/2021_2D_505-UP_Living-Systems_Indoor.dwg",
+    "source_dwg_sha256": "dfe4a6bcd655a3ed19343813a4aba8e139b847cafe8ea69b47623a6e1e71add3",
+    "block_handle_decimal": 154738,
+    "block_name": "Gruppo-24",
+    "native_bounds_mm": [
+      -10532.313352318597,
+      -1602.000039339092,
+      -9924.313352320401,
+      -834.0000393390919
+    ],
+    "native_size_mm": [
+      607.9999999981956,
+      768.0
+    ],
+    "path_count": 6,
+    "geometry_transform": "normalise_origin_then_y_axis_view_reflection_only",
+    "scale_x": 1.0,
+    "scale_y": 1.0
+  },
+  "project_body": {
+    "global_id": "19MpdkWqXC7uhUNhLQgrce",
+    "ifc_class": "IfcFurniture",
+    "name": "505 UP V1.LP.S",
+    "placement_matrix": [
+      [
+        -1.0,
+        0.0,
+        0.0,
+        3317.0
+      ],
+      [
+        0.0,
+        1.0,
+        0.0,
+        -1384.0
+      ],
+      [
+        0.0,
+        0.0,
+        -1.0,
+        0.0
+      ],
+      [
+        0.0,
+        0.0,
+        0.0,
+        1.0
+      ]
+    ],
+    "styles": [
+      {
+        "style_index": 0,
+        "style_name": "/Laccato opaco M.003",
+        "components": [
+          {
+            "face_count": 192,
+            "vertex_count": 108,
+            "minimum_mm": [
+              -1728.181026,
+              0.0,
+              -76.0
+            ],
+            "maximum_mm": [
+              479.818974,
+              320.0,
+              0.0
+            ],
+            "size_mm": [
+              2208.0,
+              320.0,
+              76.0
+            ]
+          },
+          {
+            "face_count": 170,
+            "vertex_count": 96,
+            "minimum_mm": [
+              -2368.181026,
+              0.0,
+              -76.0
+            ],
+            "maximum_mm": [
+              -1760.181026,
+              320.0,
+              0.0
+            ],
+            "size_mm": [
+              608.0,
+              320.0,
+              76.0
+            ]
+          },
+          {
+            "face_count": 300,
+            "vertex_count": 152,
+            "minimum_mm": [
+              -2400.181026,
+              0.0,
+              -2380.0
+            ],
+            "maximum_mm": [
+              -2368.181026,
+              320.0,
+              0.0
+            ],
+            "size_mm": [
+              32.0,
+              320.0,
+              2380.0
+            ]
+          },
+          {
+            "face_count": 300,
+            "vertex_count": 152,
+            "minimum_mm": [
+              -2368.181026,
+              0.0,
+              -460.0
+            ],
+            "maximum_mm": [
+              -1760.181026,
+              320.0,
+              -428.0
+            ],
+            "size_mm": [
+              608.0,
+              320.0,
+              32.0
+            ]
+          },
+          {
+            "face_count": 300,
+            "vertex_count": 152,
+            "minimum_mm": [
+              -2368.181026,
+              0.0,
+              -1996.0
+            ],
+            "maximum_mm": [
+              -1760.181026,
+              320.0,
+              -1964.0
+            ],
+            "size_mm": [
+              608.0,
+              320.0,
+              32.0
+            ]
+          },
+          {
+            "face_count": 300,
+            "vertex_count": 152,
+            "minimum_mm": [
+              -2368.181026,
+              0.0,
+              -2380.0
+            ],
+            "maximum_mm": [
+              -1760.181026,
+              320.0,
+              -2348.0
+            ],
+            "size_mm": [
+              608.0,
+              320.0,
+              32.0
+            ]
+          },
+          {
+            "face_count": 300,
+            "vertex_count": 152,
+            "minimum_mm": [
+              -1760.181026,
+              0.0,
+              -2380.0
+            ],
+            "maximum_mm": [
+              -1728.181026,
+              320.0,
+              0.0
+            ],
+            "size_mm": [
+              32.0,
+              320.0,
+              2380.0
+            ]
+          },
+          {
+            "face_count": 300,
+            "vertex_count": 152,
+            "minimum_mm": [
+              -1728.181026,
+              0.0,
+              -460.0
+            ],
+            "maximum_mm": [
+              -480.181026,
+              320.0,
+              -428.0
+            ],
+            "size_mm": [
+              1248.0,
+              320.0,
+              32.0
+            ]
+          },
+          {
+            "face_count": 300,
+            "vertex_count": 152,
+            "minimum_mm": [
+              -1728.181026,
+              0.0,
+              -1996.0
+            ],
+            "maximum_mm": [
+              -480.181026,
+              320.0,
+              -1964.0
+            ],
+            "size_mm": [
+              1248.0,
+              320.0,
+              32.0
+            ]
+          },
+          {
+            "face_count": 300,
+            "vertex_count": 152,
+            "minimum_mm": [
+              -1728.181026,
+              0.0,
+              -2380.0
+            ],
+            "maximum_mm": [
+              -480.181026,
+              320.0,
+              -2348.0
+            ],
+            "size_mm": [
+              1248.0,
+              320.0,
+              32.0
+            ]
+          },
+          {
+            "face_count": 300,
+            "vertex_count": 152,
+            "minimum_mm": [
+              -480.181026,
+              0.0,
+              -2380.0
+            ],
+            "maximum_mm": [
+              -448.181026,
+              320.0,
+              -76.0
+            ],
+            "size_mm": [
+              32.0,
+              320.0,
+              2304.0
+            ]
+          },
+          {
+            "face_count": 300,
+            "vertex_count": 152,
+            "minimum_mm": [
+              479.818974,
+              0.0,
+              -2380.0
+            ],
+            "maximum_mm": [
+              511.818974,
+              320.0,
+              0.0
+            ],
+            "size_mm": [
+              32.0,
+              320.0,
+              2380.0
+            ]
+          },
+          {
+            "face_count": 300,
+            "vertex_count": 152,
+            "minimum_mm": [
+              -448.181026,
+              0.0,
+              -460.0
+            ],
+            "maximum_mm": [
+              479.818974,
+              320.0,
+              -428.0
+            ],
+            "size_mm": [
+              928.0,
+              320.0,
+              32.0
+            ]
+          },
+          {
+            "face_count": 300,
+            "vertex_count": 152,
+            "minimum_mm": [
+              -448.181026,
+              0.0,
+              -844.0
+            ],
+            "maximum_mm": [
+              479.818974,
+              320.0,
+              -812.0
+            ],
+            "size_mm": [
+              928.0,
+              320.0,
+              32.0
+            ]
+          },
+          {
+            "face_count": 300,
+            "vertex_count": 152,
+            "minimum_mm": [
+              -448.181026,
+              0.0,
+              -1612.0
+            ],
+            "maximum_mm": [
+              479.818974,
+              320.0,
+              -1580.0
+            ],
+            "size_mm": [
+              928.0,
+              320.0,
+              32.0
+            ]
+          },
+          {
+            "face_count": 300,
+            "vertex_count": 152,
+            "minimum_mm": [
+              -448.181026,
+              0.0,
+              -1996.0
+            ],
+            "maximum_mm": [
+              479.818974,
+              320.0,
+              -1964.0
+            ],
+            "size_mm": [
+              928.0,
+              320.0,
+              32.0
+            ]
+          },
+          {
+            "face_count": 300,
+            "vertex_count": 152,
+            "minimum_mm": [
+              -448.181026,
+              0.0,
+              -2380.0
+            ],
+            "maximum_mm": [
+              479.818974,
+              320.0,
+              -2348.0
+            ],
+            "size_mm": [
+              928.0,
+              320.0,
+              32.0
+            ]
+          },
+          {
+            "face_count": 300,
+            "vertex_count": 152,
+            "minimum_mm": [
+              -1728.181026,
+              0.0,
+              -470.0
+            ],
+            "maximum_mm": [
+              -480.181026,
+              330.0,
+              -460.0
+            ],
+            "size_mm": [
+              1248.0,
+              330.0,
+              10.0
+            ]
+          },
+          {
+            "face_count": 300,
+            "vertex_count": 152,
+            "minimum_mm": [
+              -1728.181026,
+              0.0,
+              -1612.0
+            ],
+            "maximum_mm": [
+              -480.181026,
+              320.0,
+              -1580.0
+            ],
+            "size_mm": [
+              1248.0,
+              320.0,
+              32.0
+            ]
+          }
+        ]
+      },
+      {
+        "style_index": 1,
+        "style_name": "/PELTRO.012",
+        "components": [
+          {
+            "face_count": 346,
+            "vertex_count": 175,
+            "minimum_mm": [
+              -1408.181026,
+              0.0,
+              -428.0
+            ],
+            "maximum_mm": [
+              -1396.181026,
+              295.077789,
+              -76.0
+            ],
+            "size_mm": [
+              12.0,
+              295.077789,
+              352.0
+            ]
+          },
+          {
+            "face_count": 346,
+            "vertex_count": 175,
+            "minimum_mm": [
+              -768.181026,
+              0.0,
+              -428.0
+            ],
+            "maximum_mm": [
+              -756.181026,
+              295.077759,
+              -76.0
+            ],
+            "size_mm": [
+              12.0,
+              295.077759,
+              352.0
+            ]
+          },
+          {
+            "face_count": 346,
+            "vertex_count": 175,
+            "minimum_mm": [
+              -128.181026,
+              0.0,
+              -428.0
+            ],
+            "maximum_mm": [
+              -116.181026,
+              295.077637,
+              -76.0
+            ],
+            "size_mm": [
+              12.0,
+              295.077637,
+              352.0
+            ]
+          },
+          {
+            "face_count": 308,
+            "vertex_count": 156,
+            "minimum_mm": [
+              -1276.181026,
+              0.0,
+              -2348.0
+            ],
+            "maximum_mm": [
+              -1264.181026,
+              295.0,
+              -1996.0
+            ],
+            "size_mm": [
+              12.0,
+              295.0,
+              352.0
+            ]
+          },
+          {
+            "face_count": 308,
+            "vertex_count": 156,
+            "minimum_mm": [
+              -796.181026,
+              0.0,
+              -1964.0
+            ],
+            "maximum_mm": [
+              -784.181026,
+              295.0,
+              -1612.0
+            ],
+            "size_mm": [
+              12.0,
+              295.0,
+              352.0
+            ]
+          },
+          {
+            "face_count": 308,
+            "vertex_count": 156,
+            "minimum_mm": [
+              191.818974,
+              0.0,
+              -812.0
+            ],
+            "maximum_mm": [
+              203.818974,
+              295.0,
+              -460.0
+            ],
+            "size_mm": [
+              12.0,
+              295.0,
+              352.0
+            ]
+          },
+          {
+            "face_count": 308,
+            "vertex_count": 156,
+            "minimum_mm": [
+              -276.181026,
+              0.0,
+              -2348.0
+            ],
+            "maximum_mm": [
+              -264.181026,
+              295.0,
+              -1996.0
+            ],
+            "size_mm": [
+              12.0,
+              295.0,
+              352.0
+            ]
+          },
+          {
+            "face_count": 308,
+            "vertex_count": 156,
+            "minimum_mm": [
+              203.818974,
+              0.0,
+              -1964.0
+            ],
+            "maximum_mm": [
+              215.818974,
+              295.0,
+              -1612.0
+            ],
+            "size_mm": [
+              12.0,
+              295.0,
+              352.0
+            ]
+          }
+        ]
+      },
+      {
+        "style_index": 2,
+        "style_name": "/LACCATO LUCIDO.001",
+        "components": [
+          {
+            "face_count": 300,
+            "vertex_count": 152,
+            "minimum_mm": [
+              -2380.181026,
+              324.0,
+              -1976.0
+            ],
+            "maximum_mm": [
+              -2358.181026,
+              349.0,
+              -448.0
+            ],
+            "size_mm": [
+              22.0,
+              25.0,
+              1528.0
+            ]
+          },
+          {
+            "face_count": 300,
+            "vertex_count": 152,
+            "minimum_mm": [
+              -2400.181026,
+              -16.0,
+              -2380.0
+            ],
+            "maximum_mm": [
+              511.818974,
+              0.0,
+              0.0
+            ],
+            "size_mm": [
+              2912.0,
+              16.0,
+              2380.0
+            ]
+          },
+          {
+            "face_count": 300,
+            "vertex_count": 152,
+            "minimum_mm": [
+              -2336.181026,
+              324.0,
+              -1976.0
+            ],
+            "maximum_mm": [
+              -2314.181026,
+              349.0,
+              -448.0
+            ],
+            "size_mm": [
+              22.0,
+              25.0,
+              1528.0
+            ]
+          },
+          {
+            "face_count": 300,
+            "vertex_count": 152,
+            "minimum_mm": [
+              -2292.181026,
+              324.0,
+              -1976.0
+            ],
+            "maximum_mm": [
+              -2270.181026,
+              349.0,
+              -448.0
+            ],
+            "size_mm": [
+              22.0,
+              25.0,
+              1528.0
+            ]
+          },
+          {
+            "face_count": 300,
+            "vertex_count": 152,
+            "minimum_mm": [
+              -2248.181026,
+              324.0,
+              -1976.0
+            ],
+            "maximum_mm": [
+              -2226.181026,
+              349.0,
+              -448.0
+            ],
+            "size_mm": [
+              22.0,
+              25.0,
+              1528.0
+            ]
+          },
+          {
+            "face_count": 300,
+            "vertex_count": 152,
+            "minimum_mm": [
+              -2204.181026,
+              324.0,
+              -1976.0
+            ],
+            "maximum_mm": [
+              -2182.181026,
+              349.0,
+              -448.0
+            ],
+            "size_mm": [
+              22.0,
+              25.0,
+              1528.0
+            ]
+          },
+          {
+            "face_count": 300,
+            "vertex_count": 152,
+            "minimum_mm": [
+              -2160.181026,
+              324.0,
+              -1976.0
+            ],
+            "maximum_mm": [
+              -2138.181026,
+              349.0,
+              -448.0
+            ],
+            "size_mm": [
+              22.0,
+              25.0,
+              1528.0
+            ]
+          },
+          {
+            "face_count": 300,
+            "vertex_count": 152,
+            "minimum_mm": [
+              -2116.181026,
+              324.0,
+              -1976.0
+            ],
+            "maximum_mm": [
+              -2094.181026,
+              349.0,
+              -448.0
+            ],
+            "size_mm": [
+              22.0,
+              25.0,
+              1528.0
+            ]
+          },
+          {
+            "face_count": 300,
+            "vertex_count": 152,
+            "minimum_mm": [
+              -2072.181026,
+              324.0,
+              -1976.0
+            ],
+            "maximum_mm": [
+              -2050.181026,
+              349.0,
+              -448.0
+            ],
+            "size_mm": [
+              22.0,
+              25.0,
+              1528.0
+            ]
+          },
+          {
+            "face_count": 300,
+            "vertex_count": 152,
+            "minimum_mm": [
+              -2028.181026,
+              324.0,
+              -1976.0
+            ],
+            "maximum_mm": [
+              -2006.181026,
+              349.0,
+              -448.0
+            ],
+            "size_mm": [
+              22.0,
+              25.0,
+              1528.0
+            ]
+          },
+          {
+            "face_count": 300,
+            "vertex_count": 152,
+            "minimum_mm": [
+              -1984.181026,
+              324.0,
+              -1976.0
+            ],
+            "maximum_mm": [
+              -1962.181026,
+              349.0,
+              -448.0
+            ],
+            "size_mm": [
+              22.0,
+              25.0,
+              1528.0
+            ]
+          },
+          {
+            "face_count": 300,
+            "vertex_count": 152,
+            "minimum_mm": [
+              -1940.181026,
+              324.0,
+              -1976.0
+            ],
+            "maximum_mm": [
+              -1918.181026,
+              349.0,
+              -448.0
+            ],
+            "size_mm": [
+              22.0,
+              25.0,
+              1528.0
+            ]
+          },
+          {
+            "face_count": 300,
+            "vertex_count": 152,
+            "minimum_mm": [
+              -1896.181026,
+              324.0,
+              -1976.0
+            ],
+            "maximum_mm": [
+              -1874.181026,
+              349.0,
+              -448.0
+            ],
+            "size_mm": [
+              22.0,
+              25.0,
+              1528.0
+            ]
+          },
+          {
+            "face_count": 300,
+            "vertex_count": 152,
+            "minimum_mm": [
+              -1852.181026,
+              324.0,
+              -1976.0
+            ],
+            "maximum_mm": [
+              -1830.181026,
+              349.0,
+              -448.0
+            ],
+            "size_mm": [
+              22.0,
+              25.0,
+              1528.0
+            ]
+          },
+          {
+            "face_count": 300,
+            "vertex_count": 152,
+            "minimum_mm": [
+              -1808.181026,
+              324.0,
+              -1976.0
+            ],
+            "maximum_mm": [
+              -1786.181026,
+              349.0,
+              -448.0
+            ],
+            "size_mm": [
+              22.0,
+              25.0,
+              1528.0
+            ]
+          },
+          {
+            "face_count": 300,
+            "vertex_count": 152,
+            "minimum_mm": [
+              -1740.181026,
+              324.0,
+              -440.0
+            ],
+            "maximum_mm": [
+              -468.181026,
+              356.0,
+              -64.0
+            ],
+            "size_mm": [
+              1272.0,
+              32.0,
+              376.0
+            ]
+          },
+          {
+            "face_count": 300,
+            "vertex_count": 152,
+            "minimum_mm": [
+              -460.181026,
+              324.0,
+              -440.0
+            ],
+            "maximum_mm": [
+              491.818974,
+              356.0,
+              -64.0
+            ],
+            "size_mm": [
+              952.0,
+              32.0,
+              376.0
+            ]
+          }
+        ]
+      },
+      {
+        "style_index": 3,
+        "style_name": "/Laccato opaco D.007",
+        "components": [
+          {
+            "face_count": 1179,
+            "vertex_count": 610,
+            "minimum_mm": [
+              -446.22076,
+              0.037205,
+              -1610.704712
+            ],
+            "maximum_mm": [
+              163.779026,
+              420.499451,
+              -844.704468
+            ],
+            "size_mm": [
+              609.999786,
+              420.462246,
+              766.000244
+            ]
+          }
+        ]
+      }
+    ],
+    "observed_atoms": {
+      "vertical_grid_slats": {
+        "count": 14,
+        "components": [
+          {
+            "face_count": 300,
+            "vertex_count": 152,
+            "minimum_mm": [
+              -2380.181026,
+              324.0,
+              -1976.0
+            ],
+            "maximum_mm": [
+              -2358.181026,
+              349.0,
+              -448.0
+            ],
+            "size_mm": [
+              22.0,
+              25.0,
+              1528.0
+            ]
+          },
+          {
+            "face_count": 300,
+            "vertex_count": 152,
+            "minimum_mm": [
+              -2336.181026,
+              324.0,
+              -1976.0
+            ],
+            "maximum_mm": [
+              -2314.181026,
+              349.0,
+              -448.0
+            ],
+            "size_mm": [
+              22.0,
+              25.0,
+              1528.0
+            ]
+          },
+          {
+            "face_count": 300,
+            "vertex_count": 152,
+            "minimum_mm": [
+              -2292.181026,
+              324.0,
+              -1976.0
+            ],
+            "maximum_mm": [
+              -2270.181026,
+              349.0,
+              -448.0
+            ],
+            "size_mm": [
+              22.0,
+              25.0,
+              1528.0
+            ]
+          },
+          {
+            "face_count": 300,
+            "vertex_count": 152,
+            "minimum_mm": [
+              -2248.181026,
+              324.0,
+              -1976.0
+            ],
+            "maximum_mm": [
+              -2226.181026,
+              349.0,
+              -448.0
+            ],
+            "size_mm": [
+              22.0,
+              25.0,
+              1528.0
+            ]
+          },
+          {
+            "face_count": 300,
+            "vertex_count": 152,
+            "minimum_mm": [
+              -2204.181026,
+              324.0,
+              -1976.0
+            ],
+            "maximum_mm": [
+              -2182.181026,
+              349.0,
+              -448.0
+            ],
+            "size_mm": [
+              22.0,
+              25.0,
+              1528.0
+            ]
+          },
+          {
+            "face_count": 300,
+            "vertex_count": 152,
+            "minimum_mm": [
+              -2160.181026,
+              324.0,
+              -1976.0
+            ],
+            "maximum_mm": [
+              -2138.181026,
+              349.0,
+              -448.0
+            ],
+            "size_mm": [
+              22.0,
+              25.0,
+              1528.0
+            ]
+          },
+          {
+            "face_count": 300,
+            "vertex_count": 152,
+            "minimum_mm": [
+              -2116.181026,
+              324.0,
+              -1976.0
+            ],
+            "maximum_mm": [
+              -2094.181026,
+              349.0,
+              -448.0
+            ],
+            "size_mm": [
+              22.0,
+              25.0,
+              1528.0
+            ]
+          },
+          {
+            "face_count": 300,
+            "vertex_count": 152,
+            "minimum_mm": [
+              -2072.181026,
+              324.0,
+              -1976.0
+            ],
+            "maximum_mm": [
+              -2050.181026,
+              349.0,
+              -448.0
+            ],
+            "size_mm": [
+              22.0,
+              25.0,
+              1528.0
+            ]
+          },
+          {
+            "face_count": 300,
+            "vertex_count": 152,
+            "minimum_mm": [
+              -2028.181026,
+              324.0,
+              -1976.0
+            ],
+            "maximum_mm": [
+              -2006.181026,
+              349.0,
+              -448.0
+            ],
+            "size_mm": [
+              22.0,
+              25.0,
+              1528.0
+            ]
+          },
+          {
+            "face_count": 300,
+            "vertex_count": 152,
+            "minimum_mm": [
+              -1984.181026,
+              324.0,
+              -1976.0
+            ],
+            "maximum_mm": [
+              -1962.181026,
+              349.0,
+              -448.0
+            ],
+            "size_mm": [
+              22.0,
+              25.0,
+              1528.0
+            ]
+          },
+          {
+            "face_count": 300,
+            "vertex_count": 152,
+            "minimum_mm": [
+              -1940.181026,
+              324.0,
+              -1976.0
+            ],
+            "maximum_mm": [
+              -1918.181026,
+              349.0,
+              -448.0
+            ],
+            "size_mm": [
+              22.0,
+              25.0,
+              1528.0
+            ]
+          },
+          {
+            "face_count": 300,
+            "vertex_count": 152,
+            "minimum_mm": [
+              -1896.181026,
+              324.0,
+              -1976.0
+            ],
+            "maximum_mm": [
+              -1874.181026,
+              349.0,
+              -448.0
+            ],
+            "size_mm": [
+              22.0,
+              25.0,
+              1528.0
+            ]
+          },
+          {
+            "face_count": 300,
+            "vertex_count": 152,
+            "minimum_mm": [
+              -1852.181026,
+              324.0,
+              -1976.0
+            ],
+            "maximum_mm": [
+              -1830.181026,
+              349.0,
+              -448.0
+            ],
+            "size_mm": [
+              22.0,
+              25.0,
+              1528.0
+            ]
+          },
+          {
+            "face_count": 300,
+            "vertex_count": 152,
+            "minimum_mm": [
+              -1808.181026,
+              324.0,
+              -1976.0
+            ],
+            "maximum_mm": [
+              -1786.181026,
+              349.0,
+              -448.0
+            ],
+            "size_mm": [
+              22.0,
+              25.0,
+              1528.0
+            ]
+          }
+        ]
+      },
+      "right_protruding_open_element": {
+        "face_count": 1179,
+        "vertex_count": 610,
+        "minimum_mm": [
+          -446.22076,
+          0.037205,
+          -1610.704712
+        ],
+        "maximum_mm": [
+          163.779026,
+          420.499451,
+          -844.704468
+        ],
+        "size_mm": [
+          609.999786,
+          420.462246,
+          766.000244
+        ]
+      }
+    }
+  },
+  "checks": {
+    "width_module_sum": {
+      "status": "pass",
+      "equation": "640 + 1280 + 960 + 32 = 2912",
+      "delta_mm": 0
+    },
+    "body_height_modules": {
+      "status": "pass",
+      "equation": "76 + 6 * 384 = 2380",
+      "delta_mm": 0
+    },
+    "floor_clearance": {
+      "status": "fail",
+      "project_mm": 0,
+      "official_mm": 5,
+      "delta_mm": -5
+    },
+    "central_open_compartment": {
+      "status": "pass",
+      "module_width_mm": 1280,
+      "clear_width_mm": 1248,
+      "clear_height_mm": 1120
+    },
+    "right_display_front": {
+      "status": "pass_with_4mm_review_tolerance",
+      "project_width_mm": 609.999786,
+      "project_height_mm": 766.000244,
+      "official_width_mm": 608,
+      "official_height_mm": 768
+    },
+    "right_display_depth": {
+      "status": "fail",
+      "project_mm": 420.462246,
+      "official_mm": 500,
+      "delta_mm": -79.537754
+    },
+    "left_grille_identity": {
+      "status": "unresolved",
+      "official_blue_allowed": false
+    },
+    "reinforced_shelf_internal_construction": {
+      "status": "not_provable_from_external_body"
+    },
+    "native_atom_transform": {
+      "status": "pass",
+      "scale_x": 1.0,
+      "scale_y": 1.0,
+      "placement": "translation_only"
+    }
+  },
+  "overall_design_compliance": "partial_fail_requires_display_depth_and_floor_clearance_correction"
+}

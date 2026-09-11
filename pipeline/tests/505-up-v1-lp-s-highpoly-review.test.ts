@@ -41,7 +41,26 @@ test("one 505 UP Body produces three geometry-derived candidates with zero blue 
   expect(manifest.project_context.manifest_sha256).toBe(sha256(join(root, manifest.project_context.manifest)));
   expect(manifest.bonsai_review.manifest_sha256).toBe(sha256(join(root, manifest.bonsai_review.manifest)));
   expect(candidate).toMatchObject({ article_number: "505 UP System / project V1.LP.S", source_kind: sourceKind, source_label_zh: sourceLabelZh, official_cad_used: false, third_party_cad_used: false, formal_ifc_write_allowed: false });
-  expect(Object.fromEntries(Object.entries(candidate.views).map(([view, item]: any) => [view, item.proxy_paths_mm.length]))).toEqual({ plan: 19, front: 281, side: 93 });
+  expect(Object.fromEntries(Object.entries(candidate.views).map(([view, item]: any) => [view, item.proxy_paths_mm.length]))).toEqual({ plan: 24, front: 281, side: 93 });
+  expect(candidate.views.plan.component_semantics).toMatchObject({
+    method: "plan_first_visible_highest_face_semantic_partition",
+    camera_direction_world: [0, 0, -1],
+    local_to_world_z_sign: -1,
+    normalization_tolerance_mm: 0.5,
+    two_side_probe_mm: 2,
+    required_internal_interfaces: {
+      "A_main_top/C_front_left_display": 2,
+      "A_main_top/D_mid_shelf_lip": 1,
+      "C_front_left_display/E_lower_front_rails": 2,
+      "D_mid_shelf_lip/E_lower_front_rails": 6,
+    },
+    rejected_paths_removed: ["P02", "P03", "P04", "P05"],
+    bottom_76mm_components_used_as_top: false,
+    every_internal_segment_has_different_semantics_on_both_sides: true,
+    pass: true,
+  });
+  expect(sha256(join(product, "front.svg"))).toBe("0f942b3799c9854119765445258a8eb422274c5cb198582e2fe369c5b13c975b");
+  expect(sha256(join(product, "side.svg"))).toBe("8f4224ef5fb3594bd369cc850ff49bd728c266bba8ac966528a1c361ed3eb156");
   for (const view of ["plan", "front", "side"]) {
     expect(candidate.views[view].official_cad_paths_mm).toEqual([]);
     const svg = readFileSync(join(product, `${view}.svg`), "utf8");
@@ -81,20 +100,267 @@ test("actual Bonsai session contains four camera renders of the isolated MODEL_V
   expect(existsSync(join(product, "Molteni-505-UP-V1-LP-S-bonsai-review.blend1"))).toBeFalse();
 });
 
-test("pending approval rejects IFC writes and preserves the formal IFC bytes", () => {
-  const temporary = mkdtempSync(join(tmpdir(), "molteni-505-pending-"));
-  const output = join(temporary, "forbidden.ifc");
-  const script = join(root, "pipeline/scripts/505_up_v1_lp_s_drawing_ifc.py");
+test("approved Front is frozen while rejected Plan keeps only the existing derived IFC gate", () => {
   const approval = JSON.parse(readFileSync(join(root, "pipeline/decisions/505-up-v1-lp-s-drawing-approval.json"), "utf8"));
-  expect(approval).toMatchObject({ status: "pending", derived_ifc_write_allowed: false, formal_authoritative_ifc_write_allowed: false });
+  expect(approval).toMatchObject({
+    status: "revision_pending_review",
+    reviewer: "project_owner",
+    approved_views: ["plan", "front", "side"],
+    approval_evidence: "先黑色的505，下一个吧",
+    derived_ifc_write_authorization_evidence: "505 必须写入 IFC",
+    derived_ifc_write_allowed: true,
+    formal_authoritative_ifc_write_allowed: false,
+    pending_reapproval_views: ["plan"],
+    latest_review: {
+      outcome: "new_single_product_plan_candidate_pending_review",
+      front_outcome: "approved_and_frozen",
+      plan_outcome: "new_semantic_candidate_generated_pending_owner_review",
+      plan_user_authorization: "没问题，那么基于此给我新的单品svg",
+      derived_ifc_updated: false,
+      bonsai_session_updated: false,
+      create_drawing_called: false,
+    },
+    front_revision_freeze: {
+      status: "approved_and_frozen",
+      scene_svg_sha256: "85331ec1c29c42e053f06dce7fcf58a68f4cba8d594cb0044d28c0af1a6f10bf",
+      rendered_png_sha256: "8ff7aa9aab8ae33789f9b504ebbea63cbbf9910f75f08a8c581be08fd37361d9",
+      linework_path_count: 281,
+    },
+    approved_candidate: {
+      source_kind: sourceKind,
+      source_label_zh: sourceLabelZh,
+      official_cad_used: false,
+      blue_official_atomic_component_composition_selected: false,
+    },
+  });
   expect(approval.candidate_manifest_sha256).toBe(sha256(join(product, "manifest.json")));
-  const missingApply = Bun.spawnSync(["python3", script, "--input", formal, "--output", output], { cwd: root, stderr: "pipe" });
-  expect(missingApply.stderr.toString()).toContain("IFC write requires the explicit --apply flag");
-  const pending = Bun.spawnSync(["python3", script, "--input", formal, "--output", output, "--apply"], { cwd: root, stderr: "pipe" });
-  expect(pending.stderr.toString()).toContain("approval gate rejected IFC write");
-  expect(existsSync(output)).toBeFalse();
+  expect(approval.plan_semantic_candidate).toMatchObject({
+    status: "pending_owner_review",
+    source_kind: sourceKind,
+    path_count: 24,
+    every_internal_segment_has_different_semantics_on_both_sides: true,
+    derived_ifc_updated: false,
+  });
   expect(sha256(formal)).toBe(formalHash);
-  rmSync(temporary, { recursive: true, force: true });
+});
+
+test("new Plan single-product SVG contains only mechanically valid first-visible boundaries", () => {
+  const audit = JSON.parse(readFileSync(join(product, "505-up-plan-semantic-candidate-audit.json"), "utf8"));
+  expect(audit).toMatchObject({
+    status: "new_single_product_plan_svg_pending_owner_review",
+    user_authorization: "没问题，那么基于此给我新的单品svg",
+    source_kind: sourceKind,
+    plan_visibility_rule: {
+      camera_direction_world: [0, 0, -1],
+      local_to_world_z_sign: -1,
+      tessellation_gap_normalization_tolerance_mm: 0.5,
+      bottom_76mm_components_used_as_top: false,
+    },
+    removed_rejected_paths: ["P02", "P03", "P04", "P05"],
+    candidate: {
+      path_count: 24,
+      segment_count: 87,
+      internal_segment_count: 11,
+      exterior_segment_count: 76,
+      invalid_same_side_or_unexplained_count: 0,
+      required_internal_interface_counts: {
+        "A_main_top/C_front_left_display": 2,
+        "A_main_top/D_mid_shelf_lip": 1,
+        "C_front_left_display/E_lower_front_rails": 2,
+        "D_mid_shelf_lip/E_lower_front_rails": 6,
+      },
+    },
+    write_boundary: {
+      single_product_plan_svg_updated: true,
+      derived_ifc_updated: false,
+      bonsai_session_updated: false,
+      project_scene_drawing_updated: false,
+      create_drawing_called: false,
+      front_svg_frozen: true,
+      side_svg_frozen: true,
+    },
+    pass: true,
+  });
+  expect(audit.candidate.segment_semantics.every((segment: any) => segment.side_a !== segment.side_b)).toBeTrue();
+  expect(audit.candidate.segment_semantics.filter((segment: any) => segment.internal).every(
+    (segment: any) => segment.side_a !== "background" && segment.side_b !== "background",
+  )).toBeTrue();
+  for (const [pathKey, hashKey] of [
+    ["plan_preview_png", "plan_preview_png_sha256"],
+    ["contact_sheet_png", "contact_sheet_png_sha256"],
+  ]) expect(sha256(join(root, audit.outputs[pathKey]))).toBe(audit.outputs[hashKey]);
+  const svg = readFileSync(join(product, "plan.svg"), "utf8");
+  expect(svg).toContain('data-visibility-method="first-visible-highest-face"');
+  expect(svg).toContain('data-semantic-two-side-validation="passed"');
+  expect(svg).toContain('data-bottom-76mm-as-top="false"');
+  expect(svg).not.toContain("#1677c8");
+  expect(sha256(join(product, "front.svg"))).toBe("0f942b3799c9854119765445258a8eb422274c5cb198582e2fe369c5b13c975b");
+  expect(sha256(join(product, "side.svg"))).toBe("8f4224ef5fb3594bd369cc850ff49bd728c266bba8ac966528a1c361ed3eb156");
+  expect(sha256(join(product, "505-up-v1-lp-s-derived-drawing.ifc"))).toBe("a49d1b9d2859fe596761ecc70c845cf888022f32c988a71946e8bfa4b0338417");
+  expect(sha256(join(product, "505-up-v1-lp-s-bonsai-drawing-session.ifc"))).toBe("b8e9c5825225bd5f1df3a5ca5b5c9d0945e29acc9f1435c1e4dc98c3525b7687");
+  expect(sha256(formal)).toBe(formalHash);
+});
+
+test("Plan diagnostic exposes depth-visible semantic regions without changing final Drawing artifacts", () => {
+  const audit = JSON.parse(readFileSync(join(product, "505-up-plan-visibility-semantics.json"), "utf8"));
+  expect(audit).toMatchObject({
+    status: "diagnostic_only_plan_revision_required",
+    component_count: 38,
+    plan_camera_visibility_rule: {
+      camera_direction_world: [0, 0, -1],
+      local_to_world_z_sign: -1,
+      finding: "local z near 0 is world floor level, not the product top",
+    },
+    decision: {
+      current_plan_candidate_pass: false,
+      final_plan_updated: false,
+      derived_ifc_updated: false,
+      bonsai_session_updated: false,
+      create_drawing_called: false,
+    },
+    frozen_views: {
+      plan_rejected_scene_svg_sha256: "f67a0a3867e105e6ffc2a4507ba07f40d233c72142d46c5c06e2c9555ccf29d5",
+      front_scene_svg_sha256: "85331ec1c29c42e053f06dce7fcf58a68f4cba8d594cb0044d28c0af1a6f10bf",
+      side_scene_svg_sha256: "e5c16902267f3ba56157230aca3ff7b234b446f7e47b5a7b7cecc248c3643c84",
+      derived_ifc_sha256: "a49d1b9d2859fe596761ecc70c845cf888022f32c988a71946e8bfa4b0338417",
+      bonsai_session_ifc_sha256: "b8e9c5825225bd5f1df3a5ca5b5c9d0945e29acc9f1435c1e4dc98c3525b7687",
+    },
+    pass: true,
+  });
+  const regions = Object.fromEntries(
+    audit.visible_surface_records.map((record: any) => [record.semantic_region, record.top_world_height_mm]),
+  );
+  expect(regions).toMatchObject({
+    A_main_top: 2380,
+    B_right_slats: 1976,
+    C_front_left_display: 1610.705,
+    D_mid_shelf_lip: 470,
+    E_lower_front_rails: 440,
+  });
+  expect(audit.candidate_path_semantics.slice(1, 5).every((item: any) => item.classification === "unexplained_numeric_residual_loop")).toBeTrue();
+  expect(audit.candidate_path_semantics.at(-1)).toMatchObject({ path_id: "P20", classification: "main_top_to_display_depth_boundary" });
+  expect(audit.candidate_segment_summary).toEqual({
+    segment_count: 97,
+    valid_two_side_semantic_count: 81,
+    invalid_same_side_or_unexplained_count: 16,
+    invalid_segment_ids: [
+      "P02-S01", "P02-S02", "P02-S03", "P02-S04",
+      "P03-S01", "P03-S02", "P03-S03", "P03-S04",
+      "P04-S01", "P04-S02", "P04-S03", "P04-S04",
+      "P05-S01", "P05-S02", "P05-S03", "P05-S04",
+    ],
+  });
+  expect(audit.candidate_segment_semantics.filter((item: any) => !item.semantic_separation_valid).every(
+    (item: any) => item.side_a === "A_main_top" && item.side_b === "A_main_top",
+  )).toBeTrue();
+  for (const [pathKey, hashKey] of [
+    ["component_visibility_svg", "component_visibility_svg_sha256"],
+    ["depth_visibility_svg", "depth_visibility_svg_sha256"],
+    ["component_visibility_png", "component_visibility_png_sha256"],
+    ["depth_visibility_png", "depth_visibility_png_sha256"],
+  ]) expect(sha256(join(root, audit.outputs[pathKey]))).toBe(audit.outputs[hashKey]);
+  expect(sha256(formal)).toBe(formalHash);
+});
+
+test("persisted product-level IFC and revised Bonsai drawings reload with review path counts", () => {
+  const derived = join(product, "505-up-v1-lp-s-derived-drawing.ifc");
+  const session = join(product, "505-up-v1-lp-s-bonsai-drawing-session.ifc");
+  const report = JSON.parse(readFileSync(join(product, "derived-drawing-write-report.json"), "utf8"));
+  const evidence = JSON.parse(readFileSync(join(product, "505-UP-ENTRANCE-create-drawing-evidence.json"), "utf8"));
+  const drawingManifest = JSON.parse(readFileSync(join(product, "505-up-project-drawing-manifest.json"), "utf8"));
+  expect(report).toMatchObject({
+    pass: true,
+    formal_ifc_bytes_unchanged: true,
+    representation_path_counts: { plan: 20, front: 281, side: 93 },
+    official_cad_geometry_included: false,
+    source_kind: sourceKind,
+  });
+  expect(sha256(derived)).toBe(report.derived_ifc_sha256);
+  expect(evidence).toMatchObject({
+    provider: { name: "bonsai-mcp", status: "supported", execution: "execute_blender_code" },
+    formal_ifc_bytes_unchanged: true,
+    source_kind: sourceKind,
+    official_cad_used: false,
+    blue_official_atomic_component_composition_selected: false,
+    target: { global_id: "19MpdkWqXC7uhUNhLQgrce", target_include_count_after_suppression: 0 },
+    room: { name: "玄关" },
+    pass: true,
+  });
+  expect(sha256(session)).toBe(evidence.drawing_session_sha256_after);
+  expect(drawingManifest.approval).toMatchObject({ status: "revision_pending_review", pending_reapproval_views: ["plan"] });
+  expect(sha256(join(root, drawingManifest.approval.record))).not.toBe(drawingManifest.approval.record_sha256);
+  expect(drawingManifest.approval.status).toBe("revision_pending_review");
+  expect(sha256(join(root, drawingManifest.derived_ifc.path))).toBe(drawingManifest.derived_ifc.sha256);
+  expect(sha256(join(root, drawingManifest.bonsai_session.ifc))).toBe(drawingManifest.bonsai_session.ifc_sha256);
+  expect(sha256(join(root, drawingManifest.revision_audit.path))).toBe(drawingManifest.revision_audit.sha256);
+  for (const view of drawingManifest.views) {
+    expect(sha256(join(root, view.svg))).toBe(view.svg_sha256);
+    expect(sha256(join(root, view.rendered_pdf_page))).toBe(view.rendered_pdf_page_sha256);
+  }
+  const reload = Bun.spawnSync([
+    "python3",
+    "-c",
+    [
+      "import ifcopenshell,json,sys",
+      "f=ifcopenshell.open(sys.argv[1])",
+      "drawings=[x for x in f.by_type('IfcAnnotation') if getattr(x,'ObjectType',None)=='DRAWING' and (getattr(x,'Name',None) or '').startswith('MOLTENI-505-UP-ENTRANCE-')]",
+      "linework=[x for x in f.by_type('IfcAnnotation') if getattr(x,'ObjectType',None)=='LINEWORK' and (getattr(x,'Name',None) or '').startswith('Molteni 505 UP approved black proxy')]",
+      "counts={x.Name.rsplit('/',1)[-1].strip():sum(len(item.Elements or []) for rep in x.Representation.Representations or [] for item in rep.Items or [] if item.is_a('IfcGeometricCurveSet')) for x in linework}",
+      "print(json.dumps({'schema':f.schema,'drawings':len(drawings),'linework':len(linework),'counts':counts}))",
+    ].join(";"),
+    session,
+  ], { cwd: root, stdout: "pipe", stderr: "pipe" });
+  if (reload.exitCode !== 0) throw new Error(reload.stderr.toString());
+  expect(JSON.parse(reload.stdout.toString())).toEqual({
+    schema: "IFC4",
+    drawings: 3,
+    linework: 3,
+    counts: { plan: 20, front: 281, side: 93 },
+  });
+  expect(evidence.views.map((view: any) => [view.view, view.persisted_review_path_count])).toEqual([
+    ["plan", 20],
+    ["front", 281],
+    ["side", 93],
+  ]);
+  for (const view of evidence.views) {
+    expect(view.create_drawing).toMatchObject({ operator: "bpy.ops.bim.create_drawing", result: ["FINISHED"] });
+    expect(view.persisted_coordinate_residual_mm).toBe(0);
+    expect(view.svg.post_style_only).toBe(true);
+    expect(view.svg.black_geometry_element_count).toBeGreaterThan(0);
+    expect(view.svg.grey_context_geometry_element_count).toBeGreaterThan(0);
+    expect(sha256(view.svg.path)).toBe(view.svg.sha256);
+  }
+  expect(evidence).toMatchObject({ review_status: "revision_pending_review" });
+  expect(evidence.plan_component_semantics).toMatchObject({
+    method: "connected_components_then_display_main_envelope_intersection",
+    slat_components: { count: 14 },
+    interface: {
+      path_mm: [[-446.18847, 320], [163.643711, 320]],
+      closed: false,
+      full_display_footprint_added: false,
+    },
+    pass: true,
+  });
+  expect(evidence.front_orientation_revision).toMatchObject({
+    method: "product_world_axes_plus_room_facing_component_depth_plus_camera_basis",
+    local_x_screen_dot_after: 1,
+    front_outward_view_dot_after: -1,
+    persisted_north_rotation_pass: true,
+    pass: true,
+  });
+  expect(evidence.plan_front_revision).toMatchObject({
+    create_results: { plan: ["FINISHED"], front: ["FINISHED"] },
+    side_unchanged: true,
+    target_body_projection_counts: { plan: 0, front: 0 },
+    svg_sha256_after: {
+      plan: "f67a0a3867e105e6ffc2a4507ba07f40d233c72142d46c5c06e2c9555ccf29d5",
+      front: "85331ec1c29c42e053f06dce7fcf58a68f4cba8d594cb0044d28c0af1a6f10bf",
+      side: "e5c16902267f3ba56157230aca3ff7b234b446f7e47b5a7b7cecc248c3643c84",
+    },
+  });
+  expect(existsSync(evidence.bonsai_session.path)).toBeTrue();
+  expect(sha256(evidence.bonsai_session.path)).toBe(evidence.bonsai_session.sha256);
+  expect(sha256(formal)).toBe(formalHash);
 });
 
 test("scoped temporary approval writes verified representations and native-DWG source associations", () => {
@@ -107,7 +373,7 @@ test("scoped temporary approval writes verified representations and native-DWG s
   const run = Bun.spawnSync(["python3", join(root, "pipeline/scripts/505_up_v1_lp_s_drawing_ifc.py"), "--input", formal, "--manifest", manifest, "--approval", approvalPath, "--output", output, "--report", report, "--apply"], { cwd: root, stdout: "pipe", stderr: "pipe" });
   if (run.exitCode !== 0) throw new Error(run.stderr.toString());
   const result = JSON.parse(readFileSync(report, "utf8"));
-  expect(result).toMatchObject({ pass: true, formal_ifc_bytes_unchanged: true, representation_path_counts: { plan: 19, front: 281, side: 93 }, official_cad_geometry_included: false, source_kind: sourceKind, source_label_zh: sourceLabelZh });
+  expect(result).toMatchObject({ pass: true, formal_ifc_bytes_unchanged: true, representation_path_counts: { plan: 24, front: 281, side: 93 }, official_cad_geometry_included: false, source_kind: sourceKind, source_label_zh: sourceLabelZh });
   expect(result.representations).toEqual({ plan: "Molteni505UpPlan", front: "Molteni505UpFront", side: "Molteni505UpSide" });
   expect(result.source_document_associations).toContain("MOLTENI-505-UP-OFFICIAL-TECHNICAL-DWG");
   expect(result.source_document_associations).toContain("MOLTENI-505-UP-OFFICIAL-INSPIRING-DWG");

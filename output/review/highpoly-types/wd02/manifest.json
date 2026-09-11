@@ -1,13 +1,13 @@
 {
   "schema_version": 1,
-  "generated_at": "2026-08-23T06:43:07.902867+00:00",
-  "generator": "pipeline/scripts/wd02_review.py",
+  "generated_at": "2026-09-05T11:44:37.012534+00:00",
+  "generator": "pipeline/scripts/wd02_semantic_review.py",
   "formal_ifc": "2504 GBTB Yanlord Zhuhai.ifc",
   "formal_ifc_sha256": "7a50b87e8f48a7c2bfbaa9f1dabdfca7155fa684b2325c66aa1ae15c8ab0a25c",
   "formal_ifc_sha256_after_generation": "7a50b87e8f48a7c2bfbaa9f1dabdfca7155fa684b2325c66aa1ae15c8ab0a25c",
   "formal_ifc_bytes_unchanged": true,
   "profile_register": "output/review/highpoly-types/wd02/profile.json",
-  "profile_register_sha256": "89199fe94f64299df6c536a6de6b0523bc0ab5de8307c382ad959989c6ff03a2",
+  "profile_register_sha256": "54d74b65aed3903ab3ba9627514f1b68b8b73165ebe46dcdab591d56a3565309",
   "profile_key": "wd02",
   "display_name": "Poliform Senzafine glass wardrobe / project WD02",
   "ifc_type_name": "WD02",
@@ -47,8 +47,8 @@
     "official_cad_used": false,
     "third_party_cad_used": false,
     "official_source_access_record": "output/review/highpoly-types/wd02/official-source/source-access-record.json",
-    "official_source_access_record_sha256": "1f31a21e5b2da4c0c4352b3eda816f307ba2907735ee02bcd79031b412d2edc3",
-    "official_product_cad_status": "gated_resource_download_no_public_exact_WD02_asset_located_not_acquired"
+    "official_source_access_record_sha256": "42db2d7d8a7bafa5ca32c27936ec0e57641a2884f06c967a3b17bbb7de02e149",
+    "official_product_cad_status": "no_product_page_dwg_published_and_separate_reserved_area_not_authenticated_not_acquired"
   },
   "official_reference": {
     "source_id": "POLIFORM-SENZAFINE-WD02-OFFICIAL-IDENTITY-001",
@@ -59,7 +59,7 @@
     "product_page": "https://www.poliform.it/en/products/senzafine-wardrobe/",
     "technical_catalog_route": "https://www.poliform.it/it/technical-catalog/",
     "source_access_record": "output/review/highpoly-types/wd02/official-source/source-access-record.json",
-    "official_native_cad_status": "gated_resource_download_no_public_exact_WD02_asset_located_not_acquired",
+    "official_native_cad_status": "no_product_page_dwg_published_and_separate_reserved_area_not_authenticated_not_acquired",
     "official_native_cad_used": false
   },
   "official_identity_evidence_only": true,
@@ -82,9 +82,9 @@
   "third_party_cad_used": false,
   "blue_line_present": false,
   "official_source_access_record": "output/review/highpoly-types/wd02/official-source/source-access-record.json",
-  "official_source_access_record_sha256": "1f31a21e5b2da4c0c4352b3eda816f307ba2907735ee02bcd79031b412d2edc3",
+  "official_source_access_record_sha256": "42db2d7d8a7bafa5ca32c27936ec0e57641a2884f06c967a3b17bbb7de02e149",
   "candidate_representations": "output/review/highpoly-types/wd02/candidate-representations.json",
-  "candidate_representations_sha256": "601b025c0de23ce7f795615083e36bac02b4ec1583b5165722d226baf5443f0c",
+  "candidate_representations_sha256": "b143d12be063a667e3c3749c5b350a73ecde8c2f5691667bac8e093af4579b3e",
   "review_status": "visual_review_pending",
   "approved_for_drawing_ifc": false,
   "derived_ifc_write_allowed": false,
@@ -93,14 +93,17 @@
     {
       "view": "plan",
       "svg": "output/review/highpoly-types/wd02/plan.svg",
-      "svg_sha256": "378c04417e66d49e04d5358543c41d88d9e699275e95c4a6c59f5f33302745cc",
+      "svg_sha256": "4a1a6f75a4ba89e0c93940dbe8a209bad75db8d8b426dae56f65610180da8a2d",
+      "preview": "output/review/highpoly-types/wd02/plan-preview.png",
+      "preview_sha256": "09f7428061f986b677f356560f3d3a9945fbda2abea6c6ee1c35773400f2d7c6",
       "projection_axes": [
         0,
         1
       ],
       "raw_edge_count": 6294,
       "displayed_raw_edge_count": 900,
-      "silhouette_path_count": 4,
+      "silhouette_path_count": 15,
+      "semantic_path_count": 15,
       "drawing_line_source_kind": "geometry_derived_simplified_proxy",
       "drawing_line_source_label_zh": "基于原始高模几何生成的简化图纸表达",
       "official_cad_path_count": 0,
@@ -109,14 +112,17 @@
     {
       "view": "front",
       "svg": "output/review/highpoly-types/wd02/front.svg",
-      "svg_sha256": "fdae2f57a75817b9e8b61195bd90ee841612d7894cdf44c4261273f5a3154c06",
+      "svg_sha256": "3e4cf03d0d3613a2e0e40808e803bc6fa1e70f351e1a640024129d7d0cd8c169",
+      "preview": "output/review/highpoly-types/wd02/front-preview.png",
+      "preview_sha256": "36811c23d6703f31603bcd2739d2dc1f1c121d72dab554e49e513f1874de8dfc",
       "projection_axes": [
         0,
         2
       ],
       "raw_edge_count": 6294,
       "displayed_raw_edge_count": 900,
-      "silhouette_path_count": 3,
+      "silhouette_path_count": 41,
+      "semantic_path_count": 41,
       "drawing_line_source_kind": "geometry_derived_simplified_proxy",
       "drawing_line_source_label_zh": "基于原始高模几何生成的简化图纸表达",
       "official_cad_path_count": 0,
@@ -125,14 +131,17 @@
     {
       "view": "side",
       "svg": "output/review/highpoly-types/wd02/side.svg",
-      "svg_sha256": "f1a4c07b48cc73c8b5427f54698bfdf320399a7e46fce12bbfc739a833b74e18",
+      "svg_sha256": "d688510fabe29d71affacfb4a070cd1f5b0cf15ca9fadeca94831cee4476b520",
+      "preview": "output/review/highpoly-types/wd02/side-preview.png",
+      "preview_sha256": "fde9d7f2dc5400da9c451800519ab392de0878b09bd5d7be44fe9e0875591811",
       "projection_axes": [
         1,
         2
       ],
       "raw_edge_count": 6294,
       "displayed_raw_edge_count": 900,
-      "silhouette_path_count": 3,
+      "silhouette_path_count": 7,
+      "semantic_path_count": 7,
       "drawing_line_source_kind": "geometry_derived_simplified_proxy",
       "drawing_line_source_label_zh": "基于原始高模几何生成的简化图纸表达",
       "official_cad_path_count": 0,
@@ -142,7 +151,7 @@
   "pass": true,
   "project_context": {
     "manifest": "output/review/highpoly-types/wd02/project-context-manifest.json",
-    "manifest_sha256": "4be0d4204683b470a3172b80ba82eeec99f66eccf243db95db155fb4527d782d",
+    "manifest_sha256": "6e16a1d99805f13cbb5bdc8a7ca59b79c7898a4c995792d6db6eb4eaff32cfe3",
     "walls_and_surrounding_project_elements_retained": true,
     "overlay_top_layer_with_white_mask": true,
     "pass": true
@@ -154,5 +163,270 @@
     "saved_active_representation": "Body",
     "saved_camera_count": 4,
     "pass": true
+  },
+  "semantic_segmentation": {
+    "path": "output/review/highpoly-types/wd02/wd02-semantic-segmentation.json",
+    "sha256": "b5341a007c9053a2e3aec0ea50c05351c8e0777ce12fdb24838282bc60b54867",
+    "representation_item_count": 35,
+    "classified_component_count": 35,
+    "actual_projected_triangles_used": true,
+    "bbox_geometry_used": false
+  },
+  "review_contact_sheet_sha256": "c9199cda9f656ed719e58b833cda9089d230279fd47377e1684eae0ce9d22ac6",
+  "semantic_single_product_approval": {
+    "status": "approved",
+    "quote": "单品SVG可以验收，只差给我一个场景SVG",
+    "approval_record": "pipeline/decisions/wd02-drawing-approval.json"
+  },
+  "scene_drawings": {
+    "status": "pending_user_review",
+    "generator": "Bonsai Create Drawing",
+    "evidence": {
+      "path": "/Users/jiaxinchen/.codex/worktrees/3a80/2504 GBTB Yanlord Zhuhai/output/review/highpoly-types/wd02/bonsai-drawings/wardrobe/WD02-WARDROBE-create-drawing-evidence.json",
+      "bytes": 14556,
+      "sha256": "ef1e5ed439020fec3fdb9b4f90d89ace5e1a198a297d6e2220cd7ad71da7dfbd"
+    },
+    "views": [
+      {
+        "view": "plan",
+        "drawing_global_id": "0CbCn0Bnb9y9e9BKXoo$F3",
+        "annotation_global_id": "348teTzYn7Awf_EAZG5ixx",
+        "path_count": 15,
+        "camera_world_matrix_m": [
+          [
+            1.9470718370939721e-07,
+            1.0,
+            0.0,
+            6.177000045776367
+          ],
+          [
+            -1.0,
+            1.9470718370939721e-07,
+            0.0,
+            0.6220000386238098
+          ],
+          [
+            0.0,
+            0.0,
+            1.0,
+            3.1480000019073486
+          ],
+          [
+            0.0,
+            0.0,
+            0.0,
+            1.0
+          ]
+        ],
+        "view_direction_world": [
+          -0.0,
+          -0.0,
+          -1.0
+        ],
+        "create_drawing_result": [
+          "FINISHED"
+        ],
+        "svg": {
+          "path": "/Users/jiaxinchen/.codex/worktrees/3a80/2504 GBTB Yanlord Zhuhai/output/review/highpoly-types/wd02/bonsai-drawings/wardrobe/WD02-WARDROBE-PLAN.svg",
+          "sha256": "96fce130beb254aa04fc47dc5187202ea31f8c128dc64ac1341269ee457a4b49",
+          "bytes": 269941,
+          "root_tag": "svg",
+          "width": "120.0mm",
+          "height": "120.0mm",
+          "view_box": "0 0 120.0 120.0",
+          "geometry_element_count": 1060,
+          "projection_group_count": 9,
+          "semantic_black_geometry_count": 114,
+          "grey_context_geometry_count": 946,
+          "representative_body_present": false,
+          "target_body_projection_count": 0,
+          "semantic_annotation_present": true,
+          "no_body_annotation_duplicate": true,
+          "bonsai_generated_sha256_before_review_style": "64bb89082e5e770ad15ada615f4a537ec35eee47ada73fdb2eab3874e58c53de",
+          "post_style_only": true
+        },
+        "reload_verification": {
+          "path_count": 15,
+          "local_coordinate_error_mm": 0.0,
+          "installation_placement_error_mm": 0.0001640319796933909,
+          "camera_persisted": true,
+          "shared_product_origin_world_mm": [
+            5897.0,
+            896.0,
+            48.0
+          ],
+          "persistence_tolerance_mm": 0.001
+        }
+      },
+      {
+        "view": "front",
+        "drawing_global_id": "24LOE_EgPDFw9mr4n9XXY5",
+        "annotation_global_id": "3IK7R0L652bhKZha0rJqAk",
+        "path_count": 41,
+        "camera_world_matrix_m": [
+          [
+            -4.371138828673793e-08,
+            -1.6292068494294654e-07,
+            -1.0,
+            4.746999740600586
+          ],
+          [
+            -1.0,
+            -5.960463056453591e-08,
+            4.3711398944878965e-08,
+            0.621999979019165
+          ],
+          [
+            -5.960463766996327e-08,
+            1.0,
+            -1.6292068494294654e-07,
+            1.2480000257492065
+          ],
+          [
+            0.0,
+            0.0,
+            0.0,
+            1.0
+          ]
+        ],
+        "view_direction_world": [
+          1.0,
+          -4.3711398944878965e-08,
+          1.6292068494294654e-07
+        ],
+        "create_drawing_result": [
+          "FINISHED"
+        ],
+        "svg": {
+          "path": "/Users/jiaxinchen/.codex/worktrees/3a80/2504 GBTB Yanlord Zhuhai/output/review/highpoly-types/wd02/bonsai-drawings/wardrobe/WD02-WARDROBE-FRONT.svg",
+          "sha256": "15c0259336df7fd081a72b476be2c02e4bd599b19d643cc206327865f1772547",
+          "bytes": 754027,
+          "root_tag": "svg",
+          "width": "95.97882340239974mm",
+          "height": "128.00000190734863mm",
+          "view_box": "0 0 95.97882340239974 128.00000190734863",
+          "geometry_element_count": 3676,
+          "projection_group_count": 21,
+          "semantic_black_geometry_count": 354,
+          "grey_context_geometry_count": 3322,
+          "representative_body_present": false,
+          "target_body_projection_count": 0,
+          "semantic_annotation_present": true,
+          "no_body_annotation_duplicate": true,
+          "bonsai_generated_sha256_before_review_style": "0d1af864678866138761b77c4f33762b1093f0522c46c1ac7dcc832842ffbcfe",
+          "post_style_only": true
+        },
+        "reload_verification": {
+          "path_count": 41,
+          "local_coordinate_error_mm": 0.0,
+          "installation_placement_error_mm": 0.0001640319796933909,
+          "camera_persisted": true,
+          "shared_product_origin_world_mm": [
+            5897.0,
+            896.0,
+            48.0
+          ],
+          "persistence_tolerance_mm": 0.001
+        }
+      },
+      {
+        "view": "side",
+        "drawing_global_id": "1v9IyCjEb6P8PWPVoGIEot",
+        "annotation_global_id": "03p7H5ZOjDiwf1q7_KYhYP",
+        "path_count": 7,
+        "camera_world_matrix_m": [
+          [
+            -1.0,
+            1.1399865765455465e-14,
+            -1.5099580252808664e-07,
+            6.176999568939209
+          ],
+          [
+            -1.5099580252808664e-07,
+            -7.549790126404332e-08,
+            1.0,
+            2.0460000038146973
+          ],
+          [
+            0.0,
+            1.0,
+            7.549790126404332e-08,
+            1.2480000257492065
+          ],
+          [
+            0.0,
+            0.0,
+            0.0,
+            1.0
+          ]
+        ],
+        "view_direction_world": [
+          1.5099580252808664e-07,
+          -1.0,
+          -7.549790126404332e-08
+        ],
+        "create_drawing_result": [
+          "FINISHED"
+        ],
+        "svg": {
+          "path": "/Users/jiaxinchen/.codex/worktrees/3a80/2504 GBTB Yanlord Zhuhai/output/review/highpoly-types/wd02/bonsai-drawings/wardrobe/WD02-WARDROBE-SIDE.svg",
+          "sha256": "1d4d0b9d0112748989e61ba827288ead91344efb93f0bfd34dd20ab08eb70f89",
+          "bytes": 1136437,
+          "root_tag": "svg",
+          "width": "95.97882340239974mm",
+          "height": "128.00000190734863mm",
+          "view_box": "0 0 95.97882340239974 128.00000190734863",
+          "geometry_element_count": 6075,
+          "projection_group_count": 19,
+          "semantic_black_geometry_count": 49,
+          "grey_context_geometry_count": 6026,
+          "representative_body_present": false,
+          "target_body_projection_count": 0,
+          "semantic_annotation_present": true,
+          "no_body_annotation_duplicate": true,
+          "bonsai_generated_sha256_before_review_style": "b7321ee64508f402ae16117ceb0ca20c37d79b66a51f299c821bcf375f56025b",
+          "post_style_only": true
+        },
+        "reload_verification": {
+          "path_count": 7,
+          "local_coordinate_error_mm": 0.0,
+          "installation_placement_error_mm": 0.0001640319796933909,
+          "camera_persisted": true,
+          "shared_product_origin_world_mm": [
+            5897.0,
+            896.0,
+            48.0
+          ],
+          "persistence_tolerance_mm": 0.001
+        }
+      }
+    ],
+    "derived_ifc": {
+      "path": "/Users/jiaxinchen/.codex/worktrees/3a80/2504 GBTB Yanlord Zhuhai/output/review/highpoly-types/wd02/Poliform-Senzafine-WD02-derived-drawing.ifc",
+      "sha256": "c4abdcdc29c51071a0d180ddbb0f42243808b6a3b76fffbacac4c24d10861824",
+      "bytes": 87424583
+    },
+    "previews": [
+      {
+        "path": "/Users/jiaxinchen/.codex/worktrees/3a80/2504 GBTB Yanlord Zhuhai/output/review/highpoly-types/wd02/wd02-wardrobe-scene-plan.png",
+        "bytes": 18065,
+        "sha256": "928c9f97a03d753cdd18007a4c0ada92dd7152bb259a2204f167f5be68494e10"
+      },
+      {
+        "path": "/Users/jiaxinchen/.codex/worktrees/3a80/2504 GBTB Yanlord Zhuhai/output/review/highpoly-types/wd02/wd02-wardrobe-scene-front.png",
+        "bytes": 117953,
+        "sha256": "95cd11c12c1493f70bf8e72d43e9e566dc044897c3243b533e9966e7e16b305e"
+      },
+      {
+        "path": "/Users/jiaxinchen/.codex/worktrees/3a80/2504 GBTB Yanlord Zhuhai/output/review/highpoly-types/wd02/wd02-wardrobe-scene-side.png",
+        "bytes": 92113,
+        "sha256": "37c0a7a9a7573567d4f3c093a7b42414b51f92761a867e9cfb1f87469b3d3292"
+      }
+    ],
+    "pdf": {
+      "path": "/Users/jiaxinchen/.codex/worktrees/3a80/2504 GBTB Yanlord Zhuhai/output/review/highpoly-types/wd02/Poliform-Senzafine-WD02-scene-drawings.pdf",
+      "bytes": 268950,
+      "sha256": "3bcb210645a194f0ad65323d69fe059c82f1dbcb7248a5b2de09972cabeb5a57"
+    }
   }
 }

@@ -1,0 +1,276 @@
+{
+  "review_status": "superseded_rejected_by_visual_validation",
+  "superseded_reason": "Old clipping-only crop removed the entire upper elbow and horizontal assembly. Technical persistence checks passed, but component completeness failed. Use v4, pending user review.",
+  "schema_version": 1,
+  "mode": "actual_bonsai_create_drawing_cabinet_internal_orthographic_detail",
+  "formal_ifc_sha256": "7a50b87e8f48a7c2bfbaa9f1dabdfca7155fa684b2325c66aa1ae15c8ab0a25c",
+  "formal_ifc_bytes_unchanged": true,
+  "derived_ifc": {
+    "path": "output/review/highpoly-types/trap01/Geberit-151.116.11.1-TRAP01-official-detail-v3.ifc",
+    "bytes": 87875630,
+    "sha256": "d3e09bc43d50a7a9f70dab3c624257f8510d9b3e0f4b65f45013bb6034d6fda3"
+  },
+  "create_drawing_evidence": {
+    "path": "output/review/highpoly-types/trap01/bonsai-drawings/cabinet-official-detail-v3/TRAP01-official-detail-v3-evidence.json",
+    "bytes": 627045,
+    "sha256": "9dc396f9d58e6fe335ec7c56c8570bb221707d725227e03e9a6fede5d7627bae"
+  },
+  "current_installation_only": true,
+  "blue_dashed_reference_displayed": false,
+  "filtered_occluder_global_ids": [
+    "1FgLPMw$5B4wBH2ySMkXE1",
+    "2YnGmmoYbF28Vy25$aNKT8",
+    "3OVQygdDn17huGOgJJFTOY"
+  ],
+  "retained_context_element_count": 13,
+  "no_duplicate_target_or_annotation": true,
+  "all_three_current_configurations_visible": true,
+  "views": [
+    {
+      "view": "plan",
+      "drawing_global_id": "00HSWcJZLFzOt60eZ$qGb1",
+      "annotation_global_id": "2RkXojQRD0$vcekdYiDEQx",
+      "svg": {
+        "path": "output/review/highpoly-types/trap01/bonsai-drawings/cabinet-official-detail-v3/TRAP01-OFFICIAL-DETAIL-V3-PLAN.svg",
+        "bytes": 722854,
+        "sha256": "657bb0a135642b8a9379787e2f3d6e2da7ca7b6dac4861bc4aa7e91d578e1848"
+      },
+      "page_pdf": {
+        "path": "output/review/highpoly-types/trap01/bonsai-drawings/cabinet-official-detail-v3/TRAP01-OFFICIAL-DETAIL-V3-PLAN.pdf",
+        "bytes": 25062,
+        "sha256": "628216ed420495d7e3d4f1bac7a14d58aab7ff8f2a41be15f0a4446c30507395"
+      },
+      "preview": {
+        "path": "output/review/highpoly-types/trap01/trap01-official-detail-v3-plan.png",
+        "bytes": 35633,
+        "sha256": "9a7cb55a48d8dbdfc8926b03424fd02366ea65e714452c72ea8849faabd9b511"
+      },
+      "visual": {
+        "width": 1870,
+        "height": 2420,
+        "blue_installed_detail_pixels": 7425,
+        "grey_context_pixels": 16041,
+        "current_configuration_visible": true,
+        "retained_context_visible": true,
+        "pass": true,
+        "blue_dashed_reference_absent": "verified in SVG source, not inferred from pixel colour"
+      },
+      "svg_validation": {
+        "root_tag": "svg",
+        "data_scale": "1:5",
+        "view_box": "0 0 179.99999523162842 160.00940752590404",
+        "geometry_element_count": 2400,
+        "target_ifc_body_group_count": 0,
+        "current_annotation_group_count": 1,
+        "excluded_occluder_group_counts": {
+          "1FgLPMw$5B4wBH2ySMkXE1": 0,
+          "2YnGmmoYbF28Vy25$aNKT8": 0,
+          "3OVQygdDn17huGOgJJFTOY": 0
+        },
+        "no_target_or_annotation_duplicate": true,
+        "all_occluders_absent": true,
+        "external_reference_count": 0
+      },
+      "camera": {
+        "type": "ORTHO",
+        "width_m": 0.9,
+        "height_m": 0.8,
+        "clip_start_m": 0.0020000000949949026,
+        "clip_end_m": 0.72,
+        "scale": "1:5",
+        "matrix_world": [
+          [
+            1.0,
+            0.0,
+            0.0,
+            -6.321560382843018
+          ],
+          [
+            0.0,
+            1.0,
+            0.0,
+            -0.5499976873397827
+          ],
+          [
+            0.0,
+            0.0,
+            1.0,
+            0.9800000190734863
+          ],
+          [
+            0.0,
+            0.0,
+            0.0,
+            1.0
+          ]
+        ]
+      }
+    },
+    {
+      "view": "front",
+      "drawing_global_id": "2RORsO$l1FEP87fUtVQMPI",
+      "annotation_global_id": "1QbA1pjzTACPjCocMLe_vL",
+      "svg": {
+        "path": "output/review/highpoly-types/trap01/bonsai-drawings/cabinet-official-detail-v3/TRAP01-OFFICIAL-DETAIL-V3-FRONT.svg",
+        "bytes": 719593,
+        "sha256": "a49f3b2112d66e61fe0d8b02b927a6eea5887259b2a1e0a2a349e7a30d8bf670"
+      },
+      "page_pdf": {
+        "path": "output/review/highpoly-types/trap01/bonsai-drawings/cabinet-official-detail-v3/TRAP01-OFFICIAL-DETAIL-V3-FRONT.pdf",
+        "bytes": 19673,
+        "sha256": "39458843df54eca4413d6392084507fe22f1747cb2ca5118eedb18bfd16fe7a0"
+      },
+      "preview": {
+        "path": "output/review/highpoly-types/trap01/trap01-official-detail-v3-front.png",
+        "bytes": 27441,
+        "sha256": "5afd648eb25c8133fec908d3a2bc200317248904f237e23aa3570c932bd0b25d"
+      },
+      "visual": {
+        "width": 1870,
+        "height": 2420,
+        "blue_installed_detail_pixels": 5753,
+        "grey_context_pixels": 10879,
+        "current_configuration_visible": true,
+        "retained_context_visible": true,
+        "pass": true,
+        "blue_dashed_reference_absent": "verified in SVG source, not inferred from pixel colour"
+      },
+      "svg_validation": {
+        "root_tag": "svg",
+        "data_scale": "1:5",
+        "view_box": "0 0 160.0000023841858 160.0000023841858",
+        "geometry_element_count": 2582,
+        "target_ifc_body_group_count": 0,
+        "current_annotation_group_count": 1,
+        "excluded_occluder_group_counts": {
+          "1FgLPMw$5B4wBH2ySMkXE1": 0,
+          "2YnGmmoYbF28Vy25$aNKT8": 0,
+          "3OVQygdDn17huGOgJJFTOY": 0
+        },
+        "no_target_or_annotation_duplicate": true,
+        "all_occluders_absent": true,
+        "external_reference_count": 0
+      },
+      "camera": {
+        "type": "ORTHO",
+        "width_m": 0.8,
+        "height_m": 0.8,
+        "clip_start_m": 0.0020000000949949026,
+        "clip_end_m": 0.95,
+        "scale": "1:5",
+        "matrix_world": [
+          [
+            -4.371138828673793e-08,
+            4.371138828673793e-08,
+            1.0,
+            -5.771560192108154
+          ],
+          [
+            1.0,
+            1.910685676922942e-15,
+            4.371138828673793e-08,
+            -0.5499976873397827
+          ],
+          [
+            0.0,
+            1.0,
+            -4.371138828673793e-08,
+            0.6114700436592102
+          ],
+          [
+            0.0,
+            0.0,
+            0.0,
+            1.0
+          ]
+        ]
+      }
+    },
+    {
+      "view": "side",
+      "drawing_global_id": "0VDihR31v7ceafpvH_1mAN",
+      "annotation_global_id": "15DKwrfSj9FgSoxICOYVx4",
+      "svg": {
+        "path": "output/review/highpoly-types/trap01/bonsai-drawings/cabinet-official-detail-v3/TRAP01-OFFICIAL-DETAIL-V3-SIDE.svg",
+        "bytes": 563768,
+        "sha256": "ef7187f6c4e00add60231d1e9af191f3583e23b2348e7cb5dba68fd30c4820b5"
+      },
+      "page_pdf": {
+        "path": "output/review/highpoly-types/trap01/bonsai-drawings/cabinet-official-detail-v3/TRAP01-OFFICIAL-DETAIL-V3-SIDE.pdf",
+        "bytes": 17113,
+        "sha256": "0007249f65fca5af7858ace9ca4ffba814056fd1892ea8f137b76e4c9f9ff01c"
+      },
+      "preview": {
+        "path": "output/review/highpoly-types/trap01/trap01-official-detail-v3-side.png",
+        "bytes": 22313,
+        "sha256": "12acd7a9030592e75c8af96739ef982f0d81f438a41e5359d63dc6d1e6650b97"
+      },
+      "visual": {
+        "width": 1870,
+        "height": 2420,
+        "blue_installed_detail_pixels": 5730,
+        "grey_context_pixels": 13917,
+        "current_configuration_visible": true,
+        "retained_context_visible": true,
+        "pass": true,
+        "blue_dashed_reference_absent": "verified in SVG source, not inferred from pixel colour"
+      },
+      "svg_validation": {
+        "root_tag": "svg",
+        "data_scale": "1:5",
+        "view_box": "0 0 179.99999523162842 160.00940752590404",
+        "geometry_element_count": 1737,
+        "target_ifc_body_group_count": 0,
+        "current_annotation_group_count": 1,
+        "excluded_occluder_group_counts": {
+          "1FgLPMw$5B4wBH2ySMkXE1": 0,
+          "2YnGmmoYbF28Vy25$aNKT8": 0,
+          "3OVQygdDn17huGOgJJFTOY": 0
+        },
+        "no_target_or_annotation_duplicate": true,
+        "all_occluders_absent": true,
+        "external_reference_count": 0
+      },
+      "camera": {
+        "type": "ORTHO",
+        "width_m": 0.9,
+        "height_m": 0.8,
+        "clip_start_m": 0.0020000000949949026,
+        "clip_end_m": 0.95,
+        "scale": "1:5",
+        "matrix_world": [
+          [
+            1.0,
+            0.0,
+            0.0,
+            -6.321560382843018
+          ],
+          [
+            0.0,
+            7.549790126404332e-08,
+            -1.0,
+            -1.099997639656067
+          ],
+          [
+            0.0,
+            1.0,
+            7.549790126404332e-08,
+            0.6114700436592102
+          ],
+          [
+            0.0,
+            0.0,
+            0.0,
+            1.0
+          ]
+        ]
+      }
+    }
+  ],
+  "combined_pdf": {
+    "path": "output/review/highpoly-types/trap01/Geberit-151.116.11.1-TRAP01-official-detail-v3.pdf",
+    "bytes": 60269,
+    "sha256": "523f438e34f010a3d809433f6c1a81cbd3a01c38e84dde8491d42774a0880251"
+  },
+  "pass": false
+}

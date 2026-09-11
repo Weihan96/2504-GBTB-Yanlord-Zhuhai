@@ -1,0 +1,52 @@
+{
+  "schema_version": 1,
+  "profile_key": "sxb010",
+  "ifc_type_name": "sxb010",
+  "representative_global_id": "1O9JRXCI56VRUbpuLJy86Z",
+  "formal_ifc": "2504 GBTB Yanlord Zhuhai.ifc",
+  "formal_ifc_sha256": "7a50b87e8f48a7c2bfbaa9f1dabdfca7155fa684b2325c66aa1ae15c8ab0a25c",
+  "formal_ifc_bytes_unchanged": true,
+  "derived_ifc": "output/review/highpoly-types/sxb010/sxb010-derived-drawing.ifc",
+  "derived_ifc_sha256": "cbf75ca62617f1c870394239f9f0909e5fb10fdecb16fdf4dd727c20823cf293",
+  "candidate_manifest": "output/review/highpoly-types/sxb010/manifest.json",
+  "candidate_manifest_sha256": "3b27f204655125c0b9b6a42d5c8c4248b273bb9362c0215f0c2576a35da77246",
+  "approval_record": "pipeline/decisions/sxb010-drawing-approval.json",
+  "approval_record_sha256": "56e6b1b49538e99ae5cafbd69b3f3777ec6d1c52ed49d0b5fe286f79b4aa4149",
+  "representations": {
+    "plan": "Sxb010Plan",
+    "front": "Sxb010Front",
+    "side": "Sxb010Side"
+  },
+  "representation_path_counts": {
+    "plan": 5,
+    "front": 51,
+    "side": 55
+  },
+  "source_property_set": "Pset_Sxb010DrawingSource",
+  "source_kind": "geometry_derived_simplified_proxy",
+  "source_label_zh": "基于原始高模几何生成的简化图纸表达",
+  "source_document_associations": [
+    "HUNTER-DOUGLAS-SXB010-OFFICIAL-DOWNLOAD-FILTER",
+    "HUNTER-DOUGLAS-SXB010-OFFICIAL-DOWNLOADS",
+    "HUNTER-DOUGLAS-SXB010-OFFICIAL-PRODUCT-FLYER",
+    "HUNTER-DOUGLAS-SXB010-OFFICIAL-PRODUCT-PAGE",
+    "HUNTER-DOUGLAS-SXB010-OFFICIAL-TECHNICAL-BROCHURE",
+    "HUNTER-DOUGLAS-SXB010-OWNER-DIRECTION-EVIDENCE",
+    "HUNTER-DOUGLAS-SXB010-SOURCE-ACCESS-RECORD"
+  ],
+  "line_simplification": {
+    "slat_count_before": 45,
+    "slat_centerline_count_after": 45,
+    "outer_envelope_delta_mm": [
+      0.0,
+      0.0,
+      0.0,
+      0.0
+    ],
+    "audit": "output/review/highpoly-types/sxb010/line-simplification-audit.json",
+    "audit_sha256": "d16cb22d8a7baa09b60d123cc17578cc64d64db4bb93e747a92b3d34034e81dc"
+  },
+  "save_boundary": "product_level_derived_ifc_only",
+  "formal_authoritative_ifc_write_allowed": false,
+  "pass": true
+}

@@ -1,0 +1,283 @@
+{
+  "schema_version": 1,
+  "profile_key": "street-h",
+  "display_name": "STREET-H sink-holder support subcomponent",
+  "status": "complete",
+  "validation_verdict": "pass",
+  "approval_status": "approved",
+  "single_product_approval_status": "approved",
+  "scene_approval_status": "pending",
+  "label_zh": "单品已通过、场景待验收",
+  "target_global_id": "2ajpw0I9n1dBypfISg3ejX",
+  "persistent_ifc": {
+    "path": "/Users/jiaxinchen/.codex/worktrees/3a80/2504 GBTB Yanlord Zhuhai/output/review/highpoly-types/street-h/product-package/STREET-H-SUPPORT-product.ifc",
+    "bytes": 160118,
+    "sha256": "7493815ea7e82b9fe4e83d3f61cbaa0a1a713189c85fa70fe59b1ad71b1cb725"
+  },
+  "source_kind": "geometry_derived_simplified_proxy",
+  "source_label_zh": "基于原始高模几何生成的简化图纸表达",
+  "official_cad_used": false,
+  "official_product_url": "https://www.antoniolupi.it/en/products/sinks/street",
+  "approval_record": {
+    "path": "/Users/jiaxinchen/.codex/worktrees/3a80/2504 GBTB Yanlord Zhuhai/pipeline/decisions/street-h-drawing-approval.json",
+    "bytes": 1292,
+    "sha256": "e4b090be45ee0e2e82ab603967d745503cccd2ccfa1ceae12ee2664f330e6f94"
+  },
+  "candidate": {
+    "path": "/Users/jiaxinchen/.codex/worktrees/3a80/2504 GBTB Yanlord Zhuhai/output/review/highpoly-types/street-h/candidate-representations.json",
+    "bytes": 5034,
+    "sha256": "1fc5cea3112a5a2eb56546ed3feeb25c90f5b77c59a810a7922877854abb15b8"
+  },
+  "geometry": {
+    "physical_products": 1,
+    "original_body_representation_count": 2,
+    "approved_views": [
+      "plan",
+      "front",
+      "side"
+    ],
+    "annotations": 0,
+    "drawing_cameras": 0,
+    "spatial_geometry": 0,
+    "placement_matrix_project_units": [
+      [
+        1.0,
+        0.0,
+        0.0,
+        -6494.0
+      ],
+      [
+        0.0,
+        1.0,
+        0.0,
+        -198.0
+      ],
+      [
+        0.0,
+        0.0,
+        1.0,
+        714.0
+      ],
+      [
+        0.0,
+        0.0,
+        0.0,
+        1.0
+      ]
+    ],
+    "units_to_m": 0.001
+  },
+  "scene_recipe": {
+    "path": "/Users/jiaxinchen/.codex/worktrees/3a80/2504 GBTB Yanlord Zhuhai/output/review/highpoly-types/street-h/product-package/scene-recipe.json",
+    "bytes": 87815,
+    "sha256": "63550a3f041205ec2610d456d5e156fe2bc674355d977c8ee1681d7eacf9913b"
+  },
+  "scene_outputs": [
+    {
+      "view": "plan",
+      "svg": {
+        "path": "/Users/jiaxinchen/.codex/worktrees/3a80/2504 GBTB Yanlord Zhuhai/output/review/highpoly-types/street-h/product-package/STREET-H-SUPPORT-SCENE-PLAN.svg",
+        "bytes": 268637,
+        "sha256": "878580357dd313b65c642ecfa224c2f46845902a29195e46a1db3df4aa9f533c"
+      },
+      "preview": {
+        "path": "/Users/jiaxinchen/.codex/worktrees/3a80/2504 GBTB Yanlord Zhuhai/output/review/highpoly-types/street-h/product-package/STREET-H-SUPPORT-SCENE-PLAN.png",
+        "bytes": 25171,
+        "sha256": "2a4b5de879633ea576e1188ae6fd40a2f3a25622b6525653214e53d55f239938"
+      },
+      "annotation_line_count": 5,
+      "line_registration_error_world_mm": 0.0003955554327022287,
+      "camera_matrix_project_units": [
+        [
+          1.0,
+          0.0,
+          0.0,
+          -6175.0
+        ],
+        [
+          0.0,
+          1.0,
+          0.0,
+          -550.0
+        ],
+        [
+          0.0,
+          0.0,
+          1.0,
+          2350.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "camera_world_positive_z": [
+        0.0,
+        0.0,
+        1.0
+      ]
+    },
+    {
+      "view": "front",
+      "svg": {
+        "path": "/Users/jiaxinchen/.codex/worktrees/3a80/2504 GBTB Yanlord Zhuhai/output/review/highpoly-types/street-h/product-package/STREET-H-SUPPORT-SCENE-FRONT.svg",
+        "bytes": 120651,
+        "sha256": "1d20fcbe6d934d6cdb33d3a2a04b14de9a905a3887c0d5a16202c78eaed8bd4d"
+      },
+      "preview": {
+        "path": "/Users/jiaxinchen/.codex/worktrees/3a80/2504 GBTB Yanlord Zhuhai/output/review/highpoly-types/street-h/product-package/STREET-H-SUPPORT-SCENE-FRONT.png",
+        "bytes": 18971,
+        "sha256": "c79cfc0a54b6b5775ed52858e74e247a046082aad7c5ec01a30f521852b4a686"
+      },
+      "annotation_line_count": 6,
+      "line_registration_error_world_mm": 0.00024154937286838558,
+      "camera_matrix_project_units": [
+        [
+          1.0,
+          0.0,
+          0.0,
+          -6345.0
+        ],
+        [
+          0.0,
+          0.0,
+          -1.0,
+          -1120.0
+        ],
+        [
+          0.0,
+          1.0,
+          0.0,
+          900.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "camera_world_positive_z": [
+        0.0,
+        -1.0,
+        0.0
+      ]
+    },
+    {
+      "view": "side",
+      "svg": {
+        "path": "/Users/jiaxinchen/.codex/worktrees/3a80/2504 GBTB Yanlord Zhuhai/output/review/highpoly-types/street-h/product-package/STREET-H-SUPPORT-SCENE-SIDE.svg",
+        "bytes": 105026,
+        "sha256": "5d8427711583462f5b7fade94cd15bc1824f51ba82fbb9f234ab0bbf3454ad14"
+      },
+      "preview": {
+        "path": "/Users/jiaxinchen/.codex/worktrees/3a80/2504 GBTB Yanlord Zhuhai/output/review/highpoly-types/street-h/product-package/STREET-H-SUPPORT-SCENE-SIDE.png",
+        "bytes": 14599,
+        "sha256": "072d4c184396ddc356fd2328159ff8fd6b5e0dd57e0304e34d764a3776bf829e"
+      },
+      "annotation_line_count": 36,
+      "line_registration_error_world_mm": 0.00010338907639412502,
+      "camera_matrix_project_units": [
+        [
+          0.0,
+          0.0,
+          1.0,
+          -5750.0
+        ],
+        [
+          1.0,
+          0.0,
+          0.0,
+          -400.0
+        ],
+        [
+          0.0,
+          1.0,
+          0.0,
+          900.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "camera_world_positive_z": [
+        1.0,
+        0.0,
+        0.0
+      ]
+    }
+  ],
+  "single_product_outputs": [
+    {
+      "view": "plan",
+      "svg": {
+        "path": "/Users/jiaxinchen/.codex/worktrees/3a80/2504 GBTB Yanlord Zhuhai/output/review/highpoly-types/street-h/product-package/STREET-H-SUPPORT-SINGLE-PLAN.svg",
+        "bytes": 250,
+        "sha256": "0b25dc70423823dd14c0ae3e19be389982e16c51662424790fb6513b7adeb96d"
+      },
+      "preview": {
+        "path": "/Users/jiaxinchen/.codex/worktrees/3a80/2504 GBTB Yanlord Zhuhai/output/review/highpoly-types/street-h/product-package/STREET-H-SUPPORT-SINGLE-PLAN.png",
+        "bytes": 3117,
+        "sha256": "b8c605502ee84576a9d3748dae76a42ecef8f42da6ea45b9e1da29e535aef5be"
+      },
+      "source": "saved pure IFC approved representation"
+    },
+    {
+      "view": "front",
+      "svg": {
+        "path": "/Users/jiaxinchen/.codex/worktrees/3a80/2504 GBTB Yanlord Zhuhai/output/review/highpoly-types/street-h/product-package/STREET-H-SUPPORT-SINGLE-FRONT.svg",
+        "bytes": 260,
+        "sha256": "fe0e5568517f99e6df9a4651894990481f5bd171e3c9126fa948da972bcd15b5"
+      },
+      "preview": {
+        "path": "/Users/jiaxinchen/.codex/worktrees/3a80/2504 GBTB Yanlord Zhuhai/output/review/highpoly-types/street-h/product-package/STREET-H-SUPPORT-SINGLE-FRONT.png",
+        "bytes": 9844,
+        "sha256": "48e52b6f96b9bbae1caab6aa5bf5a6a6b51b6a33e995ce8c3bd5f40fba724e7b"
+      },
+      "source": "saved pure IFC approved representation"
+    },
+    {
+      "view": "side",
+      "svg": {
+        "path": "/Users/jiaxinchen/.codex/worktrees/3a80/2504 GBTB Yanlord Zhuhai/output/review/highpoly-types/street-h/product-package/STREET-H-SUPPORT-SINGLE-SIDE.svg",
+        "bytes": 1341,
+        "sha256": "d85961b2771208a345c5bb9713016949fae425f6f32936f5aba827fc94c8f606"
+      },
+      "preview": {
+        "path": "/Users/jiaxinchen/.codex/worktrees/3a80/2504 GBTB Yanlord Zhuhai/output/review/highpoly-types/street-h/product-package/STREET-H-SUPPORT-SINGLE-SIDE.png",
+        "bytes": 6845,
+        "sha256": "bfc80d12c1de8091ec375b80a55d517e1dd85142997d01a991438be0019ce4df"
+      },
+      "source": "saved pure IFC approved representation"
+    }
+  ],
+  "contact_sheet": {
+    "path": "/Users/jiaxinchen/.codex/worktrees/3a80/2504 GBTB Yanlord Zhuhai/output/review/highpoly-types/street-h/product-package/STREET-H-SUPPORT-contact-sheet.png",
+    "bytes": 32931,
+    "sha256": "5d1cf6ccb28ed1ce2d09922bfe0129db8da4a04ecadfe24164f758d329df92fe"
+  },
+  "external_style_dependencies": [
+    {
+      "source": {
+        "path": "/Users/jiaxinchen/.codex/worktrees/3a80/2504 GBTB Yanlord Zhuhai/Materials.blend",
+        "bytes": 5496522,
+        "sha256": "18a1e92531bc56c3938a16c64189bc61da83354529c22a9c4d63f0f05cfd69a2"
+      },
+      "packaged": {
+        "path": "/Users/jiaxinchen/.codex/worktrees/3a80/2504 GBTB Yanlord Zhuhai/output/review/highpoly-types/street-h/product-package/Materials.blend",
+        "bytes": 5496522,
+        "sha256": "18a1e92531bc56c3938a16c64189bc61da83354529c22a9c4d63f0f05cfd69a2"
+      }
+    }
+  ],
+  "formal_write_allowed": false,
+  "formal_sha256": "7a50b87e8f48a7c2bfbaa9f1dabdfca7155fa684b2325c66aa1ae15c8ab0a25c",
+  "legacy_source_retained": true,
+  "validation": "validation.json",
+  "scope": "STREET-H support subcomponent, not the complete STREET basin/top; official parent-family DXF is reference only."
+}

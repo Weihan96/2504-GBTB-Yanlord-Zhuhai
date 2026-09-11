@@ -9,13 +9,16 @@ const product = join(root, "output/review/highpoly-types/gessi316-54145");
 const sourceDir = join(product, "official-source");
 const formal = join(root, "2504 GBTB Yanlord Zhuhai.ifc");
 const formalHash = "7a50b87e8f48a7c2bfbaa9f1dabdfca7155fa684b2325c66aa1ae15c8ab0a25c";
-const sourceKind = "native_dwg";
-const sourceLabelZh = "Gessi 官方精确型号 54145 G000 原生 DWG 图纸表达";
+const nativeSourceKind = "native_dwg";
+const nativeSourceLabelZh = "Gessi 官方精确型号 54145 G000 原生 DWG 图纸表达";
+const reviewSourceKind = "native_dwg_review_simplification";
+const reviewSourceLabelZh = "基于官方54145 G000原生DWG轮廓的简化蓝线审核表达";
 const scope = "official Gessi exact 54145 G000 family reference; not a project shop drawing";
 const dwgHash = "9978b68468a61875acb0736aab45a62a98efadfd6be61d347e7ecaa94e08fd09";
 const zipHash = "9678c2de6a276c0d1f6e3b29e6c39763c1be0763bccf1b8974e68408ede699fd";
 const pdfHash = "148a16717193cbc066d0314c6d5369492ed582da0f026dbbe6a58d06f8279025";
 const pathCounts = { plan: 22, front: 615, side: 653 };
+const reviewPathCounts = { plan: 22, front: 112, side: 109 };
 
 function sha256(path: string) {
   return createHash("sha256").update(readFileSync(path)).digest("hex");
@@ -38,7 +41,7 @@ test("exact public Gessi 54145 G000 DWG and PDF are archived and cross-verified"
     project_ifc_body_local_xyz_mm: [599.818665, 299.818832, 119.07444],
     maximum_ifc_projection_delta_mm: 0.181335, tolerance_mm: 0.5, pass: true, geometry_stretched: false,
   });
-  expect(access.drawing_geometry_source).toMatchObject({ source_kind: sourceKind, source_label_zh: sourceLabelZh, source_dwg_sha256: dwgHash, official_cad_used: true, third_party_cad_used: false });
+  expect(access.drawing_geometry_source).toMatchObject({ source_kind: nativeSourceKind, source_label_zh: nativeSourceLabelZh, source_dwg_sha256: dwgHash, official_cad_used: true, third_party_cad_used: false });
   expect(access.identity_and_geometry_policy).toMatchObject({ "54145_g000_native_dwg_used": true, g001_variant_cad_used: false, adjacent_gessi_product_cad_used: false, third_party_cad_used: false });
   expect(sha256(join(sourceDir, "GPF5414500000G000_3.dwg"))).toBe(dwgHash);
   expect(sha256(join(sourceDir, "GPF5414500000G000_arc.zip"))).toBe(zipHash);
@@ -56,16 +59,24 @@ test("54145 G000 native DWG extraction partitions all paths repeatably", () => {
   const run = Bun.spawnSync(["python3", join(root, "pipeline/scripts/gessi316_54145_linework.py"), "--output", output], { cwd: root, stdout: "pipe", stderr: "pipe" });
   if (run.exitCode !== 0) throw new Error(run.stderr.toString());
   const linework = JSON.parse(readFileSync(output, "utf8"));
-  expect(linework.source_kind).toBe(sourceKind);
+  expect(linework.source_kind).toBe(nativeSourceKind);
   expect(linework.official_sources.native_dwg.sha256).toBe(dwgHash);
   expect(linework.sheet).toMatchObject({ eligible_entity_count: 1290, all_eligible_entities_partitioned_once: true });
   expect(linework.nominal_dimension_cross_check).toMatchObject({ maximum_ifc_projection_delta_mm: 0.181335, pass: true });
   expect(linework.identity_gates.g001_variant_cad_used).toBeFalse();
   for (const [view, count] of Object.entries(pathCounts)) expect(linework.views[view].paths_mm).toHaveLength(count);
+  expect(linework.views.side).toMatchObject({ vertical_reflection_applied: true });
+  expect(linework.line_density_audit).toMatchObject({
+    three_view_path_count: 1290,
+    three_view_node_count: 14113,
+    three_view_segment_count: 12823,
+    fine_spray_nozzle_detail_path_count: 1049,
+    fine_spray_nozzle_detail_node_count: 8766,
+  });
   rmSync(temporary, { recursive: true, force: true });
 }, 60_000);
 
-test("single-instance 54145 review has exact G000 blue DWG paths in all three views", () => {
+test("single-instance 54145 review has simplified G000 blue paths and original evidence", () => {
   const manifest = JSON.parse(readFileSync(join(product, "manifest.json"), "utf8"));
   const candidate = JSON.parse(readFileSync(join(product, "candidate-representations.json"), "utf8"));
   const profile = JSON.parse(readFileSync(join(product, "profile.json"), "utf8"));
@@ -76,32 +87,56 @@ test("single-instance 54145 review has exact G000 blue DWG paths in all three vi
   });
   expect(manifest).toMatchObject({ representative_global_id: "3jT4sCgpHC98VSIUdGUNYH", registered_instance_global_ids: ["3jT4sCgpHC98VSIUdGUNYH"], geometry_product_count: 1, whole_model_render: false, formal_ifc_bytes_unchanged: true, article_number: "54145" });
   expect(profile.profiles["gessi316-54145"].official_reference).toMatchObject({ article_number: "54145", configuration: "G000" });
-  expect(candidate).toMatchObject({ profile_key: "gessi316-54145", article_number: "54145", source_kind: sourceKind, source_label_zh: sourceLabelZh, source_dwg_sha256: dwgHash, official_cad_used: true, third_party_cad_used: false });
+  expect(candidate).toMatchObject({
+    profile_key: "gessi316-54145", article_number: "54145",
+    source_kind: reviewSourceKind, source_label_zh: reviewSourceLabelZh,
+    original_source_kind: nativeSourceKind, original_source_label_zh: nativeSourceLabelZh,
+    source_dwg_sha256: dwgHash, official_cad_used: true, third_party_cad_used: false,
+    unaltered_official_cad_used_as_review_representation: false,
+    original_official_cad_evidence_preserved: true,
+  });
   expect(manifest.views.map((view: any) => view.silhouette_path_count)).toEqual([1, 3, 5]);
+  const audit = JSON.parse(readFileSync(join(product, "line-simplification-audit.json"), "utf8"));
+  expect(audit).toMatchObject({
+    source_kind: reviewSourceKind,
+    original: { path_count: 1290, node_count: 14113, segment_count: 12823 },
+    review: { path_count: 243, node_count: 5351, segment_count: 5108 },
+    reduction: { path_count: 1047, node_count: 8762, segment_count: 7715 },
+    side_orientation: { vertical_reflection_applied: true, scale: 1, wall_arm_above_downward_spray_face: true },
+    gates: { all_envelopes_unchanged: true, all_centres_unchanged: true, formal_ifc_modified: false },
+    pass: true,
+  });
   for (const view of manifest.views) {
-    expect(view.drawing_line_source_kind).toBe(sourceKind);
-    expect(view.official_cad_path_count).toBe(pathCounts[view.view as keyof typeof pathCounts]);
+    expect(view.drawing_line_source_kind).toBe(reviewSourceKind);
+    expect(view.original_official_cad_path_count).toBe(pathCounts[view.view as keyof typeof pathCounts]);
+    expect(view.review_simplified_path_count).toBe(reviewPathCounts[view.view as keyof typeof reviewPathCounts]);
     expect(view.blue_line_present).toBeTrue();
     expect(view.white_mask_present).toBeTrue();
     expect(view.ifc_dwg_compatibility.pass).toBeTrue();
     expect(Math.max(...view.ifc_dwg_compatibility.absolute_delta_mm)).toBeLessThanOrEqual(0.5);
-    expect(candidate.views[view.view].official_native_dwg_paths_mm).toHaveLength(pathCounts[view.view as keyof typeof pathCounts]);
+    expect(candidate.views[view.view].original_official_native_dwg_paths_mm).toHaveLength(pathCounts[view.view as keyof typeof pathCounts]);
+    expect(candidate.views[view.view].review_simplified_official_outline_paths_mm).toHaveLength(reviewPathCounts[view.view as keyof typeof reviewPathCounts]);
+    expect(candidate.views[view.view].handle_line_texture_simplification).toMatchObject({
+      envelope_delta_mm: [0, 0], centre_delta_mm: [0, 0],
+      installation_axis_preserved: true, wall_anchor_preserved: true,
+      arm_reach_600mm_preserved: true, review_texture_detail_path_count: 0, pass: true,
+    });
     const svg = readFileSync(join(root, view.svg), "utf8");
     expect(svg).toContain('class="simplified-proxy-silhouette geometry-derived"');
     expect(svg).toContain('class="official-reference-mask"');
-    expect(svg).toContain('class="official-reference native-dwg"');
-    expect(svg).toContain('data-source-kind="native_dwg"');
+    expect(svg).toContain('class="review-simplified-reference official-outline-derived"');
+    expect(svg).toContain('data-source-kind="native_dwg_review_simplification"');
     expect(svg).toContain("#1677c8");
   }
 });
 
 test("54145 project plan and R17 elevations retain context under native-DWG overlays", () => {
   const context = JSON.parse(readFileSync(join(product, "project-context-manifest.json"), "utf8"));
-  expect(context).toMatchObject({ source_kind: sourceKind, source_label_zh: sourceLabelZh, official_cad_used: true, third_party_cad_used: false, project_context_retained: true, walls_and_surrounding_project_elements_retained: true, overlay_top_layer_with_white_mask: true, blue_line_present: true, pass: true });
+  expect(context).toMatchObject({ source_kind: reviewSourceKind, source_label_zh: reviewSourceLabelZh, official_cad_used: true, third_party_cad_used: false, project_context_retained: true, walls_and_surrounding_project_elements_retained: true, overlay_top_layer_with_white_mask: true, blue_line_present: true, pass: true });
   expect(context.views.map((item: any) => [item.view, item.candidate_view])).toEqual([["plan", "plan"], ["front", "front"], ["side", "side"]]);
   for (const view of context.views) {
     expect(view.overlay.source_dwg_sha256).toBe(dwgHash);
-    expect(view.overlay.path_count).toBe(pathCounts[view.candidate_view as keyof typeof pathCounts]);
+    expect(view.overlay.path_count).toBe(reviewPathCounts[view.candidate_view as keyof typeof reviewPathCounts]);
     expect(view.overlay.fit).toMatchObject({ scale_svg_units_per_mm: 0.02, uniform_scale_preserved: true, transformation_mode: "axis_swap_rigid_reflection_and_translation_only", pass: true });
     expect(Math.max(...view.overlay.fit.bbox_absolute_delta_svg_units)).toBeLessThanOrEqual(view.overlay.fit.bbox_tolerance_svg_units);
     expect(sha256(join(root, view.review_preview))).toBe(view.review_preview_sha256);
@@ -111,7 +146,7 @@ test("54145 project plan and R17 elevations retain context under native-DWG over
     if (view.view === "plan") expect(svg).toContain("IfcFurniture");
     expect(svg).toContain('class="official-reference-envelope-mask"');
     expect(svg).toContain('class="official-reference-mask"');
-    expect(svg).toContain('class="official-reference native-dwg project-context-overlay"');
+    expect(svg).toContain('class="review-simplified-reference official-outline-derived project-context-overlay"');
   }
 });
 
@@ -178,10 +213,10 @@ test("temporary scoped approval writes exact 54145 G000 representations and sour
   expect(result).toMatchObject({
     pass: true, formal_ifc_bytes_unchanged: true,
     representations: { plan: "Gessi54145Plan", front: "Gessi54145Front", side: "Gessi54145Side" },
-    representation_path_counts: pathCounts, source_kind: sourceKind, source_label_zh: sourceLabelZh,
+    representation_path_counts: reviewPathCounts, source_kind: reviewSourceKind, source_label_zh: reviewSourceLabelZh,
     official_cad_geometry_included: true, source_property_set: "Pset_Gessi31654145DrawingSource",
   });
-  expect(result.representation_geometry_source).toBe("official_native_dwg_paths_mm extracted from GPF5414500000G000_3.dwg");
+  expect(result.representation_geometry_source).toBe("review_simplified_official_outline_paths_mm based on GPF5414500000G000_3.dwg");
   expect(result.source_document_associations).toHaveLength(6);
   expect(result.source_document_associations).toContain("GESSI316-54145-OFFICIAL-NATIVE-DWG-ZIP");
   expect(result.source_document_associations).toContain("GESSI316-54145-OFFICIAL-TECHNICAL-PDF");
@@ -193,7 +228,8 @@ test("temporary scoped approval writes exact 54145 G000 representations and sour
   expect(JSON.parse(inspect.stdout.toString())).toMatchObject({
     ArticleNumber: "54145", Configuration: "G000", TechnicalDrawingNumber: "GPF5414500000G000",
     SourceDwgSha256: dwgHash, OfficialProductCadStatus: "public_official_api_exact_54145_g000_native_dwg_acquired",
-    OfficialCadUsed: "true", OfficialVectorEvidenceUsedAsCadGeometry: "false", ExcludedVariant: "G001",
+    OfficialCadUsed: "true", OfficialVectorEvidenceUsedAsCadGeometry: "true",
+    UnalteredOfficialDwgUsedAsRepresentation: "false", OriginalOfficialDwgEvidencePreserved: "true", ExcludedVariant: "G001",
     DimensionCrossCheckPass: "true", EvidenceScope: scope,
   });
   expect(sha256(formal)).toBe(formalHash);

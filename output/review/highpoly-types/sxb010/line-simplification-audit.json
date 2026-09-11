@@ -1,0 +1,201 @@
+{
+  "schema_version": 1,
+  "product": "sxb010",
+  "source_kind": "geometry_derived_simplified_proxy",
+  "source_label_zh": "基于原始高模几何生成的简化图纸表达",
+  "operation": "semantic_merge_of_close_parallel_collinear_and_repeated_projection_lines",
+  "merge_threshold_mm": 22.0,
+  "views": {
+    "plan": {
+      "view": "plan",
+      "merge_threshold_mm": 22.0,
+      "final_svg_scale_px_per_mm": 0.47442,
+      "merge_threshold_at_final_svg_scale_px": 10.437244,
+      "before_path_count": 8,
+      "after_path_count": 5,
+      "before_segment_count": 63,
+      "after_segment_count": 8,
+      "before_bounds_mm": {
+        "minimum": [
+          -2366.578613,
+          2857.247559
+        ],
+        "maximum": [
+          -554.579163,
+          2920.640869
+        ],
+        "size": [
+          1811.999451,
+          63.393311
+        ]
+      },
+      "after_bounds_mm": {
+        "minimum": [
+          -2366.578613,
+          2857.247559
+        ],
+        "maximum": [
+          -554.579163,
+          2920.640869
+        ],
+        "size": [
+          1811.99945,
+          63.39331
+        ]
+      },
+      "outer_envelope_delta_mm": [
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "slat_count_before": 45,
+      "slat_centerline_count_after": 45,
+      "slat_projected_thickness_front_mm": {
+        "minimum": 20.726807,
+        "maximum": 20.734375
+      },
+      "slat_center_pitch_after_mm": {
+        "minimum": 30.248871,
+        "maximum": 33.883423
+      },
+      "headrail_count_preserved": 1,
+      "bottom_rail_count_preserved": 1,
+      "guide_and_cord_component_count_before": 7,
+      "guide_and_cord_axis_count_after": 3,
+      "control_component_count_preserved": 9,
+      "outer_envelope_preserved": true,
+      "slat_rhythm_preserved": true,
+      "pass": true
+    },
+    "front": {
+      "view": "front",
+      "merge_threshold_mm": 22.0,
+      "final_svg_scale_px_per_mm": 0.405548,
+      "merge_threshold_at_final_svg_scale_px": 8.922049,
+      "before_path_count": 241,
+      "after_path_count": 51,
+      "before_segment_count": 1444,
+      "after_segment_count": 60,
+      "before_bounds_mm": {
+        "minimum": [
+          -2366.262695,
+          803.773987
+        ],
+        "maximum": [
+          -554.895142,
+          2399.533447
+        ],
+        "size": [
+          1811.367554,
+          1595.75946
+        ]
+      },
+      "after_bounds_mm": {
+        "minimum": [
+          -2366.262695,
+          803.773987
+        ],
+        "maximum": [
+          -554.895142,
+          2399.533447
+        ],
+        "size": [
+          1811.367553,
+          1595.75946
+        ]
+      },
+      "outer_envelope_delta_mm": [
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "slat_count_before": 45,
+      "slat_centerline_count_after": 45,
+      "slat_projected_thickness_front_mm": {
+        "minimum": 20.726807,
+        "maximum": 20.734375
+      },
+      "slat_center_pitch_after_mm": {
+        "minimum": 30.248871,
+        "maximum": 33.883423
+      },
+      "headrail_count_preserved": 1,
+      "bottom_rail_count_preserved": 1,
+      "guide_and_cord_component_count_before": 7,
+      "guide_and_cord_axis_count_after": 3,
+      "control_component_count_preserved": 9,
+      "outer_envelope_preserved": true,
+      "slat_rhythm_preserved": true,
+      "pass": true
+    },
+    "side": {
+      "view": "side",
+      "merge_threshold_mm": 22.0,
+      "final_svg_scale_px_per_mm": 0.412195,
+      "merge_threshold_at_final_svg_scale_px": 9.068295,
+      "before_path_count": 84,
+      "after_path_count": 55,
+      "before_segment_count": 696,
+      "after_segment_count": 58,
+      "before_bounds_mm": {
+        "minimum": [
+          2857.247559,
+          803.773987
+        ],
+        "maximum": [
+          2920.640869,
+          2399.849609
+        ],
+        "size": [
+          63.393311,
+          1596.075623
+        ]
+      },
+      "after_bounds_mm": {
+        "minimum": [
+          2857.247559,
+          803.773987
+        ],
+        "maximum": [
+          2920.640869,
+          2399.849609
+        ],
+        "size": [
+          63.39331,
+          1596.075622
+        ]
+      },
+      "outer_envelope_delta_mm": [
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "slat_count_before": 45,
+      "slat_centerline_count_after": 45,
+      "slat_projected_thickness_front_mm": {
+        "minimum": 20.726807,
+        "maximum": 20.734375
+      },
+      "slat_center_pitch_after_mm": {
+        "minimum": 30.248871,
+        "maximum": 33.883423
+      },
+      "headrail_count_preserved": 1,
+      "bottom_rail_count_preserved": 1,
+      "guide_and_cord_component_count_before": 7,
+      "guide_and_cord_axis_count_after": 3,
+      "control_component_count_preserved": 9,
+      "outer_envelope_preserved": true,
+      "slat_rhythm_preserved": true,
+      "pass": true
+    }
+  },
+  "formal_ifc_sha256": "7a50b87e8f48a7c2bfbaa9f1dabdfca7155fa684b2325c66aa1ae15c8ab0a25c",
+  "formal_ifc_bytes_unchanged": true,
+  "review_status": "visual_review_pending",
+  "derived_ifc_write_allowed": false,
+  "pass": true
+}

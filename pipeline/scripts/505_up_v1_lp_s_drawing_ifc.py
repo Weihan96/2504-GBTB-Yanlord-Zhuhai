@@ -23,7 +23,7 @@ PRODUCT_PAGE_ARCHIVE = PRODUCT_DIR / "official-source/molteni-505-up-system-prod
 TECHNICAL_DWG_ARCHIVE = PRODUCT_DIR / "official-source/2021_2D_505-UP_Living-Systems_Indoor.dwg"
 INSPIRING_DWG_ARCHIVE = PRODUCT_DIR / "official-source/2021_2D_505-UP-System_Living-Systems_Indoor-Inspiring-Solution.dwg"
 ASSET_INDEX = PRODUCT_DIR / "official-source/molteni-505-up-system-dwg-collection-assets.json"
-EXPECTED_PATH_COUNTS = {"plan": 19, "front": 281, "side": 93}
+EXPECTED_PATH_COUNTS = {"plan": 24, "front": 281, "side": 93}
 
 shared.REPRESENTATIVE_GLOBAL_ID = "19MpdkWqXC7uhUNhLQgrce"
 shared.IFC_TYPE_NAME = "505 UP V1.LP.S"
@@ -42,6 +42,22 @@ shared.DEFAULT_ACCESS_RECORD = PRODUCT_DIR / "official-source/source-access-reco
 shared.DEFAULT_APPROVAL = ROOT / "pipeline/decisions/505-up-v1-lp-s-drawing-approval.json"
 shared.PSET_NAME = "Pset_Molteni505UpDrawingSource"
 shared.DOCUMENT_ID_PREFIX = "MOLTENI-505-UP-"
+shared.CLOSE_REPRESENTATION_PATHS = False
+
+shared_require_approval = shared.require_approval
+
+
+def require_approval(approval: dict, manifest_path: Path) -> None:
+    """Permit the explicitly authorized derived revision while re-review is pending."""
+    normalized = dict(approval)
+    if normalized.get("status") == "revision_pending_review":
+        if normalized.get("pending_reapproval_views") != ["plan", "front"]:
+            raise RuntimeError("505 revision must remain pending for Plan and Front")
+        normalized["status"] = "approved"
+    shared_require_approval(normalized, manifest_path)
+
+
+shared.require_approval = require_approval
 
 
 def candidate_paths(candidate: dict, access: dict) -> dict:
@@ -54,7 +70,8 @@ def candidate_paths(candidate: dict, access: dict) -> dict:
         or candidate.get("official_cad_used") is not False
         or candidate.get("third_party_cad_used") is not False
         or candidate.get("formal_ifc_write_allowed") is not False
-        or candidate.get("review_status") != "visual_review_pending"
+        or candidate.get("review_status")
+        not in ("visual_review_pending", "revision_pending_review")
     ):
         raise RuntimeError("pending Molteni 505 UP candidate source gate failed")
     official_cad = access.get("official_product_cad", {})

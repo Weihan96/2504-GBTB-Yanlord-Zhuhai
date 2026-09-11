@@ -1,6 +1,7 @@
 {
   "schema_version": 1,
   "checked_on": "2026-08-23",
+  "last_rechecked_on": "2026-08-25",
   "manufacturer": "Poliform",
   "family": "Pivot + Senzafine Wardrobe",
   "project_type_code": "WD01",
@@ -42,15 +43,21 @@
     }
   ],
   "official_product_cad": {
-    "public_pages_have_gated_generic_resource_download_area": true,
-    "registration_form_and_captcha_required": true,
+    "product_pages_checked_in_active_30_day_download_session": true,
+    "pivot_product_page_native_dwg_listed": false,
+    "senzafine_product_page_native_dwg_listed": false,
+    "product_page_file_url_entries": [],
+    "technical_catalog_route": "https://www.poliform.it/it/technical-catalog/",
+    "technical_catalog_access_status": "protected_page_no_catalog_content_exposed",
+    "reserved_area": "https://b2b.poliform.it/",
+    "reserved_area_access_status": "separate_login_required_not_authenticated",
     "public_exact_native_dwg_url_located": false,
     "acquired": false,
     "local_cad_files": [],
     "sha256": null,
     "exact_project_configuration_match": false,
-    "status": "gated_resource_download_no_public_exact_WD01_configuration_asset_located_not_acquired",
-    "note": "No personal data was entered, no form was submitted and CAPTCHA or Cloudflare verification was not bypassed. No third-party CAD was substituted."
+    "status": "no_product_page_dwg_published_and_separate_reserved_area_not_authenticated_not_acquired",
+    "note": "The active 30-day Poliform product-download session exposes native files where Poliform publishes them, as verified on Hima. Neither Pivot nor Senzafine Wardrobe publishes a 2D DWG tile or data-file URL. The linked technical catalog is protected and the separate B2B Reserved Area requires another login. No third-party CAD was substituted."
   },
   "official_remote_documents": {
     "pivot_technical_pdf_url": "https://www.poliform.it/wp-content/uploads/pdf/278373-pivot-poliform-en-us.pdf",

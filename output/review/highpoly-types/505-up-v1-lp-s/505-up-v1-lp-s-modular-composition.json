@@ -1,0 +1,53 @@
+{
+  "schema_version": 1,
+  "composition_id": "project-505-up-v1-lp-s",
+  "label": "module-composed official-component candidate",
+  "representative_global_id": "19MpdkWqXC7uhUNhLQgrce",
+  "project_envelope_mm": [2912, 436.499451, 2380],
+  "body_height_mm": 2380,
+  "floor_clearance_mm": 0,
+  "plinth_mm": 76,
+  "vertical_modules": 6,
+  "end_panel_mm": 32,
+  "columns": [
+    {
+      "id": "left-w640",
+      "module_width_mm": 640,
+      "clear_width_mm": 608,
+      "depth_mm": 320,
+      "x_mm": 0,
+      "feature": "project_vertical_grille",
+      "official_component_match": "unresolved"
+    },
+    {
+      "id": "centre-w1280",
+      "module_width_mm": 1280,
+      "clear_width_mm": 1248,
+      "depth_mm": 320,
+      "x_mm": 640,
+      "feature": "h3_open_tv_compartment",
+      "official_component_match": "datasheet_rule_exact"
+    },
+    {
+      "id": "right-w960",
+      "module_width_mm": 960,
+      "clear_width_mm": 928,
+      "depth_mm": 320,
+      "x_mm": 1920,
+      "feature": "w608_h768_protruding_open_display",
+      "official_component_match": "native_dwg_atom_front_only"
+    }
+  ],
+  "official_component_instances": [
+    {
+      "atom": "native-dwg-block-154738-w608-h768",
+      "column": "right-w960",
+      "translation_mm": [1952, 844],
+      "scale": [1, 1],
+      "rotation_degrees": 0,
+      "project_depth_mm": 420.462,
+      "official_depth_mm": 500
+    }
+  ],
+  "ifc_write_allowed": false
+}

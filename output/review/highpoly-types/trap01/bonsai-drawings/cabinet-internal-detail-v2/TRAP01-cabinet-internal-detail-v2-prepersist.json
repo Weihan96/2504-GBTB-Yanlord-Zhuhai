@@ -1,0 +1,383 @@
+{
+  "schema_version": 1,
+  "generated_at": "2026-08-29T11:14:40.200887+00:00",
+  "status": "awaiting_save_ifc_file_and_reload_verification",
+  "task": "TRAP01 cabinet-internal orthographic detail with project-axis-aware accepted proxy linework",
+  "courseEvidence": {
+    "evidence_mode": "embedded-course-index",
+    "lesson": "085000 Introduction to Drawings",
+    "timestamps": [
+      "01:10 camera boundary/scale",
+      "01:52 drawing depth",
+      "01:59-02:13 Create Drawing/SVG",
+      "02:36-03:16 Element Filters"
+    ],
+    "course_fact": "Camera, depth and Include/Exclude filters are configured before Create Drawing; generated SVG is inspected.",
+    "screen_observation": null,
+    "provenance_note": "No private course screenshot was directly viewed."
+  },
+  "plan": [
+    "inspect",
+    "map product-local views to project camera axes",
+    "create filtered 1:5 Drawings",
+    "Create Drawing",
+    "save_ifc_file",
+    "reload",
+    "render and verify"
+  ],
+  "preState": {
+    "derived_ifc_sha256": "8a285ea58892eae6c68c35c8dc680b8768e102f5045788547c97fd0d0bbedfaf",
+    "formal_ifc_sha256": "7a50b87e8f48a7c2bfbaa9f1dabdfca7155fa684b2325c66aa1ae15c8ab0a25c",
+    "component_count": 3
+  },
+  "execution": {
+    "provider": "public bonsai-mcp",
+    "capability": "execute_blender_code",
+    "generator": "bpy.ops.bim.create_drawing",
+    "linework_mode": "OPENCASCADE",
+    "blender": "4.5.3 LTS"
+  },
+  "save_boundary": {
+    "derived_ifc": "/Users/jiaxinchen/.codex/worktrees/3a80/2504 GBTB Yanlord Zhuhai/output/review/highpoly-types/trap01/Geberit-151.116.11.1-TRAP01-derived-drawing.ifc",
+    "formal_ifc": "/Users/jiaxinchen/.codex/worktrees/3a80/2504 GBTB Yanlord Zhuhai/2504 GBTB Yanlord Zhuhai.ifc",
+    "geometry_mutation_allowed": false,
+    "drawing_filter_annotation_only": true
+  },
+  "target": {
+    "global_id": "2Ak2ma0lvBEA49UpplzUqi",
+    "world_bbox_m": [
+      [
+        -6.447811603546143,
+        -0.5882681608200073,
+        0.5155000686645508
+      ],
+      [
+        -6.195309162139893,
+        -0.5117271542549133,
+        0.7074400186538696
+      ]
+    ],
+    "world_centre_m": [
+      -6.321560382843018,
+      -0.5499976575374603,
+      0.6114700436592102
+    ],
+    "placement_rotation": "identity"
+  },
+  "view_mapping": {
+    "plan": "plan",
+    "front": "side",
+    "side": "front"
+  },
+  "filters": {
+    "include_count": 13,
+    "include_global_ids": [
+      "0e0XOb$L18ZBVYJiQJrQ1p",
+      "3WekjaeUn1qfL6oR1KYD_2",
+      "3ty1lUpQfD3fY1yf0Dxo53",
+      "05LSYayab3n9CDi01pw9K$",
+      "2amSzxJIb9ceddTJOslmHk",
+      "3jha5L04zBjh0$pMl_tHLy",
+      "04rs0EDjn2EvxytEQSxWRB",
+      "0nlHIdaVrV7xIKsYXraYCa",
+      "37DwA_fpXSARFOa60IfK8k",
+      "1jM_suNMPAw8_nvZejQSnp",
+      "1u997JrDbByeKqbJ6ku8GF",
+      "2ajpw0I9n1dBypfISg3ejX",
+      "3PRBtW00j1D8r2Or5PTFdh"
+    ],
+    "include_ifc_class_counts": {
+      "IfcCovering": 2,
+      "IfcSanitaryTerminal": 4,
+      "IfcWall": 7
+    },
+    "excluded_occluders": [
+      {
+        "global_id": "1FgLPMw$5B4wBH2ySMkXE1",
+        "reason": "washbasin/counter assembly above the trap"
+      },
+      {
+        "global_id": "2YnGmmoYbF28Vy25$aNKT8",
+        "reason": "vanity/cabinet volume intersecting the trap envelope"
+      },
+      {
+        "global_id": "3OVQygdDn17huGOgJJFTOY",
+        "reason": "low cabinet partition enclosing the trap"
+      }
+    ]
+  },
+  "adjustable_components": {
+    "fixed_body": {
+      "global_id": "2oBEAgLj90IvrLncW33Hxe",
+      "pset": {
+        "ComponentRole": "fixed_body",
+        "Adjustable": "false",
+        "AdjustmentAxis": "FIXED_BODY_SPINE",
+        "InterfacePointMm": "[53.471272, 0.0, -80.499954]",
+        "InstalledEndpointMm": "[53.471272, 0.0, 41.0]",
+        "InstalledLengthMm": "121.499954",
+        "MinimumLengthMm": "121.499954",
+        "MaximumLengthMm": "121.499954",
+        "OfficialDefaultOverflowMm": "0.0",
+        "CurrentInstalledLineSemantics": "black current project configuration",
+        "BlueSolidSemantics": "official native DWG linework retained within the current configured range",
+        "BlueDashedSemantics": "official adjustable-family excess beyond the current configured endpoint; reference only, not installed project geometry",
+        "DisplayedInSceneByDefault": "true",
+        "ReferenceExtensionDisplayedInSceneByDefault": "false",
+        "ParameterUpdateStrategy": "update InstalledLengthMm and InstalledEndpointMm, then regenerate dependent Plan/Front/Side drawing representations",
+        "id": 2446348
+      }
+    },
+    "horizontal_adjustable": {
+      "global_id": "1i90gVNCL5jBENkmiRt$gm",
+      "pset": {
+        "ComponentRole": "horizontal_adjustable",
+        "Adjustable": "true",
+        "AdjustmentAxis": "LOCAL_X",
+        "InterfacePointMm": "[109.288309, 0.0, 94.0]",
+        "InstalledEndpointMm": "[222.690975, 0.0, 94.0]",
+        "InstalledLengthMm": "113.402666",
+        "MinimumLengthMm": "0.0",
+        "MaximumLengthMm": "252.0",
+        "OfficialDefaultOverflowMm": "159.52933",
+        "CurrentInstalledLineSemantics": "black current project configuration",
+        "BlueSolidSemantics": "official native DWG linework retained within the current configured range",
+        "BlueDashedSemantics": "official adjustable-family excess beyond the current configured endpoint; reference only, not installed project geometry",
+        "DisplayedInSceneByDefault": "true",
+        "ReferenceExtensionDisplayedInSceneByDefault": "false",
+        "ParameterUpdateStrategy": "update InstalledLengthMm and InstalledEndpointMm, then regenerate dependent Plan/Front/Side drawing representations",
+        "id": 2446375
+      }
+    },
+    "vertical_adjustable": {
+      "global_id": "1O5mM7VGLEFPeKu3Z9ZLEY",
+      "pset": {
+        "ComponentRole": "vertical_adjustable",
+        "Adjustable": "true",
+        "AdjustmentAxis": "LOCAL_Z",
+        "InterfacePointMm": "[53.471272, 0.0, -80.499954]",
+        "InstalledEndpointMm": "[53.471272, 0.0, 111.440025]",
+        "InstalledLengthMm": "191.939979",
+        "MinimumLengthMm": "85.0",
+        "MaximumLengthMm": "334.0",
+        "OfficialDefaultOverflowMm": "208.00002",
+        "CurrentInstalledLineSemantics": "black current project configuration",
+        "BlueSolidSemantics": "official native DWG linework retained within the current configured range",
+        "BlueDashedSemantics": "official adjustable-family excess beyond the current configured endpoint; reference only, not installed project geometry",
+        "DisplayedInSceneByDefault": "true",
+        "ReferenceExtensionDisplayedInSceneByDefault": "false",
+        "ParameterUpdateStrategy": "update InstalledLengthMm and InstalledEndpointMm, then regenerate dependent Plan/Front/Side drawing representations",
+        "id": 2446402
+      }
+    }
+  },
+  "outputs": {
+    "views": [
+      {
+        "view": "plan",
+        "source_product_view": "plan",
+        "drawing_global_id": "0NjbGo3uD53BAd$Wzp0rvv",
+        "annotation_global_id": "1PLbENzQX6twM8J6c673ti",
+        "persisted_path_count_expected": 16,
+        "output_svg": "/Users/jiaxinchen/.codex/worktrees/3a80/2504 GBTB Yanlord Zhuhai/output/review/highpoly-types/trap01/bonsai-drawings/cabinet-internal-detail-v2/TRAP01-CABINET-INTERNAL-DETAIL-V2-PLAN.svg",
+        "output_svg_bytes": 202790,
+        "output_svg_sha256": "c5426bcba363a8f0ab15bdac95b231d3417da5a018cfd4a575256b4576b4a4b2",
+        "style": {
+          "raw_sha256": "5ab04c7e102a0c200549e3cd4cb4f5c0accd8eb2843a09b2ce7d054448992612",
+          "black_geometry_count": 133,
+          "grey_geometry_count": 498
+        },
+        "svg": {
+          "root_tag": "svg",
+          "data_scale": "1:5",
+          "view_box": "0 0 179.99999523162842 160.00940752590404",
+          "geometry_element_count": 631,
+          "target_ifc_body_group_count": 0,
+          "current_annotation_group_count": 1,
+          "excluded_occluder_group_counts": {
+            "1FgLPMw$5B4wBH2ySMkXE1": 0,
+            "2YnGmmoYbF28Vy25$aNKT8": 0,
+            "3OVQygdDn17huGOgJJFTOY": 0
+          },
+          "no_target_or_annotation_duplicate": true,
+          "all_occluders_absent": true,
+          "external_reference_count": 0
+        },
+        "camera": {
+          "type": "ORTHO",
+          "width_m": 0.9,
+          "height_m": 0.8,
+          "clip_start_m": 0.0020000000949949026,
+          "clip_end_m": 0.72,
+          "scale": "1:5",
+          "matrix_world": [
+            [
+              1.0,
+              0.0,
+              0.0,
+              -6.321560382843018
+            ],
+            [
+              0.0,
+              1.0,
+              0.0,
+              -0.5499976873397827
+            ],
+            [
+              0.0,
+              0.0,
+              1.0,
+              0.9800000190734863
+            ],
+            [
+              0.0,
+              0.0,
+              0.0,
+              1.0
+            ]
+          ]
+        },
+        "create_result": [
+          "FINISHED"
+        ]
+      },
+      {
+        "view": "front",
+        "source_product_view": "side",
+        "drawing_global_id": "2cBF18elT4F8rwg9lpMHrU",
+        "annotation_global_id": "11tE23FnTEQ9ftsle_BxzA",
+        "persisted_path_count_expected": 8,
+        "output_svg": "/Users/jiaxinchen/.codex/worktrees/3a80/2504 GBTB Yanlord Zhuhai/output/review/highpoly-types/trap01/bonsai-drawings/cabinet-internal-detail-v2/TRAP01-CABINET-INTERNAL-DETAIL-V2-FRONT.svg",
+        "output_svg_bytes": 264889,
+        "output_svg_sha256": "004598cde0bdb7e251b4f7080c61ec2aebeab644ef6296a58063d3eaa7d41762",
+        "style": {
+          "raw_sha256": "8f464a85859b0defe53af8a5f2c28c3967f43b2ee47be11a7b9c6581b52a7d2c",
+          "black_geometry_count": 98,
+          "grey_geometry_count": 937
+        },
+        "svg": {
+          "root_tag": "svg",
+          "data_scale": "1:5",
+          "view_box": "0 0 160.0000023841858 160.0000023841858",
+          "geometry_element_count": 1035,
+          "target_ifc_body_group_count": 0,
+          "current_annotation_group_count": 1,
+          "excluded_occluder_group_counts": {
+            "1FgLPMw$5B4wBH2ySMkXE1": 0,
+            "2YnGmmoYbF28Vy25$aNKT8": 0,
+            "3OVQygdDn17huGOgJJFTOY": 0
+          },
+          "no_target_or_annotation_duplicate": true,
+          "all_occluders_absent": true,
+          "external_reference_count": 0
+        },
+        "camera": {
+          "type": "ORTHO",
+          "width_m": 0.8,
+          "height_m": 0.8,
+          "clip_start_m": 0.0020000000949949026,
+          "clip_end_m": 0.95,
+          "scale": "1:5",
+          "matrix_world": [
+            [
+              -4.371138828673793e-08,
+              4.371138828673793e-08,
+              1.0,
+              -5.771560192108154
+            ],
+            [
+              1.0,
+              1.910685676922942e-15,
+              4.371138828673793e-08,
+              -0.5499976873397827
+            ],
+            [
+              0.0,
+              1.0,
+              -4.371138828673793e-08,
+              0.6114700436592102
+            ],
+            [
+              0.0,
+              0.0,
+              0.0,
+              1.0
+            ]
+          ]
+        },
+        "create_result": [
+          "FINISHED"
+        ]
+      },
+      {
+        "view": "side",
+        "source_product_view": "front",
+        "drawing_global_id": "1K62KPkHT8DQtSPMai8Gbe",
+        "annotation_global_id": "0x8RQZ5$15kessQjbAL1N4",
+        "persisted_path_count_expected": 1,
+        "output_svg": "/Users/jiaxinchen/.codex/worktrees/3a80/2504 GBTB Yanlord Zhuhai/output/review/highpoly-types/trap01/bonsai-drawings/cabinet-internal-detail-v2/TRAP01-CABINET-INTERNAL-DETAIL-V2-SIDE.svg",
+        "output_svg_bytes": 125759,
+        "output_svg_sha256": "9dab91289de29d2d53cd3603a0fa7721058af1cbca1d2da11e3b14df9e11cb9c",
+        "style": {
+          "raw_sha256": "8d2b475cf30195ac23910231d6b68f38c16d897d666d1bf1ecd03ba87fed0c53",
+          "black_geometry_count": 79,
+          "grey_geometry_count": 168
+        },
+        "svg": {
+          "root_tag": "svg",
+          "data_scale": "1:5",
+          "view_box": "0 0 179.99999523162842 160.00940752590404",
+          "geometry_element_count": 247,
+          "target_ifc_body_group_count": 0,
+          "current_annotation_group_count": 1,
+          "excluded_occluder_group_counts": {
+            "1FgLPMw$5B4wBH2ySMkXE1": 0,
+            "2YnGmmoYbF28Vy25$aNKT8": 0,
+            "3OVQygdDn17huGOgJJFTOY": 0
+          },
+          "no_target_or_annotation_duplicate": true,
+          "all_occluders_absent": true,
+          "external_reference_count": 0
+        },
+        "camera": {
+          "type": "ORTHO",
+          "width_m": 0.9,
+          "height_m": 0.8,
+          "clip_start_m": 0.0020000000949949026,
+          "clip_end_m": 0.95,
+          "scale": "1:5",
+          "matrix_world": [
+            [
+              1.0,
+              0.0,
+              0.0,
+              -6.321560382843018
+            ],
+            [
+              0.0,
+              7.549790126404332e-08,
+              -1.0,
+              -1.099997639656067
+            ],
+            [
+              0.0,
+              1.0,
+              7.549790126404332e-08,
+              0.6114700436592102
+            ],
+            [
+              0.0,
+              0.0,
+              0.0,
+              1.0
+            ]
+          ]
+        },
+        "create_result": [
+          "FINISHED"
+        ]
+      }
+    ]
+  },
+  "formal_ifc_bytes_unchanged": true
+}

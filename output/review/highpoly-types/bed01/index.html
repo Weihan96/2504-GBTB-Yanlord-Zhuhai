@@ -1,1 +1,75 @@
-<!doctype html><html><meta charset="utf-8"><title>Baxter Casablanca BED01 review</title><style>body{font:16px Arial;margin:30px;background:#f5f3ef;color:#1f2d3d}main{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:18px}article{background:#fff;padding:14px;border-radius:10px}img{width:100%}a{margin-right:18px}</style><h1>Baxter Casablanca 180 / project BED01</h1><p>Black line = simplified drawing representation derived from the original high-poly geometry. Official Baxter 2D/3D/BIM downloads require login, so no blue line is shown. The current product page says 2100 mm overall width, the official technical sheet says 2200 mm, and the IFC Body spans 2264.167 mm; the conflict remains an explicit review item.</p><nav><a href="manifest.json">Manifest</a><a href="candidate-representations.json">Candidate</a><a href="official-source/source-access-record.json">Source record</a><a href="project-context-furniture-plan.svg">Project furniture plan</a><a href="bonsai-review-manifest.json">Bonsai evidence</a><a href="https://www.baxter.it/en/products/casablanca-beds">Official page</a></nav><h2>Three-view review</h2><main><article><h2>Plan</h2><a href="plan.svg"><img src="plan.svg"></a></article><article><h2>Front</h2><a href="front.svg"><img src="front.svg"></a></article><article><h2>Side</h2><a href="side.svg"><img src="side.svg"></a></article></main><h2>Actual Bonsai camera renders from isolated IFC Body</h2><main><article><h2>Bonsai Plan</h2><a href="bonsai-camera-plan.png"><img src="bonsai-camera-plan.png"></a></article><article><h2>Bonsai Front</h2><a href="bonsai-camera-front-elevation.png"><img src="bonsai-camera-front-elevation.png"></a></article><article><h2>Bonsai Side</h2><a href="bonsai-camera-side-elevation.png"><img src="bonsai-camera-side-elevation.png"></a></article><article><h2>Bonsai Iso</h2><a href="bonsai-camera-iso.png"><img src="bonsai-camera-iso.png"></a></article></main><code>7a50b87e8f48a7c2bfbaa9f1dabdfca7155fa684b2325c66aa1ae15c8ab0a25c</code></html>
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Baxter Casablanca BED01 review</title>
+  <style>
+    body { font: 16px Arial, sans-serif; margin: 30px; background: #f5f3ef; color: #1f2d3d; }
+    main { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 18px; }
+    article { background: #fff; padding: 14px; border-radius: 10px; }
+    img { width: 100%; }
+    nav a { display: inline-block; margin: 0 18px 10px 0; }
+    code { overflow-wrap: anywhere; }
+  </style>
+</head>
+<body>
+  <h1>Baxter Casablanca 180 / project BED01</h1>
+  <p>
+    The authenticated Baxter 2D/3D archive contains the independent native 2D file
+    <code>Casablanca_Letto.dwg</code>. The approved blue paths are the official 180 × 200
+    Plan, Front, and Side views, aligned 1:1 by rigid transforms only. The old BIM ACIS
+    3DSOLID-envelope candidate is excluded from approval.
+  </p>
+  <nav>
+    <a href="manifest.json">Manifest</a>
+    <a href="candidate-representations.json">Candidate record</a>
+    <a href="official-source/source-access-record.json">Source record</a>
+    <a href="official-dwg-review-index.html">Approved official DWG SVG review</a>
+    <a href="master-bedroom-bonsai-drawing-manifest.json">Actual Drawing manifest</a>
+    <a href="Baxter-Casablanca-BED01-master-bedroom-drawings.pdf">Actual Drawing PDF</a>
+    <a href="Baxter-Casablanca-BED01-derived-drawing.ifc">Derived drawing IFC</a>
+    <a href="https://www.baxter.it/en/products/casablanca-beds">Official page</a>
+  </nav>
+
+  <h2>Approved official native 2D DWG review</h2>
+  <p>Blue = official native 2D; gray = actual project Body; black = geometry proxy. No proportional or anisotropic scaling was used.</p>
+  <main>
+    <article><h3>Plan</h3><a href="official-dwg-plan.svg"><img src="official-dwg-plan.svg" alt="Official DWG plan review"></a></article>
+    <article><h3>Front</h3><a href="official-dwg-front.svg"><img src="official-dwg-front.svg" alt="Official DWG front review"></a></article>
+    <article><h3>Side</h3><a href="official-dwg-side.svg"><img src="official-dwg-side.svg" alt="Official DWG side review"></a></article>
+  </main>
+
+  <h2>Actual master-bedroom Bonsai Create Drawing output</h2>
+  <p>
+    Light gray = real project-scene context in IfcSpace <code>3gHz6U6BfFXgV6PnRzfOf$</code>
+    (<code>主卧</code>). Blue = approved official DWG linework persisted as an IFC
+    LINEWORK Annotation. The project BED01 Body is excluded from each Drawing to avoid a
+    double outline. These PNG previews were converted from the final three-page PDF, not
+    captured from a Blender viewport or ordinary render.
+  </p>
+  <main>
+    <article>
+      <h3>Plan</h3>
+      <a href="bonsai-drawings/master-bedroom/BED01-MASTER-BEDROOM-PLAN.svg"><img src="master-bedroom-bonsai-drawing-plan.png" alt="Master bedroom plan Drawing"></a>
+    </article>
+    <article>
+      <h3>Front</h3>
+      <a href="bonsai-drawings/master-bedroom/BED01-MASTER-BEDROOM-FRONT.svg"><img src="master-bedroom-bonsai-drawing-front.png" alt="Master bedroom front Drawing"></a>
+    </article>
+    <article>
+      <h3>Side</h3>
+      <a href="bonsai-drawings/master-bedroom/BED01-MASTER-BEDROOM-SIDE.svg"><img src="master-bedroom-bonsai-drawing-side.png" alt="Master bedroom side Drawing"></a>
+    </article>
+  </main>
+
+  <h2>Earlier isolated evidence</h2>
+  <main>
+    <article><h3>Isolated Plan</h3><a href="bonsai-camera-plan.png"><img src="bonsai-camera-plan.png" alt="Isolated Body plan"></a></article>
+    <article><h3>Isolated Front</h3><a href="bonsai-camera-front-elevation.png"><img src="bonsai-camera-front-elevation.png" alt="Isolated Body front"></a></article>
+    <article><h3>Isolated Side</h3><a href="bonsai-camera-side-elevation.png"><img src="bonsai-camera-side-elevation.png" alt="Isolated Body side"></a></article>
+    <article><h3>Isolated Iso</h3><a href="bonsai-camera-iso.png"><img src="bonsai-camera-iso.png" alt="Isolated Body iso"></a></article>
+  </main>
+
+  <p>Formal authoritative IFC SHA-256 (unchanged): <code>7a50b87e8f48a7c2bfbaa9f1dabdfca7155fa684b2325c66aa1ae15c8ab0a25c</code></p>
+</body>
+</html>

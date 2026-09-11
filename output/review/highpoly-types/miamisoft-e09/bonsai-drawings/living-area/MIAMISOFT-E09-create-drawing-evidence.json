@@ -1,0 +1,701 @@
+{
+  "schema_version": 1,
+  "generated_at": "2026-08-27T13:13:32.792431+00:00",
+  "task": "Bonsai Create Drawing for approved Baxter Miami Soft E09 native-DWG linework in the actual project living-area context",
+  "workflow": [
+    "inspect",
+    "plan",
+    "execute",
+    "persist",
+    "reload",
+    "verify"
+  ],
+  "provider": {
+    "name": "public bonsai-mcp",
+    "status": "supported",
+    "bridge": "127.0.0.1:9878",
+    "execution": "mcp__bonsai_mcp__execute_blender_code"
+  },
+  "course_evidence": {
+    "mode": "embedded-course-index",
+    "lesson": "085000 Introduction to Drawings",
+    "timestamps": [
+      "01:59 Create Drawing",
+      "02:06 Drawing created",
+      "02:13 SVG inspection"
+    ],
+    "course_fact": "Create Drawing generates or refreshes SVG after the Drawing camera, scale, depth and filters are configured.",
+    "current_version_inference": "Bonsai 0.8.4 semantic Drawing state and bpy.ops.bim.create_drawing were used in Blender 4.5.3 LTS."
+  },
+  "formal_ifc": "/Users/jiaxinchen/.codex/worktrees/3a80/2504 GBTB Yanlord Zhuhai/2504 GBTB Yanlord Zhuhai.ifc",
+  "formal_ifc_sha256": "7a50b87e8f48a7c2bfbaa9f1dabdfca7155fa684b2325c66aa1ae15c8ab0a25c",
+  "formal_ifc_bytes_unchanged": true,
+  "derived_ifc": "/Users/jiaxinchen/.codex/worktrees/3a80/2504 GBTB Yanlord Zhuhai/output/review/highpoly-types/miamisoft-e09/Baxter-Miami-Soft-E09-derived-drawing.ifc",
+  "derived_ifc_sha256_before": "7a50b87e8f48a7c2bfbaa9f1dabdfca7155fa684b2325c66aa1ae15c8ab0a25c",
+  "derived_ifc_previous_sha256": "a7cdda3f272953e987f176448385bbc0e0e3dd56bef8327848a856db819bdb10",
+  "derived_ifc_sha256_after": "8f56bca325b49ac4d6da0395f695f1c6cb739925e81431604138efabd847c9a4",
+  "session_blend": {
+    "path": "/Users/jiaxinchen/.codex/worktrees/3a80/2504 GBTB Yanlord Zhuhai/output/review/highpoly-types/miamisoft-e09/Baxter-Miami-Soft-E09-project-drawings.blend",
+    "bytes": 524833689,
+    "sha256": "704b37300825203d9f0522373d307bccde922e0ac0bf3b84355a7bf74e5f1b08"
+  },
+  "save_boundary": "one Miami Soft E09 product-level full-project derived IFC copy",
+  "approval_record": "/Users/jiaxinchen/.codex/worktrees/3a80/2504 GBTB Yanlord Zhuhai/pipeline/decisions/miamisoft-e09-drawing-approval.json",
+  "approval_record_sha256": "8be2328a84c29aabfd0c10115da34453da30b95f5c195caec2640ad4811d83e6",
+  "candidate_record": "/Users/jiaxinchen/.codex/worktrees/3a80/2504 GBTB Yanlord Zhuhai/output/review/highpoly-types/miamisoft-e09/candidate-representations.json",
+  "candidate_record_sha256": "b9f6c3a3c6c01378388f33beebecee8b00dd1c2b640612ba25fda39ecd84bb7e",
+  "source_kind": "native_dwg",
+  "source_label_zh": "Baxter 官方 Miami Soft E09 原生二维 DWG",
+  "source_dwg_sha256": "efc3315feed0a2dac8938aebbd7336856dabba6721395e4520783c39ba0cc51a",
+  "target": {
+    "global_id": "3osoWufdD1mhDDAM6lcix4",
+    "ifc_class": "IfcFurniture",
+    "world_bbox_m": [
+      [
+        1.669321060180664,
+        0.07277520000934601,
+        0.009999999776482582
+      ],
+      [
+        2.814075231552124,
+        1.4159481525421143,
+        0.8074799180030823
+      ]
+    ],
+    "world_centre_m": [
+      2.241698145866394,
+      0.7443616762757301,
+      0.40873995888978243
+    ],
+    "placement_matrix": [
+      [
+        7.549790126404332e-08,
+        1.0,
+        0.0,
+        2.2878782749176025
+      ],
+      [
+        -1.0,
+        7.549790126404332e-08,
+        0.0,
+        0.803948163986206
+      ],
+      [
+        0.0,
+        0.0,
+        1.0,
+        0.009999999776482582
+      ],
+      [
+        0.0,
+        0.0,
+        0.0,
+        1.0
+      ]
+    ],
+    "component_force_fit_applied": false,
+    "project_highpoly_component_offsets_accepted": true
+  },
+  "scene_crop_bbox_m": [
+    [
+      -0.758301854133606,
+      -2.25563832372427,
+      -0.2
+    ],
+    [
+      5.241698145866394,
+      3.74436167627573,
+      3.0
+    ]
+  ],
+  "context": {
+    "project_context_retained": true,
+    "include_count": 154,
+    "include_ifc_class_counts": {
+      "IfcBeam": 2,
+      "IfcBuildingElementProxy": 9,
+      "IfcCovering": 23,
+      "IfcDoor": 2,
+      "IfcElectricAppliance": 5,
+      "IfcFlowSegment": 2,
+      "IfcFurniture": 35,
+      "IfcLightFixture": 28,
+      "IfcPipeSegment": 8,
+      "IfcSanitaryTerminal": 7,
+      "IfcSlab": 10,
+      "IfcWall": 23
+    },
+    "actual_target_body_suppressed_from_drawing_include": true,
+    "context_colour": "#a3abb3"
+  },
+  "views": [
+    {
+      "view": "plan",
+      "drawing": {
+        "global_id": "0t2OuZviP7cOC$0MDU8MRp",
+        "name": "MIAMISOFT-E09-LIVING-AREA-PLAN"
+      },
+      "visible_annotation_global_id": "235nsjm918KhYh6EfjT95x",
+      "hidden_annotation_global_id": null,
+      "visible_path_count": 64,
+      "hidden_path_count": 0,
+      "persisted_visible_path_count": 64,
+      "persisted_hidden_path_count": 0,
+      "edge_count": 1458,
+      "alignment": {
+        "mode": "translation_only",
+        "view_direction_reflection_x": false,
+        "reflection_reason": null,
+        "translation_mm": [
+          -14704.434806,
+          -26643.285728
+        ],
+        "anchor": "projection_centre_to_projection_centre",
+        "uniform_scale": 1.0,
+        "anisotropic_scale_used": false,
+        "source_geometry_deformed": false,
+        "source_bounds_before_alignment_mm": {
+          "minimum": [
+            14114.291725,
+            26058.856192
+          ],
+          "maximum": [
+            15413.949714,
+            27135.355155
+          ],
+          "size": [
+            1299.657989,
+            1076.498963
+          ],
+          "centre": [
+            14764.120719,
+            26597.105674
+          ]
+        },
+        "source_bounds_after_view_direction_mm": {
+          "minimum": [
+            14114.291725,
+            26058.856192
+          ],
+          "maximum": [
+            15413.949714,
+            27135.355155
+          ],
+          "size": [
+            1299.657989,
+            1076.498963
+          ],
+          "centre": [
+            14764.120719,
+            26597.105674
+          ]
+        },
+        "aligned_official_bounds_mm": {
+          "minimum": [
+            -590.143081,
+            -584.429536
+          ],
+          "maximum": [
+            709.514908,
+            492.069427
+          ],
+          "size": [
+            1299.657989,
+            1076.498963
+          ],
+          "centre": [
+            59.685913,
+            -46.180054
+          ]
+        },
+        "project_proxy_bounds_mm": {
+          "minimum": [
+            -590.143081,
+            -584.429536
+          ],
+          "maximum": [
+            709.514908,
+            492.069427
+          ],
+          "size": [
+            1299.657989,
+            1076.498963
+          ],
+          "centre": [
+            59.685913,
+            -46.180054
+          ]
+        },
+        "official_minus_proxy_envelope_mm": [
+          0.0,
+          0.0
+        ]
+      },
+      "component_force_fit_applied": false,
+      "camera": {
+        "type": "ORTHO",
+        "width_m": 6.6,
+        "height_m": 6.6,
+        "clip_start_m": 0.0020000000949949026,
+        "clip_end_m": 1.5,
+        "matrix_world": [
+          [
+            1.0,
+            0.0,
+            0.0,
+            2.2416982650756836
+          ],
+          [
+            0.0,
+            1.0,
+            0.0,
+            0.7443616986274719
+          ],
+          [
+            0.0,
+            0.0,
+            1.0,
+            1.2000000476837158
+          ],
+          [
+            0.0,
+            0.0,
+            0.0,
+            1.0
+          ]
+        ],
+        "resolution": [
+          1000,
+          1000
+        ]
+      },
+      "create_drawing": {
+        "operator": "bpy.ops.bim.create_drawing",
+        "arguments": {
+          "print_all": false,
+          "open_viewer": false,
+          "sync": false
+        },
+        "result": [
+          "FINISHED"
+        ],
+        "linework_mode": "OPENCASCADE",
+        "target_view": "PLAN_VIEW"
+      },
+      "svg": {
+        "path": "/Users/jiaxinchen/.codex/worktrees/3a80/2504 GBTB Yanlord Zhuhai/output/review/highpoly-types/miamisoft-e09/bonsai-drawings/living-area/MIAMISOFT-E09-LIVING-AREA-PLAN.svg",
+        "bytes": 4355567,
+        "sha256": "b87ecbc18f44d99031dd360a206241c50ffc78c537a43279561d7b4ff038d196",
+        "bonsai_generated_sha256_before_review_style": "984b8d4049432b253920965b43a153dcdd6423b50769c52c459a9c7ed22692f4",
+        "visible_annotation_group_count": 1458,
+        "hidden_annotation_group_count": 0,
+        "blue_visible_geometry_count": 1458,
+        "blue_hidden_geometry_count": 0,
+        "grey_context_geometry_count": 20804,
+        "hidden_dasharray": null,
+        "post_style_only": true,
+        "root_tag": "svg",
+        "geometry_element_count": 22262,
+        "projection_group_count": 95,
+        "target_ifc_projection_group_count": 0,
+        "annotation_group_counts": {
+          "235nsjm918KhYh6EfjT95x": 1458
+        },
+        "annotation_presence_all": true,
+        "duplicate_target_or_annotation": false
+      },
+      "linework_cache": {
+        "path": "/Users/jiaxinchen/.codex/worktrees/3a80/2504 GBTB Yanlord Zhuhai/output/review/highpoly-types/miamisoft-e09/bonsai-drawings/living-area/cache/MIAMISOFT-E09-LIVING-AREA-PLAN-linework.svg",
+        "bytes": 2130523,
+        "sha256": "f719af9ec56675d43332071d6f189cf22e313479b767166d4ddb3b8c801e3aaf"
+      }
+    },
+    {
+      "view": "front",
+      "drawing": {
+        "global_id": "1FIXLdUg52HhmZ1a87B2uY",
+        "name": "MIAMISOFT-E09-LIVING-AREA-FRONT"
+      },
+      "visible_annotation_global_id": "05XvWv4dz5OOiUvdNFABeh",
+      "hidden_annotation_global_id": null,
+      "visible_path_count": 130,
+      "hidden_path_count": 0,
+      "persisted_visible_path_count": 130,
+      "persisted_hidden_path_count": 0,
+      "edge_count": 1822,
+      "alignment": {
+        "mode": "translation_only",
+        "view_direction_reflection_x": false,
+        "reflection_reason": null,
+        "translation_mm": [
+          -14704.967959,
+          -28100.266624
+        ],
+        "anchor": "horizontal_centre_and_finished_bottom",
+        "uniform_scale": 1.0,
+        "anisotropic_scale_used": false,
+        "source_geometry_deformed": false,
+        "source_bounds_before_alignment_mm": {
+          "minimum": [
+            14115.358033,
+            28100.266624
+          ],
+          "maximum": [
+            15413.949714,
+            28900.266624
+          ],
+          "size": [
+            1298.591681,
+            800.0
+          ],
+          "centre": [
+            14764.653873,
+            28500.266624
+          ]
+        },
+        "source_bounds_after_view_direction_mm": {
+          "minimum": [
+            14115.358033,
+            28100.266624
+          ],
+          "maximum": [
+            15413.949714,
+            28900.266624
+          ],
+          "size": [
+            1298.591681,
+            800.0
+          ],
+          "centre": [
+            14764.653873,
+            28500.266624
+          ]
+        },
+        "aligned_official_bounds_mm": {
+          "minimum": [
+            -589.609926,
+            0.0
+          ],
+          "maximum": [
+            708.981755,
+            800.0
+          ],
+          "size": [
+            1298.591681,
+            800.0
+          ],
+          "centre": [
+            59.685915,
+            400.0
+          ]
+        },
+        "project_proxy_bounds_mm": {
+          "minimum": [
+            -589.609927,
+            0.0
+          ],
+          "maximum": [
+            708.981754,
+            800.0
+          ],
+          "size": [
+            1298.591681,
+            800.0
+          ],
+          "centre": [
+            59.685914,
+            400.0
+          ]
+        },
+        "official_minus_proxy_envelope_mm": [
+          0.0,
+          0.0
+        ]
+      },
+      "component_force_fit_applied": false,
+      "camera": {
+        "type": "ORTHO",
+        "width_m": 6.6,
+        "height_m": 3.6,
+        "clip_start_m": 0.0020000000949949026,
+        "clip_end_m": 6.8,
+        "matrix_world": [
+          [
+            -4.371138828673793e-08,
+            4.371138828673793e-08,
+            1.0,
+            5.591698169708252
+          ],
+          [
+            1.0,
+            1.910685676922942e-15,
+            4.371138828673793e-08,
+            0.7443616986274719
+          ],
+          [
+            0.0,
+            1.0,
+            -4.371138828673793e-08,
+            1.2000000476837158
+          ],
+          [
+            0.0,
+            0.0,
+            0.0,
+            1.0
+          ]
+        ],
+        "resolution": [
+          3118,
+          1700
+        ]
+      },
+      "create_drawing": {
+        "operator": "bpy.ops.bim.create_drawing",
+        "arguments": {
+          "print_all": false,
+          "open_viewer": false,
+          "sync": false
+        },
+        "result": [
+          "FINISHED"
+        ],
+        "linework_mode": "OPENCASCADE",
+        "target_view": "ELEVATION_VIEW"
+      },
+      "svg": {
+        "path": "/Users/jiaxinchen/.codex/worktrees/3a80/2504 GBTB Yanlord Zhuhai/output/review/highpoly-types/miamisoft-e09/bonsai-drawings/living-area/MIAMISOFT-E09-LIVING-AREA-FRONT.svg",
+        "bytes": 6156077,
+        "sha256": "04e7d5d4cdbef22e40923af592ddaf22191d7b4c154e0cb4d92d3268ad97384a",
+        "bonsai_generated_sha256_before_review_style": "ab834bb6ad60c0a6230f425f2ef5c88519db24589afcfa03ff4894e50ce3942a",
+        "visible_annotation_group_count": 1822,
+        "hidden_annotation_group_count": 0,
+        "blue_visible_geometry_count": 1822,
+        "blue_hidden_geometry_count": 0,
+        "grey_context_geometry_count": 30384,
+        "hidden_dasharray": null,
+        "post_style_only": true,
+        "root_tag": "svg",
+        "geometry_element_count": 32206,
+        "projection_group_count": 49,
+        "target_ifc_projection_group_count": 0,
+        "annotation_group_counts": {
+          "05XvWv4dz5OOiUvdNFABeh": 1822
+        },
+        "annotation_presence_all": true,
+        "duplicate_target_or_annotation": false
+      },
+      "linework_cache": {
+        "path": "/Users/jiaxinchen/.codex/worktrees/3a80/2504 GBTB Yanlord Zhuhai/output/review/highpoly-types/miamisoft-e09/bonsai-drawings/living-area/cache/MIAMISOFT-E09-LIVING-AREA-FRONT-linework.svg",
+        "bytes": 3081031,
+        "sha256": "252538083b619b40f038f69d4628ce2815f3b0aa1a90d7bcd541b62d221e79bd"
+      }
+    },
+    {
+      "view": "side",
+      "drawing": {
+        "global_id": "07GAM14mn40AVFMY$rRQys",
+        "name": "MIAMISOFT-E09-LIVING-AREA-SIDE"
+      },
+      "visible_annotation_global_id": "3cMGVvz7r4HQUhoteA82BD",
+      "hidden_annotation_global_id": null,
+      "visible_path_count": 85,
+      "hidden_path_count": 1,
+      "persisted_visible_path_count": 85,
+      "persisted_hidden_path_count": 1,
+      "edge_count": 1544,
+      "alignment": {
+        "mode": "view_direction_reflection_and_translation_only",
+        "view_direction_reflection_x": true,
+        "reflection_reason": "Official left-looking side is reflected to the project right-side review direction; this does not alter size.",
+        "translation_mm": [
+          -12509.986424,
+          -28100.266624
+        ],
+        "anchor": "horizontal_centre_and_finished_bottom",
+        "uniform_scale": 1.0,
+        "anisotropic_scale_used": false,
+        "source_geometry_deformed": false,
+        "source_bounds_before_alignment_mm": {
+          "minimum": [
+            11912.193542,
+            28100.266624
+          ],
+          "maximum": [
+            13015.419199,
+            28900.264142
+          ],
+          "size": [
+            1103.225657,
+            799.997518
+          ],
+          "centre": [
+            12463.806371,
+            28500.265383
+          ]
+        },
+        "source_bounds_after_view_direction_mm": {
+          "minimum": [
+            11912.193543,
+            28100.266624
+          ],
+          "maximum": [
+            13015.4192,
+            28900.264142
+          ],
+          "size": [
+            1103.225657,
+            799.997518
+          ],
+          "centre": [
+            12463.806371,
+            28500.265383
+          ]
+        },
+        "aligned_official_bounds_mm": {
+          "minimum": [
+            -597.792881,
+            0.0
+          ],
+          "maximum": [
+            505.432776,
+            799.997518
+          ],
+          "size": [
+            1103.225657,
+            799.997518
+          ],
+          "centre": [
+            -46.180052,
+            399.998759
+          ]
+        },
+        "project_proxy_bounds_mm": {
+          "minimum": [
+            -597.792882,
+            0.0
+          ],
+          "maximum": [
+            505.432775,
+            799.997518
+          ],
+          "size": [
+            1103.225657,
+            799.997518
+          ],
+          "centre": [
+            -46.180053,
+            399.998759
+          ]
+        },
+        "official_minus_proxy_envelope_mm": [
+          0.0,
+          0.0
+        ]
+      },
+      "component_force_fit_applied": false,
+      "camera": {
+        "type": "ORTHO",
+        "width_m": 6.6,
+        "height_m": 3.6,
+        "clip_start_m": 0.0020000000949949026,
+        "clip_end_m": 6.8,
+        "matrix_world": [
+          [
+            1.0,
+            0.0,
+            0.0,
+            2.2416982650756836
+          ],
+          [
+            0.0,
+            7.549790126404332e-08,
+            -1.0,
+            -2.605638265609741
+          ],
+          [
+            0.0,
+            1.0,
+            7.549790126404332e-08,
+            1.2000000476837158
+          ],
+          [
+            0.0,
+            0.0,
+            0.0,
+            1.0
+          ]
+        ],
+        "resolution": [
+          3118,
+          1700
+        ]
+      },
+      "create_drawing": {
+        "operator": "bpy.ops.bim.create_drawing",
+        "arguments": {
+          "print_all": false,
+          "open_viewer": false,
+          "sync": false
+        },
+        "result": [
+          "FINISHED"
+        ],
+        "linework_mode": "OPENCASCADE",
+        "target_view": "ELEVATION_VIEW"
+      },
+      "svg": {
+        "path": "/Users/jiaxinchen/.codex/worktrees/3a80/2504 GBTB Yanlord Zhuhai/output/review/highpoly-types/miamisoft-e09/bonsai-drawings/living-area/MIAMISOFT-E09-LIVING-AREA-SIDE.svg",
+        "bytes": 3549082,
+        "sha256": "3fa1fd2750b863c2c79bf81818f83276ee27e37bbeb4ad27faff63689992bc40",
+        "bonsai_generated_sha256_before_review_style": "0ee1bae64ebbfc48d1fd4360af3e3c48129209f9e8ea3d0e7872739d6c18413a",
+        "visible_annotation_group_count": 1544,
+        "hidden_annotation_group_count": 0,
+        "blue_visible_geometry_count": 1285,
+        "blue_hidden_geometry_count": 259,
+        "grey_context_geometry_count": 15894,
+        "hidden_dasharray": "2.4,1.5",
+        "post_style_only": true,
+        "root_tag": "svg",
+        "geometry_element_count": 17438,
+        "projection_group_count": 87,
+        "target_ifc_projection_group_count": 0,
+        "annotation_group_counts": {
+          "3cMGVvz7r4HQUhoteA82BD": 1544
+        },
+        "annotation_presence_all": true,
+        "duplicate_target_or_annotation": false
+      },
+      "linework_cache": {
+        "path": "/Users/jiaxinchen/.codex/worktrees/3a80/2504 GBTB Yanlord Zhuhai/output/review/highpoly-types/miamisoft-e09/bonsai-drawings/living-area/cache/MIAMISOFT-E09-LIVING-AREA-SIDE-linework.svg",
+        "bytes": 1625089,
+        "sha256": "4083363f542f6f9215811846b7c0c28f91f32d0b29b0c2cd843ec7b38f5cfa83"
+      }
+    }
+  ],
+  "persistence": {
+    "method": "model.write to temporary then atomic replace; bpy.ops.bim.load_project reload; bpy.ops.wm.save_as_mainfile",
+    "reload_result": [
+      "FINISHED"
+    ],
+    "post_reload_drawing_count": 3,
+    "post_reload_visible_annotation_count": 3,
+    "post_reload_hidden_annotation_count": 0,
+    "post_reload_hidden_line_semantic_path_count": 1
+  },
+  "versions": {
+    "blender": "4.5.3 LTS",
+    "ifcopenshell": "0.8.4",
+    "ifc_schema": "IFC4",
+    "bonsai_generator": "Bonsai 0.8.4 bpy.ops.bim.create_drawing"
+  },
+  "tests": {
+    "all_create_drawing_finished": true,
+    "all_target_body_projection_counts_zero": true,
+    "all_annotation_groups_unique": true,
+    "side_hidden_path_count": 1,
+    "side_hidden_dasharray": "2.4,1.5",
+    "formal_ifc_unchanged": true
+  },
+  "pass": true
+}

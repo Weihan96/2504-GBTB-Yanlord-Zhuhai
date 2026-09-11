@@ -1,0 +1,310 @@
+{
+  "schema_version": 1,
+  "generated_at": "2026-08-28T10:20:11.242151+00:00",
+  "generator": "pipeline/scripts/generate_gessi316_54146_main_bathroom_drawings.py",
+  "task": "approved Gessi316 54146 actual main-bathroom Bonsai Plan/Front/Side Drawing package",
+  "workflow": [
+    "inspect",
+    "plan",
+    "execute",
+    "persist",
+    "reload",
+    "verify"
+  ],
+  "approval_scope": "direction-corrected Plan/Front/Side; review simplification based on official Gessi 54146 G000 native DWG outline",
+  "formal_ifc": "2504 GBTB Yanlord Zhuhai.ifc",
+  "formal_ifc_sha256": "7a50b87e8f48a7c2bfbaa9f1dabdfca7155fa684b2325c66aa1ae15c8ab0a25c",
+  "formal_ifc_sha256_after_generation": "7a50b87e8f48a7c2bfbaa9f1dabdfca7155fa684b2325c66aa1ae15c8ab0a25c",
+  "formal_authoritative_ifc_write_allowed": false,
+  "derived_ifc": {
+    "path": "output/review/highpoly-types/gessi316-54146/Gessi316-54146-derived-drawing.ifc",
+    "bytes": 88090983,
+    "sha256": "6b847536c1e4e25e7cb99bc016cdcce0e092f2b35040396ac46e9b175c9e09bf"
+  },
+  "derived_ifc_write_report": {
+    "path": "output/review/highpoly-types/gessi316-54146/Gessi316-54146-derived-drawing-report.json",
+    "bytes": 2323,
+    "sha256": "0ae1e0113b81cb9e7c74e7bda434c64cedb49a5674b323368471725b5fb0e4ee"
+  },
+  "derived_ifc_write_allowed": true,
+  "source_kind": "native_dwg_review_simplification",
+  "source_label_zh": "基于官方 Gessi 54146 G000 原生 DWG 轮廓的简化蓝线审核表达",
+  "source_dwg_sha256": "c8ddb90f61565d5273a32574f777812bbb1d9ef33e2b98479f1e7c381e69950d",
+  "unaltered_official_dwg_used_as_drawing_linework": false,
+  "original_official_dwg_evidence_preserved": true,
+  "fine_spray_nozzle_detail_path_count": 0,
+  "target_global_id": "04DLh1Jk9Dcu9ibcaE0id8",
+  "target_ifc_type_name": "Gessi316 54146",
+  "room_global_id": "3a4COIs5X7lgDirMBDT4Vs",
+  "room_name": "主卫湿区",
+  "project_context_retained": true,
+  "target_body_suppressed_from_projection": true,
+  "create_drawing_operator": "bpy.ops.bim.create_drawing",
+  "provider": {
+    "preferred": "bonsai-mcp 1.1.0 at b0e67b1",
+    "status": "unsupported",
+    "reason": "Blender bridge 127.0.0.1:9878 connection refused",
+    "fallback": "local Blender 4.5.3 LTS with installed Bonsai/IfcOpenShell 0.8.4"
+  },
+  "course_evidence": {
+    "evidence_mode": "embedded-course-index",
+    "lesson": "085000 Introduction to Drawings",
+    "timestamps": [
+      "01:03 active Drawing camera",
+      "01:59 Create Drawing",
+      "02:13 SVG inspection"
+    ],
+    "course_fact": "Create Drawing refreshes SVG after the Drawing camera, linework, annotation and filters are configured.",
+    "current_inference": "The course workflow was adapted to Bonsai 0.8.4 semantic state and bpy.ops.bim.create_drawing."
+  },
+  "create_drawing_evidence": {
+    "path": "output/review/highpoly-types/gessi316-54146/bonsai-drawings/main-bathroom/GESSI316-54146-MAIN-BATH-create-drawing-evidence.json",
+    "bytes": 2113697,
+    "sha256": "b3036c37c5c8e25bc5612c8270382944bd9d9dba0e1db0b7c8e065e5a796b574"
+  },
+  "session_blend": {
+    "path": "output/review/highpoly-types/gessi316-54146/Gessi316-54146-main-bathroom-drawings.blend",
+    "bytes": 524309299,
+    "sha256": "0f716bd917b2200af1f75c9f267ec60f471af4ebd1de0e4897419f481a024d2f"
+  },
+  "combined_pdf": {
+    "path": "output/review/highpoly-types/gessi316-54146/Gessi316-54146-main-bathroom-drawings.pdf",
+    "bytes": 47203,
+    "sha256": "8c7dddda8a3dc4dd5858f296c504a40685c7f02e34596fdbb0c3cbfcbd6d7998",
+    "page_count": 3,
+    "page_order": [
+      "plan",
+      "front",
+      "side"
+    ]
+  },
+  "views": [
+    {
+      "view": "plan",
+      "drawing_name": "GESSI316-54146-MAIN-BATH-PLAN",
+      "drawing_global_id": "3EA9YYEjn4qvgo278xSJ8a",
+      "linework_annotation_global_id": "3nJ_yfg4vFR9RltUsRRHRX",
+      "review_path_count": 16,
+      "persisted_review_path_count": 16,
+      "persisted_coordinate_residual_mm": 0.0,
+      "target_ifc_projection_group_count": 0,
+      "annotation_geometry_count": 1140,
+      "camera": {
+        "type": "ORTHO",
+        "width_m": 2.399999713897705,
+        "height_m": 3.1999998077750207,
+        "clip_start_m": 0.0020000000949949026,
+        "clip_end_m": 3.200000047683716,
+        "matrix_world": [
+          [
+            1.0,
+            0.0,
+            0.0,
+            -5.699999809265137
+          ],
+          [
+            0.0,
+            1.0,
+            0.0,
+            1.3999998569488525
+          ],
+          [
+            0.0,
+            0.0,
+            1.0,
+            2.75
+          ],
+          [
+            0.0,
+            0.0,
+            0.0,
+            1.0
+          ]
+        ],
+        "resolution": [
+          1133,
+          1511
+        ]
+      },
+      "svg": {
+        "path": "output/review/highpoly-types/gessi316-54146/bonsai-drawings/main-bathroom/GESSI316-54146-MAIN-BATH-PLAN.svg",
+        "bytes": 808914,
+        "sha256": "28cdbb242c5a8679b08f1af5f3ac4d86752ef89b4e1e3ae86b2c4ad8b7ddb833"
+      },
+      "page_pdf": {
+        "path": "output/review/highpoly-types/gessi316-54146/bonsai-drawings/main-bathroom/GESSI316-54146-MAIN-BATH-PLAN.pdf",
+        "bytes": 15004,
+        "sha256": "a98dd73774a5d5895b455c6a0ce169833a4820c26c2b6c5ecf6ad9bfd5e54e4f"
+      },
+      "pdf_rendered_preview_png": {
+        "path": "output/review/highpoly-types/gessi316-54146/main-bathroom-bonsai-drawing-plan.png",
+        "bytes": 21118,
+        "sha256": "e273532d7453949b5b58de29062e86f0d929b3ffd5c677581e9f4119497e9c4b"
+      },
+      "pdf_preview_colour_gate": {
+        "width": 1530,
+        "height": 1980,
+        "blue_pixel_count": 1429,
+        "grey_pixel_count": 18495,
+        "nonwhite_pixel_count": 20622,
+        "blue_line_present": true,
+        "project_context_present": true,
+        "pass": true
+      }
+    },
+    {
+      "view": "front",
+      "drawing_name": "GESSI316-54146-MAIN-BATH-FRONT",
+      "drawing_global_id": "1bbg3KfjD4ZP0bOpqJqOgu",
+      "linework_annotation_global_id": "10a7G3cc97beLLy1TJD16r",
+      "review_path_count": 104,
+      "persisted_review_path_count": 104,
+      "persisted_coordinate_residual_mm": 0.0,
+      "target_ifc_projection_group_count": 0,
+      "annotation_geometry_count": 2047,
+      "camera": {
+        "type": "ORTHO",
+        "width_m": 3.1999998077750207,
+        "height_m": 3.6,
+        "clip_start_m": 0.0020000000949949026,
+        "clip_end_m": 2.599999713897705,
+        "matrix_world": [
+          [
+            -4.371138828673793e-08,
+            4.371138828673793e-08,
+            1.0,
+            -4.450000286102295
+          ],
+          [
+            1.0,
+            1.910685676922942e-15,
+            4.371138828673793e-08,
+            1.3999998569488525
+          ],
+          [
+            0.0,
+            1.0,
+            -4.371138828673793e-08,
+            1.2000000476837158
+          ],
+          [
+            0.0,
+            0.0,
+            0.0,
+            1.0
+          ]
+        ],
+        "resolution": [
+          1511,
+          1700
+        ]
+      },
+      "svg": {
+        "path": "output/review/highpoly-types/gessi316-54146/bonsai-drawings/main-bathroom/GESSI316-54146-MAIN-BATH-FRONT.svg",
+        "bytes": 1272166,
+        "sha256": "63b6a7f75c0d8d0c571a06b14c6f5b554440cabd205b3cc849d033e446ef267f"
+      },
+      "page_pdf": {
+        "path": "output/review/highpoly-types/gessi316-54146/bonsai-drawings/main-bathroom/GESSI316-54146-MAIN-BATH-FRONT.pdf",
+        "bytes": 12986,
+        "sha256": "def4abd94445f7fb1acfe9af52e5ec7e2f20132d357873f06cfe1a9a1ec697f6"
+      },
+      "pdf_rendered_preview_png": {
+        "path": "output/review/highpoly-types/gessi316-54146/main-bathroom-bonsai-drawing-front.png",
+        "bytes": 14440,
+        "sha256": "e511cd061fd18fd4c2a6e21e363864127c73e7c3b4c3d56d693af8b76d1bcba2"
+      },
+      "pdf_preview_colour_gate": {
+        "width": 1530,
+        "height": 1980,
+        "blue_pixel_count": 244,
+        "grey_pixel_count": 15158,
+        "nonwhite_pixel_count": 15409,
+        "blue_line_present": true,
+        "project_context_present": true,
+        "pass": true
+      }
+    },
+    {
+      "view": "side",
+      "drawing_name": "GESSI316-54146-MAIN-BATH-SIDE",
+      "drawing_global_id": "3nytnOgOP2bxkIZGtiAwFw",
+      "linework_annotation_global_id": "2tHyH7pnLD7vSzuMJsYxpG",
+      "review_path_count": 116,
+      "persisted_review_path_count": 116,
+      "persisted_coordinate_residual_mm": 0.0,
+      "target_ifc_projection_group_count": 0,
+      "annotation_geometry_count": 2302,
+      "camera": {
+        "type": "ORTHO",
+        "width_m": 2.399999713897705,
+        "height_m": 3.6,
+        "clip_start_m": 0.0020000000949949026,
+        "clip_end_m": 3.3999998077750204,
+        "matrix_world": [
+          [
+            1.0,
+            0.0,
+            0.0,
+            -5.699999809265137
+          ],
+          [
+            0.0,
+            7.549790126404332e-08,
+            -1.0,
+            -0.25
+          ],
+          [
+            0.0,
+            1.0,
+            7.549790126404332e-08,
+            1.2000000476837158
+          ],
+          [
+            0.0,
+            0.0,
+            0.0,
+            1.0
+          ]
+        ],
+        "resolution": [
+          1133,
+          1700
+        ]
+      },
+      "svg": {
+        "path": "output/review/highpoly-types/gessi316-54146/bonsai-drawings/main-bathroom/GESSI316-54146-MAIN-BATH-SIDE.svg",
+        "bytes": 1571980,
+        "sha256": "b6cf815ba4daf7f90575aed0971571a9fbd017020fefc8146d1b5c4e71192982"
+      },
+      "page_pdf": {
+        "path": "output/review/highpoly-types/gessi316-54146/bonsai-drawings/main-bathroom/GESSI316-54146-MAIN-BATH-SIDE.pdf",
+        "bytes": 20789,
+        "sha256": "5d2e724b0c9b1e4d431d86ed9afb422b4f1c03fd611a8556ea50bd275dcb67ad"
+      },
+      "pdf_rendered_preview_png": {
+        "path": "output/review/highpoly-types/gessi316-54146/main-bathroom-bonsai-drawing-side.png",
+        "bytes": 27885,
+        "sha256": "343b9cdeb70a14da181cb142c93d5e8f9463b9056ea09ce0c394dd4a8fa9f54c"
+      },
+      "pdf_preview_colour_gate": {
+        "width": 1530,
+        "height": 1980,
+        "blue_pixel_count": 173,
+        "grey_pixel_count": 27225,
+        "nonwhite_pixel_count": 27980,
+        "blue_line_present": true,
+        "project_context_present": true,
+        "pass": true
+      }
+    }
+  ],
+  "tests": {
+    "all_create_drawing_finished": true,
+    "all_annotations_persisted": true,
+    "all_target_body_projection_groups_zero": true,
+    "all_pdf_previews_have_blue_line_and_project_context": true,
+    "formal_ifc_hash_preserved": true
+  },
+  "pass": true
+}

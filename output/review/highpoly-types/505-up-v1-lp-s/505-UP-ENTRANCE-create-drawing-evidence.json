@@ -1,0 +1,1149 @@
+{
+  "schema_version": 1,
+  "generated_at": "2026-08-26T18:21:37.061625+00:00",
+  "task": "Bonsai Plan open-interface and Front north-camera revision for 505 UP",
+  "workflow": [
+    "inspect",
+    "plan",
+    "execute",
+    "persist",
+    "reload",
+    "verify"
+  ],
+  "provider": {
+    "name": "bonsai-mcp",
+    "status": "supported",
+    "bridge": "127.0.0.1:9878",
+    "execution": "execute_blender_code"
+  },
+  "course_evidence": {
+    "lesson": "085000 Introduction to Drawings",
+    "source": "/Users/jiaxinchen/.codex/worktrees/fb76/2504 GBTB Yanlord Zhuhai/research/bonsai-course/lessons/085000/README.md",
+    "screenshots": {
+      "active_drawing_layers": "/Users/jiaxinchen/.codex/worktrees/fb76/2504 GBTB Yanlord Zhuhai/research/bonsai-course/lessons/085000/screenshots/085000-01m03s-active-drawing-camera.png",
+      "create_drawing": "/Users/jiaxinchen/.codex/worktrees/fb76/2504 GBTB Yanlord Zhuhai/research/bonsai-course/lessons/085000/screenshots/085000-01m59s-create-drawing-button.png",
+      "svg_result": "/Users/jiaxinchen/.codex/worktrees/fb76/2504 GBTB Yanlord Zhuhai/research/bonsai-course/lessons/085000/screenshots/085000-02m13s-svg-in-browser.png"
+    },
+    "course_fact": "Create Drawing generates or refreshes SVG after Drawing camera, scale, depth, layers and filters are configured.",
+    "current_version_inference": "The recorded 4.2.1/0.8.2 workflow is adapted to Blender 4.5.3 LTS and Bonsai/IfcOpenShell 0.8.4 using semantic Drawing state and bpy.ops.bim.create_drawing."
+  },
+  "formal_ifc": "/Users/jiaxinchen/.codex/worktrees/3a80/2504 GBTB Yanlord Zhuhai/2504 GBTB Yanlord Zhuhai.ifc",
+  "formal_ifc_sha256": "7a50b87e8f48a7c2bfbaa9f1dabdfca7155fa684b2325c66aa1ae15c8ab0a25c",
+  "formal_ifc_bytes_unchanged": true,
+  "drawing_session_ifc": "/Users/jiaxinchen/.codex/worktrees/3a80/2504 GBTB Yanlord Zhuhai/output/review/highpoly-types/505-up-v1-lp-s/505-up-v1-lp-s-bonsai-drawing-session.ifc",
+  "drawing_session_sha256_before": "3b4c80b59656b79f71ccdde63a17f226e7afa406f4902d0bd025a15c8cc31a06",
+  "drawing_session_sha256_after": "b8e9c5825225bd5f1df3a5ca5b5c9d0945e29acc9f1435c1e4dc98c3525b7687",
+  "save_boundary": "one 505 UP product-level full-project IFC copy under its review package",
+  "bonsai_session": {
+    "path": "/Users/jiaxinchen/.codex/worktrees/3a80/2504 GBTB Yanlord Zhuhai/output/review/highpoly-types/505-up-v1-lp-s/Molteni-505-UP-V1-LP-S-project-drawings.blend",
+    "sha256": "b210b0d63a0cd0a5327cd41506c92d11d5f47735289b584dfd4f0841ffd183d6"
+  },
+  "approval_record": "/Users/jiaxinchen/.codex/worktrees/3a80/2504 GBTB Yanlord Zhuhai/pipeline/decisions/505-up-v1-lp-s-drawing-approval.json",
+  "approval_record_sha256": "63ab3c43250d8793f07e75391fdc97904d7aa662172d3a31e340a333b29e1d8f",
+  "candidate": "/Users/jiaxinchen/.codex/worktrees/3a80/2504 GBTB Yanlord Zhuhai/output/review/highpoly-types/505-up-v1-lp-s/candidate-representations.json",
+  "candidate_sha256": "52d64624d409ceed5a454ecad4a5493bc81c52ed3e3c3cad6cdf431125398545",
+  "source_kind": "geometry_derived_simplified_proxy",
+  "source_label_zh": "基于原始高模几何生成的简化图纸表达",
+  "official_cad_used": false,
+  "blue_official_atomic_component_composition_selected": false,
+  "target": {
+    "global_id": "19MpdkWqXC7uhUNhLQgrce",
+    "ifc_class": "IfcFurniture",
+    "name": "505 UP V1.LP.S",
+    "world_bbox_m": [
+      [
+        2.8051810264587402,
+        -1.399999976158142,
+        -3.6241726775188e-07
+      ],
+      [
+        5.717181205749512,
+        -0.9635004997253418,
+        2.380000114440918
+      ]
+    ],
+    "target_include_count_before_suppression": 1,
+    "target_include_count_after_suppression": 0
+  },
+  "room": {
+    "global_id": "36NNomu9TDP9xkhh6D2l8K",
+    "name": "玄关",
+    "bbox_m": [
+      [
+        3.299999952316284,
+        -1.5,
+        0.0
+      ],
+      [
+        6.599999904632568,
+        0.10000002384185791,
+        2.799999952316284
+      ]
+    ],
+    "crop_bbox_m": [
+      [
+        2.8051810264587402,
+        -1.5,
+        -3.6241726775188e-07
+      ],
+      [
+        6.599999904632568,
+        0.10000002384185791,
+        2.799999952316284
+      ]
+    ]
+  },
+  "context": {
+    "project_context_retained": true,
+    "include_count": 22,
+    "include_global_ids": [
+      "0Ik2RcgGbFOhdYTJPgh5AQ",
+      "0JcqcpduD9YRHOQJ2Q92gO",
+      "0YhssoK0P9nvtp4L4wAIvt",
+      "0dfW7$qvL0UQI5y_LT5RsF",
+      "0mnFDiYfj6fxQBaWFizjUS",
+      "0nNkP2k99BqQJilK0$E7fQ",
+      "0u3BXQfv5DNB7pJWIiPf7e",
+      "0xvuGq51D58Q48g8TUKoG3",
+      "11c$NwzxL9hASgCgwDxM$w",
+      "1PiSzHCAzAcebz69Cm6dKw",
+      "1cmuG50mj3cggtIH5tZHic",
+      "1mI2ClWgr6xwhxkjkIkFbV",
+      "1oa6zGXK1CeuV$1tRZM9Ob",
+      "1rTw$leJL4QAm03neq4Ms_",
+      "2Hzb2UxozCF9TjOK5nW1XC",
+      "2bJu5ZdkzALBfyCUpyiKTA",
+      "2dxcvMre5F6fk90OTXSFJH",
+      "2yzeNwqxf9ZwSGU68YbBpm",
+      "3$jLiDR8189OBVonOPgmlx",
+      "37DESmCqj8qAHVsS$K2iyb",
+      "39ssagG3n08RmEGQ8p0HPN",
+      "3UpLXAml9Bufs6wAjUjPJT"
+    ],
+    "include_ifc_class_counts": {
+      "IfcBuildingElementProxy": 2,
+      "IfcCovering": 5,
+      "IfcDoor": 1,
+      "IfcFurniture": 1,
+      "IfcLightFixture": 6,
+      "IfcPipeSegment": 1,
+      "IfcSlab": 3,
+      "IfcWall": 3
+    },
+    "context_colour": "#a3abb3",
+    "target_colour": "#111111"
+  },
+  "views": [
+    {
+      "view": "plan",
+      "drawing": {
+        "global_id": "1IvD6Adif1P9Tg1j2XV2ON",
+        "name": "MOLTENI-505-UP-ENTRANCE-PLAN",
+        "object_type": "DRAWING",
+        "epset_drawing": {
+          "TargetView": "PLAN_VIEW",
+          "Scale": "1/25",
+          "HumanScale": "1:25",
+          "HasUnderlay": false,
+          "HasLinework": true,
+          "HasAnnotation": true,
+          "GlobalReferencing": true,
+          "Stylesheet": "drawings/assets/default.css",
+          "Markers": "drawings/assets/markers.svg",
+          "Symbols": "drawings/assets/symbols.svg",
+          "Patterns": "drawings/assets/patterns.svg",
+          "ShadingStyles": "drawings/assets/shading_styles.json",
+          "CurrentShadingStyle": "Blender Default",
+          "DPI": 300,
+          "LineworkMode": "OPENCASCADE",
+          "FillMode": "NONE",
+          "CutMode": "BISECT",
+          "Include": "0Ik2RcgGbFOhdYTJPgh5AQ,0JcqcpduD9YRHOQJ2Q92gO,0YhssoK0P9nvtp4L4wAIvt,0dfW7$qvL0UQI5y_LT5RsF,0mnFDiYfj6fxQBaWFizjUS,0nNkP2k99BqQJilK0$E7fQ,0u3BXQfv5DNB7pJWIiPf7e,0xvuGq51D58Q48g8TUKoG3,11c$NwzxL9hASgCgwDxM$w,1PiSzHCAzAcebz69Cm6dKw,1cmuG50mj3cggtIH5tZHic,1mI2ClWgr6xwhxkjkIkFbV,1oa6zGXK1CeuV$1tRZM9Ob,1rTw$leJL4QAm03neq4Ms_,2Hzb2UxozCF9TjOK5nW1XC,2bJu5ZdkzALBfyCUpyiKTA,2dxcvMre5F6fk90OTXSFJH,2yzeNwqxf9ZwSGU68YbBpm,3$jLiDR8189OBVonOPgmlx,37DESmCqj8qAHVsS$K2iyb,39ssagG3n08RmEGQ8p0HPN,3UpLXAml9Bufs6wAjUjPJT",
+          "id": 2447620
+        }
+      },
+      "linework_annotation": {
+        "global_id": "0BXE2yOdHDAAD3IUjD6PEB",
+        "name": "Molteni 505 UP approved black proxy / plan",
+        "epset_annotation": {
+          "Classes": "review-target-505-up geometry-derived-simplified-proxy",
+          "TargetGlobalId": "19MpdkWqXC7uhUNhLQgrce",
+          "SourceKind": "geometry_derived_simplified_proxy",
+          "SourceLabelZh": "基于原始高模几何生成的简化图纸表达",
+          "OfficialCadUsed": false,
+          "BlueOfficialAtomicComponentCompositionSelected": false,
+          "IfcCurveStyleColour": "#111111",
+          "id": 2447810
+        },
+        "ifc_curve_style_persisted": true,
+        "ifc_curve_style_colour": "#111111",
+        "drawing_group_assignment_global_id": "1IuRmgmIL80hRpVlYjjRBV"
+      },
+      "review_path_count": 20,
+      "persisted_review_path_count": 20,
+      "review_edge_count": 100,
+      "persisted_coordinate_bounds_mm": [
+        [
+          -2399.895138,
+          -16.0,
+          0.0
+        ],
+        [
+          511.818974,
+          420.499451,
+          0.0
+        ]
+      ],
+      "expected_coordinate_bounds_mm": [
+        [
+          -2399.895138,
+          -16.0,
+          0.0
+        ],
+        [
+          511.818974,
+          420.499451,
+          0.0
+        ]
+      ],
+      "persisted_coordinate_residual_mm": 0.0,
+      "camera": {
+        "type": "ORTHO",
+        "width_m": 4.394818878173828,
+        "height_m": 2.200000023841858,
+        "clip_start_m": 0.0020000000949949026,
+        "clip_end_m": 1.5,
+        "resolution": [
+          2076,
+          1039
+        ]
+      },
+      "create_drawing": {
+        "operator": "bpy.ops.bim.create_drawing",
+        "arguments": {
+          "print_all": false,
+          "open_viewer": false,
+          "sync": false
+        },
+        "result": [
+          "FINISHED"
+        ],
+        "linework_mode": "OPENCASCADE",
+        "target_view": "PLAN_VIEW"
+      },
+      "svg": {
+        "path": "/Users/jiaxinchen/.codex/worktrees/3a80/2504 GBTB Yanlord Zhuhai/output/review/highpoly-types/505-up-v1-lp-s/project-drawings/MOLTENI-505-UP-ENTRANCE-PLAN.svg",
+        "bytes": 187213,
+        "sha256": "f67a0a3867e105e6ffc2a4507ba07f40d233c72142d46c5c06e2c9555ccf29d5",
+        "bonsai_generated_sha256_before_review_style": "d6765944646f937205b930e45701adc656b23a312807679b832f2dc3c898d0ed",
+        "annotation_group_count": 97,
+        "black_geometry_element_count": 97,
+        "grey_context_geometry_element_count": 284,
+        "post_style_only": true,
+        "root_tag": "svg",
+        "width": "175.79275131225586mm",
+        "height": "87.98105424539202mm",
+        "viewBox": "0 0 175.79275131225586 87.98105424539202",
+        "data_scale": "1:25",
+        "geometry_element_count": 381,
+        "projection_group_count": 12,
+        "class_counts": {
+          "0nNkP2k99BqQJilK0$E7fQ": 2,
+          "1oa6zGXK1CeuV$1tRZM9Ob": 2,
+          "2Hzb2UxozCF9TjOK5nW1XC": 4,
+          "ELEVATION": 16,
+          "GRID": 12,
+          "GlobalId-0BXE2yOdHDAAD3IUjD6PEB": 97,
+          "GlobalId-168foctebAh9NSnHyRlTl8": 1,
+          "GlobalId-1I5usrueXAl8r1LYmelnFh": 1,
+          "GlobalId-1oHSpgUgX5hgBPHrX7hZZL": 1,
+          "GlobalId-2KoTHQRTj4Y9CH6DvomrOy": 1,
+          "GlobalId-2qmpR6M6n8POJd$MjAlgjt": 1,
+          "GlobalId-3cvGQHMmfE1A0M4io4Zn0e": 1,
+          "IfcAnnotation": 103,
+          "IfcBuildingElementProxy": 2,
+          "IfcCovering": 9,
+          "IfcDoor": 1,
+          "IfcFurniture": 1,
+          "IfcMaterialLayer": 6,
+          "IfcSlab": 1,
+          "IfcSpace": 5,
+          "IfcWall": 11,
+          "PredefinedType-GRID": 6,
+          "PredefinedType-LINEWORK": 97,
+          "annotation": 27,
+          "cut": 13,
+          "geometry-derived-simplified-proxy": 97,
+          "geometry_derived_simplified_proxy": 97,
+          "large": 1,
+          "layer-material-Aircrete": 2,
+          "layer-material-Concrete": 2,
+          "layer-material-WhiteWall": 2,
+          "layer-material-category-Architectural": 6,
+          "material-": 1,
+          "material-BBF01": 2,
+          "material-Concrete200": 5,
+          "material-DT01": 1,
+          "material-FLR230": 1,
+          "material-Pewter": 1,
+          "material-WAL200B": 6,
+          "material-WW20": 6,
+          "material-null": 7,
+          "projection": 12,
+          "regular": 6,
+          "review-target-505-up": 97,
+          "scale-25": 1,
+          "section": 1,
+          "stair": 1,
+          "target-view-PLANVIEW": 1
+        },
+        "target_ifc_projection_group_count": 0,
+        "review_annotation_geometry_count": 97
+      },
+      "linework_cache": {
+        "path": "/Users/jiaxinchen/.codex/worktrees/3a80/2504 GBTB Yanlord Zhuhai/output/review/highpoly-types/505-up-v1-lp-s/project-drawings/cache/MOLTENI-505-UP-ENTRANCE-PLAN-linework.svg",
+        "bytes": 20965,
+        "sha256": "a8fb5608a1d4b937bfdea6ef2dc9d664acc05ae55cc18cf97da829b1b19c679f"
+      },
+      "component_semantics": {
+        "method": "connected_components_then_display_main_envelope_intersection",
+        "main_envelope_component": {
+          "root_vertex_index": 2465,
+          "minimum_mm": [
+            -2400.181026,
+            0.0,
+            -2380.0
+          ],
+          "maximum_mm": [
+            511.818974,
+            320.0,
+            0.0
+          ],
+          "size_mm": [
+            2912.0,
+            320.0,
+            2380.0
+          ]
+        },
+        "display_component": {
+          "root_vertex_index": 7269,
+          "minimum_mm": [
+            -446.22076,
+            0.037205,
+            -1610.704712
+          ],
+          "maximum_mm": [
+            163.779026,
+            420.499451,
+            -844.704468
+          ],
+          "size_mm": [
+            609.999786,
+            420.462246,
+            766.000244
+          ]
+        },
+        "cover_plate_components": [
+          {
+            "root_vertex_index": 201,
+            "minimum_mm": [
+              -2368.181026,
+              0.0,
+              -76.0
+            ],
+            "maximum_mm": [
+              -1760.181026,
+              320.0,
+              0.0
+            ],
+            "size_mm": [
+              608.0,
+              320.0,
+              76.0
+            ]
+          },
+          {
+            "root_vertex_index": 107,
+            "minimum_mm": [
+              -1728.181026,
+              0.0,
+              -76.0
+            ],
+            "maximum_mm": [
+              479.818974,
+              320.0,
+              0.0
+            ],
+            "size_mm": [
+              2208.0,
+              320.0,
+              76.0
+            ]
+          }
+        ],
+        "slat_components": {
+          "count": 14,
+          "centres_x_mm": [
+            -2369.181026,
+            -2325.181026,
+            -2281.181026,
+            -2237.181026,
+            -2193.181026,
+            -2149.181026,
+            -2105.181026,
+            -2061.181026,
+            -2017.181026,
+            -1973.181026,
+            -1929.181026,
+            -1885.181026,
+            -1841.181026,
+            -1797.181026
+          ],
+          "spacing_mm": [
+            44.0,
+            44.0,
+            44.0,
+            44.0,
+            44.0,
+            44.0,
+            44.0,
+            44.0,
+            44.0,
+            44.0,
+            44.0,
+            44.0,
+            44.0
+          ],
+          "component_size_mm": [
+            22.0,
+            25.0,
+            1528.0
+          ]
+        },
+        "interface": {
+          "main_envelope_front_y_mm": 320.0,
+          "path_mm": [
+            [
+              -446.18847,
+              320.0
+            ],
+            [
+              163.643711,
+              320.0
+            ]
+          ],
+          "length_mm": 609.832181,
+          "closed": false,
+          "full_display_footprint_added": false
+        },
+        "plan_screen_semantics_after_world_placement": {
+          "rear_top_cover": "local y 0..320 mm; world y -1384..-1064 mm",
+          "right_slats": "world x 5095..5697 mm; world y -1060..-1035 mm",
+          "front_left_display_protrusion": "world x 3153..3763 mm; world y -1383.963..-963.501 mm"
+        },
+        "pass": true
+      }
+    },
+    {
+      "view": "front",
+      "drawing": {
+        "global_id": "04oJNZR252BBUZ3nZ$bLW1",
+        "name": "MOLTENI-505-UP-ENTRANCE-FRONT",
+        "object_type": "DRAWING",
+        "epset_drawing": {
+          "TargetView": "ELEVATION_VIEW",
+          "Scale": "1/25",
+          "HumanScale": "1:25",
+          "HasUnderlay": false,
+          "HasLinework": true,
+          "HasAnnotation": true,
+          "GlobalReferencing": true,
+          "Stylesheet": "drawings/assets/default.css",
+          "Markers": "drawings/assets/markers.svg",
+          "Symbols": "drawings/assets/symbols.svg",
+          "Patterns": "drawings/assets/patterns.svg",
+          "ShadingStyles": "drawings/assets/shading_styles.json",
+          "CurrentShadingStyle": "Blender Default",
+          "DPI": 300,
+          "LineworkMode": "OPENCASCADE",
+          "FillMode": "NONE",
+          "CutMode": "BISECT",
+          "Include": "0Ik2RcgGbFOhdYTJPgh5AQ,0JcqcpduD9YRHOQJ2Q92gO,0YhssoK0P9nvtp4L4wAIvt,0dfW7$qvL0UQI5y_LT5RsF,0mnFDiYfj6fxQBaWFizjUS,0nNkP2k99BqQJilK0$E7fQ,0u3BXQfv5DNB7pJWIiPf7e,0xvuGq51D58Q48g8TUKoG3,11c$NwzxL9hASgCgwDxM$w,1PiSzHCAzAcebz69Cm6dKw,1cmuG50mj3cggtIH5tZHic,1mI2ClWgr6xwhxkjkIkFbV,1oa6zGXK1CeuV$1tRZM9Ob,1rTw$leJL4QAm03neq4Ms_,2Hzb2UxozCF9TjOK5nW1XC,2bJu5ZdkzALBfyCUpyiKTA,2dxcvMre5F6fk90OTXSFJH,2yzeNwqxf9ZwSGU68YbBpm,3$jLiDR8189OBVonOPgmlx,37DESmCqj8qAHVsS$K2iyb,39ssagG3n08RmEGQ8p0HPN,3UpLXAml9Bufs6wAjUjPJT",
+          "id": 2447838
+        }
+      },
+      "linework_annotation": {
+        "global_id": "15gXz$V9P6y83jocTSfr7O",
+        "name": "Molteni 505 UP approved black proxy / front",
+        "epset_annotation": {
+          "Classes": "review-target-505-up geometry-derived-simplified-proxy",
+          "TargetGlobalId": "19MpdkWqXC7uhUNhLQgrce",
+          "SourceKind": "geometry_derived_simplified_proxy",
+          "SourceLabelZh": "基于原始高模几何生成的简化图纸表达",
+          "OfficialCadUsed": false,
+          "BlueOfficialAtomicComponentCompositionSelected": false,
+          "IfcCurveStyleColour": "#111111",
+          "id": 2448735
+        },
+        "ifc_curve_style_persisted": true,
+        "ifc_curve_style_colour": "#111111",
+        "drawing_group_assignment_global_id": "0iptUMne999QpZKT92SqSL"
+      },
+      "review_path_count": 281,
+      "persisted_review_path_count": 281,
+      "review_edge_count": 284,
+      "persisted_coordinate_bounds_mm": [
+        [
+          -2400.045284,
+          0.0,
+          -2380.0
+        ],
+        [
+          512.0,
+          0.0,
+          0.0
+        ]
+      ],
+      "expected_coordinate_bounds_mm": [
+        [
+          -2400.045284,
+          0.0,
+          -2380.0
+        ],
+        [
+          512.0,
+          0.0,
+          0.0
+        ]
+      ],
+      "persisted_coordinate_residual_mm": 0.0,
+      "camera": {
+        "type": "ORTHO",
+        "width_m": 4.394818878173828,
+        "height_m": 3.6,
+        "clip_start_m": 0.0020000000949949026,
+        "clip_end_m": 2.4000000238418577,
+        "resolution": [
+          2076,
+          1700
+        ]
+      },
+      "create_drawing": {
+        "operator": "bpy.ops.bim.create_drawing",
+        "arguments": {
+          "print_all": false,
+          "open_viewer": false,
+          "sync": false
+        },
+        "result": [
+          "FINISHED"
+        ],
+        "linework_mode": "OPENCASCADE",
+        "target_view": "ELEVATION_VIEW"
+      },
+      "svg": {
+        "path": "/Users/jiaxinchen/.codex/worktrees/3a80/2504 GBTB Yanlord Zhuhai/output/review/highpoly-types/505-up-v1-lp-s/project-drawings/MOLTENI-505-UP-ENTRANCE-FRONT.svg",
+        "bytes": 769288,
+        "sha256": "85331ec1c29c42e053f06dce7fcf58a68f4cba8d594cb0044d28c0af1a6f10bf",
+        "bonsai_generated_sha256_before_review_style": "3bdcfc5e0c823729e03039fe2473eb51bfe4399a1d4c26a8d7957a729a1475bb",
+        "annotation_group_count": 284,
+        "black_geometry_element_count": 284,
+        "grey_context_geometry_element_count": 3015,
+        "post_style_only": true,
+        "root_tag": "svg",
+        "width": "175.79275131225586mm",
+        "height": "143.9536017489571mm",
+        "viewBox": "0 0 175.79275131225586 143.9536017489571",
+        "data_scale": "1:25",
+        "geometry_element_count": 3299,
+        "projection_group_count": 21,
+        "class_counts": {
+          "1cmuG50mj3cggtIH5tZHic": 2,
+          "1mI2ClWgr6xwhxkjkIkFbV": 2,
+          "ELEVATION": 10,
+          "GRID": 16,
+          "GlobalId-0Mx2c1uVfFvAIQ_GSG8eLF": 1,
+          "GlobalId-0PSu60AS15Jv070uAumgb8": 1,
+          "GlobalId-0_jsl37o52NAH76RKmQH_m": 1,
+          "GlobalId-0kk8$BTXz3NQQ_pvrCIvTD": 1,
+          "GlobalId-0vGHRigQv49vBbsQxGxDL1": 1,
+          "GlobalId-1$zvtJbYz4NRO$_$wsBJNP": 1,
+          "GlobalId-15gXz$V9P6y83jocTSfr7O": 284,
+          "GlobalId-18A5f3xiv1Hf2goAUHmzQy": 1,
+          "GlobalId-1BWnS6UwH6juST9IN6Fp1n": 1,
+          "GlobalId-1H$jhJZo95BQpVNp3xN9Wu": 1,
+          "GlobalId-1HxPgYV0H9pfsqjvXLrFtB": 1,
+          "GlobalId-1VP2nYnAj00u6en54uC3Go": 1,
+          "GlobalId-1YE3XtwC5DmBGB$Xe4uNa3": 1,
+          "GlobalId-1a3rce8KPC0Q02q4B1vqmG": 1,
+          "GlobalId-1oP88jJtzCf843SdDFLF8j": 1,
+          "GlobalId-1q3FNBhGz7y8j56DG6SMoV": 1,
+          "GlobalId-1wcgfO8qT7VugpF5zO5wuM": 1,
+          "GlobalId-2D6cYjlITE4hF$tHSx_Xcp": 1,
+          "GlobalId-2gFEHMhJzA3P9KPfAp1p43": 1,
+          "GlobalId-2lrmh_lMH5GA7K9umYphNY": 1,
+          "GlobalId-2qPVBVy2P6yBl3fQqYC6Jk": 1,
+          "GlobalId-2vvpNlMRf6iP7PRQnxpIRp": 1,
+          "GlobalId-34jE2O3c1Fx9HWpeUMhD_2": 1,
+          "GlobalId-3Aiwa7ng9FZwHjXMujiWct": 1,
+          "GlobalId-3Bhh3KFtb4gQ0B$JJ92Rr_": 1,
+          "GlobalId-3WUaG5G55DZx6LGVzvqC2k": 1,
+          "GlobalId-3pTJ9pYiz8lfSeOkfjAdhj": 1,
+          "GlobalId-3zzoOaN3vB7BhBN52jCh3D": 1,
+          "IfcAnnotation": 311,
+          "IfcBuildingElementProxy": 3,
+          "IfcCovering": 6,
+          "IfcFurniture": 1,
+          "IfcLightFixture": 6,
+          "IfcMaterialLayer": 2,
+          "IfcPipeSegment": 2,
+          "IfcSlab": 7,
+          "IfcSpace": 2,
+          "IfcWall": 3,
+          "PredefinedType-GRID": 8,
+          "PredefinedType-LINEWORK": 284,
+          "PredefinedType-SECTIONLEVEL": 19,
+          "SECTIONLEVEL": 38,
+          "annotation": 27,
+          "cut": 7,
+          "geometry-derived-simplified-proxy": 284,
+          "geometry_derived_simplified_proxy": 284,
+          "large": 1,
+          "layer-material-Aircrete": 2,
+          "layer-material-category-Architectural": 2,
+          "material-": 2,
+          "material-BBF01": 2,
+          "material-Concrete200": 1,
+          "material-FLR230": 7,
+          "material-Pewter": 1,
+          "material-PlasticaBiancaLight": 6,
+          "material-WAL200B": 2,
+          "material-WW20": 2,
+          "material-null": 7,
+          "projection": 21,
+          "regular": 6,
+          "review-target-505-up": 284,
+          "scale-25": 1,
+          "section": 1,
+          "stair": 1,
+          "target-view-ELEVATIONVIEW": 1
+        },
+        "target_ifc_projection_group_count": 0,
+        "review_annotation_geometry_count": 284
+      },
+      "linework_cache": {
+        "path": "/Users/jiaxinchen/.codex/worktrees/3a80/2504 GBTB Yanlord Zhuhai/output/review/highpoly-types/505-up-v1-lp-s/project-drawings/cache/MOLTENI-505-UP-ENTRANCE-FRONT-linework.svg",
+        "bytes": 294175,
+        "sha256": "1a34af4ad9650cb59506e311729f06fb301bcb07f7a8e4831ba30081d38b2458"
+      }
+    },
+    {
+      "view": "side",
+      "drawing": {
+        "global_id": "0IA6vqwoj6YxhlmgDoIlWN",
+        "name": "MOLTENI-505-UP-ENTRANCE-SIDE",
+        "object_type": "DRAWING",
+        "epset_drawing": {
+          "TargetView": "ELEVATION_VIEW",
+          "Scale": "1/25",
+          "HumanScale": "1:25",
+          "HasUnderlay": false,
+          "HasLinework": true,
+          "HasAnnotation": true,
+          "GlobalReferencing": true,
+          "Stylesheet": "drawings/assets/default.css",
+          "Markers": "drawings/assets/markers.svg",
+          "Symbols": "drawings/assets/symbols.svg",
+          "Patterns": "drawings/assets/patterns.svg",
+          "ShadingStyles": "drawings/assets/shading_styles.json",
+          "CurrentShadingStyle": "Blender Default",
+          "DPI": 300,
+          "LineworkMode": "OPENCASCADE",
+          "FillMode": "NONE",
+          "CutMode": "BISECT",
+          "Include": "0Ik2RcgGbFOhdYTJPgh5AQ,0JcqcpduD9YRHOQJ2Q92gO,0YhssoK0P9nvtp4L4wAIvt,0dfW7$qvL0UQI5y_LT5RsF,0mnFDiYfj6fxQBaWFizjUS,0nNkP2k99BqQJilK0$E7fQ,0u3BXQfv5DNB7pJWIiPf7e,0xvuGq51D58Q48g8TUKoG3,11c$NwzxL9hASgCgwDxM$w,1PiSzHCAzAcebz69Cm6dKw,1cmuG50mj3cggtIH5tZHic,1mI2ClWgr6xwhxkjkIkFbV,1oa6zGXK1CeuV$1tRZM9Ob,1rTw$leJL4QAm03neq4Ms_,2Hzb2UxozCF9TjOK5nW1XC,2bJu5ZdkzALBfyCUpyiKTA,2dxcvMre5F6fk90OTXSFJH,2yzeNwqxf9ZwSGU68YbBpm,3$jLiDR8189OBVonOPgmlx,37DESmCqj8qAHVsS$K2iyb,39ssagG3n08RmEGQ8p0HPN,3UpLXAml9Bufs6wAjUjPJT",
+          "id": 2448763
+        }
+      },
+      "linework_annotation": {
+        "global_id": "3eUP5s7dH3kRpaVeXhjnLj",
+        "name": "Molteni 505 UP approved black proxy / side",
+        "epset_annotation": {
+          "Classes": "review-target-505-up geometry-derived-simplified-proxy",
+          "TargetGlobalId": "19MpdkWqXC7uhUNhLQgrce",
+          "SourceKind": "geometry_derived_simplified_proxy",
+          "SourceLabelZh": "基于原始高模几何生成的简化图纸表达",
+          "OfficialCadUsed": false,
+          "BlueOfficialAtomicComponentCompositionSelected": false,
+          "IfcCurveStyleColour": "#111111",
+          "id": 2449125
+        },
+        "ifc_curve_style_persisted": true,
+        "ifc_curve_style_colour": "#111111",
+        "drawing_group_assignment_global_id": "37tlVxBqz7M9ctnbMrJJjw"
+      },
+      "review_path_count": 93,
+      "persisted_review_path_count": 93,
+      "review_edge_count": 125,
+      "persisted_coordinate_bounds_mm": [
+        [
+          0.0,
+          -16.0,
+          -2380.0
+        ],
+        [
+          0.0,
+          420.5,
+          0.0
+        ]
+      ],
+      "expected_coordinate_bounds_mm": [
+        [
+          0.0,
+          -16.0,
+          -2380.0
+        ],
+        [
+          0.0,
+          420.5,
+          0.0
+        ]
+      ],
+      "persisted_coordinate_residual_mm": 0.0,
+      "camera": {
+        "type": "ORTHO",
+        "width_m": 2.200000023841858,
+        "height_m": 3.6,
+        "clip_start_m": 0.0020000000949949026,
+        "clip_end_m": 4.594818878173828,
+        "resolution": [
+          1039,
+          1700
+        ]
+      },
+      "create_drawing": {
+        "operator": "bpy.ops.bim.create_drawing",
+        "arguments": {
+          "print_all": false,
+          "open_viewer": false,
+          "sync": false
+        },
+        "result": [
+          "FINISHED"
+        ],
+        "linework_mode": "OPENCASCADE",
+        "target_view": "ELEVATION_VIEW"
+      },
+      "svg": {
+        "path": "/Users/jiaxinchen/.codex/worktrees/3a80/2504 GBTB Yanlord Zhuhai/output/review/highpoly-types/505-up-v1-lp-s/project-drawings/MOLTENI-505-UP-ENTRANCE-SIDE.svg",
+        "bytes": 235256,
+        "sha256": "e5c16902267f3ba56157230aca3ff7b234b446f7e47b5a7b7cecc248c3643c84",
+        "bonsai_generated_sha256_before_review_style": "c8ca9f9ab44df17bec2bc7c7b586713951688916f0026ec400e6a56bcbd9d04b",
+        "annotation_group_count": 125,
+        "black_geometry_element_count": 125,
+        "grey_context_geometry_element_count": 535,
+        "post_style_only": true,
+        "root_tag": "svg",
+        "width": "88.00940943325267mm",
+        "height": "143.99999618530273mm",
+        "viewBox": "0 0 88.00940943325267 143.99999618530273",
+        "data_scale": "1:25",
+        "geometry_element_count": 660,
+        "projection_group_count": 12,
+        "class_counts": {
+          "GlobalId-3eUP5s7dH3kRpaVeXhjnLj": 125,
+          "IfcAnnotation": 125,
+          "IfcBuildingElementProxy": 1,
+          "IfcCovering": 4,
+          "IfcDoor": 1,
+          "IfcPipeSegment": 1,
+          "IfcSlab": 2,
+          "IfcWall": 3,
+          "PredefinedType-LINEWORK": 125,
+          "annotation": 27,
+          "geometry-derived-simplified-proxy": 125,
+          "geometry_derived_simplified_proxy": 125,
+          "large": 1,
+          "material-": 1,
+          "material-BBF01": 1,
+          "material-Concrete200": 1,
+          "material-DT01": 1,
+          "material-FLR230": 2,
+          "material-WAL200B": 2,
+          "material-WW20": 2,
+          "material-null": 2,
+          "projection": 12,
+          "regular": 6,
+          "review-target-505-up": 125,
+          "scale-25": 1,
+          "section": 1,
+          "stair": 1,
+          "target-view-ELEVATIONVIEW": 1
+        },
+        "target_ifc_projection_group_count": 0,
+        "review_annotation_geometry_count": 125
+      },
+      "linework_cache": {
+        "path": "/Users/jiaxinchen/.codex/worktrees/3a80/2504 GBTB Yanlord Zhuhai/output/review/highpoly-types/505-up-v1-lp-s/project-drawings/cache/MOLTENI-505-UP-ENTRANCE-SIDE-linework.svg",
+        "bytes": 42279,
+        "sha256": "1077d34b957eb1218f82f5eadf429049ae4e9c86e2ed5af0859750211ff111c6"
+      }
+    }
+  ],
+  "persistence": {
+    "method": "update Plan LINEWORK and Front Drawing placement; atomic IFC replace; Bonsai reload",
+    "reload_result": [
+      "FINISHED"
+    ],
+    "post_reload_drawing_count": 3,
+    "post_reload_annotation_count": 3,
+    "post_reload_path_counts": {
+      "plan": 20,
+      "front": 281,
+      "side": 93
+    }
+  },
+  "versions": {
+    "blender": "4.5.3 LTS",
+    "ifcopenshell": "0.8.4",
+    "ifc_schema": "IFC4",
+    "bonsai_generator": "Bonsai 0.8.4 bpy.ops.bim.create_drawing"
+  },
+  "pass": true,
+  "review_status": "revision_pending_review",
+  "plan_component_semantics": {
+    "method": "connected_components_then_display_main_envelope_intersection",
+    "main_envelope_component": {
+      "root_vertex_index": 2465,
+      "minimum_mm": [
+        -2400.181026,
+        0.0,
+        -2380.0
+      ],
+      "maximum_mm": [
+        511.818974,
+        320.0,
+        0.0
+      ],
+      "size_mm": [
+        2912.0,
+        320.0,
+        2380.0
+      ]
+    },
+    "display_component": {
+      "root_vertex_index": 7269,
+      "minimum_mm": [
+        -446.22076,
+        0.037205,
+        -1610.704712
+      ],
+      "maximum_mm": [
+        163.779026,
+        420.499451,
+        -844.704468
+      ],
+      "size_mm": [
+        609.999786,
+        420.462246,
+        766.000244
+      ]
+    },
+    "cover_plate_components": [
+      {
+        "root_vertex_index": 201,
+        "minimum_mm": [
+          -2368.181026,
+          0.0,
+          -76.0
+        ],
+        "maximum_mm": [
+          -1760.181026,
+          320.0,
+          0.0
+        ],
+        "size_mm": [
+          608.0,
+          320.0,
+          76.0
+        ]
+      },
+      {
+        "root_vertex_index": 107,
+        "minimum_mm": [
+          -1728.181026,
+          0.0,
+          -76.0
+        ],
+        "maximum_mm": [
+          479.818974,
+          320.0,
+          0.0
+        ],
+        "size_mm": [
+          2208.0,
+          320.0,
+          76.0
+        ]
+      }
+    ],
+    "slat_components": {
+      "count": 14,
+      "centres_x_mm": [
+        -2369.181026,
+        -2325.181026,
+        -2281.181026,
+        -2237.181026,
+        -2193.181026,
+        -2149.181026,
+        -2105.181026,
+        -2061.181026,
+        -2017.181026,
+        -1973.181026,
+        -1929.181026,
+        -1885.181026,
+        -1841.181026,
+        -1797.181026
+      ],
+      "spacing_mm": [
+        44.0,
+        44.0,
+        44.0,
+        44.0,
+        44.0,
+        44.0,
+        44.0,
+        44.0,
+        44.0,
+        44.0,
+        44.0,
+        44.0,
+        44.0
+      ],
+      "component_size_mm": [
+        22.0,
+        25.0,
+        1528.0
+      ]
+    },
+    "interface": {
+      "main_envelope_front_y_mm": 320.0,
+      "path_mm": [
+        [
+          -446.18847,
+          320.0
+        ],
+        [
+          163.643711,
+          320.0
+        ]
+      ],
+      "length_mm": 609.832181,
+      "closed": false,
+      "full_display_footprint_added": false
+    },
+    "plan_screen_semantics_after_world_placement": {
+      "rear_top_cover": "local y 0..320 mm; world y -1384..-1064 mm",
+      "right_slats": "world x 5095..5697 mm; world y -1060..-1035 mm",
+      "front_left_display_protrusion": "world x 3153..3763 mm; world y -1383.963..-963.501 mm"
+    },
+    "pass": true
+  },
+  "front_orientation_revision": {
+    "method": "product_world_axes_plus_room_facing_component_depth_plus_camera_basis",
+    "camera_before_matrix_m": [
+      [
+        -1.0,
+        -0.0,
+        1.51e-07,
+        4.702590466
+      ],
+      [
+        1.51e-07,
+        -7.5e-08,
+        1.0,
+        0.450000018
+      ],
+      [
+        -0.0,
+        1.0,
+        7.5e-08,
+        1.200000048
+      ],
+      [
+        0.0,
+        0.0,
+        0.0,
+        1.0
+      ]
+    ],
+    "camera_after_matrix_m": [
+      [
+        -1.0,
+        -0.0,
+        1.51e-07,
+        4.702590466
+      ],
+      [
+        1.51e-07,
+        -7.5e-08,
+        1.0,
+        0.450000018
+      ],
+      [
+        0.0,
+        1.0,
+        7.5e-08,
+        1.200000048
+      ],
+      [
+        0.0,
+        0.0,
+        0.0,
+        1.0
+      ]
+    ],
+    "target_local_x_world": [
+      -1.0,
+      0.0,
+      1.51e-07
+    ],
+    "target_front_outward_world": [
+      0.0,
+      1.0,
+      0.0
+    ],
+    "screen_right_before_world": [
+      -1.0,
+      1.51e-07,
+      -0.0
+    ],
+    "screen_right_after_world": [
+      -1.0,
+      1.51e-07,
+      0.0
+    ],
+    "view_direction_before_world": [
+      -1.51e-07,
+      -1.0,
+      -7.5e-08
+    ],
+    "view_direction_after_world": [
+      -1.51e-07,
+      -1.0,
+      -7.5e-08
+    ],
+    "local_x_screen_dot_before": 1.0,
+    "local_x_screen_dot_after": 1.0,
+    "front_outward_view_dot_before": -1.0,
+    "front_outward_view_dot_after": -1.0,
+    "mechanical_anchors": {
+      "back_wall_world_y_m": [
+        -1.6,
+        -1.4
+      ],
+      "cabinet_world_y_m": [
+        -1.4,
+        -0.9635005
+      ],
+      "entrance_room_world_y_m": [
+        -1.5,
+        0.1
+      ],
+      "front_components_local_y_mm": {
+        "slats": [
+          324.0,
+          349.0
+        ],
+        "display_maximum": 420.499451
+      }
+    },
+    "original_pre_state_evidence": {
+      "camera_matrix_m": [
+        [
+          1.0,
+          0.0,
+          0.0,
+          4.702590466
+        ],
+        [
+          0.0,
+          0.0,
+          -1.0,
+          -1.850000024
+        ],
+        [
+          0.0,
+          1.0,
+          0.0,
+          1.200000048
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "project_front_svg_sha256": "f55f2ac9d385e2df6bfd0d1ff2df41451725d34db0afa66cfdc0e80a888f5165",
+      "interpretation": "south camera looked north at the cabinet back and reversed local X"
+    },
+    "post_state": "north camera looks south at the room-facing cabinet front; local +X is screen right",
+    "input_was_mirrored_south_camera": false,
+    "input_was_already_corrected_north_camera": true,
+    "pass": true,
+    "persisted_camera_matrix_project_units": [
+      [
+        -1.0,
+        -0.0,
+        1.51e-07,
+        4702.590465546
+      ],
+      [
+        1.51e-07,
+        -7.5e-08,
+        1.0,
+        450.000017881
+      ],
+      [
+        0.0,
+        1.0,
+        7.5e-08,
+        1200.000047684
+      ],
+      [
+        0.0,
+        0.0,
+        0.0,
+        1.0
+      ]
+    ],
+    "persisted_rotation_residual": 1.51e-07,
+    "persisted_north_rotation_pass": true
+  },
+  "plan_front_revision": {
+    "create_results": {
+      "plan": [
+        "FINISHED"
+      ],
+      "front": [
+        "FINISHED"
+      ]
+    },
+    "svg_sha256_before": {
+      "plan": "1c7579b4b876b54ba8afc54bf65dcaf35b031e3eb54056c95602e6d3a1a0640c",
+      "front": "be3df73336943a91d02bd4ef3d77c02b994fab0daec74dd550646315d50aec4f",
+      "side": "e5c16902267f3ba56157230aca3ff7b234b446f7e47b5a7b7cecc248c3643c84"
+    },
+    "svg_sha256_after": {
+      "plan": "f67a0a3867e105e6ffc2a4507ba07f40d233c72142d46c5c06e2c9555ccf29d5",
+      "front": "85331ec1c29c42e053f06dce7fcf58a68f4cba8d594cb0044d28c0af1a6f10bf",
+      "side": "e5c16902267f3ba56157230aca3ff7b234b446f7e47b5a7b7cecc248c3643c84"
+    },
+    "side_unchanged": true,
+    "target_body_projection_counts": {
+      "plan": 0,
+      "front": 0
+    }
+  }
+}

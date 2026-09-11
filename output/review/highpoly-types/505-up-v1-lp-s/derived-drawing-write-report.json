@@ -1,0 +1,51 @@
+{
+  "schema_version": 1,
+  "profile_key": "505-up-v1-lp-s",
+  "ifc_type_name": "505 UP V1.LP.S",
+  "representative_global_id": "19MpdkWqXC7uhUNhLQgrce",
+  "formal_ifc": "2504 GBTB Yanlord Zhuhai.ifc",
+  "formal_ifc_sha256": "7a50b87e8f48a7c2bfbaa9f1dabdfca7155fa684b2325c66aa1ae15c8ab0a25c",
+  "formal_ifc_bytes_unchanged": true,
+  "derived_ifc": "output/review/highpoly-types/505-up-v1-lp-s/505-up-v1-lp-s-derived-drawing.ifc",
+  "derived_ifc_sha256": "a49d1b9d2859fe596761ecc70c845cf888022f32c988a71946e8bfa4b0338417",
+  "candidate_manifest": "output/review/highpoly-types/505-up-v1-lp-s/manifest.json",
+  "candidate_manifest_sha256": "82da088dd2e83732ca7e15ab9cea5a5c59e7443583e466e68f0c7396a5838886",
+  "approval_record": "pipeline/decisions/505-up-v1-lp-s-drawing-approval.json",
+  "approval_record_sha256": "63ab3c43250d8793f07e75391fdc97904d7aa662172d3a31e340a333b29e1d8f",
+  "approval": {
+    "status": "revision_pending_review",
+    "reviewer": "project_owner",
+    "review_date": "2026-08-26",
+    "approved_views": [
+      "plan",
+      "front",
+      "side"
+    ],
+    "scope": "exact manufacturer family and native family CAD; project-specific V1.LP.S composition is not mechanically matched to an official catalogue composition and is not a project shop drawing"
+  },
+  "representations": {
+    "plan": "Molteni505UpPlan",
+    "front": "Molteni505UpFront",
+    "side": "Molteni505UpSide"
+  },
+  "representation_path_counts": {
+    "plan": 20,
+    "front": 281,
+    "side": 93
+  },
+  "representation_geometry_source": "proxy_paths_mm derived from the isolated representative IFC MODEL_VIEW Body",
+  "official_cad_geometry_included": false,
+  "source_document_associations": [
+    "MOLTENI-505-UP-OFFICIAL-DWG-ASSET-INDEX",
+    "MOLTENI-505-UP-OFFICIAL-DWG-COLLECTION",
+    "MOLTENI-505-UP-OFFICIAL-INSPIRING-DWG",
+    "MOLTENI-505-UP-OFFICIAL-PRODUCT-PAGE",
+    "MOLTENI-505-UP-OFFICIAL-PRODUCT-PAGE-ARCHIVE",
+    "MOLTENI-505-UP-OFFICIAL-TECHNICAL-DWG",
+    "MOLTENI-505-UP-SOURCE-ACCESS-RECORD"
+  ],
+  "source_property_set": "Pset_Molteni505UpDrawingSource",
+  "source_kind": "geometry_derived_simplified_proxy",
+  "source_label_zh": "基于原始高模几何生成的简化图纸表达",
+  "pass": true
+}

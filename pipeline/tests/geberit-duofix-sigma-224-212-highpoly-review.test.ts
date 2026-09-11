@@ -172,6 +172,18 @@ test("official G/A/L views mechanically cross-check one isolated IFC Body", () =
   expect(manifest.views[1].mechanical_cross_check.absolute_delta_mm[0]).toBeLessThanOrEqual(1);
   expect(manifest.views[1].mechanical_cross_check.absolute_delta_mm[1]).toBeLessThanOrEqual(1);
   expect(manifest.views[2].mechanical_cross_check.absolute_delta_mm[0]).toBeLessThanOrEqual(20);
+  expect(manifest.views[2]).toMatchObject({
+    blue_line_native_dwg_code: "L",
+    view_direction: "left_side_local_negative_x",
+    mechanical_cross_check: {
+      handedness: {
+        comparison: "asymmetric_path_centroids_share_left_view_handedness",
+        view_direction: "left_side_local_negative_x",
+        same_horizontal_side: true,
+        pass: true,
+      },
+    },
+  });
 });
 
 test("project context preserves uniform official scale, walls, and top-layer blue overlays", () => {
@@ -214,6 +226,7 @@ test("Bonsai evidence is an unclipped actual camera render of the isolated IFC B
   expect(evidence.bonsai_session.saved_active_representation).toBe("Body");
   expect(evidence.bonsai_session.ifc_context_identifier).toBe("Body");
   expect(evidence.bonsai_session.saved_camera_count).toBe(4);
+  expect(evidence.bonsai_session.side_camera_local_x_sign).toBe(-1);
   expect(evidence.renders.map((render: any) => render.view)).toEqual(["plan", "front", "side", "iso"]);
   for (const render of evidence.renders) {
     expect(render.camera_type).toBe("ORTHO");
@@ -230,7 +243,7 @@ test("Bonsai evidence is an unclipped actual camera render of the isolated IFC B
   expect(sha256(join(root, evidence.isolated_ifc))).toBe(evidence.isolated_ifc_sha256);
 });
 
-test("pending Duofix review leaves the formal IFC byte-identical and creates no derived IFC", () => {
+test("approved Duofix review still leaves the formal IFC byte-identical and creates no derived IFC", () => {
   const candidate = JSON.parse(readFileSync(join(product, "candidate-representations.json"), "utf8"));
   expect(candidate).toMatchObject({
     source_kind: "native_dwg",
@@ -247,7 +260,7 @@ test("pending Duofix review leaves the formal IFC byte-identical and creates no 
   expect(sha256(formal)).toBe(formalHash);
 });
 
-test("writer rejects missing apply and the pending approval record", () => {
+test("approved writer gate still requires an explicit apply operation", () => {
   const temporary = mkdtempSync(join(tmpdir(), "duofix-224212-gate-"));
   const output = join(temporary, "forbidden.ifc");
   const script = join(root, "pipeline/scripts/geberit_duofix_sigma_224_212_drawing_ifc.py");
@@ -255,9 +268,10 @@ test("writer rejects missing apply and the pending approval record", () => {
     readFileSync(join(root, "pipeline/decisions/geberit-duofix-sigma-224-212-drawing-approval.json"), "utf8"),
   );
   const manifest = join(product, "manifest.json");
-  expect(approval.status).toBe("pending");
-  expect(approval.derived_ifc_write_allowed).toBeFalse();
+  expect(approval.status).toBe("approved");
+  expect(approval.derived_ifc_write_allowed).toBeTrue();
   expect(approval.formal_authoritative_ifc_write_allowed).toBeFalse();
+  expect(approval.approved_views).toEqual(["plan", "front", "side"]);
   expect(approval.candidate_manifest_sha256).toBe(sha256(manifest));
 
   const withoutApply = Bun.spawnSync(["python3", script, "--input", formal, "--output", output], {
@@ -268,12 +282,6 @@ test("writer rejects missing apply and the pending approval record", () => {
   expect(withoutApply.stderr.toString()).toContain("IFC write requires the explicit --apply flag");
   expect(existsSync(output)).toBeFalse();
 
-  const pendingApproval = Bun.spawnSync(
-    ["python3", script, "--input", formal, "--output", output, "--apply"],
-    { cwd: root, stderr: "pipe" },
-  );
-  expect(pendingApproval.exitCode).not.toBe(0);
-  expect(pendingApproval.stderr.toString()).toContain("approval gate rejected IFC write");
   expect(existsSync(output)).toBeFalse();
   expect(sha256(formal)).toBe(formalHash);
   rmSync(temporary, { recursive: true, force: true });

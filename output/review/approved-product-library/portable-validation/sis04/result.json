@@ -1,0 +1,144 @@
+{
+  "verdict": "technical_pass",
+  "product": "sis04",
+  "source_sha256": "80c3ef97fbeb2a3912109b5b5ca752e489403079a8f1e7a2997dfd83d3b0c315",
+  "drawings": [
+    {
+      "role": "Plan",
+      "guid": "1VMON_3ZfAhfAwlqJu3w5H",
+      "svg": "/Users/jiaxinchen/.codex/worktrees/3a80/2504 GBTB Yanlord Zhuhai/output/review/approved-product-library/portable-validation/sis04/plan.svg",
+      "sha256": "0045793a012b3165212df5d757d7ff0745104ac236cd777ce423c6db90690d9a",
+      "bytes": 120202,
+      "target_geometry_nodes": 324,
+      "selected": [
+        {
+          "global_id": "3Cd3DWzTTA39vBYTkQLOM4",
+          "target_view": "PLAN_VIEW",
+          "role": "Plan",
+          "representation_id": 30148,
+          "old_body_or_annotation_emitted": false
+        }
+      ]
+    },
+    {
+      "role": "Front",
+      "guid": "3473MnQTn0GQwlndgsCOQE",
+      "svg": "/Users/jiaxinchen/.codex/worktrees/3a80/2504 GBTB Yanlord Zhuhai/output/review/approved-product-library/portable-validation/sis04/front.svg",
+      "sha256": "69f7136cfb87c245452e579d08fe91a82c1f577c87dafc042ae32297ba5c7f79",
+      "bytes": 88319,
+      "target_geometry_nodes": 10,
+      "selected": [
+        {
+          "global_id": "3Cd3DWzTTA39vBYTkQLOM4",
+          "target_view": "ELEVATION_VIEW",
+          "role": "Front",
+          "representation_id": 30172,
+          "old_body_or_annotation_emitted": false
+        }
+      ]
+    },
+    {
+      "role": "Side",
+      "guid": "0S8sursiP289gpHYCNAh$s",
+      "svg": "/Users/jiaxinchen/.codex/worktrees/3a80/2504 GBTB Yanlord Zhuhai/output/review/approved-product-library/portable-validation/sis04/side.svg",
+      "sha256": "00e1f76da0f4a3db8dcf4d61570982cdacadc26281c4b7062cd3eb7c799064bd",
+      "bytes": 88520,
+      "target_geometry_nodes": 12,
+      "selected": [
+        {
+          "global_id": "3Cd3DWzTTA39vBYTkQLOM4",
+          "target_view": "ELEVATION_VIEW",
+          "role": "Side",
+          "representation_id": 30189,
+          "old_body_or_annotation_emitted": false
+        }
+      ]
+    }
+  ],
+  "temporary_fixture": "/private/var/folders/rz/d8p6s4y50ws53rd150nm2s3r0000gn/T/portable-library-isolation-ns4hkq7o/results/sis04/test.ifc",
+  "provider_persistence": {
+    "saved": true,
+    "output_path": "/private/var/folders/rz/d8p6s4y50ws53rd150nm2s3r0000gn/T/portable-library-isolation-ns4hkq7o/results/sis04/test.ifc",
+    "in_place": false,
+    "method": "bonsai.bim.export_ifc.IfcExporter",
+    "reloaded": true
+  },
+  "generator": "Bonsai Create Drawing / OpenCASCADE + BISECT",
+  "old_repository_read_denied_by_OS": true,
+  "catalog_products_loaded": 39,
+  "native_insert": true,
+  "disk_unchanged_until_save": true,
+  "unique_product_and_object": true,
+  "reloaded": true,
+  "loading_stages": [
+    0.05,
+    0.25,
+    0.5,
+    0.65,
+    0.85,
+    0.95
+  ],
+  "texture_dependencies": [
+    {
+      "name": "WoodPlankedButterscotch002_COL_1K_jpg",
+      "packed": true
+    },
+    {
+      "name": "WoodPlankedButterscotch002_GLOSS_1K_jpg",
+      "packed": true
+    },
+    {
+      "name": "WoodPlankedButterscotch002_NRM16_1K_tiff",
+      "packed": true
+    },
+    {
+      "name": "WoodPlankedButterscotch002_REFL_1K_jpg",
+      "packed": true
+    },
+    {
+      "name": "WoodPlankedButterscotch002_COL_1K_jpg.001",
+      "packed": true
+    },
+    {
+      "name": "WoodPlankedButterscotch002_GLOSS_1K_jpg.001",
+      "packed": true
+    },
+    {
+      "name": "WoodPlankedButterscotch002_NRM16_1K_tiff.001",
+      "packed": true
+    },
+    {
+      "name": "WoodPlankedButterscotch002_REFL_1K_jpg.001",
+      "packed": true
+    }
+  ],
+  "global_id_changed_on_insert": true,
+  "placement_m": [
+    [
+      0.0,
+      1.0,
+      0.0,
+      1.82230544090271
+    ],
+    [
+      -1.0,
+      0.0,
+      0.0,
+      2.19572687149048
+    ],
+    [
+      0.0,
+      0.0,
+      1.0,
+      0.0159914195537567
+    ],
+    [
+      0.0,
+      0.0,
+      0.0,
+      1.0
+    ]
+  ],
+  "worker_log": "/Users/jiaxinchen/.codex/worktrees/3a80/2504 GBTB Yanlord Zhuhai/output/review/approved-product-library/portable-validation/sis04/worker.log",
+  "visual_inspection": "portable-raster-validation.json; original design approval unchanged"
+}

@@ -1,0 +1,424 @@
+{
+  "schema_version": 2,
+  "generated_at": "2026-08-24T14:23:48.274863+00:00",
+  "task": "Bonsai Create Drawing from approved Geberit 224.212.00.2 native-DWG source in the actual main-bathroom context",
+  "view": "side",
+  "formal_ifc": "/Users/jiaxinchen/.codex/worktrees/3a80/2504 GBTB Yanlord Zhuhai/2504 GBTB Yanlord Zhuhai.ifc",
+  "formal_ifc_sha256": "7a50b87e8f48a7c2bfbaa9f1dabdfca7155fa684b2325c66aa1ae15c8ab0a25c",
+  "formal_ifc_bytes_unchanged": true,
+  "approved_derived_ifc": "/Users/jiaxinchen/.codex/worktrees/3a80/2504 GBTB Yanlord Zhuhai/output/review/highpoly-types/geberit-duofix-sigma-224-212/Geberit-Duofix-Sigma-224-212-derived-drawing.ifc",
+  "approved_derived_ifc_sha256": "c1a0d6af0ef0897fb6a53c3b70dd2a8ae35d8a63deca06bbc9379e3decbe8897",
+  "drawing_session_ifc": "/Users/jiaxinchen/.codex/worktrees/3a80/2504 GBTB Yanlord Zhuhai/output/review/highpoly-types/geberit-duofix-sigma-224-212/bonsai-drawings/main-bathroom/duofix-main-bath-left-side-session.ifc",
+  "drawing_session_sha256_before": "c1a0d6af0ef0897fb6a53c3b70dd2a8ae35d8a63deca06bbc9379e3decbe8897",
+  "drawing_session_sha256_after": "b26f67b1e93b39ba7dc61af17c73ed9d20b89258ea8026a739f7850c51693d0f",
+  "drawing_session_is_safe_per_view_copy": true,
+  "source_kind": "native_dwg",
+  "article_number": "224.212.00.2",
+  "native_dwg_code": "L",
+  "native_dwg_sha256": "e6a26c660ae9cd4fc8cb4b1effadcea38a4794b66523f0fea2c02c5e02b77f25",
+  "official_native_dwg_path_count": 225,
+  "persisted_native_dwg_path_count": 225,
+  "official_native_dwg_edge_count": 3288,
+  "persisted_adjusted_coordinate_bounds_mm": [
+    [
+      0.0,
+      -240.199131318326,
+      -687.011719
+    ],
+    [
+      0.0,
+      96.3008686816744,
+      527.988281
+    ]
+  ],
+  "expected_adjusted_coordinate_bounds_mm": [
+    [
+      0.0,
+      -240.19913131832558,
+      -687.011719
+    ],
+    [
+      0.0,
+      96.30086868167442,
+      527.988281
+    ]
+  ],
+  "persisted_coordinate_residual_mm": 4.263256414560601e-13,
+  "target": {
+    "global_id": "3pvAlH5C14v8uVEJ1LmK8M",
+    "ifc_class": "IfcSanitaryTerminal",
+    "type_name": "Geberit Duofix Sigma",
+    "same_type_project_instance_count": 2,
+    "same_type_project_global_ids": [
+      "3hgNkx97vCTOC2eewCpMNk",
+      "3pvAlH5C14v8uVEJ1LmK8M"
+    ],
+    "same_type_main_bath_context_count_before_suppression": 1,
+    "same_type_main_bath_context_global_ids_before_suppression": [
+      "3pvAlH5C14v8uVEJ1LmK8M"
+    ],
+    "target_include_count_before_suppression": 1,
+    "target_include_count_after_suppression": 0,
+    "duplicate_target_is_real_second_instance": false
+  },
+  "room": {
+    "global_id": "3a4COIs5X7lgDirMBDT4Vs",
+    "name": "主卫湿区",
+    "bbox_m": [
+      [
+        -6.599999904632568,
+        0.10000000149011612,
+        0.0
+      ],
+      [
+        -4.800000190734863,
+        2.6999998092651367,
+        2.799999952316284
+      ]
+    ]
+  },
+  "context": {
+    "project_context_retained": true,
+    "include_count": 65,
+    "include_global_ids": [
+      "02eX$Z5WrDuuxw1IlnwVss",
+      "04DLh1Jk9Dcu9ibcaE0id8",
+      "04rs0EDjn2EvxytEQSxWRB",
+      "06yVJMA5z1fhZE243pPlI8",
+      "0BmtX_5hX1_gzuRyMzZWCj",
+      "0UtU7yPb10ku4gsbGoM_sp",
+      "0V9CnYT0n3GvkLmXhxvv$u",
+      "0YrTm1sjv1BB8cz__8S5YA",
+      "0ekISWRMjETQVsONKhC0oM",
+      "0gTPiPQhvFcumlS52PtTnD",
+      "0nlHIdaVrV7xIKsYXraYCa",
+      "0s2tcnZmP23Qpz4zXZ$Vd0",
+      "0wbKH$_Qr2_A4hpKs0PLXw",
+      "11Yew7g9DB48FGKv9gAfVx",
+      "122leYIbHFFBi0YE3uzZDV",
+      "14EazrLgP8whYZWY_yCuKy",
+      "178mqyyzzFowLcbXcH6prO",
+      "18Hiw4PZP4rQrmw23BQQys",
+      "18Qhf59crDCAy$scVOCK92",
+      "1IotPu731BoxBq3XVaH4l8",
+      "1J6buM4aD3LO4vfb0AtPRz",
+      "1KOnGcN8n9k9NYzrvWTr4H",
+      "1UixnpnQb97wuNAGrTmMJd",
+      "1XEnNJwc177xHjBydgoQFl",
+      "1YQyOdKDnFiOaH$X4tK5dp",
+      "1Yf7cK9MTAoBRvfK3BluSI",
+      "1YzL_R8pXCROfNjkjsWacr",
+      "1eqCHDNr94wR4H6nt1ZB6F",
+      "1exwKOUpD1tO93c2_9MojK",
+      "1fsFAbqHD8Uw61ENwvVj7b",
+      "1ncV5xaxf54BXwzFCse170",
+      "1sgpvCENf4xQiaypKWW2JC",
+      "1vFwjs$QnFcOPrrmIAjNrG",
+      "1vyfckSCz8Fww8vTAKGqom",
+      "235UH42o19pgNtvD2klDXr",
+      "23tK4hWyjBMvcAx0XfRa09",
+      "24AqfsAbz9a9uOPQhRX75e",
+      "26PwmC1AX6ZROC65DohUg5",
+      "26f3RmUrL3KRqY8Zxzck1h",
+      "2HpTz1lZj40esIT4bUdhaV",
+      "2S2c498tb7$gzdukjhCGVQ",
+      "2Y6G6pyqLCeQX77WhqqdEe",
+      "2cWI15abTFXO65ZZrRLG3z",
+      "2dEG2g8YT6te1$zV2kUnlv",
+      "2esXs3ihLFdxRtDX6d97hp",
+      "2hIKyAC2X3RhKEThQtEyDv",
+      "2iKOL78$H0N9Yd9$ky3pW4",
+      "2jjNIn9gHBYwNSWwlM5T_i",
+      "2lDPsdQevFSfeOThtjSlPG",
+      "2nUpG$tzj0vR6tg5N9FJJ_",
+      "2ntxn4aYnB0xQOSuraf1r2",
+      "2sZvyk$8b2IRSOnE23XQTH",
+      "2wViHGrwX2hOYCb3MDNb$9",
+      "39j3ZGWibC9OzRnhnTZwHN",
+      "3AehGtDgv4cwDJtCqrtkrC",
+      "3BNIc86L19ZBCt40wmF$KZ",
+      "3BZcUm$uv91RVw2WGeaPxS",
+      "3ErNe1i1TCsQ3xogoRbN2S",
+      "3TgmIjIGn3iQ$9DMvqDWoV",
+      "3VgMpCodXEA9ViTVPIQmcR",
+      "3WekjaeUn1qfL6oR1KYD_2",
+      "3XHw61QWD8pO_ffygPR1Mn",
+      "3bR3wts7vEBQHsVMX7kiaY",
+      "3q92bI3TT78eG2hJbura4B",
+      "3ty1lUpQfD3fY1yf0Dxo53"
+    ],
+    "include_ifc_class_counts": {
+      "IfcBeam": 2,
+      "IfcBuildingElementProxy": 2,
+      "IfcCovering": 18,
+      "IfcFlowSegment": 5,
+      "IfcLightFixture": 4,
+      "IfcPipeSegment": 5,
+      "IfcSanitaryTerminal": 10,
+      "IfcSlab": 5,
+      "IfcWall": 13,
+      "IfcWasteTerminal": 1
+    },
+    "non_target_project_context_element_count": 65,
+    "drawing_element_policy": "65 non-target project elements plus the current Drawing's official LINEWORK annotation; target Body excluded to prevent double expression"
+  },
+  "instance_mapping_alignment": {
+    "source_representative_global_id": "3hgNkx97vCTOC2eewCpMNk",
+    "source_mapped_body_translation_mm": [
+      -108.0,
+      0.112014293670995,
+      -703.0
+    ],
+    "target_mapped_body_translation_mm": [
+      -46.8398971557599,
+      -65.2924690246546,
+      -377.0
+    ],
+    "applied_delta_mm": [
+      61.1601028442401,
+      -65.40448331832559,
+      326.0
+    ],
+    "reason": "Official DWG paths were normalized in the source representative's mapped Body coordinates and must inherit the main-bath instance's MappingTarget translation delta."
+  },
+  "elevation_alignment": {
+    "ffl_elevation_m": 0.0,
+    "nearby_finish": {
+      "global_id": "0gTPiPQhvFcumlS52PtTnD",
+      "ifc_class": "IfcCovering",
+      "top_elevation_m": -0.010402926243841648
+    },
+    "nearby_structural_slab": {
+      "global_id": "0s2tcnZmP23Qpz4zXZ$Vd0",
+      "top_elevation_m": 5.286051418806892e-08,
+      "bottom_elevation_m": -0.550000011920929
+    },
+    "project_target_body_bbox_m": [
+      [
+        -6.284892559051514,
+        1.9947491884231567,
+        -0.06999999284744263
+      ],
+      [
+        -5.96320915222168,
+        2.4951601028442383,
+        1.1449882984161377
+      ]
+    ],
+    "support_foot_elevation_m": -0.07001185417175293,
+    "support_foot_residual_to_target_body_minimum_mm": -0.011861324310302734,
+    "support_foot_offset_from_ffl_mm": -70.01185417175293,
+    "support_foot_offset_from_nearby_finish_mm": -59.60892792791128,
+    "frame_top_elevation_m": 1.1449882984161377,
+    "frame_top_residual_to_target_body_maximum_mm": 0.0,
+    "toilet_outlet_centre": {
+      "source_local_mm": [
+        -108.20550499999999,
+        -703.011831
+      ],
+      "project_world_m": [
+        -6.196000099182129,
+        2.2449545860290527,
+        0.23998814821243286
+      ],
+      "elevation_from_ffl_mm": 239.98814821243286
+    },
+    "flush_panel_reference": {
+      "source_bounds_mm": [
+        [
+          -280.205505,
+          -330.331831
+        ],
+        [
+          63.794495,
+          -40.331831
+        ]
+      ],
+      "source_centre_mm": [
+        -108.20550500000002,
+        -185.33183100000002
+      ],
+      "project_world_centre_m": [
+        -6.196000099182129,
+        2.2449545860290527,
+        0.757668137550354
+      ],
+      "elevation_from_ffl_mm": 757.668137550354
+    }
+  },
+  "drawing": {
+    "id": 2466243,
+    "global_id": "2Dm4xfxuH18wQZamIHq1WI",
+    "name": "GEBERIT-224212-MAIN-BATH-LEFT-SIDE",
+    "object_type": "DRAWING",
+    "epset_drawing": {
+      "TargetView": "ELEVATION_VIEW",
+      "Scale": "1/25",
+      "HumanScale": "1:25",
+      "HasUnderlay": false,
+      "HasLinework": true,
+      "HasAnnotation": true,
+      "GlobalReferencing": true,
+      "Stylesheet": "drawings/assets/default.css",
+      "Markers": "drawings/assets/markers.svg",
+      "Symbols": "drawings/assets/symbols.svg",
+      "Patterns": "drawings/assets/patterns.svg",
+      "ShadingStyles": "drawings/assets/shading_styles.json",
+      "CurrentShadingStyle": "Blender Default",
+      "DPI": 300,
+      "LineworkMode": "OPENCASCADE",
+      "FillMode": "NONE",
+      "CutMode": "BISECT",
+      "Include": "02eX$Z5WrDuuxw1IlnwVss,04DLh1Jk9Dcu9ibcaE0id8,04rs0EDjn2EvxytEQSxWRB,06yVJMA5z1fhZE243pPlI8,0BmtX_5hX1_gzuRyMzZWCj,0UtU7yPb10ku4gsbGoM_sp,0V9CnYT0n3GvkLmXhxvv$u,0YrTm1sjv1BB8cz__8S5YA,0ekISWRMjETQVsONKhC0oM,0gTPiPQhvFcumlS52PtTnD,0nlHIdaVrV7xIKsYXraYCa,0s2tcnZmP23Qpz4zXZ$Vd0,0wbKH$_Qr2_A4hpKs0PLXw,11Yew7g9DB48FGKv9gAfVx,122leYIbHFFBi0YE3uzZDV,14EazrLgP8whYZWY_yCuKy,178mqyyzzFowLcbXcH6prO,18Hiw4PZP4rQrmw23BQQys,18Qhf59crDCAy$scVOCK92,1IotPu731BoxBq3XVaH4l8,1J6buM4aD3LO4vfb0AtPRz,1KOnGcN8n9k9NYzrvWTr4H,1UixnpnQb97wuNAGrTmMJd,1XEnNJwc177xHjBydgoQFl,1YQyOdKDnFiOaH$X4tK5dp,1Yf7cK9MTAoBRvfK3BluSI,1YzL_R8pXCROfNjkjsWacr,1eqCHDNr94wR4H6nt1ZB6F,1exwKOUpD1tO93c2_9MojK,1fsFAbqHD8Uw61ENwvVj7b,1ncV5xaxf54BXwzFCse170,1sgpvCENf4xQiaypKWW2JC,1vFwjs$QnFcOPrrmIAjNrG,1vyfckSCz8Fww8vTAKGqom,235UH42o19pgNtvD2klDXr,23tK4hWyjBMvcAx0XfRa09,24AqfsAbz9a9uOPQhRX75e,26PwmC1AX6ZROC65DohUg5,26f3RmUrL3KRqY8Zxzck1h,2HpTz1lZj40esIT4bUdhaV,2S2c498tb7$gzdukjhCGVQ,2Y6G6pyqLCeQX77WhqqdEe,2cWI15abTFXO65ZZrRLG3z,2dEG2g8YT6te1$zV2kUnlv,2esXs3ihLFdxRtDX6d97hp,2hIKyAC2X3RhKEThQtEyDv,2iKOL78$H0N9Yd9$ky3pW4,2jjNIn9gHBYwNSWwlM5T_i,2lDPsdQevFSfeOThtjSlPG,2nUpG$tzj0vR6tg5N9FJJ_,2ntxn4aYnB0xQOSuraf1r2,2sZvyk$8b2IRSOnE23XQTH,2wViHGrwX2hOYCb3MDNb$9,39j3ZGWibC9OzRnhnTZwHN,3AehGtDgv4cwDJtCqrtkrC,3BNIc86L19ZBCt40wmF$KZ,3BZcUm$uv91RVw2WGeaPxS,3ErNe1i1TCsQ3xogoRbN2S,3TgmIjIGn3iQ$9DMvqDWoV,3VgMpCodXEA9ViTVPIQmcR,3WekjaeUn1qfL6oR1KYD_2,3XHw61QWD8pO_ffygPR1Mn,3bR3wts7vEBQHsVMX7kiaY,3q92bI3TT78eG2hJbura4B,3ty1lUpQfD3fY1yf0Dxo53",
+      "id": 2466260
+    },
+    "document_reference_location": "GEBERIT-224212-MAIN-BATH-LEFT-SIDE.svg"
+  },
+  "official_linework_annotation": {
+    "global_id": "1RLWGXL2r3Rv29jQrPNgQc",
+    "ifc_class": "IfcAnnotation",
+    "predefined_type": "LINEWORK",
+    "name": "Geberit Duofix 224.212.00.2 official native DWG / side",
+    "associated_to_drawing_group": true,
+    "target_global_id": "3pvAlH5C14v8uVEJ1LmK8M",
+    "geometry_source": "official_native_dwg_paths_mm",
+    "instance_mapping_offset_mm": [
+      61.1601028442401,
+      -65.40448331832559,
+      326.0
+    ],
+    "hidden_line_boundary": "The concealed cistern body is removed by architectural hidden-line processing; the approved source is emitted through Bonsai's native Drawing LINEWORK annotation layer."
+  },
+  "camera": {
+    "type": "ORTHO",
+    "matrix_world": [
+      [
+        1.0,
+        0.0,
+        0.0,
+        -5.699999809265137
+      ],
+      [
+        0.0,
+        7.549790126404332e-08,
+        -1.0,
+        -0.25
+      ],
+      [
+        0.0,
+        1.0,
+        7.549790126404332e-08,
+        1.2000000476837158
+      ],
+      [
+        0.0,
+        0.0,
+        0.0,
+        1.0
+      ]
+    ],
+    "width_m": 2.399999713897705,
+    "height_m": 3.6,
+    "clip_start_m": 0.0020000000949949026,
+    "clip_end_m": 3.3999998077750204,
+    "resolution": [
+      1133,
+      1700
+    ]
+  },
+  "create_drawing": {
+    "operator": "bpy.ops.bim.create_drawing",
+    "arguments": {
+      "print_all": false,
+      "open_viewer": false,
+      "sync": false
+    },
+    "result": [
+      "FINISHED"
+    ],
+    "linework_mode": "OPENCASCADE",
+    "target_view": "ELEVATION_VIEW"
+  },
+  "svg": {
+    "path": "/Users/jiaxinchen/.codex/worktrees/3a80/2504 GBTB Yanlord Zhuhai/output/review/highpoly-types/geberit-duofix-sigma-224-212/bonsai-drawings/main-bathroom/GEBERIT-224212-MAIN-BATH-LEFT-SIDE.svg",
+    "bytes": 1718976,
+    "sha256": "23407ed3197de403679482fd93f3918ac3d2309eef080463f03d7d5790e7ce8a",
+    "bonsai_generated_sha256_before_review_style": "e0f71edfb468b4880750d55e09226f2b2391b04c2b514048024fda705ec0e68e",
+    "target_group_count": 3288,
+    "target_geometry_element_count": 3288,
+    "review_style_only": true,
+    "geometry_modified": false,
+    "root_tag": "svg",
+    "width": "95.97176216349881mm",
+    "height": "143.99999618530273mm",
+    "viewBox": "0 0 95.97176216349881 143.99999618530273",
+    "data_scale": "1:25",
+    "geometry_element_count": 6088,
+    "projection_group_count": 41,
+    "class_counts": {
+      "0wbKH$_Qr2_A4hpKs0PLXw": 2,
+      "GlobalId-1RLWGXL2r3Rv29jQrPNgQc": 3288,
+      "IfcAnnotation": 3288,
+      "IfcBeam": 1,
+      "IfcBuildingElementProxy": 1,
+      "IfcCovering": 10,
+      "IfcFlowSegment": 1,
+      "IfcLightFixture": 1,
+      "IfcMaterialLayer": 1,
+      "IfcPipeSegment": 5,
+      "IfcSanitaryTerminal": 7,
+      "IfcSlab": 7,
+      "IfcSpace": 2,
+      "IfcWall": 9,
+      "IfcWasteTerminal": 1,
+      "PredefinedType-LINEWORK": 3288,
+      "annotation": 27,
+      "cut": 2,
+      "large": 1,
+      "layer-material-Aircrete": 1,
+      "layer-material-category-Architectural": 1,
+      "material-Aircrete": 2,
+      "material-BGB": 1,
+      "material-BWW03": 2,
+      "material-CAS130RF": 1,
+      "material-FLR180": 4,
+      "material-PVC": 3,
+      "material-PlasticaBiancaLight": 1,
+      "material-TerrazzoMosaicTile": 6,
+      "material-WAL100": 1,
+      "material-WAL170": 1,
+      "material-WAL200B": 2,
+      "material-WAL200S": 1,
+      "material-WAL350B": 1,
+      "material-WW20BR": 4,
+      "material-null": 15,
+      "official-native-dwg": 3288,
+      "projection": 41,
+      "regular": 6,
+      "review-target-duofix": 3288,
+      "scale-25": 1,
+      "section": 1,
+      "stair": 1,
+      "target-view-ELEVATIONVIEW": 1
+    },
+    "reference_count": 0,
+    "references": [],
+    "target_ifc_projection_group_count": 0,
+    "target_ifc_projection_geometry_count": 0,
+    "official_annotation_geometry_count": 3288,
+    "black_target_body_policy": "excluded_from_drawing_include",
+    "blue_target_layer_policy": "approved_official_native_dwg_ifc_linework_annotation_only"
+  },
+  "linework_cache": {
+    "path": "/Users/jiaxinchen/.codex/worktrees/3a80/2504 GBTB Yanlord Zhuhai/output/review/highpoly-types/geberit-duofix-sigma-224-212/bonsai-drawings/main-bathroom/cache/GEBERIT-224212-MAIN-BATH-LEFT-SIDE-linework.svg",
+    "bytes": 277153,
+    "sha256": "169fda52088c18e23dbaa398622b0bb995c4ca472841b7b5ec87729e819a3314"
+  },
+  "versions": {
+    "blender": "4.5.3 LTS",
+    "ifcopenshell": "0.8.4",
+    "ifc_schema": "IFC4",
+    "bonsai_generator": "Bonsai 0.8.4 bim.create_drawing"
+  },
+  "pass": true
+}

@@ -1,0 +1,262 @@
+{
+  "schema_version": 1,
+  "generated_at": "2026-08-25T11:57:29.464418+00:00",
+  "generator": "pipeline/scripts/generate_official_dwg_family_review_packages.py",
+  "product_slug": "bed01",
+  "display_name": "Baxter Casablanca 180 / BED01",
+  "representative_global_id": "3IQBEqO5vDI8Z9k1Ltge_N",
+  "formal_ifc_sha256": "7a50b87e8f48a7c2bfbaa9f1dabdfca7155fa684b2325c66aa1ae15c8ab0a25c",
+  "formal_ifc_bytes_unchanged": true,
+  "source_dwg": "output/review/highpoly-types/bed01/official-source/2d-3d-download/CASABLANCA/2D/Casablanca_Letto.dwg",
+  "source_dwg_absolute_path": "/Users/jiaxinchen/.codex/worktrees/3a80/2504 GBTB Yanlord Zhuhai/output/review/highpoly-types/bed01/official-source/2d-3d-download/CASABLANCA/2D/Casablanca_Letto.dwg",
+  "source_dwg_sha256": "ab697db9c27448c62a9a77537d7cc4b6286577c335328113d703184be28d9c4a",
+  "official_download_url": "https://dam.baxter.it/asset/76c053fa-2ac5-4a60-85e3-d9df4ceb9cf0/Baxter_Casablanca_Bed_2D_3D.zip",
+  "source_archive": "output/review/highpoly-types/bed01/official-source/2d-3d-download/Baxter_Casablanca_Bed_2D_3D.zip",
+  "source_archive_sha256": "acf67fddcfaa5e5bb50eb90f78a5eac262bfa318a767a938fc29f73931bb5970",
+  "source_archive_member": "CASABLANCA/2D/Casablanca_Letto.dwg",
+  "source_archive_member_sha256": "ab697db9c27448c62a9a77537d7cc4b6286577c335328113d703184be28d9c4a",
+  "source_archive_inventory": "output/review/highpoly-types/bed01/official-source/2d-3d-download/archive-inventory.json",
+  "source_archive_inventory_sha256": "4653dfc458828e4856b7e10b9af4f6b4df88a4c9bf5088651ff31ab1bffc24f9",
+  "local_byte_identical_archive_copies": [
+    {
+      "absolute_path": "/Users/jiaxinchen/Downloads/Baxter_Casablanca_Bed_2D_3D.zip",
+      "sha256": "acf67fddcfaa5e5bb50eb90f78a5eac262bfa318a767a938fc29f73931bb5970",
+      "byte_identical_to_preserved_archive": true
+    },
+    {
+      "absolute_path": "/Users/jiaxinchen/Downloads/Baxter_Casablanca_Bed_2D_3D (1).zip",
+      "sha256": "acf67fddcfaa5e5bb50eb90f78a5eac262bfa318a767a938fc29f73931bb5970",
+      "byte_identical_to_preserved_archive": true
+    },
+    {
+      "absolute_path": "/Users/jiaxinchen/Downloads/Baxter_Casablanca_Bed_2D_3D (2).zip",
+      "sha256": "acf67fddcfaa5e5bb50eb90f78a5eac262bfa318a767a938fc29f73931bb5970",
+      "byte_identical_to_preserved_archive": true
+    }
+  ],
+  "selected_geometry_layers": [
+    "_ARREDO",
+    "_MATERASSO",
+    "_PIEDINI",
+    "_CUCITURE"
+  ],
+  "excluded_layers": {
+    "_QUOTE": "dimension and annotation evidence retained in the AutoCAD screenshots, excluded from approval linework",
+    "0": "six family-size labels retained in the AutoCAD screenshots; this file has no geometric entities on layer 0",
+    "Defpoints": "non-printing definition layer with no selected product geometry"
+  },
+  "autocad_source_screenshots": [
+    "output/review/highpoly-types/bed01/official-source/autocad-casablanca-2d-full-modelspace.png",
+    "output/review/highpoly-types/bed01/official-source/autocad-casablanca-180x200-three-view.png"
+  ],
+  "superseded_error_candidates": [
+    {
+      "status": "superseded_error_candidate_excluded_from_approval",
+      "source_dwg": "output/review/highpoly-types/bed01/official-source/bim-download/CASABLANCA_BED BASE 180 X 200 H90.dwg",
+      "source_dwg_sha256": "1d3fb7931d2252f301498acdea30a145303f0a2aadbeb8e1638fdf7b800642cb",
+      "geometry_kind": "native_dwg_3d_solid_projected_envelope",
+      "reason": "ACIS 3DSOLID projection envelopes are not the independently published manufacturer 2D Plan/Front/Side linework and must never enter approval."
+    }
+  ],
+  "configuration": "180x200 / official native 2D group labelled 2100 x 2520 x 900 mm overall",
+  "reference_role": "official_native_2d_180x200_configuration_reference_not_exact_project_body",
+  "scope": "Official independent 2D DWG; mechanically selected native 180×200 Plan/Front/Side linework. The prior ACIS-solid envelope is superseded and excluded from approval.",
+  "fit_note": "Native 2D paths remain 1:1 and receive translation only. The official 2100×2520×900 mm-labelled configuration does not exactly match the project Body; no fit or scaling is applied.",
+  "official_dwg_review_reference": "output/review/highpoly-types/bed01/official-dwg-review-reference.json",
+  "official_dwg_review_reference_sha256": "ab4768e1c4dba33b267fa0712a00ed8aa303130e9f9da84973f0360fe680703d",
+  "primary_candidate_source_kind": "geometry_derived_simplified_proxy",
+  "primary_candidate_source_label_zh": "基于原始高模几何生成的简化图纸表达",
+  "primary_candidate_replaced": false,
+  "official_reference_used_as_primary_candidate": false,
+  "third_party_cad_used": false,
+  "derived_ifc_write_performed": false,
+  "formal_authoritative_ifc_write_performed": false,
+  "bounds_mm": {
+    "minimum": [
+      -1132.12793,
+      -1279.692017,
+      0.310961
+    ],
+    "maximum": [
+      1132.03894,
+      1259.109985,
+      947.578918
+    ],
+    "size": [
+      2264.16687,
+      2538.802002,
+      947.267957
+    ]
+  },
+  "views": [
+    {
+      "view": "plan",
+      "svg": "output/review/highpoly-types/bed01/official-dwg-plan.svg",
+      "svg_sha256": "a0cf0b506f6dda183a17e58fa4d2810687018fde92577cf04a3211838cec872b",
+      "official_reference_geometry_kind": "native_dwg_2d_linework",
+      "official_reference_path_count": 25,
+      "blue_stroke_style": "solid",
+      "alignment": {
+        "mode": "translation_only",
+        "view_direction_reflection_x": false,
+        "translation_mm": [
+          -1061.371061,
+          -1271.170252
+        ],
+        "anchor": "projection_centre_to_projection_centre",
+        "uniform_scale": 1.0,
+        "anisotropic_scale_used": false,
+        "source_geometry_deformed": false,
+        "source_bounds_before_alignment_mm": {
+          "minimum": [
+            0.0,
+            0.0
+          ],
+          "maximum": [
+            2122.653133,
+            2521.758471
+          ],
+          "size": [
+            2122.653133,
+            2521.758471
+          ]
+        },
+        "project_proxy_bounds_mm": {
+          "minimum": [
+            -1132.12793,
+            -1279.692017
+          ],
+          "maximum": [
+            1132.03894,
+            1259.109985
+          ],
+          "size": [
+            2264.16687,
+            2538.802002
+          ]
+        }
+      },
+      "project_minus_official_bounds_size_mm": [
+        141.513737,
+        17.043531
+      ],
+      "primary_candidate_source_kind": "geometry_derived_simplified_proxy",
+      "primary_candidate_replaced": false
+    },
+    {
+      "view": "front",
+      "svg": "output/review/highpoly-types/bed01/official-dwg-front.svg",
+      "svg_sha256": "4dfc2cfc55f89e3f44383d5bc92fc248455f00a1a666d132dc9def8c71c503a1",
+      "official_reference_geometry_kind": "native_dwg_2d_linework",
+      "official_reference_path_count": 22,
+      "blue_stroke_style": "solid",
+      "alignment": {
+        "mode": "translation_only",
+        "view_direction_reflection_x": false,
+        "translation_mm": [
+          -1057.248869,
+          0.310961
+        ],
+        "anchor": "horizontal_centre_and_finished_bottom",
+        "uniform_scale": 1.0,
+        "anisotropic_scale_used": false,
+        "source_geometry_deformed": false,
+        "source_bounds_before_alignment_mm": {
+          "minimum": [
+            0.0,
+            0.0
+          ],
+          "maximum": [
+            2114.408748,
+            894.925345
+          ],
+          "size": [
+            2114.408748,
+            894.925345
+          ]
+        },
+        "project_proxy_bounds_mm": {
+          "minimum": [
+            -1132.12793,
+            0.310961
+          ],
+          "maximum": [
+            1132.03894,
+            947.578918
+          ],
+          "size": [
+            2264.16687,
+            947.267957
+          ]
+        }
+      },
+      "project_minus_official_bounds_size_mm": [
+        149.758122,
+        52.342612
+      ],
+      "primary_candidate_source_kind": "geometry_derived_simplified_proxy",
+      "primary_candidate_replaced": false
+    },
+    {
+      "view": "side",
+      "svg": "output/review/highpoly-types/bed01/official-dwg-side.svg",
+      "svg_sha256": "557a3c19f7f3e8cac5bf4f34ddef429de221d144cb238a1b41ce9a66e4733617",
+      "official_reference_geometry_kind": "native_dwg_2d_linework",
+      "official_reference_path_count": 36,
+      "blue_stroke_style": "solid",
+      "alignment": {
+        "mode": "rigid_reflection_and_translation_only",
+        "view_direction_reflection_x": true,
+        "translation_mm": [
+          -1268.962217,
+          0.310961
+        ],
+        "anchor": "horizontal_centre_and_finished_bottom",
+        "uniform_scale": 1.0,
+        "anisotropic_scale_used": false,
+        "source_geometry_deformed": false,
+        "source_bounds_before_alignment_mm": {
+          "minimum": [
+            0.0,
+            0.0
+          ],
+          "maximum": [
+            2517.342402,
+            884.342946
+          ],
+          "size": [
+            2517.342402,
+            884.342946
+          ]
+        },
+        "project_proxy_bounds_mm": {
+          "minimum": [
+            -1279.692017,
+            0.310961
+          ],
+          "maximum": [
+            1259.109985,
+            947.070923
+          ],
+          "size": [
+            2538.802002,
+            946.759962
+          ]
+        }
+      },
+      "project_minus_official_bounds_size_mm": [
+        21.4596,
+        62.417016
+      ],
+      "primary_candidate_source_kind": "geometry_derived_simplified_proxy",
+      "primary_candidate_replaced": false
+    }
+  ],
+  "pass": true,
+  "index": "output/review/highpoly-types/bed01/official-dwg-review-index.html",
+  "index_sha256": "72db55285fa5e494549eb4075ac7b9c35f345bdbdf22211021c378b8600869d3",
+  "contact_sheet_html": "output/review/highpoly-types/bed01/official-dwg-review-contact-sheet.html",
+  "contact_sheet_html_sha256": "9d7ff7333501aafe2ed1c937c6263ea00537de9cc5502c92bb90d8df78bfec9f",
+  "contact_sheet_png": "output/review/highpoly-types/bed01/official-dwg-review-contact-sheet.png",
+  "contact_sheet_png_sha256": "b0c7c8d804115d9b51775374a77fd70e2c6b81491c950bdc3b1ab2041d31d628"
+}

@@ -1,0 +1,51 @@
+{
+  "schema_version": 1,
+  "profile_key": "geberit-duofix-sigma-224-212",
+  "article_number": "224.212.00.2",
+  "representative_global_id": "3hgNkx97vCTOC2eewCpMNk",
+  "formal_ifc": "2504 GBTB Yanlord Zhuhai.ifc",
+  "formal_ifc_sha256": "7a50b87e8f48a7c2bfbaa9f1dabdfca7155fa684b2325c66aa1ae15c8ab0a25c",
+  "formal_ifc_bytes_unchanged": true,
+  "derived_ifc": "output/review/highpoly-types/geberit-duofix-sigma-224-212/Geberit-Duofix-Sigma-224-212-derived-drawing.ifc",
+  "derived_ifc_sha256": "c1a0d6af0ef0897fb6a53c3b70dd2a8ae35d8a63deca06bbc9379e3decbe8897",
+  "candidate_manifest": "output/review/highpoly-types/geberit-duofix-sigma-224-212/manifest.json",
+  "candidate_manifest_sha256": "a01d15fc3d09cc7d16df040a031549b799144b2f6eaafc85902c0d79cf7839d7",
+  "approval_record": "pipeline/decisions/geberit-duofix-sigma-224-212-drawing-approval.json",
+  "approval_record_sha256": "69b90641c148da4540af5d3ea0faecedd6b64467c619d8be01e446a6b8507752",
+  "approval": {
+    "status": "approved",
+    "reviewer": "project_owner",
+    "review_date": "2026-08-24",
+    "approved_views": [
+      "plan",
+      "front",
+      "side"
+    ],
+    "scope": "official manufacturer exact article family reference, not a project shop drawing"
+  },
+  "representations": {
+    "plan": "Duofix224212Plan",
+    "front": "Duofix224212Front",
+    "side": "Duofix224212Side"
+  },
+  "representation_path_counts": {
+    "plan": 253,
+    "front": 790,
+    "side": 225
+  },
+  "representation_geometry_source": "official_native_dwg_paths_mm",
+  "proxy_geometry_included": false,
+  "official_linework_register": "output/review/highpoly-types/geberit-duofix-sigma-224-212/official-native-dwg-linework.json",
+  "official_linework_register_sha256": "2994211232be676481a5962fff2881a7f1f7436f47076eb4438387d6130f1aa1",
+  "source_document_associations": [
+    "GEBERIT-224-212-A-NATIVE-DWG",
+    "GEBERIT-224-212-G-NATIVE-DWG",
+    "GEBERIT-224-212-L-NATIVE-DWG",
+    "GEBERIT-224-212-OFFICIAL-CATALOGUE-EXTRACT",
+    "GEBERIT-224-212-P-NATIVE-DWG-IDENTITY",
+    "GEBERIT-224-212-PROJECT-RECEIVED-BOX-LABEL"
+  ],
+  "source_property_set": "Pset_GeberitDuofix224212DrawingSource",
+  "source_kind": "native_dwg",
+  "pass": true
+}

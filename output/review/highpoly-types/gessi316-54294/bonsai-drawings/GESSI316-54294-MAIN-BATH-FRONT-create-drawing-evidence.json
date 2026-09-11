@@ -1,0 +1,350 @@
+{
+  "schema_version": 1,
+  "generated_at": "2026-08-25T06:32:22.947695+00:00",
+  "task": "Bonsai Create Drawing for Gessi 45089_54294 de-textured official-outline review in actual main-bathroom context",
+  "workflow": [
+    "inspect",
+    "plan",
+    "execute",
+    "persist",
+    "reload",
+    "verify"
+  ],
+  "provider": {
+    "preferred": "bonsai-mcp 1.1.0",
+    "status": "unsupported",
+    "reason": "Blender bridge 127.0.0.1:9878 connection refused",
+    "fallback": "local Blender 4.5.3 LTS with installed Bonsai/IfcOpenShell 0.8.4"
+  },
+  "course_evidence": {
+    "query": "Bonsai create drawing SVG PDF annotation linework save reload verify",
+    "top_lesson": "085000 Introduction to Drawings",
+    "course_fact": "Create Drawing generates or refreshes SVG after a Drawing camera, scale, depth and filters are configured.",
+    "source_files_packaged": false,
+    "source_files_note": "The installed skill contains the indexed lesson records but not the referenced private source Markdown or screenshots."
+  },
+  "view": "front",
+  "formal_ifc": "/Users/jiaxinchen/.codex/worktrees/3a80/2504 GBTB Yanlord Zhuhai/2504 GBTB Yanlord Zhuhai.ifc",
+  "formal_ifc_sha256": "7a50b87e8f48a7c2bfbaa9f1dabdfca7155fa684b2325c66aa1ae15c8ab0a25c",
+  "formal_ifc_bytes_unchanged": true,
+  "drawing_session_ifc": "/Users/jiaxinchen/.codex/worktrees/3a80/2504 GBTB Yanlord Zhuhai/output/review/highpoly-types/gessi316-54294/bonsai-drawings/GESSI316-54294-MAIN-BATH-FRONT-session.ifc",
+  "drawing_session_sha256_before": "7a50b87e8f48a7c2bfbaa9f1dabdfca7155fa684b2325c66aa1ae15c8ab0a25c",
+  "drawing_session_sha256_after": "eae10e6f53fa79efcf4ee8dfa2d17592ac798284b72d0def68eda12f21d206cb",
+  "drawing_session_is_safe_per_view_copy": true,
+  "source_kind": "native_dwg_review_simplification",
+  "source_label_zh": "基于官方 Gessi 54294 原生 DWG 轮廓的去纹审核简化表达",
+  "source_dwg_sha256": "dfe8bcf7e100c14187c387b75a35e3fe7f718c61595fadf66adfe92ca7648ff4",
+  "unaltered_official_dwg": false,
+  "original_official_dwg_evidence_preserved": true,
+  "handle_texture_detail_path_count": 0,
+  "review_path_count": 1099,
+  "persisted_review_path_count": 1099,
+  "review_edge_count": 12414,
+  "persisted_coordinate_bounds_mm": [
+    [
+      -70.85016,
+      0.0,
+      -21.050867
+    ],
+    [
+      290.84984,
+      0.0,
+      50.49911
+    ]
+  ],
+  "expected_coordinate_bounds_mm": [
+    [
+      -70.85016,
+      0.0,
+      -21.050867
+    ],
+    [
+      290.84984,
+      0.0,
+      50.49911
+    ]
+  ],
+  "persisted_coordinate_residual_mm": 0.0,
+  "mechanical_gate": {
+    "tolerance_mm": 0.2,
+    "wall_anchor_residual_mm": 0.0,
+    "straight_spout_axis_residual_mm": 0.0,
+    "lower_lip_residual_mm": 0.0,
+    "outlet_endpoint_residual_mm": 0.0,
+    "visible_reach_residual_mm": 0.0,
+    "visible_envelope_residual_mm": [
+      0.0,
+      0.0
+    ],
+    "pass": true
+  },
+  "target": {
+    "global_id": "2iKOL78$H0N9Yd9$ky3pW4",
+    "ifc_class": "IfcSanitaryTerminal",
+    "type_name": "Gessi316 54294",
+    "world_bbox_m": [
+      [
+        -6.47981595993042,
+        0.7705439925193787,
+        0.6746593117713928
+      ],
+      [
+        -6.27694845199585,
+        1.1294556856155396,
+        0.7419999837875366
+      ]
+    ],
+    "target_include_count_before_suppression": 1,
+    "target_include_count_after_suppression": 0
+  },
+  "room": {
+    "global_id": "3a4COIs5X7lgDirMBDT4Vs",
+    "name": "主卫湿区",
+    "bbox_m": [
+      [
+        -6.599999904632568,
+        0.10000000149011612,
+        0.0
+      ],
+      [
+        -4.800000190734863,
+        2.6999998092651367,
+        2.799999952316284
+      ]
+    ]
+  },
+  "context": {
+    "project_context_retained": true,
+    "include_count": 65,
+    "include_global_ids": [
+      "02eX$Z5WrDuuxw1IlnwVss",
+      "04DLh1Jk9Dcu9ibcaE0id8",
+      "04rs0EDjn2EvxytEQSxWRB",
+      "06yVJMA5z1fhZE243pPlI8",
+      "0BmtX_5hX1_gzuRyMzZWCj",
+      "0UtU7yPb10ku4gsbGoM_sp",
+      "0V9CnYT0n3GvkLmXhxvv$u",
+      "0YrTm1sjv1BB8cz__8S5YA",
+      "0ekISWRMjETQVsONKhC0oM",
+      "0gTPiPQhvFcumlS52PtTnD",
+      "0nlHIdaVrV7xIKsYXraYCa",
+      "0s2tcnZmP23Qpz4zXZ$Vd0",
+      "0wbKH$_Qr2_A4hpKs0PLXw",
+      "11Yew7g9DB48FGKv9gAfVx",
+      "122leYIbHFFBi0YE3uzZDV",
+      "14EazrLgP8whYZWY_yCuKy",
+      "178mqyyzzFowLcbXcH6prO",
+      "18Hiw4PZP4rQrmw23BQQys",
+      "18Qhf59crDCAy$scVOCK92",
+      "1IotPu731BoxBq3XVaH4l8",
+      "1J6buM4aD3LO4vfb0AtPRz",
+      "1KOnGcN8n9k9NYzrvWTr4H",
+      "1UixnpnQb97wuNAGrTmMJd",
+      "1XEnNJwc177xHjBydgoQFl",
+      "1YQyOdKDnFiOaH$X4tK5dp",
+      "1Yf7cK9MTAoBRvfK3BluSI",
+      "1YzL_R8pXCROfNjkjsWacr",
+      "1eqCHDNr94wR4H6nt1ZB6F",
+      "1exwKOUpD1tO93c2_9MojK",
+      "1fsFAbqHD8Uw61ENwvVj7b",
+      "1ncV5xaxf54BXwzFCse170",
+      "1sgpvCENf4xQiaypKWW2JC",
+      "1vFwjs$QnFcOPrrmIAjNrG",
+      "1vyfckSCz8Fww8vTAKGqom",
+      "235UH42o19pgNtvD2klDXr",
+      "23tK4hWyjBMvcAx0XfRa09",
+      "24AqfsAbz9a9uOPQhRX75e",
+      "26PwmC1AX6ZROC65DohUg5",
+      "26f3RmUrL3KRqY8Zxzck1h",
+      "2HpTz1lZj40esIT4bUdhaV",
+      "2S2c498tb7$gzdukjhCGVQ",
+      "2Y6G6pyqLCeQX77WhqqdEe",
+      "2cWI15abTFXO65ZZrRLG3z",
+      "2dEG2g8YT6te1$zV2kUnlv",
+      "2esXs3ihLFdxRtDX6d97hp",
+      "2hIKyAC2X3RhKEThQtEyDv",
+      "2jjNIn9gHBYwNSWwlM5T_i",
+      "2lDPsdQevFSfeOThtjSlPG",
+      "2nUpG$tzj0vR6tg5N9FJJ_",
+      "2ntxn4aYnB0xQOSuraf1r2",
+      "2sZvyk$8b2IRSOnE23XQTH",
+      "2wViHGrwX2hOYCb3MDNb$9",
+      "39j3ZGWibC9OzRnhnTZwHN",
+      "3AehGtDgv4cwDJtCqrtkrC",
+      "3BNIc86L19ZBCt40wmF$KZ",
+      "3BZcUm$uv91RVw2WGeaPxS",
+      "3ErNe1i1TCsQ3xogoRbN2S",
+      "3TgmIjIGn3iQ$9DMvqDWoV",
+      "3VgMpCodXEA9ViTVPIQmcR",
+      "3WekjaeUn1qfL6oR1KYD_2",
+      "3XHw61QWD8pO_ffygPR1Mn",
+      "3bR3wts7vEBQHsVMX7kiaY",
+      "3pvAlH5C14v8uVEJ1LmK8M",
+      "3q92bI3TT78eG2hJbura4B",
+      "3ty1lUpQfD3fY1yf0Dxo53"
+    ],
+    "include_ifc_class_counts": {
+      "IfcBeam": 2,
+      "IfcBuildingElementProxy": 2,
+      "IfcCovering": 18,
+      "IfcFlowSegment": 5,
+      "IfcLightFixture": 4,
+      "IfcPipeSegment": 5,
+      "IfcSanitaryTerminal": 10,
+      "IfcSlab": 5,
+      "IfcWall": 13,
+      "IfcWasteTerminal": 1
+    }
+  },
+  "drawing": {
+    "global_id": "3Rcru80AT7hQC8rCV8eNXz",
+    "name": "GESSI316-54294-MAIN-BATH-FRONT",
+    "object_type": "DRAWING",
+    "epset_drawing": {
+      "TargetView": "ELEVATION_VIEW",
+      "Scale": "1/25",
+      "HumanScale": "1:25",
+      "HasUnderlay": false,
+      "HasLinework": true,
+      "HasAnnotation": true,
+      "GlobalReferencing": true,
+      "Stylesheet": "drawings/assets/default.css",
+      "Markers": "drawings/assets/markers.svg",
+      "Symbols": "drawings/assets/symbols.svg",
+      "Patterns": "drawings/assets/patterns.svg",
+      "ShadingStyles": "drawings/assets/shading_styles.json",
+      "CurrentShadingStyle": "Blender Default",
+      "DPI": 300,
+      "LineworkMode": "OPENCASCADE",
+      "FillMode": "NONE",
+      "CutMode": "BISECT",
+      "Include": "02eX$Z5WrDuuxw1IlnwVss,04DLh1Jk9Dcu9ibcaE0id8,04rs0EDjn2EvxytEQSxWRB,06yVJMA5z1fhZE243pPlI8,0BmtX_5hX1_gzuRyMzZWCj,0UtU7yPb10ku4gsbGoM_sp,0V9CnYT0n3GvkLmXhxvv$u,0YrTm1sjv1BB8cz__8S5YA,0ekISWRMjETQVsONKhC0oM,0gTPiPQhvFcumlS52PtTnD,0nlHIdaVrV7xIKsYXraYCa,0s2tcnZmP23Qpz4zXZ$Vd0,0wbKH$_Qr2_A4hpKs0PLXw,11Yew7g9DB48FGKv9gAfVx,122leYIbHFFBi0YE3uzZDV,14EazrLgP8whYZWY_yCuKy,178mqyyzzFowLcbXcH6prO,18Hiw4PZP4rQrmw23BQQys,18Qhf59crDCAy$scVOCK92,1IotPu731BoxBq3XVaH4l8,1J6buM4aD3LO4vfb0AtPRz,1KOnGcN8n9k9NYzrvWTr4H,1UixnpnQb97wuNAGrTmMJd,1XEnNJwc177xHjBydgoQFl,1YQyOdKDnFiOaH$X4tK5dp,1Yf7cK9MTAoBRvfK3BluSI,1YzL_R8pXCROfNjkjsWacr,1eqCHDNr94wR4H6nt1ZB6F,1exwKOUpD1tO93c2_9MojK,1fsFAbqHD8Uw61ENwvVj7b,1ncV5xaxf54BXwzFCse170,1sgpvCENf4xQiaypKWW2JC,1vFwjs$QnFcOPrrmIAjNrG,1vyfckSCz8Fww8vTAKGqom,235UH42o19pgNtvD2klDXr,23tK4hWyjBMvcAx0XfRa09,24AqfsAbz9a9uOPQhRX75e,26PwmC1AX6ZROC65DohUg5,26f3RmUrL3KRqY8Zxzck1h,2HpTz1lZj40esIT4bUdhaV,2S2c498tb7$gzdukjhCGVQ,2Y6G6pyqLCeQX77WhqqdEe,2cWI15abTFXO65ZZrRLG3z,2dEG2g8YT6te1$zV2kUnlv,2esXs3ihLFdxRtDX6d97hp,2hIKyAC2X3RhKEThQtEyDv,2jjNIn9gHBYwNSWwlM5T_i,2lDPsdQevFSfeOThtjSlPG,2nUpG$tzj0vR6tg5N9FJJ_,2ntxn4aYnB0xQOSuraf1r2,2sZvyk$8b2IRSOnE23XQTH,2wViHGrwX2hOYCb3MDNb$9,39j3ZGWibC9OzRnhnTZwHN,3AehGtDgv4cwDJtCqrtkrC,3BNIc86L19ZBCt40wmF$KZ,3BZcUm$uv91RVw2WGeaPxS,3ErNe1i1TCsQ3xogoRbN2S,3TgmIjIGn3iQ$9DMvqDWoV,3VgMpCodXEA9ViTVPIQmcR,3WekjaeUn1qfL6oR1KYD_2,3XHw61QWD8pO_ffygPR1Mn,3bR3wts7vEBQHsVMX7kiaY,3pvAlH5C14v8uVEJ1LmK8M,3q92bI3TT78eG2hJbura4B,3ty1lUpQfD3fY1yf0Dxo53",
+      "id": 2445906
+    }
+  },
+  "linework_annotation": {
+    "global_id": "0r4wqt1LX08QppTaBPPtmT",
+    "ifc_class": "IfcAnnotation",
+    "name": "Gessi 54294 de-textured official-outline review / front",
+    "predefined_type": "LINEWORK",
+    "epset_annotation": {
+      "Classes": "review-target-gessi54294 native-dwg-review-simplification",
+      "TargetGlobalId": "2iKOL78$H0N9Yd9$ky3pW4",
+      "ArticleNumber": "45089_54294",
+      "DrawingProductCode": "54294",
+      "SourceKind": "native_dwg_review_simplification",
+      "SourceLabelZh": "基于官方 Gessi 54294 原生 DWG 轮廓的去纹审核简化表达",
+      "SourceDwgSha256": "dfe8bcf7e100c14187c387b75a35e3fe7f718c61595fadf66adfe92ca7648ff4",
+      "UnalteredOfficialDwg": false,
+      "OriginalOfficialDwgEvidencePreserved": true,
+      "HandleTextureDetailPathCount": 0,
+      "IfcCurveStyleColour": "#1677c8",
+      "id": 2460569
+    },
+    "ifc_curve_style_persisted": true,
+    "ifc_curve_style_colour": "#1677c8"
+  },
+  "camera": {
+    "type": "ORTHO",
+    "width_m": 3.1999998077750207,
+    "height_m": 3.6,
+    "clip_start_m": 0.0020000000949949026,
+    "clip_end_m": 2.599999713897705,
+    "resolution": [
+      1511,
+      1700
+    ]
+  },
+  "create_drawing": {
+    "operator": "bpy.ops.bim.create_drawing",
+    "arguments": {
+      "print_all": false,
+      "open_viewer": false,
+      "sync": false
+    },
+    "result": [
+      "FINISHED"
+    ],
+    "linework_mode": "OPENCASCADE",
+    "target_view": "ELEVATION_VIEW"
+  },
+  "persistence": {
+    "method": "model.write to temporary then atomic replace; bpy.ops.bim.load_project reload",
+    "reload_result": [
+      "FINISHED"
+    ],
+    "post_reload_drawing_found": true,
+    "post_reload_annotation_found": true
+  },
+  "svg": {
+    "path": "/Users/jiaxinchen/.codex/worktrees/3a80/2504 GBTB Yanlord Zhuhai/output/review/highpoly-types/gessi316-54294/bonsai-drawings/GESSI316-54294-MAIN-BATH-FRONT.svg",
+    "bytes": 7383903,
+    "sha256": "bff75eef3805946758d803be6c54b6acd2d4330a48c6c1357a621f4969a568ba",
+    "bonsai_generated_sha256_before_review_style": "c17c69d24fe1ab88d6f4e1332fcfc986ea6c0e409d6317c7d36049f989b41a42",
+    "annotation_group_count": 12414,
+    "annotation_geometry_element_count": 12414,
+    "post_style_only": true,
+    "root_tag": "svg",
+    "width": "127.99058484470143mm",
+    "height": "143.99999618530273mm",
+    "viewBox": "0 0 127.99058484470143 143.99999618530273",
+    "data_scale": "1:25",
+    "geometry_element_count": 12628,
+    "projection_group_count": 17,
+    "class_counts": {
+      "02eX$Z5WrDuuxw1IlnwVss": 2,
+      "0wbKH$_Qr2_A4hpKs0PLXw": 2,
+      "24AqfsAbz9a9uOPQhRX75e": 2,
+      "GlobalId-0r4wqt1LX08QppTaBPPtmT": 12414,
+      "IfcAnnotation": 12414,
+      "IfcBeam": 2,
+      "IfcCovering": 2,
+      "IfcMaterialLayer": 2,
+      "IfcSlab": 7,
+      "IfcSpace": 2,
+      "IfcWall": 10,
+      "PredefinedType-LINEWORK": 12414,
+      "annotation": 27,
+      "cut": 4,
+      "large": 1,
+      "layer-material-Aircrete": 1,
+      "layer-material-Concrete": 1,
+      "layer-material-category-Architectural": 2,
+      "material-Aircrete": 2,
+      "material-BGB": 1,
+      "material-BPB": 1,
+      "material-BWW03": 1,
+      "material-CAS130RF": 1,
+      "material-Concrete200": 1,
+      "material-FLR180": 4,
+      "material-TerrazzoMosaicTile": 1,
+      "material-WAL170": 1,
+      "material-WAL200B": 5,
+      "material-WAL350B": 1,
+      "material-WW20BR": 1,
+      "material-null": 3,
+      "native-dwg-review-simplification": 12414,
+      "projection": 17,
+      "regular": 6,
+      "review-target-gessi54294": 12414,
+      "scale-25": 1,
+      "section": 1,
+      "stair": 1,
+      "target-view-ELEVATIONVIEW": 1
+    },
+    "target_ifc_projection_group_count": 0,
+    "review_annotation_geometry_count": 12414
+  },
+  "linework_cache": {
+    "path": "/Users/jiaxinchen/.codex/worktrees/3a80/2504 GBTB Yanlord Zhuhai/output/review/highpoly-types/gessi316-54294/bonsai-drawings/cache/GESSI316-54294-MAIN-BATH-FRONT-linework.svg",
+    "bytes": 12064,
+    "sha256": "b4421638313198ae4308f6548928b09e4dbb79d1fd01344ec368fffd30135e62"
+  },
+  "versions": {
+    "blender": "4.5.3 LTS",
+    "ifcopenshell": "0.8.4",
+    "ifc_schema": "IFC4",
+    "bonsai_generator": "Bonsai 0.8.4 bim.create_drawing"
+  },
+  "pass": true
+}

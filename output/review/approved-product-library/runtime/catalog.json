@@ -1,0 +1,3050 @@
+{
+  "schema_version": 4,
+  "body_view_adapter_required": true,
+  "portable": true,
+  "products": [
+    {
+      "id": "hima01",
+      "name": "Poliform Hima / HIMA01",
+      "global_id": "2xmcLzu1rDTeMzRuNxPDyE",
+      "source_label": "基于原始高模几何生成的简化图纸表达",
+      "display_front_normal_project": [
+        0,
+        -1,
+        0
+      ],
+      "display_front_basis": "candidate_scene_camera_pending_review",
+      "single_product_approval_status": "approved",
+      "scene_approval_status": "pending",
+      "approval_label": "单品已通过、场景待验收",
+      "package_validation": "pass",
+      "ifc_sha256": "0b45c43e81c4cabad3d4fb71ade9ef2aaf6a2895833d3590029941909b4826eb",
+      "ifc_bytes": 9745244,
+      "insertion_content": "review_body_views",
+      "representation_contract": "one_3d_body_three_directional_body_views",
+      "review_category": "partial",
+      "category_label": "部分验收",
+      "formal_ifc_write_authorized": false,
+      "ifc_path": "ifc/hima01.ifc",
+      "previews": {
+        "plan": "previews/hima01/plan.png",
+        "front": "previews/hima01/front.png",
+        "side": "previews/hima01/side.png",
+        "iso": "previews/hima01/iso.png"
+      },
+      "approval_record": {
+        "path": "approvals/hima01.json",
+        "sha256": "e4e08a7d361beb5cb77dc407c2955608e463ea3439f270e64f6129b954289db3"
+      },
+      "preview_evidence": {
+        "plan": {
+          "kind": "bonsai_body_linework",
+          "role": "Plan",
+          "source_ifc_sha256": "0b45c43e81c4cabad3d4fb71ade9ef2aaf6a2895833d3590029941909b4826eb",
+          "svg": "previews/hima01/plan.svg",
+          "svg_sha256": "c2a0be5f31a762c25fbeff45bfe02896f42c21c03113119e450f480ebb066cd8",
+          "png_sha256": "d4a7e73297c0e50cae1a1448d210666b28beb5872228d2bed1c43a7480d06b64",
+          "generator": "Bonsai Create Drawing / OpenCASCADE + BISECT",
+          "width": 1600,
+          "height": 1200
+        },
+        "front": {
+          "kind": "bonsai_body_linework",
+          "role": "Front",
+          "source_ifc_sha256": "0b45c43e81c4cabad3d4fb71ade9ef2aaf6a2895833d3590029941909b4826eb",
+          "svg": "previews/hima01/front.svg",
+          "svg_sha256": "5bc2d7d5223b3f6467fdb447be4d5190899b81786223526025a5f8244404b2e7",
+          "png_sha256": "f237d3f65ca0460dfef3bac35e9c1aafbd0468520410337c314d14d5c573a443",
+          "generator": "Bonsai Create Drawing / OpenCASCADE + BISECT",
+          "width": 1600,
+          "height": 1200
+        },
+        "side": {
+          "kind": "bonsai_body_linework",
+          "role": "Side",
+          "source_ifc_sha256": "0b45c43e81c4cabad3d4fb71ade9ef2aaf6a2895833d3590029941909b4826eb",
+          "svg": "previews/hima01/side.svg",
+          "svg_sha256": "3cb7eb61c6ed79352a9fc66cd4838a4e2d1808049ee9916e593637ddf6e79821",
+          "png_sha256": "946954695a212dca7fd99c9569954245a45e5041dc26153da3a7794bcbc1cbe5",
+          "generator": "Bonsai Create Drawing / OpenCASCADE + BISECT",
+          "width": 1600,
+          "height": 1200
+        },
+        "iso": {
+          "kind": "camera_render_3d",
+          "purpose": "asset_thumbnail",
+          "png_sha256": "c8c8db1a06326da6570bd1927a8339520feb7bc513f533bd5dddcf50f6cb2141",
+          "width": 384,
+          "height": 384,
+          "max_dimension": 384,
+          "source_sha256": "ff67548f7691da660f5ca22f0c7debacb248cdb7e7ab4d216fb3afe0638dae1d"
+        }
+      }
+    },
+    {
+      "id": "geberit-duofix-sigma-224-212",
+      "name": "Geberit Duofix Sigma / 224.212",
+      "global_id": "3pvAlH5C14v8uVEJ1LmK8M",
+      "source_label": "官方 224.212.00.2 原生 DWG",
+      "display_front_normal_project": [
+        1,
+        0,
+        0
+      ],
+      "display_front_basis": "approved_scene_camera",
+      "single_product_approval_status": "approved",
+      "scene_approval_status": "approved",
+      "approval_label": "单品及场景已验收",
+      "package_validation": "pass",
+      "ifc_sha256": "8b9414b77f8e5f2fc9e7400e2d70e5e058c17404ea8c5ab9494db746e3d6e50b",
+      "ifc_bytes": 7629659,
+      "insertion_content": "review_body_views",
+      "representation_contract": "one_3d_body_three_directional_body_views",
+      "review_category": "approved",
+      "category_label": "已验收",
+      "formal_ifc_write_authorized": false,
+      "ifc_path": "ifc/geberit-duofix-sigma-224-212.ifc",
+      "previews": {
+        "plan": "previews/geberit-duofix-sigma-224-212/plan.png",
+        "front": "previews/geberit-duofix-sigma-224-212/front.png",
+        "side": "previews/geberit-duofix-sigma-224-212/side.png",
+        "iso": "previews/geberit-duofix-sigma-224-212/iso.png"
+      },
+      "approval_record": {
+        "path": "approvals/geberit-duofix-sigma-224-212.json",
+        "sha256": "69b90641c148da4540af5d3ea0faecedd6b64467c619d8be01e446a6b8507752"
+      },
+      "preview_evidence": {
+        "plan": {
+          "kind": "bonsai_body_linework",
+          "role": "Plan",
+          "source_ifc_sha256": "8b9414b77f8e5f2fc9e7400e2d70e5e058c17404ea8c5ab9494db746e3d6e50b",
+          "svg": "previews/geberit-duofix-sigma-224-212/plan.svg",
+          "svg_sha256": "34742ec0e240236a166d3d5587236d26bc031fae75f6e064e4554f6c01754df3",
+          "png_sha256": "08388a11da5bee1d7ad6be14e8c82e139c9c7fdd8eddc1baac6e2f393ed71f65",
+          "generator": "Bonsai Create Drawing / OpenCASCADE + BISECT",
+          "width": 1600,
+          "height": 1200
+        },
+        "front": {
+          "kind": "bonsai_body_linework",
+          "role": "Front",
+          "source_ifc_sha256": "8b9414b77f8e5f2fc9e7400e2d70e5e058c17404ea8c5ab9494db746e3d6e50b",
+          "svg": "previews/geberit-duofix-sigma-224-212/front.svg",
+          "svg_sha256": "f1dae201101bb79a82fd156e14fb4c442ed4ebfb1be577a998293d9d48b2f3d9",
+          "png_sha256": "5ad8a361bdf0b0ae06c5e557529bb220b7bf9c56168faafe63f35ee21990fc85",
+          "generator": "Bonsai Create Drawing / OpenCASCADE + BISECT",
+          "width": 1600,
+          "height": 1200
+        },
+        "side": {
+          "kind": "bonsai_body_linework",
+          "role": "Side",
+          "source_ifc_sha256": "8b9414b77f8e5f2fc9e7400e2d70e5e058c17404ea8c5ab9494db746e3d6e50b",
+          "svg": "previews/geberit-duofix-sigma-224-212/side.svg",
+          "svg_sha256": "c5c118c2759cd3385fcf78522270a66649b60441b446a3d6272f4a53d2424482",
+          "png_sha256": "f9c6d2aca46e3c0e875297bd2d7530eade096e99520bfdca813b9abe9df4a132",
+          "generator": "Bonsai Create Drawing / OpenCASCADE + BISECT",
+          "width": 1600,
+          "height": 1200
+        },
+        "iso": {
+          "kind": "camera_render_3d",
+          "purpose": "asset_thumbnail",
+          "png_sha256": "e15e31da187bc1722db01087cbc6d169205d69d9836d610851a1a45a81c103de",
+          "width": 384,
+          "height": 384,
+          "max_dimension": 384,
+          "source_sha256": "e8decc5f3a864c55e93a3f71f6e1c63a239172506dc9a4e6c26526c275174537"
+        }
+      }
+    },
+    {
+      "id": "geberit-154-446-ks-1",
+      "name": "Geberit shower channel / 154.446.KS.1",
+      "global_id": "2S2c498tb7$gzdukjhCGVQ",
+      "source_label": "官方 154.446.KS.1 原生 DWG",
+      "display_front_normal_project": [
+        -1,
+        0,
+        0
+      ],
+      "display_front_basis": "candidate_scene_camera_pending_review",
+      "single_product_approval_status": "approved",
+      "scene_approval_status": "pending",
+      "approval_label": "单品已通过、场景待验收",
+      "package_validation": "pass",
+      "ifc_sha256": "e1c14248c2b968c6ff52ec96c062b3c77ec725a6c501c205817f175cb3861111",
+      "ifc_bytes": 4009818,
+      "insertion_content": "review_body_views",
+      "representation_contract": "one_3d_body_three_directional_body_views",
+      "review_category": "partial",
+      "category_label": "部分验收",
+      "formal_ifc_write_authorized": false,
+      "ifc_path": "ifc/geberit-154-446-ks-1.ifc",
+      "previews": {
+        "plan": "previews/geberit-154-446-ks-1/plan.png",
+        "front": "previews/geberit-154-446-ks-1/front.png",
+        "side": "previews/geberit-154-446-ks-1/side.png",
+        "iso": "previews/geberit-154-446-ks-1/iso.png"
+      },
+      "approval_record": {
+        "path": "approvals/geberit-154-446-ks-1.json",
+        "sha256": "4e8731e14771064bdcda791a8dcd35d3b1845f1d570cce0e315bd772a26d0001"
+      },
+      "preview_evidence": {
+        "plan": {
+          "kind": "bonsai_body_linework",
+          "role": "Plan",
+          "source_ifc_sha256": "e1c14248c2b968c6ff52ec96c062b3c77ec725a6c501c205817f175cb3861111",
+          "svg": "previews/geberit-154-446-ks-1/plan.svg",
+          "svg_sha256": "f4290fcbda62b3d9c3a50982b49c15bf654ea4cd587e1bc54ec58ce6ab4a02c3",
+          "png_sha256": "2cdc943be59ad59b403d09e8c1b7f88c523515c6eec9dc7f360a293eb4ad70c9",
+          "generator": "Bonsai Create Drawing / OpenCASCADE + BISECT",
+          "width": 1600,
+          "height": 1200
+        },
+        "front": {
+          "kind": "bonsai_body_linework",
+          "role": "Front",
+          "source_ifc_sha256": "e1c14248c2b968c6ff52ec96c062b3c77ec725a6c501c205817f175cb3861111",
+          "svg": "previews/geberit-154-446-ks-1/front.svg",
+          "svg_sha256": "64dafe83da6b0529b8d0332728ce0adf6314e35ee3e64a24e3cd9ee305d04fc4",
+          "png_sha256": "6172fdbf0695b7dfd0dc6a4d4c0767e0607197a3598898e3525758e358690e0c",
+          "generator": "Bonsai Create Drawing / OpenCASCADE + BISECT",
+          "width": 1600,
+          "height": 1200
+        },
+        "side": {
+          "kind": "bonsai_body_linework",
+          "role": "Side",
+          "source_ifc_sha256": "e1c14248c2b968c6ff52ec96c062b3c77ec725a6c501c205817f175cb3861111",
+          "svg": "previews/geberit-154-446-ks-1/side.svg",
+          "svg_sha256": "046e9796e80d2a4138ed3013166549325d6e88a3ac75d962c90a87ffd7c6624e",
+          "png_sha256": "399fe6c1d2cc62c77cc44f2a24d5a25832b5081250f4f46b8f8e79dcaa1d86fe",
+          "generator": "Bonsai Create Drawing / OpenCASCADE + BISECT",
+          "width": 1600,
+          "height": 1200
+        },
+        "iso": {
+          "kind": "camera_render_3d",
+          "purpose": "asset_thumbnail",
+          "png_sha256": "3876f738ceea9694a983ca7b8a5d79d8a3ea0d823b864721be18a9da5edd3dbe",
+          "width": 384,
+          "height": 384,
+          "max_dimension": 384,
+          "source_sha256": "470a098ea453e9fb4cbc3c12ea624f8e3fe8951bdab84a864bee8307be19df38"
+        }
+      }
+    },
+    {
+      "id": "gessi316-54294",
+      "name": "Gessi316 Meccanica / 54294",
+      "global_id": "2iKOL78$H0N9Yd9$ky3pW4",
+      "source_label": "官方 DWG 去纹审核简化表达",
+      "display_front_normal_project": [
+        1,
+        0,
+        0
+      ],
+      "display_front_basis": "approved_scene_camera",
+      "single_product_approval_status": "approved",
+      "scene_approval_status": "approved",
+      "approval_label": "单品及场景已验收",
+      "package_validation": "pass",
+      "ifc_sha256": "7405c23abc795ae6e9ed1e22123b119c8909b9ea29d0389d2868351eddd9002b",
+      "ifc_bytes": 8563383,
+      "insertion_content": "review_body_views",
+      "representation_contract": "one_3d_body_three_directional_body_views",
+      "review_category": "approved",
+      "category_label": "已验收",
+      "formal_ifc_write_authorized": false,
+      "ifc_path": "ifc/gessi316-54294.ifc",
+      "previews": {
+        "plan": "previews/gessi316-54294/plan.png",
+        "front": "previews/gessi316-54294/front.png",
+        "side": "previews/gessi316-54294/side.png",
+        "iso": "previews/gessi316-54294/iso.png"
+      },
+      "approval_record": {
+        "path": "approvals/gessi316-54294.json",
+        "sha256": "d8162000ae7fec45515a74488fbbd3adf848bb72b5bc325eaaa9b02cd805b3e5"
+      },
+      "preview_evidence": {
+        "plan": {
+          "kind": "bonsai_body_linework",
+          "role": "Plan",
+          "source_ifc_sha256": "7405c23abc795ae6e9ed1e22123b119c8909b9ea29d0389d2868351eddd9002b",
+          "svg": "previews/gessi316-54294/plan.svg",
+          "svg_sha256": "90c8092132c45ddea2e890d494072965b27674a8514b28e68dc7f42e4904fded",
+          "png_sha256": "9441ebb6d12272291fc38878f68ab29c2699c7bb506ccc45408125d0c80b023b",
+          "generator": "Bonsai Create Drawing / OpenCASCADE + BISECT",
+          "width": 1600,
+          "height": 1200
+        },
+        "front": {
+          "kind": "bonsai_body_linework",
+          "role": "Front",
+          "source_ifc_sha256": "7405c23abc795ae6e9ed1e22123b119c8909b9ea29d0389d2868351eddd9002b",
+          "svg": "previews/gessi316-54294/front.svg",
+          "svg_sha256": "e763030c46cbc10f51de94dc97108d81de14520e7bca82a7baf5ec274dc6e07f",
+          "png_sha256": "806557927d357ab28406d84af09263df7f4cd787abaeab2c4d5285620d556e56",
+          "generator": "Bonsai Create Drawing / OpenCASCADE + BISECT",
+          "width": 1600,
+          "height": 1200
+        },
+        "side": {
+          "kind": "bonsai_body_linework",
+          "role": "Side",
+          "source_ifc_sha256": "7405c23abc795ae6e9ed1e22123b119c8909b9ea29d0389d2868351eddd9002b",
+          "svg": "previews/gessi316-54294/side.svg",
+          "svg_sha256": "1755fcbeace2e173c72731c83735c101fd43b69df5ab9ed931c1aa0ea24f3a01",
+          "png_sha256": "f238ace06c016f598182cca2caa615191f69a87c6e997f6433c5ea6a224be596",
+          "generator": "Bonsai Create Drawing / OpenCASCADE + BISECT",
+          "width": 1600,
+          "height": 1200
+        },
+        "iso": {
+          "kind": "camera_render_3d",
+          "purpose": "asset_thumbnail",
+          "png_sha256": "1f5b4cd344cc1e78b060b5639c8b867a81e947bd84b16be46b03f454394d0d28",
+          "width": 384,
+          "height": 384,
+          "max_dimension": 384,
+          "source_sha256": "b326658f848a7829c8a69bd3d807a759254c794ba3685956ced16b15abc9c075"
+        }
+      }
+    },
+    {
+      "id": "bed02",
+      "name": "Baxter Viktor 160 × 200 / BED02",
+      "global_id": "1i_pqgLv9A7uuV7MjaArBW",
+      "source_label": "官方 160×200 家族 DWG · 非项目精确配置",
+      "display_front_normal_project": [
+        0.9999999999999981,
+        4.371138828673785e-8,
+        -4.371138828673785e-8
+      ],
+      "display_front_basis": "candidate_scene_camera_pending_review",
+      "single_product_approval_status": "approved",
+      "scene_approval_status": "pending",
+      "approval_label": "单品已通过、场景待验收",
+      "package_validation": "pass",
+      "ifc_sha256": "f0fb7b0a0724d19e74435349d2f79ec48674c652d2b2c65ecd3078cfba355ee7",
+      "ifc_bytes": 10478072,
+      "insertion_content": "review_body_views",
+      "representation_contract": "one_3d_body_three_directional_body_views",
+      "review_category": "partial",
+      "category_label": "部分验收",
+      "formal_ifc_write_authorized": false,
+      "ifc_path": "ifc/bed02.ifc",
+      "previews": {
+        "plan": "previews/bed02/plan.png",
+        "front": "previews/bed02/front.png",
+        "side": "previews/bed02/side.png",
+        "iso": "previews/bed02/iso.png"
+      },
+      "approval_record": {
+        "path": "approvals/bed02.json",
+        "sha256": "1e4a48c605dd0cab0f9fd0513100287f918f466ce02ac4b17ccfd7d3a303b348"
+      },
+      "preview_evidence": {
+        "plan": {
+          "kind": "bonsai_body_linework",
+          "role": "Plan",
+          "source_ifc_sha256": "f0fb7b0a0724d19e74435349d2f79ec48674c652d2b2c65ecd3078cfba355ee7",
+          "svg": "previews/bed02/plan.svg",
+          "svg_sha256": "26cfffa236189cd3cef5d4f9e01b31bb90f86a14595f1ebd3459c80b863661ac",
+          "png_sha256": "6a9331ecccba8c504c94e6f7635baa9d3303110e7b3047f24713e275e59796e8",
+          "generator": "Bonsai Create Drawing / OpenCASCADE + BISECT",
+          "width": 1600,
+          "height": 1200
+        },
+        "front": {
+          "kind": "bonsai_body_linework",
+          "role": "Front",
+          "source_ifc_sha256": "f0fb7b0a0724d19e74435349d2f79ec48674c652d2b2c65ecd3078cfba355ee7",
+          "svg": "previews/bed02/front.svg",
+          "svg_sha256": "b12923749f9c051e85583f644a0c291999ea863e09e63d7edf21ded18c985cc2",
+          "png_sha256": "b4726cb1faecca648c0ea2c98f3ce52879e731ab842afefb439a30a1c164b091",
+          "generator": "Bonsai Create Drawing / OpenCASCADE + BISECT",
+          "width": 1600,
+          "height": 1200
+        },
+        "side": {
+          "kind": "bonsai_body_linework",
+          "role": "Side",
+          "source_ifc_sha256": "f0fb7b0a0724d19e74435349d2f79ec48674c652d2b2c65ecd3078cfba355ee7",
+          "svg": "previews/bed02/side.svg",
+          "svg_sha256": "f512fc485ecff1d6936ebb123163dcd34ecb7efb7d7ee1aa0843b0542dbe68a4",
+          "png_sha256": "ce491e14b5a9b12e3171a28176812a95995e66f278182a3412548a51bab020f4",
+          "generator": "Bonsai Create Drawing / OpenCASCADE + BISECT",
+          "width": 1600,
+          "height": 1200
+        },
+        "iso": {
+          "kind": "camera_render_3d",
+          "purpose": "asset_thumbnail",
+          "png_sha256": "c11fba2f2b1a61e338d1995a14314a8fe5d3837e978001480cd888adeae90bd0",
+          "width": 384,
+          "height": 384,
+          "max_dimension": 384,
+          "source_sha256": "20d5cbec257dcb5ade5736fd9b1ee3f3091931f5b8a6894b0b5a5cefcdc1340f"
+        }
+      }
+    },
+    {
+      "id": "bed01",
+      "name": "Baxter Casablanca 180 / BED01",
+      "global_id": "3IQBEqO5vDI8Z9k1Ltge_N",
+      "source_label": "官方家族 DWG · 非项目精确配置",
+      "display_front_normal_project": [
+        1,
+        0,
+        0
+      ],
+      "display_front_basis": "approved_scene_camera",
+      "single_product_approval_status": "approved",
+      "scene_approval_status": "approved",
+      "approval_label": "单品及场景已验收",
+      "package_validation": "pass",
+      "ifc_sha256": "466aaee93a28658a4a08be21bd901b3ae2ab1e5096f5f1d06b5b6d2feac3d972",
+      "ifc_bytes": 2897110,
+      "insertion_content": "review_body_views",
+      "representation_contract": "one_3d_body_three_directional_body_views",
+      "review_category": "approved",
+      "category_label": "已验收",
+      "formal_ifc_write_authorized": false,
+      "ifc_path": "ifc/bed01.ifc",
+      "previews": {
+        "plan": "previews/bed01/plan.png",
+        "front": "previews/bed01/front.png",
+        "side": "previews/bed01/side.png",
+        "iso": "previews/bed01/iso.png"
+      },
+      "approval_record": {
+        "path": "approvals/bed01.json",
+        "sha256": "a18266a2aa8f37ef47bebe6c9bf28d0060aa97f40f042746bbe3505778f11687"
+      },
+      "preview_evidence": {
+        "plan": {
+          "kind": "bonsai_body_linework",
+          "role": "Plan",
+          "source_ifc_sha256": "466aaee93a28658a4a08be21bd901b3ae2ab1e5096f5f1d06b5b6d2feac3d972",
+          "svg": "previews/bed01/plan.svg",
+          "svg_sha256": "a066d79a6d40b477f0d74f995e90918a61555f3e536cdc1d1614a504ec08a8ca",
+          "png_sha256": "1f6a30e58d4f5d7e6a00ab5e0b36a8ec683d49307eda45e2b06048f5432cd508",
+          "generator": "Bonsai Create Drawing / OpenCASCADE + BISECT",
+          "width": 1600,
+          "height": 1200
+        },
+        "front": {
+          "kind": "bonsai_body_linework",
+          "role": "Front",
+          "source_ifc_sha256": "466aaee93a28658a4a08be21bd901b3ae2ab1e5096f5f1d06b5b6d2feac3d972",
+          "svg": "previews/bed01/front.svg",
+          "svg_sha256": "58e518687dd7c700ffe763a60397dd4cfdb9afb3d8abc787825fa2c2b7a4a600",
+          "png_sha256": "14b9c87b685c56d5b8e6684157ff098aefeec8e11526daf76f7554ced349d5b7",
+          "generator": "Bonsai Create Drawing / OpenCASCADE + BISECT",
+          "width": 1600,
+          "height": 1200
+        },
+        "side": {
+          "kind": "bonsai_body_linework",
+          "role": "Side",
+          "source_ifc_sha256": "466aaee93a28658a4a08be21bd901b3ae2ab1e5096f5f1d06b5b6d2feac3d972",
+          "svg": "previews/bed01/side.svg",
+          "svg_sha256": "a33aaf441d2e88df99b3a8c59e9cd1649d0bfc5654919206e6f1b731a780ca45",
+          "png_sha256": "53e189398e8a176c03fdc69d70cb8c3e0624589abf1a9410e38c1887fe1f9e43",
+          "generator": "Bonsai Create Drawing / OpenCASCADE + BISECT",
+          "width": 1600,
+          "height": 1200
+        },
+        "iso": {
+          "kind": "camera_render_3d",
+          "purpose": "asset_thumbnail",
+          "png_sha256": "c3b0bc19b628319244e21a3100e4ff41d7a0698df28bb772ff718080d63b7706",
+          "width": 384,
+          "height": 384,
+          "max_dimension": 384,
+          "source_sha256": "8a6a9b63c5db11036fceb0029be22caccb12e6fbb73d31180c58555cf5d83ee4"
+        }
+      }
+    },
+    {
+      "id": "sxb010",
+      "name": "Hunter Douglas blinds / SXB010",
+      "global_id": "1O9JRXCI56VRUbpuLJy86Z",
+      "source_label": "高模几何简化 · 蓝色仅为审核高亮",
+      "display_front_normal_project": [
+        1.5099577410637306e-7,
+        0.9999999999999754,
+        -1.6292068494294304e-7
+      ],
+      "display_front_basis": "approved_scene_camera",
+      "single_product_approval_status": "approved",
+      "scene_approval_status": "approved",
+      "approval_label": "单品及场景已验收",
+      "package_validation": "pass",
+      "ifc_sha256": "53ed48945afbad4f93befc0c199bf89579f71473536f1243294eb0a81376abf0",
+      "ifc_bytes": 2537255,
+      "insertion_content": "review_body_views",
+      "representation_contract": "one_3d_body_three_directional_body_views",
+      "review_category": "approved",
+      "category_label": "已验收",
+      "formal_ifc_write_authorized": false,
+      "ifc_path": "ifc/sxb010.ifc",
+      "previews": {
+        "plan": "previews/sxb010/plan.png",
+        "front": "previews/sxb010/front.png",
+        "side": "previews/sxb010/side.png",
+        "iso": "previews/sxb010/iso.png"
+      },
+      "approval_record": {
+        "path": "approvals/sxb010.json",
+        "sha256": "5f394c9b4af386d7169c2df7b42d625896e521605dfc99f03519dfe36205ae94"
+      },
+      "preview_evidence": {
+        "plan": {
+          "kind": "bonsai_body_linework",
+          "role": "Plan",
+          "source_ifc_sha256": "53ed48945afbad4f93befc0c199bf89579f71473536f1243294eb0a81376abf0",
+          "svg": "previews/sxb010/plan.svg",
+          "svg_sha256": "9c25b7be583a40d0f72bc53900ec7420a4532481cce589e49fd3a01e37cd13fa",
+          "png_sha256": "e0863a8af2e93d8e003643cb39d62dd53eee2ea52f5acabe9d3f5d16d6926ce5",
+          "generator": "Bonsai Create Drawing / OpenCASCADE + BISECT",
+          "width": 1600,
+          "height": 1200
+        },
+        "front": {
+          "kind": "bonsai_body_linework",
+          "role": "Front",
+          "source_ifc_sha256": "53ed48945afbad4f93befc0c199bf89579f71473536f1243294eb0a81376abf0",
+          "svg": "previews/sxb010/front.svg",
+          "svg_sha256": "99295e189c042cb3f525b8a02e9cd2b7838d0277310dfab0ba12ff404b317843",
+          "png_sha256": "1a6ec5fcd6aa8ea2c36157bf7528afe6c46a63a129d089afa3cc2671bd860162",
+          "generator": "Bonsai Create Drawing / OpenCASCADE + BISECT",
+          "width": 1600,
+          "height": 1200
+        },
+        "side": {
+          "kind": "bonsai_body_linework",
+          "role": "Side",
+          "source_ifc_sha256": "53ed48945afbad4f93befc0c199bf89579f71473536f1243294eb0a81376abf0",
+          "svg": "previews/sxb010/side.svg",
+          "svg_sha256": "2c6b6f929e10596e1f671fc4a9ade71e668ce607d903eb87b7e310656b569637",
+          "png_sha256": "abdccf88da97f2b53c7efe8b595d960d1a82eca05b6f56d4f271c4bad56e603b",
+          "generator": "Bonsai Create Drawing / OpenCASCADE + BISECT",
+          "width": 1600,
+          "height": 1200
+        },
+        "iso": {
+          "kind": "camera_render_3d",
+          "purpose": "asset_thumbnail",
+          "png_sha256": "7c0ea8fea560478b75707a62edc56d939d07659728e06e7dd42279103aea60dc",
+          "width": 384,
+          "height": 384,
+          "max_dimension": 384,
+          "source_sha256": "c79ffbcfceb93f63030ff4cf62691c6ee417493ab9392887898b1a555c634a03"
+        }
+      }
+    },
+    {
+      "id": "cha02",
+      "name": "RODA Orson 002 director lounge chair / project CHA02",
+      "global_id": "3YoxxZCgbF3Ap7gztAKkcs",
+      "source_label": "基于原始高模几何生成的简化图纸表达",
+      "display_front_normal_project": [
+        0,
+        -1,
+        0
+      ],
+      "display_front_basis": "project_axes_unreviewed",
+      "single_product_approval_status": "pending",
+      "scene_approval_status": "pending",
+      "approval_label": "尚未验收",
+      "package_validation": "pass",
+      "ifc_sha256": "89ed2af926918e5ed9c5cb7c13af107f182c729fc6ac57ecef7175d1fe9a8341",
+      "ifc_bytes": 1678476,
+      "insertion_content": "review_body_views",
+      "representation_contract": "one_3d_body_three_directional_body_views",
+      "review_category": "pending",
+      "category_label": "未验收",
+      "formal_ifc_write_authorized": false,
+      "ifc_path": "ifc/cha02.ifc",
+      "previews": {
+        "plan": "previews/cha02/plan.png",
+        "front": "previews/cha02/front.png",
+        "side": "previews/cha02/side.png",
+        "iso": "previews/cha02/iso.png"
+      },
+      "approval_record": {
+        "path": "approvals/cha02.json",
+        "sha256": "7b238e6e2aea1dbed8b342f2a71b1f5011a7f59ff0250096cd318fae39802423"
+      },
+      "preview_evidence": {
+        "plan": {
+          "kind": "bonsai_body_linework",
+          "role": "Plan",
+          "source_ifc_sha256": "89ed2af926918e5ed9c5cb7c13af107f182c729fc6ac57ecef7175d1fe9a8341",
+          "svg": "previews/cha02/plan.svg",
+          "svg_sha256": "5d437b83f699c3075f90774a5031f2d8dd37d519aecc422f95427c6816d2c983",
+          "png_sha256": "a2887c7959abe56670cff3b6852ab11b08c43c6460db193cf9ff35ae43a25326",
+          "generator": "Bonsai Create Drawing / OpenCASCADE + BISECT",
+          "width": 1600,
+          "height": 1200
+        },
+        "front": {
+          "kind": "bonsai_body_linework",
+          "role": "Front",
+          "source_ifc_sha256": "89ed2af926918e5ed9c5cb7c13af107f182c729fc6ac57ecef7175d1fe9a8341",
+          "svg": "previews/cha02/front.svg",
+          "svg_sha256": "fcea3a616b9ebd5c57ca45a3158f4e169d6025b694d5d1eb44f254a63b9d315f",
+          "png_sha256": "efd10d7e908d1af0189ad1b217177278c04b13051dba8637c5f505b002fb187f",
+          "generator": "Bonsai Create Drawing / OpenCASCADE + BISECT",
+          "width": 1600,
+          "height": 1200
+        },
+        "side": {
+          "kind": "bonsai_body_linework",
+          "role": "Side",
+          "source_ifc_sha256": "89ed2af926918e5ed9c5cb7c13af107f182c729fc6ac57ecef7175d1fe9a8341",
+          "svg": "previews/cha02/side.svg",
+          "svg_sha256": "591e8f5b233406d1c0c863bac955877e723b330358b91c9c2855b4f829c1a80e",
+          "png_sha256": "c32988ee0dc2c0076c070d832eaf23bdf961d667662856321456c85a816b4b25",
+          "generator": "Bonsai Create Drawing / OpenCASCADE + BISECT",
+          "width": 1600,
+          "height": 1200
+        },
+        "iso": {
+          "kind": "camera_render_3d",
+          "purpose": "asset_thumbnail",
+          "png_sha256": "922128da11b01ebc7e89fbe3cfbc0d447ac53a4fa97454f322d695be5f76dffa",
+          "width": 384,
+          "height": 274,
+          "max_dimension": 384,
+          "source_sha256": "33e2ba217ff6369adf89040e07f7e6b89d93c3f6419b56b8612907a20aebc20f"
+        }
+      }
+    },
+    {
+      "id": "sis04",
+      "name": "Molteni&C Sistema 7 Wall Unit 4 Doors / SIS04",
+      "global_id": "1MzM8Ms2vFo8KEm503j9w2",
+      "source_label": "基于原始高模几何生成的简化图纸表达",
+      "display_front_normal_project": [
+        0,
+        -1,
+        0
+      ],
+      "display_front_basis": "project_axes_unreviewed",
+      "single_product_approval_status": "pending",
+      "scene_approval_status": "pending",
+      "approval_label": "尚未验收",
+      "package_validation": "pass",
+      "ifc_sha256": "80c3ef97fbeb2a3912109b5b5ca752e489403079a8f1e7a2997dfd83d3b0c315",
+      "ifc_bytes": 3488651,
+      "insertion_content": "review_body_views",
+      "representation_contract": "one_3d_body_three_directional_body_views",
+      "review_category": "pending",
+      "category_label": "未验收",
+      "formal_ifc_write_authorized": false,
+      "ifc_path": "ifc/sis04.ifc",
+      "previews": {
+        "plan": "previews/sis04/plan.png",
+        "front": "previews/sis04/front.png",
+        "side": "previews/sis04/side.png",
+        "iso": "previews/sis04/iso.png"
+      },
+      "approval_record": {
+        "path": "approvals/sis04.json",
+        "sha256": "13f2b6c2300f5dde4cb56ebdc76ec473b7cfbf0cb93bc9152bb7497567781235"
+      },
+      "preview_evidence": {
+        "plan": {
+          "kind": "bonsai_body_linework",
+          "role": "Plan",
+          "source_ifc_sha256": "80c3ef97fbeb2a3912109b5b5ca752e489403079a8f1e7a2997dfd83d3b0c315",
+          "svg": "previews/sis04/plan.svg",
+          "svg_sha256": "0045793a012b3165212df5d757d7ff0745104ac236cd777ce423c6db90690d9a",
+          "png_sha256": "c763b7a3c4b121af9f706278e63fc0c5eae5578a2f9f9e7e167ce0e0b4dde5f7",
+          "generator": "Bonsai Create Drawing / OpenCASCADE + BISECT",
+          "width": 1600,
+          "height": 1200
+        },
+        "front": {
+          "kind": "bonsai_body_linework",
+          "role": "Front",
+          "source_ifc_sha256": "80c3ef97fbeb2a3912109b5b5ca752e489403079a8f1e7a2997dfd83d3b0c315",
+          "svg": "previews/sis04/front.svg",
+          "svg_sha256": "69f7136cfb87c245452e579d08fe91a82c1f577c87dafc042ae32297ba5c7f79",
+          "png_sha256": "7832d7c6328eccd6079b64c827f6861211190df0a3137d35ca888884d30fc228",
+          "generator": "Bonsai Create Drawing / OpenCASCADE + BISECT",
+          "width": 1600,
+          "height": 1200
+        },
+        "side": {
+          "kind": "bonsai_body_linework",
+          "role": "Side",
+          "source_ifc_sha256": "80c3ef97fbeb2a3912109b5b5ca752e489403079a8f1e7a2997dfd83d3b0c315",
+          "svg": "previews/sis04/side.svg",
+          "svg_sha256": "00e1f76da0f4a3db8dcf4d61570982cdacadc26281c4b7062cd3eb7c799064bd",
+          "png_sha256": "2cc2e4d9f9df690de39788dcc9211ffea7433e9f8ea8f515ba0a3b59a9514587",
+          "generator": "Bonsai Create Drawing / OpenCASCADE + BISECT",
+          "width": 1600,
+          "height": 1200
+        },
+        "iso": {
+          "kind": "camera_render_3d",
+          "purpose": "asset_thumbnail",
+          "png_sha256": "09533f776b1a0b9ac2a9542685b8404a6a408c6cf2e5ea010d2179f6a93096b2",
+          "width": 384,
+          "height": 274,
+          "max_dimension": 384,
+          "source_sha256": "9384119466857bddf4da6c279de077056e3c3e2c0c5c7e6a020fc222ebfc0e65"
+        }
+      }
+    },
+    {
+      "id": "505-up-v1-lp-s",
+      "name": "Molteni&C 505 UP System / project 505 UP V1.LP.S",
+      "global_id": "19MpdkWqXC7uhUNhLQgrce",
+      "source_label": "基于原始高模几何生成的简化图纸表达",
+      "display_front_normal_project": [
+        0,
+        -1,
+        0
+      ],
+      "display_front_basis": "project_axes_unreviewed",
+      "single_product_approval_status": "approved",
+      "scene_approval_status": "pending",
+      "approval_label": "单品已通过、场景待验收",
+      "package_validation": "pass",
+      "ifc_sha256": "15c5e9333c9d29a50e61bc412162d047d60a37f04089b2e9006704d6d522606a",
+      "ifc_bytes": 1259421,
+      "insertion_content": "review_body_views",
+      "representation_contract": "one_3d_body_three_directional_body_views",
+      "review_category": "partial",
+      "category_label": "部分验收",
+      "formal_ifc_write_authorized": false,
+      "ifc_path": "ifc/505-up-v1-lp-s.ifc",
+      "previews": {
+        "plan": "previews/505-up-v1-lp-s/plan.png",
+        "front": "previews/505-up-v1-lp-s/front.png",
+        "side": "previews/505-up-v1-lp-s/side.png",
+        "iso": "previews/505-up-v1-lp-s/iso.png"
+      },
+      "approval_record": {
+        "path": "approvals/505-up-v1-lp-s.json",
+        "sha256": "95f088d1c6f29dfb35effe8a03ab76e5eae7fa2509b60cb625ace7f6b20537ee"
+      },
+      "preview_evidence": {
+        "plan": {
+          "kind": "bonsai_body_linework",
+          "role": "Plan",
+          "source_ifc_sha256": "15c5e9333c9d29a50e61bc412162d047d60a37f04089b2e9006704d6d522606a",
+          "svg": "previews/505-up-v1-lp-s/plan.svg",
+          "svg_sha256": "f3ebe0ed00f357a61ff2c86ff844723c506323fedc6e932ca1937ee9df94ad8e",
+          "png_sha256": "9def2306f64ae4e353bd53e1d0c177ca76b31352f8ca0ca7412af874465da291",
+          "generator": "Bonsai Create Drawing / OpenCASCADE + BISECT",
+          "width": 1600,
+          "height": 1200
+        },
+        "front": {
+          "kind": "bonsai_body_linework",
+          "role": "Front",
+          "source_ifc_sha256": "15c5e9333c9d29a50e61bc412162d047d60a37f04089b2e9006704d6d522606a",
+          "svg": "previews/505-up-v1-lp-s/front.svg",
+          "svg_sha256": "afdaccf92868c0e7337f9c95b9dd97fe7d0aa344dd017587cbf20f2af467ce7e",
+          "png_sha256": "ddf9d2c7a1c1a03b759d2e0bd2a5f7085413da8dd0262b1a68525f263d0cd069",
+          "generator": "Bonsai Create Drawing / OpenCASCADE + BISECT",
+          "width": 1600,
+          "height": 1200
+        },
+        "side": {
+          "kind": "bonsai_body_linework",
+          "role": "Side",
+          "source_ifc_sha256": "15c5e9333c9d29a50e61bc412162d047d60a37f04089b2e9006704d6d522606a",
+          "svg": "previews/505-up-v1-lp-s/side.svg",
+          "svg_sha256": "e2365942885027e3c2561a71d9ebbc49d0a2528e6264097917a4cf53b9ce1437",
+          "png_sha256": "9b28aa93477eadfc742bcfec31234796fbefade417bc0705f9ec4f26eea77ff9",
+          "generator": "Bonsai Create Drawing / OpenCASCADE + BISECT",
+          "width": 1600,
+          "height": 1200
+        },
+        "iso": {
+          "kind": "camera_render_3d",
+          "purpose": "asset_thumbnail",
+          "png_sha256": "488064a1b8c4adbbc6d034caad24c3d83c4897b5591f1a75a837d3a345e83cc9",
+          "width": 384,
+          "height": 274,
+          "max_dimension": 384,
+          "source_sha256": "25fe4766d719d0ef0f60218494accac4d6d49e9f7d84efe2082e5fda8044443b"
+        }
+      }
+    },
+    {
+      "id": "miamisoft-e09",
+      "name": "Baxter Miami Soft / E09",
+      "global_id": "3osoWufdD1mhDDAM6lcix4",
+      "source_label": "官方 E09 DWG · 保留项目高模差异",
+      "display_front_normal_project": [
+        1,
+        0,
+        0
+      ],
+      "display_front_basis": "approved_scene_camera",
+      "single_product_approval_status": "approved",
+      "scene_approval_status": "approved",
+      "approval_label": "单品及场景已验收",
+      "package_validation": "pass",
+      "ifc_sha256": "da8122761e2906015c720c1962f03cb4c7e6e45e9c346149ff51cb53c1aeef1d",
+      "ifc_bytes": 4676132,
+      "insertion_content": "review_body_views",
+      "representation_contract": "one_3d_body_three_directional_body_views",
+      "review_category": "approved",
+      "category_label": "已验收",
+      "formal_ifc_write_authorized": false,
+      "ifc_path": "ifc/miamisoft-e09.ifc",
+      "previews": {
+        "plan": "previews/miamisoft-e09/plan.png",
+        "front": "previews/miamisoft-e09/front.png",
+        "side": "previews/miamisoft-e09/side.png",
+        "iso": "previews/miamisoft-e09/iso.png"
+      },
+      "approval_record": {
+        "path": "approvals/miamisoft-e09.json",
+        "sha256": "70e89130beb6af87cf4ae4bcd241ed2ce6e8a16b3b27267c8e98afcb8c2b4bd7"
+      },
+      "preview_evidence": {
+        "plan": {
+          "kind": "bonsai_body_linework",
+          "role": "Plan",
+          "source_ifc_sha256": "da8122761e2906015c720c1962f03cb4c7e6e45e9c346149ff51cb53c1aeef1d",
+          "svg": "previews/miamisoft-e09/plan.svg",
+          "svg_sha256": "87a15b5bca509528c8c200b9f43c6a0bfa24fdd907f056d2e0a963a5fc0a7dc3",
+          "png_sha256": "bff530166e849cb631a6392539939bbe73ef8186793594d623a33e41003a11cf",
+          "generator": "Bonsai Create Drawing / OpenCASCADE + BISECT",
+          "width": 1600,
+          "height": 1200
+        },
+        "front": {
+          "kind": "bonsai_body_linework",
+          "role": "Front",
+          "source_ifc_sha256": "da8122761e2906015c720c1962f03cb4c7e6e45e9c346149ff51cb53c1aeef1d",
+          "svg": "previews/miamisoft-e09/front.svg",
+          "svg_sha256": "d12eee6879d8df869cd4f1fd14442b44c3d13a76a9add49092eb7b60340c71cb",
+          "png_sha256": "875bee9a205673cfc4cbcaa036150263c91cdcb3011c18776822b799421aac92",
+          "generator": "Bonsai Create Drawing / OpenCASCADE + BISECT",
+          "width": 1600,
+          "height": 1200
+        },
+        "side": {
+          "kind": "bonsai_body_linework",
+          "role": "Side",
+          "source_ifc_sha256": "da8122761e2906015c720c1962f03cb4c7e6e45e9c346149ff51cb53c1aeef1d",
+          "svg": "previews/miamisoft-e09/side.svg",
+          "svg_sha256": "bd90907c2d5c73ac573c3ab6c7d51164df38d59fdc71fb01dcaf19e1158ba116",
+          "png_sha256": "92270a84a218a762b6f665d80656a02d6bd65280d571eb306790641d726e1d7f",
+          "generator": "Bonsai Create Drawing / OpenCASCADE + BISECT",
+          "width": 1600,
+          "height": 1200
+        },
+        "iso": {
+          "kind": "camera_render_3d",
+          "purpose": "asset_thumbnail",
+          "png_sha256": "2fbeff114808cb1d4b168e22762339a1f6ab0289a3d2b5d922d93ba564e45599",
+          "width": 384,
+          "height": 384,
+          "max_dimension": 384,
+          "source_sha256": "4ac59c78432f77e005c69be2abe972753927dca5c9f5c460d313aa11ee570bc5"
+        }
+      }
+    },
+    {
+      "id": "miamisoft-e07",
+      "name": "Baxter Miami Soft E07 left dormeuse",
+      "global_id": "1G7iO6CfP64PjummX$qTbt",
+      "source_label": "基于原始高模几何生成的简化图纸表达",
+      "display_front_normal_project": [
+        0,
+        -1,
+        0
+      ],
+      "display_front_basis": "project_axes_unreviewed",
+      "single_product_approval_status": "pending",
+      "scene_approval_status": "pending",
+      "approval_label": "尚未验收",
+      "package_validation": "pass",
+      "ifc_sha256": "ffb1fbceb0ca652b5da672cd0650a5da279fa76815e03bd2767549437cfaed14",
+      "ifc_bytes": 4389729,
+      "insertion_content": "review_body_views",
+      "representation_contract": "one_3d_body_three_directional_body_views",
+      "review_category": "pending",
+      "category_label": "未验收",
+      "formal_ifc_write_authorized": false,
+      "ifc_path": "ifc/miamisoft-e07.ifc",
+      "previews": {
+        "plan": "previews/miamisoft-e07/plan.png",
+        "front": "previews/miamisoft-e07/front.png",
+        "side": "previews/miamisoft-e07/side.png",
+        "iso": "previews/miamisoft-e07/iso.png"
+      },
+      "approval_record": {
+        "path": "approvals/miamisoft-e07.json",
+        "sha256": "00fe59df633110bfd10089e16307b696b758e370bad25bca32230f35fd4374e8"
+      },
+      "preview_evidence": {
+        "plan": {
+          "kind": "bonsai_body_linework",
+          "role": "Plan",
+          "source_ifc_sha256": "ffb1fbceb0ca652b5da672cd0650a5da279fa76815e03bd2767549437cfaed14",
+          "svg": "previews/miamisoft-e07/plan.svg",
+          "svg_sha256": "3fb2f033ac121d2148bde0042123e0af67f011515ad58e1e2c3b81e5563522cf",
+          "png_sha256": "383ef998911b35d408177cbf09126a27eb3db67a9ee15455a2812ea80dadb00a",
+          "generator": "Bonsai Create Drawing / OpenCASCADE + BISECT",
+          "width": 1600,
+          "height": 1200
+        },
+        "front": {
+          "kind": "bonsai_body_linework",
+          "role": "Front",
+          "source_ifc_sha256": "ffb1fbceb0ca652b5da672cd0650a5da279fa76815e03bd2767549437cfaed14",
+          "svg": "previews/miamisoft-e07/front.svg",
+          "svg_sha256": "98483b2a41db552f554223d807335e5de4ca5da6d491bb932d7d99c3b423a285",
+          "png_sha256": "6208aee2baca3835fd9e143832d9d7b82368e5be97d89aab763625cc206bd4a7",
+          "generator": "Bonsai Create Drawing / OpenCASCADE + BISECT",
+          "width": 1600,
+          "height": 1200
+        },
+        "side": {
+          "kind": "bonsai_body_linework",
+          "role": "Side",
+          "source_ifc_sha256": "ffb1fbceb0ca652b5da672cd0650a5da279fa76815e03bd2767549437cfaed14",
+          "svg": "previews/miamisoft-e07/side.svg",
+          "svg_sha256": "2e895f99abf8a284d536635c5c1b2e65ae6d6feb600434f5dd29ecbb14c5b937",
+          "png_sha256": "33abc7ec70dbba3175e5b93140a64f06f3ada82500a4786d6131a8866504ee33",
+          "generator": "Bonsai Create Drawing / OpenCASCADE + BISECT",
+          "width": 1600,
+          "height": 1200
+        },
+        "iso": {
+          "kind": "camera_render_3d",
+          "purpose": "asset_thumbnail",
+          "png_sha256": "9a6d16a976f61f547c3c89ef8a060ccc88811536ca78a9aaf08d38108a07fb96",
+          "width": 384,
+          "height": 274,
+          "max_dimension": 384,
+          "source_sha256": "8e4756693bc37f5fa472ea3b1b5eccd854a0bc8cabf998b7d799a92d5de3ed3e"
+        }
+      }
+    },
+    {
+      "id": "marilyn-01",
+      "name": "Baxter Marilyn bergere armchair / project Marilyn 01",
+      "global_id": "3l2Ji4k2H9oOTDGWYUq7uV",
+      "source_label": "基于 Baxter 精确型号原生 DWG 的官方图纸表达",
+      "display_front_normal_project": [
+        0,
+        -1,
+        0
+      ],
+      "display_front_basis": "project_axes_unreviewed",
+      "single_product_approval_status": "partially_approved",
+      "scene_approval_status": "pending",
+      "approval_label": "部分视图通过、其余待验收",
+      "package_validation": "pass",
+      "ifc_sha256": "3b0ed35abc8511c29f7d5c9d156cfef28ca81c59357a7c7aaf141d86aa6f9a54",
+      "ifc_bytes": 2776827,
+      "insertion_content": "review_body_views",
+      "representation_contract": "one_3d_body_three_directional_body_views",
+      "review_category": "partial",
+      "category_label": "部分验收",
+      "formal_ifc_write_authorized": false,
+      "ifc_path": "ifc/marilyn-01.ifc",
+      "previews": {
+        "plan": "previews/marilyn-01/plan.png",
+        "front": "previews/marilyn-01/front.png",
+        "side": "previews/marilyn-01/side.png",
+        "iso": "previews/marilyn-01/iso.png"
+      },
+      "approval_record": {
+        "path": "approvals/marilyn-01.json",
+        "sha256": "d0e52f927866906db227a275d9e7a7842144a563a7dd1073ef00151e0553aa1b"
+      },
+      "preview_evidence": {
+        "plan": {
+          "kind": "bonsai_body_linework",
+          "role": "Plan",
+          "source_ifc_sha256": "3b0ed35abc8511c29f7d5c9d156cfef28ca81c59357a7c7aaf141d86aa6f9a54",
+          "svg": "previews/marilyn-01/plan.svg",
+          "svg_sha256": "854397400effa18af1ddfe76588dd2234e2e605c793a5239bae74e62e2927957",
+          "png_sha256": "0f85493248394e820a063edb016a4ef76cd6d1e0296f40e983ea60c95d66b377",
+          "generator": "Bonsai Create Drawing / OpenCASCADE + BISECT",
+          "width": 1600,
+          "height": 1200
+        },
+        "front": {
+          "kind": "bonsai_body_linework",
+          "role": "Front",
+          "source_ifc_sha256": "3b0ed35abc8511c29f7d5c9d156cfef28ca81c59357a7c7aaf141d86aa6f9a54",
+          "svg": "previews/marilyn-01/front.svg",
+          "svg_sha256": "255cbc6acae34724f8cf4b379e414cb0dbd66e6692ef18e74f5fd8880b3400d2",
+          "png_sha256": "4a4a744198f93651ba858332e46d53855eb9c774dc250dba86405e6a64768dd9",
+          "generator": "Bonsai Create Drawing / OpenCASCADE + BISECT",
+          "width": 1600,
+          "height": 1200
+        },
+        "side": {
+          "kind": "bonsai_body_linework",
+          "role": "Side",
+          "source_ifc_sha256": "3b0ed35abc8511c29f7d5c9d156cfef28ca81c59357a7c7aaf141d86aa6f9a54",
+          "svg": "previews/marilyn-01/side.svg",
+          "svg_sha256": "b1e04ae1f95b75ef4c1d312f2cf1044033b377aec531445474ab129dbfa1b4a3",
+          "png_sha256": "542784cf24f0af65c46077764ed89d45f6778cab1d2f9d14c16b5e2654e23e7e",
+          "generator": "Bonsai Create Drawing / OpenCASCADE + BISECT",
+          "width": 1600,
+          "height": 1200
+        },
+        "iso": {
+          "kind": "camera_render_3d",
+          "purpose": "asset_thumbnail",
+          "png_sha256": "2b46cccdc6b6b151a2da5e1a25e6d87ed1a4aaadc601a021494fc179d247f064",
+          "width": 384,
+          "height": 274,
+          "max_dimension": 384,
+          "source_sha256": "f6ca40c8c9b7783165e0c51574d4978c7af04618697e2769aaeb6838dc2c6a80"
+        }
+      }
+    },
+    {
+      "id": "miamisoft-f03",
+      "name": "Baxter Miami Soft F03 pouf",
+      "global_id": "1y3lLYK$H9fPbuh1R1vAKX",
+      "source_label": "基于原始高模几何生成的简化图纸表达",
+      "display_front_normal_project": [
+        0,
+        -1,
+        0
+      ],
+      "display_front_basis": "project_axes_unreviewed",
+      "single_product_approval_status": "pending",
+      "scene_approval_status": "pending",
+      "approval_label": "尚未验收",
+      "package_validation": "pass",
+      "ifc_sha256": "0d4b70856c9e0797df64fcfaf519b0e980a9e3a8d13e37d7cf17bb3035ebec3f",
+      "ifc_bytes": 4380443,
+      "insertion_content": "review_body_views",
+      "representation_contract": "one_3d_body_three_directional_body_views",
+      "review_category": "pending",
+      "category_label": "未验收",
+      "formal_ifc_write_authorized": false,
+      "ifc_path": "ifc/miamisoft-f03.ifc",
+      "previews": {
+        "plan": "previews/miamisoft-f03/plan.png",
+        "front": "previews/miamisoft-f03/front.png",
+        "side": "previews/miamisoft-f03/side.png",
+        "iso": "previews/miamisoft-f03/iso.png"
+      },
+      "approval_record": {
+        "path": "approvals/miamisoft-f03.json",
+        "sha256": "3f725caf2a0db1114abe4363a62909b4f7ed938ee51303af8c466991b9e7209f"
+      },
+      "preview_evidence": {
+        "plan": {
+          "kind": "bonsai_body_linework",
+          "role": "Plan",
+          "source_ifc_sha256": "0d4b70856c9e0797df64fcfaf519b0e980a9e3a8d13e37d7cf17bb3035ebec3f",
+          "svg": "previews/miamisoft-f03/plan.svg",
+          "svg_sha256": "f42ee64914d39928b2088b020f73c87219dba413eb6c5f11d0895f76a4cf198a",
+          "png_sha256": "8456c0cd90edd8d6839354b1d5ca11011aa1166c8870da6ef16ede55c2f0d09c",
+          "generator": "Bonsai Create Drawing / OpenCASCADE + BISECT",
+          "width": 1600,
+          "height": 1200
+        },
+        "front": {
+          "kind": "bonsai_body_linework",
+          "role": "Front",
+          "source_ifc_sha256": "0d4b70856c9e0797df64fcfaf519b0e980a9e3a8d13e37d7cf17bb3035ebec3f",
+          "svg": "previews/miamisoft-f03/front.svg",
+          "svg_sha256": "012bf6ff0b053640e2f1a2c92128e3b58015aecd5ac7ee3ae80ed7381bb37e12",
+          "png_sha256": "0d33026270d0c9c0c66fb8a49d9347da4a7923470f55923f52697f6c7ef5392c",
+          "generator": "Bonsai Create Drawing / OpenCASCADE + BISECT",
+          "width": 1600,
+          "height": 1200
+        },
+        "side": {
+          "kind": "bonsai_body_linework",
+          "role": "Side",
+          "source_ifc_sha256": "0d4b70856c9e0797df64fcfaf519b0e980a9e3a8d13e37d7cf17bb3035ebec3f",
+          "svg": "previews/miamisoft-f03/side.svg",
+          "svg_sha256": "99da7d60222b1777b0ab0fe2c54b9efcf946f986fc1c0b875701459a87b1095d",
+          "png_sha256": "ee29529de7ed35c7dfe2e0141ed1534725275d6422046d543aa81f9881db5081",
+          "generator": "Bonsai Create Drawing / OpenCASCADE + BISECT",
+          "width": 1600,
+          "height": 1200
+        },
+        "iso": {
+          "kind": "camera_render_3d",
+          "purpose": "asset_thumbnail",
+          "png_sha256": "6fd9bdea838f420a1873ed0f36e7c0ed033dc44079cb40c14d85f522183b4eed",
+          "width": 384,
+          "height": 274,
+          "max_dimension": 384,
+          "source_sha256": "dd548b3f981c617530cd5d0292a01135408384f380eccf5ef7f9d8b07f275003"
+        }
+      }
+    },
+    {
+      "id": "trap01",
+      "name": "Geberit 151.116.11.1 / TRAP01",
+      "global_id": "2Ak2ma0lvBEA49UpplzUqi",
+      "source_label": "官方 DWG · 按项目安装长度配置",
+      "display_front_normal_project": [
+        1,
+        0,
+        0
+      ],
+      "display_front_basis": "approved_scene_camera",
+      "single_product_approval_status": "approved",
+      "scene_approval_status": "approved",
+      "approval_label": "单品及场景已验收",
+      "package_validation": "pass",
+      "ifc_sha256": "c01c3d5f94384784ca5c4357c5507f3c8aae795a7924a25676b983f4b30fea7b",
+      "ifc_bytes": 1426558,
+      "insertion_content": "review_body_views",
+      "representation_contract": "one_3d_body_three_directional_body_views",
+      "review_category": "approved",
+      "category_label": "已验收",
+      "formal_ifc_write_authorized": false,
+      "ifc_path": "ifc/trap01.ifc",
+      "previews": {
+        "plan": "previews/trap01/plan.png",
+        "front": "previews/trap01/front.png",
+        "side": "previews/trap01/side.png",
+        "iso": "previews/trap01/iso.png"
+      },
+      "approval_record": {
+        "path": "approvals/trap01.json",
+        "sha256": "56f56b917a741a2a0dac35b760dfdca5f56fc8c0b9736cd4a7eb2c4282191b69"
+      },
+      "preview_evidence": {
+        "plan": {
+          "kind": "bonsai_body_linework",
+          "role": "Plan",
+          "source_ifc_sha256": "c01c3d5f94384784ca5c4357c5507f3c8aae795a7924a25676b983f4b30fea7b",
+          "svg": "previews/trap01/plan.svg",
+          "svg_sha256": "d226beb3a98f6de9260ff3a892e74979c3abaf98e5edaab389eca4385f70caee",
+          "png_sha256": "aec430f31441582651483b46efda50dd3dfd9b59d4a43ed12da91385365d0255",
+          "generator": "Bonsai Create Drawing / OpenCASCADE + BISECT",
+          "width": 1600,
+          "height": 1200
+        },
+        "front": {
+          "kind": "bonsai_body_linework",
+          "role": "Front",
+          "source_ifc_sha256": "c01c3d5f94384784ca5c4357c5507f3c8aae795a7924a25676b983f4b30fea7b",
+          "svg": "previews/trap01/front.svg",
+          "svg_sha256": "fbabc6932a6d26c27e8f8ecc9ec79d1bcc1d75632eaf4746de1bd9efd28b3d6a",
+          "png_sha256": "cfd9782adfea696e0748cca27d6067073102a56b7ffab4df9084c47f326fee25",
+          "generator": "Bonsai Create Drawing / OpenCASCADE + BISECT",
+          "width": 1600,
+          "height": 1200
+        },
+        "side": {
+          "kind": "bonsai_body_linework",
+          "role": "Side",
+          "source_ifc_sha256": "c01c3d5f94384784ca5c4357c5507f3c8aae795a7924a25676b983f4b30fea7b",
+          "svg": "previews/trap01/side.svg",
+          "svg_sha256": "53748234ab21189a2cbf9e45cc34d8f3291bb3cbafb7a0e7dc49882d4c317eda",
+          "png_sha256": "568f9f8fb5ebca84c8ca57e32596eb7d8c2d31220ee8b86f4d2267e161f4251c",
+          "generator": "Bonsai Create Drawing / OpenCASCADE + BISECT",
+          "width": 1600,
+          "height": 1200
+        },
+        "iso": {
+          "kind": "camera_render_3d",
+          "purpose": "asset_thumbnail",
+          "png_sha256": "538e3bcebc475def9b1ee78ee78eac81dd32d873ae036b42335b19d2f4b41413",
+          "width": 384,
+          "height": 384,
+          "max_dimension": 384,
+          "source_sha256": "8af283a97b4908840a6d649023c0a68157f551445a4216613ec6611aa3c1b8a4"
+        }
+      }
+    },
+    {
+      "id": "marilyn-02",
+      "name": "Baxter Marilyn pouf / project Marilyn 02",
+      "global_id": "1THxa7p7n97w$wtLn4THjz",
+      "source_label": "基于 Baxter 精确型号原生 DWG 的官方图纸表达",
+      "display_front_normal_project": [
+        0,
+        -1,
+        0
+      ],
+      "display_front_basis": "project_axes_unreviewed",
+      "single_product_approval_status": "pending",
+      "scene_approval_status": "pending",
+      "approval_label": "尚未验收",
+      "package_validation": "pass",
+      "ifc_sha256": "3d693afed35f6ad2bf52f80b923c3fbb84d58165a8ea28d3530fdf491c5f7103",
+      "ifc_bytes": 2630228,
+      "insertion_content": "review_body_views",
+      "representation_contract": "one_3d_body_three_directional_body_views",
+      "review_category": "pending",
+      "category_label": "未验收",
+      "formal_ifc_write_authorized": false,
+      "ifc_path": "ifc/marilyn-02.ifc",
+      "previews": {
+        "plan": "previews/marilyn-02/plan.png",
+        "front": "previews/marilyn-02/front.png",
+        "side": "previews/marilyn-02/side.png",
+        "iso": "previews/marilyn-02/iso.png"
+      },
+      "approval_record": {
+        "path": "approvals/marilyn-02.json",
+        "sha256": "96d71fa82b9019db7f81ca862bd3c4c1023e5b9483934a8c30792ca37dba097f"
+      },
+      "preview_evidence": {
+        "plan": {
+          "kind": "bonsai_body_linework",
+          "role": "Plan",
+          "source_ifc_sha256": "3d693afed35f6ad2bf52f80b923c3fbb84d58165a8ea28d3530fdf491c5f7103",
+          "svg": "previews/marilyn-02/plan.svg",
+          "svg_sha256": "81f42473b0b7609f0d78c8f28e450f00962b0dea88e10588305517a7f72191e3",
+          "png_sha256": "5e44c65ba2a8f9a49b3c5dd9b900c306de48643a219a8c33085a4ed038a37bee",
+          "generator": "Bonsai Create Drawing / OpenCASCADE + BISECT",
+          "width": 1600,
+          "height": 1200
+        },
+        "front": {
+          "kind": "bonsai_body_linework",
+          "role": "Front",
+          "source_ifc_sha256": "3d693afed35f6ad2bf52f80b923c3fbb84d58165a8ea28d3530fdf491c5f7103",
+          "svg": "previews/marilyn-02/front.svg",
+          "svg_sha256": "4c6dc922bccb10341ccfafa747a068c02e2bbbc55e10dc88f8ed2ccf1f9de202",
+          "png_sha256": "f2cd4e44d5bd1f82df332e5d6d9031251ade396d7e01ccf1d70150339e32ac7c",
+          "generator": "Bonsai Create Drawing / OpenCASCADE + BISECT",
+          "width": 1600,
+          "height": 1200
+        },
+        "side": {
+          "kind": "bonsai_body_linework",
+          "role": "Side",
+          "source_ifc_sha256": "3d693afed35f6ad2bf52f80b923c3fbb84d58165a8ea28d3530fdf491c5f7103",
+          "svg": "previews/marilyn-02/side.svg",
+          "svg_sha256": "fb927839fa63b01ab5c3f61c90ce6e356c7c721c0983fb032e1d5e8e2426ddba",
+          "png_sha256": "67f023132d54d077b911eb6268a76932494c95846c3d7eab67061fd050011623",
+          "generator": "Bonsai Create Drawing / OpenCASCADE + BISECT",
+          "width": 1600,
+          "height": 1200
+        },
+        "iso": {
+          "kind": "camera_render_3d",
+          "purpose": "asset_thumbnail",
+          "png_sha256": "5912e1e5001b7454141ce2a3f01afa5893a748cd09b4afda49efd90f4f41fea9",
+          "width": 384,
+          "height": 274,
+          "max_dimension": 384,
+          "source_sha256": "dd9c9c5b7f0a62c05398407e69ad07b01fea0e70e2bec2a630a8039531bfb76d"
+        }
+      }
+    },
+    {
+      "id": "cha01",
+      "name": "Baxter Colette armchair 57 x 60 x 73 cm / project CHA01",
+      "global_id": "1luHljRzDAhPNXxTDNu7qB",
+      "source_label": "基于原始高模几何生成的简化图纸表达",
+      "display_front_normal_project": [
+        0,
+        -1,
+        0
+      ],
+      "display_front_basis": "project_axes_unreviewed",
+      "single_product_approval_status": "pending",
+      "scene_approval_status": "pending",
+      "approval_label": "尚未验收",
+      "package_validation": "pass",
+      "ifc_sha256": "09a4e37cab7e98aeb257bef10d59c47a2210ef392741a882611124763f25ab0d",
+      "ifc_bytes": 8484683,
+      "insertion_content": "review_body_views",
+      "representation_contract": "one_3d_body_three_directional_body_views",
+      "review_category": "pending",
+      "category_label": "未验收",
+      "formal_ifc_write_authorized": false,
+      "ifc_path": "ifc/cha01.ifc",
+      "previews": {
+        "plan": "previews/cha01/plan.png",
+        "front": "previews/cha01/front.png",
+        "side": "previews/cha01/side.png",
+        "iso": "previews/cha01/iso.png"
+      },
+      "approval_record": {
+        "path": "approvals/cha01.json",
+        "sha256": "043a1f4c2856d5124fad10d33ca6c19e8939d9f4017a7f25a165e56df7b32c72"
+      },
+      "preview_evidence": {
+        "plan": {
+          "kind": "bonsai_body_linework",
+          "role": "Plan",
+          "source_ifc_sha256": "09a4e37cab7e98aeb257bef10d59c47a2210ef392741a882611124763f25ab0d",
+          "svg": "previews/cha01/plan.svg",
+          "svg_sha256": "dba3e08d9ce64dbb3cc46929b373bed8c9de119339a1546d389bf93d0e59cbc8",
+          "png_sha256": "0bd6ccbe6a71cb797279137edc4940440ea04ab3cbcbc97004d7cd9c97dd67e7",
+          "generator": "Bonsai Create Drawing / OpenCASCADE + BISECT",
+          "width": 1600,
+          "height": 1200
+        },
+        "front": {
+          "kind": "bonsai_body_linework",
+          "role": "Front",
+          "source_ifc_sha256": "09a4e37cab7e98aeb257bef10d59c47a2210ef392741a882611124763f25ab0d",
+          "svg": "previews/cha01/front.svg",
+          "svg_sha256": "039ac044702663ebf77ca5165a2821a6ad83657335225fb1382621a61aa27733",
+          "png_sha256": "fb83d611134d1e60fcffa96f79f16d368061b29f31096fbe8d69fa2f3ac70029",
+          "generator": "Bonsai Create Drawing / OpenCASCADE + BISECT",
+          "width": 1600,
+          "height": 1200
+        },
+        "side": {
+          "kind": "bonsai_body_linework",
+          "role": "Side",
+          "source_ifc_sha256": "09a4e37cab7e98aeb257bef10d59c47a2210ef392741a882611124763f25ab0d",
+          "svg": "previews/cha01/side.svg",
+          "svg_sha256": "647fa85d12cc51ebd93bb3e8197ca330e4144baa8a41e535007de4855cbf7471",
+          "png_sha256": "61b383a4771ccd0bcedfb774f6f21088653e15fdaef90e8692fbc293bbbe7069",
+          "generator": "Bonsai Create Drawing / OpenCASCADE + BISECT",
+          "width": 1600,
+          "height": 1200
+        },
+        "iso": {
+          "kind": "camera_render_3d",
+          "purpose": "asset_thumbnail",
+          "png_sha256": "2ba71d8b879124bea9b52f8d3b381f2f4d4245c27fe003244e9157ede2952ad6",
+          "width": 384,
+          "height": 274,
+          "max_dimension": 384,
+          "source_sha256": "fb07a42bd00b99aaeeb4ca8a6b0d356fa3e01e3297f30ef3a626571913468e25"
+        }
+      }
+    },
+    {
+      "id": "miamisoft-h01",
+      "name": "Baxter Miami Soft H01 cushion",
+      "global_id": "0B8rO47U14sgJ_ydZxqvs6",
+      "source_label": "基于原始高模几何生成的简化图纸表达",
+      "display_front_normal_project": [
+        0,
+        -1,
+        0
+      ],
+      "display_front_basis": "project_axes_unreviewed",
+      "single_product_approval_status": "pending",
+      "scene_approval_status": "pending",
+      "approval_label": "尚未验收",
+      "package_validation": "pass",
+      "ifc_sha256": "d8f34a9ed0ee4efd7a19f8e36313094e7489ad5c3b4b1b0a2c1e5e6a59fe6b10",
+      "ifc_bytes": 4372633,
+      "insertion_content": "review_body_views",
+      "representation_contract": "one_3d_body_three_directional_body_views",
+      "review_category": "pending",
+      "category_label": "未验收",
+      "formal_ifc_write_authorized": false,
+      "ifc_path": "ifc/miamisoft-h01.ifc",
+      "previews": {
+        "plan": "previews/miamisoft-h01/plan.png",
+        "front": "previews/miamisoft-h01/front.png",
+        "side": "previews/miamisoft-h01/side.png",
+        "iso": "previews/miamisoft-h01/iso.png"
+      },
+      "approval_record": {
+        "path": "approvals/miamisoft-h01.json",
+        "sha256": "89acea045021e6c755ea3ea49ccf196ebfe345ceea3b9930ff7bbb14b318ce5d"
+      },
+      "preview_evidence": {
+        "plan": {
+          "kind": "bonsai_body_linework",
+          "role": "Plan",
+          "source_ifc_sha256": "d8f34a9ed0ee4efd7a19f8e36313094e7489ad5c3b4b1b0a2c1e5e6a59fe6b10",
+          "svg": "previews/miamisoft-h01/plan.svg",
+          "svg_sha256": "f6c1ee4a3c38c48ab6a4de58e52e60983924ea967b93d65e71b915e028ac93b7",
+          "png_sha256": "2b18e90a4f21016c0aa37df102b051056b64625407ccf6649f9c98272cc07241",
+          "generator": "Bonsai Create Drawing / OpenCASCADE + BISECT",
+          "width": 1600,
+          "height": 1200
+        },
+        "front": {
+          "kind": "bonsai_body_linework",
+          "role": "Front",
+          "source_ifc_sha256": "d8f34a9ed0ee4efd7a19f8e36313094e7489ad5c3b4b1b0a2c1e5e6a59fe6b10",
+          "svg": "previews/miamisoft-h01/front.svg",
+          "svg_sha256": "d8580efbd76323fa7c52584ebd9fae4350a5c9111b04664bc7f270c75c094c39",
+          "png_sha256": "d45ca9701c14cf1212ec4de79de1e752eef1ea4cd387ebe7127a36c89137edb1",
+          "generator": "Bonsai Create Drawing / OpenCASCADE + BISECT",
+          "width": 1600,
+          "height": 1200
+        },
+        "side": {
+          "kind": "bonsai_body_linework",
+          "role": "Side",
+          "source_ifc_sha256": "d8f34a9ed0ee4efd7a19f8e36313094e7489ad5c3b4b1b0a2c1e5e6a59fe6b10",
+          "svg": "previews/miamisoft-h01/side.svg",
+          "svg_sha256": "851243266714031b9456c92b2b4489712b7c1d2ca3aa9b2455ff5f41406d3612",
+          "png_sha256": "49c8b00f6483c3a8ae8f4eda8e1ce53e8f729dfaf8b1ef281528a5b957c0c082",
+          "generator": "Bonsai Create Drawing / OpenCASCADE + BISECT",
+          "width": 1600,
+          "height": 1200
+        },
+        "iso": {
+          "kind": "camera_render_3d",
+          "purpose": "asset_thumbnail",
+          "png_sha256": "3959c26c7ece9add0e33f0cccaeff056a5c62f9555b445d3085b8eea9198ce71",
+          "width": 384,
+          "height": 274,
+          "max_dimension": 384,
+          "source_sha256": "49244f2fb1bd69e14cc121b9f03967a8c871e9ca47825b7cc83b56bcbb6f5512"
+        }
+      }
+    },
+    {
+      "id": "falper-sorgente",
+      "name": "Falper Sorgente / WFB",
+      "global_id": "350tdaubr8QP3Cu2YMQZIN",
+      "source_label": "官方 WFB 家族 CAD · 非项目施工图",
+      "display_front_normal_project": [
+        0,
+        -0.9999999999999972,
+        7.549790126404312e-8
+      ],
+      "display_front_basis": "candidate_scene_camera_pending_review",
+      "single_product_approval_status": "approved",
+      "scene_approval_status": "pending",
+      "approval_label": "单品已通过、场景待验收",
+      "package_validation": "pass",
+      "ifc_sha256": "c59511a22e07e11a0961d951e5fbc324c07c0ec884f779e8111079da730341ae",
+      "ifc_bytes": 821078,
+      "insertion_content": "review_body_views",
+      "representation_contract": "one_3d_body_three_directional_body_views",
+      "review_category": "partial",
+      "category_label": "部分验收",
+      "formal_ifc_write_authorized": false,
+      "ifc_path": "ifc/falper-sorgente.ifc",
+      "previews": {
+        "plan": "previews/falper-sorgente/plan.png",
+        "front": "previews/falper-sorgente/front.png",
+        "side": "previews/falper-sorgente/side.png",
+        "iso": "previews/falper-sorgente/iso.png"
+      },
+      "approval_record": {
+        "path": "approvals/falper-sorgente.json",
+        "sha256": "04f3c33cf2420fb38d0fde8e218633e407ce945d8af0fbc409e103a4d3a4bbce"
+      },
+      "preview_evidence": {
+        "plan": {
+          "kind": "bonsai_body_linework",
+          "role": "Plan",
+          "source_ifc_sha256": "c59511a22e07e11a0961d951e5fbc324c07c0ec884f779e8111079da730341ae",
+          "svg": "previews/falper-sorgente/plan.svg",
+          "svg_sha256": "319efde3dc5ac1cc947258754b6ddca2304b049a2231d03dd020744d163e9350",
+          "png_sha256": "9d2a5adc131665aca07af0afe33fe9290330883d0600be01d0c307ee95a21a6a",
+          "generator": "Bonsai Create Drawing / OpenCASCADE + BISECT",
+          "width": 1600,
+          "height": 1200
+        },
+        "front": {
+          "kind": "bonsai_body_linework",
+          "role": "Front",
+          "source_ifc_sha256": "c59511a22e07e11a0961d951e5fbc324c07c0ec884f779e8111079da730341ae",
+          "svg": "previews/falper-sorgente/front.svg",
+          "svg_sha256": "08c605952e01607f385fc63f40a20cbc42f890b3203f7d822bcdfdd3221b35fd",
+          "png_sha256": "a737e0a335f9a0843dccaa3ae0320de9e346c660111c242ad7257b53ae948d3b",
+          "generator": "Bonsai Create Drawing / OpenCASCADE + BISECT",
+          "width": 1600,
+          "height": 1200
+        },
+        "side": {
+          "kind": "bonsai_body_linework",
+          "role": "Side",
+          "source_ifc_sha256": "c59511a22e07e11a0961d951e5fbc324c07c0ec884f779e8111079da730341ae",
+          "svg": "previews/falper-sorgente/side.svg",
+          "svg_sha256": "bb0aae19bd1bab454d81ae6f5faf89f3c6948b73c892320af39a058fb1d9e414",
+          "png_sha256": "89c782cfe58ba16680720d3ced6d0b91042f7e6e7e492e34276a7ac43e0f6202",
+          "generator": "Bonsai Create Drawing / OpenCASCADE + BISECT",
+          "width": 1600,
+          "height": 1200
+        },
+        "iso": {
+          "kind": "camera_render_3d",
+          "purpose": "asset_thumbnail",
+          "png_sha256": "763dec291bf34a01aeefbd77560b7a0ca9d9da9579370df75e4ab9116c19058d",
+          "width": 384,
+          "height": 384,
+          "max_dimension": 384,
+          "source_sha256": "46fee6a8c6cb4c39717abc98224c481cfbae0e013ab5d0d9b461cf2c25a83a39"
+        }
+      }
+    },
+    {
+      "id": "geberit-154-154-00",
+      "name": "Geberit CleanLine installation set 154.154.00.1 / project type 154.154.00",
+      "global_id": "14EazrLgP8whYZWY_yCuKy",
+      "source_label": "基于原始高模几何生成的简化图纸表达",
+      "display_front_normal_project": [
+        0,
+        -1,
+        0
+      ],
+      "display_front_basis": "project_axes_unreviewed",
+      "single_product_approval_status": "pending",
+      "scene_approval_status": "pending",
+      "approval_label": "尚未验收",
+      "package_validation": "pass",
+      "ifc_sha256": "5202a5607f6b134bcaacf547262f6b47ae70dc581f193cb8761109f7462b4cd2",
+      "ifc_bytes": 495101,
+      "insertion_content": "review_body_views",
+      "representation_contract": "one_3d_body_three_directional_body_views",
+      "review_category": "pending",
+      "category_label": "未验收",
+      "formal_ifc_write_authorized": false,
+      "ifc_path": "ifc/geberit-154-154-00.ifc",
+      "previews": {
+        "plan": "previews/geberit-154-154-00/plan.png",
+        "front": "previews/geberit-154-154-00/front.png",
+        "side": "previews/geberit-154-154-00/side.png",
+        "iso": "previews/geberit-154-154-00/iso.png"
+      },
+      "approval_record": {
+        "path": "approvals/geberit-154-154-00.json",
+        "sha256": "3b93892fd1f09aec197271963a0f53131446900602bcf76d10ea638fc9c5384e"
+      },
+      "preview_evidence": {
+        "plan": {
+          "kind": "bonsai_body_linework",
+          "role": "Plan",
+          "source_ifc_sha256": "5202a5607f6b134bcaacf547262f6b47ae70dc581f193cb8761109f7462b4cd2",
+          "svg": "previews/geberit-154-154-00/plan.svg",
+          "svg_sha256": "dac5f77788e2c5c3335526df1267ae9ab88456b6ec17b50abf7ca8d87521ec0d",
+          "png_sha256": "109ec3c61dffbc154bd3b23e89c019bb4849415725afa2b8a5aa698790dec6ee",
+          "generator": "Bonsai Create Drawing / OpenCASCADE + BISECT",
+          "width": 1600,
+          "height": 1200
+        },
+        "front": {
+          "kind": "bonsai_body_linework",
+          "role": "Front",
+          "source_ifc_sha256": "5202a5607f6b134bcaacf547262f6b47ae70dc581f193cb8761109f7462b4cd2",
+          "svg": "previews/geberit-154-154-00/front.svg",
+          "svg_sha256": "176325d1c1c3797feb13a7d420ed53bcf245f770a51fe47d91cb8cb90a40a124",
+          "png_sha256": "a5bc739760d71e61facdb8004277f9638757b5d82d6265bdd5f24a3c6b710671",
+          "generator": "Bonsai Create Drawing / OpenCASCADE + BISECT",
+          "width": 1600,
+          "height": 1200
+        },
+        "side": {
+          "kind": "bonsai_body_linework",
+          "role": "Side",
+          "source_ifc_sha256": "5202a5607f6b134bcaacf547262f6b47ae70dc581f193cb8761109f7462b4cd2",
+          "svg": "previews/geberit-154-154-00/side.svg",
+          "svg_sha256": "e1d69e1720670b43857173a20be9cfdc2d82e736b0034ed713993c11f961da8f",
+          "png_sha256": "0f0bb52bef6509eb09e7e529a01972bfe8d71c013cec2b6eef58f77ca1e0b1f4",
+          "generator": "Bonsai Create Drawing / OpenCASCADE + BISECT",
+          "width": 1600,
+          "height": 1200
+        },
+        "iso": {
+          "kind": "camera_render_3d",
+          "purpose": "asset_thumbnail",
+          "png_sha256": "123266c032436f23603b34502d9f14facde1a7f1351a5eafd97b8aa00fef49be",
+          "width": 384,
+          "height": 274,
+          "max_dimension": 384,
+          "source_sha256": "a52b18623af6a534a252268e0bd3d124c9a01f915726341b1ff45a77539dd30b"
+        }
+      }
+    },
+    {
+      "id": "bst03",
+      "name": "Baxter Stone freestanding bedside table with L drawer / project BST03",
+      "global_id": "1HZoxe$df4cBb4UXXH5J2S",
+      "source_label": "基于原始高模几何生成的简化图纸表达",
+      "display_front_normal_project": [
+        0,
+        -1,
+        0
+      ],
+      "display_front_basis": "project_axes_unreviewed",
+      "single_product_approval_status": "pending",
+      "scene_approval_status": "pending",
+      "approval_label": "尚未验收",
+      "package_validation": "pass",
+      "ifc_sha256": "cbe1451a38eda9938f1766b9b95414f7896e9eb9f34ffe566253a4efdcacd6a7",
+      "ifc_bytes": 7867964,
+      "insertion_content": "review_body_views",
+      "representation_contract": "one_3d_body_three_directional_body_views",
+      "review_category": "pending",
+      "category_label": "未验收",
+      "formal_ifc_write_authorized": false,
+      "ifc_path": "ifc/bst03.ifc",
+      "previews": {
+        "plan": "previews/bst03/plan.png",
+        "front": "previews/bst03/front.png",
+        "side": "previews/bst03/side.png",
+        "iso": "previews/bst03/iso.png"
+      },
+      "approval_record": {
+        "path": "approvals/bst03.json",
+        "sha256": "e3de8d392e7f9fed82d874897c8b5c19ff208bb52317a2cbc05a87613bfbec19"
+      },
+      "preview_evidence": {
+        "plan": {
+          "kind": "bonsai_body_linework",
+          "role": "Plan",
+          "source_ifc_sha256": "cbe1451a38eda9938f1766b9b95414f7896e9eb9f34ffe566253a4efdcacd6a7",
+          "svg": "previews/bst03/plan.svg",
+          "svg_sha256": "ccd276ffcc8db2c9e347de9fcf8a69b91ddf92a874142ae3dd06ae57420f9942",
+          "png_sha256": "35da9e9c21472eb31170ba625d12265e9a9228c57a06092312a76a1bf5b66abf",
+          "generator": "Bonsai Create Drawing / OpenCASCADE + BISECT",
+          "width": 1600,
+          "height": 1200
+        },
+        "front": {
+          "kind": "bonsai_body_linework",
+          "role": "Front",
+          "source_ifc_sha256": "cbe1451a38eda9938f1766b9b95414f7896e9eb9f34ffe566253a4efdcacd6a7",
+          "svg": "previews/bst03/front.svg",
+          "svg_sha256": "d600e06ca94f3e4e20dd8ab0bed9cb44c03e308f65858050649efa3571fbc9bf",
+          "png_sha256": "ae8051f14a292468fa7f0a17d3dfc886a2c0be5be45fe2d7f6017f658cd86ee9",
+          "generator": "Bonsai Create Drawing / OpenCASCADE + BISECT",
+          "width": 1600,
+          "height": 1200
+        },
+        "side": {
+          "kind": "bonsai_body_linework",
+          "role": "Side",
+          "source_ifc_sha256": "cbe1451a38eda9938f1766b9b95414f7896e9eb9f34ffe566253a4efdcacd6a7",
+          "svg": "previews/bst03/side.svg",
+          "svg_sha256": "09ee7f8cf17b50a16c9246933fbee82da11a7fd9a4394e7a7c2068f68282493b",
+          "png_sha256": "dd2ad3f7c0942e858f89ec02a82eced5155caaebc73d7d826891feb3b25d9046",
+          "generator": "Bonsai Create Drawing / OpenCASCADE + BISECT",
+          "width": 1600,
+          "height": 1200
+        },
+        "iso": {
+          "kind": "camera_render_3d",
+          "purpose": "asset_thumbnail",
+          "png_sha256": "6460528fecc74b69854dd927e31a9a4bead8af8daafda3f6b8d65b2787f9b0c5",
+          "width": 384,
+          "height": 274,
+          "max_dimension": 384,
+          "source_sha256": "471f8042936aafa4481aadf33fac56187681615c7c23d0b51e890061b4f1e6d1"
+        }
+      }
+    },
+    {
+      "id": "fau02",
+      "name": "Falper floor-mounted basin spout / project FAU02",
+      "global_id": "36ZX3QPyD7SvlXsDKMP8rY",
+      "source_label": "基于原始高模几何生成的简化图纸表达",
+      "display_front_normal_project": [
+        0,
+        -1,
+        0
+      ],
+      "display_front_basis": "project_axes_unreviewed",
+      "single_product_approval_status": "pending",
+      "scene_approval_status": "pending",
+      "approval_label": "尚未验收",
+      "package_validation": "pass",
+      "ifc_sha256": "3457a23398482e84f816053fb4bc00033e644d3e0cec38c3f5fbe0cee7bde883",
+      "ifc_bytes": 624919,
+      "insertion_content": "review_body_views",
+      "representation_contract": "one_3d_body_three_directional_body_views",
+      "review_category": "pending",
+      "category_label": "未验收",
+      "formal_ifc_write_authorized": false,
+      "ifc_path": "ifc/fau02.ifc",
+      "previews": {
+        "plan": "previews/fau02/plan.png",
+        "front": "previews/fau02/front.png",
+        "side": "previews/fau02/side.png",
+        "iso": "previews/fau02/iso.png"
+      },
+      "approval_record": {
+        "path": "approvals/fau02.json",
+        "sha256": "b3b8a1b3729e9021b489a0e6e88e28e06c351e446229c144b1b58e720cac24db"
+      },
+      "preview_evidence": {
+        "plan": {
+          "kind": "bonsai_body_linework",
+          "role": "Plan",
+          "source_ifc_sha256": "3457a23398482e84f816053fb4bc00033e644d3e0cec38c3f5fbe0cee7bde883",
+          "svg": "previews/fau02/plan.svg",
+          "svg_sha256": "90a80d44b7e192563cd147972fac1744979fed57e844aef1a5730ddb436972b5",
+          "png_sha256": "cb46623c3342377b5e2f1551665bd1291e9cf4133038f076de296faed002c226",
+          "generator": "Bonsai Create Drawing / OpenCASCADE + BISECT",
+          "width": 1600,
+          "height": 1200
+        },
+        "front": {
+          "kind": "bonsai_body_linework",
+          "role": "Front",
+          "source_ifc_sha256": "3457a23398482e84f816053fb4bc00033e644d3e0cec38c3f5fbe0cee7bde883",
+          "svg": "previews/fau02/front.svg",
+          "svg_sha256": "df2d905fdfec1e57d5571207c0c08191afd298994d865610005e087638937999",
+          "png_sha256": "e2e73e90fcc38fe823342141bfdd8313fe69e7a0958a21b2888cb03f02fec016",
+          "generator": "Bonsai Create Drawing / OpenCASCADE + BISECT",
+          "width": 1600,
+          "height": 1200
+        },
+        "side": {
+          "kind": "bonsai_body_linework",
+          "role": "Side",
+          "source_ifc_sha256": "3457a23398482e84f816053fb4bc00033e644d3e0cec38c3f5fbe0cee7bde883",
+          "svg": "previews/fau02/side.svg",
+          "svg_sha256": "925ed339e02eb139fa2ff64f7ae720635c2bd08574637736599bc2d2f0f713da",
+          "png_sha256": "89e3f428db6223b22b9268d0296714f5de7e9ee508292fb0e391831985423702",
+          "generator": "Bonsai Create Drawing / OpenCASCADE + BISECT",
+          "width": 1600,
+          "height": 1200
+        },
+        "iso": {
+          "kind": "camera_render_3d",
+          "purpose": "asset_thumbnail",
+          "png_sha256": "fbb62f74ca452fb6f1dd917707e2ecee04c7df613ffef6739c3318b73e362200",
+          "width": 384,
+          "height": 274,
+          "max_dimension": 384,
+          "source_sha256": "77062cbfc39d3b40fbfe906b29faeb1bac6f517adface08d84a433ec126fc6de"
+        }
+      }
+    },
+    {
+      "id": "gessi316-54146",
+      "name": "Gessi316 Meccanica ceiling-mounted adjustable headshower / 54146 G000",
+      "global_id": "04DLh1Jk9Dcu9ibcaE0id8",
+      "source_label": "基于官方 Gessi 54146 G000 原生 DWG 轮廓的简化蓝线审核表达",
+      "display_front_normal_project": [
+        0,
+        -1,
+        0
+      ],
+      "display_front_basis": "project_axes_unreviewed",
+      "single_product_approval_status": "approved",
+      "scene_approval_status": "pending",
+      "approval_label": "单品已通过、场景待验收",
+      "package_validation": "pass",
+      "ifc_sha256": "f9d7faa6ccd186dc4be1b4d317ce98675e2d860ec8e3f6e0fab29ee2b57d20ad",
+      "ifc_bytes": 7975489,
+      "insertion_content": "review_body_views",
+      "representation_contract": "one_3d_body_three_directional_body_views",
+      "review_category": "partial",
+      "category_label": "部分验收",
+      "formal_ifc_write_authorized": false,
+      "ifc_path": "ifc/gessi316-54146.ifc",
+      "previews": {
+        "plan": "previews/gessi316-54146/plan.png",
+        "front": "previews/gessi316-54146/front.png",
+        "side": "previews/gessi316-54146/side.png",
+        "iso": "previews/gessi316-54146/iso.png"
+      },
+      "approval_record": {
+        "path": "approvals/gessi316-54146.json",
+        "sha256": "088f9d81f4e6d297e9227dcc5fb953b0ee93b8acab0c4d0c7c3f23329d6ec1f4"
+      },
+      "preview_evidence": {
+        "plan": {
+          "kind": "bonsai_body_linework",
+          "role": "Plan",
+          "source_ifc_sha256": "f9d7faa6ccd186dc4be1b4d317ce98675e2d860ec8e3f6e0fab29ee2b57d20ad",
+          "svg": "previews/gessi316-54146/plan.svg",
+          "svg_sha256": "72fded25c548db39de05f142716d8c4f0cebae7b6b90939b9e0ed133b2bbec58",
+          "png_sha256": "4528b6038a998644b05b18999af6b6b5e93c074a032ca8bc31b972a9b01e9088",
+          "generator": "Bonsai Create Drawing / OpenCASCADE + BISECT",
+          "width": 1600,
+          "height": 1200
+        },
+        "front": {
+          "kind": "bonsai_body_linework",
+          "role": "Front",
+          "source_ifc_sha256": "f9d7faa6ccd186dc4be1b4d317ce98675e2d860ec8e3f6e0fab29ee2b57d20ad",
+          "svg": "previews/gessi316-54146/front.svg",
+          "svg_sha256": "e15776bb75392787bf20c33642f2f3610d704f97fd7460d0712b7e946da0c32f",
+          "png_sha256": "4cdcc622fe5f8693f58d73ae746952abc07041f88a3543181ce9f862ed9e2406",
+          "generator": "Bonsai Create Drawing / OpenCASCADE + BISECT",
+          "width": 1600,
+          "height": 1200
+        },
+        "side": {
+          "kind": "bonsai_body_linework",
+          "role": "Side",
+          "source_ifc_sha256": "f9d7faa6ccd186dc4be1b4d317ce98675e2d860ec8e3f6e0fab29ee2b57d20ad",
+          "svg": "previews/gessi316-54146/side.svg",
+          "svg_sha256": "c8edfade3e555f72e831dc98ff42aba93162957cf39ea6f2151bb63afe7df136",
+          "png_sha256": "a15bb76c8b6af06eebc84ab8fb66ae90c25abcb1bc43b37b7a6c23688921e858",
+          "generator": "Bonsai Create Drawing / OpenCASCADE + BISECT",
+          "width": 1600,
+          "height": 1200
+        },
+        "iso": {
+          "kind": "camera_render_3d",
+          "purpose": "asset_thumbnail",
+          "png_sha256": "5dec16b5a4cc59f5ee0cb52acbad5f7f675da1dbde56c48f4683ee0fe482f2c8",
+          "width": 384,
+          "height": 274,
+          "max_dimension": 384,
+          "source_sha256": "bda05185c0043bcc315819a69220e905de370f94b0d6cc3b85e6e839141e96c9"
+        }
+      }
+    },
+    {
+      "id": "wd03",
+      "name": "Poliform Senzafine / WD03",
+      "global_id": "3cmikd9MTB$egM5KQaNgUf",
+      "source_label": "基于原始高模几何生成的简化图纸表达",
+      "display_front_normal_project": [
+        1.5099580252808397e-7,
+        0.9999999999999858,
+        7.549790126404218e-8
+      ],
+      "display_front_basis": "approved_scene_camera",
+      "single_product_approval_status": "approved",
+      "scene_approval_status": "approved",
+      "approval_label": "单品及场景已验收",
+      "package_validation": "pass",
+      "ifc_sha256": "65c8327df7e2f985b95c44131cb1d690974f02c3cacb9f9392ff4167db66f95e",
+      "ifc_bytes": 406393,
+      "insertion_content": "review_body_views",
+      "representation_contract": "one_3d_body_three_directional_body_views",
+      "review_category": "approved",
+      "category_label": "已验收",
+      "formal_ifc_write_authorized": false,
+      "ifc_path": "ifc/wd03.ifc",
+      "previews": {
+        "plan": "previews/wd03/plan.png",
+        "front": "previews/wd03/front.png",
+        "side": "previews/wd03/side.png",
+        "iso": "previews/wd03/iso.png"
+      },
+      "approval_record": {
+        "path": "approvals/wd03.json",
+        "sha256": "1f86e4777ceae9cf1eff280c7e34c8dec77d033d9b946a913e8f3aaa78edf105"
+      },
+      "preview_evidence": {
+        "plan": {
+          "kind": "bonsai_body_linework",
+          "role": "Plan",
+          "source_ifc_sha256": "65c8327df7e2f985b95c44131cb1d690974f02c3cacb9f9392ff4167db66f95e",
+          "svg": "previews/wd03/plan.svg",
+          "svg_sha256": "e939aece93b32b86ea5b0b0ffa715c7832cb2400d7994f185b010c79d497c4f4",
+          "png_sha256": "49e59ae6379a188ce3af843586d8723adbf7bfa718d6521a6b4facd5d2c5b97a",
+          "generator": "Bonsai Create Drawing / OpenCASCADE + BISECT",
+          "width": 1600,
+          "height": 1200
+        },
+        "front": {
+          "kind": "bonsai_body_linework",
+          "role": "Front",
+          "source_ifc_sha256": "65c8327df7e2f985b95c44131cb1d690974f02c3cacb9f9392ff4167db66f95e",
+          "svg": "previews/wd03/front.svg",
+          "svg_sha256": "549d69811845912a23687dc8421012c19df3a4e1fc9e175a557ba47d1cf10312",
+          "png_sha256": "552d7510ffa42aadc158f833882da0f26d3be8e574b031b9b715b8fa75f1bac8",
+          "generator": "Bonsai Create Drawing / OpenCASCADE + BISECT",
+          "width": 1600,
+          "height": 1200
+        },
+        "side": {
+          "kind": "bonsai_body_linework",
+          "role": "Side",
+          "source_ifc_sha256": "65c8327df7e2f985b95c44131cb1d690974f02c3cacb9f9392ff4167db66f95e",
+          "svg": "previews/wd03/side.svg",
+          "svg_sha256": "69d5676adefefcf68650db54e6c891e103d81709887bf200e02fe744a0d88067",
+          "png_sha256": "ab4b60401adbb9a51faa90541bcd040ebc5387cdaef4e8069811264fb2d3922b",
+          "generator": "Bonsai Create Drawing / OpenCASCADE + BISECT",
+          "width": 1600,
+          "height": 1200
+        },
+        "iso": {
+          "kind": "camera_render_3d",
+          "purpose": "asset_thumbnail",
+          "png_sha256": "36e70bf46794a598810e8b24488fdea04691e56c9bba2fc4cfcd43682c9a5067",
+          "width": 384,
+          "height": 384,
+          "max_dimension": 384,
+          "source_sha256": "cf5d7e4fff2e603c20741634867b727f6534644e2e45764710e82eb1e83cdff6"
+        }
+      }
+    },
+    {
+      "id": "miamisoft-i03",
+      "name": "Baxter Miami Soft I03 roll cushion",
+      "global_id": "1hdNtfQRPCGfHLfqzdp6w0",
+      "source_label": "基于原始高模几何生成的简化图纸表达",
+      "display_front_normal_project": [
+        0,
+        -1,
+        0
+      ],
+      "display_front_basis": "project_axes_unreviewed",
+      "single_product_approval_status": "pending",
+      "scene_approval_status": "pending",
+      "approval_label": "尚未验收",
+      "package_validation": "pass",
+      "ifc_sha256": "3490c70ef3451c08eb89814260ef28179598a53b4b7ff348ac129b70d0ce05a5",
+      "ifc_bytes": 4368176,
+      "insertion_content": "review_body_views",
+      "representation_contract": "one_3d_body_three_directional_body_views",
+      "review_category": "pending",
+      "category_label": "未验收",
+      "formal_ifc_write_authorized": false,
+      "ifc_path": "ifc/miamisoft-i03.ifc",
+      "previews": {
+        "plan": "previews/miamisoft-i03/plan.png",
+        "front": "previews/miamisoft-i03/front.png",
+        "side": "previews/miamisoft-i03/side.png",
+        "iso": "previews/miamisoft-i03/iso.png"
+      },
+      "approval_record": {
+        "path": "approvals/miamisoft-i03.json",
+        "sha256": "26aa3ea46623b59df2309c64400d604362bdd41ca58b2a4e6c606bcaebf245ef"
+      },
+      "preview_evidence": {
+        "plan": {
+          "kind": "bonsai_body_linework",
+          "role": "Plan",
+          "source_ifc_sha256": "3490c70ef3451c08eb89814260ef28179598a53b4b7ff348ac129b70d0ce05a5",
+          "svg": "previews/miamisoft-i03/plan.svg",
+          "svg_sha256": "afdb7bbfd8d02f839b9b50936645610c4525318de51870a3de027631d9a42390",
+          "png_sha256": "4068300f5404950dbbef6e8bf843a239e8e2a9d1979858adced44f85e7e88436",
+          "generator": "Bonsai Create Drawing / OpenCASCADE + BISECT",
+          "width": 1600,
+          "height": 1200
+        },
+        "front": {
+          "kind": "bonsai_body_linework",
+          "role": "Front",
+          "source_ifc_sha256": "3490c70ef3451c08eb89814260ef28179598a53b4b7ff348ac129b70d0ce05a5",
+          "svg": "previews/miamisoft-i03/front.svg",
+          "svg_sha256": "fd8752dfa8c527ee8ccf8f2fee3f93b02ce991587b44958b8aef2c6961d59273",
+          "png_sha256": "eb8003bf7629c17ebee09ec184b990c3ae9834ace0898317dc674a9283c53195",
+          "generator": "Bonsai Create Drawing / OpenCASCADE + BISECT",
+          "width": 1600,
+          "height": 1200
+        },
+        "side": {
+          "kind": "bonsai_body_linework",
+          "role": "Side",
+          "source_ifc_sha256": "3490c70ef3451c08eb89814260ef28179598a53b4b7ff348ac129b70d0ce05a5",
+          "svg": "previews/miamisoft-i03/side.svg",
+          "svg_sha256": "7a46dc9b492b12b57a0a0c20545a2d95897a9f808085b3b58c16e5c161b0277f",
+          "png_sha256": "e875a482e204122aefe162777cf42766f27b2a63d3e9342a90c8122df56b3ef1",
+          "generator": "Bonsai Create Drawing / OpenCASCADE + BISECT",
+          "width": 1600,
+          "height": 1200
+        },
+        "iso": {
+          "kind": "camera_render_3d",
+          "purpose": "asset_thumbnail",
+          "png_sha256": "d9949fc8edd655888b5ce7b919e245b47a5cc420c7a93ed11cead4bb5d01127d",
+          "width": 384,
+          "height": 274,
+          "max_dimension": 384,
+          "source_sha256": "29c071954dc52e21715d5b8d2049ea3cbf9fa059326eca0dfb6744b400b331e8"
+        }
+      }
+    },
+    {
+      "id": "geberit-146-140",
+      "name": "Geberit 146.140 / AquaClean Sela wall-hung WC",
+      "global_id": "1rhZG98PPCSxaLeMFLTYb9",
+      "source_label": "Geberit 官方归档原生 DWG 图纸表达",
+      "display_front_normal_project": [
+        0,
+        -1,
+        0
+      ],
+      "display_front_basis": "project_axes_unreviewed",
+      "single_product_approval_status": "approved",
+      "scene_approval_status": "pending",
+      "approval_label": "单品已通过、场景待验收",
+      "package_validation": "pass",
+      "ifc_sha256": "2c307ee743ddd9f5e170545092584115bc0f44beb16be9d475eb9ac043ec54a3",
+      "ifc_bytes": 844921,
+      "insertion_content": "review_body_views",
+      "representation_contract": "one_3d_body_three_directional_body_views",
+      "review_category": "partial",
+      "category_label": "部分验收",
+      "formal_ifc_write_authorized": false,
+      "ifc_path": "ifc/geberit-146-140.ifc",
+      "previews": {
+        "plan": "previews/geberit-146-140/plan.png",
+        "front": "previews/geberit-146-140/front.png",
+        "side": "previews/geberit-146-140/side.png",
+        "iso": "previews/geberit-146-140/iso.png"
+      },
+      "approval_record": {
+        "path": "approvals/geberit-146-140.json",
+        "sha256": "e28f18d89cb539d2aeac0ddb6893ed8a801ba8bdbda6ea5036aeb9bdc53e2182"
+      },
+      "preview_evidence": {
+        "plan": {
+          "kind": "bonsai_body_linework",
+          "role": "Plan",
+          "source_ifc_sha256": "2c307ee743ddd9f5e170545092584115bc0f44beb16be9d475eb9ac043ec54a3",
+          "svg": "previews/geberit-146-140/plan.svg",
+          "svg_sha256": "20c402599f62adaeabafff6768d2bdbd7063d77a0bade1b88fa284160df1c7d2",
+          "png_sha256": "5d018dc19a667f548927af148b9661b607b093a996b9dfc03f7e55d135aca7d3",
+          "generator": "Bonsai Create Drawing / OpenCASCADE + BISECT",
+          "width": 1600,
+          "height": 1200
+        },
+        "front": {
+          "kind": "bonsai_body_linework",
+          "role": "Front",
+          "source_ifc_sha256": "2c307ee743ddd9f5e170545092584115bc0f44beb16be9d475eb9ac043ec54a3",
+          "svg": "previews/geberit-146-140/front.svg",
+          "svg_sha256": "70a7c7fafefde4126a74a799c59f9ad5e2e14483e0db413a5392afd530aaba52",
+          "png_sha256": "2d5a2fcc67df5124fcd97cc265dd2a7e0307917fcc88c93af69750b9ad9f3e5e",
+          "generator": "Bonsai Create Drawing / OpenCASCADE + BISECT",
+          "width": 1600,
+          "height": 1200
+        },
+        "side": {
+          "kind": "bonsai_body_linework",
+          "role": "Side",
+          "source_ifc_sha256": "2c307ee743ddd9f5e170545092584115bc0f44beb16be9d475eb9ac043ec54a3",
+          "svg": "previews/geberit-146-140/side.svg",
+          "svg_sha256": "d6524648129c3b318f0ac5b3b878e0779a5b73feb41ce891350e6609b511a3a6",
+          "png_sha256": "0fcbdafd3b26ac68a6b5e295114220735f09b46485e6f94bb23b823dc60f26b5",
+          "generator": "Bonsai Create Drawing / OpenCASCADE + BISECT",
+          "width": 1600,
+          "height": 1200
+        },
+        "iso": {
+          "kind": "camera_render_3d",
+          "purpose": "asset_thumbnail",
+          "png_sha256": "8087a033753450aa66a1126941de5bde71e4a26952c7ffbabd7cabfbd91d72ae",
+          "width": 384,
+          "height": 384,
+          "max_dimension": 384,
+          "source_sha256": "b623c83665f6a7279c772e9e7c7dbc088861f49dd4600c097365480f68367189"
+        }
+      }
+    },
+    {
+      "id": "gessi316-54145",
+      "name": "Gessi316 Meccanica / 54145 G000",
+      "global_id": "3jT4sCgpHC98VSIUdGUNYH",
+      "source_label": "基于官方 54145 G000 DWG 的简化表达",
+      "display_front_normal_project": [
+        0,
+        1,
+        0
+      ],
+      "display_front_basis": "candidate_scene_camera_pending_review",
+      "single_product_approval_status": "approved",
+      "scene_approval_status": "pending",
+      "approval_label": "单品已通过、场景待验收",
+      "package_validation": "pass",
+      "ifc_sha256": "3bf6766c1c230c221a7eec45dce7fcc23a57ecad5766ed38e244843a9d8c0825",
+      "ifc_bytes": 790353,
+      "insertion_content": "review_body_views",
+      "representation_contract": "one_3d_body_three_directional_body_views",
+      "review_category": "partial",
+      "category_label": "部分验收",
+      "formal_ifc_write_authorized": false,
+      "ifc_path": "ifc/gessi316-54145.ifc",
+      "previews": {
+        "plan": "previews/gessi316-54145/plan.png",
+        "front": "previews/gessi316-54145/front.png",
+        "side": "previews/gessi316-54145/side.png",
+        "iso": "previews/gessi316-54145/iso.png"
+      },
+      "approval_record": {
+        "path": "approvals/gessi316-54145.json",
+        "sha256": "32e093739085616e4cfe3aeeff2bbe662331e5fc6293548885b8a50fb4ba19be"
+      },
+      "preview_evidence": {
+        "plan": {
+          "kind": "bonsai_body_linework",
+          "role": "Plan",
+          "source_ifc_sha256": "3bf6766c1c230c221a7eec45dce7fcc23a57ecad5766ed38e244843a9d8c0825",
+          "svg": "previews/gessi316-54145/plan.svg",
+          "svg_sha256": "4a3dc66cebdbb79d9a37b7b043f8512fb88d9b8250d63dc8b255aa7fe0dbb870",
+          "png_sha256": "9f465508c5f6f8dd503b1fea695af843ba4462ad10814cfa35d20d00b40f2b2b",
+          "generator": "Bonsai Create Drawing / OpenCASCADE + BISECT",
+          "width": 1600,
+          "height": 1200
+        },
+        "front": {
+          "kind": "bonsai_body_linework",
+          "role": "Front",
+          "source_ifc_sha256": "3bf6766c1c230c221a7eec45dce7fcc23a57ecad5766ed38e244843a9d8c0825",
+          "svg": "previews/gessi316-54145/front.svg",
+          "svg_sha256": "8417acdc15505d54919f262f3ac08eb8d24d62bb687b659036ec0dd00078137e",
+          "png_sha256": "eb845ed324400c5ed3fa3f046f8d2357399ca7aaf888e85f9c4eecbdaa44d51a",
+          "generator": "Bonsai Create Drawing / OpenCASCADE + BISECT",
+          "width": 1600,
+          "height": 1200
+        },
+        "side": {
+          "kind": "bonsai_body_linework",
+          "role": "Side",
+          "source_ifc_sha256": "3bf6766c1c230c221a7eec45dce7fcc23a57ecad5766ed38e244843a9d8c0825",
+          "svg": "previews/gessi316-54145/side.svg",
+          "svg_sha256": "b6fc28933ae6f50018b644f502cd3a2ba8ac41af5115d139c5a8d333ee96483d",
+          "png_sha256": "01370d3e358889e6c76b5b7a2041d2e46b876029c19d1d41e40f2f38b905f91d",
+          "generator": "Bonsai Create Drawing / OpenCASCADE + BISECT",
+          "width": 1600,
+          "height": 1200
+        },
+        "iso": {
+          "kind": "camera_render_3d",
+          "purpose": "asset_thumbnail",
+          "png_sha256": "266d4c56db1d42dbc94d051b2185c0dc5fe3d18ced3626e6b8d00fc38777f78d",
+          "width": 384,
+          "height": 384,
+          "max_dimension": 384,
+          "source_sha256": "c59c7daa39b6c6335fa385b00cfbd1c7360325dbd58ce486e15cf5f25bc2df5e"
+        }
+      }
+    },
+    {
+      "id": "street-h",
+      "name": "antoniolupi STREET-H / 支撑子构件",
+      "global_id": "2ajpw0I9n1dBypfISg3ejX",
+      "source_label": "支撑子构件 · 基于原始高模几何生成的简化图纸表达",
+      "display_front_normal_project": [
+        0,
+        -1,
+        0
+      ],
+      "display_front_basis": "candidate_scene_camera_pending_review",
+      "single_product_approval_status": "approved",
+      "scene_approval_status": "pending",
+      "approval_label": "单品已通过、场景待验收",
+      "package_validation": "pass",
+      "ifc_sha256": "7afc729d220634c4987933cc356fc075d8d6645ad3b3d1d6ef0552ff6e2e2445",
+      "ifc_bytes": 159541,
+      "insertion_content": "review_body_views",
+      "representation_contract": "one_3d_body_three_directional_body_views",
+      "review_category": "partial",
+      "category_label": "部分验收",
+      "formal_ifc_write_authorized": false,
+      "ifc_path": "ifc/street-h.ifc",
+      "previews": {
+        "plan": "previews/street-h/plan.png",
+        "front": "previews/street-h/front.png",
+        "side": "previews/street-h/side.png",
+        "iso": "previews/street-h/iso.png"
+      },
+      "approval_record": {
+        "path": "approvals/street-h.json",
+        "sha256": "e4b090be45ee0e2e82ab603967d745503cccd2ccfa1ceae12ee2664f330e6f94"
+      },
+      "preview_evidence": {
+        "plan": {
+          "kind": "bonsai_body_linework",
+          "role": "Plan",
+          "source_ifc_sha256": "7afc729d220634c4987933cc356fc075d8d6645ad3b3d1d6ef0552ff6e2e2445",
+          "svg": "previews/street-h/plan.svg",
+          "svg_sha256": "866ff2b85d84e05649331f43cf301da9dab8121f0c3166e410b44bcafe224cda",
+          "png_sha256": "a176aad466c66f2cda385a674bcef1893b75bc9dac0c09b301de44d84fa508fa",
+          "generator": "Bonsai Create Drawing / OpenCASCADE + BISECT",
+          "width": 1600,
+          "height": 1200
+        },
+        "front": {
+          "kind": "bonsai_body_linework",
+          "role": "Front",
+          "source_ifc_sha256": "7afc729d220634c4987933cc356fc075d8d6645ad3b3d1d6ef0552ff6e2e2445",
+          "svg": "previews/street-h/front.svg",
+          "svg_sha256": "a879baaf1a19824606466dc179b5af4628c70e62972c0570264a974c14a8d852",
+          "png_sha256": "3582619bce206ed93b73f97273d1614eb440ed5f380043a2bd8d66bd060cbc25",
+          "generator": "Bonsai Create Drawing / OpenCASCADE + BISECT",
+          "width": 1600,
+          "height": 1200
+        },
+        "side": {
+          "kind": "bonsai_body_linework",
+          "role": "Side",
+          "source_ifc_sha256": "7afc729d220634c4987933cc356fc075d8d6645ad3b3d1d6ef0552ff6e2e2445",
+          "svg": "previews/street-h/side.svg",
+          "svg_sha256": "891f74e4f45b6e0158caf6098db560b738a620b8f260a3060d64f9938b690ca5",
+          "png_sha256": "0aca16e364b65bad17e42f6d0771cb420d3f9facbc5b72d5e9d8fd82a1b9e53f",
+          "generator": "Bonsai Create Drawing / OpenCASCADE + BISECT",
+          "width": 1600,
+          "height": 1200
+        },
+        "iso": {
+          "kind": "camera_render_3d",
+          "purpose": "asset_thumbnail",
+          "png_sha256": "f365c9bd108eafa03d686bc1adc09930ba15e98497ec9003015a42744e8fad41",
+          "width": 384,
+          "height": 384,
+          "max_dimension": 384,
+          "source_sha256": "f8be21e47877acc00ee2c88b1857cc06be184414448e35b382728e62e78780bc"
+        }
+      }
+    },
+    {
+      "id": "wd02",
+      "name": "Poliform Senzafine glass wardrobe / WD02",
+      "global_id": "3yuXF4PtnBHgIXDlmXFJ$7",
+      "source_label": "基于原始高模几何生成的简化图纸表达",
+      "display_front_normal_project": [
+        -0.9999999999999858,
+        4.371139894487829e-8,
+        -1.6292068494294397e-7
+      ],
+      "display_front_basis": "approved_scene_camera",
+      "single_product_approval_status": "approved",
+      "scene_approval_status": "approved",
+      "approval_label": "单品及场景已验收",
+      "package_validation": "pass",
+      "ifc_sha256": "5e19a26503943a8f8e9265a022587754ef7d32725b30f0555a203fba193b0686",
+      "ifc_bytes": 348845,
+      "insertion_content": "review_body_views",
+      "representation_contract": "one_3d_body_three_directional_body_views",
+      "review_category": "approved",
+      "category_label": "已验收",
+      "formal_ifc_write_authorized": false,
+      "ifc_path": "ifc/wd02.ifc",
+      "previews": {
+        "plan": "previews/wd02/plan.png",
+        "front": "previews/wd02/front.png",
+        "side": "previews/wd02/side.png",
+        "iso": "previews/wd02/iso.png"
+      },
+      "approval_record": {
+        "path": "approvals/wd02.json",
+        "sha256": "8b213bf95e9d6ad27c88c8854fa2e7b9bf07a0998eb164255647fcd62c8f8507"
+      },
+      "preview_evidence": {
+        "plan": {
+          "kind": "bonsai_body_linework",
+          "role": "Plan",
+          "source_ifc_sha256": "5e19a26503943a8f8e9265a022587754ef7d32725b30f0555a203fba193b0686",
+          "svg": "previews/wd02/plan.svg",
+          "svg_sha256": "e82c1a58e798b99d433394393e20297e096291c03f1b69b1c0da5138fdd8670b",
+          "png_sha256": "57436d852f99099d4da9f92f529584befab77fcc6b540a4e12c85ec7952735b0",
+          "generator": "Bonsai Create Drawing / OpenCASCADE + BISECT",
+          "width": 1600,
+          "height": 1200
+        },
+        "front": {
+          "kind": "bonsai_body_linework",
+          "role": "Front",
+          "source_ifc_sha256": "5e19a26503943a8f8e9265a022587754ef7d32725b30f0555a203fba193b0686",
+          "svg": "previews/wd02/front.svg",
+          "svg_sha256": "f57e6a540c782f809038f44e8dff327dfe611b8ae6d10429875db9d544d94b19",
+          "png_sha256": "b31746ba5a66735bfa701a01f9f4c43a57baa41636afe3d3fa1db2a294df6760",
+          "generator": "Bonsai Create Drawing / OpenCASCADE + BISECT",
+          "width": 1600,
+          "height": 1200
+        },
+        "side": {
+          "kind": "bonsai_body_linework",
+          "role": "Side",
+          "source_ifc_sha256": "5e19a26503943a8f8e9265a022587754ef7d32725b30f0555a203fba193b0686",
+          "svg": "previews/wd02/side.svg",
+          "svg_sha256": "1cc7dcef21b9787eb9ca659e6a5a9f25c03c3c3c85a751a0bc7842f08b4a74a7",
+          "png_sha256": "83682c752a0a93464d4d95638a5b00013968bc97d1ed0d8d3bdc79d3208561b8",
+          "generator": "Bonsai Create Drawing / OpenCASCADE + BISECT",
+          "width": 1600,
+          "height": 1200
+        },
+        "iso": {
+          "kind": "camera_render_3d",
+          "purpose": "asset_thumbnail",
+          "png_sha256": "454183b914710fdd7def864050f50884ff1c5239c26691c4306c5c40c2280164",
+          "width": 384,
+          "height": 384,
+          "max_dimension": 384,
+          "source_sha256": "decc454f39927b614a40863f6ad3d6881e1a76bfc8651543a07ab28e19ea865d"
+        }
+      }
+    },
+    {
+      "id": "tab02",
+      "name": "RODA Bernardo 367 / TAB02",
+      "global_id": "2eX84IyLr8_e34nuOoRPLQ",
+      "source_label": "基于原始高模几何生成的简化图纸表达",
+      "display_front_normal_project": [
+        0,
+        -1,
+        0
+      ],
+      "display_front_basis": "candidate_scene_camera_pending_review",
+      "single_product_approval_status": "approved",
+      "scene_approval_status": "pending",
+      "approval_label": "单品已通过、场景待验收",
+      "package_validation": "pass",
+      "ifc_sha256": "e9171b4e843ef83be7e25b4a5feb22768bd37fdf4715736dbf5a7aa3fb4734e4",
+      "ifc_bytes": 151649,
+      "insertion_content": "review_body_views",
+      "representation_contract": "one_3d_body_three_directional_body_views",
+      "review_category": "partial",
+      "category_label": "部分验收",
+      "formal_ifc_write_authorized": false,
+      "ifc_path": "ifc/tab02.ifc",
+      "previews": {
+        "plan": "previews/tab02/plan.png",
+        "front": "previews/tab02/front.png",
+        "side": "previews/tab02/side.png",
+        "iso": "previews/tab02/iso.png"
+      },
+      "approval_record": {
+        "path": "approvals/tab02.json",
+        "sha256": "47aaf3acdec9ab3dbb1304c51945d876f17daf776e43e950c4f7144c34b51157"
+      },
+      "preview_evidence": {
+        "plan": {
+          "kind": "bonsai_body_linework",
+          "role": "Plan",
+          "source_ifc_sha256": "e9171b4e843ef83be7e25b4a5feb22768bd37fdf4715736dbf5a7aa3fb4734e4",
+          "svg": "previews/tab02/plan.svg",
+          "svg_sha256": "cd930743ec10a06b08a4d05a83e428f62efde4bcd8c349ab9590a938b7ba2949",
+          "png_sha256": "44f1ce24067d286bc17eb1c948c3a23744fa694e989bf8f291de329130368585",
+          "generator": "Bonsai Create Drawing / OpenCASCADE + BISECT",
+          "width": 1600,
+          "height": 1200
+        },
+        "front": {
+          "kind": "bonsai_body_linework",
+          "role": "Front",
+          "source_ifc_sha256": "e9171b4e843ef83be7e25b4a5feb22768bd37fdf4715736dbf5a7aa3fb4734e4",
+          "svg": "previews/tab02/front.svg",
+          "svg_sha256": "9033ad45c8c192ee6a47accf0fc8afbefb02f1ff680c8ea24b47fb32d2a63050",
+          "png_sha256": "2d77aff56d55173c2becd64d3e190355b79cba5809888df18aa90edec496ede4",
+          "generator": "Bonsai Create Drawing / OpenCASCADE + BISECT",
+          "width": 1600,
+          "height": 1200
+        },
+        "side": {
+          "kind": "bonsai_body_linework",
+          "role": "Side",
+          "source_ifc_sha256": "e9171b4e843ef83be7e25b4a5feb22768bd37fdf4715736dbf5a7aa3fb4734e4",
+          "svg": "previews/tab02/side.svg",
+          "svg_sha256": "c6ceaa02752e8d20efc8424c671adf4f4e304c2cd85a5b6921a64a2a01678e55",
+          "png_sha256": "f2ef4d17d3b33f59fae64d99f5c504f0e1ec7692cec6ec9f304c92b8ad99d92a",
+          "generator": "Bonsai Create Drawing / OpenCASCADE + BISECT",
+          "width": 1600,
+          "height": 1200
+        },
+        "iso": {
+          "kind": "camera_render_3d",
+          "purpose": "asset_thumbnail",
+          "png_sha256": "3c3683ee02d71e352c13c533737837cbdff65177360b911f58bdfbab653dfbc7",
+          "width": 384,
+          "height": 384,
+          "max_dimension": 384,
+          "source_sha256": "8919e5a3e304aa7b909111da92fe95056326ca5770e6cd0d9f24421fd4f6d9d5"
+        }
+      }
+    },
+    {
+      "id": "bst02",
+      "name": "Baxter Beside bedside table / project BST02",
+      "global_id": "3hA0vKpcn44u4Tsx4tqiUz",
+      "source_label": "基于原始高模几何生成的简化图纸表达",
+      "display_front_normal_project": [
+        0,
+        -1,
+        0
+      ],
+      "display_front_basis": "project_axes_unreviewed",
+      "single_product_approval_status": "pending",
+      "scene_approval_status": "pending",
+      "approval_label": "尚未验收",
+      "package_validation": "pass",
+      "ifc_sha256": "5b712fcfe8ef408ce62c938d8f0bd9dd303ae1f079cfe5aa37692c8788ff65b4",
+      "ifc_bytes": 9740347,
+      "insertion_content": "review_body_views",
+      "representation_contract": "one_3d_body_three_directional_body_views",
+      "review_category": "pending",
+      "category_label": "未验收",
+      "formal_ifc_write_authorized": false,
+      "ifc_path": "ifc/bst02.ifc",
+      "previews": {
+        "plan": "previews/bst02/plan.png",
+        "front": "previews/bst02/front.png",
+        "side": "previews/bst02/side.png",
+        "iso": "previews/bst02/iso.png"
+      },
+      "approval_record": {
+        "path": "approvals/bst02.json",
+        "sha256": "a04a7d4d3986dd686fd4ac99ba44aab1699a610adf92ba917dca6eb4834dd914"
+      },
+      "preview_evidence": {
+        "plan": {
+          "kind": "bonsai_body_linework",
+          "role": "Plan",
+          "source_ifc_sha256": "5b712fcfe8ef408ce62c938d8f0bd9dd303ae1f079cfe5aa37692c8788ff65b4",
+          "svg": "previews/bst02/plan.svg",
+          "svg_sha256": "1de9e892ade829be262c07f2b5badf714b20a193bc39afa362eb53a6de22c923",
+          "png_sha256": "85cb258aef4cce380fc4bf991cbdb4ecc846dd089b25393eeff2698ae3d2c425",
+          "generator": "Bonsai Create Drawing / OpenCASCADE + BISECT",
+          "width": 1600,
+          "height": 1200
+        },
+        "front": {
+          "kind": "bonsai_body_linework",
+          "role": "Front",
+          "source_ifc_sha256": "5b712fcfe8ef408ce62c938d8f0bd9dd303ae1f079cfe5aa37692c8788ff65b4",
+          "svg": "previews/bst02/front.svg",
+          "svg_sha256": "9b60ea53ed14c6411caa5ab0b4dbc66af595f44dd2ea6872e3f7208e576befc0",
+          "png_sha256": "06ae446bf4917901f482d6003324966b471b3310458aa933427c26f8e5541e3a",
+          "generator": "Bonsai Create Drawing / OpenCASCADE + BISECT",
+          "width": 1600,
+          "height": 1200
+        },
+        "side": {
+          "kind": "bonsai_body_linework",
+          "role": "Side",
+          "source_ifc_sha256": "5b712fcfe8ef408ce62c938d8f0bd9dd303ae1f079cfe5aa37692c8788ff65b4",
+          "svg": "previews/bst02/side.svg",
+          "svg_sha256": "403e333989e66ef3a9baa85805b64a71daebe072ef62d16001bd59a25514efd1",
+          "png_sha256": "c0bd26113059a1cab0f5e2c7ff3bfbca06f06ce7e04bbb7c24acbd7da543c3da",
+          "generator": "Bonsai Create Drawing / OpenCASCADE + BISECT",
+          "width": 1600,
+          "height": 1200
+        },
+        "iso": {
+          "kind": "camera_render_3d",
+          "purpose": "asset_thumbnail",
+          "png_sha256": "9238dce2f59f3c3aa8b14a9198937f9e25cd7444349087c55cfca8a6517c7512",
+          "width": 384,
+          "height": 274,
+          "max_dimension": 384,
+          "source_sha256": "55ab52df7072f0a350c8db14cd577694c13c15207ea778aeefe3436a7d2a4206"
+        }
+      }
+    },
+    {
+      "id": "street",
+      "name": "antoniolupi Street domestic-custom integrated washbasin top / project STREET",
+      "global_id": "1FgLPMw$5B4wBH2ySMkXE1",
+      "source_label": "基于原始高模几何生成的简化图纸表达",
+      "display_front_normal_project": [
+        0,
+        -1,
+        0
+      ],
+      "display_front_basis": "project_axes_unreviewed",
+      "single_product_approval_status": "pending",
+      "scene_approval_status": "pending",
+      "approval_label": "尚未验收",
+      "package_validation": "pass",
+      "ifc_sha256": "1b9b941f778ae97be81577f88bfab4ab2f765a5931ec9517b32f765beb3c549b",
+      "ifc_bytes": 688213,
+      "insertion_content": "review_body_views",
+      "representation_contract": "one_3d_body_three_directional_body_views",
+      "review_category": "pending",
+      "category_label": "未验收",
+      "formal_ifc_write_authorized": false,
+      "ifc_path": "ifc/street.ifc",
+      "previews": {
+        "plan": "previews/street/plan.png",
+        "front": "previews/street/front.png",
+        "side": "previews/street/side.png",
+        "iso": "previews/street/iso.png"
+      },
+      "approval_record": {
+        "path": "approvals/street.json",
+        "sha256": "6f3cdc55d591b94af2698d730cb1646cbe3c03c38b5d0bd30e19f1e16a2a9637"
+      },
+      "preview_evidence": {
+        "plan": {
+          "kind": "bonsai_body_linework",
+          "role": "Plan",
+          "source_ifc_sha256": "1b9b941f778ae97be81577f88bfab4ab2f765a5931ec9517b32f765beb3c549b",
+          "svg": "previews/street/plan.svg",
+          "svg_sha256": "b1dc392886e52422dfcad299622583dabbd32347b329ef559c2422c1be6ce22a",
+          "png_sha256": "72e1a30b48b07ed2e91db0db2c59a5c8d737993201960b4937e7d967bfda542e",
+          "generator": "Bonsai Create Drawing / OpenCASCADE + BISECT",
+          "width": 1600,
+          "height": 1200
+        },
+        "front": {
+          "kind": "bonsai_body_linework",
+          "role": "Front",
+          "source_ifc_sha256": "1b9b941f778ae97be81577f88bfab4ab2f765a5931ec9517b32f765beb3c549b",
+          "svg": "previews/street/front.svg",
+          "svg_sha256": "e672a5aa6d1a37d7d3ace89b08c94ea3012e78e4497c375b2ca634adeb11f893",
+          "png_sha256": "0c4b4d4d29134cb1b6e7a8b9cd9eadd68dd32e9288bc9398a4f7d21e333ef260",
+          "generator": "Bonsai Create Drawing / OpenCASCADE + BISECT",
+          "width": 1600,
+          "height": 1200
+        },
+        "side": {
+          "kind": "bonsai_body_linework",
+          "role": "Side",
+          "source_ifc_sha256": "1b9b941f778ae97be81577f88bfab4ab2f765a5931ec9517b32f765beb3c549b",
+          "svg": "previews/street/side.svg",
+          "svg_sha256": "35d323d2874feda78f5cb8ced31d1220ff2b72c6db8de7324967d60e11a07d89",
+          "png_sha256": "5b10f6c0f4960afd456ae50d0084ff26b2da894b8114df171838d274ac3aef7f",
+          "generator": "Bonsai Create Drawing / OpenCASCADE + BISECT",
+          "width": 1600,
+          "height": 1200
+        },
+        "iso": {
+          "kind": "camera_render_3d",
+          "purpose": "asset_thumbnail",
+          "png_sha256": "d20c67f85bcd1f0c46c0101bae165d7e2d99a79d5cad99c4ee322e45b4ece928",
+          "width": 384,
+          "height": 274,
+          "max_dimension": 384,
+          "source_sha256": "c4e4187a79a9729c7d291ec26686bd42e356735914d4172f77d74dd476c609d7"
+        }
+      }
+    },
+    {
+      "id": "gessi316-54093",
+      "name": "Gessi316 Meccanica high counter basin spout / 54093 G000",
+      "global_id": "1jM_suNMPAw8_nvZejQSnp",
+      "source_label": "Gessi 官方精确型号 54093 G000 原生 DWG 图纸表达",
+      "display_front_normal_project": [
+        0,
+        -1,
+        0
+      ],
+      "display_front_basis": "project_axes_unreviewed",
+      "single_product_approval_status": "pending",
+      "scene_approval_status": "pending",
+      "approval_label": "尚未验收",
+      "package_validation": "pass",
+      "ifc_sha256": "f8d0f0058b46918b94a49e205e6b7ca48830d59d30325ffb80b3877c3c1e4d38",
+      "ifc_bytes": 8101442,
+      "insertion_content": "review_body_views",
+      "representation_contract": "one_3d_body_three_directional_body_views",
+      "review_category": "pending",
+      "category_label": "未验收",
+      "formal_ifc_write_authorized": false,
+      "ifc_path": "ifc/gessi316-54093.ifc",
+      "previews": {
+        "plan": "previews/gessi316-54093/plan.png",
+        "front": "previews/gessi316-54093/front.png",
+        "side": "previews/gessi316-54093/side.png",
+        "iso": "previews/gessi316-54093/iso.png"
+      },
+      "approval_record": {
+        "path": "approvals/gessi316-54093.json",
+        "sha256": "96068dd3b33b6e2aeb4f71f079bdc1fc23d8dc97c790dfd80b49ecb37f915d60"
+      },
+      "preview_evidence": {
+        "plan": {
+          "kind": "bonsai_body_linework",
+          "role": "Plan",
+          "source_ifc_sha256": "f8d0f0058b46918b94a49e205e6b7ca48830d59d30325ffb80b3877c3c1e4d38",
+          "svg": "previews/gessi316-54093/plan.svg",
+          "svg_sha256": "62dc8a33fede5886be466f94a390a8858429d7e315b5ac792421f49a312e72f4",
+          "png_sha256": "46faa60f47ef5743d7a54823ca3565ab772a545310ff32e96f47aaf4e35b1683",
+          "generator": "Bonsai Create Drawing / OpenCASCADE + BISECT",
+          "width": 1600,
+          "height": 1200
+        },
+        "front": {
+          "kind": "bonsai_body_linework",
+          "role": "Front",
+          "source_ifc_sha256": "f8d0f0058b46918b94a49e205e6b7ca48830d59d30325ffb80b3877c3c1e4d38",
+          "svg": "previews/gessi316-54093/front.svg",
+          "svg_sha256": "886a1a651bba5ba5b7beda53b83ea228096b4f652e33f4bf5f85d81fb2c47dd5",
+          "png_sha256": "4b5c12f131cc95a7e49fa9d74f9781c14bf3d70010209aef24d45efb9b7a2517",
+          "generator": "Bonsai Create Drawing / OpenCASCADE + BISECT",
+          "width": 1600,
+          "height": 1200
+        },
+        "side": {
+          "kind": "bonsai_body_linework",
+          "role": "Side",
+          "source_ifc_sha256": "f8d0f0058b46918b94a49e205e6b7ca48830d59d30325ffb80b3877c3c1e4d38",
+          "svg": "previews/gessi316-54093/side.svg",
+          "svg_sha256": "c2e407fe031713561c83ae9523d022f50b75dc0f3d99d078f5bfb11962fcfeb2",
+          "png_sha256": "7db7b1f40aff182123c39cc816dacb7830af26ed6e42d7df47a304b3da66fe72",
+          "generator": "Bonsai Create Drawing / OpenCASCADE + BISECT",
+          "width": 1600,
+          "height": 1200
+        },
+        "iso": {
+          "kind": "camera_render_3d",
+          "purpose": "asset_thumbnail",
+          "png_sha256": "b83adc4a2cd63d98b69f8cd420bfad45371e8c9c5c8aa5a543e8cf9358ac2c18",
+          "width": 384,
+          "height": 274,
+          "max_dimension": 384,
+          "source_sha256": "9c4cfe997ba5bb7872c2da44d7f6482def410dbc32c58fc22bea401967fa6ba5"
+        }
+      }
+    },
+    {
+      "id": "geberit-154-154-00-1-f",
+      "name": "Geberit CleanLine 154.154.00.1 / project flange component .F",
+      "global_id": "2jjNIn9gHBYwNSWwlM5T_i",
+      "source_label": "基于原始高模几何生成的简化图纸表达",
+      "display_front_normal_project": [
+        0,
+        -1,
+        0
+      ],
+      "display_front_basis": "project_axes_unreviewed",
+      "single_product_approval_status": "pending",
+      "scene_approval_status": "pending",
+      "approval_label": "尚未验收",
+      "package_validation": "pass",
+      "ifc_sha256": "bf5b16a19cf6fe39245e32a1d8d88ae2bad71c91a4a1206e64364aab47aca6da",
+      "ifc_bytes": 499969,
+      "insertion_content": "review_body_views",
+      "representation_contract": "one_3d_body_three_directional_body_views",
+      "review_category": "pending",
+      "category_label": "未验收",
+      "formal_ifc_write_authorized": false,
+      "ifc_path": "ifc/geberit-154-154-00-1-f.ifc",
+      "previews": {
+        "plan": "previews/geberit-154-154-00-1-f/plan.png",
+        "front": "previews/geberit-154-154-00-1-f/front.png",
+        "side": "previews/geberit-154-154-00-1-f/side.png",
+        "iso": "previews/geberit-154-154-00-1-f/iso.png"
+      },
+      "approval_record": {
+        "path": "approvals/geberit-154-154-00-1-f.json",
+        "sha256": "e7e40a77530404c03e219041e4ab0685c596db9f69c6fdb810e80edd8df2d530"
+      },
+      "preview_evidence": {
+        "plan": {
+          "kind": "bonsai_body_linework",
+          "role": "Plan",
+          "source_ifc_sha256": "bf5b16a19cf6fe39245e32a1d8d88ae2bad71c91a4a1206e64364aab47aca6da",
+          "svg": "previews/geberit-154-154-00-1-f/plan.svg",
+          "svg_sha256": "ff8987caf8fd9ab353a0f375a56fe55b68bba931a92f152081a3887b5b2fc928",
+          "png_sha256": "87d89113b51166800d73153ae73bbbc515ce38891fea9f92f7f9669e09d5916a",
+          "generator": "Bonsai Create Drawing / OpenCASCADE + BISECT",
+          "width": 1600,
+          "height": 1200
+        },
+        "front": {
+          "kind": "bonsai_body_linework",
+          "role": "Front",
+          "source_ifc_sha256": "bf5b16a19cf6fe39245e32a1d8d88ae2bad71c91a4a1206e64364aab47aca6da",
+          "svg": "previews/geberit-154-154-00-1-f/front.svg",
+          "svg_sha256": "2d7c0b5297b08fa999a2ebf4b3cfb29a2851067f1e9057278d47bfeebe9393b9",
+          "png_sha256": "ca25e0847790c86634beb491d7b6a52df54bcdfcf79f0bbe45fcfe5ec3204fd7",
+          "generator": "Bonsai Create Drawing / OpenCASCADE + BISECT",
+          "width": 1600,
+          "height": 1200
+        },
+        "side": {
+          "kind": "bonsai_body_linework",
+          "role": "Side",
+          "source_ifc_sha256": "bf5b16a19cf6fe39245e32a1d8d88ae2bad71c91a4a1206e64364aab47aca6da",
+          "svg": "previews/geberit-154-154-00-1-f/side.svg",
+          "svg_sha256": "b2acac43d7249c76568b61cb67a113a1e5a4e269989d7d26b4cd08b8783aa2d5",
+          "png_sha256": "4cc2fefc6cefdc35a6e07dea1265a8ce50fe20b0227a522505b00973c52ce44c",
+          "generator": "Bonsai Create Drawing / OpenCASCADE + BISECT",
+          "width": 1600,
+          "height": 1200
+        },
+        "iso": {
+          "kind": "camera_render_3d",
+          "purpose": "asset_thumbnail",
+          "png_sha256": "a1bfbda6b9d1b74e05c854205c47eed4093f991bc31b061ae1d2b3bc836c388b",
+          "width": 384,
+          "height": 274,
+          "max_dimension": 384,
+          "source_sha256": "bd78b445fed314886b556c63695c8c0417d1ab5b0fb66aed40c15c9ea0b4ae18"
+        }
+      }
+    },
+    {
+      "id": "geberit-115-770",
+      "name": "Geberit Sigma01 / 115.770.11.5 dual-flush actuator plate",
+      "global_id": "2gFgcOYEXEaQWAzcKulTFt",
+      "source_label": "基于 Geberit 精确型号原生 DWG 的官方图纸表达",
+      "display_front_normal_project": [
+        0,
+        -1,
+        0
+      ],
+      "display_front_basis": "project_axes_unreviewed",
+      "single_product_approval_status": "pending",
+      "scene_approval_status": "pending",
+      "approval_label": "尚未验收",
+      "package_validation": "pass",
+      "ifc_sha256": "1f4ba5fda753b800d05b734044d13479c952ffbbdfde694e27a5ed223fd1637f",
+      "ifc_bytes": 154362,
+      "insertion_content": "review_body_views",
+      "representation_contract": "one_3d_body_three_directional_body_views",
+      "review_category": "pending",
+      "category_label": "未验收",
+      "formal_ifc_write_authorized": false,
+      "ifc_path": "ifc/geberit-115-770.ifc",
+      "previews": {
+        "plan": "previews/geberit-115-770/plan.png",
+        "front": "previews/geberit-115-770/front.png",
+        "side": "previews/geberit-115-770/side.png",
+        "iso": "previews/geberit-115-770/iso.png"
+      },
+      "approval_record": {
+        "path": "approvals/geberit-115-770.json",
+        "sha256": "4a53f62caba7b521ae30c366abdd0d4d4dded463615d006f6c654900d8fb2514"
+      },
+      "preview_evidence": {
+        "plan": {
+          "kind": "bonsai_body_linework",
+          "role": "Plan",
+          "source_ifc_sha256": "1f4ba5fda753b800d05b734044d13479c952ffbbdfde694e27a5ed223fd1637f",
+          "svg": "previews/geberit-115-770/plan.svg",
+          "svg_sha256": "7bbb4041357557a44e8b2503bac79e87ae1e40318ee580bbc0ed03157165a172",
+          "png_sha256": "6e8bc2fe64ccbaf144459308c40ec36af34d3d052f324cf431b961dc589f9250",
+          "generator": "Bonsai Create Drawing / OpenCASCADE + BISECT",
+          "width": 1600,
+          "height": 1200
+        },
+        "front": {
+          "kind": "bonsai_body_linework",
+          "role": "Front",
+          "source_ifc_sha256": "1f4ba5fda753b800d05b734044d13479c952ffbbdfde694e27a5ed223fd1637f",
+          "svg": "previews/geberit-115-770/front.svg",
+          "svg_sha256": "ec627997f4295fb97a862df070981cd976304a0eb82f1f24ebe998791f3b7649",
+          "png_sha256": "46784dc65feb54ad96fbe7c97cebcd7f282fab356bd1549d2ee305c54c8ac244",
+          "generator": "Bonsai Create Drawing / OpenCASCADE + BISECT",
+          "width": 1600,
+          "height": 1200
+        },
+        "side": {
+          "kind": "bonsai_body_linework",
+          "role": "Side",
+          "source_ifc_sha256": "1f4ba5fda753b800d05b734044d13479c952ffbbdfde694e27a5ed223fd1637f",
+          "svg": "previews/geberit-115-770/side.svg",
+          "svg_sha256": "074d4dec7c6152f9772f27d4ab583c6c49b4fc8f5487170482b0c674012ce494",
+          "png_sha256": "06f3740dd0bc9bb5313466eaa6b8276781dc2aa8c402fe07111274d185ba14ba",
+          "generator": "Bonsai Create Drawing / OpenCASCADE + BISECT",
+          "width": 1600,
+          "height": 1200
+        },
+        "iso": {
+          "kind": "camera_render_3d",
+          "purpose": "asset_thumbnail",
+          "png_sha256": "bae9d7224afdb7d8a24442604f00797ba31896cc42f60c500f625a5298150477",
+          "width": 384,
+          "height": 384,
+          "max_dimension": 384,
+          "source_sha256": "4584ecc159847d16d1a602bd2ee9156ac31999a1bf496c740251ecd90aa28914"
+        }
+      }
+    },
+    {
+      "id": "wd01",
+      "name": "Poliform Pivot + Senzafine custom wardrobe / project WD01",
+      "global_id": "2mPTt7$nvBSAn28I9NWt6T",
+      "source_label": "基于原始高模几何生成的简化图纸表达",
+      "display_front_normal_project": [
+        0,
+        -1,
+        0
+      ],
+      "display_front_basis": "project_axes_unreviewed",
+      "single_product_approval_status": "pending",
+      "scene_approval_status": "pending",
+      "approval_label": "尚未验收",
+      "package_validation": "pass",
+      "ifc_sha256": "5962afb324476a878a8c144f48a06b127c99b3a197140e889724e43bcfd9ceb3",
+      "ifc_bytes": 9073489,
+      "insertion_content": "review_body_views",
+      "representation_contract": "one_3d_body_three_directional_body_views",
+      "review_category": "pending",
+      "category_label": "未验收",
+      "formal_ifc_write_authorized": false,
+      "ifc_path": "ifc/wd01.ifc",
+      "previews": {
+        "plan": "previews/wd01/plan.png",
+        "front": "previews/wd01/front.png",
+        "side": "previews/wd01/side.png",
+        "iso": "previews/wd01/iso.png"
+      },
+      "approval_record": {
+        "path": "approvals/wd01.json",
+        "sha256": "c168aa15cbc083842c7c7192bb48167f48f08902040e792f0bbbfba1bf736aed"
+      },
+      "preview_evidence": {
+        "plan": {
+          "kind": "bonsai_body_linework",
+          "role": "Plan",
+          "source_ifc_sha256": "5962afb324476a878a8c144f48a06b127c99b3a197140e889724e43bcfd9ceb3",
+          "svg": "previews/wd01/plan.svg",
+          "svg_sha256": "28eb6d94bd58e19e141f83ff2603ab05bd143042e5692555fe80ed4cedbf588d",
+          "png_sha256": "7fa2ac00cbba15cff0e8f2ad795b569683dd62c40341c27aa336e48728bce178",
+          "generator": "Bonsai Create Drawing / OpenCASCADE + BISECT",
+          "width": 1600,
+          "height": 1200
+        },
+        "front": {
+          "kind": "bonsai_body_linework",
+          "role": "Front",
+          "source_ifc_sha256": "5962afb324476a878a8c144f48a06b127c99b3a197140e889724e43bcfd9ceb3",
+          "svg": "previews/wd01/front.svg",
+          "svg_sha256": "bc446e6041c7175fc0d33310dfd652bbd1bf136c0dbb5afaf605d087417d028f",
+          "png_sha256": "195d256e6e2fd4966491cf7b59d5f909cd869a08332d685006094bcb59498390",
+          "generator": "Bonsai Create Drawing / OpenCASCADE + BISECT",
+          "width": 1600,
+          "height": 1200
+        },
+        "side": {
+          "kind": "bonsai_body_linework",
+          "role": "Side",
+          "source_ifc_sha256": "5962afb324476a878a8c144f48a06b127c99b3a197140e889724e43bcfd9ceb3",
+          "svg": "previews/wd01/side.svg",
+          "svg_sha256": "20b0b7fabb73d5970ebbd8ccdbfa985199fe0eb17ff5198e3a88b9728462c582",
+          "png_sha256": "93caaf57b01e23864e0f5d3c6fe8e6b635e618e8f52c8a4088dc8e5e670e7715",
+          "generator": "Bonsai Create Drawing / OpenCASCADE + BISECT",
+          "width": 1600,
+          "height": 1200
+        },
+        "iso": {
+          "kind": "camera_render_3d",
+          "purpose": "asset_thumbnail",
+          "png_sha256": "11bd3f873f91ede9f13ee22dd3585d07078bc91ce5281f735cf626b106e08be5",
+          "width": 384,
+          "height": 274,
+          "max_dimension": 384,
+          "source_sha256": "4bd23a0def03f5963e3ec67b923f4bbd2a225fe72f1a6a9a43b40b1f68b161e1"
+        }
+      }
+    },
+    {
+      "id": "gessi316-54038",
+      "name": "Gessi316 two-way built-in shower mixer external parts / 54038",
+      "global_id": "245NU$zZL0d9tYTVwwBdk$",
+      "source_label": "Gessi 官方精确型号 54038 原生 DWG 图纸表达",
+      "display_front_normal_project": [
+        0,
+        -1,
+        0
+      ],
+      "display_front_basis": "project_axes_unreviewed",
+      "single_product_approval_status": "pending",
+      "scene_approval_status": "pending",
+      "approval_label": "尚未验收",
+      "package_validation": "pass",
+      "ifc_sha256": "09b7f56085015a7e3c43dd4ed2c5440cfe17a4297a9416aeef81968b8f4ea0f2",
+      "ifc_bytes": 9517311,
+      "insertion_content": "review_body_views",
+      "representation_contract": "one_3d_body_three_directional_body_views",
+      "review_category": "pending",
+      "category_label": "未验收",
+      "formal_ifc_write_authorized": false,
+      "ifc_path": "ifc/gessi316-54038.ifc",
+      "previews": {
+        "plan": "previews/gessi316-54038/plan.png",
+        "front": "previews/gessi316-54038/front.png",
+        "side": "previews/gessi316-54038/side.png",
+        "iso": "previews/gessi316-54038/iso.png"
+      },
+      "approval_record": {
+        "path": "approvals/gessi316-54038.json",
+        "sha256": "0ce947f7bc161ec022fb3a665b9fc75758dbde57a4611f568b13b05beb2aede4"
+      },
+      "preview_evidence": {
+        "plan": {
+          "kind": "bonsai_body_linework",
+          "role": "Plan",
+          "source_ifc_sha256": "09b7f56085015a7e3c43dd4ed2c5440cfe17a4297a9416aeef81968b8f4ea0f2",
+          "svg": "previews/gessi316-54038/plan.svg",
+          "svg_sha256": "2bbbeeda0446d13e87264e34d38408783a9056264fefb090e9fb19e45d1513e5",
+          "png_sha256": "c5b5973329a08660d582ebda76718b37ce8f53a7e6e9141556be61b6e8d284d8",
+          "generator": "Bonsai Create Drawing / OpenCASCADE + BISECT",
+          "width": 1600,
+          "height": 1200
+        },
+        "front": {
+          "kind": "bonsai_body_linework",
+          "role": "Front",
+          "source_ifc_sha256": "09b7f56085015a7e3c43dd4ed2c5440cfe17a4297a9416aeef81968b8f4ea0f2",
+          "svg": "previews/gessi316-54038/front.svg",
+          "svg_sha256": "5e7bf6b7b8a9b682e831d3c25508fa8c8739cf1059e423a406b79216eafcc8ac",
+          "png_sha256": "ace9c27f026bd3ea37256e9665191339680775a0c08309bd4abaca18371f5248",
+          "generator": "Bonsai Create Drawing / OpenCASCADE + BISECT",
+          "width": 1600,
+          "height": 1200
+        },
+        "side": {
+          "kind": "bonsai_body_linework",
+          "role": "Side",
+          "source_ifc_sha256": "09b7f56085015a7e3c43dd4ed2c5440cfe17a4297a9416aeef81968b8f4ea0f2",
+          "svg": "previews/gessi316-54038/side.svg",
+          "svg_sha256": "0406c674e4067d50e8ee4fa3e93fb02ec5987589af02797f13aa0770b4db04b3",
+          "png_sha256": "ff1258110ab203bc16c625e9a0ce7d11d5a39cbf559281c4aad9a78ef78d454e",
+          "generator": "Bonsai Create Drawing / OpenCASCADE + BISECT",
+          "width": 1600,
+          "height": 1200
+        },
+        "iso": {
+          "kind": "camera_render_3d",
+          "purpose": "asset_thumbnail",
+          "png_sha256": "5cc9e2a9938e06ff4cfea9d7d5f6a804e227009a985d45d29a195c5ed3c589b2",
+          "width": 384,
+          "height": 274,
+          "max_dimension": 384,
+          "source_sha256": "110cafb20db1393baf7db9acb2d5cdd949ff4975cce1b151d4ae8fbccd3167d9"
+        }
+      }
+    },
+    {
+      "id": "electric-flue-check-valve",
+      "name": "Electric flue check valve / unresolved project proxy",
+      "global_id": "1faflkXXH6M9cnYPE9Liir",
+      "source_label": "基于原始高模几何生成的简化图纸表达",
+      "display_front_normal_project": [
+        0,
+        -1,
+        0
+      ],
+      "display_front_basis": "project_axes_unreviewed",
+      "single_product_approval_status": "pending",
+      "scene_approval_status": "pending",
+      "approval_label": "尚未验收",
+      "package_validation": "pass",
+      "ifc_sha256": "b9b706e2e077efc24bbd1817310ed53015a25396f2778b92705a93ce3ec1fafe",
+      "ifc_bytes": 120524,
+      "insertion_content": "review_body_views",
+      "representation_contract": "one_3d_body_three_directional_body_views",
+      "review_category": "pending",
+      "category_label": "未验收",
+      "formal_ifc_write_authorized": false,
+      "ifc_path": "ifc/electric-flue-check-valve.ifc",
+      "previews": {
+        "plan": "previews/electric-flue-check-valve/plan.png",
+        "front": "previews/electric-flue-check-valve/front.png",
+        "side": "previews/electric-flue-check-valve/side.png",
+        "iso": "previews/electric-flue-check-valve/iso.png"
+      },
+      "approval_record": {
+        "path": "approvals/electric-flue-check-valve.json",
+        "sha256": "6525d74a11bb016235110c32d1e80980759f8df17b6f0d9f8df8a19a6be332c5"
+      },
+      "preview_evidence": {
+        "plan": {
+          "kind": "bonsai_body_linework",
+          "role": "Plan",
+          "source_ifc_sha256": "b9b706e2e077efc24bbd1817310ed53015a25396f2778b92705a93ce3ec1fafe",
+          "svg": "previews/electric-flue-check-valve/plan.svg",
+          "svg_sha256": "17db24e54f925a50dfaf9f4cbd9d09a2322bbb45b91b4933766dde8ddceeaf31",
+          "png_sha256": "b40d2803e20ee3d3ca11876a678e2e3fade7d1c83af155098180f15ed1f6c886",
+          "generator": "Bonsai Create Drawing / OpenCASCADE + BISECT",
+          "width": 1600,
+          "height": 1200
+        },
+        "front": {
+          "kind": "bonsai_body_linework",
+          "role": "Front",
+          "source_ifc_sha256": "b9b706e2e077efc24bbd1817310ed53015a25396f2778b92705a93ce3ec1fafe",
+          "svg": "previews/electric-flue-check-valve/front.svg",
+          "svg_sha256": "d707725939510ed4f49bda4651df66fbb61c74cd456582a6f2e186b0d5bfd88d",
+          "png_sha256": "6698e9ad1883b9e6135658877e383a77d208a4f3589d88bf925f137ec061db98",
+          "generator": "Bonsai Create Drawing / OpenCASCADE + BISECT",
+          "width": 1600,
+          "height": 1200
+        },
+        "side": {
+          "kind": "bonsai_body_linework",
+          "role": "Side",
+          "source_ifc_sha256": "b9b706e2e077efc24bbd1817310ed53015a25396f2778b92705a93ce3ec1fafe",
+          "svg": "previews/electric-flue-check-valve/side.svg",
+          "svg_sha256": "1a41010042d0cbbf040c88ecf7afeb91d2ce12d7270a57f0b40042e0f29b0f55",
+          "png_sha256": "16269c522a6c4a7f332df6ddc8974c83450025775111a6bf8f489d73fa39de1d",
+          "generator": "Bonsai Create Drawing / OpenCASCADE + BISECT",
+          "width": 1600,
+          "height": 1200
+        },
+        "iso": {
+          "kind": "camera_render_3d",
+          "purpose": "asset_thumbnail",
+          "png_sha256": "935309808400a991f90498de6362cf16c3f0bf5284449173581013106c2d18b5",
+          "width": 384,
+          "height": 274,
+          "max_dimension": 384,
+          "source_sha256": "5bef018064cc7f5fd69f7667bded53ea12a33c35fd462a0ea19d1286c1a790dc"
+        }
+      }
+    },
+    {
+      "id": "bst01",
+      "name": "Baxter Ninfea bedside table / project BST01",
+      "global_id": "3eic1dzkn5heTIn4PhF37v",
+      "source_label": "基于原始高模几何生成的简化图纸表达",
+      "display_front_normal_project": [
+        0,
+        -1,
+        0
+      ],
+      "display_front_basis": "project_axes_unreviewed",
+      "single_product_approval_status": "pending",
+      "scene_approval_status": "pending",
+      "approval_label": "尚未验收",
+      "package_validation": "pass",
+      "ifc_sha256": "dc81c6fbb8d503070fb66a60f71a3ed2a2b38711a5ba4380e06aaaa25e896e65",
+      "ifc_bytes": 9808758,
+      "insertion_content": "review_body_views",
+      "representation_contract": "one_3d_body_three_directional_body_views",
+      "review_category": "pending",
+      "category_label": "未验收",
+      "formal_ifc_write_authorized": false,
+      "ifc_path": "ifc/bst01.ifc",
+      "previews": {
+        "plan": "previews/bst01/plan.png",
+        "front": "previews/bst01/front.png",
+        "side": "previews/bst01/side.png",
+        "iso": "previews/bst01/iso.png"
+      },
+      "approval_record": {
+        "path": "approvals/bst01.json",
+        "sha256": "ad5a71c35568067bd202a455360bb0f4dac0729257b85138720054da76fb3c80"
+      },
+      "preview_evidence": {
+        "plan": {
+          "kind": "bonsai_body_linework",
+          "role": "Plan",
+          "source_ifc_sha256": "dc81c6fbb8d503070fb66a60f71a3ed2a2b38711a5ba4380e06aaaa25e896e65",
+          "svg": "previews/bst01/plan.svg",
+          "svg_sha256": "b9582e05fc256118f96ceb11da80ea8fcfafd85b868fe12b02a5a5e48795c02b",
+          "png_sha256": "e669098ddb515fe0faf799bd52f1f2b6f43dd85b68783ad18b2f97fd5525806b",
+          "generator": "Bonsai Create Drawing / OpenCASCADE + BISECT",
+          "width": 1600,
+          "height": 1200
+        },
+        "front": {
+          "kind": "bonsai_body_linework",
+          "role": "Front",
+          "source_ifc_sha256": "dc81c6fbb8d503070fb66a60f71a3ed2a2b38711a5ba4380e06aaaa25e896e65",
+          "svg": "previews/bst01/front.svg",
+          "svg_sha256": "114888067504984ff2538693fcce36c0e4058c0c187dd0dffe8a6247f6ff8149",
+          "png_sha256": "1826c009ae071f0e5f1ecc80e94089ee2f30eda5a412656e3d31d92b58e693c2",
+          "generator": "Bonsai Create Drawing / OpenCASCADE + BISECT",
+          "width": 1600,
+          "height": 1200
+        },
+        "side": {
+          "kind": "bonsai_body_linework",
+          "role": "Side",
+          "source_ifc_sha256": "dc81c6fbb8d503070fb66a60f71a3ed2a2b38711a5ba4380e06aaaa25e896e65",
+          "svg": "previews/bst01/side.svg",
+          "svg_sha256": "05bebf49acc52ed98737f3748fc83a6acb0cf29a16bfe871cf91db293597283a",
+          "png_sha256": "9923f83ea95fc0101638b48a9f48885b7c0fd8a041894afdf8169f4a38a2800c",
+          "generator": "Bonsai Create Drawing / OpenCASCADE + BISECT",
+          "width": 1600,
+          "height": 1200
+        },
+        "iso": {
+          "kind": "camera_render_3d",
+          "purpose": "asset_thumbnail",
+          "png_sha256": "3474edaa006189708778e4a08563f0bf35526f4336062f68d0f3d18b088c1499",
+          "width": 384,
+          "height": 274,
+          "max_dimension": 384,
+          "source_sha256": "884de949eb35dfbf90f8a2d16d4efdcfe08bf4a1b7250b5becd9dbfc35ca52b5"
+        }
+      }
+    }
+  ],
+  "preview_contract": "plan_front_side_bonsai_linework_iso_camera_render"
+}

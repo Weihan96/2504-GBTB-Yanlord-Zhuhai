@@ -1,0 +1,110 @@
+{
+  "schema_version": 1,
+  "source_pdf": "output/review/highpoly-types/sxb010/bonsai-drawings/dining-bay/sxb010-dining-bay-bonsai-drawings.pdf",
+  "source_pdf_sha256": "85fd2e65f335d59350a4fe2a5de563d37e282af1689c874671d252718161f738",
+  "render_command": "pdftoppm -png -r 180",
+  "views": [
+    {
+      "view": "plan",
+      "preview": "output/review/highpoly-types/sxb010/bonsai-drawings/dining-bay/sxb010-dining-bay-bonsai-plan-preview.png",
+      "preview_sha256": "13742c23563d5dc2c404101d18c1c3e29d077a2d252441acc55d526d8876ca16",
+      "image_size_px": [
+        851,
+        1361
+      ],
+      "blue_pixel_count": 3276,
+      "blue_target_bbox_px": [
+        47,
+        1148,
+        562,
+        1167
+      ],
+      "blue_target_margins_px": [
+        47,
+        1148,
+        288,
+        193
+      ],
+      "target_not_clipped": true,
+      "review_crop": "output/review/highpoly-types/sxb010/bonsai-drawings/dining-bay/sxb010-dining-bay-bonsai-plan-review-crop.png",
+      "review_crop_sha256": "9d1f811807f83f6f992e85abedc565ba788583a9dc3e181311d59516f5b7c332",
+      "review_crop_box_px": [
+        0,
+        1008,
+        703,
+        1308
+      ]
+    },
+    {
+      "view": "front",
+      "preview": "output/review/highpoly-types/sxb010/bonsai-drawings/dining-bay/sxb010-dining-bay-bonsai-front-preview.png",
+      "preview_sha256": "247d5cfa9e1bfe4750994bd7a2469f39fd96ab5d3ff91f4c9ed2dbd7e1a1768c",
+      "image_size_px": [
+        851,
+        964
+      ],
+      "blue_pixel_count": 63868,
+      "blue_target_bbox_px": [
+        287,
+        203,
+        802,
+        657
+      ],
+      "blue_target_margins_px": [
+        287,
+        203,
+        48,
+        306
+      ],
+      "target_not_clipped": true,
+      "review_crop": "output/review/highpoly-types/sxb010/bonsai-drawings/dining-bay/sxb010-dining-bay-bonsai-front-review-crop.png",
+      "review_crop_sha256": "e0aefdfeb7722dc99ba1629c232728fcdcabbb3e27848735392d2391b2197d69",
+      "review_crop_box_px": [
+        147,
+        63,
+        851,
+        798
+      ]
+    },
+    {
+      "view": "side",
+      "preview": "output/review/highpoly-types/sxb010/bonsai-drawings/dining-bay/sxb010-dining-bay-bonsai-side-preview.png",
+      "preview_sha256": "d622a23089f296677ec94deb4ddb59b6418449867413646a48a823065e18b684",
+      "image_size_px": [
+        1361,
+        964
+      ],
+      "blue_pixel_count": 6155,
+      "blue_target_bbox_px": [
+        192,
+        203,
+        212,
+        657
+      ],
+      "blue_target_margins_px": [
+        192,
+        203,
+        1148,
+        306
+      ],
+      "target_not_clipped": true,
+      "review_crop": "output/review/highpoly-types/sxb010/bonsai-drawings/dining-bay/sxb010-dining-bay-bonsai-side-review-crop.png",
+      "review_crop_sha256": "4a49db9fd8894da184e838893ec06532b03456978a4f097ff44dd6e9767ce2d4",
+      "review_crop_box_px": [
+        52,
+        63,
+        353,
+        798
+      ]
+    }
+  ],
+  "visual_review": {
+    "blue_target_visible_in_all_views": true,
+    "blue_target_unobscured_by_grey_context": true,
+    "blue_target_not_clipped_in_all_views": true,
+    "context_colour": "light_grey",
+    "target_colour": "blue",
+    "pass": true
+  },
+  "pass": true
+}

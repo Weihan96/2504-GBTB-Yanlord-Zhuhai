@@ -1,6 +1,14 @@
 {
+  "latest_scene_review": {
+    "revision": "official-detail-v4",
+    "status": "pending_user_review",
+    "source_kind": "native_dwg_configured_installation",
+    "source_label_zh": "基于官方原生DWG固定接头刚性移位及直管长度调整的二维安装细节表达",
+    "manifest": "output/review/highpoly-types/trap01/TRAP01-official-detail-v4-manifest.json",
+    "note": "Product candidate fields below preserve historical proxy review evidence; current scene SVG uses complete official 2D component paths."
+  },
   "schema_version": 1,
-  "generated_at": "2026-08-23T12:05:51.794371+00:00",
+  "generated_at": "2026-08-27T14:40:46.769938+00:00",
   "generator": "pipeline/scripts/trap01_review.py",
   "formal_ifc": "2504 GBTB Yanlord Zhuhai.ifc",
   "formal_ifc_sha256": "7a50b87e8f48a7c2bfbaa9f1dabdfca7155fa684b2325c66aa1ae15c8ab0a25c",
@@ -24,7 +32,7 @@
   "official_cad_used": false,
   "official_cad_used_as_representation": false,
   "third_party_cad_used": false,
-  "blue_line_present": false,
+  "blue_line_present": true,
   "mesh_vertex_count": 4536,
   "mesh_face_count": 9079,
   "bounds_mm": {
@@ -53,7 +61,7 @@
     "official_cad_used_as_representation": false,
     "third_party_cad_used": false,
     "official_source_access_record": "output/review/highpoly-types/trap01/official-source/source-access-record.json",
-    "official_source_access_record_sha256": "875deb7f912af6d07693100099afb08589a75f992df4641cdbc8235f91f5c067",
+    "official_source_access_record_sha256": "ac6cfe70847e017778f46112b5d494fe21f71b7572ba4c1d8423123582a0cfc0",
     "official_native_dwg_linework": "output/review/highpoly-types/trap01/official-native-dwg-linework.json",
     "official_native_dwg_linework_sha256": "3279df2a67948d846d05098104f75f44d5801a54eda95788f79c2526e9e4c0f1"
   },
@@ -113,17 +121,21 @@
     "project_instance_is_shortened_configuration": true,
     "official_default_family_paths_used_as_project_representation": false,
     "geometry_scaled_or_stretched_to_match": false,
+    "review_overlay_rule": "Translate the exact native DWG onto the current shortened black proxy using fixed-body and connection-axis datums at 1:1. Keep official linework within the current horizontal/vertical endpoints solid blue; render only the independently classified adjustable excess beyond those endpoints dashed blue.",
+    "blue_dashed_semantics": "official adjustable-family default/extended excess beyond this project configuration; not installed project geometry and not an exact project shop drawing",
     "pass": true
   },
   "candidate_representations": "output/review/highpoly-types/trap01/candidate-representations.json",
-  "candidate_representations_sha256": "f5e202bcbceb107994c0ac7c1fc19aac0fa398d93e7d3ca008bf85d0c822c5c5",
+  "candidate_representations_sha256": "1c2ed03833e585307436e19a5f6346c4e6aae0ceb8beec60c8c2451d0ccad201",
+  "adjustable_overlay_audit": "output/review/highpoly-types/trap01/adjustable-overlay-audit.json",
+  "adjustable_overlay_audit_sha256": "f8441ac0db752a5e0f6cc208f90872a7d18b5ee691918c4bd31acef384815eff",
   "views": [
     {
       "view": "plan",
       "svg": "output/review/highpoly-types/trap01/plan.svg",
-      "svg_sha256": "7b5dece64376e21ea4ccb9f9682218873efb955ee9f6a6ea668818319c314a85",
+      "svg_sha256": "45e4ff2ee1479160bccc693935c2dcc108aa80221bf59830e5e289c1f1630cce",
       "preview": "output/review/highpoly-types/trap01/plan-preview.png",
-      "preview_sha256": "36cdf749b6d4675e67eb979f99c8675ef008437b923a0eb65dbd35581dd28188",
+      "preview_sha256": "c939791021473215064bd0832070c882789dbbe44db09682ce5b2b24fad3f146",
       "projection_axes": [
         0,
         1
@@ -133,7 +145,10 @@
       "silhouette_path_count": 16,
       "candidate_drawing_line_source_kind": "geometry_derived_simplified_proxy",
       "official_family_native_dwg_path_count": 92,
+      "official_family_retained_solid_fragment_count": 86,
+      "official_family_clipped_dashed_fragment_count": 8,
       "blue_line_present_as_separate_family_reference": true,
+      "blue_line_present": true,
       "blue_line_used_as_project_representation": false,
       "comparison": {
         "native_dwg_code": "G",
@@ -153,9 +168,9 @@
     {
       "view": "front",
       "svg": "output/review/highpoly-types/trap01/front.svg",
-      "svg_sha256": "9a46b7f6cb206fa06f539c7b1d686966d025d346bde59da01f8228c1c6c44387",
+      "svg_sha256": "211b48b9d9b1391179ce1aca5aa088614c826564be9f071bbb0f7140f074becc",
       "preview": "output/review/highpoly-types/trap01/front-preview.png",
-      "preview_sha256": "f1f8cfe636e20179b5a240cb95b0be5a0190a09970d2c0df6c82921d6805a82d",
+      "preview_sha256": "11a7346b4924b00d0a6db140726cea03b2187a96ea6f7c3d2265657a685165dc",
       "projection_axes": [
         0,
         2
@@ -165,7 +180,10 @@
       "silhouette_path_count": 1,
       "candidate_drawing_line_source_kind": "geometry_derived_simplified_proxy",
       "official_family_native_dwg_path_count": 77,
+      "official_family_retained_solid_fragment_count": 53,
+      "official_family_clipped_dashed_fragment_count": 26,
       "blue_line_present_as_separate_family_reference": true,
+      "blue_line_present": true,
       "blue_line_used_as_project_representation": false,
       "comparison": {
         "native_dwg_code": "L",
@@ -185,9 +203,9 @@
     {
       "view": "side",
       "svg": "output/review/highpoly-types/trap01/side.svg",
-      "svg_sha256": "1c4871fc72c3504c42d422edf4d22eae912b340557234121c7807f108ffcdcc7",
+      "svg_sha256": "9581624b1de6fe55e672fa62377bc0df39ddc2f0c633fc39dcd797972f34bfbc",
       "preview": "output/review/highpoly-types/trap01/side-preview.png",
-      "preview_sha256": "bcd1d8e20798c34bf0b16e0685a5bff584d92cc36d06d21f8f38aea5c1e14410",
+      "preview_sha256": "86651342adcacdf681817b77869810fcb0d87f680a049640287987f82bcae2f1",
       "projection_axes": [
         1,
         2
@@ -197,7 +215,10 @@
       "silhouette_path_count": 8,
       "candidate_drawing_line_source_kind": "geometry_derived_simplified_proxy",
       "official_family_native_dwg_path_count": 117,
+      "official_family_retained_solid_fragment_count": 94,
+      "official_family_clipped_dashed_fragment_count": 25,
       "blue_line_present_as_separate_family_reference": true,
+      "blue_line_present": true,
       "blue_line_used_as_project_representation": false,
       "comparison": {
         "native_dwg_code": "A",

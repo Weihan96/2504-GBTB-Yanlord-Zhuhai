@@ -1,0 +1,9 @@
+Historical failed attempt; resolved by moving the IFC API import to module scope. Final evidence.json and all rendered outputs passed independent checks.
+Traceback (most recent call last):
+  File "/Users/jiaxinchen/.codex/worktrees/3a80/2504 GBTB Yanlord Zhuhai/pipeline/scripts/repair_aquaclean_registered_3d_views.py", line 141, in <module>
+    try:main()
+        ^^^^^^
+  File "/Users/jiaxinchen/.codex/worktrees/3a80/2504 GBTB Yanlord Zhuhai/pipeline/scripts/repair_aquaclean_registered_3d_views.py", line 44, in main
+    T=ifcopenshell.util.placement.get_local_placement(target.ObjectPlacement)
+      ^^^^^^^^^^^^
+UnboundLocalError: cannot access local variable 'ifcopenshell' where it is not associated with a value

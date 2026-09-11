@@ -1,0 +1,322 @@
+{
+  "task": "WD03 Front camera corrected from guest-bedroom window toward BED02 and wardrobe",
+  "generated_at": "2026-09-05T11:43:40.900387+00:00",
+  "versions": {
+    "blender": "4.5.3 LTS",
+    "ifcopenshell": "0.8.4",
+    "bridge": [
+      1,
+      1,
+      0
+    ]
+  },
+  "courseEvidence": {
+    "mode": "embedded-course-index",
+    "lesson": "085000 Introduction to Drawings",
+    "timestamps": [
+      "01:03 active drawing camera",
+      "01:24 move camera boundary",
+      "01:59 Create Drawing"
+    ]
+  },
+  "plan": [
+    "inspect real IFC world coordinates",
+    "reverse Front camera from window side",
+    "native Create Drawing",
+    "provider save_ifc_file and reload",
+    "verify frozen geometry and Plan/Side"
+  ],
+  "preState": {
+    "derived_ifc_sha256": "c7389d2c606fc92eb7be744d06dbcfbd00a221efe73b4dec2d90abb2b7060618",
+    "front_camera_matrix_m": [
+      [
+        1,
+        0,
+        0,
+        -4.023506164550781
+      ],
+      [
+        0,
+        0,
+        -1,
+        -2.034576892852783
+      ],
+      [
+        0,
+        1,
+        0,
+        1.2000000476837158
+      ],
+      [
+        0,
+        0,
+        0,
+        1
+      ]
+    ],
+    "frozen_files": {
+      "/Users/jiaxinchen/.codex/worktrees/3a80/2504 GBTB Yanlord Zhuhai/output/review/highpoly-types/wd03/candidate-representations.json": "2a613484994475387ac85ad1e3383ede06fb3cdff0837f8f471cd641c00159e8",
+      "/Users/jiaxinchen/.codex/worktrees/3a80/2504 GBTB Yanlord Zhuhai/output/review/highpoly-types/wd03/plan.svg": "493d527555679a7b16c4a0e1893b271105de0f76b69fb084fa69556b34e0d786",
+      "/Users/jiaxinchen/.codex/worktrees/3a80/2504 GBTB Yanlord Zhuhai/output/review/highpoly-types/wd03/front.svg": "287af4c363d5c75016f8d4bb7f4db13b21257964040afb8165bf8e6c8d067997",
+      "/Users/jiaxinchen/.codex/worktrees/3a80/2504 GBTB Yanlord Zhuhai/output/review/highpoly-types/wd03/side.svg": "ccb3662105122f86e3c963df8531fea711c7ab42424ef3b3bd71a176a44d5e23",
+      "/Users/jiaxinchen/.codex/worktrees/3a80/2504 GBTB Yanlord Zhuhai/output/review/highpoly-types/wd03/bonsai-drawings/wardrobe/WD03-WARDROBE-PLAN.svg": "5dc184e3c1615c53af34e9365189d30143222964f97400427e89786642f900c2",
+      "/Users/jiaxinchen/.codex/worktrees/3a80/2504 GBTB Yanlord Zhuhai/output/review/highpoly-types/wd03/bonsai-drawings/wardrobe/WD03-WARDROBE-SIDE.svg": "5bec3cd11c5141af6ff2e79dbbd0234fea97b0ecddfe74d870060296600ecc7b"
+    }
+  },
+  "world_direction_evidence": {
+    "guest_bed": {
+      "global_id": "1i_pqgLv9A7uuV7MjaArBW",
+      "type_name": "BED02",
+      "world_bbox_m": [
+        [
+          -4.7275166511535645,
+          1.5037199258804321,
+          0.009999999776482582
+        ],
+        [
+          -2.3234987258911133,
+          3.1794309616088867,
+          1.1171460151672363
+        ]
+      ],
+      "world_placement_mm": [
+        [
+          0,
+          -1,
+          0,
+          -3525.33793449402
+        ],
+        [
+          1,
+          0,
+          0,
+          2341.54415130615
+        ],
+        [
+          0,
+          0,
+          1,
+          10
+        ],
+        [
+          0,
+          0,
+          0,
+          1
+        ]
+      ]
+    },
+    "guest_window": {
+      "global_id": "2nisU4bAr9MfEP9b7LwE2g",
+      "type_name": "WB02",
+      "world_bbox_m": [
+        [
+          -4.179999828338623,
+          3.875,
+          0.6700000166893005
+        ],
+        [
+          -3,
+          3.924999952316284,
+          2.450000047683716
+        ]
+      ],
+      "world_placement_mm": [
+        [
+          1,
+          0,
+          0,
+          -4180
+        ],
+        [
+          0,
+          1,
+          0,
+          3825.0000000000005
+        ],
+        [
+          0,
+          0,
+          1,
+          670
+        ],
+        [
+          0,
+          0,
+          0,
+          1
+        ]
+      ]
+    },
+    "wd03": {
+      "global_id": "3cmikd9MTB$egM5KQaNgUf",
+      "type_name": "WD03",
+      "world_bbox_m": [
+        [
+          -4.679987907409668,
+          0.22260341048240662,
+          0
+        ],
+        [
+          -3.3670244216918945,
+          0.8082426190376282,
+          2.3894999027252197
+        ]
+      ],
+      "world_placement_mm": [
+        [
+          -1,
+          0,
+          0,
+          -4593
+        ],
+        [
+          0,
+          -1,
+          0,
+          528
+        ],
+        [
+          0,
+          0,
+          1,
+          2365
+        ],
+        [
+          0,
+          0,
+          0,
+          1
+        ]
+      ]
+    }
+  },
+  "execution": {
+    "generator": "bpy.ops.bim.create_drawing",
+    "result": [
+      "FINISHED"
+    ],
+    "mode": "OPENCASCADE",
+    "adapter": "isolated Blender process using installed public bridge save_ifc_file handler; unrelated live MCP scene preserved"
+  },
+  "persistence": {
+    "saved": true,
+    "output_path": "/Users/jiaxinchen/.codex/worktrees/3a80/2504 GBTB Yanlord Zhuhai/output/review/highpoly-types/wd03/Poliform-Senzafine-WD03-derived-drawing.ifc",
+    "in_place": false,
+    "method": "bonsai.bim.export_ifc.IfcExporter",
+    "reloaded": true
+  },
+  "postState": {
+    "front_camera_matrix_m": [
+      [
+        -1,
+        0,
+        0,
+        -4.023506164550781
+      ],
+      [
+        0,
+        0,
+        1,
+        3.5250000953674316
+      ],
+      [
+        0,
+        1,
+        0,
+        1.2000000476837158
+      ],
+      [
+        0,
+        0,
+        0,
+        1
+      ]
+    ],
+    "view_direction_world": [
+      0,
+      -1,
+      0
+    ],
+    "persisted_drawing_matrix_mm": [
+      [
+        -0.9999999999999886,
+        -1.1399866190550168e-14,
+        1.5099580252808397e-7,
+        -4023.50616455078
+      ],
+      [
+        1.5099580252808492e-7,
+        -7.549790126404134e-8,
+        0.9999999999999858,
+        3525.00009536743
+      ],
+      [
+        0,
+        0.9999999999999972,
+        7.549790126404218e-8,
+        1200.00004768372
+      ],
+      [
+        0,
+        0,
+        0,
+        1
+      ]
+    ],
+    "persisted_annotation_path_count": 9,
+    "formal_ifc_sha256": "7a50b87e8f48a7c2bfbaa9f1dabdfca7155fa684b2325c66aa1ae15c8ab0a25c"
+  },
+  "outputs": {
+    "front_svg": {
+      "path": "/Users/jiaxinchen/.codex/worktrees/3a80/2504 GBTB Yanlord Zhuhai/output/review/highpoly-types/wd03/bonsai-drawings/wardrobe/WD03-WARDROBE-FRONT.svg",
+      "sha256": "2c66404c2060fa8491ad48a3477fad72b337f7658c9c3408033841cf2d28609d",
+      "bytes": 1652592,
+      "root_tag": "svg",
+      "width": "200.0mm",
+      "height": "143.94580863674852mm",
+      "view_box": "0 0 200.0 143.94580863674852",
+      "geometry_element_count": 8913,
+      "projection_group_count": 81,
+      "semantic_black_geometry_count": 18,
+      "grey_context_geometry_count": 8895,
+      "representative_body_present": false,
+      "target_body_projection_count": 0,
+      "semantic_annotation_present": true,
+      "no_body_annotation_duplicate": true,
+      "bonsai_generated_sha256_before_review_style": "80b56716910954257d082c7054ea05075080961e83dad9da783dea7d9c02fb1e",
+      "post_style_only": true
+    },
+    "derived_ifc": {
+      "path": "/Users/jiaxinchen/.codex/worktrees/3a80/2504 GBTB Yanlord Zhuhai/output/review/highpoly-types/wd03/Poliform-Senzafine-WD03-derived-drawing.ifc",
+      "sha256": "4b43da2669561eee6fcdcf8ddeb967dce706e6a6ffc1b361ff85b29d6a32a67b",
+      "bytes": 87400399
+    },
+    "session_blend": {
+      "path": "/Users/jiaxinchen/.codex/worktrees/3a80/2504 GBTB Yanlord Zhuhai/output/review/highpoly-types/wd03/Poliform-Senzafine-WD03-project-drawings.blend",
+      "sha256": "b8072dd6c9d29a38e291f6cf8d4297408b896fbf3a077d3922e5038a21ddedf5",
+      "bytes": 526456603
+    }
+  },
+  "tests": {
+    "window_bed_wardrobe_world_order_verified": true,
+    "front_points_from_window_to_bed": true,
+    "candidate_and_plan_side_bytes_unchanged": true,
+    "annotation_path_count_9": true,
+    "target_body_no_duplicate": true
+  },
+  "visual": {
+    "status": "rendered_and_inspected",
+    "png": {
+      "path": "/Users/jiaxinchen/.codex/worktrees/3a80/2504 GBTB Yanlord Zhuhai/output/review/highpoly-types/wd03/wd03-wardrobe-scene-front.png",
+      "sha256": "2a12ea7747f999d5234322a1c0fe18852e2814a5ca1918c343413b3b684c56f5"
+    },
+    "observations": [
+      "Black wardrobe semantic frame and horizontal partitions remain visible; grey actual project context reverses with the camera.",
+      "View direction is confirmed by persisted camera and actual guest-window/BED02/WD03 world coordinates, not by mirroring SVG geometry."
+    ]
+  },
+  "review_status": "front_scene_svg_pending_user_review",
+  "geometry_approval_quote": "但是这个几何的看上去是OK的。",
+  "verdict": "pass"
+}

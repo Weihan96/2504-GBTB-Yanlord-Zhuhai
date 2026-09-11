@@ -63,6 +63,39 @@ def align_paths(view, source_view, minimum, maximum):
     return [[(target_center_y + x - source_center[0], maximum[2] + y - source_max[1]) for x, y in path] for path in paths]
 
 
+def orient_ifc_projection(view, paths, minimum, maximum):
+    """Match IFC projections to the manufacturer drawing-view direction."""
+    if view != "side":
+        return paths
+    # Geberit's L drawing is a left-side elevation. The generic Y/Z IFC
+    # projection is viewed from local +X, so reflect its horizontal axis to
+    # express the same local -X viewing direction as the official L view.
+    horizontal_axis_sum = minimum[1] + maximum[1]
+    return [
+        [(horizontal_axis_sum - x, y) for x, y in path]
+        for path in paths
+    ]
+
+
+def side_handedness_check(proxy, official, minimum, maximum):
+    alignment_center = (minimum[1] + maximum[1]) / 2.0
+
+    def horizontal_centroid(paths):
+        points = [point for path in paths for point in path]
+        return sum(point[0] for point in points) / len(points)
+
+    proxy_offset = horizontal_centroid(proxy) - alignment_center
+    official_offset = horizontal_centroid(official) - alignment_center
+    return {
+        "comparison": "asymmetric_path_centroids_share_left_view_handedness",
+        "view_direction": "left_side_local_negative_x",
+        "proxy_horizontal_centroid_offset_mm": round(proxy_offset, 6),
+        "official_horizontal_centroid_offset_mm": round(official_offset, 6),
+        "same_horizontal_side": proxy_offset * official_offset > 0.0,
+        "pass": proxy_offset * official_offset > 0.0,
+    }
+
+
 def cross_check(view, source_view, minimum, maximum):
     official = source_view["contour_bounds_mm"]["size"]
     if view == "plan":
@@ -227,11 +260,19 @@ def main():
     for view, definition in VIEWS.items():
         axes = definition["axes"]
         all_edges = projected_raw_edges(vertices, faces, axes)
-        edges = display_edge_sample(all_edges)
-        proxy = projected_silhouette(vertices, faces, axes, float(profile["silhouette_simplify_mm"]))
+        edges = orient_ifc_projection(view, display_edge_sample(all_edges), minimum, maximum)
+        proxy = orient_ifc_projection(
+            view,
+            projected_silhouette(vertices, faces, axes, float(profile["silhouette_simplify_mm"])),
+            minimum,
+            maximum,
+        )
         source_view = linework["views"][view]
         official = align_paths(view, source_view, minimum, maximum)
         check = cross_check(view, source_view, minimum, maximum)
+        if view == "side":
+            check["handedness"] = side_handedness_check(proxy, official, minimum, maximum)
+            check["pass"] = check["pass"] and check["handedness"]["pass"]
         if not check["pass"]:
             raise RuntimeError(f"Duofix {view} mechanical identity gate failed")
         checks[view] = check
@@ -243,6 +284,7 @@ def main():
             "official_native_dwg_paths_mm": rounded(official),
             "native_dwg_code": source_view["native_dwg_code"],
             "native_dwg_sha256": source_view["source_dwg_sha256"],
+            "view_direction": "left_side_local_negative_x" if view == "side" else definition["label"],
         }
         records.append({
             "view": view,
@@ -257,6 +299,7 @@ def main():
             "blue_line_article_number": ARTICLE,
             "blue_line_native_dwg_code": source_view["native_dwg_code"],
             "blue_line_native_dwg_sha256": source_view["source_dwg_sha256"],
+            "view_direction": "left_side_local_negative_x" if view == "side" else definition["label"],
             "mechanical_cross_check": check,
         })
     candidate_path = output / "candidate-representations.json"

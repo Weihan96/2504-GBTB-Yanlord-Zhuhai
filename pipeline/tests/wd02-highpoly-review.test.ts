@@ -33,7 +33,9 @@ test("official Senzafine family identity is archived without claiming exact WD02
     customised_compositions_supported: true,
   });
   expect(access.official_product_cad).toMatchObject({
-    registration_form_and_captcha_required: true,
+    product_page_checked_in_active_30_day_download_session: true,
+    product_page_native_dwg_listed: false,
+    technical_catalog_access_status: "protected_page_no_catalog_content_exposed",
     public_exact_native_dwg_url_located: false,
     acquired: false,
     local_cad_files: [],
@@ -99,12 +101,12 @@ test("one WD02 Body produces three geometry-derived views with zero blue CAD pat
   expect(candidate.source_label_zh).toBe(sourceLabelZh);
   expect(candidate.official_cad_used).toBeFalse();
   expect(candidate.third_party_cad_used).toBeFalse();
-  expect(manifest.views.map((view: any) => view.silhouette_path_count)).toEqual([4, 3, 3]);
+  expect(manifest.views.map((view: any) => view.silhouette_path_count)).toEqual([15, 41, 7]);
   for (const view of manifest.views) {
     expect(view.official_cad_path_count).toBe(0);
     expect(view.blue_line_present).toBeFalse();
     const svg = readFileSync(join(root, view.svg), "utf8");
-    expect(svg).toContain('class="simplified-proxy-silhouette geometry-derived"');
+    expect(svg).toContain('class="simplified-proxy-silhouette geometry-derived semantic-boundary"');
     expect(svg).toContain('data-source-kind="geometry_derived_simplified_proxy"');
     expect(svg).not.toContain('class="official-reference native-dwg"');
     expect(svg).not.toContain("#1677c8");
@@ -258,7 +260,7 @@ test("a scoped temporary approval writes verified WD02 representations and sourc
   expect(result.pass).toBeTrue();
   expect(result.formal_ifc_bytes_unchanged).toBeTrue();
   expect(result.representations).toEqual({ plan: "Wd02Plan", front: "Wd02Front", side: "Wd02Side" });
-  expect(result.representation_path_counts).toEqual({ plan: 4, front: 3, side: 3 });
+  expect(result.representation_path_counts).toEqual({ plan: 15, front: 41, side: 7 });
   expect(result.source_kind).toBe(sourceKind);
   expect(result.source_label_zh).toBe(sourceLabelZh);
   expect(result.official_cad_geometry_included).toBeFalse();

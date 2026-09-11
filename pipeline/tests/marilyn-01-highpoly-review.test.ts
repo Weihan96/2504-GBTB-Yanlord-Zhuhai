@@ -86,14 +86,64 @@ test("live Baxter sources preserve the exact bergere package and exclude Marilyn
   expect(Object.values(evidence.measurement_svgs).every((item: any) => item.pass)).toBeTrue();
 });
 
-test("direct native-DWG parsing supplies exactly 24/68/54 approved blue paths", () => {
+test("native ARC OCS conversion restores 44/96/78 blue paths", () => {
   const linework = JSON.parse(readFileSync(join(product, "official-native-dwg-linework.json"), "utf8"));
   expect(linework).toMatchObject({ source_kind: "native_dwg", source_dwg_sha256: dwgHash, source_zip_sha256: "db054a193c9c5b8dc45f0df39199b2d96dc3712a5a7e48821fe94dce1566fedb", exact_model_3ds_sha256: "171dbd72b2298f201d834fb54a5d39bca7ca5b86a552b97a5cbc64e23dd5e385", pass: true });
-  expect(Object.fromEntries(Object.entries(linework.views).map(([view, value]: any) => [view, value.paths_mm.length]))).toEqual({ plan: 24, front: 68, side: 54 });
+  expect(linework.direct_autocad_inspection).toMatchObject({
+    application: "Autodesk AutoCAD 2024",
+    source_opened_sha256: dwgHash,
+    source_matches_archived_native_dwg: true,
+    exact_variant: "Marilyn bergere armchair with swivel base - 86 x 100 x 94 cm",
+    selection_unique: true,
+    pass: true,
+  });
+  expect(sha256(join(root, linework.direct_autocad_inspection.full_modelspace_screenshot))).toBe(linework.direct_autocad_inspection.full_modelspace_screenshot_sha256);
+  expect(Object.fromEntries(Object.entries(linework.views).map(([view, value]: any) => [view, value.paths_mm.length]))).toEqual({ plan: 44, front: 96, side: 78 });
+  expect(linework.upholstery_completeness_audit).toMatchObject({
+    original_layer_filtered_path_counts: { plan: 24, front: 68, side: 54 },
+    previous_rational_spline_omitted_path_counts: { plan: 38, front: 80, side: 62 },
+    revised_complete_path_counts: { plan: 44, front: 96, side: 78 },
+    omitted_rational_native_splines_restored: {
+      plan: { path_count: 4, all_endpoints_rejoin_native_topology_within_4_mm: true },
+      front: { path_count: 4, all_endpoints_rejoin_native_topology_within_4_mm: true },
+      side: { path_count: 0, all_endpoints_rejoin_native_topology_within_4_mm: true },
+    },
+    omitted_fit_point_native_splines_restored: {
+      plan: { path_count: 0 },
+      front: { path_count: 2, native_entity_indices: [1005, 1006] },
+      side: { path_count: 0 },
+    },
+    omitted_native_layers_restored: {
+      plan: { "0": 14 },
+      front: { "0": 12 },
+      side: { "Make2D$Visibile$Curve": 8 },
+    },
+    central_project_headrest_cushion: {
+      present_in_project_ifc_body: true,
+      present_as_independent_closed_component_in_exact_native_dwg_cluster: false,
+      synthetic_blue_outline_added: false,
+    },
+    pass: true,
+  });
+  expect(linework.views.plan.native_layer_path_counts).toEqual({ "0": 14, _ARREDO: 30 });
+  expect(linework.views.front.native_layer_path_counts).toEqual({ "0": 12, _ARREDO: 84 });
+  expect(linework.views.side.native_layer_path_counts).toEqual({ "Make2D$Visibile$Curve": 8, _ARREDO: 70 });
   expect(linework.native_dimension_labels_in_exact_cluster).toEqual(["1000", "450", "860", "940"]);
   const counterexample = readFileSync(join(product, "official-source/counterexamples/README.md"), "utf8");
   expect(counterexample).toContain("negative");
   expect(counterexample).toContain("must never be used");
+});
+
+test("restored support ARC closes the native shell without fabricated segments", () => {
+  const audit = JSON.parse(readFileSync(join(product, "marilyn-side-support-closure-audit.json"), "utf8"));
+  expect(audit.source_dwg_sha256).toBe(dwgHash);
+  expect(audit.missing_support_arc_native_entity).toMatchObject({ index: 234, entity: "ARC", extrusion: [0, 0, -1] });
+  expect(audit.restored_arc_234_length_mm).toBeCloseTo(65.393226885, 6);
+  expect(audit.support_outline_cycle.native_entity_indices).toContain(234);
+  expect(audit.support_outline_cycle.maximum_endpoint_gap_mm).toBeLessThan(0.001);
+  expect(audit.hand_drawn_join_added).toBeFalse();
+  expect(audit.source_geometry_scaled).toBeFalse();
+  expect(audit.front_fit_only_curves_still_approximate).toEqual([1005, 1006]);
 });
 
 test("candidate SVGs put white masks below native-DWG blue linework and inventory includes Marilyn", () => {
@@ -105,7 +155,7 @@ test("candidate SVGs put white masks below native-DWG blue linework and inventor
   expect(manifest).toMatchObject({ representative_global_id: "3l2Ji4k2H9oOTDGWYUq7uV", geometry_product_count: 1, whole_model_render: false, source_kind: "native_dwg", official_cad_used: true, third_party_cad_used: false, review_status: "visual_review_pending", approved_for_drawing_ifc: false, pass: true });
   expect(manifest.bounds_mm.size).toEqual([877.174957, 1013.911865, 970.476962]);
   expect(candidate).toMatchObject({ source_kind: "native_dwg", source_dwg_sha256: dwgHash, official_cad_used: true, third_party_cad_used: false, formal_ifc_write_allowed: false, review_status: "visual_review_pending" });
-  for (const [view, count] of Object.entries({ plan: 24, front: 68, side: 54 })) {
+  for (const [view, count] of Object.entries({ plan: 44, front: 96, side: 78 })) {
     expect(candidate.views[view].official_native_dwg_paths_mm.length).toBe(count);
     const svg = readFileSync(join(product, `${view}.svg`), "utf8");
     expect(svg).toContain('class="official-reference-mask"');
@@ -115,22 +165,32 @@ test("candidate SVGs put white masks below native-DWG blue linework and inventor
   }
 });
 
-test("project plan and two elevations retain walls and furniture at fixed native scale", () => {
+test("project plan and two elevations retain actual Body plus candidate morphology at fixed native scale", () => {
   const context = JSON.parse(readFileSync(join(product, "project-context-manifest.json"), "utf8"));
   expect(context.views.map((view: any) => view.view)).toEqual(["plan", "front", "side"]);
-  expect(context).toMatchObject({ source_kind: "native_dwg", official_cad_used: true, third_party_cad_used: false, project_context_retained: true, walls_and_surrounding_project_elements_retained: true, overlay_top_layer_with_white_mask: true, blue_line_present: true, project_scale_svg_units_per_mm: 0.02, pass: true });
+  expect(context).toMatchObject({ source_kind: "native_dwg", official_cad_used: true, third_party_cad_used: false, project_context_retained: true, walls_and_surrounding_project_elements_retained: true, actual_ifc_projection_retained: true, proxy_overlay_present: true, overlay_top_layer_with_white_halo: true, overlay_top_layer_with_white_mask: false, blue_line_present: true, project_scale_svg_units_per_mm: 0.02, pass: true });
   expect(context.context_view_scope).toMatchObject({ included: ["plan", "front", "side"], excluded: [] });
   expect(context.project_projection_note.geometry_stretched).toBeFalse();
   expect(context.review_annotation_suppression.walls_furniture_and_ifc_geometry_removed).toBeFalse();
   for (const view of context.views) {
     expect(view.overlay.fit.uniform_scale_preserved).toBeTrue();
     expect(view.overlay.fit.transformation_mode).toContain("native_1_50_scale_only");
-    expect(view.overlay.path_count).toBe(({ plan: 24, front: 68, side: 54 } as any)[view.view]);
+    expect(view.overlay.path_count).toBe(({ plan: 44, front: 96, side: 78 } as any)[view.view]);
+    expect(view.overlay.actual_ifc_projection_retained).toBeTrue();
+    expect(view.overlay.single_product_morphology).toMatchObject({
+      context_uses_same_ordered_official_paths: true,
+      context_uses_same_ordered_proxy_paths: true,
+      resampled: false,
+      scaled_to_force_fit: false,
+      pass: true,
+    });
     expect(sha256(join(root, view.review_preview))).toBe(view.review_preview_sha256);
     const full = readFileSync(join(root, view.output), "utf8");
-    expect(full).toContain('class="official-native-dwg-mask"');
+    expect(full).toContain('data-review-actual-ifc="true"');
+    expect(full).toContain('class="candidate-proxy-halo"');
+    expect(full).toContain('class="candidate-proxy-black"');
     expect(full).toContain('class="official-native-dwg-blue"');
-    expect(full.indexOf('class="official-native-dwg-mask"')).toBeLessThan(full.indexOf('class="official-native-dwg-blue"'));
+    expect(full.indexOf('class="candidate-proxy-black"')).toBeLessThan(full.indexOf('class="official-native-dwg-blue"'));
   }
 });
 
@@ -180,7 +240,7 @@ test("temporary scoped approval writes verified official-DWG representations and
   expect(run.exitCode).toBe(0);
   if (run.exitCode !== 0) throw new Error(run.stderr.toString());
   const result = JSON.parse(readFileSync(report, "utf8"));
-  expect(result).toMatchObject({ pass: true, formal_ifc_bytes_unchanged: true, representations: { plan: "Marilyn01Plan", front: "Marilyn01Front", side: "Marilyn01Side" }, representation_path_counts: { plan: 24, front: 68, side: 54 }, representation_geometry_source: "official_native_dwg_paths_mm", official_cad_geometry_included: true, proxy_geometry_included: false, source_property_set: "Pset_Marilyn01DrawingSource", source_kind: "native_dwg", source_label_zh: "基于 Baxter 精确型号原生 DWG 的官方图纸表达" });
+  expect(result).toMatchObject({ pass: true, formal_ifc_bytes_unchanged: true, representations: { plan: "Marilyn01Plan", front: "Marilyn01Front", side: "Marilyn01Side" }, representation_path_counts: { plan: 44, front: 96, side: 78 }, representation_geometry_source: "official_native_dwg_paths_mm", official_cad_geometry_included: true, proxy_geometry_included: false, source_property_set: "Pset_Marilyn01DrawingSource", source_kind: "native_dwg", source_label_zh: "基于 Baxter 精确型号原生 DWG 的官方图纸表达" });
   expect(result.source_document_associations).toContain("BAXTER-MARILYN-01-NATIVE-DWG");
   expect(result.source_document_associations).toContain("BAXTER-MARILYN-01-OFFICIAL-PRODUCT-PAGE");
   expect(result.source_document_associations).toContain("BAXTER-MARILYN-01-NATIVE-LINEWORK-REGISTER");

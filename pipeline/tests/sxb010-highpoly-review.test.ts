@@ -76,9 +76,9 @@ test("single untyped representative uses semantic Plan Front Side axes and no bl
     side: [2, 1],
   });
   expect(Object.fromEntries(manifest.views.map((view: any) => [view.view, view.silhouette_path_count]))).toEqual({
-    plan: 8,
-    front: 241,
-    side: 84,
+    plan: 5,
+    front: 51,
+    side: 55,
   });
   for (const view of manifest.views) {
     expect(view.drawing_line_source_kind).toBe(sourceKind);
@@ -90,6 +90,48 @@ test("single untyped representative uses semantic Plan Front Side axes and no bl
     expect(svg).toContain('data-source-kind="geometry_derived_simplified_proxy"');
     expect(svg).not.toContain('class="official-reference native-dwg"');
     expect(svg).not.toContain("#1677c8");
+  }
+});
+
+test("22 mm near-line merge keeps all slats, controls and the exact projected envelope", () => {
+  const audit = JSON.parse(readFileSync(join(product, "line-simplification-audit.json"), "utf8"));
+  const manifest = JSON.parse(readFileSync(join(product, "manifest.json"), "utf8"));
+  const candidate = JSON.parse(readFileSync(join(product, "candidate-representations.json"), "utf8"));
+  expect(audit.source_kind).toBe(sourceKind);
+  expect(audit.source_label_zh).toBe(sourceLabelZh);
+  expect(audit.merge_threshold_mm).toBe(22);
+  expect(audit.review_status).toBe("visual_review_pending");
+  expect(audit.derived_ifc_write_allowed).toBeFalse();
+  expect(audit.formal_ifc_bytes_unchanged).toBeTrue();
+  expect(audit.pass).toBeTrue();
+  expect(manifest.line_simplification_audit_sha256).toBe(sha256(join(product, "line-simplification-audit.json")));
+  expect(candidate.near_line_merge_threshold_mm).toBe(22);
+
+  const expected = {
+    plan: { beforePaths: 8, afterPaths: 5, beforeSegments: 63, afterSegments: 8 },
+    front: { beforePaths: 241, afterPaths: 51, beforeSegments: 1444, afterSegments: 60 },
+    side: { beforePaths: 84, afterPaths: 55, beforeSegments: 696, afterSegments: 58 },
+  };
+  for (const [view, record] of Object.entries(audit.views) as any) {
+    expect(record.before_path_count).toBe(expected[view as keyof typeof expected].beforePaths);
+    expect(record.after_path_count).toBe(expected[view as keyof typeof expected].afterPaths);
+    expect(record.before_segment_count).toBe(expected[view as keyof typeof expected].beforeSegments);
+    expect(record.after_segment_count).toBe(expected[view as keyof typeof expected].afterSegments);
+    expect(record.merge_threshold_at_final_svg_scale_px).toBeGreaterThan(8.9);
+    expect(record.merge_threshold_at_final_svg_scale_px).toBeLessThan(10.5);
+    expect(Math.max(...record.outer_envelope_delta_mm)).toBe(0);
+    expect(record.before_bounds_mm.minimum).toEqual(record.after_bounds_mm.minimum);
+    expect(record.before_bounds_mm.maximum).toEqual(record.after_bounds_mm.maximum);
+    expect(record.slat_count_before).toBe(45);
+    expect(record.slat_centerline_count_after).toBe(45);
+    expect(record.slat_center_pitch_after_mm.minimum).toBeGreaterThan(record.merge_threshold_mm);
+    expect(record.headrail_count_preserved).toBe(1);
+    expect(record.bottom_rail_count_preserved).toBe(1);
+    expect(record.guide_and_cord_component_count_before).toBe(7);
+    expect(record.guide_and_cord_axis_count_after).toBe(3);
+    expect(record.control_component_count_preserved).toBe(9);
+    expect(record.outer_envelope_preserved).toBeTrue();
+    expect(record.slat_rhythm_preserved).toBeTrue();
   }
 });
 
@@ -123,7 +165,7 @@ test("project plan and R07 elevations retain context with mechanically located s
   expect(context.context_target_derivation.no_nonuniform_fit_or_blank_space_guessing).toBeTrue();
   expect(context.rejected_context_evidence.used_as_alignment_target).toBeFalse();
   expect(context.review_annotation_suppression.geometry_removed).toBeFalse();
-  const expectedPathCounts = { plan: 8, front: 241, side: 84 };
+  const expectedPathCounts = { plan: 5, front: 51, side: 55 };
   for (const view of context.views) {
     expect(view.overlay.path_count).toBe(expectedPathCounts[view.view as keyof typeof expectedPathCounts]);
     expect(Math.max(...view.overlay.fit.bbox_absolute_delta_svg_units)).toBeLessThanOrEqual(
@@ -203,14 +245,15 @@ test("pending sxb010 review leaves the formal IFC byte-identical and creates no 
   expect(sha256(formal)).toBe(formalHash);
 });
 
-test("writer rejects missing apply and the pending human approval record", () => {
+test("approved sxb010 record still requires explicit apply and forbids formal IFC writes", () => {
   const temporary = mkdtempSync(join(tmpdir(), "sxb010-gate-"));
   const output = join(temporary, "forbidden.ifc");
   const script = join(root, "pipeline/scripts/sxb010_drawing_ifc.py");
   const approval = JSON.parse(readFileSync(join(root, "pipeline/decisions/sxb010-drawing-approval.json"), "utf8"));
   const manifest = join(product, "manifest.json");
-  expect(approval.status).toBe("pending");
-  expect(approval.derived_ifc_write_allowed).toBeFalse();
+  expect(approval.status).toBe("approved");
+  expect(approval.approved_views).toEqual(["plan", "front", "side"]);
+  expect(approval.derived_ifc_write_allowed).toBeTrue();
   expect(approval.formal_authoritative_ifc_write_allowed).toBeFalse();
   expect(approval.candidate_manifest_sha256).toBe(sha256(manifest));
 
@@ -222,13 +265,6 @@ test("writer rejects missing apply and the pending human approval record", () =>
   expect(withoutApply.stderr.toString()).toContain("IFC write requires the explicit --apply flag");
   expect(existsSync(output)).toBeFalse();
 
-  const pendingApproval = Bun.spawnSync(
-    ["python3", script, "--input", formal, "--output", output, "--apply"],
-    { cwd: root, stderr: "pipe" },
-  );
-  expect(pendingApproval.exitCode).not.toBe(0);
-  expect(pendingApproval.stderr.toString()).toContain("approval gate rejected IFC write");
-  expect(existsSync(output)).toBeFalse();
   expect(sha256(formal)).toBe(formalHash);
   rmSync(temporary, { recursive: true, force: true });
 });
@@ -281,7 +317,7 @@ test("synthetic approval writes only a temporary derived IFC with traceable fall
     front: "Sxb010Front",
     side: "Sxb010Side",
   });
-  expect(report.representation_path_counts).toEqual({ plan: 8, front: 241, side: 84 });
+  expect(report.representation_path_counts).toEqual({ plan: 5, front: 51, side: 55 });
   expect(report.source_kind).toBe(sourceKind);
   expect(report.source_label_zh).toBe(sourceLabelZh);
   expect(report.official_cad_geometry_included).toBeFalse();

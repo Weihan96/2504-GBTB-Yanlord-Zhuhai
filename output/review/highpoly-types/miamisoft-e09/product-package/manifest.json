@@ -1,0 +1,231 @@
+{
+  "schema_version": 1,
+  "profile_key": "miamisoft-e09",
+  "display_name": "Baxter Miami Soft E09",
+  "status": "complete",
+  "target_global_id": "3osoWufdD1mhDDAM6lcix4",
+  "persistent_ifc": {
+    "path": "/Users/jiaxinchen/.codex/worktrees/3a80/2504 GBTB Yanlord Zhuhai/output/review/highpoly-types/miamisoft-e09/product-package/MIAMI-E09-product.ifc",
+    "bytes": 4676673,
+    "sha256": "7a51025a8ffece775464c2eaeef4a263d02c1df20ce41cb9d0aa79ac46b1681e"
+  },
+  "source_kind": "native_dwg",
+  "source_label_zh": "Baxter Miami Soft E09 官方原生二维 DWG 蓝线",
+  "scope": "approved E09 dx/r native linework; project component offsets accepted; no force-fit",
+  "source_dwg": {
+    "path": "/Users/jiaxinchen/.codex/worktrees/3a80/2504 GBTB Yanlord Zhuhai/output/review/highpoly-types/miamisoft-e09/official-source/official-download/Miami Soft_Divano_Abaco.dwg",
+    "bytes": 995101,
+    "sha256": "efc3315feed0a2dac8938aebbd7336856dabba6721395e4520783c39ba0cc51a"
+  },
+  "official_download_url": "https://dam.baxter.it/asset/b9c9485c-9716-422d-9c1f-7851c7bc9530/Baxter_MiamiSoft_Sofa_2D_3D.zip",
+  "source_access_record": {
+    "path": "/Users/jiaxinchen/.codex/worktrees/3a80/2504 GBTB Yanlord Zhuhai/output/review/highpoly-types/miamisoft-e09/official-source/source-access-record.json",
+    "bytes": 7630,
+    "sha256": "ee1121aa7c1ee3f110ff3bf44969c5725ef580ded761c1bdeaa4d81b1480c327"
+  },
+  "approval_record": {
+    "path": "/Users/jiaxinchen/.codex/worktrees/3a80/2504 GBTB Yanlord Zhuhai/pipeline/decisions/miamisoft-e09-drawing-approval.json",
+    "bytes": 1858,
+    "sha256": "70e89130beb6af87cf4ae4bcd241ed2ce6e8a16b3b27267c8e98afcb8c2b4bd7"
+  },
+  "geometry": {
+    "physical_products": 1,
+    "original_body_preserved": true,
+    "approved_views": [
+      "plan",
+      "front",
+      "side"
+    ],
+    "placement_matrix_project_units": [
+      [
+        0.0,
+        1.0,
+        0.0,
+        2287.8782749176
+      ],
+      [
+        -1.0,
+        0.0,
+        0.0,
+        803.948163986206
+      ],
+      [
+        0.0,
+        0.0,
+        1.0,
+        10.0
+      ],
+      [
+        0.0,
+        0.0,
+        0.0,
+        1.0
+      ]
+    ],
+    "units_to_m": 0.001,
+    "annotations": 0,
+    "drawing_cameras": 0,
+    "spatial_geometry": 0
+  },
+  "scene_recipe": {
+    "path": "/Users/jiaxinchen/.codex/worktrees/3a80/2504 GBTB Yanlord Zhuhai/output/review/highpoly-types/miamisoft-e09/product-package/scene-recipe.json",
+    "bytes": 153430,
+    "sha256": "63f4da789f3e8a23927678e6d7193a5001088c8aac3be78ac160d63d9c01750b"
+  },
+  "scene_outputs": [
+    {
+      "view": "plan",
+      "max_linework_hausdorff_error_world_mm": 0.00043202450051742783,
+      "tolerance_mm": 0.01,
+      "svg": {
+        "path": "/Users/jiaxinchen/.codex/worktrees/3a80/2504 GBTB Yanlord Zhuhai/output/review/highpoly-types/miamisoft-e09/product-package/MIAMI-E09-SCENE-PLAN.svg",
+        "bytes": 4373032,
+        "sha256": "3187f4b7019a63650804fdc7c4132994f9705df41a8f0354863a706777b2b413"
+      },
+      "preview": {
+        "path": "/Users/jiaxinchen/.codex/worktrees/3a80/2504 GBTB Yanlord Zhuhai/output/review/highpoly-types/miamisoft-e09/product-package/MIAMI-E09-SCENE-PLAN.png",
+        "bytes": 195924,
+        "sha256": "47538ce3edc219a07fecba4b0ee1a8a1e2f3e8174716531cf98cfe0bb1442300"
+      },
+      "single_product_thumbnail": {
+        "path": "/Users/jiaxinchen/.codex/worktrees/3a80/2504 GBTB Yanlord Zhuhai/output/review/highpoly-types/miamisoft-e09/product-package/MIAMI-E09-SINGLE-PLAN.png",
+        "bytes": 44530,
+        "sha256": "a26ea6d1190bb32ba4f04920e174d9f4bdfa4d017ca77773eb4639f868957281"
+      },
+      "single_product_svg": {
+        "path": "/Users/jiaxinchen/.codex/worktrees/3a80/2504 GBTB Yanlord Zhuhai/output/review/highpoly-types/miamisoft-e09/product-package/MIAMI-E09-SINGLE-PLAN.svg",
+        "bytes": 648101,
+        "sha256": "86c5890cf046c47e9f9d391535c7ce44f08a04ce99fc40c8a4bd3c5f1eaf3cc3"
+      }
+    },
+    {
+      "view": "front",
+      "max_linework_hausdorff_error_world_mm": 0.0,
+      "tolerance_mm": 0.01,
+      "svg": {
+        "path": "/Users/jiaxinchen/.codex/worktrees/3a80/2504 GBTB Yanlord Zhuhai/output/review/highpoly-types/miamisoft-e09/product-package/MIAMI-E09-SCENE-FRONT.svg",
+        "bytes": 6178072,
+        "sha256": "e092d7018ee3bc1809b0efee6d20e60da2a9875c1060e440d6bbed72f111a668"
+      },
+      "preview": {
+        "path": "/Users/jiaxinchen/.codex/worktrees/3a80/2504 GBTB Yanlord Zhuhai/output/review/highpoly-types/miamisoft-e09/product-package/MIAMI-E09-SCENE-FRONT.png",
+        "bytes": 122291,
+        "sha256": "cd10c94455107a61e21337658ef7f416094800041bf1602449ac7550f8bb30f9"
+      },
+      "single_product_thumbnail": {
+        "path": "/Users/jiaxinchen/.codex/worktrees/3a80/2504 GBTB Yanlord Zhuhai/output/review/highpoly-types/miamisoft-e09/product-package/MIAMI-E09-SINGLE-FRONT.png",
+        "bytes": 53511,
+        "sha256": "071ac5a6dc5c2b64e62b6c6ffbc5b7b285faef901660404a3721d74fdd2b57a1"
+      },
+      "single_product_svg": {
+        "path": "/Users/jiaxinchen/.codex/worktrees/3a80/2504 GBTB Yanlord Zhuhai/output/review/highpoly-types/miamisoft-e09/product-package/MIAMI-E09-SINGLE-FRONT.svg",
+        "bytes": 809301,
+        "sha256": "4f290aee215e458b13f4230c032f9717a70750e0e5eba1656cb98e84517ea9ca"
+      }
+    },
+    {
+      "view": "side",
+      "max_linework_hausdorff_error_world_mm": 0.0,
+      "tolerance_mm": 0.01,
+      "svg": {
+        "path": "/Users/jiaxinchen/.codex/worktrees/3a80/2504 GBTB Yanlord Zhuhai/output/review/highpoly-types/miamisoft-e09/product-package/MIAMI-E09-SCENE-SIDE.svg",
+        "bytes": 3567895,
+        "sha256": "1e0c1bb2082a63d87f42f39f4b564651e3ea48980ae2316934828b0be78495c1"
+      },
+      "preview": {
+        "path": "/Users/jiaxinchen/.codex/worktrees/3a80/2504 GBTB Yanlord Zhuhai/output/review/highpoly-types/miamisoft-e09/product-package/MIAMI-E09-SCENE-SIDE.png",
+        "bytes": 79664,
+        "sha256": "446f09d001da39a28f7dd014a41467f717143d5afa69600024c6cec38df9a6d5"
+      },
+      "single_product_thumbnail": {
+        "path": "/Users/jiaxinchen/.codex/worktrees/3a80/2504 GBTB Yanlord Zhuhai/output/review/highpoly-types/miamisoft-e09/product-package/MIAMI-E09-SINGLE-SIDE.png",
+        "bytes": 75348,
+        "sha256": "290633b9914251768191692e6a5d0f14231eb9d42e796b38aaf6294d0302bd39"
+      },
+      "single_product_svg": {
+        "path": "/Users/jiaxinchen/.codex/worktrees/3a80/2504 GBTB Yanlord Zhuhai/output/review/highpoly-types/miamisoft-e09/product-package/MIAMI-E09-SINGLE-SIDE.svg",
+        "bytes": 700836,
+        "sha256": "5744b924e6f54cedd7d95f1beb349a9f4b7a41983e2252f0097abf51b2af2a74"
+      }
+    }
+  ],
+  "external_style_dependencies": [
+    {
+      "location": "Materials.blend",
+      "source": {
+        "path": "/Users/jiaxinchen/.codex/worktrees/3a80/2504 GBTB Yanlord Zhuhai/Materials.blend",
+        "bytes": 5496522,
+        "sha256": "18a1e92531bc56c3938a16c64189bc61da83354529c22a9c4d63f0f05cfd69a2"
+      },
+      "packaged": {
+        "path": "/Users/jiaxinchen/.codex/worktrees/3a80/2504 GBTB Yanlord Zhuhai/output/review/highpoly-types/miamisoft-e09/product-package/Materials.blend",
+        "bytes": 5496522,
+        "sha256": "18a1e92531bc56c3938a16c64189bc61da83354529c22a9c4d63f0f05cfd69a2"
+      },
+      "identifications": [
+        "materials/KashmirAzure_1K"
+      ]
+    }
+  ],
+  "validation": "validation.json",
+  "legacy_source_retained": true,
+  "formal_write_allowed": false,
+  "formal_sha256": "7a50b87e8f48a7c2bfbaa9f1dabdfca7155fa684b2325c66aa1ae15c8ab0a25c",
+  "known_limitations": [
+    "Project foot and bolster offsets are explicitly accepted; official linework is not force-fit.",
+    "The source hidden circle uses 259 independently styled short SVG lines. Dash attributes are preserved, but per-segment dash-phase reset makes the circle appear nearly continuous at thumbnail scale; inherited, not corrected by this storage migration."
+  ],
+  "single_product_views": {
+    "plan": {
+      "path": "/Users/jiaxinchen/.codex/worktrees/3a80/2504 GBTB Yanlord Zhuhai/output/review/highpoly-types/miamisoft-e09/product-package/MIAMI-E09-SINGLE-PLAN.svg",
+      "bytes": 648101,
+      "sha256": "86c5890cf046c47e9f9d391535c7ce44f08a04ce99fc40c8a4bd3c5f1eaf3cc3"
+    },
+    "front": {
+      "path": "/Users/jiaxinchen/.codex/worktrees/3a80/2504 GBTB Yanlord Zhuhai/output/review/highpoly-types/miamisoft-e09/product-package/MIAMI-E09-SINGLE-FRONT.svg",
+      "bytes": 809301,
+      "sha256": "4f290aee215e458b13f4230c032f9717a70750e0e5eba1656cb98e84517ea9ca"
+    },
+    "side": {
+      "path": "/Users/jiaxinchen/.codex/worktrees/3a80/2504 GBTB Yanlord Zhuhai/output/review/highpoly-types/miamisoft-e09/product-package/MIAMI-E09-SINGLE-SIDE.svg",
+      "bytes": 700836,
+      "sha256": "5744b924e6f54cedd7d95f1beb349a9f4b7a41983e2252f0097abf51b2af2a74"
+    }
+  },
+  "library_previews": {
+    "plan": {
+      "path": "/Users/jiaxinchen/.codex/worktrees/3a80/2504 GBTB Yanlord Zhuhai/output/review/highpoly-types/miamisoft-e09/product-package/MIAMI-E09-SINGLE-PLAN.png",
+      "bytes": 44530,
+      "sha256": "a26ea6d1190bb32ba4f04920e174d9f4bdfa4d017ca77773eb4639f868957281"
+    },
+    "front": {
+      "path": "/Users/jiaxinchen/.codex/worktrees/3a80/2504 GBTB Yanlord Zhuhai/output/review/highpoly-types/miamisoft-e09/product-package/MIAMI-E09-SINGLE-FRONT.png",
+      "bytes": 53511,
+      "sha256": "071ac5a6dc5c2b64e62b6c6ffbc5b7b285faef901660404a3721d74fdd2b57a1"
+    },
+    "side": {
+      "path": "/Users/jiaxinchen/.codex/worktrees/3a80/2504 GBTB Yanlord Zhuhai/output/review/highpoly-types/miamisoft-e09/product-package/MIAMI-E09-SINGLE-SIDE.png",
+      "bytes": 75348,
+      "sha256": "290633b9914251768191692e6a5d0f14231eb9d42e796b38aaf6294d0302bd39"
+    },
+    "iso": {
+      "path": "/Users/jiaxinchen/.codex/worktrees/3a80/2504 GBTB Yanlord Zhuhai/output/review/highpoly-types/miamisoft-e09/bonsai-camera-iso.png",
+      "bytes": 1117521,
+      "sha256": "19aebe1f84099f2bbb4d00c3a902444ea6f3793cebb81bbf94c3df687983411b"
+    }
+  },
+  "existing_body_iso_preview": {
+    "path": "/Users/jiaxinchen/.codex/worktrees/3a80/2504 GBTB Yanlord Zhuhai/output/review/highpoly-types/miamisoft-e09/bonsai-camera-iso.png",
+    "bytes": 1117521,
+    "sha256": "19aebe1f84099f2bbb4d00c3a902444ea6f3793cebb81bbf94c3df687983411b"
+  },
+  "preview_provenance": {
+    "2d": "Target linework isolated from newly generated real Bonsai scene SVGs; no geometry change; reframed only.",
+    "3d": "Existing actual IFC Body saved-camera render; target Body fingerprint unchanged.",
+    "3d_manifest": {
+      "path": "/Users/jiaxinchen/.codex/worktrees/3a80/2504 GBTB Yanlord Zhuhai/output/review/highpoly-types/miamisoft-e09/bonsai-review-manifest.json",
+      "bytes": 4743,
+      "sha256": "a73b71f805c1dc21a8081dd9aad05fa72e34b741259997539af2249b8f81d687"
+    }
+  }
+}

@@ -1,0 +1,137 @@
+{
+  "schema_version": 2,
+  "generated_at": "2026-08-24T11:45:00Z",
+  "product": "Geberit Duofix Sigma / 224.212.00.2",
+  "room": {
+    "name": "主卫湿区",
+    "global_id": "3a4COIs5X7lgDirMBDT4Vs"
+  },
+  "target": {
+    "global_id": "3pvAlH5C14v8uVEJ1LmK8M",
+    "source_kind": "native_dwg"
+  },
+  "versions": {
+    "blender": "4.5.3 LTS",
+    "bonsai_ifcopenshell": "0.8.4",
+    "drawing_operator": "bpy.ops.bim.create_drawing",
+    "linework_mode": "OPENCASCADE",
+    "preview_renderer": "Poppler pdftoppm 26.05.0 at 200 DPI"
+  },
+  "write_boundary": {
+    "formal_ifc_sha256": "7a50b87e8f48a7c2bfbaa9f1dabdfca7155fa684b2325c66aa1ae15c8ab0a25c",
+    "formal_ifc_modified": false,
+    "approved_derived_ifc_sha256": "c1a0d6af0ef0897fb6a53c3b70dd2a8ae35d8a63deca06bbc9379e3decbe8897",
+    "approved_derived_ifc_modified_by_create_drawing": false,
+    "per_view_session_copies_only": true
+  },
+  "drawing_boundary": "Main-bathroom context is native OPENCASCADE linework. The target Body is excluded from Drawing Include to prevent duplicate black/blue expression; approved native-DWG curves are emitted by the same Bonsai Create Drawing operation through an IFC LINEWORK annotation associated with each Drawing.",
+  "correction_audit": {
+    "previous_plan_target_ifc_projection_group_count": 1,
+    "previous_plan_target_ifc_projection_geometry_count": 1386,
+    "previous_plan_official_annotation_edge_count": 4202,
+    "corrected_plan_target_ifc_projection_group_count": 0,
+    "previous_unmapped_support_foot_elevation_m": -0.396011831,
+    "corrected_support_foot_elevation_m": -0.07001185417175293,
+    "previous_unmapped_frame_top_elevation_m": 0.818988281,
+    "corrected_frame_top_elevation_m": 1.1449882984161377,
+    "vertical_correction_mm": 326.0,
+    "plan_blue_to_project_body_centre_residual_before_mm_xy": [-65.40449636340284, -61.16015063369762],
+    "plan_blue_to_project_body_centre_residual_after_mm_xy": [-0.000013045077906781444, -0.000047789457724434214]
+  },
+  "duplicate_target_review": {
+    "same_type_project_instance_count": 2,
+    "same_type_project_global_ids": ["3hgNkx97vCTOC2eewCpMNk", "3pvAlH5C14v8uVEJ1LmK8M"],
+    "same_type_main_bath_context_count": 1,
+    "main_bath_target_count_before_suppression": 1,
+    "main_bath_target_count_after_suppression": 0,
+    "target_ifc_projection_group_count_after_create_drawing": 0,
+    "duplicate_was_real_second_instance": false,
+    "black_target_layer_policy": "excluded_from_drawing_include",
+    "blue_target_layer_policy": "approved_official_native_dwg_ifc_linework_annotation_only"
+  },
+  "instance_mapping_alignment": {
+    "source_representative_global_id": "3hgNkx97vCTOC2eewCpMNk",
+    "source_mapped_body_translation_mm": [-108.0, 0.112014293670995, -703.0],
+    "target_mapped_body_translation_mm": [-46.8398971557599, -65.2924690246546, -377.0],
+    "applied_delta_mm": [61.1601028442401, -65.40448331832559, 326.0]
+  },
+  "elevation_alignment": {
+    "ffl_elevation_m": 0.0,
+    "nearby_finish_top_elevation_m": -0.010402926243841648,
+    "nearby_structural_slab_top_elevation_m": 0.00000005286051418806892,
+    "nearby_structural_slab_bottom_elevation_m": -0.550000011920929,
+    "support_foot_elevation_m": -0.07001185417175293,
+    "support_foot_residual_to_project_target_body_minimum_mm": -0.011861324310302734,
+    "support_foot_offset_from_ffl_mm": -70.01185417175293,
+    "frame_top_elevation_m": 1.1449882984161377,
+    "frame_top_residual_to_project_target_body_maximum_mm": 0.0,
+    "toilet_outlet_centre_elevation_from_ffl_mm": 239.98814821243286,
+    "flush_panel_reference_centre_elevation_from_ffl_mm": 757.668137550354
+  },
+  "views": {
+    "plan": {
+      "target_view": "PLAN_VIEW",
+      "native_dwg_code": "G",
+      "native_dwg_sha256": "841dd3c72d594cfd2c7f921b84f10a2305ab9957b531771662fb7f03eff97207",
+      "official_path_count": 253,
+      "context_element_count": 65,
+      "create_drawing_result": "FINISHED",
+      "svg": "GEBERIT-224212-MAIN-BATH-PLAN.svg",
+      "svg_sha256": "c9b03d1d940d8ee68b4f5f875b664a756b4c07115a4c5c38c8170f76b799863c",
+      "pdf": "GEBERIT-224212-MAIN-BATH-PLAN.pdf",
+      "pdf_sha256": "e8c2d7675da7c01dfcb0aa8460bb442b4a6991e40f8a6b2032de6f86078895de",
+      "preview_png": "previews/GEBERIT-224212-MAIN-BATH-PLAN-preview.png",
+      "preview_png_sha256": "08fbaab5f60807425a3340f61750e8b6e6a192c5d7e18a06cdeeb4e9c4c84888",
+      "drawing_session_ifc_sha256": "0ca9959f37a544b572836c6431142fd658466838f2b3bce6f1330a670b6b7701",
+      "target_ifc_projection_group_count": 0,
+      "official_annotation_geometry_count": 4202,
+      "preview_source_pdf_page": 1,
+      "evidence": "GEBERIT-224212-MAIN-BATH-PLAN-create-drawing-evidence.json"
+    },
+    "front": {
+      "target_view": "ELEVATION_VIEW",
+      "native_dwg_code": "A",
+      "native_dwg_sha256": "f06952ac7bf91f0a0037ae85644df3df0938d549322cbfb59b7dfd9be01939d4",
+      "official_path_count": 790,
+      "context_element_count": 65,
+      "create_drawing_result": "FINISHED",
+      "svg": "GEBERIT-224212-MAIN-BATH-FRONT.svg",
+      "svg_sha256": "70182f74eefa330dde4b1b5a62d7a8cd765ab643ac5af0790c7cfd7b3e7045bb",
+      "pdf": "GEBERIT-224212-MAIN-BATH-FRONT.pdf",
+      "pdf_sha256": "81bb4d9888f543d5e3f3c52cee1735e4420624f23e05e8209f3202b47c6bb107",
+      "preview_png": "previews/GEBERIT-224212-MAIN-BATH-FRONT-preview.png",
+      "preview_png_sha256": "bfa25979b5bc76ee6bbb72d1bf4b6bd5a9a9abec6ef3a72bf26c9eeaa6b064db",
+      "drawing_session_ifc_sha256": "a9c2f1c86dc43f45d3ab70429610fcd908f2d77d450cdc54c1dadd664d9ed2c1",
+      "target_ifc_projection_group_count": 0,
+      "official_annotation_geometry_count": 10274,
+      "preview_source_pdf_page": 2,
+      "evidence": "GEBERIT-224212-MAIN-BATH-FRONT-create-drawing-evidence.json"
+    },
+    "left_side": {
+      "target_view": "ELEVATION_VIEW",
+      "native_dwg_code": "L",
+      "native_dwg_sha256": "e6a26c660ae9cd4fc8cb4b1effadcea38a4794b66523f0fea2c02c5e02b77f25",
+      "official_path_count": 225,
+      "context_element_count": 65,
+      "create_drawing_result": "FINISHED",
+      "svg": "GEBERIT-224212-MAIN-BATH-LEFT-SIDE.svg",
+      "svg_sha256": "23407ed3197de403679482fd93f3918ac3d2309eef080463f03d7d5790e7ce8a",
+      "pdf": "GEBERIT-224212-MAIN-BATH-LEFT-SIDE.pdf",
+      "pdf_sha256": "5437e4011e0a32feeda61960e5d9ff5ea219ffc206047f260bab79d9c0a8bf31",
+      "preview_png": "previews/GEBERIT-224212-MAIN-BATH-LEFT-SIDE-preview.png",
+      "preview_png_sha256": "1bd012bbd3794c6a1e3165c0cfd3d8eef3e1625cf2891183de4b1e5e8b6bfce1",
+      "drawing_session_ifc_sha256": "b26f67b1e93b39ba7dc61af17c73ed9d20b89258ea8026a739f7850c51693d0f",
+      "target_ifc_projection_group_count": 0,
+      "official_annotation_geometry_count": 3288,
+      "preview_source_pdf_page": 3,
+      "evidence": "GEBERIT-224212-MAIN-BATH-LEFT-SIDE-create-drawing-evidence.json"
+    }
+  },
+  "combined_pdf": {
+    "path": "Geberit-224212-main-bathroom-bonsai-drawings.pdf",
+    "sha256": "6c34c8f171752ef28f44e0e95098e8e8ec3db6374830f9f027d591dc4316bbcd",
+    "page_count": 3,
+    "page_sizes_points": [[271.91998, 363.12], [363.12, 408.0], [271.91998, 408.0]]
+  },
+  "pass": true
+}

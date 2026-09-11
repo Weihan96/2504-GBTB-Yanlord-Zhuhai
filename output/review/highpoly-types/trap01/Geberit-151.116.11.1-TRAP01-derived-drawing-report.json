@@ -1,0 +1,97 @@
+{
+  "schema_version": 1,
+  "profile_key": "trap01",
+  "ifc_type_name": "TRAP01",
+  "representative_global_id": "2Ak2ma0lvBEA49UpplzUqi",
+  "formal_ifc": "2504 GBTB Yanlord Zhuhai.ifc",
+  "formal_ifc_sha256": "7a50b87e8f48a7c2bfbaa9f1dabdfca7155fa684b2325c66aa1ae15c8ab0a25c",
+  "formal_ifc_bytes_unchanged": true,
+  "derived_ifc": "output/review/highpoly-types/trap01/Geberit-151.116.11.1-TRAP01-derived-drawing.ifc",
+  "derived_ifc_sha256": "305adce1f1c8f1f91c105ed612e8123d60df5e6f1b0c244ca47345fc443f5649",
+  "candidate_manifest": "output/review/highpoly-types/trap01/manifest.json",
+  "candidate_manifest_sha256": "e5fe6d830c10515e14c848e42c8a03aceaa08746efc0ba0be32d2d644d4edb82",
+  "approval_record": "pipeline/decisions/trap01-drawing-approval.json",
+  "approval_record_sha256": "2e92b970aaaa3b3a177450b2e3b2af4cbeffd249d4ef2c62b275e875c1788700",
+  "approval": {
+    "status": "approved",
+    "reviewer": "project_owner",
+    "review_date": "2026-08-28",
+    "approved_views": [
+      "plan",
+      "front",
+      "side"
+    ],
+    "scope": "exact Geberit 151.116.11.1 adjustable family reference; project instance is a shortened installation configuration; not a project shop drawing"
+  },
+  "representations": {
+    "plan": "Trap01Plan",
+    "front": "Trap01Front",
+    "side": "Trap01Side"
+  },
+  "representation_path_counts": {
+    "plan": 16,
+    "front": 1,
+    "side": 8
+  },
+  "representation_geometry_source": "proxy_paths_mm derived from the configured isolated representative IFC Body",
+  "official_cad_geometry_included": false,
+  "source_document_associations": [
+    "GEBERIT-151-116-11-1-TRAP01-INSTALLATION-INSTRUCTIONS",
+    "GEBERIT-151-116-11-1-TRAP01-MAINTENANCE-MANUAL",
+    "GEBERIT-151-116-11-1-TRAP01-NATIVE-DWG-LINEWORK",
+    "GEBERIT-151-116-11-1-TRAP01-OFFICIAL-A-DWG",
+    "GEBERIT-151-116-11-1-TRAP01-OFFICIAL-G-DWG",
+    "GEBERIT-151-116-11-1-TRAP01-OFFICIAL-L-DWG",
+    "GEBERIT-151-116-11-1-TRAP01-OFFICIAL-P-DWG",
+    "GEBERIT-151-116-11-1-TRAP01-OFFICIAL-PRODUCT-PAGE",
+    "GEBERIT-151-116-11-1-TRAP01-PRODUCT-DATA-SHEET",
+    "GEBERIT-151-116-11-1-TRAP01-PRODUCT-PAGE-ARCHIVE",
+    "GEBERIT-151-116-11-1-TRAP01-SOURCE-ACCESS-RECORD"
+  ],
+  "source_property_set": "Pset_Trap01DrawingSource",
+  "source_kind": "geometry_derived_simplified_proxy",
+  "source_label_zh": "基于原始高模几何生成的简化图纸表达",
+  "pass": true,
+  "adjustable_component_group": {
+    "global_id": "1ha3HZYKXBXAY4g343S01c",
+    "name": "TRAP01 adjustable drawing components"
+  },
+  "adjustable_components": {
+    "fixed_body": {
+      "global_id": "2oBEAgLj90IvrLncW33Hxe",
+      "installed_length_mm": 121.499954,
+      "axis": "FIXED_BODY_SPINE",
+      "axis_representation_count": 1
+    },
+    "horizontal_adjustable": {
+      "global_id": "1i90gVNCL5jBENkmiRt$gm",
+      "installed_length_mm": 113.402666,
+      "axis": "LOCAL_X",
+      "axis_representation_count": 1
+    },
+    "vertical_adjustable": {
+      "global_id": "1O5mM7VGLEFPeKu3Z9ZLEY",
+      "installed_length_mm": 191.939979,
+      "axis": "LOCAL_Z",
+      "axis_representation_count": 1
+    }
+  },
+  "adjustment_parameters_mm": {
+    "horizontal": {
+      "installed": 113.402666,
+      "minimum": 0.0,
+      "maximum": 252.0,
+      "official_default_overflow": 159.52933
+    },
+    "vertical_h": {
+      "installed": 191.939979,
+      "minimum": 85.0,
+      "maximum": 334.0,
+      "official_default_overflow": 208.00002
+    }
+  },
+  "blue_solid_semantics": "official native DWG linework retained within the current configured range",
+  "blue_dashed_semantics": "official adjustable-family excess beyond the current configured endpoint; reference only, not installed project geometry",
+  "reference_extension_displayed_in_scene_by_default": false,
+  "component_model_pass": true
+}

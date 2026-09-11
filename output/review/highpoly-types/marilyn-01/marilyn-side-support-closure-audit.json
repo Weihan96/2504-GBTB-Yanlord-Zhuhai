@@ -1,0 +1,155 @@
+{
+  "schema_version": 1,
+  "source_dwg_sha256": "cb9825eecab7c78ee28e7668e933c2fe413395a63bf75f3afab8cc4959864724",
+  "source_linework_sha256": "fe497af3c30a815266ddc84ae432ed5b5bb1c410e77b776a95235a8156f864d2",
+  "cause": "ARC coordinates were treated as WCS although DWG stores them in OCS; -Z extrusion requires reflected X before spatial selection.",
+  "missing_support_arc_native_entity": {
+    "entity": "ARC",
+    "index": 234,
+    "type": 17,
+    "handle": [
+      0,
+      2,
+      15486
+    ],
+    "size": 63,
+    "bitsize": 479,
+    "_subclass": "AcDbArc",
+    "layer": [
+      5,
+      2,
+      8124,
+      8124
+    ],
+    "preview_exists": 0,
+    "entmode": 2,
+    "is_xdic_missing": 1,
+    "has_ds_data": 0,
+    "color": {
+      "index": 256,
+      "rgb": "000000",
+      "flag": 1
+    },
+    "ltype_scale": 1.0,
+    "ltype_flags": 0,
+    "plotstyle_flags": 0,
+    "material_flags": 0,
+    "shadow_flags": 0,
+    "has_full_visualstyle": 0,
+    "has_face_visualstyle": 0,
+    "has_edge_visualstyle": 0,
+    "invisible": 0,
+    "linewt": 29,
+    "center": [
+      -11747.510138209564,
+      2157.926595684895,
+      0.0
+    ],
+    "radius": 263.1973100837377,
+    "thickness": 0,
+    "extrusion": [
+      0.0,
+      0.0,
+      -1.0
+    ],
+    "start_angle": 4.35129659202477,
+    "end_angle": 4.59975364070991
+  },
+  "restored_arc_234_normalized_endpoints_mm": [
+    [
+      90.858932,
+      161.044277
+    ],
+    [
+      27.454948,
+      145.738854
+    ]
+  ],
+  "restored_arc_234_length_mm": 65.39322688527301,
+  "restored_negative_z_arc_indices": {
+    "plan": [
+      974,
+      978
+    ],
+    "front": [
+      180,
+      186,
+      189,
+      194,
+      195,
+      196,
+      205,
+      206,
+      218,
+      221
+    ],
+    "side": [
+      234,
+      237,
+      238,
+      244,
+      245,
+      251,
+      259,
+      260,
+      261,
+      263,
+      264,
+      280,
+      283,
+      286,
+      289,
+      292
+    ]
+  },
+  "path_counts_before": {
+    "plan": 42,
+    "front": 86,
+    "side": 62
+  },
+  "path_counts_after": {
+    "plan": 44,
+    "front": 96,
+    "side": 78
+  },
+  "support_outline_cycle": {
+    "native_entity_indices": [
+      234,
+      235,
+      238,
+      290,
+      281,
+      237,
+      236,
+      233,
+      226,
+      240,
+      241,
+      224,
+      225,
+      232,
+      231,
+      278,
+      230,
+      229,
+      279,
+      242,
+      228,
+      243,
+      227
+    ],
+    "maximum_endpoint_gap_mm": 0.000757460230002257,
+    "join_tolerance_mm": 0.005,
+    "closed_within_tolerance": true,
+    "coordinates_snapped": false
+  },
+  "hand_drawn_join_added": false,
+  "source_geometry_scaled": false,
+  "front_fit_only_curves_still_approximate": [
+    1005,
+    1006
+  ],
+  "visual_approval": "pending",
+  "derived_ifc_write_allowed": false,
+  "formal_ifc_write_allowed": false
+}

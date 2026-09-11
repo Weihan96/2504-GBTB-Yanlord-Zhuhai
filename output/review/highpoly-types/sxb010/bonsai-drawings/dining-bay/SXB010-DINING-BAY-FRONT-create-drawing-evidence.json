@@ -1,0 +1,276 @@
+{
+  "schema_version": 1,
+  "generated_at": "2026-08-25T06:31:01.760417+00:00",
+  "task": "Bonsai Create Drawing for approved sxb010 in dining-bay and dining-room context",
+  "view": "front",
+  "formal_ifc": "/Users/jiaxinchen/.codex/worktrees/3a80/2504 GBTB Yanlord Zhuhai/2504 GBTB Yanlord Zhuhai.ifc",
+  "formal_ifc_sha256": "7a50b87e8f48a7c2bfbaa9f1dabdfca7155fa684b2325c66aa1ae15c8ab0a25c",
+  "formal_ifc_bytes_unchanged": true,
+  "approved_derived_ifc": "/Users/jiaxinchen/.codex/worktrees/3a80/2504 GBTB Yanlord Zhuhai/output/review/highpoly-types/sxb010/sxb010-derived-drawing.ifc",
+  "approved_derived_ifc_sha256": "cbf75ca62617f1c870394239f9f0909e5fb10fdecb16fdf4dd727c20823cf293",
+  "drawing_session_ifc": "/Users/jiaxinchen/.codex/worktrees/3a80/2504 GBTB Yanlord Zhuhai/output/review/highpoly-types/sxb010/bonsai-drawings/dining-bay/sxb010-dining-bay-front-session.ifc",
+  "drawing_session_sha256_before": "cbf75ca62617f1c870394239f9f0909e5fb10fdecb16fdf4dd727c20823cf293",
+  "drawing_session_sha256_after": "8ad9c67af52c82bf206d8efd6391a7ff1b54b63d7dc7b5fa0587be6cae44682e",
+  "drawing_session_is_safe_per_view_copy": true,
+  "source_kind": "geometry_derived_simplified_proxy",
+  "source_label_zh": "基于原始高模几何生成的简化图纸表达",
+  "candidate_sha256": "84bcefe9acb41271795eee7ae73e5d33486a08a8c50ea06c5da8c3d58848d432",
+  "line_simplification_audit_sha256": "d16cb22d8a7baa09b60d123cc17578cc64d64db4bb93e747a92b3d34034e81dc",
+  "line_simplification": {
+    "slat_count_before": 45,
+    "slat_centerline_count_after": 45,
+    "outer_envelope_delta_mm": [
+      0.0,
+      0.0,
+      0.0,
+      0.0
+    ],
+    "path_count": 51,
+    "persisted_path_count": 51
+  },
+  "target": {
+    "global_id": "1O9JRXCI56VRUbpuLJy86Z",
+    "ifc_class": "IfcBuildingElementProxy",
+    "name": "sxb010",
+    "object_type": "KITCHEN",
+    "bbox_m": [
+      [
+        -2.578700304031372,
+        -4.9666924476623535,
+        0.833774209022522
+      ],
+      [
+        -0.7667009234428406,
+        -4.903298854827881,
+        2.429849863052368
+      ]
+    ],
+    "include_count_before_suppression": 1,
+    "include_count_after_suppression": 0,
+    "duplicate_target_is_real_second_instance": false
+  },
+  "spaces": [
+    {
+      "global_id": "3AlgzRX3jCvPS420cah9Qn",
+      "long_name": "餐厅飘窗"
+    },
+    {
+      "global_id": "2JnxeB$or6D8nffRg7GQbf",
+      "long_name": "餐厅"
+    }
+  ],
+  "context": {
+    "project_context_retained": true,
+    "crop_bbox_m": [
+      [
+        -2.4000000953674316,
+        -5.300000190734863,
+        0.0
+      ],
+      [
+        -0.10000014305114746,
+        -1.2000000476837158,
+        2.799999952316284
+      ]
+    ],
+    "include_count": 105,
+    "include_ifc_class_counts": {
+      "IfcBeam": 2,
+      "IfcBuildingElementProxy": 18,
+      "IfcCovering": 12,
+      "IfcDoor": 1,
+      "IfcElectricAppliance": 6,
+      "IfcFurniture": 31,
+      "IfcLightFixture": 8,
+      "IfcPipeSegment": 3,
+      "IfcSanitaryTerminal": 2,
+      "IfcSlab": 8,
+      "IfcWall": 12,
+      "IfcWindow": 2
+    },
+    "context_colour": "light_grey",
+    "target_colour": "blue"
+  },
+  "drawing": {
+    "id": 2446421,
+    "global_id": "2uYJecBln8xA_ebyVlaxOg",
+    "name": "SXB010-DINING-BAY-FRONT",
+    "object_type": "DRAWING",
+    "epset_drawing": {
+      "TargetView": "ELEVATION_VIEW",
+      "Scale": "1/25",
+      "HumanScale": "1:25",
+      "HasUnderlay": false,
+      "HasLinework": true,
+      "HasAnnotation": true,
+      "GlobalReferencing": true,
+      "Stylesheet": "drawings/assets/default.css",
+      "Markers": "drawings/assets/markers.svg",
+      "Symbols": "drawings/assets/symbols.svg",
+      "Patterns": "drawings/assets/patterns.svg",
+      "ShadingStyles": "drawings/assets/shading_styles.json",
+      "CurrentShadingStyle": "Blender Default",
+      "DPI": 300,
+      "LineworkMode": "OPENCASCADE",
+      "FillMode": "NONE",
+      "CutMode": "BISECT",
+      "Include": "02IFRV8lH2DOUrX4F4N2rR,02JiVqnyTDXQ1GpfLPCpMl,04rQahsKnVWAQm005VLUaQ,07nS4ZFvD8swm8Oyc16noe,08$zuESt19iA9k1u7d4hi9,09n9MD4MP6YwWt7w8SLJlG,0EjdAJnV5AxxJ1FbxzQY3I,0FvgLct_j8OOSR$V6GRYQR,0G_rbqpMHE28Txkf09jW3_,0GgW5I8Y157eTRunV9OdnD,0JcqcpduD9YRHOQJ2Q92gO,0LGnQmHPDT5P1L4FD30GWT,0MVn0S2GP0IuDnXI2x_0wg,0NyJR9FMf6sBa1V_Jb5FkK,0YVlVSQ8P8FB9NhuRYt0uz,0etjVZleH2DvGnYhJm0BCK,0g9nlU$MjAMRCzhYImmt98,0goB22sEf0W9caxUqAkTwJ,0hHnbLj0X4jPDz4o3QJo1l,0jhVMe5nn9b8xNJphVwucj,0mnFDiYfj6fxQBaWFizjUS,0pXVcnUbz8VQurx0yCzZMi,0tM_AFFsLCsfwouf4rVzw9,0u4zwgDnn7xvipmCCqbbWj,0vMU_9TZXEV8GPr46AYxhu,0w_j3LiLHFX8uK$fI3H5IP,1$3UG05MPFmumejbg1KJ$I,1$8Qz3qyrCNh2OkNLTBz8K,10Wm8ivdX7dAVfz4cV8l5Q,11c$NwzxL9hASgCgwDxM$w,18IhVjmef3XeS3XSkZ_Gax,18eimQPoDDKg_QKo2uX5el,1B6IEQzi53sQKQXMKDU2XE,1C2NYt_qT35P4jTGTCHJyh,1JMXCthV161Ay1zyyjMeYY,1KBBoRNWb1Svpz9__rmYKy,1MXBM_4krBEgVwJi3PFF3A,1OU00zHknFfQOKVh$gmE1r,1P9tbKJXXBlP00xtCWHNEd,1QBdVekDnBsOleyo9PM6rT,1QPmeve6fEIhNrBYMdD2sJ,1TW6$_GfnABRZusYvx0zZG,1TzVxcofbE8uxozIseRjwb,1VsQ0h0WH7ugs_sdywiL7g,1W$zPXJs93UfXs41zQw4oi,1W_SysTb9CJQGS7TZtcqax,1Yr_JdSGn8XOs804Vwoetk,1Ys4uIWGf7c8$gUyLRFKw2,1cmuG50mj3cggtIH5tZHic,1g4Fqh3PH4zhLGJIqKmzu1,1hZRB0eOX8OA8rcjke67P0,1luHljRzDAhPNXxTDNu7qB,1mI2ClWgr6xwhxkjkIkFbV,1pcd3vOPrF9wIHlKsmCv0a,1rEY33mWr2nxgCw3qNVY0n,1u$4fbgXP7VQ1Yhr_1xQgF,1uQsUUwhT9Y8fHZJQtvJqa,22tO8BAFTDWPLxqXvDzGct,23EqZuJ7zEw8JjKNbjSYrg,26ke2y0wHCSQzE2KTxaV_Z,29Bsqi59j53wkoXK3bK3Ps,2AaE1g$kT9yuXagzwxD3_j,2B9gGJ5197jvvwqUj7h8_U,2C9JmXaZXCX9I$vMds4lYK,2Ih9Dj$vP4oRd477l9Ascu,2Iq2ABipLBiBnzHH09G$gB,2LN3hvkNfE$P7IVE0GkeKc,2MZOWmnIX7KA3Wfnp2HxoF,2T92129$LE0Pve_Pv6F9Sx,2URKnyRmD11e$nu56qRs5A,2Urz4772T2w8c8KKNtSUY2,2VVDWezmbEmQh$5mczGb4m,2XslZd4419P8dGGPeAflZX,2Zjq0wICPAYAr4RNJLeesH,2_vcnNErPCixD2MSQiqhdi,2d2Vw3ZSn0exH1seMBMiVf,2kLVkB_bX7GeSBXYrxJJvh,2mPTt7$nvBSAn28I9NWt6T,2qhynM3rf33AQqbI129k2v,2tCmGkmFz2_Pg0jRjf3Nup,2uFOoqROzFVBRlm_TS9tIZ,2xsQvORMH4Lft5PawZ3Bxu,2xvG7uDof7OwbTH_w0edo0,3$lrsbcgT3Jg4KFoQ9xsL_,31Naj$Q6nFq8XESxcIbWJ5,32sWy7gRHFC9EuWultV1Lq,34MraFd1nFsep2QMO2kY48,34ibuNihL8HQ7qG1pk9Bvn,3BwA5Rnkf4Bf3v3vTmeWTw,3Cz0fQK8f54AFcm1SrjsGr,3EaO22qXv38wM47SaLX1Yk,3JAkt8PsX7vPfGKWLK5EKp,3Kxq1aQl9EyfzEhA_7IoLA,3TV2zkQdH3QRCAFhe47WOL,3TzcgvX591BfiTgtWaS4C4,3UenMPISX1dh_407aINnUK,3W49YFIC1BfgfuUQBU6ylN,3gksf1Sxz5TRfXh5l$12xr,3pAfMJYxPBlwR30CstZ4kK,3qz3zPw_r7nf0mYn_Jv805,3s1sv3rivC_B$dTKwCA4kt,3vRIKiKbL9nAvF_CZkYkxA,3weUZWAWv7_fzNorBDCdeL,3xKTsYjIjFSOwrsDNweAjR,3z8DudsGj6x9wzlJXT7$7F",
+      "id": 2446438
+    },
+    "document_reference_location": "SXB010-DINING-BAY-FRONT.svg"
+  },
+  "linework_annotation": {
+    "global_id": "3QPK3KW3b77Ag7KU6FZ3bS",
+    "ifc_class": "IfcAnnotation",
+    "predefined_type": "LINEWORK",
+    "name": "sxb010 approved merged-line blind / front",
+    "associated_to_drawing_group": true,
+    "target_global_id": "1O9JRXCI56VRUbpuLJy86Z",
+    "geometry_source": "approved proxy_paths_mm",
+    "edge_count": 60
+  },
+  "camera": {
+    "type": "ORTHO",
+    "matrix_world": [
+      [
+        -1.0,
+        1.5099581673894136e-07,
+        1.509957741063772e-07,
+        -1.2500001192092896
+      ],
+      [
+        1.5099580252808664e-07,
+        1.629206565212371e-07,
+        1.0,
+        -4.7683716530855236e-08
+      ],
+      [
+        1.5099578831723193e-07,
+        1.0,
+        -1.6292068494294654e-07,
+        1.4500000476837158
+      ],
+      [
+        0.0,
+        0.0,
+        0.0,
+        1.0
+      ]
+    ],
+    "width_m": 2.9999999523162844,
+    "height_m": 3.4,
+    "clip_start_m": 0.0020000000949949026,
+    "clip_end_m": 6.1000001430511475,
+    "resolution": [
+      1417,
+      1606
+    ]
+  },
+  "create_drawing": {
+    "operator": "bpy.ops.bim.create_drawing",
+    "arguments": {
+      "print_all": false,
+      "open_viewer": false,
+      "sync": false
+    },
+    "result": [
+      "FINISHED"
+    ],
+    "linework_mode": "OPENCASCADE",
+    "target_view": "ELEVATION_VIEW"
+  },
+  "svg": {
+    "path": "/Users/jiaxinchen/.codex/worktrees/3a80/2504 GBTB Yanlord Zhuhai/output/review/highpoly-types/sxb010/bonsai-drawings/dining-bay/SXB010-DINING-BAY-FRONT.svg",
+    "bytes": 2990076,
+    "sha256": "d0e3f3dcaf7af86563a884eee37f57a0cb37635ec820e04d9ec67c1e26a713c3",
+    "bonsai_generated_sha256_before_review_style": "fe26dbe8a7abc6bf1f7a600e3c0701b3a42cfb393df9ec331cccaa4dfd19f713",
+    "geometry_element_count": 18657,
+    "target_group_count": 60,
+    "target_geometry_element_count": 60,
+    "review_style_only": true,
+    "geometry_modified": false,
+    "root_tag": "svg",
+    "width": "119.99502204571982mm",
+    "height": "136.00000381469727mm",
+    "viewBox": "0 0 119.99502204571982 136.00000381469727",
+    "data_scale": "1:25",
+    "projection_group_count": 65,
+    "class_counts": {
+      "0G_rbqpMHE28Txkf09jW3_": 2,
+      "1cmuG50mj3cggtIH5tZHic": 2,
+      "1mI2ClWgr6xwhxkjkIkFbV": 2,
+      "2_vcnNErPCixD2MSQiqhdi": 2,
+      "GlobalId-3QPK3KW3b77Ag7KU6FZ3bS": 60,
+      "IfcAnnotation": 60,
+      "IfcBeam": 2,
+      "IfcBuildingElementProxy": 16,
+      "IfcCovering": 16,
+      "IfcDoor": 1,
+      "IfcElectricAppliance": 1,
+      "IfcFurniture": 18,
+      "IfcLightFixture": 2,
+      "IfcMaterialLayer": 7,
+      "IfcPipeSegment": 4,
+      "IfcSanitaryTerminal": 1,
+      "IfcSlab": 15,
+      "IfcSpace": 2,
+      "IfcWall": 7,
+      "IfcWindow": 1,
+      "PredefinedType-LINEWORK": 60,
+      "annotation": 27,
+      "cut": 19,
+      "geometry-derived-simplified-proxy": 60,
+      "large": 1,
+      "layer-material-Aircrete": 4,
+      "layer-material-FADWOODJOIST": 2,
+      "layer-material-WhiteWall": 1,
+      "layer-material-category-Architectural": 7,
+      "material-": 4,
+      "material-AC": 1,
+      "material-BBF01": 1,
+      "material-BD": 1,
+      "material-BK": 1,
+      "material-BWW01": 1,
+      "material-BWW02": 2,
+      "material-CHA01": 2,
+      "material-DB02": 1,
+      "material-FLR180": 7,
+      "material-FLR230": 8,
+      "material-NebulaSteel": 6,
+      "material-PlasticaBiancaLight": 2,
+      "material-ThermoOak": 3,
+      "material-WAL200B": 1,
+      "material-WAL400B": 1,
+      "material-WD01": 1,
+      "material-WD02": 3,
+      "material-WD03": 3,
+      "material-WW20": 5,
+      "material-null": 32,
+      "projection": 65,
+      "regular": 6,
+      "review-target-sxb010": 60,
+      "scale-25": 1,
+      "section": 1,
+      "stair": 1,
+      "target-view-ELEVATIONVIEW": 1
+    }
+  },
+  "linework_cache": {
+    "path": "/Users/jiaxinchen/.codex/worktrees/3a80/2504 GBTB Yanlord Zhuhai/output/review/highpoly-types/sxb010/bonsai-drawings/dining-bay/cache/SXB010-DINING-BAY-FRONT-linework.svg",
+    "bytes": 1905917,
+    "sha256": "a5106a9041dc58b970ccfbc24147abe24581e5e166302f5564dd70a339293448"
+  },
+  "persistence": {
+    "method": "IfcOpenShell write to per-view session IFC",
+    "reloaded_from_persisted_session": true,
+    "drawing_found_after_reload": true,
+    "annotation_path_count_after_reload": 51
+  },
+  "versions": {
+    "blender": "4.5.3 LTS",
+    "ifcopenshell": "0.8.4",
+    "ifc_schema": "IFC4",
+    "bonsai_generator": "Bonsai 0.8.4 bpy.ops.bim.create_drawing"
+  },
+  "pass": true
+}

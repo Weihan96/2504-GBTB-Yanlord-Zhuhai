@@ -1,10 +1,10 @@
 #!/usr/bin/env python3
 """Approval-gated writer for geometry-derived Hima drawing representations.
 
-The official Hima product page and technical sheet establish manufacturer and
-family identity only. The checked-in candidate linework is explicitly derived
-from the single representative IFC Body because the published official 2D DWG
-has not been acquired. The formal authoritative IFC is never a valid output.
+The authenticated official PVA11 DWG is retained as family and unfolded-state
+evidence. The approved candidate remains explicitly derived from the folded
+single representative IFC Body. The formal authoritative IFC is never a valid
+output.
 """
 
 from __future__ import annotations
@@ -29,7 +29,8 @@ SOURCE_LABEL_ZH = "基于原始高模几何生成的简化图纸表达"
 PRODUCT_PAGE = "https://www.poliform.it/en/products/hima/"
 TECHNICAL_SHEET = "https://www.poliform.it/assets/pdf/200467-hima-poliform-en.pdf"
 NEWS_TECHNICAL_PUBLICATION = "https://www.poliform.it/assets/2022/05/Poliform_News_2022-2.pdf"
-SCOPE = "manufacturer family identity and nominal dimensions only; not official CAD geometry and not a project shop drawing"
+SCOPE = "geometry-derived Plan, Front and Side drawing representation for the project-folded HIMA01 Body; the official PVA11 DWG remains family and unfolded-state reference only, not project candidate geometry or a project shop drawing"
+ACCESS_SCOPE = "manufacturer-authenticated native family DWG acquired; PVA11 matches the three-element 1000 mm variant, but the project pose/envelope is not an exact match and the DWG is not yet used as candidate linework or a project shop drawing"
 REQUIRED_VIEWS = {"plan", "front", "side"}
 REPRESENTATIONS = {
     "plan": ("Hima01Plan", "PLAN_VIEW"),
@@ -39,6 +40,9 @@ REPRESENTATIONS = {
 EXPECTED_PATH_COUNTS = {"plan": 8, "front": 17, "side": 27}
 FORMAL_SHA256 = "7a50b87e8f48a7c2bfbaa9f1dabdfca7155fa684b2325c66aa1ae15c8ab0a25c"
 PRODUCT_DIR = ROOT / "output/review/highpoly-types/hima01"
+OFFICIAL_DWG = PRODUCT_DIR / "official-source/official-download/Poliform-HIMA-screen.dwg"
+OFFICIAL_DWG_SHA256 = "f0e1b980aa102f3e06fe602f9e7a9b40db45d76e45200c08e4b8b4a0eec1d523"
+OFFICIAL_DWG_URL = "https://s3.poliform.it/2025/09/Poliform-HIMA-screen.dwg"
 DEFAULT_MANIFEST = PRODUCT_DIR / "manifest.json"
 DEFAULT_CANDIDATE = PRODUCT_DIR / "candidate-representations.json"
 DEFAULT_ACCESS_RECORD = PRODUCT_DIR / "official-source/source-access-record.json"
@@ -137,12 +141,18 @@ def candidate_paths(candidate: dict, access: dict) -> dict:
     ):
         raise RuntimeError("pending Hima candidate source gate failed")
     drawing_source = access.get("drawing_geometry_source", {})
+    official_dwg = access.get("official_2d_dwg", {})
     if (
-        access.get("official_2d_dwg", {}).get("acquired") is not False
+        official_dwg.get("acquired") is not True
+        or official_dwg.get("local_path") != relative(OFFICIAL_DWG)
+        or official_dwg.get("sha256") != OFFICIAL_DWG_SHA256
+        or official_dwg.get("download_url") != OFFICIAL_DWG_URL
+        or not OFFICIAL_DWG.exists()
+        or sha256(OFFICIAL_DWG) != OFFICIAL_DWG_SHA256
         or drawing_source.get("source_kind") != SOURCE_KIND
         or drawing_source.get("official_cad_used") is not False
         or drawing_source.get("third_party_cad_used") is not False
-        or access.get("scope") != SCOPE
+        or access.get("scope") != ACCESS_SCOPE
         or access.get("official_product_page_evidence", {}).get("sha256") != sha256(PAGE_EVIDENCE)
         or access.get("official_dimension_cross_check", {}).get("pass") is not True
     ):
@@ -185,10 +195,16 @@ def add_document_associations(model, product, product_type, access_path):
             f"SHA-256 {sha256(PAGE_EVIDENCE)}; records the official DWG listing and registration/CAPTCHA boundary",
         ),
         (
+            "POLIFORM-HIMA-OFFICIAL-PVA11-DWG",
+            OFFICIAL_DWG_URL,
+            "Poliform official Hima PVA11 native DWG",
+            f"SHA-256 {OFFICIAL_DWG_SHA256}; family and unfolded-state evidence only; not candidate geometry",
+        ),
+        (
             "POLIFORM-HIMA-SOURCE-ACCESS-RECORD",
             relative(access_path),
             "Hima official CAD access record",
-            f"SHA-256 {sha256(access_path)}; official 2D DWG published but not acquired; no third-party CAD used",
+            f"SHA-256 {sha256(access_path)}; official PVA11 DWG acquired but retained only as family and unfolded-state evidence",
         ),
     )
     identifiers = []
@@ -224,7 +240,9 @@ def add_source_pset(model, product, product_type, approval, manifest_hash, candi
         "SourceProductPage": PRODUCT_PAGE,
         "SourceTechnicalSheet": TECHNICAL_SHEET,
         "SourceNews2022TechnicalPublication": NEWS_TECHNICAL_PUBLICATION,
-        "Official2DDwgStatus": "published_registration_form_and_captcha_required_not_acquired",
+        "Official2DDwgStatus": "acquired_from_authenticated_30_day_download_session",
+        "Official2DDwgSha256": OFFICIAL_DWG_SHA256,
+        "Official2DDwgUse": "family and unfolded-state reference only; excluded from approved candidate geometry",
         "OfficialCadUsed": str(OFFICIAL_CAD_USED).lower(),
         "ThirdPartyCadUsed": "false",
         "EvidenceScope": SCOPE,

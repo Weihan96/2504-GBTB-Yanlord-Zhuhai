@@ -1,0 +1,1464 @@
+{
+  "schema_version": 1,
+  "profile_key": "505-up-v1-lp-s",
+  "representative_global_id": "19MpdkWqXC7uhUNhLQgrce",
+  "status": "new_single_product_plan_svg_pending_owner_review",
+  "user_authorization": "没问题，那么基于此给我新的单品svg",
+  "source_kind": "geometry_derived_simplified_proxy",
+  "source_label_zh": "基于原始高模几何生成的简化图纸表达",
+  "plan_visibility_rule": {
+    "camera_direction_world": [
+      0.0,
+      0.0,
+      -1.0
+    ],
+    "local_to_world_z_sign": -1,
+    "rule": "at each Plan XY coordinate retain only the first visible highest world-Z horizontal face",
+    "tessellation_gap_normalization_tolerance_mm": 0.5,
+    "bottom_76mm_components_used_as_top": false
+  },
+  "removed_rejected_paths": [
+    "P02",
+    "P03",
+    "P04",
+    "P05"
+  ],
+  "candidate": {
+    "path_count": 24,
+    "segment_count": 87,
+    "internal_segment_count": 11,
+    "exterior_segment_count": 76,
+    "invalid_same_side_or_unexplained_count": 0,
+    "required_internal_interface_counts": {
+      "A_main_top/C_front_left_display": 2,
+      "A_main_top/D_mid_shelf_lip": 1,
+      "C_front_left_display/E_lower_front_rails": 2,
+      "D_mid_shelf_lip/E_lower_front_rails": 6
+    },
+    "segment_semantics": [
+      {
+        "segment_id": "S001",
+        "start_mm": [
+          -2399.907585,
+          6e-06
+        ],
+        "end_mm": [
+          -2399.900021,
+          319.719025
+        ],
+        "length_mm": 319.719019,
+        "side_a": "background",
+        "side_b": "A_main_top",
+        "internal": false,
+        "semantic_separation_valid": true
+      },
+      {
+        "segment_id": "S002",
+        "start_mm": [
+          -2399.900021,
+          319.719025
+        ],
+        "end_mm": [
+          -1727.718704,
+          319.719025
+        ],
+        "length_mm": 672.181317,
+        "side_a": "background",
+        "side_b": "A_main_top",
+        "internal": false,
+        "semantic_separation_valid": true
+      },
+      {
+        "segment_id": "S003",
+        "start_mm": [
+          -1727.718704,
+          319.719025
+        ],
+        "end_mm": [
+          -480.466366,
+          319.719025
+        ],
+        "length_mm": 1247.252338,
+        "side_a": "D_mid_shelf_lip",
+        "side_b": "A_main_top",
+        "internal": true,
+        "semantic_separation_valid": true
+      },
+      {
+        "segment_id": "S004",
+        "start_mm": [
+          -480.466366,
+          319.719025
+        ],
+        "end_mm": [
+          511.538032,
+          319.719025
+        ],
+        "length_mm": 992.004397,
+        "side_a": "C_front_left_display",
+        "side_b": "A_main_top",
+        "internal": true,
+        "semantic_separation_valid": true
+      },
+      {
+        "segment_id": "S005",
+        "start_mm": [
+          511.538032,
+          319.719025
+        ],
+        "end_mm": [
+          511.538027,
+          -15.719058
+        ],
+        "length_mm": 335.438083,
+        "side_a": "background",
+        "side_b": "A_main_top",
+        "internal": false,
+        "semantic_separation_valid": true
+      },
+      {
+        "segment_id": "S006",
+        "start_mm": [
+          511.538027,
+          -15.719058
+        ],
+        "end_mm": [
+          -2399.900021,
+          -15.719058
+        ],
+        "length_mm": 2911.438048,
+        "side_a": "background",
+        "side_b": "A_main_top",
+        "internal": false,
+        "semantic_separation_valid": true
+      },
+      {
+        "segment_id": "S007",
+        "start_mm": [
+          -2399.900021,
+          -15.719058
+        ],
+        "end_mm": [
+          -2399.907585,
+          6e-06
+        ],
+        "length_mm": 15.719066,
+        "side_a": "background",
+        "side_b": "A_main_top",
+        "internal": false,
+        "semantic_separation_valid": true
+      },
+      {
+        "segment_id": "S008",
+        "start_mm": [
+          -1807.900021,
+          324.280914
+        ],
+        "end_mm": [
+          -1807.900021,
+          348.719086
+        ],
+        "length_mm": 24.438171,
+        "side_a": "background",
+        "side_b": "B_right_slats",
+        "internal": false,
+        "semantic_separation_valid": true
+      },
+      {
+        "segment_id": "S009",
+        "start_mm": [
+          -1807.900021,
+          348.719086
+        ],
+        "end_mm": [
+          -1786.4613,
+          348.719086
+        ],
+        "length_mm": 21.438721,
+        "side_a": "background",
+        "side_b": "B_right_slats",
+        "internal": false,
+        "semantic_separation_valid": true
+      },
+      {
+        "segment_id": "S010",
+        "start_mm": [
+          -1786.4613,
+          348.719086
+        ],
+        "end_mm": [
+          -1786.466183,
+          324.462219
+        ],
+        "length_mm": 24.256867,
+        "side_a": "background",
+        "side_b": "B_right_slats",
+        "internal": false,
+        "semantic_separation_valid": true
+      },
+      {
+        "segment_id": "S011",
+        "start_mm": [
+          -1786.466183,
+          324.462219
+        ],
+        "end_mm": [
+          -1807.900021,
+          324.280914
+        ],
+        "length_mm": 21.434605,
+        "side_a": "background",
+        "side_b": "B_right_slats",
+        "internal": false,
+        "semantic_separation_valid": true
+      },
+      {
+        "segment_id": "S012",
+        "start_mm": [
+          -1851.899776,
+          324.280914
+        ],
+        "end_mm": [
+          -1851.899776,
+          348.719086
+        ],
+        "length_mm": 24.438171,
+        "side_a": "background",
+        "side_b": "B_right_slats",
+        "internal": false,
+        "semantic_separation_valid": true
+      },
+      {
+        "segment_id": "S013",
+        "start_mm": [
+          -1851.899776,
+          348.719086
+        ],
+        "end_mm": [
+          -1830.462032,
+          348.719086
+        ],
+        "length_mm": 21.437744,
+        "side_a": "background",
+        "side_b": "B_right_slats",
+        "internal": false,
+        "semantic_separation_valid": true
+      },
+      {
+        "segment_id": "S014",
+        "start_mm": [
+          -1830.462032,
+          348.719086
+        ],
+        "end_mm": [
+          -1830.466427,
+          324.462219
+        ],
+        "length_mm": 24.256867,
+        "side_a": "background",
+        "side_b": "B_right_slats",
+        "internal": false,
+        "semantic_separation_valid": true
+      },
+      {
+        "segment_id": "S015",
+        "start_mm": [
+          -1830.466427,
+          324.462219
+        ],
+        "end_mm": [
+          -1851.899776,
+          324.280914
+        ],
+        "length_mm": 21.434116,
+        "side_a": "background",
+        "side_b": "B_right_slats",
+        "internal": false,
+        "semantic_separation_valid": true
+      },
+      {
+        "segment_id": "S016",
+        "start_mm": [
+          -1874.461544,
+          324.280914
+        ],
+        "end_mm": [
+          -1895.899532,
+          324.280914
+        ],
+        "length_mm": 21.437988,
+        "side_a": "background",
+        "side_b": "B_right_slats",
+        "internal": false,
+        "semantic_separation_valid": true
+      },
+      {
+        "segment_id": "S017",
+        "start_mm": [
+          -1895.899532,
+          324.280914
+        ],
+        "end_mm": [
+          -1895.899532,
+          348.719086
+        ],
+        "length_mm": 24.438171,
+        "side_a": "background",
+        "side_b": "B_right_slats",
+        "internal": false,
+        "semantic_separation_valid": true
+      },
+      {
+        "segment_id": "S018",
+        "start_mm": [
+          -1895.899532,
+          348.719086
+        ],
+        "end_mm": [
+          -1874.643185,
+          348.71463
+        ],
+        "length_mm": 21.256348,
+        "side_a": "background",
+        "side_b": "B_right_slats",
+        "internal": false,
+        "semantic_separation_valid": true
+      },
+      {
+        "segment_id": "S019",
+        "start_mm": [
+          -1874.643185,
+          348.71463
+        ],
+        "end_mm": [
+          -1874.461544,
+          324.280914
+        ],
+        "length_mm": 24.434391,
+        "side_a": "background",
+        "side_b": "B_right_slats",
+        "internal": false,
+        "semantic_separation_valid": true
+      },
+      {
+        "segment_id": "S020",
+        "start_mm": [
+          -1939.900021,
+          324.280914
+        ],
+        "end_mm": [
+          -1939.900021,
+          348.719086
+        ],
+        "length_mm": 24.438171,
+        "side_a": "background",
+        "side_b": "B_right_slats",
+        "internal": false,
+        "semantic_separation_valid": true
+      },
+      {
+        "segment_id": "S021",
+        "start_mm": [
+          -1939.900021,
+          348.719086
+        ],
+        "end_mm": [
+          -1918.4613,
+          348.719086
+        ],
+        "length_mm": 21.438721,
+        "side_a": "background",
+        "side_b": "B_right_slats",
+        "internal": false,
+        "semantic_separation_valid": true
+      },
+      {
+        "segment_id": "S022",
+        "start_mm": [
+          -1918.4613,
+          348.719086
+        ],
+        "end_mm": [
+          -1918.466183,
+          324.462219
+        ],
+        "length_mm": 24.256867,
+        "side_a": "background",
+        "side_b": "B_right_slats",
+        "internal": false,
+        "semantic_separation_valid": true
+      },
+      {
+        "segment_id": "S023",
+        "start_mm": [
+          -1918.466183,
+          324.462219
+        ],
+        "end_mm": [
+          -1939.900021,
+          324.280914
+        ],
+        "length_mm": 21.434605,
+        "side_a": "background",
+        "side_b": "B_right_slats",
+        "internal": false,
+        "semantic_separation_valid": true
+      },
+      {
+        "segment_id": "S024",
+        "start_mm": [
+          -1983.899532,
+          324.280914
+        ],
+        "end_mm": [
+          -1983.899532,
+          348.719086
+        ],
+        "length_mm": 24.438171,
+        "side_a": "background",
+        "side_b": "B_right_slats",
+        "internal": false,
+        "semantic_separation_valid": true
+      },
+      {
+        "segment_id": "S025",
+        "start_mm": [
+          -1983.899532,
+          348.719086
+        ],
+        "end_mm": [
+          -1962.462032,
+          348.719086
+        ],
+        "length_mm": 21.4375,
+        "side_a": "background",
+        "side_b": "B_right_slats",
+        "internal": false,
+        "semantic_separation_valid": true
+      },
+      {
+        "segment_id": "S026",
+        "start_mm": [
+          -1962.462032,
+          348.719086
+        ],
+        "end_mm": [
+          -1962.466183,
+          324.462219
+        ],
+        "length_mm": 24.256867,
+        "side_a": "background",
+        "side_b": "B_right_slats",
+        "internal": false,
+        "semantic_separation_valid": true
+      },
+      {
+        "segment_id": "S027",
+        "start_mm": [
+          -1962.466183,
+          324.462219
+        ],
+        "end_mm": [
+          -1983.899532,
+          324.280914
+        ],
+        "length_mm": 21.434116,
+        "side_a": "background",
+        "side_b": "B_right_slats",
+        "internal": false,
+        "semantic_separation_valid": true
+      },
+      {
+        "segment_id": "S028",
+        "start_mm": [
+          -2006.4613,
+          324.280914
+        ],
+        "end_mm": [
+          -2027.899776,
+          324.280914
+        ],
+        "length_mm": 21.438477,
+        "side_a": "background",
+        "side_b": "B_right_slats",
+        "internal": false,
+        "semantic_separation_valid": true
+      },
+      {
+        "segment_id": "S029",
+        "start_mm": [
+          -2027.899776,
+          324.280914
+        ],
+        "end_mm": [
+          -2027.899776,
+          348.719086
+        ],
+        "length_mm": 24.438171,
+        "side_a": "background",
+        "side_b": "B_right_slats",
+        "internal": false,
+        "semantic_separation_valid": true
+      },
+      {
+        "segment_id": "S030",
+        "start_mm": [
+          -2027.899776,
+          348.719086
+        ],
+        "end_mm": [
+          -2006.642941,
+          348.71463
+        ],
+        "length_mm": 21.256836,
+        "side_a": "background",
+        "side_b": "B_right_slats",
+        "internal": false,
+        "semantic_separation_valid": true
+      },
+      {
+        "segment_id": "S031",
+        "start_mm": [
+          -2006.642941,
+          348.71463
+        ],
+        "end_mm": [
+          -2006.4613,
+          324.280914
+        ],
+        "length_mm": 24.434391,
+        "side_a": "background",
+        "side_b": "B_right_slats",
+        "internal": false,
+        "semantic_separation_valid": true
+      },
+      {
+        "segment_id": "S032",
+        "start_mm": [
+          -2050.4613,
+          324.280914
+        ],
+        "end_mm": [
+          -2071.899776,
+          324.280914
+        ],
+        "length_mm": 21.438477,
+        "side_a": "background",
+        "side_b": "B_right_slats",
+        "internal": false,
+        "semantic_separation_valid": true
+      },
+      {
+        "segment_id": "S033",
+        "start_mm": [
+          -2071.899776,
+          324.280914
+        ],
+        "end_mm": [
+          -2071.899776,
+          348.719086
+        ],
+        "length_mm": 24.438171,
+        "side_a": "background",
+        "side_b": "B_right_slats",
+        "internal": false,
+        "semantic_separation_valid": true
+      },
+      {
+        "segment_id": "S034",
+        "start_mm": [
+          -2071.899776,
+          348.719086
+        ],
+        "end_mm": [
+          -2050.465939,
+          348.53772
+        ],
+        "length_mm": 21.434605,
+        "side_a": "background",
+        "side_b": "B_right_slats",
+        "internal": false,
+        "semantic_separation_valid": true
+      },
+      {
+        "segment_id": "S035",
+        "start_mm": [
+          -2050.465939,
+          348.53772
+        ],
+        "end_mm": [
+          -2050.4613,
+          324.280914
+        ],
+        "length_mm": 24.256806,
+        "side_a": "background",
+        "side_b": "B_right_slats",
+        "internal": false,
+        "semantic_separation_valid": true
+      },
+      {
+        "segment_id": "S036",
+        "start_mm": [
+          -2115.899532,
+          324.280914
+        ],
+        "end_mm": [
+          -2115.899532,
+          348.719086
+        ],
+        "length_mm": 24.438171,
+        "side_a": "background",
+        "side_b": "B_right_slats",
+        "internal": false,
+        "semantic_separation_valid": true
+      },
+      {
+        "segment_id": "S037",
+        "start_mm": [
+          -2115.899532,
+          348.719086
+        ],
+        "end_mm": [
+          -2094.461788,
+          348.719086
+        ],
+        "length_mm": 21.437744,
+        "side_a": "background",
+        "side_b": "B_right_slats",
+        "internal": false,
+        "semantic_separation_valid": true
+      },
+      {
+        "segment_id": "S038",
+        "start_mm": [
+          -2094.461788,
+          348.719086
+        ],
+        "end_mm": [
+          -2094.466183,
+          324.462219
+        ],
+        "length_mm": 24.256867,
+        "side_a": "background",
+        "side_b": "B_right_slats",
+        "internal": false,
+        "semantic_separation_valid": true
+      },
+      {
+        "segment_id": "S039",
+        "start_mm": [
+          -2094.466183,
+          324.462219
+        ],
+        "end_mm": [
+          -2115.899532,
+          324.280914
+        ],
+        "length_mm": 21.434116,
+        "side_a": "background",
+        "side_b": "B_right_slats",
+        "internal": false,
+        "semantic_separation_valid": true
+      },
+      {
+        "segment_id": "S040",
+        "start_mm": [
+          -2159.899776,
+          324.280914
+        ],
+        "end_mm": [
+          -2159.899776,
+          348.719086
+        ],
+        "length_mm": 24.438171,
+        "side_a": "background",
+        "side_b": "B_right_slats",
+        "internal": false,
+        "semantic_separation_valid": true
+      },
+      {
+        "segment_id": "S041",
+        "start_mm": [
+          -2159.899776,
+          348.719086
+        ],
+        "end_mm": [
+          -2138.461544,
+          348.719086
+        ],
+        "length_mm": 21.438232,
+        "side_a": "background",
+        "side_b": "B_right_slats",
+        "internal": false,
+        "semantic_separation_valid": true
+      },
+      {
+        "segment_id": "S042",
+        "start_mm": [
+          -2138.461544,
+          348.719086
+        ],
+        "end_mm": [
+          -2138.466427,
+          324.462219
+        ],
+        "length_mm": 24.256867,
+        "side_a": "background",
+        "side_b": "B_right_slats",
+        "internal": false,
+        "semantic_separation_valid": true
+      },
+      {
+        "segment_id": "S043",
+        "start_mm": [
+          -2138.466427,
+          324.462219
+        ],
+        "end_mm": [
+          -2159.899776,
+          324.280914
+        ],
+        "length_mm": 21.434116,
+        "side_a": "background",
+        "side_b": "B_right_slats",
+        "internal": false,
+        "semantic_separation_valid": true
+      },
+      {
+        "segment_id": "S044",
+        "start_mm": [
+          -2182.4613,
+          324.280914
+        ],
+        "end_mm": [
+          -2203.899776,
+          324.280914
+        ],
+        "length_mm": 21.438477,
+        "side_a": "background",
+        "side_b": "B_right_slats",
+        "internal": false,
+        "semantic_separation_valid": true
+      },
+      {
+        "segment_id": "S045",
+        "start_mm": [
+          -2203.899776,
+          324.280914
+        ],
+        "end_mm": [
+          -2203.899776,
+          348.719086
+        ],
+        "length_mm": 24.438171,
+        "side_a": "background",
+        "side_b": "B_right_slats",
+        "internal": false,
+        "semantic_separation_valid": true
+      },
+      {
+        "segment_id": "S046",
+        "start_mm": [
+          -2203.899776,
+          348.719086
+        ],
+        "end_mm": [
+          -2182.642452,
+          348.71463
+        ],
+        "length_mm": 21.257325,
+        "side_a": "background",
+        "side_b": "B_right_slats",
+        "internal": false,
+        "semantic_separation_valid": true
+      },
+      {
+        "segment_id": "S047",
+        "start_mm": [
+          -2182.642452,
+          348.71463
+        ],
+        "end_mm": [
+          -2182.4613,
+          324.280914
+        ],
+        "length_mm": 24.434387,
+        "side_a": "background",
+        "side_b": "B_right_slats",
+        "internal": false,
+        "semantic_separation_valid": true
+      },
+      {
+        "segment_id": "S048",
+        "start_mm": [
+          -2247.899776,
+          324.280914
+        ],
+        "end_mm": [
+          -2247.899776,
+          348.719086
+        ],
+        "length_mm": 24.438171,
+        "side_a": "background",
+        "side_b": "B_right_slats",
+        "internal": false,
+        "semantic_separation_valid": true
+      },
+      {
+        "segment_id": "S049",
+        "start_mm": [
+          -2247.899776,
+          348.719086
+        ],
+        "end_mm": [
+          -2226.461788,
+          348.719086
+        ],
+        "length_mm": 21.437988,
+        "side_a": "background",
+        "side_b": "B_right_slats",
+        "internal": false,
+        "semantic_separation_valid": true
+      },
+      {
+        "segment_id": "S050",
+        "start_mm": [
+          -2226.461788,
+          348.719086
+        ],
+        "end_mm": [
+          -2226.466183,
+          324.462219
+        ],
+        "length_mm": 24.256867,
+        "side_a": "background",
+        "side_b": "B_right_slats",
+        "internal": false,
+        "semantic_separation_valid": true
+      },
+      {
+        "segment_id": "S051",
+        "start_mm": [
+          -2226.466183,
+          324.462219
+        ],
+        "end_mm": [
+          -2247.899776,
+          324.280914
+        ],
+        "length_mm": 21.434361,
+        "side_a": "background",
+        "side_b": "B_right_slats",
+        "internal": false,
+        "semantic_separation_valid": true
+      },
+      {
+        "segment_id": "S052",
+        "start_mm": [
+          -2270.461544,
+          324.280914
+        ],
+        "end_mm": [
+          -2291.899776,
+          324.280914
+        ],
+        "length_mm": 21.438232,
+        "side_a": "background",
+        "side_b": "B_right_slats",
+        "internal": false,
+        "semantic_separation_valid": true
+      },
+      {
+        "segment_id": "S053",
+        "start_mm": [
+          -2291.899776,
+          324.280914
+        ],
+        "end_mm": [
+          -2291.899776,
+          348.719086
+        ],
+        "length_mm": 24.438171,
+        "side_a": "background",
+        "side_b": "B_right_slats",
+        "internal": false,
+        "semantic_separation_valid": true
+      },
+      {
+        "segment_id": "S054",
+        "start_mm": [
+          -2291.899776,
+          348.719086
+        ],
+        "end_mm": [
+          -2270.642941,
+          348.71463
+        ],
+        "length_mm": 21.256836,
+        "side_a": "background",
+        "side_b": "B_right_slats",
+        "internal": false,
+        "semantic_separation_valid": true
+      },
+      {
+        "segment_id": "S055",
+        "start_mm": [
+          -2270.642941,
+          348.71463
+        ],
+        "end_mm": [
+          -2270.461544,
+          324.280914
+        ],
+        "length_mm": 24.434389,
+        "side_a": "background",
+        "side_b": "B_right_slats",
+        "internal": false,
+        "semantic_separation_valid": true
+      },
+      {
+        "segment_id": "S056",
+        "start_mm": [
+          -2314.4613,
+          324.280914
+        ],
+        "end_mm": [
+          -2335.899776,
+          324.280914
+        ],
+        "length_mm": 21.438477,
+        "side_a": "background",
+        "side_b": "B_right_slats",
+        "internal": false,
+        "semantic_separation_valid": true
+      },
+      {
+        "segment_id": "S057",
+        "start_mm": [
+          -2335.899776,
+          324.280914
+        ],
+        "end_mm": [
+          -2335.899776,
+          348.719086
+        ],
+        "length_mm": 24.438171,
+        "side_a": "background",
+        "side_b": "B_right_slats",
+        "internal": false,
+        "semantic_separation_valid": true
+      },
+      {
+        "segment_id": "S058",
+        "start_mm": [
+          -2335.899776,
+          348.719086
+        ],
+        "end_mm": [
+          -2314.642452,
+          348.71463
+        ],
+        "length_mm": 21.257325,
+        "side_a": "background",
+        "side_b": "B_right_slats",
+        "internal": false,
+        "semantic_separation_valid": true
+      },
+      {
+        "segment_id": "S059",
+        "start_mm": [
+          -2314.642452,
+          348.71463
+        ],
+        "end_mm": [
+          -2314.4613,
+          324.280914
+        ],
+        "length_mm": 24.434387,
+        "side_a": "background",
+        "side_b": "B_right_slats",
+        "internal": false,
+        "semantic_separation_valid": true
+      },
+      {
+        "segment_id": "S060",
+        "start_mm": [
+          -2358.461544,
+          324.280914
+        ],
+        "end_mm": [
+          -2379.900021,
+          324.280914
+        ],
+        "length_mm": 21.438477,
+        "side_a": "background",
+        "side_b": "B_right_slats",
+        "internal": false,
+        "semantic_separation_valid": true
+      },
+      {
+        "segment_id": "S061",
+        "start_mm": [
+          -2379.900021,
+          324.280914
+        ],
+        "end_mm": [
+          -2379.900021,
+          348.719086
+        ],
+        "length_mm": 24.438171,
+        "side_a": "background",
+        "side_b": "B_right_slats",
+        "internal": false,
+        "semantic_separation_valid": true
+      },
+      {
+        "segment_id": "S062",
+        "start_mm": [
+          -2379.900021,
+          348.719086
+        ],
+        "end_mm": [
+          -2358.466427,
+          348.53772
+        ],
+        "length_mm": 21.434361,
+        "side_a": "background",
+        "side_b": "B_right_slats",
+        "internal": false,
+        "semantic_separation_valid": true
+      },
+      {
+        "segment_id": "S063",
+        "start_mm": [
+          -2358.466427,
+          348.53772
+        ],
+        "end_mm": [
+          -2358.461544,
+          324.280914
+        ],
+        "length_mm": 24.256806,
+        "side_a": "background",
+        "side_b": "B_right_slats",
+        "internal": false,
+        "semantic_separation_valid": true
+      },
+      {
+        "segment_id": "S064",
+        "start_mm": [
+          163.498112,
+          420.218536
+        ],
+        "end_mm": [
+          163.498112,
+          355.714597
+        ],
+        "length_mm": 64.503939,
+        "side_a": "background",
+        "side_b": "C_front_left_display",
+        "internal": false,
+        "semantic_separation_valid": true
+      },
+      {
+        "segment_id": "S065",
+        "start_mm": [
+          163.498112,
+          355.714597
+        ],
+        "end_mm": [
+          163.498112,
+          324.285309
+        ],
+        "length_mm": 31.429288,
+        "side_a": "E_lower_front_rails",
+        "side_b": "C_front_left_display",
+        "internal": true,
+        "semantic_separation_valid": true
+      },
+      {
+        "segment_id": "S066",
+        "start_mm": [
+          163.498112,
+          324.285309
+        ],
+        "end_mm": [
+          163.498112,
+          320.780426
+        ],
+        "length_mm": 3.504883,
+        "side_a": "background",
+        "side_b": "C_front_left_display",
+        "internal": false,
+        "semantic_separation_valid": true
+      },
+      {
+        "segment_id": "S067",
+        "start_mm": [
+          163.498112,
+          320.780426
+        ],
+        "end_mm": [
+          -445.939816,
+          320.780426
+        ],
+        "length_mm": 609.437927,
+        "side_a": "A_main_top",
+        "side_b": "C_front_left_display",
+        "internal": true,
+        "semantic_separation_valid": true
+      },
+      {
+        "segment_id": "S068",
+        "start_mm": [
+          -445.939816,
+          320.780426
+        ],
+        "end_mm": [
+          -445.758419,
+          420.214081
+        ],
+        "length_mm": 99.43382,
+        "side_a": "background",
+        "side_b": "C_front_left_display",
+        "internal": false,
+        "semantic_separation_valid": true
+      },
+      {
+        "segment_id": "S069",
+        "start_mm": [
+          -445.758419,
+          420.214081
+        ],
+        "end_mm": [
+          163.498112,
+          420.218536
+        ],
+        "length_mm": 609.256531,
+        "side_a": "background",
+        "side_b": "C_front_left_display",
+        "internal": false,
+        "semantic_separation_valid": true
+      },
+      {
+        "segment_id": "S070",
+        "start_mm": [
+          -480.461971,
+          329.719055
+        ],
+        "end_mm": [
+          -480.466366,
+          319.719025
+        ],
+        "length_mm": 10.000031,
+        "side_a": "E_lower_front_rails",
+        "side_b": "D_mid_shelf_lip",
+        "internal": true,
+        "semantic_separation_valid": true
+      },
+      {
+        "segment_id": "S071",
+        "start_mm": [
+          -1727.718704,
+          319.719025
+        ],
+        "end_mm": [
+          -1727.899776,
+          329.719055
+        ],
+        "length_mm": 10.00167,
+        "side_a": "E_lower_front_rails",
+        "side_b": "D_mid_shelf_lip",
+        "internal": true,
+        "semantic_separation_valid": true
+      },
+      {
+        "segment_id": "S072",
+        "start_mm": [
+          -1727.899776,
+          329.719055
+        ],
+        "end_mm": [
+          -480.461971,
+          329.719055
+        ],
+        "length_mm": 1247.437805,
+        "side_a": "E_lower_front_rails",
+        "side_b": "D_mid_shelf_lip",
+        "internal": true,
+        "semantic_separation_valid": true
+      },
+      {
+        "segment_id": "S073",
+        "start_mm": [
+          491.538111,
+          324.280914
+        ],
+        "end_mm": [
+          163.498112,
+          324.285309
+        ],
+        "length_mm": 328.039999,
+        "side_a": "background",
+        "side_b": "E_lower_front_rails",
+        "internal": false,
+        "semantic_separation_valid": true
+      },
+      {
+        "segment_id": "S074",
+        "start_mm": [
+          163.498112,
+          355.714597
+        ],
+        "end_mm": [
+          491.53368,
+          355.537689
+        ],
+        "length_mm": 328.035616,
+        "side_a": "background",
+        "side_b": "E_lower_front_rails",
+        "internal": false,
+        "semantic_separation_valid": true
+      },
+      {
+        "segment_id": "S075",
+        "start_mm": [
+          491.53368,
+          355.537689
+        ],
+        "end_mm": [
+          491.538111,
+          324.280914
+        ],
+        "length_mm": 31.256775,
+        "side_a": "background",
+        "side_b": "E_lower_front_rails",
+        "internal": false,
+        "semantic_separation_valid": true
+      },
+      {
+        "segment_id": "S076",
+        "start_mm": [
+          -459.89996,
+          324.280914
+        ],
+        "end_mm": [
+          -459.89996,
+          355.719055
+        ],
+        "length_mm": 31.438141,
+        "side_a": "background",
+        "side_b": "E_lower_front_rails",
+        "internal": false,
+        "semantic_separation_valid": true
+      },
+      {
+        "segment_id": "S077",
+        "start_mm": [
+          -459.89996,
+          355.719055
+        ],
+        "end_mm": [
+          -445.9354,
+          355.7146
+        ],
+        "length_mm": 13.964561,
+        "side_a": "background",
+        "side_b": "E_lower_front_rails",
+        "internal": false,
+        "semantic_separation_valid": true
+      },
+      {
+        "segment_id": "S078",
+        "start_mm": [
+          -445.9354,
+          355.7146
+        ],
+        "end_mm": [
+          -445.935419,
+          324.285309
+        ],
+        "length_mm": 31.429291,
+        "side_a": "C_front_left_display",
+        "side_b": "E_lower_front_rails",
+        "internal": true,
+        "semantic_separation_valid": true
+      },
+      {
+        "segment_id": "S079",
+        "start_mm": [
+          -445.935419,
+          324.285309
+        ],
+        "end_mm": [
+          -459.89996,
+          324.280914
+        ],
+        "length_mm": 13.964541,
+        "side_a": "background",
+        "side_b": "E_lower_front_rails",
+        "internal": false,
+        "semantic_separation_valid": true
+      },
+      {
+        "segment_id": "S080",
+        "start_mm": [
+          -468.461788,
+          355.719055
+        ],
+        "end_mm": [
+          -468.461788,
+          324.280914
+        ],
+        "length_mm": 31.438141,
+        "side_a": "background",
+        "side_b": "E_lower_front_rails",
+        "internal": false,
+        "semantic_separation_valid": true
+      },
+      {
+        "segment_id": "S081",
+        "start_mm": [
+          -468.461788,
+          324.280914
+        ],
+        "end_mm": [
+          -480.464359,
+          324.285308
+        ],
+        "length_mm": 12.002572,
+        "side_a": "background",
+        "side_b": "E_lower_front_rails",
+        "internal": false,
+        "semantic_separation_valid": true
+      },
+      {
+        "segment_id": "S082",
+        "start_mm": [
+          -480.464359,
+          324.285308
+        ],
+        "end_mm": [
+          -480.461971,
+          329.719055
+        ],
+        "length_mm": 5.433748,
+        "side_a": "D_mid_shelf_lip",
+        "side_b": "E_lower_front_rails",
+        "internal": true,
+        "semantic_separation_valid": true
+      },
+      {
+        "segment_id": "S083",
+        "start_mm": [
+          -1727.899776,
+          329.719055
+        ],
+        "end_mm": [
+          -1727.895626,
+          329.489843
+        ],
+        "length_mm": 0.229249,
+        "side_a": "D_mid_shelf_lip",
+        "side_b": "E_lower_front_rails",
+        "internal": true,
+        "semantic_separation_valid": true
+      },
+      {
+        "segment_id": "S084",
+        "start_mm": [
+          -1727.895626,
+          329.489843
+        ],
+        "end_mm": [
+          -1727.895626,
+          324.285309
+        ],
+        "length_mm": 5.204534,
+        "side_a": "D_mid_shelf_lip",
+        "side_b": "E_lower_front_rails",
+        "internal": true,
+        "semantic_separation_valid": true
+      },
+      {
+        "segment_id": "S085",
+        "start_mm": [
+          -1727.895626,
+          324.285309
+        ],
+        "end_mm": [
+          -1739.899532,
+          324.280914
+        ],
+        "length_mm": 12.003907,
+        "side_a": "background",
+        "side_b": "E_lower_front_rails",
+        "internal": false,
+        "semantic_separation_valid": true
+      },
+      {
+        "segment_id": "S086",
+        "start_mm": [
+          -1739.899532,
+          324.280914
+        ],
+        "end_mm": [
+          -1739.718136,
+          355.7146
+        ],
+        "length_mm": 31.434209,
+        "side_a": "background",
+        "side_b": "E_lower_front_rails",
+        "internal": false,
+        "semantic_separation_valid": true
+      },
+      {
+        "segment_id": "S087",
+        "start_mm": [
+          -1739.718136,
+          355.7146
+        ],
+        "end_mm": [
+          -468.461788,
+          355.719055
+        ],
+        "length_mm": 1271.256348,
+        "side_a": "background",
+        "side_b": "E_lower_front_rails",
+        "internal": false,
+        "semantic_separation_valid": true
+      }
+    ]
+  },
+  "write_boundary": {
+    "single_product_plan_svg_updated": true,
+    "derived_ifc_updated": false,
+    "bonsai_session_updated": false,
+    "project_scene_drawing_updated": false,
+    "create_drawing_called": false,
+    "front_svg_frozen": true,
+    "side_svg_frozen": true
+  },
+  "frozen_hashes": {
+    "front_svg_sha256": "0f942b3799c9854119765445258a8eb422274c5cb198582e2fe369c5b13c975b",
+    "side_svg_sha256": "8f4224ef5fb3594bd369cc850ff49bd728c266bba8ac966528a1c361ed3eb156",
+    "derived_ifc_sha256": "a49d1b9d2859fe596761ecc70c845cf888022f32c988a71946e8bfa4b0338417",
+    "bonsai_session_ifc_sha256": "b8e9c5825225bd5f1df3a5ca5b5c9d0945e29acc9f1435c1e4dc98c3525b7687",
+    "rejected_plan_scene_svg_sha256": "f67a0a3867e105e6ffc2a4507ba07f40d233c72142d46c5c06e2c9555ccf29d5"
+  },
+  "outputs": {
+    "plan_svg": "output/review/highpoly-types/505-up-v1-lp-s/plan.svg",
+    "contact_sheet_svg": "output/review/highpoly-types/505-up-v1-lp-s/505-up-plan-semantic-review.svg",
+    "plan_preview_png": "output/review/highpoly-types/505-up-v1-lp-s/505-up-plan-semantic-preview.png",
+    "plan_preview_png_sha256": "42938c546faecdd2f6efd74d0781b0c21c085c7a9cc306d3a76fdec7b748147a",
+    "contact_sheet_png": "output/review/highpoly-types/505-up-v1-lp-s/505-up-plan-semantic-contact-sheet.png",
+    "contact_sheet_png_sha256": "e8fe545db05ad1991ad2485febb9910f4f7513990d64c476de6f1ca58e1d369a"
+  },
+  "course_evidence": {
+    "lesson": "085000 Introduction to Drawings",
+    "course_fact": "Plan is an orthographic camera view; camera direction/depth and Linework determine SVG visibility, and generated SVG must be visually inspected.",
+    "scope_note": "This review-only product SVG precedes any persisted Bonsai Drawing refresh."
+  },
+  "formal_ifc_sha256": "7a50b87e8f48a7c2bfbaa9f1dabdfca7155fa684b2325c66aa1ae15c8ab0a25c",
+  "pass": true
+}

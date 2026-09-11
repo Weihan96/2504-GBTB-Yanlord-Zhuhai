@@ -1,0 +1,462 @@
+{
+  "schema_version": 1,
+  "generated_at": "2026-08-27T13:20:37.359937+00:00",
+  "generator": "pipeline/scripts/generate_miamisoft_e09_project_drawings.py",
+  "task": "actual project living-area Bonsai Plan/Front/Side Drawing package for approved Baxter Miami Soft E09 native-DWG linework",
+  "workflow": [
+    "inspect",
+    "plan",
+    "execute",
+    "persist",
+    "reload",
+    "verify"
+  ],
+  "formal_ifc": "2504 GBTB Yanlord Zhuhai.ifc",
+  "formal_ifc_sha256": "7a50b87e8f48a7c2bfbaa9f1dabdfca7155fa684b2325c66aa1ae15c8ab0a25c",
+  "formal_ifc_sha256_after_generation": "7a50b87e8f48a7c2bfbaa9f1dabdfca7155fa684b2325c66aa1ae15c8ab0a25c",
+  "formal_ifc_bytes_unchanged": true,
+  "save_boundary": "one Miami Soft E09 product-level full-project derived IFC copy",
+  "derived_ifc": {
+    "path": "output/review/highpoly-types/miamisoft-e09/Baxter-Miami-Soft-E09-derived-drawing.ifc",
+    "bytes": 87696264,
+    "sha256": "8f56bca325b49ac4d6da0395f695f1c6cb739925e81431604138efabd847c9a4"
+  },
+  "session_blend": {
+    "path": "output/review/highpoly-types/miamisoft-e09/Baxter-Miami-Soft-E09-project-drawings.blend",
+    "bytes": 524833689,
+    "sha256": "704b37300825203d9f0522373d307bccde922e0ac0bf3b84355a7bf74e5f1b08"
+  },
+  "approval_record": {
+    "path": "pipeline/decisions/miamisoft-e09-drawing-approval.json",
+    "bytes": 1858,
+    "sha256": "70e89130beb6af87cf4ae4bcd241ed2ce6e8a16b3b27267c8e98afcb8c2b4bd7"
+  },
+  "create_drawing_evidence": {
+    "path": "output/review/highpoly-types/miamisoft-e09/bonsai-drawings/living-area/MIAMISOFT-E09-create-drawing-evidence.json",
+    "bytes": 20378,
+    "sha256": "732f1874022549cb89709b671a1dfcd334abe53651ae21a31493b683685efb0a"
+  },
+  "source_kind": "native_dwg",
+  "source_label_zh": "Baxter 官方 Miami Soft E09 原生二维 DWG",
+  "source_dwg_sha256": "efc3315feed0a2dac8938aebbd7336856dabba6721395e4520783c39ba0cc51a",
+  "target_global_id": "3osoWufdD1mhDDAM6lcix4",
+  "project_highpoly_component_offsets_accepted": true,
+  "component_force_fit_applied": false,
+  "actual_target_body_suppressed_from_drawing_include": true,
+  "official_hidden_line_source_handle": "1115B",
+  "official_hidden_line_pattern": "DASHED",
+  "provider": {
+    "name": "public bonsai-mcp",
+    "status": "supported",
+    "bridge": "127.0.0.1:9878",
+    "execution": "mcp__bonsai_mcp__execute_blender_code"
+  },
+  "course_evidence": {
+    "mode": "embedded-course-index",
+    "lesson": "085000 Introduction to Drawings",
+    "timestamps": [
+      "01:59 Create Drawing",
+      "02:06 Drawing created",
+      "02:13 SVG inspection"
+    ],
+    "course_fact": "Create Drawing generates or refreshes SVG after the Drawing camera, scale, depth and filters are configured.",
+    "current_version_inference": "Bonsai 0.8.4 semantic Drawing state and bpy.ops.bim.create_drawing were used in Blender 4.5.3 LTS."
+  },
+  "combined_pdf": {
+    "path": "output/review/highpoly-types/miamisoft-e09/Baxter-Miami-Soft-E09-living-area-drawings.pdf",
+    "bytes": 619381,
+    "sha256": "0121386c10e020442b7718113d4ae96455f45160dd2b1626c61d058fcc1c70d7",
+    "page_count": 3,
+    "page_order": [
+      "plan",
+      "front",
+      "side"
+    ]
+  },
+  "views": [
+    {
+      "view": "plan",
+      "drawing_name": "MIAMISOFT-E09-LIVING-AREA-PLAN",
+      "drawing_global_id": "0t2OuZviP7cOC$0MDU8MRp",
+      "visible_annotation_global_id": "235nsjm918KhYh6EfjT95x",
+      "official_path_count": 64,
+      "official_hidden_path_count": 0,
+      "persisted_official_path_count": 64,
+      "persisted_hidden_path_count": 0,
+      "camera": {
+        "type": "ORTHO",
+        "width_m": 6.6,
+        "height_m": 6.6,
+        "clip_start_m": 0.0020000000949949026,
+        "clip_end_m": 1.5,
+        "matrix_world": [
+          [
+            1.0,
+            0.0,
+            0.0,
+            2.2416982650756836
+          ],
+          [
+            0.0,
+            1.0,
+            0.0,
+            0.7443616986274719
+          ],
+          [
+            0.0,
+            0.0,
+            1.0,
+            1.2000000476837158
+          ],
+          [
+            0.0,
+            0.0,
+            0.0,
+            1.0
+          ]
+        ],
+        "resolution": [
+          1000,
+          1000
+        ]
+      },
+      "create_drawing": {
+        "operator": "bpy.ops.bim.create_drawing",
+        "arguments": {
+          "print_all": false,
+          "open_viewer": false,
+          "sync": false
+        },
+        "result": [
+          "FINISHED"
+        ],
+        "linework_mode": "OPENCASCADE",
+        "target_view": "PLAN_VIEW"
+      },
+      "svg_validation": {
+        "path": "/Users/jiaxinchen/.codex/worktrees/3a80/2504 GBTB Yanlord Zhuhai/output/review/highpoly-types/miamisoft-e09/bonsai-drawings/living-area/MIAMISOFT-E09-LIVING-AREA-PLAN.svg",
+        "bytes": 4355567,
+        "sha256": "b87ecbc18f44d99031dd360a206241c50ffc78c537a43279561d7b4ff038d196",
+        "bonsai_generated_sha256_before_review_style": "984b8d4049432b253920965b43a153dcdd6423b50769c52c459a9c7ed22692f4",
+        "visible_annotation_group_count": 1458,
+        "hidden_annotation_group_count": 0,
+        "blue_visible_geometry_count": 1458,
+        "blue_hidden_geometry_count": 0,
+        "grey_context_geometry_count": 20804,
+        "hidden_dasharray": null,
+        "post_style_only": true,
+        "root_tag": "svg",
+        "geometry_element_count": 22262,
+        "projection_group_count": 95,
+        "target_ifc_projection_group_count": 0,
+        "annotation_group_counts": {
+          "235nsjm918KhYh6EfjT95x": 1458
+        },
+        "annotation_presence_all": true,
+        "duplicate_target_or_annotation": false
+      },
+      "hidden_line_gate": {
+        "hidden_segment_count": 0,
+        "dashed_hidden_segment_count": 0,
+        "expected_hidden_segment_count": 0,
+        "pass": true
+      },
+      "svg": {
+        "path": "output/review/highpoly-types/miamisoft-e09/bonsai-drawings/living-area/MIAMISOFT-E09-LIVING-AREA-PLAN.svg",
+        "bytes": 4355567,
+        "sha256": "b87ecbc18f44d99031dd360a206241c50ffc78c537a43279561d7b4ff038d196"
+      },
+      "page_pdf": {
+        "path": "output/review/highpoly-types/miamisoft-e09/bonsai-drawings/living-area/MIAMISOFT-E09-LIVING-AREA-PLAN.pdf",
+        "bytes": 211467,
+        "sha256": "7b5249a16afcf0347f97969a32b1a51995ab7f5e6d9511b9a6cab06dd880b27a"
+      },
+      "pdf_rendered_preview_png": {
+        "path": "output/review/highpoly-types/miamisoft-e09/living-area-bonsai-drawing-plan.png",
+        "bytes": 108892,
+        "sha256": "5ac693bd15e6aa86a480129ed9fec5d158c255b3ce59af8125d4576ba604e5ce"
+      },
+      "pdf_preview_gate": {
+        "width": 1530,
+        "height": 1980,
+        "blue_pixel_count": 7061,
+        "grey_context_pixel_count": 63154,
+        "ink_bbox_px": [
+          69,
+          69,
+          1459,
+          1460
+        ],
+        "page_margins_px": {
+          "left": 69,
+          "right": 70,
+          "top": 69,
+          "bottom": 519
+        },
+        "blue_line_present": true,
+        "grey_context_present": true,
+        "no_page_edge_clipping": true,
+        "pass": true
+      }
+    },
+    {
+      "view": "front",
+      "drawing_name": "MIAMISOFT-E09-LIVING-AREA-FRONT",
+      "drawing_global_id": "1FIXLdUg52HhmZ1a87B2uY",
+      "visible_annotation_global_id": "05XvWv4dz5OOiUvdNFABeh",
+      "official_path_count": 130,
+      "official_hidden_path_count": 0,
+      "persisted_official_path_count": 130,
+      "persisted_hidden_path_count": 0,
+      "camera": {
+        "type": "ORTHO",
+        "width_m": 6.6,
+        "height_m": 3.6,
+        "clip_start_m": 0.0020000000949949026,
+        "clip_end_m": 6.8,
+        "matrix_world": [
+          [
+            -4.371138828673793e-08,
+            4.371138828673793e-08,
+            1.0,
+            5.591698169708252
+          ],
+          [
+            1.0,
+            1.910685676922942e-15,
+            4.371138828673793e-08,
+            0.7443616986274719
+          ],
+          [
+            0.0,
+            1.0,
+            -4.371138828673793e-08,
+            1.2000000476837158
+          ],
+          [
+            0.0,
+            0.0,
+            0.0,
+            1.0
+          ]
+        ],
+        "resolution": [
+          3118,
+          1700
+        ]
+      },
+      "create_drawing": {
+        "operator": "bpy.ops.bim.create_drawing",
+        "arguments": {
+          "print_all": false,
+          "open_viewer": false,
+          "sync": false
+        },
+        "result": [
+          "FINISHED"
+        ],
+        "linework_mode": "OPENCASCADE",
+        "target_view": "ELEVATION_VIEW"
+      },
+      "svg_validation": {
+        "path": "/Users/jiaxinchen/.codex/worktrees/3a80/2504 GBTB Yanlord Zhuhai/output/review/highpoly-types/miamisoft-e09/bonsai-drawings/living-area/MIAMISOFT-E09-LIVING-AREA-FRONT.svg",
+        "bytes": 6156077,
+        "sha256": "04e7d5d4cdbef22e40923af592ddaf22191d7b4c154e0cb4d92d3268ad97384a",
+        "bonsai_generated_sha256_before_review_style": "ab834bb6ad60c0a6230f425f2ef5c88519db24589afcfa03ff4894e50ce3942a",
+        "visible_annotation_group_count": 1822,
+        "hidden_annotation_group_count": 0,
+        "blue_visible_geometry_count": 1822,
+        "blue_hidden_geometry_count": 0,
+        "grey_context_geometry_count": 30384,
+        "hidden_dasharray": null,
+        "post_style_only": true,
+        "root_tag": "svg",
+        "geometry_element_count": 32206,
+        "projection_group_count": 49,
+        "target_ifc_projection_group_count": 0,
+        "annotation_group_counts": {
+          "05XvWv4dz5OOiUvdNFABeh": 1822
+        },
+        "annotation_presence_all": true,
+        "duplicate_target_or_annotation": false
+      },
+      "hidden_line_gate": {
+        "hidden_segment_count": 0,
+        "dashed_hidden_segment_count": 0,
+        "expected_hidden_segment_count": 0,
+        "pass": true
+      },
+      "svg": {
+        "path": "output/review/highpoly-types/miamisoft-e09/bonsai-drawings/living-area/MIAMISOFT-E09-LIVING-AREA-FRONT.svg",
+        "bytes": 6156077,
+        "sha256": "04e7d5d4cdbef22e40923af592ddaf22191d7b4c154e0cb4d92d3268ad97384a"
+      },
+      "page_pdf": {
+        "path": "output/review/highpoly-types/miamisoft-e09/bonsai-drawings/living-area/MIAMISOFT-E09-LIVING-AREA-FRONT.pdf",
+        "bytes": 221112,
+        "sha256": "a14b91186cdb6edaa7e5a6f37803af06f526786de70019dd5f7d0c32d1ddc294"
+      },
+      "pdf_rendered_preview_png": {
+        "path": "output/review/highpoly-types/miamisoft-e09/living-area-bonsai-drawing-front.png",
+        "bytes": 72502,
+        "sha256": "f4c1cdcc9b51ed5c7e640d56a110f866472fc659d0db19234fe576cf1153c942"
+      },
+      "pdf_preview_gate": {
+        "width": 1530,
+        "height": 1980,
+        "blue_pixel_count": 5858,
+        "grey_context_pixel_count": 57826,
+        "ink_bbox_px": [
+          69,
+          69,
+          1459,
+          818
+        ],
+        "page_margins_px": {
+          "left": 69,
+          "right": 70,
+          "top": 69,
+          "bottom": 1161
+        },
+        "blue_line_present": true,
+        "grey_context_present": true,
+        "no_page_edge_clipping": true,
+        "pass": true
+      }
+    },
+    {
+      "view": "side",
+      "drawing_name": "MIAMISOFT-E09-LIVING-AREA-SIDE",
+      "drawing_global_id": "07GAM14mn40AVFMY$rRQys",
+      "visible_annotation_global_id": "3cMGVvz7r4HQUhoteA82BD",
+      "official_path_count": 85,
+      "official_hidden_path_count": 1,
+      "persisted_official_path_count": 85,
+      "persisted_hidden_path_count": 1,
+      "camera": {
+        "type": "ORTHO",
+        "width_m": 6.6,
+        "height_m": 3.6,
+        "clip_start_m": 0.0020000000949949026,
+        "clip_end_m": 6.8,
+        "matrix_world": [
+          [
+            1.0,
+            0.0,
+            0.0,
+            2.2416982650756836
+          ],
+          [
+            0.0,
+            7.549790126404332e-08,
+            -1.0,
+            -2.605638265609741
+          ],
+          [
+            0.0,
+            1.0,
+            7.549790126404332e-08,
+            1.2000000476837158
+          ],
+          [
+            0.0,
+            0.0,
+            0.0,
+            1.0
+          ]
+        ],
+        "resolution": [
+          3118,
+          1700
+        ]
+      },
+      "create_drawing": {
+        "operator": "bpy.ops.bim.create_drawing",
+        "arguments": {
+          "print_all": false,
+          "open_viewer": false,
+          "sync": false
+        },
+        "result": [
+          "FINISHED"
+        ],
+        "linework_mode": "OPENCASCADE",
+        "target_view": "ELEVATION_VIEW"
+      },
+      "svg_validation": {
+        "path": "/Users/jiaxinchen/.codex/worktrees/3a80/2504 GBTB Yanlord Zhuhai/output/review/highpoly-types/miamisoft-e09/bonsai-drawings/living-area/MIAMISOFT-E09-LIVING-AREA-SIDE.svg",
+        "bytes": 3549082,
+        "sha256": "3fa1fd2750b863c2c79bf81818f83276ee27e37bbeb4ad27faff63689992bc40",
+        "bonsai_generated_sha256_before_review_style": "0ee1bae64ebbfc48d1fd4360af3e3c48129209f9e8ea3d0e7872739d6c18413a",
+        "visible_annotation_group_count": 1544,
+        "hidden_annotation_group_count": 0,
+        "blue_visible_geometry_count": 1285,
+        "blue_hidden_geometry_count": 259,
+        "grey_context_geometry_count": 15894,
+        "hidden_dasharray": "2.4,1.5",
+        "post_style_only": true,
+        "root_tag": "svg",
+        "geometry_element_count": 17438,
+        "projection_group_count": 87,
+        "target_ifc_projection_group_count": 0,
+        "annotation_group_counts": {
+          "3cMGVvz7r4HQUhoteA82BD": 1544
+        },
+        "annotation_presence_all": true,
+        "duplicate_target_or_annotation": false
+      },
+      "hidden_line_gate": {
+        "hidden_segment_count": 259,
+        "dashed_hidden_segment_count": 259,
+        "expected_hidden_segment_count": 259,
+        "pass": true
+      },
+      "svg": {
+        "path": "output/review/highpoly-types/miamisoft-e09/bonsai-drawings/living-area/MIAMISOFT-E09-LIVING-AREA-SIDE.svg",
+        "bytes": 3549082,
+        "sha256": "3fa1fd2750b863c2c79bf81818f83276ee27e37bbeb4ad27faff63689992bc40"
+      },
+      "page_pdf": {
+        "path": "output/review/highpoly-types/miamisoft-e09/bonsai-drawings/living-area/MIAMISOFT-E09-LIVING-AREA-SIDE.pdf",
+        "bytes": 188379,
+        "sha256": "17115be2e899773ae4dfacce9904b3860a3abc6e30a43d97a90c5f23b82d49e7"
+      },
+      "pdf_rendered_preview_png": {
+        "path": "output/review/highpoly-types/miamisoft-e09/living-area-bonsai-drawing-side.png",
+        "bytes": 53842,
+        "sha256": "43f8831d662fb136d195e5b212a20fd6bc63d7608ec23dfe00b3271e08b3433d"
+      },
+      "pdf_preview_gate": {
+        "width": 1530,
+        "height": 1980,
+        "blue_pixel_count": 3941,
+        "grey_context_pixel_count": 47997,
+        "ink_bbox_px": [
+          69,
+          69,
+          1459,
+          818
+        ],
+        "page_margins_px": {
+          "left": 69,
+          "right": 70,
+          "top": 69,
+          "bottom": 1161
+        },
+        "blue_line_present": true,
+        "grey_context_present": true,
+        "no_page_edge_clipping": true,
+        "pass": true
+      }
+    }
+  ],
+  "tests": {
+    "all_create_drawing_finished": true,
+    "all_previews_blue_and_grey": true,
+    "all_previews_not_clipped": true,
+    "side_hidden_line_dashed": true,
+    "target_projection_group_count": 0,
+    "formal_ifc_unchanged": true
+  },
+  "pass": true
+}

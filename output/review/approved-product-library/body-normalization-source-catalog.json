@@ -1,0 +1,2987 @@
+{
+  "schema_version": 3,
+  "products": [
+    {
+      "id": "hima01",
+      "name": "Poliform Hima / HIMA01",
+      "global_id": "2xmcLzu1rDTeMzRuNxPDyE",
+      "source_label": "基于原始高模几何生成的简化图纸表达",
+      "display_front_normal_project": [
+        0.0,
+        -1.0,
+        0.0
+      ],
+      "display_front_basis": "candidate_scene_camera_pending_review",
+      "single_product_approval_status": "approved",
+      "scene_approval_status": "pending",
+      "approval_label": "单品已通过、场景待验收",
+      "package_validation": "pass",
+      "ifc_path": "../highpoly-types/hima01/product-package/HIMA01-product.ifc",
+      "ifc_sha256": "4014d7423520f9a133994c67644cd893c9a8db804364e11cfab479188849bbc0",
+      "ifc_bytes": 9772557,
+      "body_fingerprint": "bb779e10599aafece873a83e8c84516b60ea2168af8822e2fb00d6bdbe436ed8",
+      "single_svg": {
+        "plan": "previews/hima01/plan.svg",
+        "front": "previews/hima01/front.svg",
+        "side": "previews/hima01/side.svg"
+      },
+      "scene_svg": {
+        "plan": "../highpoly-types/hima01/product-package/HIMA01-SCENE-PLAN.svg",
+        "front": "../highpoly-types/hima01/product-package/HIMA01-SCENE-FRONT.svg",
+        "side": "../highpoly-types/hima01/product-package/HIMA01-SCENE-SIDE.svg"
+      },
+      "previews": {
+        "plan": "previews/hima01/plan.png",
+        "front": "previews/hima01/front.png",
+        "side": "previews/hima01/side.png",
+        "iso": "previews/hima01/iso.png"
+      },
+      "thumbnail_evidence": {
+        "plan": {
+          "source_svg": {
+            "path": "/Users/jiaxinchen/.codex/worktrees/3a80/2504 GBTB Yanlord Zhuhai/output/review/highpoly-types/hima01/product-package/HIMA01-SCENE-PLAN.svg",
+            "bytes": 442120,
+            "sha256": "18b801052db3ecc1faa9ff4b12f3a4543ce5a04f238af30cda2c6eb5fa16b131"
+          },
+          "annotation_global_id": "2oFx1py2H9QRwla83AAPMK",
+          "line_count": 113,
+          "single_svg": {
+            "path": "/Users/jiaxinchen/.codex/worktrees/3a80/2504 GBTB Yanlord Zhuhai/output/review/approved-product-library/previews/hima01/plan.svg",
+            "bytes": 123884,
+            "sha256": "ff8396a97c40f17519104f95e02db05bb240d80e74f9b9d99a93e3f105710c27"
+          },
+          "preview": {
+            "path": "/Users/jiaxinchen/.codex/worktrees/3a80/2504 GBTB Yanlord Zhuhai/output/review/approved-product-library/previews/hima01/plan.png",
+            "bytes": 16669,
+            "sha256": "57240f1c9faf6764365b5ae78aed9c72fbaa364d6d4ab7959504bc0a08f15999"
+          },
+          "line_geometry_changed": false
+        },
+        "front": {
+          "source_svg": {
+            "path": "/Users/jiaxinchen/.codex/worktrees/3a80/2504 GBTB Yanlord Zhuhai/output/review/highpoly-types/hima01/product-package/HIMA01-SCENE-FRONT.svg",
+            "bytes": 199896,
+            "sha256": "ad34da91d3a9d195408286a8b7df31bfe4dc79136beb80c35fde31e6c01c6f60"
+          },
+          "annotation_global_id": "3wZCA_2GTCRO_PcfBoP_Vd",
+          "line_count": 101,
+          "single_svg": {
+            "path": "/Users/jiaxinchen/.codex/worktrees/3a80/2504 GBTB Yanlord Zhuhai/output/review/approved-product-library/previews/hima01/front.svg",
+            "bytes": 119787,
+            "sha256": "d3790074f5e42f596852e26507c91752582b9617d33ec85e8b01d7576fe74c4e"
+          },
+          "preview": {
+            "path": "/Users/jiaxinchen/.codex/worktrees/3a80/2504 GBTB Yanlord Zhuhai/output/review/approved-product-library/previews/hima01/front.png",
+            "bytes": 6449,
+            "sha256": "c44bf339d4731fa7b9f041ecf2ffb9c9f7b13777d3575b3023c9ecf0f95c6f3e"
+          },
+          "line_geometry_changed": false
+        },
+        "side": {
+          "source_svg": {
+            "path": "/Users/jiaxinchen/.codex/worktrees/3a80/2504 GBTB Yanlord Zhuhai/output/review/highpoly-types/hima01/product-package/HIMA01-SCENE-SIDE.svg",
+            "bytes": 312821,
+            "sha256": "4c2b6f91c12ca69f4f48b3bd59e96d32867e3693a89063595e28dcacff6e11f6"
+          },
+          "annotation_global_id": "11bW3kfvf3Xudw$KDxNwHV",
+          "line_count": 206,
+          "single_svg": {
+            "path": "/Users/jiaxinchen/.codex/worktrees/3a80/2504 GBTB Yanlord Zhuhai/output/review/approved-product-library/previews/hima01/side.svg",
+            "bytes": 154965,
+            "sha256": "d756b07cc66e7308f349eeb11b1b6165d499189b6750acdba32fee3f11c93586"
+          },
+          "preview": {
+            "path": "/Users/jiaxinchen/.codex/worktrees/3a80/2504 GBTB Yanlord Zhuhai/output/review/approved-product-library/previews/hima01/side.png",
+            "bytes": 6321,
+            "sha256": "fa28b72786e361c41d9815acba9961f800e804add3fc529e386fd29b52abbd3d"
+          },
+          "line_geometry_changed": false
+        }
+      },
+      "iso_evidence": {
+        "path": "/Users/jiaxinchen/.codex/worktrees/3a80/2504 GBTB Yanlord Zhuhai/output/review/approved-product-library/previews/hima01/iso.png",
+        "bytes": 376275,
+        "sha256": "ff67548f7691da660f5ca22f0c7debacb248cdb7e7ab4d216fb3afe0638dae1d",
+        "kind": "new_pure_IFC_Body_camera_render",
+        "source_ifc_sha256": "4014d7423520f9a133994c67644cd893c9a8db804364e11cfab479188849bbc0",
+        "global_id": "2xmcLzu1rDTeMzRuNxPDyE",
+        "source": "All Body representations loaded from this exact pure IFC; neutral display materials"
+      },
+      "approval_record": {
+        "path": "/Users/jiaxinchen/.codex/worktrees/3a80/2504 GBTB Yanlord Zhuhai/pipeline/decisions/hima01-drawing-approval.json",
+        "bytes": 1269,
+        "sha256": "e4e08a7d361beb5cb77dc407c2955608e463ea3439f270e64f6129b954289db3"
+      },
+      "validation_record": {
+        "path": "/Users/jiaxinchen/.codex/worktrees/3a80/2504 GBTB Yanlord Zhuhai/output/review/highpoly-types/hima01/product-package/handoff.json",
+        "bytes": 792,
+        "sha256": "27b8e151f48b4db36286a01422074aef6b2622e1a3d3b1d5e4e367f7e836f55c"
+      },
+      "recipe": {
+        "path": "/Users/jiaxinchen/.codex/worktrees/3a80/2504 GBTB Yanlord Zhuhai/output/review/highpoly-types/hima01/product-package/scene-recipe.json",
+        "bytes": 91343,
+        "sha256": "06b33f7f9ff27f833b0305aea136f027066e75193970609731d665b44c869ff2"
+      },
+      "ifc_write_allowed": false,
+      "library_authorization": {
+        "path": "/Users/jiaxinchen/.codex/worktrees/3a80/2504 GBTB Yanlord Zhuhai/output/review/approved-product-library/migration-authorization.json",
+        "bytes": 1189,
+        "sha256": "be266f18465023b1c2436d1585bb59290504b0b66ba03d822cc5fb7d148ee4ee"
+      },
+      "legacy_iso_reference": {
+        "path": "/Users/jiaxinchen/.codex/worktrees/3a80/2504 GBTB Yanlord Zhuhai/output/review/highpoly-types/hima01/bonsai-camera-iso.png",
+        "bytes": 986891,
+        "sha256": "d723ff621047824c35ce546f36044747d768c58d00d5f200fac6fcb915f2be77",
+        "kind": "historical_representative_reference_only"
+      },
+      "insertion_content": "approved_3d_2d",
+      "review_category": "partial",
+      "category_label": "部分验收",
+      "formal_ifc_write_authorized": false
+    },
+    {
+      "id": "geberit-duofix-sigma-224-212",
+      "name": "Geberit Duofix Sigma / 224.212",
+      "global_id": "3pvAlH5C14v8uVEJ1LmK8M",
+      "source_label": "官方 224.212.00.2 原生 DWG",
+      "display_front_normal_project": [
+        1.0,
+        0.0,
+        0.0
+      ],
+      "display_front_basis": "approved_scene_camera",
+      "single_product_approval_status": "approved",
+      "scene_approval_status": "approved",
+      "approval_label": "单品及场景已验收",
+      "package_validation": "pass",
+      "ifc_path": "../highpoly-types/geberit-duofix-sigma-224-212/product-package/DUOFIX-product.ifc",
+      "ifc_sha256": "9b0a1b4302ccd1a926196bdb1b5dd2d8dbfd8222b58eab13af833336f35f77d1",
+      "ifc_bytes": 7710698,
+      "body_fingerprint": "6bf82a4dc10d17abaa6b65a405f0581ef07cda98056508ea7b96a7682f29035c",
+      "single_svg": {
+        "plan": "previews/geberit-duofix-sigma-224-212/plan.svg",
+        "front": "previews/geberit-duofix-sigma-224-212/front.svg",
+        "side": "previews/geberit-duofix-sigma-224-212/side.svg"
+      },
+      "scene_svg": {
+        "plan": "../highpoly-types/geberit-duofix-sigma-224-212/product-package/DUOFIX-SCENE-PLAN.svg",
+        "front": "../highpoly-types/geberit-duofix-sigma-224-212/product-package/DUOFIX-SCENE-FRONT.svg",
+        "side": "../highpoly-types/geberit-duofix-sigma-224-212/product-package/DUOFIX-SCENE-SIDE.svg"
+      },
+      "previews": {
+        "plan": "previews/geberit-duofix-sigma-224-212/plan.png",
+        "front": "previews/geberit-duofix-sigma-224-212/front.png",
+        "side": "previews/geberit-duofix-sigma-224-212/side.png",
+        "iso": "previews/geberit-duofix-sigma-224-212/iso.png"
+      },
+      "thumbnail_evidence": {
+        "plan": {
+          "source_svg": {
+            "path": "/Users/jiaxinchen/.codex/worktrees/3a80/2504 GBTB Yanlord Zhuhai/output/review/highpoly-types/geberit-duofix-sigma-224-212/product-package/DUOFIX-SCENE-PLAN.svg",
+            "bytes": 3434085,
+            "sha256": "54b4bb74d2361d11e892751ac2e3e8b01fa6eeee0597b0f2311e47712c7f6cd8"
+          },
+          "annotation_global_id": "0IrLefJmT6$u_j1FOarh04",
+          "line_count": 4055,
+          "single_svg": {
+            "path": "/Users/jiaxinchen/.codex/worktrees/3a80/2504 GBTB Yanlord Zhuhai/output/review/approved-product-library/previews/geberit-duofix-sigma-224-212/plan.svg",
+            "bytes": 1761140,
+            "sha256": "6efb56d8b56603c65921801fcae5e4fa1b80448e6bc6d9e745ae56912aa4e3ed"
+          },
+          "preview": {
+            "path": "/Users/jiaxinchen/.codex/worktrees/3a80/2504 GBTB Yanlord Zhuhai/output/review/approved-product-library/previews/geberit-duofix-sigma-224-212/plan.png",
+            "bytes": 21781,
+            "sha256": "f86aa8e360d4bece8638eaa492f028b8578a5dc7dd063db6ad01f85963107f97"
+          },
+          "line_geometry_changed": false
+        },
+        "front": {
+          "source_svg": {
+            "path": "/Users/jiaxinchen/.codex/worktrees/3a80/2504 GBTB Yanlord Zhuhai/output/review/highpoly-types/geberit-duofix-sigma-224-212/product-package/DUOFIX-SCENE-FRONT.svg",
+            "bytes": 4271207,
+            "sha256": "7dd55018e4917ccc8af48c1557e9b6aa4071f6b87ed7505732aa06499868e6d6"
+          },
+          "annotation_global_id": "0dqurPwyXAphRH_QF$$Hb1",
+          "line_count": 10074,
+          "single_svg": {
+            "path": "/Users/jiaxinchen/.codex/worktrees/3a80/2504 GBTB Yanlord Zhuhai/output/review/approved-product-library/previews/geberit-duofix-sigma-224-212/front.svg",
+            "bytes": 4243789,
+            "sha256": "e22d342748a52bf346f51e3e2e33945ac05f20e3f33f12158ff0dc6a0ef4beb2"
+          },
+          "preview": {
+            "path": "/Users/jiaxinchen/.codex/worktrees/3a80/2504 GBTB Yanlord Zhuhai/output/review/approved-product-library/previews/geberit-duofix-sigma-224-212/front.png",
+            "bytes": 45644,
+            "sha256": "1b061dbcdd315e6cd7638469bd737caded649df6218a5f501146cf394be9cd61"
+          },
+          "line_geometry_changed": false
+        },
+        "side": {
+          "source_svg": {
+            "path": "/Users/jiaxinchen/.codex/worktrees/3a80/2504 GBTB Yanlord Zhuhai/output/review/highpoly-types/geberit-duofix-sigma-224-212/product-package/DUOFIX-SCENE-SIDE.svg",
+            "bytes": 1652344,
+            "sha256": "0f80cbcdc7467d903fabe2f0989de08c345c44cae642fc635aeeedc5e50d2fb9"
+          },
+          "annotation_global_id": "1RLWGXL2r3Rv29jQrPNgQc",
+          "line_count": 3089,
+          "single_svg": {
+            "path": "/Users/jiaxinchen/.codex/worktrees/3a80/2504 GBTB Yanlord Zhuhai/output/review/approved-product-library/previews/geberit-duofix-sigma-224-212/side.svg",
+            "bytes": 1357950,
+            "sha256": "d0842394e6cac4805729a694b6bd868b2f13a75a86001f92ed25f73c73909ea4"
+          },
+          "preview": {
+            "path": "/Users/jiaxinchen/.codex/worktrees/3a80/2504 GBTB Yanlord Zhuhai/output/review/approved-product-library/previews/geberit-duofix-sigma-224-212/side.png",
+            "bytes": 28477,
+            "sha256": "d1653e12aec82f1202a8a466bcf401165b8f607af8a87eef79b8ee040191852e"
+          },
+          "line_geometry_changed": false
+        }
+      },
+      "iso_evidence": {
+        "path": "/Users/jiaxinchen/.codex/worktrees/3a80/2504 GBTB Yanlord Zhuhai/output/review/approved-product-library/previews/geberit-duofix-sigma-224-212/iso.png",
+        "bytes": 394724,
+        "sha256": "e8decc5f3a864c55e93a3f71f6e1c63a239172506dc9a4e6c26526c275174537",
+        "kind": "new_pure_IFC_Body_camera_render",
+        "source_ifc_sha256": "9b0a1b4302ccd1a926196bdb1b5dd2d8dbfd8222b58eab13af833336f35f77d1",
+        "global_id": "3pvAlH5C14v8uVEJ1LmK8M",
+        "source": "All Body representations loaded from this exact pure IFC; neutral display materials"
+      },
+      "approval_record": {
+        "path": "/Users/jiaxinchen/.codex/worktrees/3a80/2504 GBTB Yanlord Zhuhai/pipeline/decisions/geberit-duofix-sigma-224-212-drawing-approval.json",
+        "bytes": 1023,
+        "sha256": "69b90641c148da4540af5d3ea0faecedd6b64467c619d8be01e446a6b8507752"
+      },
+      "validation_record": {
+        "path": "/Users/jiaxinchen/.codex/worktrees/3a80/2504 GBTB Yanlord Zhuhai/output/review/highpoly-types/geberit-duofix-sigma-224-212/product-package/handoff.json",
+        "bytes": 1263,
+        "sha256": "844549aae0f65f3e3750328827fa29b4477eb3fddf022318ca65cf05ec9e81c2"
+      },
+      "recipe": {
+        "path": "/Users/jiaxinchen/.codex/worktrees/3a80/2504 GBTB Yanlord Zhuhai/output/review/highpoly-types/geberit-duofix-sigma-224-212/product-package/scene-recipe.json",
+        "bytes": 150521,
+        "sha256": "0244546e96caf62a7e61ea698b59816b31816bcfa80775ef2a990d8dd90bcae4"
+      },
+      "ifc_write_allowed": false,
+      "library_authorization": null,
+      "legacy_iso_reference": {
+        "path": "/Users/jiaxinchen/.codex/worktrees/3a80/2504 GBTB Yanlord Zhuhai/output/review/highpoly-types/geberit-duofix-sigma-224-212/bonsai-camera-iso.png",
+        "bytes": 947808,
+        "sha256": "e42a865e202f488ad31fc594db9f1bd59ff3efd852018f83d5829d0123af52d2",
+        "kind": "historical_representative_reference_only"
+      },
+      "insertion_content": "approved_3d_2d",
+      "review_category": "approved",
+      "category_label": "已验收",
+      "formal_ifc_write_authorized": false
+    },
+    {
+      "id": "geberit-154-446-ks-1",
+      "name": "Geberit shower channel / 154.446.KS.1",
+      "global_id": "2S2c498tb7$gzdukjhCGVQ",
+      "source_label": "官方 154.446.KS.1 原生 DWG",
+      "display_front_normal_project": [
+        -1.0,
+        0.0,
+        0.0
+      ],
+      "display_front_basis": "candidate_scene_camera_pending_review",
+      "single_product_approval_status": "approved",
+      "scene_approval_status": "pending",
+      "approval_label": "单品已通过、场景待验收",
+      "package_validation": "pass",
+      "ifc_path": "../highpoly-types/geberit-154-446-ks-1/product-package/GEBERIT154446-product.ifc",
+      "ifc_sha256": "f20aa0dc1972a3123b481a98d4c67b0243fcbb3e7528726f8b2629cfa4c090df",
+      "ifc_bytes": 4095291,
+      "body_fingerprint": "e05310a54c7ef30746e068b1ce59b2d31a9d7904ead63db8904106712c447ab2",
+      "single_svg": {
+        "plan": "previews/geberit-154-446-ks-1/plan.svg",
+        "front": "previews/geberit-154-446-ks-1/front.svg",
+        "side": "previews/geberit-154-446-ks-1/side.svg"
+      },
+      "scene_svg": {
+        "plan": "../highpoly-types/geberit-154-446-ks-1/product-package/GEBERIT154446-SCENE-PLAN.svg",
+        "front": "../highpoly-types/geberit-154-446-ks-1/product-package/GEBERIT154446-SCENE-FRONT.svg",
+        "side": "../highpoly-types/geberit-154-446-ks-1/product-package/GEBERIT154446-SCENE-SIDE.svg"
+      },
+      "previews": {
+        "plan": "previews/geberit-154-446-ks-1/plan.png",
+        "front": "previews/geberit-154-446-ks-1/front.png",
+        "side": "previews/geberit-154-446-ks-1/side.png",
+        "iso": "previews/geberit-154-446-ks-1/iso.png"
+      },
+      "thumbnail_evidence": {
+        "plan": {
+          "source_svg": {
+            "path": "/Users/jiaxinchen/.codex/worktrees/3a80/2504 GBTB Yanlord Zhuhai/output/review/highpoly-types/geberit-154-446-ks-1/product-package/GEBERIT154446-SCENE-PLAN.svg",
+            "bytes": 3196114,
+            "sha256": "9490434ec4fad08799a1c0a332ead6f47ed8e0e7f6145887b8c2a6f4df5d71fc"
+          },
+          "annotation_global_id": "0rfZ78hMbD1QOMF5lqtppS",
+          "line_count": 1388,
+          "single_svg": {
+            "path": "/Users/jiaxinchen/.codex/worktrees/3a80/2504 GBTB Yanlord Zhuhai/output/review/approved-product-library/previews/geberit-154-446-ks-1/plan.svg",
+            "bytes": 597067,
+            "sha256": "fab6adf79b79dd06fe3fa20d1a7f4c5e1155095736b960c1e2ed447847ee8e52"
+          },
+          "preview": {
+            "path": "/Users/jiaxinchen/.codex/worktrees/3a80/2504 GBTB Yanlord Zhuhai/output/review/approved-product-library/previews/geberit-154-446-ks-1/plan.png",
+            "bytes": 24349,
+            "sha256": "2a4fbfc83066d0a4104d929034ead3a69bff35e40fa404d3bed5f5cce2864b4a"
+          },
+          "line_geometry_changed": false
+        },
+        "front": {
+          "source_svg": {
+            "path": "/Users/jiaxinchen/.codex/worktrees/3a80/2504 GBTB Yanlord Zhuhai/output/review/highpoly-types/geberit-154-446-ks-1/product-package/GEBERIT154446-SCENE-FRONT.svg",
+            "bytes": 1217443,
+            "sha256": "ac0e8b2283ec0aac7de1aaea42938dd0e3a93d6c80296400fc26b0e67846df0c"
+          },
+          "annotation_global_id": "1ILiF3IFXC4Pbzdp0Md982",
+          "line_count": 581,
+          "single_svg": {
+            "path": "/Users/jiaxinchen/.codex/worktrees/3a80/2504 GBTB Yanlord Zhuhai/output/review/approved-product-library/previews/geberit-154-446-ks-1/front.svg",
+            "bytes": 300005,
+            "sha256": "9acf218e5f02ea38cb944436741c65b01a086aebd0fe7c25ec79c65bdc728b4e"
+          },
+          "preview": {
+            "path": "/Users/jiaxinchen/.codex/worktrees/3a80/2504 GBTB Yanlord Zhuhai/output/review/approved-product-library/previews/geberit-154-446-ks-1/front.png",
+            "bytes": 3114,
+            "sha256": "3476e336f80277377ea0b60a96299e525e50b8e726782dbd6f1d7697eaeab682"
+          },
+          "line_geometry_changed": false
+        },
+        "side": {
+          "source_svg": {
+            "path": "/Users/jiaxinchen/.codex/worktrees/3a80/2504 GBTB Yanlord Zhuhai/output/review/highpoly-types/geberit-154-446-ks-1/product-package/GEBERIT154446-SCENE-SIDE.svg",
+            "bytes": 1303134,
+            "sha256": "b0ed07bdc2c315c9a09f08a5330246a1390658aa59ebe588534200c9fb688b6a"
+          },
+          "annotation_global_id": "03xNXtFDH1bR0ObaBmeTO1",
+          "line_count": 1831,
+          "single_svg": {
+            "path": "/Users/jiaxinchen/.codex/worktrees/3a80/2504 GBTB Yanlord Zhuhai/output/review/approved-product-library/previews/geberit-154-446-ks-1/side.svg",
+            "bytes": 759737,
+            "sha256": "965cf94bb65b7c7d88b2fcf6414465dd1812e39257018a83ed9a11fb498871a1"
+          },
+          "preview": {
+            "path": "/Users/jiaxinchen/.codex/worktrees/3a80/2504 GBTB Yanlord Zhuhai/output/review/approved-product-library/previews/geberit-154-446-ks-1/side.png",
+            "bytes": 8260,
+            "sha256": "c67b27d0c1a0dd112df748b3500e4d687d37741fd7c835e07b97ae9308ece44c"
+          },
+          "line_geometry_changed": false
+        }
+      },
+      "iso_evidence": {
+        "path": "/Users/jiaxinchen/.codex/worktrees/3a80/2504 GBTB Yanlord Zhuhai/output/review/approved-product-library/previews/geberit-154-446-ks-1/iso.png",
+        "bytes": 332674,
+        "sha256": "470a098ea453e9fb4cbc3c12ea624f8e3fe8951bdab84a864bee8307be19df38",
+        "kind": "new_pure_IFC_Body_camera_render",
+        "source_ifc_sha256": "f20aa0dc1972a3123b481a98d4c67b0243fcbb3e7528726f8b2629cfa4c090df",
+        "global_id": "2S2c498tb7$gzdukjhCGVQ",
+        "source": "All Body representations loaded from this exact pure IFC; neutral display materials"
+      },
+      "approval_record": {
+        "path": "/Users/jiaxinchen/.codex/worktrees/3a80/2504 GBTB Yanlord Zhuhai/pipeline/decisions/geberit-154-446-ks-1-drawing-approval.json",
+        "bytes": 962,
+        "sha256": "4e8731e14771064bdcda791a8dcd35d3b1845f1d570cce0e315bd772a26d0001"
+      },
+      "validation_record": {
+        "path": "/Users/jiaxinchen/.codex/worktrees/3a80/2504 GBTB Yanlord Zhuhai/output/review/highpoly-types/geberit-154-446-ks-1/product-package/handoff.json",
+        "bytes": 2295,
+        "sha256": "f10a51f0cf7d5b36471764bfdfae0232dcab5c462db0b6258196c3c664767bce"
+      },
+      "recipe": {
+        "path": "/Users/jiaxinchen/.codex/worktrees/3a80/2504 GBTB Yanlord Zhuhai/output/review/highpoly-types/geberit-154-446-ks-1/product-package/scene-recipe.json",
+        "bytes": 93471,
+        "sha256": "73f87e4672586b93d1abb433f1c3beec4d72608e993924bd6d80a5abf93ed1d4"
+      },
+      "ifc_write_allowed": false,
+      "library_authorization": {
+        "path": "/Users/jiaxinchen/.codex/worktrees/3a80/2504 GBTB Yanlord Zhuhai/output/review/approved-product-library/migration-authorization.json",
+        "bytes": 1189,
+        "sha256": "be266f18465023b1c2436d1585bb59290504b0b66ba03d822cc5fb7d148ee4ee"
+      },
+      "legacy_iso_reference": {
+        "path": "/Users/jiaxinchen/.codex/worktrees/3a80/2504 GBTB Yanlord Zhuhai/output/review/highpoly-types/geberit-154-446-ks-1/bonsai-camera-iso.png",
+        "bytes": 841118,
+        "sha256": "7c2b7e718e621dd5a32a4d743234ec4235e32ee7c6ff9c4ba0f201ad8f6cc3f6",
+        "kind": "historical_representative_reference_only"
+      },
+      "insertion_content": "approved_3d_2d",
+      "review_category": "partial",
+      "category_label": "部分验收",
+      "formal_ifc_write_authorized": false
+    },
+    {
+      "id": "gessi316-54294",
+      "name": "Gessi316 Meccanica / 54294",
+      "global_id": "2iKOL78$H0N9Yd9$ky3pW4",
+      "source_label": "官方 DWG 去纹审核简化表达",
+      "display_front_normal_project": [
+        1.0,
+        0.0,
+        0.0
+      ],
+      "display_front_basis": "approved_scene_camera",
+      "single_product_approval_status": "approved",
+      "scene_approval_status": "approved",
+      "approval_label": "单品及场景已验收",
+      "package_validation": "pass",
+      "ifc_path": "../highpoly-types/gessi316-54294/product-package/GESSI54294-product.ifc",
+      "ifc_sha256": "aa1af19b744f543e8b78dd63567bb9d1c1949080e7e99b1f6add515e6764295d",
+      "ifc_bytes": 8569720,
+      "body_fingerprint": "26b014b39406acf8a4f56b5305c4ac1fc49e429a77df1d741b4afc4a54989158",
+      "single_svg": {
+        "plan": "previews/gessi316-54294/plan.svg",
+        "front": "previews/gessi316-54294/front.svg",
+        "side": "previews/gessi316-54294/side.svg"
+      },
+      "scene_svg": {
+        "plan": "../highpoly-types/gessi316-54294/product-package/GESSI54294-SCENE-PLAN.svg",
+        "front": "../highpoly-types/gessi316-54294/product-package/GESSI54294-SCENE-FRONT.svg",
+        "side": "../highpoly-types/gessi316-54294/product-package/GESSI54294-SCENE-SIDE.svg"
+      },
+      "previews": {
+        "plan": "previews/gessi316-54294/plan.png",
+        "front": "previews/gessi316-54294/front.png",
+        "side": "previews/gessi316-54294/side.png",
+        "iso": "previews/gessi316-54294/iso.png"
+      },
+      "thumbnail_evidence": {
+        "plan": {
+          "source_svg": {
+            "path": "/Users/jiaxinchen/.codex/worktrees/3a80/2504 GBTB Yanlord Zhuhai/output/review/highpoly-types/gessi316-54294/product-package/GESSI54294-SCENE-PLAN.svg",
+            "bytes": 2064041,
+            "sha256": "072fe145a8e287b704278c19dd608fbe7698e32e9c8dbc93857e870edfe42e33"
+          },
+          "annotation_global_id": "27Iiba4aPDKQe8trQGa8vR",
+          "line_count": 722,
+          "single_svg": {
+            "path": "/Users/jiaxinchen/.codex/worktrees/3a80/2504 GBTB Yanlord Zhuhai/output/review/approved-product-library/previews/gessi316-54294/plan.svg",
+            "bytes": 510454,
+            "sha256": "cb7743f85d183bc3b9495c4611b29763f214fa9180b3b542eae9f99c3af9a867"
+          },
+          "preview": {
+            "path": "/Users/jiaxinchen/.codex/worktrees/3a80/2504 GBTB Yanlord Zhuhai/output/review/approved-product-library/previews/gessi316-54294/plan.png",
+            "bytes": 10203,
+            "sha256": "0add53ac6b0d5df418bc781b6b1848a69c6fd5742295935a4ef066caa53669e1"
+          },
+          "line_geometry_changed": false
+        },
+        "front": {
+          "source_svg": {
+            "path": "/Users/jiaxinchen/.codex/worktrees/3a80/2504 GBTB Yanlord Zhuhai/output/review/highpoly-types/gessi316-54294/product-package/GESSI54294-SCENE-FRONT.svg",
+            "bytes": 4946007,
+            "sha256": "b8fa98828e8a36800cf3e8dc5c2d1dd442baa0d4bdafb1961ffdf1bacc195caf"
+          },
+          "annotation_global_id": "0r4wqt1LX08QppTaBPPtmT",
+          "line_count": 8233,
+          "single_svg": {
+            "path": "/Users/jiaxinchen/.codex/worktrees/3a80/2504 GBTB Yanlord Zhuhai/output/review/approved-product-library/previews/gessi316-54294/front.svg",
+            "bytes": 4918568,
+            "sha256": "8faff2e10923abe80129e4ede495a6d987c23e678695e386438283350b8e1432"
+          },
+          "preview": {
+            "path": "/Users/jiaxinchen/.codex/worktrees/3a80/2504 GBTB Yanlord Zhuhai/output/review/approved-product-library/previews/gessi316-54294/front.png",
+            "bytes": 18177,
+            "sha256": "0004667e50d015a5a14b55882cdb79c42a38f338f59b0ca415a4912b84a88c2f"
+          },
+          "line_geometry_changed": false
+        },
+        "side": {
+          "source_svg": {
+            "path": "/Users/jiaxinchen/.codex/worktrees/3a80/2504 GBTB Yanlord Zhuhai/output/review/highpoly-types/gessi316-54294/product-package/GESSI54294-SCENE-SIDE.svg",
+            "bytes": 661444,
+            "sha256": "fb33079ad35bb04c0e0dfc21d8293e6f00260c7c9ecb84158d314c0dce714dda"
+          },
+          "annotation_global_id": "3oXULbrPH6wuBzphrbgpOB",
+          "line_count": 385,
+          "single_svg": {
+            "path": "/Users/jiaxinchen/.codex/worktrees/3a80/2504 GBTB Yanlord Zhuhai/output/review/approved-product-library/previews/gessi316-54294/side.svg",
+            "bytes": 312679,
+            "sha256": "533e5834c2a1a6ca0ae0353341570f90d55c7656c03739d320e5d587afdd9268"
+          },
+          "preview": {
+            "path": "/Users/jiaxinchen/.codex/worktrees/3a80/2504 GBTB Yanlord Zhuhai/output/review/approved-product-library/previews/gessi316-54294/side.png",
+            "bytes": 8665,
+            "sha256": "8f42058168ee5537f3e85cb6251f770219cea91860e14d60f7cdf4865c4679cd"
+          },
+          "line_geometry_changed": false
+        }
+      },
+      "iso_evidence": {
+        "path": "/Users/jiaxinchen/.codex/worktrees/3a80/2504 GBTB Yanlord Zhuhai/output/review/approved-product-library/previews/gessi316-54294/iso.png",
+        "bytes": 353836,
+        "sha256": "b326658f848a7829c8a69bd3d807a759254c794ba3685956ced16b15abc9c075",
+        "kind": "new_pure_IFC_Body_camera_render",
+        "source_ifc_sha256": "aa1af19b744f543e8b78dd63567bb9d1c1949080e7e99b1f6add515e6764295d",
+        "global_id": "2iKOL78$H0N9Yd9$ky3pW4",
+        "source": "All Body representations loaded from this exact pure IFC; neutral display materials"
+      },
+      "approval_record": {
+        "path": "/Users/jiaxinchen/.codex/worktrees/3a80/2504 GBTB Yanlord Zhuhai/pipeline/decisions/gessi316-54294-drawing-approval.json",
+        "bytes": 2730,
+        "sha256": "d8162000ae7fec45515a74488fbbd3adf848bb72b5bc325eaaa9b02cd805b3e5"
+      },
+      "validation_record": {
+        "path": "/Users/jiaxinchen/.codex/worktrees/3a80/2504 GBTB Yanlord Zhuhai/output/review/highpoly-types/gessi316-54294/product-package/handoff.json",
+        "bytes": 334,
+        "sha256": "baa4e33d99f8c2908e084eaa427dab77bbeaf671d4f3fef5758b3b167771be41"
+      },
+      "recipe": {
+        "path": "/Users/jiaxinchen/.codex/worktrees/3a80/2504 GBTB Yanlord Zhuhai/output/review/highpoly-types/gessi316-54294/product-package/scene-recipe.json",
+        "bytes": 146607,
+        "sha256": "b775454bf72d6f7ef1e991e0195e1424a82a6431f3cc49086d6ed190a555b729"
+      },
+      "ifc_write_allowed": false,
+      "library_authorization": null,
+      "legacy_iso_reference": {
+        "path": "/Users/jiaxinchen/.codex/worktrees/3a80/2504 GBTB Yanlord Zhuhai/output/review/highpoly-types/gessi316-54294/bonsai-camera-iso.png",
+        "bytes": 928559,
+        "sha256": "2e25e6cad2ebe81a8b403687e5cc650d5d13ecc09645e6920180d04731a6c324",
+        "kind": "historical_representative_reference_only"
+      },
+      "insertion_content": "approved_3d_2d",
+      "review_category": "approved",
+      "category_label": "已验收",
+      "formal_ifc_write_authorized": false
+    },
+    {
+      "id": "bed02",
+      "name": "Baxter Viktor 160 × 200 / BED02",
+      "global_id": "1i_pqgLv9A7uuV7MjaArBW",
+      "source_label": "官方 160×200 家族 DWG · 非项目精确配置",
+      "display_front_normal_project": [
+        0.9999999999999981,
+        4.371138828673785e-08,
+        -4.371138828673785e-08
+      ],
+      "display_front_basis": "candidate_scene_camera_pending_review",
+      "single_product_approval_status": "approved",
+      "scene_approval_status": "pending",
+      "approval_label": "单品已通过、场景待验收",
+      "package_validation": "pass",
+      "ifc_path": "../highpoly-types/bed02/product-package/BED02-product.ifc",
+      "ifc_sha256": "4a54ee630ade339f95a87709ee3b824d060cb06e926829f8bfd6debd84dfd252",
+      "ifc_bytes": 10482836,
+      "body_fingerprint": "eecff5b9381decfc692d2d3db7f978c060c9685378f3d716e0d31d878d1a4775",
+      "single_svg": {
+        "plan": "previews/bed02/plan.svg",
+        "front": "previews/bed02/front.svg",
+        "side": "previews/bed02/side.svg"
+      },
+      "scene_svg": {
+        "plan": "../highpoly-types/bed02/product-package/BED02-SCENE-PLAN.svg",
+        "front": "../highpoly-types/bed02/product-package/BED02-SCENE-FRONT.svg",
+        "side": "../highpoly-types/bed02/product-package/BED02-SCENE-SIDE.svg"
+      },
+      "previews": {
+        "plan": "previews/bed02/plan.png",
+        "front": "previews/bed02/front.png",
+        "side": "previews/bed02/side.png",
+        "iso": "previews/bed02/iso.png"
+      },
+      "thumbnail_evidence": {
+        "plan": {
+          "source_svg": {
+            "path": "/Users/jiaxinchen/.codex/worktrees/3a80/2504 GBTB Yanlord Zhuhai/output/review/highpoly-types/bed02/product-package/BED02-SCENE-PLAN.svg",
+            "bytes": 287288,
+            "sha256": "008f7fc0d2c9403c3f98aa730cde601d9c26d0fe616a0bc7996499e10dcc767b"
+          },
+          "annotation_global_id": "1VcsNmMwT36uVYxwS_QTg_",
+          "line_count": 253,
+          "single_svg": {
+            "path": "/Users/jiaxinchen/.codex/worktrees/3a80/2504 GBTB Yanlord Zhuhai/output/review/approved-product-library/previews/bed02/plan.svg",
+            "bytes": 194387,
+            "sha256": "bef41c097eaead68f0077e86c40f89349959f7016fc544c460ea0c499afc5181"
+          },
+          "preview": {
+            "path": "/Users/jiaxinchen/.codex/worktrees/3a80/2504 GBTB Yanlord Zhuhai/output/review/approved-product-library/previews/bed02/plan.png",
+            "bytes": 6069,
+            "sha256": "2f358918a8aabb25e7fd5f640a299542be3bd7354314cc6c7a8507ebdd94a787"
+          },
+          "line_geometry_changed": false
+        },
+        "front": {
+          "source_svg": {
+            "path": "/Users/jiaxinchen/.codex/worktrees/3a80/2504 GBTB Yanlord Zhuhai/output/review/highpoly-types/bed02/product-package/BED02-SCENE-FRONT.svg",
+            "bytes": 705224,
+            "sha256": "296d7e765351556b44caf78b87eede19a08ba6fe545bc37e4609b85e6b1c69a7"
+          },
+          "annotation_global_id": "35dqKv9Dr8tPhpunhoFfCi",
+          "line_count": 306,
+          "single_svg": {
+            "path": "/Users/jiaxinchen/.codex/worktrees/3a80/2504 GBTB Yanlord Zhuhai/output/review/approved-product-library/previews/bed02/front.svg",
+            "bytes": 214652,
+            "sha256": "482886a6af0608a7a0c8204e3e9ed045bf279d78e7416bef070af197ea2eb4c8"
+          },
+          "preview": {
+            "path": "/Users/jiaxinchen/.codex/worktrees/3a80/2504 GBTB Yanlord Zhuhai/output/review/approved-product-library/previews/bed02/front.png",
+            "bytes": 6398,
+            "sha256": "da345c4b4cc213c87f022257eac54eda07fc35535b35e962a02a4db66e59c8e1"
+          },
+          "line_geometry_changed": false
+        },
+        "side": {
+          "source_svg": {
+            "path": "/Users/jiaxinchen/.codex/worktrees/3a80/2504 GBTB Yanlord Zhuhai/output/review/highpoly-types/bed02/product-package/BED02-SCENE-SIDE.svg",
+            "bytes": 510531,
+            "sha256": "65234b4c7a48c33b136ac5672b08607133c7c2a31682f6c1c3ae10f121717f56"
+          },
+          "annotation_global_id": "1oMTF1$Bf2of51p6oftcZ2",
+          "line_count": 960,
+          "single_svg": {
+            "path": "/Users/jiaxinchen/.codex/worktrees/3a80/2504 GBTB Yanlord Zhuhai/output/review/approved-product-library/previews/bed02/side.svg",
+            "bytes": 467673,
+            "sha256": "6b64ff0598cf34841f83e53148b30a7014a60608baaccc328bf76a56601ea5a1"
+          },
+          "preview": {
+            "path": "/Users/jiaxinchen/.codex/worktrees/3a80/2504 GBTB Yanlord Zhuhai/output/review/approved-product-library/previews/bed02/side.png",
+            "bytes": 12279,
+            "sha256": "6e0e7034ab07c64797781e300f960dd960587b8b3fbc85a25d859d2c0b83d29d"
+          },
+          "line_geometry_changed": false
+        }
+      },
+      "iso_evidence": {
+        "path": "/Users/jiaxinchen/.codex/worktrees/3a80/2504 GBTB Yanlord Zhuhai/output/review/approved-product-library/previews/bed02/iso.png",
+        "bytes": 445524,
+        "sha256": "20d5cbec257dcb5ade5736fd9b1ee3f3091931f5b8a6894b0b5a5cefcdc1340f",
+        "kind": "new_pure_IFC_Body_camera_render",
+        "source_ifc_sha256": "4a54ee630ade339f95a87709ee3b824d060cb06e926829f8bfd6debd84dfd252",
+        "global_id": "1i_pqgLv9A7uuV7MjaArBW",
+        "source": "All Body representations loaded from this exact pure IFC; neutral display materials"
+      },
+      "approval_record": {
+        "path": "/Users/jiaxinchen/.codex/worktrees/3a80/2504 GBTB Yanlord Zhuhai/pipeline/decisions/bed02-drawing-approval.json",
+        "bytes": 1323,
+        "sha256": "1e4a48c605dd0cab0f9fd0513100287f918f466ce02ac4b17ccfd7d3a303b348"
+      },
+      "validation_record": {
+        "path": "/Users/jiaxinchen/.codex/worktrees/3a80/2504 GBTB Yanlord Zhuhai/output/review/highpoly-types/bed02/product-package/handoff.json",
+        "bytes": 725,
+        "sha256": "8219228068ce8137b54620ce0bd07c8bd84f5aa0b33850303c8c7a31f340318e"
+      },
+      "recipe": {
+        "path": "/Users/jiaxinchen/.codex/worktrees/3a80/2504 GBTB Yanlord Zhuhai/output/review/highpoly-types/bed02/product-package/scene-recipe.json",
+        "bytes": 163433,
+        "sha256": "02707ac3a8c04d941babfd1abd0f24dd775cf7ff707a453e2c90ef7f750e0ac9"
+      },
+      "ifc_write_allowed": false,
+      "library_authorization": {
+        "path": "/Users/jiaxinchen/.codex/worktrees/3a80/2504 GBTB Yanlord Zhuhai/output/review/approved-product-library/migration-authorization.json",
+        "bytes": 1189,
+        "sha256": "be266f18465023b1c2436d1585bb59290504b0b66ba03d822cc5fb7d148ee4ee"
+      },
+      "legacy_iso_reference": {
+        "path": "/Users/jiaxinchen/.codex/worktrees/3a80/2504 GBTB Yanlord Zhuhai/output/review/highpoly-types/bed02/bonsai-camera-iso.png",
+        "bytes": 1131082,
+        "sha256": "8996cd173540cc505eadb7861ca55fe2a094a4a943dfff4003966a4e3cc45fae",
+        "kind": "historical_representative_reference_only"
+      },
+      "insertion_content": "approved_3d_2d",
+      "review_category": "partial",
+      "category_label": "部分验收",
+      "formal_ifc_write_authorized": false
+    },
+    {
+      "id": "bed01",
+      "name": "Baxter Casablanca 180 / BED01",
+      "global_id": "3IQBEqO5vDI8Z9k1Ltge_N",
+      "source_label": "官方家族 DWG · 非项目精确配置",
+      "display_front_normal_project": [
+        1.0,
+        0.0,
+        0.0
+      ],
+      "display_front_basis": "approved_scene_camera",
+      "single_product_approval_status": "approved",
+      "scene_approval_status": "approved",
+      "approval_label": "单品及场景已验收",
+      "package_validation": "pass",
+      "ifc_path": "../highpoly-types/bed01/product-package/BED01-product.ifc",
+      "ifc_sha256": "9e5660e5e4db95fc3dd44eb05dd8dcd2515a19e21b23ee462391431fb13d111a",
+      "ifc_bytes": 2902036,
+      "body_fingerprint": "43db3b296d28a9338a1c40d7a73fff760fdba50b30859947058ccb5e3ad200bc",
+      "single_svg": {
+        "plan": "previews/bed01/plan.svg",
+        "front": "previews/bed01/front.svg",
+        "side": "previews/bed01/side.svg"
+      },
+      "scene_svg": {
+        "plan": "../highpoly-types/bed01/product-package/BED01-SCENE-PLAN.svg",
+        "front": "../highpoly-types/bed01/product-package/BED01-SCENE-FRONT.svg",
+        "side": "../highpoly-types/bed01/product-package/BED01-SCENE-SIDE.svg"
+      },
+      "previews": {
+        "plan": "previews/bed01/plan.png",
+        "front": "previews/bed01/front.png",
+        "side": "previews/bed01/side.png",
+        "iso": "previews/bed01/iso.png"
+      },
+      "thumbnail_evidence": {
+        "plan": {
+          "source_svg": {
+            "path": "/Users/jiaxinchen/.codex/worktrees/3a80/2504 GBTB Yanlord Zhuhai/output/review/highpoly-types/bed01/product-package/BED01-SCENE-PLAN.svg",
+            "bytes": 1263077,
+            "sha256": "ab942e2a91d4d9a5f9e3fdebb0c479b9fe02ea43eb91a4335a68b09897bc14b2"
+          },
+          "annotation_global_id": "3b7hYRzxP3AhCvSyCqdRN4",
+          "line_count": 1824,
+          "single_svg": {
+            "path": "/Users/jiaxinchen/.codex/worktrees/3a80/2504 GBTB Yanlord Zhuhai/output/review/approved-product-library/previews/bed01/plan.svg",
+            "bytes": 936301,
+            "sha256": "43496df8f2c8d0bb4b8a5b6e2c81263e3f32fa9eff961661b2509640d2f9f6ac"
+          },
+          "preview": {
+            "path": "/Users/jiaxinchen/.codex/worktrees/3a80/2504 GBTB Yanlord Zhuhai/output/review/approved-product-library/previews/bed01/plan.png",
+            "bytes": 19679,
+            "sha256": "6224149e568bafe62541fb0a7c476a6d56628cb7437fa7e49c1bd26a224895b7"
+          },
+          "line_geometry_changed": false
+        },
+        "front": {
+          "source_svg": {
+            "path": "/Users/jiaxinchen/.codex/worktrees/3a80/2504 GBTB Yanlord Zhuhai/output/review/highpoly-types/bed01/product-package/BED01-SCENE-FRONT.svg",
+            "bytes": 1005945,
+            "sha256": "34b3b168f944d3d4ab2a13d2504043faa27e225c7eb4639c04777bbff08e7f43"
+          },
+          "annotation_global_id": "2wV_pSXMjBNxToWMgH03uU",
+          "line_count": 1717,
+          "single_svg": {
+            "path": "/Users/jiaxinchen/.codex/worktrees/3a80/2504 GBTB Yanlord Zhuhai/output/review/approved-product-library/previews/bed01/front.svg",
+            "bytes": 888741,
+            "sha256": "b99fbef3028d34191a71a904ed635d57b6eccb997b3ece6dbdb9963eda668150"
+          },
+          "preview": {
+            "path": "/Users/jiaxinchen/.codex/worktrees/3a80/2504 GBTB Yanlord Zhuhai/output/review/approved-product-library/previews/bed01/front.png",
+            "bytes": 16490,
+            "sha256": "387cdf8a26f720962b029b5c96cbdf7a4fc9b1b27027d07522f6081bc93f0234"
+          },
+          "line_geometry_changed": false
+        },
+        "side": {
+          "source_svg": {
+            "path": "/Users/jiaxinchen/.codex/worktrees/3a80/2504 GBTB Yanlord Zhuhai/output/review/highpoly-types/bed01/product-package/BED01-SCENE-SIDE.svg",
+            "bytes": 1074200,
+            "sha256": "b46446cd12be575965a0c560dc15ff3c2bb1500c172baaa20f5f36ac69b83aad"
+          },
+          "annotation_global_id": "3SbTuIHMX4OOO0JgbtDgsQ",
+          "line_count": 2008,
+          "single_svg": {
+            "path": "/Users/jiaxinchen/.codex/worktrees/3a80/2504 GBTB Yanlord Zhuhai/output/review/approved-product-library/previews/bed01/side.svg",
+            "bytes": 1021496,
+            "sha256": "b4596a08bc0cd85c30d90c88756e22551ccb71145b078f10e236bb655b9a785e"
+          },
+          "preview": {
+            "path": "/Users/jiaxinchen/.codex/worktrees/3a80/2504 GBTB Yanlord Zhuhai/output/review/approved-product-library/previews/bed01/side.png",
+            "bytes": 13667,
+            "sha256": "2e156eeaf399c5d892b1034ba5f18eb036d8331cfe4c69f98076a375e0dfbe4b"
+          },
+          "line_geometry_changed": false
+        }
+      },
+      "iso_evidence": {
+        "path": "/Users/jiaxinchen/.codex/worktrees/3a80/2504 GBTB Yanlord Zhuhai/output/review/approved-product-library/previews/bed01/iso.png",
+        "bytes": 429056,
+        "sha256": "8a6a9b63c5db11036fceb0029be22caccb12e6fbb73d31180c58555cf5d83ee4",
+        "kind": "new_pure_IFC_Body_camera_render",
+        "source_ifc_sha256": "9e5660e5e4db95fc3dd44eb05dd8dcd2515a19e21b23ee462391431fb13d111a",
+        "global_id": "3IQBEqO5vDI8Z9k1Ltge_N",
+        "source": "All Body representations loaded from this exact pure IFC; neutral display materials"
+      },
+      "approval_record": {
+        "path": "/Users/jiaxinchen/.codex/worktrees/3a80/2504 GBTB Yanlord Zhuhai/pipeline/decisions/bed01-drawing-approval.json",
+        "bytes": 2530,
+        "sha256": "a18266a2aa8f37ef47bebe6c9bf28d0060aa97f40f042746bbe3505778f11687"
+      },
+      "validation_record": {
+        "path": "/Users/jiaxinchen/.codex/worktrees/3a80/2504 GBTB Yanlord Zhuhai/output/review/highpoly-types/bed01/product-package/handoff.json",
+        "bytes": 324,
+        "sha256": "6873dd2e176b7fc1b60861af48fe0292396d8c6fc45539a709d8d41d4f99400d"
+      },
+      "recipe": {
+        "path": "/Users/jiaxinchen/.codex/worktrees/3a80/2504 GBTB Yanlord Zhuhai/output/review/highpoly-types/bed01/product-package/scene-recipe.json",
+        "bytes": 140745,
+        "sha256": "5165acb4705c9f05eb4112657a1e04daf8c0490cf22eb02e7a5def941529dc36"
+      },
+      "ifc_write_allowed": false,
+      "library_authorization": null,
+      "legacy_iso_reference": {
+        "path": "/Users/jiaxinchen/.codex/worktrees/3a80/2504 GBTB Yanlord Zhuhai/output/review/highpoly-types/bed01/bonsai-camera-iso.png",
+        "bytes": 1184235,
+        "sha256": "47b96721758b16b8248b5ecb7264ea7a672deaa7c8701bf9af98480e46428605",
+        "kind": "historical_representative_reference_only"
+      },
+      "insertion_content": "approved_3d_2d",
+      "review_category": "approved",
+      "category_label": "已验收",
+      "formal_ifc_write_authorized": false
+    },
+    {
+      "id": "sxb010",
+      "name": "Hunter Douglas blinds / SXB010",
+      "global_id": "1O9JRXCI56VRUbpuLJy86Z",
+      "source_label": "高模几何简化 · 蓝色仅为审核高亮",
+      "display_front_normal_project": [
+        1.5099577410637306e-07,
+        0.9999999999999754,
+        -1.6292068494294304e-07
+      ],
+      "display_front_basis": "approved_scene_camera",
+      "single_product_approval_status": "approved",
+      "scene_approval_status": "approved",
+      "approval_label": "单品及场景已验收",
+      "package_validation": "pass",
+      "ifc_path": "../highpoly-types/sxb010/product-package/SXB010-product.ifc",
+      "ifc_sha256": "649a0886c3e6ed8041314b4ad96c15592841ea13d09960a1bd06d01faed37fb8",
+      "ifc_bytes": 2541549,
+      "body_fingerprint": "1984277e57beb96ab29509ebe6e87fd8a089d4fdf336b35b6fef2421e68c4131",
+      "single_svg": {
+        "plan": "previews/sxb010/plan.svg",
+        "front": "previews/sxb010/front.svg",
+        "side": "previews/sxb010/side.svg"
+      },
+      "scene_svg": {
+        "plan": "../highpoly-types/sxb010/product-package/SXB010-SCENE-PLAN.svg",
+        "front": "../highpoly-types/sxb010/product-package/SXB010-SCENE-FRONT.svg",
+        "side": "../highpoly-types/sxb010/product-package/SXB010-SCENE-SIDE.svg"
+      },
+      "previews": {
+        "plan": "previews/sxb010/plan.png",
+        "front": "previews/sxb010/front.png",
+        "side": "previews/sxb010/side.png",
+        "iso": "previews/sxb010/iso.png"
+      },
+      "thumbnail_evidence": {
+        "plan": {
+          "source_svg": {
+            "path": "/Users/jiaxinchen/.codex/worktrees/3a80/2504 GBTB Yanlord Zhuhai/output/review/highpoly-types/sxb010/product-package/SXB010-SCENE-PLAN.svg",
+            "bytes": 1283275,
+            "sha256": "51ef2f090db763fdc527aa3640fd091c8688f1e5e1c2f4b78fd3c37e5ae7c13d"
+          },
+          "annotation_global_id": "3joB6oO5n11PvcTsJYDil8",
+          "line_count": 8,
+          "single_svg": {
+            "path": "/Users/jiaxinchen/.codex/worktrees/3a80/2504 GBTB Yanlord Zhuhai/output/review/approved-product-library/previews/sxb010/plan.svg",
+            "bytes": 97797,
+            "sha256": "1b654c8647baeb1e13eb133276ba89038da4f16b5aaa65042c728f724bc359a0"
+          },
+          "preview": {
+            "path": "/Users/jiaxinchen/.codex/worktrees/3a80/2504 GBTB Yanlord Zhuhai/output/review/approved-product-library/previews/sxb010/plan.png",
+            "bytes": 1343,
+            "sha256": "14fae4b86d4640aadd86a9e48cfc740beda19ea252e3918dd8f0b0eef7cbe4d2"
+          },
+          "line_geometry_changed": false
+        },
+        "front": {
+          "source_svg": {
+            "path": "/Users/jiaxinchen/.codex/worktrees/3a80/2504 GBTB Yanlord Zhuhai/output/review/highpoly-types/sxb010/product-package/SXB010-SCENE-FRONT.svg",
+            "bytes": 3009150,
+            "sha256": "e4040dc8d93eb80e2efa6337a8bbc376719b4742356ef201d92fc054e47a0566"
+          },
+          "annotation_global_id": "3QPK3KW3b77Ag7KU6FZ3bS",
+          "line_count": 60,
+          "single_svg": {
+            "path": "/Users/jiaxinchen/.codex/worktrees/3a80/2504 GBTB Yanlord Zhuhai/output/review/approved-product-library/previews/sxb010/front.svg",
+            "bytes": 125530,
+            "sha256": "569f4f2bcf64ad1d343710eeef49c79b63c09429e13e673fcebdd5217caae4e7"
+          },
+          "preview": {
+            "path": "/Users/jiaxinchen/.codex/worktrees/3a80/2504 GBTB Yanlord Zhuhai/output/review/approved-product-library/previews/sxb010/front.png",
+            "bytes": 13338,
+            "sha256": "d721fd37cf1a9dcee4e6b619ef16a12f2d64e28164b983f7b1f39e4e84604d99"
+          },
+          "line_geometry_changed": false
+        },
+        "side": {
+          "source_svg": {
+            "path": "/Users/jiaxinchen/.codex/worktrees/3a80/2504 GBTB Yanlord Zhuhai/output/review/highpoly-types/sxb010/product-package/SXB010-SCENE-SIDE.svg",
+            "bytes": 2142619,
+            "sha256": "621ea1b6d950f97a82f22385046fdec2098446dda20bdcb818476218c0a00102"
+          },
+          "annotation_global_id": "2Y7nKsL6v56u_GvPPQTNmW",
+          "line_count": 58,
+          "single_svg": {
+            "path": "/Users/jiaxinchen/.codex/worktrees/3a80/2504 GBTB Yanlord Zhuhai/output/review/approved-product-library/previews/sxb010/side.svg",
+            "bytes": 124401,
+            "sha256": "34cc699925a26c1ee6ed9f59a17aa3d6a67aa285faa7fb8ca1630e75b48f2ade"
+          },
+          "preview": {
+            "path": "/Users/jiaxinchen/.codex/worktrees/3a80/2504 GBTB Yanlord Zhuhai/output/review/approved-product-library/previews/sxb010/side.png",
+            "bytes": 112859,
+            "sha256": "843bc1f74bac04077bf8b1b87afdeb52151bb92af29ea0b674a9f1bf7da7cc03"
+          },
+          "line_geometry_changed": false
+        }
+      },
+      "iso_evidence": {
+        "path": "/Users/jiaxinchen/.codex/worktrees/3a80/2504 GBTB Yanlord Zhuhai/output/review/approved-product-library/previews/sxb010/iso.png",
+        "bytes": 484167,
+        "sha256": "c79ffbcfceb93f63030ff4cf62691c6ee417493ab9392887898b1a555c634a03",
+        "kind": "new_pure_IFC_Body_camera_render",
+        "source_ifc_sha256": "649a0886c3e6ed8041314b4ad96c15592841ea13d09960a1bd06d01faed37fb8",
+        "global_id": "1O9JRXCI56VRUbpuLJy86Z",
+        "source": "All Body representations loaded from this exact pure IFC; neutral display materials"
+      },
+      "approval_record": {
+        "path": "/Users/jiaxinchen/.codex/worktrees/3a80/2504 GBTB Yanlord Zhuhai/pipeline/decisions/sxb010-drawing-approval.json",
+        "bytes": 3348,
+        "sha256": "5f394c9b4af386d7169c2df7b42d625896e521605dfc99f03519dfe36205ae94"
+      },
+      "validation_record": {
+        "path": "/Users/jiaxinchen/.codex/worktrees/3a80/2504 GBTB Yanlord Zhuhai/output/review/highpoly-types/sxb010/product-package/handoff.json",
+        "bytes": 389,
+        "sha256": "8abb46f5a984a96adffa2b3aa4065de6d7a9c24ecc185701b2df450d7616249b"
+      },
+      "recipe": {
+        "path": "/Users/jiaxinchen/.codex/worktrees/3a80/2504 GBTB Yanlord Zhuhai/output/review/highpoly-types/sxb010/product-package/scene-recipe.json",
+        "bytes": 169212,
+        "sha256": "a1189e07481d48129f5c8206880014cc1d686951c6de17146d88c2e5781a1f41"
+      },
+      "ifc_write_allowed": false,
+      "library_authorization": null,
+      "legacy_iso_reference": {
+        "path": "/Users/jiaxinchen/.codex/worktrees/3a80/2504 GBTB Yanlord Zhuhai/output/review/highpoly-types/sxb010/bonsai-camera-iso.png",
+        "bytes": 1098112,
+        "sha256": "f1d87d8415da9a9c7d37637deb0371f5dce9c854b020ba005e3058d5a7cf6541",
+        "kind": "historical_representative_reference_only"
+      },
+      "insertion_content": "approved_3d_2d",
+      "review_category": "approved",
+      "category_label": "已验收",
+      "formal_ifc_write_authorized": false
+    },
+    {
+      "id": "cha02",
+      "name": "RODA Orson 002 director lounge chair / project CHA02",
+      "global_id": "3YoxxZCgbF3Ap7gztAKkcs",
+      "ifc_path": "candidate-packages/cha02.ifc",
+      "ifc_sha256": "a0887d38f6c5caee91595cf1cebc3c4678d375f1f47a909158786f84ea74e809",
+      "previews": {
+        "plan": "/Users/jiaxinchen/.codex/worktrees/3a80/2504 GBTB Yanlord Zhuhai/output/review/highpoly-types/cha02/bonsai-camera-plan.png",
+        "front": "/Users/jiaxinchen/.codex/worktrees/3a80/2504 GBTB Yanlord Zhuhai/output/review/highpoly-types/cha02/bonsai-camera-front-elevation.png",
+        "side": "/Users/jiaxinchen/.codex/worktrees/3a80/2504 GBTB Yanlord Zhuhai/output/review/highpoly-types/cha02/bonsai-camera-side-elevation.png",
+        "iso": "/Users/jiaxinchen/.codex/worktrees/3a80/2504 GBTB Yanlord Zhuhai/output/review/highpoly-types/cha02/bonsai-camera-iso.png"
+      },
+      "single_svg": {
+        "plan": "/Users/jiaxinchen/.codex/worktrees/3a80/2504 GBTB Yanlord Zhuhai/output/review/highpoly-types/cha02/plan.svg",
+        "front": "/Users/jiaxinchen/.codex/worktrees/3a80/2504 GBTB Yanlord Zhuhai/output/review/highpoly-types/cha02/front.svg",
+        "side": "/Users/jiaxinchen/.codex/worktrees/3a80/2504 GBTB Yanlord Zhuhai/output/review/highpoly-types/cha02/side.svg"
+      },
+      "display_front_normal_project": [
+        0,
+        -1,
+        0
+      ],
+      "display_front_basis": "project_axes_unreviewed",
+      "single_product_approval_status": "pending",
+      "scene_approval_status": "pending",
+      "approval_label": "尚未验收",
+      "source_label": "基于原始高模几何生成的简化图纸表达",
+      "package_validation": "pass",
+      "insertion_content": "body_only",
+      "candidate_review_index": "/Users/jiaxinchen/.codex/worktrees/3a80/2504 GBTB Yanlord Zhuhai/output/review/highpoly-types/cha02/index.html",
+      "preview_note": "原始 Bonsai Body 相机图；待审二维 SVG 单独列出，未嵌入 IFC",
+      "approval_record": {
+        "path": "/Users/jiaxinchen/.codex/worktrees/3a80/2504 GBTB Yanlord Zhuhai/pipeline/decisions/cha02-drawing-approval.json",
+        "sha256": "7b238e6e2aea1dbed8b342f2a71b1f5011a7f59ff0250096cd318fae39802423"
+      },
+      "review_category": "pending",
+      "category_label": "未验收",
+      "formal_ifc_write_authorized": false
+    },
+    {
+      "id": "sis04",
+      "name": "Molteni&C Sistema 7 Wall Unit 4 Doors / SIS04",
+      "global_id": "1MzM8Ms2vFo8KEm503j9w2",
+      "ifc_path": "candidate-packages/sis04.ifc",
+      "ifc_sha256": "31d455edfd8ff837a4c07e9cec44f53e5186111b8f8654c11fb89b4f9947c803",
+      "previews": {
+        "plan": "/Users/jiaxinchen/.codex/worktrees/3a80/2504 GBTB Yanlord Zhuhai/output/review/highpoly-types/sis04/bonsai-camera-plan.png",
+        "front": "/Users/jiaxinchen/.codex/worktrees/3a80/2504 GBTB Yanlord Zhuhai/output/review/highpoly-types/sis04/bonsai-camera-front-elevation.png",
+        "side": "/Users/jiaxinchen/.codex/worktrees/3a80/2504 GBTB Yanlord Zhuhai/output/review/highpoly-types/sis04/bonsai-camera-side-elevation.png",
+        "iso": "/Users/jiaxinchen/.codex/worktrees/3a80/2504 GBTB Yanlord Zhuhai/output/review/highpoly-types/sis04/bonsai-camera-iso.png"
+      },
+      "single_svg": {
+        "plan": "/Users/jiaxinchen/.codex/worktrees/3a80/2504 GBTB Yanlord Zhuhai/output/review/highpoly-types/sis04/plan.svg",
+        "front": "/Users/jiaxinchen/.codex/worktrees/3a80/2504 GBTB Yanlord Zhuhai/output/review/highpoly-types/sis04/front.svg",
+        "side": "/Users/jiaxinchen/.codex/worktrees/3a80/2504 GBTB Yanlord Zhuhai/output/review/highpoly-types/sis04/side.svg"
+      },
+      "display_front_normal_project": [
+        0,
+        -1,
+        0
+      ],
+      "display_front_basis": "project_axes_unreviewed",
+      "single_product_approval_status": "pending",
+      "scene_approval_status": "pending",
+      "approval_label": "尚未验收",
+      "source_label": "基于原始高模几何生成的简化图纸表达",
+      "package_validation": "pass",
+      "insertion_content": "body_only",
+      "candidate_review_index": "/Users/jiaxinchen/.codex/worktrees/3a80/2504 GBTB Yanlord Zhuhai/output/review/highpoly-types/sis04/index.html",
+      "preview_note": "原始 Bonsai Body 相机图；待审二维 SVG 单独列出，未嵌入 IFC",
+      "approval_record": {
+        "path": "/Users/jiaxinchen/.codex/worktrees/3a80/2504 GBTB Yanlord Zhuhai/pipeline/decisions/sis04-drawing-approval.json",
+        "sha256": "13f2b6c2300f5dde4cb56ebdc76ec473b7cfbf0cb93bc9152bb7497567781235"
+      },
+      "review_category": "pending",
+      "category_label": "未验收",
+      "formal_ifc_write_authorized": false
+    },
+    {
+      "id": "505-up-v1-lp-s",
+      "name": "Molteni&C 505 UP System / project 505 UP V1.LP.S",
+      "global_id": "19MpdkWqXC7uhUNhLQgrce",
+      "ifc_path": "candidate-packages/505-up-v1-lp-s.ifc",
+      "ifc_sha256": "6771ba63d33d8f08371d8ae8b5a5efed9192835659656a0df6a468080e4f531c",
+      "previews": {
+        "plan": "/Users/jiaxinchen/.codex/worktrees/3a80/2504 GBTB Yanlord Zhuhai/output/review/highpoly-types/505-up-v1-lp-s/bonsai-camera-plan.png",
+        "front": "/Users/jiaxinchen/.codex/worktrees/3a80/2504 GBTB Yanlord Zhuhai/output/review/highpoly-types/505-up-v1-lp-s/bonsai-camera-front-elevation.png",
+        "side": "/Users/jiaxinchen/.codex/worktrees/3a80/2504 GBTB Yanlord Zhuhai/output/review/highpoly-types/505-up-v1-lp-s/bonsai-camera-side-elevation.png",
+        "iso": "/Users/jiaxinchen/.codex/worktrees/3a80/2504 GBTB Yanlord Zhuhai/output/review/highpoly-types/505-up-v1-lp-s/bonsai-camera-iso.png"
+      },
+      "single_svg": {
+        "plan": "/Users/jiaxinchen/.codex/worktrees/3a80/2504 GBTB Yanlord Zhuhai/output/review/highpoly-types/505-up-v1-lp-s/plan.svg",
+        "front": "/Users/jiaxinchen/.codex/worktrees/3a80/2504 GBTB Yanlord Zhuhai/output/review/highpoly-types/505-up-v1-lp-s/front.svg",
+        "side": "/Users/jiaxinchen/.codex/worktrees/3a80/2504 GBTB Yanlord Zhuhai/output/review/highpoly-types/505-up-v1-lp-s/side.svg"
+      },
+      "display_front_normal_project": [
+        0,
+        -1,
+        0
+      ],
+      "display_front_basis": "project_axes_unreviewed",
+      "single_product_approval_status": "approved",
+      "scene_approval_status": "pending",
+      "approval_label": "单品已通过、场景待验收",
+      "source_label": "基于原始高模几何生成的简化图纸表达",
+      "package_validation": "pass",
+      "insertion_content": "body_only",
+      "candidate_review_index": "/Users/jiaxinchen/.codex/worktrees/3a80/2504 GBTB Yanlord Zhuhai/output/review/highpoly-types/505-up-v1-lp-s/index.html",
+      "preview_note": "原始 Bonsai Body 相机图；待审二维 SVG 单独列出，未嵌入 IFC",
+      "approval_record": {
+        "path": "/Users/jiaxinchen/.codex/worktrees/3a80/2504 GBTB Yanlord Zhuhai/pipeline/decisions/505-up-v1-lp-s-drawing-approval.json",
+        "sha256": "95f088d1c6f29dfb35effe8a03ab76e5eae7fa2509b60cb625ace7f6b20537ee"
+      },
+      "review_category": "partial",
+      "category_label": "部分验收",
+      "formal_ifc_write_authorized": false
+    },
+    {
+      "id": "miamisoft-e09",
+      "name": "Baxter Miami Soft / E09",
+      "global_id": "3osoWufdD1mhDDAM6lcix4",
+      "source_label": "官方 E09 DWG · 保留项目高模差异",
+      "display_front_normal_project": [
+        1.0,
+        0.0,
+        0.0
+      ],
+      "display_front_basis": "approved_scene_camera",
+      "single_product_approval_status": "approved",
+      "scene_approval_status": "approved",
+      "approval_label": "单品及场景已验收",
+      "package_validation": "pass",
+      "ifc_path": "../highpoly-types/miamisoft-e09/product-package/MIAMI-E09-product.ifc",
+      "ifc_sha256": "7a51025a8ffece775464c2eaeef4a263d02c1df20ce41cb9d0aa79ac46b1681e",
+      "ifc_bytes": 4676673,
+      "body_fingerprint": "d373e754f09fab6ece0770f655e870ee19b97a898cf18398105a6a14953edea5",
+      "single_svg": {
+        "plan": "previews/miamisoft-e09/plan.svg",
+        "front": "previews/miamisoft-e09/front.svg",
+        "side": "previews/miamisoft-e09/side.svg"
+      },
+      "scene_svg": {
+        "plan": "../highpoly-types/miamisoft-e09/product-package/MIAMI-E09-SCENE-PLAN.svg",
+        "front": "../highpoly-types/miamisoft-e09/product-package/MIAMI-E09-SCENE-FRONT.svg",
+        "side": "../highpoly-types/miamisoft-e09/product-package/MIAMI-E09-SCENE-SIDE.svg"
+      },
+      "previews": {
+        "plan": "previews/miamisoft-e09/plan.png",
+        "front": "previews/miamisoft-e09/front.png",
+        "side": "previews/miamisoft-e09/side.png",
+        "iso": "previews/miamisoft-e09/iso.png"
+      },
+      "thumbnail_evidence": {
+        "plan": {
+          "source_svg": {
+            "path": "/Users/jiaxinchen/.codex/worktrees/3a80/2504 GBTB Yanlord Zhuhai/output/review/highpoly-types/miamisoft-e09/product-package/MIAMI-E09-SCENE-PLAN.svg",
+            "bytes": 4373032,
+            "sha256": "3187f4b7019a63650804fdc7c4132994f9705df41a8f0354863a706777b2b413"
+          },
+          "annotation_global_id": "235nsjm918KhYh6EfjT95x",
+          "line_count": 1458,
+          "single_svg": {
+            "path": "/Users/jiaxinchen/.codex/worktrees/3a80/2504 GBTB Yanlord Zhuhai/output/review/approved-product-library/previews/miamisoft-e09/plan.svg",
+            "bytes": 738602,
+            "sha256": "3c12e702b0c0bc0bc0f842e3f5fb8202b814bfbd4afd7748316d71a0207b39a7"
+          },
+          "preview": {
+            "path": "/Users/jiaxinchen/.codex/worktrees/3a80/2504 GBTB Yanlord Zhuhai/output/review/approved-product-library/previews/miamisoft-e09/plan.png",
+            "bytes": 32209,
+            "sha256": "527311e783f7e0045e88ffa56c3dccfb41c01a4b5f31122874b358417d75dfaa"
+          },
+          "line_geometry_changed": false
+        },
+        "front": {
+          "source_svg": {
+            "path": "/Users/jiaxinchen/.codex/worktrees/3a80/2504 GBTB Yanlord Zhuhai/output/review/highpoly-types/miamisoft-e09/product-package/MIAMI-E09-SCENE-FRONT.svg",
+            "bytes": 6178072,
+            "sha256": "e092d7018ee3bc1809b0efee6d20e60da2a9875c1060e440d6bbed72f111a668"
+          },
+          "annotation_global_id": "05XvWv4dz5OOiUvdNFABeh",
+          "line_count": 1821,
+          "single_svg": {
+            "path": "/Users/jiaxinchen/.codex/worktrees/3a80/2504 GBTB Yanlord Zhuhai/output/review/approved-product-library/previews/miamisoft-e09/front.svg",
+            "bytes": 898350,
+            "sha256": "4ba6f80401156dc592ead010cb18fad0b493a1491fcb575b3485349570db6d74"
+          },
+          "preview": {
+            "path": "/Users/jiaxinchen/.codex/worktrees/3a80/2504 GBTB Yanlord Zhuhai/output/review/approved-product-library/previews/miamisoft-e09/front.png",
+            "bytes": 23630,
+            "sha256": "987ef69741d11e2729c2b187ae874d478fcd900adac310191c08d5d18e5d8f0e"
+          },
+          "line_geometry_changed": false
+        },
+        "side": {
+          "source_svg": {
+            "path": "/Users/jiaxinchen/.codex/worktrees/3a80/2504 GBTB Yanlord Zhuhai/output/review/highpoly-types/miamisoft-e09/product-package/MIAMI-E09-SCENE-SIDE.svg",
+            "bytes": 3567895,
+            "sha256": "1e0c1bb2082a63d87f42f39f4b564651e3ea48980ae2316934828b0be78495c1"
+          },
+          "annotation_global_id": "3cMGVvz7r4HQUhoteA82BD",
+          "line_count": 1544,
+          "single_svg": {
+            "path": "/Users/jiaxinchen/.codex/worktrees/3a80/2504 GBTB Yanlord Zhuhai/output/review/approved-product-library/previews/miamisoft-e09/side.svg",
+            "bytes": 790998,
+            "sha256": "1f93ca785684dd00ac00e2deec4f37e4c8271478eb706e880d4ccb8daea9f0ab"
+          },
+          "preview": {
+            "path": "/Users/jiaxinchen/.codex/worktrees/3a80/2504 GBTB Yanlord Zhuhai/output/review/approved-product-library/previews/miamisoft-e09/side.png",
+            "bytes": 29679,
+            "sha256": "29486fecac84b29aef2ccb0be228d3cca1b567e9d82e0e3d8391bc5694d77413"
+          },
+          "line_geometry_changed": false
+        }
+      },
+      "iso_evidence": {
+        "path": "/Users/jiaxinchen/.codex/worktrees/3a80/2504 GBTB Yanlord Zhuhai/output/review/approved-product-library/previews/miamisoft-e09/iso.png",
+        "bytes": 432425,
+        "sha256": "4ac59c78432f77e005c69be2abe972753927dca5c9f5c460d313aa11ee570bc5",
+        "kind": "new_pure_IFC_Body_camera_render",
+        "source_ifc_sha256": "7a51025a8ffece775464c2eaeef4a263d02c1df20ce41cb9d0aa79ac46b1681e",
+        "global_id": "3osoWufdD1mhDDAM6lcix4",
+        "source": "All Body representations loaded from this exact pure IFC; neutral display materials"
+      },
+      "approval_record": {
+        "path": "/Users/jiaxinchen/.codex/worktrees/3a80/2504 GBTB Yanlord Zhuhai/pipeline/decisions/miamisoft-e09-drawing-approval.json",
+        "bytes": 1858,
+        "sha256": "70e89130beb6af87cf4ae4bcd241ed2ce6e8a16b3b27267c8e98afcb8c2b4bd7"
+      },
+      "validation_record": {
+        "path": "/Users/jiaxinchen/.codex/worktrees/3a80/2504 GBTB Yanlord Zhuhai/output/review/highpoly-types/miamisoft-e09/product-package/handoff.json",
+        "bytes": 332,
+        "sha256": "566396f94c39171d0f86acadb9489a1e380cde61705c739999a912d7cbd780d8"
+      },
+      "recipe": {
+        "path": "/Users/jiaxinchen/.codex/worktrees/3a80/2504 GBTB Yanlord Zhuhai/output/review/highpoly-types/miamisoft-e09/product-package/scene-recipe.json",
+        "bytes": 153430,
+        "sha256": "63f4da789f3e8a23927678e6d7193a5001088c8aac3be78ac160d63d9c01750b"
+      },
+      "ifc_write_allowed": false,
+      "library_authorization": null,
+      "legacy_iso_reference": {
+        "path": "/Users/jiaxinchen/.codex/worktrees/3a80/2504 GBTB Yanlord Zhuhai/output/review/highpoly-types/miamisoft-e09/bonsai-camera-iso.png",
+        "bytes": 1117521,
+        "sha256": "19aebe1f84099f2bbb4d00c3a902444ea6f3793cebb81bbf94c3df687983411b",
+        "kind": "historical_representative_reference_only"
+      },
+      "insertion_content": "approved_3d_2d",
+      "review_category": "approved",
+      "category_label": "已验收",
+      "formal_ifc_write_authorized": false
+    },
+    {
+      "id": "miamisoft-e07",
+      "name": "Baxter Miami Soft E07 left dormeuse",
+      "global_id": "1G7iO6CfP64PjummX$qTbt",
+      "ifc_path": "candidate-packages/miamisoft-e07.ifc",
+      "ifc_sha256": "2f6beccb7f062d0535de87e4aa91a51bee27a0c7e2428087aacbc9b1311cc69a",
+      "previews": {
+        "plan": "/Users/jiaxinchen/.codex/worktrees/3a80/2504 GBTB Yanlord Zhuhai/output/review/highpoly-types/miamisoft-e07/bonsai-camera-plan.png",
+        "front": "/Users/jiaxinchen/.codex/worktrees/3a80/2504 GBTB Yanlord Zhuhai/output/review/highpoly-types/miamisoft-e07/bonsai-camera-front-elevation.png",
+        "side": "/Users/jiaxinchen/.codex/worktrees/3a80/2504 GBTB Yanlord Zhuhai/output/review/highpoly-types/miamisoft-e07/bonsai-camera-side-elevation.png",
+        "iso": "/Users/jiaxinchen/.codex/worktrees/3a80/2504 GBTB Yanlord Zhuhai/output/review/highpoly-types/miamisoft-e07/bonsai-camera-iso.png"
+      },
+      "single_svg": {
+        "plan": "/Users/jiaxinchen/.codex/worktrees/3a80/2504 GBTB Yanlord Zhuhai/output/review/highpoly-types/miamisoft-e07/plan.svg",
+        "front": "/Users/jiaxinchen/.codex/worktrees/3a80/2504 GBTB Yanlord Zhuhai/output/review/highpoly-types/miamisoft-e07/front.svg",
+        "side": "/Users/jiaxinchen/.codex/worktrees/3a80/2504 GBTB Yanlord Zhuhai/output/review/highpoly-types/miamisoft-e07/side.svg"
+      },
+      "display_front_normal_project": [
+        0,
+        -1,
+        0
+      ],
+      "display_front_basis": "project_axes_unreviewed",
+      "single_product_approval_status": "pending",
+      "scene_approval_status": "pending",
+      "approval_label": "尚未验收",
+      "source_label": "基于原始高模几何生成的简化图纸表达",
+      "package_validation": "pass",
+      "insertion_content": "body_only",
+      "candidate_review_index": "/Users/jiaxinchen/.codex/worktrees/3a80/2504 GBTB Yanlord Zhuhai/output/review/highpoly-types/miamisoft-e07/index.html",
+      "preview_note": "原始 Bonsai Body 相机图；待审二维 SVG 单独列出，未嵌入 IFC",
+      "approval_record": {
+        "path": "/Users/jiaxinchen/.codex/worktrees/3a80/2504 GBTB Yanlord Zhuhai/pipeline/decisions/miamisoft-e07-drawing-approval.json",
+        "sha256": "00fe59df633110bfd10089e16307b696b758e370bad25bca32230f35fd4374e8"
+      },
+      "review_category": "pending",
+      "category_label": "未验收",
+      "formal_ifc_write_authorized": false
+    },
+    {
+      "id": "marilyn-01",
+      "name": "Baxter Marilyn bergere armchair / project Marilyn 01",
+      "global_id": "3l2Ji4k2H9oOTDGWYUq7uV",
+      "ifc_path": "candidate-packages/marilyn-01.ifc",
+      "ifc_sha256": "3907a3c75f351f7832aad1f82d3d75344318ee20e9322503e976df5ec1e5c4bc",
+      "previews": {
+        "plan": "/Users/jiaxinchen/.codex/worktrees/3a80/2504 GBTB Yanlord Zhuhai/output/review/highpoly-types/marilyn-01/bonsai-camera-plan.png",
+        "front": "/Users/jiaxinchen/.codex/worktrees/3a80/2504 GBTB Yanlord Zhuhai/output/review/highpoly-types/marilyn-01/bonsai-camera-front-elevation.png",
+        "side": "/Users/jiaxinchen/.codex/worktrees/3a80/2504 GBTB Yanlord Zhuhai/output/review/highpoly-types/marilyn-01/bonsai-camera-side-elevation.png",
+        "iso": "/Users/jiaxinchen/.codex/worktrees/3a80/2504 GBTB Yanlord Zhuhai/output/review/highpoly-types/marilyn-01/bonsai-camera-iso.png"
+      },
+      "single_svg": {
+        "plan": "/Users/jiaxinchen/.codex/worktrees/3a80/2504 GBTB Yanlord Zhuhai/output/review/highpoly-types/marilyn-01/plan.svg",
+        "front": "/Users/jiaxinchen/.codex/worktrees/3a80/2504 GBTB Yanlord Zhuhai/output/review/highpoly-types/marilyn-01/front.svg",
+        "side": "/Users/jiaxinchen/.codex/worktrees/3a80/2504 GBTB Yanlord Zhuhai/output/review/highpoly-types/marilyn-01/side.svg"
+      },
+      "display_front_normal_project": [
+        0,
+        -1,
+        0
+      ],
+      "display_front_basis": "project_axes_unreviewed",
+      "single_product_approval_status": "partially_approved",
+      "scene_approval_status": "pending",
+      "approval_label": "部分视图通过、其余待验收",
+      "source_label": "基于 Baxter 精确型号原生 DWG 的官方图纸表达",
+      "package_validation": "pass",
+      "insertion_content": "body_only",
+      "candidate_review_index": "/Users/jiaxinchen/.codex/worktrees/3a80/2504 GBTB Yanlord Zhuhai/output/review/highpoly-types/marilyn-01/index.html",
+      "preview_note": "原始 Bonsai Body 相机图；待审二维 SVG 单独列出，未嵌入 IFC",
+      "approval_record": {
+        "path": "/Users/jiaxinchen/.codex/worktrees/3a80/2504 GBTB Yanlord Zhuhai/pipeline/decisions/marilyn-01-drawing-approval.json",
+        "sha256": "d0e52f927866906db227a275d9e7a7842144a563a7dd1073ef00151e0553aa1b"
+      },
+      "review_category": "partial",
+      "category_label": "部分验收",
+      "formal_ifc_write_authorized": false
+    },
+    {
+      "id": "miamisoft-f03",
+      "name": "Baxter Miami Soft F03 pouf",
+      "global_id": "1y3lLYK$H9fPbuh1R1vAKX",
+      "ifc_path": "candidate-packages/miamisoft-f03.ifc",
+      "ifc_sha256": "6d3b4e08de675d0ee70ddb0cf05269aeabf0c87f491b3e96277833b4ab492dc5",
+      "previews": {
+        "plan": "/Users/jiaxinchen/.codex/worktrees/3a80/2504 GBTB Yanlord Zhuhai/output/review/highpoly-types/miamisoft-f03/bonsai-camera-plan.png",
+        "front": "/Users/jiaxinchen/.codex/worktrees/3a80/2504 GBTB Yanlord Zhuhai/output/review/highpoly-types/miamisoft-f03/bonsai-camera-front-elevation.png",
+        "side": "/Users/jiaxinchen/.codex/worktrees/3a80/2504 GBTB Yanlord Zhuhai/output/review/highpoly-types/miamisoft-f03/bonsai-camera-side-elevation.png",
+        "iso": "/Users/jiaxinchen/.codex/worktrees/3a80/2504 GBTB Yanlord Zhuhai/output/review/highpoly-types/miamisoft-f03/bonsai-camera-iso.png"
+      },
+      "single_svg": {
+        "plan": "/Users/jiaxinchen/.codex/worktrees/3a80/2504 GBTB Yanlord Zhuhai/output/review/highpoly-types/miamisoft-f03/plan.svg",
+        "front": "/Users/jiaxinchen/.codex/worktrees/3a80/2504 GBTB Yanlord Zhuhai/output/review/highpoly-types/miamisoft-f03/front.svg",
+        "side": "/Users/jiaxinchen/.codex/worktrees/3a80/2504 GBTB Yanlord Zhuhai/output/review/highpoly-types/miamisoft-f03/side.svg"
+      },
+      "display_front_normal_project": [
+        0,
+        -1,
+        0
+      ],
+      "display_front_basis": "project_axes_unreviewed",
+      "single_product_approval_status": "pending",
+      "scene_approval_status": "pending",
+      "approval_label": "尚未验收",
+      "source_label": "基于原始高模几何生成的简化图纸表达",
+      "package_validation": "pass",
+      "insertion_content": "body_only",
+      "candidate_review_index": "/Users/jiaxinchen/.codex/worktrees/3a80/2504 GBTB Yanlord Zhuhai/output/review/highpoly-types/miamisoft-f03/index.html",
+      "preview_note": "原始 Bonsai Body 相机图；待审二维 SVG 单独列出，未嵌入 IFC",
+      "approval_record": {
+        "path": "/Users/jiaxinchen/.codex/worktrees/3a80/2504 GBTB Yanlord Zhuhai/pipeline/decisions/miamisoft-f03-drawing-approval.json",
+        "sha256": "3f725caf2a0db1114abe4363a62909b4f7ed938ee51303af8c466991b9e7209f"
+      },
+      "review_category": "pending",
+      "category_label": "未验收",
+      "formal_ifc_write_authorized": false
+    },
+    {
+      "id": "trap01",
+      "name": "Geberit 151.116.11.1 / TRAP01",
+      "global_id": "2Ak2ma0lvBEA49UpplzUqi",
+      "source_label": "官方 DWG · 按项目安装长度配置",
+      "display_front_normal_project": [
+        1.0,
+        0.0,
+        0.0
+      ],
+      "display_front_basis": "approved_scene_camera",
+      "single_product_approval_status": "approved",
+      "scene_approval_status": "approved",
+      "approval_label": "单品及场景已验收",
+      "package_validation": "pass",
+      "ifc_path": "../highpoly-types/trap01/product-package/TRAP01-product.ifc",
+      "ifc_sha256": "83e3b5252665ccfcf20d6e56b205b199767ba0bdf243a36c71258b93f00322bc",
+      "ifc_bytes": 1466932,
+      "body_fingerprint": "0a0814a6ded0f5b40bb8700364fbdf5e344e18b865e7e0b420af1fc9659f12a1",
+      "single_svg": {
+        "plan": "previews/trap01/plan.svg",
+        "front": "previews/trap01/front.svg",
+        "side": "previews/trap01/side.svg"
+      },
+      "scene_svg": {
+        "plan": "../highpoly-types/trap01/product-package/TRAP01-SCENE-PLAN.svg",
+        "front": "../highpoly-types/trap01/product-package/TRAP01-SCENE-FRONT.svg",
+        "side": "../highpoly-types/trap01/product-package/TRAP01-SCENE-SIDE.svg"
+      },
+      "previews": {
+        "plan": "previews/trap01/plan.png",
+        "front": "previews/trap01/front.png",
+        "side": "previews/trap01/side.png",
+        "iso": "previews/trap01/iso.png"
+      },
+      "thumbnail_evidence": {
+        "plan": {
+          "source_svg": {
+            "path": "/Users/jiaxinchen/.codex/worktrees/3a80/2504 GBTB Yanlord Zhuhai/output/review/highpoly-types/trap01/product-package/TRAP01-SCENE-PLAN.svg",
+            "bytes": 867810,
+            "sha256": "6ece2b3f556cb2493fdf7c4d7210fbf80818bc724ea520078484ed21669b4809"
+          },
+          "annotation_global_id": "2wMANTAEP4WRRf8Kz4nQhG",
+          "line_count": 2374,
+          "single_svg": {
+            "path": "/Users/jiaxinchen/.codex/worktrees/3a80/2504 GBTB Yanlord Zhuhai/output/review/approved-product-library/previews/trap01/plan.svg",
+            "bytes": 798185,
+            "sha256": "2a409525dcbe25915e9ab0622d2f6e81ece3e471613866d4184f3fba27ec43c6"
+          },
+          "preview": {
+            "path": "/Users/jiaxinchen/.codex/worktrees/3a80/2504 GBTB Yanlord Zhuhai/output/review/approved-product-library/previews/trap01/plan.png",
+            "bytes": 21025,
+            "sha256": "9aeeb14790e165a23df4d1e811d6c77bc7506255b69b507c98f51fdab9d7b670"
+          },
+          "line_geometry_changed": false
+        },
+        "front": {
+          "source_svg": {
+            "path": "/Users/jiaxinchen/.codex/worktrees/3a80/2504 GBTB Yanlord Zhuhai/output/review/highpoly-types/trap01/product-package/TRAP01-SCENE-FRONT.svg",
+            "bytes": 936951,
+            "sha256": "0f42f82b1b3f4a70f5346b230ad436ab08a38213c403cb911ae53af34b56490b"
+          },
+          "annotation_global_id": "1eBrRf2_5BN9iGp9_AkRa2",
+          "line_count": 2346,
+          "single_svg": {
+            "path": "/Users/jiaxinchen/.codex/worktrees/3a80/2504 GBTB Yanlord Zhuhai/output/review/approved-product-library/previews/trap01/front.svg",
+            "bytes": 788899,
+            "sha256": "57078c6f3a7d92f7f6f0ab8ad3fc85b753fc9de1afd6e4a207407a1a13892daf"
+          },
+          "preview": {
+            "path": "/Users/jiaxinchen/.codex/worktrees/3a80/2504 GBTB Yanlord Zhuhai/output/review/approved-product-library/previews/trap01/front.png",
+            "bytes": 41047,
+            "sha256": "3774bbf36eb5313986b2204836534ad70725886946ef0f3196c92762fc144036"
+          },
+          "line_geometry_changed": false
+        },
+        "side": {
+          "source_svg": {
+            "path": "/Users/jiaxinchen/.codex/worktrees/3a80/2504 GBTB Yanlord Zhuhai/output/review/highpoly-types/trap01/product-package/TRAP01-SCENE-SIDE.svg",
+            "bytes": 780598,
+            "sha256": "fe8d607c351be0522efbdebd4f52fa27392f47c18f5fd57881f43006aee3a951"
+          },
+          "annotation_global_id": "3KI_E9ncXERQwoWAJcOxeI",
+          "line_count": 2280,
+          "single_svg": {
+            "path": "/Users/jiaxinchen/.codex/worktrees/3a80/2504 GBTB Yanlord Zhuhai/output/review/approved-product-library/previews/trap01/side.svg",
+            "bytes": 770041,
+            "sha256": "bc6a6e29ecb5bc8a6e9f57ed2ebdc5404dded00e8d8792380a583736aef374eb"
+          },
+          "preview": {
+            "path": "/Users/jiaxinchen/.codex/worktrees/3a80/2504 GBTB Yanlord Zhuhai/output/review/approved-product-library/previews/trap01/side.png",
+            "bytes": 13576,
+            "sha256": "955b43a639e7b4bff542be0d9f60f4204346ee41109ec0f410b36bf61dcb314e"
+          },
+          "line_geometry_changed": false
+        }
+      },
+      "iso_evidence": {
+        "path": "/Users/jiaxinchen/.codex/worktrees/3a80/2504 GBTB Yanlord Zhuhai/output/review/approved-product-library/previews/trap01/iso.png",
+        "bytes": 358319,
+        "sha256": "8af283a97b4908840a6d649023c0a68157f551445a4216613ec6611aa3c1b8a4",
+        "kind": "new_pure_IFC_Body_camera_render",
+        "source_ifc_sha256": "83e3b5252665ccfcf20d6e56b205b199767ba0bdf243a36c71258b93f00322bc",
+        "global_id": "2Ak2ma0lvBEA49UpplzUqi",
+        "source": "All Body representations loaded from this exact pure IFC; neutral display materials"
+      },
+      "approval_record": {
+        "path": "/Users/jiaxinchen/.codex/worktrees/3a80/2504 GBTB Yanlord Zhuhai/pipeline/decisions/trap01-drawing-approval.json",
+        "bytes": 2594,
+        "sha256": "56f56b917a741a2a0dac35b760dfdca5f56fc8c0b9736cd4a7eb2c4282191b69"
+      },
+      "validation_record": {
+        "path": "/Users/jiaxinchen/.codex/worktrees/3a80/2504 GBTB Yanlord Zhuhai/output/review/highpoly-types/trap01/product-package/handoff.json",
+        "bytes": 2107,
+        "sha256": "7219c46bfbce5c2a14f5e5034b62ba5bc9046ab844ccb575df8a0876d0fce4f2"
+      },
+      "recipe": {
+        "path": "/Users/jiaxinchen/.codex/worktrees/3a80/2504 GBTB Yanlord Zhuhai/output/review/highpoly-types/trap01/product-package/scene-recipe.json",
+        "bytes": 184187,
+        "sha256": "e5bb0242ac5b4d54e2577ccbc9ee5bd89176d3d52a8e0ba9777afd1ed8eecbfe"
+      },
+      "ifc_write_allowed": false,
+      "library_authorization": null,
+      "legacy_iso_reference": {
+        "path": "/Users/jiaxinchen/.codex/worktrees/3a80/2504 GBTB Yanlord Zhuhai/output/review/highpoly-types/trap01/bonsai-camera-iso.png",
+        "bytes": 932053,
+        "sha256": "85429321781f6168a05d7247267e8482d3c74cd149cfe8243edfee5ebedaa1b9",
+        "kind": "historical_representative_reference_only"
+      },
+      "insertion_content": "approved_3d_2d",
+      "review_category": "approved",
+      "category_label": "已验收",
+      "formal_ifc_write_authorized": false
+    },
+    {
+      "id": "marilyn-02",
+      "name": "Baxter Marilyn pouf / project Marilyn 02",
+      "global_id": "1THxa7p7n97w$wtLn4THjz",
+      "ifc_path": "candidate-packages/marilyn-02.ifc",
+      "ifc_sha256": "930036ffc81c894f24d1d5556b3ead6cf48c659aaf4ab28112cc9d47dcb72077",
+      "previews": {
+        "plan": "/Users/jiaxinchen/.codex/worktrees/3a80/2504 GBTB Yanlord Zhuhai/output/review/highpoly-types/marilyn-02/bonsai-camera-plan.png",
+        "front": "/Users/jiaxinchen/.codex/worktrees/3a80/2504 GBTB Yanlord Zhuhai/output/review/highpoly-types/marilyn-02/bonsai-camera-front-elevation.png",
+        "side": "/Users/jiaxinchen/.codex/worktrees/3a80/2504 GBTB Yanlord Zhuhai/output/review/highpoly-types/marilyn-02/bonsai-camera-side-elevation.png",
+        "iso": "/Users/jiaxinchen/.codex/worktrees/3a80/2504 GBTB Yanlord Zhuhai/output/review/highpoly-types/marilyn-02/bonsai-camera-iso.png"
+      },
+      "single_svg": {
+        "plan": "/Users/jiaxinchen/.codex/worktrees/3a80/2504 GBTB Yanlord Zhuhai/output/review/highpoly-types/marilyn-02/plan.svg",
+        "front": "/Users/jiaxinchen/.codex/worktrees/3a80/2504 GBTB Yanlord Zhuhai/output/review/highpoly-types/marilyn-02/front.svg",
+        "side": "/Users/jiaxinchen/.codex/worktrees/3a80/2504 GBTB Yanlord Zhuhai/output/review/highpoly-types/marilyn-02/side.svg"
+      },
+      "display_front_normal_project": [
+        0,
+        -1,
+        0
+      ],
+      "display_front_basis": "project_axes_unreviewed",
+      "single_product_approval_status": "pending",
+      "scene_approval_status": "pending",
+      "approval_label": "尚未验收",
+      "source_label": "基于 Baxter 精确型号原生 DWG 的官方图纸表达",
+      "package_validation": "pass",
+      "insertion_content": "body_only",
+      "candidate_review_index": "/Users/jiaxinchen/.codex/worktrees/3a80/2504 GBTB Yanlord Zhuhai/output/review/highpoly-types/marilyn-02/index.html",
+      "preview_note": "原始 Bonsai Body 相机图；待审二维 SVG 单独列出，未嵌入 IFC",
+      "approval_record": {
+        "path": "/Users/jiaxinchen/.codex/worktrees/3a80/2504 GBTB Yanlord Zhuhai/pipeline/decisions/marilyn-02-drawing-approval.json",
+        "sha256": "96d71fa82b9019db7f81ca862bd3c4c1023e5b9483934a8c30792ca37dba097f"
+      },
+      "review_category": "pending",
+      "category_label": "未验收",
+      "formal_ifc_write_authorized": false
+    },
+    {
+      "id": "cha01",
+      "name": "Baxter Colette armchair 57 x 60 x 73 cm / project CHA01",
+      "global_id": "1luHljRzDAhPNXxTDNu7qB",
+      "ifc_path": "candidate-packages/cha01.ifc",
+      "ifc_sha256": "7d6fb5b13b8de7462175f8213203ac801cb431f0ebb7d8973b91cc5e62795441",
+      "previews": {
+        "plan": "/Users/jiaxinchen/.codex/worktrees/3a80/2504 GBTB Yanlord Zhuhai/output/review/highpoly-types/cha01/bonsai-camera-plan.png",
+        "front": "/Users/jiaxinchen/.codex/worktrees/3a80/2504 GBTB Yanlord Zhuhai/output/review/highpoly-types/cha01/bonsai-camera-front-elevation.png",
+        "side": "/Users/jiaxinchen/.codex/worktrees/3a80/2504 GBTB Yanlord Zhuhai/output/review/highpoly-types/cha01/bonsai-camera-side-elevation.png",
+        "iso": "/Users/jiaxinchen/.codex/worktrees/3a80/2504 GBTB Yanlord Zhuhai/output/review/highpoly-types/cha01/bonsai-camera-iso.png"
+      },
+      "single_svg": {
+        "plan": "/Users/jiaxinchen/.codex/worktrees/3a80/2504 GBTB Yanlord Zhuhai/output/review/highpoly-types/cha01/plan.svg",
+        "front": "/Users/jiaxinchen/.codex/worktrees/3a80/2504 GBTB Yanlord Zhuhai/output/review/highpoly-types/cha01/front.svg",
+        "side": "/Users/jiaxinchen/.codex/worktrees/3a80/2504 GBTB Yanlord Zhuhai/output/review/highpoly-types/cha01/side.svg"
+      },
+      "display_front_normal_project": [
+        0,
+        -1,
+        0
+      ],
+      "display_front_basis": "project_axes_unreviewed",
+      "single_product_approval_status": "pending",
+      "scene_approval_status": "pending",
+      "approval_label": "尚未验收",
+      "source_label": "基于原始高模几何生成的简化图纸表达",
+      "package_validation": "pass",
+      "insertion_content": "body_only",
+      "candidate_review_index": "/Users/jiaxinchen/.codex/worktrees/3a80/2504 GBTB Yanlord Zhuhai/output/review/highpoly-types/cha01/index.html",
+      "preview_note": "原始 Bonsai Body 相机图；待审二维 SVG 单独列出，未嵌入 IFC",
+      "approval_record": {
+        "path": "/Users/jiaxinchen/.codex/worktrees/3a80/2504 GBTB Yanlord Zhuhai/pipeline/decisions/cha01-drawing-approval.json",
+        "sha256": "043a1f4c2856d5124fad10d33ca6c19e8939d9f4017a7f25a165e56df7b32c72"
+      },
+      "review_category": "pending",
+      "category_label": "未验收",
+      "formal_ifc_write_authorized": false
+    },
+    {
+      "id": "miamisoft-h01",
+      "name": "Baxter Miami Soft H01 cushion",
+      "global_id": "0B8rO47U14sgJ_ydZxqvs6",
+      "ifc_path": "candidate-packages/miamisoft-h01.ifc",
+      "ifc_sha256": "31d8d1aafd32678437fd97e962fc671b63009d3444c7fab5df3bec2554baa50d",
+      "previews": {
+        "plan": "/Users/jiaxinchen/.codex/worktrees/3a80/2504 GBTB Yanlord Zhuhai/output/review/highpoly-types/miamisoft-h01/bonsai-camera-plan.png",
+        "front": "/Users/jiaxinchen/.codex/worktrees/3a80/2504 GBTB Yanlord Zhuhai/output/review/highpoly-types/miamisoft-h01/bonsai-camera-front-elevation.png",
+        "side": "/Users/jiaxinchen/.codex/worktrees/3a80/2504 GBTB Yanlord Zhuhai/output/review/highpoly-types/miamisoft-h01/bonsai-camera-side-elevation.png",
+        "iso": "/Users/jiaxinchen/.codex/worktrees/3a80/2504 GBTB Yanlord Zhuhai/output/review/highpoly-types/miamisoft-h01/bonsai-camera-iso.png"
+      },
+      "single_svg": {
+        "plan": "/Users/jiaxinchen/.codex/worktrees/3a80/2504 GBTB Yanlord Zhuhai/output/review/highpoly-types/miamisoft-h01/plan.svg",
+        "front": "/Users/jiaxinchen/.codex/worktrees/3a80/2504 GBTB Yanlord Zhuhai/output/review/highpoly-types/miamisoft-h01/front.svg",
+        "side": "/Users/jiaxinchen/.codex/worktrees/3a80/2504 GBTB Yanlord Zhuhai/output/review/highpoly-types/miamisoft-h01/side.svg"
+      },
+      "display_front_normal_project": [
+        0,
+        -1,
+        0
+      ],
+      "display_front_basis": "project_axes_unreviewed",
+      "single_product_approval_status": "pending",
+      "scene_approval_status": "pending",
+      "approval_label": "尚未验收",
+      "source_label": "基于原始高模几何生成的简化图纸表达",
+      "package_validation": "pass",
+      "insertion_content": "body_only",
+      "candidate_review_index": "/Users/jiaxinchen/.codex/worktrees/3a80/2504 GBTB Yanlord Zhuhai/output/review/highpoly-types/miamisoft-h01/index.html",
+      "preview_note": "原始 Bonsai Body 相机图；待审二维 SVG 单独列出，未嵌入 IFC",
+      "approval_record": {
+        "path": "/Users/jiaxinchen/.codex/worktrees/3a80/2504 GBTB Yanlord Zhuhai/pipeline/decisions/miamisoft-h01-drawing-approval.json",
+        "sha256": "89acea045021e6c755ea3ea49ccf196ebfe345ceea3b9930ff7bbb14b318ce5d"
+      },
+      "review_category": "pending",
+      "category_label": "未验收",
+      "formal_ifc_write_authorized": false
+    },
+    {
+      "id": "falper-sorgente",
+      "name": "Falper Sorgente / WFB",
+      "global_id": "350tdaubr8QP3Cu2YMQZIN",
+      "source_label": "官方 WFB 家族 CAD · 非项目施工图",
+      "display_front_normal_project": [
+        0.0,
+        -0.9999999999999972,
+        7.549790126404312e-08
+      ],
+      "display_front_basis": "candidate_scene_camera_pending_review",
+      "single_product_approval_status": "approved",
+      "scene_approval_status": "pending",
+      "approval_label": "单品已通过、场景待验收",
+      "package_validation": "pass",
+      "ifc_path": "../highpoly-types/falper-sorgente/product-package/FALPER-WFB-product.ifc",
+      "ifc_sha256": "ec6029ad7a4a67449d5a9e6030b531dcf9e9ed8273843420415b289a8431cd57",
+      "ifc_bytes": 821139,
+      "body_fingerprint": "3881a62e55a8099bbf86f916234859f3c899a830f56bd1da945eed4e84f5ace3",
+      "single_svg": {
+        "plan": "previews/falper-sorgente/plan.svg",
+        "front": "previews/falper-sorgente/front.svg",
+        "side": "previews/falper-sorgente/side.svg"
+      },
+      "scene_svg": {
+        "plan": "../highpoly-types/falper-sorgente/product-package/FALPER-WFB-SCENE-PLAN.svg",
+        "front": "../highpoly-types/falper-sorgente/product-package/FALPER-WFB-SCENE-FRONT.svg",
+        "side": "../highpoly-types/falper-sorgente/product-package/FALPER-WFB-SCENE-SIDE.svg"
+      },
+      "previews": {
+        "plan": "previews/falper-sorgente/plan.png",
+        "front": "previews/falper-sorgente/front.png",
+        "side": "previews/falper-sorgente/side.png",
+        "iso": "previews/falper-sorgente/iso.png"
+      },
+      "thumbnail_evidence": {
+        "plan": {
+          "source_svg": {
+            "path": "/Users/jiaxinchen/.codex/worktrees/3a80/2504 GBTB Yanlord Zhuhai/output/review/highpoly-types/falper-sorgente/product-package/FALPER-WFB-SCENE-PLAN.svg",
+            "bytes": 640776,
+            "sha256": "e38a14dc7daa4882966a456ced7987a771d5f2a149757f003681993afea56033"
+          },
+          "annotation_global_id": "3YElnDEWH0y8fZ3KgbQECx",
+          "line_count": 1280,
+          "single_svg": {
+            "path": "/Users/jiaxinchen/.codex/worktrees/3a80/2504 GBTB Yanlord Zhuhai/output/review/approved-product-library/previews/falper-sorgente/plan.svg",
+            "bytes": 387697,
+            "sha256": "7af224c212410169b5459b52f138475ca13811b3b46f0b811aa7a342544482ed"
+          },
+          "preview": {
+            "path": "/Users/jiaxinchen/.codex/worktrees/3a80/2504 GBTB Yanlord Zhuhai/output/review/approved-product-library/previews/falper-sorgente/plan.png",
+            "bytes": 64421,
+            "sha256": "c5510c87fadcc801cfc9dcca5e9ff2abe5cf1a2fb17a19a8df25925872165030"
+          },
+          "line_geometry_changed": false
+        },
+        "front": {
+          "source_svg": {
+            "path": "/Users/jiaxinchen/.codex/worktrees/3a80/2504 GBTB Yanlord Zhuhai/output/review/highpoly-types/falper-sorgente/product-package/FALPER-WFB-SCENE-FRONT.svg",
+            "bytes": 1464205,
+            "sha256": "72d362d1fb0ff65f927b6b2f1ff202c2f42125a4f77eac338b27c22fab0bbe48"
+          },
+          "annotation_global_id": "26Aqyzik9DGwBCj3QLgi5r",
+          "line_count": 1538,
+          "single_svg": {
+            "path": "/Users/jiaxinchen/.codex/worktrees/3a80/2504 GBTB Yanlord Zhuhai/output/review/approved-product-library/previews/falper-sorgente/front.svg",
+            "bytes": 448242,
+            "sha256": "5fae374bfa7193a4a67b845d34716c6d593f423ce3c7f5d909e992392fd6eee9"
+          },
+          "preview": {
+            "path": "/Users/jiaxinchen/.codex/worktrees/3a80/2504 GBTB Yanlord Zhuhai/output/review/approved-product-library/previews/falper-sorgente/front.png",
+            "bytes": 25780,
+            "sha256": "838304e272744697cf03b32f63f3cfbc051cd4b8e45484212d706e19de4cc78b"
+          },
+          "line_geometry_changed": false
+        },
+        "side": {
+          "source_svg": {
+            "path": "/Users/jiaxinchen/.codex/worktrees/3a80/2504 GBTB Yanlord Zhuhai/output/review/highpoly-types/falper-sorgente/product-package/FALPER-WFB-SCENE-SIDE.svg",
+            "bytes": 1093684,
+            "sha256": "47f3fe4e768a775fef3ed4b0a8a8fc09ba676f2d684da2e0a0249588bddf7e13"
+          },
+          "annotation_global_id": "1XnHq4wyb3c9Bckdqr98Tx",
+          "line_count": 1538,
+          "single_svg": {
+            "path": "/Users/jiaxinchen/.codex/worktrees/3a80/2504 GBTB Yanlord Zhuhai/output/review/approved-product-library/previews/falper-sorgente/side.svg",
+            "bytes": 448297,
+            "sha256": "609f22cfb93959800bb57c80873a10d33f1de7ed8136900323dcce3ad99f9938"
+          },
+          "preview": {
+            "path": "/Users/jiaxinchen/.codex/worktrees/3a80/2504 GBTB Yanlord Zhuhai/output/review/approved-product-library/previews/falper-sorgente/side.png",
+            "bytes": 25776,
+            "sha256": "aafcb53ce0ebe6b2baf68d92fe9e37858fc3203a2d2042466586cf2f5ee5c00f"
+          },
+          "line_geometry_changed": false
+        }
+      },
+      "iso_evidence": {
+        "path": "/Users/jiaxinchen/.codex/worktrees/3a80/2504 GBTB Yanlord Zhuhai/output/review/approved-product-library/previews/falper-sorgente/iso.png",
+        "bytes": 379206,
+        "sha256": "46fee6a8c6cb4c39717abc98224c481cfbae0e013ab5d0d9b461cf2c25a83a39",
+        "kind": "new_pure_IFC_Body_camera_render",
+        "source_ifc_sha256": "ec6029ad7a4a67449d5a9e6030b531dcf9e9ed8273843420415b289a8431cd57",
+        "global_id": "350tdaubr8QP3Cu2YMQZIN",
+        "source": "All Body representations loaded from this exact pure IFC; neutral display materials"
+      },
+      "approval_record": {
+        "path": "/Users/jiaxinchen/.codex/worktrees/3a80/2504 GBTB Yanlord Zhuhai/pipeline/decisions/falper-sorgente-drawing-approval.json",
+        "bytes": 738,
+        "sha256": "04f3c33cf2420fb38d0fde8e218633e407ce945d8af0fbc409e103a4d3a4bbce"
+      },
+      "validation_record": {
+        "path": "/Users/jiaxinchen/.codex/worktrees/3a80/2504 GBTB Yanlord Zhuhai/output/review/highpoly-types/falper-sorgente/product-package/handoff.json",
+        "bytes": 671,
+        "sha256": "591e4012b25f922195e7bfde665e69f2e23e5d68033c4b9eabf54950c42561f4"
+      },
+      "recipe": {
+        "path": "/Users/jiaxinchen/.codex/worktrees/3a80/2504 GBTB Yanlord Zhuhai/output/review/highpoly-types/falper-sorgente/product-package/scene-recipe.json",
+        "bytes": 94812,
+        "sha256": "59c503d28d5b9ac7a15c94cfbf637d07dbb1e0f89d1ee1fa63a886b3bf1bbb86"
+      },
+      "ifc_write_allowed": false,
+      "library_authorization": {
+        "path": "/Users/jiaxinchen/.codex/worktrees/3a80/2504 GBTB Yanlord Zhuhai/output/review/approved-product-library/migration-authorization.json",
+        "bytes": 1189,
+        "sha256": "be266f18465023b1c2436d1585bb59290504b0b66ba03d822cc5fb7d148ee4ee"
+      },
+      "legacy_iso_reference": {
+        "path": "/Users/jiaxinchen/.codex/worktrees/3a80/2504 GBTB Yanlord Zhuhai/output/review/highpoly-types/falper-sorgente/bonsai-camera-iso.png",
+        "bytes": 988037,
+        "sha256": "af53ea50e4661e5b0678cef4e8d665c149e3029d371bc6af8c68743fb5c27eee",
+        "kind": "historical_representative_reference_only"
+      },
+      "insertion_content": "approved_3d_2d",
+      "review_category": "partial",
+      "category_label": "部分验收",
+      "formal_ifc_write_authorized": false
+    },
+    {
+      "id": "geberit-154-154-00",
+      "name": "Geberit CleanLine installation set 154.154.00.1 / project type 154.154.00",
+      "global_id": "14EazrLgP8whYZWY_yCuKy",
+      "ifc_path": "candidate-packages/geberit-154-154-00.ifc",
+      "ifc_sha256": "2ebc0c7c4de5171829d6d7104d59b5a7c46fa9f492b78744e3a391d6c864d887",
+      "previews": {
+        "plan": "/Users/jiaxinchen/.codex/worktrees/3a80/2504 GBTB Yanlord Zhuhai/output/review/highpoly-types/geberit-154-154-00/bonsai-camera-plan.png",
+        "front": "/Users/jiaxinchen/.codex/worktrees/3a80/2504 GBTB Yanlord Zhuhai/output/review/highpoly-types/geberit-154-154-00/bonsai-camera-front-elevation.png",
+        "side": "/Users/jiaxinchen/.codex/worktrees/3a80/2504 GBTB Yanlord Zhuhai/output/review/highpoly-types/geberit-154-154-00/bonsai-camera-side-elevation.png",
+        "iso": "/Users/jiaxinchen/.codex/worktrees/3a80/2504 GBTB Yanlord Zhuhai/output/review/highpoly-types/geberit-154-154-00/bonsai-camera-iso.png"
+      },
+      "single_svg": {
+        "plan": "/Users/jiaxinchen/.codex/worktrees/3a80/2504 GBTB Yanlord Zhuhai/output/review/highpoly-types/geberit-154-154-00/plan.svg",
+        "front": "/Users/jiaxinchen/.codex/worktrees/3a80/2504 GBTB Yanlord Zhuhai/output/review/highpoly-types/geberit-154-154-00/front.svg",
+        "side": "/Users/jiaxinchen/.codex/worktrees/3a80/2504 GBTB Yanlord Zhuhai/output/review/highpoly-types/geberit-154-154-00/side.svg"
+      },
+      "display_front_normal_project": [
+        0,
+        -1,
+        0
+      ],
+      "display_front_basis": "project_axes_unreviewed",
+      "single_product_approval_status": "pending",
+      "scene_approval_status": "pending",
+      "approval_label": "尚未验收",
+      "source_label": "基于原始高模几何生成的简化图纸表达",
+      "package_validation": "pass",
+      "insertion_content": "body_only",
+      "candidate_review_index": "/Users/jiaxinchen/.codex/worktrees/3a80/2504 GBTB Yanlord Zhuhai/output/review/highpoly-types/geberit-154-154-00/index.html",
+      "preview_note": "原始 Bonsai Body 相机图；待审二维 SVG 单独列出，未嵌入 IFC",
+      "approval_record": {
+        "path": "/Users/jiaxinchen/.codex/worktrees/3a80/2504 GBTB Yanlord Zhuhai/pipeline/decisions/geberit-154-154-00-drawing-approval.json",
+        "sha256": "3b93892fd1f09aec197271963a0f53131446900602bcf76d10ea638fc9c5384e"
+      },
+      "review_category": "pending",
+      "category_label": "未验收",
+      "formal_ifc_write_authorized": false
+    },
+    {
+      "id": "bst03",
+      "name": "Baxter Stone freestanding bedside table with L drawer / project BST03",
+      "global_id": "1HZoxe$df4cBb4UXXH5J2S",
+      "ifc_path": "candidate-packages/bst03.ifc",
+      "ifc_sha256": "d51f3b3ff7fc991ee0daf22e60174cf8e5893c442e8221766caaca240f03485e",
+      "previews": {
+        "plan": "/Users/jiaxinchen/.codex/worktrees/3a80/2504 GBTB Yanlord Zhuhai/output/review/highpoly-types/bst03/bonsai-camera-plan.png",
+        "front": "/Users/jiaxinchen/.codex/worktrees/3a80/2504 GBTB Yanlord Zhuhai/output/review/highpoly-types/bst03/bonsai-camera-front-elevation.png",
+        "side": "/Users/jiaxinchen/.codex/worktrees/3a80/2504 GBTB Yanlord Zhuhai/output/review/highpoly-types/bst03/bonsai-camera-side-elevation.png",
+        "iso": "/Users/jiaxinchen/.codex/worktrees/3a80/2504 GBTB Yanlord Zhuhai/output/review/highpoly-types/bst03/bonsai-camera-iso.png"
+      },
+      "single_svg": {
+        "plan": "/Users/jiaxinchen/.codex/worktrees/3a80/2504 GBTB Yanlord Zhuhai/output/review/highpoly-types/bst03/plan.svg",
+        "front": "/Users/jiaxinchen/.codex/worktrees/3a80/2504 GBTB Yanlord Zhuhai/output/review/highpoly-types/bst03/front.svg",
+        "side": "/Users/jiaxinchen/.codex/worktrees/3a80/2504 GBTB Yanlord Zhuhai/output/review/highpoly-types/bst03/side.svg"
+      },
+      "display_front_normal_project": [
+        0,
+        -1,
+        0
+      ],
+      "display_front_basis": "project_axes_unreviewed",
+      "single_product_approval_status": "pending",
+      "scene_approval_status": "pending",
+      "approval_label": "尚未验收",
+      "source_label": "基于原始高模几何生成的简化图纸表达",
+      "package_validation": "pass",
+      "insertion_content": "body_only",
+      "candidate_review_index": "/Users/jiaxinchen/.codex/worktrees/3a80/2504 GBTB Yanlord Zhuhai/output/review/highpoly-types/bst03/index.html",
+      "preview_note": "原始 Bonsai Body 相机图；待审二维 SVG 单独列出，未嵌入 IFC",
+      "approval_record": {
+        "path": "/Users/jiaxinchen/.codex/worktrees/3a80/2504 GBTB Yanlord Zhuhai/pipeline/decisions/bst03-drawing-approval.json",
+        "sha256": "e3de8d392e7f9fed82d874897c8b5c19ff208bb52317a2cbc05a87613bfbec19"
+      },
+      "review_category": "pending",
+      "category_label": "未验收",
+      "formal_ifc_write_authorized": false
+    },
+    {
+      "id": "fau02",
+      "name": "Falper floor-mounted basin spout / project FAU02",
+      "global_id": "36ZX3QPyD7SvlXsDKMP8rY",
+      "ifc_path": "candidate-packages/fau02.ifc",
+      "ifc_sha256": "a773647bf228c3909d45b060fda487b44ed4de0cde9ac27bd10b4b56aec13e41",
+      "previews": {
+        "plan": "/Users/jiaxinchen/.codex/worktrees/3a80/2504 GBTB Yanlord Zhuhai/output/review/highpoly-types/fau02/bonsai-camera-plan.png",
+        "front": "/Users/jiaxinchen/.codex/worktrees/3a80/2504 GBTB Yanlord Zhuhai/output/review/highpoly-types/fau02/bonsai-camera-front-elevation.png",
+        "side": "/Users/jiaxinchen/.codex/worktrees/3a80/2504 GBTB Yanlord Zhuhai/output/review/highpoly-types/fau02/bonsai-camera-side-elevation.png",
+        "iso": "/Users/jiaxinchen/.codex/worktrees/3a80/2504 GBTB Yanlord Zhuhai/output/review/highpoly-types/fau02/bonsai-camera-iso.png"
+      },
+      "single_svg": {
+        "plan": "/Users/jiaxinchen/.codex/worktrees/3a80/2504 GBTB Yanlord Zhuhai/output/review/highpoly-types/fau02/plan.svg",
+        "front": "/Users/jiaxinchen/.codex/worktrees/3a80/2504 GBTB Yanlord Zhuhai/output/review/highpoly-types/fau02/front.svg",
+        "side": "/Users/jiaxinchen/.codex/worktrees/3a80/2504 GBTB Yanlord Zhuhai/output/review/highpoly-types/fau02/side.svg"
+      },
+      "display_front_normal_project": [
+        0,
+        -1,
+        0
+      ],
+      "display_front_basis": "project_axes_unreviewed",
+      "single_product_approval_status": "pending",
+      "scene_approval_status": "pending",
+      "approval_label": "尚未验收",
+      "source_label": "基于原始高模几何生成的简化图纸表达",
+      "package_validation": "pass",
+      "insertion_content": "body_only",
+      "candidate_review_index": "/Users/jiaxinchen/.codex/worktrees/3a80/2504 GBTB Yanlord Zhuhai/output/review/highpoly-types/fau02/index.html",
+      "preview_note": "原始 Bonsai Body 相机图；待审二维 SVG 单独列出，未嵌入 IFC",
+      "approval_record": {
+        "path": "/Users/jiaxinchen/.codex/worktrees/3a80/2504 GBTB Yanlord Zhuhai/pipeline/decisions/fau02-drawing-approval.json",
+        "sha256": "b3b8a1b3729e9021b489a0e6e88e28e06c351e446229c144b1b58e720cac24db"
+      },
+      "review_category": "pending",
+      "category_label": "未验收",
+      "formal_ifc_write_authorized": false
+    },
+    {
+      "id": "gessi316-54146",
+      "name": "Gessi316 Meccanica ceiling-mounted adjustable headshower / 54146 G000",
+      "global_id": "04DLh1Jk9Dcu9ibcaE0id8",
+      "ifc_path": "candidate-packages/gessi316-54146.ifc",
+      "ifc_sha256": "197485af7a6ba4cdb7cafeef6c0985fb1e43aa38d670e2ead41ea7cbc7db6a1b",
+      "previews": {
+        "plan": "/Users/jiaxinchen/.codex/worktrees/3a80/2504 GBTB Yanlord Zhuhai/output/review/highpoly-types/gessi316-54146/bonsai-camera-plan.png",
+        "front": "/Users/jiaxinchen/.codex/worktrees/3a80/2504 GBTB Yanlord Zhuhai/output/review/highpoly-types/gessi316-54146/bonsai-camera-front-elevation.png",
+        "side": "/Users/jiaxinchen/.codex/worktrees/3a80/2504 GBTB Yanlord Zhuhai/output/review/highpoly-types/gessi316-54146/bonsai-camera-side-elevation.png",
+        "iso": "/Users/jiaxinchen/.codex/worktrees/3a80/2504 GBTB Yanlord Zhuhai/output/review/highpoly-types/gessi316-54146/bonsai-camera-iso.png"
+      },
+      "single_svg": {
+        "plan": "/Users/jiaxinchen/.codex/worktrees/3a80/2504 GBTB Yanlord Zhuhai/output/review/highpoly-types/gessi316-54146/plan.svg",
+        "front": "/Users/jiaxinchen/.codex/worktrees/3a80/2504 GBTB Yanlord Zhuhai/output/review/highpoly-types/gessi316-54146/front.svg",
+        "side": "/Users/jiaxinchen/.codex/worktrees/3a80/2504 GBTB Yanlord Zhuhai/output/review/highpoly-types/gessi316-54146/side.svg"
+      },
+      "display_front_normal_project": [
+        0,
+        -1,
+        0
+      ],
+      "display_front_basis": "project_axes_unreviewed",
+      "single_product_approval_status": "approved",
+      "scene_approval_status": "pending",
+      "approval_label": "单品已通过、场景待验收",
+      "source_label": "基于官方 Gessi 54146 G000 原生 DWG 轮廓的简化蓝线审核表达",
+      "package_validation": "pass",
+      "insertion_content": "body_only",
+      "candidate_review_index": "/Users/jiaxinchen/.codex/worktrees/3a80/2504 GBTB Yanlord Zhuhai/output/review/highpoly-types/gessi316-54146/index.html",
+      "preview_note": "原始 Bonsai Body 相机图；待审二维 SVG 单独列出，未嵌入 IFC",
+      "approval_record": {
+        "path": "/Users/jiaxinchen/.codex/worktrees/3a80/2504 GBTB Yanlord Zhuhai/pipeline/decisions/gessi316-54146-drawing-approval.json",
+        "sha256": "088f9d81f4e6d297e9227dcc5fb953b0ee93b8acab0c4d0c7c3f23329d6ec1f4"
+      },
+      "review_category": "partial",
+      "category_label": "部分验收",
+      "formal_ifc_write_authorized": false
+    },
+    {
+      "id": "wd03",
+      "name": "Poliform Senzafine / WD03",
+      "global_id": "3cmikd9MTB$egM5KQaNgUf",
+      "source_label": "基于原始高模几何生成的简化图纸表达",
+      "display_front_normal_project": [
+        1.5099580252808397e-07,
+        0.9999999999999858,
+        7.549790126404218e-08
+      ],
+      "display_front_basis": "approved_scene_camera",
+      "single_product_approval_status": "approved",
+      "scene_approval_status": "approved",
+      "approval_label": "单品及场景已验收",
+      "package_validation": "pass",
+      "ifc_path": "../highpoly-types/wd03/product-package/WD03-product.ifc",
+      "ifc_sha256": "9d9d20db08717e9a926dac21c8bfeac7fffcbb721576e247ab0ded7b6ffb32c2",
+      "ifc_bytes": 409673,
+      "body_fingerprint": "543da6b7f26c3c64143ed7adb523a7ead2526519eb0e0d91fc04d15ef4057cd9",
+      "single_svg": {
+        "plan": "previews/wd03/plan.svg",
+        "front": "previews/wd03/front.svg",
+        "side": "previews/wd03/side.svg"
+      },
+      "scene_svg": {
+        "plan": "../highpoly-types/wd03/product-package/WD03-SCENE-PLAN.svg",
+        "front": "../highpoly-types/wd03/product-package/WD03-SCENE-FRONT.svg",
+        "side": "../highpoly-types/wd03/product-package/WD03-SCENE-SIDE.svg"
+      },
+      "previews": {
+        "plan": "previews/wd03/plan.png",
+        "front": "previews/wd03/front.png",
+        "side": "previews/wd03/side.png",
+        "iso": "previews/wd03/iso.png"
+      },
+      "thumbnail_evidence": {
+        "plan": {
+          "source_svg": {
+            "path": "/Users/jiaxinchen/.codex/worktrees/3a80/2504 GBTB Yanlord Zhuhai/output/review/highpoly-types/wd03/product-package/WD03-SCENE-PLAN.svg",
+            "bytes": 3193351,
+            "sha256": "c5881dae14a5a2c63868f2842e80f3ee5d015ff06d16f3c8eea9b65bc553d7d5"
+          },
+          "annotation_global_id": "0ZEewP0OH1FAM8MZhKfgb4",
+          "line_count": 12,
+          "single_svg": {
+            "path": "/Users/jiaxinchen/.codex/worktrees/3a80/2504 GBTB Yanlord Zhuhai/output/review/approved-product-library/previews/wd03/plan.svg",
+            "bytes": 100102,
+            "sha256": "6f68e8069ee5936d18f0df1c232357b7877db3eed47a0de4c7570c2dc9d01d90"
+          },
+          "preview": {
+            "path": "/Users/jiaxinchen/.codex/worktrees/3a80/2504 GBTB Yanlord Zhuhai/output/review/approved-product-library/previews/wd03/plan.png",
+            "bytes": 2324,
+            "sha256": "5a068c828c5d90a110ea1c05d57e5ca2bace98f778b9aa6e446bef158dcb25e3"
+          },
+          "line_geometry_changed": false
+        },
+        "front": {
+          "source_svg": {
+            "path": "/Users/jiaxinchen/.codex/worktrees/3a80/2504 GBTB Yanlord Zhuhai/output/review/highpoly-types/wd03/product-package/WD03-SCENE-FRONT.svg",
+            "bytes": 1653986,
+            "sha256": "241b0d07fa6c7c3e8767b6efbbfa145eb95ea09c6807326127a097fbdbe30e21"
+          },
+          "annotation_global_id": "2uAkszkbj8YBoncHNaFrYK",
+          "line_count": 24,
+          "single_svg": {
+            "path": "/Users/jiaxinchen/.codex/worktrees/3a80/2504 GBTB Yanlord Zhuhai/output/review/approved-product-library/previews/wd03/front.svg",
+            "bytes": 103661,
+            "sha256": "7fc463170416bbef7df6ba3925c469342339718633530710822d19f89c1117a1"
+          },
+          "preview": {
+            "path": "/Users/jiaxinchen/.codex/worktrees/3a80/2504 GBTB Yanlord Zhuhai/output/review/approved-product-library/previews/wd03/front.png",
+            "bytes": 6507,
+            "sha256": "04487285504d848367e02e173713fa493da93e8897cd2c557e7e896fb4703813"
+          },
+          "line_geometry_changed": false
+        },
+        "side": {
+          "source_svg": {
+            "path": "/Users/jiaxinchen/.codex/worktrees/3a80/2504 GBTB Yanlord Zhuhai/output/review/highpoly-types/wd03/product-package/WD03-SCENE-SIDE.svg",
+            "bytes": 647559,
+            "sha256": "ef85a09480defbf6835f2304c05f922e363c73e8c3a2a4312912198de0e0e40b"
+          },
+          "annotation_global_id": "0lDNmWWdD5keJujVqNDHeg",
+          "line_count": 12,
+          "single_svg": {
+            "path": "/Users/jiaxinchen/.codex/worktrees/3a80/2504 GBTB Yanlord Zhuhai/output/review/approved-product-library/previews/wd03/side.svg",
+            "bytes": 100094,
+            "sha256": "dd24fef0e3f4dcf8aa1a104fb2a9e4bd8ffb492ba3b789ea1a0faa56a6c3f8e3"
+          },
+          "preview": {
+            "path": "/Users/jiaxinchen/.codex/worktrees/3a80/2504 GBTB Yanlord Zhuhai/output/review/approved-product-library/previews/wd03/side.png",
+            "bytes": 10123,
+            "sha256": "e700deb3b77b9106f71473405eed04c85928c6b67ab8ed60b7ab7b827557a722"
+          },
+          "line_geometry_changed": false
+        }
+      },
+      "iso_evidence": {
+        "path": "/Users/jiaxinchen/.codex/worktrees/3a80/2504 GBTB Yanlord Zhuhai/output/review/approved-product-library/previews/wd03/iso.png",
+        "bytes": 397656,
+        "sha256": "cf5d7e4fff2e603c20741634867b727f6534644e2e45764710e82eb1e83cdff6",
+        "kind": "new_pure_IFC_Body_camera_render",
+        "source_ifc_sha256": "9d9d20db08717e9a926dac21c8bfeac7fffcbb721576e247ab0ded7b6ffb32c2",
+        "global_id": "3cmikd9MTB$egM5KQaNgUf",
+        "source": "All Body representations loaded from this exact pure IFC; neutral display materials"
+      },
+      "approval_record": {
+        "path": "/Users/jiaxinchen/.codex/worktrees/3a80/2504 GBTB Yanlord Zhuhai/pipeline/decisions/wd03-drawing-approval.json",
+        "bytes": 3290,
+        "sha256": "1f86e4777ceae9cf1eff280c7e34c8dec77d033d9b946a913e8f3aaa78edf105"
+      },
+      "validation_record": {
+        "path": "/Users/jiaxinchen/.codex/worktrees/3a80/2504 GBTB Yanlord Zhuhai/output/review/highpoly-types/wd03/product-package/handoff.json",
+        "bytes": 23405,
+        "sha256": "0648ac93b2d72e7db54234a475c5583309f8ea8de8973ffc87ba970094ea68c7"
+      },
+      "recipe": {
+        "path": "/Users/jiaxinchen/.codex/worktrees/3a80/2504 GBTB Yanlord Zhuhai/output/review/highpoly-types/wd03/product-package/scene-recipe.json",
+        "bytes": 158447,
+        "sha256": "335244950d62926ea849707fdea9c8f8a2edc6a26ad8c35b6ead391093a70506"
+      },
+      "ifc_write_allowed": false,
+      "library_authorization": null,
+      "legacy_iso_reference": {
+        "path": "/Users/jiaxinchen/.codex/worktrees/3a80/2504 GBTB Yanlord Zhuhai/output/review/highpoly-types/wd03/bonsai-camera-iso.png",
+        "bytes": 1015606,
+        "sha256": "628b59a84430ed66bb7b78f5ba1a130ecb5b5eeecb3aa9e29e06af49a418fd88",
+        "kind": "historical_representative_reference_only"
+      },
+      "insertion_content": "approved_3d_2d",
+      "review_category": "approved",
+      "category_label": "已验收",
+      "formal_ifc_write_authorized": false
+    },
+    {
+      "id": "miamisoft-i03",
+      "name": "Baxter Miami Soft I03 roll cushion",
+      "global_id": "1hdNtfQRPCGfHLfqzdp6w0",
+      "ifc_path": "candidate-packages/miamisoft-i03.ifc",
+      "ifc_sha256": "9fc77d3ca257c9d038eb332cfaec5a3c7dadca82f4a9eb4a526a51aea651e1d1",
+      "previews": {
+        "plan": "/Users/jiaxinchen/.codex/worktrees/3a80/2504 GBTB Yanlord Zhuhai/output/review/highpoly-types/miamisoft-i03/bonsai-camera-plan.png",
+        "front": "/Users/jiaxinchen/.codex/worktrees/3a80/2504 GBTB Yanlord Zhuhai/output/review/highpoly-types/miamisoft-i03/bonsai-camera-front-elevation.png",
+        "side": "/Users/jiaxinchen/.codex/worktrees/3a80/2504 GBTB Yanlord Zhuhai/output/review/highpoly-types/miamisoft-i03/bonsai-camera-side-elevation.png",
+        "iso": "/Users/jiaxinchen/.codex/worktrees/3a80/2504 GBTB Yanlord Zhuhai/output/review/highpoly-types/miamisoft-i03/bonsai-camera-iso.png"
+      },
+      "single_svg": {
+        "plan": "/Users/jiaxinchen/.codex/worktrees/3a80/2504 GBTB Yanlord Zhuhai/output/review/highpoly-types/miamisoft-i03/plan.svg",
+        "front": "/Users/jiaxinchen/.codex/worktrees/3a80/2504 GBTB Yanlord Zhuhai/output/review/highpoly-types/miamisoft-i03/front.svg",
+        "side": "/Users/jiaxinchen/.codex/worktrees/3a80/2504 GBTB Yanlord Zhuhai/output/review/highpoly-types/miamisoft-i03/side.svg"
+      },
+      "display_front_normal_project": [
+        0,
+        -1,
+        0
+      ],
+      "display_front_basis": "project_axes_unreviewed",
+      "single_product_approval_status": "pending",
+      "scene_approval_status": "pending",
+      "approval_label": "尚未验收",
+      "source_label": "基于原始高模几何生成的简化图纸表达",
+      "package_validation": "pass",
+      "insertion_content": "body_only",
+      "candidate_review_index": "/Users/jiaxinchen/.codex/worktrees/3a80/2504 GBTB Yanlord Zhuhai/output/review/highpoly-types/miamisoft-i03/index.html",
+      "preview_note": "原始 Bonsai Body 相机图；待审二维 SVG 单独列出，未嵌入 IFC",
+      "approval_record": {
+        "path": "/Users/jiaxinchen/.codex/worktrees/3a80/2504 GBTB Yanlord Zhuhai/pipeline/decisions/miamisoft-i03-drawing-approval.json",
+        "sha256": "26aa3ea46623b59df2309c64400d604362bdd41ca58b2a4e6c606bcaebf245ef"
+      },
+      "review_category": "pending",
+      "category_label": "未验收",
+      "formal_ifc_write_authorized": false
+    },
+    {
+      "id": "geberit-146-140",
+      "name": "Geberit 146.140 / AquaClean Sela wall-hung WC",
+      "global_id": "1rhZG98PPCSxaLeMFLTYb9",
+      "ifc_path": "candidate-packages/geberit-146-140.ifc",
+      "ifc_sha256": "676301af34d7e2eceea34ec889ad05064f9240440f96a1119ccbd2843c54dbcc",
+      "previews": {
+        "plan": "/Users/jiaxinchen/.codex/worktrees/3a80/2504 GBTB Yanlord Zhuhai/output/review/highpoly-types/geberit-146-140/bonsai-camera-plan.png",
+        "front": "/Users/jiaxinchen/.codex/worktrees/3a80/2504 GBTB Yanlord Zhuhai/output/review/highpoly-types/geberit-146-140/bonsai-camera-front-elevation.png",
+        "side": "/Users/jiaxinchen/.codex/worktrees/3a80/2504 GBTB Yanlord Zhuhai/output/review/highpoly-types/geberit-146-140/bonsai-camera-side-elevation.png",
+        "iso": "/Users/jiaxinchen/.codex/worktrees/3a80/2504 GBTB Yanlord Zhuhai/output/review/highpoly-types/geberit-146-140/bonsai-camera-iso.png"
+      },
+      "single_svg": {
+        "plan": "/Users/jiaxinchen/.codex/worktrees/3a80/2504 GBTB Yanlord Zhuhai/output/review/highpoly-types/geberit-146-140/plan.svg",
+        "front": "/Users/jiaxinchen/.codex/worktrees/3a80/2504 GBTB Yanlord Zhuhai/output/review/highpoly-types/geberit-146-140/front.svg",
+        "side": "/Users/jiaxinchen/.codex/worktrees/3a80/2504 GBTB Yanlord Zhuhai/output/review/highpoly-types/geberit-146-140/side.svg"
+      },
+      "display_front_normal_project": [
+        0,
+        -1,
+        0
+      ],
+      "display_front_basis": "project_axes_unreviewed",
+      "single_product_approval_status": "approved",
+      "scene_approval_status": "pending",
+      "approval_label": "单品已通过、场景待验收",
+      "source_label": "Geberit 官方归档原生 DWG 图纸表达",
+      "package_validation": "pass",
+      "insertion_content": "body_only",
+      "candidate_review_index": "/Users/jiaxinchen/.codex/worktrees/3a80/2504 GBTB Yanlord Zhuhai/output/review/highpoly-types/geberit-146-140/index.html",
+      "preview_note": "原始 Bonsai Body 相机图；待审二维 SVG 单独列出，未嵌入 IFC",
+      "approval_record": {
+        "path": "/Users/jiaxinchen/.codex/worktrees/3a80/2504 GBTB Yanlord Zhuhai/pipeline/decisions/geberit-146-140-drawing-approval.json",
+        "sha256": "e28f18d89cb539d2aeac0ddb6893ed8a801ba8bdbda6ea5036aeb9bdc53e2182"
+      },
+      "review_category": "partial",
+      "category_label": "部分验收",
+      "formal_ifc_write_authorized": false
+    },
+    {
+      "id": "gessi316-54145",
+      "name": "Gessi316 Meccanica / 54145 G000",
+      "global_id": "3jT4sCgpHC98VSIUdGUNYH",
+      "source_label": "基于官方 54145 G000 DWG 的简化表达",
+      "display_front_normal_project": [
+        0.0,
+        1.0,
+        0.0
+      ],
+      "display_front_basis": "candidate_scene_camera_pending_review",
+      "single_product_approval_status": "approved",
+      "scene_approval_status": "pending",
+      "approval_label": "单品已通过、场景待验收",
+      "package_validation": "pass",
+      "ifc_path": "../highpoly-types/gessi316-54145/product-package/GESSI54145-product.ifc",
+      "ifc_sha256": "a2bd449156b7af3be7feff331c106742924970756738bfe2f30f1f624e5a92a1",
+      "ifc_bytes": 790503,
+      "body_fingerprint": "e1bad8b7289e3d37208543a305ff6a1f88919d7be5d6d0f639cd51c4fb030a72",
+      "single_svg": {
+        "plan": "previews/gessi316-54145/plan.svg",
+        "front": "previews/gessi316-54145/front.svg",
+        "side": "previews/gessi316-54145/side.svg"
+      },
+      "scene_svg": {
+        "plan": "../highpoly-types/gessi316-54145/product-package/GESSI54145-SCENE-PLAN.svg",
+        "front": "../highpoly-types/gessi316-54145/product-package/GESSI54145-SCENE-FRONT.svg",
+        "side": "../highpoly-types/gessi316-54145/product-package/GESSI54145-SCENE-SIDE.svg"
+      },
+      "previews": {
+        "plan": "previews/gessi316-54145/plan.png",
+        "front": "previews/gessi316-54145/front.png",
+        "side": "previews/gessi316-54145/side.png",
+        "iso": "previews/gessi316-54145/iso.png"
+      },
+      "thumbnail_evidence": {
+        "plan": {
+          "source_svg": {
+            "path": "/Users/jiaxinchen/.codex/worktrees/3a80/2504 GBTB Yanlord Zhuhai/output/review/highpoly-types/gessi316-54145/product-package/GESSI54145-SCENE-PLAN.svg",
+            "bytes": 631040,
+            "sha256": "ce3c9add7a1e640d30e1d260da2437a028c83c46c886467c59aaeb03cdd16de5"
+          },
+          "annotation_global_id": "2qS_MQ9JP60gN2iIYuS1V3",
+          "line_count": 483,
+          "single_svg": {
+            "path": "/Users/jiaxinchen/.codex/worktrees/3a80/2504 GBTB Yanlord Zhuhai/output/review/approved-product-library/previews/gessi316-54145/plan.svg",
+            "bytes": 249504,
+            "sha256": "c3681fd16c993d704185338556575eeb2fdca612f43a431277a7ec12e446bbfd"
+          },
+          "preview": {
+            "path": "/Users/jiaxinchen/.codex/worktrees/3a80/2504 GBTB Yanlord Zhuhai/output/review/approved-product-library/previews/gessi316-54145/plan.png",
+            "bytes": 14323,
+            "sha256": "d47b03369863f2982718f9162fda3716b848050898ccbd8b49c6c474c89bdf4d"
+          },
+          "line_geometry_changed": false
+        },
+        "front": {
+          "source_svg": {
+            "path": "/Users/jiaxinchen/.codex/worktrees/3a80/2504 GBTB Yanlord Zhuhai/output/review/highpoly-types/gessi316-54145/product-package/GESSI54145-SCENE-FRONT.svg",
+            "bytes": 1072511,
+            "sha256": "694a8fd21e29494cdfb2f2fbb3a70c6f9afd866a93a9db6f3207ed87d5b5cab7"
+          },
+          "annotation_global_id": "3EfZKz6WPBmg21eY1eb4Ez",
+          "line_count": 1949,
+          "single_svg": {
+            "path": "/Users/jiaxinchen/.codex/worktrees/3a80/2504 GBTB Yanlord Zhuhai/output/review/approved-product-library/previews/gessi316-54145/front.svg",
+            "bytes": 744346,
+            "sha256": "111f38c24a052a2218f447ea1e7f90b2a5936e5a78b21403eadab9e2be8544c3"
+          },
+          "preview": {
+            "path": "/Users/jiaxinchen/.codex/worktrees/3a80/2504 GBTB Yanlord Zhuhai/output/review/approved-product-library/previews/gessi316-54145/front.png",
+            "bytes": 3740,
+            "sha256": "9bc2a1a373af4bdefced6d63b9da675c1ac733f34eddc89e40d87d8dfea5ba71"
+          },
+          "line_geometry_changed": false
+        },
+        "side": {
+          "source_svg": {
+            "path": "/Users/jiaxinchen/.codex/worktrees/3a80/2504 GBTB Yanlord Zhuhai/output/review/highpoly-types/gessi316-54145/product-package/GESSI54145-SCENE-SIDE.svg",
+            "bytes": 1144802,
+            "sha256": "81214e42c2f2c009c2bf4486a060fbabbbc515d14cf2edc7b4fb0a805cebb398"
+          },
+          "annotation_global_id": "2bSdSkxn542OIrMl22SICa",
+          "line_count": 2558,
+          "single_svg": {
+            "path": "/Users/jiaxinchen/.codex/worktrees/3a80/2504 GBTB Yanlord Zhuhai/output/review/approved-product-library/previews/gessi316-54145/side.svg",
+            "bytes": 947072,
+            "sha256": "612552d041bb0f3050bd65da76e9a19c4415b436493dc45ad4021d1b40504a61"
+          },
+          "preview": {
+            "path": "/Users/jiaxinchen/.codex/worktrees/3a80/2504 GBTB Yanlord Zhuhai/output/review/approved-product-library/previews/gessi316-54145/side.png",
+            "bytes": 9823,
+            "sha256": "8ac25af5c40ec4e5b78b76450fb8111212784ec7ff09722c1fede57e18cb5b99"
+          },
+          "line_geometry_changed": false
+        }
+      },
+      "iso_evidence": {
+        "path": "/Users/jiaxinchen/.codex/worktrees/3a80/2504 GBTB Yanlord Zhuhai/output/review/approved-product-library/previews/gessi316-54145/iso.png",
+        "bytes": 362153,
+        "sha256": "c59c7daa39b6c6335fa385b00cfbd1c7360325dbd58ce486e15cf5f25bc2df5e",
+        "kind": "new_pure_IFC_Body_camera_render",
+        "source_ifc_sha256": "a2bd449156b7af3be7feff331c106742924970756738bfe2f30f1f624e5a92a1",
+        "global_id": "3jT4sCgpHC98VSIUdGUNYH",
+        "source": "All Body representations loaded from this exact pure IFC; neutral display materials"
+      },
+      "approval_record": {
+        "path": "/Users/jiaxinchen/.codex/worktrees/3a80/2504 GBTB Yanlord Zhuhai/pipeline/decisions/gessi316-54145-drawing-approval.json",
+        "bytes": 1167,
+        "sha256": "32e093739085616e4cfe3aeeff2bbe662331e5fc6293548885b8a50fb4ba19be"
+      },
+      "validation_record": {
+        "path": "/Users/jiaxinchen/.codex/worktrees/3a80/2504 GBTB Yanlord Zhuhai/output/review/highpoly-types/gessi316-54145/product-package/handoff.json",
+        "bytes": 631,
+        "sha256": "54084d5115d9c8eaf77d9143c2ac7457da7a5b9e5d5de85454c5f5f0f719ce94"
+      },
+      "recipe": {
+        "path": "/Users/jiaxinchen/.codex/worktrees/3a80/2504 GBTB Yanlord Zhuhai/output/review/highpoly-types/gessi316-54145/product-package/scene-recipe.json",
+        "bytes": 89958,
+        "sha256": "4c3f8fbee1c08d15a94d1e901f6be4096456f92dee6ff4e70ff654ca68476102"
+      },
+      "ifc_write_allowed": false,
+      "library_authorization": {
+        "path": "/Users/jiaxinchen/.codex/worktrees/3a80/2504 GBTB Yanlord Zhuhai/output/review/approved-product-library/migration-authorization.json",
+        "bytes": 1189,
+        "sha256": "be266f18465023b1c2436d1585bb59290504b0b66ba03d822cc5fb7d148ee4ee"
+      },
+      "legacy_iso_reference": {
+        "path": "/Users/jiaxinchen/.codex/worktrees/3a80/2504 GBTB Yanlord Zhuhai/output/review/highpoly-types/gessi316-54145/bonsai-camera-iso.png",
+        "bytes": 950876,
+        "sha256": "426799fb0c09e393d0ad39b42fb173faa1e5b31131f09eacd1252f82cf13826d",
+        "kind": "historical_representative_reference_only"
+      },
+      "insertion_content": "approved_3d_2d",
+      "review_category": "partial",
+      "category_label": "部分验收",
+      "formal_ifc_write_authorized": false
+    },
+    {
+      "id": "street-h",
+      "name": "antoniolupi STREET-H / 支撑子构件",
+      "global_id": "2ajpw0I9n1dBypfISg3ejX",
+      "source_label": "支撑子构件 · 基于原始高模几何生成的简化图纸表达",
+      "display_front_normal_project": [
+        0.0,
+        -1.0,
+        0.0
+      ],
+      "display_front_basis": "candidate_scene_camera_pending_review",
+      "single_product_approval_status": "approved",
+      "scene_approval_status": "pending",
+      "approval_label": "单品已通过、场景待验收",
+      "package_validation": "pass",
+      "ifc_path": "../highpoly-types/street-h/product-package/STREET-H-SUPPORT-product.ifc",
+      "ifc_sha256": "7493815ea7e82b9fe4e83d3f61cbaa0a1a713189c85fa70fe59b1ad71b1cb725",
+      "ifc_bytes": 160118,
+      "body_fingerprint": "76803e5ef125af8babb8e7ecf99d2e7f6533cd8831081849a028190b361da8d0",
+      "single_svg": {
+        "plan": "previews/street-h/plan.svg",
+        "front": "previews/street-h/front.svg",
+        "side": "previews/street-h/side.svg"
+      },
+      "scene_svg": {
+        "plan": "../highpoly-types/street-h/product-package/STREET-H-SUPPORT-SCENE-PLAN.svg",
+        "front": "../highpoly-types/street-h/product-package/STREET-H-SUPPORT-SCENE-FRONT.svg",
+        "side": "../highpoly-types/street-h/product-package/STREET-H-SUPPORT-SCENE-SIDE.svg"
+      },
+      "previews": {
+        "plan": "previews/street-h/plan.png",
+        "front": "previews/street-h/front.png",
+        "side": "previews/street-h/side.png",
+        "iso": "previews/street-h/iso.png"
+      },
+      "thumbnail_evidence": {
+        "plan": {
+          "source_svg": {
+            "path": "/Users/jiaxinchen/.codex/worktrees/3a80/2504 GBTB Yanlord Zhuhai/output/review/highpoly-types/street-h/product-package/STREET-H-SUPPORT-SCENE-PLAN.svg",
+            "bytes": 268637,
+            "sha256": "878580357dd313b65c642ecfa224c2f46845902a29195e46a1db3df4aa9f533c"
+          },
+          "annotation_global_id": "3wGyIieDL4EP7JTYel$t0Q",
+          "line_count": 5,
+          "single_svg": {
+            "path": "/Users/jiaxinchen/.codex/worktrees/3a80/2504 GBTB Yanlord Zhuhai/output/review/approved-product-library/previews/street-h/plan.svg",
+            "bytes": 89471,
+            "sha256": "659b39e2301f0cdb87208451b03999246340c1f17d2492a5554a85d45da4be02"
+          },
+          "preview": {
+            "path": "/Users/jiaxinchen/.codex/worktrees/3a80/2504 GBTB Yanlord Zhuhai/output/review/approved-product-library/previews/street-h/plan.png",
+            "bytes": 2217,
+            "sha256": "cf239d6d0e595ec09b1d0983f38ea9602f9955b8fc1b50698af4312614f59ccd"
+          },
+          "line_geometry_changed": false
+        },
+        "front": {
+          "source_svg": {
+            "path": "/Users/jiaxinchen/.codex/worktrees/3a80/2504 GBTB Yanlord Zhuhai/output/review/highpoly-types/street-h/product-package/STREET-H-SUPPORT-SCENE-FRONT.svg",
+            "bytes": 120651,
+            "sha256": "1d20fcbe6d934d6cdb33d3a2a04b14de9a905a3887c0d5a16202c78eaed8bd4d"
+          },
+          "annotation_global_id": "14W$d9XCL5lfNziKmqI7AT",
+          "line_count": 6,
+          "single_svg": {
+            "path": "/Users/jiaxinchen/.codex/worktrees/3a80/2504 GBTB Yanlord Zhuhai/output/review/approved-product-library/previews/street-h/front.svg",
+            "bytes": 89796,
+            "sha256": "e037977ac56a460f174743ea54ec65d604e10e39f20d02d5b27ca210b8f18441"
+          },
+          "preview": {
+            "path": "/Users/jiaxinchen/.codex/worktrees/3a80/2504 GBTB Yanlord Zhuhai/output/review/approved-product-library/previews/street-h/front.png",
+            "bytes": 6828,
+            "sha256": "d5654911b24b476536591c92f2db8a79c811b16032e85911f60e81c07dcce459"
+          },
+          "line_geometry_changed": false
+        },
+        "side": {
+          "source_svg": {
+            "path": "/Users/jiaxinchen/.codex/worktrees/3a80/2504 GBTB Yanlord Zhuhai/output/review/highpoly-types/street-h/product-package/STREET-H-SUPPORT-SCENE-SIDE.svg",
+            "bytes": 105026,
+            "sha256": "5d8427711583462f5b7fade94cd15bc1824f51ba82fbb9f234ab0bbf3454ad14"
+          },
+          "annotation_global_id": "1$cl9dWTjDixJyjANPV0z9",
+          "line_count": 36,
+          "single_svg": {
+            "path": "/Users/jiaxinchen/.codex/worktrees/3a80/2504 GBTB Yanlord Zhuhai/output/review/approved-product-library/previews/street-h/side.svg",
+            "bytes": 99599,
+            "sha256": "8abad61623acbdc769f2d60e92df4c21fac79093849b16641f2b3c8beacd1026"
+          },
+          "preview": {
+            "path": "/Users/jiaxinchen/.codex/worktrees/3a80/2504 GBTB Yanlord Zhuhai/output/review/approved-product-library/previews/street-h/side.png",
+            "bytes": 4909,
+            "sha256": "cb751e2ab450e2ffa14cd9adfc2d128818da0bc88aff7f101e52bc574e8078d2"
+          },
+          "line_geometry_changed": false
+        }
+      },
+      "iso_evidence": {
+        "path": "/Users/jiaxinchen/.codex/worktrees/3a80/2504 GBTB Yanlord Zhuhai/output/review/approved-product-library/previews/street-h/iso.png",
+        "bytes": 366533,
+        "sha256": "f8be21e47877acc00ee2c88b1857cc06be184414448e35b382728e62e78780bc",
+        "kind": "new_pure_IFC_Body_camera_render",
+        "source_ifc_sha256": "7493815ea7e82b9fe4e83d3f61cbaa0a1a713189c85fa70fe59b1ad71b1cb725",
+        "global_id": "2ajpw0I9n1dBypfISg3ejX",
+        "source": "All Body representations loaded from this exact pure IFC; neutral display materials"
+      },
+      "approval_record": {
+        "path": "/Users/jiaxinchen/.codex/worktrees/3a80/2504 GBTB Yanlord Zhuhai/pipeline/decisions/street-h-drawing-approval.json",
+        "bytes": 1292,
+        "sha256": "e4b090be45ee0e2e82ab603967d745503cccd2ccfa1ceae12ee2664f330e6f94"
+      },
+      "validation_record": {
+        "path": "/Users/jiaxinchen/.codex/worktrees/3a80/2504 GBTB Yanlord Zhuhai/output/review/highpoly-types/street-h/product-package/handoff.json",
+        "bytes": 577,
+        "sha256": "7e52adec3afd4438d49fe860f0e3b362364e038340e7264e2a27c5bb3f6bbc49"
+      },
+      "recipe": {
+        "path": "/Users/jiaxinchen/.codex/worktrees/3a80/2504 GBTB Yanlord Zhuhai/output/review/highpoly-types/street-h/product-package/scene-recipe.json",
+        "bytes": 87815,
+        "sha256": "63550a3f041205ec2610d456d5e156fe2bc674355d977c8ee1681d7eacf9913b"
+      },
+      "ifc_write_allowed": false,
+      "library_authorization": {
+        "path": "/Users/jiaxinchen/.codex/worktrees/3a80/2504 GBTB Yanlord Zhuhai/output/review/approved-product-library/migration-authorization.json",
+        "bytes": 1189,
+        "sha256": "be266f18465023b1c2436d1585bb59290504b0b66ba03d822cc5fb7d148ee4ee"
+      },
+      "legacy_iso_reference": {
+        "path": "/Users/jiaxinchen/.codex/worktrees/3a80/2504 GBTB Yanlord Zhuhai/output/review/highpoly-types/street-h/bonsai-camera-iso.png",
+        "bytes": 1070093,
+        "sha256": "cb36ede0c126842ee84c5aa7790fad9469b253a9da699975033379a19922d1a1",
+        "kind": "historical_representative_reference_only"
+      },
+      "insertion_content": "approved_3d_2d",
+      "review_category": "partial",
+      "category_label": "部分验收",
+      "formal_ifc_write_authorized": false
+    },
+    {
+      "id": "wd02",
+      "name": "Poliform Senzafine glass wardrobe / WD02",
+      "global_id": "3yuXF4PtnBHgIXDlmXFJ$7",
+      "source_label": "基于原始高模几何生成的简化图纸表达",
+      "display_front_normal_project": [
+        -0.9999999999999858,
+        4.371139894487829e-08,
+        -1.6292068494294397e-07
+      ],
+      "display_front_basis": "approved_scene_camera",
+      "single_product_approval_status": "approved",
+      "scene_approval_status": "approved",
+      "approval_label": "单品及场景已验收",
+      "package_validation": "pass",
+      "ifc_path": "../highpoly-types/wd02/product-package/WD02-product.ifc",
+      "ifc_sha256": "1612bf65e84c1be9aaac261ce9545646b4a665ec9933efbf3aa2be48757b5f11",
+      "ifc_bytes": 354714,
+      "body_fingerprint": "26a406fd9e5926e080d0fd4dbe69c446503c63392e1af2257772f2134f028ee9",
+      "single_svg": {
+        "plan": "previews/wd02/plan.svg",
+        "front": "previews/wd02/front.svg",
+        "side": "previews/wd02/side.svg"
+      },
+      "scene_svg": {
+        "plan": "../highpoly-types/wd02/product-package/WD02-SCENE-PLAN.svg",
+        "front": "../highpoly-types/wd02/product-package/WD02-SCENE-FRONT.svg",
+        "side": "../highpoly-types/wd02/product-package/WD02-SCENE-SIDE.svg"
+      },
+      "previews": {
+        "plan": "previews/wd02/plan.png",
+        "front": "previews/wd02/front.png",
+        "side": "previews/wd02/side.png",
+        "iso": "previews/wd02/iso.png"
+      },
+      "thumbnail_evidence": {
+        "plan": {
+          "source_svg": {
+            "path": "/Users/jiaxinchen/.codex/worktrees/3a80/2504 GBTB Yanlord Zhuhai/output/review/highpoly-types/wd02/product-package/WD02-SCENE-PLAN.svg",
+            "bytes": 272245,
+            "sha256": "31ef1e4481576e6934cbb25fb4a35684497f3b80f41d1186a6a44f7815705c80"
+          },
+          "annotation_global_id": "348teTzYn7Awf_EAZG5ixx",
+          "line_count": 105,
+          "single_svg": {
+            "path": "/Users/jiaxinchen/.codex/worktrees/3a80/2504 GBTB Yanlord Zhuhai/output/review/approved-product-library/previews/wd02/plan.svg",
+            "bytes": 127419,
+            "sha256": "e13c4f3cb71d5d0d782c852ad11134f56c350617ec25abc6262727dfb44c7e51"
+          },
+          "preview": {
+            "path": "/Users/jiaxinchen/.codex/worktrees/3a80/2504 GBTB Yanlord Zhuhai/output/review/approved-product-library/previews/wd02/plan.png",
+            "bytes": 5992,
+            "sha256": "95700214dfed10891c3ce80214c25054080f15cf88c148f7c6ed95748ab18c10"
+          },
+          "line_geometry_changed": false
+        },
+        "front": {
+          "source_svg": {
+            "path": "/Users/jiaxinchen/.codex/worktrees/3a80/2504 GBTB Yanlord Zhuhai/output/review/highpoly-types/wd02/product-package/WD02-SCENE-FRONT.svg",
+            "bytes": 770423,
+            "sha256": "47a27aad04a68fa8e69934c98d55cad2f1523b206eba286aab78f1811db83c0c"
+          },
+          "annotation_global_id": "3IK7R0L652bhKZha0rJqAk",
+          "line_count": 346,
+          "single_svg": {
+            "path": "/Users/jiaxinchen/.codex/worktrees/3a80/2504 GBTB Yanlord Zhuhai/output/review/approved-product-library/previews/wd02/front.svg",
+            "bytes": 198769,
+            "sha256": "d8e4e7e277bddb9fe39e4af07d3a2485c3efe743a8115592825196428342b649"
+          },
+          "preview": {
+            "path": "/Users/jiaxinchen/.codex/worktrees/3a80/2504 GBTB Yanlord Zhuhai/output/review/approved-product-library/previews/wd02/front.png",
+            "bytes": 14196,
+            "sha256": "3956179d244ae7782391436cebab2b73de90e4527092b419552615caf94e4f94"
+          },
+          "line_geometry_changed": false
+        },
+        "side": {
+          "source_svg": {
+            "path": "/Users/jiaxinchen/.codex/worktrees/3a80/2504 GBTB Yanlord Zhuhai/output/review/highpoly-types/wd02/product-package/WD02-SCENE-SIDE.svg",
+            "bytes": 1152126,
+            "sha256": "f1038957995b6360a12e7062d1ed6fe42ee2b0a7ecbd6747fb17d34a0f76cbc3"
+          },
+          "annotation_global_id": "03p7H5ZOjDiwf1q7_KYhYP",
+          "line_count": 48,
+          "single_svg": {
+            "path": "/Users/jiaxinchen/.codex/worktrees/3a80/2504 GBTB Yanlord Zhuhai/output/review/approved-product-library/previews/wd02/side.svg",
+            "bytes": 110721,
+            "sha256": "bb894387341c30afa97fa849c6d5bd4eeb04a3d8ac9fcef9450ea86929804db1"
+          },
+          "preview": {
+            "path": "/Users/jiaxinchen/.codex/worktrees/3a80/2504 GBTB Yanlord Zhuhai/output/review/approved-product-library/previews/wd02/side.png",
+            "bytes": 9856,
+            "sha256": "ae6ebf095e6b5d69be0c8dc628e1f93220b58206ff37d03ce7a2ae9176bfa51d"
+          },
+          "line_geometry_changed": false
+        }
+      },
+      "iso_evidence": {
+        "path": "/Users/jiaxinchen/.codex/worktrees/3a80/2504 GBTB Yanlord Zhuhai/output/review/approved-product-library/previews/wd02/iso.png",
+        "bytes": 355861,
+        "sha256": "decc454f39927b614a40863f6ad3d6881e1a76bfc8651543a07ab28e19ea865d",
+        "kind": "new_pure_IFC_Body_camera_render",
+        "source_ifc_sha256": "1612bf65e84c1be9aaac261ce9545646b4a665ec9933efbf3aa2be48757b5f11",
+        "global_id": "3yuXF4PtnBHgIXDlmXFJ$7",
+        "source": "All Body representations loaded from this exact pure IFC; neutral display materials"
+      },
+      "approval_record": {
+        "path": "/Users/jiaxinchen/.codex/worktrees/3a80/2504 GBTB Yanlord Zhuhai/pipeline/decisions/wd02-drawing-approval.json",
+        "bytes": 2854,
+        "sha256": "8b213bf95e9d6ad27c88c8854fa2e7b9bf07a0998eb164255647fcd62c8f8507"
+      },
+      "validation_record": {
+        "path": "/Users/jiaxinchen/.codex/worktrees/3a80/2504 GBTB Yanlord Zhuhai/output/review/highpoly-types/wd02/product-package/handoff.json",
+        "bytes": 339,
+        "sha256": "4809adfb2a7d9f1fba153229a1b3d701da2a221c02e58ddfb1ed36a853ce5705"
+      },
+      "recipe": {
+        "path": "/Users/jiaxinchen/.codex/worktrees/3a80/2504 GBTB Yanlord Zhuhai/output/review/highpoly-types/wd02/product-package/scene-recipe.json",
+        "bytes": 138005,
+        "sha256": "7b3bdd7b33d55c8bf81b718f136a8f04e2a5a268b3b4cc0d9be5fa6941f035e6"
+      },
+      "ifc_write_allowed": false,
+      "library_authorization": null,
+      "legacy_iso_reference": {
+        "path": "/Users/jiaxinchen/.codex/worktrees/3a80/2504 GBTB Yanlord Zhuhai/output/review/highpoly-types/wd02/bonsai-camera-iso.png",
+        "bytes": 934229,
+        "sha256": "8ace16390fda8d88a4dc42dcc7f5a6509b54eed4c0dd64761e36690e73332f58",
+        "kind": "historical_representative_reference_only"
+      },
+      "insertion_content": "approved_3d_2d",
+      "review_category": "approved",
+      "category_label": "已验收",
+      "formal_ifc_write_authorized": false
+    },
+    {
+      "id": "tab02",
+      "name": "RODA Bernardo 367 / TAB02",
+      "global_id": "2eX84IyLr8_e34nuOoRPLQ",
+      "source_label": "基于原始高模几何生成的简化图纸表达",
+      "display_front_normal_project": [
+        0.0,
+        -1.0,
+        0.0
+      ],
+      "display_front_basis": "candidate_scene_camera_pending_review",
+      "single_product_approval_status": "approved",
+      "scene_approval_status": "pending",
+      "approval_label": "单品已通过、场景待验收",
+      "package_validation": "pass",
+      "ifc_path": "../highpoly-types/tab02/product-package/TAB02-product.ifc",
+      "ifc_sha256": "50b949ce1d56c3bca38e476a012b467f6ae8405aaa1482d8c2f598a9e7e97623",
+      "ifc_bytes": 151108,
+      "body_fingerprint": "0c32f5c9521a0cdbdd3dd2e0ab24c452c989916cadedffb50c38ff71cd56bee3",
+      "single_svg": {
+        "plan": "previews/tab02/plan.svg",
+        "front": "previews/tab02/front.svg",
+        "side": "previews/tab02/side.svg"
+      },
+      "scene_svg": {
+        "plan": "../highpoly-types/tab02/product-package/TAB02-SCENE-PLAN.svg",
+        "front": "../highpoly-types/tab02/product-package/TAB02-SCENE-FRONT.svg",
+        "side": "../highpoly-types/tab02/product-package/TAB02-SCENE-SIDE.svg"
+      },
+      "previews": {
+        "plan": "previews/tab02/plan.png",
+        "front": "previews/tab02/front.png",
+        "side": "previews/tab02/side.png",
+        "iso": "previews/tab02/iso.png"
+      },
+      "thumbnail_evidence": {
+        "plan": {
+          "source_svg": {
+            "path": "/Users/jiaxinchen/.codex/worktrees/3a80/2504 GBTB Yanlord Zhuhai/output/review/highpoly-types/tab02/product-package/TAB02-SCENE-PLAN.svg",
+            "bytes": 319883,
+            "sha256": "7e358387c01f3cb3cae6bdd077fbf0f9a95157f855c1104896c0098cd759192e"
+          },
+          "annotation_global_id": "0_yrt7Q5LAo8bNoti0wUFw",
+          "line_count": 64,
+          "single_svg": {
+            "path": "/Users/jiaxinchen/.codex/worktrees/3a80/2504 GBTB Yanlord Zhuhai/output/review/approved-product-library/previews/tab02/plan.svg",
+            "bytes": 107344,
+            "sha256": "54ee29b3094e8fa20d903185ef1fc6b6ac0a077f3b6f25dd0c24c9447c4c7a8b"
+          },
+          "preview": {
+            "path": "/Users/jiaxinchen/.codex/worktrees/3a80/2504 GBTB Yanlord Zhuhai/output/review/approved-product-library/previews/tab02/plan.png",
+            "bytes": 8586,
+            "sha256": "96467f3a9f166011f8e67788e3416441af2fd6545dc76b2daa12fc44ffacab0d"
+          },
+          "line_geometry_changed": false
+        },
+        "front": {
+          "source_svg": {
+            "path": "/Users/jiaxinchen/.codex/worktrees/3a80/2504 GBTB Yanlord Zhuhai/output/review/highpoly-types/tab02/product-package/TAB02-SCENE-FRONT.svg",
+            "bytes": 98388,
+            "sha256": "f71b2e485a6ef00bcf367f53dda4c7c1a841d4127d52cae75c1fffe88de4dbad"
+          },
+          "annotation_global_id": "1ltP9fSi93NQi$aRKhFcVt",
+          "line_count": 23,
+          "single_svg": {
+            "path": "/Users/jiaxinchen/.codex/worktrees/3a80/2504 GBTB Yanlord Zhuhai/output/review/approved-product-library/previews/tab02/front.svg",
+            "bytes": 93630,
+            "sha256": "f2f06f69a4d6837ed2cbe25d67a4ea8f13379ebba731a96529cb1b35aad8d15b"
+          },
+          "preview": {
+            "path": "/Users/jiaxinchen/.codex/worktrees/3a80/2504 GBTB Yanlord Zhuhai/output/review/approved-product-library/previews/tab02/front.png",
+            "bytes": 5078,
+            "sha256": "a19b18a2d82fca0fe3f27ee04763ee280c6ce5845c80c4f0617ab29e00cb6fa2"
+          },
+          "line_geometry_changed": false
+        },
+        "side": {
+          "source_svg": {
+            "path": "/Users/jiaxinchen/.codex/worktrees/3a80/2504 GBTB Yanlord Zhuhai/output/review/highpoly-types/tab02/product-package/TAB02-SCENE-SIDE.svg",
+            "bytes": 116304,
+            "sha256": "5ebdbd317894bdcd72da1a922758f58e7b9088552d91955a9aa2ab194b472c7a"
+          },
+          "annotation_global_id": "2hfcUxy095Mhzz8PamM0ph",
+          "line_count": 22,
+          "single_svg": {
+            "path": "/Users/jiaxinchen/.codex/worktrees/3a80/2504 GBTB Yanlord Zhuhai/output/review/approved-product-library/previews/tab02/side.svg",
+            "bytes": 93282,
+            "sha256": "461e6f346da62f037b04911a9d6ffb86d3de9e92a208c9263456830817a14272"
+          },
+          "preview": {
+            "path": "/Users/jiaxinchen/.codex/worktrees/3a80/2504 GBTB Yanlord Zhuhai/output/review/approved-product-library/previews/tab02/side.png",
+            "bytes": 5110,
+            "sha256": "b4eedccd87f8df727abecaf4f6a825c4f0c0549135fabe869aafcd4187a6bc47"
+          },
+          "line_geometry_changed": false
+        }
+      },
+      "iso_evidence": {
+        "path": "/Users/jiaxinchen/.codex/worktrees/3a80/2504 GBTB Yanlord Zhuhai/output/review/approved-product-library/previews/tab02/iso.png",
+        "bytes": 364172,
+        "sha256": "8919e5a3e304aa7b909111da92fe95056326ca5770e6cd0d9f24421fd4f6d9d5",
+        "kind": "new_pure_IFC_Body_camera_render",
+        "source_ifc_sha256": "50b949ce1d56c3bca38e476a012b467f6ae8405aaa1482d8c2f598a9e7e97623",
+        "global_id": "2eX84IyLr8_e34nuOoRPLQ",
+        "source": "All Body representations loaded from this exact pure IFC; neutral display materials"
+      },
+      "approval_record": {
+        "path": "/Users/jiaxinchen/.codex/worktrees/3a80/2504 GBTB Yanlord Zhuhai/pipeline/decisions/tab02-drawing-approval.json",
+        "bytes": 1225,
+        "sha256": "47aaf3acdec9ab3dbb1304c51945d876f17daf776e43e950c4f7144c34b51157"
+      },
+      "validation_record": {
+        "path": "/Users/jiaxinchen/.codex/worktrees/3a80/2504 GBTB Yanlord Zhuhai/output/review/highpoly-types/tab02/product-package/handoff.json",
+        "bytes": 788,
+        "sha256": "dd723741218e3be26f9a4c56f583d21ef895acb8ba69f16a4ff8be88ee85869c"
+      },
+      "recipe": {
+        "path": "/Users/jiaxinchen/.codex/worktrees/3a80/2504 GBTB Yanlord Zhuhai/output/review/highpoly-types/tab02/product-package/scene-recipe.json",
+        "bytes": 90774,
+        "sha256": "b188aa46a8285c8ed14cbb56dbedb2e977608198101dff3fb3e1ff28bfead752"
+      },
+      "ifc_write_allowed": false,
+      "library_authorization": {
+        "path": "/Users/jiaxinchen/.codex/worktrees/3a80/2504 GBTB Yanlord Zhuhai/output/review/approved-product-library/migration-authorization.json",
+        "bytes": 1189,
+        "sha256": "be266f18465023b1c2436d1585bb59290504b0b66ba03d822cc5fb7d148ee4ee"
+      },
+      "legacy_iso_reference": {
+        "path": "/Users/jiaxinchen/.codex/worktrees/3a80/2504 GBTB Yanlord Zhuhai/output/review/highpoly-types/tab02/bonsai-camera-iso.png",
+        "bytes": 910158,
+        "sha256": "43cbb60945a7997da5663523420c63c7efd7cc49cd4b8c5aaad914c8284eda00",
+        "kind": "historical_representative_reference_only"
+      },
+      "insertion_content": "approved_3d_2d",
+      "review_category": "partial",
+      "category_label": "部分验收",
+      "formal_ifc_write_authorized": false
+    },
+    {
+      "id": "bst02",
+      "name": "Baxter Beside bedside table / project BST02",
+      "global_id": "3hA0vKpcn44u4Tsx4tqiUz",
+      "ifc_path": "candidate-packages/bst02.ifc",
+      "ifc_sha256": "a56e48d52a327ec7bc629222f406bc1869156dcdb6d1a47416ab0088ce558656",
+      "previews": {
+        "plan": "/Users/jiaxinchen/.codex/worktrees/3a80/2504 GBTB Yanlord Zhuhai/output/review/highpoly-types/bst02/bonsai-camera-plan.png",
+        "front": "/Users/jiaxinchen/.codex/worktrees/3a80/2504 GBTB Yanlord Zhuhai/output/review/highpoly-types/bst02/bonsai-camera-front-elevation.png",
+        "side": "/Users/jiaxinchen/.codex/worktrees/3a80/2504 GBTB Yanlord Zhuhai/output/review/highpoly-types/bst02/bonsai-camera-side-elevation.png",
+        "iso": "/Users/jiaxinchen/.codex/worktrees/3a80/2504 GBTB Yanlord Zhuhai/output/review/highpoly-types/bst02/bonsai-camera-iso.png"
+      },
+      "single_svg": {
+        "plan": "/Users/jiaxinchen/.codex/worktrees/3a80/2504 GBTB Yanlord Zhuhai/output/review/highpoly-types/bst02/plan.svg",
+        "front": "/Users/jiaxinchen/.codex/worktrees/3a80/2504 GBTB Yanlord Zhuhai/output/review/highpoly-types/bst02/front.svg",
+        "side": "/Users/jiaxinchen/.codex/worktrees/3a80/2504 GBTB Yanlord Zhuhai/output/review/highpoly-types/bst02/side.svg"
+      },
+      "display_front_normal_project": [
+        0,
+        -1,
+        0
+      ],
+      "display_front_basis": "project_axes_unreviewed",
+      "single_product_approval_status": "pending",
+      "scene_approval_status": "pending",
+      "approval_label": "尚未验收",
+      "source_label": "基于原始高模几何生成的简化图纸表达",
+      "package_validation": "pass",
+      "insertion_content": "body_only",
+      "candidate_review_index": "/Users/jiaxinchen/.codex/worktrees/3a80/2504 GBTB Yanlord Zhuhai/output/review/highpoly-types/bst02/index.html",
+      "preview_note": "原始 Bonsai Body 相机图；待审二维 SVG 单独列出，未嵌入 IFC",
+      "approval_record": {
+        "path": "/Users/jiaxinchen/.codex/worktrees/3a80/2504 GBTB Yanlord Zhuhai/pipeline/decisions/bst02-drawing-approval.json",
+        "sha256": "a04a7d4d3986dd686fd4ac99ba44aab1699a610adf92ba917dca6eb4834dd914"
+      },
+      "review_category": "pending",
+      "category_label": "未验收",
+      "formal_ifc_write_authorized": false
+    },
+    {
+      "id": "street",
+      "name": "antoniolupi Street domestic-custom integrated washbasin top / project STREET",
+      "global_id": "1FgLPMw$5B4wBH2ySMkXE1",
+      "ifc_path": "candidate-packages/street.ifc",
+      "ifc_sha256": "d8a38d005c75d52b2b0bbc340fba253aa59bfae96cb7d661c382d11642392492",
+      "previews": {
+        "plan": "/Users/jiaxinchen/.codex/worktrees/3a80/2504 GBTB Yanlord Zhuhai/output/review/highpoly-types/street/bonsai-camera-plan.png",
+        "front": "/Users/jiaxinchen/.codex/worktrees/3a80/2504 GBTB Yanlord Zhuhai/output/review/highpoly-types/street/bonsai-camera-front-elevation.png",
+        "side": "/Users/jiaxinchen/.codex/worktrees/3a80/2504 GBTB Yanlord Zhuhai/output/review/highpoly-types/street/bonsai-camera-side-elevation.png",
+        "iso": "/Users/jiaxinchen/.codex/worktrees/3a80/2504 GBTB Yanlord Zhuhai/output/review/highpoly-types/street/bonsai-camera-iso.png"
+      },
+      "single_svg": {
+        "plan": "/Users/jiaxinchen/.codex/worktrees/3a80/2504 GBTB Yanlord Zhuhai/output/review/highpoly-types/street/plan.svg",
+        "front": "/Users/jiaxinchen/.codex/worktrees/3a80/2504 GBTB Yanlord Zhuhai/output/review/highpoly-types/street/front.svg",
+        "side": "/Users/jiaxinchen/.codex/worktrees/3a80/2504 GBTB Yanlord Zhuhai/output/review/highpoly-types/street/side.svg"
+      },
+      "display_front_normal_project": [
+        0,
+        -1,
+        0
+      ],
+      "display_front_basis": "project_axes_unreviewed",
+      "single_product_approval_status": "pending",
+      "scene_approval_status": "pending",
+      "approval_label": "尚未验收",
+      "source_label": "基于原始高模几何生成的简化图纸表达",
+      "package_validation": "pass",
+      "insertion_content": "body_only",
+      "candidate_review_index": "/Users/jiaxinchen/.codex/worktrees/3a80/2504 GBTB Yanlord Zhuhai/output/review/highpoly-types/street/index.html",
+      "preview_note": "原始 Bonsai Body 相机图；待审二维 SVG 单独列出，未嵌入 IFC",
+      "approval_record": {
+        "path": "/Users/jiaxinchen/.codex/worktrees/3a80/2504 GBTB Yanlord Zhuhai/pipeline/decisions/street-drawing-approval.json",
+        "sha256": "6f3cdc55d591b94af2698d730cb1646cbe3c03c38b5d0bd30e19f1e16a2a9637"
+      },
+      "review_category": "pending",
+      "category_label": "未验收",
+      "formal_ifc_write_authorized": false
+    },
+    {
+      "id": "gessi316-54093",
+      "name": "Gessi316 Meccanica high counter basin spout / 54093 G000",
+      "global_id": "1jM_suNMPAw8_nvZejQSnp",
+      "ifc_path": "candidate-packages/gessi316-54093.ifc",
+      "ifc_sha256": "6339b61967421d5a09b886b7a81f21ac27cc4d081eaebed95b485f67b821cfdb",
+      "previews": {
+        "plan": "/Users/jiaxinchen/.codex/worktrees/3a80/2504 GBTB Yanlord Zhuhai/output/review/highpoly-types/gessi316-54093/bonsai-camera-plan.png",
+        "front": "/Users/jiaxinchen/.codex/worktrees/3a80/2504 GBTB Yanlord Zhuhai/output/review/highpoly-types/gessi316-54093/bonsai-camera-front-elevation.png",
+        "side": "/Users/jiaxinchen/.codex/worktrees/3a80/2504 GBTB Yanlord Zhuhai/output/review/highpoly-types/gessi316-54093/bonsai-camera-side-elevation.png",
+        "iso": "/Users/jiaxinchen/.codex/worktrees/3a80/2504 GBTB Yanlord Zhuhai/output/review/highpoly-types/gessi316-54093/bonsai-camera-iso.png"
+      },
+      "single_svg": {
+        "plan": "/Users/jiaxinchen/.codex/worktrees/3a80/2504 GBTB Yanlord Zhuhai/output/review/highpoly-types/gessi316-54093/plan.svg",
+        "front": "/Users/jiaxinchen/.codex/worktrees/3a80/2504 GBTB Yanlord Zhuhai/output/review/highpoly-types/gessi316-54093/front.svg",
+        "side": "/Users/jiaxinchen/.codex/worktrees/3a80/2504 GBTB Yanlord Zhuhai/output/review/highpoly-types/gessi316-54093/side.svg"
+      },
+      "display_front_normal_project": [
+        0,
+        -1,
+        0
+      ],
+      "display_front_basis": "project_axes_unreviewed",
+      "single_product_approval_status": "pending",
+      "scene_approval_status": "pending",
+      "approval_label": "尚未验收",
+      "source_label": "Gessi 官方精确型号 54093 G000 原生 DWG 图纸表达",
+      "package_validation": "pass",
+      "insertion_content": "body_only",
+      "candidate_review_index": "/Users/jiaxinchen/.codex/worktrees/3a80/2504 GBTB Yanlord Zhuhai/output/review/highpoly-types/gessi316-54093/index.html",
+      "preview_note": "原始 Bonsai Body 相机图；待审二维 SVG 单独列出，未嵌入 IFC",
+      "approval_record": {
+        "path": "/Users/jiaxinchen/.codex/worktrees/3a80/2504 GBTB Yanlord Zhuhai/pipeline/decisions/gessi316-54093-drawing-approval.json",
+        "sha256": "96068dd3b33b6e2aeb4f71f079bdc1fc23d8dc97c790dfd80b49ecb37f915d60"
+      },
+      "review_category": "pending",
+      "category_label": "未验收",
+      "formal_ifc_write_authorized": false
+    },
+    {
+      "id": "geberit-154-154-00-1-f",
+      "name": "Geberit CleanLine 154.154.00.1 / project flange component .F",
+      "global_id": "2jjNIn9gHBYwNSWwlM5T_i",
+      "ifc_path": "candidate-packages/geberit-154-154-00-1-f.ifc",
+      "ifc_sha256": "6614108d7efac331eeef0688382bca0b3ca2a6dc3eb54774ef0f57414d917f01",
+      "previews": {
+        "plan": "/Users/jiaxinchen/.codex/worktrees/3a80/2504 GBTB Yanlord Zhuhai/output/review/highpoly-types/geberit-154-154-00-1-f/bonsai-camera-plan.png",
+        "front": "/Users/jiaxinchen/.codex/worktrees/3a80/2504 GBTB Yanlord Zhuhai/output/review/highpoly-types/geberit-154-154-00-1-f/bonsai-camera-front-elevation.png",
+        "side": "/Users/jiaxinchen/.codex/worktrees/3a80/2504 GBTB Yanlord Zhuhai/output/review/highpoly-types/geberit-154-154-00-1-f/bonsai-camera-side-elevation.png",
+        "iso": "/Users/jiaxinchen/.codex/worktrees/3a80/2504 GBTB Yanlord Zhuhai/output/review/highpoly-types/geberit-154-154-00-1-f/bonsai-camera-iso.png"
+      },
+      "single_svg": {
+        "plan": "/Users/jiaxinchen/.codex/worktrees/3a80/2504 GBTB Yanlord Zhuhai/output/review/highpoly-types/geberit-154-154-00-1-f/plan.svg",
+        "front": "/Users/jiaxinchen/.codex/worktrees/3a80/2504 GBTB Yanlord Zhuhai/output/review/highpoly-types/geberit-154-154-00-1-f/front.svg",
+        "side": "/Users/jiaxinchen/.codex/worktrees/3a80/2504 GBTB Yanlord Zhuhai/output/review/highpoly-types/geberit-154-154-00-1-f/side.svg"
+      },
+      "display_front_normal_project": [
+        0,
+        -1,
+        0
+      ],
+      "display_front_basis": "project_axes_unreviewed",
+      "single_product_approval_status": "pending",
+      "scene_approval_status": "pending",
+      "approval_label": "尚未验收",
+      "source_label": "基于原始高模几何生成的简化图纸表达",
+      "package_validation": "pass",
+      "insertion_content": "body_only",
+      "candidate_review_index": "/Users/jiaxinchen/.codex/worktrees/3a80/2504 GBTB Yanlord Zhuhai/output/review/highpoly-types/geberit-154-154-00-1-f/index.html",
+      "preview_note": "原始 Bonsai Body 相机图；待审二维 SVG 单独列出，未嵌入 IFC",
+      "approval_record": {
+        "path": "/Users/jiaxinchen/.codex/worktrees/3a80/2504 GBTB Yanlord Zhuhai/pipeline/decisions/geberit-154-154-00-1-f-drawing-approval.json",
+        "sha256": "e7e40a77530404c03e219041e4ab0685c596db9f69c6fdb810e80edd8df2d530"
+      },
+      "review_category": "pending",
+      "category_label": "未验收",
+      "formal_ifc_write_authorized": false
+    },
+    {
+      "id": "geberit-115-770",
+      "name": "Geberit Sigma01 / 115.770.11.5 dual-flush actuator plate",
+      "global_id": "2gFgcOYEXEaQWAzcKulTFt",
+      "ifc_path": "candidate-packages/geberit-115-770.ifc",
+      "ifc_sha256": "2527a691d19835fcfc233093f8fefca6e6aacbce2039b74ac2ea1f216350746c",
+      "previews": {
+        "plan": "/Users/jiaxinchen/.codex/worktrees/3a80/2504 GBTB Yanlord Zhuhai/output/review/highpoly-types/geberit-115-770/bonsai-camera-plan.png",
+        "front": "/Users/jiaxinchen/.codex/worktrees/3a80/2504 GBTB Yanlord Zhuhai/output/review/highpoly-types/geberit-115-770/bonsai-camera-front-elevation.png",
+        "side": "/Users/jiaxinchen/.codex/worktrees/3a80/2504 GBTB Yanlord Zhuhai/output/review/highpoly-types/geberit-115-770/bonsai-camera-side-elevation.png",
+        "iso": "/Users/jiaxinchen/.codex/worktrees/3a80/2504 GBTB Yanlord Zhuhai/output/review/highpoly-types/geberit-115-770/bonsai-camera-iso.png"
+      },
+      "single_svg": {
+        "plan": "/Users/jiaxinchen/.codex/worktrees/3a80/2504 GBTB Yanlord Zhuhai/output/review/highpoly-types/geberit-115-770/plan.svg",
+        "front": "/Users/jiaxinchen/.codex/worktrees/3a80/2504 GBTB Yanlord Zhuhai/output/review/highpoly-types/geberit-115-770/front.svg",
+        "side": "/Users/jiaxinchen/.codex/worktrees/3a80/2504 GBTB Yanlord Zhuhai/output/review/highpoly-types/geberit-115-770/side.svg"
+      },
+      "display_front_normal_project": [
+        0,
+        -1,
+        0
+      ],
+      "display_front_basis": "project_axes_unreviewed",
+      "single_product_approval_status": "pending",
+      "scene_approval_status": "pending",
+      "approval_label": "尚未验收",
+      "source_label": "基于 Geberit 精确型号原生 DWG 的官方图纸表达",
+      "package_validation": "pass",
+      "insertion_content": "body_only",
+      "candidate_review_index": "/Users/jiaxinchen/.codex/worktrees/3a80/2504 GBTB Yanlord Zhuhai/output/review/highpoly-types/geberit-115-770/index.html",
+      "preview_note": "原始 Bonsai Body 相机图；待审二维 SVG 单独列出，未嵌入 IFC",
+      "approval_record": {
+        "path": "/Users/jiaxinchen/.codex/worktrees/3a80/2504 GBTB Yanlord Zhuhai/pipeline/decisions/geberit-115-770-drawing-approval.json",
+        "sha256": "4a53f62caba7b521ae30c366abdd0d4d4dded463615d006f6c654900d8fb2514"
+      },
+      "review_category": "pending",
+      "category_label": "未验收",
+      "formal_ifc_write_authorized": false
+    },
+    {
+      "id": "wd01",
+      "name": "Poliform Pivot + Senzafine custom wardrobe / project WD01",
+      "global_id": "2mPTt7$nvBSAn28I9NWt6T",
+      "ifc_path": "candidate-packages/wd01.ifc",
+      "ifc_sha256": "81269b7130d1ee0e1f4ed78040a4757b0ab185fc2f5b22a4def3cfb644f22afd",
+      "previews": {
+        "plan": "/Users/jiaxinchen/.codex/worktrees/3a80/2504 GBTB Yanlord Zhuhai/output/review/highpoly-types/wd01/bonsai-camera-plan.png",
+        "front": "/Users/jiaxinchen/.codex/worktrees/3a80/2504 GBTB Yanlord Zhuhai/output/review/highpoly-types/wd01/bonsai-camera-front-elevation.png",
+        "side": "/Users/jiaxinchen/.codex/worktrees/3a80/2504 GBTB Yanlord Zhuhai/output/review/highpoly-types/wd01/bonsai-camera-side-elevation.png",
+        "iso": "/Users/jiaxinchen/.codex/worktrees/3a80/2504 GBTB Yanlord Zhuhai/output/review/highpoly-types/wd01/bonsai-camera-iso.png"
+      },
+      "single_svg": {
+        "plan": "/Users/jiaxinchen/.codex/worktrees/3a80/2504 GBTB Yanlord Zhuhai/output/review/highpoly-types/wd01/plan.svg",
+        "front": "/Users/jiaxinchen/.codex/worktrees/3a80/2504 GBTB Yanlord Zhuhai/output/review/highpoly-types/wd01/front.svg",
+        "side": "/Users/jiaxinchen/.codex/worktrees/3a80/2504 GBTB Yanlord Zhuhai/output/review/highpoly-types/wd01/side.svg"
+      },
+      "display_front_normal_project": [
+        0,
+        -1,
+        0
+      ],
+      "display_front_basis": "project_axes_unreviewed",
+      "single_product_approval_status": "pending",
+      "scene_approval_status": "pending",
+      "approval_label": "尚未验收",
+      "source_label": "基于原始高模几何生成的简化图纸表达",
+      "package_validation": "pass",
+      "insertion_content": "body_only",
+      "candidate_review_index": "/Users/jiaxinchen/.codex/worktrees/3a80/2504 GBTB Yanlord Zhuhai/output/review/highpoly-types/wd01/index.html",
+      "preview_note": "原始 Bonsai Body 相机图；待审二维 SVG 单独列出，未嵌入 IFC",
+      "approval_record": {
+        "path": "/Users/jiaxinchen/.codex/worktrees/3a80/2504 GBTB Yanlord Zhuhai/pipeline/decisions/wd01-drawing-approval.json",
+        "sha256": "c168aa15cbc083842c7c7192bb48167f48f08902040e792f0bbbfba1bf736aed"
+      },
+      "review_category": "pending",
+      "category_label": "未验收",
+      "formal_ifc_write_authorized": false
+    },
+    {
+      "id": "gessi316-54038",
+      "name": "Gessi316 two-way built-in shower mixer external parts / 54038",
+      "global_id": "245NU$zZL0d9tYTVwwBdk$",
+      "ifc_path": "candidate-packages/gessi316-54038.ifc",
+      "ifc_sha256": "86f81e89406ce454c454d8e9a7a158b8aabedcda42c0797d6dacebf55c24f2c2",
+      "previews": {
+        "plan": "/Users/jiaxinchen/.codex/worktrees/3a80/2504 GBTB Yanlord Zhuhai/output/review/highpoly-types/gessi316-54038/bonsai-camera-plan.png",
+        "front": "/Users/jiaxinchen/.codex/worktrees/3a80/2504 GBTB Yanlord Zhuhai/output/review/highpoly-types/gessi316-54038/bonsai-camera-front-elevation.png",
+        "side": "/Users/jiaxinchen/.codex/worktrees/3a80/2504 GBTB Yanlord Zhuhai/output/review/highpoly-types/gessi316-54038/bonsai-camera-side-elevation.png",
+        "iso": "/Users/jiaxinchen/.codex/worktrees/3a80/2504 GBTB Yanlord Zhuhai/output/review/highpoly-types/gessi316-54038/bonsai-camera-iso.png"
+      },
+      "single_svg": {
+        "plan": "/Users/jiaxinchen/.codex/worktrees/3a80/2504 GBTB Yanlord Zhuhai/output/review/highpoly-types/gessi316-54038/plan.svg",
+        "front": "/Users/jiaxinchen/.codex/worktrees/3a80/2504 GBTB Yanlord Zhuhai/output/review/highpoly-types/gessi316-54038/front.svg",
+        "side": "/Users/jiaxinchen/.codex/worktrees/3a80/2504 GBTB Yanlord Zhuhai/output/review/highpoly-types/gessi316-54038/side.svg"
+      },
+      "display_front_normal_project": [
+        0,
+        -1,
+        0
+      ],
+      "display_front_basis": "project_axes_unreviewed",
+      "single_product_approval_status": "pending",
+      "scene_approval_status": "pending",
+      "approval_label": "尚未验收",
+      "source_label": "Gessi 官方精确型号 54038 原生 DWG 图纸表达",
+      "package_validation": "pass",
+      "insertion_content": "body_only",
+      "candidate_review_index": "/Users/jiaxinchen/.codex/worktrees/3a80/2504 GBTB Yanlord Zhuhai/output/review/highpoly-types/gessi316-54038/index.html",
+      "preview_note": "原始 Bonsai Body 相机图；待审二维 SVG 单独列出，未嵌入 IFC",
+      "approval_record": {
+        "path": "/Users/jiaxinchen/.codex/worktrees/3a80/2504 GBTB Yanlord Zhuhai/pipeline/decisions/gessi316-54038-drawing-approval.json",
+        "sha256": "0ce947f7bc161ec022fb3a665b9fc75758dbde57a4611f568b13b05beb2aede4"
+      },
+      "review_category": "pending",
+      "category_label": "未验收",
+      "formal_ifc_write_authorized": false
+    },
+    {
+      "id": "electric-flue-check-valve",
+      "name": "Electric flue check valve / unresolved project proxy",
+      "global_id": "1faflkXXH6M9cnYPE9Liir",
+      "ifc_path": "candidate-packages/electric-flue-check-valve.ifc",
+      "ifc_sha256": "404bc9f5954bf50aa63c5321f617dabf61f11cb220a0cc49a75acd01268d24a2",
+      "previews": {
+        "plan": "/Users/jiaxinchen/.codex/worktrees/3a80/2504 GBTB Yanlord Zhuhai/output/review/highpoly-types/electric-flue-check-valve/bonsai-camera-plan.png",
+        "front": "/Users/jiaxinchen/.codex/worktrees/3a80/2504 GBTB Yanlord Zhuhai/output/review/highpoly-types/electric-flue-check-valve/bonsai-camera-front-elevation.png",
+        "side": "/Users/jiaxinchen/.codex/worktrees/3a80/2504 GBTB Yanlord Zhuhai/output/review/highpoly-types/electric-flue-check-valve/bonsai-camera-side-elevation.png",
+        "iso": "/Users/jiaxinchen/.codex/worktrees/3a80/2504 GBTB Yanlord Zhuhai/output/review/highpoly-types/electric-flue-check-valve/bonsai-camera-iso.png"
+      },
+      "single_svg": {
+        "plan": "/Users/jiaxinchen/.codex/worktrees/3a80/2504 GBTB Yanlord Zhuhai/output/review/highpoly-types/electric-flue-check-valve/plan.svg",
+        "front": "/Users/jiaxinchen/.codex/worktrees/3a80/2504 GBTB Yanlord Zhuhai/output/review/highpoly-types/electric-flue-check-valve/front.svg",
+        "side": "/Users/jiaxinchen/.codex/worktrees/3a80/2504 GBTB Yanlord Zhuhai/output/review/highpoly-types/electric-flue-check-valve/side.svg"
+      },
+      "display_front_normal_project": [
+        0,
+        -1,
+        0
+      ],
+      "display_front_basis": "project_axes_unreviewed",
+      "single_product_approval_status": "pending",
+      "scene_approval_status": "pending",
+      "approval_label": "尚未验收",
+      "source_label": "基于原始高模几何生成的简化图纸表达",
+      "package_validation": "pass",
+      "insertion_content": "body_only",
+      "candidate_review_index": "/Users/jiaxinchen/.codex/worktrees/3a80/2504 GBTB Yanlord Zhuhai/output/review/highpoly-types/electric-flue-check-valve/index.html",
+      "preview_note": "原始 Bonsai Body 相机图；待审二维 SVG 单独列出，未嵌入 IFC",
+      "approval_record": {
+        "path": "/Users/jiaxinchen/.codex/worktrees/3a80/2504 GBTB Yanlord Zhuhai/pipeline/decisions/electric-flue-check-valve-drawing-approval.json",
+        "sha256": "6525d74a11bb016235110c32d1e80980759f8df17b6f0d9f8df8a19a6be332c5"
+      },
+      "review_category": "pending",
+      "category_label": "未验收",
+      "formal_ifc_write_authorized": false
+    },
+    {
+      "id": "bst01",
+      "name": "Baxter Ninfea bedside table / project BST01",
+      "global_id": "3eic1dzkn5heTIn4PhF37v",
+      "ifc_path": "candidate-packages/bst01.ifc",
+      "ifc_sha256": "d6e4638e536e14b11317f9395c801cd77893027958643e89138e9378eaf5f727",
+      "previews": {
+        "plan": "/Users/jiaxinchen/.codex/worktrees/3a80/2504 GBTB Yanlord Zhuhai/output/review/highpoly-types/bst01/bonsai-camera-plan.png",
+        "front": "/Users/jiaxinchen/.codex/worktrees/3a80/2504 GBTB Yanlord Zhuhai/output/review/highpoly-types/bst01/bonsai-camera-front-elevation.png",
+        "side": "/Users/jiaxinchen/.codex/worktrees/3a80/2504 GBTB Yanlord Zhuhai/output/review/highpoly-types/bst01/bonsai-camera-side-elevation.png",
+        "iso": "/Users/jiaxinchen/.codex/worktrees/3a80/2504 GBTB Yanlord Zhuhai/output/review/highpoly-types/bst01/bonsai-camera-iso.png"
+      },
+      "single_svg": {
+        "plan": "/Users/jiaxinchen/.codex/worktrees/3a80/2504 GBTB Yanlord Zhuhai/output/review/highpoly-types/bst01/plan.svg",
+        "front": "/Users/jiaxinchen/.codex/worktrees/3a80/2504 GBTB Yanlord Zhuhai/output/review/highpoly-types/bst01/front.svg",
+        "side": "/Users/jiaxinchen/.codex/worktrees/3a80/2504 GBTB Yanlord Zhuhai/output/review/highpoly-types/bst01/side.svg"
+      },
+      "display_front_normal_project": [
+        0,
+        -1,
+        0
+      ],
+      "display_front_basis": "project_axes_unreviewed",
+      "single_product_approval_status": "pending",
+      "scene_approval_status": "pending",
+      "approval_label": "尚未验收",
+      "source_label": "基于原始高模几何生成的简化图纸表达",
+      "package_validation": "pass",
+      "insertion_content": "body_only",
+      "candidate_review_index": "/Users/jiaxinchen/.codex/worktrees/3a80/2504 GBTB Yanlord Zhuhai/output/review/highpoly-types/bst01/index.html",
+      "preview_note": "原始 Bonsai Body 相机图；待审二维 SVG 单独列出，未嵌入 IFC",
+      "approval_record": {
+        "path": "/Users/jiaxinchen/.codex/worktrees/3a80/2504 GBTB Yanlord Zhuhai/pipeline/decisions/bst01-drawing-approval.json",
+        "sha256": "ad5a71c35568067bd202a455360bb0f4dac0729257b85138720054da76fb3c80"
+      },
+      "review_category": "pending",
+      "category_label": "未验收",
+      "formal_ifc_write_authorized": false
+    }
+  ],
+  "excluded": [
+    {
+      "id": "libelle",
+      "reason": "excluded_other_task_do_not_touch"
+    }
+  ],
+  "formal_sha256_unchanged": "7a50b87e8f48a7c2bfbaa9f1dabdfca7155fa684b2325c66aa1ae15c8ab0a25c",
+  "inclusion_authority": "用户要求将尚未通过验证的模型全部加入图库并标注验收类别；纳入不代表批准"
+}

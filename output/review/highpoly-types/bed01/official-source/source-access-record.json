@@ -5,8 +5,8 @@
   "designer": "Paola Navone",
   "project_type_code": "BED01",
   "project_ifc_type_description": "Casablanca 180",
-  "identity_status": "manufacturer_family_and_180x200_variant_confirmed_dimension_conflict_review_required",
-  "research_date": "2026-08-23",
+  "identity_status": "manufacturer_family_and_180x200_variant_confirmed_independent_native_2d_dwg_acquired_dimension_conflict_review_required",
+  "research_date": "2026-08-25",
   "official_identity_sources": [
     {
       "kind": "manufacturer_product_page",
@@ -27,11 +27,103 @@
   "official_product_cad": {
     "published_access_surface": "Baxter professional login",
     "product_page": "https://www.baxter.it/en/products/casablanca-beds",
-    "advertised_formats": ["2D", "3D", "BIM"],
+    "download_url": "https://dam.baxter.it/asset/e2700d9c-12bf-479b-bbe1-393f44df2cd6/Baxter_Casablanca_Bed_BIM.zip",
+    "advertised_formats": ["RFA", "DWG", "IFC", "SKP"],
     "authentication_required": true,
-    "acquired": false,
-    "local_cad_files": [],
-    "reason": "The official product page requires login for 2D, 3D and BIM downloads. No account was created and no third-party or visually similar Casablanca CAD was substituted."
+    "acquired": true,
+    "acquisition_date": "2026-08-25",
+    "archive": {
+      "original_filename": "Baxter_Casablanca_Bed_BIM.zip",
+      "local_path": "output/review/highpoly-types/bed01/official-source/bim-download/Baxter_Casablanca_Bed_BIM.zip",
+      "bytes": 23462184,
+      "sha256": "209e5e6eb630b5391ac749226724231999abea447d3aa2092877abed95a9c758",
+      "included_variants": [
+        "BED BASE 160 X 200 H90",
+        "BED BASE 180 X 200 H90",
+        "BED BASE 200 X 200 H90",
+        "CALIFORNIA KING SIZE BED 183 X 213 H90",
+        "KING SIZE BED 193 X 203 H90",
+        "QUEEN SIZE BED 152 X 203 H90"
+      ]
+    },
+    "selected_variant": "CASABLANCA_BED BASE 180 X 200 H90",
+    "local_cad_files": [
+      {
+        "format": "DWG",
+        "local_path": "output/review/highpoly-types/bed01/official-source/bim-download/CASABLANCA_BED BASE 180 X 200 H90.dwg",
+        "bytes": 692694,
+        "sha256": "1d3fb7931d2252f301498acdea30a145303f0a2aadbeb8e1638fdf7b800642cb",
+        "dwg_header": "AC1024",
+        "dwg_version": "AutoCAD 2010",
+        "insunits": "millimetres",
+        "entity_counts": {
+          "3DSOLID": 20,
+          "INSERT": 6,
+          "BLOCK": 9,
+          "ENDBLK": 9
+        },
+        "model_extents_min_mm": [-1082.584342, -1261.372105, 2.349900],
+        "model_extents_max_mm": [1082.584341, 1212.729402, 863.188020],
+        "model_extents_size_mm": [2165.168683, 2474.101507, 860.838119]
+      }
+    ],
+    "note": "The Baxter BIM archive is a six-variant family package. The project-matching selection is the 180 x 200 H90 DWG; the other sizes are retained only in the original archive and must not be substituted."
+  },
+  "official_product_2d_3d_cad": {
+    "published_access_surface": "Baxter professional login / Casablanca product page",
+    "product_page": "https://www.baxter.it/en/products/casablanca-beds",
+    "download_url": "https://dam.baxter.it/asset/76c053fa-2ac5-4a60-85e3-d9df4ceb9cf0/Baxter_Casablanca_Bed_2D_3D.zip",
+    "authentication_required": true,
+    "acquired": true,
+    "acquisition_date": "2026-08-25",
+    "archive": {
+      "original_filename": "Baxter_Casablanca_Bed_2D_3D.zip",
+      "local_path": "output/review/highpoly-types/bed01/official-source/2d-3d-download/Baxter_Casablanca_Bed_2D_3D.zip",
+      "bytes": 128653647,
+      "sha256": "acf67fddcfaa5e5bb50eb90f78a5eac262bfa318a767a938fc29f73931bb5970",
+      "byte_identical_download_copies": [
+        "/Users/jiaxinchen/Downloads/Baxter_Casablanca_Bed_2D_3D.zip",
+        "/Users/jiaxinchen/Downloads/Baxter_Casablanca_Bed_2D_3D (1).zip",
+        "/Users/jiaxinchen/Downloads/Baxter_Casablanca_Bed_2D_3D (2).zip"
+      ],
+      "included_2d_member": "CASABLANCA/2D/Casablanca_Letto.dwg",
+      "included_3d_variants": [
+        "160x200",
+        "180x200",
+        "200x200",
+        "Queen 152x203",
+        "King 193x203",
+        "California King 183x213"
+      ]
+    },
+    "selected_native_2d": {
+      "local_path": "output/review/highpoly-types/bed01/official-source/2d-3d-download/CASABLANCA/2D/Casablanca_Letto.dwg",
+      "bytes": 173784,
+      "sha256": "ab697db9c27448c62a9a77537d7cc4b6286577c335328113d703184be28d9c4a",
+      "dwg_header": "AC1032",
+      "dwg_version": "AutoCAD 2018/2019/2020",
+      "insunits": "millimetres",
+      "selected_group": "180x200",
+      "selected_geometry_layers": ["_ARREDO", "_MATERASSO", "_PIEDINI", "_CUCITURE"],
+      "excluded_layers": ["_QUOTE", "0", "Defpoints"],
+      "official_dimension_evidence_mm": {
+        "overall_width": 2100,
+        "inner_width": 2020,
+        "overall_depth": 2520,
+        "overall_height": 900
+      },
+      "autocad_evidence": [
+        "output/review/highpoly-types/bed01/official-source/autocad-casablanca-2d-full-modelspace.png",
+        "output/review/highpoly-types/bed01/official-source/autocad-casablanca-180x200-three-view.png"
+      ]
+    },
+    "superseded_error_candidate": {
+      "source_dwg": "output/review/highpoly-types/bed01/official-source/bim-download/CASABLANCA_BED BASE 180 X 200 H90.dwg",
+      "sha256": "1d3fb7931d2252f301498acdea30a145303f0a2aadbeb8e1638fdf7b800642cb",
+      "geometry_kind": "native_dwg_3d_solid_projected_envelope",
+      "approval_status": "superseded_error_candidate_excluded_from_approval",
+      "reason": "The ACIS 3DSOLID projection envelope is not the independently published manufacturer 2D drawing."
+    }
   },
   "dimension_cross_check": {
     "official_product_page_180x200_variant_overall_mm": [2100.0, 2520.0, 900.0],
@@ -47,8 +139,10 @@
     "source_label_zh": "基于原始高模几何生成的简化图纸表达",
     "source_label_en": "simplified drawing representation derived from the original high-poly geometry",
     "official_cad_used": false,
-    "third_party_cad_used": false
+    "third_party_cad_used": false,
+    "supplemental_official_native_2d_review_reference_used": true,
+    "supplemental_reference_primary_candidate_replaced": false
   },
-  "scope": "manufacturer family and 180 x 200 cm variant identity only; manufacturer dimension conflict requires review; not a project shop drawing and not drawing geometry",
+  "scope": "manufacturer family and 180 x 200 cm variant identity plus native 2D review reference; manufacturer/project dimension conflict requires review; not a project shop drawing and no IFC write authority",
   "pass": true
 }

@@ -1,0 +1,23 @@
+{
+  "status": "awaiting_foreign_dwg_confirmation",
+  "source_dwg": "official-source/Marilyn_Abaco.dwg",
+  "source_dwg_sha256": "cb9825eecab7c78ee28e7668e933c2fe413395a63bf75f3afab8cc4959864724",
+  "verified_fit_only_entities": [
+    {"native_entity_index": 1005, "handle_hex": "3F81", "degree": 3, "fit_point_count": 3, "knotparam": 0, "fit_tolerance_mm": 0.00001},
+    {"native_entity_index": 1006, "handle_hex": "3F82", "degree": 3, "fit_point_count": 3, "knotparam": 0, "fit_tolerance_mm": 0.00001}
+  ],
+  "existing_front_interpolation": "quadratic interpolation; not a verified native cubic evaluation",
+  "attempts": [
+    "AutoCAD 2024 original file chooser: correct DWG selected, Open disabled.",
+    "Hash-identical temporary copy without stale DWL sidecars: Open also disabled, so a stale source lock alone does not explain the blocker.",
+    "AutoCAD 2026 get_app_state timed out repeatedly after launch.",
+    "AutoCAD 2024 finally enabled Open on the original source. Opening now awaits the native Open - Foreign DWG File confirmation; the agent has not clicked Continue."
+  ],
+  "blocker_screenshot": "official-source/autocad-marilyn-foreign-dwg-confirmation-2026-09-07.png",
+  "blocker_screenshot_is_official_geometry_evidence": false,
+  "side_approved_svg_preserved": true,
+  "single_product_svg_changed": false,
+  "source_dwg_saved": false,
+  "ifc_written": false,
+  "remaining": "User confirms Continue opening DWG file. Then capture readable Plan/Front/Side and evaluate fit-only Front curves before replacing interpolation."
+}

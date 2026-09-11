@@ -15,7 +15,7 @@ function sha256(path: string) {
   return createHash("sha256").update(readFileSync(path)).digest("hex");
 }
 
-test("official Hima identity does not masquerade as acquired CAD geometry", () => {
+test("acquired official Hima DWG remains reference rather than candidate geometry", () => {
   const access = JSON.parse(readFileSync(join(product, "official-source/source-access-record.json"), "utf8"));
   const globalProfile = JSON.parse(
     readFileSync(join(root, "pipeline/decisions/highpoly-drawing-profile-register.json"), "utf8"),
@@ -26,15 +26,20 @@ test("official Hima identity does not masquerade as acquired CAD geometry", () =
   expect(access.manufacturer).toBe("Poliform");
   expect(access.family).toBe("Hima");
   expect(access.official_2d_dwg.published_on_product_page).toBeTrue();
-  expect(access.official_2d_dwg.acquired).toBeFalse();
-  expect(access.official_2d_dwg.local_path).toBeNull();
-  expect(access.official_2d_dwg.sha256).toBeNull();
-  expect(access.official_2d_dwg.access_status).toBe(
-    "published_registration_form_and_captcha_required_not_acquired",
+  expect(access.official_2d_dwg.acquired).toBeTrue();
+  expect(access.official_2d_dwg.local_path).toBe(
+    "output/review/highpoly-types/hima01/official-source/official-download/Poliform-HIMA-screen.dwg",
   );
-  expect(access.official_2d_dwg.public_exact_native_dwg_url_located).toBeFalse();
+  expect(access.official_2d_dwg.sha256).toBe(
+    "f0e1b980aa102f3e06fe602f9e7a9b40db45d76e45200c08e4b8b4a0eec1d523",
+  );
+  expect(sha256(join(root, access.official_2d_dwg.local_path))).toBe(access.official_2d_dwg.sha256);
+  expect(access.official_2d_dwg.access_status).toBe(
+    "acquired_from_authenticated_30_day_download_session",
+  );
+  expect(access.official_2d_dwg.public_exact_native_dwg_url_located).toBeTrue();
   expect(access.official_2d_dwg.download_link_behavior).toBe(
-    "same-page registration modal; no public native-DWG asset URL exposed",
+    "authenticated product-page download tile with data-file-url pointing to the native DWG",
   );
   expect(access.official_technical_sheet).toBe(
     "https://www.poliform.it/assets/pdf/201250-hima-poliform-en-us.pdf",
@@ -77,13 +82,9 @@ test("official Hima identity does not masquerade as acquired CAD geometry", () =
   expect(access.drawing_geometry_source.official_cad_used).toBeFalse();
   expect(access.drawing_geometry_source.third_party_cad_used).toBeFalse();
   expect(globalProfile.drawing_source).toEqual(access.drawing_geometry_source);
-  expect(globalProfile.official_reference).toMatchObject({
-    source_kind: "manufacturer_product_page_and_technical_publication_identity_only",
-    technical_sheet: "https://www.poliform.it/assets/pdf/201250-hima-poliform-en-us.pdf",
-    technical_sheet_legacy: "https://www.poliform.it/assets/pdf/200467-hima-poliform-en.pdf",
-    official_2d_dwg_status: "published_registration_form_and_captcha_required_not_acquired",
-    official_2d_dwg_used: false,
-  });
+  expect(access.official_dimension_cross_check.matched_official_dwg_variant).toBe(
+    "PVA11 / 3 elements / 2330 x 115 x 1000 mm",
+  );
 });
 
 test("single-instance review has three transparent geometry-derived views and no blue CAD line", () => {
@@ -189,7 +190,7 @@ test("Bonsai evidence contains unclipped actual IFC Body camera renders", () => 
   expect(sha256(join(root, evidence.isolated_ifc))).toBe(evidence.isolated_ifc_sha256);
 });
 
-test("pending Hima review leaves the formal IFC byte-identical and creates no derived IFC", () => {
+test("approved Hima decision leaves the formal IFC byte-identical and creates no derived IFC", () => {
   const candidate = JSON.parse(readFileSync(join(product, "candidate-representations.json"), "utf8"));
   expect(candidate.formal_ifc_write_allowed).toBeFalse();
   expect(candidate.review_status).toBe("visual_review_pending");
@@ -197,14 +198,14 @@ test("pending Hima review leaves the formal IFC byte-identical and creates no de
   expect(sha256(formal)).toBe(formalHash);
 });
 
-test("writer rejects missing apply and the pending human approval record", () => {
+test("approved writer still rejects a call without the explicit apply flag", () => {
   const temporary = mkdtempSync(join(tmpdir(), "hima01-gate-"));
   const output = join(temporary, "forbidden.ifc");
   const script = join(root, "pipeline/scripts/hima01_drawing_ifc.py");
   const approval = JSON.parse(readFileSync(join(root, "pipeline/decisions/hima01-drawing-approval.json"), "utf8"));
   const manifest = join(product, "manifest.json");
-  expect(approval.status).toBe("pending");
-  expect(approval.derived_ifc_write_allowed).toBeFalse();
+  expect(approval.status).toBe("approved");
+  expect(approval.derived_ifc_write_allowed).toBeTrue();
   expect(approval.formal_authoritative_ifc_write_allowed).toBeFalse();
   expect(approval.candidate_manifest_sha256).toBe(sha256(manifest));
 
@@ -216,12 +217,6 @@ test("writer rejects missing apply and the pending human approval record", () =>
   expect(withoutApply.stderr.toString()).toContain("IFC write requires the explicit --apply flag");
   expect(existsSync(output)).toBeFalse();
 
-  const pendingApproval = Bun.spawnSync(
-    ["python3", script, "--input", formal, "--output", output, "--apply"],
-    { cwd: root, stderr: "pipe" },
-  );
-  expect(pendingApproval.exitCode).not.toBe(0);
-  expect(pendingApproval.stderr.toString()).toContain("approval gate rejected IFC write");
   expect(existsSync(output)).toBeFalse();
   expect(sha256(formal)).toBe(formalHash);
   rmSync(temporary, { recursive: true, force: true });
@@ -244,7 +239,7 @@ test("a scoped temporary approval writes verified Hima representations and sourc
     approved_views: ["plan", "front", "side"],
     derived_ifc_write_allowed: true,
     formal_authoritative_ifc_write_allowed: false,
-    scope: "manufacturer family identity and nominal dimensions only; not official CAD geometry and not a project shop drawing",
+    scope: "geometry-derived Plan, Front and Side drawing representation for the project-folded HIMA01 Body; the official PVA11 DWG remains family and unfolded-state reference only, not project candidate geometry or a project shop drawing",
     approval_evidence: "temporary automated writer verification only",
   }, null, 2));
   const run = Bun.spawnSync([
@@ -276,6 +271,7 @@ test("a scoped temporary approval writes verified Hima representations and sourc
     "POLIFORM-HIMA-OFFICIAL-NEWS-2022-TECHNICAL-DATA",
     "POLIFORM-HIMA-OFFICIAL-PAGE-EVIDENCE",
     "POLIFORM-HIMA-OFFICIAL-PRODUCT-PAGE",
+    "POLIFORM-HIMA-OFFICIAL-PVA11-DWG",
     "POLIFORM-HIMA-OFFICIAL-TECHNICAL-SHEET",
     "POLIFORM-HIMA-SOURCE-ACCESS-RECORD",
   ]);

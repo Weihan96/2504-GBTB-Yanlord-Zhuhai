@@ -1,0 +1,70 @@
+{
+  "schema_version": 1,
+  "profile_key": "wd03",
+  "ifc_type_name": "WD03",
+  "representative_global_id": "3cmikd9MTB$egM5KQaNgUf",
+  "formal_ifc": "2504 GBTB Yanlord Zhuhai.ifc",
+  "formal_ifc_sha256": "7a50b87e8f48a7c2bfbaa9f1dabdfca7155fa684b2325c66aa1ae15c8ab0a25c",
+  "formal_ifc_bytes_unchanged": true,
+  "derived_ifc": "output/review/highpoly-types/wd03/Poliform-Senzafine-WD03-derived-drawing.ifc",
+  "derived_ifc_sha256_before_bonsai_create_drawing": "2d6f97bf269cfa517a5832b50213c382398d9ed2c4467f2d3e7a51ae016c313e",
+  "derived_ifc_sha256": "4b43da2669561eee6fcdcf8ddeb967dce706e6a6ffc1b361ff85b29d6a32a67b",
+  "candidate_manifest": "output/review/highpoly-types/wd03/manifest.json",
+  "candidate_manifest_sha256": "bcc415f99b139da333e1972ce0900ac5693daaf9ead45d3cc6ed310d342f496c",
+  "approval_record": "pipeline/decisions/wd03-drawing-approval.json",
+  "approval_record_sha256": "73550d91f39e117d999621229ed902f9177657a4da282e2011e6cbab43e391be",
+  "approval": {
+    "status": "approved",
+    "reviewer": "project owner",
+    "review_date": "2026-08-29",
+    "approved_views": [
+      "plan",
+      "front",
+      "side"
+    ],
+    "scope": "official manufacturer and Senzafine modular wardrobe-family identity only; not an exact project configuration, not official CAD geometry and not a project shop drawing"
+  },
+  "representations": {
+    "plan": "Wd03Plan",
+    "front": "Wd03Front",
+    "side": "Wd03Side"
+  },
+  "representation_path_counts": {
+    "plan": 5,
+    "front": 9,
+    "side": 3
+  },
+  "representation_geometry_source": "proxy_paths_mm derived from the isolated representative IFC Body",
+  "official_cad_geometry_included": false,
+  "source_document_associations": [
+    "POLIFORM-SENZAFINE-WD03-OFFICIAL-PAGE-EVIDENCE",
+    "POLIFORM-SENZAFINE-WD03-OFFICIAL-PRODUCT-PAGE",
+    "POLIFORM-SENZAFINE-WD03-OFFICIAL-TECHNICAL-CATALOG-ROUTE",
+    "POLIFORM-SENZAFINE-WD03-SOURCE-ACCESS-RECORD"
+  ],
+  "source_property_set": "Pset_Wd03DrawingSource",
+  "source_kind": "geometry_derived_simplified_proxy",
+  "source_label_zh": "基于原始高模几何生成的简化图纸表达",
+  "bonsai_create_drawing": {
+    "operator": "bpy.ops.bim.create_drawing",
+    "views": [
+      "plan",
+      "front",
+      "side"
+    ],
+    "evidence": "output/review/highpoly-types/wd03/bonsai-drawings/wardrobe/WD03-WARDROBE-create-drawing-evidence.json",
+    "persisted_path_counts": {
+      "plan": 5,
+      "front": 9,
+      "side": 3
+    },
+    "target_body_projection_count": {
+      "plan": 0,
+      "front": 0,
+      "side": 0
+    },
+    "pass": true,
+    "front_camera_revision_evidence": "output/review/highpoly-types/wd03/bonsai-drawings/wardrobe/WD03-FRONT-window-to-bed-evidence.json"
+  },
+  "pass": true
+}

@@ -1,0 +1,689 @@
+{
+  "schema_version": 1,
+  "generated_at": "2026-09-05T11:53:14.438833+00:00",
+  "representative_global_id": "2eX84IyLr8_e34nuOoRPLQ",
+  "source_kind": "geometry_derived_simplified_proxy",
+  "source_label_zh": "基于原始高模几何生成的简化图纸表达",
+  "isolated_ifc": "output/review/highpoly-types/tab02/RODA-Bernardo-367-TAB02-bonsai-isolated.ifc",
+  "isolated_ifc_sha256": "195062b1b29219964b1e457572bdd7c4d313a94c6d8cb61eee0666cc2a445f90",
+  "mesh_vertex_count": 936,
+  "mesh_face_count": 1860,
+  "representation_item_count": 3,
+  "components": [
+    {
+      "item_id": 781,
+      "ifc_entity": "IfcPolygonalFaceSet",
+      "semantic": "stone_base",
+      "face_count": 716,
+      "minimum_mm": [
+        -150.0,
+        -150.0,
+        -3.85463217003192e-21
+      ],
+      "maximum_mm": [
+        150.0,
+        150.0,
+        40.0
+      ],
+      "size_mm": [
+        300.0,
+        300.0,
+        40.0
+      ]
+    },
+    {
+      "item_id": 1547,
+      "ifc_entity": "IfcPolygonalFaceSet",
+      "semantic": "rounded_tabletop",
+      "face_count": 764,
+      "minimum_mm": [
+        -250.0,
+        -250.0,
+        667.0
+      ],
+      "maximum_mm": [
+        250.0,
+        250.0,
+        670.0
+      ],
+      "size_mm": [
+        500.0,
+        500.0,
+        3.0
+      ]
+    },
+    {
+      "item_id": 1929,
+      "ifc_entity": "IfcPolygonalFaceSet",
+      "semantic": "central_column",
+      "face_count": 380,
+      "minimum_mm": [
+        -25.0,
+        -25.0,
+        40.0
+      ],
+      "maximum_mm": [
+        25.0,
+        25.0,
+        667.0
+      ],
+      "size_mm": [
+        50.0,
+        50.0,
+        627.0
+      ]
+    }
+  ],
+  "views": {
+    "plan": [
+      {
+        "id": "plan.rounded_tabletop.0",
+        "component": "rounded_tabletop",
+        "item_id": 1547,
+        "kind": "visible_component_boundary",
+        "path_mm": [
+          [
+            -250.0,
+            -200.0
+          ],
+          [
+            -250.0,
+            200.0
+          ],
+          [
+            -249.726089,
+            205.226105
+          ],
+          [
+            -248.907379,
+            210.395279
+          ],
+          [
+            -247.552811,
+            215.450546
+          ],
+          [
+            -245.677246,
+            220.336533
+          ],
+          [
+            -243.301254,
+            225.0
+          ],
+          [
+            -240.450821,
+            229.388931
+          ],
+          [
+            -237.157211,
+            233.456207
+          ],
+          [
+            -233.456512,
+            237.156906
+          ],
+          [
+            -229.389236,
+            240.450516
+          ],
+          [
+            -225.0,
+            243.300964
+          ],
+          [
+            -220.336823,
+            245.676956
+          ],
+          [
+            -215.450836,
+            247.552521
+          ],
+          [
+            -210.395584,
+            248.907074
+          ],
+          [
+            -205.22641,
+            249.725784
+          ],
+          [
+            -200.0,
+            250.0
+          ],
+          [
+            200.0,
+            250.0
+          ],
+          [
+            205.22641,
+            249.725784
+          ],
+          [
+            210.395584,
+            248.907074
+          ],
+          [
+            215.450836,
+            247.552521
+          ],
+          [
+            220.336823,
+            245.676956
+          ],
+          [
+            225.0,
+            243.300964
+          ],
+          [
+            229.389236,
+            240.450516
+          ],
+          [
+            233.456512,
+            237.156906
+          ],
+          [
+            237.157211,
+            233.456207
+          ],
+          [
+            240.450821,
+            229.388931
+          ],
+          [
+            243.301254,
+            225.0
+          ],
+          [
+            245.677246,
+            220.336533
+          ],
+          [
+            247.552811,
+            215.450546
+          ],
+          [
+            248.907379,
+            210.395279
+          ],
+          [
+            249.726089,
+            205.226105
+          ],
+          [
+            250.0,
+            200.0
+          ],
+          [
+            250.0,
+            -200.0
+          ],
+          [
+            249.726089,
+            -205.2267
+          ],
+          [
+            248.907379,
+            -210.395874
+          ],
+          [
+            247.552811,
+            -215.451141
+          ],
+          [
+            245.677246,
+            -220.337128
+          ],
+          [
+            243.301254,
+            -225.0
+          ],
+          [
+            240.450821,
+            -229.389542
+          ],
+          [
+            237.157211,
+            -233.456802
+          ],
+          [
+            233.456512,
+            -237.157516
+          ],
+          [
+            229.389236,
+            -240.451111
+          ],
+          [
+            225.0,
+            -243.301559
+          ],
+          [
+            220.336823,
+            -245.677551
+          ],
+          [
+            215.450836,
+            -247.553116
+          ],
+          [
+            210.395584,
+            -248.907669
+          ],
+          [
+            205.22641,
+            -249.726379
+          ],
+          [
+            200.0,
+            -250.0
+          ],
+          [
+            -200.0,
+            -250.0
+          ],
+          [
+            -205.22641,
+            -249.726379
+          ],
+          [
+            -210.395584,
+            -248.907669
+          ],
+          [
+            -215.450836,
+            -247.553116
+          ],
+          [
+            -220.336823,
+            -245.677551
+          ],
+          [
+            -225.0,
+            -243.301559
+          ],
+          [
+            -229.389236,
+            -240.451111
+          ],
+          [
+            -233.456512,
+            -237.157516
+          ],
+          [
+            -237.157211,
+            -233.456802
+          ],
+          [
+            -240.450821,
+            -229.389542
+          ],
+          [
+            -243.301254,
+            -225.0
+          ],
+          [
+            -245.677246,
+            -220.337128
+          ],
+          [
+            -247.552811,
+            -215.451141
+          ],
+          [
+            -248.907379,
+            -210.395874
+          ],
+          [
+            -249.726089,
+            -205.2267
+          ],
+          [
+            -250.0,
+            -200.0
+          ]
+        ],
+        "projection_boundary_error_mm": 0.0,
+        "sides": [
+          "rounded_tabletop",
+          "exterior_void_or_adjacent_contact_component"
+        ]
+      }
+    ],
+    "front": [
+      {
+        "id": "front.stone_base.0",
+        "component": "stone_base",
+        "item_id": 781,
+        "kind": "visible_component_boundary",
+        "path_mm": [
+          [
+            -146.558441,
+            -0.0
+          ],
+          [
+            -148.0,
+            0.0
+          ],
+          [
+            -150.0,
+            2.0
+          ],
+          [
+            -150.0,
+            38.0
+          ],
+          [
+            -148.0,
+            40.0
+          ],
+          [
+            148.0,
+            40.0
+          ],
+          [
+            150.0,
+            38.0
+          ],
+          [
+            150.0,
+            2.0
+          ],
+          [
+            148.0,
+            -0.0
+          ],
+          [
+            -146.558441,
+            -0.0
+          ]
+        ],
+        "projection_boundary_error_mm": 8.526512829121202e-14,
+        "sides": [
+          "stone_base",
+          "exterior_void_or_adjacent_contact_component"
+        ]
+      },
+      {
+        "id": "front.rounded_tabletop.0",
+        "component": "rounded_tabletop",
+        "item_id": 1547,
+        "kind": "visible_component_boundary",
+        "path_mm": [
+          [
+            -249.912125,
+            667.086548
+          ],
+          [
+            -250.0,
+            667.298706
+          ],
+          [
+            -250.0,
+            669.69873
+          ],
+          [
+            -249.912125,
+            669.910889
+          ],
+          [
+            -249.699966,
+            670.0
+          ],
+          [
+            249.699966,
+            670.0
+          ],
+          [
+            249.912125,
+            669.910889
+          ],
+          [
+            250.0,
+            669.69873
+          ],
+          [
+            250.0,
+            667.298706
+          ],
+          [
+            249.912125,
+            667.086548
+          ],
+          [
+            249.699966,
+            667.0
+          ],
+          [
+            -249.699966,
+            667.0
+          ],
+          [
+            -249.912125,
+            667.086548
+          ]
+        ],
+        "projection_boundary_error_mm": 8.526512829121202e-14,
+        "sides": [
+          "rounded_tabletop",
+          "exterior_void_or_adjacent_contact_component"
+        ]
+      },
+      {
+        "id": "front.central_column.0",
+        "component": "central_column",
+        "item_id": 1929,
+        "kind": "visible_component_boundary",
+        "path_mm": [
+          [
+            -25.0,
+            40.0
+          ],
+          [
+            -25.0,
+            667.0
+          ]
+        ],
+        "projection_boundary_error_mm": 1.0658141036401503e-14,
+        "sides": [
+          "central_column",
+          "exterior_void_or_adjacent_contact_component"
+        ]
+      },
+      {
+        "id": "front.central_column.1",
+        "component": "central_column",
+        "item_id": 1929,
+        "kind": "visible_component_boundary",
+        "path_mm": [
+          [
+            25.0,
+            40.0
+          ],
+          [
+            25.0,
+            667.0
+          ]
+        ],
+        "projection_boundary_error_mm": 1.0658141036401503e-14,
+        "sides": [
+          "central_column",
+          "exterior_void_or_adjacent_contact_component"
+        ]
+      }
+    ],
+    "side": [
+      {
+        "id": "side.stone_base.0",
+        "component": "stone_base",
+        "item_id": 781,
+        "kind": "visible_component_boundary",
+        "path_mm": [
+          [
+            -148.0,
+            40.0
+          ],
+          [
+            148.0,
+            40.0
+          ],
+          [
+            150.0,
+            38.0
+          ],
+          [
+            150.0,
+            2.0
+          ],
+          [
+            148.0,
+            -0.0
+          ],
+          [
+            -148.0,
+            0.0
+          ],
+          [
+            -150.0,
+            2.0
+          ],
+          [
+            -150.0,
+            38.0
+          ],
+          [
+            -148.0,
+            40.0
+          ]
+        ],
+        "projection_boundary_error_mm": 8.526512829121202e-14,
+        "sides": [
+          "stone_base",
+          "exterior_void_or_adjacent_contact_component"
+        ]
+      },
+      {
+        "id": "side.rounded_tabletop.0",
+        "component": "rounded_tabletop",
+        "item_id": 1547,
+        "kind": "visible_component_boundary",
+        "path_mm": [
+          [
+            -249.700256,
+            670.0
+          ],
+          [
+            249.699661,
+            670.0
+          ],
+          [
+            249.911835,
+            669.910889
+          ],
+          [
+            250.0,
+            669.69873
+          ],
+          [
+            250.0,
+            667.298706
+          ],
+          [
+            249.911835,
+            667.086548
+          ],
+          [
+            249.699661,
+            667.0
+          ],
+          [
+            -249.700256,
+            667.0
+          ],
+          [
+            -249.91243,
+            667.086548
+          ],
+          [
+            -250.0,
+            667.298706
+          ],
+          [
+            -250.0,
+            669.69873
+          ],
+          [
+            -249.91243,
+            669.910889
+          ],
+          [
+            -249.700256,
+            670.0
+          ]
+        ],
+        "projection_boundary_error_mm": 8.526512829121202e-14,
+        "sides": [
+          "rounded_tabletop",
+          "exterior_void_or_adjacent_contact_component"
+        ]
+      },
+      {
+        "id": "side.central_column.0",
+        "component": "central_column",
+        "item_id": 1929,
+        "kind": "visible_component_boundary",
+        "path_mm": [
+          [
+            -25.0,
+            40.0
+          ],
+          [
+            -25.0,
+            667.0
+          ]
+        ],
+        "projection_boundary_error_mm": 1.0658141036401503e-14,
+        "sides": [
+          "central_column",
+          "exterior_void_or_adjacent_contact_component"
+        ]
+      },
+      {
+        "id": "side.central_column.1",
+        "component": "central_column",
+        "item_id": 1929,
+        "kind": "visible_component_boundary",
+        "path_mm": [
+          [
+            25.0,
+            40.0
+          ],
+          [
+            25.0,
+            667.0
+          ]
+        ],
+        "projection_boundary_error_mm": 1.0658141036401503e-14,
+        "sides": [
+          "central_column",
+          "exterior_void_or_adjacent_contact_component"
+        ]
+      }
+    ]
+  },
+  "meaningless_coplanar_internal_lines": 0,
+  "coordinate_frame": "IFC product local XYZ in mm; no translation, reflection, fitting or scaling",
+  "visibility": {
+    "plan": "Opaque tabletop occludes column and base completely.",
+    "front": "Camera from -Y; all three components visible.",
+    "side": "Camera from -X; all three components visible."
+  },
+  "omissions": {
+    "separate_mounting_hardware": "No separate mounting hardware exists in the actual Body; none invented.",
+    "column_contact_edges": "Coincide with tabletop underside/base top; drawn once by those components."
+  },
+  "derived_ifc_write_allowed": false,
+  "formal_ifc_write_allowed": false,
+  "review_status": "visual_review_pending",
+  "pass": true
+}

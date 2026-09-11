@@ -1,0 +1,193 @@
+{
+  "schema_version": 1,
+  "generator": "pipeline/scripts/create_sxb010_dining_bay_drawing.py",
+  "mode": "actual_bonsai_create_drawing_in_dining_bay_and_dining_context",
+  "provider": {
+    "name": "public bonsai-mcp",
+    "bridge": "127.0.0.1:9878",
+    "blender": "4.5.3 LTS",
+    "bonsai_ifcopenshell": "0.8.4",
+    "drawing_generator": "bpy.ops.bim.create_drawing",
+    "linework_mode": "OPENCASCADE"
+  },
+  "formal_ifc": "2504 GBTB Yanlord Zhuhai.ifc",
+  "formal_ifc_sha256": "7a50b87e8f48a7c2bfbaa9f1dabdfca7155fa684b2325c66aa1ae15c8ab0a25c",
+  "formal_ifc_bytes_unchanged": true,
+  "derived_ifc": "output/review/highpoly-types/sxb010/sxb010-derived-drawing.ifc",
+  "derived_ifc_sha256": "cbf75ca62617f1c870394239f9f0909e5fb10fdecb16fdf4dd727c20823cf293",
+  "derived_ifc_report": "output/review/highpoly-types/sxb010/sxb010-derived-drawing-report.json",
+  "derived_ifc_report_sha256": "d5720ab97e75d9a5460af165eb0a162ed11971b05e78f116adde97cc007925df",
+  "save_boundary": "product_level_derived_ifc_and_per_view_session_ifcs_only",
+  "target": {
+    "global_id": "1O9JRXCI56VRUbpuLJy86Z",
+    "ifc_class": "IfcBuildingElementProxy",
+    "name": "sxb010",
+    "object_type": "KITCHEN"
+  },
+  "spaces": [
+    {
+      "global_id": "3AlgzRX3jCvPS420cah9Qn",
+      "long_name": "餐厅飘窗"
+    },
+    {
+      "global_id": "2JnxeB$or6D8nffRg7GQbf",
+      "long_name": "餐厅"
+    }
+  ],
+  "source_kind": "geometry_derived_simplified_proxy",
+  "source_label_zh": "基于原始高模几何生成的简化图纸表达",
+  "official_cad_used": false,
+  "third_party_cad_used": false,
+  "project_context_retained": true,
+  "target_projection_policy": "target Body excluded from ordinary grey projection; approved merged-line IFC LINEWORK Annotation shown once in blue",
+  "context_colour": "light_grey",
+  "target_colour": "blue",
+  "line_simplification": {
+    "slat_count_before": 45,
+    "slat_centerline_count_after": 45,
+    "outer_envelope_delta_mm": [
+      0.0,
+      0.0,
+      0.0,
+      0.0
+    ],
+    "near_line_merge_threshold_mm": 22.0,
+    "audit": "output/review/highpoly-types/sxb010/line-simplification-audit.json",
+    "audit_sha256": "d16cb22d8a7baa09b60d123cc17578cc64d64db4bb93e747a92b3d34034e81dc"
+  },
+  "views": [
+    {
+      "view": "plan",
+      "drawing_name": "SXB010-DINING-BAY-PLAN",
+      "drawing_global_id": "3OIwzRTtDEuuu20DAfHBxu",
+      "linework_annotation_global_id": "3joB6oO5n11PvcTsJYDil8",
+      "source_kind": "geometry_derived_simplified_proxy",
+      "source_label_zh": "基于原始高模几何生成的简化图纸表达",
+      "path_count": 5,
+      "slat_centerline_count_after": 45,
+      "outer_envelope_delta_mm": [
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "create_drawing_operator": "bpy.ops.bim.create_drawing",
+      "create_drawing_result": [
+        "FINISHED"
+      ],
+      "svg": "output/review/highpoly-types/sxb010/bonsai-drawings/dining-bay/SXB010-DINING-BAY-PLAN.svg",
+      "svg_sha256": "5ad408902981ed75dabf407789a6642caec0da69ba7a7a3a895a16d04c8edaa6",
+      "svg_bytes": 1271196,
+      "session_ifc": "output/review/highpoly-types/sxb010/bonsai-drawings/dining-bay/sxb010-dining-bay-plan-session.ifc",
+      "session_ifc_sha256": "8a4fd3f96d3af6cf3cd73945bd08905e3f8e9aa49ed8e7118cb43904353a83ec",
+      "session_ifc_bytes": 87371926,
+      "evidence": "output/review/highpoly-types/sxb010/bonsai-drawings/dining-bay/SXB010-DINING-BAY-PLAN-create-drawing-evidence.json",
+      "evidence_sha256": "35aeab2247cc0d66cdecb5277f091ed47ac544e030767295cad37b44bd803d08",
+      "pdf_rendered_preview": "output/review/highpoly-types/sxb010/bonsai-drawings/dining-bay/sxb010-dining-bay-bonsai-plan-preview.png",
+      "pdf_rendered_preview_sha256": "13742c23563d5dc2c404101d18c1c3e29d077a2d252441acc55d526d8876ca16",
+      "review_crop": "output/review/highpoly-types/sxb010/bonsai-drawings/dining-bay/sxb010-dining-bay-bonsai-plan-review-crop.png",
+      "review_crop_sha256": "9d1f811807f83f6f992e85abedc565ba788583a9dc3e181311d59516f5b7c332",
+      "reloaded_from_persisted_session": true,
+      "pass": true
+    },
+    {
+      "view": "front",
+      "drawing_name": "SXB010-DINING-BAY-FRONT",
+      "drawing_global_id": "2uYJecBln8xA_ebyVlaxOg",
+      "linework_annotation_global_id": "3QPK3KW3b77Ag7KU6FZ3bS",
+      "source_kind": "geometry_derived_simplified_proxy",
+      "source_label_zh": "基于原始高模几何生成的简化图纸表达",
+      "path_count": 51,
+      "slat_centerline_count_after": 45,
+      "outer_envelope_delta_mm": [
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "create_drawing_operator": "bpy.ops.bim.create_drawing",
+      "create_drawing_result": [
+        "FINISHED"
+      ],
+      "svg": "output/review/highpoly-types/sxb010/bonsai-drawings/dining-bay/SXB010-DINING-BAY-FRONT.svg",
+      "svg_sha256": "d0e3f3dcaf7af86563a884eee37f57a0cb37635ec820e04d9ec67c1e26a713c3",
+      "svg_bytes": 2990076,
+      "session_ifc": "output/review/highpoly-types/sxb010/bonsai-drawings/dining-bay/sxb010-dining-bay-front-session.ifc",
+      "session_ifc_sha256": "8ad9c67af52c82bf206d8efd6391a7ff1b54b63d7dc7b5fa0587be6cae44682e",
+      "session_ifc_bytes": 87381292,
+      "evidence": "output/review/highpoly-types/sxb010/bonsai-drawings/dining-bay/SXB010-DINING-BAY-FRONT-create-drawing-evidence.json",
+      "evidence_sha256": "63a7f67306f8434ed5b5515790b743b5640bbc94b7af62b0f7df74d09ffaebf1",
+      "pdf_rendered_preview": "output/review/highpoly-types/sxb010/bonsai-drawings/dining-bay/sxb010-dining-bay-bonsai-front-preview.png",
+      "pdf_rendered_preview_sha256": "247d5cfa9e1bfe4750994bd7a2469f39fd96ab5d3ff91f4c9ed2dbd7e1a1768c",
+      "review_crop": "output/review/highpoly-types/sxb010/bonsai-drawings/dining-bay/sxb010-dining-bay-bonsai-front-review-crop.png",
+      "review_crop_sha256": "e0aefdfeb7722dc99ba1629c232728fcdcabbb3e27848735392d2391b2197d69",
+      "reloaded_from_persisted_session": true,
+      "pass": true
+    },
+    {
+      "view": "side",
+      "drawing_name": "SXB010-DINING-BAY-SIDE",
+      "drawing_global_id": "2dEW1BfC96bQzeBLruFl7e",
+      "linework_annotation_global_id": "2Y7nKsL6v56u_GvPPQTNmW",
+      "source_kind": "geometry_derived_simplified_proxy",
+      "source_label_zh": "基于原始高模几何生成的简化图纸表达",
+      "path_count": 55,
+      "slat_centerline_count_after": 45,
+      "outer_envelope_delta_mm": [
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "create_drawing_operator": "bpy.ops.bim.create_drawing",
+      "create_drawing_result": [
+        "FINISHED"
+      ],
+      "svg": "output/review/highpoly-types/sxb010/bonsai-drawings/dining-bay/SXB010-DINING-BAY-SIDE.svg",
+      "svg_sha256": "93138cee6dd215ff410ac806a82e1b0e4f5273b1c51325735f54d0b740cc4fcd",
+      "svg_bytes": 2123812,
+      "session_ifc": "output/review/highpoly-types/sxb010/bonsai-drawings/dining-bay/sxb010-dining-bay-side-session.ifc",
+      "session_ifc_sha256": "5a8a08b77b692d747bfd350550d2b9fc8fbd3638bbe34b1b5e3734a0afa1dbfd",
+      "session_ifc_bytes": 87381637,
+      "evidence": "output/review/highpoly-types/sxb010/bonsai-drawings/dining-bay/SXB010-DINING-BAY-SIDE-create-drawing-evidence.json",
+      "evidence_sha256": "a3e39a0a256a15a303350e165ae27b97ed8c7b1d9f9acb1b20a06e57c72592c5",
+      "pdf_rendered_preview": "output/review/highpoly-types/sxb010/bonsai-drawings/dining-bay/sxb010-dining-bay-bonsai-side-preview.png",
+      "pdf_rendered_preview_sha256": "d622a23089f296677ec94deb4ddb59b6418449867413646a48a823065e18b684",
+      "review_crop": "output/review/highpoly-types/sxb010/bonsai-drawings/dining-bay/sxb010-dining-bay-bonsai-side-review-crop.png",
+      "review_crop_sha256": "4a49db9fd8894da184e838893ec06532b03456978a4f097ff44dd6e9767ce2d4",
+      "reloaded_from_persisted_session": true,
+      "pass": true
+    }
+  ],
+  "merged_pdf": {
+    "path": "output/review/highpoly-types/sxb010/bonsai-drawings/dining-bay/sxb010-dining-bay-bonsai-drawings.pdf",
+    "sha256": "85fd2e65f335d59350a4fe2a5de563d37e282af1689c874671d252718161f738",
+    "bytes": 112301,
+    "pages": 3,
+    "page_order": [
+      "plan",
+      "front",
+      "side"
+    ],
+    "svg_to_pdf": "Inkscape command-line export",
+    "pdf_merge": "pypdf PdfWriter"
+  },
+  "visual_validation": {
+    "path": "output/review/highpoly-types/sxb010/bonsai-drawings/dining-bay/visual-validation.json",
+    "sha256": "15a836ecef552a7b80a99fd27f6ac1b72ef8c6d31f672c933153b0dccd911973",
+    "blue_target_visible_in_all_views": true,
+    "blue_target_unobscured_by_grey_context": true,
+    "blue_target_not_clipped_in_all_views": true,
+    "context_colour": "light_grey",
+    "target_colour": "blue",
+    "pass": true
+  },
+  "pdf_skill_verification": {
+    "render_command": "pdftoppm -png -r 180",
+    "rendered_page_count": 3,
+    "latest_png_visual_inspection": "no clipping, no obstruction, no black squares, blue target legible against light-grey context",
+    "pass": true
+  },
+  "formal_authoritative_ifc_write_allowed": false,
+  "pass": true
+}

@@ -19,7 +19,8 @@ PRODUCT_DIR = ROOT / "output/review/highpoly-types/sxb010"
 PROFILE = PRODUCT_DIR / "profile.json"
 PROJECT_CONTEXT_MANIFEST = PRODUCT_DIR / "project-context-manifest.json"
 BONSAI_REVIEW_MANIFEST = PRODUCT_DIR / "bonsai-review-manifest.json"
-EXPECTED_PATH_COUNTS = {"plan": 8, "front": 241, "side": 84}
+EXPECTED_PATH_COUNTS = {"plan": 5, "front": 51, "side": 55}
+NEAR_LINE_MERGE_THRESHOLD_MM = 22.0
 
 shared.REPRESENTATIVE_GLOBAL_ID = "1O9JRXCI56VRUbpuLJy86Z"
 shared.IFC_TYPE_NAME = "sxb010"
@@ -51,6 +52,7 @@ def candidate_paths(candidate: dict, access: dict) -> dict:
         or candidate.get("third_party_cad_used") is not False
         or candidate.get("formal_ifc_write_allowed") is not False
         or candidate.get("review_status") != "visual_review_pending"
+        or candidate.get("near_line_merge_threshold_mm") != NEAR_LINE_MERGE_THRESHOLD_MM
     ):
         raise RuntimeError("pending sxb010 candidate source gate failed")
     official_cad = access.get("official_product_cad", {})
@@ -76,6 +78,11 @@ def candidate_paths(candidate: dict, access: dict) -> dict:
             item.get("source_kind") != shared.SOURCE_KIND
             or item.get("official_cad_paths_mm") != []
             or item.get("projection_axes") != expected_axes[view]
+            or item.get("line_simplification", {}).get("merge_threshold_mm") != NEAR_LINE_MERGE_THRESHOLD_MM
+            or item.get("line_simplification", {}).get("slat_count_before") != 45
+            or item.get("line_simplification", {}).get("slat_centerline_count_after") != 45
+            or item.get("line_simplification", {}).get("outer_envelope_preserved") is not True
+            or item.get("line_simplification", {}).get("pass") is not True
         ):
             raise RuntimeError(f"sxb010 {view} must remain semantic-axis geometry-derived linework")
         paths[view] = item.get("proxy_paths_mm", [])

@@ -81,9 +81,68 @@
     "source_dwg_sha256": "cb9825eecab7c78ee28e7668e933c2fe413395a63bf75f3afab8cc4959864724",
     "exact_model_3ds_filename": "Marilyn_bergere_86x100xh94.3ds",
     "native_dimension_labels": ["860", "1000", "940", "450"],
-    "three_view_path_counts": {"plan": 24, "front": 68, "side": 54},
+    "three_view_path_counts": {"plan": 44, "front": 96, "side": 78},
+    "negative_z_ocs_arc_repair": {
+      "restored_counts": {"plan": 2, "front": 10, "side": 16},
+      "side_support_arc_native_entity_index": 234,
+      "side_support_arc_length_mm": 65.39322688527301,
+      "audit": "output/review/highpoly-types/marilyn-01/marilyn-side-support-closure-audit.json",
+      "synthetic_join_added": false,
+      "legacy_layer_audit_predates_this_repair": true,
+      "autocad_closeups_status": "pending_readable_viewport",
+      "autocad_current_blocker_screenshot": "output/review/highpoly-types/marilyn-01/official-source/autocad-marilyn-viewport-blocker-2026-09-06.png"
+    },
+    "spatial_inventory_completeness": {
+      "selection_method": "exact 860 x 1000 x 940 mm bergere modelspace regions; all geometric entities inventoried before expected-layer assertion",
+      "prior_rational_spline_omission_counts": {"plan": 4, "front": 4, "side": 0},
+      "prior_fit_point_spline_omission_counts": {"plan": 0, "front": 2, "side": 0},
+      "restored_native_entity_indices": {
+        "plan": [975, 976, 982, 983],
+        "front": [170, 181, 183, 184, 1005, 1006],
+        "side": []
+      },
+      "pass": true
+    },
+    "native_layers_included_by_view": {
+      "plan": ["0", "_ARREDO"],
+      "front": ["0", "_ARREDO"],
+      "side": ["Make2D$Visibile$Curve", "_ARREDO"]
+    },
+    "project_headrest_cushion_interpretation": "The raised central headrest cushion is present in the project IFC Body but does not exist as an independent closed component in the exact official 2D cluster. Native internal centre lines are seam/fold details; no synthetic blue cushion outline is added.",
+    "layer_audit_svg": "output/review/highpoly-types/marilyn-01/official-source/marilyn-exact-cluster-layer-audit.svg",
+    "layer_audit_svg_sha256": "8ee81a55159558a34cf2891dbbd76c2fae68b5a048a8aeabe1d6b938103b4544",
+    "layer_audit_png": "output/review/highpoly-types/marilyn-01/official-source/marilyn-exact-cluster-layer-audit.png",
+    "layer_audit_png_sha256": "fa867bb0bec715ccfe428a97a4bf27945d8947ade31bde1e7afcabc0666163b0",
     "official_cad_used": true,
     "third_party_cad_used": false,
+    "pass": true
+  },
+  "autocad_direct_inspection": {
+    "application": "Autodesk AutoCAD 2024",
+    "mode": "direct read-only visual inspection of a byte-identical temporary copy",
+    "source_dwg": "output/review/highpoly-types/marilyn-01/official-source/Marilyn_Abaco.dwg",
+    "source_dwg_sha256": "cb9825eecab7c78ee28e7668e933c2fe413395a63bf75f3afab8cc4959864724",
+    "full_modelspace_screenshot": "output/review/highpoly-types/marilyn-01/official-source/autocad-marilyn-full-modelspace.png",
+    "full_modelspace_screenshot_sha256": "1eff00b28e82c98dd532c6cf935055a8c5c56a1bdcec4e69cfe8278d437c8e18",
+    "exact_variant": "Marilyn bergere armchair with swivel base - 86 x 100 x 94 cm",
+    "exact_dimension_labels_mm": [
+      860,
+      1000,
+      940,
+      450
+    ],
+    "adjacent_standard_armchair_dimension_labels_mm": [
+      800,
+      870,
+      780,
+      400
+    ],
+    "adjacent_pouf_dimension_labels_mm": [
+      800,
+      620,
+      450
+    ],
+    "selection_unique": true,
     "pass": true
   },
   "dimension_cross_check": {

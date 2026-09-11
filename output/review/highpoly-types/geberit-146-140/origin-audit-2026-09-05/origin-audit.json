@@ -1,0 +1,375 @@
+{
+  "task": "Read-only AquaClean146.140 cross-view origins audit",
+  "date": "2026-09-05",
+  "style_status": "user_accepted",
+  "placement_status": "pending_direction_and_installation_datum_review",
+  "courseEvidence": {
+    "mode": "embedded-course-index",
+    "lesson": "085000 Introduction to Drawings",
+    "timestamps": [
+      "00:42 place 3D cursor",
+      "01:03 active drawing camera",
+      "01:59 Create Drawing",
+      "02:13 SVG inspection"
+    ],
+    "raw_private_source_observed": false
+  },
+  "versions": {
+    "ifcopenshell": "0.8.4",
+    "ifc_schema": "IFC4",
+    "persisted_scene_versions": {
+      "blender": "4.5.3 LTS",
+      "bonsai": "0.8.4",
+      "ifcopenshell": "0.8.4",
+      "ifc_schema": "IFC4"
+    }
+  },
+  "read_only": true,
+  "unit_to_metre": 0.001,
+  "product_global_id": "1rhZG98PPCSxaLeMFLTYb9",
+  "product_placement_mm": [
+    [
+      0.0,
+      1.0,
+      0.0,
+      -565.0
+    ],
+    [
+      -1.0,
+      0.0,
+      0.0,
+      2768.0
+    ],
+    [
+      0.0,
+      0.0,
+      1.0,
+      337.0
+    ],
+    [
+      0.0,
+      0.0,
+      0.0,
+      1.0
+    ]
+  ],
+  "shared_native_origin_in_ifc_local_mm": [
+    -0.0004425048780092311,
+    47.112014293670704,
+    27.99988245703102
+  ],
+  "shared_native_origin_world_mm": [
+    -517.8879857063293,
+    2768.000442504878,
+    364.99988245703105
+  ],
+  "origin_derivation": "One shared registration: X symmetry centre, Y rear envelope, Z top minus native top 150.782161. Envelope-based registration is NOT independent installation-datum proof.",
+  "sources": {
+    "G": {
+      "path": "/Users/jiaxinchen/.codex/worktrees/3a80/2504 GBTB Yanlord Zhuhai/output/review/highpoly-types/geberit-146-140/official-source/146.140.11.1_G.dwg",
+      "sha256": "f6253efd2d736ef8fa0830455692f96c0f61b057a597f38ddc0544e3c9de5c0c",
+      "INSUNITS": 4,
+      "INSBASE": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "UCSORG": [
+        0.0,
+        0.0,
+        0.0
+      ]
+    },
+    "A": {
+      "path": "/Users/jiaxinchen/.codex/worktrees/3a80/2504 GBTB Yanlord Zhuhai/output/review/highpoly-types/geberit-146-140/official-source/146.140.11.1_A.dwg",
+      "sha256": "8e7f2ec11311e77e8625c908d13586379fb8def19e6f65320ce61b15b2515172",
+      "INSUNITS": 4,
+      "INSBASE": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "UCSORG": [
+        0.0,
+        0.0,
+        0.0
+      ]
+    },
+    "L": {
+      "path": "/Users/jiaxinchen/.codex/worktrees/3a80/2504 GBTB Yanlord Zhuhai/output/review/highpoly-types/geberit-146-140/official-source/146.140.11.1_L.dwg",
+      "sha256": "e3c29b0f1778de7f3178a6dd6a2261dc3e7d46942e9c81e7a9943308204e9233",
+      "INSUNITS": 4,
+      "INSBASE": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "UCSORG": [
+        0.0,
+        0.0,
+        0.0
+      ]
+    }
+  },
+  "anchors": {
+    "O": {
+      "source_xyz_mm": [
+        0,
+        0,
+        0
+      ],
+      "meaning": "native insertion cross; physical installation meaning unknown"
+    },
+    "R1": {
+      "source_xyz_mm": [
+        -192.75194101797302,
+        -91.0536170386812,
+        53.79980685464011
+      ],
+      "meaning": "left rim/body seam rear endpoint; matching native LINE endpoints in G/A/L"
+    },
+    "R2": {
+      "source_xyz_mm": [
+        -184.9809557679863,
+        -383.14000000003887,
+        53.79980685464011
+      ],
+      "meaning": "left rim/body seam forward endpoint; matching native LINE endpoints in G/A/L"
+    }
+  },
+  "views": [
+    {
+      "view": "plan",
+      "native_code": "G",
+      "path_count": 50,
+      "shared_placement_max_delta_mm": 0.0,
+      "native_to_persisted_max_error_mm": 5.756633834727628e-07,
+      "persisted_to_scene_svg_max_error_mm": 0.0005503602956891947,
+      "anchors": {
+        "O": {
+          "source_endpoint_residual_mm": 0.0,
+          "persisted_shared_anchor_residual_mm": 0.0,
+          "world_xyz_mm": [
+            -517.8879857063293,
+            2768.000442504878,
+            364.99988245703105
+          ]
+        },
+        "R1": {
+          "source_endpoint_residual_mm": 4.265283996265395e-08,
+          "persisted_shared_anchor_residual_mm": 5.410090495806775e-07,
+          "world_xyz_mm": [
+            -608.9416027450105,
+            2960.7523835228512,
+            418.79968931167116
+          ]
+        },
+        "R2": {
+          "source_endpoint_residual_mm": 2.3201369329583626e-07,
+          "persisted_shared_anchor_residual_mm": 7.841849169242159e-07,
+          "world_xyz_mm": [
+            -901.0279857063681,
+            2952.981398272864,
+            418.79968931167116
+          ]
+        }
+      },
+      "camera_matrix_mm": [
+        [
+          1.0,
+          0.0,
+          0.0,
+          -806.765019893646
+        ],
+        [
+          0.0,
+          1.0,
+          0.0,
+          2768.00012588501
+        ],
+        [
+          0.0,
+          0.0,
+          1.0,
+          1200.00004768372
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "camera_looks_world": [
+        -0.0,
+        -0.0,
+        -1.0
+      ],
+      "svg_path": "/Users/jiaxinchen/.codex/worktrees/3a80/2504 GBTB Yanlord Zhuhai/output/review/highpoly-types/geberit-146-140/bonsai-drawings/wc/GEBERIT-146-140-WC-PLAN.svg",
+      "svg_sha256": "77ebc1fe616bc1876dc1075dd2b75265f9d815c5f86fc54f97b074f026b59d89"
+    },
+    {
+      "view": "front",
+      "native_code": "A",
+      "path_count": 82,
+      "shared_placement_max_delta_mm": 0.0,
+      "native_to_persisted_max_error_mm": 6.73812440894565e-07,
+      "persisted_to_scene_svg_max_error_mm": 0.0005298273855721457,
+      "anchors": {
+        "O": {
+          "source_endpoint_residual_mm": 0.0,
+          "persisted_shared_anchor_residual_mm": 0.0,
+          "world_xyz_mm": [
+            -517.8879857063293,
+            2768.000442504878,
+            364.99988245703105
+          ]
+        },
+        "R1": {
+          "source_endpoint_residual_mm": 1.4646681541216446e-07,
+          "persisted_shared_anchor_residual_mm": 5.699210781934245e-07,
+          "world_xyz_mm": [
+            -608.9416027450105,
+            2960.7523835228512,
+            418.79968931167116
+          ]
+        },
+        "R2": {
+          "source_endpoint_residual_mm": 2.737879660336898e-07,
+          "persisted_shared_anchor_residual_mm": 7.911164378327262e-07,
+          "world_xyz_mm": [
+            -901.0279857063681,
+            2952.981398272864,
+            418.79968931167116
+          ]
+        }
+      },
+      "camera_matrix_mm": [
+        [
+          0.0,
+          0.0,
+          1.0,
+          1143.23496818542
+        ],
+        [
+          1.0,
+          0.0,
+          0.0,
+          2768.00012588501
+        ],
+        [
+          0.0,
+          1.0,
+          0.0,
+          1200.00004768372
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "camera_looks_world": [
+        -1.0,
+        -0.0,
+        -0.0
+      ],
+      "svg_path": "/Users/jiaxinchen/.codex/worktrees/3a80/2504 GBTB Yanlord Zhuhai/output/review/highpoly-types/geberit-146-140/bonsai-drawings/wc/GEBERIT-146-140-WC-FRONT.svg",
+      "svg_sha256": "313f17ff9a708665bdf4d04b4b395f14f79199c1f4cd5925c2441567ca008032"
+    },
+    {
+      "view": "side",
+      "native_code": "L",
+      "path_count": 65,
+      "shared_placement_max_delta_mm": 0.0,
+      "native_to_persisted_max_error_mm": 5.432494174354512e-07,
+      "persisted_to_scene_svg_max_error_mm": 0.0003017893623879199,
+      "anchors": {
+        "O": {
+          "source_endpoint_residual_mm": 0.0,
+          "persisted_shared_anchor_residual_mm": 0.0,
+          "world_xyz_mm": [
+            -517.8879857063293,
+            2768.000442504878,
+            364.99988245703105
+          ]
+        },
+        "R1": {
+          "source_endpoint_residual_mm": 1.504185251208382e-07,
+          "persisted_shared_anchor_residual_mm": 4.026891389800636e-07,
+          "world_xyz_mm": [
+            -608.9416027450105,
+            2960.7523835228512,
+            418.79968931167116
+          ]
+        },
+        "R2": {
+          "source_endpoint_residual_mm": 1.4535989643481117e-07,
+          "persisted_shared_anchor_residual_mm": 4.2820386735265506e-07,
+          "world_xyz_mm": [
+            -901.0279857063681,
+            2952.981398272864,
+            418.79968931167116
+          ]
+        }
+      },
+      "camera_matrix_mm": [
+        [
+          1.0,
+          0.0,
+          0.0,
+          -806.765019893646
+        ],
+        [
+          0.0,
+          0.0,
+          -1.0,
+          818.000257015228
+        ],
+        [
+          0.0,
+          1.0,
+          0.0,
+          1200.00004768372
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "camera_looks_world": [
+        -0.0,
+        1.0,
+        -0.0
+      ],
+      "svg_path": "/Users/jiaxinchen/.codex/worktrees/3a80/2504 GBTB Yanlord Zhuhai/output/review/highpoly-types/geberit-146-140/bonsai-drawings/wc/GEBERIT-146-140-WC-SIDE.svg",
+      "svg_sha256": "dc9e0a520e4dec7ebe143acb9bc6871d3d46ba835c3d2d5b2c70534436329e3b"
+    }
+  ],
+  "envelope_residual_mm": {
+    "width": 2.8083983977467142e-05,
+    "depth": 0.015130679687899828,
+    "height": 5.424804953690909e-06
+  },
+  "finding": {
+    "shared_three_view_origin": "pass within numerical tolerance",
+    "scene_svg_projection": "pass if maximum residual below 0.01 mm",
+    "front_direction": "Camera is on rear/wall side (+world X), looks -world X. Nose extends toward -world X. This is a rear-side scene viewpoint, not room-to-WC front. The approved A linework is projected from that opposite side and is horizontally mirrored in scene coordinates.",
+    "unproven": [
+      "Finished wall installation plane identity and contact are unknown: registration uses rear product envelope, not a wall-face anchor.",
+      "Finished floor elevation is unknown: Z offset uses product top rather than floor datum.",
+      "Drain outlet axis/connector match is unknown: no named pipe/connector anchor was certified.",
+      "Native insertion cross physical meaning is unknown despite exact raw DWG origin evidence."
+    ],
+    "proposed_next_step": "Retain accepted style. Request/perform authorized direction correction using room-facing camera from -world X looking +X; verify named wall/floor/outlet datums before placement acceptance. Do not move blue line per view or recenter."
+  },
+  "inputs": {
+    "derived_ifc": "/Users/jiaxinchen/.codex/worktrees/3a80/2504 GBTB Yanlord Zhuhai/output/review/highpoly-types/geberit-146-140/Geberit-146-140-derived-drawing.ifc",
+    "derived_ifc_sha256_before": "8babf753316b46853d2991d233213f67545c0d623a6d0f9fbab0ac6211038420",
+    "derived_ifc_sha256_after": "8babf753316b46853d2991d233213f67545c0d623a6d0f9fbab0ac6211038420"
+  },
+  "verdict": "partial: numerical registration consistent, front direction mismatch, installation semantic datums unknown"
+}

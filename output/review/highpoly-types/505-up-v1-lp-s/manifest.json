@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "generated_at": "2026-08-23T00:49:52.056583+00:00",
+  "generated_at": "2026-08-26T18:18:24.342948+00:00",
   "generator": "pipeline/scripts/505_up_v1_lp_s_review.py",
   "formal_ifc": "2504 GBTB Yanlord Zhuhai.ifc",
   "formal_ifc_sha256": "7a50b87e8f48a7c2bfbaa9f1dabdfca7155fa684b2325c66aa1ae15c8ab0a25c",
@@ -74,7 +74,7 @@
   "official_source_access_record": "output/review/highpoly-types/505-up-v1-lp-s/official-source/source-access-record.json",
   "official_source_access_record_sha256": "20cb91a87296315d1ab8efa1db91e2078096ff63e5551e6ab4f520194cb327d2",
   "candidate_representations": "output/review/highpoly-types/505-up-v1-lp-s/candidate-representations.json",
-  "candidate_representations_sha256": "2b390cc9e255ba7297dcc8e858bb7b43b6be9366ddf291d335d2bca75bdcffd4",
+  "candidate_representations_sha256": "ec153a439dd278ac30064c7c591cc1879bb67f15d919d3dd0ed5073102090ecd",
   "review_status": "visual_review_pending",
   "approved_for_drawing_ifc": false,
   "derived_ifc_write_allowed": false,
@@ -83,18 +83,98 @@
     {
       "view": "plan",
       "svg": "output/review/highpoly-types/505-up-v1-lp-s/plan.svg",
-      "svg_sha256": "26faf0d2990e7d1655ee42711850f701b70e203c9b8345867aee4ef03fcb0006",
+      "svg_sha256": "dae37f6ac1d79a7a8c79a57de7ae026eae2d24e1d5cee1eca6307d90ec7b909a",
       "projection_axes": [
         0,
         1
       ],
       "raw_edge_count": 21537,
       "displayed_raw_edge_count": 979,
-      "silhouette_path_count": 19,
+      "silhouette_path_count": 14,
       "drawing_line_source_kind": "geometry_derived_simplified_proxy",
       "drawing_line_source_label_zh": "基于原始高模几何生成的简化图纸表达",
       "official_cad_path_count": 0,
-      "blue_line_present": false
+      "blue_line_present": false,
+      "semantic_path_count": 10,
+      "derived_proxy_path_count": 24,
+      "component_semantics": {
+        "method": "plan_first_visible_highest_face_semantic_partition",
+        "camera_direction_world": [
+          0.0,
+          0.0,
+          -1.0
+        ],
+        "local_to_world_z_sign": -1,
+        "normalization_tolerance_mm": 0.5,
+        "two_side_probe_mm": 2.0,
+        "visible_regions": {
+          "A_main_top": {
+            "top_world_height_mm": 2380.0,
+            "area_mm2": 976608.466,
+            "bbox_local_xy_mm": [
+              -2399.908,
+              -15.719,
+              511.538,
+              319.719
+            ]
+          },
+          "B_right_slats": {
+            "top_world_height_mm": 1976.0,
+            "area_mm2": 7305.436,
+            "bbox_local_xy_mm": [
+              -2379.9,
+              324.281,
+              -1786.461,
+              348.719
+            ]
+          },
+          "C_front_left_display": {
+            "top_world_height_mm": 1610.705,
+            "area_mm2": 60590.979,
+            "bbox_local_xy_mm": [
+              -445.94,
+              320.78,
+              163.498,
+              420.219
+            ]
+          },
+          "D_mid_shelf_lip": {
+            "top_world_height_mm": 470.0,
+            "area_mm2": 12473.489,
+            "bbox_local_xy_mm": [
+              -1727.9,
+              319.719,
+              -480.462,
+              329.719
+            ]
+          },
+          "E_lower_front_rails": {
+            "top_world_height_mm": 440.0,
+            "area_mm2": 43902.845,
+            "bbox_local_xy_mm": [
+              -1739.9,
+              324.281,
+              491.538,
+              355.719
+            ]
+          }
+        },
+        "required_internal_interfaces": {
+          "A_main_top/C_front_left_display": 2,
+          "A_main_top/D_mid_shelf_lip": 1,
+          "C_front_left_display/E_lower_front_rails": 2,
+          "D_mid_shelf_lip/E_lower_front_rails": 6
+        },
+        "rejected_paths_removed": [
+          "P02",
+          "P03",
+          "P04",
+          "P05"
+        ],
+        "bottom_76mm_components_used_as_top": false,
+        "every_internal_segment_has_different_semantics_on_both_sides": true,
+        "pass": true
+      }
     },
     {
       "view": "front",
@@ -144,5 +224,92 @@
     "saved_active_representation": "Body",
     "saved_camera_count": 4,
     "pass": true
+  },
+  "plan_component_semantics": {
+    "method": "plan_first_visible_highest_face_semantic_partition",
+    "camera_direction_world": [
+      0.0,
+      0.0,
+      -1.0
+    ],
+    "local_to_world_z_sign": -1,
+    "normalization_tolerance_mm": 0.5,
+    "two_side_probe_mm": 2.0,
+    "visible_regions": {
+      "A_main_top": {
+        "top_world_height_mm": 2380.0,
+        "area_mm2": 976608.466,
+        "bbox_local_xy_mm": [
+          -2399.908,
+          -15.719,
+          511.538,
+          319.719
+        ]
+      },
+      "B_right_slats": {
+        "top_world_height_mm": 1976.0,
+        "area_mm2": 7305.436,
+        "bbox_local_xy_mm": [
+          -2379.9,
+          324.281,
+          -1786.461,
+          348.719
+        ]
+      },
+      "C_front_left_display": {
+        "top_world_height_mm": 1610.705,
+        "area_mm2": 60590.979,
+        "bbox_local_xy_mm": [
+          -445.94,
+          320.78,
+          163.498,
+          420.219
+        ]
+      },
+      "D_mid_shelf_lip": {
+        "top_world_height_mm": 470.0,
+        "area_mm2": 12473.489,
+        "bbox_local_xy_mm": [
+          -1727.9,
+          319.719,
+          -480.462,
+          329.719
+        ]
+      },
+      "E_lower_front_rails": {
+        "top_world_height_mm": 440.0,
+        "area_mm2": 43902.845,
+        "bbox_local_xy_mm": [
+          -1739.9,
+          324.281,
+          491.538,
+          355.719
+        ]
+      }
+    },
+    "required_internal_interfaces": {
+      "A_main_top/C_front_left_display": 2,
+      "A_main_top/D_mid_shelf_lip": 1,
+      "C_front_left_display/E_lower_front_rails": 2,
+      "D_mid_shelf_lip/E_lower_front_rails": 6
+    },
+    "rejected_paths_removed": [
+      "P02",
+      "P03",
+      "P04",
+      "P05"
+    ],
+    "bottom_76mm_components_used_as_top": false,
+    "every_internal_segment_has_different_semantics_on_both_sides": true,
+    "pass": true
+  },
+  "plan_semantic_candidate_audit": {
+    "path": "output/review/highpoly-types/505-up-v1-lp-s/505-up-plan-semantic-candidate-audit.json",
+    "sha256": "9d13d43ba483ab5d61029e2cacb2afc96921f110aad00f7be2a233b732c54683",
+    "status": "new_single_product_plan_svg_pending_owner_review",
+    "preview": "output/review/highpoly-types/505-up-v1-lp-s/505-up-plan-semantic-preview.png",
+    "preview_sha256": "42938c546faecdd2f6efd74d0781b0c21c085c7a9cc306d3a76fdec7b748147a",
+    "contact_sheet": "output/review/highpoly-types/505-up-v1-lp-s/505-up-plan-semantic-contact-sheet.png",
+    "contact_sheet_sha256": "e8fe545db05ad1991ad2485febb9910f4f7513990d64c476de6f1ca58e1d369a"
   }
 }

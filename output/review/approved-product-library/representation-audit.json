@@ -1,0 +1,3522 @@
+{
+  "status": "audit_complete_correction_requires_direction_policy",
+  "ifc_modified": false,
+  "formal_ifc_sha256_before": "7a50b87e8f48a7c2bfbaa9f1dabdfca7155fa684b2325c66aa1ae15c8ab0a25c",
+  "formal_ifc_sha256_after": "7a50b87e8f48a7c2bfbaa9f1dabdfca7155fa684b2325c66aa1ae15c8ab0a25c",
+  "course_evidence_mode": "embedded-course-index",
+  "course_lesson": "109000 Representation contexts as they relate to a door; 00:27 Plan / Body / PLAN_VIEW / Annotation2D",
+  "course_screenshot_provenance_sha256_not_directly_observed": "34540cf996d3ed68b6158f3bd5f4caf7f68d77008b098fc90f9cb435b56204d0",
+  "installed_selector": {
+    "path": "/Users/jiaxinchen/Library/Application Support/Blender/4.5/extensions/.local/lib/python3.11/site-packages/bonsai/bim/module/drawing/operator.py",
+    "line": 484,
+    "sha256": "7fa66189a7f91cbf4076afc8360c06aef16beb0d323c817cb05eaacc2133c672",
+    "executed_from_installed_ast": true
+  },
+  "ifc4_context_reference": "https://standards.buildingsmart.org/IFC/RELEASE/IFC4/FINAL/HTML/schema/ifcrepresentationresource/lexical/ifcgeometricrepresentationsubcontext.htm",
+  "count": 39,
+  "finding_counts": {
+    "approved_product_linework_in_annotation_context": 13,
+    "legacy_body_views_coexist_with_approved_linework": 14,
+    "front_side_share_target_view_no_native_direction_selection": 15,
+    "body_only_candidate_no_approved_three_view_package": 24,
+    "custom_product_context_not_selected_by_native_drawing": 2
+  },
+  "products": [
+    {
+      "id": "hima01",
+      "path": "output/review/highpoly-types/hima01/product-package/HIMA01-product.ifc",
+      "sha256": "4014d7423520f9a133994c67644cd893c9a8db804364e11cfab479188849bbc0",
+      "global_id": "2xmcLzu1rDTeMzRuNxPDyE",
+      "review_category": "partial",
+      "physical_product_count": 1,
+      "opening_dependency_count": 0,
+      "ifc_annotation_entity_count": 0,
+      "representations": [
+        {
+          "step_id": 35,
+          "representation_identifier": "Body",
+          "context_type": "Model",
+          "context_identifier": "Body",
+          "target_view": "MODEL_VIEW",
+          "context_step_id": 36,
+          "representation_type": "MappedRepresentation",
+          "item_count": 1,
+          "items_fingerprint": "86c02f507328127ec0ccfe1be2dbe56e47a8632aea44b74ba4141a614c7c1c7d"
+        },
+        {
+          "step_id": 119575,
+          "representation_identifier": "Body",
+          "context_type": "Model",
+          "context_identifier": "Body",
+          "target_view": "PLAN_VIEW",
+          "context_step_id": 119576,
+          "representation_type": "MappedRepresentation",
+          "item_count": 1,
+          "items_fingerprint": "39a8c9f2ba23244db316a4b419f99e2e5ca87074651fc8d36edfa51b209359a3"
+        },
+        {
+          "step_id": 119617,
+          "representation_identifier": "Body",
+          "context_type": "Model",
+          "context_identifier": "Body",
+          "target_view": "ELEVATION_VIEW",
+          "context_step_id": 119618,
+          "representation_type": "Curve3D",
+          "item_count": 23,
+          "items_fingerprint": "54ca3dd112cc2b99895e341401dab6f168243486666a9e0845c1e3b8de641a51"
+        },
+        {
+          "step_id": 119718,
+          "representation_identifier": "ApprovedPlan",
+          "context_type": "Model",
+          "context_identifier": "Annotation",
+          "target_view": "PLAN_VIEW",
+          "context_step_id": 119719,
+          "representation_type": "GeometricCurveSet",
+          "item_count": 1,
+          "items_fingerprint": "d07e6e58d4de2c419b7ec9c87c687f5b4b2fd44a6da41b5030a6628feb5e0c47"
+        },
+        {
+          "step_id": 119850,
+          "representation_identifier": "ApprovedFront",
+          "context_type": "Model",
+          "context_identifier": "Annotation",
+          "target_view": "ELEVATION_VIEW",
+          "context_step_id": 119851,
+          "representation_type": "GeometricCurveSet",
+          "item_count": 1,
+          "items_fingerprint": "61d14d562425be3f3e7a0d658970388ddd3888caffeee8286a8c2cebac1f937a"
+        },
+        {
+          "step_id": 119988,
+          "representation_identifier": "ApprovedSide",
+          "context_type": "Model",
+          "context_identifier": "Annotation",
+          "target_view": "ELEVATION_VIEW",
+          "context_step_id": 119989,
+          "representation_type": "GeometricCurveSet",
+          "item_count": 1,
+          "items_fingerprint": "6c9d0f213f0271fa133e9d782c93bf760b40d03a4325e105b00e537387a1fd41"
+        }
+      ],
+      "legacy_body_view_count": 2,
+      "review_view_count": 3,
+      "exact_item_graph_duplicates_of_model_body": [],
+      "native_context_priority_buckets": {
+        "PLAN_VIEW": {
+          "body": [
+            [],
+            [],
+            [
+              "Body"
+            ],
+            [
+              "Body"
+            ]
+          ],
+          "annotation": [
+            [],
+            [],
+            [
+              "ApprovedPlan"
+            ],
+            []
+          ]
+        },
+        "ELEVATION_VIEW": {
+          "body": [
+            [
+              "Body"
+            ],
+            [
+              "Body"
+            ]
+          ],
+          "annotation": [
+            [
+              "ApprovedFront",
+              "ApprovedSide"
+            ],
+            []
+          ]
+        }
+      },
+      "findings": [
+        "approved_product_linework_in_annotation_context",
+        "legacy_body_views_coexist_with_approved_linework",
+        "front_side_share_target_view_no_native_direction_selection"
+      ]
+    },
+    {
+      "id": "geberit-duofix-sigma-224-212",
+      "path": "output/review/highpoly-types/geberit-duofix-sigma-224-212/product-package/DUOFIX-product.ifc",
+      "sha256": "9b0a1b4302ccd1a926196bdb1b5dd2d8dbfd8222b58eab13af833336f35f77d1",
+      "global_id": "3pvAlH5C14v8uVEJ1LmK8M",
+      "review_category": "approved",
+      "physical_product_count": 1,
+      "opening_dependency_count": 0,
+      "ifc_annotation_entity_count": 0,
+      "representations": [
+        {
+          "step_id": 69318,
+          "representation_identifier": "Body",
+          "context_type": "Model",
+          "context_identifier": "Body",
+          "target_view": "MODEL_VIEW",
+          "context_step_id": 32,
+          "representation_type": "MappedRepresentation",
+          "item_count": 1,
+          "items_fingerprint": "726e6a67b1eaabb9f9095b14b05ba4e5d0cc32af94d869572c8815b485f5a38e"
+        },
+        {
+          "step_id": 69325,
+          "representation_identifier": "Body",
+          "context_type": "Plan",
+          "context_identifier": "Body",
+          "target_view": "PLAN_VIEW",
+          "context_step_id": 69000,
+          "representation_type": "MappedRepresentation",
+          "item_count": 1,
+          "items_fingerprint": "c1281003a3be4e3e937a13bf4b7d7f2048d7d4cd88b5dc1141a3fad7da12aa08"
+        },
+        {
+          "step_id": 69332,
+          "representation_identifier": "Body",
+          "context_type": "Model",
+          "context_identifier": "Body",
+          "target_view": "ELEVATION_VIEW",
+          "context_step_id": 69333,
+          "representation_type": "Curve3D",
+          "item_count": 27,
+          "items_fingerprint": "d15dc676250485fd8d3af13e6952f4bb1c30a22a1c655c853091a7855e113338"
+        },
+        {
+          "step_id": 69415,
+          "representation_identifier": "ApprovedPlan",
+          "context_type": "Plan",
+          "context_identifier": "Annotation",
+          "target_view": "PLAN_VIEW",
+          "context_step_id": 69416,
+          "representation_type": "GeometricCurveSet",
+          "item_count": 1,
+          "items_fingerprint": "14eec67d5c6b3d4ab954fcc8754b1dbbb2fc3beca8fb9d5c3924b34ec44e0cd4"
+        },
+        {
+          "step_id": 74126,
+          "representation_identifier": "ApprovedFront",
+          "context_type": "Model",
+          "context_identifier": "Annotation",
+          "target_view": "ELEVATION_VIEW",
+          "context_step_id": 74127,
+          "representation_type": "GeometricCurveSet",
+          "item_count": 1,
+          "items_fingerprint": "eba105803a35cbae961314fb2481e1c41ab6783e7494acb801eaadbcfd04945c"
+        },
+        {
+          "step_id": 85988,
+          "representation_identifier": "ApprovedSide",
+          "context_type": "Model",
+          "context_identifier": "Annotation",
+          "target_view": "ELEVATION_VIEW",
+          "context_step_id": 85989,
+          "representation_type": "GeometricCurveSet",
+          "item_count": 1,
+          "items_fingerprint": "b106e47a66026454bf05d38ce5f7e19a296a365b192cb2ffec1dc8c07106c4bc"
+        }
+      ],
+      "legacy_body_view_count": 2,
+      "review_view_count": 3,
+      "exact_item_graph_duplicates_of_model_body": [],
+      "native_context_priority_buckets": {
+        "PLAN_VIEW": {
+          "body": [
+            [
+              "Body"
+            ],
+            [],
+            [],
+            [
+              "Body"
+            ]
+          ],
+          "annotation": [
+            [
+              "ApprovedPlan"
+            ],
+            [],
+            [],
+            []
+          ]
+        },
+        "ELEVATION_VIEW": {
+          "body": [
+            [
+              "Body"
+            ],
+            [
+              "Body"
+            ]
+          ],
+          "annotation": [
+            [
+              "ApprovedFront",
+              "ApprovedSide"
+            ],
+            []
+          ]
+        }
+      },
+      "findings": [
+        "approved_product_linework_in_annotation_context",
+        "legacy_body_views_coexist_with_approved_linework",
+        "front_side_share_target_view_no_native_direction_selection"
+      ]
+    },
+    {
+      "id": "geberit-154-446-ks-1",
+      "path": "output/review/highpoly-types/geberit-154-446-ks-1/product-package/GEBERIT154446-product.ifc",
+      "sha256": "f20aa0dc1972a3123b481a98d4c67b0243fcbb3e7528726f8b2629cfa4c090df",
+      "global_id": "2S2c498tb7$gzdukjhCGVQ",
+      "review_category": "partial",
+      "physical_product_count": 1,
+      "opening_dependency_count": 0,
+      "ifc_annotation_entity_count": 0,
+      "representations": [
+        {
+          "step_id": 35,
+          "representation_identifier": "Body",
+          "context_type": "Model",
+          "context_identifier": "Body",
+          "target_view": "MODEL_VIEW",
+          "context_step_id": 36,
+          "representation_type": "MappedRepresentation",
+          "item_count": 1,
+          "items_fingerprint": "daa53984a52465eafdc8a060751567ca3a43ea46f6d7defdf511f5e2abcda028"
+        },
+        {
+          "step_id": 44271,
+          "representation_identifier": "Body",
+          "context_type": "Plan",
+          "context_identifier": "Body",
+          "target_view": "PLAN_VIEW",
+          "context_step_id": 44272,
+          "representation_type": "MappedRepresentation",
+          "item_count": 1,
+          "items_fingerprint": "8443d31d710b3daea5315dfde7bccf5279c3abce5f6363d168a317f73f7d095f"
+        },
+        {
+          "step_id": 44578,
+          "representation_identifier": "Body",
+          "context_type": "Model",
+          "context_identifier": "Body",
+          "target_view": "ELEVATION_VIEW",
+          "context_step_id": 44579,
+          "representation_type": "Curve3D",
+          "item_count": 25,
+          "items_fingerprint": "ce20002fc5a8d8f4d9e3f9dffe4d5520cc92b537957cce7d8b858ad65808c41d"
+        },
+        {
+          "step_id": 44685,
+          "representation_identifier": "ApprovedPlan",
+          "context_type": "Model",
+          "context_identifier": "Annotation",
+          "target_view": "PLAN_VIEW",
+          "context_step_id": 44686,
+          "representation_type": "GeometricCurveSet",
+          "item_count": 1,
+          "items_fingerprint": "d35b3597ae5bf4d830d6e2023f68397df72bd70a4ad69af01d2cba73357ed9ec"
+        },
+        {
+          "step_id": 46391,
+          "representation_identifier": "ApprovedFront",
+          "context_type": "Model",
+          "context_identifier": "Annotation",
+          "target_view": "ELEVATION_VIEW",
+          "context_step_id": 46392,
+          "representation_type": "GeometricCurveSet",
+          "item_count": 1,
+          "items_fingerprint": "5c42ea3ec60631be3725519f7b33f7b4b65db63e4b2868da0543394fecd1beb1"
+        },
+        {
+          "step_id": 47348,
+          "representation_identifier": "ApprovedSide",
+          "context_type": "Model",
+          "context_identifier": "Annotation",
+          "target_view": "ELEVATION_VIEW",
+          "context_step_id": 47349,
+          "representation_type": "GeometricCurveSet",
+          "item_count": 1,
+          "items_fingerprint": "b58a1126e8d324b7e413a86dfc3980a967713cff5e02afdb10f98c8f107dd869"
+        }
+      ],
+      "legacy_body_view_count": 2,
+      "review_view_count": 3,
+      "exact_item_graph_duplicates_of_model_body": [],
+      "native_context_priority_buckets": {
+        "PLAN_VIEW": {
+          "body": [
+            [
+              "Body"
+            ],
+            [],
+            [],
+            [
+              "Body"
+            ]
+          ],
+          "annotation": [
+            [],
+            [],
+            [
+              "ApprovedPlan"
+            ],
+            []
+          ]
+        },
+        "ELEVATION_VIEW": {
+          "body": [
+            [
+              "Body"
+            ],
+            [
+              "Body"
+            ]
+          ],
+          "annotation": [
+            [
+              "ApprovedFront",
+              "ApprovedSide"
+            ],
+            []
+          ]
+        }
+      },
+      "findings": [
+        "approved_product_linework_in_annotation_context",
+        "legacy_body_views_coexist_with_approved_linework",
+        "front_side_share_target_view_no_native_direction_selection"
+      ]
+    },
+    {
+      "id": "gessi316-54294",
+      "path": "output/review/highpoly-types/gessi316-54294/product-package/GESSI54294-product.ifc",
+      "sha256": "aa1af19b744f543e8b78dd63567bb9d1c1949080e7e99b1f6add515e6764295d",
+      "global_id": "2iKOL78$H0N9Yd9$ky3pW4",
+      "review_category": "approved",
+      "physical_product_count": 1,
+      "opening_dependency_count": 0,
+      "ifc_annotation_entity_count": 0,
+      "representations": [
+        {
+          "step_id": 42884,
+          "representation_identifier": "Body",
+          "context_type": "Model",
+          "context_identifier": "Body",
+          "target_view": "MODEL_VIEW",
+          "context_step_id": 59,
+          "representation_type": "MappedRepresentation",
+          "item_count": 1,
+          "items_fingerprint": "b699bc0f734633f1e996920b349853505043268fcb70d279416c209a44e1f33e"
+        },
+        {
+          "step_id": 42891,
+          "representation_identifier": "Body",
+          "context_type": "Model",
+          "context_identifier": "Body",
+          "target_view": "PLAN_VIEW",
+          "context_step_id": 41665,
+          "representation_type": "MappedRepresentation",
+          "item_count": 1,
+          "items_fingerprint": "86533ef6c86a36b4c172f2404a801043f09d5c237a4faa91d9e3fecc13301be6"
+        },
+        {
+          "step_id": 42898,
+          "representation_identifier": "Body",
+          "context_type": "Model",
+          "context_identifier": "Body",
+          "target_view": "ELEVATION_VIEW",
+          "context_step_id": 42899,
+          "representation_type": "Curve3D",
+          "item_count": 26,
+          "items_fingerprint": "c5255b332aa62184c339a04b0556f7745a124a11a1b182357d9a4d38309b09e4"
+        },
+        {
+          "step_id": 42978,
+          "representation_identifier": "ApprovedPlan",
+          "context_type": "Plan",
+          "context_identifier": "Annotation",
+          "target_view": "PLAN_VIEW",
+          "context_step_id": 42979,
+          "representation_type": "GeometricCurveSet",
+          "item_count": 1,
+          "items_fingerprint": "cc3af3cb0c265f499ad5983e424f0ca3987d31944ed6488f15cff0fbdb64cfa2"
+        },
+        {
+          "step_id": 43841,
+          "representation_identifier": "ApprovedFront",
+          "context_type": "Model",
+          "context_identifier": "Annotation",
+          "target_view": "ELEVATION_VIEW",
+          "context_step_id": 43842,
+          "representation_type": "GeometricCurveSet",
+          "item_count": 1,
+          "items_fingerprint": "22909ed15bd42f1e10612ffbd9e3051b3bc97728d176acf0bfce3c7ce84e3a8d"
+        },
+        {
+          "step_id": 58461,
+          "representation_identifier": "ApprovedSide",
+          "context_type": "Model",
+          "context_identifier": "Annotation",
+          "target_view": "ELEVATION_VIEW",
+          "context_step_id": 58462,
+          "representation_type": "GeometricCurveSet",
+          "item_count": 1,
+          "items_fingerprint": "a326928f683c368af2df94d8bcbbfd0df82f947960ec8ee45e712edaa86da6a5"
+        }
+      ],
+      "legacy_body_view_count": 2,
+      "review_view_count": 3,
+      "exact_item_graph_duplicates_of_model_body": [],
+      "native_context_priority_buckets": {
+        "PLAN_VIEW": {
+          "body": [
+            [],
+            [],
+            [
+              "Body"
+            ],
+            [
+              "Body"
+            ]
+          ],
+          "annotation": [
+            [
+              "ApprovedPlan"
+            ],
+            [],
+            [],
+            []
+          ]
+        },
+        "ELEVATION_VIEW": {
+          "body": [
+            [
+              "Body"
+            ],
+            [
+              "Body"
+            ]
+          ],
+          "annotation": [
+            [
+              "ApprovedFront",
+              "ApprovedSide"
+            ],
+            []
+          ]
+        }
+      },
+      "findings": [
+        "approved_product_linework_in_annotation_context",
+        "legacy_body_views_coexist_with_approved_linework",
+        "front_side_share_target_view_no_native_direction_selection"
+      ]
+    },
+    {
+      "id": "bed02",
+      "path": "output/review/highpoly-types/bed02/product-package/BED02-product.ifc",
+      "sha256": "4a54ee630ade339f95a87709ee3b824d060cb06e926829f8bfd6debd84dfd252",
+      "global_id": "1i_pqgLv9A7uuV7MjaArBW",
+      "review_category": "partial",
+      "physical_product_count": 1,
+      "opening_dependency_count": 0,
+      "ifc_annotation_entity_count": 0,
+      "representations": [
+        {
+          "step_id": 31910,
+          "representation_identifier": "Body",
+          "context_type": "Model",
+          "context_identifier": "Body",
+          "target_view": "MODEL_VIEW",
+          "context_step_id": 52,
+          "representation_type": "MappedRepresentation",
+          "item_count": 1,
+          "items_fingerprint": "51bb906886a4e016ce571d792f535d84ba475fdc3332ca3010a4a634e7312c0a"
+        },
+        {
+          "step_id": 31917,
+          "representation_identifier": "Body",
+          "context_type": "Model",
+          "context_identifier": "Body",
+          "target_view": "PLAN_VIEW",
+          "context_step_id": 31707,
+          "representation_type": "MappedRepresentation",
+          "item_count": 1,
+          "items_fingerprint": "5428bfbc6a0b0e5e7dcb957a233656ded4db84601c25fbb9a08d6c4e319bfa5c"
+        },
+        {
+          "step_id": 31924,
+          "representation_identifier": "Body",
+          "context_type": "Model",
+          "context_identifier": "Body",
+          "target_view": "ELEVATION_VIEW",
+          "context_step_id": 31925,
+          "representation_type": "Curve3D",
+          "item_count": 23,
+          "items_fingerprint": "e6c0bbbbc1d2eee0b1e26db4b25ca3cdf93940b712295d06d834a84d8210f6f6"
+        },
+        {
+          "step_id": 31995,
+          "representation_identifier": "ApprovedPlan",
+          "context_type": "Plan",
+          "context_identifier": "Annotation",
+          "target_view": "PLAN_VIEW",
+          "context_step_id": 31996,
+          "representation_type": "GeometricCurveSet",
+          "item_count": 1,
+          "items_fingerprint": "e9ce744ce00f32704f8f39e4706e9fdecce7c5bbc73b52517fbab550af40b10d"
+        },
+        {
+          "step_id": 32353,
+          "representation_identifier": "ApprovedFront",
+          "context_type": "Model",
+          "context_identifier": "Annotation",
+          "target_view": "ELEVATION_VIEW",
+          "context_step_id": 32354,
+          "representation_type": "GeometricCurveSet",
+          "item_count": 1,
+          "items_fingerprint": "b1838e48a9c74b01a1d9ea29f6f1566d5d5f740742072be36107885ced02f885"
+        },
+        {
+          "step_id": 32860,
+          "representation_identifier": "ApprovedSide",
+          "context_type": "Model",
+          "context_identifier": "Annotation",
+          "target_view": "ELEVATION_VIEW",
+          "context_step_id": 32354,
+          "representation_type": "GeometricCurveSet",
+          "item_count": 1,
+          "items_fingerprint": "e354908199c4abc0ed92668730659a73b58c5ddc8a625172fb5651cbd3007332"
+        }
+      ],
+      "legacy_body_view_count": 2,
+      "review_view_count": 3,
+      "exact_item_graph_duplicates_of_model_body": [],
+      "native_context_priority_buckets": {
+        "PLAN_VIEW": {
+          "body": [
+            [],
+            [],
+            [
+              "Body"
+            ],
+            [
+              "Body"
+            ]
+          ],
+          "annotation": [
+            [
+              "ApprovedPlan"
+            ],
+            [],
+            [],
+            []
+          ]
+        },
+        "ELEVATION_VIEW": {
+          "body": [
+            [
+              "Body"
+            ],
+            [
+              "Body"
+            ]
+          ],
+          "annotation": [
+            [
+              "ApprovedFront",
+              "ApprovedSide"
+            ],
+            []
+          ]
+        }
+      },
+      "findings": [
+        "approved_product_linework_in_annotation_context",
+        "legacy_body_views_coexist_with_approved_linework",
+        "front_side_share_target_view_no_native_direction_selection"
+      ]
+    },
+    {
+      "id": "bed01",
+      "path": "output/review/highpoly-types/bed01/product-package/BED01-product.ifc",
+      "sha256": "9e5660e5e4db95fc3dd44eb05dd8dcd2515a19e21b23ee462391431fb13d111a",
+      "global_id": "3IQBEqO5vDI8Z9k1Ltge_N",
+      "review_category": "approved",
+      "physical_product_count": 1,
+      "opening_dependency_count": 0,
+      "ifc_annotation_entity_count": 0,
+      "representations": [
+        {
+          "step_id": 29695,
+          "representation_identifier": "Body",
+          "context_type": "Model",
+          "context_identifier": "Body",
+          "target_view": "MODEL_VIEW",
+          "context_step_id": 52,
+          "representation_type": "MappedRepresentation",
+          "item_count": 1,
+          "items_fingerprint": "5e9af7b1c466581ba8c3106b200a840ee3925abcb18f7c1e9f7f40a92f036453"
+        },
+        {
+          "step_id": 29702,
+          "representation_identifier": "Body",
+          "context_type": "Model",
+          "context_identifier": "Body",
+          "target_view": "PLAN_VIEW",
+          "context_step_id": 28788,
+          "representation_type": "MappedRepresentation",
+          "item_count": 1,
+          "items_fingerprint": "02cded203ab735cd3bbb042bd615ebe82615bb9262c62295a9f14a42fea185ac"
+        },
+        {
+          "step_id": 29709,
+          "representation_identifier": "Body",
+          "context_type": "Model",
+          "context_identifier": "Body",
+          "target_view": "ELEVATION_VIEW",
+          "context_step_id": 29710,
+          "representation_type": "Curve3D",
+          "item_count": 23,
+          "items_fingerprint": "4f3e339c98b67368addc00490421373dcce18aedd083221095762f8d18bfbde8"
+        },
+        {
+          "step_id": 29782,
+          "representation_identifier": "ApprovedPlan",
+          "context_type": "Plan",
+          "context_identifier": "Annotation",
+          "target_view": "PLAN_VIEW",
+          "context_step_id": 29783,
+          "representation_type": "GeometricCurveSet",
+          "item_count": 1,
+          "items_fingerprint": "0c41ee2659f0741a86fae8ca26f14c1e24b563dd02d5187a33a6bab1c1a9f5d8"
+        },
+        {
+          "step_id": 31659,
+          "representation_identifier": "ApprovedFront",
+          "context_type": "Model",
+          "context_identifier": "Annotation",
+          "target_view": "ELEVATION_VIEW",
+          "context_step_id": 31660,
+          "representation_type": "GeometricCurveSet",
+          "item_count": 1,
+          "items_fingerprint": "4a22d07dddb44f50a4eaa9409b330a3b2039eba68d3349c0b030f1c0bb4885b7"
+        },
+        {
+          "step_id": 33423,
+          "representation_identifier": "ApprovedSide",
+          "context_type": "Model",
+          "context_identifier": "Annotation",
+          "target_view": "ELEVATION_VIEW",
+          "context_step_id": 31660,
+          "representation_type": "GeometricCurveSet",
+          "item_count": 1,
+          "items_fingerprint": "754788b5cb4dee665c0c8d7ea8459ddbc779a5491aa46dd1e93b72c3b7466a13"
+        }
+      ],
+      "legacy_body_view_count": 2,
+      "review_view_count": 3,
+      "exact_item_graph_duplicates_of_model_body": [],
+      "native_context_priority_buckets": {
+        "PLAN_VIEW": {
+          "body": [
+            [],
+            [],
+            [
+              "Body"
+            ],
+            [
+              "Body"
+            ]
+          ],
+          "annotation": [
+            [
+              "ApprovedPlan"
+            ],
+            [],
+            [],
+            []
+          ]
+        },
+        "ELEVATION_VIEW": {
+          "body": [
+            [
+              "Body"
+            ],
+            [
+              "Body"
+            ]
+          ],
+          "annotation": [
+            [
+              "ApprovedFront",
+              "ApprovedSide"
+            ],
+            []
+          ]
+        }
+      },
+      "findings": [
+        "approved_product_linework_in_annotation_context",
+        "legacy_body_views_coexist_with_approved_linework",
+        "front_side_share_target_view_no_native_direction_selection"
+      ]
+    },
+    {
+      "id": "sxb010",
+      "path": "output/review/highpoly-types/sxb010/product-package/SXB010-product.ifc",
+      "sha256": "649a0886c3e6ed8041314b4ad96c15592841ea13d09960a1bd06d01faed37fb8",
+      "global_id": "1O9JRXCI56VRUbpuLJy86Z",
+      "review_category": "approved",
+      "physical_product_count": 1,
+      "opening_dependency_count": 0,
+      "ifc_annotation_entity_count": 0,
+      "representations": [
+        {
+          "step_id": 59,
+          "representation_identifier": "Body",
+          "context_type": "Model",
+          "context_identifier": "Body",
+          "target_view": "MODEL_VIEW",
+          "context_step_id": 60,
+          "representation_type": "Tessellation",
+          "item_count": 56,
+          "items_fingerprint": "8aa9d66f720979236a7991a53b3c4a5428bd38b3b72dfc53f8283da1297c2672"
+        },
+        {
+          "step_id": 20553,
+          "representation_identifier": "Body",
+          "context_type": "Model",
+          "context_identifier": "Body",
+          "target_view": "ELEVATION_VIEW",
+          "context_step_id": 20554,
+          "representation_type": "Curve3D",
+          "item_count": 24,
+          "items_fingerprint": "d34acf8d369810f49431270e7a5a3884130d029be4afae4f8bf2d77e0efb0c04"
+        },
+        {
+          "step_id": 20627,
+          "representation_identifier": "ApprovedPlan",
+          "context_type": "Plan",
+          "context_identifier": "Annotation",
+          "target_view": "PLAN_VIEW",
+          "context_step_id": 20628,
+          "representation_type": "GeometricCurveSet",
+          "item_count": 1,
+          "items_fingerprint": "c8a48ccadbbb0fc67749d0114602a42abd4de79470bed08e56f43252067a08c9"
+        },
+        {
+          "step_id": 20648,
+          "representation_identifier": "ApprovedFront",
+          "context_type": "Model",
+          "context_identifier": "Annotation",
+          "target_view": "ELEVATION_VIEW",
+          "context_step_id": 20649,
+          "representation_type": "GeometricCurveSet",
+          "item_count": 1,
+          "items_fingerprint": "86e6a4763b0fade3a4bdab14b861de72f32332633f9baec7475eabd94f9caf43"
+        },
+        {
+          "step_id": 20813,
+          "representation_identifier": "ApprovedSide",
+          "context_type": "Model",
+          "context_identifier": "Annotation",
+          "target_view": "ELEVATION_VIEW",
+          "context_step_id": 20649,
+          "representation_type": "GeometricCurveSet",
+          "item_count": 1,
+          "items_fingerprint": "49a5e0596ff8c35cca1fe12c0888bd151276ff0de8ad7ae554085cbe0ec7f5bf"
+        }
+      ],
+      "legacy_body_view_count": 1,
+      "review_view_count": 3,
+      "exact_item_graph_duplicates_of_model_body": [],
+      "native_context_priority_buckets": {
+        "PLAN_VIEW": {
+          "body": [
+            [],
+            [],
+            [],
+            [
+              "Body"
+            ]
+          ],
+          "annotation": [
+            [
+              "ApprovedPlan"
+            ],
+            [],
+            [],
+            []
+          ]
+        },
+        "ELEVATION_VIEW": {
+          "body": [
+            [
+              "Body"
+            ],
+            [
+              "Body"
+            ]
+          ],
+          "annotation": [
+            [
+              "ApprovedFront",
+              "ApprovedSide"
+            ],
+            []
+          ]
+        }
+      },
+      "findings": [
+        "approved_product_linework_in_annotation_context",
+        "legacy_body_views_coexist_with_approved_linework",
+        "front_side_share_target_view_no_native_direction_selection"
+      ]
+    },
+    {
+      "id": "cha02",
+      "path": "output/review/approved-product-library/candidate-packages/cha02.ifc",
+      "sha256": "a0887d38f6c5caee91595cf1cebc3c4678d375f1f47a909158786f84ea74e809",
+      "global_id": "3YoxxZCgbF3Ap7gztAKkcs",
+      "review_category": "pending",
+      "physical_product_count": 1,
+      "opening_dependency_count": 0,
+      "ifc_annotation_entity_count": 0,
+      "representations": [
+        {
+          "step_id": 20279,
+          "representation_identifier": "Body",
+          "context_type": "Model",
+          "context_identifier": "Body",
+          "target_view": "MODEL_VIEW",
+          "context_step_id": 52,
+          "representation_type": "MappedRepresentation",
+          "item_count": 1,
+          "items_fingerprint": "a5418de869ebad0fb606b234e8feefa62b4f1a3078a622492ef8743577f45041"
+        },
+        {
+          "step_id": 20286,
+          "representation_identifier": "Body",
+          "context_type": "Model",
+          "context_identifier": "Body",
+          "target_view": "PLAN_VIEW",
+          "context_step_id": 17152,
+          "representation_type": "MappedRepresentation",
+          "item_count": 1,
+          "items_fingerprint": "1e8b59c77de375ad837f42c89b3b2297b742cc9ae1b94115a49fe1f49bef5179"
+        }
+      ],
+      "legacy_body_view_count": 1,
+      "review_view_count": 0,
+      "exact_item_graph_duplicates_of_model_body": [],
+      "native_context_priority_buckets": {
+        "PLAN_VIEW": {
+          "body": [
+            [],
+            [],
+            [
+              "Body"
+            ],
+            [
+              "Body"
+            ]
+          ],
+          "annotation": [
+            [],
+            [],
+            [],
+            []
+          ]
+        },
+        "ELEVATION_VIEW": {
+          "body": [
+            [],
+            [
+              "Body"
+            ]
+          ],
+          "annotation": [
+            [],
+            []
+          ]
+        }
+      },
+      "findings": [
+        "body_only_candidate_no_approved_three_view_package"
+      ]
+    },
+    {
+      "id": "sis04",
+      "path": "output/review/approved-product-library/candidate-packages/sis04.ifc",
+      "sha256": "31d455edfd8ff837a4c07e9cec44f53e5186111b8f8654c11fb89b4f9947c803",
+      "global_id": "1MzM8Ms2vFo8KEm503j9w2",
+      "review_category": "pending",
+      "physical_product_count": 1,
+      "opening_dependency_count": 0,
+      "ifc_annotation_entity_count": 0,
+      "representations": [
+        {
+          "step_id": 30041,
+          "representation_identifier": "Body",
+          "context_type": "Model",
+          "context_identifier": "Body",
+          "target_view": "MODEL_VIEW",
+          "context_step_id": 45,
+          "representation_type": "MappedRepresentation",
+          "item_count": 1,
+          "items_fingerprint": "c0aef843e895c64b747bf76e2f3b046e7c36056741f4a8c7e7eea65af35c19b8"
+        },
+        {
+          "step_id": 30048,
+          "representation_identifier": "Body",
+          "context_type": "Model",
+          "context_identifier": "Body",
+          "target_view": "PLAN_VIEW",
+          "context_step_id": 29800,
+          "representation_type": "MappedRepresentation",
+          "item_count": 1,
+          "items_fingerprint": "0f751ae6aebf6ff706fd5d87b2d317b808328a33d612654fb3989c75be6cf376"
+        },
+        {
+          "step_id": 30055,
+          "representation_identifier": "Body",
+          "context_type": "Model",
+          "context_identifier": "Body",
+          "target_view": "ELEVATION_VIEW",
+          "context_step_id": 30056,
+          "representation_type": "Curve3D",
+          "item_count": 23,
+          "items_fingerprint": "66f230da83669f586a923fface4a48919fd86ccdf9ef3bef4afc889d4465ef4b"
+        }
+      ],
+      "legacy_body_view_count": 2,
+      "review_view_count": 0,
+      "exact_item_graph_duplicates_of_model_body": [],
+      "native_context_priority_buckets": {
+        "PLAN_VIEW": {
+          "body": [
+            [],
+            [],
+            [
+              "Body"
+            ],
+            [
+              "Body"
+            ]
+          ],
+          "annotation": [
+            [],
+            [],
+            [],
+            []
+          ]
+        },
+        "ELEVATION_VIEW": {
+          "body": [
+            [
+              "Body"
+            ],
+            [
+              "Body"
+            ]
+          ],
+          "annotation": [
+            [],
+            []
+          ]
+        }
+      },
+      "findings": [
+        "body_only_candidate_no_approved_three_view_package"
+      ]
+    },
+    {
+      "id": "505-up-v1-lp-s",
+      "path": "output/review/approved-product-library/candidate-packages/505-up-v1-lp-s.ifc",
+      "sha256": "6771ba63d33d8f08371d8ae8b5a5efed9192835659656a0df6a468080e4f531c",
+      "global_id": "19MpdkWqXC7uhUNhLQgrce",
+      "review_category": "partial",
+      "physical_product_count": 1,
+      "opening_dependency_count": 0,
+      "ifc_annotation_entity_count": 0,
+      "representations": [
+        {
+          "step_id": 57,
+          "representation_identifier": "Body",
+          "context_type": "Model",
+          "context_identifier": "Body",
+          "target_view": "MODEL_VIEW",
+          "context_step_id": 58,
+          "representation_type": "Tessellation",
+          "item_count": 4,
+          "items_fingerprint": "ae1a2b8a753734002ba4242f6b52092564985625bf1160d263bdbd341b2b279a"
+        },
+        {
+          "step_id": 14383,
+          "representation_identifier": "Body",
+          "context_type": "Model",
+          "context_identifier": "Body",
+          "target_view": "PLAN_VIEW",
+          "context_step_id": 14384,
+          "representation_type": "Curve3D",
+          "item_count": 29,
+          "items_fingerprint": "6b9100e1773f0d0e883d5970a203cdf8b058151ed7d050aa349a6ba1878aeda7"
+        }
+      ],
+      "legacy_body_view_count": 1,
+      "review_view_count": 0,
+      "exact_item_graph_duplicates_of_model_body": [],
+      "native_context_priority_buckets": {
+        "PLAN_VIEW": {
+          "body": [
+            [],
+            [],
+            [
+              "Body"
+            ],
+            [
+              "Body"
+            ]
+          ],
+          "annotation": [
+            [],
+            [],
+            [],
+            []
+          ]
+        },
+        "ELEVATION_VIEW": {
+          "body": [
+            [],
+            [
+              "Body"
+            ]
+          ],
+          "annotation": [
+            [],
+            []
+          ]
+        }
+      },
+      "findings": [
+        "body_only_candidate_no_approved_three_view_package"
+      ]
+    },
+    {
+      "id": "miamisoft-e09",
+      "path": "output/review/highpoly-types/miamisoft-e09/product-package/MIAMI-E09-product.ifc",
+      "sha256": "7a51025a8ffece775464c2eaeef4a263d02c1df20ce41cb9d0aa79ac46b1681e",
+      "global_id": "3osoWufdD1mhDDAM6lcix4",
+      "review_category": "approved",
+      "physical_product_count": 1,
+      "opening_dependency_count": 0,
+      "ifc_annotation_entity_count": 0,
+      "representations": [
+        {
+          "step_id": 14001,
+          "representation_identifier": "Body",
+          "context_type": "Model",
+          "context_identifier": "Body",
+          "target_view": "MODEL_VIEW",
+          "context_step_id": 52,
+          "representation_type": "MappedRepresentation",
+          "item_count": 1,
+          "items_fingerprint": "6f0cace5d77deddb267505d51428f926b96039d468882084d755914d054b9384"
+        },
+        {
+          "step_id": 14008,
+          "representation_identifier": "Body",
+          "context_type": "Model",
+          "context_identifier": "Body",
+          "target_view": "PLAN_VIEW",
+          "context_step_id": 12163,
+          "representation_type": "MappedRepresentation",
+          "item_count": 1,
+          "items_fingerprint": "63a3f29f1680a071adb35bfd54e4b2a11b68633789b364535121210bc4dfca36"
+        },
+        {
+          "step_id": 14017,
+          "representation_identifier": "ApprovedPlan",
+          "context_type": "Plan",
+          "context_identifier": "Annotation",
+          "target_view": "PLAN_VIEW",
+          "context_step_id": 14018,
+          "representation_type": "GeometricCurveSet",
+          "item_count": 1,
+          "items_fingerprint": "d251f33fd99870bdb111fb3ed130449fece9ac9fb3a1105021f37a3b15ff37bc"
+        },
+        {
+          "step_id": 15606,
+          "representation_identifier": "ApprovedFront",
+          "context_type": "Model",
+          "context_identifier": "Annotation",
+          "target_view": "ELEVATION_VIEW",
+          "context_step_id": 15607,
+          "representation_type": "GeometricCurveSet",
+          "item_count": 1,
+          "items_fingerprint": "7c28eb201238ba29d2d671425197f9a7fef6f1d8a96b410995656bd5a14550d2"
+        },
+        {
+          "step_id": 17691,
+          "representation_identifier": "ApprovedSide",
+          "context_type": "Model",
+          "context_identifier": "Annotation",
+          "target_view": "ELEVATION_VIEW",
+          "context_step_id": 15607,
+          "representation_type": "GeometricCurveSet",
+          "item_count": 1,
+          "items_fingerprint": "b1289bd42b21dc3fb69401e2d87b320230b45d89f2871a2e3f5dbfb922848ce7"
+        }
+      ],
+      "legacy_body_view_count": 1,
+      "review_view_count": 3,
+      "exact_item_graph_duplicates_of_model_body": [],
+      "native_context_priority_buckets": {
+        "PLAN_VIEW": {
+          "body": [
+            [],
+            [],
+            [
+              "Body"
+            ],
+            [
+              "Body"
+            ]
+          ],
+          "annotation": [
+            [
+              "ApprovedPlan"
+            ],
+            [],
+            [],
+            []
+          ]
+        },
+        "ELEVATION_VIEW": {
+          "body": [
+            [],
+            [
+              "Body"
+            ]
+          ],
+          "annotation": [
+            [
+              "ApprovedFront",
+              "ApprovedSide"
+            ],
+            []
+          ]
+        }
+      },
+      "findings": [
+        "approved_product_linework_in_annotation_context",
+        "legacy_body_views_coexist_with_approved_linework",
+        "front_side_share_target_view_no_native_direction_selection"
+      ]
+    },
+    {
+      "id": "miamisoft-e07",
+      "path": "output/review/approved-product-library/candidate-packages/miamisoft-e07.ifc",
+      "sha256": "2f6beccb7f062d0535de87e4aa91a51bee27a0c7e2428087aacbc9b1311cc69a",
+      "global_id": "1G7iO6CfP64PjummX$qTbt",
+      "review_category": "pending",
+      "physical_product_count": 1,
+      "opening_dependency_count": 0,
+      "ifc_annotation_entity_count": 0,
+      "representations": [
+        {
+          "step_id": 13882,
+          "representation_identifier": "Body",
+          "context_type": "Model",
+          "context_identifier": "Body",
+          "target_view": "MODEL_VIEW",
+          "context_step_id": 52,
+          "representation_type": "MappedRepresentation",
+          "item_count": 1,
+          "items_fingerprint": "86b19a4c64dfb65c891aefe3afbb6ce309ec802824fe5e7e2055a15c2178dd98"
+        },
+        {
+          "step_id": 13896,
+          "representation_identifier": "Body",
+          "context_type": "Model",
+          "context_identifier": "Body",
+          "target_view": "PLAN_VIEW",
+          "context_step_id": 13002,
+          "representation_type": "MappedRepresentation",
+          "item_count": 1,
+          "items_fingerprint": "2f917fd6927d77149ae96d285e2ce7e7dd1cc4d08abcac1fc810d444aa8c652b"
+        }
+      ],
+      "legacy_body_view_count": 1,
+      "review_view_count": 0,
+      "exact_item_graph_duplicates_of_model_body": [],
+      "native_context_priority_buckets": {
+        "PLAN_VIEW": {
+          "body": [
+            [],
+            [],
+            [
+              "Body"
+            ],
+            [
+              "Body"
+            ]
+          ],
+          "annotation": [
+            [],
+            [],
+            [],
+            []
+          ]
+        },
+        "ELEVATION_VIEW": {
+          "body": [
+            [],
+            [
+              "Body"
+            ]
+          ],
+          "annotation": [
+            [],
+            []
+          ]
+        }
+      },
+      "findings": [
+        "body_only_candidate_no_approved_three_view_package"
+      ]
+    },
+    {
+      "id": "marilyn-01",
+      "path": "output/review/approved-product-library/candidate-packages/marilyn-01.ifc",
+      "sha256": "3907a3c75f351f7832aad1f82d3d75344318ee20e9322503e976df5ec1e5c4bc",
+      "global_id": "3l2Ji4k2H9oOTDGWYUq7uV",
+      "review_category": "partial",
+      "physical_product_count": 1,
+      "opening_dependency_count": 0,
+      "ifc_annotation_entity_count": 0,
+      "representations": [
+        {
+          "step_id": 12911,
+          "representation_identifier": "Body",
+          "context_type": "Model",
+          "context_identifier": "Body",
+          "target_view": "MODEL_VIEW",
+          "context_step_id": 52,
+          "representation_type": "MappedRepresentation",
+          "item_count": 1,
+          "items_fingerprint": "61ab4afe047d4c40a47afd1e7db048bed20e8bf64703770046bdd8aedb0cd387"
+        },
+        {
+          "step_id": 12918,
+          "representation_identifier": "Body",
+          "context_type": "Model",
+          "context_identifier": "Body",
+          "target_view": "PLAN_VIEW",
+          "context_step_id": 11530,
+          "representation_type": "MappedRepresentation",
+          "item_count": 1,
+          "items_fingerprint": "08d8ecd3b2e281a61f97219efc6bf88686d97173ba4fb9c77fb5bc2df9ba33c6"
+        }
+      ],
+      "legacy_body_view_count": 1,
+      "review_view_count": 0,
+      "exact_item_graph_duplicates_of_model_body": [],
+      "native_context_priority_buckets": {
+        "PLAN_VIEW": {
+          "body": [
+            [],
+            [],
+            [
+              "Body"
+            ],
+            [
+              "Body"
+            ]
+          ],
+          "annotation": [
+            [],
+            [],
+            [],
+            []
+          ]
+        },
+        "ELEVATION_VIEW": {
+          "body": [
+            [],
+            [
+              "Body"
+            ]
+          ],
+          "annotation": [
+            [],
+            []
+          ]
+        }
+      },
+      "findings": [
+        "body_only_candidate_no_approved_three_view_package"
+      ]
+    },
+    {
+      "id": "miamisoft-f03",
+      "path": "output/review/approved-product-library/candidate-packages/miamisoft-f03.ifc",
+      "sha256": "6d3b4e08de675d0ee70ddb0cf05269aeabf0c87f491b3e96277833b4ab492dc5",
+      "global_id": "1y3lLYK$H9fPbuh1R1vAKX",
+      "review_category": "pending",
+      "physical_product_count": 1,
+      "opening_dependency_count": 0,
+      "ifc_annotation_entity_count": 0,
+      "representations": [
+        {
+          "step_id": 10415,
+          "representation_identifier": "Body",
+          "context_type": "Model",
+          "context_identifier": "Body",
+          "target_view": "MODEL_VIEW",
+          "context_step_id": 52,
+          "representation_type": "MappedRepresentation",
+          "item_count": 1,
+          "items_fingerprint": "b797970db0caee3f98b7ed286eebcfac187c6241c9ae2c43334dc32376b79e93"
+        },
+        {
+          "step_id": 10422,
+          "representation_identifier": "Body",
+          "context_type": "Model",
+          "context_identifier": "Body",
+          "target_view": "PLAN_VIEW",
+          "context_step_id": 9634,
+          "representation_type": "MappedRepresentation",
+          "item_count": 1,
+          "items_fingerprint": "8daad90be64e0adc439fb2028ef664ed05f3ae9dc23aaf1d3e7c59ec04da77c0"
+        }
+      ],
+      "legacy_body_view_count": 1,
+      "review_view_count": 0,
+      "exact_item_graph_duplicates_of_model_body": [],
+      "native_context_priority_buckets": {
+        "PLAN_VIEW": {
+          "body": [
+            [],
+            [],
+            [
+              "Body"
+            ],
+            [
+              "Body"
+            ]
+          ],
+          "annotation": [
+            [],
+            [],
+            [],
+            []
+          ]
+        },
+        "ELEVATION_VIEW": {
+          "body": [
+            [],
+            [
+              "Body"
+            ]
+          ],
+          "annotation": [
+            [],
+            []
+          ]
+        }
+      },
+      "findings": [
+        "body_only_candidate_no_approved_three_view_package"
+      ]
+    },
+    {
+      "id": "trap01",
+      "path": "output/review/highpoly-types/trap01/product-package/TRAP01-product.ifc",
+      "sha256": "83e3b5252665ccfcf20d6e56b205b199767ba0bdf243a36c71258b93f00322bc",
+      "global_id": "2Ak2ma0lvBEA49UpplzUqi",
+      "review_category": "approved",
+      "physical_product_count": 1,
+      "opening_dependency_count": 0,
+      "ifc_annotation_entity_count": 0,
+      "representations": [
+        {
+          "step_id": 9300,
+          "representation_identifier": "Body",
+          "context_type": "Model",
+          "context_identifier": "Body",
+          "target_view": "MODEL_VIEW",
+          "context_step_id": 59,
+          "representation_type": "MappedRepresentation",
+          "item_count": 1,
+          "items_fingerprint": "fc5a600aef5044b2fcd04b75113f2f7ef93073b3dfa3c507862c0f49c3ec8f94"
+        },
+        {
+          "step_id": 9307,
+          "representation_identifier": "Body",
+          "context_type": "Plan",
+          "context_identifier": "Body",
+          "target_view": "PLAN_VIEW",
+          "context_step_id": 9164,
+          "representation_type": "MappedRepresentation",
+          "item_count": 1,
+          "items_fingerprint": "65f3e722aa91b9407cdcb2de51e316bfdf3ff7fa3b63a4b5303c1640ed77b6b5"
+        },
+        {
+          "step_id": 9314,
+          "representation_identifier": "ApprovedPlan",
+          "context_type": "Plan",
+          "context_identifier": "Annotation",
+          "target_view": "PLAN_VIEW",
+          "context_step_id": 9315,
+          "representation_type": "GeometricCurveSet",
+          "item_count": 1,
+          "items_fingerprint": "2dbdd99f05dc7328f17e2e70d43d27ed91883cb910693109a97284637d88cb23"
+        },
+        {
+          "step_id": 11961,
+          "representation_identifier": "ApprovedFront",
+          "context_type": "Model",
+          "context_identifier": "Annotation",
+          "target_view": "ELEVATION_VIEW",
+          "context_step_id": 11962,
+          "representation_type": "GeometricCurveSet",
+          "item_count": 1,
+          "items_fingerprint": "60f4146a212bc77da4f563146312460fc552ff19f261c8a4b921c9225a39ae25"
+        },
+        {
+          "step_id": 14780,
+          "representation_identifier": "ApprovedSide",
+          "context_type": "Model",
+          "context_identifier": "Annotation",
+          "target_view": "ELEVATION_VIEW",
+          "context_step_id": 11962,
+          "representation_type": "GeometricCurveSet",
+          "item_count": 1,
+          "items_fingerprint": "c49e233b429c11de05f9b768fcc57f02df8f02fa78c8c1375c82ffe1c0aacb71"
+        }
+      ],
+      "legacy_body_view_count": 1,
+      "review_view_count": 3,
+      "exact_item_graph_duplicates_of_model_body": [],
+      "native_context_priority_buckets": {
+        "PLAN_VIEW": {
+          "body": [
+            [
+              "Body"
+            ],
+            [],
+            [],
+            [
+              "Body"
+            ]
+          ],
+          "annotation": [
+            [
+              "ApprovedPlan"
+            ],
+            [],
+            [],
+            []
+          ]
+        },
+        "ELEVATION_VIEW": {
+          "body": [
+            [],
+            [
+              "Body"
+            ]
+          ],
+          "annotation": [
+            [
+              "ApprovedFront",
+              "ApprovedSide"
+            ],
+            []
+          ]
+        }
+      },
+      "findings": [
+        "approved_product_linework_in_annotation_context",
+        "legacy_body_views_coexist_with_approved_linework",
+        "front_side_share_target_view_no_native_direction_selection"
+      ]
+    },
+    {
+      "id": "marilyn-02",
+      "path": "output/review/approved-product-library/candidate-packages/marilyn-02.ifc",
+      "sha256": "930036ffc81c894f24d1d5556b3ead6cf48c659aaf4ab28112cc9d47dcb72077",
+      "global_id": "1THxa7p7n97w$wtLn4THjz",
+      "review_category": "pending",
+      "physical_product_count": 1,
+      "opening_dependency_count": 0,
+      "ifc_annotation_entity_count": 0,
+      "representations": [
+        {
+          "step_id": 8162,
+          "representation_identifier": "Body",
+          "context_type": "Model",
+          "context_identifier": "Body",
+          "target_view": "MODEL_VIEW",
+          "context_step_id": 52,
+          "representation_type": "MappedRepresentation",
+          "item_count": 1,
+          "items_fingerprint": "c3eab4625c88983c06b264183797429ad4376e6fafa1566741a2e153ab388ddc"
+        },
+        {
+          "step_id": 8169,
+          "representation_identifier": "Body",
+          "context_type": "Model",
+          "context_identifier": "Body",
+          "target_view": "PLAN_VIEW",
+          "context_step_id": 5193,
+          "representation_type": "MappedRepresentation",
+          "item_count": 1,
+          "items_fingerprint": "96ee1cd32810d63b610a3251a8e160511bc022d3e7a02383cdbb9c1c00514e4f"
+        }
+      ],
+      "legacy_body_view_count": 1,
+      "review_view_count": 0,
+      "exact_item_graph_duplicates_of_model_body": [],
+      "native_context_priority_buckets": {
+        "PLAN_VIEW": {
+          "body": [
+            [],
+            [],
+            [
+              "Body"
+            ],
+            [
+              "Body"
+            ]
+          ],
+          "annotation": [
+            [],
+            [],
+            [],
+            []
+          ]
+        },
+        "ELEVATION_VIEW": {
+          "body": [
+            [],
+            [
+              "Body"
+            ]
+          ],
+          "annotation": [
+            [],
+            []
+          ]
+        }
+      },
+      "findings": [
+        "body_only_candidate_no_approved_three_view_package"
+      ]
+    },
+    {
+      "id": "cha01",
+      "path": "output/review/approved-product-library/candidate-packages/cha01.ifc",
+      "sha256": "7d6fb5b13b8de7462175f8213203ac801cb431f0ebb7d8973b91cc5e62795441",
+      "global_id": "1luHljRzDAhPNXxTDNu7qB",
+      "review_category": "pending",
+      "physical_product_count": 1,
+      "opening_dependency_count": 0,
+      "ifc_annotation_entity_count": 0,
+      "representations": [
+        {
+          "step_id": 7634,
+          "representation_identifier": "Body",
+          "context_type": "Model",
+          "context_identifier": "Body",
+          "target_view": "MODEL_VIEW",
+          "context_step_id": 52,
+          "representation_type": "MappedRepresentation",
+          "item_count": 1,
+          "items_fingerprint": "e661688f7cd0e7e139f4ff38f146125c38123848c799c9a2ca52a287fdd12cf3"
+        },
+        {
+          "step_id": 7641,
+          "representation_identifier": "Body",
+          "context_type": "Model",
+          "context_identifier": "Body",
+          "target_view": "PLAN_VIEW",
+          "context_step_id": 7610,
+          "representation_type": "MappedRepresentation",
+          "item_count": 1,
+          "items_fingerprint": "16ae4032f7996a4385d4bc49abf312d78a2e2846ec1e656a4483c9e81de6eed9"
+        }
+      ],
+      "legacy_body_view_count": 1,
+      "review_view_count": 0,
+      "exact_item_graph_duplicates_of_model_body": [],
+      "native_context_priority_buckets": {
+        "PLAN_VIEW": {
+          "body": [
+            [],
+            [],
+            [
+              "Body"
+            ],
+            [
+              "Body"
+            ]
+          ],
+          "annotation": [
+            [],
+            [],
+            [],
+            []
+          ]
+        },
+        "ELEVATION_VIEW": {
+          "body": [
+            [],
+            [
+              "Body"
+            ]
+          ],
+          "annotation": [
+            [],
+            []
+          ]
+        }
+      },
+      "findings": [
+        "body_only_candidate_no_approved_three_view_package"
+      ]
+    },
+    {
+      "id": "miamisoft-h01",
+      "path": "output/review/approved-product-library/candidate-packages/miamisoft-h01.ifc",
+      "sha256": "31d8d1aafd32678437fd97e962fc671b63009d3444c7fab5df3bec2554baa50d",
+      "global_id": "0B8rO47U14sgJ_ydZxqvs6",
+      "review_category": "pending",
+      "physical_product_count": 1,
+      "opening_dependency_count": 0,
+      "ifc_annotation_entity_count": 0,
+      "representations": [
+        {
+          "step_id": 7353,
+          "representation_identifier": "Body",
+          "context_type": "Model",
+          "context_identifier": "Body",
+          "target_view": "MODEL_VIEW",
+          "context_step_id": 52,
+          "representation_type": "MappedRepresentation",
+          "item_count": 1,
+          "items_fingerprint": "272f7919f0c19b0b4307bb58fb621bd425285fc991bfa7a7f7559e27fc4ac53a"
+        },
+        {
+          "step_id": 7360,
+          "representation_identifier": "Body",
+          "context_type": "Model",
+          "context_identifier": "Body",
+          "target_view": "PLAN_VIEW",
+          "context_step_id": 6046,
+          "representation_type": "MappedRepresentation",
+          "item_count": 1,
+          "items_fingerprint": "f75139caf8f32372eda74f59376da0860b075d0b225b6581efd4edfe6b17b2da"
+        }
+      ],
+      "legacy_body_view_count": 1,
+      "review_view_count": 0,
+      "exact_item_graph_duplicates_of_model_body": [],
+      "native_context_priority_buckets": {
+        "PLAN_VIEW": {
+          "body": [
+            [],
+            [],
+            [
+              "Body"
+            ],
+            [
+              "Body"
+            ]
+          ],
+          "annotation": [
+            [],
+            [],
+            [],
+            []
+          ]
+        },
+        "ELEVATION_VIEW": {
+          "body": [
+            [],
+            [
+              "Body"
+            ]
+          ],
+          "annotation": [
+            [],
+            []
+          ]
+        }
+      },
+      "findings": [
+        "body_only_candidate_no_approved_three_view_package"
+      ]
+    },
+    {
+      "id": "falper-sorgente",
+      "path": "output/review/highpoly-types/falper-sorgente/product-package/FALPER-WFB-product.ifc",
+      "sha256": "ec6029ad7a4a67449d5a9e6030b531dcf9e9ed8273843420415b289a8431cd57",
+      "global_id": "350tdaubr8QP3Cu2YMQZIN",
+      "review_category": "partial",
+      "physical_product_count": 1,
+      "opening_dependency_count": 0,
+      "ifc_annotation_entity_count": 0,
+      "representations": [
+        {
+          "step_id": 35,
+          "representation_identifier": "Body",
+          "context_type": "Model",
+          "context_identifier": "Body",
+          "target_view": "MODEL_VIEW",
+          "context_step_id": 36,
+          "representation_type": "MappedRepresentation",
+          "item_count": 1,
+          "items_fingerprint": "120e0444826452c3936e909f13d928388f0f890af4848dc37b053685d1720191"
+        },
+        {
+          "step_id": 4909,
+          "representation_identifier": "Body",
+          "context_type": "Model",
+          "context_identifier": "Body",
+          "target_view": "PLAN_VIEW",
+          "context_step_id": 4910,
+          "representation_type": "MappedRepresentation",
+          "item_count": 1,
+          "items_fingerprint": "a9fb865a6db0d91cfb841cec56b130ed809a91300f225315ae11720b2ca57829"
+        },
+        {
+          "step_id": 5130,
+          "representation_identifier": "FalperWFBPlan",
+          "context_type": "Model",
+          "context_identifier": "FalperWFBPlan",
+          "target_view": "PLAN_VIEW",
+          "context_step_id": 5131,
+          "representation_type": "GeometricCurveSet",
+          "item_count": 1,
+          "items_fingerprint": "473fcfc3685e394e81e17f4f98793594c362cd78c6f15823d1d6f66f396a57f8"
+        },
+        {
+          "step_id": 6423,
+          "representation_identifier": "FalperWFBFront",
+          "context_type": "Model",
+          "context_identifier": "FalperWFBFront",
+          "target_view": "ELEVATION_VIEW",
+          "context_step_id": 6424,
+          "representation_type": "GeometricCurveSet",
+          "item_count": 1,
+          "items_fingerprint": "3823e49fb21c98ee2089640b099a69963795d96c638fd326bfe3e58fe76af4ea"
+        },
+        {
+          "step_id": 7972,
+          "representation_identifier": "FalperWFBSide",
+          "context_type": "Model",
+          "context_identifier": "FalperWFBSide",
+          "target_view": "ELEVATION_VIEW",
+          "context_step_id": 7973,
+          "representation_type": "GeometricCurveSet",
+          "item_count": 1,
+          "items_fingerprint": "38f6820e22427f95ff291e9becc251f510b004e48a44d171407c8fcdc3bf8492"
+        }
+      ],
+      "legacy_body_view_count": 1,
+      "review_view_count": 3,
+      "exact_item_graph_duplicates_of_model_body": [],
+      "native_context_priority_buckets": {
+        "PLAN_VIEW": {
+          "body": [
+            [],
+            [],
+            [
+              "Body"
+            ],
+            [
+              "Body"
+            ]
+          ],
+          "annotation": [
+            [],
+            [],
+            [],
+            []
+          ]
+        },
+        "ELEVATION_VIEW": {
+          "body": [
+            [],
+            [
+              "Body"
+            ]
+          ],
+          "annotation": [
+            [],
+            []
+          ]
+        }
+      },
+      "findings": [
+        "custom_product_context_not_selected_by_native_drawing",
+        "legacy_body_views_coexist_with_approved_linework",
+        "front_side_share_target_view_no_native_direction_selection"
+      ]
+    },
+    {
+      "id": "geberit-154-154-00",
+      "path": "output/review/approved-product-library/candidate-packages/geberit-154-154-00.ifc",
+      "sha256": "2ebc0c7c4de5171829d6d7104d59b5a7c46fa9f492b78744e3a391d6c864d887",
+      "global_id": "14EazrLgP8whYZWY_yCuKy",
+      "review_category": "pending",
+      "physical_product_count": 1,
+      "opening_dependency_count": 0,
+      "ifc_annotation_entity_count": 0,
+      "representations": [
+        {
+          "step_id": 4912,
+          "representation_identifier": "Body",
+          "context_type": "Model",
+          "context_identifier": "Body",
+          "target_view": "MODEL_VIEW",
+          "context_step_id": 59,
+          "representation_type": "MappedRepresentation",
+          "item_count": 1,
+          "items_fingerprint": "ac028483a7e6096822920f5679031a6031930f5c2aff420174994fded1c6c292"
+        },
+        {
+          "step_id": 4919,
+          "representation_identifier": "Body",
+          "context_type": "Plan",
+          "context_identifier": "Body",
+          "target_view": "PLAN_VIEW",
+          "context_step_id": 4870,
+          "representation_type": "MappedRepresentation",
+          "item_count": 1,
+          "items_fingerprint": "c8211731af269145c7cd403bcf4fcca2770fb23c0f1bd747ffb61951c0181039"
+        }
+      ],
+      "legacy_body_view_count": 1,
+      "review_view_count": 0,
+      "exact_item_graph_duplicates_of_model_body": [],
+      "native_context_priority_buckets": {
+        "PLAN_VIEW": {
+          "body": [
+            [
+              "Body"
+            ],
+            [],
+            [],
+            [
+              "Body"
+            ]
+          ],
+          "annotation": [
+            [],
+            [],
+            [],
+            []
+          ]
+        },
+        "ELEVATION_VIEW": {
+          "body": [
+            [],
+            [
+              "Body"
+            ]
+          ],
+          "annotation": [
+            [],
+            []
+          ]
+        }
+      },
+      "findings": [
+        "body_only_candidate_no_approved_three_view_package"
+      ]
+    },
+    {
+      "id": "bst03",
+      "path": "output/review/approved-product-library/candidate-packages/bst03.ifc",
+      "sha256": "d51f3b3ff7fc991ee0daf22e60174cf8e5893c442e8221766caaca240f03485e",
+      "global_id": "1HZoxe$df4cBb4UXXH5J2S",
+      "review_category": "pending",
+      "physical_product_count": 1,
+      "opening_dependency_count": 0,
+      "ifc_annotation_entity_count": 0,
+      "representations": [
+        {
+          "step_id": 4355,
+          "representation_identifier": "Body",
+          "context_type": "Model",
+          "context_identifier": "Body",
+          "target_view": "MODEL_VIEW",
+          "context_step_id": 52,
+          "representation_type": "MappedRepresentation",
+          "item_count": 1,
+          "items_fingerprint": "e25ac1ea7647e14f9ebdf7f4dba6b349446827a70134434ba8991390b278b473"
+        },
+        {
+          "step_id": 4362,
+          "representation_identifier": "Body",
+          "context_type": "Model",
+          "context_identifier": "Body",
+          "target_view": "PLAN_VIEW",
+          "context_step_id": 4109,
+          "representation_type": "MappedRepresentation",
+          "item_count": 1,
+          "items_fingerprint": "c561de75ec898b5e70955b938724cadc8bf934d0666f8729c294dccc2305bcb7"
+        }
+      ],
+      "legacy_body_view_count": 1,
+      "review_view_count": 0,
+      "exact_item_graph_duplicates_of_model_body": [],
+      "native_context_priority_buckets": {
+        "PLAN_VIEW": {
+          "body": [
+            [],
+            [],
+            [
+              "Body"
+            ],
+            [
+              "Body"
+            ]
+          ],
+          "annotation": [
+            [],
+            [],
+            [],
+            []
+          ]
+        },
+        "ELEVATION_VIEW": {
+          "body": [
+            [],
+            [
+              "Body"
+            ]
+          ],
+          "annotation": [
+            [],
+            []
+          ]
+        }
+      },
+      "findings": [
+        "body_only_candidate_no_approved_three_view_package"
+      ]
+    },
+    {
+      "id": "fau02",
+      "path": "output/review/approved-product-library/candidate-packages/fau02.ifc",
+      "sha256": "a773647bf228c3909d45b060fda487b44ed4de0cde9ac27bd10b4b56aec13e41",
+      "global_id": "36ZX3QPyD7SvlXsDKMP8rY",
+      "review_category": "pending",
+      "physical_product_count": 1,
+      "opening_dependency_count": 0,
+      "ifc_annotation_entity_count": 0,
+      "representations": [
+        {
+          "step_id": 3791,
+          "representation_identifier": "Body",
+          "context_type": "Model",
+          "context_identifier": "Body",
+          "target_view": "MODEL_VIEW",
+          "context_step_id": 52,
+          "representation_type": "MappedRepresentation",
+          "item_count": 1,
+          "items_fingerprint": "a71e381ffd488fb67ec193105f3ba68caafb31d6860339afb3c51eb4c7a4d3a6"
+        },
+        {
+          "step_id": 3798,
+          "representation_identifier": "Body",
+          "context_type": "Model",
+          "context_identifier": "Body",
+          "target_view": "PLAN_VIEW",
+          "context_step_id": 3617,
+          "representation_type": "MappedRepresentation",
+          "item_count": 1,
+          "items_fingerprint": "c6f92746129e2ab14c5537526daa3ec663612f2f3b3f447f9de2ad6d1986ebd6"
+        }
+      ],
+      "legacy_body_view_count": 1,
+      "review_view_count": 0,
+      "exact_item_graph_duplicates_of_model_body": [],
+      "native_context_priority_buckets": {
+        "PLAN_VIEW": {
+          "body": [
+            [],
+            [],
+            [
+              "Body"
+            ],
+            [
+              "Body"
+            ]
+          ],
+          "annotation": [
+            [],
+            [],
+            [],
+            []
+          ]
+        },
+        "ELEVATION_VIEW": {
+          "body": [
+            [],
+            [
+              "Body"
+            ]
+          ],
+          "annotation": [
+            [],
+            []
+          ]
+        }
+      },
+      "findings": [
+        "body_only_candidate_no_approved_three_view_package"
+      ]
+    },
+    {
+      "id": "gessi316-54146",
+      "path": "output/review/approved-product-library/candidate-packages/gessi316-54146.ifc",
+      "sha256": "197485af7a6ba4cdb7cafeef6c0985fb1e43aa38d670e2ead41ea7cbc7db6a1b",
+      "global_id": "04DLh1Jk9Dcu9ibcaE0id8",
+      "review_category": "partial",
+      "physical_product_count": 1,
+      "opening_dependency_count": 0,
+      "ifc_annotation_entity_count": 0,
+      "representations": [
+        {
+          "step_id": 3702,
+          "representation_identifier": "Body",
+          "context_type": "Model",
+          "context_identifier": "Body",
+          "target_view": "MODEL_VIEW",
+          "context_step_id": 59,
+          "representation_type": "MappedRepresentation",
+          "item_count": 1,
+          "items_fingerprint": "657129b35703f267d0cc3e8dfe908ba9f6296171e34317e01b4de7c5becbdb17"
+        },
+        {
+          "step_id": 3709,
+          "representation_identifier": "Body",
+          "context_type": "Model",
+          "context_identifier": "Body",
+          "target_view": "PLAN_VIEW",
+          "context_step_id": 3589,
+          "representation_type": "MappedRepresentation",
+          "item_count": 1,
+          "items_fingerprint": "192b5f8a42f3a117b11ae11c8cb0b9e3038898eabd13f1983f9610a387efbb80"
+        }
+      ],
+      "legacy_body_view_count": 1,
+      "review_view_count": 0,
+      "exact_item_graph_duplicates_of_model_body": [],
+      "native_context_priority_buckets": {
+        "PLAN_VIEW": {
+          "body": [
+            [],
+            [],
+            [
+              "Body"
+            ],
+            [
+              "Body"
+            ]
+          ],
+          "annotation": [
+            [],
+            [],
+            [],
+            []
+          ]
+        },
+        "ELEVATION_VIEW": {
+          "body": [
+            [],
+            [
+              "Body"
+            ]
+          ],
+          "annotation": [
+            [],
+            []
+          ]
+        }
+      },
+      "findings": [
+        "body_only_candidate_no_approved_three_view_package"
+      ]
+    },
+    {
+      "id": "wd03",
+      "path": "output/review/highpoly-types/wd03/product-package/WD03-product.ifc",
+      "sha256": "9d9d20db08717e9a926dac21c8bfeac7fffcbb721576e247ab0ded7b6ffb32c2",
+      "global_id": "3cmikd9MTB$egM5KQaNgUf",
+      "review_category": "approved",
+      "physical_product_count": 1,
+      "opening_dependency_count": 0,
+      "ifc_annotation_entity_count": 0,
+      "representations": [
+        {
+          "step_id": 3579,
+          "representation_identifier": "Body",
+          "context_type": "Model",
+          "context_identifier": "Body",
+          "target_view": "MODEL_VIEW",
+          "context_step_id": 52,
+          "representation_type": "MappedRepresentation",
+          "item_count": 1,
+          "items_fingerprint": "bc018d35e3436ddc35ce8ae7df649e9bf4fdb67db74f625324fcd308c7a7fd5e"
+        },
+        {
+          "step_id": 3586,
+          "representation_identifier": "Body",
+          "context_type": "Model",
+          "context_identifier": "Body",
+          "target_view": "PLAN_VIEW",
+          "context_step_id": 3555,
+          "representation_type": "MappedRepresentation",
+          "item_count": 1,
+          "items_fingerprint": "c9dff37eb4ae62012bab8817076b3efaf4f88d03d41b93af36b0846ec4cf81d1"
+        },
+        {
+          "step_id": 3593,
+          "representation_identifier": "Wd03Plan",
+          "context_type": "Model",
+          "context_identifier": "Wd03Plan",
+          "target_view": "PLAN_VIEW",
+          "context_step_id": 3594,
+          "representation_type": "GeometricCurveSet",
+          "item_count": 1,
+          "items_fingerprint": "94a327bfc8775a54ea2f7bbfe4e823f191c687339a8253f69442427baaeef597"
+        },
+        {
+          "step_id": 3618,
+          "representation_identifier": "Wd03Front",
+          "context_type": "Model",
+          "context_identifier": "Wd03Front",
+          "target_view": "ELEVATION_VIEW",
+          "context_step_id": 3619,
+          "representation_type": "GeometricCurveSet",
+          "item_count": 1,
+          "items_fingerprint": "4a051f44b0d25c568c9677c091aa95ba8503ea0b6a3213e97e3af827e37e3d64"
+        },
+        {
+          "step_id": 3663,
+          "representation_identifier": "Wd03Side",
+          "context_type": "Model",
+          "context_identifier": "Wd03Side",
+          "target_view": "ELEVATION_VIEW",
+          "context_step_id": 3664,
+          "representation_type": "GeometricCurveSet",
+          "item_count": 1,
+          "items_fingerprint": "68d9f8632dbd0675ce554a221bfac101df02b8a94ba88fd1e1da3e3ab2572e46"
+        }
+      ],
+      "legacy_body_view_count": 1,
+      "review_view_count": 3,
+      "exact_item_graph_duplicates_of_model_body": [],
+      "native_context_priority_buckets": {
+        "PLAN_VIEW": {
+          "body": [
+            [],
+            [],
+            [
+              "Body"
+            ],
+            [
+              "Body"
+            ]
+          ],
+          "annotation": [
+            [],
+            [],
+            [],
+            []
+          ]
+        },
+        "ELEVATION_VIEW": {
+          "body": [
+            [],
+            [
+              "Body"
+            ]
+          ],
+          "annotation": [
+            [],
+            []
+          ]
+        }
+      },
+      "findings": [
+        "custom_product_context_not_selected_by_native_drawing",
+        "legacy_body_views_coexist_with_approved_linework",
+        "front_side_share_target_view_no_native_direction_selection"
+      ]
+    },
+    {
+      "id": "miamisoft-i03",
+      "path": "output/review/approved-product-library/candidate-packages/miamisoft-i03.ifc",
+      "sha256": "9fc77d3ca257c9d038eb332cfaec5a3c7dadca82f4a9eb4a526a51aea651e1d1",
+      "global_id": "1hdNtfQRPCGfHLfqzdp6w0",
+      "review_category": "pending",
+      "physical_product_count": 1,
+      "opening_dependency_count": 0,
+      "ifc_annotation_entity_count": 0,
+      "representations": [
+        {
+          "step_id": 3293,
+          "representation_identifier": "Body",
+          "context_type": "Model",
+          "context_identifier": "Body",
+          "target_view": "MODEL_VIEW",
+          "context_step_id": 52,
+          "representation_type": "MappedRepresentation",
+          "item_count": 1,
+          "items_fingerprint": "e0a69380d70e4982dde787cce4fd0063e335964649f06ad981c7bbaa14342d00"
+        },
+        {
+          "step_id": 3300,
+          "representation_identifier": "Body",
+          "context_type": "Model",
+          "context_identifier": "Body",
+          "target_view": "PLAN_VIEW",
+          "context_step_id": 3275,
+          "representation_type": "MappedRepresentation",
+          "item_count": 1,
+          "items_fingerprint": "15141e46b946b4049dc40890897ca289bdd5b95de8e291b3443ab664b7990134"
+        }
+      ],
+      "legacy_body_view_count": 1,
+      "review_view_count": 0,
+      "exact_item_graph_duplicates_of_model_body": [],
+      "native_context_priority_buckets": {
+        "PLAN_VIEW": {
+          "body": [
+            [],
+            [],
+            [
+              "Body"
+            ],
+            [
+              "Body"
+            ]
+          ],
+          "annotation": [
+            [],
+            [],
+            [],
+            []
+          ]
+        },
+        "ELEVATION_VIEW": {
+          "body": [
+            [],
+            [
+              "Body"
+            ]
+          ],
+          "annotation": [
+            [],
+            []
+          ]
+        }
+      },
+      "findings": [
+        "body_only_candidate_no_approved_three_view_package"
+      ]
+    },
+    {
+      "id": "geberit-146-140",
+      "path": "output/review/approved-product-library/candidate-packages/geberit-146-140.ifc",
+      "sha256": "676301af34d7e2eceea34ec889ad05064f9240440f96a1119ccbd2843c54dbcc",
+      "global_id": "1rhZG98PPCSxaLeMFLTYb9",
+      "review_category": "partial",
+      "physical_product_count": 1,
+      "opening_dependency_count": 0,
+      "ifc_annotation_entity_count": 0,
+      "representations": [
+        {
+          "step_id": 3179,
+          "representation_identifier": "Body",
+          "context_type": "Model",
+          "context_identifier": "Body",
+          "target_view": "MODEL_VIEW",
+          "context_step_id": 52,
+          "representation_type": "MappedRepresentation",
+          "item_count": 1,
+          "items_fingerprint": "487e7020d444cd3f08175f8be4de0101f3bd2f0776d7061e3defa36c4fa9fc62"
+        },
+        {
+          "step_id": 3186,
+          "representation_identifier": "Body",
+          "context_type": "Model",
+          "context_identifier": "Body",
+          "target_view": "PLAN_VIEW",
+          "context_step_id": 2822,
+          "representation_type": "MappedRepresentation",
+          "item_count": 1,
+          "items_fingerprint": "44ffa89e00d06f4ec2f732bfa40cc4fbeaac37c1ca80cfc08ea5ca9a86649023"
+        }
+      ],
+      "legacy_body_view_count": 1,
+      "review_view_count": 0,
+      "exact_item_graph_duplicates_of_model_body": [],
+      "native_context_priority_buckets": {
+        "PLAN_VIEW": {
+          "body": [
+            [],
+            [],
+            [
+              "Body"
+            ],
+            [
+              "Body"
+            ]
+          ],
+          "annotation": [
+            [],
+            [],
+            [],
+            []
+          ]
+        },
+        "ELEVATION_VIEW": {
+          "body": [
+            [],
+            [
+              "Body"
+            ]
+          ],
+          "annotation": [
+            [],
+            []
+          ]
+        }
+      },
+      "findings": [
+        "body_only_candidate_no_approved_three_view_package"
+      ]
+    },
+    {
+      "id": "gessi316-54145",
+      "path": "output/review/highpoly-types/gessi316-54145/product-package/GESSI54145-product.ifc",
+      "sha256": "a2bd449156b7af3be7feff331c106742924970756738bfe2f30f1f624e5a92a1",
+      "global_id": "3jT4sCgpHC98VSIUdGUNYH",
+      "review_category": "partial",
+      "physical_product_count": 1,
+      "opening_dependency_count": 0,
+      "ifc_annotation_entity_count": 0,
+      "representations": [
+        {
+          "step_id": 31,
+          "representation_identifier": "Body",
+          "context_type": "Model",
+          "context_identifier": "Body",
+          "target_view": "MODEL_VIEW",
+          "context_step_id": 32,
+          "representation_type": "MappedRepresentation",
+          "item_count": 1,
+          "items_fingerprint": "b9ddfde088a3b0b5bcf95b5457a50cc5428cafe978fd32350c0c8c4a8930ae6a"
+        },
+        {
+          "step_id": 2884,
+          "representation_identifier": "Body",
+          "context_type": "Model",
+          "context_identifier": "Body",
+          "target_view": "PLAN_VIEW",
+          "context_step_id": 2885,
+          "representation_type": "MappedRepresentation",
+          "item_count": 1,
+          "items_fingerprint": "e064e8181f61a76075ea8a6d002d21df3c74f9f9ef2f64998160bd01059eb45b"
+        },
+        {
+          "step_id": 3010,
+          "representation_identifier": "ApprovedPlan",
+          "context_type": "Model",
+          "context_identifier": "Annotation",
+          "target_view": "PLAN_VIEW",
+          "context_step_id": 3011,
+          "representation_type": "GeometricCurveSet",
+          "item_count": 1,
+          "items_fingerprint": "852c180f3f221723f4a272b8ae6122ae45a1a9cb87e56c0321ae82ff3695576b"
+        },
+        {
+          "step_id": 3540,
+          "representation_identifier": "ApprovedFront",
+          "context_type": "Model",
+          "context_identifier": "Annotation",
+          "target_view": "ELEVATION_VIEW",
+          "context_step_id": 3541,
+          "representation_type": "GeometricCurveSet",
+          "item_count": 1,
+          "items_fingerprint": "1bd653a2d3f65b01f9ee3f99a36b5a459c0729de8225ffedbee6bc0a597ec197"
+        },
+        {
+          "step_id": 5827,
+          "representation_identifier": "ApprovedSide",
+          "context_type": "Model",
+          "context_identifier": "Annotation",
+          "target_view": "ELEVATION_VIEW",
+          "context_step_id": 5828,
+          "representation_type": "GeometricCurveSet",
+          "item_count": 1,
+          "items_fingerprint": "3e4ce2b83998fd8cd029e83a947a3ba13d94e59a6f69ab75d7ecc6268d959562"
+        }
+      ],
+      "legacy_body_view_count": 1,
+      "review_view_count": 3,
+      "exact_item_graph_duplicates_of_model_body": [],
+      "native_context_priority_buckets": {
+        "PLAN_VIEW": {
+          "body": [
+            [],
+            [],
+            [
+              "Body"
+            ],
+            [
+              "Body"
+            ]
+          ],
+          "annotation": [
+            [],
+            [],
+            [
+              "ApprovedPlan"
+            ],
+            []
+          ]
+        },
+        "ELEVATION_VIEW": {
+          "body": [
+            [],
+            [
+              "Body"
+            ]
+          ],
+          "annotation": [
+            [
+              "ApprovedFront",
+              "ApprovedSide"
+            ],
+            []
+          ]
+        }
+      },
+      "findings": [
+        "approved_product_linework_in_annotation_context",
+        "legacy_body_views_coexist_with_approved_linework",
+        "front_side_share_target_view_no_native_direction_selection"
+      ]
+    },
+    {
+      "id": "street-h",
+      "path": "output/review/highpoly-types/street-h/product-package/STREET-H-SUPPORT-product.ifc",
+      "sha256": "7493815ea7e82b9fe4e83d3f61cbaa0a1a713189c85fa70fe59b1ad71b1cb725",
+      "global_id": "2ajpw0I9n1dBypfISg3ejX",
+      "review_category": "partial",
+      "physical_product_count": 1,
+      "opening_dependency_count": 0,
+      "ifc_annotation_entity_count": 0,
+      "representations": [
+        {
+          "step_id": 35,
+          "representation_identifier": "Body",
+          "context_type": "Model",
+          "context_identifier": "Body",
+          "target_view": "MODEL_VIEW",
+          "context_step_id": 36,
+          "representation_type": "MappedRepresentation",
+          "item_count": 1,
+          "items_fingerprint": "a5ad4b5ab70606cc0d4861d4dda32f7195b8d7785999ec67092e18885de2d4ea"
+        },
+        {
+          "step_id": 2167,
+          "representation_identifier": "Body",
+          "context_type": "Plan",
+          "context_identifier": "Body",
+          "target_view": "PLAN_VIEW",
+          "context_step_id": 2168,
+          "representation_type": "MappedRepresentation",
+          "item_count": 1,
+          "items_fingerprint": "93fab3d9cd44893294594b9b7426f483a1936d732b28005f85deccc905f72b4c"
+        },
+        {
+          "step_id": 2217,
+          "representation_identifier": "ApprovedPlan",
+          "context_type": "Model",
+          "context_identifier": "Annotation",
+          "target_view": "PLAN_VIEW",
+          "context_step_id": 2218,
+          "representation_type": "GeometricCurveSet",
+          "item_count": 1,
+          "items_fingerprint": "eb29ab0f9189db4183b4ea0a8a49ff412c22d05e14d10057b7e640735759e47b"
+        },
+        {
+          "step_id": 2227,
+          "representation_identifier": "ApprovedFront",
+          "context_type": "Model",
+          "context_identifier": "Annotation",
+          "target_view": "ELEVATION_VIEW",
+          "context_step_id": 2228,
+          "representation_type": "GeometricCurveSet",
+          "item_count": 1,
+          "items_fingerprint": "0ed7b9f3b9396637238850540b201055109a7489587a4c597d356a07b9c21793"
+        },
+        {
+          "step_id": 2238,
+          "representation_identifier": "ApprovedSide",
+          "context_type": "Model",
+          "context_identifier": "Annotation",
+          "target_view": "ELEVATION_VIEW",
+          "context_step_id": 2239,
+          "representation_type": "GeometricCurveSet",
+          "item_count": 1,
+          "items_fingerprint": "7a32930994c000f87ca4ed8aaa0bba68a17e3768292a253f6c9a32f0982fcbb8"
+        }
+      ],
+      "legacy_body_view_count": 1,
+      "review_view_count": 3,
+      "exact_item_graph_duplicates_of_model_body": [],
+      "native_context_priority_buckets": {
+        "PLAN_VIEW": {
+          "body": [
+            [
+              "Body"
+            ],
+            [],
+            [],
+            [
+              "Body"
+            ]
+          ],
+          "annotation": [
+            [],
+            [],
+            [
+              "ApprovedPlan"
+            ],
+            []
+          ]
+        },
+        "ELEVATION_VIEW": {
+          "body": [
+            [],
+            [
+              "Body"
+            ]
+          ],
+          "annotation": [
+            [
+              "ApprovedFront",
+              "ApprovedSide"
+            ],
+            []
+          ]
+        }
+      },
+      "findings": [
+        "approved_product_linework_in_annotation_context",
+        "legacy_body_views_coexist_with_approved_linework",
+        "front_side_share_target_view_no_native_direction_selection"
+      ]
+    },
+    {
+      "id": "wd02",
+      "path": "output/review/highpoly-types/wd02/product-package/WD02-product.ifc",
+      "sha256": "1612bf65e84c1be9aaac261ce9545646b4a665ec9933efbf3aa2be48757b5f11",
+      "global_id": "3yuXF4PtnBHgIXDlmXFJ$7",
+      "review_category": "approved",
+      "physical_product_count": 1,
+      "opening_dependency_count": 0,
+      "ifc_annotation_entity_count": 0,
+      "representations": [
+        {
+          "step_id": 2175,
+          "representation_identifier": "Body",
+          "context_type": "Model",
+          "context_identifier": "Body",
+          "target_view": "MODEL_VIEW",
+          "context_step_id": 52,
+          "representation_type": "MappedRepresentation",
+          "item_count": 1,
+          "items_fingerprint": "0fffacb8478644c4c05a792eaede421a92c0248f035878947f59f4930c76ee57"
+        },
+        {
+          "step_id": 2182,
+          "representation_identifier": "Body",
+          "context_type": "Model",
+          "context_identifier": "Body",
+          "target_view": "PLAN_VIEW",
+          "context_step_id": 2129,
+          "representation_type": "MappedRepresentation",
+          "item_count": 1,
+          "items_fingerprint": "e47f928b88989f0a88690b7e8e366e6666595bf3a96ad70f057fb621ea4a3f36"
+        },
+        {
+          "step_id": 2189,
+          "representation_identifier": "Wd02Plan",
+          "context_type": "Plan",
+          "context_identifier": "Annotation",
+          "target_view": "PLAN_VIEW",
+          "context_step_id": 2190,
+          "representation_type": "GeometricCurveSet",
+          "item_count": 1,
+          "items_fingerprint": "c5939bc547f33b0ec62fcee894624d516f1ece18138b47c2cab666dbd96f8645"
+        },
+        {
+          "step_id": 2336,
+          "representation_identifier": "Wd02Front",
+          "context_type": "Model",
+          "context_identifier": "Annotation",
+          "target_view": "ELEVATION_VIEW",
+          "context_step_id": 2337,
+          "representation_type": "GeometricCurveSet",
+          "item_count": 1,
+          "items_fingerprint": "c15c583448c98046dd67fc2b3b533bc8a4f57d14b2a92bbc28ff2a0b0e06a0ae"
+        },
+        {
+          "step_id": 2775,
+          "representation_identifier": "Wd02Side",
+          "context_type": "Model",
+          "context_identifier": "Annotation",
+          "target_view": "ELEVATION_VIEW",
+          "context_step_id": 2337,
+          "representation_type": "GeometricCurveSet",
+          "item_count": 1,
+          "items_fingerprint": "ccef996d3887f45dfe4bcdeb1c6858dc8baf0c43b530b20eaa890ab0182dc1f1"
+        }
+      ],
+      "legacy_body_view_count": 1,
+      "review_view_count": 3,
+      "exact_item_graph_duplicates_of_model_body": [],
+      "native_context_priority_buckets": {
+        "PLAN_VIEW": {
+          "body": [
+            [],
+            [],
+            [
+              "Body"
+            ],
+            [
+              "Body"
+            ]
+          ],
+          "annotation": [
+            [
+              "Wd02Plan"
+            ],
+            [],
+            [],
+            []
+          ]
+        },
+        "ELEVATION_VIEW": {
+          "body": [
+            [],
+            [
+              "Body"
+            ]
+          ],
+          "annotation": [
+            [
+              "Wd02Front",
+              "Wd02Side"
+            ],
+            []
+          ]
+        }
+      },
+      "findings": [
+        "approved_product_linework_in_annotation_context",
+        "legacy_body_views_coexist_with_approved_linework",
+        "front_side_share_target_view_no_native_direction_selection"
+      ]
+    },
+    {
+      "id": "tab02",
+      "path": "output/review/highpoly-types/tab02/product-package/TAB02-product.ifc",
+      "sha256": "50b949ce1d56c3bca38e476a012b467f6ae8405aaa1482d8c2f598a9e7e97623",
+      "global_id": "2eX84IyLr8_e34nuOoRPLQ",
+      "review_category": "partial",
+      "physical_product_count": 1,
+      "opening_dependency_count": 0,
+      "ifc_annotation_entity_count": 0,
+      "representations": [
+        {
+          "step_id": 35,
+          "representation_identifier": "Body",
+          "context_type": "Model",
+          "context_identifier": "Body",
+          "target_view": "MODEL_VIEW",
+          "context_step_id": 36,
+          "representation_type": "MappedRepresentation",
+          "item_count": 1,
+          "items_fingerprint": "9a4a727e520324749bf0bc93dfe41d1b00571be7d96c140557f27655e4e9a836"
+        },
+        {
+          "step_id": 1945,
+          "representation_identifier": "ApprovedPlan",
+          "context_type": "Model",
+          "context_identifier": "Annotation",
+          "target_view": "PLAN_VIEW",
+          "context_step_id": 1946,
+          "representation_type": "GeometricCurveSet",
+          "item_count": 1,
+          "items_fingerprint": "80a7ae0082bd36a290b22b1056bc64df09f59134afe0611c58a73eaa955af213"
+        },
+        {
+          "step_id": 2014,
+          "representation_identifier": "ApprovedFront",
+          "context_type": "Model",
+          "context_identifier": "Annotation",
+          "target_view": "ELEVATION_VIEW",
+          "context_step_id": 2015,
+          "representation_type": "GeometricCurveSet",
+          "item_count": 1,
+          "items_fingerprint": "e6d4a85583121d724a647e0f26cb608447173fcbbb04caf7c332e1a4eb53b415"
+        },
+        {
+          "step_id": 2048,
+          "representation_identifier": "ApprovedSide",
+          "context_type": "Model",
+          "context_identifier": "Annotation",
+          "target_view": "ELEVATION_VIEW",
+          "context_step_id": 2049,
+          "representation_type": "GeometricCurveSet",
+          "item_count": 1,
+          "items_fingerprint": "e52bea9021ee271a33a7077b54da6ec881009145376d7d12c517c611dd6cdac9"
+        }
+      ],
+      "legacy_body_view_count": 0,
+      "review_view_count": 3,
+      "exact_item_graph_duplicates_of_model_body": [],
+      "native_context_priority_buckets": {
+        "PLAN_VIEW": {
+          "body": [
+            [],
+            [],
+            [],
+            [
+              "Body"
+            ]
+          ],
+          "annotation": [
+            [],
+            [],
+            [
+              "ApprovedPlan"
+            ],
+            []
+          ]
+        },
+        "ELEVATION_VIEW": {
+          "body": [
+            [],
+            [
+              "Body"
+            ]
+          ],
+          "annotation": [
+            [
+              "ApprovedFront",
+              "ApprovedSide"
+            ],
+            []
+          ]
+        }
+      },
+      "findings": [
+        "approved_product_linework_in_annotation_context",
+        "front_side_share_target_view_no_native_direction_selection"
+      ]
+    },
+    {
+      "id": "bst02",
+      "path": "output/review/approved-product-library/candidate-packages/bst02.ifc",
+      "sha256": "a56e48d52a327ec7bc629222f406bc1869156dcdb6d1a47416ab0088ce558656",
+      "global_id": "3hA0vKpcn44u4Tsx4tqiUz",
+      "review_category": "pending",
+      "physical_product_count": 1,
+      "opening_dependency_count": 0,
+      "ifc_annotation_entity_count": 0,
+      "representations": [
+        {
+          "step_id": 1790,
+          "representation_identifier": "Body",
+          "context_type": "Model",
+          "context_identifier": "Body",
+          "target_view": "MODEL_VIEW",
+          "context_step_id": 52,
+          "representation_type": "MappedRepresentation",
+          "item_count": 1,
+          "items_fingerprint": "e1dbffd12f3d441d43bf8f5c74c5143c060675c5db2e07fda92b75d64d840657"
+        },
+        {
+          "step_id": 1804,
+          "representation_identifier": "Body",
+          "context_type": "Model",
+          "context_identifier": "Body",
+          "target_view": "PLAN_VIEW",
+          "context_step_id": 1489,
+          "representation_type": "MappedRepresentation",
+          "item_count": 1,
+          "items_fingerprint": "fd653894dfbb392eb3986f5effa0379eefd63f2cca984ae6c1fd586effef53db"
+        }
+      ],
+      "legacy_body_view_count": 1,
+      "review_view_count": 0,
+      "exact_item_graph_duplicates_of_model_body": [],
+      "native_context_priority_buckets": {
+        "PLAN_VIEW": {
+          "body": [
+            [],
+            [],
+            [
+              "Body"
+            ],
+            [
+              "Body"
+            ]
+          ],
+          "annotation": [
+            [],
+            [],
+            [],
+            []
+          ]
+        },
+        "ELEVATION_VIEW": {
+          "body": [
+            [],
+            [
+              "Body"
+            ]
+          ],
+          "annotation": [
+            [],
+            []
+          ]
+        }
+      },
+      "findings": [
+        "body_only_candidate_no_approved_three_view_package"
+      ]
+    },
+    {
+      "id": "street",
+      "path": "output/review/approved-product-library/candidate-packages/street.ifc",
+      "sha256": "d8a38d005c75d52b2b0bbc340fba253aa59bfae96cb7d661c382d11642392492",
+      "global_id": "1FgLPMw$5B4wBH2ySMkXE1",
+      "review_category": "pending",
+      "physical_product_count": 1,
+      "opening_dependency_count": 0,
+      "ifc_annotation_entity_count": 0,
+      "representations": [
+        {
+          "step_id": 1513,
+          "representation_identifier": "Body",
+          "context_type": "Model",
+          "context_identifier": "Body",
+          "target_view": "MODEL_VIEW",
+          "context_step_id": 59,
+          "representation_type": "MappedRepresentation",
+          "item_count": 1,
+          "items_fingerprint": "f21aac8a5216c187cd74e16c1dbaf3b46002fb345b741da212c0ce560e1a060c"
+        },
+        {
+          "step_id": 1527,
+          "representation_identifier": "Body",
+          "context_type": "Model",
+          "context_identifier": "Body",
+          "target_view": "PLAN_VIEW",
+          "context_step_id": 1261,
+          "representation_type": "MappedRepresentation",
+          "item_count": 1,
+          "items_fingerprint": "0f6b1b544cea542cfa626e5c9bfba34b3cd020199d22ac24d2105015728b2e2e"
+        }
+      ],
+      "legacy_body_view_count": 1,
+      "review_view_count": 0,
+      "exact_item_graph_duplicates_of_model_body": [],
+      "native_context_priority_buckets": {
+        "PLAN_VIEW": {
+          "body": [
+            [],
+            [],
+            [
+              "Body"
+            ],
+            [
+              "Body"
+            ]
+          ],
+          "annotation": [
+            [],
+            [],
+            [],
+            []
+          ]
+        },
+        "ELEVATION_VIEW": {
+          "body": [
+            [],
+            [
+              "Body"
+            ]
+          ],
+          "annotation": [
+            [],
+            []
+          ]
+        }
+      },
+      "findings": [
+        "body_only_candidate_no_approved_three_view_package"
+      ]
+    },
+    {
+      "id": "gessi316-54093",
+      "path": "output/review/approved-product-library/candidate-packages/gessi316-54093.ifc",
+      "sha256": "6339b61967421d5a09b886b7a81f21ac27cc4d081eaebed95b485f67b821cfdb",
+      "global_id": "1jM_suNMPAw8_nvZejQSnp",
+      "review_category": "pending",
+      "physical_product_count": 1,
+      "opening_dependency_count": 0,
+      "ifc_annotation_entity_count": 0,
+      "representations": [
+        {
+          "step_id": 1402,
+          "representation_identifier": "Body",
+          "context_type": "Model",
+          "context_identifier": "Body",
+          "target_view": "MODEL_VIEW",
+          "context_step_id": 59,
+          "representation_type": "MappedRepresentation",
+          "item_count": 1,
+          "items_fingerprint": "1372d92d89e6f73a3ac0b369ec186923e5e4ef834b85a3179a0d73f192ddf2ec"
+        }
+      ],
+      "legacy_body_view_count": 0,
+      "review_view_count": 0,
+      "exact_item_graph_duplicates_of_model_body": [],
+      "native_context_priority_buckets": {
+        "PLAN_VIEW": {
+          "body": [
+            [],
+            [],
+            [],
+            [
+              "Body"
+            ]
+          ],
+          "annotation": [
+            [],
+            [],
+            [],
+            []
+          ]
+        },
+        "ELEVATION_VIEW": {
+          "body": [
+            [],
+            [
+              "Body"
+            ]
+          ],
+          "annotation": [
+            [],
+            []
+          ]
+        }
+      },
+      "findings": [
+        "body_only_candidate_no_approved_three_view_package"
+      ]
+    },
+    {
+      "id": "geberit-154-154-00-1-f",
+      "path": "output/review/approved-product-library/candidate-packages/geberit-154-154-00-1-f.ifc",
+      "sha256": "6614108d7efac331eeef0688382bca0b3ca2a6dc3eb54774ef0f57414d917f01",
+      "global_id": "2jjNIn9gHBYwNSWwlM5T_i",
+      "review_category": "pending",
+      "physical_product_count": 1,
+      "opening_dependency_count": 0,
+      "ifc_annotation_entity_count": 0,
+      "representations": [
+        {
+          "step_id": 1306,
+          "representation_identifier": "Body",
+          "context_type": "Model",
+          "context_identifier": "Body",
+          "target_view": "MODEL_VIEW",
+          "context_step_id": 59,
+          "representation_type": "MappedRepresentation",
+          "item_count": 1,
+          "items_fingerprint": "2d0deaea1e5a3cd142596f103f4bb33cc4209345b61245e7bead9dff54fdf9d0"
+        },
+        {
+          "step_id": 1313,
+          "representation_identifier": "Body",
+          "context_type": "Plan",
+          "context_identifier": "Body",
+          "target_view": "PLAN_VIEW",
+          "context_step_id": 1280,
+          "representation_type": "MappedRepresentation",
+          "item_count": 1,
+          "items_fingerprint": "7641c4e4f5395cac915396202a0a2f4cadef466f7473133c1b22ce02dcbd91eb"
+        }
+      ],
+      "legacy_body_view_count": 1,
+      "review_view_count": 0,
+      "exact_item_graph_duplicates_of_model_body": [],
+      "native_context_priority_buckets": {
+        "PLAN_VIEW": {
+          "body": [
+            [
+              "Body"
+            ],
+            [],
+            [],
+            [
+              "Body"
+            ]
+          ],
+          "annotation": [
+            [],
+            [],
+            [],
+            []
+          ]
+        },
+        "ELEVATION_VIEW": {
+          "body": [
+            [],
+            [
+              "Body"
+            ]
+          ],
+          "annotation": [
+            [],
+            []
+          ]
+        }
+      },
+      "findings": [
+        "body_only_candidate_no_approved_three_view_package"
+      ]
+    },
+    {
+      "id": "geberit-115-770",
+      "path": "output/review/approved-product-library/candidate-packages/geberit-115-770.ifc",
+      "sha256": "2527a691d19835fcfc233093f8fefca6e6aacbce2039b74ac2ea1f216350746c",
+      "global_id": "2gFgcOYEXEaQWAzcKulTFt",
+      "review_category": "pending",
+      "physical_product_count": 1,
+      "opening_dependency_count": 0,
+      "ifc_annotation_entity_count": 0,
+      "representations": [
+        {
+          "step_id": 1288,
+          "representation_identifier": "Body",
+          "context_type": "Model",
+          "context_identifier": "Body",
+          "target_view": "MODEL_VIEW",
+          "context_step_id": 52,
+          "representation_type": "MappedRepresentation",
+          "item_count": 1,
+          "items_fingerprint": "c46e04c9215805dc0302172ed46b7afd474a5f2638fc0b85b66db806187edf66"
+        },
+        {
+          "step_id": 1295,
+          "representation_identifier": "Body",
+          "context_type": "Plan",
+          "context_identifier": "Body",
+          "target_view": "PLAN_VIEW",
+          "context_step_id": 1250,
+          "representation_type": "MappedRepresentation",
+          "item_count": 1,
+          "items_fingerprint": "5d30798a94f77bf9f12dc82a9544dcec1fbc9dcf11057663b9855dd0395eb6c2"
+        }
+      ],
+      "legacy_body_view_count": 1,
+      "review_view_count": 0,
+      "exact_item_graph_duplicates_of_model_body": [],
+      "native_context_priority_buckets": {
+        "PLAN_VIEW": {
+          "body": [
+            [
+              "Body"
+            ],
+            [],
+            [],
+            [
+              "Body"
+            ]
+          ],
+          "annotation": [
+            [],
+            [],
+            [],
+            []
+          ]
+        },
+        "ELEVATION_VIEW": {
+          "body": [
+            [],
+            [
+              "Body"
+            ]
+          ],
+          "annotation": [
+            [],
+            []
+          ]
+        }
+      },
+      "findings": [
+        "body_only_candidate_no_approved_three_view_package"
+      ]
+    },
+    {
+      "id": "wd01",
+      "path": "output/review/approved-product-library/candidate-packages/wd01.ifc",
+      "sha256": "81269b7130d1ee0e1f4ed78040a4757b0ab185fc2f5b22a4def3cfb644f22afd",
+      "global_id": "2mPTt7$nvBSAn28I9NWt6T",
+      "review_category": "pending",
+      "physical_product_count": 1,
+      "opening_dependency_count": 0,
+      "ifc_annotation_entity_count": 0,
+      "representations": [
+        {
+          "step_id": 1336,
+          "representation_identifier": "Body",
+          "context_type": "Model",
+          "context_identifier": "Body",
+          "target_view": "MODEL_VIEW",
+          "context_step_id": 52,
+          "representation_type": "MappedRepresentation",
+          "item_count": 1,
+          "items_fingerprint": "c575baff21046eea8561518b6ed4f35bbf97d568d525f3773ba280e2038a2c12"
+        },
+        {
+          "step_id": 1343,
+          "representation_identifier": "Body",
+          "context_type": "Model",
+          "context_identifier": "Body",
+          "target_view": "PLAN_VIEW",
+          "context_step_id": 1246,
+          "representation_type": "MappedRepresentation",
+          "item_count": 1,
+          "items_fingerprint": "08db4035dde629f0f0db502ce950793adf6ac49cef3a1afb403fd456db6d921a"
+        }
+      ],
+      "legacy_body_view_count": 1,
+      "review_view_count": 0,
+      "exact_item_graph_duplicates_of_model_body": [],
+      "native_context_priority_buckets": {
+        "PLAN_VIEW": {
+          "body": [
+            [],
+            [],
+            [
+              "Body"
+            ],
+            [
+              "Body"
+            ]
+          ],
+          "annotation": [
+            [],
+            [],
+            [],
+            []
+          ]
+        },
+        "ELEVATION_VIEW": {
+          "body": [
+            [],
+            [
+              "Body"
+            ]
+          ],
+          "annotation": [
+            [],
+            []
+          ]
+        }
+      },
+      "findings": [
+        "body_only_candidate_no_approved_three_view_package"
+      ]
+    },
+    {
+      "id": "gessi316-54038",
+      "path": "output/review/approved-product-library/candidate-packages/gessi316-54038.ifc",
+      "sha256": "86f81e89406ce454c454d8e9a7a158b8aabedcda42c0797d6dacebf55c24f2c2",
+      "global_id": "245NU$zZL0d9tYTVwwBdk$",
+      "review_category": "pending",
+      "physical_product_count": 1,
+      "opening_dependency_count": 0,
+      "ifc_annotation_entity_count": 0,
+      "representations": [
+        {
+          "step_id": 1349,
+          "representation_identifier": "Body",
+          "context_type": "Model",
+          "context_identifier": "Body",
+          "target_view": "MODEL_VIEW",
+          "context_step_id": 52,
+          "representation_type": "MappedRepresentation",
+          "item_count": 1,
+          "items_fingerprint": "f5b3478198be3faca06e6e3dc13cbfe606fee71bdff156bc929429f28a1dfa99"
+        },
+        {
+          "step_id": 1356,
+          "representation_identifier": "Body",
+          "context_type": "Model",
+          "context_identifier": "Body",
+          "target_view": "PLAN_VIEW",
+          "context_step_id": 1255,
+          "representation_type": "MappedRepresentation",
+          "item_count": 1,
+          "items_fingerprint": "d8f3b12da3b1a21e9b3fd8d1029e9669e0d50235025484a42c94e21690aaffce"
+        }
+      ],
+      "legacy_body_view_count": 1,
+      "review_view_count": 0,
+      "exact_item_graph_duplicates_of_model_body": [],
+      "native_context_priority_buckets": {
+        "PLAN_VIEW": {
+          "body": [
+            [],
+            [],
+            [
+              "Body"
+            ],
+            [
+              "Body"
+            ]
+          ],
+          "annotation": [
+            [],
+            [],
+            [],
+            []
+          ]
+        },
+        "ELEVATION_VIEW": {
+          "body": [
+            [],
+            [
+              "Body"
+            ]
+          ],
+          "annotation": [
+            [],
+            []
+          ]
+        }
+      },
+      "findings": [
+        "body_only_candidate_no_approved_three_view_package"
+      ]
+    },
+    {
+      "id": "electric-flue-check-valve",
+      "path": "output/review/approved-product-library/candidate-packages/electric-flue-check-valve.ifc",
+      "sha256": "404bc9f5954bf50aa63c5321f617dabf61f11cb220a0cc49a75acd01268d24a2",
+      "global_id": "1faflkXXH6M9cnYPE9Liir",
+      "review_category": "pending",
+      "physical_product_count": 1,
+      "opening_dependency_count": 2,
+      "ifc_annotation_entity_count": 0,
+      "representations": [
+        {
+          "step_id": 64,
+          "representation_identifier": "Body",
+          "context_type": "Model",
+          "context_identifier": "Body",
+          "target_view": "MODEL_VIEW",
+          "context_step_id": 65,
+          "representation_type": "Tessellation",
+          "item_count": 5,
+          "items_fingerprint": "ed03d8d5ca7d24e7a93884a0fd461c1def69aa1a9e44db1aa7f56cafa1d28728"
+        }
+      ],
+      "legacy_body_view_count": 0,
+      "review_view_count": 0,
+      "exact_item_graph_duplicates_of_model_body": [],
+      "native_context_priority_buckets": {
+        "PLAN_VIEW": {
+          "body": [
+            [],
+            [],
+            [],
+            [
+              "Body"
+            ]
+          ],
+          "annotation": [
+            [],
+            [],
+            [],
+            []
+          ]
+        },
+        "ELEVATION_VIEW": {
+          "body": [
+            [],
+            [
+              "Body"
+            ]
+          ],
+          "annotation": [
+            [],
+            []
+          ]
+        }
+      },
+      "findings": [
+        "body_only_candidate_no_approved_three_view_package"
+      ]
+    },
+    {
+      "id": "bst01",
+      "path": "output/review/approved-product-library/candidate-packages/bst01.ifc",
+      "sha256": "d6e4638e536e14b11317f9395c801cd77893027958643e89138e9378eaf5f727",
+      "global_id": "3eic1dzkn5heTIn4PhF37v",
+      "review_category": "pending",
+      "physical_product_count": 1,
+      "opening_dependency_count": 0,
+      "ifc_annotation_entity_count": 0,
+      "representations": [
+        {
+          "step_id": 1060,
+          "representation_identifier": "Body",
+          "context_type": "Model",
+          "context_identifier": "Body",
+          "target_view": "MODEL_VIEW",
+          "context_step_id": 52,
+          "representation_type": "MappedRepresentation",
+          "item_count": 1,
+          "items_fingerprint": "a3eba3f941c64d3c0f725099e28bdaa7f9f746a0f5c2ca2d3e97aea0c81b4827"
+        },
+        {
+          "step_id": 1067,
+          "representation_identifier": "Body",
+          "context_type": "Model",
+          "context_identifier": "Body",
+          "target_view": "PLAN_VIEW",
+          "context_step_id": 706,
+          "representation_type": "MappedRepresentation",
+          "item_count": 1,
+          "items_fingerprint": "a2ee284cd0fd4d8eb0ef460858ca84ddb7c6b0009f01a22c5b7ca3acf1ceaf5d"
+        }
+      ],
+      "legacy_body_view_count": 1,
+      "review_view_count": 0,
+      "exact_item_graph_duplicates_of_model_body": [],
+      "native_context_priority_buckets": {
+        "PLAN_VIEW": {
+          "body": [
+            [],
+            [],
+            [
+              "Body"
+            ],
+            [
+              "Body"
+            ]
+          ],
+          "annotation": [
+            [],
+            [],
+            [],
+            []
+          ]
+        },
+        "ELEVATION_VIEW": {
+          "body": [
+            [],
+            [
+              "Body"
+            ]
+          ],
+          "annotation": [
+            [],
+            []
+          ]
+        }
+      },
+      "findings": [
+        "body_only_candidate_no_approved_three_view_package"
+      ]
+    }
+  ],
+  "rename_only_probe": {
+    "product": "gessi316-54294",
+    "source_sha256_unchanged": "aa1af19b744f543e8b78dd63567bb9d1c1949080e7e99b1f6add515e6764295d",
+    "persisted": false,
+    "experiment": "rename approved Front/Side context identifier to Body only",
+    "selected_context_ids": [
+      42899,
+      43842,
+      58462
+    ],
+    "shapes_emitted_for_one_product": [
+      {
+        "element_step_id": 42876,
+        "geometry_id": "42898",
+        "vertex_count": 52,
+        "edge_count": 26
+      },
+      {
+        "element_step_id": 42876,
+        "geometry_id": "43841",
+        "vertex_count": 9312,
+        "edge_count": 8233
+      },
+      {
+        "element_step_id": 42876,
+        "geometry_id": "58461",
+        "vertex_count": 416,
+        "edge_count": 385
+      }
+    ],
+    "representation_id_map": {
+      "42884": "Body",
+      "42891": "Body",
+      "42898": "Body",
+      "42978": "ApprovedPlan",
+      "43841": "ApprovedFront",
+      "58461": "ApprovedSide"
+    },
+    "conclusion": "legacy elevation, approved Front and approved Side emitted together; rename alone is not a fix",
+    "not_a_create_drawing_svg_test": true
+  },
+  "not_verified": [
+    "new native Create Drawing SVG",
+    "corrected IFC reload",
+    "direction-aware representation adapter"
+  ],
+  "approval_statuses_unchanged": true
+}

@@ -8,11 +8,11 @@
   "formal_ifc": "2504 GBTB Yanlord Zhuhai.ifc",
   "formal_ifc_sha256": "7a50b87e8f48a7c2bfbaa9f1dabdfca7155fa684b2325c66aa1ae15c8ab0a25c",
   "formal_ifc_bytes_unchanged": true,
-  "isolated_ifc": "output/review/highpoly-types/gessi316-54294/Gessi316-45089-54294-bonsai-isolated.ifc",
-  "isolated_ifc_sha256": "9413b08ad837b820f4adab42d7c91bc808009c8cc6e026451e7f381dc9ed93db",
+  "isolated_ifc": "output/review/highpoly-types/gessi316-54294/Gessi316-45089-54294-bonsai-review-simplified.ifc",
+  "isolated_ifc_sha256": "97c68b6811f1de8c24bdee1bf8626a40f4140f50af61caea6e7badece6a5e17b",
   "bonsai_session": {
     "path": "output/review/highpoly-types/gessi316-54294/Gessi316-45089-54294-bonsai-review.blend",
-    "sha256": "fafad551e3a41d6e2c6539b5a5ac9b3da3c50e18344de62398d6e5090a4d1d27",
+    "sha256": "ea946f9e360302d9054f31f99cd9fc323ac5073641e9f116aa02475053f73f06",
     "saved_active_representation": "Body",
     "saved_camera_count": 4,
     "saved_camera_names": [
@@ -23,23 +23,26 @@
     ],
     "ifc_definition_id": 41658,
     "ifc_context_identifier": "Body",
+    "ifc_target_view": "MODEL_VIEW",
+    "front_camera_local_y_sign": -1.0,
+    "side_camera_local_x_sign": 1.0,
     "object_name": "IfcSanitaryTerminal/SanitaryTerminal",
     "object_bounds_m": {
       "minimum": [
         -6.47981596,
         0.770543993,
-        0.674659312
+        0.670948207
       ],
       "maximum": [
-        -6.276948452,
+        -6.269982338,
         1.129455686,
-        0.741999984
+        0.742499948
       ]
     },
     "local_axis_extents_m": {
       "x": 0.358911737,
-      "y": 0.202867535,
-      "z": 0.067340732
+      "y": 0.209834126,
+      "z": 0.0715518
     },
     "local_axes_world": [
       [
@@ -65,14 +68,15 @@
       "camera": "GESSI316_45089_54294_CAM_PLAN",
       "camera_type": "ORTHO",
       "camera_axis_basis": "IFC product local axes",
-      "camera_ortho_scale_m": 0.592922211,
-      "projected_width_m": 0.202867508,
-      "projected_height_m": 0.358911753,
+      "camera_ortho_scale_m": 0.59292280674,
+      "projected_width_m": 0.209834098816,
+      "projected_height_m": 0.358911752701,
       "image_aspect": 1.4,
       "framing_margin_factor": 1.18,
+      "ortho_scale_quantization_safety_factor": 1.000001,
       "render_operation": "bpy.ops.render.render(write_still=True)",
       "path": "output/review/highpoly-types/gessi316-54294/bonsai-camera-plan.png",
-      "sha256": "55ce7e5f6aae092148e0e87b2f8fc7afda812bc96fb5769e0d3ac51333e1ed3d",
+      "sha256": "dba39a111daa56c4c2909ffbbba62966444f7dca883b7c60c166935b83e970e5",
       "resolution": [
         1400,
         1000
@@ -83,14 +87,15 @@
       "camera": "GESSI316_45089_54294_CAM_FRONT",
       "camera_type": "ORTHO",
       "camera_axis_basis": "IFC product local axes",
-      "camera_ortho_scale_m": 0.423515856,
-      "projected_width_m": 0.358911737,
-      "projected_height_m": 0.067340747,
+      "camera_ortho_scale_m": 0.423516273499,
+      "projected_width_m": 0.358911736859,
+      "projected_height_m": 0.071551815616,
       "image_aspect": 1.4,
       "framing_margin_factor": 1.18,
+      "ortho_scale_quantization_safety_factor": 1.000001,
       "render_operation": "bpy.ops.render.render(write_still=True)",
       "path": "output/review/highpoly-types/gessi316-54294/bonsai-camera-front-elevation.png",
-      "sha256": "3b08eda6fc9dae40ad5456524c8bed628e3a2090f06fc2dff7ffed1f6dc98c45",
+      "sha256": "987d58150a3fe392895a23c89592528ddd154daaaf05cc70a7686e2dd339eae8",
       "resolution": [
         1400,
         1000
@@ -101,14 +106,15 @@
       "camera": "GESSI316_45089_54294_CAM_SIDE",
       "camera_type": "ORTHO",
       "camera_axis_basis": "IFC product local axes",
-      "camera_ortho_scale_m": 0.239383742,
-      "projected_width_m": 0.202867572,
-      "projected_height_m": 0.067340821,
+      "camera_ortho_scale_m": 0.247604563832,
+      "projected_width_m": 0.209834163814,
+      "projected_height_m": 0.071551889932,
       "image_aspect": 1.4,
       "framing_margin_factor": 1.18,
+      "ortho_scale_quantization_safety_factor": 1.000001,
       "render_operation": "bpy.ops.render.render(write_still=True)",
       "path": "output/review/highpoly-types/gessi316-54294/bonsai-camera-side-elevation.png",
-      "sha256": "c29dfe9557970c4a9fe4d08118e7ff4c2cfe9e0e0d9f8e09271cf3691abe35b8",
+      "sha256": "aeafa0fd0056dc0550ffefb06dd3b86e63d189673432197ee5937f482ade4b0b",
       "resolution": [
         1400,
         1000
@@ -119,19 +125,179 @@
       "camera": "GESSI316_45089_54294_CAM_ISO",
       "camera_type": "ORTHO",
       "camera_axis_basis": "IFC product local axes",
-      "camera_ortho_scale_m": 0.469711244,
-      "projected_width_m": 0.397237827,
-      "projected_height_m": 0.284328844,
+      "camera_ortho_scale_m": 0.480090111494,
+      "projected_width_m": 0.402163897789,
+      "projected_height_m": 0.290611151606,
       "image_aspect": 1.4,
       "framing_margin_factor": 1.18,
+      "ortho_scale_quantization_safety_factor": 1.000001,
       "render_operation": "bpy.ops.render.render(write_still=True)",
       "path": "output/review/highpoly-types/gessi316-54294/bonsai-camera-iso.png",
-      "sha256": "c9a52afa3696df84b0b29244cc65e80b7e60d28f425f14432218c1f33b09e98d",
+      "sha256": "2e25e6cad2ebe81a8b403687e5cc650d5d13ecc09645e6920180d04731a6c324",
       "resolution": [
         1400,
         1000
       ]
     }
   ],
-  "pass": true
+  "pass": true,
+  "review_only_geometry_simplification": {
+    "report": "output/review/highpoly-types/gessi316-54294/review-geometry-simplification.json",
+    "mode": "review_only_smooth_handles_and_official_max_reach_spout",
+    "removed_component_count": 3,
+    "original_vertex_count": 21299,
+    "original_face_count": 41570,
+    "optimised_vertex_count": 1822,
+    "optimised_face_count": 3616,
+    "vertex_reduction_percent": 91.446,
+    "face_reduction_percent": 91.301,
+    "main_cylinder_outline_preserved": true,
+    "control_levers_preserved": true,
+    "spout_preserved": true,
+    "three_hole_layout_preserved": true,
+    "spout_rebuilt_to_official_54294_maximum_reach": true,
+    "side_mechanical_gate": {
+      "tolerance_mm": 0.2,
+      "official_exact_54294_native_dwg": {
+        "wall_surface_x_mm": -18.818959,
+        "straight_spout_wall_z_mm": [
+          29.051758,
+          49.051758
+        ],
+        "straight_spout_axis_z_mm": 39.051758,
+        "bend_start_x_mm": -178.311053,
+        "outlet_endpoint_x_mm": -228.631321,
+        "outlet_endpoint_z_mm": 6.940652,
+        "lower_lip_z_mm": 0.0,
+        "lower_lip_x_mm": -210.106846,
+        "upper_envelope_z_mm": 71.551758,
+        "visible_reach_mm": 209.812362,
+        "visible_envelope_mm": [
+          209.812362,
+          71.551758
+        ],
+        "raw_full_envelope_mm": [
+          228.631321,
+          71.551758
+        ],
+        "concealed_rear_extension_mm": 18.818959
+      },
+      "actual_project_ifc_body": {
+        "wall_surface_y_mm": 9.794979,
+        "straight_spout_axis_z_mm": 18.0,
+        "lower_lip_z_mm": -17.340641,
+        "outlet_endpoint_y_mm": -193.05135,
+        "upper_envelope_z_mm": 50.0,
+        "visible_reach_mm": 202.846329,
+        "visible_envelope_mm": [
+          202.846329,
+          67.340641
+        ],
+        "raw_full_envelope_mm": [
+          202.867443,
+          67.340641
+        ]
+      },
+      "official_mapped_targets": {
+        "wall_surface_y_mm": 9.794979,
+        "straight_spout_axis_z_mm": 18.0,
+        "lower_lip_z_mm": -21.051758,
+        "outlet_endpoint_y_mm": -200.017383,
+        "upper_envelope_z_mm": 50.5,
+        "visible_reach_mm": 209.812362,
+        "visible_envelope_mm": [
+          209.812362,
+          71.551758
+        ]
+      },
+      "review_only_proxy": {
+        "wall_surface_y_mm": 9.794979,
+        "straight_spout_axis_z_mm": 18.0,
+        "lower_lip_z_mm": -21.051758,
+        "outlet_endpoint_y_mm": -200.017383,
+        "upper_envelope_z_mm": 50.5,
+        "visible_reach_mm": 209.812362,
+        "visible_envelope_mm": [
+          209.812362,
+          71.551758
+        ],
+        "raw_full_envelope_mm": [
+          209.833476,
+          71.551758
+        ]
+      },
+      "actual_body_residual_mm": {
+        "wall_surface_y_mm": 0.0,
+        "straight_spout_axis_z_mm": 0.0,
+        "lower_lip_z_mm": 3.711117,
+        "outlet_endpoint_y_mm": 6.966033,
+        "visible_reach_mm": -6.966033,
+        "visible_envelope_mm": [
+          -6.966033,
+          -4.211117
+        ]
+      },
+      "review_proxy_residual_mm": {
+        "wall_surface_y_mm": 0.0,
+        "straight_spout_axis_z_mm": 0.0,
+        "lower_lip_z_mm": 0.0,
+        "outlet_endpoint_y_mm": 0.0,
+        "visible_reach_mm": 0.0,
+        "visible_envelope_mm": [
+          0.0,
+          0.0
+        ]
+      },
+      "previous_axis_only_overlay": {
+        "translation_mm": [
+          9.816093,
+          -21.051758
+        ],
+        "wall_surface_residual_mm": -18.797845,
+        "outlet_endpoint_residual_mm": -25.763878,
+        "lower_lip_residual_mm": -3.711117,
+        "straight_spout_axis_residual_mm": 0.0
+      },
+      "correct_wall_and_axis_translation_mm": [
+        28.613938,
+        -21.051758
+      ],
+      "official_line_scaled": false,
+      "official_line_mirrored": false,
+      "review_proxy_geometry_changed": true,
+      "actual_body_comparison_retained": true,
+      "cause": "previous overlay used the concealed rear endpoint instead of the published wall surface; after correcting that transform, the project Body remains 6.966033 mm shorter because 54294 is adjustable and the official DWG shows the 210 mm maximum-depth configuration",
+      "wrong_dwg_view_selected": false,
+      "latest_exact_54294_dwg_used": true,
+      "project_body_within_official_adjustable_depth_range_190_210_mm": true,
+      "feature_gate_pass": true
+    },
+    "formal_ifc_modified": false,
+    "pass": true
+  },
+  "actual_project_body_comparison": {
+    "manifest": "output/review/highpoly-types/gessi316-54294/actual-body-comparison-manifest.json",
+    "mode": "unchanged_actual_project_ifc_body_side_comparison",
+    "side_render": {
+      "view": "side",
+      "camera": "GESSI316_45089_54294_ACTUAL_CAM_SIDE",
+      "camera_type": "ORTHO",
+      "camera_axis_basis": "IFC product local axes",
+      "camera_ortho_scale_m": 0.239383980632,
+      "projected_width_m": 0.202867572297,
+      "projected_height_m": 0.067340820727,
+      "image_aspect": 1.4,
+      "framing_margin_factor": 1.18,
+      "ortho_scale_quantization_safety_factor": 1.000001,
+      "render_operation": "bpy.ops.render.render(write_still=True)",
+      "path": "output/review/highpoly-types/gessi316-54294/bonsai-camera-side-elevation-actual-body.png",
+      "sha256": "660615c96c3f5c2cf0e3d91b3043c2efc999aab79925f50799d42877385c6a53",
+      "resolution": [
+        1400,
+        1000
+      ]
+    },
+    "purpose": "Disclose the shorter adjustable project Body beside the review-only official maximum-reach proxy; this image must not be presented as the modified review proxy.",
+    "pass": true
+  }
 }

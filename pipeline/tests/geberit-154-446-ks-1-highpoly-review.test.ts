@@ -157,6 +157,25 @@ test("official G/A/L views mechanically cross-check the isolated IFC Body", () =
   expect(side.height_absolute_delta_mm).toBeLessThanOrEqual(0.2);
   expect(side.visible_width_difference_mm).toBeGreaterThan(20);
   expect(side.note).toContain("visible 53.4 mm channel component");
+  expect(side.horizontal_alignment).toMatchObject({
+    mode: "native_dwg_origin_to_ifc_primary_channel_axis",
+    ifc_primary_channel_bounds_y_mm: [-2.758846, 27.241154],
+    ifc_primary_channel_axis_y_mm: 12.241154,
+    native_dwg_origin_x_mm: 0,
+    applied_translation_mm: 12.241154,
+    previous_contour_center_translation_mm: 17.736181,
+    horizontal_offset_correction_mm: -5.495028,
+    aligned_official_visible_bounds_y_mm: [-19.958846, 33.441154],
+    axis_alignment_absolute_delta_mm: 0,
+    tolerance_mm: 0.01,
+    pass: true,
+  });
+  const candidate = JSON.parse(
+    readFileSync(join(product, "candidate-representations.json"), "utf8"),
+  );
+  const sideOfficialPoints = candidate.views.side.official_native_dwg_paths_mm.flat();
+  expect(Math.min(...sideOfficialPoints.map((point: number[]) => point[0]))).toBeCloseTo(-19.958846, 5);
+  expect(Math.max(...sideOfficialPoints.map((point: number[]) => point[0]))).toBeCloseTo(33.441154, 5);
 });
 
 test("project drawings retain walls and surrounding elements with top-layer official overlays", () => {
@@ -181,6 +200,9 @@ test("project drawings retain walls and surrounding elements with top-layer offi
     expect(view.overlays[0].fit.transformation_mode).toBe("axis_swap_rigid_reflection_and_translation_only");
     expect(sha256(join(root, view.review_preview))).toBe(view.review_preview_sha256);
   }
+  expect(context.views.find((view: any) => view.view === "side").overlays[0].fit.x_anchor).toBe(
+    "native_origin",
+  );
   const plan = readFileSync(join(product, "project-context-sanitary-plan.svg"), "utf8");
   expect(plan).toContain("IfcWall");
   expect(plan).toContain("IfcSanitaryTerminal");
@@ -209,7 +231,7 @@ test("Bonsai evidence is an actual local-axis camera render of the IFC Body", ()
   expect(sha256(join(root, evidence.isolated_ifc))).toBe(evidence.isolated_ifc_sha256);
 });
 
-test("pending CleanLine50 candidate cannot write any derived drawing IFC", () => {
+test("approved CleanLine50 review leaves the formal IFC byte-identical and creates no derived IFC", () => {
   const candidate = JSON.parse(readFileSync(join(product, "candidate-representations.json"), "utf8"));
   const manifest = join(product, "manifest.json");
   const approval = JSON.parse(readFileSync(join(root, "pipeline/decisions/geberit-154-446-ks-1-drawing-approval.json"), "utf8"));
@@ -224,15 +246,16 @@ test("pending CleanLine50 candidate cannot write any derived drawing IFC", () =>
     simplified_proxy_comparison_source_kind: "geometry_derived_simplified_proxy",
   });
   expect(candidate.review_status).toBe("visual_review_pending");
-  expect(approval.status).toBe("pending");
-  expect(approval.derived_ifc_write_allowed).toBeFalse();
+  expect(approval.status).toBe("approved");
+  expect(approval.derived_ifc_write_allowed).toBeTrue();
   expect(approval.formal_authoritative_ifc_write_allowed).toBeFalse();
+  expect(approval.approved_views).toEqual(["plan", "front", "side"]);
   expect(approval.candidate_manifest_sha256).toBe(sha256(manifest));
   expect(existsSync(join(product, "Geberit-154-446-KS-1-derived-drawing.ifc"))).toBeFalse();
   expect(sha256(formal)).toBe(formalHash);
 });
 
-test("writer rejects both missing apply and the pending approval record", () => {
+test("approved writer gate still requires an explicit apply operation", () => {
   const temporary = mkdtempSync(join(tmpdir(), "geberit-154446ks1-gate-"));
   const output = join(temporary, "forbidden.ifc");
   const script = join(root, "pipeline/scripts/geberit_154_446_ks_1_drawing_ifc.py");
@@ -244,13 +267,6 @@ test("writer rejects both missing apply and the pending approval record", () => 
   expect(withoutApply.stderr.toString()).toContain("IFC write requires the explicit --apply flag");
   expect(existsSync(output)).toBeFalse();
 
-  const pendingApproval = Bun.spawnSync(
-    ["python3", script, "--input", formal, "--output", output, "--apply"],
-    { cwd: root, stderr: "pipe" },
-  );
-  expect(pendingApproval.exitCode).not.toBe(0);
-  expect(pendingApproval.stderr.toString()).toContain("approval gate rejected IFC write");
-  expect(existsSync(output)).toBeFalse();
   expect(sha256(formal)).toBe(formalHash);
   rmSync(temporary, { recursive: true, force: true });
 });

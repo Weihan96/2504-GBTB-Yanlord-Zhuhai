@@ -40,16 +40,16 @@ SOURCE_LABEL_ZH = "基于 Baxter 精确型号原生 DWG 的官方图纸表达"
 SOURCE_LABEL_EN = "official drawing representation from exact Baxter model native DWG"
 BLUE = "#1677c8"
 EXPECTED_DESCRIPTION = "Bergère armchair with swivel base W86D100H78"
-EXPECTED_PATH_COUNTS = {"plan": 24, "front": 68, "side": 54}
+EXPECTED_PATH_COUNTS = {"plan": 44, "front": 96, "side": 78}
 SCOPE = "exact Baxter Marilyn bergere 86 x 100 x 94 cm family CAD reference; not a project shop drawing"
 ARTICLE_LABEL = "Baxter Marilyn bergere armchair 86 x 100 x 94 cm"
 COMPARISON_TOLERANCE_MM = 60.0
 GENERATOR = "pipeline/scripts/marilyn_01_review.py"
 INDEX_TITLE = "Baxter Marilyn bergere / project Marilyn 01"
-INDEX_DESCRIPTION = "Blue line = exact Baxter native DWG bergere cluster. Grey = actual IFC Body. Black = simplified proxy. The project IFC Description height 78 cm is stale; official current sources and Body geometry identify the 86 x 100 x 94 cm bergere."
+INDEX_DESCRIPTION = "Blue line = Baxter native DWG bergere cluster with negative-Z OCS arcs restored. Two Front fit-only curves remain approximate pending AutoCAD verification. Grey = actual IFC Body. Black = simplified proxy. The project-only raised headrest cushion remains grey/black."
 DISCLOSURE_LINES = (
-    "IFC Description height 78 cm is stale.",
-    "Official/current and Body identify H94 cm.",
+    "OCS arcs restored; Side support outline reconnected.",
+    "Two Front fit curves still await AutoCAD verification.",
 )
 
 
@@ -125,8 +125,9 @@ def write_index(manifest):
         f'<article><h2>Bonsai {view.title()}</h2><a href="bonsai-camera-{filename}.png"><img src="bonsai-camera-{filename}.png"></a></article>'
         for view, filename in (("plan", "plan"), ("front", "front-elevation"), ("side", "side-elevation"), ("iso", "iso"))
     )
+    autocad = manifest["direct_autocad_inspection"]
     (OUTPUT_DIR / "index.html").write_text(
-        f'''<!doctype html><html><meta charset="utf-8"><title>{html.escape(INDEX_TITLE)} review</title><style>body{{font:16px Arial;margin:30px;background:#f5f3ef;color:#1f2d3d}}main{{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:18px}}article{{background:#fff;padding:14px;border-radius:10px}}img{{width:100%}}a{{margin-right:18px}}</style><h1>{html.escape(INDEX_TITLE)}</h1><p>{html.escape(INDEX_DESCRIPTION)}</p><nav><a href="manifest.json">Manifest</a><a href="candidate-representations.json">Candidate</a><a href="profile.json">Profile</a><a href="official-native-dwg-linework.json">Native DWG linework</a><a href="official-source/source-access-record.json">Source record</a><a href="project-context-furniture-plan.svg">Project furniture plan</a><a href="project-context-r22-front-elevation.svg">R22 front</a><a href="project-context-r22-side-elevation.svg">R22 side</a><a href="bonsai-review-manifest.json">Bonsai evidence</a><a href="https://www.baxter.it/en/products/marilyn-sofas-and-armchairs">Official page</a></nav><h2>Project drawing context</h2><main><article><h2>Furniture plan</h2><img src="project-context-furniture-plan-review-preview.png"></article><article><h2>R22 front</h2><img src="project-context-r22-front-elevation-review-preview.png"></article><article><h2>R22 side</h2><img src="project-context-r22-side-elevation-review-preview.png"></article></main><h2>Native DWG / IFC comparison</h2><main>{cards}</main><h2>Actual Bonsai camera renders from isolated IFC Body</h2><main>{bonsai_cards}</main><code>{manifest["formal_ifc_sha256"]}</code></html>''',
+        f'''<!doctype html><html><meta charset="utf-8"><title>{html.escape(INDEX_TITLE)} review</title><style>body{{font:16px Arial;margin:30px;background:#f5f3ef;color:#1f2d3d}}main{{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:18px}}article{{background:#fff;padding:14px;border-radius:10px}}img{{width:100%}}a{{margin-right:18px}}</style><h1>{html.escape(INDEX_TITLE)}</h1><p>{html.escape(INDEX_DESCRIPTION)}</p><nav><a href="manifest.json">Manifest</a><a href="candidate-representations.json">Candidate</a><a href="profile.json">Profile</a><a href="official-native-dwg-linework.json">Native DWG linework</a><a href="official-source/source-access-record.json">Source record</a><a href="official-source/autocad-marilyn-full-modelspace.png">AutoCAD modelspace screenshot</a><a href="official-source/marilyn-exact-cluster-layer-audit.svg">Exact-cluster layer audit</a><a href="project-context-furniture-plan.svg">Project furniture plan</a><a href="project-context-r22-front-elevation.svg">R22 front</a><a href="project-context-r22-side-elevation.svg">R22 side</a><a href="bonsai-review-manifest.json">Bonsai evidence</a><a href="https://www.baxter.it/en/products/marilyn-sofas-and-armchairs">Official page</a></nav><h2>Direct AutoCAD 2024 inspection</h2><p>{html.escape(autocad["exact_variant"])} · source SHA-256 {html.escape(autocad["source_opened_sha256"])} · unique exact cluster: {autocad["selection_unique"]}</p><img src="official-source/autocad-marilyn-full-modelspace.png" alt="AutoCAD 2024 full Marilyn modelspace"><h2>Exact-cluster layer audit</h2><p>Blue = _ARREDO · red = native layer 0 seam/fold detail · purple = native Make2D visible upholstery surface.</p><img src="official-source/marilyn-exact-cluster-layer-audit.svg" alt="Marilyn exact cluster layer audit"><h2>Project drawing context</h2><main><article><h2>Furniture plan</h2><img src="project-context-furniture-plan-review-preview.png"></article><article><h2>R22 front</h2><img src="project-context-r22-front-elevation-review-preview.png"></article><article><h2>R22 side</h2><img src="project-context-r22-side-elevation-review-preview.png"></article></main><h2>Native DWG / IFC comparison</h2><main>{cards}</main><h2>Actual Bonsai camera renders from isolated IFC Body</h2><main>{bonsai_cards}</main><code>{manifest["formal_ifc_sha256"]}</code></html>''',
         encoding="utf-8",
     )
 
@@ -316,6 +317,7 @@ def main():
         },
         "dimension_cross_check": access["dimension_cross_check"],
         "native_dwg_ifc_view_comparisons": comparisons,
+        "direct_autocad_inspection": linework["direct_autocad_inspection"],
         "candidate_representations": relative(candidate_path),
         "candidate_representations_sha256": sha256(candidate_path),
         "review_status": "visual_review_pending",
@@ -337,6 +339,10 @@ def main():
         manifest["bonsai_review"] = {"manifest": relative(bonsai_path), "manifest_sha256": sha256(bonsai_path), "mode": bonsai.get("mode"), "saved_active_representation": bonsai.get("bonsai_session", {}).get("saved_active_representation"), "saved_camera_count": bonsai.get("bonsai_session", {}).get("saved_camera_count"), "pass": bonsai.get("pass")}
         manifest["pass"] = manifest["pass"] and bonsai.get("pass") is True
     manifest_path = output / "manifest.json"
+    closure = output / "marilyn-side-support-closure-audit.json"
+    if closure.is_file():
+        manifest["side_support_closure"] = {"audit": relative(closure), "sha256": sha256(closure), "native_arc_restored": 234, "synthetic_join_added": False}
+    manifest["remaining_visual_verification"] = {"autocad_readable_closeups": "pending", "front_fit_only_curve_indices": [1005, 1006], "front_fit_only_curves_exactly_verified": False}
     write_json(manifest_path, manifest)
     write_index(manifest)
     print(manifest_path)

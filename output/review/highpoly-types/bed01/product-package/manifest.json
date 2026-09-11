@@ -1,0 +1,160 @@
+{
+  "schema_version": 1,
+  "profile_key": "bed01",
+  "display_name": "Baxter Casablanca 180 / BED01",
+  "status": "complete",
+  "target_global_id": "3IQBEqO5vDI8Z9k1Ltge_N",
+  "persistent_ifc": {
+    "path": "/Users/jiaxinchen/.codex/worktrees/3a80/2504 GBTB Yanlord Zhuhai/output/review/highpoly-types/bed01/product-package/BED01-product.ifc",
+    "bytes": 2902036,
+    "sha256": "9e5660e5e4db95fc3dd44eb05dd8dcd2515a19e21b23ee462391431fb13d111a"
+  },
+  "source_kind": "native_dwg_review_reference",
+  "source_label_zh": "Baxter Casablanca 官方独立 2D DWG 原生蓝线",
+  "scope": "approved 180x200 family linework; not an exact project Body fit; no geometry rescaling",
+  "source_dwg": {
+    "path": "/Users/jiaxinchen/.codex/worktrees/3a80/2504 GBTB Yanlord Zhuhai/output/review/highpoly-types/bed01/official-source/2d-3d-download/CASABLANCA/2D/Casablanca_Letto.dwg",
+    "bytes": 173784,
+    "sha256": "ab697db9c27448c62a9a77537d7cc4b6286577c335328113d703184be28d9c4a"
+  },
+  "official_download_url": "https://dam.baxter.it/asset/76c053fa-2ac5-4a60-85e3-d9df4ceb9cf0/Baxter_Casablanca_Bed_2D_3D.zip",
+  "source_access_record": {
+    "path": "/Users/jiaxinchen/.codex/worktrees/3a80/2504 GBTB Yanlord Zhuhai/output/review/highpoly-types/bed01/official-source/source-access-record.json",
+    "bytes": 7817,
+    "sha256": "a3502f8c4c289a89fc776734b70889a6ba03003d4556ce86e4992a5755465f4d"
+  },
+  "approval_record": {
+    "path": "/Users/jiaxinchen/.codex/worktrees/3a80/2504 GBTB Yanlord Zhuhai/pipeline/decisions/bed01-drawing-approval.json",
+    "bytes": 2530,
+    "sha256": "a18266a2aa8f37ef47bebe6c9bf28d0060aa97f40f042746bbe3505778f11687"
+  },
+  "geometry": {
+    "physical_products": 1,
+    "original_body_preserved": true,
+    "approved_views": [
+      "plan",
+      "front",
+      "side"
+    ],
+    "placement_matrix_project_units": [
+      [
+        0.0,
+        -1.0,
+        0.0,
+        -5249.81164932251
+      ],
+      [
+        1.0,
+        0.0,
+        0.0,
+        -2750.0
+      ],
+      [
+        0.0,
+        0.0,
+        1.0,
+        10.0
+      ],
+      [
+        0.0,
+        0.0,
+        0.0,
+        1.0
+      ]
+    ],
+    "units_to_m": 0.001,
+    "annotations": 0,
+    "drawing_cameras": 0,
+    "spatial_geometry": 0
+  },
+  "scene_recipe": {
+    "path": "/Users/jiaxinchen/.codex/worktrees/3a80/2504 GBTB Yanlord Zhuhai/output/review/highpoly-types/bed01/product-package/scene-recipe.json",
+    "bytes": 140745,
+    "sha256": "5165acb4705c9f05eb4112657a1e04daf8c0490cf22eb02e7a5def941529dc36"
+  },
+  "scene_outputs": [
+    {
+      "view": "plan",
+      "max_linework_hausdorff_error_world_mm": 0.0005943576753803502,
+      "tolerance_mm": 0.01,
+      "svg": {
+        "path": "/Users/jiaxinchen/.codex/worktrees/3a80/2504 GBTB Yanlord Zhuhai/output/review/highpoly-types/bed01/product-package/BED01-SCENE-PLAN.svg",
+        "bytes": 1263077,
+        "sha256": "ab942e2a91d4d9a5f9e3fdebb0c479b9fe02ea43eb91a4335a68b09897bc14b2"
+      },
+      "preview": {
+        "path": "/Users/jiaxinchen/.codex/worktrees/3a80/2504 GBTB Yanlord Zhuhai/output/review/highpoly-types/bed01/product-package/BED01-SCENE-PLAN.png",
+        "bytes": 97054,
+        "sha256": "ec9172c187c08972e34cd11ca13615495db7b9baff50e29c82819e7fe2b32d41"
+      }
+    },
+    {
+      "view": "front",
+      "max_linework_hausdorff_error_world_mm": 0.0,
+      "tolerance_mm": 0.01,
+      "svg": {
+        "path": "/Users/jiaxinchen/.codex/worktrees/3a80/2504 GBTB Yanlord Zhuhai/output/review/highpoly-types/bed01/product-package/BED01-SCENE-FRONT.svg",
+        "bytes": 1005945,
+        "sha256": "34b3b168f944d3d4ab2a13d2504043faa27e225c7eb4639c04777bbff08e7f43"
+      },
+      "preview": {
+        "path": "/Users/jiaxinchen/.codex/worktrees/3a80/2504 GBTB Yanlord Zhuhai/output/review/highpoly-types/bed01/product-package/BED01-SCENE-FRONT.png",
+        "bytes": 82596,
+        "sha256": "a180c6094f87dfd5a9a64d64a792de29e652ee4c2483f51eb20ca310257419e6"
+      }
+    },
+    {
+      "view": "side",
+      "max_linework_hausdorff_error_world_mm": 6.509614410022001e-05,
+      "tolerance_mm": 0.01,
+      "svg": {
+        "path": "/Users/jiaxinchen/.codex/worktrees/3a80/2504 GBTB Yanlord Zhuhai/output/review/highpoly-types/bed01/product-package/BED01-SCENE-SIDE.svg",
+        "bytes": 1074200,
+        "sha256": "b46446cd12be575965a0c560dc15ff3c2bb1500c172baaa20f5f36ac69b83aad"
+      },
+      "preview": {
+        "path": "/Users/jiaxinchen/.codex/worktrees/3a80/2504 GBTB Yanlord Zhuhai/output/review/highpoly-types/bed01/product-package/BED01-SCENE-SIDE.png",
+        "bytes": 48331,
+        "sha256": "6b5a165177e41ec16db00c9838d83e3b3136ed6029ee42d8727416f6020ff31a"
+      }
+    }
+  ],
+  "external_style_dependencies": [
+    {
+      "location": "Materials.blend",
+      "source": {
+        "path": "/Users/jiaxinchen/.codex/worktrees/3a80/2504 GBTB Yanlord Zhuhai/Materials.blend",
+        "bytes": 5496522,
+        "sha256": "18a1e92531bc56c3938a16c64189bc61da83354529c22a9c4d63f0f05cfd69a2"
+      },
+      "packaged": {
+        "path": "/Users/jiaxinchen/.codex/worktrees/3a80/2504 GBTB Yanlord Zhuhai/output/review/highpoly-types/bed01/product-package/Materials.blend",
+        "bytes": 5496522,
+        "sha256": "18a1e92531bc56c3938a16c64189bc61da83354529c22a9c4d63f0f05cfd69a2"
+      },
+      "identifications": [
+        "materials/FabricCotton001_1K",
+        "materials/KashmirPlomb_1K"
+      ]
+    }
+  ],
+  "validation": "validation.json",
+  "legacy_source_retained": true,
+  "formal_write_allowed": false,
+  "formal_sha256": "7a50b87e8f48a7c2bfbaa9f1dabdfca7155fa684b2325c66aa1ae15c8ab0a25c",
+  "known_limitations": [
+    "Approved official family CAD does not exactly fit the project's modified highpoly Body.",
+    "Missing OD_Textures/Materials.blend was inherited from formal baseline; 2D linework succeeds."
+  ],
+  "single_product_views": {
+    "plan": "/Users/jiaxinchen/.codex/worktrees/3a80/2504 GBTB Yanlord Zhuhai/output/review/highpoly-types/bed01/official-dwg-plan.svg",
+    "front": "/Users/jiaxinchen/.codex/worktrees/3a80/2504 GBTB Yanlord Zhuhai/output/review/highpoly-types/bed01/official-dwg-front.svg",
+    "side": "/Users/jiaxinchen/.codex/worktrees/3a80/2504 GBTB Yanlord Zhuhai/output/review/highpoly-types/bed01/official-dwg-side.svg"
+  },
+  "existing_body_iso_preview": {
+    "path": "/Users/jiaxinchen/.codex/worktrees/3a80/2504 GBTB Yanlord Zhuhai/output/review/highpoly-types/bed01/bonsai-camera-iso.png",
+    "bytes": 1184235,
+    "sha256": "47b96721758b16b8248b5ecb7264ea7a672deaa7c8701bf9af98480e46428605"
+  },
+  "note_preview": "Existing actual Body saved-camera preview retained; Body fingerprint unchanged. Library-specific thumbnails may be regenerated without changing IFC."
+}

@@ -1,6 +1,6 @@
 {
   "schema_version": 2,
-  "generated_at": "2026-08-23T14:35:08.856339+00:00",
+  "generated_at": "2026-08-24T18:01:30.961298+00:00",
   "generator": "pipeline/scripts/gessi316_54294_review.py",
   "formal_ifc": "2504 GBTB Yanlord Zhuhai.ifc",
   "formal_ifc_sha256": "7a50b87e8f48a7c2bfbaa9f1dabdfca7155fa684b2325c66aa1ae15c8ab0a25c",
@@ -20,35 +20,209 @@
   ],
   "geometry_product_count": 1,
   "whole_model_render": false,
-  "mesh_vertex_count": 21299,
-  "mesh_face_count": 41570,
+  "mesh_vertex_count": 1822,
+  "mesh_face_count": 3616,
+  "original_mesh_vertex_count": 21299,
+  "original_mesh_face_count": 41570,
+  "review_only_geometry_simplification": {
+    "mode": "review_only_smooth_handles_and_official_max_reach_spout",
+    "original_vertex_count": 21299,
+    "original_face_count": 41570,
+    "removed_component_count": 3,
+    "removed_vertex_count": 20387,
+    "removed_face_count": 39762,
+    "handle_replacement_component_count": 2,
+    "handle_replacement_vertex_count": 260,
+    "handle_replacement_face_count": 512,
+    "spout_replacement_component_count": 1,
+    "spout_replacement_vertex_count": 650,
+    "spout_replacement_face_count": 1296,
+    "optimised_vertex_count": 1822,
+    "optimised_face_count": 3616,
+    "vertex_reduction_percent": 91.446,
+    "face_reduction_percent": 91.301,
+    "smooth_segments_per_sleeve": 64,
+    "main_handle_cylinder_count_preserved": 2,
+    "control_levers_preserved": true,
+    "spout_component_count_preserved": 1,
+    "three_hole_trim_disc_count_preserved": 3,
+    "plan_front_identity_and_three_hole_layout_preserved": true,
+    "main_axis_z_mm": 18.0,
+    "side_mechanical_gate": {
+      "tolerance_mm": 0.2,
+      "official_exact_54294_native_dwg": {
+        "wall_surface_x_mm": -18.818959,
+        "straight_spout_wall_z_mm": [
+          29.051758,
+          49.051758
+        ],
+        "straight_spout_axis_z_mm": 39.051758,
+        "bend_start_x_mm": -178.311053,
+        "outlet_endpoint_x_mm": -228.631321,
+        "outlet_endpoint_z_mm": 6.940652,
+        "lower_lip_z_mm": 0.0,
+        "lower_lip_x_mm": -210.106846,
+        "upper_envelope_z_mm": 71.551758,
+        "visible_reach_mm": 209.812362,
+        "visible_envelope_mm": [
+          209.812362,
+          71.551758
+        ],
+        "raw_full_envelope_mm": [
+          228.631321,
+          71.551758
+        ],
+        "concealed_rear_extension_mm": 18.818959
+      },
+      "actual_project_ifc_body": {
+        "wall_surface_y_mm": 9.794979,
+        "straight_spout_axis_z_mm": 18.0,
+        "lower_lip_z_mm": -17.340641,
+        "outlet_endpoint_y_mm": -193.05135,
+        "upper_envelope_z_mm": 50.0,
+        "visible_reach_mm": 202.846329,
+        "visible_envelope_mm": [
+          202.846329,
+          67.340641
+        ],
+        "raw_full_envelope_mm": [
+          202.867443,
+          67.340641
+        ]
+      },
+      "official_mapped_targets": {
+        "wall_surface_y_mm": 9.794979,
+        "straight_spout_axis_z_mm": 18.0,
+        "lower_lip_z_mm": -21.051758,
+        "outlet_endpoint_y_mm": -200.017383,
+        "upper_envelope_z_mm": 50.5,
+        "visible_reach_mm": 209.812362,
+        "visible_envelope_mm": [
+          209.812362,
+          71.551758
+        ]
+      },
+      "review_only_proxy": {
+        "wall_surface_y_mm": 9.794979,
+        "straight_spout_axis_z_mm": 18.0,
+        "lower_lip_z_mm": -21.051758,
+        "outlet_endpoint_y_mm": -200.017383,
+        "upper_envelope_z_mm": 50.5,
+        "visible_reach_mm": 209.812362,
+        "visible_envelope_mm": [
+          209.812362,
+          71.551758
+        ],
+        "raw_full_envelope_mm": [
+          209.833476,
+          71.551758
+        ]
+      },
+      "actual_body_residual_mm": {
+        "wall_surface_y_mm": 0.0,
+        "straight_spout_axis_z_mm": 0.0,
+        "lower_lip_z_mm": 3.711117,
+        "outlet_endpoint_y_mm": 6.966033,
+        "visible_reach_mm": -6.966033,
+        "visible_envelope_mm": [
+          -6.966033,
+          -4.211117
+        ]
+      },
+      "review_proxy_residual_mm": {
+        "wall_surface_y_mm": 0.0,
+        "straight_spout_axis_z_mm": 0.0,
+        "lower_lip_z_mm": 0.0,
+        "outlet_endpoint_y_mm": 0.0,
+        "visible_reach_mm": 0.0,
+        "visible_envelope_mm": [
+          0.0,
+          0.0
+        ]
+      },
+      "previous_axis_only_overlay": {
+        "translation_mm": [
+          9.816093,
+          -21.051758
+        ],
+        "wall_surface_residual_mm": -18.797845,
+        "outlet_endpoint_residual_mm": -25.763878,
+        "lower_lip_residual_mm": -3.711117,
+        "straight_spout_axis_residual_mm": 0.0
+      },
+      "correct_wall_and_axis_translation_mm": [
+        28.613938,
+        -21.051758
+      ],
+      "official_line_scaled": false,
+      "official_line_mirrored": false,
+      "review_proxy_geometry_changed": true,
+      "actual_body_comparison_retained": true,
+      "cause": "previous overlay used the concealed rear endpoint instead of the published wall surface; after correcting that transform, the project Body remains 6.966033 mm shorter because 54294 is adjustable and the official DWG shows the 210 mm maximum-depth configuration",
+      "wrong_dwg_view_selected": false,
+      "latest_exact_54294_dwg_used": true,
+      "project_body_within_official_adjustable_depth_range_190_210_mm": true,
+      "feature_gate_pass": true
+    },
+    "original_bounds_mm": {
+      "minimum": [
+        -69.455978,
+        -193.05135,
+        -17.340641
+      ],
+      "maximum": [
+        289.455658,
+        9.816093,
+        50.0
+      ]
+    },
+    "optimised_bounds_mm": {
+      "minimum": [
+        -69.455978,
+        -200.017383,
+        -21.051758
+      ],
+      "maximum": [
+        289.455658,
+        9.816093,
+        50.5
+      ]
+    },
+    "formal_ifc_modified": false,
+    "pass": true
+  },
   "bounds_mm": {
     "minimum": [
       -69.455978,
-      -193.05135,
-      -17.340641
+      -200.017383,
+      -21.051758
     ],
     "maximum": [
       289.455658,
       9.816093,
-      50.0
+      50.5
     ],
     "size": [
       358.911636,
-      202.867443,
-      67.340641
+      209.833476,
+      71.551758
     ]
   },
-  "source_kind": "native_dwg",
-  "source_label_zh": "Gessi 官方精确型号 54294 原生 DWG 图纸表达",
+  "source_kind": "native_dwg_review_simplification",
+  "source_label_zh": "基于官方 Gessi 54294 原生 DWG 轮廓的去纹审核简化表达",
+  "original_source_kind": "native_dwg",
+  "original_source_label_zh": "Gessi 官方精确型号 54294 原生 DWG 图纸表达",
   "drawing_source": {
-    "source_kind": "native_dwg",
-    "source_label_zh": "Gessi 官方精确型号 54294 原生 DWG 图纸表达",
-    "source_label_en": "drawing representation from the exact Gessi 54294 official native DWG",
+    "source_kind": "native_dwg_review_simplification",
+    "source_label_zh": "基于官方 Gessi 54294 原生 DWG 轮廓的去纹审核简化表达",
+    "source_label_en": "de-textured review simplification based on the official Gessi 54294 native-DWG outline",
+    "original_source_kind": "native_dwg",
+    "original_source_label_zh": "Gessi 官方精确型号 54294 原生 DWG 图纸表达",
+    "original_source_label_en": "drawing representation from the exact Gessi 54294 official native DWG",
     "official_cad_used": true,
     "third_party_cad_used": false,
     "official_source_access_record": "output/review/highpoly-types/gessi316-54294/official-source/source-access-record.json",
-    "official_source_access_record_sha256": "e5c973813216c9ccc30cb3b2203d990959198fa5fb9118cba49dbc97f786d679",
+    "official_source_access_record_sha256": "ef860d728539d78f474f5d3b27b75012071a19697440ab245962f7dd090cf568",
     "official_product_cad_status": "public_official_api_exact_54294_native_dwg_acquired",
     "source_dwg": "output/review/highpoly-types/gessi316-54294/official-source/GPF5429400000G000_3.dwg",
     "source_dwg_sha256": "dfe8bcf7e100c14187c387b75a35e3fe7f718c61595fadf66adfe92ca7648ff4"
@@ -103,14 +277,27 @@
       25.763878,
       4.211117
     ],
+    "official_dwg_wall_surface_x_mm": -18.818959,
+    "official_dwg_visible_wall_to_outlet_reach_mm": 209.812362,
+    "project_ifc_visible_wall_to_outlet_reach_mm": 202.846329,
+    "official_vs_project_visible_reach_delta_mm": 6.966033,
+    "technical_pdf_adjustable_depth_range_mm": [
+      190.0,
+      210.0
+    ],
+    "project_body_inside_adjustable_depth_range": true,
+    "previous_side_overlay_transform_error_mm": 18.797845,
+    "previous_side_overlay_transform_error_cause": "The prior overlay aligned DWG x=0, the concealed rear connector endpoint, to the IFC wall surface instead of aligning the published wall surface at x=-18.818959.",
     "plan_tolerance_mm": 8.0,
     "front_tolerance_mm": 5.0,
     "side_full_envelope_tolerance_mm": 30.0,
     "pass": true
   },
   "official_cad_acquired": true,
-  "official_cad_exact_project_configuration_match": true,
+  "official_cad_exact_project_configuration_match": false,
   "official_cad_used": true,
+  "unaltered_official_cad_used_as_review_representation": false,
+  "original_official_cad_evidence_preserved": true,
   "third_party_cad_used": false,
   "companion_45089_dwg_used_as_54294_geometry": false,
   "blue_line_present": true,
@@ -122,9 +309,9 @@
   "official_source_revalidation": "output/review/highpoly-types/gessi316-54294/official-source/official-source-revalidation.json",
   "official_source_revalidation_sha256": "5057cee1729fd2b1be058f3343170d5c5d5cb96f1f3a0379e6a7bb5eddeb324d",
   "official_source_access_record": "output/review/highpoly-types/gessi316-54294/official-source/source-access-record.json",
-  "official_source_access_record_sha256": "e5c973813216c9ccc30cb3b2203d990959198fa5fb9118cba49dbc97f786d679",
+  "official_source_access_record_sha256": "ef860d728539d78f474f5d3b27b75012071a19697440ab245962f7dd090cf568",
   "candidate_representations": "output/review/highpoly-types/gessi316-54294/candidate-representations.json",
-  "candidate_representations_sha256": "0762098f1facc657735c7c5f5c037d2ae6f5479b4624d0bacfe6950fa37630b8",
+  "candidate_representations_sha256": "ffe80dde94dd95149a5881cc9a2026f50ce1be9a58f25b210a634a2ee26122d6",
   "review_status": "visual_review_pending",
   "approved_for_drawing_ifc": false,
   "derived_ifc_write_allowed": false,
@@ -134,23 +321,91 @@
     {
       "view": "plan",
       "svg": "output/review/highpoly-types/gessi316-54294/plan.svg",
-      "svg_sha256": "124f9c04adc9cf30da1f9fc6825cee7bab2686d6808d22984817f6efd8cee9e2",
+      "svg_sha256": "d1f62a98f2d31f62fa45b01aff080c80268dd816920a25a5990df8cf116133e3",
       "projection_axes": [
         0,
         1
       ],
       "raw_edge_count": 62861,
       "displayed_raw_edge_count": 998,
-      "silhouette_path_count": 20,
-      "drawing_line_source_kind": "native_dwg",
-      "drawing_line_source_label_zh": "Gessi 官方精确型号 54294 原生 DWG 图纸表达",
-      "official_cad_path_count": 1481,
+      "silhouette_path_count": 3,
+      "drawing_line_source_kind": "native_dwg_review_simplification",
+      "drawing_line_source_label_zh": "基于官方 Gessi 54294 原生 DWG 轮廓的去纹审核简化表达",
+      "review_simplified_path_count": 69,
+      "original_official_cad_path_count": 1481,
+      "original_official_evidence_svg": "output/review/highpoly-types/gessi316-54294/official-original-plan.svg",
+      "original_official_evidence_svg_sha256": "e23242190af729df8c25e9c6d4f92be3de04449a8fe0c48a468f022eecb7bdb0",
+      "handle_line_texture_simplification": {
+        "mode": "official_54294_outline_based_de_textured_review_simplification",
+        "original_path_count": 1481,
+        "paths_in_handle_texture_zones": 1414,
+        "original_handle_outline_path_count": 4,
+        "original_texture_detail_path_count": 1410,
+        "replacement_smooth_outline_path_count": 2,
+        "review_path_count": 69,
+        "review_texture_detail_path_count": 0,
+        "handle_texture_zone_bounds_mm": [
+          [
+            -120.85,
+            -32.0,
+            -78.85,
+            -4.5
+          ],
+          [
+            79.15,
+            -32.0,
+            121.15,
+            -4.5
+          ]
+        ],
+        "replacement_smooth_outline_bounds_mm": [
+          [
+            -120.80597,
+            -32.0,
+            -78.89403,
+            -4.5
+          ],
+          [
+            79.19403,
+            -32.0,
+            121.10597,
+            -4.5
+          ]
+        ],
+        "handle_envelope_delta_mm": [
+          0.0,
+          0.0
+        ],
+        "handle_centres_mm": [
+          [
+            -99.85,
+            -18.25
+          ],
+          [
+            100.15,
+            -18.25
+          ]
+        ],
+        "handle_centres_delta_mm": [
+          [
+            0.0,
+            0.0
+          ],
+          [
+            0.0,
+            0.0
+          ]
+        ],
+        "three_hole_and_spout_positions_unchanged": true,
+        "original_native_dwg_preserved_unchanged": true,
+        "pass": true
+      },
       "blue_line_present": true,
       "white_mask_present": true,
       "ifc_dwg_compatibility": {
         "ifc_body_projection_size_mm": [
           358.911636,
-          202.867443
+          209.833476
         ],
         "official_native_dwg_size_mm": [
           361.7,
@@ -158,33 +413,65 @@
         ],
         "absolute_delta_mm": [
           2.788364,
-          6.944969
+          0.021064
         ],
         "tolerance_mm": 8.0,
         "side_full_envelope_note": null,
         "pass": true
+      },
+      "translation_alignment": {
+        "mode": "project_center_and_wall_plane_translation_only"
       }
     },
     {
       "view": "front",
       "svg": "output/review/highpoly-types/gessi316-54294/front.svg",
-      "svg_sha256": "1f8c12796f9b824cf1dc554a000bac33b73ab53b644f317985b24f6fde6e2858",
+      "svg_sha256": "a22cfeab21231feb2dbf8d5fea9e54a70f2471e79cb5e4c07f7088576275320e",
       "projection_axes": [
         0,
         2
       ],
       "raw_edge_count": 62861,
       "displayed_raw_edge_count": 998,
-      "silhouette_path_count": 20,
-      "drawing_line_source_kind": "native_dwg",
-      "drawing_line_source_label_zh": "Gessi 官方精确型号 54294 原生 DWG 图纸表达",
-      "official_cad_path_count": 1099,
+      "silhouette_path_count": 8,
+      "drawing_line_source_kind": "native_dwg_review_simplification",
+      "drawing_line_source_label_zh": "基于官方 Gessi 54294 原生 DWG 轮廓的去纹审核简化表达",
+      "review_simplified_path_count": 1099,
+      "original_official_cad_path_count": 1099,
+      "original_official_evidence_svg": "output/review/highpoly-types/gessi316-54294/official-original-front.svg",
+      "original_official_evidence_svg_sha256": "c6e8322202d0e0020eddcdbe68f580bd9e42949b444fd493ce6ed07cc1465c34",
+      "handle_line_texture_simplification": {
+        "mode": "no_handle_texture_visible_in_this_projection",
+        "original_path_count": 1099,
+        "paths_in_handle_texture_zones": 0,
+        "original_handle_outline_path_count": 0,
+        "original_texture_detail_path_count": 0,
+        "replacement_smooth_outline_path_count": 0,
+        "review_path_count": 1099,
+        "review_texture_detail_path_count": 0,
+        "handle_envelope_delta_mm": [
+          0.0,
+          0.0
+        ],
+        "handle_centres_delta_mm": [
+          [
+            0.0,
+            0.0
+          ],
+          [
+            0.0,
+            0.0
+          ]
+        ],
+        "three_hole_and_spout_positions_unchanged": true,
+        "pass": true
+      },
       "blue_line_present": true,
       "white_mask_present": true,
       "ifc_dwg_compatibility": {
         "ifc_body_projection_size_mm": [
           358.911636,
-          67.340641
+          71.551758
         ],
         "official_native_dwg_size_mm": [
           361.7,
@@ -192,44 +479,248 @@
         ],
         "absolute_delta_mm": [
           2.788364,
-          4.209336
+          0.001781
         ],
         "tolerance_mm": 5.0,
         "side_full_envelope_note": null,
         "pass": true
+      },
+      "translation_alignment": {
+        "mode": "project_center_translation_only"
       }
     },
     {
       "view": "side",
       "svg": "output/review/highpoly-types/gessi316-54294/side.svg",
-      "svg_sha256": "3f64f5a861d5c259004fb89b52bfb4716da8272a40337625a28345b949bdfadf",
+      "svg_sha256": "650470a9a6b4c25ce20c6e4a06bca51dfe05b02b4fa3e06fc6795082b1853684",
       "projection_axes": [
         1,
         2
       ],
       "raw_edge_count": 62861,
       "displayed_raw_edge_count": 998,
-      "silhouette_path_count": 4,
-      "drawing_line_source_kind": "native_dwg",
-      "drawing_line_source_label_zh": "Gessi 官方精确型号 54294 原生 DWG 图纸表达",
-      "official_cad_path_count": 745,
+      "silhouette_path_count": 1,
+      "drawing_line_source_kind": "native_dwg_review_simplification",
+      "drawing_line_source_label_zh": "基于官方 Gessi 54294 原生 DWG 轮廓的去纹审核简化表达",
+      "review_simplified_path_count": 35,
+      "original_official_cad_path_count": 745,
+      "original_official_evidence_svg": "output/review/highpoly-types/gessi316-54294/official-original-side.svg",
+      "original_official_evidence_svg_sha256": "532d46f6295412f13fc993f0a4bdc4fbec561dd066e30dce6c0b66d16067b4cd",
+      "handle_line_texture_simplification": {
+        "mode": "official_54294_outline_based_de_textured_review_simplification",
+        "original_path_count": 745,
+        "paths_in_handle_texture_zones": 711,
+        "original_handle_outline_path_count": 2,
+        "original_texture_detail_path_count": 709,
+        "replacement_smooth_outline_path_count": 1,
+        "review_path_count": 35,
+        "review_texture_detail_path_count": 0,
+        "handle_texture_zone_bounds_mm": [
+          [
+            -51.318959,
+            18.05181,
+            -23.318959,
+            60.051706
+          ]
+        ],
+        "replacement_smooth_outline_bounds_mm": [
+          [
+            -51.318959,
+            18.05181,
+            -23.318959,
+            60.051706
+          ]
+        ],
+        "handle_envelope_delta_mm": [
+          0.0,
+          0.0
+        ],
+        "handle_centres_mm": [
+          [
+            -37.318959,
+            39.051758
+          ]
+        ],
+        "handle_centres_delta_mm": [
+          [
+            0.0,
+            0.0
+          ]
+        ],
+        "three_hole_and_spout_positions_unchanged": true,
+        "original_native_dwg_preserved_unchanged": true,
+        "pass": true
+      },
       "blue_line_present": true,
       "white_mask_present": true,
       "ifc_dwg_compatibility": {
         "ifc_body_projection_size_mm": [
-          202.867443,
+          202.846329,
           67.340641
         ],
-        "official_native_dwg_size_mm": [
+        "review_proxy_visible_side_envelope_mm": [
+          209.812362,
+          71.551758
+        ],
+        "official_native_dwg_visible_side_envelope_mm": [
+          209.812362,
+          71.551758
+        ],
+        "official_native_dwg_raw_full_side_envelope_mm": [
           228.631321,
           71.551758
         ],
+        "official_concealed_rear_extension_mm": 18.818959,
         "absolute_delta_mm": [
-          25.763878,
-          4.211117
+          0.0,
+          0.0
         ],
-        "tolerance_mm": 30.0,
-        "side_full_envelope_note": "The official side envelope includes the published wall trim and full adjustable spout reach.",
+        "tolerance_mm": 0.2,
+        "side_full_envelope_note": "Visible Side envelope is gated wall-surface-to-outlet. The raw DWG additionally contains an 18.818959 mm concealed rear connector, disclosed separately and not used as the wall anchor.",
+        "pass": true
+      },
+      "translation_alignment": {
+        "mode": "wall_plane_and_straight_spout_axis_translation_only",
+        "scale_applied": false,
+        "mirror_applied": false,
+        "official_wall_surface_x_mm": -18.818959,
+        "review_wall_surface_y_mm": 9.794979,
+        "official_straight_spout_wall_z_mm": [
+          29.051758,
+          49.051758
+        ],
+        "official_straight_spout_axis_z_mm": 39.051758,
+        "review_straight_spout_axis_z_mm": 18.0,
+        "prior_axis_only_translation_mm": [
+          9.816093,
+          -21.051758
+        ],
+        "corrected_wall_and_axis_translation_mm": [
+          28.613938,
+          -21.051758
+        ],
+        "prior_wall_surface_residual_mm": -18.797845,
+        "prior_outlet_endpoint_residual_mm": -25.763878,
+        "corrected_anchor_residual_mm": [
+          0.0,
+          0.0
+        ],
+        "side_mechanical_gate": {
+          "tolerance_mm": 0.2,
+          "official_exact_54294_native_dwg": {
+            "wall_surface_x_mm": -18.818959,
+            "straight_spout_wall_z_mm": [
+              29.051758,
+              49.051758
+            ],
+            "straight_spout_axis_z_mm": 39.051758,
+            "bend_start_x_mm": -178.311053,
+            "outlet_endpoint_x_mm": -228.631321,
+            "outlet_endpoint_z_mm": 6.940652,
+            "lower_lip_z_mm": 0.0,
+            "lower_lip_x_mm": -210.106846,
+            "upper_envelope_z_mm": 71.551758,
+            "visible_reach_mm": 209.812362,
+            "visible_envelope_mm": [
+              209.812362,
+              71.551758
+            ],
+            "raw_full_envelope_mm": [
+              228.631321,
+              71.551758
+            ],
+            "concealed_rear_extension_mm": 18.818959
+          },
+          "actual_project_ifc_body": {
+            "wall_surface_y_mm": 9.794979,
+            "straight_spout_axis_z_mm": 18.0,
+            "lower_lip_z_mm": -17.340641,
+            "outlet_endpoint_y_mm": -193.05135,
+            "upper_envelope_z_mm": 50.0,
+            "visible_reach_mm": 202.846329,
+            "visible_envelope_mm": [
+              202.846329,
+              67.340641
+            ],
+            "raw_full_envelope_mm": [
+              202.867443,
+              67.340641
+            ]
+          },
+          "official_mapped_targets": {
+            "wall_surface_y_mm": 9.794979,
+            "straight_spout_axis_z_mm": 18.0,
+            "lower_lip_z_mm": -21.051758,
+            "outlet_endpoint_y_mm": -200.017383,
+            "upper_envelope_z_mm": 50.5,
+            "visible_reach_mm": 209.812362,
+            "visible_envelope_mm": [
+              209.812362,
+              71.551758
+            ]
+          },
+          "review_only_proxy": {
+            "wall_surface_y_mm": 9.794979,
+            "straight_spout_axis_z_mm": 18.0,
+            "lower_lip_z_mm": -21.051758,
+            "outlet_endpoint_y_mm": -200.017383,
+            "upper_envelope_z_mm": 50.5,
+            "visible_reach_mm": 209.812362,
+            "visible_envelope_mm": [
+              209.812362,
+              71.551758
+            ],
+            "raw_full_envelope_mm": [
+              209.833476,
+              71.551758
+            ]
+          },
+          "actual_body_residual_mm": {
+            "wall_surface_y_mm": 0.0,
+            "straight_spout_axis_z_mm": 0.0,
+            "lower_lip_z_mm": 3.711117,
+            "outlet_endpoint_y_mm": 6.966033,
+            "visible_reach_mm": -6.966033,
+            "visible_envelope_mm": [
+              -6.966033,
+              -4.211117
+            ]
+          },
+          "review_proxy_residual_mm": {
+            "wall_surface_y_mm": 0.0,
+            "straight_spout_axis_z_mm": 0.0,
+            "lower_lip_z_mm": 0.0,
+            "outlet_endpoint_y_mm": 0.0,
+            "visible_reach_mm": 0.0,
+            "visible_envelope_mm": [
+              0.0,
+              0.0
+            ]
+          },
+          "previous_axis_only_overlay": {
+            "translation_mm": [
+              9.816093,
+              -21.051758
+            ],
+            "wall_surface_residual_mm": -18.797845,
+            "outlet_endpoint_residual_mm": -25.763878,
+            "lower_lip_residual_mm": -3.711117,
+            "straight_spout_axis_residual_mm": 0.0
+          },
+          "correct_wall_and_axis_translation_mm": [
+            28.613938,
+            -21.051758
+          ],
+          "official_line_scaled": false,
+          "official_line_mirrored": false,
+          "review_proxy_geometry_changed": true,
+          "actual_body_comparison_retained": true,
+          "cause": "previous overlay used the concealed rear endpoint instead of the published wall surface; after correcting that transform, the project Body remains 6.966033 mm shorter because 54294 is adjustable and the official DWG shows the 210 mm maximum-depth configuration",
+          "wrong_dwg_view_selected": false,
+          "latest_exact_54294_dwg_used": true,
+          "project_body_within_official_adjustable_depth_range_190_210_mm": true,
+          "feature_gate_pass": true
+        },
         "pass": true
       }
     }
@@ -237,14 +728,14 @@
   "pass": true,
   "project_context": {
     "manifest": "output/review/highpoly-types/gessi316-54294/project-context-manifest.json",
-    "manifest_sha256": "b8ff2130721612391e3ab5177fc3aabb96fc569ae2c1a6338f3bcdd909a22466",
+    "manifest_sha256": "995aae760d9a685438b941aee09a35c39cba681c266ad3488f1b0945b20037de",
     "walls_and_surrounding_project_elements_retained": true,
     "overlay_top_layer_with_white_mask": true,
     "pass": true
   },
   "bonsai_review": {
     "manifest": "output/review/highpoly-types/gessi316-54294/bonsai-review-manifest.json",
-    "manifest_sha256": "ccb0947cf4b68651d0d2af936718d6c81157236544d8b8a597c93b11d1d53fce",
+    "manifest_sha256": "aaf6e534abe85cfaea02e583db340a488eaba002881ca26e7039f6265567a598",
     "mode": "actual_bonsai_ifc_body_camera_render",
     "saved_active_representation": "Body",
     "saved_camera_count": 4,

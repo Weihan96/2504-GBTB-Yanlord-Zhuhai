@@ -1,0 +1,31 @@
+{
+  "schema_version": 1,
+  "title": "Molteni&C 505 UP rule-backed modular composition",
+  "units": "mm",
+  "scope": "review prototype only; no IFC authoring",
+  "rules": {
+    "horizontal_module_widths_mm": [320, 480, 640, 960, 1280, 1440, 1920],
+    "vertical_pitch_mm": 384,
+    "available_floor_heights_mm": [465, 849, 1233, 1617, 2001, 2385, 2769],
+    "floor_clearance_mm": 5,
+    "plinth_mm": 76,
+    "structural_panel_mm": 32,
+    "back_panel_mm": 16,
+    "central_divider_options_mm": [10, 12, 32],
+    "structure_depths_mm": [320, 400],
+    "display_position_pitch_mm": 160,
+    "maximum_unsupported_clear_width_mm": 960,
+    "open_display_atoms": [
+      {"width_mm": 928, "height_mm": 384, "depth_mm": 500},
+      {"width_mm": 1248, "height_mm": 384, "depth_mm": 500},
+      {"width_mm": 608, "height_mm": 768, "depth_mm": 500}
+    ],
+    "large_module_requires_central_divider": true,
+    "display_in_w960_or_larger_requires_reinforced_shelves": true
+  },
+  "provenance": {
+    "datasheet_pages": [2, 5, 6, 9, 10, 14, 18, 23, 24, 25],
+    "datasheet_sha256": "6df90e8b77c428b01fbda98525397952600dc56000e1a38673152c632544966b",
+    "native_dwg_sha256": "dfe4a6bcd655a3ed19343813a4aba8e139b847cafe8ea69b47623a6e1e71add3"
+  }
+}

@@ -1,0 +1,353 @@
+{
+  "schema_version": 1,
+  "profile_key": "geberit-154-446-ks-1",
+  "display_name": "Geberit 154.446.KS.1",
+  "status": "complete",
+  "target_global_id": "2S2c498tb7$gzdukjhCGVQ",
+  "persistent_ifc": {
+    "path": "/Users/jiaxinchen/.codex/worktrees/3a80/2504 GBTB Yanlord Zhuhai/output/review/highpoly-types/geberit-154-446-ks-1/product-package/GEBERIT154446-product.ifc",
+    "bytes": 4095291,
+    "sha256": "f20aa0dc1972a3123b481a98d4c67b0243fcbb3e7528726f8b2629cfa4c090df"
+  },
+  "scene_recipe": {
+    "path": "/Users/jiaxinchen/.codex/worktrees/3a80/2504 GBTB Yanlord Zhuhai/output/review/highpoly-types/geberit-154-446-ks-1/product-package/scene-recipe.json",
+    "bytes": 93471,
+    "sha256": "73f87e4672586b93d1abb433f1c3beec4d72608e993924bd6d80a5abf93ed1d4"
+  },
+  "source_kind": "official_native_dwg_paths_mm",
+  "source_label_zh": "Geberit 官方精确归档154.446.KS.1原生DWG蓝线（批准Side基准修正版）",
+  "official_sources": {
+    "A": {
+      "path": "output/review/highpoly-types/geberit-154-446-ks-1/official-source/154.446.KS.1_A.dwg",
+      "url": "https://cdn.data.geberit.com/cad/154.446.KS.1_A.dwg",
+      "sha256": "de09a6bbf99ecbe3c832cbee7ac9d398e95b927246f274643b513bfe960586c3"
+    },
+    "G": {
+      "path": "output/review/highpoly-types/geberit-154-446-ks-1/official-source/154.446.KS.1_G.dwg",
+      "url": "https://cdn.data.geberit.com/cad/154.446.KS.1_G.dwg",
+      "sha256": "bc41f8db7c7989de9d9089374e03c3b9deea94e2634bbb0f9418cad982b4b6e4"
+    },
+    "L": {
+      "path": "output/review/highpoly-types/geberit-154-446-ks-1/official-source/154.446.KS.1_L.dwg",
+      "url": "https://cdn.data.geberit.com/cad/154.446.KS.1_L.dwg",
+      "sha256": "dedb47964cc69310bd9af3982379c428c8b20494b7588296aedc5d07380e3421"
+    },
+    "P": {
+      "path": "output/review/highpoly-types/geberit-154-446-ks-1/official-source/154.446.KS.1_P.dwg",
+      "url": "https://cdn.data.geberit.com/cad/154.446.KS.1_P.dwg",
+      "sha256": "46e1d9fe9b7afda6f4a72970a5e35d7bc0935c2bdc890ccca232f0b0896a8e82"
+    }
+  },
+  "side_alignment_evidence": {
+    "mode": "native_dwg_origin_to_ifc_primary_channel_axis",
+    "ifc_primary_channel_bounds_y_mm": [
+      -2.758846,
+      27.241154
+    ],
+    "ifc_primary_channel_axis_y_mm": 12.241154,
+    "native_dwg_origin_x_mm": 0.0,
+    "applied_translation_mm": 12.241154,
+    "previous_contour_center_translation_mm": 17.736181,
+    "horizontal_offset_correction_mm": -5.495028,
+    "aligned_official_visible_bounds_y_mm": [
+      -19.958846,
+      33.441154
+    ],
+    "axis_alignment_absolute_delta_mm": 0.0,
+    "tolerance_mm": 0.01,
+    "pass": true
+  },
+  "official_download_url": "https://cdn.data.geberit.com/cad/154.446.KS.1_L.dwg",
+  "approval_record": {
+    "path": "/Users/jiaxinchen/.codex/worktrees/3a80/2504 GBTB Yanlord Zhuhai/pipeline/decisions/geberit-154-446-ks-1-drawing-approval.json",
+    "bytes": 962,
+    "sha256": "4e8731e14771064bdcda791a8dcd35d3b1845f1d570cce0e315bd772a26d0001"
+  },
+  "migration_authorization": {
+    "path": "/Users/jiaxinchen/.codex/worktrees/3a80/2504 GBTB Yanlord Zhuhai/output/review/approved-product-library/migration-authorization.json",
+    "bytes": 1189,
+    "sha256": "be266f18465023b1c2436d1585bb59290504b0b66ba03d822cc5fb7d148ee4ee"
+  },
+  "single_product_approval_status": "approved",
+  "scene_approval_status": "pending",
+  "approval_label_zh": "单品已通过、场景待验收",
+  "formal_write_allowed": false,
+  "formal_sha256": "7a50b87e8f48a7c2bfbaa9f1dabdfca7155fa684b2325c66aa1ae15c8ab0a25c",
+  "geometry": {
+    "physical_products": 1,
+    "body_representation_count": 3,
+    "original_body_preserved": true,
+    "discarded_box_representation_count": 0,
+    "approved_views": [
+      "plan",
+      "front",
+      "side"
+    ],
+    "annotations": 0,
+    "groups": 0,
+    "drawing_cameras": 0,
+    "spatial_geometry": 0,
+    "units_to_m": 0.001,
+    "placement_matrix_project_units": [
+      [
+        0.0,
+        -1.0,
+        0.0,
+        -5845.0
+      ],
+      [
+        1.0,
+        0.0,
+        0.0,
+        500.0
+      ],
+      [
+        0.0,
+        0.0,
+        1.0,
+        20.0
+      ],
+      [
+        0.0,
+        0.0,
+        0.0,
+        1.0
+      ]
+    ]
+  },
+  "scene_outputs": [
+    {
+      "view": "plan",
+      "path_count": 122,
+      "approved_coordinates_exact": true,
+      "submicron_source_paths": [],
+      "projection_test_minimum_path_length_mm": 0.0001,
+      "generated_scene_absolute_error_mm": 0.006385473989321652,
+      "camera_screen_up_world_z": 0.0,
+      "svg": {
+        "path": "/Users/jiaxinchen/.codex/worktrees/3a80/2504 GBTB Yanlord Zhuhai/output/review/highpoly-types/geberit-154-446-ks-1/product-package/GEBERIT154446-SCENE-PLAN.svg",
+        "bytes": 3196114,
+        "sha256": "9490434ec4fad08799a1c0a332ead6f47ed8e0e7f6145887b8c2a6f4df5d71fc"
+      },
+      "preview": {
+        "path": "/Users/jiaxinchen/.codex/worktrees/3a80/2504 GBTB Yanlord Zhuhai/output/review/highpoly-types/geberit-154-446-ks-1/product-package/GEBERIT154446-SCENE-PLAN.png",
+        "bytes": 138434,
+        "sha256": "f91e0c96f3b988ed7377e9594326c3888e8fe6358a6e6a5e84cb5a765877ee00"
+      },
+      "single_product_svg": {
+        "path": "/Users/jiaxinchen/.codex/worktrees/3a80/2504 GBTB Yanlord Zhuhai/output/review/highpoly-types/geberit-154-446-ks-1/product-package/GEBERIT154446-SINGLE-PLAN.svg",
+        "bytes": 49877,
+        "sha256": "57c8d66c31b08e19bbce62623be720e0f7d55ca893a796a7a6c629ceaa4ec078"
+      },
+      "single_product_thumbnail": {
+        "path": "/Users/jiaxinchen/.codex/worktrees/3a80/2504 GBTB Yanlord Zhuhai/output/review/highpoly-types/geberit-154-446-ks-1/product-package/GEBERIT154446-SINGLE-PLAN.png",
+        "bytes": 8462,
+        "sha256": "1d21ab6d7af1e234a4f22e412562f0dfac1d63912d3f5d001d6b11755be3a030"
+      },
+      "local_bounds_mm": [
+        [
+          -0.009073,
+          -3.773017
+        ],
+        [
+          899.990927,
+          49.626983
+        ]
+      ]
+    },
+    {
+      "view": "front",
+      "path_count": 118,
+      "approved_coordinates_exact": true,
+      "submicron_source_paths": [],
+      "projection_test_minimum_path_length_mm": 0.0001,
+      "generated_scene_absolute_error_mm": 0.003730520086584171,
+      "camera_screen_up_world_z": 1.0,
+      "svg": {
+        "path": "/Users/jiaxinchen/.codex/worktrees/3a80/2504 GBTB Yanlord Zhuhai/output/review/highpoly-types/geberit-154-446-ks-1/product-package/GEBERIT154446-SCENE-FRONT.svg",
+        "bytes": 1217443,
+        "sha256": "ac0e8b2283ec0aac7de1aaea42938dd0e3a93d6c80296400fc26b0e67846df0c"
+      },
+      "preview": {
+        "path": "/Users/jiaxinchen/.codex/worktrees/3a80/2504 GBTB Yanlord Zhuhai/output/review/highpoly-types/geberit-154-446-ks-1/product-package/GEBERIT154446-SCENE-FRONT.png",
+        "bytes": 47735,
+        "sha256": "cadb3ec89ad1be93834edd587dfa1f42f7dc87d63d537d8ba4afa6201693754e"
+      },
+      "single_product_svg": {
+        "path": "/Users/jiaxinchen/.codex/worktrees/3a80/2504 GBTB Yanlord Zhuhai/output/review/highpoly-types/geberit-154-446-ks-1/product-package/GEBERIT154446-SINGLE-FRONT.svg",
+        "bytes": 31935,
+        "sha256": "a3adc454e0c48645edf434361c39bef2f6e673577c1da22e16006aad8d3e6dd2"
+      },
+      "single_product_thumbnail": {
+        "path": "/Users/jiaxinchen/.codex/worktrees/3a80/2504 GBTB Yanlord Zhuhai/output/review/highpoly-types/geberit-154-446-ks-1/product-package/GEBERIT154446-SINGLE-FRONT.png",
+        "bytes": 7144,
+        "sha256": "a2a587adad16ca9675d57f1995182995599fc4342beb4849b64c615fff09712f"
+      },
+      "local_bounds_mm": [
+        [
+          0.0,
+          -50.500059
+        ],
+        [
+          900.0,
+          0.0
+        ]
+      ]
+    },
+    {
+      "view": "side",
+      "path_count": 176,
+      "approved_coordinates_exact": true,
+      "submicron_source_paths": [
+        {
+          "path_index_zero_based": 97,
+          "length_mm": 5.631370845998321e-05,
+          "approved_coordinates_retained": true,
+          "omitted_by_bonsai": false
+        },
+        {
+          "path_index_zero_based": 104,
+          "length_mm": 7.197056340737035e-05,
+          "approved_coordinates_retained": true,
+          "omitted_by_bonsai": false
+        },
+        {
+          "path_index_zero_based": 107,
+          "length_mm": 4.365776002709553e-05,
+          "approved_coordinates_retained": true,
+          "omitted_by_bonsai": true
+        },
+        {
+          "path_index_zero_based": 110,
+          "length_mm": 0.0,
+          "approved_coordinates_retained": true,
+          "omitted_by_bonsai": false
+        },
+        {
+          "path_index_zero_based": 111,
+          "length_mm": 0.0,
+          "approved_coordinates_retained": true,
+          "omitted_by_bonsai": false
+        },
+        {
+          "path_index_zero_based": 113,
+          "length_mm": 1.999999810209374e-06,
+          "approved_coordinates_retained": true,
+          "omitted_by_bonsai": false
+        }
+      ],
+      "projection_test_minimum_path_length_mm": 0.0001,
+      "generated_scene_absolute_error_mm": 0.006844718884451257,
+      "camera_screen_up_world_z": 1.0,
+      "svg": {
+        "path": "/Users/jiaxinchen/.codex/worktrees/3a80/2504 GBTB Yanlord Zhuhai/output/review/highpoly-types/geberit-154-446-ks-1/product-package/GEBERIT154446-SCENE-SIDE.svg",
+        "bytes": 1303134,
+        "sha256": "b0ed07bdc2c315c9a09f08a5330246a1390658aa59ebe588534200c9fb688b6a"
+      },
+      "preview": {
+        "path": "/Users/jiaxinchen/.codex/worktrees/3a80/2504 GBTB Yanlord Zhuhai/output/review/highpoly-types/geberit-154-446-ks-1/product-package/GEBERIT154446-SCENE-SIDE.png",
+        "bytes": 26574,
+        "sha256": "10f020281bf5f937120119b81a56f1a4fdcef11ed8bc4a90b631c477576a77be"
+      },
+      "single_product_svg": {
+        "path": "/Users/jiaxinchen/.codex/worktrees/3a80/2504 GBTB Yanlord Zhuhai/output/review/highpoly-types/geberit-154-446-ks-1/product-package/GEBERIT154446-SINGLE-SIDE.svg",
+        "bytes": 75885,
+        "sha256": "9d7988a959c40b335c0fbb9ec71d8d578f0b53f3f955cd3785b88e3eca82c553"
+      },
+      "single_product_thumbnail": {
+        "path": "/Users/jiaxinchen/.codex/worktrees/3a80/2504 GBTB Yanlord Zhuhai/output/review/highpoly-types/geberit-154-446-ks-1/product-package/GEBERIT154446-SINGLE-SIDE.png",
+        "bytes": 35720,
+        "sha256": "6586011e7962b2289183accc0f237b4c1891004a68d20f3b2d11c79856179eac"
+      },
+      "local_bounds_mm": [
+        [
+          -19.958846,
+          -50.5
+        ],
+        [
+          33.441154,
+          0.0
+        ]
+      ]
+    }
+  ],
+  "single_product_views": {
+    "plan": {
+      "path": "/Users/jiaxinchen/.codex/worktrees/3a80/2504 GBTB Yanlord Zhuhai/output/review/highpoly-types/geberit-154-446-ks-1/product-package/GEBERIT154446-SINGLE-PLAN.svg",
+      "bytes": 49877,
+      "sha256": "57c8d66c31b08e19bbce62623be720e0f7d55ca893a796a7a6c629ceaa4ec078"
+    },
+    "front": {
+      "path": "/Users/jiaxinchen/.codex/worktrees/3a80/2504 GBTB Yanlord Zhuhai/output/review/highpoly-types/geberit-154-446-ks-1/product-package/GEBERIT154446-SINGLE-FRONT.svg",
+      "bytes": 31935,
+      "sha256": "a3adc454e0c48645edf434361c39bef2f6e673577c1da22e16006aad8d3e6dd2"
+    },
+    "side": {
+      "path": "/Users/jiaxinchen/.codex/worktrees/3a80/2504 GBTB Yanlord Zhuhai/output/review/highpoly-types/geberit-154-446-ks-1/product-package/GEBERIT154446-SINGLE-SIDE.svg",
+      "bytes": 75885,
+      "sha256": "9d7988a959c40b335c0fbb9ec71d8d578f0b53f3f955cd3785b88e3eca82c553"
+    }
+  },
+  "library_previews": {
+    "plan": {
+      "path": "/Users/jiaxinchen/.codex/worktrees/3a80/2504 GBTB Yanlord Zhuhai/output/review/highpoly-types/geberit-154-446-ks-1/product-package/GEBERIT154446-SINGLE-PLAN.png",
+      "bytes": 8462,
+      "sha256": "1d21ab6d7af1e234a4f22e412562f0dfac1d63912d3f5d001d6b11755be3a030"
+    },
+    "front": {
+      "path": "/Users/jiaxinchen/.codex/worktrees/3a80/2504 GBTB Yanlord Zhuhai/output/review/highpoly-types/geberit-154-446-ks-1/product-package/GEBERIT154446-SINGLE-FRONT.png",
+      "bytes": 7144,
+      "sha256": "a2a587adad16ca9675d57f1995182995599fc4342beb4849b64c615fff09712f"
+    },
+    "side": {
+      "path": "/Users/jiaxinchen/.codex/worktrees/3a80/2504 GBTB Yanlord Zhuhai/output/review/highpoly-types/geberit-154-446-ks-1/product-package/GEBERIT154446-SINGLE-SIDE.png",
+      "bytes": 35720,
+      "sha256": "6586011e7962b2289183accc0f237b4c1891004a68d20f3b2d11c79856179eac"
+    },
+    "iso": {
+      "path": "/Users/jiaxinchen/.codex/worktrees/3a80/2504 GBTB Yanlord Zhuhai/output/review/highpoly-types/geberit-154-446-ks-1/bonsai-camera-iso.png",
+      "bytes": 841118,
+      "sha256": "7c2b7e718e621dd5a32a4d743234ec4235e32ee7c6ff9c4ba0f201ad8f6cc3f6"
+    }
+  },
+  "external_style_dependencies": [],
+  "validation": "validation.json",
+  "known_limitations": [
+    "Exact archived154.446.KS.1 DWG with approved Side datum alignment; replacement KS.2 not used.",
+    "New real Bonsai scene SVGs are technical migration checks awaiting human scene approval."
+  ],
+  "preview_provenance": {
+    "2d": "Exact persisted Approved views, local positive axes match user-approved single-product orientation; display-only framing and stroke styling.",
+    "3d": "Existing actual IFC Body camera render; all three original Body representations preserved."
+  },
+  "validation_verdict": "pass",
+  "fresh_pure_session": {
+    "scene_name": "🔍 逐个审核高模图纸候选",
+    "task_title_available": true,
+    "scene_renamed": true,
+    "pid": 82339,
+    "ifc": "/Users/jiaxinchen/.codex/worktrees/3a80/2504 GBTB Yanlord Zhuhai/output/review/highpoly-types/geberit-154-446-ks-1/product-package/GEBERIT154446-product.ifc",
+    "sha256": "f20aa0dc1972a3123b481a98d4c67b0243fcbb3e7528726f8b2629cfa4c090df",
+    "blend_saved": false,
+    "has_blend_warning": false,
+    "blender_version": "4.5.3 LTS",
+    "log": "/var/folders/rz/d8p6s4y50ws53rd150nm2s3r0000gn/T/codex-task-blender-501/9112eaa735e0599458a5-1788841439812.log",
+    "owner_task_id": "01a075a7-e948-7bd1-a27e-6ff542ea187c-geberit154446-migration",
+    "bridge_port": 9895
+  },
+  "scene_installation_observation": {
+    "status": "requires_user_scene_judgment",
+    "observation": "In Plan the blue drain lies within the grey bathtub projection. This is retained from the formal model, not a migration translation.",
+    "source_body_and_placement_unchanged": true,
+    "installation_position_approved": false,
+    "parent_agent_visual_cross_check": "Three SCENE PNGs independently viewed: blue lines complete; no historical markers; bathtub/drain overlap retained for user judgment."
+  },
+  "native_generator_degenerate_path_exception": {
+    "view": "side",
+    "path_index_zero_based": 107,
+    "length_mm": 4.365776002709553e-05,
+    "outcome": "Native Bonsai omits the near-zero-length two-point path; its full exact coordinates remain in ApprovedSide. The 0.05 mm projection threshold is retained for every non-degenerate contour.",
+    "pure_ifc_all_176_paths_retained": true,
+    "official_dwg_retained": true
+  }
+}

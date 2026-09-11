@@ -22,6 +22,13 @@ shared.CONTEXT_VIEWS = (
 
 
 if __name__ == "__main__":
+    original_load = shared.load_json
+    def project_local_candidate(path):
+        data = original_load(path)
+        if path == shared.CANDIDATE and 'project_local_views' in data:
+            data['views'] = {key: dict(data['views'][key], **value) for key,value in data['project_local_views'].items()}
+        return data
+    shared.load_json = project_local_candidate
     shared.main()
     manifest_path = shared.PRODUCT_DIR / "project-context-manifest.json"
     manifest = load_json(manifest_path)
@@ -44,6 +51,7 @@ if __name__ == "__main__":
         "plan": {"candidate_axes": [0, 1], "source": "drawings/Furniture Plan.svg", "rotate_quarter_turns": 1, "project_direction": "+Z"},
         "side": {"candidate_axes": [1, 2], "source": "drawings/elevations/native/EL-05-16-R09-NY.svg", "rotate_quarter_turns": 0, "project_direction": "-X"},
     }
+    manifest['review_frame_mapping'] = {'review_rotation_z_degrees': -7.031244116545077, 'context_projection': 'Original IFC product-local vertices; review-camera rotation is not applied to project placement.'}
     manifest["context_view_scope"] = {
         "included": ["plan", "side"],
         "excluded": ["front"],

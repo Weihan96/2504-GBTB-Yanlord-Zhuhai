@@ -1,0 +1,338 @@
+{
+  "schema_version": 1,
+  "generated_at": "2026-08-25T12:04:12.069134+00:00",
+  "generator": "pipeline/scripts/generate_official_dwg_family_review_packages.py",
+  "product_slug": "bed02",
+  "display_name": "Baxter Viktor 160×200 family / BED02",
+  "representative_global_id": "1i_pqgLv9A7uuV7MjaArBW",
+  "formal_ifc_sha256": "7a50b87e8f48a7c2bfbaa9f1dabdfca7155fa684b2325c66aa1ae15c8ab0a25c",
+  "formal_ifc_bytes_unchanged": true,
+  "source_dwg": "output/review/highpoly-types/bed02/official-source/official-download/Viktor_Letto.dwg",
+  "source_dwg_absolute_path": "/Users/jiaxinchen/.codex/worktrees/3a80/2504 GBTB Yanlord Zhuhai/output/review/highpoly-types/bed02/official-source/official-download/Viktor_Letto.dwg",
+  "source_dwg_sha256": "3f0676a004f3e744779093188d75d58238153332d9d1810f28821cafc79a9bbd",
+  "official_download_url": "https://dam.baxter.it/asset/6c3331bf-d64d-4bf6-83f9-40c1ffc41344/Baxter_Viktor_Bed_2D_3D.zip",
+  "source_archive": null,
+  "source_archive_sha256": null,
+  "source_archive_member": null,
+  "source_archive_member_sha256": null,
+  "source_archive_inventory": null,
+  "source_archive_inventory_sha256": null,
+  "local_byte_identical_archive_copies": [],
+  "selected_geometry_layers": [
+    "ARREDO",
+    "0"
+  ],
+  "excluded_layers": {
+    "_QUOTE": "Official red dimensions remain source evidence and are excluded from blue approval linework.",
+    "Defpoints": "Non-printing definition layer; excluded."
+  },
+  "autocad_source_screenshots": [],
+  "superseded_error_candidates": [],
+  "configuration": "160x200 / official dimension labels 1720 x 2340 x 1060 mm",
+  "reference_role": "official_family_identity_and_native_160x200_linework_reference_not_exact_project_configuration",
+  "scope": "Official six-spec family CAD; selected 160×200 group is identity/family reference only.",
+  "fit_note": "Project high-poly Body was non-uniformly reduced in width and is not an exact official configuration; no fit or scaling applied.",
+  "official_dwg_review_reference": "output/review/highpoly-types/bed02/official-dwg-review-reference.json",
+  "official_dwg_review_reference_sha256": "ad2ab76c19f0b563b26752208eaddeef6aa035487f57a327024bae12b7e74820",
+  "primary_candidate_source_kind": "geometry_derived_simplified_proxy",
+  "primary_candidate_source_label_zh": "基于原始高模几何生成的简化图纸表达",
+  "primary_candidate_replaced": false,
+  "official_reference_used_as_primary_candidate": false,
+  "third_party_cad_used": false,
+  "derived_ifc_write_performed": false,
+  "formal_authoritative_ifc_write_performed": false,
+  "bounds_mm": {
+    "minimum": [
+      -837.824158,
+      -1201.839111,
+      0.0
+    ],
+    "maximum": [
+      837.88678,
+      1202.178589,
+      1107.145996
+    ],
+    "size": [
+      1675.710938,
+      2404.0177,
+      1107.145996
+    ]
+  },
+  "views": [
+    {
+      "view": "plan",
+      "svg": "output/review/highpoly-types/bed02/official-dwg-plan.svg",
+      "svg_sha256": "04f47ffc9290424bc4d040c7399f78359cdc49ef0fa6b0676a26c543a3840a9f",
+      "official_reference_geometry_kind": "native_dwg_2d_linework",
+      "official_reference_path_count": 51,
+      "blue_stroke_style": "solid",
+      "alignment": {
+        "mode": "translation_only",
+        "view_direction_reflection_x": false,
+        "translation_mm": [
+          -861.664829,
+          -1170.306636
+        ],
+        "anchor": "projection_centre_to_projection_centre",
+        "uniform_scale": 1.0,
+        "anisotropic_scale_used": false,
+        "source_geometry_deformed": false,
+        "source_bounds_before_alignment_mm": {
+          "minimum": [
+            0.0,
+            0.0
+          ],
+          "maximum": [
+            1723.392281,
+            2340.708974
+          ],
+          "size": [
+            1723.392281,
+            2340.708974
+          ]
+        },
+        "project_proxy_bounds_mm": {
+          "minimum": [
+            -837.824158,
+            -1201.839111
+          ],
+          "maximum": [
+            837.88678,
+            1201.934814
+          ],
+          "size": [
+            1675.710938,
+            2403.773925
+          ]
+        }
+      },
+      "project_minus_official_bounds_size_mm": [
+        -47.681343,
+        63.064951
+      ],
+      "primary_candidate_source_kind": "geometry_derived_simplified_proxy",
+      "primary_candidate_replaced": false
+    },
+    {
+      "view": "front",
+      "svg": "output/review/highpoly-types/bed02/official-dwg-front.svg",
+      "svg_sha256": "10f77d3281b6ca27fd5231bc244cfca2ff8c5b7951030189727962bbf7aea614",
+      "official_reference_geometry_kind": "native_dwg_2d_linework",
+      "official_reference_path_count": 99,
+      "blue_stroke_style": "solid",
+      "alignment": {
+        "mode": "translation_only",
+        "view_direction_reflection_x": false,
+        "translation_mm": [
+          -866.80177,
+          0.0
+        ],
+        "anchor": "horizontal_centre_and_finished_bottom",
+        "uniform_scale": 1.0,
+        "anisotropic_scale_used": false,
+        "source_geometry_deformed": false,
+        "source_bounds_before_alignment_mm": {
+          "minimum": [
+            0.0,
+            0.0
+          ],
+          "maximum": [
+            1733.666161,
+            1060.0
+          ],
+          "size": [
+            1733.666161,
+            1060.0
+          ]
+        },
+        "project_proxy_bounds_mm": {
+          "minimum": [
+            -837.824158,
+            0.0
+          ],
+          "maximum": [
+            837.88678,
+            1107.029907
+          ],
+          "size": [
+            1675.710938,
+            1107.029907
+          ]
+        }
+      },
+      "project_minus_official_bounds_size_mm": [
+        -57.955223,
+        47.029907
+      ],
+      "primary_candidate_source_kind": "geometry_derived_simplified_proxy",
+      "primary_candidate_replaced": false
+    },
+    {
+      "view": "side",
+      "svg": "output/review/highpoly-types/bed02/official-dwg-side.svg",
+      "svg_sha256": "ab565cf5170c99c8c5e57c311da0da59c4cbff54ddf815dedd8010d5f576218a",
+      "official_reference_geometry_kind": "native_dwg_2d_linework",
+      "official_reference_path_count": 84,
+      "blue_stroke_style": "solid",
+      "alignment": {
+        "mode": "rigid_reflection_and_translation_only",
+        "view_direction_reflection_x": true,
+        "translation_mm": [
+          -1175.494939,
+          0.0
+        ],
+        "anchor": "horizontal_centre_and_finished_bottom",
+        "uniform_scale": 1.0,
+        "anisotropic_scale_used": false,
+        "source_geometry_deformed": false,
+        "source_bounds_before_alignment_mm": {
+          "minimum": [
+            0.0,
+            0.0
+          ],
+          "maximum": [
+            2351.640392,
+            1065.443243
+          ],
+          "size": [
+            2351.640392,
+            1065.443243
+          ]
+        },
+        "project_proxy_bounds_mm": {
+          "minimum": [
+            -1201.528076,
+            0.0
+          ],
+          "maximum": [
+            1202.178589,
+            1107.145996
+          ],
+          "size": [
+            2403.706665,
+            1107.145996
+          ]
+        }
+      },
+      "project_minus_official_bounds_size_mm": [
+        52.066273,
+        41.702753
+      ],
+      "primary_candidate_source_kind": "geometry_derived_simplified_proxy",
+      "primary_candidate_replaced": false
+    }
+  ],
+  "pass": true,
+  "index": "output/review/highpoly-types/bed02/official-dwg-review-index.html",
+  "index_sha256": "22e2af7638dc00286e0986d4300aa5d006c6db05ff918918e5ea336c33e3f3c8",
+  "contact_sheet_html": "output/review/highpoly-types/bed02/official-dwg-review-contact-sheet.html",
+  "contact_sheet_html_sha256": "90b0068138c85cccfeb79fe2d86cada87ef485cb59f00dc1fb2f41accd089863",
+  "contact_sheet_png": "output/review/highpoly-types/bed02/official-dwg-review-contact-sheet.png",
+  "contact_sheet_png_sha256": "b5d5a1d15397c67c7905a66c17cb803403e9b7f9daeec911bc96792803f8359b",
+  "repair_generator": "pipeline/scripts/repair_bed02_viktor_official_dwg_review.py",
+  "allowed_geometry_entity_types": [
+    "ARC",
+    "CIRCLE",
+    "ELLIPSE",
+    "LINE",
+    "LWPOLYLINE",
+    "POLYLINE",
+    "SPLINE"
+  ],
+  "excluded_entity_types": {
+    "TEXT": "Family-size labels are source evidence, not product geometry.",
+    "MTEXT": "The layer-0 160x200 title would otherwise become a false Front path; excluded."
+  },
+  "official_dimension_cross_check_mm": {
+    "nominal_overall": [
+      1720.0,
+      2340.0,
+      1060.0
+    ],
+    "native_soft_linework_bounds": {
+      "plan": [
+        1723.392281,
+        2340.708974
+      ],
+      "front": [
+        1733.666161,
+        1060.0
+      ],
+      "side": [
+        2351.640392,
+        1065.443243
+      ]
+    },
+    "note": "Small width/height overhangs are native upholstered curves; no source path is scaled or deformed."
+  },
+  "superseded_extractions": [
+    {
+      "status": "superseded_incomplete_extraction_excluded_from_approval",
+      "source_dwg_valid": true,
+      "source_dwg_sha256": "3f0676a004f3e744779093188d75d58238153332d9d1810f28821cafc79a9bbd",
+      "generator": "pipeline/scripts/extract_official_dwg_family_review_references.py",
+      "reference_sha256_before_repair": "781faef1fdc66d29ad72492fafb269ed56e1de663da4dbbeae31001754060948",
+      "selected_geometry_layers": [
+        "ARREDO"
+      ],
+      "excluded_geometry_layer_in_error": "0",
+      "reason": "The DWG is correct, but the ARREDO-only extraction omitted required native bed geometry on layer 0. The superseded SVGs are extraction errors, not manufacturer-DWG errors.",
+      "views": {
+        "plan": {
+          "path_count": 28,
+          "bounds_mm": {
+            "minimum": [
+              0.0,
+              0.0
+            ],
+            "maximum": [
+              1715.424395,
+              2169.757421
+            ],
+            "size": [
+              1715.424395,
+              2169.757421
+            ]
+          },
+          "svg_sha256": "2359099fe5f249c673f314ba2d81345ba6241572dc886b3eda744a3b2674cbde"
+        },
+        "front": {
+          "path_count": 91,
+          "bounds_mm": {
+            "minimum": [
+              0.0,
+              0.0
+            ],
+            "maximum": [
+              1733.666161,
+              1060.0
+            ],
+            "size": [
+              1733.666161,
+              1060.0
+            ]
+          },
+          "svg_sha256": "89ac44c9da9eb411f0a866a442b81b479235b27efc4fbb424674ac5abc0b3366"
+        },
+        "side": {
+          "path_count": 77,
+          "bounds_mm": {
+            "minimum": [
+              0.0,
+              0.0
+            ],
+            "maximum": [
+              2351.640392,
+              1065.443243
+            ],
+            "size": [
+              2351.640392,
+              1065.443243
+            ]
+          },
+          "svg_sha256": "8ba8fb47e6f256ecb1db7b360a868842201942b76634bde899389d7d8f1402fc"
+        }
+      }
+    }
+  ]
+}

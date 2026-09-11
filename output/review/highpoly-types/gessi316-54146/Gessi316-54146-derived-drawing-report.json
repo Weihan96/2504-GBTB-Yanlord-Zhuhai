@@ -1,0 +1,53 @@
+{
+  "schema_version": 1,
+  "profile_key": "gessi316-54146",
+  "ifc_type_name": "Gessi316 54146",
+  "representative_global_id": "04DLh1Jk9Dcu9ibcaE0id8",
+  "formal_ifc": "2504 GBTB Yanlord Zhuhai.ifc",
+  "formal_ifc_sha256": "7a50b87e8f48a7c2bfbaa9f1dabdfca7155fa684b2325c66aa1ae15c8ab0a25c",
+  "formal_ifc_bytes_unchanged": true,
+  "derived_ifc": "output/review/highpoly-types/gessi316-54146/Gessi316-54146-derived-drawing.ifc",
+  "derived_ifc_sha256": "6b847536c1e4e25e7cb99bc016cdcce0e092f2b35040396ac46e9b175c9e09bf",
+  "candidate_manifest": "output/review/highpoly-types/gessi316-54146/manifest.json",
+  "candidate_manifest_sha256": "581a7064c1b97e3eb57d985ef4699e2895e259458092a68ccaaa4087f80fa411",
+  "approval_record": "pipeline/decisions/gessi316-54146-drawing-approval.json",
+  "approval_record_sha256": "088f9d81f4e6d297e9227dcc5fb953b0ee93b8acab0c4d0c7c3f23329d6ec1f4",
+  "approval": {
+    "status": "approved",
+    "reviewer": "project owner",
+    "review_date": "2026-08-28",
+    "approved_views": [
+      "plan",
+      "front",
+      "side"
+    ],
+    "scope": "official Gessi exact 54146 G000 family reference; not a project shop drawing"
+  },
+  "representations": {
+    "plan": "Gessi54146Plan",
+    "front": "Gessi54146Front",
+    "side": "Gessi54146Side"
+  },
+  "representation_path_counts": {
+    "plan": 16,
+    "front": 104,
+    "side": 116
+  },
+  "representation_geometry_source": "review_simplified_official_outline_paths_mm based on GPF5414600000G000_3.dwg",
+  "official_cad_geometry_included": true,
+  "source_document_associations": [
+    "GESSI316-54146-OFFICIAL-CATALOGUE",
+    "GESSI316-54146-OFFICIAL-NATIVE-DWG-ZIP",
+    "GESSI316-54146-OFFICIAL-PRODUCT-API",
+    "GESSI316-54146-OFFICIAL-PRODUCT-ROUTE",
+    "GESSI316-54146-OFFICIAL-TECHNICAL-PDF",
+    "GESSI316-54146-SOURCE-ACCESS-RECORD"
+  ],
+  "source_property_set": "Pset_Gessi31654146DrawingSource",
+  "source_kind": "native_dwg_review_simplification",
+  "source_label_zh": "基于官方 Gessi 54146 G000 原生 DWG 轮廓的简化蓝线审核表达",
+  "pass": true,
+  "derived_ifc_sha256_before_bonsai_drawings": "0f6f91a43be7e75057f173e97e92c7597f5e154fa9ab0a12c955e0cf24e40c65",
+  "derived_ifc_sha256_after_bonsai_drawings": "6b847536c1e4e25e7cb99bc016cdcce0e092f2b35040396ac46e9b175c9e09bf",
+  "bonsai_drawings_persisted": true
+}

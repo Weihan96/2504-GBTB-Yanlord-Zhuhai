@@ -89,11 +89,16 @@ def transform_for_context(paths, target_points, view):
         oriented = [(y, x) if swap else (x, y) for x, y in raw]
         oriented_min, oriented_max = bbox(oriented)
         oriented_center = tuple((oriented_min[axis] + oriented_max[axis]) / 2.0 for axis in range(2))
-        for flip_x in (False, True):
+        flip_x_values = (True,) if view == "side" else (False, True)
+        for flip_x in flip_x_values:
             for flip_y in (False, True):
-                for x_anchor in ("minimum", "center", "maximum"):
+                x_anchors = ("native_origin",) if view == "side" else ("minimum", "center", "maximum")
+                for x_anchor in x_anchors:
                     for y_anchor in ("minimum", "center", "maximum"):
                         def axis_offset(axis, anchor):
+                            if anchor == "native_origin":
+                                native_origin = oriented_min[axis] + oriented_max[axis] if flip_x else 0.0
+                                return target_center[axis] - native_origin * PROJECT_SCALE_SVG_UNITS_PER_MM
                             if anchor == "minimum":
                                 return target_min[axis] - oriented_min[axis] * PROJECT_SCALE_SVG_UNITS_PER_MM
                             if anchor == "maximum":

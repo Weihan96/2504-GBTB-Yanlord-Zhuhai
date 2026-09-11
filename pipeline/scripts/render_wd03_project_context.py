@@ -52,8 +52,8 @@ def group_points(source):
 shared.group_points = group_points
 
 
-def add_overlay(source, target, view, path):
-    original_add_overlay(source, target, view, path)
+def add_overlay(source, target, view, path, overlay_bbox):
+    original_add_overlay(source, target, view, path, overlay_bbox)
     content = target.read_text(encoding="utf-8")
     content = re.sub(
         r'<g id="noninteger-highlights"[^>]*>.*?</g>',

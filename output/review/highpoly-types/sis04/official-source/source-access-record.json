@@ -6,8 +6,8 @@
   "project_type_code": "SIS04",
   "project_ifc_type_description": "Sistema 7 Wall Unit 4 Doors",
   "project_object_global_id": "1MzM8Ms2vFo8KEm503j9w2",
-  "identity_status": "exact_manufacturer_family_and_wall_unit_product_confirmed_by_ifc_description_and_official_dimensions",
-  "research_date": "2026-08-23",
+  "identity_status": "exact_manufacturer_wall_unit_native_dwg_acquired_project_1962x370x722_configuration_confirmed",
+  "research_date": "2026-08-25",
   "official_identity_sources": [
     {
       "kind": "manufacturer_product_page",
@@ -57,12 +57,45 @@
   "official_product_cad": {
     "exact_product": "Sistema 7 Wall Unit",
     "public_product_page_has_download_entry": true,
-    "exact_native_cad_acquired": false,
-    "acquired": false,
-    "local_cad_files": [],
+    "authenticated_trigger_page": "https://www.molteni.it/en/us/my-area/documents?collection=All&category=what-s-new",
+    "authenticated_listing_label": "DWG 2D SISTEMA 7 WALL UNIT",
+    "download_url": "https://res.cloudinary.com/molteni/raw/upload/v1752749168/0000_2D_Sistema-7_Wall-Units_Kitchens.dwg",
+    "exact_native_cad_acquired": true,
+    "acquired": true,
+    "acquisition_date": "2026-08-25",
+    "local_cad_files": [
+      {
+        "format": "DWG",
+        "original_filename": "0000_2D_Sistema-7_Wall-Units_Kitchens.dwg",
+        "local_path": "output/review/highpoly-types/sis04/official-source/official-download/0000_2D_Sistema-7_Wall-Units_Kitchens.dwg",
+        "bytes": 80651,
+        "sha256": "77f240f65f1ab68a168b363b18f8294122ec913259f93745a01d19d534678263",
+        "dwg_header": "AC1032",
+        "dwg_version": "AutoCAD 2018/2019/2020",
+        "insunits": "millimetres",
+        "entity_counts": {
+          "VERTEX_2D": 580,
+          "POLYLINE_2D": 148,
+          "LWPOLYLINE": 48,
+          "LINE": 55,
+          "DIMENSION_LINEAR": 27,
+          "MTEXT": 31,
+          "INSERT": 79
+        },
+        "drawing_title": "PENSILE SISTEMA 7 / SISTEMA 7 WALL UNIT",
+        "published_dimension_texts_mm": {
+          "width_inner": [980.0, 1962.0],
+          "width_overall": [1000.0, 1982.0],
+          "height": [608.0, 722.0, 1083.0],
+          "depth_internal": 331.0,
+          "depth_overall": 370.0
+        }
+      }
+    ],
     "third_party_cad_used": false,
     "near_name_sistema_7_doors_dwg_excluded": true,
-    "reason": "No exact native Wall Unit CAD file was acquired from the verified public manufacturer surfaces. The authenticated DWG advertised for the separate full-height Sistema 7 Doors product is not this wall unit and is excluded."
+    "near_name_sistema_7_doors_download_url_excluded": "https://res.cloudinary.com/molteni/raw/upload/v1752761675/2020_2D_Sistema-7_Doors_Kitchens.dwg",
+    "note": "The authenticated My Area listing exposes separate Sistema 7 and Sistema 7 Wall Unit DWGs. Only the exact Wall Unit file was downloaded; the full-height Doors file remains excluded."
   },
   "dimension_cross_check": {
     "official_standard_widths_mm": [
@@ -74,27 +107,33 @@
       1083.0
     ],
     "official_nominal_depth_mm": 331.0,
+    "official_dwg_width_inner_mm": 1962.0,
+    "official_dwg_width_overall_mm": 1982.0,
+    "official_dwg_depth_internal_mm": 331.0,
+    "official_dwg_depth_overall_mm": 370.0,
+    "official_dwg_height_mm": 722.0,
     "project_ifc_body_local_xyz_mm": [
       1961.974548,
       369.0,
       721.991028
     ],
     "semantic_axis_mapping": "local X=official width; local Y=project Body depth envelope; local Z=official height",
-    "selected_official_width_height_depth_mm": [
-      1960.0,
+    "selected_official_dwg_width_height_depth_mm": [
+      1962.0,
       722.0,
-      331.0
+      370.0
     ],
-    "body_minus_selected_official_mm": [
-      1.974548,
+    "body_minus_selected_official_dwg_mm": [
+      -0.025452,
       -0.008972,
-      38.0
+      -1.0
     ],
-    "width_height_maximum_absolute_delta_mm": 1.974548,
+    "width_height_maximum_absolute_delta_mm": 0.025452,
     "project_body_depth_excess_mm": 38.0,
-    "status": "exact_family_and_wall_unit_size_class_consistent_project_depth_is_not_fabrication_dimension",
+    "project_body_minus_official_dwg_overall_depth_mm": -1.0,
+    "status": "exact_wall_unit_dwg_configuration_matches_project_body_within_1mm_catalogue_depth_is_internal_not_outer_envelope",
     "pass": true,
-    "note": "Width and height mechanically match the official 1960 x 722 mm standard size class. The 369 mm project Body depth envelope is 38 mm above the 331 mm catalogue depth and remains project-model geometry only; no fabrication inference or scaling is permitted."
+    "note": "The catalogue's 331 mm depth is retained as the internal or nominal case depth. The native DWG separately dimensions a 370 mm overall depth, explaining the apparent 38 mm project-depth excess. The project Body 1961.974548 x 369 x 721.991028 mm matches the DWG's 1962 x 370 x 722 mm configuration within 1 mm without scaling."
   },
   "drawing_geometry_source": {
     "source_kind": "geometry_derived_simplified_proxy",
@@ -103,6 +142,6 @@
     "official_cad_used": false,
     "third_party_cad_used": false
   },
-  "scope": "exact Molteni&C Sistema 7 Wall Unit family identity and standard dimensions; project IFC configuration is labelled 4 Doors; exact official CAD not acquired; not a project shop drawing",
+  "scope": "exact Molteni&C Sistema 7 Wall Unit native DWG and 1962 x 370 x 722 mm configuration; project IFC configuration is labelled 4 Doors; official source is not a project shop drawing",
   "pass": true
 }

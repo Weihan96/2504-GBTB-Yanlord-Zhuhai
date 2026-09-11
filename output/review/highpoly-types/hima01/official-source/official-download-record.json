@@ -1,0 +1,74 @@
+{
+  "schema_version": 1,
+  "manufacturer": "Poliform",
+  "family": "Hima",
+  "project_type_code": "HIMA01",
+  "acquired_at": "2026-08-25T01:59:00+08:00",
+  "access": {
+    "browser": "user-authenticated Chrome session",
+    "trigger_page": "https://www.poliform.it/us/products/hima/",
+    "trigger_label": "2D (DWG)",
+    "access_period_message": "You can now download all Poliform files for 30 days.",
+    "final_download_url": "https://s3.poliform.it/2025/09/Poliform-HIMA-screen.dwg"
+  },
+  "official_dwg": {
+    "original_filename": "Poliform-HIMA-screen.dwg",
+    "local_path": "output/review/highpoly-types/hima01/official-source/official-download/Poliform-HIMA-screen.dwg",
+    "bytes": 2308598,
+    "sha256": "f0e1b980aa102f3e06fe602f9e7a9b40db45d76e45200c08e4b8b4a0eec1d523",
+    "dwg_signature": "AC1024",
+    "dwg_version": "AutoCAD 2010/2011/2012",
+    "insertion_units": "millimetres",
+    "mechanical_inventory": {
+      "entities_total": 2739,
+      "HATCH": 1119,
+      "LWPOLYLINE": 1002,
+      "SPLINE": 491,
+      "MTEXT": 121
+    },
+    "family_variants_mm": [
+      {
+        "codes": ["PVA11", "PVA12", "PVA13"],
+        "elements": 3,
+        "width": 2330,
+        "depth": 115,
+        "heights": [1000, 1300, 1800]
+      },
+      {
+        "codes": ["PVB11", "PVB12", "PVB13"],
+        "elements": 4,
+        "width": 3115,
+        "depth": 115,
+        "heights": [1000, 1300, 1800]
+      },
+      {
+        "codes": ["PVC11", "PVC12", "PVC13"],
+        "elements": 5,
+        "width": 3900,
+        "depth": 115,
+        "heights": [1000, 1300, 1800]
+      },
+      {
+        "codes": ["PVD11", "PVD12"],
+        "elements": 6,
+        "width": 4680,
+        "depth": 115,
+        "heights": [1000, 1300]
+      }
+    ]
+  },
+  "project_fit": {
+    "project_description": "Poliform HIMA 3 elements 1m",
+    "matched_official_variant": "PVA11 / 3 elements / 2330 x 115 x 1000 mm",
+    "family_and_variant_match": true,
+    "project_body_height_mm": 999,
+    "height_delta_mm": -1,
+    "exact_pose_envelope_match": false,
+    "note": "The project high-poly Body represents the same three-element, 1000 mm family variant but is folded to a smaller plan envelope. The official DWG remains authoritative family/variant linework, not evidence that the project pose exactly equals the fully published arrangement."
+  },
+  "drawing_use": {
+    "official_cad_used_in_current_candidate": false,
+    "blue_line_present_in_current_candidate": false,
+    "derived_ifc_write_performed": false
+  }
+}

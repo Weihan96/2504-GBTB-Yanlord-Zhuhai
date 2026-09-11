@@ -1,0 +1,297 @@
+{
+  "schema_version": 1,
+  "generated_at": "2026-08-29T11:02:22.276105+00:00",
+  "task": "approved WD03 product-level derived IFC plus Bonsai Create Drawing Plan/Front/Side in actual project context",
+  "courseEvidence": {
+    "mode": "embedded-course-index",
+    "lesson": "085000 Introduction to Drawings",
+    "timestamps": [
+      "01:59 Create Drawing",
+      "02:06 Drawing created",
+      "02:13 SVG inspection",
+      "02:41 Element Filters"
+    ],
+    "course_fact": "Drawing camera, depth and element filters precede Create Drawing; generated SVG is then inspected.",
+    "current_inference": "The workflow was adapted to Blender 4.5.3 LTS and Bonsai/IfcOpenShell 0.8.4 using semantic Drawing state and bpy.ops.bim.create_drawing."
+  },
+  "preState": {
+    "derived_ifc_sha256": "2d6f97bf269cfa517a5832b50213c382398d9ed2c4467f2d3e7a51ae016c313e",
+    "formal_ifc_sha256": "7a50b87e8f48a7c2bfbaa9f1dabdfca7155fa684b2325c66aa1ae15c8ab0a25c",
+    "target_global_id": "3cmikd9MTB$egM5KQaNgUf"
+  },
+  "execution": {
+    "generator": "bpy.ops.bim.create_drawing",
+    "linework_mode": "OPENCASCADE",
+    "source_kind": "geometry_derived_simplified_proxy",
+    "source_label_zh": "基于原始高模几何生成的简化图纸表达",
+    "official_cad_used": false
+  },
+  "persistence": {
+    "method": "temporary IFC write, atomic replace, Bonsai reload and Blend save",
+    "reload_result": [
+      "FINISHED"
+    ]
+  },
+  "postState": {
+    "derived_ifc_sha256": "4b43da2669561eee6fcdcf8ddeb967dce706e6a6ffc1b361ff85b29d6a32a67b",
+    "formal_ifc_sha256": "7a50b87e8f48a7c2bfbaa9f1dabdfca7155fa684b2325c66aa1ae15c8ab0a25c",
+    "drawing_count": 3
+  },
+  "outputs": {
+    "views": [
+      {
+        "view": "plan",
+        "drawing_global_id": "3Wb1sCRBv7Fx7UscFO1GFT",
+        "annotation_global_id": "0ZEewP0OH1FAM8MZhKfgb4",
+        "path_count": 5,
+        "persisted_path_count": 5,
+        "camera": {
+          "type": "ORTHO",
+          "width_m": 5,
+          "height_m": 5,
+          "clip_end_m": 1.5,
+          "matrix_world": [
+            [
+              1,
+              0,
+              0,
+              -4.023506164550781
+            ],
+            [
+              0,
+              1,
+              0,
+              0.5154229998588562
+            ],
+            [
+              0,
+              0,
+              1,
+              1.2000000476837158
+            ],
+            [
+              0,
+              0,
+              0,
+              1
+            ]
+          ]
+        },
+        "create_drawing": {
+          "operator": "bpy.ops.bim.create_drawing",
+          "result": [
+            "FINISHED"
+          ]
+        },
+        "svg": {
+          "path": "/Users/jiaxinchen/.codex/worktrees/3a80/2504 GBTB Yanlord Zhuhai/output/review/highpoly-types/wd03/bonsai-drawings/wardrobe/WD03-WARDROBE-PLAN.svg",
+          "bytes": 3177620,
+          "sha256": "5dc184e3c1615c53af34e9365189d30143222964f97400427e89786642f900c2",
+          "root_tag": "svg",
+          "width": "200.0mm",
+          "height": "200.0mm",
+          "view_box": "0 0 200.0 200.0",
+          "geometry_element_count": 17757,
+          "projection_group_count": 75,
+          "semantic_black_geometry_count": 8,
+          "grey_context_geometry_count": 17749,
+          "representative_body_present": false,
+          "target_body_projection_count": 0,
+          "semantic_annotation_present": true,
+          "no_body_annotation_duplicate": true,
+          "bonsai_generated_sha256_before_review_style": "6f5d21bd6d7a24cc11239d9b9c9da72253e94ce6286f34dabf054b769d1f3a58",
+          "post_style_only": true
+        },
+        "linework_cache": {
+          "path": "/Users/jiaxinchen/.codex/worktrees/3a80/2504 GBTB Yanlord Zhuhai/output/review/highpoly-types/wd03/bonsai-drawings/wardrobe/cache/WD03-WARDROBE-PLAN-linework.svg",
+          "bytes": 1812299,
+          "sha256": "d9687a9b79ac7bf63cba020c50871e9d55fc67cdcd688d745b08ce2fd12428dd"
+        }
+      },
+      {
+        "view": "front",
+        "drawing_global_id": "1P1egc73v5kOpl_BXKYZ62",
+        "annotation_global_id": "2uAkszkbj8YBoncHNaFrYK",
+        "path_count": 9,
+        "persisted_path_count": 9,
+        "camera": {
+          "type": "ORTHO",
+          "width_m": 5,
+          "height_m": 3.6,
+          "clip_end_m": 5.2,
+          "matrix_world": [
+            [
+              -1,
+              0,
+              0,
+              -4.023506164550781
+            ],
+            [
+              0,
+              0,
+              1,
+              3.5250000953674316
+            ],
+            [
+              0,
+              1,
+              0,
+              1.2000000476837158
+            ],
+            [
+              0,
+              0,
+              0,
+              1
+            ]
+          ]
+        },
+        "create_drawing": {
+          "operator": "bpy.ops.bim.create_drawing",
+          "result": [
+            "FINISHED"
+          ]
+        },
+        "svg": {
+          "path": "/Users/jiaxinchen/.codex/worktrees/3a80/2504 GBTB Yanlord Zhuhai/output/review/highpoly-types/wd03/bonsai-drawings/wardrobe/WD03-WARDROBE-FRONT.svg",
+          "sha256": "2c66404c2060fa8491ad48a3477fad72b337f7658c9c3408033841cf2d28609d",
+          "bytes": 1652592,
+          "root_tag": "svg",
+          "width": "200.0mm",
+          "height": "143.94580863674852mm",
+          "view_box": "0 0 200.0 143.94580863674852",
+          "geometry_element_count": 8913,
+          "projection_group_count": 81,
+          "semantic_black_geometry_count": 18,
+          "grey_context_geometry_count": 8895,
+          "representative_body_present": false,
+          "target_body_projection_count": 0,
+          "semantic_annotation_present": true,
+          "no_body_annotation_duplicate": true,
+          "bonsai_generated_sha256_before_review_style": "80b56716910954257d082c7054ea05075080961e83dad9da783dea7d9c02fb1e",
+          "post_style_only": true
+        },
+        "linework_cache": {
+          "path": "/Users/jiaxinchen/.codex/worktrees/3a80/2504 GBTB Yanlord Zhuhai/output/review/highpoly-types/wd03/bonsai-drawings/wardrobe/cache/WD03-WARDROBE-FRONT-linework.svg",
+          "bytes": 903959,
+          "sha256": "760332b0526f9e1fcf184f63334b1c584cdd59363db3ee0c225b9817123157be"
+        }
+      },
+      {
+        "view": "side",
+        "drawing_global_id": "1_AiEzX4HCdRc9c1J$j3xM",
+        "annotation_global_id": "0lDNmWWdD5keJujVqNDHeg",
+        "path_count": 3,
+        "persisted_path_count": 3,
+        "camera": {
+          "type": "ORTHO",
+          "width_m": 5,
+          "height_m": 3.6,
+          "clip_end_m": 5.2,
+          "matrix_world": [
+            [
+              -4.371138828673793e-8,
+              4.371138828673793e-8,
+              1,
+              -1.473506212234497
+            ],
+            [
+              1,
+              1.910685676922942e-15,
+              4.371138828673793e-8,
+              0.5154229998588562
+            ],
+            [
+              0,
+              1,
+              -4.371138828673793e-8,
+              1.2000000476837158
+            ],
+            [
+              0,
+              0,
+              0,
+              1
+            ]
+          ]
+        },
+        "create_drawing": {
+          "operator": "bpy.ops.bim.create_drawing",
+          "result": [
+            "FINISHED"
+          ]
+        },
+        "svg": {
+          "path": "/Users/jiaxinchen/.codex/worktrees/3a80/2504 GBTB Yanlord Zhuhai/output/review/highpoly-types/wd03/bonsai-drawings/wardrobe/WD03-WARDROBE-SIDE.svg",
+          "bytes": 624703,
+          "sha256": "5bec3cd11c5141af6ff2e79dbbd0234fea97b0ecddfe74d870060296600ecc7b",
+          "root_tag": "svg",
+          "width": "200.0mm",
+          "height": "143.94580863674852mm",
+          "view_box": "0 0 200.0 143.94580863674852",
+          "geometry_element_count": 3112,
+          "projection_group_count": 41,
+          "semantic_black_geometry_count": 12,
+          "grey_context_geometry_count": 3100,
+          "representative_body_present": false,
+          "target_body_projection_count": 0,
+          "semantic_annotation_present": true,
+          "no_body_annotation_duplicate": true,
+          "bonsai_generated_sha256_before_review_style": "18e0c9351e178d71621974b9eb686118a8b4260cd12aa5ffeebb07104d817fde",
+          "post_style_only": true
+        },
+        "linework_cache": {
+          "path": "/Users/jiaxinchen/.codex/worktrees/3a80/2504 GBTB Yanlord Zhuhai/output/review/highpoly-types/wd03/bonsai-drawings/wardrobe/cache/WD03-WARDROBE-SIDE-linework.svg",
+          "bytes": 312816,
+          "sha256": "33cd3ca3dbc9b7ae725c3f3bc061e0ad44a29d33afd24d8d65d2cecb435368ba"
+        }
+      }
+    ],
+    "session_blend": {
+      "path": "/Users/jiaxinchen/.codex/worktrees/3a80/2504 GBTB Yanlord Zhuhai/output/review/highpoly-types/wd03/Poliform-Senzafine-WD03-project-drawings.blend",
+      "sha256": "b8072dd6c9d29a38e291f6cf8d4297408b896fbf3a077d3922e5038a21ddedf5",
+      "bytes": 526456603
+    }
+  },
+  "visual": {
+    "representative_body_displayed": false,
+    "semantic_annotation_displayed_once_per_view": true,
+    "context_colour": "#a3abb3",
+    "semantic_colour": "#151a20"
+  },
+  "context": {
+    "include_count": 112,
+    "include_ifc_class_counts": {
+      "IfcBeam": 5,
+      "IfcBuildingElementProxy": 4,
+      "IfcCovering": 28,
+      "IfcDoor": 4,
+      "IfcElectricAppliance": 3,
+      "IfcFlowSegment": 3,
+      "IfcFurniture": 4,
+      "IfcLightFixture": 13,
+      "IfcPipeSegment": 3,
+      "IfcSanitaryTerminal": 14,
+      "IfcSlab": 9,
+      "IfcWall": 21,
+      "IfcWasteTerminal": 1
+    },
+    "representative_body_suppressed_from_drawing_include": true
+  },
+  "tests": {
+    "all_create_drawing_finished": true,
+    "all_body_annotation_duplicates_absent": true,
+    "all_path_counts_persisted": true,
+    "formal_ifc_unchanged": true
+  },
+  "verdict": "pass",
+  "pass": true,
+  "revisions": [
+    {
+      "date": "2026-09-05T11:43:40.900387+00:00",
+      "reason": "Front camera corrected from guest window toward BED02",
+      "evidence": "output/review/highpoly-types/wd03/bonsai-drawings/wardrobe/WD03-FRONT-window-to-bed-evidence.json",
+      "previous_front_svg_sha256": "443711459f0a0cf323bbaa8514450909fa48c1cd437fdd8e7c6c997ed975ab25"
+    }
+  ]
+}

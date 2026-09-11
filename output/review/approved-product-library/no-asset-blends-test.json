@@ -1,0 +1,370 @@
+{
+  "task": "Remove only native-assets/*.blend in a disposable runtime; test IFC-only importer",
+  "status": "backend_pass_ui_evidence_separate",
+  "capsule": "/var/folders/rz/d8p6s4y50ws53rd150nm2s3r0000gn/T/library-no-asset-blends-nhngirwd",
+  "courseEvidence": {
+    "mode": "embedded-course-index",
+    "lesson": "052000",
+    "fact": "Save IFC and reopen to verify persistence"
+  },
+  "plan": "Omit cache Blends, retain placement and material dependencies, prohibit access to old repository, insert/save/reload/draw two samples",
+  "preState": {
+    "asset_blends": 39,
+    "runtime_files_hashed": 286,
+    "formal_sha256": "7a50b87e8f48a7c2bfbaa9f1dabdfca7155fa684b2325c66aa1ae15c8ab0a25c"
+  },
+  "postState": {
+    "asset_blends": 0,
+    "catalog_entries": 39,
+    "placement_records": 39,
+    "material_blend_retained": true,
+    "delivered_runtime_unchanged": true,
+    "formal_unchanged": true,
+    "index_unchanged": true
+  },
+  "results": [
+    {
+      "verdict": "structured_pass_pending_raster_check",
+      "product": "bed01",
+      "source_sha256": "466aaee93a28658a4a08be21bd901b3ae2ab1e5096f5f1d06b5b6d2feac3d972",
+      "drawings": [
+        {
+          "role": "Plan",
+          "guid": "25nws$o6DDeP48$$o$UDnT",
+          "svg": "/private/var/folders/rz/d8p6s4y50ws53rd150nm2s3r0000gn/T/library-no-asset-blends-nhngirwd/results/bed01/svg/plan.svg",
+          "sha256": "b1987886dc6b5e537667c7f677184bad49314b664ee0d54206aab2b71d3da4ad",
+          "bytes": 272239,
+          "target_geometry_nodes": 1821,
+          "selected": [
+            {
+              "global_id": "2IvBtdhlD8iBQQz4rSKBnN",
+              "target_view": "PLAN_VIEW",
+              "role": "Plan",
+              "representation_id": 30669,
+              "old_body_or_annotation_emitted": false
+            }
+          ],
+          "persisted_svg": "/Users/jiaxinchen/.codex/worktrees/3a80/2504 GBTB Yanlord Zhuhai/output/review/approved-product-library/no-asset-blends-test/bed01-plan.svg"
+        },
+        {
+          "role": "Front",
+          "guid": "1KBnrY6z9A98alctlj$pA_",
+          "svg": "/private/var/folders/rz/d8p6s4y50ws53rd150nm2s3r0000gn/T/library-no-asset-blends-nhngirwd/results/bed01/svg/front.svg",
+          "sha256": "333fa1b4c01a190d3f11073445df18237011742cf86c939992ec68e343ae2268",
+          "bytes": 261004,
+          "target_geometry_nodes": 1710,
+          "selected": [
+            {
+              "global_id": "2IvBtdhlD8iBQQz4rSKBnN",
+              "target_view": "ELEVATION_VIEW",
+              "role": "Front",
+              "representation_id": 32433,
+              "old_body_or_annotation_emitted": false
+            }
+          ],
+          "persisted_svg": "/Users/jiaxinchen/.codex/worktrees/3a80/2504 GBTB Yanlord Zhuhai/output/review/approved-product-library/no-asset-blends-test/bed01-front.svg"
+        },
+        {
+          "role": "Side",
+          "guid": "2fuakIEGf5kOHSVzADidSJ",
+          "svg": "/private/var/folders/rz/d8p6s4y50ws53rd150nm2s3r0000gn/T/library-no-asset-blends-nhngirwd/results/bed01/svg/side.svg",
+          "sha256": "7203c4e2ee2f06aa2b363f458ef235207332b6e2eddf4b8f35b0218d8d6ee9f9",
+          "bytes": 285118,
+          "target_geometry_nodes": 1948,
+          "selected": [
+            {
+              "global_id": "2IvBtdhlD8iBQQz4rSKBnN",
+              "target_view": "ELEVATION_VIEW",
+              "role": "Side",
+              "representation_id": 34520,
+              "old_body_or_annotation_emitted": false
+            }
+          ],
+          "persisted_svg": "/Users/jiaxinchen/.codex/worktrees/3a80/2504 GBTB Yanlord Zhuhai/output/review/approved-product-library/no-asset-blends-test/bed01-side.svg"
+        }
+      ],
+      "temporary_fixture": "/private/var/folders/rz/d8p6s4y50ws53rd150nm2s3r0000gn/T/library-no-asset-blends-nhngirwd/results/bed01/test.ifc",
+      "provider_persistence": {
+        "saved": true,
+        "output_path": "/private/var/folders/rz/d8p6s4y50ws53rd150nm2s3r0000gn/T/library-no-asset-blends-nhngirwd/results/bed01/test.ifc",
+        "in_place": false,
+        "method": "bonsai.bim.export_ifc.IfcExporter",
+        "reloaded": true
+      },
+      "generator": "Bonsai Create Drawing / OpenCASCADE + BISECT",
+      "old_repository_read_denied_by_OS": true,
+      "catalog_products_loaded": 39,
+      "native_insert": true,
+      "disk_unchanged_until_save": true,
+      "unique_product_and_object": true,
+      "reloaded": true,
+      "loading_stages": [
+        0.05,
+        0.25,
+        0.5,
+        0.65,
+        0.85,
+        0.95
+      ],
+      "texture_dependencies": [
+        {
+          "name": "FabricCotton001_COL_VAR1_1K_jpg",
+          "packed": true
+        },
+        {
+          "name": "FabricCotton001_COL_VAR2_1K_jpg",
+          "packed": true
+        },
+        {
+          "name": "FabricCotton001_DISP_1K_jpg",
+          "packed": true
+        },
+        {
+          "name": "FabricCotton001_GLOSS_1K_jpg",
+          "packed": true
+        },
+        {
+          "name": "FabricCotton001_NRM_1K_jpg",
+          "packed": true
+        },
+        {
+          "name": "FabricCotton001_REFL_1K_jpg",
+          "packed": true
+        },
+        {
+          "name": "FabricCotton001_COL_VAR1_1K_jpg.001",
+          "packed": true
+        },
+        {
+          "name": "FabricCotton001_COL_VAR2_1K_jpg.001",
+          "packed": true
+        },
+        {
+          "name": "FabricCotton001_DISP_1K_jpg.001",
+          "packed": true
+        },
+        {
+          "name": "FabricCotton001_GLOSS_1K_jpg.001",
+          "packed": true
+        },
+        {
+          "name": "FabricCotton001_NRM_1K_jpg.001",
+          "packed": true
+        },
+        {
+          "name": "FabricCotton001_REFL_1K_jpg.001",
+          "packed": true
+        },
+        {
+          "name": "FabricVelourPlain001_AO_1K_METALNESS_png",
+          "packed": true
+        },
+        {
+          "name": "FabricVelourPlain001_BUMP16_1K_METALNESS_png",
+          "packed": true
+        },
+        {
+          "name": "FabricVelourPlain001_COL_1K_METALNESS_png",
+          "packed": true
+        },
+        {
+          "name": "FabricVelourPlain001_DISP16_1K_METALNESS_png",
+          "packed": true
+        },
+        {
+          "name": "FabricVelourPlain001_METALNESS_1K_METALNESS_png",
+          "packed": true
+        },
+        {
+          "name": "FabricVelourPlain001_NRM_1K_METALNESS_png",
+          "packed": true
+        },
+        {
+          "name": "FabricVelourPlain001_ROUGHNESS_1K_METALNESS_png",
+          "packed": true
+        },
+        {
+          "name": "FabricVelourPlain001_AO_1K_METALNESS_png.001",
+          "packed": true
+        },
+        {
+          "name": "FabricVelourPlain001_BUMP16_1K_METALNESS_png.001",
+          "packed": true
+        },
+        {
+          "name": "FabricVelourPlain001_COL_1K_METALNESS_png.001",
+          "packed": true
+        },
+        {
+          "name": "FabricVelourPlain001_DISP16_1K_METALNESS_png.001",
+          "packed": true
+        },
+        {
+          "name": "FabricVelourPlain001_METALNESS_1K_METALNESS_png.001",
+          "packed": true
+        },
+        {
+          "name": "FabricVelourPlain001_NRM_1K_METALNESS_png.001",
+          "packed": true
+        },
+        {
+          "name": "FabricVelourPlain001_ROUGHNESS_1K_METALNESS_png.001",
+          "packed": true
+        }
+      ],
+      "global_id_changed_on_insert": true,
+      "placement_m": [
+        [
+          0.9999999999999991,
+          4.371138828673791e-8,
+          0,
+          2.00004434585571
+        ],
+        [
+          -4.371138828673791e-8,
+          0.9999999999999991,
+          0,
+          3.01029109954834
+        ],
+        [
+          0,
+          0,
+          1,
+          -0.00031096109887585
+        ],
+        [
+          0,
+          0,
+          0,
+          1
+        ]
+      ]
+    },
+    {
+      "verdict": "structured_pass_pending_raster_check",
+      "product": "trap01",
+      "source_sha256": "c01c3d5f94384784ca5c4357c5507f3c8aae795a7924a25676b983f4b30fea7b",
+      "drawings": [
+        {
+          "role": "Plan",
+          "guid": "3DJH8ZfQ58SA5J1A9Tsh7F",
+          "svg": "/private/var/folders/rz/d8p6s4y50ws53rd150nm2s3r0000gn/T/library-no-asset-blends-nhngirwd/results/trap01/svg/plan.svg",
+          "sha256": "e18ad8b0110f5a8b3453fe496a897ad7bbc6c4c25e0da38e283036552847fb87",
+          "bytes": 264569,
+          "target_geometry_nodes": 1745,
+          "selected": [
+            {
+              "global_id": "1QqwZQkhv5svO8IWHqiCwy",
+              "target_view": "PLAN_VIEW",
+              "role": "Plan",
+              "representation_id": 11804,
+              "old_body_or_annotation_emitted": false
+            }
+          ],
+          "persisted_svg": "/Users/jiaxinchen/.codex/worktrees/3a80/2504 GBTB Yanlord Zhuhai/output/review/approved-product-library/no-asset-blends-test/trap01-plan.svg"
+        },
+        {
+          "role": "Front",
+          "guid": "1TEoSlqgH6_uEdpP7feftT",
+          "svg": "/private/var/folders/rz/d8p6s4y50ws53rd150nm2s3r0000gn/T/library-no-asset-blends-nhngirwd/results/trap01/svg/front.svg",
+          "sha256": "dd7fb04ec8e0ed34dd9dd4b416810aaf49a7bda4cc05b2a6c73c40b29948f350",
+          "bytes": 251551,
+          "target_geometry_nodes": 1617,
+          "selected": [
+            {
+              "global_id": "1QqwZQkhv5svO8IWHqiCwy",
+              "target_view": "ELEVATION_VIEW",
+              "role": "Front",
+              "representation_id": 14623,
+              "old_body_or_annotation_emitted": false
+            }
+          ],
+          "persisted_svg": "/Users/jiaxinchen/.codex/worktrees/3a80/2504 GBTB Yanlord Zhuhai/output/review/approved-product-library/no-asset-blends-test/trap01-front.svg"
+        },
+        {
+          "role": "Side",
+          "guid": "1JWUWQsAX9Pxwzqwk3EPRm",
+          "svg": "/private/var/folders/rz/d8p6s4y50ws53rd150nm2s3r0000gn/T/library-no-asset-blends-nhngirwd/results/trap01/svg/side.svg",
+          "sha256": "b4fbc12bb23faad7e39c2e9daba631b67945fe0aeb51b024357209e138a38700",
+          "bytes": 247874,
+          "target_geometry_nodes": 1580,
+          "selected": [
+            {
+              "global_id": "1QqwZQkhv5svO8IWHqiCwy",
+              "target_view": "ELEVATION_VIEW",
+              "role": "Side",
+              "representation_id": 17078,
+              "old_body_or_annotation_emitted": false
+            }
+          ],
+          "persisted_svg": "/Users/jiaxinchen/.codex/worktrees/3a80/2504 GBTB Yanlord Zhuhai/output/review/approved-product-library/no-asset-blends-test/trap01-side.svg"
+        }
+      ],
+      "temporary_fixture": "/private/var/folders/rz/d8p6s4y50ws53rd150nm2s3r0000gn/T/library-no-asset-blends-nhngirwd/results/trap01/test.ifc",
+      "provider_persistence": {
+        "saved": true,
+        "output_path": "/private/var/folders/rz/d8p6s4y50ws53rd150nm2s3r0000gn/T/library-no-asset-blends-nhngirwd/results/trap01/test.ifc",
+        "in_place": false,
+        "method": "bonsai.bim.export_ifc.IfcExporter",
+        "reloaded": true
+      },
+      "generator": "Bonsai Create Drawing / OpenCASCADE + BISECT",
+      "old_repository_read_denied_by_OS": true,
+      "catalog_products_loaded": 39,
+      "native_insert": true,
+      "disk_unchanged_until_save": true,
+      "unique_product_and_object": true,
+      "reloaded": true,
+      "loading_stages": [
+        0.05,
+        0.25,
+        0.5,
+        0.65,
+        0.85,
+        0.95
+      ],
+      "texture_dependencies": [],
+      "global_id_changed_on_insert": true,
+      "placement_m": [
+        [
+          -4.371138828673791e-8,
+          0.9999999999999991,
+          0,
+          1.9999976158142099
+        ],
+        [
+          -0.9999999999999991,
+          -4.371138828673791e-8,
+          0,
+          3.0964395999908403
+        ],
+        [
+          0,
+          0,
+          1,
+          0.080499954521656
+        ],
+        [
+          0,
+          0,
+          0,
+          1
+        ]
+      ]
+    }
+  ],
+  "svg_count": 6,
+  "visual": {
+    "status": "pass",
+    "inspection": "Main agent inspected all six v0.7 regression SVG rasters; bed and trap are visible in all three directions, distinct and within their frames. No design approval changed.",
+    "images": 6,
+    "contact": "/Users/jiaxinchen/.codex/worktrees/3a80/2504 GBTB Yanlord Zhuhai/output/review/approved-product-library/no-asset-blends-test/contact.png"
+  },
+  "ui_check": {
+    "method": "source inspection, not interactive mouse test",
+    "grid": "REVIEWLIB_PT_Library.draw uses template_asset_view with Collection filter",
+    "drag": "asset_product resolves the transient empty card's product_id",
+    "conclusion": "v0.7 uses in-memory cards; UI tests are in ifc-card-validation.json and ifc-card-drag-validation.json"
+  },
+  "verdict": "Two IFC-only insertion, save/reload and drawing regressions passed. UI evidence is recorded separately."
+}

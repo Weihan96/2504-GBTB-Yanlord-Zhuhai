@@ -1,0 +1,203 @@
+{
+  "schema_version": 1,
+  "generated_at": "2026-08-25T06:31:17.838293+00:00",
+  "generator": "pipeline/scripts/generate_official_dwg_family_review_packages.py",
+  "product_slug": "sis04",
+  "display_name": "Molteni&C Sistema 7 Wall Unit / SIS04",
+  "representative_global_id": "1MzM8Ms2vFo8KEm503j9w2",
+  "formal_ifc_sha256": "7a50b87e8f48a7c2bfbaa9f1dabdfca7155fa684b2325c66aa1ae15c8ab0a25c",
+  "formal_ifc_bytes_unchanged": true,
+  "source_dwg": "output/review/highpoly-types/sis04/official-source/official-download/0000_2D_Sistema-7_Wall-Units_Kitchens.dwg",
+  "source_dwg_absolute_path": "/Users/jiaxinchen/.codex/worktrees/3a80/2504 GBTB Yanlord Zhuhai/output/review/highpoly-types/sis04/official-source/official-download/0000_2D_Sistema-7_Wall-Units_Kitchens.dwg",
+  "source_dwg_sha256": "77f240f65f1ab68a168b363b18f8294122ec913259f93745a01d19d534678263",
+  "official_download_url": "https://res.cloudinary.com/molteni/raw/upload/v1752749168/0000_2D_Sistema-7_Wall-Units_Kitchens.dwg",
+  "configuration": "1962 x 370 x 722 mm / project 4 Doors",
+  "reference_role": "exact_official_wall_unit_configuration_reference",
+  "scope": "Exact official Wall Unit native DWG; selected project configuration is 1962×370×722 mm.",
+  "fit_note": "Project Body is about 1961.975×369×721.991 mm. Overall depth is 370 mm; catalogue 331 mm is the internal depth.",
+  "official_dwg_review_reference": "output/review/highpoly-types/sis04/official-dwg-review-reference.json",
+  "official_dwg_review_reference_sha256": "7dfee7a5e0e330c78e49507c867fa1c45a52b70dea18fdfecc0560ceffc09044",
+  "primary_candidate_source_kind": "geometry_derived_simplified_proxy",
+  "primary_candidate_source_label_zh": "基于原始高模几何生成的简化图纸表达",
+  "primary_candidate_replaced": false,
+  "official_reference_used_as_primary_candidate": false,
+  "third_party_cad_used": false,
+  "derived_ifc_write_performed": false,
+  "formal_authoritative_ifc_write_performed": false,
+  "bounds_mm": {
+    "minimum": [
+      -1785.260395,
+      -6.805498,
+      -15.991419
+    ],
+    "maximum": [
+      176.714153,
+      362.194502,
+      705.999609
+    ],
+    "size": [
+      1961.974548,
+      369.0,
+      721.991028
+    ]
+  },
+  "views": [
+    {
+      "view": "plan",
+      "svg": "output/review/highpoly-types/sis04/official-dwg-plan.svg",
+      "svg_sha256": "ad9c9da22277c44b00ae789362bdb3deb73d558576036b00bebbdb21a152d4af",
+      "official_reference_geometry_kind": "native_dwg_2d_linework",
+      "official_reference_path_count": 11,
+      "blue_stroke_style": "solid",
+      "alignment": {
+        "mode": "translation_only",
+        "view_direction_reflection_x": false,
+        "translation_mm": [
+          -1795.273121,
+          -7.305498
+        ],
+        "anchor": "projection_centre_to_projection_centre",
+        "uniform_scale": 1.0,
+        "anisotropic_scale_used": false,
+        "source_geometry_deformed": false,
+        "source_bounds_before_alignment_mm": {
+          "minimum": [
+            0.0,
+            0.0
+          ],
+          "maximum": [
+            1982.0,
+            370.0
+          ],
+          "size": [
+            1982.0,
+            370.0
+          ]
+        },
+        "project_proxy_bounds_mm": {
+          "minimum": [
+            -1785.260395,
+            -6.805498
+          ],
+          "maximum": [
+            176.714153,
+            362.194502
+          ],
+          "size": [
+            1961.974548,
+            369.0
+          ]
+        }
+      },
+      "primary_candidate_source_kind": "geometry_derived_simplified_proxy",
+      "primary_candidate_replaced": false
+    },
+    {
+      "view": "front",
+      "svg": "output/review/highpoly-types/sis04/official-dwg-front.svg",
+      "svg_sha256": "c2fe5ff69938849b2bdf6fd922a3622501628a79fa3ab9b3ed0b097c5dbdeac4",
+      "official_reference_geometry_kind": "native_dwg_dimension_envelope_not_dedicated_2d_view",
+      "official_reference_path_count": 1,
+      "blue_stroke_style": "dashed",
+      "alignment": {
+        "mode": "translation_only",
+        "view_direction_reflection_x": false,
+        "translation_mm": [
+          -1785.273121,
+          -15.991297
+        ],
+        "anchor": "horizontal_centre_and_finished_bottom",
+        "uniform_scale": 1.0,
+        "anisotropic_scale_used": false,
+        "source_geometry_deformed": false,
+        "source_bounds_before_alignment_mm": {
+          "minimum": [
+            0.0,
+            0.0
+          ],
+          "maximum": [
+            1962.0,
+            722.0
+          ],
+          "size": [
+            1962.0,
+            722.0
+          ]
+        },
+        "project_proxy_bounds_mm": {
+          "minimum": [
+            -1785.260395,
+            -15.991297
+          ],
+          "maximum": [
+            176.714153,
+            705.999365
+          ],
+          "size": [
+            1961.974548,
+            721.990662
+          ]
+        }
+      },
+      "primary_candidate_source_kind": "geometry_derived_simplified_proxy",
+      "primary_candidate_replaced": false
+    },
+    {
+      "view": "side",
+      "svg": "output/review/highpoly-types/sis04/official-dwg-side.svg",
+      "svg_sha256": "8d3abee80f722e1740564da05d4315a2ed1b0797a195060ffe547f8004235900",
+      "official_reference_geometry_kind": "native_dwg_dimension_envelope_not_dedicated_2d_view",
+      "official_reference_path_count": 1,
+      "blue_stroke_style": "dashed",
+      "alignment": {
+        "mode": "translation_only",
+        "view_direction_reflection_x": false,
+        "translation_mm": [
+          -7.305498,
+          -15.991419
+        ],
+        "anchor": "horizontal_centre_and_finished_bottom",
+        "uniform_scale": 1.0,
+        "anisotropic_scale_used": false,
+        "source_geometry_deformed": false,
+        "source_bounds_before_alignment_mm": {
+          "minimum": [
+            0.0,
+            0.0
+          ],
+          "maximum": [
+            370.0,
+            722.0
+          ],
+          "size": [
+            370.0,
+            722.0
+          ]
+        },
+        "project_proxy_bounds_mm": {
+          "minimum": [
+            -6.805498,
+            -15.991419
+          ],
+          "maximum": [
+            362.194502,
+            705.999609
+          ],
+          "size": [
+            369.0,
+            721.991028
+          ]
+        }
+      },
+      "primary_candidate_source_kind": "geometry_derived_simplified_proxy",
+      "primary_candidate_replaced": false
+    }
+  ],
+  "pass": true,
+  "index": "output/review/highpoly-types/sis04/official-dwg-review-index.html",
+  "index_sha256": "d2594570cd5087b32609366c46faafd0cabf18a4467b0cb989da23ab5eee10b5",
+  "contact_sheet_html": "output/review/highpoly-types/sis04/official-dwg-review-contact-sheet.html",
+  "contact_sheet_html_sha256": "106540a8334bfc6bc6b1048625461a02568d0443624df3a12149857f862804e7",
+  "contact_sheet_png": "output/review/highpoly-types/sis04/official-dwg-review-contact-sheet.png",
+  "contact_sheet_png_sha256": "2b567b4eb1ab0d15667efa573b7da0e9058812f134c7fde13ed5902596656eac"
+}

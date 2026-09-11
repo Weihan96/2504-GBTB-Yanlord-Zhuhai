@@ -1,0 +1,72 @@
+{
+  "status": "implemented_verified_pending_user_mouse_acceptance",
+  "version": "0.7.0",
+  "task": "Remove all persisted product asset Blends; native cards directly dispatch IFC insertion",
+  "courseEvidence": {
+    "mode": "embedded-course-index",
+    "lesson": "052000",
+    "fact": "Save and reopen IFC to prove persistence"
+  },
+  "plan": "Keep native drag grid with image/ID-only cards; retain original IFC insertion and feedback; validate; archive old caches",
+  "preState": {
+    "runtime_bytes": 429828393,
+    "asset_blends": 39,
+    "formal_sha256": "7a50b87e8f48a7c2bfbaa9f1dabdfca7155fa684b2325c66aa1ae15c8ab0a25c"
+  },
+  "execution": {
+    "cards": {
+      "status": "pass",
+      "cards": 39,
+      "objects_added": 0,
+      "meshes_added": 0,
+      "previews": 39,
+      "direct_product_id_resolution": true,
+      "placements": 39,
+      "other_asset_not_insertable": true,
+      "preferences_unchanged": true,
+      "rebuild_and_unregister": true
+    },
+    "drag_handler": {
+      "status": "pass",
+      "cancel_no_mutation": true,
+      "outside_drop_no_mutation": true,
+      "bounding_box_gpu_draw": true,
+      "bounding_box_translation_matches_pointer": true,
+      "preview_handler_removed_on_cancel_and_release": true,
+      "synthetic_release_creates_one_real_ifc_element": true,
+      "single_blender_object": true,
+      "native_undo_restores_previous_elements": true,
+      "disk_unchanged": true,
+      "physical_pointer_test": "not_verified; synthetic handler events only"
+    },
+    "combined_instances_saved_reloaded": 40,
+    "regression_svgs": 6
+  },
+  "persistence": "No card Blend, preferences or formal IFC saved. Native integration tests save disposable IFCs only. Ctrl+S remains Bonsai-owned.",
+  "postState": {
+    "runtime_bytes": 345168881,
+    "asset_blends": 0,
+    "placement_bytes": 29183,
+    "formal_unchanged": true,
+    "protected_index_unchanged": true,
+    "source_ifcs_materials_previews_approvals_unchanged": true
+  },
+  "outputs": {
+    "archive": "/Users/jiaxinchen/.codex/archives/ifc-asset-caches-2qwvvdls",
+    "archived_bytes": 84662112,
+    "net_bytes_reduced": 84659512
+  },
+  "visual": {
+    "grid": "/Users/jiaxinchen/.codex/worktrees/3a80/2504 GBTB Yanlord Zhuhai/output/review/approved-product-library/ifc-card-ui/grid.png",
+    "real_loading_stage": "/Users/jiaxinchen/.codex/worktrees/3a80/2504 GBTB Yanlord Zhuhai/output/review/approved-product-library/ifc-card-ui/green-real-stage.png",
+    "svg_contact": "/Users/jiaxinchen/.codex/worktrees/3a80/2504 GBTB Yanlord Zhuhai/output/review/approved-product-library/no-asset-blends-test/contact.png",
+    "inspection": "Native grid and six SVG rasters inspected; screenshot shows actual 65% import-stage translucent green volume. Camera was reframed for legibility."
+  },
+  "boundaries": [
+    "Physical mouse launch was not automated: Computer Use selected another task's Blender, which was not operated.",
+    "Native LOCAL asset grid may also list the user's other Collection assets; only owned cards dispatch IFC insertion.",
+    "39 product cache Blends removed; material dependency Materials.blend deliberately retained.",
+    "No new design approvals; no staging, commit, stash or history edits."
+  ],
+  "verdict": "Dependency removed and runtime behavior verified at card, handler, persistence and drawing layers; physical mouse acceptance remains with user."
+}

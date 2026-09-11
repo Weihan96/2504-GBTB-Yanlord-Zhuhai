@@ -1,0 +1,628 @@
+{
+  "schema_version": 1,
+  "generated_at": "2026-08-25T17:50:20.266089+00:00",
+  "generator": "pipeline/scripts/generate_bed01_master_bedroom_drawings.py",
+  "task": "actual master-bedroom Bonsai Plan/Front/Side Drawing package for approved Baxter Casablanca native 2D DWG linework",
+  "workflow": [
+    "inspect",
+    "plan",
+    "execute",
+    "persist",
+    "reload",
+    "verify"
+  ],
+  "formal_ifc": "2504 GBTB Yanlord Zhuhai.ifc",
+  "formal_ifc_sha256": "7a50b87e8f48a7c2bfbaa9f1dabdfca7155fa684b2325c66aa1ae15c8ab0a25c",
+  "formal_ifc_sha256_after_generation": "7a50b87e8f48a7c2bfbaa9f1dabdfca7155fa684b2325c66aa1ae15c8ab0a25c",
+  "formal_ifc_bytes_unchanged": true,
+  "save_boundary": "one BED01 product-level full-project derived IFC copy",
+  "derived_ifc_previous_sha256": "fca38de43750b7a61dedb3b061577b1460b150f464bee4dd575eafe20d00d591",
+  "derived_ifc": {
+    "path": "output/review/highpoly-types/bed01/Baxter-Casablanca-BED01-derived-drawing.ifc",
+    "bytes": 87721917,
+    "sha256": "17e2718e32face14524b2e565bb96c1d345c6ca28d750f01e9fd2796f161c020"
+  },
+  "approval_record": {
+    "path": "pipeline/decisions/bed01-drawing-approval.json",
+    "bytes": 1904,
+    "sha256": "fe35cfd71d66f48a5134ebf5b3829b83d8333e76760610757d1e6e45757a4fd3"
+  },
+  "official_dwg_review_reference": {
+    "path": "output/review/highpoly-types/bed01/official-dwg-review-reference.json",
+    "bytes": 414988,
+    "sha256": "ab4768e1c4dba33b267fa0712a00ed8aa303130e9f9da84973f0360fe680703d"
+  },
+  "official_dwg_review_manifest": {
+    "path": "output/review/highpoly-types/bed01/official-dwg-review-manifest.json",
+    "bytes": 10161,
+    "sha256": "1063e4d07ddf902f8c0ba66a5ceeae7a3ca53cf18736c522b7600ce8e8b2138a"
+  },
+  "source_kind": "native_dwg_review_reference",
+  "source_label_zh": "Baxter Casablanca 官方独立 2D DWG 原生蓝线",
+  "source_dwg_sha256": "ab697db9c27448c62a9a77537d7cc4b6286577c335328113d703184be28d9c4a",
+  "source_scale": 1.0,
+  "superseded_acis_candidate_excluded": true,
+  "target_global_id": "3IQBEqO5vDI8Z9k1Ltge_N",
+  "target_ifc_type_name": "BED01",
+  "room_global_id": "3gHz6U6BfFXgV6PnRzfOf$",
+  "room_name": "主卧",
+  "project_context_retained": true,
+  "actual_target_body_suppressed_from_drawing_include": true,
+  "context_colour": "#a3abb3",
+  "official_linework_colour": "#1677c8",
+  "provider": {
+    "preferred": "bonsai-mcp 1.1.0",
+    "status": "unsupported",
+    "reason": "Blender bridge 127.0.0.1:9878 connection refused",
+    "fallback": "local Blender 4.5.3 LTS with installed Bonsai/IfcOpenShell 0.8.4"
+  },
+  "course_evidence": {
+    "query": "085000 Create Drawing SVG persistent IFC annotation linework",
+    "top_lesson": "085000 Introduction to Drawings",
+    "timestamps": [
+      "01:59 Create Drawing",
+      "02:06 Drawing created",
+      "02:13 SVG in browser"
+    ],
+    "course_fact": "Create Drawing generates or refreshes SVG after Drawing camera, scale, depth and filters are configured.",
+    "source_files_packaged": false,
+    "source_files_note": "The installed skill contains indexed lesson records but not the referenced private source Markdown or screenshots.",
+    "current_version_inference": "The recorded workflow was adapted to Blender 4.5.3 LTS and Bonsai/IfcOpenShell 0.8.4 using semantic Drawing state and bpy.ops.bim.create_drawing."
+  },
+  "blender_stdout_tail": "GBTB Yanlord Zhuhai/output/review/highpoly-types/bed01/Materials.blend'\nError: Error loading external style for \"Teak burma wood decking terrace board 09312\" - cannot find file: '/Users/jiaxinchen/.codex/worktrees/3a80/2504 GBTB Yanlord Zhuhai/output/review/highpoly-types/bed01/Materials.blend'\nError: Error loading external style for \"Old wood boards 08788\" - cannot find file: '/Users/jiaxinchen/.codex/worktrees/3a80/2504 GBTB Yanlord Zhuhai/output/review/highpoly-types/bed01/Materials.blend'\nError: Error loading external style for \"Light parquet 05245\" - cannot find file: '/Users/jiaxinchen/.codex/worktrees/3a80/2504 GBTB Yanlord Zhuhai/output/review/highpoly-types/bed01/Materials.blend'\nError: Error loading external style for \"TerrazzoMosaicWet\" - cannot find file: '/Users/jiaxinchen/.codex/worktrees/3a80/2504 GBTB Yanlord Zhuhai/output/review/highpoly-types/bed01/Materials.blend'\nError: Error loading external style for \"Travertine silver slab 22275R\" - cannot find file: '/Users/jiaxinchen/.codex/worktrees/3a80/2504 GBTB Yanlord Zhuhai/output/review/highpoly-types/bed01/Materials.blend'\nError: Error loading external style for \"Brushed silver metal 09801R\" - cannot find file: '/Users/jiaxinchen/.codex/worktrees/3a80/2504 GBTB Yanlord Zhuhai/output/review/highpoly-types/bed01/Materials.blend'\nError: Error loading external style for \"TerraVista Panna \" - cannot find file: '/Users/jiaxinchen/.codex/worktrees/3a80/2504 GBTB Yanlord Zhuhai/output/review/highpoly-types/bed01/Materials.blend'\nError: Error loading external style for \"TerraVista Cipria\" - cannot find file: '/Users/jiaxinchen/.codex/worktrees/3a80/2504 GBTB Yanlord Zhuhai/output/review/highpoly-types/bed01/Materials.blend'\nError: Error loading external style for \"Light parquet 05226\" - cannot find file: '/Users/jiaxinchen/.codex/worktrees/3a80/2504 GBTB Yanlord Zhuhai/output/review/highpoly-types/bed01/Materials.blend'\nError: Error loading external style for \"Plaster painted wall 06885\" - cannot find file: '/Users/jiaxinchen/.codex/worktrees/3a80/2504 GBTB Yanlord Zhuhai/output/review/highpoly-types/bed01/Materials.blend'\nError: Error loading external style for \"Clean plaster 22373\" - cannot find file: '/Users/jiaxinchen/.codex/worktrees/3a80/2504 GBTB Yanlord Zhuhai/output/review/highpoly-types/bed01/Materials.blend'\nError: Error loading external style for \"Parquet medium color 16939\" - cannot find file: '/Users/jiaxinchen/.codex/worktrees/3a80/2504 GBTB Yanlord Zhuhai/output/review/highpoly-types/bed01/Materials.blend'\nError: Error loading external style for \"Florim Tile Metal Burnished\" - cannot find file: '/Users/jiaxinchen/.codex/worktrees/3a80/2504 GBTB Yanlord Zhuhai/output/review/highpoly-types/bed01/Materials.blend'\nCreate styles :: 0.02\nParsing native elements :: 0.00\nDone creating geometry\nCreate native elements :: 0.00\n250 / 537 (47% created, 42% preprocessed) elements processed in 1.85s ...\n500 / 537 (93% created, 100% preprocessed) elements processed in 1.75s ...\nDone creating geometry\n0 / 10 elements processed ...\nCreate elements :: 4.25\nCreate annotations :: 0.00\nCreate positioning elements :: 0.00\nDone creating geometry\n0 / 21 elements processed ...\nCreate spatial elements :: 0.07\nCreate structural items :: 0.00\nCreate element types :: 5.89\nPlace objects in collections :: 0.03\nSetup arrays :: 0.00\nLoad linked models :: 0.00\nAdd project to scene :: 0.00\nSetting default context :: 0.01\nImport finished in 10.62 seconds\n{\"derived_ifc\": \"/Users/jiaxinchen/.codex/worktrees/3a80/2504 GBTB Yanlord Zhuhai/output/review/highpoly-types/bed01/Baxter-Casablanca-BED01-derived-drawing.ifc\", \"evidence\": \"/Users/jiaxinchen/.codex/worktrees/3a80/2504 GBTB Yanlord Zhuhai/output/review/highpoly-types/bed01/bonsai-drawings/master-bedroom/BED01-MASTER-BEDROOM-create-drawing-evidence.json\", \"create_drawing_results\": {\"plan\": [\"FINISHED\"], \"front\": [\"FINISHED\"], \"side\": [\"FINISHED\"]}, \"pass\": true}\nBlender 4.5.3 LTS (hash 67807e1800cc built 2025-09-09 01:33:39)\n\nBlender quit\n",
+  "create_drawing_evidence": {
+    "path": "output/review/highpoly-types/bed01/bonsai-drawings/master-bedroom/BED01-MASTER-BEDROOM-create-drawing-evidence.json",
+    "bytes": 29727,
+    "sha256": "273e56da472d3ba0428a1ee7787f0ed399ed9397c5364d881f826ceea93e401a"
+  },
+  "combined_pdf": {
+    "path": "output/review/highpoly-types/bed01/Baxter-Casablanca-BED01-master-bedroom-drawings.pdf",
+    "bytes": 85957,
+    "sha256": "76f3890493d6415a9f3476f2b8ea828e36bb7c94d72c6ac75d848f1a53b73516",
+    "page_count": 3,
+    "page_order": [
+      "plan",
+      "front",
+      "side"
+    ]
+  },
+  "views": [
+    {
+      "view": "plan",
+      "drawing_name": "BED01-MASTER-BEDROOM-PLAN",
+      "drawing_global_id": "3hNc8sU3P4SAWS_7x79cO$",
+      "linework_annotation_global_id": "3b7hYRzxP3AhCvSyCqdRN4",
+      "review_path_count": 25,
+      "persisted_review_path_count": 25,
+      "persisted_coordinate_residual_mm": 2.2737367544323206e-13,
+      "alignment": {
+        "mode": "translation_only",
+        "view_direction_reflection_x": false,
+        "translation_mm": [
+          -1061.371061,
+          -1271.170252
+        ],
+        "anchor": "projection_centre_to_projection_centre",
+        "uniform_scale": 1.0,
+        "anisotropic_scale_used": false,
+        "source_geometry_deformed": false,
+        "source_bounds_before_alignment_mm": {
+          "minimum": [
+            0.0,
+            0.0
+          ],
+          "maximum": [
+            2122.653133,
+            2521.758471
+          ],
+          "size": [
+            2122.653133,
+            2521.758471
+          ]
+        },
+        "project_proxy_bounds_mm": {
+          "minimum": [
+            -1132.12793,
+            -1279.692017
+          ],
+          "maximum": [
+            1132.03894,
+            1259.109985
+          ],
+          "size": [
+            2264.16687,
+            2538.802002
+          ]
+        }
+      },
+      "camera": {
+        "type": "ORTHO",
+        "width_m": 4.799999809265136,
+        "height_m": 3.8999999523162843,
+        "clip_start_m": 0.0020000000949949026,
+        "clip_end_m": 1.5,
+        "resolution": [
+          2267,
+          1842
+        ]
+      },
+      "create_drawing": {
+        "operator": "bpy.ops.bim.create_drawing",
+        "arguments": {
+          "print_all": false,
+          "open_viewer": false,
+          "sync": false
+        },
+        "result": [
+          "FINISHED"
+        ],
+        "linework_mode": "OPENCASCADE",
+        "target_view": "PLAN_VIEW"
+      },
+      "svg_validation": {
+        "path": "/Users/jiaxinchen/.codex/worktrees/3a80/2504 GBTB Yanlord Zhuhai/output/review/highpoly-types/bed01/bonsai-drawings/master-bedroom/BED01-MASTER-BEDROOM-PLAN.svg",
+        "bytes": 1253737,
+        "sha256": "e1ac3cc72697f65003f50e9fac59a13ad638781e1bd3fb01bb0f595c6547c15e",
+        "bonsai_generated_sha256_before_review_style": "06f95395836f0a8a928d2eb2ed1ab711bb096c841aa077e5f2e9c1ba83ee0893",
+        "annotation_group_count": 1824,
+        "blue_geometry_element_count": 1824,
+        "grey_context_geometry_element_count": 1898,
+        "post_style_only": true,
+        "root_tag": "svg",
+        "width": "191.9999885559082mm",
+        "height": "156.0052840405747mm",
+        "viewBox": "0 0 191.9999885559082 156.0052840405747",
+        "data_scale": "1:25",
+        "geometry_element_count": 3722,
+        "projection_group_count": 32,
+        "class_counts": {
+          "05LSYayab3n9CDi01pw9K$": 2,
+          "1GT_8LA1P1AQ20xisLLbMN": 2,
+          "1haxNPS0P1FxP1VZiCTIFV": 2,
+          "1yuWIPQdP3uuPJnZhwUAcx": 2,
+          "1zX6DiGXjV2PeHHkTz230u": 1,
+          "37DwA_fpXSARFOa60IfK8k": 1,
+          "3IOZ8Z$$5DH9cGih34wZt$": 2,
+          "3jha5L04zBjh0$pMl_tHLy": 2,
+          "GlobalId-3b7hYRzxP3AhCvSyCqdRN4": 1824,
+          "IfcAnnotation": 1824,
+          "IfcBuildingElementProxy": 4,
+          "IfcCovering": 25,
+          "IfcFurniture": 5,
+          "IfcMaterialLayer": 12,
+          "IfcSlab": 2,
+          "IfcSpace": 7,
+          "IfcWall": 24,
+          "PredefinedType-LINEWORK": 1824,
+          "annotation": 27,
+          "cut": 28,
+          "large": 1,
+          "layer-material-Aircrete": 1,
+          "layer-material-Concrete": 4,
+          "layer-material-Unknown": 1,
+          "layer-material-WhiteWall": 6,
+          "layer-material-category-Architectural": 11,
+          "material-": 2,
+          "material-BBF01": 5,
+          "material-BWW01": 2,
+          "material-FLR180": 2,
+          "material-ThermoOak": 4,
+          "material-WAL170": 3,
+          "material-WAL200B": 6,
+          "material-WAL200S": 3,
+          "material-WAL400B": 6,
+          "material-WW20": 18,
+          "material-null": 16,
+          "official-native-dwg": 1824,
+          "projection": 32,
+          "regular": 6,
+          "review-target-bed01": 1824,
+          "scale-25": 1,
+          "section": 1,
+          "stair": 1,
+          "target-view-PLANVIEW": 1
+        },
+        "target_ifc_projection_group_count": 0,
+        "review_annotation_geometry_count": 1824,
+        "blue_style_count": 1824,
+        "grey_style_count": 1898
+      },
+      "svg": {
+        "path": "output/review/highpoly-types/bed01/bonsai-drawings/master-bedroom/BED01-MASTER-BEDROOM-PLAN.svg",
+        "bytes": 1253737,
+        "sha256": "e1ac3cc72697f65003f50e9fac59a13ad638781e1bd3fb01bb0f595c6547c15e"
+      },
+      "page_pdf": {
+        "path": "output/review/highpoly-types/bed01/bonsai-drawings/master-bedroom/BED01-MASTER-BEDROOM-PLAN.pdf",
+        "bytes": 37494,
+        "sha256": "7dbd1515c9013a2964454800635ea10bd694b8a1b6bb9de7d695db75b26207eb"
+      },
+      "pdf_rendered_preview_png": {
+        "path": "output/review/highpoly-types/bed01/master-bedroom-bonsai-drawing-plan.png",
+        "bytes": 49133,
+        "sha256": "2d05c4bf336e4e0802e53f7fdb7310f6d0c2d0e9577a2d0f7861da77af5a062e"
+      },
+      "pdf_preview_gate": {
+        "width": 1530,
+        "height": 1980,
+        "blue_pixel_count": 26378,
+        "grey_context_pixel_count": 34892,
+        "ink_bbox_px": [
+          69,
+          69,
+          1430,
+          1175
+        ],
+        "page_margins_px": {
+          "left": 69,
+          "right": 99,
+          "top": 69,
+          "bottom": 804
+        },
+        "blue_line_present": true,
+        "grey_context_present": true,
+        "no_page_edge_clipping": true,
+        "source": "rendered from the combined PDF page; PDF pages originate from final Bonsai SVG files",
+        "pass": true
+      }
+    },
+    {
+      "view": "front",
+      "drawing_name": "BED01-MASTER-BEDROOM-FRONT",
+      "drawing_global_id": "0tfdKZduT8wBOtb6o50zp8",
+      "linework_annotation_global_id": "2wV_pSXMjBNxToWMgH03uU",
+      "review_path_count": 22,
+      "persisted_review_path_count": 22,
+      "persisted_coordinate_residual_mm": 2.2737367544323206e-13,
+      "alignment": {
+        "mode": "translation_only",
+        "view_direction_reflection_x": false,
+        "translation_mm": [
+          -1057.248869,
+          0.310961
+        ],
+        "anchor": "horizontal_centre_and_finished_bottom",
+        "uniform_scale": 1.0,
+        "anisotropic_scale_used": false,
+        "source_geometry_deformed": false,
+        "source_bounds_before_alignment_mm": {
+          "minimum": [
+            0.0,
+            0.0
+          ],
+          "maximum": [
+            2114.408748,
+            894.925345
+          ],
+          "size": [
+            2114.408748,
+            894.925345
+          ]
+        },
+        "project_proxy_bounds_mm": {
+          "minimum": [
+            -1132.12793,
+            0.310961
+          ],
+          "maximum": [
+            1132.03894,
+            947.578918
+          ],
+          "size": [
+            2264.16687,
+            947.267957
+          ]
+        }
+      },
+      "camera": {
+        "type": "ORTHO",
+        "width_m": 3.8999999523162843,
+        "height_m": 3.6,
+        "clip_start_m": 0.0020000000949949026,
+        "clip_end_m": 4.9999998092651365,
+        "resolution": [
+          1842,
+          1700
+        ]
+      },
+      "create_drawing": {
+        "operator": "bpy.ops.bim.create_drawing",
+        "arguments": {
+          "print_all": false,
+          "open_viewer": false,
+          "sync": false
+        },
+        "result": [
+          "FINISHED"
+        ],
+        "linework_mode": "OPENCASCADE",
+        "target_view": "ELEVATION_VIEW"
+      },
+      "svg_validation": {
+        "path": "/Users/jiaxinchen/.codex/worktrees/3a80/2504 GBTB Yanlord Zhuhai/output/review/highpoly-types/bed01/bonsai-drawings/master-bedroom/BED01-MASTER-BEDROOM-FRONT.svg",
+        "bytes": 986425,
+        "sha256": "5deb7ef11e55baf17859234d6358be8a19f2b290e85870183d183a1d398b3615",
+        "bonsai_generated_sha256_before_review_style": "6ea8efac8d0fedd7be412fa78c81bc18a602a8bfdadcc89d1e5b9f7801e143b9",
+        "annotation_group_count": 1717,
+        "blue_geometry_element_count": 1717,
+        "grey_context_geometry_element_count": 654,
+        "post_style_only": true,
+        "root_tag": "svg",
+        "width": "155.9999942779541mm",
+        "height": "143.9739360871455mm",
+        "viewBox": "0 0 155.9999942779541 143.9739360871455",
+        "data_scale": "1:25",
+        "geometry_element_count": 2371,
+        "projection_group_count": 28,
+        "class_counts": {
+          "0G_rbqpMHE28Txkf09jW3_": 2,
+          "0vMU_9TZXEV8GPr46AYxhu": 1,
+          "2_vcnNErPCixD2MSQiqhdi": 2,
+          "34MraFd1nFsep2QMO2kY48": 1,
+          "GlobalId-2wV_pSXMjBNxToWMgH03uU": 1717,
+          "IfcAnnotation": 1717,
+          "IfcBeam": 1,
+          "IfcBuildingElementProxy": 3,
+          "IfcCovering": 13,
+          "IfcFurniture": 2,
+          "IfcMaterialLayer": 3,
+          "IfcSlab": 8,
+          "IfcSpace": 3,
+          "IfcWall": 11,
+          "PredefinedType-LINEWORK": 1717,
+          "annotation": 27,
+          "cut": 10,
+          "large": 1,
+          "layer-material-Aircrete": 2,
+          "layer-material-WhiteWall": 1,
+          "layer-material-category-Architectural": 3,
+          "material-": 3,
+          "material-BB": 1,
+          "material-BBF01": 4,
+          "material-BWW01": 5,
+          "material-FLR180": 8,
+          "material-ThermoOak": 2,
+          "material-WAL170": 1,
+          "material-WAL200B": 1,
+          "material-WAL200S": 1,
+          "material-WAL400B": 1,
+          "material-WW20": 6,
+          "material-null": 8,
+          "official-native-dwg": 1717,
+          "projection": 28,
+          "regular": 6,
+          "review-target-bed01": 1717,
+          "scale-25": 1,
+          "section": 1,
+          "stair": 1,
+          "target-view-ELEVATIONVIEW": 1
+        },
+        "target_ifc_projection_group_count": 0,
+        "review_annotation_geometry_count": 1717,
+        "blue_style_count": 1717,
+        "grey_style_count": 654
+      },
+      "svg": {
+        "path": "output/review/highpoly-types/bed01/bonsai-drawings/master-bedroom/BED01-MASTER-BEDROOM-FRONT.svg",
+        "bytes": 986425,
+        "sha256": "5deb7ef11e55baf17859234d6358be8a19f2b290e85870183d183a1d398b3615"
+      },
+      "page_pdf": {
+        "path": "output/review/highpoly-types/bed01/bonsai-drawings/master-bedroom/BED01-MASTER-BEDROOM-FRONT.pdf",
+        "bytes": 23975,
+        "sha256": "7123046b710803529e34500dd0e0664fca9aec2dc315a22e8a6c6af8e0f8c3d3"
+      },
+      "pdf_rendered_preview_png": {
+        "path": "output/review/highpoly-types/bed01/master-bedroom-bonsai-drawing-front.png",
+        "bytes": 31442,
+        "sha256": "0b28e419766978249ebb1b95c403cdff8dffeee26aee36cf625558829e5d78ed"
+      },
+      "pdf_preview_gate": {
+        "width": 1530,
+        "height": 1980,
+        "blue_pixel_count": 10586,
+        "grey_context_pixel_count": 40512,
+        "ink_bbox_px": [
+          69,
+          69,
+          1175,
+          970
+        ],
+        "page_margins_px": {
+          "left": 69,
+          "right": 354,
+          "top": 69,
+          "bottom": 1009
+        },
+        "blue_line_present": true,
+        "grey_context_present": true,
+        "no_page_edge_clipping": true,
+        "source": "rendered from the combined PDF page; PDF pages originate from final Bonsai SVG files",
+        "pass": true
+      }
+    },
+    {
+      "view": "side",
+      "drawing_name": "BED01-MASTER-BEDROOM-SIDE",
+      "drawing_global_id": "1t8HIKtmjCkQzwDjLQkOak",
+      "linework_annotation_global_id": "3SbTuIHMX4OOO0JgbtDgsQ",
+      "review_path_count": 36,
+      "persisted_review_path_count": 36,
+      "persisted_coordinate_residual_mm": 2.2737367544323206e-13,
+      "alignment": {
+        "mode": "rigid_reflection_and_translation_only",
+        "view_direction_reflection_x": true,
+        "translation_mm": [
+          -1268.962217,
+          0.310961
+        ],
+        "anchor": "horizontal_centre_and_finished_bottom",
+        "uniform_scale": 1.0,
+        "anisotropic_scale_used": false,
+        "source_geometry_deformed": false,
+        "source_bounds_before_alignment_mm": {
+          "minimum": [
+            0.0,
+            0.0
+          ],
+          "maximum": [
+            2517.342402,
+            884.342946
+          ],
+          "size": [
+            2517.342402,
+            884.342946
+          ]
+        },
+        "project_proxy_bounds_mm": {
+          "minimum": [
+            -1279.692017,
+            0.310961
+          ],
+          "maximum": [
+            1259.109985,
+            947.070923
+          ],
+          "size": [
+            2538.802002,
+            946.759962
+          ]
+        }
+      },
+      "camera": {
+        "type": "ORTHO",
+        "width_m": 4.799999809265136,
+        "height_m": 3.6,
+        "clip_start_m": 0.0020000000949949026,
+        "clip_end_m": 4.099999952316284,
+        "resolution": [
+          2267,
+          1700
+        ]
+      },
+      "create_drawing": {
+        "operator": "bpy.ops.bim.create_drawing",
+        "arguments": {
+          "print_all": false,
+          "open_viewer": false,
+          "sync": false
+        },
+        "result": [
+          "FINISHED"
+        ],
+        "linework_mode": "OPENCASCADE",
+        "target_view": "ELEVATION_VIEW"
+      },
+      "svg_validation": {
+        "path": "/Users/jiaxinchen/.codex/worktrees/3a80/2504 GBTB Yanlord Zhuhai/output/review/highpoly-types/bed01/bonsai-drawings/master-bedroom/BED01-MASTER-BEDROOM-SIDE.svg",
+        "bytes": 1059041,
+        "sha256": "390ebb668c47f717e174ed1ce134398c8d41423bce37826c290eb453958d6b2c",
+        "bonsai_generated_sha256_before_review_style": "18ebe06e57980cefbbf519736bca3c183c3fdf1261aec8306e90b9b3ceca670b",
+        "annotation_group_count": 2012,
+        "blue_geometry_element_count": 2012,
+        "grey_context_geometry_element_count": 302,
+        "post_style_only": true,
+        "root_tag": "svg",
+        "width": "191.9999885559082mm",
+        "height": "143.97881806133387mm",
+        "viewBox": "0 0 191.9999885559082 143.97881806133387",
+        "data_scale": "1:25",
+        "geometry_element_count": 2314,
+        "projection_group_count": 27,
+        "class_counts": {
+          "0vMU_9TZXEV8GPr46AYxhu": 1,
+          "1GT_8LA1P1AQ20xisLLbMN": 2,
+          "2IZwo0dYv0p8B0RhP1oOtT": 1,
+          "2QL0HI22bBP9QJHhfY1YLK": 1,
+          "34MraFd1nFsep2QMO2kY48": 1,
+          "GlobalId-3SbTuIHMX4OOO0JgbtDgsQ": 2012,
+          "IfcAnnotation": 2012,
+          "IfcBuildingElementProxy": 3,
+          "IfcCovering": 16,
+          "IfcFurniture": 3,
+          "IfcMaterialLayer": 4,
+          "IfcSlab": 3,
+          "IfcSpace": 2,
+          "IfcWall": 15,
+          "PredefinedType-LINEWORK": 2012,
+          "annotation": 27,
+          "cut": 13,
+          "large": 1,
+          "layer-material-Concrete": 1,
+          "layer-material-WhiteWall": 3,
+          "layer-material-category-Architectural": 4,
+          "material-": 2,
+          "material-BBF01": 3,
+          "material-BWW01": 8,
+          "material-FLR180": 3,
+          "material-ThermoOak": 2,
+          "material-WAL170": 1,
+          "material-WAL200S": 1,
+          "material-WAL400B": 4,
+          "material-WW20": 11,
+          "material-null": 7,
+          "official-native-dwg": 2012,
+          "projection": 27,
+          "regular": 6,
+          "review-target-bed01": 2012,
+          "scale-25": 1,
+          "section": 1,
+          "stair": 1,
+          "target-view-ELEVATIONVIEW": 1
+        },
+        "target_ifc_projection_group_count": 0,
+        "review_annotation_geometry_count": 2012,
+        "blue_style_count": 2012,
+        "grey_style_count": 302
+      },
+      "svg": {
+        "path": "output/review/highpoly-types/bed01/bonsai-drawings/master-bedroom/BED01-MASTER-BEDROOM-SIDE.svg",
+        "bytes": 1059041,
+        "sha256": "390ebb668c47f717e174ed1ce134398c8d41423bce37826c290eb453958d6b2c"
+      },
+      "page_pdf": {
+        "path": "output/review/highpoly-types/bed01/bonsai-drawings/master-bedroom/BED01-MASTER-BEDROOM-SIDE.pdf",
+        "bytes": 26052,
+        "sha256": "a9d9e657eb5c1eb3e028b1f5ccd2598a4d1a83b9195ea1e80c9f9d732c644fcb"
+      },
+      "pdf_rendered_preview_png": {
+        "path": "output/review/highpoly-types/bed01/master-bedroom-bonsai-drawing-side.png",
+        "bytes": 30421,
+        "sha256": "c4d1dcfa6720bb334893202e22ea189f8cdb68c3d3a1e51aab504a8463b4150f"
+      },
+      "pdf_preview_gate": {
+        "width": 1530,
+        "height": 1980,
+        "blue_pixel_count": 10234,
+        "grey_context_pixel_count": 33299,
+        "ink_bbox_px": [
+          69,
+          69,
+          1430,
+          970
+        ],
+        "page_margins_px": {
+          "left": 69,
+          "right": 99,
+          "top": 69,
+          "bottom": 1009
+        },
+        "blue_line_present": true,
+        "grey_context_present": true,
+        "no_page_edge_clipping": true,
+        "source": "rendered from the combined PDF page; PDF pages originate from final Bonsai SVG files",
+        "pass": true
+      }
+    }
+  ],
+  "tests": {
+    "all_views_create_drawing_finished": true,
+    "all_views_opencascade": true,
+    "all_persisted_path_counts_match": true,
+    "all_previews_blue_and_grey": true,
+    "all_previews_not_clipped": true,
+    "actual_bed_body_projection_group_count": 0,
+    "formal_ifc_hash_preserved": true
+  },
+  "pass": true
+}

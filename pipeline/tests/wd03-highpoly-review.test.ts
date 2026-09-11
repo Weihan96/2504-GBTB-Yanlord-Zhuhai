@@ -33,7 +33,11 @@ test("official Senzafine family identity is archived without claiming exact WD03
     customised_compositions_supported: true,
   });
   expect(access.official_product_cad).toMatchObject({
-    registration_form_and_captcha_required: true,
+    product_page_checked_in_active_30_day_download_session: true,
+    product_page_native_dwg_listed: false,
+    product_page_file_url_entries: [],
+    technical_catalog_access_status: "protected_page_no_catalog_content_exposed",
+    reserved_area_access_status: "separate_login_required_not_authenticated",
     public_exact_native_dwg_url_located: false,
     acquired: false,
     local_cad_files: [],
@@ -85,12 +89,27 @@ test("one WD03 Body produces three geometry-derived views with zero blue CAD pat
   expect(candidate.source_label_zh).toBe(sourceLabelZh);
   expect(candidate.official_cad_used).toBeFalse();
   expect(candidate.third_party_cad_used).toBeFalse();
-  expect(manifest.views.map((view: any) => view.silhouette_path_count)).toEqual([3, 2, 6]);
+  expect(manifest.views.map((view: any) => view.silhouette_path_count)).toEqual([5, 9, 3]);
+  expect(manifest.semantic_segmentation).toMatchObject({
+    representation_item_count: 25,
+    classified_component_count: 25,
+    meaningless_coplanar_internal_line_count: 0,
+    every_internal_line_has_two_different_semantics_or_real_occlusion: true,
+    catalogue_geometry_used: false,
+    pass: true,
+  });
+  const semantic = JSON.parse(readFileSync(join(product, "wd03-semantic-segmentation.json"), "utf8"));
+  expect(semantic.views.plan.path_count).toBe(5);
+  expect(semantic.views.front.path_count).toBe(9);
+  expect(semantic.views.side.path_count).toBe(3);
+  expect(semantic.components).toHaveLength(25);
+  expect(semantic.components.every((item: any) => Boolean(item.semantic))).toBeTrue();
+  expect(semantic.catalogue_geometry_used).toBeFalse();
   for (const view of manifest.views) {
     expect(view.official_cad_path_count).toBe(0);
     expect(view.blue_line_present).toBeFalse();
     const svg = readFileSync(join(root, view.svg), "utf8");
-    expect(svg).toContain('class="simplified-proxy-silhouette geometry-derived"');
+    expect(svg).toContain('class="simplified-proxy-silhouette geometry-derived semantic-boundary"');
     expect(svg).toContain('data-source-kind="geometry_derived_simplified_proxy"');
     expect(svg).not.toContain('class="official-reference native-dwg"');
     expect(svg).not.toContain("#1677c8");
@@ -153,20 +172,22 @@ test("WD03 Bonsai evidence uses four cameras on the actual IFC Body", () => {
   expect(sha256(join(root, evidence.isolated_ifc))).toBe(evidence.isolated_ifc_sha256);
 });
 
-test("pending WD03 approval blocks every IFC write and preserves the formal IFC", () => {
+test("approved WD03 scope writes only the product-level derived IFC and preserves the formal IFC", () => {
   const candidate = JSON.parse(readFileSync(join(product, "candidate-representations.json"), "utf8"));
   const approval = JSON.parse(readFileSync(join(root, "pipeline/decisions/wd03-drawing-approval.json"), "utf8"));
   expect(candidate.formal_ifc_write_allowed).toBeFalse();
   expect(candidate.review_status).toBe("visual_review_pending");
-  expect(approval.status).toBe("pending");
-  expect(approval.derived_ifc_write_allowed).toBeFalse();
+  expect(approval.status).toBe("approved");
+  expect(approval.derived_ifc_write_allowed).toBeTrue();
   expect(approval.formal_authoritative_ifc_write_allowed).toBeFalse();
   expect(approval.candidate_manifest_sha256).toBe(sha256(join(product, "manifest.json")));
-  expect(existsSync(join(product, "Poliform-Senzafine-WD03-derived-drawing.ifc"))).toBeFalse();
+  expect(approval.review_stage).toBe("product_level_derived_ifc_written_scene_drawings_ready_for_review");
+  expect(existsSync(join(product, "Poliform-Senzafine-WD03-derived-drawing.ifc"))).toBeTrue();
+  expect(sha256(join(product, "Poliform-Senzafine-WD03-derived-drawing.ifc"))).toBe(approval.write_execution.derived_ifc_sha256);
   expect(sha256(formal)).toBe(formalHash);
 });
 
-test("WD03 writer rejects missing apply and the pending human approval record", () => {
+test("WD03 writer still rejects a missing explicit apply flag", () => {
   const temporary = mkdtempSync(join(tmpdir(), "wd03-gate-"));
   const output = join(temporary, "forbidden.ifc");
   const script = join(root, "pipeline/scripts/wd03_drawing_ifc.py");
@@ -177,15 +198,40 @@ test("WD03 writer rejects missing apply and the pending human approval record", 
   expect(withoutApply.exitCode).not.toBe(0);
   expect(withoutApply.stderr.toString()).toContain("IFC write requires the explicit --apply flag");
   expect(existsSync(output)).toBeFalse();
-  const pendingApproval = Bun.spawnSync(
-    ["python3", script, "--input", formal, "--output", output, "--apply"],
-    { cwd: root, stderr: "pipe" },
-  );
-  expect(pendingApproval.exitCode).not.toBe(0);
-  expect(pendingApproval.stderr.toString()).toContain("approval gate rejected IFC write");
   expect(existsSync(output)).toBeFalse();
   expect(sha256(formal)).toBe(formalHash);
   rmSync(temporary, { recursive: true, force: true });
+});
+
+test("WD03 Bonsai Create Drawing persists the approved 5/9/3 black semantics without Body duplication", () => {
+  const evidence = JSON.parse(readFileSync(join(product, "bonsai-drawings/wardrobe/WD03-WARDROBE-create-drawing-evidence.json"), "utf8"));
+  expect(evidence.execution).toMatchObject({
+    generator: "bpy.ops.bim.create_drawing",
+    source_kind: sourceKind,
+    source_label_zh: sourceLabelZh,
+    official_cad_used: false,
+  });
+  expect(evidence.tests).toEqual({
+    all_create_drawing_finished: true,
+    all_body_annotation_duplicates_absent: true,
+    all_path_counts_persisted: true,
+    formal_ifc_unchanged: true,
+  });
+  expect(evidence.outputs.views.map((view: any) => [view.view, view.path_count, view.persisted_path_count])).toEqual([
+    ["plan", 5, 5],
+    ["front", 9, 9],
+    ["side", 3, 3],
+  ]);
+  for (const view of evidence.outputs.views) {
+    expect(view.create_drawing).toMatchObject({ operator: "bpy.ops.bim.create_drawing", result: ["FINISHED"] });
+    expect(view.svg.target_body_projection_count).toBe(0);
+    expect(view.svg.semantic_annotation_present).toBeTrue();
+    expect(view.svg.no_body_annotation_duplicate).toBeTrue();
+    expect(sha256(view.svg.path)).toBe(view.svg.sha256);
+  }
+  expect(evidence.postState.derived_ifc_sha256).toBe(sha256(join(product, "Poliform-Senzafine-WD03-derived-drawing.ifc")));
+  expect(evidence.postState.formal_ifc_sha256).toBe(formalHash);
+  expect(evidence.pass).toBeTrue();
 });
 
 test("a scoped temporary approval writes verified WD03 representations and source documents", () => {
@@ -224,7 +270,7 @@ test("a scoped temporary approval writes verified WD03 representations and sourc
   expect(result.pass).toBeTrue();
   expect(result.formal_ifc_bytes_unchanged).toBeTrue();
   expect(result.representations).toEqual({ plan: "Wd03Plan", front: "Wd03Front", side: "Wd03Side" });
-  expect(result.representation_path_counts).toEqual({ plan: 3, front: 2, side: 6 });
+  expect(result.representation_path_counts).toEqual({ plan: 5, front: 9, side: 3 });
   expect(result.source_kind).toBe(sourceKind);
   expect(result.source_label_zh).toBe(sourceLabelZh);
   expect(result.official_cad_geometry_included).toBeFalse();

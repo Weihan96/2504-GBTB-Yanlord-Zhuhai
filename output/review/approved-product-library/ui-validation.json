@@ -1,0 +1,57 @@
+{
+  "products": 15,
+  "search_and_preview_operator_pass": true,
+  "approval_tiers_verified": true,
+  "approval_summary": {
+    "approved": 8,
+    "pending": 7
+  },
+  "tier_screenshots": {
+    "scene_approved": {
+      "product_id": "bed01",
+      "path": "/Users/jiaxinchen/.codex/worktrees/3a80/2504 GBTB Yanlord Zhuhai/output/review/approved-product-library/library-ui-scene-approved.png",
+      "sha256": "cc6093f2207fa6c2c5f579b5bcba154ce84223597fa1d0649d747e04723eb994"
+    },
+    "scene_pending": {
+      "product_id": "bed02",
+      "path": "/Users/jiaxinchen/.codex/worktrees/3a80/2504 GBTB Yanlord Zhuhai/output/review/approved-product-library/library-ui.png",
+      "sha256": "db352f8db3526e5666b4c4e684e4e2bd976a1a36af97acd801c5a71664511fc7"
+    }
+  },
+  "search_empty_result_supported": true,
+  "invalid_catalog_preserves_previous_state": true,
+  "four_preview_buttons_pass": true,
+  "images_fitted_to_panel": true,
+  "source_ifc_hashes_unchanged": {
+    "bed01": "9e5660e5e4db95fc3dd44eb05dd8dcd2515a19e21b23ee462391431fb13d111a",
+    "wd03": "9d9d20db08717e9a926dac21c8bfeac7fffcbb721576e247ab0ded7b6ffb32c2",
+    "trap01": "83e3b5252665ccfcf20d6e56b205b199767ba0bdf243a36c71258b93f00322bc",
+    "miamisoft-e09": "7a51025a8ffece775464c2eaeef4a263d02c1df20ce41cb9d0aa79ac46b1681e",
+    "wd02": "1612bf65e84c1be9aaac261ce9545646b4a665ec9933efbf3aa2be48757b5f11",
+    "sxb010": "649a0886c3e6ed8041314b4ad96c15592841ea13d09960a1bd06d01faed37fb8",
+    "gessi316-54294": "aa1af19b744f543e8b78dd63567bb9d1c1949080e7e99b1f6add515e6764295d",
+    "geberit-duofix-sigma-224-212": "9b0a1b4302ccd1a926196bdb1b5dd2d8dbfd8222b58eab13af833336f35f77d1",
+    "hima01": "4014d7423520f9a133994c67644cd893c9a8db804364e11cfab479188849bbc0",
+    "geberit-154-446-ks-1": "f20aa0dc1972a3123b481a98d4c67b0243fcbb3e7528726f8b2629cfa4c090df",
+    "bed02": "4a54ee630ade339f95a87709ee3b824d060cb06e926829f8bfd6debd84dfd252",
+    "gessi316-54145": "a2bd449156b7af3be7feff331c106742924970756738bfe2f30f1f624e5a92a1",
+    "street-h": "7493815ea7e82b9fe4e83d3f61cbaa0a1a713189c85fa70fe59b1ad71b1cb725",
+    "tab02": "50b949ce1d56c3bca38e476a012b467f6ae8405aaa1482d8c2f598a9e7e97623",
+    "falper-sorgente": "ec6029ad7a4a67449d5a9e6030b531dcf9e9ed8273843420415b289a8431cd57"
+  },
+  "ui_regions": [
+    {
+      "width_pixels": 561,
+      "height_pixels": 1273
+    }
+  ],
+  "ui_scale": 2.0,
+  "window_screenshot": {
+    "path": "/Users/jiaxinchen/.codex/worktrees/3a80/2504 GBTB Yanlord Zhuhai/output/review/approved-product-library/library-ui.png",
+    "sha256": "db352f8db3526e5666b4c4e684e4e2bd976a1a36af97acd801c5a71664511fc7"
+  },
+  "ifc_write_performed": false,
+  "visual_review": "pass",
+  "visual_review_notes": "主代理已分别查看15项的已验收BED01与待验收BED02实际窗口截图：8/7计数、完整状态、4张缩略图、图像大图、加载和阵列控制均可见。待验收截图在确认后台帧缓存滞后后经本任务窗口刷新重取，未使用另一个Blender任务的画面。",
+  "task_owned_blender_pid": 87322
+}

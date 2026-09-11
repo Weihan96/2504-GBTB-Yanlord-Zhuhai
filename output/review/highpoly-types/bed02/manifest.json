@@ -47,12 +47,12 @@
     "official_cad_used": false,
     "third_party_cad_used": false,
     "official_source_access_record": "output/review/highpoly-types/bed02/official-source/source-access-record.json",
-    "official_source_access_record_sha256": "47eed9c4643b29c0a3ff634f1cabb2da485cd60e5abc1aab45cb9b56bcdf6106",
-    "official_product_cad_status": "manufacturer_login_required_not_acquired"
+    "official_source_access_record_sha256": "86202c1d09244ca51fde7dbaea82ed9aa0bed4fdeb0894b155a5db838c89f5d2",
+    "official_product_cad_status": "manufacturer_authenticated_family_cad_acquired_and_rendered_as_review_reference_not_primary"
   },
   "official_reference": {
     "source_id": "BAXTER-VIKTOR-BED-OFFICIAL-IDENTITY-001",
-    "source_kind": "manufacturer_product_page_technical_sheet_and_assembly_instructions_identity_only",
+    "source_kind": "manufacturer_product_page_technical_sheet_assembly_instructions_and_authenticated_family_cad_identity_only",
     "manufacturer": "Baxter",
     "family": "Viktor",
     "designer": "Draga & Aurel",
@@ -63,13 +63,18 @@
       2340,
       1060
     ],
-    "scope": "manufacturer family identity and nominal dimensions only; dimension difference requires review; not a project shop drawing and not drawing geometry",
+    "scope": "Manufacturer family identity, nominal dimensions, and native 160x200 review linework; not an exact project configuration, not a project shop drawing, and not the primary candidate.",
     "product_page": "https://www.baxter.it/en/products/viktor-beds",
     "technical_sheet": "https://dam.baxter.it/m/e9f40f5d27de0f5/original/Baxter_Viktor_letto_Indoor.pdf",
     "assembly_instructions": "https://dam.baxter.it/m/55b97eeff80c31a9/original/Baxter_AssemblyInstructions_Viktor_bed.pdf",
     "source_access_record": "output/review/highpoly-types/bed02/official-source/source-access-record.json",
-    "official_2d_3d_bim_status": "manufacturer_login_required_not_acquired",
-    "official_cad_used": false
+    "official_2d_3d_bim_status": "authenticated_manufacturer_2d_3d_acquired_no_separate_bim",
+    "official_download_record": "output/review/highpoly-types/bed02/official-source/official-download-record.json",
+    "official_download_url": "https://dam.baxter.it/asset/6c3331bf-d64d-4bf6-83f9-40c1ffc41344/Baxter_Viktor_Bed_2D_3D.zip",
+    "official_dwg": "output/review/highpoly-types/bed02/official-source/official-download/Viktor_Letto.dwg",
+    "official_dwg_sha256": "3f0676a004f3e744779093188d75d58238153332d9d1810f28821cafc79a9bbd",
+    "official_cad_used": false,
+    "official_review_reference_rendered": true
   },
   "official_identity_evidence_only": true,
   "dimension_cross_check": {
@@ -96,12 +101,12 @@
     "status": "review_required_not_scaled_or_corrected",
     "note": "The official 160 x 200 cm bed-base variant is 1720 mm wide overall, while the IFC description states 1620 mm and the detailed Body spans 1675.711 mm. The discrepancy is retained and no geometry is anisotropically fitted."
   },
-  "official_cad_acquired": false,
+  "official_cad_acquired": true,
   "official_cad_used": false,
   "third_party_cad_used": false,
-  "blue_line_present": false,
+  "blue_line_present": true,
   "official_source_access_record": "output/review/highpoly-types/bed02/official-source/source-access-record.json",
-  "official_source_access_record_sha256": "47eed9c4643b29c0a3ff634f1cabb2da485cd60e5abc1aab45cb9b56bcdf6106",
+  "official_source_access_record_sha256": "86202c1d09244ca51fde7dbaea82ed9aa0bed4fdeb0894b155a5db838c89f5d2",
   "candidate_representations": "output/review/highpoly-types/bed02/candidate-representations.json",
   "candidate_representations_sha256": "1c98fa9bc95ef787ffb5176d92453710733b0cd65c7180afa997c529fb60cd6a",
   "review_status": "visual_review_pending",
@@ -160,5 +165,158 @@
       "blue_line_present": false
     }
   ],
-  "pass": true
+  "pass": true,
+  "blue_line_role": "official_native_dwg_review_reference_only_not_primary_candidate",
+  "official_dwg_review_supplement": {
+    "status": "pending_visual_approval",
+    "package": "output/review/highpoly-types/bed02/official-dwg-review-manifest.json",
+    "package_sha256": "e03859695e2776f26b4a51cbc83bbea155fede9498bfc6625201a72f15856dc2",
+    "reference": "output/review/highpoly-types/bed02/official-dwg-review-reference.json",
+    "reference_sha256": "ad2ab76c19f0b563b26752208eaddeef6aa035487f57a327024bae12b7e74820",
+    "selected_geometry_layers": [
+      "ARREDO",
+      "0"
+    ],
+    "excluded_layers": {
+      "_QUOTE": "Official red dimensions remain source evidence and are excluded from blue approval linework.",
+      "Defpoints": "Non-printing definition layer; excluded."
+    },
+    "views": {
+      "plan": {
+        "svg": "output/review/highpoly-types/bed02/official-dwg-plan.svg",
+        "svg_sha256": "04f47ffc9290424bc4d040c7399f78359cdc49ef0fa6b0676a26c543a3840a9f",
+        "path_count": 51,
+        "bounds_mm": {
+          "minimum": [
+            0.0,
+            0.0
+          ],
+          "maximum": [
+            1723.392281,
+            2340.708974
+          ],
+          "size": [
+            1723.392281,
+            2340.708974
+          ]
+        },
+        "uniform_scale": 1.0,
+        "view_direction_reflection_x": false
+      },
+      "front": {
+        "svg": "output/review/highpoly-types/bed02/official-dwg-front.svg",
+        "svg_sha256": "10f77d3281b6ca27fd5231bc244cfca2ff8c5b7951030189727962bbf7aea614",
+        "path_count": 99,
+        "bounds_mm": {
+          "minimum": [
+            0.0,
+            0.0
+          ],
+          "maximum": [
+            1733.666161,
+            1060.0
+          ],
+          "size": [
+            1733.666161,
+            1060.0
+          ]
+        },
+        "uniform_scale": 1.0,
+        "view_direction_reflection_x": false
+      },
+      "side": {
+        "svg": "output/review/highpoly-types/bed02/official-dwg-side.svg",
+        "svg_sha256": "ab565cf5170c99c8c5e57c311da0da59c4cbff54ddf815dedd8010d5f576218a",
+        "path_count": 84,
+        "bounds_mm": {
+          "minimum": [
+            0.0,
+            0.0
+          ],
+          "maximum": [
+            2351.640392,
+            1065.443243
+          ],
+          "size": [
+            2351.640392,
+            1065.443243
+          ]
+        },
+        "uniform_scale": 1.0,
+        "view_direction_reflection_x": true
+      }
+    },
+    "superseded_extractions": [
+      {
+        "status": "superseded_incomplete_extraction_excluded_from_approval",
+        "source_dwg_valid": true,
+        "source_dwg_sha256": "3f0676a004f3e744779093188d75d58238153332d9d1810f28821cafc79a9bbd",
+        "generator": "pipeline/scripts/extract_official_dwg_family_review_references.py",
+        "reference_sha256_before_repair": "781faef1fdc66d29ad72492fafb269ed56e1de663da4dbbeae31001754060948",
+        "selected_geometry_layers": [
+          "ARREDO"
+        ],
+        "excluded_geometry_layer_in_error": "0",
+        "reason": "The DWG is correct, but the ARREDO-only extraction omitted required native bed geometry on layer 0. The superseded SVGs are extraction errors, not manufacturer-DWG errors.",
+        "views": {
+          "plan": {
+            "path_count": 28,
+            "bounds_mm": {
+              "minimum": [
+                0.0,
+                0.0
+              ],
+              "maximum": [
+                1715.424395,
+                2169.757421
+              ],
+              "size": [
+                1715.424395,
+                2169.757421
+              ]
+            },
+            "svg_sha256": "2359099fe5f249c673f314ba2d81345ba6241572dc886b3eda744a3b2674cbde"
+          },
+          "front": {
+            "path_count": 91,
+            "bounds_mm": {
+              "minimum": [
+                0.0,
+                0.0
+              ],
+              "maximum": [
+                1733.666161,
+                1060.0
+              ],
+              "size": [
+                1733.666161,
+                1060.0
+              ]
+            },
+            "svg_sha256": "89ac44c9da9eb411f0a866a442b81b479235b27efc4fbb424674ac5abc0b3366"
+          },
+          "side": {
+            "path_count": 77,
+            "bounds_mm": {
+              "minimum": [
+                0.0,
+                0.0
+              ],
+              "maximum": [
+                2351.640392,
+                1065.443243
+              ],
+              "size": [
+                2351.640392,
+                1065.443243
+              ]
+            },
+            "svg_sha256": "8ba8fb47e6f256ecb1db7b360a868842201942b76634bde899389d7d8f1402fc"
+          }
+        }
+      }
+    ],
+    "derived_ifc_write_performed": false,
+    "formal_authoritative_ifc_write_performed": false
+  }
 }

@@ -1,0 +1,87 @@
+{
+  "schema_version": 1,
+  "mode": "review_only_smooth_handles_and_official_max_reach_spout",
+  "representative_global_id": "2iKOL78$H0N9Yd9$ky3pW4",
+  "formal_ifc_sha256": "7a50b87e8f48a7c2bfbaa9f1dabdfca7155fa684b2325c66aa1ae15c8ab0a25c",
+  "formal_ifc_bytes_unchanged": true,
+  "review_ifc": "output/review/highpoly-types/gessi316-54294/Gessi316-45089-54294-bonsai-review-simplified.ifc",
+  "review_ifc_sha256": "97c68b6811f1de8c24bdee1bf8626a40f4140f50af61caea6e7badece6a5e17b",
+  "original_vertex_count": 21299,
+  "original_face_count": 41570,
+  "removed_components": [
+    {
+      "semantic": "diamond_knurled_handle_sleeve",
+      "ifc_item_id": 19501,
+      "vertex_count": 9960,
+      "face_count": 19440,
+      "bounds_mm": {
+        "minimum": [
+          -120.854614,
+          -24.416544,
+          -20.507812
+        ],
+        "maximum": [
+          -79.83963,
+          -0.041437,
+          20.507261
+        ]
+      }
+    },
+    {
+      "semantic": "diamond_knurled_handle_sleeve",
+      "ifc_item_id": 38943,
+      "vertex_count": 9960,
+      "face_count": 19440,
+      "bounds_mm": {
+        "minimum": [
+          79.839287,
+          -24.353983,
+          -20.507812
+        ],
+        "maximum": [
+          120.854233,
+          0.021114,
+          20.507261
+        ]
+      }
+    },
+    {
+      "semantic": "project_adjustable_spout_rebuilt_to_official_54294_maximum_reach",
+      "ifc_item_id": 41231,
+      "vertex_count": 467,
+      "face_count": 882,
+      "bounds_mm": {
+        "minimum": [
+          -9.665141,
+          -202.846329,
+          -35.340641
+        ],
+        "maximum": [
+          9.665099,
+          0.0,
+          9.665069
+        ]
+      }
+    }
+  ],
+  "removed_vertex_count": 20387,
+  "removed_face_count": 39762,
+  "replacement_component_count": 3,
+  "replacement_vertex_count": 910,
+  "replacement_face_count": 1808,
+  "spout_replacement_vertex_count": 650,
+  "spout_replacement_face_count": 1296,
+  "trim_disc_count_adjusted_to_official_side_height": 3,
+  "optimised_vertex_count": 1822,
+  "optimised_face_count": 3616,
+  "vertex_reduction_percent": 91.446,
+  "face_reduction_percent": 91.301,
+  "smooth_segments_per_sleeve": 64,
+  "main_cylinder_outline_preserved": true,
+  "control_levers_preserved": true,
+  "spout_preserved": true,
+  "spout_rebuilt_to_official_54294_maximum_reach": true,
+  "actual_project_body_comparison_required": true,
+  "three_hole_layout_preserved": true,
+  "pass": true
+}

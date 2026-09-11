@@ -1,0 +1,74 @@
+{
+  "verdict": "technical_and_visual_pass",
+  "product": "gessi316-54294",
+  "source_sha256": "7405c23abc795ae6e9ed1e22123b119c8909b9ea29d0389d2868351eddd9002b",
+  "drawings": [
+    {
+      "role": "Plan",
+      "guid": "0xRk0zWcbAChw_L35FjwuI",
+      "svg": "/Users/jiaxinchen/.codex/worktrees/3a80/2504 GBTB Yanlord Zhuhai/output/review/approved-product-library/body-view-drawings/gessi316-54294-bisect/plan.svg",
+      "sha256": "79a7d3f1f9d9f4316f24944d5c459e85a213d045a4ed2abfb66865365857d271",
+      "bytes": 160699,
+      "target_geometry_nodes": 722,
+      "selected": [
+        {
+          "global_id": "2iKOL78$H0N9Yd9$ky3pW4",
+          "target_view": "PLAN_VIEW",
+          "role": "Plan",
+          "representation_id": 41668,
+          "old_body_or_annotation_emitted": false
+        }
+      ]
+    },
+    {
+      "role": "Front",
+      "guid": "3XcV$UrWv8kQgwECBE2EGG",
+      "svg": "/Users/jiaxinchen/.codex/worktrees/3a80/2504 GBTB Yanlord Zhuhai/output/review/approved-product-library/body-view-drawings/gessi316-54294-bisect/front.svg",
+      "sha256": "749e2fc989871d06aa85887bc4bdaf2252b791e35480bfd062c45a8d63677d93",
+      "bytes": 835760,
+      "target_geometry_nodes": 7369,
+      "selected": [
+        {
+          "global_id": "2iKOL78$H0N9Yd9$ky3pW4",
+          "target_view": "ELEVATION_VIEW",
+          "role": "Front",
+          "representation_id": 42531,
+          "old_body_or_annotation_emitted": false
+        }
+      ]
+    },
+    {
+      "role": "Side",
+      "guid": "02GXd$IC578eWVx7n0Wmw0",
+      "svg": "/Users/jiaxinchen/.codex/worktrees/3a80/2504 GBTB Yanlord Zhuhai/output/review/approved-product-library/body-view-drawings/gessi316-54294-bisect/side.svg",
+      "sha256": "7182f397a749fcd6ebf796d17406831d6285f8f345103c45830055bdd473fed8",
+      "bytes": 126438,
+      "target_geometry_nodes": 385,
+      "selected": [
+        {
+          "global_id": "2iKOL78$H0N9Yd9$ky3pW4",
+          "target_view": "ELEVATION_VIEW",
+          "role": "Side",
+          "representation_id": 57146,
+          "old_body_or_annotation_emitted": false
+        }
+      ]
+    }
+  ],
+  "cut_mode": "BISECT",
+  "temporary_fixture": "/var/folders/rz/d8p6s4y50ws53rd150nm2s3r0000gn/T/review-body-native-qi69ssal/body-view-test.ifc",
+  "provider_persistence": {
+    "saved": true,
+    "output_path": "/var/folders/rz/d8p6s4y50ws53rd150nm2s3r0000gn/T/review-body-native-qi69ssal/body-view-test.ifc",
+    "in_place": false,
+    "method": "bonsai.bim.export_ifc.IfcExporter",
+    "reloaded": true
+  },
+  "generator": "Bonsai Create Drawing / OpenCASCADE",
+  "annotation_linework_objects_created": 0,
+  "formal_sha256_unchanged": "7a50b87e8f48a7c2bfbaa9f1dabdfca7155fa684b2325c66aa1ae15c8ab0a25c",
+  "reloaded": true,
+  "visual_verification": "Main agent inspected Plan/Front/Side contact sheet: corresponding separate views, no high-poly overlay; not user approval",
+  "visual_contact": "/Users/jiaxinchen/.codex/worktrees/3a80/2504 GBTB Yanlord Zhuhai/output/review/approved-product-library/body-view-drawings/gessi316-54294-bisect/contact.png",
+  "visual_contact_sha256": "e2eb28d907b05ad91c79511deaac33bb449e9f9cbd425ddcdf3befe43d574cc7"
+}

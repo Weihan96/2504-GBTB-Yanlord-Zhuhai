@@ -1,0 +1,312 @@
+{
+  "verdict": "technical_pass",
+  "product": "bed02",
+  "source_sha256": "f0fb7b0a0724d19e74435349d2f79ec48674c652d2b2c65ecd3078cfba355ee7",
+  "drawings": [
+    {
+      "role": "Plan",
+      "guid": "2zK66d9Q50FQLpSXbuJkii",
+      "svg": "/Users/jiaxinchen/.codex/worktrees/3a80/2504 GBTB Yanlord Zhuhai/output/review/approved-product-library/portable-validation/bed02/plan.svg",
+      "sha256": "26cfffa236189cd3cef5d4f9e01b31bb90f86a14595f1ebd3459c80b863661ac",
+      "bytes": 112985,
+      "target_geometry_nodes": 253,
+      "selected": [
+        {
+          "global_id": "1KAnRjIkv8sQ_$bnWymDBs",
+          "target_view": "PLAN_VIEW",
+          "role": "Plan",
+          "representation_id": 32067,
+          "old_body_or_annotation_emitted": false
+        }
+      ]
+    },
+    {
+      "role": "Front",
+      "guid": "1iv4nTQkT1Vwxyo8maVgq4",
+      "svg": "/Users/jiaxinchen/.codex/worktrees/3a80/2504 GBTB Yanlord Zhuhai/output/review/approved-product-library/portable-validation/bed02/front.svg",
+      "sha256": "b12923749f9c051e85583f644a0c291999ea863e09e63d7edf21ded18c985cc2",
+      "bytes": 118374,
+      "target_geometry_nodes": 306,
+      "selected": [
+        {
+          "global_id": "1KAnRjIkv8sQ_$bnWymDBs",
+          "target_view": "ELEVATION_VIEW",
+          "role": "Front",
+          "representation_id": 32574,
+          "old_body_or_annotation_emitted": false
+        }
+      ]
+    },
+    {
+      "role": "Side",
+      "guid": "13tJms3g5BEx5byvGnXmm6",
+      "svg": "/Users/jiaxinchen/.codex/worktrees/3a80/2504 GBTB Yanlord Zhuhai/output/review/approved-product-library/portable-validation/bed02/side.svg",
+      "sha256": "f512fc485ecff1d6936ebb123163dcd34ecb7efb7d7ee1aa0843b0542dbe68a4",
+      "bytes": 184823,
+      "target_geometry_nodes": 960,
+      "selected": [
+        {
+          "global_id": "1KAnRjIkv8sQ_$bnWymDBs",
+          "target_view": "ELEVATION_VIEW",
+          "role": "Side",
+          "representation_id": 33705,
+          "old_body_or_annotation_emitted": false
+        }
+      ]
+    }
+  ],
+  "temporary_fixture": "/private/var/folders/rz/d8p6s4y50ws53rd150nm2s3r0000gn/T/portable-library-isolation-ns4hkq7o/results/bed02/test.ifc",
+  "provider_persistence": {
+    "saved": true,
+    "output_path": "/private/var/folders/rz/d8p6s4y50ws53rd150nm2s3r0000gn/T/portable-library-isolation-ns4hkq7o/results/bed02/test.ifc",
+    "in_place": false,
+    "method": "bonsai.bim.export_ifc.IfcExporter",
+    "reloaded": true
+  },
+  "generator": "Bonsai Create Drawing / OpenCASCADE + BISECT",
+  "old_repository_read_denied_by_OS": true,
+  "catalog_products_loaded": 39,
+  "native_insert": true,
+  "disk_unchanged_until_save": true,
+  "unique_product_and_object": true,
+  "reloaded": true,
+  "loading_stages": [
+    0.05,
+    0.25,
+    0.5,
+    0.65,
+    0.85,
+    0.95
+  ],
+  "texture_dependencies": [
+    {
+      "name": "FabricUpholsteryCottonBasketWeave001_AO_1K_jpg",
+      "packed": true
+    },
+    {
+      "name": "FabricUpholsteryCottonBasketWeave001_BUMP16_1K_tif",
+      "packed": true
+    },
+    {
+      "name": "FabricUpholsteryCottonBasketWeave001_COL_VAR1_1K_jpg",
+      "packed": true
+    },
+    {
+      "name": "FabricUpholsteryCottonBasketWeave001_COL_VAR2_1K_jpg",
+      "packed": true
+    },
+    {
+      "name": "FabricUpholsteryCottonBasketWeave001_COL_VAR3_1K_jpg",
+      "packed": true
+    },
+    {
+      "name": "FabricUpholsteryCottonBasketWeave001_DISP16_1K_tif",
+      "packed": true
+    },
+    {
+      "name": "FabricUpholsteryCottonBasketWeave001_FUZZ_1K_jpg",
+      "packed": true
+    },
+    {
+      "name": "FabricUpholsteryCottonBasketWeave001_GLOSS_1K_jpg",
+      "packed": true
+    },
+    {
+      "name": "FabricUpholsteryCottonBasketWeave001_IDMAP_1K_tif",
+      "packed": true
+    },
+    {
+      "name": "FabricUpholsteryCottonBasketWeave001_MASK_1K_tif",
+      "packed": true
+    },
+    {
+      "name": "FabricUpholsteryCottonBasketWeave001_NRM_1K_jpg",
+      "packed": true
+    },
+    {
+      "name": "FabricUpholsteryCottonBasketWeave001_REFL_1K_jpg",
+      "packed": true
+    },
+    {
+      "name": "FabricUpholsteryCottonBasketWeave001_AO_1K_jpg.001",
+      "packed": true
+    },
+    {
+      "name": "FabricUpholsteryCottonBasketWeave001_BUMP16_1K_tif.001",
+      "packed": true
+    },
+    {
+      "name": "FabricUpholsteryCottonBasketWeave001_COL_VAR1_1K_jpg.001",
+      "packed": true
+    },
+    {
+      "name": "FabricUpholsteryCottonBasketWeave001_COL_VAR2_1K_jpg.001",
+      "packed": true
+    },
+    {
+      "name": "FabricUpholsteryCottonBasketWeave001_COL_VAR3_1K_jpg.001",
+      "packed": true
+    },
+    {
+      "name": "FabricUpholsteryCottonBasketWeave001_DISP16_1K_tif.001",
+      "packed": true
+    },
+    {
+      "name": "FabricUpholsteryCottonBasketWeave001_FUZZ_1K_jpg.001",
+      "packed": true
+    },
+    {
+      "name": "FabricUpholsteryCottonBasketWeave001_GLOSS_1K_jpg.001",
+      "packed": true
+    },
+    {
+      "name": "FabricUpholsteryCottonBasketWeave001_IDMAP_1K_tif.001",
+      "packed": true
+    },
+    {
+      "name": "FabricUpholsteryCottonBasketWeave001_MASK_1K_tif.001",
+      "packed": true
+    },
+    {
+      "name": "FabricUpholsteryCottonBasketWeave001_NRM_1K_jpg.001",
+      "packed": true
+    },
+    {
+      "name": "FabricUpholsteryCottonBasketWeave001_REFL_1K_jpg.001",
+      "packed": true
+    },
+    {
+      "name": "FabricVelourPlain001_AO_1K_METALNESS_png",
+      "packed": true
+    },
+    {
+      "name": "FabricVelourPlain001_BUMP16_1K_METALNESS_png",
+      "packed": true
+    },
+    {
+      "name": "FabricVelourPlain001_COL_1K_METALNESS_png",
+      "packed": true
+    },
+    {
+      "name": "FabricVelourPlain001_DISP16_1K_METALNESS_png",
+      "packed": true
+    },
+    {
+      "name": "FabricVelourPlain001_METALNESS_1K_METALNESS_png",
+      "packed": true
+    },
+    {
+      "name": "FabricVelourPlain001_NRM_1K_METALNESS_png",
+      "packed": true
+    },
+    {
+      "name": "FabricVelourPlain001_ROUGHNESS_1K_METALNESS_png",
+      "packed": true
+    },
+    {
+      "name": "FabricVelourPlain001_AO_1K_METALNESS_png.001",
+      "packed": true
+    },
+    {
+      "name": "FabricVelourPlain001_BUMP16_1K_METALNESS_png.001",
+      "packed": true
+    },
+    {
+      "name": "FabricVelourPlain001_COL_1K_METALNESS_png.001",
+      "packed": true
+    },
+    {
+      "name": "FabricVelourPlain001_DISP16_1K_METALNESS_png.001",
+      "packed": true
+    },
+    {
+      "name": "FabricVelourPlain001_METALNESS_1K_METALNESS_png.001",
+      "packed": true
+    },
+    {
+      "name": "FabricVelourPlain001_NRM_1K_METALNESS_png.001",
+      "packed": true
+    },
+    {
+      "name": "FabricVelourPlain001_ROUGHNESS_1K_METALNESS_png.001",
+      "packed": true
+    },
+    {
+      "name": "MetalBrassCast005_BUMP16_1K_METALNESS_png",
+      "packed": true
+    },
+    {
+      "name": "MetalBrassCast005_COL_1K_METALNESS_png",
+      "packed": true
+    },
+    {
+      "name": "MetalBrassCast005_DISP16_1K_METALNESS_png",
+      "packed": true
+    },
+    {
+      "name": "MetalBrassCast005_METALNESS_1K_METALNESS_png",
+      "packed": true
+    },
+    {
+      "name": "MetalBrassCast005_NRM_1K_METALNESS_png",
+      "packed": true
+    },
+    {
+      "name": "MetalBrassCast005_ROUGHNESS_1K_METALNESS_png",
+      "packed": true
+    },
+    {
+      "name": "MetalBrassCast005_BUMP16_1K_METALNESS_png.001",
+      "packed": true
+    },
+    {
+      "name": "MetalBrassCast005_COL_1K_METALNESS_png.001",
+      "packed": true
+    },
+    {
+      "name": "MetalBrassCast005_DISP16_1K_METALNESS_png.001",
+      "packed": true
+    },
+    {
+      "name": "MetalBrassCast005_METALNESS_1K_METALNESS_png.001",
+      "packed": true
+    },
+    {
+      "name": "MetalBrassCast005_NRM_1K_METALNESS_png.001",
+      "packed": true
+    },
+    {
+      "name": "MetalBrassCast005_ROUGHNESS_1K_METALNESS_png.001",
+      "packed": true
+    }
+  ],
+  "global_id_changed_on_insert": true,
+  "placement_m": [
+    [
+      0.9999999999999991,
+      4.371138828673791e-08,
+      0.0,
+      1.99996864795685
+    ],
+    [
+      -4.371138828673791e-08,
+      0.9999999999999991,
+      0.0,
+      2.99983024597168
+    ],
+    [
+      0.0,
+      0.0,
+      1.0,
+      0.0
+    ],
+    [
+      0.0,
+      0.0,
+      0.0,
+      1.0
+    ]
+  ],
+  "worker_log": "/Users/jiaxinchen/.codex/worktrees/3a80/2504 GBTB Yanlord Zhuhai/output/review/approved-product-library/portable-validation/bed02/worker.log",
+  "visual_inspection": "portable-raster-validation.json; original design approval unchanged"
+}

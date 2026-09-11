@@ -1,0 +1,96 @@
+{
+  "schema_version": 1,
+  "manufacturer": "Baxter",
+  "family": "Viktor",
+  "project_type_code": "BED02",
+  "acquired_at": "2026-08-25T01:53:00+08:00",
+  "access": {
+    "surface": "authenticated Baxter product page",
+    "trigger_page": "https://www.baxter.it/en/products/viktor-beds",
+    "trigger_label": "Download 2D and 3D",
+    "authentication_observed": true,
+    "final_download_url": "https://dam.baxter.it/asset/6c3331bf-d64d-4bf6-83f9-40c1ffc41344/Baxter_Viktor_Bed_2D_3D.zip"
+  },
+  "official_package": {
+    "original_filename": "Baxter_Viktor_Bed_2D_3D.zip",
+    "local_path": "output/review/highpoly-types/bed02/official-source/official-download/Baxter_Viktor_Bed_2D_3D.zip",
+    "bytes": 83501330,
+    "sha256": "8750144ea98c94b1eb5a8aaf666489e357401d15a252779ba32e278225089a49",
+    "contents_summary": {
+      "two_d": [
+        "VIKTOR LETTO/2D/Viktor_Letto.dwg"
+      ],
+      "three_d": [
+        "VIKTOR LETTO/3D/Viktor-bed_172x234xh106(160x200).3ds",
+        "VIKTOR LETTO/3D/Viktor-bed_192x234xh106(180x200).3ds",
+        "VIKTOR LETTO/3D/Viktor-bed_212x234xh106(200x200).3ds",
+        "VIKTOR LETTO/3D/Viktor-bed_164x237xh106(152x203).3ds",
+        "VIKTOR LETTO/3D/Viktor-bed_195x247xh106(183x213).3ds",
+        "VIKTOR LETTO/3D/Viktor-bed_205x237xh106(193x203).3ds"
+      ]
+    }
+  },
+  "official_dwg": {
+    "archive_path": "VIKTOR LETTO/2D/Viktor_Letto.dwg",
+    "local_path": "output/review/highpoly-types/bed02/official-source/official-download/Viktor_Letto.dwg",
+    "bytes": 190944,
+    "sha256": "3f0676a004f3e744779093188d75d58238153332d9d1810f28821cafc79a9bbd",
+    "dwg_signature": "AC1032",
+    "dwg_version": "AutoCAD 2018/2019/2020",
+    "mechanical_inventory": {
+      "entities_total": 2157,
+      "LINE": 1196,
+      "ARC": 318,
+      "POINT": 144,
+      "SOLID": 96,
+      "SPLINE": 78,
+      "VERTEX_2D": 78,
+      "MTEXT": 54,
+      "DIMENSION_LINEAR": 48,
+      "POLYLINE_2D": 18
+    },
+    "family_variants_mm": [
+      {
+        "bed_base": "160 x 200 cm",
+        "overall": [1720, 2340, 1060]
+      },
+      {
+        "bed_base": "180 x 200 cm",
+        "overall": [1920, 2340, 1060]
+      },
+      {
+        "bed_base": "200 x 200 cm",
+        "overall": [2120, 2340, 1060]
+      },
+      {
+        "bed_base": "Queen 152 x 203 cm",
+        "overall": [1640, 2370, 1060]
+      },
+      {
+        "bed_base": "California King 183 x 213 cm",
+        "overall": [1950, 2470, 1060]
+      },
+      {
+        "bed_base": "King 193 x 203 cm",
+        "overall": [2050, 2370, 1060]
+      }
+    ],
+    "duplicate_local_asset": {
+      "path": "/Users/jiaxinchen/Documents/Projects/仁恒-滨海湾/Blender文件/assets/Baxter Models/Imported/Viktor/2D/Viktor_Letto.dwg",
+      "sha256": "3f0676a004f3e744779093188d75d58238153332d9d1810f28821cafc79a9bbd",
+      "byte_identical": true
+    }
+  },
+  "bim_download": {
+    "available_in_product_payload": false,
+    "files": [],
+    "note": "The authenticated product payload published one 2D/3D package and no separate BIM download for Viktor. The acquired DWG is the 2D family drawing, not an RFA/IFC/SKP BIM package."
+  },
+  "project_fit": {
+    "project_ifc_body_bounds_mm": [1675.710938, 2404.0177, 1107.145996],
+    "closest_family_reference_by_width": "Queen 152 x 203 cm / 1640 x 2370 x 1060 mm",
+    "identity_only": true,
+    "exact_project_match": false,
+    "note": "The project Body was previously traced to Showefy VIKTLEVKQS geometry with approximately 1961.808 x 2404.018 x 1107.146 mm bounds and then non-uniformly reduced in width to 1675.711 mm. The official Baxter DWG is a multi-variant family reference and must not be presented as exact project-configuration linework."
+  }
+}

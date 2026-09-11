@@ -1,0 +1,23 @@
+{
+  "schema_version": 1,
+  "date": "2026-09-08",
+  "source": "Explicit user response annotation in this task",
+  "proposal_quote": "是否把这 7 项也纳入迁移和图库，并明确标为‘单品已通过、场景待验收’？",
+  "user_response": "是",
+  "products": ["hima01", "geberit-154-446-ks-1", "bed02", "gessi316-54145", "street-h", "tab02", "falper-sorgente"],
+  "pure_product_ifc_write_authorized": true,
+  "library_inclusion_authorized": true,
+  "single_product_approval_status": "approved",
+  "scene_approval_status": "pending",
+  "approval_label": "单品已通过、场景待验收",
+  "formal_ifc_write_authorized": false,
+  "cleanup_authorized": false,
+  "protected_staged_files": 937,
+  "protected_git_index_entries_sha256": "06230b8b18fbb1fb5a1e4bd3e7749bc2086dda09ab4dadc3d78abee58712e67f",
+  "scope_limits": [
+    "STREET-H 仅为支撑子构件，不是 STREET 整体台盆。",
+    "单品批准不升级为场景批准；真实 Bonsai 场景 SVG 的技术验证与用户验收分开记录。",
+    "旧逐产品批准记录、官方来源和受保护暂存文件保持不变。",
+    "新成果未暂存；旧完整审核副本仅列清理建议。"
+  ]
+}

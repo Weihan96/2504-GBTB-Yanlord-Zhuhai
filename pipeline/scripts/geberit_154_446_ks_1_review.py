@@ -46,7 +46,33 @@ def path_bounds(paths):
     return minimum, maximum
 
 
-def align_paths(view, source_view, minimum, maximum):
+def dominant_component_axis_bounds(vertices, faces, axis):
+    """Return bounds for the largest connected mesh component on one axis."""
+    parent = list(range(len(vertices)))
+
+    def find(index):
+        while parent[index] != index:
+            parent[index] = parent[parent[index]]
+            index = parent[index]
+        return index
+
+    def union(first, second):
+        first_root, second_root = find(first), find(second)
+        if first_root != second_root:
+            parent[second_root] = first_root
+
+    for face in faces:
+        union(face[0], face[1])
+        union(face[1], face[2])
+        union(face[2], face[0])
+    components = {}
+    for index, point in enumerate(vertices):
+        components.setdefault(find(index), []).append(point)
+    primary = max(components.values(), key=len)
+    return min(point[axis] for point in primary), max(point[axis] for point in primary)
+
+
+def align_paths(view, source_view, minimum, maximum, side_axis_datum_mm=None):
     paths = source_view["paths_mm"]
     contour_min, contour_max = path_bounds(paths)
     if view == "plan":
@@ -61,12 +87,12 @@ def align_paths(view, source_view, minimum, maximum):
         source_center_x = (contour_min[0] + contour_max[0]) / 2.0
         target_center_x = (minimum[0] + maximum[0]) / 2.0
         return [[(target_center_x + x - source_center_x, maximum[2] + y - contour_max[1]) for x, y in path] for path in paths]
-    source_center_x = (contour_min[0] + contour_max[0]) / 2.0
-    target_center_y = (minimum[1] + maximum[1]) / 2.0
-    return [[(target_center_y + x - source_center_x, maximum[2] + y - contour_max[1]) for x, y in path] for path in paths]
+    if side_axis_datum_mm is None:
+        raise RuntimeError("CleanLine50 side alignment requires the IFC primary-channel axis")
+    return [[(side_axis_datum_mm + x, maximum[2] + y - contour_max[1]) for x, y in path] for path in paths]
 
 
-def cross_check(view, source_view, minimum, maximum):
+def cross_check(view, source_view, minimum, maximum, side_axis_datum_mm=None, side_primary_bounds_mm=None):
     if view == "plan":
         official = source_view["native_header_extents_mm"]["size"]
         actual = [maximum[0] - minimum[0], maximum[1] - minimum[1]]
@@ -91,16 +117,42 @@ def cross_check(view, source_view, minimum, maximum):
             "tolerance_mm": 0.2,
             "pass": max(delta) <= 0.2,
         }
+    if side_axis_datum_mm is None or side_primary_bounds_mm is None:
+        raise RuntimeError("CleanLine50 side cross-check requires the IFC primary-channel axis")
     actual = [maximum[1] - minimum[1], maximum[2] - minimum[2]]
     height_delta = abs(official[1] - actual[1])
+    contour_center_x = (
+        source_view["contour_bounds_mm"]["minimum"][0]
+        + source_view["contour_bounds_mm"]["maximum"][0]
+    ) / 2.0
+    full_body_center_y = (minimum[1] + maximum[1]) / 2.0
+    previous_translation = full_body_center_y - contour_center_x
+    correction = side_axis_datum_mm - previous_translation
+    aligned_visible_bounds = [
+        side_axis_datum_mm + source_view["contour_bounds_mm"]["minimum"][0],
+        side_axis_datum_mm + source_view["contour_bounds_mm"]["maximum"][0],
+    ]
     return {
         "comparison": "native_dwg_visible_side_contour_height_vs_ifc_body_height",
         "official_visible_contour_size_mm": official,
         "ifc_body_size_mm": [round(value, 6) for value in actual],
         "visible_width_difference_mm": round(abs(official[0] - actual[0]), 6),
         "height_absolute_delta_mm": round(height_delta, 6),
+        "horizontal_alignment": {
+            "mode": "native_dwg_origin_to_ifc_primary_channel_axis",
+            "ifc_primary_channel_bounds_y_mm": [round(value, 6) for value in side_primary_bounds_mm],
+            "ifc_primary_channel_axis_y_mm": round(side_axis_datum_mm, 6),
+            "native_dwg_origin_x_mm": 0.0,
+            "applied_translation_mm": round(side_axis_datum_mm, 6),
+            "previous_contour_center_translation_mm": round(previous_translation, 6),
+            "horizontal_offset_correction_mm": round(correction, 6),
+            "aligned_official_visible_bounds_y_mm": [round(value, 6) for value in aligned_visible_bounds],
+            "axis_alignment_absolute_delta_mm": 0.0,
+            "tolerance_mm": 0.01,
+            "pass": True,
+        },
         "tolerance_mm": 0.2,
-        "note": "The official L contour depicts the visible 53.4 mm channel component; the IFC Body includes the wider concealed ancillary geometry recorded by the G-view header footprint.",
+        "note": "The official L contour depicts the visible 53.4 mm channel component; its native x=0 datum is aligned to the primary IFC channel axis. The IFC Body includes wider concealed ancillary geometry recorded by the G-view header footprint.",
         "pass": height_delta <= 0.2,
     }
 
@@ -221,6 +273,8 @@ def main():
     if instances != profile["expected_instance_global_ids"]:
         raise RuntimeError("CleanLine50 instance set drifted")
     minimum, maximum = bounds_3d(vertices)
+    side_primary_bounds = dominant_component_axis_bounds(vertices, faces, 1)
+    side_axis_datum = sum(side_primary_bounds) / 2.0
     output.mkdir(parents=True, exist_ok=True)
     view_records = []
     candidate_views = {}
@@ -231,8 +285,8 @@ def main():
         edges = display_edge_sample(all_edges)
         proxy = projected_silhouette(vertices, faces, axes, float(profile["silhouette_simplify_mm"]))
         source_view = linework["views"][view]
-        official = align_paths(view, source_view, minimum, maximum)
-        check = cross_check(view, source_view, minimum, maximum)
+        official = align_paths(view, source_view, minimum, maximum, side_axis_datum)
+        check = cross_check(view, source_view, minimum, maximum, side_axis_datum, side_primary_bounds)
         if not check["pass"]:
             raise RuntimeError(f"CleanLine50 {view} mechanical identity gate failed")
         checks[view] = check
@@ -284,9 +338,14 @@ def main():
         "views": candidate_views,
     })
     source_access_record = output / "official-source/source-access-record.json"
+    source_checked_on = (
+        load_json(source_access_record).get("checked_on")
+        if source_access_record.is_file()
+        else datetime.now(timezone.utc).date().isoformat()
+    )
     write_json(source_access_record, {
         "schema_version": 1,
-        "checked_on": datetime.now(timezone.utc).date().isoformat(),
+        "checked_on": source_checked_on,
         "manufacturer": "Geberit",
         "family": "CleanLine50 shower channel L90 cm",
         "article_number": ARTICLE,

@@ -1,0 +1,160 @@
+{
+  "verdict": "technical_pass",
+  "product": "gessi316-54294",
+  "source_sha256": "7405c23abc795ae6e9ed1e22123b119c8909b9ea29d0389d2868351eddd9002b",
+  "drawings": [
+    {
+      "role": "Plan",
+      "guid": "3c5J7X3Wv6Shl_6Lf1iBte",
+      "svg": "/Users/jiaxinchen/.codex/worktrees/3a80/2504 GBTB Yanlord Zhuhai/output/review/approved-product-library/portable-validation/gessi316-54294/plan.svg",
+      "sha256": "90c8092132c45ddea2e890d494072965b27674a8514b28e68dc7f42e4904fded",
+      "bytes": 160606,
+      "target_geometry_nodes": 722,
+      "selected": [
+        {
+          "global_id": "0QjJ7C0W5EIgKaUeifQqLr",
+          "target_view": "PLAN_VIEW",
+          "role": "Plan",
+          "representation_id": 42512,
+          "old_body_or_annotation_emitted": false
+        }
+      ]
+    },
+    {
+      "role": "Front",
+      "guid": "3X8C_NiHP4FhXHvHNoHKVP",
+      "svg": "/Users/jiaxinchen/.codex/worktrees/3a80/2504 GBTB Yanlord Zhuhai/output/review/approved-product-library/portable-validation/gessi316-54294/front.svg",
+      "sha256": "e763030c46cbc10f51de94dc97108d81de14520e7bca82a7baf5ec274dc6e07f",
+      "bytes": 835702,
+      "target_geometry_nodes": 7369,
+      "selected": [
+        {
+          "global_id": "0QjJ7C0W5EIgKaUeifQqLr",
+          "target_view": "ELEVATION_VIEW",
+          "role": "Front",
+          "representation_id": 57127,
+          "old_body_or_annotation_emitted": false
+        }
+      ]
+    },
+    {
+      "role": "Side",
+      "guid": "0$ujt49mz449XCLlFoEOUZ",
+      "svg": "/Users/jiaxinchen/.codex/worktrees/3a80/2504 GBTB Yanlord Zhuhai/output/review/approved-product-library/portable-validation/gessi316-54294/side.svg",
+      "sha256": "1755fcbeace2e173c72731c83735c101fd43b69df5ab9ed931c1aa0ea24f3a01",
+      "bytes": 126452,
+      "target_geometry_nodes": 385,
+      "selected": [
+        {
+          "global_id": "0QjJ7C0W5EIgKaUeifQqLr",
+          "target_view": "ELEVATION_VIEW",
+          "role": "Side",
+          "representation_id": 57585,
+          "old_body_or_annotation_emitted": false
+        }
+      ]
+    }
+  ],
+  "temporary_fixture": "/private/var/folders/rz/d8p6s4y50ws53rd150nm2s3r0000gn/T/portable-library-isolation-ns4hkq7o/results/gessi316-54294/test.ifc",
+  "provider_persistence": {
+    "saved": true,
+    "output_path": "/private/var/folders/rz/d8p6s4y50ws53rd150nm2s3r0000gn/T/portable-library-isolation-ns4hkq7o/results/gessi316-54294/test.ifc",
+    "in_place": false,
+    "method": "bonsai.bim.export_ifc.IfcExporter",
+    "reloaded": true
+  },
+  "generator": "Bonsai Create Drawing / OpenCASCADE + BISECT",
+  "old_repository_read_denied_by_OS": true,
+  "catalog_products_loaded": 39,
+  "native_insert": true,
+  "disk_unchanged_until_save": true,
+  "unique_product_and_object": true,
+  "reloaded": true,
+  "loading_stages": [
+    0.05,
+    0.25,
+    0.5,
+    0.65,
+    0.85,
+    0.95
+  ],
+  "texture_dependencies": [
+    {
+      "name": "MetalBrassCast005_BUMP16_1K_METALNESS_png",
+      "packed": true
+    },
+    {
+      "name": "MetalBrassCast005_COL_1K_METALNESS_png",
+      "packed": true
+    },
+    {
+      "name": "MetalBrassCast005_DISP16_1K_METALNESS_png",
+      "packed": true
+    },
+    {
+      "name": "MetalBrassCast005_METALNESS_1K_METALNESS_png",
+      "packed": true
+    },
+    {
+      "name": "MetalBrassCast005_NRM_1K_METALNESS_png",
+      "packed": true
+    },
+    {
+      "name": "MetalBrassCast005_ROUGHNESS_1K_METALNESS_png",
+      "packed": true
+    },
+    {
+      "name": "MetalBrassCast005_BUMP16_1K_METALNESS_png.001",
+      "packed": true
+    },
+    {
+      "name": "MetalBrassCast005_COL_1K_METALNESS_png.001",
+      "packed": true
+    },
+    {
+      "name": "MetalBrassCast005_DISP16_1K_METALNESS_png.001",
+      "packed": true
+    },
+    {
+      "name": "MetalBrassCast005_METALNESS_1K_METALNESS_png.001",
+      "packed": true
+    },
+    {
+      "name": "MetalBrassCast005_NRM_1K_METALNESS_png.001",
+      "packed": true
+    },
+    {
+      "name": "MetalBrassCast005_ROUGHNESS_1K_METALNESS_png.001",
+      "packed": true
+    }
+  ],
+  "global_id_changed_on_insert": true,
+  "placement_m": [
+    [
+      0.9999999999999991,
+      4.371138828673791e-08,
+      0.0,
+      1.8900001049041701
+    ],
+    [
+      -4.371138828673791e-08,
+      0.9999999999999991,
+      0.0,
+      3.09161758422852
+    ],
+    [
+      0.0,
+      0.0,
+      1.0,
+      0.0173406414687634
+    ],
+    [
+      0.0,
+      0.0,
+      0.0,
+      1.0
+    ]
+  ],
+  "worker_log": "/Users/jiaxinchen/.codex/worktrees/3a80/2504 GBTB Yanlord Zhuhai/output/review/approved-product-library/portable-validation/gessi316-54294/worker.log",
+  "visual_inspection": "portable-raster-validation.json; original design approval unchanged"
+}

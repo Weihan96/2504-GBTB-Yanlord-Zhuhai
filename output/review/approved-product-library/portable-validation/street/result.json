@@ -1,0 +1,144 @@
+{
+  "verdict": "technical_pass",
+  "product": "street",
+  "source_sha256": "1b9b941f778ae97be81577f88bfab4ab2f765a5931ec9517b32f765beb3c549b",
+  "drawings": [
+    {
+      "role": "Plan",
+      "guid": "11QZGPKrf9IuY18BNE_BA6",
+      "svg": "/Users/jiaxinchen/.codex/worktrees/3a80/2504 GBTB Yanlord Zhuhai/output/review/approved-product-library/portable-validation/street/plan.svg",
+      "sha256": "b1dc392886e52422dfcad299622583dabbd32347b329ef559c2422c1be6ce22a",
+      "bytes": 94217,
+      "target_geometry_nodes": 68,
+      "selected": [
+        {
+          "global_id": "3W6qrIlzDBpOiNiE3PIlw_",
+          "target_view": "PLAN_VIEW",
+          "role": "Plan",
+          "representation_id": 1321,
+          "old_body_or_annotation_emitted": false
+        }
+      ]
+    },
+    {
+      "role": "Front",
+      "guid": "2z3O0xNWjD$B_JysMjSeQZ",
+      "svg": "/Users/jiaxinchen/.codex/worktrees/3a80/2504 GBTB Yanlord Zhuhai/output/review/approved-product-library/portable-validation/street/front.svg",
+      "sha256": "e672a5aa6d1a37d7d3ace89b08c94ea3012e78e4497c375b2ca634adeb11f893",
+      "bytes": 87724,
+      "target_geometry_nodes": 4,
+      "selected": [
+        {
+          "global_id": "3W6qrIlzDBpOiNiE3PIlw_",
+          "target_view": "ELEVATION_VIEW",
+          "role": "Front",
+          "representation_id": 1331,
+          "old_body_or_annotation_emitted": false
+        }
+      ]
+    },
+    {
+      "role": "Side",
+      "guid": "2qLES_$pD8YBHbLVmmJcV2",
+      "svg": "/Users/jiaxinchen/.codex/worktrees/3a80/2504 GBTB Yanlord Zhuhai/output/review/approved-product-library/portable-validation/street/side.svg",
+      "sha256": "35d323d2874feda78f5cb8ced31d1220ff2b72c6db8de7324967d60e11a07d89",
+      "bytes": 89142,
+      "target_geometry_nodes": 18,
+      "selected": [
+        {
+          "global_id": "3W6qrIlzDBpOiNiE3PIlw_",
+          "target_view": "ELEVATION_VIEW",
+          "role": "Side",
+          "representation_id": 1357,
+          "old_body_or_annotation_emitted": false
+        }
+      ]
+    }
+  ],
+  "temporary_fixture": "/private/var/folders/rz/d8p6s4y50ws53rd150nm2s3r0000gn/T/portable-library-isolation-ns4hkq7o/results/street/test.ifc",
+  "provider_persistence": {
+    "saved": true,
+    "output_path": "/private/var/folders/rz/d8p6s4y50ws53rd150nm2s3r0000gn/T/portable-library-isolation-ns4hkq7o/results/street/test.ifc",
+    "in_place": false,
+    "method": "bonsai.bim.export_ifc.IfcExporter",
+    "reloaded": true
+  },
+  "generator": "Bonsai Create Drawing / OpenCASCADE + BISECT",
+  "old_repository_read_denied_by_OS": true,
+  "catalog_products_loaded": 39,
+  "native_insert": true,
+  "disk_unchanged_until_save": true,
+  "unique_product_and_object": true,
+  "reloaded": true,
+  "loading_stages": [
+    0.05,
+    0.25,
+    0.5,
+    0.65,
+    0.85,
+    0.95
+  ],
+  "texture_dependencies": [
+    {
+      "name": "66_dark red marble slab_DIFF.jpg",
+      "packed": true
+    },
+    {
+      "name": "66_dark red marble slab_SPEC.jpg",
+      "packed": true
+    },
+    {
+      "name": "66_dark red marble slab_NORM.jpg",
+      "packed": true
+    },
+    {
+      "name": "66_dark red marble slab-AO.jpg",
+      "packed": true
+    },
+    {
+      "name": "66_dark red marble slab_DIFF.jpg.001",
+      "packed": true
+    },
+    {
+      "name": "66_dark red marble slab_SPEC.jpg.001",
+      "packed": true
+    },
+    {
+      "name": "66_dark red marble slab_NORM.jpg.001",
+      "packed": true
+    },
+    {
+      "name": "66_dark red marble slab-AO.jpg.001",
+      "packed": true
+    }
+  ],
+  "global_id_changed_on_insert": true,
+  "placement_m": [
+    [
+      0.0,
+      -1.0,
+      0.0,
+      1.7698115110397301
+    ],
+    [
+      1.0,
+      0.0,
+      0.0,
+      2.5
+    ],
+    [
+      0.0,
+      0.0,
+      1.0,
+      0.155000001192093
+    ],
+    [
+      0.0,
+      0.0,
+      0.0,
+      1.0
+    ]
+  ],
+  "worker_log": "/Users/jiaxinchen/.codex/worktrees/3a80/2504 GBTB Yanlord Zhuhai/output/review/approved-product-library/portable-validation/street/worker.log",
+  "visual_inspection": "portable-raster-validation.json; original design approval unchanged"
+}

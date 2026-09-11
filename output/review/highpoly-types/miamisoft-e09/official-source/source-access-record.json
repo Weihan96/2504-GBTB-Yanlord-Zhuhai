@@ -6,7 +6,7 @@
   "project_ifc_type_name": "MiamiSoft E09",
   "project_ifc_type_description": "R terminal module 130 x 108 h70/80 cm",
   "resolved_variant": "E09 - dx/r - right terminal module - 130 x 108 h70/80 cm",
-  "research_date": "2026-08-23",
+  "research_date": "2026-08-25",
   "official_identity_sources": [
     {
       "kind": "manufacturer_product_page",
@@ -50,18 +50,98 @@
     }
   ],
   "official_product_cad": {
-    "published_access_surface": "Baxter authenticated user downloads",
-    "restricted_asset_name": "Baxter_MiamiSoft_divano_2D_3D",
+    "published_access_surface": "Baxter product drawings API and official DAM",
+    "restricted_asset_name": "Baxter_MiamiSoft_Sofa_2D_3D",
+    "known_catalog_asset_alias": "Baxter_MiamiSoft_divano_2D_3D",
     "restricted_asset_database_id": "B9C9485C-9716-422D-9C1F7851C7BC9530",
-    "authentication_required": true,
-    "acquired": false,
-    "exact_project_configuration_match": false,
-    "local_cad_files": [],
+    "official_api_url": "https://www.baxter.it/api/catalog/get_pdp_drawings?baxterId=MIAMSO&outdoor=false&indoor=true&open_air=false&settore=divani-e-poltrone",
+    "official_download_url": "https://dam.baxter.it/asset/b9c9485c-9716-422d-9c1f-7851c7bc9530/Baxter_MiamiSoft_Sofa_2D_3D.zip",
+    "authentication_required_on_user_download_page": true,
+    "official_asset_url_returned_by_product_drawings_api": true,
+    "acquired": true,
+    "exact_project_configuration_match": true,
+    "selected_configuration": "E09 dx/r right terminal module 130 x 108 h70/80 cm",
+    "family_archive": "output/review/highpoly-types/miamisoft-e09/official-source/official-download/Baxter_MiamiSoft_Sofa_2D_3D.zip",
+    "family_archive_sha256": "f422e836ed7d666616340d696af93002fac6c9deff5c9e4a714ea9b8e1cbafd8",
+    "archive_inventory": "output/review/highpoly-types/miamisoft-e09/official-source/official-download/archive-inventory.json",
+    "archive_inventory_sha256": "9545530fe9c322fa02dd8ddc6643d17b6c77b4990f49943e95c83170446cb291",
+    "local_cad_files": [
+      {
+        "path": "output/review/highpoly-types/miamisoft-e09/official-source/official-download/Miami Soft_Divano_Abaco.dwg",
+        "sha256": "efc3315feed0a2dac8938aebbd7336856dabba6721395e4520783c39ba0cc51a",
+        "archive_member": "MIAMI SOFT/2D/Miami Soft_Divano_Abaco.dwg",
+        "format": "AutoCAD 2018/2019/2020 DWG"
+      }
+    ],
+    "selected_native_views": {
+      "plan": {
+        "path_count": 64,
+        "bounds_dwg_mm": {
+          "minimum": [
+            14114.291725,
+            26058.856192
+          ],
+          "maximum": [
+            15413.949714,
+            27135.355155
+          ],
+          "size": [
+            1299.657989,
+            1076.498963
+          ],
+          "centre": [
+            14764.120719,
+            26597.105674
+          ]
+        }
+      },
+      "front": {
+        "path_count": 130,
+        "bounds_dwg_mm": {
+          "minimum": [
+            14115.358033,
+            28100.266624
+          ],
+          "maximum": [
+            15413.949714,
+            28900.266624
+          ],
+          "size": [
+            1298.591681,
+            800.0
+          ],
+          "centre": [
+            14764.653873,
+            28500.266624
+          ]
+        }
+      },
+      "side": {
+        "path_count": 85,
+        "bounds_dwg_mm": {
+          "minimum": [
+            11912.193542,
+            28100.266624
+          ],
+          "maximum": [
+            13015.419199,
+            28900.264142
+          ],
+          "size": [
+            1103.225657,
+            799.997518
+          ],
+          "centre": [
+            12463.806371,
+            28500.265383
+          ]
+        }
+      }
+    },
     "third_party_cad_used": false,
     "official_vector_pdf_archived": true,
     "official_measurement_svg_archived": true,
-    "official_vector_references_used_as_cad_geometry": false,
-    "reason": "The official public product page exposes the exact E09 vector measurement SVG and technical sheet, but routes native 2D/3D/BIM downloads through login. No account was created, no access control was bypassed and no third-party CAD was substituted."
+    "official_vector_references_used_as_cad_geometry": false
   },
   "dimension_cross_check": {
     "official_nominal_width_depth_height_mm": [
@@ -97,12 +177,14 @@
     "handed_variant_status": "confirmed_E09_dx_r_right_terminal"
   },
   "drawing_geometry_source": {
-    "source_kind": "geometry_derived_simplified_proxy",
-    "source_label_zh": "基于原始高模几何生成的简化图纸表达",
-    "source_label_en": "simplified drawing representation derived from the original high-poly geometry",
-    "official_cad_used": false,
-    "third_party_cad_used": false
+    "source_kind": "native_dwg",
+    "source_label_zh": "Baxter 官方 Miami Soft E09 原生二维 DWG 候选",
+    "source_label_en": "exact E09 native 2D linework from Baxter's official Miami Soft DWG",
+    "official_cad_used": true,
+    "third_party_cad_used": false,
+    "review_status": "visual_review_pending",
+    "official_dwg_review_reference": "output/review/highpoly-types/miamisoft-e09/official-dwg-review-reference.json"
   },
-  "scope": "exact manufacturer family, E09 handed variant and nominal dimensions; authenticated native 2D/3D/BIM not acquired; not a project shop drawing and not official CAD geometry",
+  "scope": "Exact Baxter Miami Soft E09 dx/r native Plan/Front/Side selected from the official family DWG; 1:1, translation only, with Side view-direction reflection; pending review and not yet written to IFC.",
   "pass": true
 }

@@ -1,0 +1,74 @@
+{
+  "verdict": "technical_and_visual_pass",
+  "product": "cha02",
+  "source_sha256": "89ed2af926918e5ed9c5cb7c13af107f182c729fc6ac57ecef7175d1fe9a8341",
+  "drawings": [
+    {
+      "role": "Plan",
+      "guid": "2R9nQDKXX5M9p3KFVPsaga",
+      "svg": "/Users/jiaxinchen/.codex/worktrees/3a80/2504 GBTB Yanlord Zhuhai/output/review/approved-product-library/body-view-drawings/cha02/plan.svg",
+      "sha256": "33fb5e99c1b697237e92bea6750cc7a3407102657a4989581c1026bed9124111",
+      "bytes": 95817,
+      "target_geometry_nodes": 84,
+      "selected": [
+        {
+          "global_id": "3YoxxZCgbF3Ap7gztAKkcs",
+          "target_view": "PLAN_VIEW",
+          "role": "Plan",
+          "representation_id": 17166,
+          "old_body_or_annotation_emitted": false
+        }
+      ]
+    },
+    {
+      "role": "Front",
+      "guid": "2gRIU65750Kvln$k8vFLK4",
+      "svg": "/Users/jiaxinchen/.codex/worktrees/3a80/2504 GBTB Yanlord Zhuhai/output/review/approved-product-library/body-view-drawings/cha02/front.svg",
+      "sha256": "d33b33f5863ce2c93fde37c88d3499cd9bdc6bb25086f4023765bfa42ba643a7",
+      "bytes": 109132,
+      "target_geometry_nodes": 215,
+      "selected": [
+        {
+          "global_id": "3YoxxZCgbF3Ap7gztAKkcs",
+          "target_view": "ELEVATION_VIEW",
+          "role": "Front",
+          "representation_id": 17294,
+          "old_body_or_annotation_emitted": false
+        }
+      ]
+    },
+    {
+      "role": "Side",
+      "guid": "3ivudTu1j119sgya2H1J_w",
+      "svg": "/Users/jiaxinchen/.codex/worktrees/3a80/2504 GBTB Yanlord Zhuhai/output/review/approved-product-library/body-view-drawings/cha02/side.svg",
+      "sha256": "13112f20dfb62b0c5088237f1ad3a391b67afc49685683b1881030b60ddf8495",
+      "bytes": 93906,
+      "target_geometry_nodes": 65,
+      "selected": [
+        {
+          "global_id": "3YoxxZCgbF3Ap7gztAKkcs",
+          "target_view": "ELEVATION_VIEW",
+          "role": "Side",
+          "representation_id": 17601,
+          "old_body_or_annotation_emitted": false
+        }
+      ]
+    }
+  ],
+  "cut_mode": "OPENCASCADE",
+  "temporary_fixture": "/var/folders/rz/d8p6s4y50ws53rd150nm2s3r0000gn/T/review-body-native-h8tlri98/body-view-test.ifc",
+  "provider_persistence": {
+    "saved": true,
+    "output_path": "/var/folders/rz/d8p6s4y50ws53rd150nm2s3r0000gn/T/review-body-native-h8tlri98/body-view-test.ifc",
+    "in_place": false,
+    "method": "bonsai.bim.export_ifc.IfcExporter",
+    "reloaded": true
+  },
+  "generator": "Bonsai Create Drawing / OpenCASCADE",
+  "annotation_linework_objects_created": 0,
+  "formal_sha256_unchanged": "7a50b87e8f48a7c2bfbaa9f1dabdfca7155fa684b2325c66aa1ae15c8ab0a25c",
+  "reloaded": true,
+  "visual_verification": "Main agent inspected Plan/Front/Side contact sheet: corresponding separate views, no high-poly overlay; not user approval",
+  "visual_contact": "/Users/jiaxinchen/.codex/worktrees/3a80/2504 GBTB Yanlord Zhuhai/output/review/approved-product-library/body-view-drawings/cha02/contact.png",
+  "visual_contact_sha256": "d8fe85fc83f3c7d914ed5bec003f15e8c5cfe1fd36b6767363553b4b34f8c5ff"
+}

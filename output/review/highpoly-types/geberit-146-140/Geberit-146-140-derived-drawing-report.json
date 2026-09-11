@@ -1,0 +1,50 @@
+{
+  "schema_version": 1,
+  "profile_key": "geberit-146-140",
+  "article_number": "146.140.11.1",
+  "representative_global_id": "1rhZG98PPCSxaLeMFLTYb9",
+  "formal_ifc": "2504 GBTB Yanlord Zhuhai.ifc",
+  "formal_ifc_sha256": "7a50b87e8f48a7c2bfbaa9f1dabdfca7155fa684b2325c66aa1ae15c8ab0a25c",
+  "formal_ifc_bytes_unchanged": true,
+  "derived_ifc": "output/review/highpoly-types/geberit-146-140/Geberit-146-140-derived-drawing.ifc",
+  "derived_ifc_sha256": "d56dac9656c4a699c592b84b6ec5eed66e4dd8a3b8b02a845f5afea89c66a8d3",
+  "candidate_manifest": "output/review/highpoly-types/geberit-146-140/manifest.json",
+  "candidate_manifest_sha256": "bc71a60801a3afd6ed16aadbae4493303e7987c273807473aaedbf97b130ae74",
+  "approval_record": "pipeline/decisions/geberit-146-140-drawing-approval.json",
+  "approval_record_sha256": "1d44bcf8131411987207629b49bb9c21c736e5620fddbf6a356261242362d300",
+  "approval": {
+    "status": "approved",
+    "reviewer": "project owner",
+    "review_date": "2026-08-28",
+    "approved_views": [
+      "plan",
+      "front",
+      "side"
+    ],
+    "scope": "official manufacturer product-family reference, not a project shop drawing"
+  },
+  "representations": {
+    "plan": "Geberit146140Plan",
+    "front": "Geberit146140Front",
+    "side": "Geberit146140Side"
+  },
+  "representation_path_counts": {
+    "plan": 50,
+    "front": 82,
+    "side": 65
+  },
+  "representation_geometry_source": "official_native_dwg_paths_mm",
+  "proxy_geometry_included": false,
+  "official_linework_register": "output/review/highpoly-types/geberit-146-140/official-native-dwg-linework.json",
+  "official_linework_register_sha256": "5cd5fbc296380d683dd2562b79a6009e27f475e4fb338fba1fae2813bcc6b880",
+  "source_document_associations": [
+    "GEBERIT-146-140-A-NATIVE-DWG",
+    "GEBERIT-146-140-G-NATIVE-DWG",
+    "GEBERIT-146-140-L-NATIVE-DWG",
+    "GEBERIT-146-140-OFFICIAL-PRODUCT-PAGE",
+    "GEBERIT-146-140-P-NATIVE-DWG-IDENTITY"
+  ],
+  "source_property_set": "Pset_Geberit146140DrawingSource",
+  "source_kind": "native_dwg",
+  "pass": true
+}

@@ -1,0 +1,965 @@
+{
+  "schema_version": 1,
+  "generated_at": "2026-08-27T16:27:05.485160+00:00",
+  "generator": "pipeline/scripts/wd03_semantic_review.py",
+  "representative_global_id": "3cmikd9MTB$egM5KQaNgUf",
+  "source_kind": "geometry_derived_simplified_proxy",
+  "source_label_zh": "基于原始高模几何生成的简化图纸表达",
+  "official_cad_used": false,
+  "catalogue_geometry_used": false,
+  "isolated_ifc": "output/review/highpoly-types/wd03/Poliform-Senzafine-WD03-bonsai-isolated.ifc",
+  "isolated_ifc_sha256": "32a1b9e6811f9a2e1f3686311eef4d4a7d19fd98c866ce7d7640de44b200b4f2",
+  "mesh_vertex_count": 3608,
+  "mesh_face_count": 7148,
+  "representation_item_count": 25,
+  "world_to_candidate_translation_mm": [
+    3454.012635,
+    -502.846202,
+    -2365.0
+  ],
+  "components": [
+    {
+      "item_id": 125,
+      "ifc_entity": "IfcPolygonalFaceSet",
+      "face_count": 132,
+      "semantic": "full_height_back_panel",
+      "minimum_mm": [
+        -1200.898834,
+        -280.24262,
+        -2292.752746
+      ],
+      "maximum_mm": [
+        61.989472,
+        -273.76264,
+        24.500001
+      ],
+      "size_mm": [
+        1262.888306,
+        6.47998,
+        2317.252747
+      ]
+    },
+    {
+      "item_id": 181,
+      "ifc_entity": "IfcPolygonalFaceSet",
+      "face_count": 108,
+      "semantic": "top_deck",
+      "minimum_mm": [
+        -1200.899444,
+        -270.762426,
+        0.006104
+      ],
+      "maximum_mm": [
+        61.988984,
+        302.394526,
+        24.006837
+      ],
+      "size_mm": [
+        1262.888428,
+        573.156952,
+        24.000732
+      ]
+    },
+    {
+      "item_id": 237,
+      "ifc_entity": "IfcPolygonalFaceSet",
+      "face_count": 108,
+      "semantic": "top_front_edge",
+      "minimum_mm": [
+        -1200.897979,
+        302.392817,
+        -0.499999
+      ],
+      "maximum_mm": [
+        61.988373,
+        305.393977,
+        24.500001
+      ],
+      "size_mm": [
+        1262.886353,
+        3.00116,
+        25.0
+      ]
+    },
+    {
+      "item_id": 293,
+      "ifc_entity": "IfcPolygonalFaceSet",
+      "face_count": 108,
+      "semantic": "middle_shelf",
+      "minimum_mm": [
+        -1200.899444,
+        -270.762945,
+        -1336.927001
+      ],
+      "maximum_mm": [
+        61.988984,
+        302.39416,
+        -1312.926513
+      ],
+      "size_mm": [
+        1262.888428,
+        573.157104,
+        24.000488
+      ]
+    },
+    {
+      "item_id": 349,
+      "ifc_entity": "IfcPolygonalFaceSet",
+      "face_count": 108,
+      "semantic": "middle_shelf_front_edge",
+      "minimum_mm": [
+        -1200.897979,
+        302.39242,
+        -1337.427001
+      ],
+      "maximum_mm": [
+        61.988373,
+        305.393488,
+        -1312.427001
+      ],
+      "size_mm": [
+        1262.886353,
+        3.001068,
+        25.0
+      ]
+    },
+    {
+      "item_id": 392,
+      "ifc_entity": "IfcPolygonalFaceSet",
+      "face_count": 80,
+      "semantic": "top_under_shelf_runner",
+      "minimum_mm": [
+        -1203.349945,
+        205.921656,
+        -10.56079
+      ],
+      "maximum_mm": [
+        59.537934,
+        217.297602,
+        -0.499999
+      ],
+      "size_mm": [
+        1262.887878,
+        11.375946,
+        10.060791
+      ]
+    },
+    {
+      "item_id": 435,
+      "ifc_entity": "IfcPolygonalFaceSet",
+      "face_count": 80,
+      "semantic": "middle_under_shelf_runner",
+      "minimum_mm": [
+        -1200.861236,
+        205.921153,
+        -1347.28363
+      ],
+      "maximum_mm": [
+        62.029023,
+        217.296992,
+        -1337.216552
+      ],
+      "size_mm": [
+        1262.890259,
+        11.375839,
+        10.067078
+      ]
+    },
+    {
+      "item_id": 491,
+      "ifc_entity": "IfcPolygonalFaceSet",
+      "face_count": 108,
+      "semantic": "bottom_plinth_or_deck_layer",
+      "minimum_mm": [
+        -1197.910675,
+        -277.240667,
+        -2328.139247
+      ],
+      "maximum_mm": [
+        58.987946,
+        302.394587,
+        -2293.25254
+      ],
+      "size_mm": [
+        1256.898621,
+        579.635254,
+        34.886707
+      ]
+    },
+    {
+      "item_id": 605,
+      "ifc_entity": "IfcPolygonalFaceSet",
+      "face_count": 224,
+      "semantic": "bottom_plinth_or_deck_layer",
+      "minimum_mm": [
+        -1200.911102,
+        -280.240636,
+        -2328.638019
+      ],
+      "maximum_mm": [
+        61.988495,
+        305.393549,
+        -2292.751083
+      ],
+      "size_mm": [
+        1262.899597,
+        585.634186,
+        35.886936
+      ]
+    },
+    {
+      "item_id": 661,
+      "ifc_entity": "IfcPolygonalFaceSet",
+      "face_count": 108,
+      "semantic": "bottom_plinth_or_deck_layer",
+      "minimum_mm": [
+        -1197.911163,
+        -277.240667,
+        -2364.499999
+      ],
+      "maximum_mm": [
+        58.987946,
+        302.394679,
+        -2329.387565
+      ],
+      "size_mm": [
+        1256.899109,
+        579.635345,
+        35.112434
+      ]
+    },
+    {
+      "item_id": 775,
+      "ifc_entity": "IfcPolygonalFaceSet",
+      "face_count": 224,
+      "semantic": "bottom_plinth_or_deck_layer",
+      "minimum_mm": [
+        -1200.911102,
+        -280.240636,
+        -2365.000093
+      ],
+      "maximum_mm": [
+        61.988495,
+        305.393672,
+        -2328.886108
+      ],
+      "size_mm": [
+        1262.899597,
+        585.634308,
+        36.113985
+      ]
+    },
+    {
+      "item_id": 1103,
+      "ifc_entity": "IfcPolygonalFaceSet",
+      "face_count": 716,
+      "semantic": "upper_clothes_rail",
+      "minimum_mm": [
+        -1198.68045,
+        2.190421,
+        -66.194824
+      ],
+      "maximum_mm": [
+        61.113678,
+        32.434277,
+        -35.951904
+      ],
+      "size_mm": [
+        1259.794128,
+        30.243856,
+        30.24292
+      ]
+    },
+    {
+      "item_id": 1407,
+      "ifc_entity": "IfcPolygonalFaceSet",
+      "face_count": 636,
+      "semantic": "upper_rail_end_bracket",
+      "minimum_mm": [
+        -1175.942901,
+        9.027512,
+        -45.836425
+      ],
+      "maximum_mm": [
+        -1138.536163,
+        25.604964,
+        0.014405
+      ],
+      "size_mm": [
+        37.406738,
+        16.577452,
+        45.85083
+      ]
+    },
+    {
+      "item_id": 1711,
+      "ifc_entity": "IfcPolygonalFaceSet",
+      "face_count": 636,
+      "semantic": "upper_rail_end_bracket",
+      "minimum_mm": [
+        0.971405,
+        9.028043,
+        -45.836425
+      ],
+      "maximum_mm": [
+        38.378144,
+        25.605738,
+        0.014405
+      ],
+      "size_mm": [
+        37.406738,
+        16.577695,
+        45.85083
+      ]
+    },
+    {
+      "item_id": 1857,
+      "ifc_entity": "IfcPolygonalFaceSet",
+      "face_count": 288,
+      "semantic": "upper_clothes_rail",
+      "minimum_mm": [
+        -1196.954864,
+        1.761713,
+        -66.627685
+      ],
+      "maximum_mm": [
+        58.839264,
+        32.87226,
+        -35.518798
+      ],
+      "size_mm": [
+        1255.794128,
+        31.110546,
+        31.108887
+      ]
+    },
+    {
+      "item_id": 2185,
+      "ifc_entity": "IfcPolygonalFaceSet",
+      "face_count": 716,
+      "semantic": "lower_clothes_rail",
+      "minimum_mm": [
+        -1198.68045,
+        2.188839,
+        -1402.705688
+      ],
+      "maximum_mm": [
+        61.113678,
+        32.434161,
+        -1372.463012
+      ],
+      "size_mm": [
+        1259.794128,
+        30.245321,
+        30.242676
+      ]
+    },
+    {
+      "item_id": 2489,
+      "ifc_entity": "IfcPolygonalFaceSet",
+      "face_count": 636,
+      "semantic": "lower_rail_end_bracket",
+      "minimum_mm": [
+        -1175.942901,
+        9.027395,
+        -1382.347412
+      ],
+      "maximum_mm": [
+        -1138.536163,
+        25.604847,
+        -1336.499999
+      ],
+      "size_mm": [
+        37.406738,
+        16.577452,
+        45.847412
+      ]
+    },
+    {
+      "item_id": 2793,
+      "ifc_entity": "IfcPolygonalFaceSet",
+      "face_count": 636,
+      "semantic": "lower_rail_end_bracket",
+      "minimum_mm": [
+        0.971405,
+        9.027927,
+        -1382.347412
+      ],
+      "maximum_mm": [
+        38.378144,
+        25.605622,
+        -1336.499999
+      ],
+      "size_mm": [
+        37.406738,
+        16.577695,
+        45.847412
+      ]
+    },
+    {
+      "item_id": 2939,
+      "ifc_entity": "IfcPolygonalFaceSet",
+      "face_count": 288,
+      "semantic": "lower_clothes_rail",
+      "minimum_mm": [
+        -1196.954864,
+        1.760133,
+        -1403.138671
+      ],
+      "maximum_mm": [
+        58.839264,
+        32.872145,
+        -1372.029663
+      ],
+      "size_mm": [
+        1255.794128,
+        31.112012,
+        31.109009
+      ]
+    },
+    {
+      "item_id": 3135,
+      "ifc_entity": "IfcPolygonalFaceSet",
+      "face_count": 388,
+      "semantic": "left_or_right_full_height_side_panel",
+      "minimum_mm": [
+        -1225.974029,
+        -280.23847,
+        -2364.750264
+      ],
+      "maximum_mm": [
+        -1200.973297,
+        305.395899,
+        24.500001
+      ],
+      "size_mm": [
+        25.000732,
+        585.634369,
+        2389.250265
+      ]
+    },
+    {
+      "item_id": 3191,
+      "ifc_entity": "IfcPolygonalFaceSet",
+      "face_count": 108,
+      "semantic": "upper_open_door_panel",
+      "minimum_mm": [
+        -1225.975433,
+        -239.989416,
+        -1312.98999
+      ],
+      "maximum_mm": [
+        -1219.496185,
+        264.122141,
+        -0.499999
+      ],
+      "size_mm": [
+        6.479248,
+        504.111557,
+        1312.48999
+      ]
+    },
+    {
+      "item_id": 3247,
+      "ifc_entity": "IfcPolygonalFaceSet",
+      "face_count": 108,
+      "semantic": "lower_open_door_panel",
+      "minimum_mm": [
+        -1225.974945,
+        -239.989507,
+        -2292.753044
+      ],
+      "maximum_mm": [
+        -1219.496185,
+        264.122401,
+        -1337.02246
+      ],
+      "size_mm": [
+        6.47876,
+        504.111908,
+        955.730583
+      ]
+    },
+    {
+      "item_id": 3303,
+      "ifc_entity": "IfcPolygonalFaceSet",
+      "face_count": 108,
+      "semantic": "upper_open_door_panel",
+      "minimum_mm": [
+        -1207.387298,
+        -239.989416,
+        -1312.98999
+      ],
+      "maximum_mm": [
+        -1200.907989,
+        264.122141,
+        -0.499999
+      ],
+      "size_mm": [
+        6.479309,
+        504.111557,
+        1312.48999
+      ]
+    },
+    {
+      "item_id": 3359,
+      "ifc_entity": "IfcPolygonalFaceSet",
+      "face_count": 108,
+      "semantic": "lower_open_door_panel",
+      "minimum_mm": [
+        -1207.386749,
+        -239.989477,
+        -2292.753044
+      ],
+      "maximum_mm": [
+        -1200.907989,
+        264.122431,
+        -1337.02246
+      ],
+      "size_mm": [
+        6.47876,
+        504.111908,
+        955.730583
+      ]
+    },
+    {
+      "item_id": 3555,
+      "ifc_entity": "IfcPolygonalFaceSet",
+      "face_count": 388,
+      "semantic": "left_or_right_full_height_side_panel",
+      "minimum_mm": [
+        61.986969,
+        -280.237951,
+        -2364.749946
+      ],
+      "maximum_mm": [
+        86.988068,
+        305.396418,
+        24.500001
+      ],
+      "size_mm": [
+        25.001099,
+        585.634369,
+        2389.249946
+      ]
+    }
+  ],
+  "views": {
+    "plan": {
+      "path_count": 5,
+      "paths": [
+        {
+          "id": "plan.outer_envelope",
+          "kind": "silhouette",
+          "sides": [
+            "wardrobe_body",
+            "exterior_void"
+          ],
+          "path_mm": [
+            [
+              -1225.975433,
+              -280.24262
+            ],
+            [
+              86.988068,
+              -280.24262
+            ],
+            [
+              86.988068,
+              305.396418
+            ],
+            [
+              -1225.975433,
+              305.396418
+            ],
+            [
+              -1225.975433,
+              -280.24262
+            ]
+          ]
+        },
+        {
+          "id": "plan.left_side_cap",
+          "kind": "component_boundary",
+          "sides": [
+            "left_side_panel_cap",
+            "top_deck/back/front_regions"
+          ],
+          "path_mm": [
+            [
+              -1200.899444,
+              -280.24262
+            ],
+            [
+              -1200.899444,
+              305.396418
+            ]
+          ]
+        },
+        {
+          "id": "plan.right_side_cap",
+          "kind": "component_boundary",
+          "sides": [
+            "right_side_panel_cap",
+            "top_deck/back/front_regions"
+          ],
+          "path_mm": [
+            [
+              61.988984,
+              -280.24262
+            ],
+            [
+              61.988984,
+              305.396418
+            ]
+          ]
+        },
+        {
+          "id": "plan.back_to_top_deck",
+          "kind": "depth_transition",
+          "sides": [
+            "back_panel_or_rear_gap",
+            "top_deck"
+          ],
+          "path_mm": [
+            [
+              -1200.899444,
+              -270.762426
+            ],
+            [
+              61.988984,
+              -270.762426
+            ]
+          ]
+        },
+        {
+          "id": "plan.top_deck_to_front_edge",
+          "kind": "component_boundary",
+          "sides": [
+            "top_deck",
+            "top_front_edge"
+          ],
+          "path_mm": [
+            [
+              -1200.899444,
+              302.394526
+            ],
+            [
+              61.988984,
+              302.394526
+            ]
+          ]
+        }
+      ],
+      "every_internal_line_has_two_different_semantics_or_real_occlusion": true,
+      "meaningless_coplanar_internal_lines": 0
+    },
+    "front": {
+      "path_count": 9,
+      "paths": [
+        {
+          "id": "front.outer_envelope",
+          "kind": "silhouette",
+          "sides": [
+            "wardrobe_body",
+            "exterior_void"
+          ],
+          "path_mm": [
+            [
+              -1225.975433,
+              -2365.000093
+            ],
+            [
+              86.988068,
+              -2365.000093
+            ],
+            [
+              86.988068,
+              24.500001
+            ],
+            [
+              -1225.975433,
+              24.500001
+            ],
+            [
+              -1225.975433,
+              -2365.000093
+            ]
+          ]
+        },
+        {
+          "id": "front.left_side_panel",
+          "kind": "component_boundary",
+          "sides": [
+            "left_side_panel",
+            "open_bays/shelves"
+          ],
+          "path_mm": [
+            [
+              -1200.899444,
+              -2365.000093
+            ],
+            [
+              -1200.899444,
+              24.500001
+            ]
+          ]
+        },
+        {
+          "id": "front.right_side_panel",
+          "kind": "component_boundary",
+          "sides": [
+            "right_side_panel",
+            "open_bays/shelves"
+          ],
+          "path_mm": [
+            [
+              61.988984,
+              -2365.000093
+            ],
+            [
+              61.988984,
+              24.500001
+            ]
+          ]
+        },
+        {
+          "id": "front.top_deck_lower_edge",
+          "kind": "occlusion_boundary",
+          "sides": [
+            "top_deck",
+            "upper_open_bay"
+          ],
+          "path_mm": [
+            [
+              -1200.899444,
+              0.006104
+            ],
+            [
+              61.988984,
+              0.006104
+            ]
+          ]
+        },
+        {
+          "id": "front.middle_shelf_upper_edge",
+          "kind": "occlusion_boundary",
+          "sides": [
+            "upper_open_bay",
+            "middle_shelf"
+          ],
+          "path_mm": [
+            [
+              -1200.899444,
+              -1312.926513
+            ],
+            [
+              61.988984,
+              -1312.926513
+            ]
+          ]
+        },
+        {
+          "id": "front.middle_shelf_lower_edge",
+          "kind": "occlusion_boundary",
+          "sides": [
+            "middle_shelf",
+            "lower_open_bay"
+          ],
+          "path_mm": [
+            [
+              -1200.899444,
+              -1336.927001
+            ],
+            [
+              61.988984,
+              -1336.927001
+            ]
+          ]
+        },
+        {
+          "id": "front.bottom_deck_upper_edge",
+          "kind": "occlusion_boundary",
+          "sides": [
+            "lower_open_bay",
+            "bottom_deck/plinth"
+          ],
+          "path_mm": [
+            [
+              -1200.899444,
+              -2292.751083
+            ],
+            [
+              61.988984,
+              -2292.751083
+            ]
+          ]
+        },
+        {
+          "id": "front.upper_clothes_rail",
+          "kind": "occluding_component_envelope",
+          "sides": [
+            "upper_clothes_rail",
+            "back_panel"
+          ],
+          "path_mm": [
+            [
+              -1198.68045,
+              -66.627685
+            ],
+            [
+              61.113678,
+              -66.627685
+            ],
+            [
+              61.113678,
+              -35.518798
+            ],
+            [
+              -1198.68045,
+              -35.518798
+            ],
+            [
+              -1198.68045,
+              -66.627685
+            ]
+          ]
+        },
+        {
+          "id": "front.lower_clothes_rail",
+          "kind": "occluding_component_envelope",
+          "sides": [
+            "lower_clothes_rail",
+            "back_panel"
+          ],
+          "path_mm": [
+            [
+              -1198.68045,
+              -1403.138671
+            ],
+            [
+              61.113678,
+              -1403.138671
+            ],
+            [
+              61.113678,
+              -1372.029663
+            ],
+            [
+              -1198.68045,
+              -1372.029663
+            ],
+            [
+              -1198.68045,
+              -1403.138671
+            ]
+          ]
+        }
+      ],
+      "every_internal_line_has_two_different_semantics_or_real_occlusion": true,
+      "meaningless_coplanar_internal_lines": 0
+    },
+    "side": {
+      "path_count": 3,
+      "paths": [
+        {
+          "id": "side.outer_side_panel",
+          "kind": "silhouette",
+          "sides": [
+            "left_side_panel",
+            "exterior_void"
+          ],
+          "path_mm": [
+            [
+              -280.24262,
+              -2365.000093
+            ],
+            [
+              305.396418,
+              -2365.000093
+            ],
+            [
+              305.396418,
+              24.500001
+            ],
+            [
+              -280.24262,
+              24.500001
+            ],
+            [
+              -280.24262,
+              -2365.000093
+            ]
+          ]
+        },
+        {
+          "id": "side.upper_open_door_panel",
+          "kind": "occluding_component_envelope",
+          "sides": [
+            "upper_open_door_panel",
+            "side_panel"
+          ],
+          "path_mm": [
+            [
+              -239.989416,
+              -1312.98999
+            ],
+            [
+              264.122141,
+              -1312.98999
+            ],
+            [
+              264.122141,
+              -0.499999
+            ],
+            [
+              -239.989416,
+              -0.499999
+            ],
+            [
+              -239.989416,
+              -1312.98999
+            ]
+          ]
+        },
+        {
+          "id": "side.lower_open_door_panel",
+          "kind": "occluding_component_envelope",
+          "sides": [
+            "lower_open_door_panel",
+            "side_panel"
+          ],
+          "path_mm": [
+            [
+              -239.989507,
+              -2292.753044
+            ],
+            [
+              264.122431,
+              -2292.753044
+            ],
+            [
+              264.122431,
+              -1337.02246
+            ],
+            [
+              -239.989507,
+              -1337.02246
+            ],
+            [
+              -239.989507,
+              -2292.753044
+            ]
+          ]
+        }
+      ],
+      "every_internal_line_has_two_different_semantics_or_real_occlusion": true,
+      "meaningless_coplanar_internal_lines": 0
+    }
+  },
+  "omissions": {
+    "rail_end_brackets": "below drawing-detail threshold; retained in grey actual-Body evidence but not promoted to black line",
+    "under_shelf_runners": "occluded by shelf/deck in the orthographic review directions; retained in semantic inventory"
+  },
+  "pass": true
+}

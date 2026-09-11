@@ -1,0 +1,230 @@
+{
+  "schema_version": 1,
+  "profile_key": "gessi316-54294",
+  "display_name": "Gessi316 54294",
+  "status": "complete",
+  "target_global_id": "2iKOL78$H0N9Yd9$ky3pW4",
+  "persistent_ifc": {
+    "path": "/Users/jiaxinchen/.codex/worktrees/3a80/2504 GBTB Yanlord Zhuhai/output/review/highpoly-types/gessi316-54294/product-package/GESSI54294-product.ifc",
+    "bytes": 8569720,
+    "sha256": "aa1af19b744f543e8b78dd63567bb9d1c1949080e7e99b1f6add515e6764295d"
+  },
+  "source_kind": "native_dwg_review_simplification",
+  "source_label_zh": "基于官方 Gessi 54294 原生 DWG 轮廓的去纹审核简化表达",
+  "scope": "Approved main bathroom de-textured Plan/Front/Side; zero annotation translation; Side finished-wall filter retained",
+  "source_dwg": {
+    "path": "/Users/jiaxinchen/.codex/worktrees/3a80/2504 GBTB Yanlord Zhuhai/output/review/highpoly-types/gessi316-54294/official-source/GPF5429400000G000_3.dwg",
+    "bytes": 639178,
+    "sha256": "dfe8bcf7e100c14187c387b75a35e3fe7f718c61595fadf66adfe92ca7648ff4"
+  },
+  "official_download_url": "https://gessistorage.blob.core.windows.net/zwa/GPF5429400000G000_arc.zip",
+  "source_access_record": {
+    "path": "/Users/jiaxinchen/.codex/worktrees/3a80/2504 GBTB Yanlord Zhuhai/output/review/highpoly-types/gessi316-54294/official-source/source-access-record.json",
+    "bytes": 7006,
+    "sha256": "ef860d728539d78f474f5d3b27b75012071a19697440ab245962f7dd090cf568"
+  },
+  "approval_record": {
+    "path": "/Users/jiaxinchen/.codex/worktrees/3a80/2504 GBTB Yanlord Zhuhai/pipeline/decisions/gessi316-54294-drawing-approval.json",
+    "bytes": 2730,
+    "sha256": "d8162000ae7fec45515a74488fbbd3adf848bb72b5bc325eaaa9b02cd805b3e5"
+  },
+  "geometry": {
+    "physical_products": 1,
+    "original_body_preserved": true,
+    "approved_views": [
+      "plan",
+      "front",
+      "side"
+    ],
+    "placement_matrix_project_units": [
+      [
+        0.0,
+        -1.0,
+        0.0,
+        -6470.0
+      ],
+      [
+        1.0,
+        0.0,
+        0.0,
+        840.0
+      ],
+      [
+        0.0,
+        0.0,
+        1.0,
+        692.0
+      ],
+      [
+        0.0,
+        0.0,
+        0.0,
+        1.0
+      ]
+    ],
+    "units_to_m": 0.001,
+    "annotations": 0,
+    "drawing_cameras": 0,
+    "spatial_geometry": 0
+  },
+  "scene_recipe": {
+    "path": "/Users/jiaxinchen/.codex/worktrees/3a80/2504 GBTB Yanlord Zhuhai/output/review/highpoly-types/gessi316-54294/product-package/scene-recipe.json",
+    "bytes": 146607,
+    "sha256": "b775454bf72d6f7ef1e991e0195e1424a82a6431f3cc49086d6ed190a555b729"
+  },
+  "scene_outputs": [
+    {
+      "view": "plan",
+      "max_linework_hausdorff_error_world_mm": 0.0004729838011684431,
+      "tolerance_mm": 0.01,
+      "svg": {
+        "path": "/Users/jiaxinchen/.codex/worktrees/3a80/2504 GBTB Yanlord Zhuhai/output/review/highpoly-types/gessi316-54294/product-package/GESSI54294-SCENE-PLAN.svg",
+        "bytes": 2064041,
+        "sha256": "072fe145a8e287b704278c19dd608fbe7698e32e9c8dbc93857e870edfe42e33"
+      },
+      "preview": {
+        "path": "/Users/jiaxinchen/.codex/worktrees/3a80/2504 GBTB Yanlord Zhuhai/output/review/highpoly-types/gessi316-54294/product-package/GESSI54294-SCENE-PLAN.png",
+        "bytes": 128481,
+        "sha256": "da2b5b19cfe09748abfae5c923232ac92822d7e75526b0617e96c9a8cb0d9428"
+      },
+      "single_product_thumbnail": {
+        "path": "/Users/jiaxinchen/.codex/worktrees/3a80/2504 GBTB Yanlord Zhuhai/output/review/highpoly-types/gessi316-54294/product-package/GESSI54294-SINGLE-PLAN.png",
+        "bytes": 8418,
+        "sha256": "36f32f025b8c0dc9983cb895c8be456d1ae05a46437a5a90a45777e3bfe9547b"
+      },
+      "single_product_svg": {
+        "path": "/Users/jiaxinchen/.codex/worktrees/3a80/2504 GBTB Yanlord Zhuhai/output/review/highpoly-types/gessi316-54294/product-package/GESSI54294-SINGLE-PLAN.svg",
+        "bytes": 469313,
+        "sha256": "16c1c40cc8c5ac8e3c76af04b78730fbf6c27dc58ef14d35713c3ee7d8e080e3"
+      },
+      "single_product_display_style": "Thumbnail-only 2px-equivalent strokes and round caps; source coordinates and all scene SVG styles unchanged"
+    },
+    {
+      "view": "front",
+      "max_linework_hausdorff_error_world_mm": 0.004783606034845143,
+      "tolerance_mm": 0.01,
+      "svg": {
+        "path": "/Users/jiaxinchen/.codex/worktrees/3a80/2504 GBTB Yanlord Zhuhai/output/review/highpoly-types/gessi316-54294/product-package/GESSI54294-SCENE-FRONT.svg",
+        "bytes": 4946007,
+        "sha256": "b8fa98828e8a36800cf3e8dc5c2d1dd442baa0d4bdafb1961ffdf1bacc195caf"
+      },
+      "preview": {
+        "path": "/Users/jiaxinchen/.codex/worktrees/3a80/2504 GBTB Yanlord Zhuhai/output/review/highpoly-types/gessi316-54294/product-package/GESSI54294-SCENE-FRONT.png",
+        "bytes": 32974,
+        "sha256": "8509cbaccbae46503f4fa895ac0395b2997b4f3d96c7668b5536100d4780685c"
+      },
+      "single_product_thumbnail": {
+        "path": "/Users/jiaxinchen/.codex/worktrees/3a80/2504 GBTB Yanlord Zhuhai/output/review/highpoly-types/gessi316-54294/product-package/GESSI54294-SINGLE-FRONT.png",
+        "bytes": 37023,
+        "sha256": "db1b69c66f118486a954a552fd859aafdafb83d6312d66bbd03e8107ee2e08fb"
+      },
+      "single_product_svg": {
+        "path": "/Users/jiaxinchen/.codex/worktrees/3a80/2504 GBTB Yanlord Zhuhai/output/review/highpoly-types/gessi316-54294/product-package/GESSI54294-SINGLE-FRONT.svg",
+        "bytes": 5350619,
+        "sha256": "cd1195349e95d1e8e1ff1d58f29e91fe069dfcc03c4ad8a0c8db2594a7b64855"
+      },
+      "single_product_display_style": "Thumbnail-only 2px-equivalent strokes and round caps; source coordinates and all scene SVG styles unchanged"
+    },
+    {
+      "view": "side",
+      "max_linework_hausdorff_error_world_mm": 0.0,
+      "tolerance_mm": 0.01,
+      "svg": {
+        "path": "/Users/jiaxinchen/.codex/worktrees/3a80/2504 GBTB Yanlord Zhuhai/output/review/highpoly-types/gessi316-54294/product-package/GESSI54294-SCENE-SIDE.svg",
+        "bytes": 661444,
+        "sha256": "fb33079ad35bb04c0e0dfc21d8293e6f00260c7c9ecb84158d314c0dce714dda"
+      },
+      "preview": {
+        "path": "/Users/jiaxinchen/.codex/worktrees/3a80/2504 GBTB Yanlord Zhuhai/output/review/highpoly-types/gessi316-54294/product-package/GESSI54294-SCENE-SIDE.png",
+        "bytes": 79951,
+        "sha256": "b41b6a162e3006edd54de5e78eb87baa70ffa2e36ba5095567466b09668c3439"
+      },
+      "single_product_thumbnail": {
+        "path": "/Users/jiaxinchen/.codex/worktrees/3a80/2504 GBTB Yanlord Zhuhai/output/review/highpoly-types/gessi316-54294/product-package/GESSI54294-SINGLE-SIDE.png",
+        "bytes": 15589,
+        "sha256": "04ae938c6569f4fa69de8b52b3115f2f4f8da19354e7d31f0f4a569e71cbd717"
+      },
+      "single_product_svg": {
+        "path": "/Users/jiaxinchen/.codex/worktrees/3a80/2504 GBTB Yanlord Zhuhai/output/review/highpoly-types/gessi316-54294/product-package/GESSI54294-SINGLE-SIDE.svg",
+        "bytes": 250305,
+        "sha256": "9b128e3b6368c0de209b9d64fe0ce2de3df4558685cec4ab022a4dade4ee1ac3"
+      },
+      "single_product_display_style": "Thumbnail-only 2px-equivalent strokes and round caps; source coordinates and all scene SVG styles unchanged"
+    }
+  ],
+  "external_style_dependencies": [
+    {
+      "location": "Materials.blend",
+      "source": {
+        "path": "/Users/jiaxinchen/.codex/worktrees/3a80/2504 GBTB Yanlord Zhuhai/Materials.blend",
+        "bytes": 5496522,
+        "sha256": "18a1e92531bc56c3938a16c64189bc61da83354529c22a9c4d63f0f05cfd69a2"
+      },
+      "packaged": {
+        "path": "/Users/jiaxinchen/.codex/worktrees/3a80/2504 GBTB Yanlord Zhuhai/output/review/highpoly-types/gessi316-54294/product-package/Materials.blend",
+        "bytes": 5496522,
+        "sha256": "18a1e92531bc56c3938a16c64189bc61da83354529c22a9c4d63f0f05cfd69a2"
+      },
+      "identifications": [
+        "materials/MetalBrassCast005_1K"
+      ]
+    }
+  ],
+  "validation": "validation.json",
+  "legacy_source_retained": true,
+  "formal_write_allowed": false,
+  "formal_sha256": "7a50b87e8f48a7c2bfbaa9f1dabdfca7155fa684b2325c66aa1ae15c8ab0a25c",
+  "known_limitations": [
+    "Blue linework is a de-textured simplification, not untouched official CAD; original DWG and its source record remain preserved."
+  ],
+  "single_product_views": {
+    "plan": {
+      "path": "/Users/jiaxinchen/.codex/worktrees/3a80/2504 GBTB Yanlord Zhuhai/output/review/highpoly-types/gessi316-54294/product-package/GESSI54294-SINGLE-PLAN.svg",
+      "bytes": 469313,
+      "sha256": "16c1c40cc8c5ac8e3c76af04b78730fbf6c27dc58ef14d35713c3ee7d8e080e3"
+    },
+    "front": {
+      "path": "/Users/jiaxinchen/.codex/worktrees/3a80/2504 GBTB Yanlord Zhuhai/output/review/highpoly-types/gessi316-54294/product-package/GESSI54294-SINGLE-FRONT.svg",
+      "bytes": 5350619,
+      "sha256": "cd1195349e95d1e8e1ff1d58f29e91fe069dfcc03c4ad8a0c8db2594a7b64855"
+    },
+    "side": {
+      "path": "/Users/jiaxinchen/.codex/worktrees/3a80/2504 GBTB Yanlord Zhuhai/output/review/highpoly-types/gessi316-54294/product-package/GESSI54294-SINGLE-SIDE.svg",
+      "bytes": 250305,
+      "sha256": "9b128e3b6368c0de209b9d64fe0ce2de3df4558685cec4ab022a4dade4ee1ac3"
+    }
+  },
+  "library_previews": {
+    "plan": {
+      "path": "/Users/jiaxinchen/.codex/worktrees/3a80/2504 GBTB Yanlord Zhuhai/output/review/highpoly-types/gessi316-54294/product-package/GESSI54294-SINGLE-PLAN.png",
+      "bytes": 8418,
+      "sha256": "36f32f025b8c0dc9983cb895c8be456d1ae05a46437a5a90a45777e3bfe9547b"
+    },
+    "front": {
+      "path": "/Users/jiaxinchen/.codex/worktrees/3a80/2504 GBTB Yanlord Zhuhai/output/review/highpoly-types/gessi316-54294/product-package/GESSI54294-SINGLE-FRONT.png",
+      "bytes": 37023,
+      "sha256": "db1b69c66f118486a954a552fd859aafdafb83d6312d66bbd03e8107ee2e08fb"
+    },
+    "side": {
+      "path": "/Users/jiaxinchen/.codex/worktrees/3a80/2504 GBTB Yanlord Zhuhai/output/review/highpoly-types/gessi316-54294/product-package/GESSI54294-SINGLE-SIDE.png",
+      "bytes": 15589,
+      "sha256": "04ae938c6569f4fa69de8b52b3115f2f4f8da19354e7d31f0f4a569e71cbd717"
+    },
+    "iso": {
+      "path": "/Users/jiaxinchen/.codex/worktrees/3a80/2504 GBTB Yanlord Zhuhai/output/review/highpoly-types/gessi316-54294/bonsai-camera-iso.png",
+      "bytes": 928559,
+      "sha256": "2e25e6cad2ebe81a8b403687e5cc650d5d13ecc09645e6920180d04731a6c324"
+    }
+  },
+  "preview_provenance": {
+    "2d": "Approved product lines isolated from regenerated real Bonsai scene SVGs; reframing plus thumbnail-only stroke width/round-cap adaptation. No geometry change; approved scene SVG styling unchanged.",
+    "3d": "Existing actual Body camera render; all original Body representations preserved unchanged."
+  },
+  "handle_texture_detail_path_count": 0,
+  "side_annotation_translation_mm": [
+    0,
+    0,
+    0
+  ],
+  "approved_finished_wall_residual_mm": 0.02276718446054815
+}

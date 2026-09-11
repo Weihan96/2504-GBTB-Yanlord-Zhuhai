@@ -1,0 +1,640 @@
+{
+  "profile_key": "wd03",
+  "status": "complete",
+  "verdict": "pass",
+  "visual_verification": {
+    "method": "independent SVG rasterization with Inkscape and direct image inspection",
+    "reviewed_views": ["plan", "front", "side"],
+    "observations": "Approved black wardrobe lines remain legible in grey project context. Plan, window-to-bed Front, and Side retain the approved placement and silhouette. No second Body is overlaid.",
+    "date": "2026-09-08"
+  },
+  "single_product": {
+    "path": "/Users/jiaxinchen/.codex/worktrees/3a80/2504 GBTB Yanlord Zhuhai/output/review/highpoly-types/wd03/product-package/WD03-product.ifc",
+    "bytes": 409673,
+    "sha256": "9d9d20db08717e9a926dac21c8bfeac7fffcbb721576e247ab0ded7b6ffb32c2"
+  },
+  "source_full_project": {
+    "path": "/Users/jiaxinchen/.codex/worktrees/3a80/2504 GBTB Yanlord Zhuhai/output/review/highpoly-types/wd03/Poliform-Senzafine-WD03-derived-drawing.ifc",
+    "bytes": 87400399,
+    "sha256": "4b43da2669561eee6fcdcf8ddeb967dce706e6a6ffc1b361ff85b29d6a32a67b"
+  },
+  "validation": {
+    "represented_physical_elements": 1,
+    "body_unchanged": true,
+    "all_representations_unchanged": true,
+    "placement_matrix": [
+      [
+        -1.0,
+        0.0,
+        0.0,
+        -4593.0
+      ],
+      [
+        0.0,
+        -1.0,
+        0.0,
+        528.0
+      ],
+      [
+        0.0,
+        0.0,
+        1.0,
+        2365.0
+      ],
+      [
+        0.0,
+        0.0,
+        0.0,
+        1.0
+      ]
+    ],
+    "placement_error_project_units": 0,
+    "rotation_error": 0,
+    "unit_scale_to_m": 0.001,
+    "properties_type_and_container_preserved": true,
+    "duplicate_global_ids": 0,
+    "styles_preserved": true,
+    "georeferencing_preserved": true,
+    "annotations": []
+  },
+  "schema_errors": 0,
+  "inherited_metadata_repairs": [
+    {
+      "entity": 7,
+      "attribute": "WorldCoordinateSystem",
+      "old": null,
+      "new": "explicit 2D identity origin",
+      "basis": "source Model WCS identity; approved SVG registration verified independently"
+    },
+    {
+      "entity": 27,
+      "attribute": "ApplicationDeveloper",
+      "old": null,
+      "new": "explicit unspecified placeholder; no invented author identity"
+    }
+  ],
+  "drawing_annotations": 0,
+  "scene_camera_objects": 0,
+  "represented_products": 1,
+  "protected_files": [
+    {
+      "path": "/Users/jiaxinchen/.codex/worktrees/3a80/2504 GBTB Yanlord Zhuhai/2504 GBTB Yanlord Zhuhai.ifc",
+      "bytes": 87322517,
+      "sha256": "7a50b87e8f48a7c2bfbaa9f1dabdfca7155fa684b2325c66aa1ae15c8ab0a25c"
+    },
+    {
+      "path": "/Users/jiaxinchen/.codex/worktrees/3a80/2504 GBTB Yanlord Zhuhai/output/review/highpoly-types/wd03/Poliform-Senzafine-WD03-derived-drawing.ifc",
+      "bytes": 87400399,
+      "sha256": "4b43da2669561eee6fcdcf8ddeb967dce706e6a6ffc1b361ff85b29d6a32a67b"
+    },
+    {
+      "path": "/Users/jiaxinchen/.codex/worktrees/3a80/2504 GBTB Yanlord Zhuhai/pipeline/decisions/wd03-drawing-approval.json",
+      "bytes": 3290,
+      "sha256": "1f86e4777ceae9cf1eff280c7e34c8dec77d033d9b946a913e8f3aaa78edf105"
+    },
+    {
+      "path": "/Users/jiaxinchen/.codex/worktrees/3a80/2504 GBTB Yanlord Zhuhai/output/review/highpoly-types/wd03/bonsai-drawings/wardrobe/WD03-WARDROBE-create-drawing-evidence.json",
+      "bytes": 10258,
+      "sha256": "9fc377e3489c6ae7ad80c4ea4fcdf33b661f514810843c6abcea426a723b7de5"
+    },
+    {
+      "path": "/Users/jiaxinchen/.codex/worktrees/3a80/2504 GBTB Yanlord Zhuhai/output/review/highpoly-types/wd03/bonsai-drawings/wardrobe/WD03-WARDROBE-PLAN.svg",
+      "bytes": 3177620,
+      "sha256": "5dc184e3c1615c53af34e9365189d30143222964f97400427e89786642f900c2"
+    },
+    {
+      "path": "/Users/jiaxinchen/.codex/worktrees/3a80/2504 GBTB Yanlord Zhuhai/output/review/highpoly-types/wd03/bonsai-drawings/wardrobe/WD03-WARDROBE-FRONT.svg",
+      "bytes": 1652592,
+      "sha256": "2c66404c2060fa8491ad48a3477fad72b337f7658c9c3408033841cf2d28609d"
+    },
+    {
+      "path": "/Users/jiaxinchen/.codex/worktrees/3a80/2504 GBTB Yanlord Zhuhai/output/review/highpoly-types/wd03/bonsai-drawings/wardrobe/WD03-WARDROBE-SIDE.svg",
+      "bytes": 624703,
+      "sha256": "5bec3cd11c5141af6ff2e79dbbd0234fea97b0ecddfe74d870060296600ecc7b"
+    },
+    {
+      "path": "/Users/jiaxinchen/.codex/worktrees/3a80/2504 GBTB Yanlord Zhuhai/output/review/highpoly-types/wd03/official-source/source-access-record.json",
+      "bytes": 3718,
+      "sha256": "70d0c8765cd6b45e4f984002f348cb3c3cff85ba360134b831c5ae8e58a798d9"
+    },
+    {
+      "path": "/Users/jiaxinchen/.codex/worktrees/3a80/2504 GBTB Yanlord Zhuhai/output/review/highpoly-types/wd03/official-source/official-product-page-evidence.json",
+      "bytes": 2968,
+      "sha256": "8000ecdac17af50902c3467fdac2023f47e45d7f60b1007ec5789c59074d0f81"
+    }
+  ],
+  "approved_views": [
+    {
+      "view": "plan",
+      "drawing_global_id": "3Wb1sCRBv7Fx7UscFO1GFT",
+      "annotation_global_id": "0ZEewP0OH1FAM8MZhKfgb4",
+      "path_count": 5,
+      "persisted_path_count": 5,
+      "camera": {
+        "type": "ORTHO",
+        "width_m": 5,
+        "height_m": 5,
+        "clip_end_m": 1.5,
+        "matrix_world": [
+          [
+            1,
+            0,
+            0,
+            -4.023506164550781
+          ],
+          [
+            0,
+            1,
+            0,
+            0.5154229998588562
+          ],
+          [
+            0,
+            0,
+            1,
+            1.2000000476837158
+          ],
+          [
+            0,
+            0,
+            0,
+            1
+          ]
+        ]
+      },
+      "create_drawing": {
+        "operator": "bpy.ops.bim.create_drawing",
+        "result": [
+          "FINISHED"
+        ]
+      },
+      "svg": {
+        "path": "/Users/jiaxinchen/.codex/worktrees/3a80/2504 GBTB Yanlord Zhuhai/output/review/highpoly-types/wd03/bonsai-drawings/wardrobe/WD03-WARDROBE-PLAN.svg",
+        "bytes": 3177620,
+        "sha256": "5dc184e3c1615c53af34e9365189d30143222964f97400427e89786642f900c2",
+        "root_tag": "svg",
+        "width": "200.0mm",
+        "height": "200.0mm",
+        "view_box": "0 0 200.0 200.0",
+        "geometry_element_count": 17757,
+        "projection_group_count": 75,
+        "semantic_black_geometry_count": 8,
+        "grey_context_geometry_count": 17749,
+        "representative_body_present": false,
+        "target_body_projection_count": 0,
+        "semantic_annotation_present": true,
+        "no_body_annotation_duplicate": true,
+        "bonsai_generated_sha256_before_review_style": "6f5d21bd6d7a24cc11239d9b9c9da72253e94ce6286f34dabf054b769d1f3a58",
+        "post_style_only": true
+      },
+      "linework_cache": {
+        "path": "/Users/jiaxinchen/.codex/worktrees/3a80/2504 GBTB Yanlord Zhuhai/output/review/highpoly-types/wd03/bonsai-drawings/wardrobe/cache/WD03-WARDROBE-PLAN-linework.svg",
+        "bytes": 1812299,
+        "sha256": "d9687a9b79ac7bf63cba020c50871e9d55fc67cdcd688d745b08ce2fd12428dd"
+      }
+    },
+    {
+      "view": "front",
+      "drawing_global_id": "1P1egc73v5kOpl_BXKYZ62",
+      "annotation_global_id": "2uAkszkbj8YBoncHNaFrYK",
+      "path_count": 9,
+      "persisted_path_count": 9,
+      "camera": {
+        "type": "ORTHO",
+        "width_m": 5,
+        "height_m": 3.6,
+        "clip_end_m": 5.2,
+        "matrix_world": [
+          [
+            -1,
+            0,
+            0,
+            -4.023506164550781
+          ],
+          [
+            0,
+            0,
+            1,
+            3.5250000953674316
+          ],
+          [
+            0,
+            1,
+            0,
+            1.2000000476837158
+          ],
+          [
+            0,
+            0,
+            0,
+            1
+          ]
+        ]
+      },
+      "create_drawing": {
+        "operator": "bpy.ops.bim.create_drawing",
+        "result": [
+          "FINISHED"
+        ]
+      },
+      "svg": {
+        "path": "/Users/jiaxinchen/.codex/worktrees/3a80/2504 GBTB Yanlord Zhuhai/output/review/highpoly-types/wd03/bonsai-drawings/wardrobe/WD03-WARDROBE-FRONT.svg",
+        "sha256": "2c66404c2060fa8491ad48a3477fad72b337f7658c9c3408033841cf2d28609d",
+        "bytes": 1652592,
+        "root_tag": "svg",
+        "width": "200.0mm",
+        "height": "143.94580863674852mm",
+        "view_box": "0 0 200.0 143.94580863674852",
+        "geometry_element_count": 8913,
+        "projection_group_count": 81,
+        "semantic_black_geometry_count": 18,
+        "grey_context_geometry_count": 8895,
+        "representative_body_present": false,
+        "target_body_projection_count": 0,
+        "semantic_annotation_present": true,
+        "no_body_annotation_duplicate": true,
+        "bonsai_generated_sha256_before_review_style": "80b56716910954257d082c7054ea05075080961e83dad9da783dea7d9c02fb1e",
+        "post_style_only": true
+      },
+      "linework_cache": {
+        "path": "/Users/jiaxinchen/.codex/worktrees/3a80/2504 GBTB Yanlord Zhuhai/output/review/highpoly-types/wd03/bonsai-drawings/wardrobe/cache/WD03-WARDROBE-FRONT-linework.svg",
+        "bytes": 903959,
+        "sha256": "760332b0526f9e1fcf184f63334b1c584cdd59363db3ee0c225b9817123157be"
+      }
+    },
+    {
+      "view": "side",
+      "drawing_global_id": "1_AiEzX4HCdRc9c1J$j3xM",
+      "annotation_global_id": "0lDNmWWdD5keJujVqNDHeg",
+      "path_count": 3,
+      "persisted_path_count": 3,
+      "camera": {
+        "type": "ORTHO",
+        "width_m": 5,
+        "height_m": 3.6,
+        "clip_end_m": 5.2,
+        "matrix_world": [
+          [
+            -4.371138828673793e-08,
+            4.371138828673793e-08,
+            1,
+            -1.473506212234497
+          ],
+          [
+            1,
+            1.910685676922942e-15,
+            4.371138828673793e-08,
+            0.5154229998588562
+          ],
+          [
+            0,
+            1,
+            -4.371138828673793e-08,
+            1.2000000476837158
+          ],
+          [
+            0,
+            0,
+            0,
+            1
+          ]
+        ]
+      },
+      "create_drawing": {
+        "operator": "bpy.ops.bim.create_drawing",
+        "result": [
+          "FINISHED"
+        ]
+      },
+      "svg": {
+        "path": "/Users/jiaxinchen/.codex/worktrees/3a80/2504 GBTB Yanlord Zhuhai/output/review/highpoly-types/wd03/bonsai-drawings/wardrobe/WD03-WARDROBE-SIDE.svg",
+        "bytes": 624703,
+        "sha256": "5bec3cd11c5141af6ff2e79dbbd0234fea97b0ecddfe74d870060296600ecc7b",
+        "root_tag": "svg",
+        "width": "200.0mm",
+        "height": "143.94580863674852mm",
+        "view_box": "0 0 200.0 143.94580863674852",
+        "geometry_element_count": 3112,
+        "projection_group_count": 41,
+        "semantic_black_geometry_count": 12,
+        "grey_context_geometry_count": 3100,
+        "representative_body_present": false,
+        "target_body_projection_count": 0,
+        "semantic_annotation_present": true,
+        "no_body_annotation_duplicate": true,
+        "bonsai_generated_sha256_before_review_style": "18e0c9351e178d71621974b9eb686118a8b4260cd12aa5ffeebb07104d817fde",
+        "post_style_only": true
+      },
+      "linework_cache": {
+        "path": "/Users/jiaxinchen/.codex/worktrees/3a80/2504 GBTB Yanlord Zhuhai/output/review/highpoly-types/wd03/bonsai-drawings/wardrobe/cache/WD03-WARDROBE-SIDE-linework.svg",
+        "bytes": 312816,
+        "sha256": "33cd3ca3dbc9b7ae725c3f3bc061e0ad44a29d33afd24d8d65d2cecb435368ba"
+      }
+    }
+  ],
+  "formal_sha256_before": "7a50b87e8f48a7c2bfbaa9f1dabdfca7155fa684b2325c66aa1ae15c8ab0a25c",
+  "formal_sha256_after": "7a50b87e8f48a7c2bfbaa9f1dabdfca7155fa684b2325c66aa1ae15c8ab0a25c",
+  "legacy_files_retained": true,
+  "formal_ifc_write_allowed": false,
+  "courseEvidence": {
+    "mode": "embedded-course-index",
+    "lesson": "085000",
+    "timestamps": [
+      "01:59",
+      "02:13",
+      "02:41"
+    ]
+  },
+  "bonsai_save_reload": {
+    "saved": true,
+    "output_path": "/Users/jiaxinchen/.codex/worktrees/3a80/2504 GBTB Yanlord Zhuhai/output/review/highpoly-types/wd03/product-package/WD03-product.ifc",
+    "in_place": false,
+    "method": "bonsai.bim.export_ifc.IfcExporter",
+    "reloaded": true
+  },
+  "provider": {
+    "version": [
+      1,
+      1,
+      0
+    ],
+    "path": "/Users/jiaxinchen/Library/Application Support/Blender/4.5/scripts/addons/bonsai_bridge.py",
+    "sha256": "5902c69c146aff5f53d627b6151fdc53725433a044b96c199f7720a3dbccbd75",
+    "blender": "4.5.3 LTS",
+    "ifcopenshell": "0.8.4",
+    "pid": 60851,
+    "port": 9883
+  },
+  "independent_pure_validation": {
+    "one_represented_product": true,
+    "drawing_or_camera_annotations": 0,
+    "scene_filter_properties": 0,
+    "three_view_path_counts": {
+      "Wd03Plan": 5,
+      "Wd03Front": 9,
+      "Wd03Side": 3
+    },
+    "schema_errors": 0,
+    "formal_and_approved_legacy_sources_unchanged": true
+  },
+  "pure_package_audit": {
+    "target_global_id": "3cmikd9MTB$egM5KQaNgUf",
+    "body_unchanged": true,
+    "body_representation_count": 2,
+    "placement_matrix_project_units": [
+      [
+        -1.0,
+        0.0,
+        0.0,
+        -4593.0
+      ],
+      [
+        0.0,
+        -1.0,
+        0.0,
+        528.0
+      ],
+      [
+        0.0,
+        0.0,
+        1.0,
+        2365.0
+      ],
+      [
+        0.0,
+        0.0,
+        0.0,
+        1.0
+      ]
+    ],
+    "views": {
+      "plan": {
+        "representation_identifier": "Wd03Plan",
+        "content_fingerprint": "0b03ea839069f5269ee22c9de6cf733c60ae75f3b4efb8ecb8ec7f3965d4c607",
+        "source_annotation_guid": "0ZEewP0OH1FAM8MZhKfgb4",
+        "scene_context_fingerprint": "06181ce9d72f5b79bc93ba3360e0eca28aece92aea804376617ada931caad99e"
+      },
+      "front": {
+        "representation_identifier": "Wd03Front",
+        "content_fingerprint": "7ffe06687fbab084b53bb493c2980f71cc64bcff207c77cc7dd9bc21581e3e9c",
+        "source_annotation_guid": "2uAkszkbj8YBoncHNaFrYK",
+        "scene_context_fingerprint": "811e0c4e9e4cdc4b5c157deafa151427d3c2b314222e6955ec7d994a15c4d786"
+      },
+      "side": {
+        "representation_identifier": "Wd03Side",
+        "content_fingerprint": "c8539bcb1da85850d9cd6a88ecd2405b8505cce25424938acf2125f7834ec811",
+        "source_annotation_guid": "0lDNmWWdD5keJujVqNDHeg",
+        "scene_context_fingerprint": "811e0c4e9e4cdc4b5c157deafa151427d3c2b314222e6955ec7d994a15c4d786"
+      }
+    },
+    "ifc_annotation_count": 0,
+    "ifc_group_count": 0,
+    "represented_products": 1,
+    "spatial_geometry_count": 0,
+    "scene_settings_in_ifc": false,
+    "inherited_schema_repairs": [
+      {
+        "entity": 7,
+        "attribute": "WorldCoordinateSystem",
+        "old": null,
+        "new": "explicit 2D identity origin",
+        "basis": "source Model WCS identity; approved SVG registration verified independently"
+      },
+      {
+        "entity": 27,
+        "attribute": "ApplicationDeveloper",
+        "old": null,
+        "new": "explicit unspecified placeholder; no invented author identity"
+      }
+    ]
+  },
+  "scene_recipe": {
+    "path": "/Users/jiaxinchen/.codex/worktrees/3a80/2504 GBTB Yanlord Zhuhai/output/review/highpoly-types/wd03/product-package/scene-recipe.json",
+    "bytes": 158447,
+    "sha256": "335244950d62926ea849707fdea9c8f8a2edc6a26ad8c35b6ead391093a70506"
+  },
+  "temporary_attempts": [
+    "/var/folders/rz/d8p6s4y50ws53rd150nm2s3r0000gn/T/wd03-pure-scene-i8zbxcta/scene.ifc",
+    "/var/folders/rz/d8p6s4y50ws53rd150nm2s3r0000gn/T/wd03-pure-scene-s43rgjhv/scene.ifc",
+    "/var/folders/rz/d8p6s4y50ws53rd150nm2s3r0000gn/T/wd03-pure-scene-qlquno11/scene.ifc"
+  ],
+  "attachment": {
+    "physical_element_count_before": 714,
+    "physical_element_count_after": 714,
+    "target_instances": 1,
+    "target_body_copied": false,
+    "target_body_unchanged": true,
+    "target_placement_error_project_units": 0,
+    "linework_geometry_source": "pure_product_ifc_representations"
+  },
+  "second_attachment_created_entities": 0,
+  "temporary_resources": [
+    {
+      "source": {
+        "path": "/Users/jiaxinchen/.codex/worktrees/3a80/2504 GBTB Yanlord Zhuhai/Materials.blend",
+        "bytes": 5496522,
+        "sha256": "18a1e92531bc56c3938a16c64189bc61da83354529c22a9c4d63f0f05cfd69a2"
+      },
+      "temporary": "/var/folders/rz/d8p6s4y50ws53rd150nm2s3r0000gn/T/wd03-pure-scene-qlquno11/Materials.blend"
+    },
+    {
+      "location": "OD_Textures/Materials.blend",
+      "status": "already_missing_at_formal_source"
+    }
+  ],
+  "temporary_save_reload": {
+    "saved": true,
+    "output_path": "/var/folders/rz/d8p6s4y50ws53rd150nm2s3r0000gn/T/wd03-pure-scene-qlquno11/scene.ifc",
+    "in_place": false,
+    "method": "bonsai.bim.export_ifc.IfcExporter",
+    "reloaded": true
+  },
+  "scene_reload_verified": true,
+  "all_formal_bodies_unchanged": true,
+  "runtime_input_dependencies": [
+    "/Users/jiaxinchen/.codex/worktrees/3a80/2504 GBTB Yanlord Zhuhai/output/review/highpoly-types/wd03/product-package/WD03-product.ifc",
+    "/Users/jiaxinchen/.codex/worktrees/3a80/2504 GBTB Yanlord Zhuhai/output/review/highpoly-types/wd03/product-package/scene-recipe.json",
+    "/Users/jiaxinchen/.codex/worktrees/3a80/2504 GBTB Yanlord Zhuhai/2504 GBTB Yanlord Zhuhai.ifc"
+  ],
+  "formal_sha256_after_scene": "7a50b87e8f48a7c2bfbaa9f1dabdfca7155fa684b2325c66aa1ae15c8ab0a25c",
+  "scene_adapter": {
+    "file": {
+      "path": "/Users/jiaxinchen/.codex/worktrees/3a80/2504 GBTB Yanlord Zhuhai/output/review/highpoly-types/wd03/product-package/migrate_wd03.py",
+      "bytes": 16150,
+      "sha256": "4b730af42348cf1c766acf85cbd46f7cbb23977a46b1eb4c96d9854f560a27fb"
+    },
+    "helper": {
+      "path": "/Users/jiaxinchen/.codex/worktrees/3a80/2504 GBTB Yanlord Zhuhai/pipeline/scripts/pure_product_package.py",
+      "bytes": 10761,
+      "sha256": "88e42f3921e1938e5c73b5e1a6aca28d5d76e44a4c2c40e63263326a0a68edd7"
+    }
+  },
+  "scene_outputs": [
+    {
+      "view": "plan",
+      "svg": {
+        "path": "/Users/jiaxinchen/.codex/worktrees/3a80/2504 GBTB Yanlord Zhuhai/output/review/highpoly-types/wd03/product-package/WD03-SCENE-PLAN.svg",
+        "bytes": 3193351,
+        "sha256": "c5881dae14a5a2c63868f2842e80f3ee5d015ff06d16f3c8eea9b65bc553d7d5"
+      },
+      "inspection": {
+        "root_tag": "svg",
+        "width": "200.0mm",
+        "height": "200.0mm",
+        "view_box": "0 0 200.0 200.0",
+        "geometry_element_count": 17769,
+        "projection_group_count": 75,
+        "semantic_black_geometry_count": 12,
+        "grey_context_geometry_count": 17757,
+        "representative_body_present": false,
+        "target_body_projection_count": 0,
+        "semantic_annotation_present": true,
+        "no_body_annotation_duplicate": true,
+        "bonsai_generated_sha256_before_review_style": "4eb1d3870e8b356d148a509ca3f8882603fb3b5293b98d92b2aa34ef3bb1a954",
+        "post_style_only": true
+      },
+      "generator": "bpy.ops.bim.create_drawing",
+      "annotation_global_id": "0ZEewP0OH1FAM8MZhKfgb4",
+      "drawing_global_id": "3Wb1sCRBv7Fx7UscFO1GFT"
+    },
+    {
+      "view": "front",
+      "svg": {
+        "path": "/Users/jiaxinchen/.codex/worktrees/3a80/2504 GBTB Yanlord Zhuhai/output/review/highpoly-types/wd03/product-package/WD03-SCENE-FRONT.svg",
+        "bytes": 1653986,
+        "sha256": "241b0d07fa6c7c3e8767b6efbbfa145eb95ea09c6807326127a097fbdbe30e21"
+      },
+      "inspection": {
+        "root_tag": "svg",
+        "width": "200.0mm",
+        "height": "143.94580863674852mm",
+        "view_box": "0 0 200.0 143.94580863674852",
+        "geometry_element_count": 8919,
+        "projection_group_count": 81,
+        "semantic_black_geometry_count": 24,
+        "grey_context_geometry_count": 8895,
+        "representative_body_present": false,
+        "target_body_projection_count": 0,
+        "semantic_annotation_present": true,
+        "no_body_annotation_duplicate": true,
+        "bonsai_generated_sha256_before_review_style": "13c3cf31127de8f1467b2e60f905a7de4e3394754f6fdc0d96547582796a5bea",
+        "post_style_only": true
+      },
+      "generator": "bpy.ops.bim.create_drawing",
+      "annotation_global_id": "2uAkszkbj8YBoncHNaFrYK",
+      "drawing_global_id": "1P1egc73v5kOpl_BXKYZ62"
+    },
+    {
+      "view": "side",
+      "svg": {
+        "path": "/Users/jiaxinchen/.codex/worktrees/3a80/2504 GBTB Yanlord Zhuhai/output/review/highpoly-types/wd03/product-package/WD03-SCENE-SIDE.svg",
+        "bytes": 647559,
+        "sha256": "ef85a09480defbf6835f2304c05f922e363c73e8c3a2a4312912198de0e0e40b"
+      },
+      "inspection": {
+        "root_tag": "svg",
+        "width": "200.0mm",
+        "height": "143.94580863674852mm",
+        "view_box": "0 0 200.0 143.94580863674852",
+        "geometry_element_count": 3143,
+        "projection_group_count": 41,
+        "semantic_black_geometry_count": 12,
+        "grey_context_geometry_count": 3131,
+        "representative_body_present": false,
+        "target_body_projection_count": 0,
+        "semantic_annotation_present": true,
+        "no_body_annotation_duplicate": true,
+        "bonsai_generated_sha256_before_review_style": "c38f76604499d3861a909f185971b6f4e8af0ed7a348d7be290ebb3796362b1a",
+        "post_style_only": true
+      },
+      "generator": "bpy.ops.bim.create_drawing",
+      "annotation_global_id": "0lDNmWWdD5keJujVqNDHeg",
+      "drawing_global_id": "1_AiEzX4HCdRc9c1J$j3xM"
+    }
+  ],
+  "approved_scene_comparison": [
+    {
+      "view": "plan",
+      "max_linework_hausdorff_error_world_mm": 0.0,
+      "svg": {
+        "path": "/Users/jiaxinchen/.codex/worktrees/3a80/2504 GBTB Yanlord Zhuhai/output/review/highpoly-types/wd03/product-package/WD03-SCENE-PLAN.svg",
+        "bytes": 3193351,
+        "sha256": "c5881dae14a5a2c63868f2842e80f3ee5d015ff06d16f3c8eea9b65bc553d7d5"
+      },
+      "png": {
+        "path": "/Users/jiaxinchen/.codex/worktrees/3a80/2504 GBTB Yanlord Zhuhai/output/review/highpoly-types/wd03/product-package/WD03-SCENE-PLAN.png",
+        "bytes": 134718,
+        "sha256": "ddeca5ee5ddd7127ac070afefc8d077346016631333b0c68f4f5cf280817e3df"
+      }
+    },
+    {
+      "view": "front",
+      "max_linework_hausdorff_error_world_mm": 0.0,
+      "svg": {
+        "path": "/Users/jiaxinchen/.codex/worktrees/3a80/2504 GBTB Yanlord Zhuhai/output/review/highpoly-types/wd03/product-package/WD03-SCENE-FRONT.svg",
+        "bytes": 1653986,
+        "sha256": "241b0d07fa6c7c3e8767b6efbbfa145eb95ea09c6807326127a097fbdbe30e21"
+      },
+      "png": {
+        "path": "/Users/jiaxinchen/.codex/worktrees/3a80/2504 GBTB Yanlord Zhuhai/output/review/highpoly-types/wd03/product-package/WD03-SCENE-FRONT.png",
+        "bytes": 65959,
+        "sha256": "69cb32f16e7dd80e66e56cd64627b2567ec5a3adbd3f012d00b1081aed775411"
+      }
+    },
+    {
+      "view": "side",
+      "max_linework_hausdorff_error_world_mm": 0.0,
+      "svg": {
+        "path": "/Users/jiaxinchen/.codex/worktrees/3a80/2504 GBTB Yanlord Zhuhai/output/review/highpoly-types/wd03/product-package/WD03-SCENE-SIDE.svg",
+        "bytes": 647559,
+        "sha256": "ef85a09480defbf6835f2304c05f922e363c73e8c3a2a4312912198de0e0e40b"
+      },
+      "png": {
+        "path": "/Users/jiaxinchen/.codex/worktrees/3a80/2504 GBTB Yanlord Zhuhai/output/review/highpoly-types/wd03/product-package/WD03-SCENE-SIDE.png",
+        "bytes": 59146,
+        "sha256": "623f0a24579e88ffcbe73f383c85100e9f191cc89380b638a42d619ac3b4f668"
+      }
+    }
+  ],
+  "formal_sha256_after_independent_validation": "7a50b87e8f48a7c2bfbaa9f1dabdfca7155fa684b2325c66aa1ae15c8ab0a25c"
+}

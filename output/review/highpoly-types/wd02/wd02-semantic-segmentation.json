@@ -1,0 +1,4670 @@
+{
+  "schema_version": 1,
+  "generator": "pipeline/scripts/wd02_semantic_review.py",
+  "representative_global_id": "3yuXF4PtnBHgIXDlmXFJ$7",
+  "source_kind": "geometry_derived_simplified_proxy",
+  "source_label_zh": "基于原始高模几何生成的简化图纸表达",
+  "isolated_ifc": "output/review/highpoly-types/wd02/Poliform-Senzafine-WD02-bonsai-isolated.ifc",
+  "isolated_ifc_sha256": "87d1ca3990fc4dd77d54ab709518445fd87bfbc5837a4b5b63762517baaef1d4",
+  "mesh_vertex_count": 2178,
+  "mesh_face_count": 4176,
+  "representation_item_count": 35,
+  "components": [
+    {
+      "item_id": 91,
+      "semantic": "bottom_plinth",
+      "minimum_mm": [
+        -1.0,
+        -0.000366,
+        -37.5
+      ],
+      "maximum_mm": [
+        549.0,
+        583.126648,
+        -12.5
+      ],
+      "size_mm": [
+        550.0,
+        583.127014,
+        25.0
+      ],
+      "triangle_count": 60
+    },
+    {
+      "item_id": 123,
+      "semantic": "bottom_deck",
+      "minimum_mm": [
+        -1.0,
+        -0.000244,
+        -12.5
+      ],
+      "maximum_mm": [
+        549.0,
+        565.126648,
+        12.5
+      ],
+      "size_mm": [
+        550.0,
+        565.126892,
+        25.0
+      ],
+      "triangle_count": 60
+    },
+    {
+      "item_id": 195,
+      "semantic": "top_deck",
+      "minimum_mm": [
+        -1.0,
+        17.999756,
+        2330.311279
+      ],
+      "maximum_mm": [
+        549.0,
+        565.126648,
+        2355.252685
+      ],
+      "size_mm": [
+        550.0,
+        547.126892,
+        24.941405999999915
+      ],
+      "triangle_count": 140
+    },
+    {
+      "item_id": 267,
+      "semantic": "upper_shelf",
+      "minimum_mm": [
+        -1.0,
+        17.999817,
+        1944.5
+      ],
+      "maximum_mm": [
+        549.0,
+        565.126648,
+        1969.442138
+      ],
+      "size_mm": [
+        550.0,
+        547.126831,
+        24.942138000000114
+      ],
+      "triangle_count": 140
+    },
+    {
+      "item_id": 275,
+      "semantic": "back_panel",
+      "minimum_mm": [
+        -1.0,
+        565.126648,
+        -12.5
+      ],
+      "maximum_mm": [
+        549.0,
+        583.126648,
+        2352.569091
+      ],
+      "size_mm": [
+        550.0,
+        18.0,
+        2365.069091
+      ],
+      "triangle_count": 12
+    },
+    {
+      "item_id": 291,
+      "semantic": "left_side_panel",
+      "minimum_mm": [
+        -26.0,
+        0.000183,
+        -37.5
+      ],
+      "maximum_mm": [
+        -1.0,
+        583.126648,
+        2352.567138
+      ],
+      "size_mm": [
+        25.0,
+        583.126465,
+        2390.067138
+      ],
+      "triangle_count": 28
+    },
+    {
+      "item_id": 307,
+      "semantic": "right_side_panel",
+      "minimum_mm": [
+        549.0,
+        0.000122,
+        -37.5
+      ],
+      "maximum_mm": [
+        574.0,
+        583.126648,
+        2352.568115
+      ],
+      "size_mm": [
+        25.0,
+        583.126526,
+        2390.068115
+      ],
+      "triangle_count": 28
+    },
+    {
+      "item_id": 581,
+      "semantic": "clothes_rail",
+      "minimum_mm": [
+        11.549866,
+        276.683472,
+        1864.534912
+      ],
+      "maximum_mm": [
+        535.334595,
+        301.683686,
+        1889.534912
+      ],
+      "size_mm": [
+        523.7847290000001,
+        25.000214000000028,
+        25.0
+      ],
+      "triangle_count": 512
+    },
+    {
+      "item_id": 693,
+      "semantic": "left_rail_bracket",
+      "minimum_mm": [
+        15.109741,
+        284.400086,
+        1888.583252
+      ],
+      "maximum_mm": [
+        45.109726,
+        293.967194,
+        1944.544677
+      ],
+      "size_mm": [
+        29.999985000000002,
+        9.567108000000019,
+        55.96142500000019
+      ],
+      "triangle_count": 220
+    },
+    {
+      "item_id": 805,
+      "semantic": "right_rail_bracket",
+      "minimum_mm": [
+        501.669037,
+        284.39975,
+        1888.583252
+      ],
+      "maximum_mm": [
+        531.669006,
+        293.966858,
+        1944.544677
+      ],
+      "size_mm": [
+        29.999968999999965,
+        9.567108000000019,
+        55.96142500000019
+      ],
+      "triangle_count": 220
+    },
+    {
+      "item_id": 855,
+      "semantic": "drawer_unit_top",
+      "minimum_mm": [
+        -0.426697,
+        63.056946,
+        767.366455
+      ],
+      "maximum_mm": [
+        549.146942,
+        565.126648,
+        787.366943
+      ],
+      "size_mm": [
+        549.573639,
+        502.06970200000006,
+        20.00048800000002
+      ],
+      "triangle_count": 96
+    },
+    {
+      "item_id": 901,
+      "semantic": "middle_drawer_front_frame",
+      "minimum_mm": [
+        15.245423,
+        37.495178,
+        487.623291
+      ],
+      "maximum_mm": [
+        529.349472,
+        62.108399,
+        637.760498
+      ],
+      "size_mm": [
+        514.104049,
+        24.613220999999996,
+        150.137207
+      ],
+      "triangle_count": 88
+    },
+    {
+      "item_id": 909,
+      "semantic": "middle_drawer_front_infill",
+      "minimum_mm": [
+        16.245667,
+        37.695191,
+        488.623291
+      ],
+      "maximum_mm": [
+        528.349182,
+        42.695191,
+        636.760986
+      ],
+      "size_mm": [
+        512.103515,
+        5.0,
+        148.137695
+      ],
+      "triangle_count": 12
+    },
+    {
+      "item_id": 1083,
+      "semantic": "middle_drawer_pull",
+      "minimum_mm": [
+        15.245545,
+        19.881592,
+        632.18872
+      ],
+      "maximum_mm": [
+        529.189072,
+        62.158386,
+        638.76831
+      ],
+      "size_mm": [
+        513.943527,
+        42.276793999999995,
+        6.579590000000053
+      ],
+      "triangle_count": 344
+    },
+    {
+      "item_id": 1163,
+      "semantic": "middle_drawer_bottom",
+      "minimum_mm": [
+        30.0,
+        62.10791,
+        489.644775
+      ],
+      "maximum_mm": [
+        519.078049,
+        516.640335,
+        507.644775
+      ],
+      "size_mm": [
+        489.07804899999996,
+        454.53242500000005,
+        18.0
+      ],
+      "triangle_count": 156
+    },
+    {
+      "item_id": 1209,
+      "semantic": "lower_drawer_front_frame",
+      "minimum_mm": [
+        15.245423,
+        37.495178,
+        334.478241
+      ],
+      "maximum_mm": [
+        529.349472,
+        62.108399,
+        484.615478
+      ],
+      "size_mm": [
+        514.104049,
+        24.613220999999996,
+        150.13723699999997
+      ],
+      "triangle_count": 88
+    },
+    {
+      "item_id": 1217,
+      "semantic": "lower_drawer_front_infill",
+      "minimum_mm": [
+        16.245667,
+        37.695191,
+        335.478241
+      ],
+      "maximum_mm": [
+        528.349182,
+        42.695191,
+        483.615478
+      ],
+      "size_mm": [
+        512.103515,
+        5.0,
+        148.13723699999997
+      ],
+      "triangle_count": 12
+    },
+    {
+      "item_id": 1391,
+      "semantic": "lower_drawer_pull",
+      "minimum_mm": [
+        15.245545,
+        19.881592,
+        479.043213
+      ],
+      "maximum_mm": [
+        529.189072,
+        62.158386,
+        485.623291
+      ],
+      "size_mm": [
+        513.943527,
+        42.276793999999995,
+        6.5800780000000145
+      ],
+      "triangle_count": 344
+    },
+    {
+      "item_id": 1471,
+      "semantic": "lower_drawer_bottom",
+      "minimum_mm": [
+        30.0,
+        62.10791,
+        336.5
+      ],
+      "maximum_mm": [
+        519.078049,
+        516.640343,
+        354.5
+      ],
+      "size_mm": [
+        489.07804899999996,
+        454.532433,
+        18.0
+      ],
+      "triangle_count": 156
+    },
+    {
+      "item_id": 1479,
+      "semantic": "drawer_top_inset",
+      "minimum_mm": [
+        0.573456,
+        64.037598,
+        781.278076
+      ],
+      "maximum_mm": [
+        547.647186,
+        564.126648,
+        786.278015
+      ],
+      "size_mm": [
+        547.0737300000001,
+        500.08905000000004,
+        4.999938999999927
+      ],
+      "triangle_count": 12
+    },
+    {
+      "item_id": 1559,
+      "semantic": "drawer_unit_right_side",
+      "minimum_mm": [
+        521.077637,
+        83.331818,
+        336.5
+      ],
+      "maximum_mm": [
+        549.078156,
+        564.437735,
+        778.613525
+      ],
+      "size_mm": [
+        28.000519000000054,
+        481.105917,
+        442.113525
+      ],
+      "triangle_count": 156
+    },
+    {
+      "item_id": 1639,
+      "semantic": "drawer_unit_left_side",
+      "minimum_mm": [
+        -0.437439,
+        83.332032,
+        337.759979
+      ],
+      "maximum_mm": [
+        27.562607,
+        564.43804,
+        778.614013
+      ],
+      "size_mm": [
+        28.000046,
+        481.106008,
+        440.854034
+      ],
+      "triangle_count": 156
+    },
+    {
+      "item_id": 1719,
+      "semantic": "drawer_unit_back",
+      "minimum_mm": [
+        27.562592,
+        546.437714,
+        337.760009
+      ],
+      "maximum_mm": [
+        521.078354,
+        564.438252,
+        778.479248
+      ],
+      "size_mm": [
+        493.515762,
+        18.000538000000006,
+        440.71923899999996
+      ],
+      "triangle_count": 156
+    },
+    {
+      "item_id": 1799,
+      "semantic": "drawer_right_front_edge",
+      "minimum_mm": [
+        521.077637,
+        63.195008,
+        336.5
+      ],
+      "maximum_mm": [
+        549.07785,
+        83.05481,
+        767.5
+      ],
+      "size_mm": [
+        28.00021300000003,
+        19.859802000000002,
+        431.0
+      ],
+      "triangle_count": 156
+    },
+    {
+      "item_id": 1879,
+      "semantic": "drawer_left_front_edge",
+      "minimum_mm": [
+        -0.437622,
+        63.195191,
+        337.759491
+      ],
+      "maximum_mm": [
+        27.562607,
+        83.055146,
+        767.5
+      ],
+      "size_mm": [
+        28.000229,
+        19.859954999999992,
+        429.740509
+      ],
+      "triangle_count": 156
+    },
+    {
+      "item_id": 1959,
+      "semantic": "upper_drawer_bottom",
+      "minimum_mm": [
+        30.0,
+        62.10791,
+        640.76831
+      ],
+      "maximum_mm": [
+        519.078354,
+        516.640328,
+        658.768249
+      ],
+      "size_mm": [
+        489.078354,
+        454.53241799999995,
+        17.999938999999927
+      ],
+      "triangle_count": 156
+    },
+    {
+      "item_id": 1979,
+      "semantic": "upper_drawer_front",
+      "minimum_mm": [
+        15.245667,
+        37.494995,
+        640.76831
+      ],
+      "maximum_mm": [
+        529.349655,
+        62.108704,
+        802.449951
+      ],
+      "size_mm": [
+        514.103988,
+        24.613709,
+        161.681641
+      ],
+      "triangle_count": 36
+    },
+    {
+      "item_id": 2006,
+      "semantic": "door_bottom_frame",
+      "minimum_mm": [
+        -6.66864,
+        -30.168579,
+        -12.326685
+      ],
+      "maximum_mm": [
+        553.397644,
+        -1.804748,
+        22.346649
+      ],
+      "size_mm": [
+        560.066284,
+        28.363831,
+        34.673334
+      ],
+      "triangle_count": 80
+    },
+    {
+      "item_id": 2031,
+      "semantic": "door_top_frame",
+      "minimum_mm": [
+        -6.668457,
+        -30.168701,
+        2317.357177
+      ],
+      "maximum_mm": [
+        553.397736,
+        -1.804809,
+        2352.030029
+      ],
+      "size_mm": [
+        560.066193,
+        28.363892,
+        34.67285200000015
+      ],
+      "triangle_count": 82
+    },
+    {
+      "item_id": 2039,
+      "semantic": "door_glass",
+      "minimum_mm": [
+        -11.365417,
+        -19.712646,
+        15.372043
+      ],
+      "maximum_mm": [
+        558.0,
+        -12.712097,
+        2324.01831
+      ],
+      "size_mm": [
+        569.365417,
+        7.0005489999999995,
+        2308.646267
+      ],
+      "triangle_count": 12
+    },
+    {
+      "item_id": 2058,
+      "semantic": "bottom_hinge",
+      "minimum_mm": [
+        548.203735,
+        -45.279358,
+        -12.4678
+      ],
+      "maximum_mm": [
+        572.033631,
+        -1.979553,
+        29.297096
+      ],
+      "size_mm": [
+        23.829895999999962,
+        43.299805,
+        41.764896
+      ],
+      "triangle_count": 72
+    },
+    {
+      "item_id": 2077,
+      "semantic": "top_hinge",
+      "minimum_mm": [
+        548.203735,
+        -45.279541,
+        2310.80249
+      ],
+      "maximum_mm": [
+        572.033631,
+        -1.979675,
+        2352.568115
+      ],
+      "size_mm": [
+        23.829895999999962,
+        43.299866,
+        41.765625
+      ],
+      "triangle_count": 78
+    },
+    {
+      "item_id": 2099,
+      "semantic": "door_right_frame",
+      "minimum_mm": [
+        548.397827,
+        -43.775329,
+        -12.326441
+      ],
+      "maximum_mm": [
+        570.489441,
+        -1.804748,
+        2352.030029
+      ],
+      "size_mm": [
+        22.09161400000005,
+        41.970580999999996,
+        2364.35647
+      ],
+      "triangle_count": 64
+    },
+    {
+      "item_id": 2121,
+      "semantic": "door_left_frame",
+      "minimum_mm": [
+        -23.759949,
+        -43.775268,
+        -12.326441
+      ],
+      "maximum_mm": [
+        -1.668518,
+        -1.804748,
+        2352.030029
+      ],
+      "size_mm": [
+        22.091431,
+        41.97051999999999,
+        2364.35647
+      ],
+      "triangle_count": 76
+    },
+    {
+      "item_id": 2129,
+      "semantic": "door_handle",
+      "minimum_mm": [
+        -11.159424,
+        -42.392883,
+        1056.727295
+      ],
+      "maximum_mm": [
+        -0.315735,
+        -37.926025,
+        1176.227295
+      ],
+      "size_mm": [
+        10.843689,
+        4.466857999999995,
+        119.5
+      ],
+      "triangle_count": 12
+    }
+  ],
+  "projection_method": "union of actual projected triangles per semantic component, front-to-back component occlusion, 0.3 mm topology-preserving simplification",
+  "coordinate_basis": "IFC product local XYZ in mm; no inferred translation or world-axis swapping",
+  "view_directions": {
+    "plan": "from local +Z looking -Z",
+    "front": "from local -Y looking +Y through glass door",
+    "side": "from local -X looking +X"
+  },
+  "visibility": {
+    "plan": [
+      {
+        "item_id": 195,
+        "semantic": "top_deck",
+        "projected_area_mm2": 300917.706755579,
+        "visible_area_mm2": 300917.706755579,
+        "occluded_area_mm2": 0.0,
+        "transparent": false
+      },
+      {
+        "item_id": 275,
+        "semantic": "back_panel",
+        "projected_area_mm2": 9900.0,
+        "visible_area_mm2": 9900.0,
+        "occluded_area_mm2": 0.0,
+        "transparent": false
+      },
+      {
+        "item_id": 307,
+        "semantic": "right_side_panel",
+        "projected_area_mm2": 14576.162296,
+        "visible_area_mm2": 14576.162296,
+        "occluded_area_mm2": 0.0,
+        "transparent": false
+      },
+      {
+        "item_id": 2077,
+        "semantic": "top_hinge",
+        "projected_area_mm2": 340.88580340720347,
+        "visible_area_mm2": 340.8858034072034,
+        "occluded_area_mm2": 5.684341886080802e-14,
+        "transparent": false
+      },
+      {
+        "item_id": 291,
+        "semantic": "left_side_panel",
+        "projected_area_mm2": 14576.160771,
+        "visible_area_mm2": 14576.160771,
+        "occluded_area_mm2": 0.0,
+        "transparent": false
+      },
+      {
+        "item_id": 2031,
+        "semantic": "door_top_frame",
+        "projected_area_mm2": 15734.055566981324,
+        "visible_area_mm2": 15734.055566981322,
+        "occluded_area_mm2": 1.8189894035458565e-12,
+        "transparent": false
+      },
+      {
+        "item_id": 2099,
+        "semantic": "door_right_frame",
+        "projected_area_mm2": 666.0306673124784,
+        "visible_area_mm2": 487.2845066214067,
+        "occluded_area_mm2": 178.74616069107168,
+        "transparent": false
+      },
+      {
+        "item_id": 2121,
+        "semantic": "door_left_frame",
+        "projected_area_mm2": 664.904922084532,
+        "visible_area_mm2": 663.4095549082008,
+        "occluded_area_mm2": 1.4953671763312286,
+        "transparent": false
+      },
+      {
+        "item_id": 2039,
+        "semantic": "door_glass",
+        "projected_area_mm2": 3985.853134968714,
+        "visible_area_mm2": 102.58505486097826,
+        "occluded_area_mm2": 3883.268080107736,
+        "transparent": false
+      },
+      {
+        "item_id": 267,
+        "semantic": "upper_shelf",
+        "projected_area_mm2": 300917.6899805893,
+        "visible_area_mm2": 0.0,
+        "occluded_area_mm2": 300917.6899805893,
+        "transparent": false
+      },
+      {
+        "item_id": 693,
+        "semantic": "left_rail_bracket",
+        "projected_area_mm2": 283.0900889883565,
+        "visible_area_mm2": 0.0,
+        "occluded_area_mm2": 283.0900889883565,
+        "transparent": false
+      },
+      {
+        "item_id": 805,
+        "semantic": "right_rail_bracket",
+        "projected_area_mm2": 283.0898850068903,
+        "visible_area_mm2": 0.0,
+        "occluded_area_mm2": 283.0898850068903,
+        "transparent": false
+      },
+      {
+        "item_id": 581,
+        "semantic": "clothes_rail",
+        "projected_area_mm2": 13092.155223227557,
+        "visible_area_mm2": 0.0,
+        "occluded_area_mm2": 13092.155223227557,
+        "transparent": false
+      },
+      {
+        "item_id": 2129,
+        "semantic": "door_handle",
+        "projected_area_mm2": 47.01956382333094,
+        "visible_area_mm2": 47.01956382333094,
+        "occluded_area_mm2": 0.0,
+        "transparent": false
+      },
+      {
+        "item_id": 1979,
+        "semantic": "upper_drawer_front",
+        "projected_area_mm2": 12652.757313955764,
+        "visible_area_mm2": 0.0,
+        "occluded_area_mm2": 12652.757313955764,
+        "transparent": false
+      },
+      {
+        "item_id": 855,
+        "semantic": "drawer_unit_top",
+        "projected_area_mm2": 40465.83074570249,
+        "visible_area_mm2": 0.5909831374209031,
+        "occluded_area_mm2": 40465.23976256507,
+        "transparent": false
+      },
+      {
+        "item_id": 1479,
+        "semantic": "drawer_top_inset",
+        "projected_area_mm2": 273585.3034039835,
+        "visible_area_mm2": 0.0,
+        "occluded_area_mm2": 273585.3034039835,
+        "transparent": false
+      },
+      {
+        "item_id": 1639,
+        "semantic": "drawer_unit_left_side",
+        "projected_area_mm2": 13467.976131681009,
+        "visible_area_mm2": 0.0,
+        "occluded_area_mm2": 13467.976131681009,
+        "transparent": false
+      },
+      {
+        "item_id": 1559,
+        "semantic": "drawer_unit_right_side",
+        "projected_area_mm2": 13468.020289361997,
+        "visible_area_mm2": 0.0,
+        "occluded_area_mm2": 13468.020289361997,
+        "transparent": false
+      },
+      {
+        "item_id": 1719,
+        "semantic": "drawer_unit_back",
+        "projected_area_mm2": 8880.342250280257,
+        "visible_area_mm2": 0.0,
+        "occluded_area_mm2": 8880.342250280257,
+        "transparent": false
+      },
+      {
+        "item_id": 1799,
+        "semantic": "drawer_right_front_edge",
+        "projected_area_mm2": 553.0750454689195,
+        "visible_area_mm2": 0.0,
+        "occluded_area_mm2": 553.0750454689195,
+        "transparent": false
+      },
+      {
+        "item_id": 1879,
+        "semantic": "drawer_left_front_edge",
+        "projected_area_mm2": 553.0779039030509,
+        "visible_area_mm2": 0.0,
+        "occluded_area_mm2": 553.0779039030509,
+        "transparent": false
+      },
+      {
+        "item_id": 1959,
+        "semantic": "upper_drawer_bottom",
+        "projected_area_mm2": 222300.3348838127,
+        "visible_area_mm2": 0.0,
+        "occluded_area_mm2": 222300.3348838127,
+        "transparent": false
+      },
+      {
+        "item_id": 1083,
+        "semantic": "middle_drawer_pull",
+        "projected_area_mm2": 21727.414085415418,
+        "visible_area_mm2": 0.0,
+        "occluded_area_mm2": 21727.414085415418,
+        "transparent": false
+      },
+      {
+        "item_id": 901,
+        "semantic": "middle_drawer_front_frame",
+        "projected_area_mm2": 12650.787435752112,
+        "visible_area_mm2": 0.0,
+        "occluded_area_mm2": 12650.787435752112,
+        "transparent": false
+      },
+      {
+        "item_id": 909,
+        "semantic": "middle_drawer_front_infill",
+        "projected_area_mm2": 2560.517575,
+        "visible_area_mm2": 0.0,
+        "occluded_area_mm2": 2560.517575,
+        "transparent": false
+      },
+      {
+        "item_id": 1163,
+        "semantic": "middle_drawer_bottom",
+        "projected_area_mm2": 222300.22784383481,
+        "visible_area_mm2": 0.0,
+        "occluded_area_mm2": 222300.22784383481,
+        "transparent": false
+      },
+      {
+        "item_id": 1391,
+        "semantic": "lower_drawer_pull",
+        "projected_area_mm2": 21727.414085415418,
+        "visible_area_mm2": 0.0,
+        "occluded_area_mm2": 21727.414085415418,
+        "transparent": false
+      },
+      {
+        "item_id": 1209,
+        "semantic": "lower_drawer_front_frame",
+        "projected_area_mm2": 12650.787435752112,
+        "visible_area_mm2": 0.0,
+        "occluded_area_mm2": 12650.787435752112,
+        "transparent": false
+      },
+      {
+        "item_id": 1217,
+        "semantic": "lower_drawer_front_infill",
+        "projected_area_mm2": 2560.517575,
+        "visible_area_mm2": 0.0,
+        "occluded_area_mm2": 2560.517575,
+        "transparent": false
+      },
+      {
+        "item_id": 1471,
+        "semantic": "lower_drawer_bottom",
+        "projected_area_mm2": 222300.23151202523,
+        "visible_area_mm2": 0.0,
+        "occluded_area_mm2": 222300.23151202523,
+        "transparent": false
+      },
+      {
+        "item_id": 2058,
+        "semantic": "bottom_hinge",
+        "projected_area_mm2": 340.8854619345112,
+        "visible_area_mm2": 0.0017501512750058793,
+        "occluded_area_mm2": 340.8837117832362,
+        "transparent": false
+      },
+      {
+        "item_id": 2006,
+        "semantic": "door_bottom_frame",
+        "projected_area_mm2": 15734.080141175646,
+        "visible_area_mm2": 0.07400773513820663,
+        "occluded_area_mm2": 15734.006133440507,
+        "transparent": false
+      },
+      {
+        "item_id": 123,
+        "semantic": "bottom_deck",
+        "projected_area_mm2": 310817.7235000001,
+        "visible_area_mm2": 9900.016744421006,
+        "occluded_area_mm2": 300917.7067555791,
+        "transparent": false
+      },
+      {
+        "item_id": 91,
+        "semantic": "bottom_plinth",
+        "projected_area_mm2": 320717.7906,
+        "visible_area_mm2": 0.4761168625792529,
+        "occluded_area_mm2": 320717.31448313745,
+        "transparent": false
+      }
+    ],
+    "front": [
+      {
+        "item_id": 2077,
+        "semantic": "top_hinge",
+        "projected_area_mm2": 734.2322611386259,
+        "visible_area_mm2": 734.2322611386259,
+        "occluded_area_mm2": 0.0,
+        "transparent": false
+      },
+      {
+        "item_id": 2058,
+        "semantic": "bottom_hinge",
+        "projected_area_mm2": 734.2149004168613,
+        "visible_area_mm2": 734.2149004168613,
+        "occluded_area_mm2": 0.0,
+        "transparent": false
+      },
+      {
+        "item_id": 2099,
+        "semantic": "door_right_frame",
+        "projected_area_mm2": 52217.186069223375,
+        "visible_area_mm2": 50890.71999891393,
+        "occluded_area_mm2": 1326.4660703094414,
+        "transparent": false
+      },
+      {
+        "item_id": 2121,
+        "semantic": "door_left_frame",
+        "projected_area_mm2": 52216.820364614156,
+        "visible_area_mm2": 52216.82036461416,
+        "occluded_area_mm2": -7.275957614183426e-12,
+        "transparent": false
+      },
+      {
+        "item_id": 2129,
+        "semantic": "door_handle",
+        "projected_area_mm2": 1271.4534931874998,
+        "visible_area_mm2": 150.22616643324787,
+        "occluded_area_mm2": 1121.2273267542519,
+        "transparent": false
+      },
+      {
+        "item_id": 2031,
+        "semantic": "door_top_frame",
+        "projected_area_mm2": 19390.360169310155,
+        "visible_area_mm2": 19075.54296211428,
+        "occluded_area_mm2": 314.8172071958761,
+        "transparent": false
+      },
+      {
+        "item_id": 2006,
+        "semantic": "door_bottom_frame",
+        "projected_area_mm2": 19390.56378864291,
+        "visible_area_mm2": 19077.17907275576,
+        "occluded_area_mm2": 313.3847158871504,
+        "transparent": false
+      },
+      {
+        "item_id": 2039,
+        "semantic": "door_glass",
+        "projected_area_mm2": 1314463.3445159483,
+        "visible_area_mm2": 1262257.891599,
+        "occluded_area_mm2": 52205.45291694836,
+        "transparent": true
+      },
+      {
+        "item_id": 91,
+        "semantic": "bottom_plinth",
+        "projected_area_mm2": 13748.0,
+        "visible_area_mm2": 13748.0,
+        "occluded_area_mm2": 0.0,
+        "transparent": false
+      },
+      {
+        "item_id": 123,
+        "semantic": "bottom_deck",
+        "projected_area_mm2": 13748.0,
+        "visible_area_mm2": 95.00665808922531,
+        "occluded_area_mm2": 13652.993341910775,
+        "transparent": false
+      },
+      {
+        "item_id": 307,
+        "semantic": "right_side_panel",
+        "projected_area_mm2": 59749.702631,
+        "visible_area_mm2": 8813.89561037563,
+        "occluded_area_mm2": 50935.80702062437,
+        "transparent": false
+      },
+      {
+        "item_id": 291,
+        "semantic": "left_side_panel",
+        "projected_area_mm2": 59749.67844999999,
+        "visible_area_mm2": 7399.59128491337,
+        "occluded_area_mm2": 52350.087165086625,
+        "transparent": false
+      },
+      {
+        "item_id": 195,
+        "semantic": "top_deck",
+        "projected_area_mm2": 13714.632172708625,
+        "visible_area_mm2": 1770.8396244231435,
+        "occluded_area_mm2": 11943.79254828548,
+        "transparent": false
+      },
+      {
+        "item_id": 267,
+        "semantic": "upper_shelf",
+        "projected_area_mm2": 13715.638825505835,
+        "visible_area_mm2": 13701.461025772276,
+        "occluded_area_mm2": 14.177799733559368,
+        "transparent": false
+      },
+      {
+        "item_id": 1083,
+        "semantic": "middle_drawer_pull",
+        "projected_area_mm2": 3381.3112178139572,
+        "visible_area_mm2": 3381.3112178139572,
+        "occluded_area_mm2": 0.0,
+        "transparent": false
+      },
+      {
+        "item_id": 1391,
+        "semantic": "lower_drawer_pull",
+        "projected_area_mm2": 3381.5627159758124,
+        "visible_area_mm2": 3381.5627159758124,
+        "occluded_area_mm2": 0.0,
+        "transparent": false
+      },
+      {
+        "item_id": 1979,
+        "semantic": "upper_drawer_front",
+        "projected_area_mm2": 83121.17149319427,
+        "visible_area_mm2": 83121.17149319426,
+        "occluded_area_mm2": 1.4551915228366852e-11,
+        "transparent": false
+      },
+      {
+        "item_id": 901,
+        "semantic": "middle_drawer_front_frame",
+        "projected_area_mm2": 25411.35414819444,
+        "visible_area_mm2": 22547.888147713427,
+        "occluded_area_mm2": 2863.466000481014,
+        "transparent": false
+      },
+      {
+        "item_id": 1209,
+        "semantic": "lower_drawer_front_frame",
+        "projected_area_mm2": 25411.25486828082,
+        "visible_area_mm2": 22547.53857730217,
+        "occluded_area_mm2": 2863.7162909786493,
+        "transparent": false
+      },
+      {
+        "item_id": 909,
+        "semantic": "middle_drawer_front_infill",
+        "projected_area_mm2": 75861.83431349794,
+        "visible_area_mm2": 51774.773559317444,
+        "occluded_area_mm2": 24087.060754180493,
+        "transparent": false
+      },
+      {
+        "item_id": 1217,
+        "semantic": "lower_drawer_front_infill",
+        "projected_area_mm2": 75861.59977008804,
+        "visible_area_mm2": 51774.88826234885,
+        "occluded_area_mm2": 24086.711507739186,
+        "transparent": false
+      },
+      {
+        "item_id": 1163,
+        "semantic": "middle_drawer_bottom",
+        "projected_area_mm2": 8800.406370499999,
+        "visible_area_mm2": 0.0,
+        "occluded_area_mm2": 8800.406370499999,
+        "transparent": false
+      },
+      {
+        "item_id": 1471,
+        "semantic": "lower_drawer_bottom",
+        "projected_area_mm2": 8800.4063705,
+        "visible_area_mm2": 0.0,
+        "occluded_area_mm2": 8800.4063705,
+        "transparent": false
+      },
+      {
+        "item_id": 1959,
+        "semantic": "upper_drawer_bottom",
+        "projected_area_mm2": 8800.382125697557,
+        "visible_area_mm2": 0.0,
+        "occluded_area_mm2": 8800.382125697557,
+        "transparent": false
+      },
+      {
+        "item_id": 855,
+        "semantic": "drawer_unit_top",
+        "projected_area_mm2": 10991.004806001223,
+        "visible_area_mm2": 694.0608396580835,
+        "occluded_area_mm2": 10296.94396634314,
+        "transparent": false
+      },
+      {
+        "item_id": 1799,
+        "semantic": "drawer_right_front_edge",
+        "projected_area_mm2": 12065.052002514904,
+        "visible_area_mm2": 8240.385016542004,
+        "occluded_area_mm2": 3824.666985972899,
+        "transparent": false
+      },
+      {
+        "item_id": 1879,
+        "semantic": "drawer_left_front_edge",
+        "projected_area_mm2": 12029.730945881007,
+        "visible_area_mm2": 6785.667916300078,
+        "occluded_area_mm2": 5244.063029580929,
+        "transparent": false
+      },
+      {
+        "item_id": 1479,
+        "semantic": "drawer_top_inset",
+        "projected_area_mm2": 2735.3352785024304,
+        "visible_area_mm2": 0.0,
+        "occluded_area_mm2": 2735.3352785024304,
+        "transparent": false
+      },
+      {
+        "item_id": 1559,
+        "semantic": "drawer_unit_right_side",
+        "projected_area_mm2": 12376.360763599432,
+        "visible_area_mm2": 0.1403964490910849,
+        "occluded_area_mm2": 12376.220367150341,
+        "transparent": false
+      },
+      {
+        "item_id": 1639,
+        "semantic": "drawer_unit_left_side",
+        "projected_area_mm2": 12340.91410216007,
+        "visible_area_mm2": 0.6331639207524915,
+        "occluded_area_mm2": 12340.280938239317,
+        "transparent": false
+      },
+      {
+        "item_id": 581,
+        "semantic": "clothes_rail",
+        "projected_area_mm2": 13092.155442501897,
+        "visible_area_mm2": 13092.155442501897,
+        "occluded_area_mm2": 0.0,
+        "transparent": false
+      },
+      {
+        "item_id": 805,
+        "semantic": "right_rail_bracket",
+        "projected_area_mm2": 1678.450888900462,
+        "visible_area_mm2": 1648.9509360822676,
+        "occluded_area_mm2": 29.499952818194288,
+        "transparent": false
+      },
+      {
+        "item_id": 693,
+        "semantic": "left_rail_bracket",
+        "projected_area_mm2": 1678.4517923785859,
+        "visible_area_mm2": 1648.9518155236779,
+        "occluded_area_mm2": 29.499976854908027,
+        "transparent": false
+      },
+      {
+        "item_id": 1719,
+        "semantic": "drawer_unit_back",
+        "projected_area_mm2": 217500.28533416748,
+        "visible_area_mm2": 1974.0594943192846,
+        "occluded_area_mm2": 215526.2258398482,
+        "transparent": false
+      },
+      {
+        "item_id": 275,
+        "semantic": "back_panel",
+        "projected_area_mm2": 1300787.462975,
+        "visible_area_mm2": 974488.1170795702,
+        "occluded_area_mm2": 326299.34589542984,
+        "transparent": false
+      }
+    ],
+    "side": [
+      {
+        "item_id": 291,
+        "semantic": "left_side_panel",
+        "projected_area_mm2": 1393711.3283975597,
+        "visible_area_mm2": 1393711.3283975597,
+        "occluded_area_mm2": 0.0,
+        "transparent": false
+      },
+      {
+        "item_id": 2121,
+        "semantic": "door_left_frame",
+        "projected_area_mm2": 99207.37672761777,
+        "visible_area_mm2": 99207.37672761777,
+        "occluded_area_mm2": 0.0,
+        "transparent": false
+      },
+      {
+        "item_id": 2039,
+        "semantic": "door_glass",
+        "projected_area_mm2": 16160.594282711143,
+        "visible_area_mm2": 0.0,
+        "occluded_area_mm2": 16160.594282711143,
+        "transparent": false
+      },
+      {
+        "item_id": 2129,
+        "semantic": "door_handle",
+        "projected_area_mm2": 533.3531849374993,
+        "visible_area_mm2": 0.0,
+        "occluded_area_mm2": 533.3531849374993,
+        "transparent": false
+      },
+      {
+        "item_id": 2006,
+        "semantic": "door_bottom_frame",
+        "projected_area_mm2": 926.9661704297894,
+        "visible_area_mm2": 1.7400709355697142,
+        "occluded_area_mm2": 925.2260994942196,
+        "transparent": false
+      },
+      {
+        "item_id": 2031,
+        "semantic": "door_top_frame",
+        "projected_area_mm2": 931.3796448906327,
+        "visible_area_mm2": 1.743975655370637,
+        "occluded_area_mm2": 929.6356692352621,
+        "transparent": false
+      },
+      {
+        "item_id": 91,
+        "semantic": "bottom_plinth",
+        "projected_area_mm2": 14576.17535,
+        "visible_area_mm2": 0.014023034050987912,
+        "occluded_area_mm2": 14576.161326965948,
+        "transparent": false
+      },
+      {
+        "item_id": 123,
+        "semantic": "bottom_deck",
+        "projected_area_mm2": 14126.1723,
+        "visible_area_mm2": 0.011202224230931106,
+        "occluded_area_mm2": 14126.16109777577,
+        "transparent": false
+      },
+      {
+        "item_id": 195,
+        "semantic": "top_deck",
+        "projected_area_mm2": 13644.113672092275,
+        "visible_area_mm2": 1468.335013929947,
+        "occluded_area_mm2": 12175.778658162328,
+        "transparent": false
+      },
+      {
+        "item_id": 267,
+        "semantic": "upper_shelf",
+        "projected_area_mm2": 13644.310053114761,
+        "visible_area_mm2": 0.0,
+        "occluded_area_mm2": 13644.310053114761,
+        "transparent": false
+      },
+      {
+        "item_id": 275,
+        "semantic": "back_panel",
+        "projected_area_mm2": 42571.24363799999,
+        "visible_area_mm2": 0.035153999999238295,
+        "occluded_area_mm2": 42571.208483999995,
+        "transparent": false
+      },
+      {
+        "item_id": 1879,
+        "semantic": "drawer_left_front_edge",
+        "projected_area_mm2": 8533.2697662816,
+        "visible_area_mm2": 0.0,
+        "occluded_area_mm2": 8533.2697662816,
+        "transparent": false
+      },
+      {
+        "item_id": 1639,
+        "semantic": "drawer_unit_left_side",
+        "projected_area_mm2": 212096.0281522252,
+        "visible_area_mm2": 0.0,
+        "occluded_area_mm2": 212096.0281522252,
+        "transparent": false
+      },
+      {
+        "item_id": 855,
+        "semantic": "drawer_unit_top",
+        "projected_area_mm2": 10040.648404918831,
+        "visible_area_mm2": 0.0,
+        "occluded_area_mm2": 10040.648404918831,
+        "transparent": false
+      },
+      {
+        "item_id": 1479,
+        "semantic": "drawer_top_inset",
+        "projected_area_mm2": 2500.4147445679137,
+        "visible_area_mm2": 0.0,
+        "occluded_area_mm2": 2500.4147445679137,
+        "transparent": false
+      },
+      {
+        "item_id": 581,
+        "semantic": "clothes_rail",
+        "projected_area_mm2": 478.36361741547535,
+        "visible_area_mm2": 0.0,
+        "occluded_area_mm2": 478.36361741547535,
+        "transparent": false
+      },
+      {
+        "item_id": 693,
+        "semantic": "left_rail_bracket",
+        "projected_area_mm2": 531.1116726007056,
+        "visible_area_mm2": 0.0,
+        "occluded_area_mm2": 531.1116726007056,
+        "transparent": false
+      },
+      {
+        "item_id": 901,
+        "semantic": "middle_drawer_front_frame",
+        "projected_area_mm2": 3692.611561042978,
+        "visible_area_mm2": 0.0,
+        "occluded_area_mm2": 3692.611561042978,
+        "transparent": false
+      },
+      {
+        "item_id": 1209,
+        "semantic": "lower_drawer_front_frame",
+        "projected_area_mm2": 3692.6122882493178,
+        "visible_area_mm2": 0.0,
+        "occluded_area_mm2": 3692.6122882493178,
+        "transparent": false
+      },
+      {
+        "item_id": 1083,
+        "semantic": "middle_drawer_pull",
+        "projected_area_mm2": 107.42901566322162,
+        "visible_area_mm2": 0.0,
+        "occluded_area_mm2": 107.42901566322162,
+        "transparent": false
+      },
+      {
+        "item_id": 1391,
+        "semantic": "lower_drawer_pull",
+        "projected_area_mm2": 107.43421343230926,
+        "visible_area_mm2": 0.0,
+        "occluded_area_mm2": 107.43421343230926,
+        "transparent": false
+      },
+      {
+        "item_id": 1979,
+        "semantic": "upper_drawer_front",
+        "projected_area_mm2": 3836.4992452037795,
+        "visible_area_mm2": 0.0,
+        "occluded_area_mm2": 3836.4992452037795,
+        "transparent": false
+      },
+      {
+        "item_id": 909,
+        "semantic": "middle_drawer_front_infill",
+        "projected_area_mm2": 740.688475,
+        "visible_area_mm2": 0.0,
+        "occluded_area_mm2": 740.688475,
+        "transparent": false
+      },
+      {
+        "item_id": 1217,
+        "semantic": "lower_drawer_front_infill",
+        "projected_area_mm2": 740.6861849999998,
+        "visible_area_mm2": 0.0,
+        "occluded_area_mm2": 740.6861849999998,
+        "transparent": false
+      },
+      {
+        "item_id": 1719,
+        "semantic": "drawer_unit_back",
+        "projected_area_mm2": 7930.128315963686,
+        "visible_area_mm2": 0.0,
+        "occluded_area_mm2": 7930.128315963686,
+        "transparent": false
+      },
+      {
+        "item_id": 1163,
+        "semantic": "middle_drawer_bottom",
+        "projected_area_mm2": 8178.583528000002,
+        "visible_area_mm2": 0.0,
+        "occluded_area_mm2": 8178.583528000002,
+        "transparent": false
+      },
+      {
+        "item_id": 1471,
+        "semantic": "lower_drawer_bottom",
+        "projected_area_mm2": 8178.583672000001,
+        "visible_area_mm2": 0.0,
+        "occluded_area_mm2": 8178.583672000001,
+        "transparent": false
+      },
+      {
+        "item_id": 1959,
+        "semantic": "upper_drawer_bottom",
+        "projected_area_mm2": 8178.555767024328,
+        "visible_area_mm2": 0.0,
+        "occluded_area_mm2": 8178.555767024328,
+        "transparent": false
+      },
+      {
+        "item_id": 805,
+        "semantic": "right_rail_bracket",
+        "projected_area_mm2": 531.1116414154965,
+        "visible_area_mm2": 0.0,
+        "occluded_area_mm2": 531.1116414154965,
+        "transparent": false
+      },
+      {
+        "item_id": 1559,
+        "semantic": "drawer_unit_right_side",
+        "projected_area_mm2": 212701.95583836763,
+        "visible_area_mm2": 0.0,
+        "occluded_area_mm2": 212701.95583836763,
+        "transparent": false
+      },
+      {
+        "item_id": 1799,
+        "semantic": "drawer_right_front_edge",
+        "projected_area_mm2": 8558.217532458839,
+        "visible_area_mm2": 0.0,
+        "occluded_area_mm2": 8558.217532458839,
+        "transparent": false
+      },
+      {
+        "item_id": 2058,
+        "semantic": "bottom_hinge",
+        "projected_area_mm2": 1563.6634614565648,
+        "visible_area_mm2": 57.16696018259917,
+        "occluded_area_mm2": 1506.4965012739656,
+        "transparent": false
+      },
+      {
+        "item_id": 2077,
+        "semantic": "top_hinge",
+        "projected_area_mm2": 1563.6634469491971,
+        "visible_area_mm2": 73.7250480122238,
+        "occluded_area_mm2": 1489.9383989369733,
+        "transparent": false
+      },
+      {
+        "item_id": 2099,
+        "semantic": "door_right_frame",
+        "projected_area_mm2": 99208.16828947747,
+        "visible_area_mm2": 0.07025154336932121,
+        "occluded_area_mm2": 99208.0980379341,
+        "transparent": false
+      },
+      {
+        "item_id": 307,
+        "semantic": "right_side_panel",
+        "projected_area_mm2": 1393711.9710091637,
+        "visible_area_mm2": 0.09045327859696177,
+        "occluded_area_mm2": 1393711.8805558851,
+        "transparent": false
+      }
+    ]
+  },
+  "views": {
+    "plan": {
+      "paths": [
+        {
+          "id": "plan.top_deck.0.0",
+          "path": [
+            [
+              -1.0,
+              20.000122
+            ],
+            [
+              -1.0,
+              564.126648
+            ],
+            [
+              0.0,
+              565.126648
+            ],
+            [
+              548.0,
+              565.126648
+            ],
+            [
+              549.0,
+              564.126648
+            ],
+            [
+              549.0,
+              18.999695
+            ],
+            [
+              548.0,
+              17.999756
+            ],
+            [
+              0.0,
+              18.000061
+            ],
+            [
+              -1.0,
+              19.000061
+            ],
+            [
+              -1.0,
+              20.000122
+            ]
+          ],
+          "kind": "visible_component_boundary",
+          "item_id": 195,
+          "sides": [
+            "top_deck",
+            "adjacent_component_or_exterior"
+          ],
+          "transparent_drawing_convention": false
+        },
+        {
+          "id": "plan.back_panel.0.0",
+          "path": [
+            [
+              -1.0,
+              583.126648
+            ],
+            [
+              549.0,
+              583.126648
+            ],
+            [
+              549.0,
+              565.126648
+            ],
+            [
+              -1.0,
+              565.126648
+            ],
+            [
+              -1.0,
+              583.126648
+            ]
+          ],
+          "kind": "visible_component_boundary",
+          "item_id": 275,
+          "sides": [
+            "back_panel",
+            "adjacent_component_or_exterior"
+          ],
+          "transparent_drawing_convention": false
+        },
+        {
+          "id": "plan.right_side_panel.0.0",
+          "path": [
+            [
+              549.0,
+              18.999695
+            ],
+            [
+              549.0,
+              582.126648
+            ],
+            [
+              550.0,
+              583.126648
+            ],
+            [
+              573.0,
+              583.126648
+            ],
+            [
+              574.0,
+              582.126648
+            ],
+            [
+              574.0,
+              1.000244
+            ],
+            [
+              573.0,
+              0.000122
+            ],
+            [
+              550.0,
+              0.000183
+            ],
+            [
+              549.0,
+              1.000244
+            ],
+            [
+              549.0,
+              18.999695
+            ]
+          ],
+          "kind": "visible_component_boundary",
+          "item_id": 307,
+          "sides": [
+            "right_side_panel",
+            "adjacent_component_or_exterior"
+          ],
+          "transparent_drawing_convention": false
+        },
+        {
+          "id": "plan.top_hinge.0.0",
+          "path": [
+            [
+              558.508728,
+              -32.213745
+            ],
+            [
+              558.508802,
+              -32.715805
+            ],
+            [
+              569.194946,
+              -32.728943
+            ],
+            [
+              569.194946,
+              -1.979675
+            ],
+            [
+              571.038239,
+              -2.097107
+            ],
+            [
+              572.033631,
+              -2.982605
+            ],
+            [
+              571.038208,
+              -45.279541
+            ],
+            [
+              552.687012,
+              -45.092529
+            ],
+            [
+              549.453125,
+              -42.715637
+            ],
+            [
+              548.203735,
+              -38.873352
+            ],
+            [
+              549.453003,
+              -35.026733
+            ],
+            [
+              558.508728,
+              -32.213745
+            ]
+          ],
+          "kind": "visible_component_boundary",
+          "item_id": 2077,
+          "sides": [
+            "top_hinge",
+            "adjacent_component_or_exterior"
+          ],
+          "transparent_drawing_convention": false
+        },
+        {
+          "id": "plan.top_hinge.0.1",
+          "path": [
+            [
+              570.378207,
+              -40.785659
+            ],
+            [
+              570.378207,
+              -40.785659
+            ],
+            [
+              569.194946,
+              -32.728943
+            ],
+            [
+              570.378207,
+              -40.785659
+            ]
+          ],
+          "kind": "visible_component_boundary",
+          "item_id": 2077,
+          "sides": [
+            "top_hinge",
+            "adjacent_component_or_exterior"
+          ],
+          "transparent_drawing_convention": false
+        },
+        {
+          "id": "plan.left_side_panel.0.0",
+          "path": [
+            [
+              -26.0,
+              582.126648
+            ],
+            [
+              -25.0,
+              583.126648
+            ],
+            [
+              -2.0,
+              583.126648
+            ],
+            [
+              -1.0,
+              582.126648
+            ],
+            [
+              -1.0,
+              1.000305
+            ],
+            [
+              -2.0,
+              0.000183
+            ],
+            [
+              -25.0,
+              0.000244
+            ],
+            [
+              -26.0,
+              1.000305
+            ],
+            [
+              -26.0,
+              582.126648
+            ]
+          ],
+          "kind": "visible_component_boundary",
+          "item_id": 291,
+          "sides": [
+            "left_side_panel",
+            "adjacent_component_or_exterior"
+          ],
+          "transparent_drawing_convention": false
+        },
+        {
+          "id": "plan.door_top_frame.0.0",
+          "path": [
+            [
+              -0.668457,
+              -1.804809
+            ],
+            [
+              547.397827,
+              -1.805176
+            ],
+            [
+              549.648332,
+              -14.671612
+            ],
+            [
+              553.397736,
+              -20.726013
+            ],
+            [
+              553.397736,
+              -29.168762
+            ],
+            [
+              552.397736,
+              -30.168701
+            ],
+            [
+              -5.66864,
+              -30.168274
+            ],
+            [
+              -6.668457,
+              -28.754089
+            ],
+            [
+              -6.668457,
+              -20.725769
+            ],
+            [
+              -2.919116,
+              -14.671444
+            ],
+            [
+              -0.668457,
+              -1.804809
+            ]
+          ],
+          "kind": "visible_component_boundary",
+          "item_id": 2031,
+          "sides": [
+            "door_top_frame",
+            "adjacent_component_or_exterior"
+          ],
+          "transparent_drawing_convention": false
+        },
+        {
+          "id": "plan.door_right_frame.0.0",
+          "path": [
+            [
+              558.335938,
+              -19.725281
+            ],
+            [
+              558.335938,
+              -12.652343
+            ],
+            [
+              549.234372,
+              -12.488888
+            ],
+            [
+              548.397827,
+              -8.077965
+            ],
+            [
+              548.397827,
+              -2.805176
+            ],
+            [
+              549.397858,
+              -1.804748
+            ],
+            [
+              569.489441,
+              -1.804748
+            ],
+            [
+              569.194946,
+              -32.728943
+            ],
+            [
+              558.508802,
+              -32.715805
+            ],
+            [
+              558.508728,
+              -32.213745
+            ],
+            [
+              557.504677,
+              -32.252936
+            ],
+            [
+              557.339325,
+              -30.168335
+            ],
+            [
+              554.397736,
+              -30.168335
+            ],
+            [
+              553.397736,
+              -20.725403
+            ],
+            [
+              558.335938,
+              -19.725281
+            ]
+          ],
+          "kind": "visible_component_boundary",
+          "item_id": 2099,
+          "sides": [
+            "door_right_frame",
+            "adjacent_component_or_exterior"
+          ],
+          "transparent_drawing_convention": false
+        },
+        {
+          "id": "plan.door_right_frame.0.1",
+          "path": [
+            [
+              558.821985,
+              -20.599421
+            ],
+            [
+              558.821985,
+              -20.599421
+            ],
+            [
+              558.821985,
+              -20.599421
+            ],
+            [
+              558.821985,
+              -20.599421
+            ],
+            [
+              558.821985,
+              -20.599421
+            ]
+          ],
+          "kind": "visible_component_boundary",
+          "item_id": 2099,
+          "sides": [
+            "door_right_frame",
+            "adjacent_component_or_exterior"
+          ],
+          "transparent_drawing_convention": false
+        },
+        {
+          "id": "plan.door_right_frame.0.2",
+          "path": [
+            [
+              558.342791,
+              -12.646059
+            ],
+            [
+              558.342791,
+              -12.646059
+            ],
+            [
+              558.342791,
+              -12.646059
+            ],
+            [
+              558.342791,
+              -12.646059
+            ]
+          ],
+          "kind": "visible_component_boundary",
+          "item_id": 2099,
+          "sides": [
+            "door_right_frame",
+            "adjacent_component_or_exterior"
+          ],
+          "transparent_drawing_convention": false
+        },
+        {
+          "id": "plan.door_left_frame.0.0",
+          "path": [
+            [
+              -23.759949,
+              -2.804809
+            ],
+            [
+              -22.759979,
+              -1.804748
+            ],
+            [
+              -2.668487,
+              -1.804748
+            ],
+            [
+              -1.668518,
+              -2.804809
+            ],
+            [
+              -1.668518,
+              -8.077679
+            ],
+            [
+              -2.668487,
+              -12.652282
+            ],
+            [
+              -11.606445,
+              -12.652282
+            ],
+            [
+              -11.606445,
+              -19.725281
+            ],
+            [
+              -6.668457,
+              -20.725403
+            ],
+            [
+              -6.668457,
+              -29.168274
+            ],
+            [
+              -7.668426,
+              -30.168274
+            ],
+            [
+              -9.139192,
+              -30.168274
+            ],
+            [
+              -10.703145,
+              -30.801265
+            ],
+            [
+              -12.610077,
+              -43.775268
+            ],
+            [
+              -22.759979,
+              -43.775268
+            ],
+            [
+              -23.759949,
+              -42.775329
+            ],
+            [
+              -23.759949,
+              -2.804809
+            ]
+          ],
+          "kind": "visible_component_boundary",
+          "item_id": 2121,
+          "sides": [
+            "door_left_frame",
+            "adjacent_component_or_exterior"
+          ],
+          "transparent_drawing_convention": false
+        },
+        {
+          "id": "plan.door_glass.0.0",
+          "path": [
+            [
+              -11.365417,
+              -12.712646
+            ],
+            [
+              -11.365417,
+              -12.712097
+            ],
+            [
+              -2.547499,
+              -12.712097
+            ],
+            [
+              -2.919116,
+              -14.671444
+            ],
+            [
+              -6.04101,
+              -19.712586
+            ],
+            [
+              -11.365417,
+              -19.712585
+            ],
+            [
+              -11.365417,
+              -12.712646
+            ]
+          ],
+          "kind": "visible_component_boundary",
+          "item_id": 2039,
+          "sides": [
+            "door_glass",
+            "adjacent_component_or_exterior"
+          ],
+          "transparent_drawing_convention": false
+        },
+        {
+          "id": "plan.door_glass.1.0",
+          "path": [
+            [
+              558.0,
+              -12.712097
+            ],
+            [
+              558.0,
+              -19.712646
+            ],
+            [
+              552.770172,
+              -19.712645
+            ],
+            [
+              549.648332,
+              -14.671612
+            ],
+            [
+              549.276704,
+              -12.712097
+            ],
+            [
+              558.0,
+              -12.712097
+            ]
+          ],
+          "kind": "visible_component_boundary",
+          "item_id": 2039,
+          "sides": [
+            "door_glass",
+            "adjacent_component_or_exterior"
+          ],
+          "transparent_drawing_convention": false
+        },
+        {
+          "id": "plan.door_handle.0.0",
+          "path": [
+            [
+              -0.315735,
+              -42.392883
+            ],
+            [
+              -11.159424,
+              -42.392883
+            ],
+            [
+              -11.159424,
+              -38.113525
+            ],
+            [
+              -0.503174,
+              -37.926025
+            ],
+            [
+              -0.315735,
+              -42.392883
+            ]
+          ],
+          "kind": "visible_component_boundary",
+          "item_id": 2129,
+          "sides": [
+            "door_handle",
+            "adjacent_component_or_exterior"
+          ],
+          "transparent_drawing_convention": false
+        },
+        {
+          "id": "plan.bottom_deck.0.0",
+          "path": [
+            [
+              -1.0,
+              1.000305
+            ],
+            [
+              -1.0,
+              19.000061
+            ],
+            [
+              0.0,
+              18.000061
+            ],
+            [
+              548.0,
+              17.999756
+            ],
+            [
+              549.0,
+              18.999695
+            ],
+            [
+              549.0,
+              0.999756
+            ],
+            [
+              548.0,
+              -0.000244
+            ],
+            [
+              0.0,
+              0.0
+            ],
+            [
+              -1.0,
+              1.000305
+            ]
+          ],
+          "kind": "visible_component_boundary",
+          "item_id": 123,
+          "sides": [
+            "bottom_deck",
+            "adjacent_component_or_exterior"
+          ],
+          "transparent_drawing_convention": false
+        }
+      ],
+      "path_count": 15
+    },
+    "front": {
+      "paths": [
+        {
+          "id": "front.top_hinge.0.0",
+          "path": [
+            [
+              548.203735,
+              2351.588379
+            ],
+            [
+              548.564728,
+              2352.068115
+            ],
+            [
+              569.194946,
+              2352.568115
+            ],
+            [
+              572.033631,
+              2351.550537
+            ],
+            [
+              572.033631,
+              2311.832763
+            ],
+            [
+              570.947601,
+              2311.150146
+            ],
+            [
+              569.194946,
+              2310.80249
+            ],
+            [
+              569.194946,
+              2321.77124
+            ],
+            [
+              557.339935,
+              2321.52124
+            ],
+            [
+              549.453003,
+              2322.5
+            ],
+            [
+              548.203735,
+              2351.588379
+            ]
+          ],
+          "kind": "visible_component_boundary",
+          "item_id": 2077,
+          "sides": [
+            "top_hinge",
+            "adjacent_component_or_exterior"
+          ],
+          "transparent_drawing_convention": false
+        },
+        {
+          "id": "front.bottom_hinge.0.0",
+          "path": [
+            [
+              549.540649,
+              17.608284
+            ],
+            [
+              557.339935,
+              18.578834
+            ],
+            [
+              569.194946,
+              18.328834
+            ],
+            [
+              569.194946,
+              29.297096
+            ],
+            [
+              572.033631,
+              28.267555
+            ],
+            [
+              572.033631,
+              -11.449978
+            ],
+            [
+              569.194946,
+              -12.4678
+            ],
+            [
+              548.564728,
+              -11.967802
+            ],
+            [
+              548.203735,
+              -11.488554
+            ],
+            [
+              549.540649,
+              17.608284
+            ]
+          ],
+          "kind": "visible_component_boundary",
+          "item_id": 2058,
+          "sides": [
+            "bottom_hinge",
+            "adjacent_component_or_exterior"
+          ],
+          "transparent_drawing_convention": false
+        },
+        {
+          "id": "front.door_right_frame.0.0",
+          "path": [
+            [
+              548.397827,
+              2347.069075
+            ],
+            [
+              549.453003,
+              2322.5
+            ],
+            [
+              557.339935,
+              2321.52124
+            ],
+            [
+              569.194946,
+              2321.77124
+            ],
+            [
+              569.194946,
+              2310.80249
+            ],
+            [
+              570.489441,
+              2311.059266
+            ],
+            [
+              570.489441,
+              29.04086
+            ],
+            [
+              569.194946,
+              29.297096
+            ],
+            [
+              569.194946,
+              18.328834
+            ],
+            [
+              557.339935,
+              18.578834
+            ],
+            [
+              549.453125,
+              17.598121
+            ],
+            [
+              548.397827,
+              -6.969742
+            ],
+            [
+              548.397827,
+              2347.069075
+            ]
+          ],
+          "kind": "visible_component_boundary",
+          "item_id": 2099,
+          "sides": [
+            "door_right_frame",
+            "adjacent_component_or_exterior"
+          ],
+          "transparent_drawing_convention": false
+        },
+        {
+          "id": "front.door_right_frame.1.0",
+          "path": [
+            [
+              558.822022,
+              -12.326441
+            ],
+            [
+              556.963857,
+              -11.983961
+            ],
+            [
+              566.039854,
+              -12.326441
+            ],
+            [
+              558.822022,
+              -12.326441
+            ]
+          ],
+          "kind": "visible_component_boundary",
+          "item_id": 2099,
+          "sides": [
+            "door_right_frame",
+            "adjacent_component_or_exterior"
+          ],
+          "transparent_drawing_convention": false
+        },
+        {
+          "id": "front.door_left_frame.0.0",
+          "path": [
+            [
+              -22.345795,
+              2352.030029
+            ],
+            [
+              -12.092712,
+              2352.030029
+            ],
+            [
+              -8.446527,
+              2351.357829
+            ],
+            [
+              -1.668518,
+              2351.030029
+            ],
+            [
+              -1.668518,
+              -11.326685
+            ],
+            [
+              -8.446527,
+              -11.654405
+            ],
+            [
+              -12.092712,
+              -12.326441
+            ],
+            [
+              -22.345795,
+              -12.326441
+            ],
+            [
+              -23.759949,
+              -11.326687
+            ],
+            [
+              -23.759949,
+              2351.030029
+            ],
+            [
+              -22.345795,
+              2352.030029
+            ]
+          ],
+          "kind": "visible_component_boundary",
+          "item_id": 2121,
+          "sides": [
+            "door_left_frame",
+            "adjacent_component_or_exterior"
+          ],
+          "transparent_drawing_convention": false
+        },
+        {
+          "id": "front.door_handle.0.0",
+          "path": [
+            [
+              -0.503174,
+              1176.227295
+            ],
+            [
+              -0.315735,
+              1056.914795
+            ],
+            [
+              -1.668518,
+              1056.890992
+            ],
+            [
+              -1.668518,
+              1176.20679
+            ],
+            [
+              -0.503174,
+              1176.227295
+            ]
+          ],
+          "kind": "visible_component_boundary",
+          "item_id": 2129,
+          "sides": [
+            "door_handle",
+            "adjacent_component_or_exterior"
+          ],
+          "transparent_drawing_convention": false
+        },
+        {
+          "id": "front.door_top_frame.0.0",
+          "path": [
+            [
+              -5.66864,
+              2352.030029
+            ],
+            [
+              548.536069,
+              2352.030029
+            ],
+            [
+              548.203735,
+              2351.588379
+            ],
+            [
+              548.397827,
+              2317.357177
+            ],
+            [
+              -1.668518,
+              2317.357177
+            ],
+            [
+              -1.668518,
+              2351.030029
+            ],
+            [
+              -5.697665,
+              2351.224888
+            ],
+            [
+              -5.66864,
+              2352.030029
+            ]
+          ],
+          "kind": "visible_component_boundary",
+          "item_id": 2031,
+          "sides": [
+            "door_top_frame",
+            "adjacent_component_or_exterior"
+          ],
+          "transparent_drawing_convention": false
+        },
+        {
+          "id": "front.door_bottom_frame.0.0",
+          "path": [
+            [
+              -0.668642,
+              22.346647
+            ],
+            [
+              548.397827,
+              22.346414
+            ],
+            [
+              548.203735,
+              -11.488554
+            ],
+            [
+              548.564728,
+              -11.967802
+            ],
+            [
+              552.410368,
+              -11.973775
+            ],
+            [
+              552.397644,
+              -12.326685
+            ],
+            [
+              -5.668762,
+              -12.326685
+            ],
+            [
+              -5.697786,
+              -11.521502
+            ],
+            [
+              -1.668518,
+              -11.326685
+            ],
+            [
+              -1.668518,
+              22.346647
+            ],
+            [
+              -0.668642,
+              22.346647
+            ]
+          ],
+          "kind": "visible_component_boundary",
+          "item_id": 2006,
+          "sides": [
+            "door_bottom_frame",
+            "adjacent_component_or_exterior"
+          ],
+          "transparent_drawing_convention": false
+        },
+        {
+          "id": "front.door_glass.0.0",
+          "path": [
+            [
+              -1.668518,
+              22.346647
+            ],
+            [
+              -1.668518,
+              1056.890992
+            ],
+            [
+              -0.315735,
+              1056.914795
+            ],
+            [
+              -0.503174,
+              1176.227295
+            ],
+            [
+              -1.668518,
+              1176.20679
+            ],
+            [
+              -1.668518,
+              2317.357177
+            ],
+            [
+              548.397827,
+              2317.357177
+            ],
+            [
+              548.397827,
+              22.346414
+            ],
+            [
+              -1.668518,
+              22.346647
+            ]
+          ],
+          "kind": "visible_component_boundary",
+          "item_id": 2039,
+          "sides": [
+            "door_glass",
+            "adjacent_component_or_exterior"
+          ],
+          "transparent_drawing_convention": true
+        },
+        {
+          "id": "front.bottom_plinth.0.0",
+          "path": [
+            [
+              -1.0,
+              -35.5
+            ],
+            [
+              -1.0,
+              -13.5
+            ],
+            [
+              0.0,
+              -12.5
+            ],
+            [
+              548.0,
+              -12.5
+            ],
+            [
+              549.0,
+              -13.5
+            ],
+            [
+              549.0,
+              -36.5
+            ],
+            [
+              548.0,
+              -37.5
+            ],
+            [
+              0.0,
+              -37.5
+            ],
+            [
+              -1.0,
+              -36.5
+            ],
+            [
+              -1.0,
+              -35.5
+            ]
+          ],
+          "kind": "visible_component_boundary",
+          "item_id": 91,
+          "sides": [
+            "bottom_plinth",
+            "adjacent_component_or_exterior"
+          ],
+          "transparent_drawing_convention": false
+        },
+        {
+          "id": "front.bottom_deck.0.0",
+          "path": [
+            [
+              548.0,
+              -12.5
+            ],
+            [
+              0.0,
+              -12.5
+            ],
+            [
+              -0.173315,
+              -12.326685
+            ],
+            [
+              548.173315,
+              -12.326685
+            ],
+            [
+              548.0,
+              -12.5
+            ]
+          ],
+          "kind": "visible_component_boundary",
+          "item_id": 123,
+          "sides": [
+            "bottom_deck",
+            "adjacent_component_or_exterior"
+          ],
+          "transparent_drawing_convention": false
+        },
+        {
+          "id": "front.right_side_panel.0.0",
+          "path": [
+            [
+              574.0,
+              2351.567871
+            ],
+            [
+              574.0,
+              -36.5
+            ],
+            [
+              573.0,
+              -37.5
+            ],
+            [
+              550.0,
+              -37.5
+            ],
+            [
+              549.0,
+              -36.5
+            ],
+            [
+              549.0,
+              -12.326685
+            ],
+            [
+              556.963857,
+              -11.983961
+            ],
+            [
+              569.194946,
+              -12.4678
+            ],
+            [
+              572.033631,
+              -11.449978
+            ],
+            [
+              572.033631,
+              28.267555
+            ],
+            [
+              570.489441,
+              29.04086
+            ],
+            [
+              570.489441,
+              2311.059266
+            ],
+            [
+              572.033631,
+              2311.832763
+            ],
+            [
+              572.033631,
+              2351.550537
+            ],
+            [
+              569.194946,
+              2352.568115
+            ],
+            [
+              573.0,
+              2352.568115
+            ],
+            [
+              574.0,
+              2351.567871
+            ]
+          ],
+          "kind": "visible_component_boundary",
+          "item_id": 307,
+          "sides": [
+            "right_side_panel",
+            "adjacent_component_or_exterior"
+          ],
+          "transparent_drawing_convention": false
+        },
+        {
+          "id": "front.right_side_panel.1.0",
+          "path": [
+            [
+              550.0,
+              2352.568115
+            ],
+            [
+              569.194946,
+              2352.568115
+            ],
+            [
+              549.500122,
+              2352.068115
+            ],
+            [
+              550.0,
+              2352.568115
+            ]
+          ],
+          "kind": "visible_component_boundary",
+          "item_id": 307,
+          "sides": [
+            "right_side_panel",
+            "adjacent_component_or_exterior"
+          ],
+          "transparent_drawing_convention": false
+        },
+        {
+          "id": "front.left_side_panel.0.0",
+          "path": [
+            [
+              -2.0,
+              2352.567138
+            ],
+            [
+              -1.462891,
+              2352.030029
+            ],
+            [
+              -5.66864,
+              2352.030029
+            ],
+            [
+              -5.697665,
+              2351.224888
+            ],
+            [
+              -12.092712,
+              2352.030029
+            ],
+            [
+              -22.345795,
+              2352.030029
+            ],
+            [
+              -23.759949,
+              2351.030029
+            ],
+            [
+              -23.759949,
+              -11.326687
+            ],
+            [
+              -22.345795,
+              -12.326441
+            ],
+            [
+              -12.092712,
+              -12.326441
+            ],
+            [
+              -5.697786,
+              -11.521502
+            ],
+            [
+              -5.668762,
+              -12.326685
+            ],
+            [
+              -1.0,
+              -12.326685
+            ],
+            [
+              -1.0,
+              -36.5
+            ],
+            [
+              -2.0,
+              -37.5
+            ],
+            [
+              -25.0,
+              -37.5
+            ],
+            [
+              -26.0,
+              -36.5
+            ],
+            [
+              -26.0,
+              2351.567138
+            ],
+            [
+              -25.0,
+              2352.567138
+            ],
+            [
+              -2.0,
+              2352.567138
+            ]
+          ],
+          "kind": "visible_component_boundary",
+          "item_id": 291,
+          "sides": [
+            "left_side_panel",
+            "adjacent_component_or_exterior"
+          ],
+          "transparent_drawing_convention": false
+        },
+        {
+          "id": "front.left_side_panel.1.0",
+          "path": [
+            [
+              -1.0,
+              1176.218553
+            ],
+            [
+              -1.668518,
+              1176.20679
+            ],
+            [
+              -1.668518,
+              2317.357177
+            ],
+            [
+              -1.0,
+              2317.357177
+            ],
+            [
+              -1.0,
+              1176.218553
+            ]
+          ],
+          "kind": "visible_component_boundary",
+          "item_id": 291,
+          "sides": [
+            "left_side_panel",
+            "adjacent_component_or_exterior"
+          ],
+          "transparent_drawing_convention": false
+        },
+        {
+          "id": "front.left_side_panel.2.0",
+          "path": [
+            [
+              -1.0,
+              22.346647
+            ],
+            [
+              -1.668518,
+              22.346647
+            ],
+            [
+              -1.668518,
+              1056.890992
+            ],
+            [
+              -1.0,
+              1056.902755
+            ],
+            [
+              -1.0,
+              22.346647
+            ]
+          ],
+          "kind": "visible_component_boundary",
+          "item_id": 291,
+          "sides": [
+            "left_side_panel",
+            "adjacent_component_or_exterior"
+          ],
+          "transparent_drawing_convention": false
+        },
+        {
+          "id": "front.top_deck.0.0",
+          "path": [
+            [
+              -1.0,
+              2353.250732
+            ],
+            [
+              -1.0,
+              2354.250732
+            ],
+            [
+              0.0,
+              2355.250488
+            ],
+            [
+              548.0,
+              2355.252685
+            ],
+            [
+              549.0,
+              2354.252685
+            ],
+            [
+              549.0,
+              2352.068115
+            ],
+            [
+              -1.0,
+              2352.030029
+            ],
+            [
+              -1.0,
+              2353.250732
+            ]
+          ],
+          "kind": "visible_component_boundary",
+          "item_id": 195,
+          "sides": [
+            "top_deck",
+            "adjacent_component_or_exterior"
+          ],
+          "transparent_drawing_convention": false
+        },
+        {
+          "id": "front.upper_shelf.0.0",
+          "path": [
+            [
+              -1.0,
+              1945.5
+            ],
+            [
+              -1.0,
+              1968.440063
+            ],
+            [
+              0.0,
+              1969.440185
+            ],
+            [
+              548.0,
+              1969.442138
+            ],
+            [
+              548.397827,
+              1969.04436
+            ],
+            [
+              548.397827,
+              1944.897827
+            ],
+            [
+              548.0,
+              1944.5
+            ],
+            [
+              0.0,
+              1944.5
+            ],
+            [
+              -1.0,
+              1945.5
+            ]
+          ],
+          "kind": "visible_component_boundary",
+          "item_id": 267,
+          "sides": [
+            "upper_shelf",
+            "adjacent_component_or_exterior"
+          ],
+          "transparent_drawing_convention": false
+        },
+        {
+          "id": "front.upper_shelf.0.1",
+          "path": [
+            [
+              11.952996,
+              1969.440185
+            ],
+            [
+              11.953186,
+              1969.440185
+            ],
+            [
+              11.952913,
+              1969.440185
+            ],
+            [
+              11.952996,
+              1969.440185
+            ]
+          ],
+          "kind": "visible_component_boundary",
+          "item_id": 267,
+          "sides": [
+            "upper_shelf",
+            "adjacent_component_or_exterior"
+          ],
+          "transparent_drawing_convention": false
+        },
+        {
+          "id": "front.middle_drawer_pull.0.0",
+          "path": [
+            [
+              15.245545,
+              638.26831
+            ],
+            [
+              15.651581,
+              638.76831
+            ],
+            [
+              528.783264,
+              638.76831
+            ],
+            [
+              529.189072,
+              638.26831
+            ],
+            [
+              529.189072,
+              632.68872
+            ],
+            [
+              528.783264,
+              632.18872
+            ],
+            [
+              15.651581,
+              632.18872
+            ],
+            [
+              15.245545,
+              632.68872
+            ],
+            [
+              15.245545,
+              638.26831
+            ]
+          ],
+          "kind": "visible_component_boundary",
+          "item_id": 1083,
+          "sides": [
+            "middle_drawer_pull",
+            "adjacent_component_or_exterior"
+          ],
+          "transparent_drawing_convention": false
+        },
+        {
+          "id": "front.lower_drawer_pull.0.0",
+          "path": [
+            [
+              15.245545,
+              484.623291
+            ],
+            [
+              15.651581,
+              485.623291
+            ],
+            [
+              528.783264,
+              485.623291
+            ],
+            [
+              529.189072,
+              485.123291
+            ],
+            [
+              529.189072,
+              479.543213
+            ],
+            [
+              528.783264,
+              479.043213
+            ],
+            [
+              15.651581,
+              479.043213
+            ],
+            [
+              15.245545,
+              479.543213
+            ],
+            [
+              15.245545,
+              484.623291
+            ]
+          ],
+          "kind": "visible_component_boundary",
+          "item_id": 1391,
+          "sides": [
+            "lower_drawer_pull",
+            "adjacent_component_or_exterior"
+          ],
+          "transparent_drawing_convention": false
+        },
+        {
+          "id": "front.upper_drawer_front.0.0",
+          "path": [
+            [
+              15.245667,
+              640.76831
+            ],
+            [
+              15.245728,
+              802.449951
+            ],
+            [
+              529.349655,
+              802.449951
+            ],
+            [
+              529.349655,
+              640.76831
+            ],
+            [
+              15.245667,
+              640.76831
+            ]
+          ],
+          "kind": "visible_component_boundary",
+          "item_id": 1979,
+          "sides": [
+            "upper_drawer_front",
+            "adjacent_component_or_exterior"
+          ],
+          "transparent_drawing_convention": false
+        },
+        {
+          "id": "front.upper_drawer_front.0.1",
+          "path": [
+            [
+              65.525967,
+              786.25003
+            ],
+            [
+              65.525967,
+              786.25003
+            ],
+            [
+              65.525967,
+              786.25003
+            ],
+            [
+              65.525967,
+              786.25003
+            ],
+            [
+              65.525967,
+              786.25003
+            ]
+          ],
+          "kind": "visible_component_boundary",
+          "item_id": 1979,
+          "sides": [
+            "upper_drawer_front",
+            "adjacent_component_or_exterior"
+          ],
+          "transparent_drawing_convention": false
+        },
+        {
+          "id": "front.middle_drawer_front_frame.0.0",
+          "path": [
+            [
+              15.245545,
+              487.623291
+            ],
+            [
+              15.245423,
+              487.623291
+            ],
+            [
+              15.245545,
+              637.760498
+            ],
+            [
+              15.245545,
+              632.68872
+            ],
+            [
+              15.651581,
+              632.18872
+            ],
+            [
+              528.783264,
+              632.18872
+            ],
+            [
+              529.189072,
+              632.68872
+            ],
+            [
+              529.349472,
+              637.760498
+            ],
+            [
+              529.34935,
+              487.623291
+            ],
+            [
+              15.245545,
+              487.623291
+            ]
+          ],
+          "kind": "visible_component_boundary",
+          "item_id": 901,
+          "sides": [
+            "middle_drawer_front_frame",
+            "adjacent_component_or_exterior"
+          ],
+          "transparent_drawing_convention": false
+        },
+        {
+          "id": "front.middle_drawer_front_frame.0.1",
+          "path": [
+            [
+              507.349259,
+              507.623291
+            ],
+            [
+              507.34935,
+              617.760498
+            ],
+            [
+              37.254868,
+              617.760498
+            ],
+            [
+              37.254868,
+              507.623779
+            ],
+            [
+              507.349259,
+              507.623291
+            ]
+          ],
+          "kind": "visible_component_boundary",
+          "item_id": 901,
+          "sides": [
+            "middle_drawer_front_frame",
+            "adjacent_component_or_exterior"
+          ],
+          "transparent_drawing_convention": false
+        },
+        {
+          "id": "front.lower_drawer_front_frame.0.0",
+          "path": [
+            [
+              529.34935,
+              484.615478
+            ],
+            [
+              529.34935,
+              334.478241
+            ],
+            [
+              15.245423,
+              334.478241
+            ],
+            [
+              15.245545,
+              484.615478
+            ],
+            [
+              15.245545,
+              479.543213
+            ],
+            [
+              15.651581,
+              479.043213
+            ],
+            [
+              528.783264,
+              479.043213
+            ],
+            [
+              529.189072,
+              479.543213
+            ],
+            [
+              529.34935,
+              484.615478
+            ]
+          ],
+          "kind": "visible_component_boundary",
+          "item_id": 1209,
+          "sides": [
+            "lower_drawer_front_frame",
+            "adjacent_component_or_exterior"
+          ],
+          "transparent_drawing_convention": false
+        },
+        {
+          "id": "front.lower_drawer_front_frame.0.1",
+          "path": [
+            [
+              507.349259,
+              354.478241
+            ],
+            [
+              507.34935,
+              464.615448
+            ],
+            [
+              37.254868,
+              464.615448
+            ],
+            [
+              37.254868,
+              354.478241
+            ],
+            [
+              507.349259,
+              354.478241
+            ]
+          ],
+          "kind": "visible_component_boundary",
+          "item_id": 1209,
+          "sides": [
+            "lower_drawer_front_frame",
+            "adjacent_component_or_exterior"
+          ],
+          "transparent_drawing_convention": false
+        },
+        {
+          "id": "front.middle_drawer_front_infill.0.0",
+          "path": [
+            [
+              37.254868,
+              617.760498
+            ],
+            [
+              507.34935,
+              617.760498
+            ],
+            [
+              507.349259,
+              507.623291
+            ],
+            [
+              37.254868,
+              507.623779
+            ],
+            [
+              37.254868,
+              617.760498
+            ]
+          ],
+          "kind": "visible_component_boundary",
+          "item_id": 909,
+          "sides": [
+            "middle_drawer_front_infill",
+            "adjacent_component_or_exterior"
+          ],
+          "transparent_drawing_convention": false
+        },
+        {
+          "id": "front.lower_drawer_front_infill.0.0",
+          "path": [
+            [
+              37.254868,
+              464.615448
+            ],
+            [
+              507.34935,
+              464.615448
+            ],
+            [
+              507.349259,
+              354.478241
+            ],
+            [
+              37.254868,
+              354.478241
+            ],
+            [
+              37.254868,
+              464.615448
+            ]
+          ],
+          "kind": "visible_component_boundary",
+          "item_id": 1217,
+          "sides": [
+            "lower_drawer_front_infill",
+            "adjacent_component_or_exterior"
+          ],
+          "transparent_drawing_convention": false
+        },
+        {
+          "id": "front.drawer_unit_top.0.0",
+          "path": [
+            [
+              548.288086,
+              767.366455
+            ],
+            [
+              529.349655,
+              767.366455
+            ],
+            [
+              529.349655,
+              787.366943
+            ],
+            [
+              548.397827,
+              787.366943
+            ],
+            [
+              548.288086,
+              767.366455
+            ]
+          ],
+          "kind": "visible_component_boundary",
+          "item_id": 855,
+          "sides": [
+            "drawer_unit_top",
+            "adjacent_component_or_exterior"
+          ],
+          "transparent_drawing_convention": false
+        },
+        {
+          "id": "front.drawer_unit_top.1.0",
+          "path": [
+            [
+              0.431824,
+              767.366455
+            ],
+            [
+              -0.426697,
+              767.56665
+            ],
+            [
+              -0.426697,
+              786.366455
+            ],
+            [
+              0.280579,
+              787.366943
+            ],
+            [
+              15.245722,
+              787.366943
+            ],
+            [
+              15.245715,
+              767.366455
+            ],
+            [
+              0.431824,
+              767.366455
+            ]
+          ],
+          "kind": "visible_component_boundary",
+          "item_id": 855,
+          "sides": [
+            "drawer_unit_top",
+            "adjacent_component_or_exterior"
+          ],
+          "transparent_drawing_convention": false
+        },
+        {
+          "id": "front.drawer_right_front_edge.0.0",
+          "path": [
+            [
+              548.397827,
+              767.061037
+            ],
+            [
+              548.397827,
+              336.939813
+            ],
+            [
+              547.077637,
+              336.5
+            ],
+            [
+              529.349352,
+              336.5
+            ],
+            [
+              529.349472,
+              484.615478
+            ],
+            [
+              528.783264,
+              485.623291
+            ],
+            [
+              521.077642,
+              485.623291
+            ],
+            [
+              521.077642,
+              487.623291
+            ],
+            [
+              529.34935,
+              487.623291
+            ],
+            [
+              529.349472,
+              637.760498
+            ],
+            [
+              528.783264,
+              638.76831
+            ],
+            [
+              521.077648,
+              638.76831
+            ],
+            [
+              521.077648,
+              640.76831
+            ],
+            [
+              529.349655,
+              640.76831
+            ],
+            [
+              529.349655,
+              767.366455
+            ],
+            [
+              548.397827,
+              767.061037
+            ]
+          ],
+          "kind": "visible_component_boundary",
+          "item_id": 1799,
+          "sides": [
+            "drawer_right_front_edge",
+            "adjacent_component_or_exterior"
+          ],
+          "transparent_drawing_convention": false
+        },
+        {
+          "id": "front.drawer_left_front_edge.0.0",
+          "path": [
+            [
+              -0.437622,
+              764.5
+            ],
+            [
+              -0.437622,
+              766.5
+            ],
+            [
+              1.160843,
+              767.366455
+            ],
+            [
+              15.245715,
+              767.366455
+            ],
+            [
+              15.245667,
+              640.76831
+            ],
+            [
+              27.562434,
+              640.76831
+            ],
+            [
+              27.562435,
+              638.76831
+            ],
+            [
+              15.651581,
+              638.76831
+            ],
+            [
+              15.245545,
+              638.26831
+            ],
+            [
+              15.245423,
+              487.623291
+            ],
+            [
+              27.562522,
+              487.623291
+            ],
+            [
+              27.562524,
+              485.623291
+            ],
+            [
+              15.651581,
+              485.623291
+            ],
+            [
+              15.245545,
+              485.123291
+            ],
+            [
+              15.245426,
+              337.759491
+            ],
+            [
+              1.562653,
+              337.759491
+            ],
+            [
+              -0.437378,
+              338.759491
+            ],
+            [
+              -0.437622,
+              764.5
+            ]
+          ],
+          "kind": "visible_component_boundary",
+          "item_id": 1879,
+          "sides": [
+            "drawer_left_front_edge",
+            "adjacent_component_or_exterior"
+          ],
+          "transparent_drawing_convention": false
+        },
+        {
+          "id": "front.clothes_rail.0.0",
+          "path": [
+            [
+              11.549866,
+              1885.520263
+            ],
+            [
+              11.549866,
+              1889.034912
+            ],
+            [
+              12.049866,
+              1889.534912
+            ],
+            [
+              14.549866,
+              1889.534912
+            ],
+            [
+              14.549866,
+              1888.534912
+            ],
+            [
+              15.040558,
+              1888.534912
+            ],
+            [
+              15.040558,
+              1889.534912
+            ],
+            [
+              531.843842,
+              1889.534912
+            ],
+            [
+              531.843842,
+              1888.534912
+            ],
+            [
+              532.334564,
+              1888.534912
+            ],
+            [
+              532.334564,
+              1889.534912
+            ],
+            [
+              534.834564,
+              1889.534912
+            ],
+            [
+              535.334595,
+              1889.034912
+            ],
+            [
+              535.334595,
+              1865.03479
+            ],
+            [
+              534.834564,
+              1864.534912
+            ],
+            [
+              532.334564,
+              1864.534912
+            ],
+            [
+              532.334564,
+              1865.534912
+            ],
+            [
+              531.843842,
+              1865.534912
+            ],
+            [
+              531.843842,
+              1864.534912
+            ],
+            [
+              15.040558,
+              1864.534912
+            ],
+            [
+              15.040558,
+              1865.534912
+            ],
+            [
+              14.549866,
+              1865.534912
+            ],
+            [
+              14.549866,
+              1864.534912
+            ],
+            [
+              12.049866,
+              1864.534912
+            ],
+            [
+              11.549866,
+              1865.03479
+            ],
+            [
+              11.549866,
+              1885.520263
+            ]
+          ],
+          "kind": "visible_component_boundary",
+          "item_id": 581,
+          "sides": [
+            "clothes_rail",
+            "adjacent_component_or_exterior"
+          ],
+          "transparent_drawing_convention": false
+        },
+        {
+          "id": "front.right_rail_bracket.0.0",
+          "path": [
+            [
+              501.669037,
+              1891.090088
+            ],
+            [
+              501.669037,
+              1944.5
+            ],
+            [
+              531.669006,
+              1944.5
+            ],
+            [
+              531.669006,
+              1889.534912
+            ],
+            [
+              501.669037,
+              1889.534912
+            ],
+            [
+              501.669037,
+              1891.090088
+            ]
+          ],
+          "kind": "visible_component_boundary",
+          "item_id": 805,
+          "sides": [
+            "right_rail_bracket",
+            "adjacent_component_or_exterior"
+          ],
+          "transparent_drawing_convention": false
+        },
+        {
+          "id": "front.left_rail_bracket.0.0",
+          "path": [
+            [
+              15.109741,
+              1891.090088
+            ],
+            [
+              15.109741,
+              1944.5
+            ],
+            [
+              45.109726,
+              1944.5
+            ],
+            [
+              45.109726,
+              1889.534912
+            ],
+            [
+              15.109741,
+              1889.534912
+            ],
+            [
+              15.109741,
+              1891.090088
+            ]
+          ],
+          "kind": "visible_component_boundary",
+          "item_id": 693,
+          "sides": [
+            "left_rail_bracket",
+            "adjacent_component_or_exterior"
+          ],
+          "transparent_drawing_convention": false
+        },
+        {
+          "id": "front.drawer_unit_back.0.0",
+          "path": [
+            [
+              27.562824,
+              487.623291
+            ],
+            [
+              521.077637,
+              487.623291
+            ],
+            [
+              521.077637,
+              485.623291
+            ],
+            [
+              27.562826,
+              485.623291
+            ],
+            [
+              27.562824,
+              487.623291
+            ]
+          ],
+          "kind": "visible_component_boundary",
+          "item_id": 1719,
+          "sides": [
+            "drawer_unit_back",
+            "adjacent_component_or_exterior"
+          ],
+          "transparent_drawing_convention": false
+        },
+        {
+          "id": "front.drawer_unit_back.1.0",
+          "path": [
+            [
+              27.562701,
+              640.76831
+            ],
+            [
+              521.077637,
+              640.76831
+            ],
+            [
+              521.077637,
+              638.76831
+            ],
+            [
+              27.562703,
+              638.76831
+            ],
+            [
+              27.562701,
+              640.76831
+            ]
+          ],
+          "kind": "visible_component_boundary",
+          "item_id": 1719,
+          "sides": [
+            "drawer_unit_back",
+            "adjacent_component_or_exterior"
+          ],
+          "transparent_drawing_convention": false
+        },
+        {
+          "id": "front.back_panel.1.0",
+          "path": [
+            [
+              -1.0,
+              1056.902755
+            ],
+            [
+              -0.315735,
+              1056.914795
+            ],
+            [
+              -0.503174,
+              1176.227295
+            ],
+            [
+              -1.0,
+              1176.218553
+            ],
+            [
+              -1.0,
+              1945.5
+            ],
+            [
+              0.0,
+              1944.5
+            ],
+            [
+              15.109741,
+              1944.5
+            ],
+            [
+              15.109741,
+              1889.534912
+            ],
+            [
+              15.040558,
+              1888.534912
+            ],
+            [
+              14.549866,
+              1888.534912
+            ],
+            [
+              14.549866,
+              1889.534912
+            ],
+            [
+              12.049866,
+              1889.534912
+            ],
+            [
+              11.549866,
+              1889.034912
+            ],
+            [
+              11.549866,
+              1865.03479
+            ],
+            [
+              12.049866,
+              1864.534912
+            ],
+            [
+              14.549866,
+              1864.534912
+            ],
+            [
+              14.549866,
+              1865.534912
+            ],
+            [
+              15.040558,
+              1865.534912
+            ],
+            [
+              15.040558,
+              1864.534912
+            ],
+            [
+              531.843842,
+              1864.534912
+            ],
+            [
+              531.843842,
+              1865.534912
+            ],
+            [
+              532.334564,
+              1865.534912
+            ],
+            [
+              532.334564,
+              1864.534912
+            ],
+            [
+              534.834564,
+              1864.534912
+            ],
+            [
+              535.334595,
+              1865.03479
+            ],
+            [
+              535.334595,
+              1889.034912
+            ],
+            [
+              534.834564,
+              1889.534912
+            ],
+            [
+              532.334564,
+              1889.534912
+            ],
+            [
+              532.334564,
+              1888.534912
+            ],
+            [
+              531.843842,
+              1888.534912
+            ],
+            [
+              531.669006,
+              1889.534912
+            ],
+            [
+              531.669006,
+              1944.5
+            ],
+            [
+              548.0,
+              1944.5
+            ],
+            [
+              548.397827,
+              1944.897827
+            ],
+            [
+              548.397827,
+              787.366943
+            ],
+            [
+              529.349655,
+              787.366943
+            ],
+            [
+              529.349655,
+              802.449951
+            ],
+            [
+              15.245728,
+              802.449951
+            ],
+            [
+              15.245722,
+              787.366943
+            ],
+            [
+              0.280579,
+              787.366943
+            ],
+            [
+              -0.426575,
+              786.366943
+            ],
+            [
+              -0.437622,
+              766.5
+            ],
+            [
+              -0.437378,
+              338.759491
+            ],
+            [
+              1.562653,
+              337.759491
+            ],
+            [
+              15.245426,
+              337.759491
+            ],
+            [
+              15.245423,
+              334.478241
+            ],
+            [
+              529.34935,
+              334.478241
+            ],
+            [
+              529.349352,
+              336.5
+            ],
+            [
+              547.077942,
+              336.5
+            ],
+            [
+              548.397827,
+              336.939738
+            ],
+            [
+              548.397827,
+              22.346414
+            ],
+            [
+              -1.0,
+              22.346647
+            ],
+            [
+              -1.0,
+              1056.902755
+            ]
+          ],
+          "kind": "visible_component_boundary",
+          "item_id": 275,
+          "sides": [
+            "back_panel",
+            "adjacent_component_or_exterior"
+          ],
+          "transparent_drawing_convention": false
+        },
+        {
+          "id": "front.back_panel.2.0",
+          "path": [
+            [
+              -1.0,
+              2317.357177
+            ],
+            [
+              548.397827,
+              2317.357177
+            ],
+            [
+              548.397827,
+              1969.04436
+            ],
+            [
+              548.0,
+              1969.442138
+            ],
+            [
+              0.0,
+              1969.440185
+            ],
+            [
+              -1.0,
+              1968.440063
+            ],
+            [
+              -1.0,
+              2317.357177
+            ]
+          ],
+          "kind": "visible_component_boundary",
+          "item_id": 275,
+          "sides": [
+            "back_panel",
+            "adjacent_component_or_exterior"
+          ],
+          "transparent_drawing_convention": false
+        },
+        {
+          "id": "front.back_panel.6.0",
+          "path": [
+            [
+              501.669037,
+              1889.534912
+            ],
+            [
+              45.109726,
+              1889.534912
+            ],
+            [
+              45.109726,
+              1944.5
+            ],
+            [
+              501.669037,
+              1944.5
+            ],
+            [
+              501.669037,
+              1889.534912
+            ]
+          ],
+          "kind": "visible_component_boundary",
+          "item_id": 275,
+          "sides": [
+            "back_panel",
+            "adjacent_component_or_exterior"
+          ],
+          "transparent_drawing_convention": false
+        }
+      ],
+      "path_count": 41
+    },
+    "side": {
+      "paths": [
+        {
+          "id": "side.left_side_panel.0.0",
+          "path": [
+            [
+              0.000244,
+              2352.567138
+            ],
+            [
+              583.126648,
+              2352.567138
+            ],
+            [
+              583.126648,
+              -37.5
+            ],
+            [
+              0.000244,
+              -37.5
+            ],
+            [
+              0.000244,
+              2352.567138
+            ]
+          ],
+          "kind": "visible_component_boundary",
+          "item_id": 291,
+          "sides": [
+            "left_side_panel",
+            "adjacent_component_or_exterior"
+          ],
+          "transparent_drawing_convention": false
+        },
+        {
+          "id": "side.door_left_frame.0.0",
+          "path": [
+            [
+              -43.775268,
+              2351.030029
+            ],
+            [
+              -20.599426,
+              2352.030029
+            ],
+            [
+              -2.805053,
+              2352.030029
+            ],
+            [
+              -1.805114,
+              2351.030029
+            ],
+            [
+              -1.804748,
+              -11.326685
+            ],
+            [
+              -2.804687,
+              -12.326441
+            ],
+            [
+              -20.599182,
+              -12.326441
+            ],
+            [
+              -43.775024,
+              -11.326687
+            ],
+            [
+              -43.775268,
+              2351.030029
+            ]
+          ],
+          "kind": "visible_component_boundary",
+          "item_id": 2121,
+          "sides": [
+            "door_left_frame",
+            "adjacent_component_or_exterior"
+          ],
+          "transparent_drawing_convention": false
+        },
+        {
+          "id": "side.door_bottom_frame.1.0",
+          "path": [
+            [
+              -2.805053,
+              -12.326685
+            ],
+            [
+              -29.168518,
+              -12.326685
+            ],
+            [
+              -29.57337,
+              -11.921857
+            ],
+            [
+              -20.599182,
+              -12.326441
+            ],
+            [
+              -2.805053,
+              -12.326685
+            ]
+          ],
+          "kind": "visible_component_boundary",
+          "item_id": 2006,
+          "sides": [
+            "door_bottom_frame",
+            "adjacent_component_or_exterior"
+          ],
+          "transparent_drawing_convention": false
+        },
+        {
+          "id": "side.door_top_frame.0.0",
+          "path": [
+            [
+              -29.16864,
+              2352.030029
+            ],
+            [
+              -29.168274,
+              2352.030029
+            ],
+            [
+              -20.599426,
+              2352.030029
+            ],
+            [
+              -29.573334,
+              2351.62536
+            ],
+            [
+              -29.16864,
+              2352.030029
+            ]
+          ],
+          "kind": "visible_component_boundary",
+          "item_id": 2031,
+          "sides": [
+            "door_top_frame",
+            "adjacent_component_or_exterior"
+          ],
+          "transparent_drawing_convention": false
+        },
+        {
+          "id": "side.top_deck.0.0",
+          "path": [
+            [
+              138.858856,
+              2355.252685
+            ],
+            [
+              564.126648,
+              2355.252685
+            ],
+            [
+              565.126648,
+              2354.252685
+            ],
+            [
+              565.126648,
+              2352.567138
+            ],
+            [
+              17.999756,
+              2352.567138
+            ],
+            [
+              17.999756,
+              2354.252685
+            ],
+            [
+              18.999695,
+              2355.252685
+            ],
+            [
+              138.858856,
+              2355.252685
+            ]
+          ],
+          "kind": "visible_component_boundary",
+          "item_id": 195,
+          "sides": [
+            "top_deck",
+            "adjacent_component_or_exterior"
+          ],
+          "transparent_drawing_convention": false
+        },
+        {
+          "id": "side.bottom_hinge.0.0",
+          "path": [
+            [
+              -44.298584,
+              18.578834
+            ],
+            [
+              -43.775027,
+              18.578973
+            ],
+            [
+              -43.775024,
+              -11.326687
+            ],
+            [
+              -29.57337,
+              -11.921857
+            ],
+            [
+              -29.168518,
+              -12.326685
+            ],
+            [
+              -2.817809,
+              -12.326685
+            ],
+            [
+              -32.728821,
+              -12.4678
+            ],
+            [
+              -44.904419,
+              -11.967802
+            ],
+            [
+              -45.279358,
+              -11.488554
+            ],
+            [
+              -45.279358,
+              17.599098
+            ],
+            [
+              -44.298584,
+              18.578834
+            ]
+          ],
+          "kind": "visible_component_boundary",
+          "item_id": 2058,
+          "sides": [
+            "bottom_hinge",
+            "adjacent_component_or_exterior"
+          ],
+          "transparent_drawing_convention": false
+        },
+        {
+          "id": "side.top_hinge.0.0",
+          "path": [
+            [
+              -45.279541,
+              2351.588379
+            ],
+            [
+              -44.904541,
+              2352.068115
+            ],
+            [
+              -32.728943,
+              2352.568115
+            ],
+            [
+              -2.833313,
+              2352.442871
+            ],
+            [
+              -1.979675,
+              2351.204884
+            ],
+            [
+              -2.80487,
+              2352.030029
+            ],
+            [
+              -29.16864,
+              2352.030029
+            ],
+            [
+              -29.573334,
+              2351.62536
+            ],
+            [
+              -43.775268,
+              2351.030029
+            ],
+            [
+              -43.775265,
+              2321.52124
+            ],
+            [
+              -44.298706,
+              2321.52124
+            ],
+            [
+              -45.279541,
+              2322.5
+            ],
+            [
+              -45.279541,
+              2351.588379
+            ]
+          ],
+          "kind": "visible_component_boundary",
+          "item_id": 2077,
+          "sides": [
+            "top_hinge",
+            "adjacent_component_or_exterior"
+          ],
+          "transparent_drawing_convention": false
+        }
+      ],
+      "path_count": 7
+    }
+  },
+  "limitations": [
+    "Opaque-component depth ordering uses the nearest component depth; this is a component-level orthographic simplification, not a per-pixel raytracer.",
+    "Glass is intentionally transparent in Front so shelf, hanging rail and drawers are readable; the saved shaded render uses an opaque-looking glass material.",
+    "Shared semantic boundaries may occur in adjacent closed component loops; they represent one physical interface."
+  ],
+  "simplification_tolerance_mm": 0.3,
+  "official_cad_used": false,
+  "pass_checks": true
+}

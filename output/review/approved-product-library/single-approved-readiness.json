@@ -1,0 +1,251 @@
+{
+  "status": "read_only_readiness_audit",
+  "products": [
+    {
+      "id": "hima01",
+      "global_id": "2xmcLzu1rDTeMzRuNxPDyE",
+      "approval": {
+        "path": "/Users/jiaxinchen/.codex/worktrees/3a80/2504 GBTB Yanlord Zhuhai/pipeline/decisions/hima01-drawing-approval.json",
+        "bytes": 1269,
+        "sha256": "e4e08a7d361beb5cb77dc407c2955608e463ea3439f270e64f6129b954289db3"
+      },
+      "single_views_approved": [
+        "plan",
+        "front",
+        "side"
+      ],
+      "recorded_derived_ifc_write_allowed": true,
+      "approval_scope": "geometry-derived Plan, Front and Side drawing representation for the project-folded HIMA01 Body; the official PVA11 DWG remains family and unfolded-state reference only, not project candidate geometry or a project shop drawing",
+      "approval_note": "Human approval selects the reviewed black geometry-derived Plan, Front and Side representations. The authenticated official PVA11 DWG is retained separately as family and unfolded-state evidence and is not used as candidate blue linework. This opens the product-level derived IFC gate only; no derived IFC will be written until the project owner separately instructs execution, and formal authoritative IFC write remains prohibited.",
+      "source_ifc": {
+        "path": "/Users/jiaxinchen/.codex/worktrees/3a80/2504 GBTB Yanlord Zhuhai/output/review/highpoly-types/hima01/Poliform-Hima-HIMA01-bonsai-isolated.ifc",
+        "bytes": 9739139,
+        "sha256": "9ce52f623848cbbf173a45e34ffa7b00ce58919ff9c849fe7fb2163195be501e"
+      },
+      "representation_identifiers": [
+        "Body",
+        "Body",
+        "Body"
+      ],
+      "existing_view_representations": [],
+      "body_matches_formal": true,
+      "placement_matrix_max_error_project_units": 0.0,
+      "unit_scale_matches_formal": true,
+      "work_if_included": "First write approved 2D geometry into a new pure IFC, then create and validate external scene recipe",
+      "scope_confirmation_pending": true,
+      "ifc_written": false
+    },
+    {
+      "id": "geberit-154-446-ks-1",
+      "global_id": "2S2c498tb7$gzdukjhCGVQ",
+      "approval": {
+        "path": "/Users/jiaxinchen/.codex/worktrees/3a80/2504 GBTB Yanlord Zhuhai/pipeline/decisions/geberit-154-446-ks-1-drawing-approval.json",
+        "bytes": 962,
+        "sha256": "4e8731e14771064bdcda791a8dcd35d3b1845f1d570cce0e315bd772a26d0001"
+      },
+      "single_views_approved": [
+        "plan",
+        "front",
+        "side"
+      ],
+      "recorded_derived_ifc_write_allowed": true,
+      "approval_scope": "official manufacturer exact archived article reference, not a project shop drawing",
+      "approval_note": "Approved Plan, Front and corrected Side using the exact archived Geberit 154.446.KS.1 native DWG blue-line scheme. The product-level derived IFC write gate is open, but no derived IFC will be written until the user gives a separate explicit write instruction. The formal authoritative IFC remains prohibited.",
+      "source_ifc": {
+        "path": "/Users/jiaxinchen/.codex/worktrees/3a80/2504 GBTB Yanlord Zhuhai/output/review/highpoly-types/geberit-154-446-ks-1/Geberit-154-446-KS-1-bonsai-isolated.ifc",
+        "bytes": 3765410,
+        "sha256": "34b38617095ab2d212f55345d5fb48c78eb8f572b02f968df4eebaab734ad260"
+      },
+      "representation_identifiers": [
+        "Body",
+        "Body",
+        "Body"
+      ],
+      "existing_view_representations": [],
+      "body_matches_formal": true,
+      "placement_matrix_max_error_project_units": 0.0,
+      "unit_scale_matches_formal": true,
+      "work_if_included": "First write approved 2D geometry into a new pure IFC, then create and validate external scene recipe",
+      "scope_confirmation_pending": true,
+      "ifc_written": false
+    },
+    {
+      "id": "bed02",
+      "global_id": "1i_pqgLv9A7uuV7MjaArBW",
+      "approval": {
+        "path": "/Users/jiaxinchen/.codex/worktrees/3a80/2504 GBTB Yanlord Zhuhai/pipeline/decisions/bed02-drawing-approval.json",
+        "bytes": 1323,
+        "sha256": "1e4a48c605dd0cab0f9fd0513100287f918f466ce02ac4b17ccfd7d3a303b348"
+      },
+      "single_views_approved": [
+        "plan",
+        "front",
+        "side"
+      ],
+      "recorded_derived_ifc_write_allowed": false,
+      "approval_scope": "Official Viktor 160x200 family native DWG Plan/Front/Side, selected at scale 1.0; project Body width/configuration differs and is not an exact match.",
+      "approval_note": "User selects the corrected official native-DWG family blue linework, not the older geometry-derived-only candidate. Family/project dimension differences are retained. Official DWG was acquired and its extraction corrected; previous no-download note is superseded. No new IFC write permission is inferred from this single-product approval.",
+      "source_ifc": {
+        "path": "/Users/jiaxinchen/.codex/worktrees/3a80/2504 GBTB Yanlord Zhuhai/output/review/highpoly-types/bed02/Baxter-Viktor-BED02-bonsai-isolated.ifc",
+        "bytes": 2768915,
+        "sha256": "bd2aefb659bb75053716e3f3c431a84fbef6525d631f37fa447d05ff79194169"
+      },
+      "representation_identifiers": [
+        "Body",
+        "Body",
+        "Body"
+      ],
+      "existing_view_representations": [],
+      "body_matches_formal": true,
+      "placement_matrix_max_error_project_units": 0.0,
+      "unit_scale_matches_formal": true,
+      "work_if_included": "First write approved 2D geometry into a new pure IFC, then create and validate external scene recipe",
+      "scope_confirmation_pending": true,
+      "ifc_written": false
+    },
+    {
+      "id": "gessi316-54145",
+      "global_id": "3jT4sCgpHC98VSIUdGUNYH",
+      "approval": {
+        "path": "/Users/jiaxinchen/.codex/worktrees/3a80/2504 GBTB Yanlord Zhuhai/pipeline/decisions/gessi316-54145-drawing-approval.json",
+        "bytes": 1167,
+        "sha256": "32e093739085616e4cfe3aeeff2bbe662331e5fc6293548885b8a50fb4ba19be"
+      },
+      "single_views_approved": [
+        "plan",
+        "front",
+        "side"
+      ],
+      "recorded_derived_ifc_write_allowed": false,
+      "approval_scope": "official Gessi exact 54145 G000 family reference; not a project shop drawing",
+      "approval_note": "User approved the corrected and simplified single-product SVG candidate. Blue linework is based on official 54145 G000 native DWG with fine nozzle detail removed; original official evidence remains preserved. This closes the single-product correction/review task. Existing IFC write gates remain false; scene drawing and IFC writing are not claimed complete.",
+      "source_ifc": {
+        "path": "/Users/jiaxinchen/.codex/worktrees/3a80/2504 GBTB Yanlord Zhuhai/output/review/highpoly-types/gessi316-54145/Gessi316-54145-bonsai-isolated.ifc",
+        "bytes": 471342,
+        "sha256": "790d4edc0aaa6190b1810b9de454793f8fe0ff0a4018b0cd13bee777129cbc3b"
+      },
+      "representation_identifiers": [
+        "Body",
+        "Box",
+        "Body"
+      ],
+      "existing_view_representations": [],
+      "body_matches_formal": true,
+      "placement_matrix_max_error_project_units": 0.0,
+      "unit_scale_matches_formal": true,
+      "work_if_included": "First write approved 2D geometry into a new pure IFC, then create and validate external scene recipe",
+      "scope_confirmation_pending": true,
+      "ifc_written": false
+    },
+    {
+      "id": "street-h",
+      "global_id": "2ajpw0I9n1dBypfISg3ejX",
+      "approval": {
+        "path": "/Users/jiaxinchen/.codex/worktrees/3a80/2504 GBTB Yanlord Zhuhai/pipeline/decisions/street-h-drawing-approval.json",
+        "bytes": 1292,
+        "sha256": "e4b090be45ee0e2e82ab603967d745503cccd2ccfa1ceae12ee2664f330e6f94"
+      },
+      "single_views_approved": [
+        "plan",
+        "front",
+        "side"
+      ],
+      "recorded_derived_ifc_write_allowed": false,
+      "approval_scope": "official complete antoniolupi Street family-top CAD evidence only; the project STREET-H type is an isolated repeated sink-holder subcomponent, not the complete catalogue top and not a project shop drawing",
+      "approval_note": "User approved the current geometry-derived black-line candidate. Official parent-family DXF remains archived as reference only, not an exact STREET-H component model. This approval records single-product SVG acceptance; no explicit IFC write instruction was given in this message, so existing IFC write gates remain unchanged.",
+      "source_ifc": {
+        "path": "/Users/jiaxinchen/.codex/worktrees/3a80/2504 GBTB Yanlord Zhuhai/output/review/highpoly-types/street-h/antoniolupi-Street-H-bonsai-isolated.ifc",
+        "bytes": 154577,
+        "sha256": "2b7f9a70f52fbb67f04f11c78b42eb24b13748f7f36bfc99a1d2f957bf423425"
+      },
+      "representation_identifiers": [
+        "Body",
+        "Body"
+      ],
+      "existing_view_representations": [],
+      "body_matches_formal": true,
+      "placement_matrix_max_error_project_units": 0.0,
+      "unit_scale_matches_formal": true,
+      "work_if_included": "First write approved 2D geometry into a new pure IFC, then create and validate external scene recipe",
+      "scope_confirmation_pending": true,
+      "ifc_written": false
+    },
+    {
+      "id": "tab02",
+      "global_id": "2eX84IyLr8_e34nuOoRPLQ",
+      "approval": {
+        "path": "/Users/jiaxinchen/.codex/worktrees/3a80/2504 GBTB Yanlord Zhuhai/pipeline/decisions/tab02-drawing-approval.json",
+        "bytes": 1225,
+        "sha256": "47aaf3acdec9ab3dbb1304c51945d876f17daf776e43e950c4f7144c34b51157"
+      },
+      "single_views_approved": [
+        "plan",
+        "front",
+        "side"
+      ],
+      "recorded_derived_ifc_write_allowed": false,
+      "approval_scope": "exact RODA BERNARDO 367 manufacturer identity and public-catalogue dimensions; official 2D/3D downloads require reserved-area authentication and were not acquired; not a project shop drawing and not official CAD geometry",
+      "approval_note": "Semantic single-product SVGs approved; drawing uses actual Body components and contact boundaries. Existing IFC write gates unchanged; no TAB02 scene IFC delivery claimed.",
+      "source_ifc": {
+        "path": "/Users/jiaxinchen/.codex/worktrees/3a80/2504 GBTB Yanlord Zhuhai/output/review/highpoly-types/tab02/RODA-Bernardo-367-TAB02-bonsai-isolated.ifc",
+        "bytes": 141929,
+        "sha256": "195062b1b29219964b1e457572bdd7c4d313a94c6d8cb61eee0666cc2a445f90"
+      },
+      "representation_identifiers": [
+        "Body"
+      ],
+      "existing_view_representations": [],
+      "body_matches_formal": true,
+      "placement_matrix_max_error_project_units": 0.0,
+      "unit_scale_matches_formal": true,
+      "work_if_included": "First write approved 2D geometry into a new pure IFC, then create and validate external scene recipe",
+      "scope_confirmation_pending": true,
+      "ifc_written": false
+    },
+    {
+      "id": "falper-sorgente",
+      "global_id": "350tdaubr8QP3Cu2YMQZIN",
+      "approval": {
+        "path": "/Users/jiaxinchen/.codex/worktrees/3a80/2504 GBTB Yanlord Zhuhai/pipeline/decisions/falper-sorgente-drawing-approval.json",
+        "bytes": 738,
+        "sha256": "04f3c33cf2420fb38d0fde8e218633e407ce945d8af0fbc409e103a4d3a4bbce"
+      },
+      "single_views_approved": [
+        "plan",
+        "front",
+        "side"
+      ],
+      "recorded_derived_ifc_write_allowed": null,
+      "approval_scope": "family_reference_not_project_shop_drawing",
+      "approval_note": "Elevation approval covers the reviewed Front and Side views; output is a derived drawing IFC, not the formal authoritative IFC.",
+      "source_ifc": {
+        "path": "/Users/jiaxinchen/.codex/worktrees/3a80/2504 GBTB Yanlord Zhuhai/output/review/highpoly-types/falper-sorgente/Falper-Sorgente-WFB-bonsai-isolated.ifc",
+        "bytes": 820307,
+        "sha256": "e87f796d6b4987ab355f8c6c4014ec379f97baa2f09fea67b2da208a8c1f17f2"
+      },
+      "representation_identifiers": [
+        "Body",
+        "Body",
+        "FalperWFBPlan",
+        "FalperWFBFront",
+        "FalperWFBSide"
+      ],
+      "existing_view_representations": [
+        "FalperWFBPlan",
+        "FalperWFBFront",
+        "FalperWFBSide"
+      ],
+      "body_matches_formal": true,
+      "placement_matrix_max_error_project_units": 0.0,
+      "unit_scale_matches_formal": true,
+      "work_if_included": "Verify and package existing view geometry, create and validate external scene recipe",
+      "scope_confirmation_pending": true,
+      "ifc_written": false
+    }
+  ],
+  "single_approval_not_promoted_to_scene_approval": true,
+  "formal_ifc_sha256_before": "7a50b87e8f48a7c2bfbaa9f1dabdfca7155fa684b2325c66aa1ae15c8ab0a25c",
+  "formal_ifc_sha256_after": "7a50b87e8f48a7c2bfbaa9f1dabdfca7155fa684b2325c66aa1ae15c8ab0a25c",
+  "ifc_writes_performed": 0,
+  "question": "Should the seven single-SVG-approved products also be migrated and included with scene approval explicitly pending?"
+}

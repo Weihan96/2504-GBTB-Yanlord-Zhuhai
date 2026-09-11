@@ -9,12 +9,78 @@
       "expected_instance_global_ids": [
         "3yuXF4PtnBHgIXDlmXFJ$7"
       ],
-      "profile_source": "isolated_highpoly_projection; official_family_identity_verified; exact_native_cad_not_acquired",
+      "profile_source": "actual_highpoly_component_semantics; manufacturer_family_identity_only",
       "silhouette_simplify_mm": 1.0,
       "semantic_sections": {
-        "plan": [],
-        "front": [],
-        "side": []
+        "plan": [
+          "plan.top_deck.0.0",
+          "plan.back_panel.0.0",
+          "plan.right_side_panel.0.0",
+          "plan.top_hinge.0.0",
+          "plan.top_hinge.0.1",
+          "plan.left_side_panel.0.0",
+          "plan.door_top_frame.0.0",
+          "plan.door_right_frame.0.0",
+          "plan.door_right_frame.0.1",
+          "plan.door_right_frame.0.2",
+          "plan.door_left_frame.0.0",
+          "plan.door_glass.0.0",
+          "plan.door_glass.1.0",
+          "plan.door_handle.0.0",
+          "plan.bottom_deck.0.0"
+        ],
+        "front": [
+          "front.top_hinge.0.0",
+          "front.bottom_hinge.0.0",
+          "front.door_right_frame.0.0",
+          "front.door_right_frame.1.0",
+          "front.door_left_frame.0.0",
+          "front.door_handle.0.0",
+          "front.door_top_frame.0.0",
+          "front.door_bottom_frame.0.0",
+          "front.door_glass.0.0",
+          "front.bottom_plinth.0.0",
+          "front.bottom_deck.0.0",
+          "front.right_side_panel.0.0",
+          "front.right_side_panel.1.0",
+          "front.left_side_panel.0.0",
+          "front.left_side_panel.1.0",
+          "front.left_side_panel.2.0",
+          "front.top_deck.0.0",
+          "front.upper_shelf.0.0",
+          "front.upper_shelf.0.1",
+          "front.middle_drawer_pull.0.0",
+          "front.lower_drawer_pull.0.0",
+          "front.upper_drawer_front.0.0",
+          "front.upper_drawer_front.0.1",
+          "front.middle_drawer_front_frame.0.0",
+          "front.middle_drawer_front_frame.0.1",
+          "front.lower_drawer_front_frame.0.0",
+          "front.lower_drawer_front_frame.0.1",
+          "front.middle_drawer_front_infill.0.0",
+          "front.lower_drawer_front_infill.0.0",
+          "front.drawer_unit_top.0.0",
+          "front.drawer_unit_top.1.0",
+          "front.drawer_right_front_edge.0.0",
+          "front.drawer_left_front_edge.0.0",
+          "front.clothes_rail.0.0",
+          "front.right_rail_bracket.0.0",
+          "front.left_rail_bracket.0.0",
+          "front.drawer_unit_back.0.0",
+          "front.drawer_unit_back.1.0",
+          "front.back_panel.1.0",
+          "front.back_panel.2.0",
+          "front.back_panel.6.0"
+        ],
+        "side": [
+          "side.left_side_panel.0.0",
+          "side.door_left_frame.0.0",
+          "side.door_bottom_frame.1.0",
+          "side.door_top_frame.0.0",
+          "side.top_deck.0.0",
+          "side.bottom_hinge.0.0",
+          "side.top_hinge.0.0"
+        ]
       },
       "required_semantics": [
         "single_project_WD02_representative",
@@ -40,7 +106,8 @@
         "source_access_record": "output/review/highpoly-types/wd02/official-source/source-access-record.json",
         "official_native_cad_status": "gated_resource_download_no_public_exact_WD02_asset_located_not_acquired",
         "official_native_cad_used": false
-      }
+      },
+      "semantic_audit": "output/review/highpoly-types/wd02/wd02-semantic-segmentation.json"
     }
   }
 }

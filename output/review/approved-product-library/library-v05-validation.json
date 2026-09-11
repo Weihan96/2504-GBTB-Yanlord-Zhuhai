@@ -1,0 +1,63 @@
+{
+  "version": "0.5.0",
+  "verdict": "implemented_and_tested_live_upgrade_pending",
+  "task": "Bottom-up translucent green loading feedback after release",
+  "courseEvidence": {
+    "mode": "embedded-course-index",
+    "lesson": "052000",
+    "timestamp": "01:17",
+    "fact": "IFC save is distinct from Blender display"
+  },
+  "plan": [
+    "keep placement box",
+    "show actual stage progress",
+    "remove overlay on success/error",
+    "retain native save transaction"
+  ],
+  "preState": {
+    "protected_index": "ebe9e5eb87e11b53216c1dac1aa772bd860ffc26d1c81c2ade2b0ee331b8c053",
+    "formal_ifc": "7a50b87e8f48a7c2bfbaa9f1dabdfca7155fa684b2325c66aa1ae15c8ab0a25c"
+  },
+  "execution": {
+    "provider": "bonsai-mcp 1.1.0",
+    "blender": "4.5.3",
+    "bonsai": "0.8.4"
+  },
+  "persistence": {
+    "test_fixture": "/var/folders/rz/d8p6s4y50ws53rd150nm2s3r0000gn/T/review-native-ifc-x14u5uqx/asset-insertion.ifc",
+    "native_save_reload_pass": true,
+    "source_ifcs_saved": false
+  },
+  "postState": {
+    "protected_index": "ebe9e5eb87e11b53216c1dac1aa772bd860ffc26d1c81c2ade2b0ee331b8c053",
+    "formal_ifc": "7a50b87e8f48a7c2bfbaa9f1dabdfca7155fa684b2325c66aa1ae15c8ab0a25c",
+    "all_39_packages_unchanged": true
+  },
+  "visual": {
+    "status": "pass",
+    "bottom_up_fill_at": [
+      0.2,
+      0.65,
+      1.0
+    ],
+    "outputs": [
+      "/Users/jiaxinchen/.codex/worktrees/3a80/2504 GBTB Yanlord Zhuhai/output/review/approved-product-library/loading-feedback-20.png",
+      "/Users/jiaxinchen/.codex/worktrees/3a80/2504 GBTB Yanlord Zhuhai/output/review/approved-product-library/loading-feedback-65.png",
+      "/Users/jiaxinchen/.codex/worktrees/3a80/2504 GBTB Yanlord Zhuhai/output/review/approved-product-library/loading-feedback-100.png"
+    ],
+    "success_and_error_cleanup": true,
+    "scene_and_ifc_unchanged": true,
+    "existing_live_addon_version": [
+      0,
+      4,
+      0
+    ],
+    "production_drag_hot_reloaded": false,
+    "physical_drag_test": "pending"
+  },
+  "outputs": [
+    "highpoly_review_library.zip",
+    "native-loading-insertion-validation.json"
+  ],
+  "remaining": "Current v0.4 session contains user edits; no RNA hot reload or restart. User saves before fresh-session upgrade; physical drag acceptance pending."
+}

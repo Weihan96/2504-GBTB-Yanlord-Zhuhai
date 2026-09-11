@@ -7,7 +7,10 @@
   "third_party_cad_used": false,
   "project_context_retained": true,
   "walls_and_surrounding_project_elements_retained": true,
-  "overlay_top_layer_with_white_mask": true,
+  "actual_ifc_projection_retained": true,
+  "proxy_overlay_present": true,
+  "overlay_top_layer_with_white_halo": true,
+  "overlay_top_layer_with_white_mask": false,
   "blue_line_present": true,
   "source_dwg_sha256": "cb9825eecab7c78ee28e7668e933c2fe413395a63bf75f3afab8cc4959864724",
   "project_scale_svg_units_per_mm": 0.02,
@@ -17,11 +20,11 @@
       "candidate_view": "plan",
       "source": "drawings/Furniture Plan.svg",
       "output": "output/review/highpoly-types/marilyn-01/project-context-furniture-plan.svg",
-      "output_sha256": "211b8966f918e2ba9757145a17e4c585c6d7f97a9176549721d6a005790cd4e7",
+      "output_sha256": "57d514ce90759534b3081081e60027757cc9de4db2f24bca87276c30f7d8be73",
       "review_crop": "output/review/highpoly-types/marilyn-01/project-context-furniture-plan-review.svg",
-      "review_crop_sha256": "87632a71113963d5ee2e5d71e582dffcfc90ddda44d0cce9117ba4080fd0703e",
+      "review_crop_sha256": "584031d4f7bde43f167a7b1dbab7a27261e79d0abe7ec26f6f5691e1536d23f1",
       "review_preview": "output/review/highpoly-types/marilyn-01/project-context-furniture-plan-review-preview.png",
-      "review_preview_sha256": "61e26b91a5d0685361bc52a48d054793504aae6e8f6e33bd33408f467d49516a",
+      "review_preview_sha256": "0b2b2eeb7facaefe1d166af52cf03543e57f77dcb568672a0368af206d2b353d",
       "overlay": {
         "ifc_guid": "3l2Ji4k2H9oOTDGWYUq7uV",
         "source_kind": "native_dwg",
@@ -29,7 +32,19 @@
         "official_cad_used": true,
         "third_party_cad_used": false,
         "source_dwg_sha256": "cb9825eecab7c78ee28e7668e933c2fe413395a63bf75f3afab8cc4959864724",
-        "path_count": 24,
+        "path_count": 44,
+        "proxy_path_count": 33,
+        "actual_ifc_projection_retained": true,
+        "single_product_morphology": {
+          "candidate_source": "output/review/highpoly-types/marilyn-01/candidate-representations.json",
+          "official_paths_sha256": "8d422f3be53f2a88a7474a86ee3dde9069fc390c27c4c4c3eb9a04cf59826a9b",
+          "proxy_paths_sha256": "3f05efbfdb65dbb54ff4fa891fae2e0fa75a44f3faffbcdf099f67f3ee781fa5",
+          "context_uses_same_ordered_official_paths": true,
+          "context_uses_same_ordered_proxy_paths": true,
+          "resampled": false,
+          "scaled_to_force_fit": false,
+          "pass": true
+        },
         "fit": {
           "rotate_quarter_turns": 0,
           "alignment_mode": "centre",
@@ -71,11 +86,11 @@
       "candidate_view": "front",
       "source": "drawings/elevations/native/EL-09-33-R22-PY.svg",
       "output": "output/review/highpoly-types/marilyn-01/project-context-r22-front-elevation.svg",
-      "output_sha256": "154c94e8d91d9a6cb51299fd98db966691af43e0fbea2d6d3bc12e03ba8a92b6",
+      "output_sha256": "fc7ed9560f3998400c2775d3be04a733ba33e67284e6c0162ad0a59e25f3cffa",
       "review_crop": "output/review/highpoly-types/marilyn-01/project-context-r22-front-elevation-review.svg",
-      "review_crop_sha256": "9d9146443d226ae2b577b337d35aa6709db35a45cd75ef2dcc8c79603a83f7ac",
+      "review_crop_sha256": "daea389b51ba139a33edf50bfa81fd684a9f9336a3fa8e8bd9d4663c24c36707",
       "review_preview": "output/review/highpoly-types/marilyn-01/project-context-r22-front-elevation-review-preview.png",
-      "review_preview_sha256": "c698baf2d1ce049c39ea40bcdee6aed884b6c6adb5c3eab6f2128282b3eda9b5",
+      "review_preview_sha256": "4ce20bb63e57ea9f10a61199907c8afee877f4e6fd77b02b0dff5726cfd97c9d",
       "overlay": {
         "ifc_guid": "3l2Ji4k2H9oOTDGWYUq7uV",
         "source_kind": "native_dwg",
@@ -83,7 +98,19 @@
         "official_cad_used": true,
         "third_party_cad_used": false,
         "source_dwg_sha256": "cb9825eecab7c78ee28e7668e933c2fe413395a63bf75f3afab8cc4959864724",
-        "path_count": 68,
+        "path_count": 96,
+        "proxy_path_count": 1,
+        "actual_ifc_projection_retained": true,
+        "single_product_morphology": {
+          "candidate_source": "output/review/highpoly-types/marilyn-01/candidate-representations.json",
+          "official_paths_sha256": "bda5755daca20d903dfb151d0bdb43409a705afb5b2e83048a8fd506e1369847",
+          "proxy_paths_sha256": "e66d177be8e06df1a8a1a09349b095b4e52466ef5ee621f401a55a654d2ab32a",
+          "context_uses_same_ordered_official_paths": true,
+          "context_uses_same_ordered_proxy_paths": true,
+          "resampled": false,
+          "scaled_to_force_fit": false,
+          "pass": true
+        },
         "fit": {
           "rotate_quarter_turns": 0,
           "alignment_mode": "baseline_centre",
@@ -125,11 +152,11 @@
       "candidate_view": "side",
       "source": "drawings/elevations/native/EL-09-36-R22-NX.svg",
       "output": "output/review/highpoly-types/marilyn-01/project-context-r22-side-elevation.svg",
-      "output_sha256": "db12dfbff69db39f77688acd4cbf9c54ac168b01fd3e704c28f7bc34ffb07219",
+      "output_sha256": "0487807bb5a0562b9a2760420d7f25541b18c550853816d858c5ccb6526e5606",
       "review_crop": "output/review/highpoly-types/marilyn-01/project-context-r22-side-elevation-review.svg",
-      "review_crop_sha256": "9f07ecaba309e923e64d435c3cffae2d4700b7294aed21e89dd61a92807e0eb3",
+      "review_crop_sha256": "d6df260c56976821daf71642865390498503aa8e05336feb4d23099efcd6b991",
       "review_preview": "output/review/highpoly-types/marilyn-01/project-context-r22-side-elevation-review-preview.png",
-      "review_preview_sha256": "6b38688966bc74453c6b9233cb9b33ed053c8723361f952f89e67f51ee1f7a31",
+      "review_preview_sha256": "f7f77e077df3afc57f0028eca98eccccba41508fc48a011a687112da579ab11b",
       "overlay": {
         "ifc_guid": "3l2Ji4k2H9oOTDGWYUq7uV",
         "source_kind": "native_dwg",
@@ -137,7 +164,19 @@
         "official_cad_used": true,
         "third_party_cad_used": false,
         "source_dwg_sha256": "cb9825eecab7c78ee28e7668e933c2fe413395a63bf75f3afab8cc4959864724",
-        "path_count": 54,
+        "path_count": 78,
+        "proxy_path_count": 3,
+        "actual_ifc_projection_retained": true,
+        "single_product_morphology": {
+          "candidate_source": "output/review/highpoly-types/marilyn-01/candidate-representations.json",
+          "official_paths_sha256": "9d83ba4fc60789e65de08db4f589fc0eedd860ad2024aedf31e58ac136329323",
+          "proxy_paths_sha256": "b378df0ad10c31cd3f4d148432888139c7da02001735537a7a3f8b5b1bb4c038",
+          "context_uses_same_ordered_official_paths": true,
+          "context_uses_same_ordered_proxy_paths": true,
+          "resampled": false,
+          "scaled_to_force_fit": false,
+          "pass": true
+        },
         "fit": {
           "rotate_quarter_turns": 0,
           "alignment_mode": "baseline_centre",
@@ -155,17 +194,17 @@
           ],
           "proxy_bbox": [
             [
-              40.058251,
-              33.253802
+              40.055628,
+              33.099825
             ],
             [
-              59.236152,
+              59.238775,
               51.710027
             ]
           ],
           "bbox_absolute_delta_svg_units": [
-            1.100336,
-            0.953314
+            1.095089,
+            0.799337
           ],
           "bbox_tolerance_svg_units": 1.2,
           "uniform_scale_preserved": true,

@@ -1,0 +1,47 @@
+{
+  "product": "geberit154446",
+  "status": "complete",
+  "package": "manifest.json",
+  "ifc": "GEBERIT154446-product.ifc",
+  "scene_recipe": "scene-recipe.json",
+  "validation": "validation.json",
+  "scene_approval_status": "pending",
+  "single_product_approval_status": "approved",
+  "new_files_only": true,
+  "staged_baseline_modified": false,
+  "legacy_deleted": false,
+  "formal_modified": false,
+  "bridge_port": 9895,
+  "validation_verdict": "pass",
+  "approval_label_zh": "单品已通过、场景待验收",
+  "fresh_pure_session": {
+    "scene_name": "🔍 逐个审核高模图纸候选",
+    "task_title_available": true,
+    "scene_renamed": true,
+    "pid": 82339,
+    "ifc": "/Users/jiaxinchen/.codex/worktrees/3a80/2504 GBTB Yanlord Zhuhai/output/review/highpoly-types/geberit-154-446-ks-1/product-package/GEBERIT154446-product.ifc",
+    "sha256": "f20aa0dc1972a3123b481a98d4c67b0243fcbb3e7528726f8b2629cfa4c090df",
+    "blend_saved": false,
+    "has_blend_warning": false,
+    "blender_version": "4.5.3 LTS",
+    "log": "/var/folders/rz/d8p6s4y50ws53rd150nm2s3r0000gn/T/codex-task-blender-501/9112eaa735e0599458a5-1788841439812.log",
+    "owner_task_id": "01a075a7-e948-7bd1-a27e-6ff542ea187c-geberit154446-migration",
+    "bridge_port": 9895
+  },
+  "scene_installation_observation": {
+    "status": "requires_user_scene_judgment",
+    "observation": "In Plan the blue drain lies within the grey bathtub projection. This is retained from the formal model, not a migration translation.",
+    "source_body_and_placement_unchanged": true,
+    "installation_position_approved": false,
+    "parent_agent_visual_cross_check": "Three SCENE PNGs independently viewed: blue lines complete; no historical markers; bathtub/drain overlap retained for user judgment."
+  },
+  "native_generator_degenerate_path_exception": {
+    "view": "side",
+    "path_index_zero_based": 107,
+    "length_mm": 4.365776002709553e-05,
+    "outcome": "Native Bonsai omits the near-zero-length two-point path; its full exact coordinates remain in ApprovedSide. The 0.05 mm projection threshold is retained for every non-degenerate contour.",
+    "pure_ifc_all_176_paths_retained": true,
+    "official_dwg_retained": true
+  },
+  "ifc_sha256": "f20aa0dc1972a3123b481a98d4c67b0243fcbb3e7528726f8b2629cfa4c090df"
+}

@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Overlay exact Gessi316 54146 G000 native-DWG views on project drawings."""
+"""Overlay the simplified Gessi316 54146 review line on project drawings."""
 
 from falper_sorgente_linework import ROOT, load_json
 import render_hima01_project_context as shared
@@ -10,11 +10,11 @@ shared.CANDIDATE = shared.PRODUCT_DIR / "candidate-representations.json"
 shared.GLOBAL_ID = "04DLh1Jk9Dcu9ibcaE0id8"
 shared.OVERLAY_ID_PREFIX = "gessi316-54146"
 shared.GENERATOR = "pipeline/scripts/render_gessi316_54146_project_context.py"
-shared.SOURCE_KIND = "native_dwg"
-shared.SOURCE_LABEL_ZH = "Gessi 官方精确型号 54146 G000 原生 DWG 图纸表达"
+shared.SOURCE_KIND = "native_dwg_review_simplification"
+shared.SOURCE_LABEL_ZH = "基于官方 Gessi 54146 G000 原生 DWG 轮廓的简化蓝线审核表达"
 shared.SOURCE_DWG_SHA256 = "c8ddb90f61565d5273a32574f777812bbb1d9ef33e2b98479f1e7c381e69950d"
 shared.OFFICIAL_CAD_USED = True
-shared.PATH_KEY = "official_native_dwg_paths_mm"
+shared.PATH_KEY = "review_simplified_official_outline_paths_mm"
 shared.CLOSE_PATHS = False
 shared.BLUE = "#1677c8"
 shared.REVIEW_HIDDEN_CSS = "#noninteger-highlights{display:none}"
@@ -28,6 +28,7 @@ shared.CONTEXT_VIEWS = (
 )
 
 original_group_points = shared.group_points
+original_add_overlay = shared.add_overlay
 
 
 def group_points(source):
@@ -53,6 +54,27 @@ def group_points(source):
 
 
 shared.group_points = group_points
+
+
+def add_overlay(source, target, view, path, overlay_bbox):
+    original_add_overlay(source, target, view, path, overlay_bbox)
+    content = target.read_text(encoding="utf-8")
+    content = content.replace(
+        'class="official-reference native-dwg project-context-overlay"',
+        'class="review-simplified-reference official-outline-derived project-context-overlay"',
+    )
+    content = content.replace(
+        'class="official-reference native-dwg"',
+        'class="review-simplified-reference official-outline-derived"',
+    )
+    content = content.replace(
+        'data-official-cad-used="true"',
+        'data-official-cad-used="true" data-unaltered-official-dwg="false"',
+    )
+    target.write_text(content, encoding="utf-8")
+
+
+shared.add_overlay = add_overlay
 
 
 if __name__ == "__main__":

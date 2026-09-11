@@ -1,0 +1,63 @@
+{
+  "task": "v0.4 drag bounding box and all-candidate IFC library",
+  "version": "0.4.0",
+  "verdict": "pass_with_physical_pointer_acceptance_pending",
+  "courseEvidence": {
+    "mode": "embedded-course-index",
+    "lesson": "052000",
+    "timestamp": "01:17",
+    "fact": "IFC persistence is distinct from Blender display state"
+  },
+  "preState": {
+    "approved_packages": 15,
+    "protected_index_sha256": "ebe9e5eb87e11b53216c1dac1aa772bd860ffc26d1c81c2ade2b0ee331b8c053",
+    "formal_sha256": "7a50b87e8f48a7c2bfbaa9f1dabdfca7155fa684b2325c66aa1ae15c8ab0a25c"
+  },
+  "plan": [
+    "preserve approved packages",
+    "extract candidate Body and necessary dependencies",
+    "build native assets",
+    "verify drag preview and native IFC insertion"
+  ],
+  "execution": {
+    "provider": "bonsai-mcp 1.1.0 / b0e67b1",
+    "blender": "4.5.3 LTS",
+    "bonsai": "0.8.4",
+    "native_integration_record": "native-integration-validation.json",
+    "drag_record": "native-drag-handler-validation.json"
+  },
+  "persistence": {
+    "save_method": "Bonsai bim.save_project",
+    "fixture": "/var/folders/rz/d8p6s4y50ws53rd150nm2s3r0000gn/T/review-native-ifc-8t11zl_v/asset-insertion.ifc",
+    "native_save_reload_pass": true,
+    "automatic_save": false
+  },
+  "postState": {
+    "counts": {
+      "部分验收": 11,
+      "已验收": 8,
+      "未验收": 20
+    },
+    "approved_3d_2d_packages": 15,
+    "candidate_body_packages": 24,
+    "formal_sha256": "7a50b87e8f48a7c2bfbaa9f1dabdfca7155fa684b2325c66aa1ae15c8ab0a25c",
+    "protected_index_sha256": "ebe9e5eb87e11b53216c1dac1aa772bd860ffc26d1c81c2ade2b0ee331b8c053",
+    "source_packages_unchanged": true,
+    "excluded": [
+      {
+        "id": "libelle",
+        "reason": "excluded_other_task_do_not_touch"
+      }
+    ]
+  },
+  "visual": {
+    "path": "/Users/jiaxinchen/.codex/worktrees/3a80/2504 GBTB Yanlord Zhuhai/output/review/approved-product-library/library-v04-bounding-box.png",
+    "observed": "Native 39-product grid with categories; GPU blue bounding box in owned viewport",
+    "physical_pointer": "not_verified_system_mouse_tool_selected_unrelated_Blender_window"
+  },
+  "outputs": {
+    "catalog": "all-review-catalog.json",
+    "addon": "highpoly_review_library.zip"
+  },
+  "remaining": "User physical drag acceptance; product approval states remain unchanged"
+}

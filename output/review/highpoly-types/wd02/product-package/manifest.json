@@ -1,0 +1,160 @@
+{
+  "schema_version": 1,
+  "profile_key": "wd02",
+  "display_name": "Poliform Senzafine glass wardrobe / WD02",
+  "status": "pass",
+  "persistent_ifc": {
+    "path": "/Users/jiaxinchen/.codex/worktrees/3a80/2504 GBTB Yanlord Zhuhai/output/review/highpoly-types/wd02/product-package/WD02-product.ifc",
+    "bytes": 354714,
+    "sha256": "1612bf65e84c1be9aaac261ce9545646b4a665ec9933efbf3aa2be48757b5f11"
+  },
+  "target_global_id": "3yuXF4PtnBHgIXDlmXFJ$7",
+  "source_kind": "geometry_derived_simplified_proxy",
+  "source_label_zh": "基于原始高模几何生成的简化图纸表达",
+  "approval_record": {
+    "path": "/Users/jiaxinchen/.codex/worktrees/3a80/2504 GBTB Yanlord Zhuhai/pipeline/decisions/wd02-drawing-approval.json",
+    "bytes": 2854,
+    "sha256": "8b213bf95e9d6ad27c88c8854fa2e7b9bf07a0998eb164255647fcd62c8f8507"
+  },
+  "source_access_record": {
+    "path": "/Users/jiaxinchen/.codex/worktrees/3a80/2504 GBTB Yanlord Zhuhai/output/review/highpoly-types/wd02/official-source/source-access-record.json",
+    "bytes": 4409,
+    "sha256": "42db2d7d8a7bafa5ca32c27936ec0e57641a2884f06c967a3b17bbb7de02e149"
+  },
+  "geometry": {
+    "physical_products": 1,
+    "body_representations": 2,
+    "annotations": 0,
+    "drawing_cameras": 0,
+    "spatial_geometry": 0,
+    "approved_views": [
+      "plan",
+      "front",
+      "side"
+    ],
+    "placement_matrix_project_units": [
+      [
+        0.0,
+        1.0,
+        0.0,
+        5897.0
+      ],
+      [
+        -1.0,
+        0.0,
+        0.0,
+        896.0
+      ],
+      [
+        0.0,
+        0.0,
+        1.0,
+        48.0
+      ],
+      [
+        0.0,
+        0.0,
+        0.0,
+        1.0
+      ]
+    ]
+  },
+  "scene_recipe": {
+    "path": "/Users/jiaxinchen/.codex/worktrees/3a80/2504 GBTB Yanlord Zhuhai/output/review/highpoly-types/wd02/product-package/scene-recipe.json",
+    "bytes": 138005,
+    "sha256": "7b3bdd7b33d55c8bf81b718f136a8f04e2a5a268b3b4cc0d9be5fa6941f035e6"
+  },
+  "scene_outputs": [
+    {
+      "view": "plan",
+      "svg": {
+        "path": "/Users/jiaxinchen/.codex/worktrees/3a80/2504 GBTB Yanlord Zhuhai/output/review/highpoly-types/wd02/product-package/WD02-SCENE-PLAN.svg",
+        "bytes": 272245,
+        "sha256": "31ef1e4481576e6934cbb25fb4a35684497f3b80f41d1186a6a44f7815705c80"
+      },
+      "preview": {
+        "path": "/Users/jiaxinchen/.codex/worktrees/3a80/2504 GBTB Yanlord Zhuhai/output/review/highpoly-types/wd02/product-package/WD02-SCENE-PLAN.png",
+        "bytes": 61704,
+        "sha256": "ce70f381f75d339c02a1b22c55808ffdc46b1afb31537dc90eb4a8a7a094d3ca"
+      },
+      "max_linework_hausdorff_error_world_mm": 0.000762939453125,
+      "tolerance_mm": 0.01
+    },
+    {
+      "view": "front",
+      "svg": {
+        "path": "/Users/jiaxinchen/.codex/worktrees/3a80/2504 GBTB Yanlord Zhuhai/output/review/highpoly-types/wd02/product-package/WD02-SCENE-FRONT.svg",
+        "bytes": 770423,
+        "sha256": "47a27aad04a68fa8e69934c98d55cad2f1523b206eba286aab78f1811db83c0c"
+      },
+      "preview": {
+        "path": "/Users/jiaxinchen/.codex/worktrees/3a80/2504 GBTB Yanlord Zhuhai/output/review/highpoly-types/wd02/product-package/WD02-SCENE-FRONT.png",
+        "bytes": 111925,
+        "sha256": "9e27b3ee5a36bdde55d16fc684672bb8c14f66563af020e3613f29bdefddf3ac"
+      },
+      "max_linework_hausdorff_error_world_mm": 0.000286102294921875,
+      "tolerance_mm": 0.01
+    },
+    {
+      "view": "side",
+      "svg": {
+        "path": "/Users/jiaxinchen/.codex/worktrees/3a80/2504 GBTB Yanlord Zhuhai/output/review/highpoly-types/wd02/product-package/WD02-SCENE-SIDE.svg",
+        "bytes": 1152126,
+        "sha256": "f1038957995b6360a12e7062d1ed6fe42ee2b0a7ecbd6747fb17d34a0f76cbc3"
+      },
+      "preview": {
+        "path": "/Users/jiaxinchen/.codex/worktrees/3a80/2504 GBTB Yanlord Zhuhai/output/review/highpoly-types/wd02/product-package/WD02-SCENE-SIDE.png",
+        "bytes": 84739,
+        "sha256": "fc9fcc6b13f0086f2ecae696f083346875e971933c71ce9f31927fb2b10dcab6"
+      },
+      "max_linework_hausdorff_error_world_mm": 0.0,
+      "tolerance_mm": 0.01
+    }
+  ],
+  "style_dependencies": [],
+  "single_product_svgs": {
+    "plan": {
+      "path": "/Users/jiaxinchen/.codex/worktrees/3a80/2504 GBTB Yanlord Zhuhai/output/review/highpoly-types/wd02/plan.svg",
+      "bytes": 39777,
+      "sha256": "4a1a6f75a4ba89e0c93940dbe8a209bad75db8d8b426dae56f65610180da8a2d"
+    },
+    "front": {
+      "path": "/Users/jiaxinchen/.codex/worktrees/3a80/2504 GBTB Yanlord Zhuhai/output/review/highpoly-types/wd02/front.svg",
+      "bytes": 53423,
+      "sha256": "3e4cf03d0d3613a2e0e40808e803bc6fa1e70f351e1a640024129d7d0cd8c169"
+    },
+    "side": {
+      "path": "/Users/jiaxinchen/.codex/worktrees/3a80/2504 GBTB Yanlord Zhuhai/output/review/highpoly-types/wd02/side.svg",
+      "bytes": 35557,
+      "sha256": "d688510fabe29d71affacfb4a070cd1f5b0cf15ca9fadeca94831cee4476b520"
+    }
+  },
+  "library_previews": {
+    "plan": {
+      "path": "/Users/jiaxinchen/.codex/worktrees/3a80/2504 GBTB Yanlord Zhuhai/output/review/highpoly-types/wd02/plan-preview.png",
+      "bytes": 143201,
+      "sha256": "09f7428061f986b677f356560f3d3a9945fbda2abea6c6ee1c35773400f2d7c6"
+    },
+    "front": {
+      "path": "/Users/jiaxinchen/.codex/worktrees/3a80/2504 GBTB Yanlord Zhuhai/output/review/highpoly-types/wd02/front-preview.png",
+      "bytes": 97455,
+      "sha256": "36811c23d6703f31603bcd2739d2dc1f1c121d72dab554e49e513f1874de8dfc"
+    },
+    "side": {
+      "path": "/Users/jiaxinchen/.codex/worktrees/3a80/2504 GBTB Yanlord Zhuhai/output/review/highpoly-types/wd02/side-preview.png",
+      "bytes": 107194,
+      "sha256": "fde9d7f2dc5400da9c451800519ab392de0878b09bd5d7be44fe9e0875591811"
+    },
+    "iso": {
+      "path": "/Users/jiaxinchen/.codex/worktrees/3a80/2504 GBTB Yanlord Zhuhai/output/review/highpoly-types/wd02/bonsai-camera-iso.png",
+      "bytes": 934229,
+      "sha256": "8ace16390fda8d88a4dc42dcc7f5a6509b54eed4c0dd64761e36690e73332f58"
+    }
+  },
+  "preview_provenance": "Existing approved semantic SVG previews and actual Bonsai Body iso camera render; source Body fingerprint unchanged",
+  "formal_write_allowed": false,
+  "formal_sha256": "7a50b87e8f48a7c2bfbaa9f1dabdfca7155fa684b2325c66aa1ae15c8ab0a25c",
+  "legacy_source_retained": true,
+  "validation": "validation.json",
+  "verdict": "pass"
+}

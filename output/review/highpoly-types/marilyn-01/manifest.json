@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "generated_at": "2026-08-23T13:24:25.606724+00:00",
+  "generated_at": "2026-09-05T17:50:59.321411+00:00",
   "generator": "pipeline/scripts/marilyn_01_review.py",
   "formal_ifc": "2504 GBTB Yanlord Zhuhai.ifc",
   "formal_ifc_sha256": "7a50b87e8f48a7c2bfbaa9f1dabdfca7155fa684b2325c66aa1ae15c8ab0a25c",
@@ -47,9 +47,9 @@
   "source_dwg": "output/review/highpoly-types/marilyn-01/official-source/Marilyn_Abaco.dwg",
   "source_dwg_sha256": "cb9825eecab7c78ee28e7668e933c2fe413395a63bf75f3afab8cc4959864724",
   "official_native_dwg_linework": "output/review/highpoly-types/marilyn-01/official-native-dwg-linework.json",
-  "official_native_dwg_linework_sha256": "4ca42b2f40a2184f5a7169231987af784ad04e220633223f358c826bac83c2ff",
+  "official_native_dwg_linework_sha256": "fe497af3c30a815266ddc84ae432ed5b5bb1c410e77b776a95235a8156f864d2",
   "official_source_access_record": "output/review/highpoly-types/marilyn-01/official-source/source-access-record.json",
-  "official_source_access_record_sha256": "1e4cee5cbdac9ae35e1d21fdd464b703d2417ef9b4a503f6e0f30f64a4eaa28d",
+  "official_source_access_record_sha256": "c154bee3aa4996a35c45b863ed7ab71dd28d956e23afd8aa35660b8c9dc71f28",
   "official_source_revalidation": {
     "path": "output/review/highpoly-types/marilyn-01/official-source/official-source-revalidation.json",
     "sha256": "b0708b70db5d6b00262862ac206f6360a2e518fa836662df7cd842b36f0bd615",
@@ -121,25 +121,95 @@
     },
     "side": {
       "official_visible_size_mm": [
-        958.895026,
-        922.811247
+        959.157386,
+        930.510097
       ],
       "ifc_projection_size_mm": [
         1013.911865,
         970.476962
       ],
       "absolute_delta_mm": [
-        55.016839,
-        47.665715
+        54.754479,
+        39.966865
       ],
-      "maximum_absolute_delta_mm": 55.016839,
+      "maximum_absolute_delta_mm": 54.754479,
       "tolerance_mm": 60.0,
       "geometry_scaled_to_match": false,
       "pass": true
     }
   },
+  "direct_autocad_inspection": {
+    "application": "Autodesk AutoCAD 2024",
+    "mode": "direct read-only visual inspection of a byte-identical temporary copy",
+    "source_opened_sha256": "cb9825eecab7c78ee28e7668e933c2fe413395a63bf75f3afab8cc4959864724",
+    "source_matches_archived_native_dwg": true,
+    "full_modelspace_screenshot": "output/review/highpoly-types/marilyn-01/official-source/autocad-marilyn-full-modelspace.png",
+    "full_modelspace_screenshot_sha256": "1eff00b28e82c98dd532c6cf935055a8c5c56a1bdcec4e69cfe8278d437c8e18",
+    "exact_cluster_regions_mm": {
+      "plan": [
+        9900.0,
+        300.0,
+        11100.0,
+        1400.0
+      ],
+      "front": [
+        9900.0,
+        1650.0,
+        11100.0,
+        2750.0
+      ],
+      "side": [
+        11100.0,
+        1650.0,
+        12400.0,
+        2750.0
+      ]
+    },
+    "exact_dimension_anchors_mm": {
+      "1000": [
+        9780.341356,
+        904.350842
+      ],
+      "940": [
+        9780.341356,
+        2220.562604
+      ],
+      "450": [
+        12369.73917,
+        1975.608108
+      ],
+      "860": [
+        10531.173941,
+        228.583319
+      ]
+    },
+    "exact_variant": "Marilyn bergere armchair with swivel base - 86 x 100 x 94 cm",
+    "adjacent_variant_exclusions": [
+      {
+        "variant": "standard armchair cluster",
+        "dimension_labels_mm": [
+          800,
+          870,
+          780,
+          400
+        ],
+        "reason": "height 780 mm and width/depth cluster do not match the project Body or exact 3DS filename"
+      },
+      {
+        "variant": "Marilyn pouf cluster",
+        "dimension_labels_mm": [
+          800,
+          620,
+          450
+        ],
+        "reason": "pouf geometry belongs to project Marilyn 02 and is excluded from Marilyn 01"
+      }
+    ],
+    "selection_unique": true,
+    "pass": true
+  },
   "candidate_representations": "output/review/highpoly-types/marilyn-01/candidate-representations.json",
-  "candidate_representations_sha256": "5498d5606702bdd0a4b04bfd0153bbc0bf0bd4c08d490e34b49d768eb5eda277",
+  "candidate_representations_sha256": "deedae77dff110795afe02f2becfe932fb18f93793175553b6b265ae48df91ca",
   "review_status": "visual_review_pending",
   "approved_for_drawing_ifc": false,
   "derived_ifc_write_allowed": false,
@@ -149,9 +219,9 @@
     {
       "view": "plan",
       "svg": "output/review/highpoly-types/marilyn-01/plan.svg",
-      "svg_sha256": "e3096c35b1e33bba199374231b9b2117d244c31ee694fe590d447667bf0ce7e0",
+      "svg_sha256": "a64b7b5568e8fe72eeea6f1805af62afa337d752ff894d5591765312b150dbf1",
       "preview": "output/review/highpoly-types/marilyn-01/plan-preview.png",
-      "preview_sha256": "58b9275d5dbbf923e84c35738c2086fc28f72601d19f448d230aaf9bc47fd73d",
+      "preview_sha256": "d1e7e83b8aff8455511f8e724f2e419e0451fba8bf1e24efe5af24e8a28a0b6f",
       "projection_axes": [
         0,
         1
@@ -159,7 +229,7 @@
       "raw_edge_count": 23226,
       "displayed_raw_edge_count": 596,
       "silhouette_path_count": 33,
-      "official_cad_path_count": 24,
+      "official_cad_path_count": 44,
       "blue_line_source_kind": "native_dwg",
       "blue_line_native_dwg_sha256": "cb9825eecab7c78ee28e7668e933c2fe413395a63bf75f3afab8cc4959864724",
       "white_mask_below_blue": true,
@@ -188,9 +258,9 @@
     {
       "view": "front",
       "svg": "output/review/highpoly-types/marilyn-01/front.svg",
-      "svg_sha256": "9f1f752269d16290741efe23323575a5098f477eff0ae5aa2a03e9c79f60ea69",
+      "svg_sha256": "ad7205244e872de9543451b97bb57bda90feec724612dba4effb4662e67f7875",
       "preview": "output/review/highpoly-types/marilyn-01/front-preview.png",
-      "preview_sha256": "b815b805ea61d27ac4a03fc25d6e036c13009dad07a1b3822fdcf6a03fd1a883",
+      "preview_sha256": "30f6389a6c724a20eeb0333a464869b1f5a997c27b62f5983bf2c04a73852ca5",
       "projection_axes": [
         0,
         2
@@ -198,7 +268,7 @@
       "raw_edge_count": 23226,
       "displayed_raw_edge_count": 596,
       "silhouette_path_count": 1,
-      "official_cad_path_count": 68,
+      "official_cad_path_count": 96,
       "blue_line_source_kind": "native_dwg",
       "blue_line_native_dwg_sha256": "cb9825eecab7c78ee28e7668e933c2fe413395a63bf75f3afab8cc4959864724",
       "white_mask_below_blue": true,
@@ -227,9 +297,9 @@
     {
       "view": "side",
       "svg": "output/review/highpoly-types/marilyn-01/side.svg",
-      "svg_sha256": "a8d0a77c3e48e6887dc64e51fa94b5f4781d45e9945f85afdb1396d39e72690a",
+      "svg_sha256": "dbd414a1bcef6cf8fc3542e142026aedd71041407830eed54b25c8eb00fadc50",
       "preview": "output/review/highpoly-types/marilyn-01/side-preview.png",
-      "preview_sha256": "fe7292029683bf3e817768243c3c7a3b7100aa2d2d3d317779eda0237ec68f5d",
+      "preview_sha256": "098301106b0bc6816de8e84104c055c76b34cc71a5decc871b9ee613a1e15ece",
       "projection_axes": [
         1,
         2
@@ -237,7 +307,7 @@
       "raw_edge_count": 23226,
       "displayed_raw_edge_count": 596,
       "silhouette_path_count": 3,
-      "official_cad_path_count": 54,
+      "official_cad_path_count": 78,
       "blue_line_source_kind": "native_dwg",
       "blue_line_native_dwg_sha256": "cb9825eecab7c78ee28e7668e933c2fe413395a63bf75f3afab8cc4959864724",
       "white_mask_below_blue": true,
@@ -246,18 +316,18 @@
       "blue_line_present": true,
       "comparison": {
         "official_visible_size_mm": [
-          958.895026,
-          922.811247
+          959.157386,
+          930.510097
         ],
         "ifc_projection_size_mm": [
           1013.911865,
           970.476962
         ],
         "absolute_delta_mm": [
-          55.016839,
-          47.665715
+          54.754479,
+          39.966865
         ],
-        "maximum_absolute_delta_mm": 55.016839,
+        "maximum_absolute_delta_mm": 54.754479,
         "tolerance_mm": 60.0,
         "geometry_scaled_to_match": false,
         "pass": true
@@ -267,9 +337,9 @@
   "pass": true,
   "project_context": {
     "manifest": "output/review/highpoly-types/marilyn-01/project-context-manifest.json",
-    "manifest_sha256": "13964e13583edcedaac91f4a47e585e7bc0e13e2652e7d8a66bc22d18a50717e",
+    "manifest_sha256": "fdc91261c6db1deee9114d5fdc9bfc4647cebce1f09c69fbb559530889c6a00a",
     "walls_and_surrounding_project_elements_retained": true,
-    "overlay_top_layer_with_white_mask": true,
+    "overlay_top_layer_with_white_mask": false,
     "pass": true
   },
   "bonsai_review": {
@@ -279,5 +349,19 @@
     "saved_active_representation": "Body",
     "saved_camera_count": 4,
     "pass": true
+  },
+  "side_support_closure": {
+    "audit": "output/review/highpoly-types/marilyn-01/marilyn-side-support-closure-audit.json",
+    "sha256": "83c281b945b62fddbe70e05aeeb895c59a4e035caf3506f20928453fbaabe008",
+    "native_arc_restored": 234,
+    "synthetic_join_added": false
+  },
+  "remaining_visual_verification": {
+    "autocad_readable_closeups": "pending",
+    "front_fit_only_curve_indices": [
+      1005,
+      1006
+    ],
+    "front_fit_only_curves_exactly_verified": false
   }
 }

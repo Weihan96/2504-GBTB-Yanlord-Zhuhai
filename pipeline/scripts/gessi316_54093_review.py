@@ -35,7 +35,12 @@ def align_official_paths(view, paths, minimum, maximum):
     center_x = (minimum[0] + maximum[0]) / 2.0
     official_bounds = shared.path_bounds(paths)
     if view == "plan":
-        return [[[center_x + x, minimum[1] + y] for x, y in path] for path in paths]
+        # Native sheet Plan points toward -Y; Side points toward +Y.
+        # The semicircle (path 4) joins the vertical stem at its installation
+        # axis. Register that semantic axis to Side's 25 mm base radius.
+        source_axis_y = min(point[1] for point in paths[4])
+        target_axis_y = minimum[1] + 25.0
+        return [[[center_x + x, target_axis_y + source_axis_y - y] for x, y in path] for path in paths]
     top_offset = maximum[2] - official_bounds["maximum"][1]
     if view == "front":
         return [[[center_x + x, top_offset + z] for x, z in path] for path in paths]

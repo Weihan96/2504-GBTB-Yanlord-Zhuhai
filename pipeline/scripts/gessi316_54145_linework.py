@@ -4,6 +4,7 @@
 from __future__ import annotations
 
 import argparse
+import math
 from datetime import datetime, timezone
 from pathlib import Path
 
@@ -55,14 +56,46 @@ def normalize(view: str, paths: list[list[list[float]]]):
         normalized = [[[round(x - center_x, 6), round(y - maximum_y, 6)] for x, y in path] for path in paths]
         origin = "assembly_center_x_and_top_z"
     else:
-        normalized = [[[round(y - minimum_y, 6), round(x - maximum_x, 6)] for x, y in path] for path in paths]
-        origin = "rotated_minimum_depth_and_top_z"
+        normalized = [[[round(y - minimum_y, 6), round(maximum_x - x, 6)] for x, y in path] for path in paths]
+        origin = "rotated_minimum_depth_and_bottom_z_after_vertical_reflection"
     return normalized, {
         "source_sheet_bounds_mm": source_bounds,
         "normalization_scale": 1.0,
         "normalization_origin": origin,
         "source_axes_swapped": view == "side",
+        "vertical_reflection_applied": view == "side",
+        "normalization_translation_mm": [-minimum_y, maximum_x] if view == "side" else None,
     }
+
+
+def line_density(paths: list[list[list[float]]]) -> dict:
+    node_count = sum(len(path) for path in paths)
+    return {
+        "entity_count": len(paths),
+        "path_count": len(paths),
+        "node_count": node_count,
+        "segment_count": sum(max(0, len(path) - 1) for path in paths),
+        "closed_path_count": sum(
+            1 for path in paths
+            if len(path) > 2 and math.dist(path[0], path[-1]) <= 0.000001
+        ),
+    }
+
+
+def fine_spray_detail_indices(view: str, paths: list[list[list[float]]]) -> list[int]:
+    """Identify only sub-8 mm nozzle paths in the lower spray-face band."""
+    if view == "plan":
+        return []
+    lower = min(point[1] for path in paths for point in path)
+    indices = []
+    for index, path in enumerate(paths):
+        xs = [point[0] for point in path]
+        ys = [point[1] for point in path]
+        maximum_dimension = max(max(xs) - min(xs), max(ys) - min(ys))
+        centre_y = (min(ys) + max(ys)) / 2.0
+        if maximum_dimension <= 8.0 and centre_y <= lower + 10.25:
+            indices.append(index)
+    return indices
 
 
 def main() -> None:
@@ -122,6 +155,21 @@ def main() -> None:
             "normalization_scale": 1.0,
             "normalization_origin": metadata["normalization_origin"],
             "source_axes_swapped": metadata["source_axes_swapped"],
+            "vertical_reflection_applied": metadata["vertical_reflection_applied"],
+            "normalization_translation_mm": metadata["normalization_translation_mm"],
+            "line_density": line_density(paths),
+        }
+        detail_indices = fine_spray_detail_indices(view, paths)
+        detail_paths = [paths[index] for index in detail_indices]
+        detail_density = line_density(detail_paths)
+        views[view]["fine_spray_nozzle_detail"] = {
+            "classification": "sub_8mm_paths_in_lower_10_25mm_spray_face_band",
+            **detail_density,
+            "path_share_percent": round(100.0 * len(detail_indices) / len(paths), 3),
+            "node_share_percent": round(
+                100.0 * detail_density["node_count"] / views[view]["line_density"]["node_count"],
+                3,
+            ),
         }
     plan_size = views["plan"]["bounds_mm"]["size"]
     front_size = views["front"]["bounds_mm"]["size"]
@@ -138,7 +186,7 @@ def main() -> None:
     }
     maximum_delta = max(value for view_delta in deltas.values() for value in view_delta)
     payload = {
-        "schema_version": 1,
+        "schema_version": 2,
         "generated_at": datetime.now(timezone.utc).isoformat(),
         "generator": "pipeline/scripts/gessi316_54145_linework.py",
         "manufacturer": "Gessi",
@@ -180,6 +228,14 @@ def main() -> None:
             "pass": maximum_delta <= 0.5,
         },
         "views": views,
+        "line_density_audit": {
+            "three_view_entity_count": sum(view["line_density"]["entity_count"] for view in views.values()),
+            "three_view_path_count": sum(view["line_density"]["path_count"] for view in views.values()),
+            "three_view_node_count": sum(view["line_density"]["node_count"] for view in views.values()),
+            "three_view_segment_count": sum(view["line_density"]["segment_count"] for view in views.values()),
+            "fine_spray_nozzle_detail_path_count": sum(view["fine_spray_nozzle_detail"]["path_count"] for view in views.values()),
+            "fine_spray_nozzle_detail_node_count": sum(view["fine_spray_nozzle_detail"]["node_count"] for view in views.values()),
+        },
         "pass": maximum_delta <= 0.5,
     }
     write_json(args.output.resolve(), payload)

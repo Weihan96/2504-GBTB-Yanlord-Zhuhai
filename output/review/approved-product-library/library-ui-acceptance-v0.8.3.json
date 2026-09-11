@@ -1,0 +1,21 @@
+{
+  "version": "0.8.3",
+  "status": "accepted",
+  "scope": "IFC Assets library interaction and loading feedback; not blanket product approval",
+  "user_confirmation": "非常好，我已经验收完成了，可以通过提交吧。",
+  "accepted_behaviors": [
+    "Native card drag places the selected IFC product with its Body representations",
+    "Click release opens Plan, Front and Side details without interrupting drag",
+    "Blue placement bounds remain visible during borderless green loading fill",
+    "Insertion remains in memory until Bonsai save; no additional save button"
+  ],
+  "verification": {
+    "unit_tests_passed": 43,
+    "runtime_manifest_version": "0.8.3",
+    "runtime_files_checked": 365,
+    "formal_ifc_sha256": "7a50b87e8f48a7c2bfbaa9f1dabdfca7155fa684b2325c66aa1ae15c8ab0a25c"
+  },
+  "unchanged": ["Per-product approval categories", "Formal project IFC", "Stashes"],
+  "not_implemented": ["Hover details", "Horizontal asset layout"],
+  "git_authorization": "Update the protected staged baseline to the cleaned final files and create a local commit; no push requested"
+}

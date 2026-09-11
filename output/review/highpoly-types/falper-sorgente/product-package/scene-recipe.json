@@ -1,0 +1,3570 @@
+{
+  "schema_version": 1,
+  "target_global_id": "350tdaubr8QP3Cu2YMQZIN",
+  "views": {
+    "plan": {
+      "drawing_guid": "2pT8ZtU_L10vZ2GQbSWXLD",
+      "annotation_guid": "3YElnDEWH0y8fZ3KgbQECx",
+      "representation_identifier": "FalperWFBPlan"
+    },
+    "front": {
+      "drawing_guid": "3hwm9XXPv0r8BBLUaYS7r3",
+      "annotation_guid": "26Aqyzik9DGwBCj3QLgi5r",
+      "representation_identifier": "FalperWFBFront"
+    },
+    "side": {
+      "drawing_guid": "3v_JGo4_vEaxFLMWs6nTEg",
+      "annotation_guid": "1XnHq4wyb3c9Bckdqr98Tx",
+      "representation_identifier": "FalperWFBSide"
+    }
+  },
+  "format": "scoped-ifc-scene-dependency-graph",
+  "body_geometry_included": false,
+  "linework_geometry_included": false,
+  "pure_view_representations": {
+    "plan": {
+      "representation_identifier": "FalperWFBPlan",
+      "content_fingerprint": "306e3df6bdbd8e227de613f86bb17bc8da80a1694793c946dab623c9ce592389",
+      "source_annotation_guid": "3YElnDEWH0y8fZ3KgbQECx",
+      "scene_context_fingerprint": "06181ce9d72f5b79bc93ba3360e0eca28aece92aea804376617ada931caad99e"
+    },
+    "front": {
+      "representation_identifier": "FalperWFBFront",
+      "content_fingerprint": "7e0b94764cf42c06e2f6490c5bd2465412d3bdd840429586a2020ef6d602791e",
+      "source_annotation_guid": "26Aqyzik9DGwBCj3QLgi5r",
+      "scene_context_fingerprint": "811e0c4e9e4cdc4b5c157deafa151427d3c2b314222e6955ec7d994a15c4d786"
+    },
+    "side": {
+      "representation_identifier": "FalperWFBSide",
+      "content_fingerprint": "e1dd58d71a54007e2446f23e3b7c5ba360a8e9fa2b355457bec09860e3d26816",
+      "source_annotation_guid": "1XnHq4wyb3c9Bckdqr98Tx",
+      "scene_context_fingerprint": "811e0c4e9e4cdc4b5c157deafa151427d3c2b314222e6955ec7d994a15c4d786"
+    }
+  },
+  "runtime_inputs": [
+    "pure_product_ifc",
+    "scene_recipe_json",
+    "formal_project_temporary_copy"
+  ],
+  "graph": {
+    "schema": "IFC4",
+    "entities": [
+      {
+        "id": 128,
+        "type": "IfcDocumentInformation",
+        "attributes": [
+          "X",
+          "FALPER-WFB-SCENE-PLAN",
+          null,
+          null,
+          null,
+          null,
+          "DRAWING",
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null
+        ]
+      },
+      {
+        "id": 129,
+        "type": "IfcOwnerHistory",
+        "attributes": [
+          {
+            "ref": 23
+          },
+          {
+            "ref": 26
+          },
+          "READWRITE",
+          "MODIFIED",
+          1788839963,
+          {
+            "ref": 23
+          },
+          {
+            "ref": 26
+          },
+          1788839962
+        ]
+      },
+      {
+        "id": 130,
+        "type": "IfcRelAssignsToGroup",
+        "attributes": [
+          "2ukyXmQqjFlBu6xsxZ352w",
+          {
+            "ref": 131
+          },
+          null,
+          null,
+          [
+            {
+              "ref": 114
+            },
+            {
+              "ref": 99
+            }
+          ],
+          null,
+          {
+            "ref": 112
+          }
+        ]
+      },
+      {
+        "id": 131,
+        "type": "IfcOwnerHistory",
+        "attributes": [
+          {
+            "ref": 23
+          },
+          {
+            "ref": 26
+          },
+          "READWRITE",
+          "MODIFIED",
+          1788839963,
+          {
+            "ref": 23
+          },
+          {
+            "ref": 26
+          },
+          1788839963
+        ]
+      },
+      {
+        "id": 132,
+        "type": "IfcRelDefinesByProperties",
+        "attributes": [
+          "2lq3QhWUXBXB8Je5rHCXEx",
+          {
+            "ref": 133
+          },
+          null,
+          null,
+          [
+            {
+              "ref": 99
+            }
+          ],
+          {
+            "ref": 134
+          }
+        ]
+      },
+      {
+        "id": 133,
+        "type": "IfcOwnerHistory",
+        "attributes": [
+          {
+            "ref": 23
+          },
+          {
+            "ref": 26
+          },
+          "READWRITE",
+          "ADDED",
+          1788839963,
+          {
+            "ref": 23
+          },
+          {
+            "ref": 26
+          },
+          1788839963
+        ]
+      },
+      {
+        "id": 134,
+        "type": "IfcPropertySet",
+        "attributes": [
+          "1L$IyU3xrCNxHbnEgWPfqX",
+          {
+            "ref": 135
+          },
+          "EPset_Drawing",
+          null,
+          [
+            {
+              "ref": 136
+            },
+            {
+              "ref": 137
+            },
+            {
+              "ref": 138
+            },
+            {
+              "ref": 139
+            },
+            {
+              "ref": 140
+            },
+            {
+              "ref": 141
+            },
+            {
+              "ref": 142
+            },
+            {
+              "ref": 143
+            },
+            {
+              "ref": 144
+            },
+            {
+              "ref": 145
+            },
+            {
+              "ref": 146
+            },
+            {
+              "ref": 147
+            },
+            {
+              "ref": 148
+            },
+            {
+              "ref": 149
+            },
+            {
+              "ref": 150
+            },
+            {
+              "ref": 151
+            },
+            {
+              "ref": 152
+            },
+            {
+              "ref": 153
+            },
+            {
+              "ref": 154
+            }
+          ]
+        ]
+      },
+      {
+        "id": 135,
+        "type": "IfcOwnerHistory",
+        "attributes": [
+          {
+            "ref": 23
+          },
+          {
+            "ref": 26
+          },
+          "READWRITE",
+          "ADDED",
+          1788839963,
+          {
+            "ref": 23
+          },
+          {
+            "ref": 26
+          },
+          1788839963
+        ]
+      },
+      {
+        "id": 136,
+        "type": "IfcPropertySingleValue",
+        "attributes": [
+          "TargetView",
+          null,
+          {
+            "inline": "IfcLabel",
+            "values": [
+              "ELEVATION_VIEW"
+            ]
+          },
+          null
+        ]
+      },
+      {
+        "id": 137,
+        "type": "IfcPropertySingleValue",
+        "attributes": [
+          "Scale",
+          null,
+          {
+            "inline": "IfcLabel",
+            "values": [
+              "1/25"
+            ]
+          },
+          null
+        ]
+      },
+      {
+        "id": 138,
+        "type": "IfcPropertySingleValue",
+        "attributes": [
+          "HumanScale",
+          null,
+          {
+            "inline": "IfcLabel",
+            "values": [
+              "1:25"
+            ]
+          },
+          null
+        ]
+      },
+      {
+        "id": 139,
+        "type": "IfcPropertySingleValue",
+        "attributes": [
+          "HasUnderlay",
+          null,
+          {
+            "inline": "IfcBoolean",
+            "values": [
+              false
+            ]
+          },
+          null
+        ]
+      },
+      {
+        "id": 140,
+        "type": "IfcPropertySingleValue",
+        "attributes": [
+          "HasLinework",
+          null,
+          {
+            "inline": "IfcBoolean",
+            "values": [
+              true
+            ]
+          },
+          null
+        ]
+      },
+      {
+        "id": 141,
+        "type": "IfcPropertySingleValue",
+        "attributes": [
+          "HasAnnotation",
+          null,
+          {
+            "inline": "IfcBoolean",
+            "values": [
+              true
+            ]
+          },
+          null
+        ]
+      },
+      {
+        "id": 142,
+        "type": "IfcPropertySingleValue",
+        "attributes": [
+          "GlobalReferencing",
+          null,
+          {
+            "inline": "IfcBoolean",
+            "values": [
+              false
+            ]
+          },
+          null
+        ]
+      },
+      {
+        "id": 143,
+        "type": "IfcPropertySingleValue",
+        "attributes": [
+          "Stylesheet",
+          null,
+          {
+            "inline": "IfcText",
+            "values": [
+              "drawings/assets/default.css"
+            ]
+          },
+          null
+        ]
+      },
+      {
+        "id": 144,
+        "type": "IfcPropertySingleValue",
+        "attributes": [
+          "Markers",
+          null,
+          {
+            "inline": "IfcText",
+            "values": [
+              "drawings/assets/markers.svg"
+            ]
+          },
+          null
+        ]
+      },
+      {
+        "id": 145,
+        "type": "IfcPropertySingleValue",
+        "attributes": [
+          "Symbols",
+          null,
+          {
+            "inline": "IfcText",
+            "values": [
+              "drawings/assets/symbols.svg"
+            ]
+          },
+          null
+        ]
+      },
+      {
+        "id": 146,
+        "type": "IfcPropertySingleValue",
+        "attributes": [
+          "Patterns",
+          null,
+          {
+            "inline": "IfcText",
+            "values": [
+              "drawings/assets/patterns.svg"
+            ]
+          },
+          null
+        ]
+      },
+      {
+        "id": 147,
+        "type": "IfcPropertySingleValue",
+        "attributes": [
+          "ShadingStyles",
+          null,
+          {
+            "inline": "IfcText",
+            "values": [
+              "drawings/assets/shading_styles.json"
+            ]
+          },
+          null
+        ]
+      },
+      {
+        "id": 148,
+        "type": "IfcPropertySingleValue",
+        "attributes": [
+          "CurrentShadingStyle",
+          null,
+          {
+            "inline": "IfcLabel",
+            "values": [
+              "Blender Default"
+            ]
+          },
+          null
+        ]
+      },
+      {
+        "id": 149,
+        "type": "IfcPropertySingleValue",
+        "attributes": [
+          "DPI",
+          null,
+          {
+            "inline": "IfcInteger",
+            "values": [
+              300
+            ]
+          },
+          null
+        ]
+      },
+      {
+        "id": 150,
+        "type": "IfcPropertySingleValue",
+        "attributes": [
+          "LineworkMode",
+          null,
+          {
+            "inline": "IfcLabel",
+            "values": [
+              "OPENCASCADE"
+            ]
+          },
+          null
+        ]
+      },
+      {
+        "id": 151,
+        "type": "IfcPropertySingleValue",
+        "attributes": [
+          "FillMode",
+          null,
+          {
+            "inline": "IfcLabel",
+            "values": [
+              "NONE"
+            ]
+          },
+          null
+        ]
+      },
+      {
+        "id": 152,
+        "type": "IfcPropertySingleValue",
+        "attributes": [
+          "CutMode",
+          null,
+          {
+            "inline": "IfcLabel",
+            "values": [
+              "BISECT"
+            ]
+          },
+          null
+        ]
+      },
+      {
+        "id": 153,
+        "type": "IfcPropertySingleValue",
+        "attributes": [
+          "Include",
+          null,
+          {
+            "inline": "IfcText",
+            "values": [
+              "3DNT0yqe1EMRpVglm_yCZ4,0WdsBKMo545Ryicomy6Mqg,1Yr_JdSGn8XOs804Vwoetk,2VVDWezmbEmQh$5mczGb4m,30YXVJrQjBEgTfH5xSTneR,2UhljZvyHBM9jCYFR8xcyl,1QkVJsQDf6keIyddhN5Dmc,2jK2g2$tb18Qu3jsAzqyh_,06wFwLoDD6ie5iCTnc_yad,3mlT3vP4P1MwwtT7Mb20tc,3oxgGk27D4pRhha6_X05df,1cudaM$BT1GAKD9EEg4nqS,0rwOcjvjn5WBdoq4bxiHSk,02JiVqnyTDXQ1GpfLPCpMl,11c$NwzxL9hASgCgwDxM$w,1Lj_LXp3z7tQDMYUGoTsFc,3L$xQZHiz7b8ws7de1jiZN,2uYGzJR3f1QO6LmO9Nq3Mf,0AN5MRpZ16dRCAg1l5TOyz,1To6gRjrf2nBU5GQuuD8FV,3xKBbA2CT9mfby2$MODnzM,3ARl_CqPrCWQrA6_$W073W,1UixnpnQb97wuNAGrTmMJd,3qo2s5gKPA$8hNQznuTTCf,0MVn0S2GP0IuDnXI2x_0wg,1Yf7cK9MTAoBRvfK3BluSI,3ZKyTiBc1ECxQi0UR8K1Ke,1mI2ClWgr6xwhxkjkIkFbV,0IlFpdzSbD_9sqRVW8SpPi,2vTSinfYHC$8prkGP7LD7X,0s2tcnZmP23Qpz4zXZ$Vd0,0mnFDiYfj6fxQBaWFizjUS,2_vcnNErPCixD2MSQiqhdi,2MZOWmnIX7KA3Wfnp2HxoF,0wbKH$_Qr2_A4hpKs0PLXw,1fAJA2jj59uhEyVVcR7EM7,1cmuG50mj3cggtIH5tZHic,02eX$Z5WrDuuxw1IlnwVss,2T92129$LE0Pve_Pv6F9Sx,0G_rbqpMHE28Txkf09jW3_,3ty1lUpQfD3fY1yf0Dxo53,05LSYayab3n9CDi01pw9K$,1yuWIPQdP3uuPJnZhwUAcx,1vyfckSCz8Fww8vTAKGqom,24AqfsAbz9a9uOPQhRX75e,3Iwtjib290RgoxOZXiXjY_,18eimQPoDDKg_QKo2uX5el,3IOZ8Z$$5DH9cGih34wZt$,0nNkP2k99BqQJilK0$E7fQ,1oa6zGXK1CeuV$1tRZM9Ob,3wW32FPxv45Ac3yhuS2W5U,0jLabLY_9C18Pu7tVszuIs,21rLg3DBL3dupCGoi2RsUf,1aQiUP$CH5uhQBoEX8NjwK,2amSzxJIb9ceddTJOslmHk,0$9uFhN9v7tw5pryslitkb,3VgMpCodXEA9ViTVPIQmcR,0hKdvAZkn1TejLgJhK_vDp,1AxFP7vkD30Q3ZdxDr_l4l,2NAJrrSQb2twKjQ2V6lQI6,322GWgwy5EpfjZYxs3LRoD,28l5JUTGT3r8kMzEzzSngn,0a6glteMX7_x6fU36rB7Xa,3uxUxvIOTAHOul$htmNuGA,3W8L7rd6vBx9Y_wSLIYlqb,3pq6QdkHHDZR3RR1nYivCC,21vcsFmEvC2xpOEhH31C0E,2Hzb2UxozCF9TjOK5nW1XC,1q9EfwGKLByPI32Mi7AhWS,3NM8wlQfDDFB3rAZF1Mq_N,1kB9zQpv94vO1NObylFPcP,3KxJ$jTjT69vr2qwa3swbL,34MraFd1nFsep2QMO2kY48,2IZwo0dYv0p8B0RhP1oOtT,0qZZv8B9b9SQk3mAPTXSfP,3s$BGbHSj8hxQSeUdUDGfx,3gksf1Sxz5TRfXh5l$12xr,3TV2zkQdH3QRCAFhe47WOL,3JyOUPuivAwvLvV8DSz6CD,0vMU_9TZXEV8GPr46AYxhu,122leYIbHFFBi0YE3uzZDV,3hKNxGFpT1NPjsqhFgHhOQ,24TAYXjcD4EQjzT1RbeRjW,0LbcMYbS508RMhWL3dk51Z,2KjLxctsH7ShdaODr66Wg0,2QL0HI22bBP9QJHhfY1YLK,0WeXy0Nt55NxHgOrArxZd8,3kCjg_sZ1EF85Nip_y67gy,1YQyOdKDnFiOaH$X4tK5dp,2QGNuB0B16IeBRoltmvWce,2D8TYZqFD9ou0OP0wZWxih,1qTZAO3FXD8uU5_b8nP56O,37ZsdMPsnFCwBzj_WFlAfy,3Ks3Ov9p5EJ93H8eLBmiyy,2XslZd4419P8dGGPeAflZX,3qz3zPw_r7nf0mYn_Jv805,26tBNOs75EH9eZKZJlkRH3,1haxNPS0P1FxP1VZiCTIFV,2WAa5VUzT7ROWsWFxg38yH,1AEziWa0DAR8TEFYF8unFF,1ZVH2UdTP3dRvnG0LRbYIR,1Jfv0e_IDCLRJN$vloEl97,3DDP4nbdn6AApndIK6kkR4,15OpJLVNT1KBzxIDjBV7yp,1NPW7kpY90ofCA3b1oDHTr,0ekISWRMjETQVsONKhC0oM,0rj$xpoALDGQ3T1Tw9NAOA,3q92bI3TT78eG2hJbura4B,1KEHQ8njvClveqqoC3Ygq$,2cAQkZskLDv8hZ_cW77VS1,0jhVMe5nn9b8xNJphVwucj,3I1CMx2brDHRAqSOCI6eq6,3tvnsnioX7PQZ7u8kENvQd,26z2GfGaTA$RfZRO_HdeCI,2OyR0O$o90F9hKvgkw30Em,27xkga6Qr2v8HW65geRw7i,2h_R7XgCnEihwQ9xO2qxEJ,1W_SysTb9CJQGS7TZtcqax,1GT_8LA1P1AQ20xisLLbMN,23tK4hWyjBMvcAx0XfRa09,2TMU7718r0mAuJUNlb2SYn,18Qhf59crDCAy$scVOCK92,3OVQygdDn17huGOgJJFTOY,3jha5L04zBjh0$pMl_tHLy,04rs0EDjn2EvxytEQSxWRB,2nUpG$tzj0vR6tg5N9FJJ_,2Ca2tGerPBj8kvUTjlUtDl,3pAfMJYxPBlwR30CstZ4kK,0nlHIdaVrV7xIKsYXraYCa,37DwA_fpXSARFOa60IfK8k,28axnJOc1KaeA2jTdv5tk4,1s0ElI6BnG6xHZgQ37OOHr,0LGnQmHPDT5P1L4FD30GWT,11VsxE48XUhxS_l7yPUfeN,3Q5pOfhDvQsfsYufTtPS8u,1zX6DiGXjV2PeHHkTz230u,04rQahsKnVWAQm005VLUaQ,18mq2JXA1GaOLupE0pkNjZ,12lp8aIu9LTeewHdYAmHs2,1fwAQpF8TIaxJWoTVaZPyU,3gUd_KnZLPiQfFIw6FQwN8,10Wm8ivdX7dAVfz4cV8l5Q,0YgqsahOH4FvZ_nLwl_Tlf,06GpMzzWj1XQobAhD35cgU,0WP_ZkBqnB2P0aAfYeeBF9,3Itc2u2Yz5d9C0mXWYxzY$,1v_uB54DzEbARv3GX9zvoY,2wueiwazb6xBf0SUqSVhTB,19lEsYZcTBBR2TBnN2QWv6,1cgYaMV$HEIQTGmbjnIe3j,2S3yKtNmb9ShDjnra4juRS,0xmmL9dVP4rhlwSfwPEU0D,0GVPxjL8j96u92n6m17Gnb,36ZX3QPyD7SvlXsDKMP8rY,245NU$zZL0d9tYTVwwBdk$,3jT4sCgpHC98VSIUdGUNYH,1YxMx6s0r3ZPPohkRKXWbl,1PrWPEGF52deATqDqovfvh,22JsDd6sHC$PPQKBNQOW0y,2XVxPKYhfB79rI5US7KTf3,1yCfq0IHT57uClZRdyfIiK,2TnJnAuDb3cOoTeFLK4HdD,0GVA0pu6f1gh1ddVc58IqT,1QViGm50D1TP6oyZyAwSTP,2qk0nafof6XRl4CYcn5yQ2,0SCRXea81EcvS5088$VF9k,1XMusZjHr3ox9YBUbJg9rv,2KrNi9gT90MupPWHCfJwcn,3Hu_Yj575AZ9mo4zIVCeEV,0lLJUrXuv0NvoVpmTH07ON,29N1WkcE1DMgvzDDD4hCtn,3$SiLlObL89vfb3X4Vct$_,2pNehS5uj5IhnlCwSOPYW6,0ZXn49sxb5x82rCoYqoXKq,3qgu$TepT0J8Yat7ZQ90Mf,2oHWzdjkr8X8Yt0Gd2e3RQ,1JVGu2xtb1ZhGElhvSmyd$,3k2aFe_p5Ah8HJEqWUBB7F,3ERXx822H9jOPo6CetKX9r,0DOeKdT3DE9f2LMR_x$G7q,2NKrigWuPDpupK6upmd9Dz,0_Z2u7PpD6YBNKxya8tJEG,0V0NtkKUf6e8cPnz9if4Rv,3XQ9jj4jfDG9Rg2EDD46a6,0S8zkx4QD5pOrOIATVrtId,2wRzC7tFj8ifz6bI$YLdEX,1_EX1UWfL8ShcGm5BI1UPc,04F4qmHTP7TOvbpiQ7gZBJ,3qtF1s43PBgeiIIRR7DBba,0faD6FNAT40OGcq7Rvm_OW,3EVE8lqaz1jeLbHne5O4Sa,1MkgtBdKX3UvuzU7PXlhDC,3C5$uQhr52FBB2yYZovxCU,1MhvaabjjDYvl9DUE8AD7q,1Rn79Gplf7gwfEamngx4os,1gSxUUTXL7y87dIHf$ZbJi,0BF_v4sJzAd82iwqnjr39d,2ALgYzh_f8HPzZ9WJEBwoT,0ai2GGtAb858ZQ8rgk5Moi,2FQeCPllj1lQSKesOcZ6gb,1VtlgAcvv5tgFQq214xt1X,1LvkybbzX3ogJudDFQ2PEr,2O2esK8Ez5u906$714eyPh,0WhqLsotv7M9F0Aiia8dj1,3Kii7FN5H7deUEEvpV01lO,3X5VY_8un1ru2RXNTTD2Th,032u35G4b48gGJPZSrsaqp,1aUqD0p_P2GhhQhY7m5ILX,0Rh0$eFG57rw9zS8mjpCdK,1WPOiANMXEufdVxm0kIswl,33IuE0PNf6wwF_s16J4MvV,3AzpGQNhr4FhCAFXPEkaJn,0_eLd9WVfFLvk6I8goe8it,2LCZDONiLBShgK9CpOImZJ,2iD0$qLLb7cu7T$dATAC4E,0mchShss58$fvULZmouuUH,2KV8sWa1DC9RDyHYIRPBOP,1QPmeve6fEIhNrBYMdD2sJ,2Zjq0wICPAYAr4RNJLeesH,3vRIKiKbL9nAvF_CZkYkxA,2qhynM3rf33AQqbI129k2v,1JMXCthV161Ay1zyyjMeYY,3EaO22qXv38wM47SaLX1Yk,3DC1GDi6j01O$a9IjXU81p,03OxzOyN12ff3jkuUtjJPD,0tM_AFFsLCsfwouf4rVzw9,0pXVcnUbz8VQurx0yCzZMi,1XnHq4wyb3c9Bckdqr98Tx"
+            ]
+          },
+          null
+        ]
+      },
+      {
+        "id": 154,
+        "type": "IfcPropertySingleValue",
+        "attributes": [
+          "Exclude",
+          null,
+          {
+            "inline": "IfcText",
+            "values": [
+              "0$K8jHNgXCwB5w4R8Gk5s4,00fJpxqFXCHe6Hqg5jU2IN,00x5IPbTv8f86KJxthh6Wl,02ceDLwADB5eZJ$wQIxNrD,03QGD3YVL4kQ09hpfX6ZB3,06CNkFHQn2ZhnxkCmzCNEi,07Gvgx_qf93Rbat_7x96LT,0BFQIQV7r7TxZNvErJFvyS,0BcDHTdFX4x8rHz20JxY4K,0CVJWEQNL5hPA2CDa3nrrw,0ENjo6cXv34Q3ur_oFu35d,0HiMVAajv8xAARS233qDTe,0HivM5I5XF7gD1n35ZuIFX,0Lthi11x5Ad8PA$d0R8PP7,0QTOS1qur0sQgio4sft44Q,0RNLjTmq157vODPbbBPPj0,0Rk1e0rPv6K9tDw37_qRWJ,0W2JVDjsPF3g$bFV_K2lFX,0XBXxNg5D8eAsEaPGygVFr,0XNKzLs5rCQhc47u0Npwq4,0XVURVLHv8UwMVYO0fgWkp,0YsJnmXX59_B8tiYcGO6ur,0ZA8eHv6P4jRRHUwx7la69,0ZMLkgM6j2bu5yvjEea8cP,0ZPCn_n4L9tO3vVMztEYYQ,0ZTeZ96XHFbuYRjGQjSKle,0ZVZUf$Ar7KgkCHO7fOQyg,0_l8b5Don2XOwxWtKkMXED,0bZn1sv7f8teLPUxWd_9xq,0dBCR02kz1kv$SR1bv3i3d,0dhICpxE15MBdFZJaWQ8Gt,0eGA2q7S5E6gOybJoqsyqg,0eUhGmkAH1U9eyz6ahSAm2,0em0Y5w3f0GvFb4ggcWBUb,0iqzEyNlXE$B8lvi7jmv9b,0jqXyyymfC5RZy6sAieyib,0oPr0vjjv8nR5O$jMJYuhC,0qOCIS1pX4Pes5vDHTi8wi,0tiugLvJXE4evJI9A$YMHe,0tm3JB9ZX29goig6yMpVHK,0ttglzazrFaw93fN_TwPJh,0yOlQl0CjDjOOprL2qRrX7,0ziO7ioAr3FAqmmXwLygbB,1$S0gYW3T3bRxyHsEYiLLv,100$Wnni5CGQ$OnnEISN1a,11LVvWMRnExQ0AbmdKFx3U,134HkfoFnAyBBK_lE0xYWM,13fBgujbLFJhNnTCxZKHel,140pwjdu51i8Bf4yRy3ifH,14rvDJ$4L9o9QVZ86vPmyT,14z9GECtbB19M6LB7rXDyS,1674ghmCn3GuBPOuxW40DL,17BA8nGTf1ueSk4xKrrvOV,18A07EJ7f7sAlNVM4wwwos,18R00kaKPCYQBsM2o5$r_r,199f3DSOz98uT8DXSlPZ3d,1B6UIPB457fwl7F13v5gGr,1BrGjXSab4JxWxYY9WDR2z,1Dp$Shc49EShzNPw2QB1jk,1EQEiX03DDhRlXykY_vfhJ,1F3S2ug3z83feJFCf1GSqt,1FEgJp2P970u77zbD3EQfh,1G7HSMnFrC_R5KMRIob5CU,1H_RJx9c52EhHhFTPKxSdm,1JumS0L$H2Q9Aae3NsDpRY,1M$IaBZfn0NvLQezp1Z5Oc,1MawEiIGH91QofmcT4ZEao,1OV2qusT90seCMCM1v7_tt,1T7IU6d8LF1Rh628EK1ZwS,1U05xDYEb3NepRzadH7KHL,1UfJddtEz0EBL849tmnhql,1VjEk5I8XFmfiAYaLk_F_7,1XjInkM197Bvgkc5lJRGH1,1ZWtG4whH9g8EAbjhIwRpj,1_3CJIIjP1ZwKCnx4iGKe6,1aQKwMe794DAiMrTxaMy7L,1aZJKmg8nAawXlQwf$FCNr,1c3VjP7Cj8XOzrglchrWX5,1c4RgOFwTCm8eCTmMik2BS,1cWTMdxLbERA7F2YEXDAZK,1dqgr1kSH4hu3gzVVwMlyu,1gwq89bFnFggGKelj8ZT8O,1iam6gpU12vgtQfG9jg9Hr,1jQDhkWW5FRBlJrlZmpLxg,1m0njCsJ1AYxew6gmE9ZbA,1mGB1N1mn4oganvsO0AXgj,1mjQbi35n6EBYo0RbPW7wt,1nWDSMPFnE6ReuI_BVi9KH,1oGNnndgv2383eKPDwXXi4,1oMNZMf558VO30UD0XcC49,1ovw6V8Dj5fQ9Mwyed8Lcb,1p_7lJye11wRy_iyycu_YM,1qthKed514feGwPgnQ5$hM,1tDjl2kdz8qeW4KZ_ts8Na,1vr1cNQS1FHAMclohsylLc,1wKP6R9bH1vPPFnnBgUuuJ,1ww$Mih0zD$B2AYBjdbv7S,1xmkyH9FXBIeT4epDPpYVW,1yKX71KsT4RhSDJXHmXD8s,22gEUDaWX8QeiRrujWcOqw,22zTIYgzr47fDMM4$n34hF,2388Qqwur0_u5otzVLpqMj,23FycdHjT1APpzQJhfhEqO,23btfSBvv9zf3TZ$dTgs3p,28$lzZA4H7wgR6dKi$6V6S,2CPOqhIKXBm9RhVDp3GaZj,2CXDIlIQvDqfbPRP0P1VcF,2DeTXIPkX13x2AkFF36WYk,2EGrx1BlPAued7yJAAkuEO,2FpzAV1dvA08wmzuLKKsR7,2KbVwoYuvBSO4yEoqrC9L1,2McjTI7EDETwgF3eIc4IlF,2OwqJkIz19I9ZhNWKLuJrB,2T69JK$gv7Af1$wLBOtIOe,2TOGvyUyHEqPUwZaef5XH2,2V$yYS0$v3NwU2Ur2NT6lZ,2Wh17_pjfEwOzX3eVQOmzb,2XBI4$$6vB0hRZLUrNIdVk,2YQSsE9UP96BNq9hDLK_Mp,2ZNpmy8bXF8wzsTRljO7FD,2aKroOGMz1_8t0CIa$SOgw,2b6HVSPyr0mAMRQop1IzX6,2c$YEd3qLApB4oWyLJByjc,2cEbxy0wf4Gwj52oGOzYzy,2cqdvVEC5Co9JmR54Jvh0A,2gLJe_Rhj6YuSq4PwFqvLd,2gfQbHnE14dvjEuEJEwG2z,2jEqmgzVz55woyrQvKATHE,2jX5YDw6PE5AnmEG96_lLw,2lYlzigkD38PY7Fy73YztG,2nTVMu7HD5XvermD7Aqx4V,2nYCStdQv3hB3yYDYHAaRo,2oi6uwN8b9fBkFgSXHjf_M,2pT8ZtU_L10vZ2GQbSWXLD,2p_Xahspr6v8g2baYorMph,2rzDmZp5LAcPvLz$YkA9b5,2sRevbEuvCRuIloEuqrtX7,2smGc8ISL57P7Jll7ujr4d,2xsKoHFRP8wQFciZCS2W8A,2ydY16y357O9sTgJwOjZsn,31xhpapQXCKfYIK9OURdgh,33aMRH9An36RQi37lCJkbO,33eWFtzoP21ffkl7wZ6sk3,350tdaubr8QP3Cu2YMQZIN,35BA7sjaD4fvhV3D5r3pW6,36w81K$mPEme72vB7VvWkj,38QjJs3c114Bb_uwQgEj6e,38xKgADYD27OsQbaDCPZI4,39rhw6iKX5wg1gKfdI1hLW,3BYMmagU5FUBE4FGLHok0W,3Bmzgitm5CshAE2r7vERnd,3CWU3S86XCSwX9D$Z1ICqS,3EblOhuRj8Vv41BKSFk8Ao,3FBOyAMij3zhSOyrBw8rSj,3FY5hyX4v1Ihq0MQ1Bp7MX,3GVpAeYA54NBh_ynAitlmD,3GpGnsvVn2$9qYNIdbFTIO,3L8etFg5n3fBdIyR_I$nFj,3N4ef7jp56Ju8sF93P6z0u,3NOxsoddP8fOL0NOMD_P$z,3OXJQjZ0rAEwUl2EKO$DsV,3OyyR1Gpj5OvJoD00uGq1r,3RE70TsVHC99$UTfipGwhE,3RMlw3zQT1cRxXDsVQ5vHE,3RZqEkOqj6c8Qa6ZsBK_Tc,3UE275G6zBMvNzTHs_8eAW,3URAugTD9B5wkP6_IHBNbJ,3Ul6Ug1c55QfpEslH7VB5T,3XJ3VZbUf1lO$ppwkWdKh6,3XwwBWAb1Fuegrn8PB7q4l,3Zn5IzS3H3yBjk1CBCPdYB,3_Q5JzG0j2Zu0bu7_tiMUB,3aK4Kd0EX1cPWTcl11cMac,3aLUH7qar3mhe_7HiqSSN3,3aZThguef5fuAHoNz7FKel,3bThBrFFf1keu1sDh5NfYq,3cfFsLRWHE$PStLsb5HPUp,3h0rGEgGTBoQELVXpaHHK1,3hkH$I7T17fuiQoTo4npUp,3hwm9XXPv0r8BBLUaYS7r3,3ijRmuUZn0d8bxfnuZgnQm,3jyN1JyPj6HQ6W9w_nBgb4,3ldIQ947TBsQfmeoWCkAxk,3lkinA9Gn7NBffLkDk22pC,3mpRvDPDH2jAhA93UmR6ud,3mtEdbDYn1d9iNK0Iw113w,3nvIdBaTzBMvbeUzA64Gn4,3oQZvKp$DBYQZCNExowkE1,3qtykWCp592PRp2pF6lY2M,3uIyebbR996uX5ZQicuwnL,3v_JGo4_vEaxFLMWs6nTEg,3vkj1wUgb2BuHeaXL4z7k_,3ys4uZnZv0Ph4ODUWRj83U,IfcSpace"
+            ]
+          },
+          null
+        ]
+      },
+      {
+        "id": 155,
+        "type": "IfcRelAssociatesDocument",
+        "attributes": [
+          "3_8RhLvwrBFuwcPc8hrBkQ",
+          {
+            "ref": 156
+          },
+          null,
+          null,
+          [
+            {
+              "ref": 99
+            }
+          ],
+          {
+            "ref": 157
+          }
+        ]
+      },
+      {
+        "id": 156,
+        "type": "IfcOwnerHistory",
+        "attributes": [
+          {
+            "ref": 23
+          },
+          {
+            "ref": 26
+          },
+          "READWRITE",
+          "ADDED",
+          1788839963,
+          {
+            "ref": 23
+          },
+          {
+            "ref": 26
+          },
+          1788839963
+        ]
+      },
+      {
+        "id": 157,
+        "type": "IfcDocumentReference",
+        "attributes": [
+          "product-package/FALPER-WFB-SCENE-SIDE.svg",
+          "X",
+          null,
+          null,
+          {
+            "ref": 122
+          }
+        ]
+      },
+      {
+        "id": 158,
+        "type": "IfcRelContainedInSpatialStructure",
+        "attributes": [
+          "1G56qmqEb65QTCaMdrZ$JE",
+          {
+            "ref": 119
+          },
+          null,
+          null,
+          [
+            {
+              "ref": 17
+            }
+          ],
+          {
+            "ref": 35
+          }
+        ]
+      },
+      {
+        "id": 159,
+        "type": "IfcRelAggregates",
+        "attributes": [
+          "1Tibwzfdn1MBIwg_Onr_6t",
+          {
+            "ref": 119
+          },
+          null,
+          null,
+          {
+            "ref": 42
+          },
+          [
+            {
+              "ref": 35
+            }
+          ]
+        ]
+      },
+      {
+        "id": 160,
+        "type": "IfcRelAggregates",
+        "attributes": [
+          "1LSXCsCaf4kAJLvWRwLwWS",
+          {
+            "ref": 119
+          },
+          null,
+          null,
+          {
+            "ref": 49
+          },
+          [
+            {
+              "ref": 42
+            }
+          ]
+        ]
+      },
+      {
+        "id": 161,
+        "type": "IfcRelAggregates",
+        "attributes": [
+          "2K6M8X_7D4LvBWf3rUGKXw",
+          {
+            "ref": 119
+          },
+          null,
+          null,
+          {
+            "ref": 56
+          },
+          [
+            {
+              "ref": 49
+            }
+          ]
+        ]
+      },
+      {
+        "id": 162,
+        "type": "IfcRelAssignsToGroup",
+        "attributes": [
+          "0dvPzwGef6nQgb5FLo0A9P",
+          {
+            "ref": 163
+          },
+          null,
+          null,
+          [
+            {
+              "ref": 80
+            },
+            {
+              "ref": 63
+            }
+          ],
+          null,
+          {
+            "ref": 78
+          }
+        ]
+      },
+      {
+        "id": 163,
+        "type": "IfcOwnerHistory",
+        "attributes": [
+          {
+            "ref": 23
+          },
+          {
+            "ref": 26
+          },
+          "READWRITE",
+          "MODIFIED",
+          1788839962,
+          {
+            "ref": 23
+          },
+          {
+            "ref": 26
+          },
+          1788839962
+        ]
+      },
+      {
+        "id": 164,
+        "type": "IfcRelAssociatesDocument",
+        "attributes": [
+          "39k8AXDDz6YuL1F0SsiLmn",
+          {
+            "ref": 165
+          },
+          null,
+          null,
+          [
+            {
+              "ref": 63
+            }
+          ],
+          {
+            "ref": 166
+          }
+        ]
+      },
+      {
+        "id": 165,
+        "type": "IfcOwnerHistory",
+        "attributes": [
+          {
+            "ref": 23
+          },
+          {
+            "ref": 26
+          },
+          "READWRITE",
+          "ADDED",
+          1788839962,
+          {
+            "ref": 23
+          },
+          {
+            "ref": 26
+          },
+          1788839962
+        ]
+      },
+      {
+        "id": 166,
+        "type": "IfcDocumentReference",
+        "attributes": [
+          "product-package/FALPER-WFB-SCENE-PLAN.svg",
+          "X",
+          null,
+          null,
+          {
+            "ref": 128
+          }
+        ]
+      },
+      {
+        "id": 167,
+        "type": "IfcRelDefinesByProperties",
+        "attributes": [
+          "0WouIRJuPELOyDEWxYO$N7",
+          {
+            "ref": 168
+          },
+          null,
+          null,
+          [
+            {
+              "ref": 63
+            }
+          ],
+          {
+            "ref": 169
+          }
+        ]
+      },
+      {
+        "id": 168,
+        "type": "IfcOwnerHistory",
+        "attributes": [
+          {
+            "ref": 23
+          },
+          {
+            "ref": 26
+          },
+          "READWRITE",
+          "ADDED",
+          1788839962,
+          {
+            "ref": 23
+          },
+          {
+            "ref": 26
+          },
+          1788839962
+        ]
+      },
+      {
+        "id": 169,
+        "type": "IfcPropertySet",
+        "attributes": [
+          "1_UL8$gj99pgvNDlZVfG8f",
+          {
+            "ref": 170
+          },
+          "EPset_Drawing",
+          null,
+          [
+            {
+              "ref": 171
+            },
+            {
+              "ref": 172
+            },
+            {
+              "ref": 173
+            },
+            {
+              "ref": 174
+            },
+            {
+              "ref": 175
+            },
+            {
+              "ref": 176
+            },
+            {
+              "ref": 177
+            },
+            {
+              "ref": 178
+            },
+            {
+              "ref": 179
+            },
+            {
+              "ref": 180
+            },
+            {
+              "ref": 181
+            },
+            {
+              "ref": 182
+            },
+            {
+              "ref": 183
+            },
+            {
+              "ref": 184
+            },
+            {
+              "ref": 185
+            },
+            {
+              "ref": 186
+            },
+            {
+              "ref": 187
+            },
+            {
+              "ref": 188
+            },
+            {
+              "ref": 189
+            }
+          ]
+        ]
+      },
+      {
+        "id": 170,
+        "type": "IfcOwnerHistory",
+        "attributes": [
+          {
+            "ref": 23
+          },
+          {
+            "ref": 26
+          },
+          "READWRITE",
+          "ADDED",
+          1788839962,
+          {
+            "ref": 23
+          },
+          {
+            "ref": 26
+          },
+          1788839962
+        ]
+      },
+      {
+        "id": 171,
+        "type": "IfcPropertySingleValue",
+        "attributes": [
+          "TargetView",
+          null,
+          {
+            "inline": "IfcLabel",
+            "values": [
+              "PLAN_VIEW"
+            ]
+          },
+          null
+        ]
+      },
+      {
+        "id": 172,
+        "type": "IfcPropertySingleValue",
+        "attributes": [
+          "Scale",
+          null,
+          {
+            "inline": "IfcLabel",
+            "values": [
+              "1/25"
+            ]
+          },
+          null
+        ]
+      },
+      {
+        "id": 173,
+        "type": "IfcPropertySingleValue",
+        "attributes": [
+          "HumanScale",
+          null,
+          {
+            "inline": "IfcLabel",
+            "values": [
+              "1:25"
+            ]
+          },
+          null
+        ]
+      },
+      {
+        "id": 174,
+        "type": "IfcPropertySingleValue",
+        "attributes": [
+          "HasUnderlay",
+          null,
+          {
+            "inline": "IfcBoolean",
+            "values": [
+              false
+            ]
+          },
+          null
+        ]
+      },
+      {
+        "id": 175,
+        "type": "IfcPropertySingleValue",
+        "attributes": [
+          "HasLinework",
+          null,
+          {
+            "inline": "IfcBoolean",
+            "values": [
+              true
+            ]
+          },
+          null
+        ]
+      },
+      {
+        "id": 176,
+        "type": "IfcPropertySingleValue",
+        "attributes": [
+          "HasAnnotation",
+          null,
+          {
+            "inline": "IfcBoolean",
+            "values": [
+              true
+            ]
+          },
+          null
+        ]
+      },
+      {
+        "id": 177,
+        "type": "IfcPropertySingleValue",
+        "attributes": [
+          "GlobalReferencing",
+          null,
+          {
+            "inline": "IfcBoolean",
+            "values": [
+              false
+            ]
+          },
+          null
+        ]
+      },
+      {
+        "id": 178,
+        "type": "IfcPropertySingleValue",
+        "attributes": [
+          "Stylesheet",
+          null,
+          {
+            "inline": "IfcText",
+            "values": [
+              "drawings/assets/default.css"
+            ]
+          },
+          null
+        ]
+      },
+      {
+        "id": 179,
+        "type": "IfcPropertySingleValue",
+        "attributes": [
+          "Markers",
+          null,
+          {
+            "inline": "IfcText",
+            "values": [
+              "drawings/assets/markers.svg"
+            ]
+          },
+          null
+        ]
+      },
+      {
+        "id": 180,
+        "type": "IfcPropertySingleValue",
+        "attributes": [
+          "Symbols",
+          null,
+          {
+            "inline": "IfcText",
+            "values": [
+              "drawings/assets/symbols.svg"
+            ]
+          },
+          null
+        ]
+      },
+      {
+        "id": 181,
+        "type": "IfcPropertySingleValue",
+        "attributes": [
+          "Patterns",
+          null,
+          {
+            "inline": "IfcText",
+            "values": [
+              "drawings/assets/patterns.svg"
+            ]
+          },
+          null
+        ]
+      },
+      {
+        "id": 182,
+        "type": "IfcPropertySingleValue",
+        "attributes": [
+          "ShadingStyles",
+          null,
+          {
+            "inline": "IfcText",
+            "values": [
+              "drawings/assets/shading_styles.json"
+            ]
+          },
+          null
+        ]
+      },
+      {
+        "id": 183,
+        "type": "IfcPropertySingleValue",
+        "attributes": [
+          "CurrentShadingStyle",
+          null,
+          {
+            "inline": "IfcLabel",
+            "values": [
+              "Blender Default"
+            ]
+          },
+          null
+        ]
+      },
+      {
+        "id": 184,
+        "type": "IfcPropertySingleValue",
+        "attributes": [
+          "DPI",
+          null,
+          {
+            "inline": "IfcInteger",
+            "values": [
+              300
+            ]
+          },
+          null
+        ]
+      },
+      {
+        "id": 185,
+        "type": "IfcPropertySingleValue",
+        "attributes": [
+          "LineworkMode",
+          null,
+          {
+            "inline": "IfcLabel",
+            "values": [
+              "OPENCASCADE"
+            ]
+          },
+          null
+        ]
+      },
+      {
+        "id": 186,
+        "type": "IfcPropertySingleValue",
+        "attributes": [
+          "FillMode",
+          null,
+          {
+            "inline": "IfcLabel",
+            "values": [
+              "NONE"
+            ]
+          },
+          null
+        ]
+      },
+      {
+        "id": 187,
+        "type": "IfcPropertySingleValue",
+        "attributes": [
+          "CutMode",
+          null,
+          {
+            "inline": "IfcLabel",
+            "values": [
+              "BISECT"
+            ]
+          },
+          null
+        ]
+      },
+      {
+        "id": 188,
+        "type": "IfcPropertySingleValue",
+        "attributes": [
+          "Include",
+          null,
+          {
+            "inline": "IfcText",
+            "values": [
+              "3DNT0yqe1EMRpVglm_yCZ4,0WdsBKMo545Ryicomy6Mqg,1Yr_JdSGn8XOs804Vwoetk,2VVDWezmbEmQh$5mczGb4m,30YXVJrQjBEgTfH5xSTneR,2UhljZvyHBM9jCYFR8xcyl,1QkVJsQDf6keIyddhN5Dmc,2jK2g2$tb18Qu3jsAzqyh_,06wFwLoDD6ie5iCTnc_yad,3mlT3vP4P1MwwtT7Mb20tc,3oxgGk27D4pRhha6_X05df,1cudaM$BT1GAKD9EEg4nqS,0rwOcjvjn5WBdoq4bxiHSk,02JiVqnyTDXQ1GpfLPCpMl,11c$NwzxL9hASgCgwDxM$w,1Lj_LXp3z7tQDMYUGoTsFc,3L$xQZHiz7b8ws7de1jiZN,2uYGzJR3f1QO6LmO9Nq3Mf,0AN5MRpZ16dRCAg1l5TOyz,1To6gRjrf2nBU5GQuuD8FV,3xKBbA2CT9mfby2$MODnzM,3ARl_CqPrCWQrA6_$W073W,1UixnpnQb97wuNAGrTmMJd,3qo2s5gKPA$8hNQznuTTCf,0MVn0S2GP0IuDnXI2x_0wg,1Yf7cK9MTAoBRvfK3BluSI,3ZKyTiBc1ECxQi0UR8K1Ke,1mI2ClWgr6xwhxkjkIkFbV,0IlFpdzSbD_9sqRVW8SpPi,2vTSinfYHC$8prkGP7LD7X,0s2tcnZmP23Qpz4zXZ$Vd0,0mnFDiYfj6fxQBaWFizjUS,2_vcnNErPCixD2MSQiqhdi,2MZOWmnIX7KA3Wfnp2HxoF,0wbKH$_Qr2_A4hpKs0PLXw,1fAJA2jj59uhEyVVcR7EM7,1cmuG50mj3cggtIH5tZHic,02eX$Z5WrDuuxw1IlnwVss,2T92129$LE0Pve_Pv6F9Sx,0G_rbqpMHE28Txkf09jW3_,3ty1lUpQfD3fY1yf0Dxo53,05LSYayab3n9CDi01pw9K$,1yuWIPQdP3uuPJnZhwUAcx,1vyfckSCz8Fww8vTAKGqom,24AqfsAbz9a9uOPQhRX75e,3Iwtjib290RgoxOZXiXjY_,18eimQPoDDKg_QKo2uX5el,3IOZ8Z$$5DH9cGih34wZt$,0nNkP2k99BqQJilK0$E7fQ,1oa6zGXK1CeuV$1tRZM9Ob,3wW32FPxv45Ac3yhuS2W5U,0jLabLY_9C18Pu7tVszuIs,21rLg3DBL3dupCGoi2RsUf,1aQiUP$CH5uhQBoEX8NjwK,2amSzxJIb9ceddTJOslmHk,0$9uFhN9v7tw5pryslitkb,3VgMpCodXEA9ViTVPIQmcR,0hKdvAZkn1TejLgJhK_vDp,1AxFP7vkD30Q3ZdxDr_l4l,2NAJrrSQb2twKjQ2V6lQI6,322GWgwy5EpfjZYxs3LRoD,28l5JUTGT3r8kMzEzzSngn,0a6glteMX7_x6fU36rB7Xa,3uxUxvIOTAHOul$htmNuGA,3W8L7rd6vBx9Y_wSLIYlqb,3pq6QdkHHDZR3RR1nYivCC,21vcsFmEvC2xpOEhH31C0E,2Hzb2UxozCF9TjOK5nW1XC,1q9EfwGKLByPI32Mi7AhWS,3NM8wlQfDDFB3rAZF1Mq_N,1kB9zQpv94vO1NObylFPcP,3KxJ$jTjT69vr2qwa3swbL,34MraFd1nFsep2QMO2kY48,2IZwo0dYv0p8B0RhP1oOtT,0qZZv8B9b9SQk3mAPTXSfP,3s$BGbHSj8hxQSeUdUDGfx,3gksf1Sxz5TRfXh5l$12xr,3TV2zkQdH3QRCAFhe47WOL,3JyOUPuivAwvLvV8DSz6CD,0vMU_9TZXEV8GPr46AYxhu,122leYIbHFFBi0YE3uzZDV,3hKNxGFpT1NPjsqhFgHhOQ,24TAYXjcD4EQjzT1RbeRjW,0LbcMYbS508RMhWL3dk51Z,2KjLxctsH7ShdaODr66Wg0,2QL0HI22bBP9QJHhfY1YLK,0WeXy0Nt55NxHgOrArxZd8,3kCjg_sZ1EF85Nip_y67gy,1YQyOdKDnFiOaH$X4tK5dp,2QGNuB0B16IeBRoltmvWce,2D8TYZqFD9ou0OP0wZWxih,1qTZAO3FXD8uU5_b8nP56O,37ZsdMPsnFCwBzj_WFlAfy,3Ks3Ov9p5EJ93H8eLBmiyy,2XslZd4419P8dGGPeAflZX,3qz3zPw_r7nf0mYn_Jv805,26tBNOs75EH9eZKZJlkRH3,1haxNPS0P1FxP1VZiCTIFV,2WAa5VUzT7ROWsWFxg38yH,1AEziWa0DAR8TEFYF8unFF,1ZVH2UdTP3dRvnG0LRbYIR,1Jfv0e_IDCLRJN$vloEl97,3DDP4nbdn6AApndIK6kkR4,15OpJLVNT1KBzxIDjBV7yp,1NPW7kpY90ofCA3b1oDHTr,0ekISWRMjETQVsONKhC0oM,0rj$xpoALDGQ3T1Tw9NAOA,3q92bI3TT78eG2hJbura4B,1KEHQ8njvClveqqoC3Ygq$,2cAQkZskLDv8hZ_cW77VS1,0jhVMe5nn9b8xNJphVwucj,3I1CMx2brDHRAqSOCI6eq6,3tvnsnioX7PQZ7u8kENvQd,26z2GfGaTA$RfZRO_HdeCI,2OyR0O$o90F9hKvgkw30Em,27xkga6Qr2v8HW65geRw7i,2h_R7XgCnEihwQ9xO2qxEJ,1W_SysTb9CJQGS7TZtcqax,1GT_8LA1P1AQ20xisLLbMN,23tK4hWyjBMvcAx0XfRa09,2TMU7718r0mAuJUNlb2SYn,18Qhf59crDCAy$scVOCK92,3OVQygdDn17huGOgJJFTOY,3jha5L04zBjh0$pMl_tHLy,04rs0EDjn2EvxytEQSxWRB,2nUpG$tzj0vR6tg5N9FJJ_,2Ca2tGerPBj8kvUTjlUtDl,3pAfMJYxPBlwR30CstZ4kK,0nlHIdaVrV7xIKsYXraYCa,37DwA_fpXSARFOa60IfK8k,28axnJOc1KaeA2jTdv5tk4,1s0ElI6BnG6xHZgQ37OOHr,0LGnQmHPDT5P1L4FD30GWT,11VsxE48XUhxS_l7yPUfeN,3Q5pOfhDvQsfsYufTtPS8u,1zX6DiGXjV2PeHHkTz230u,04rQahsKnVWAQm005VLUaQ,18mq2JXA1GaOLupE0pkNjZ,12lp8aIu9LTeewHdYAmHs2,1fwAQpF8TIaxJWoTVaZPyU,3gUd_KnZLPiQfFIw6FQwN8,10Wm8ivdX7dAVfz4cV8l5Q,0YgqsahOH4FvZ_nLwl_Tlf,06GpMzzWj1XQobAhD35cgU,0WP_ZkBqnB2P0aAfYeeBF9,3Itc2u2Yz5d9C0mXWYxzY$,1v_uB54DzEbARv3GX9zvoY,2wueiwazb6xBf0SUqSVhTB,19lEsYZcTBBR2TBnN2QWv6,1cgYaMV$HEIQTGmbjnIe3j,2S3yKtNmb9ShDjnra4juRS,0xmmL9dVP4rhlwSfwPEU0D,0GVPxjL8j96u92n6m17Gnb,36ZX3QPyD7SvlXsDKMP8rY,245NU$zZL0d9tYTVwwBdk$,3jT4sCgpHC98VSIUdGUNYH,1YxMx6s0r3ZPPohkRKXWbl,1PrWPEGF52deATqDqovfvh,22JsDd6sHC$PPQKBNQOW0y,2XVxPKYhfB79rI5US7KTf3,1yCfq0IHT57uClZRdyfIiK,2TnJnAuDb3cOoTeFLK4HdD,0GVA0pu6f1gh1ddVc58IqT,1QViGm50D1TP6oyZyAwSTP,2qk0nafof6XRl4CYcn5yQ2,0SCRXea81EcvS5088$VF9k,1XMusZjHr3ox9YBUbJg9rv,2KrNi9gT90MupPWHCfJwcn,3Hu_Yj575AZ9mo4zIVCeEV,0lLJUrXuv0NvoVpmTH07ON,29N1WkcE1DMgvzDDD4hCtn,3$SiLlObL89vfb3X4Vct$_,2pNehS5uj5IhnlCwSOPYW6,0ZXn49sxb5x82rCoYqoXKq,3qgu$TepT0J8Yat7ZQ90Mf,2oHWzdjkr8X8Yt0Gd2e3RQ,1JVGu2xtb1ZhGElhvSmyd$,3k2aFe_p5Ah8HJEqWUBB7F,3ERXx822H9jOPo6CetKX9r,0DOeKdT3DE9f2LMR_x$G7q,2NKrigWuPDpupK6upmd9Dz,0_Z2u7PpD6YBNKxya8tJEG,0V0NtkKUf6e8cPnz9if4Rv,3XQ9jj4jfDG9Rg2EDD46a6,0S8zkx4QD5pOrOIATVrtId,2wRzC7tFj8ifz6bI$YLdEX,1_EX1UWfL8ShcGm5BI1UPc,04F4qmHTP7TOvbpiQ7gZBJ,3qtF1s43PBgeiIIRR7DBba,0faD6FNAT40OGcq7Rvm_OW,3EVE8lqaz1jeLbHne5O4Sa,1MkgtBdKX3UvuzU7PXlhDC,3C5$uQhr52FBB2yYZovxCU,1MhvaabjjDYvl9DUE8AD7q,1Rn79Gplf7gwfEamngx4os,1gSxUUTXL7y87dIHf$ZbJi,0BF_v4sJzAd82iwqnjr39d,2ALgYzh_f8HPzZ9WJEBwoT,0ai2GGtAb858ZQ8rgk5Moi,2FQeCPllj1lQSKesOcZ6gb,1VtlgAcvv5tgFQq214xt1X,1LvkybbzX3ogJudDFQ2PEr,2O2esK8Ez5u906$714eyPh,0WhqLsotv7M9F0Aiia8dj1,3Kii7FN5H7deUEEvpV01lO,3X5VY_8un1ru2RXNTTD2Th,032u35G4b48gGJPZSrsaqp,1aUqD0p_P2GhhQhY7m5ILX,0Rh0$eFG57rw9zS8mjpCdK,1WPOiANMXEufdVxm0kIswl,33IuE0PNf6wwF_s16J4MvV,3AzpGQNhr4FhCAFXPEkaJn,0_eLd9WVfFLvk6I8goe8it,2LCZDONiLBShgK9CpOImZJ,2iD0$qLLb7cu7T$dATAC4E,0mchShss58$fvULZmouuUH,2KV8sWa1DC9RDyHYIRPBOP,1QPmeve6fEIhNrBYMdD2sJ,2Zjq0wICPAYAr4RNJLeesH,3vRIKiKbL9nAvF_CZkYkxA,2qhynM3rf33AQqbI129k2v,1JMXCthV161Ay1zyyjMeYY,3EaO22qXv38wM47SaLX1Yk,3DC1GDi6j01O$a9IjXU81p,03OxzOyN12ff3jkuUtjJPD,0tM_AFFsLCsfwouf4rVzw9,0pXVcnUbz8VQurx0yCzZMi,3YElnDEWH0y8fZ3KgbQECx"
+            ]
+          },
+          null
+        ]
+      },
+      {
+        "id": 189,
+        "type": "IfcPropertySingleValue",
+        "attributes": [
+          "Exclude",
+          null,
+          {
+            "inline": "IfcText",
+            "values": [
+              "0$K8jHNgXCwB5w4R8Gk5s4,00fJpxqFXCHe6Hqg5jU2IN,00x5IPbTv8f86KJxthh6Wl,02ceDLwADB5eZJ$wQIxNrD,03QGD3YVL4kQ09hpfX6ZB3,06CNkFHQn2ZhnxkCmzCNEi,07Gvgx_qf93Rbat_7x96LT,0BFQIQV7r7TxZNvErJFvyS,0BcDHTdFX4x8rHz20JxY4K,0CVJWEQNL5hPA2CDa3nrrw,0ENjo6cXv34Q3ur_oFu35d,0HiMVAajv8xAARS233qDTe,0HivM5I5XF7gD1n35ZuIFX,0Lthi11x5Ad8PA$d0R8PP7,0QTOS1qur0sQgio4sft44Q,0RNLjTmq157vODPbbBPPj0,0Rk1e0rPv6K9tDw37_qRWJ,0W2JVDjsPF3g$bFV_K2lFX,0XBXxNg5D8eAsEaPGygVFr,0XNKzLs5rCQhc47u0Npwq4,0XVURVLHv8UwMVYO0fgWkp,0YsJnmXX59_B8tiYcGO6ur,0ZA8eHv6P4jRRHUwx7la69,0ZMLkgM6j2bu5yvjEea8cP,0ZPCn_n4L9tO3vVMztEYYQ,0ZTeZ96XHFbuYRjGQjSKle,0ZVZUf$Ar7KgkCHO7fOQyg,0_l8b5Don2XOwxWtKkMXED,0bZn1sv7f8teLPUxWd_9xq,0dBCR02kz1kv$SR1bv3i3d,0dhICpxE15MBdFZJaWQ8Gt,0eGA2q7S5E6gOybJoqsyqg,0eUhGmkAH1U9eyz6ahSAm2,0em0Y5w3f0GvFb4ggcWBUb,0iqzEyNlXE$B8lvi7jmv9b,0jqXyyymfC5RZy6sAieyib,0oPr0vjjv8nR5O$jMJYuhC,0qOCIS1pX4Pes5vDHTi8wi,0tiugLvJXE4evJI9A$YMHe,0tm3JB9ZX29goig6yMpVHK,0ttglzazrFaw93fN_TwPJh,0yOlQl0CjDjOOprL2qRrX7,0ziO7ioAr3FAqmmXwLygbB,1$S0gYW3T3bRxyHsEYiLLv,100$Wnni5CGQ$OnnEISN1a,11LVvWMRnExQ0AbmdKFx3U,134HkfoFnAyBBK_lE0xYWM,13fBgujbLFJhNnTCxZKHel,140pwjdu51i8Bf4yRy3ifH,14rvDJ$4L9o9QVZ86vPmyT,14z9GECtbB19M6LB7rXDyS,1674ghmCn3GuBPOuxW40DL,17BA8nGTf1ueSk4xKrrvOV,18A07EJ7f7sAlNVM4wwwos,18R00kaKPCYQBsM2o5$r_r,199f3DSOz98uT8DXSlPZ3d,1B6UIPB457fwl7F13v5gGr,1BrGjXSab4JxWxYY9WDR2z,1Dp$Shc49EShzNPw2QB1jk,1EQEiX03DDhRlXykY_vfhJ,1F3S2ug3z83feJFCf1GSqt,1FEgJp2P970u77zbD3EQfh,1G7HSMnFrC_R5KMRIob5CU,1H_RJx9c52EhHhFTPKxSdm,1JumS0L$H2Q9Aae3NsDpRY,1M$IaBZfn0NvLQezp1Z5Oc,1MawEiIGH91QofmcT4ZEao,1OV2qusT90seCMCM1v7_tt,1T7IU6d8LF1Rh628EK1ZwS,1U05xDYEb3NepRzadH7KHL,1UfJddtEz0EBL849tmnhql,1VjEk5I8XFmfiAYaLk_F_7,1XjInkM197Bvgkc5lJRGH1,1ZWtG4whH9g8EAbjhIwRpj,1_3CJIIjP1ZwKCnx4iGKe6,1aQKwMe794DAiMrTxaMy7L,1aZJKmg8nAawXlQwf$FCNr,1c3VjP7Cj8XOzrglchrWX5,1c4RgOFwTCm8eCTmMik2BS,1cWTMdxLbERA7F2YEXDAZK,1dqgr1kSH4hu3gzVVwMlyu,1gwq89bFnFggGKelj8ZT8O,1iam6gpU12vgtQfG9jg9Hr,1jQDhkWW5FRBlJrlZmpLxg,1m0njCsJ1AYxew6gmE9ZbA,1mGB1N1mn4oganvsO0AXgj,1mjQbi35n6EBYo0RbPW7wt,1nWDSMPFnE6ReuI_BVi9KH,1oGNnndgv2383eKPDwXXi4,1oMNZMf558VO30UD0XcC49,1ovw6V8Dj5fQ9Mwyed8Lcb,1p_7lJye11wRy_iyycu_YM,1qthKed514feGwPgnQ5$hM,1tDjl2kdz8qeW4KZ_ts8Na,1vr1cNQS1FHAMclohsylLc,1wKP6R9bH1vPPFnnBgUuuJ,1ww$Mih0zD$B2AYBjdbv7S,1xmkyH9FXBIeT4epDPpYVW,1yKX71KsT4RhSDJXHmXD8s,22gEUDaWX8QeiRrujWcOqw,22zTIYgzr47fDMM4$n34hF,2388Qqwur0_u5otzVLpqMj,23FycdHjT1APpzQJhfhEqO,23btfSBvv9zf3TZ$dTgs3p,28$lzZA4H7wgR6dKi$6V6S,2CPOqhIKXBm9RhVDp3GaZj,2CXDIlIQvDqfbPRP0P1VcF,2DeTXIPkX13x2AkFF36WYk,2EGrx1BlPAued7yJAAkuEO,2FpzAV1dvA08wmzuLKKsR7,2KbVwoYuvBSO4yEoqrC9L1,2McjTI7EDETwgF3eIc4IlF,2OwqJkIz19I9ZhNWKLuJrB,2T69JK$gv7Af1$wLBOtIOe,2TOGvyUyHEqPUwZaef5XH2,2V$yYS0$v3NwU2Ur2NT6lZ,2Wh17_pjfEwOzX3eVQOmzb,2XBI4$$6vB0hRZLUrNIdVk,2YQSsE9UP96BNq9hDLK_Mp,2ZNpmy8bXF8wzsTRljO7FD,2aKroOGMz1_8t0CIa$SOgw,2b6HVSPyr0mAMRQop1IzX6,2c$YEd3qLApB4oWyLJByjc,2cEbxy0wf4Gwj52oGOzYzy,2cqdvVEC5Co9JmR54Jvh0A,2gLJe_Rhj6YuSq4PwFqvLd,2gfQbHnE14dvjEuEJEwG2z,2jEqmgzVz55woyrQvKATHE,2jX5YDw6PE5AnmEG96_lLw,2lYlzigkD38PY7Fy73YztG,2nTVMu7HD5XvermD7Aqx4V,2nYCStdQv3hB3yYDYHAaRo,2oi6uwN8b9fBkFgSXHjf_M,2pT8ZtU_L10vZ2GQbSWXLD,2p_Xahspr6v8g2baYorMph,2rzDmZp5LAcPvLz$YkA9b5,2sRevbEuvCRuIloEuqrtX7,2smGc8ISL57P7Jll7ujr4d,2xsKoHFRP8wQFciZCS2W8A,2ydY16y357O9sTgJwOjZsn,31xhpapQXCKfYIK9OURdgh,33aMRH9An36RQi37lCJkbO,33eWFtzoP21ffkl7wZ6sk3,350tdaubr8QP3Cu2YMQZIN,35BA7sjaD4fvhV3D5r3pW6,36w81K$mPEme72vB7VvWkj,38QjJs3c114Bb_uwQgEj6e,38xKgADYD27OsQbaDCPZI4,39rhw6iKX5wg1gKfdI1hLW,3BYMmagU5FUBE4FGLHok0W,3Bmzgitm5CshAE2r7vERnd,3CWU3S86XCSwX9D$Z1ICqS,3EblOhuRj8Vv41BKSFk8Ao,3FBOyAMij3zhSOyrBw8rSj,3FY5hyX4v1Ihq0MQ1Bp7MX,3GVpAeYA54NBh_ynAitlmD,3GpGnsvVn2$9qYNIdbFTIO,3L8etFg5n3fBdIyR_I$nFj,3N4ef7jp56Ju8sF93P6z0u,3NOxsoddP8fOL0NOMD_P$z,3OXJQjZ0rAEwUl2EKO$DsV,3OyyR1Gpj5OvJoD00uGq1r,3RE70TsVHC99$UTfipGwhE,3RMlw3zQT1cRxXDsVQ5vHE,3RZqEkOqj6c8Qa6ZsBK_Tc,3UE275G6zBMvNzTHs_8eAW,3URAugTD9B5wkP6_IHBNbJ,3Ul6Ug1c55QfpEslH7VB5T,3XJ3VZbUf1lO$ppwkWdKh6,3XwwBWAb1Fuegrn8PB7q4l,3Zn5IzS3H3yBjk1CBCPdYB,3_Q5JzG0j2Zu0bu7_tiMUB,3aK4Kd0EX1cPWTcl11cMac,3aLUH7qar3mhe_7HiqSSN3,3aZThguef5fuAHoNz7FKel,3bThBrFFf1keu1sDh5NfYq,3cfFsLRWHE$PStLsb5HPUp,3h0rGEgGTBoQELVXpaHHK1,3hkH$I7T17fuiQoTo4npUp,3hwm9XXPv0r8BBLUaYS7r3,3ijRmuUZn0d8bxfnuZgnQm,3jyN1JyPj6HQ6W9w_nBgb4,3ldIQ947TBsQfmeoWCkAxk,3lkinA9Gn7NBffLkDk22pC,3mpRvDPDH2jAhA93UmR6ud,3mtEdbDYn1d9iNK0Iw113w,3nvIdBaTzBMvbeUzA64Gn4,3oQZvKp$DBYQZCNExowkE1,3qtykWCp592PRp2pF6lY2M,3uIyebbR996uX5ZQicuwnL,3v_JGo4_vEaxFLMWs6nTEg,3vkj1wUgb2BuHeaXL4z7k_,3ys4uZnZv0Ph4ODUWRj83U,IfcSpace"
+            ]
+          },
+          null
+        ]
+      },
+      {
+        "id": 190,
+        "type": "IfcRelAssociatesDocument",
+        "attributes": [
+          "10seCSdEf1GQQIp7hKxPJb",
+          {
+            "ref": 191
+          },
+          null,
+          null,
+          [
+            {
+              "ref": 82
+            }
+          ],
+          {
+            "ref": 65
+          }
+        ]
+      },
+      {
+        "id": 191,
+        "type": "IfcOwnerHistory",
+        "attributes": [
+          {
+            "ref": 23
+          },
+          {
+            "ref": 26
+          },
+          "READWRITE",
+          "ADDED",
+          1788839962,
+          {
+            "ref": 23
+          },
+          {
+            "ref": 26
+          },
+          1788839962
+        ]
+      },
+      {
+        "id": 64,
+        "type": "IfcOwnerHistory",
+        "attributes": [
+          {
+            "ref": 23
+          },
+          {
+            "ref": 26
+          },
+          "READWRITE",
+          "MODIFIED",
+          1788839962,
+          {
+            "ref": 23
+          },
+          {
+            "ref": 26
+          },
+          1788839962
+        ]
+      },
+      {
+        "id": 65,
+        "type": "IfcDocumentReference",
+        "attributes": [
+          "product-package/FALPER-WFB-SCENE-FRONT.svg",
+          "X",
+          null,
+          null,
+          {
+            "ref": 125
+          }
+        ]
+      },
+      {
+        "id": 66,
+        "type": "IfcLocalPlacement",
+        "attributes": [
+          null,
+          {
+            "ref": 67
+          }
+        ]
+      },
+      {
+        "id": 67,
+        "type": "IfcAxis2Placement3D",
+        "attributes": [
+          {
+            "ref": 68
+          },
+          {
+            "ref": 69
+          },
+          {
+            "ref": 70
+          }
+        ]
+      },
+      {
+        "id": 68,
+        "type": "IfcCartesianPoint",
+        "attributes": [
+          [
+            -550.000011920929,
+            349.9999940395355,
+            1200.0000476837158
+          ]
+        ]
+      },
+      {
+        "id": 69,
+        "type": "IfcDirection",
+        "attributes": [
+          [
+            0.0,
+            0.0,
+            1.0
+          ]
+        ]
+      },
+      {
+        "id": 70,
+        "type": "IfcDirection",
+        "attributes": [
+          [
+            1.0,
+            0.0,
+            0.0
+          ]
+        ]
+      },
+      {
+        "id": 71,
+        "type": "IfcProductDefinitionShape",
+        "attributes": [
+          null,
+          null,
+          [
+            {
+              "ref": 72
+            }
+          ]
+        ]
+      },
+      {
+        "id": 72,
+        "type": "IfcShapeRepresentation",
+        "attributes": [
+          {
+            "ref": 73
+          },
+          "Body",
+          "CSG",
+          [
+            {
+              "ref": 74
+            }
+          ]
+        ]
+      },
+      {
+        "id": 73,
+        "type": "IfcGeometricRepresentationSubContext",
+        "attributes": [
+          "Body",
+          "Model",
+          null,
+          null,
+          null,
+          null,
+          {
+            "ref": 3
+          },
+          null,
+          "MODEL_VIEW",
+          null
+        ]
+      },
+      {
+        "id": 74,
+        "type": "IfcCsgSolid",
+        "attributes": [
+          {
+            "ref": 75
+          }
+        ]
+      },
+      {
+        "id": 75,
+        "type": "IfcBlock",
+        "attributes": [
+          {
+            "ref": 76
+          },
+          2799.9999523162837,
+          2799.999952316284,
+          1500.0
+        ]
+      },
+      {
+        "id": 76,
+        "type": "IfcAxis2Placement3D",
+        "attributes": [
+          {
+            "ref": 77
+          },
+          null,
+          null
+        ]
+      },
+      {
+        "id": 77,
+        "type": "IfcCartesianPoint",
+        "attributes": [
+          [
+            -1399.9999761581419,
+            -1399.999976158142,
+            -1500.0
+          ]
+        ]
+      },
+      {
+        "id": 78,
+        "type": "IfcGroup",
+        "attributes": [
+          "0JoRAHNq92p8$7$h1_5dAR",
+          {
+            "ref": 79
+          },
+          "FALPER-WFB-SCENE-PLAN",
+          null,
+          "DRAWING"
+        ]
+      },
+      {
+        "id": 79,
+        "type": "IfcOwnerHistory",
+        "attributes": [
+          {
+            "ref": 23
+          },
+          {
+            "ref": 26
+          },
+          "READWRITE",
+          "MODIFIED",
+          1788839962,
+          {
+            "ref": 23
+          },
+          {
+            "ref": 26
+          },
+          1788839962
+        ]
+      },
+      {
+        "id": 80,
+        "type": "IfcAnnotation",
+        "attributes": [
+          "3YElnDEWH0y8fZ3KgbQECx",
+          {
+            "ref": 81
+          },
+          "Falper Sorgente WFB official native DWG / plan",
+          null,
+          "LINEWORK",
+          {
+            "ref": 30
+          },
+          null
+        ]
+      },
+      {
+        "id": 81,
+        "type": "IfcOwnerHistory",
+        "attributes": [
+          {
+            "ref": 23
+          },
+          {
+            "ref": 26
+          },
+          "READWRITE",
+          "MODIFIED",
+          1788839962,
+          {
+            "ref": 23
+          },
+          {
+            "ref": 26
+          },
+          1788839962
+        ]
+      },
+      {
+        "id": 82,
+        "type": "IfcAnnotation",
+        "attributes": [
+          "3hwm9XXPv0r8BBLUaYS7r3",
+          {
+            "ref": 83
+          },
+          "FALPER-WFB-SCENE-FRONT",
+          "Falper Sorgente WFB scene review candidate; product linework approved, scene pending user acceptance",
+          "DRAWING",
+          {
+            "ref": 84
+          },
+          {
+            "ref": 89
+          }
+        ]
+      },
+      {
+        "id": 83,
+        "type": "IfcOwnerHistory",
+        "attributes": [
+          {
+            "ref": 23
+          },
+          {
+            "ref": 26
+          },
+          "READWRITE",
+          "MODIFIED",
+          1788839963,
+          {
+            "ref": 23
+          },
+          {
+            "ref": 26
+          },
+          1788839962
+        ]
+      },
+      {
+        "id": 84,
+        "type": "IfcLocalPlacement",
+        "attributes": [
+          null,
+          {
+            "ref": 85
+          }
+        ]
+      },
+      {
+        "id": 85,
+        "type": "IfcAxis2Placement3D",
+        "attributes": [
+          {
+            "ref": 86
+          },
+          {
+            "ref": 87
+          },
+          {
+            "ref": 88
+          }
+        ]
+      },
+      {
+        "id": 86,
+        "type": "IfcCartesianPoint",
+        "attributes": [
+          [
+            -550.000011920929,
+            -1100.000023841858,
+            1200.0000476837158
+          ]
+        ]
+      },
+      {
+        "id": 87,
+        "type": "IfcDirection",
+        "attributes": [
+          [
+            0.0,
+            -0.9999999999999971,
+            7.549790126404311e-08
+          ]
+        ]
+      },
+      {
+        "id": 88,
+        "type": "IfcDirection",
+        "attributes": [
+          [
+            1.0,
+            0.0,
+            0.0
+          ]
+        ]
+      },
+      {
+        "id": 89,
+        "type": "IfcProductDefinitionShape",
+        "attributes": [
+          null,
+          null,
+          [
+            {
+              "ref": 90
+            }
+          ]
+        ]
+      },
+      {
+        "id": 90,
+        "type": "IfcShapeRepresentation",
+        "attributes": [
+          {
+            "ref": 73
+          },
+          "Body",
+          "CSG",
+          [
+            {
+              "ref": 91
+            }
+          ]
+        ]
+      },
+      {
+        "id": 91,
+        "type": "IfcCsgSolid",
+        "attributes": [
+          {
+            "ref": 92
+          }
+        ]
+      },
+      {
+        "id": 92,
+        "type": "IfcBlock",
+        "attributes": [
+          {
+            "ref": 93
+          },
+          2799.529337602503,
+          3599.9999046325684,
+          3000.0
+        ]
+      },
+      {
+        "id": 93,
+        "type": "IfcAxis2Placement3D",
+        "attributes": [
+          {
+            "ref": 94
+          },
+          null,
+          null
+        ]
+      },
+      {
+        "id": 94,
+        "type": "IfcCartesianPoint",
+        "attributes": [
+          [
+            -1399.7646688012514,
+            -1799.9999523162842,
+            -3000.0
+          ]
+        ]
+      },
+      {
+        "id": 95,
+        "type": "IfcGroup",
+        "attributes": [
+          "2yAL03tY92twT7YaUIKLPs",
+          {
+            "ref": 96
+          },
+          "FALPER-WFB-SCENE-FRONT",
+          null,
+          "DRAWING"
+        ]
+      },
+      {
+        "id": 96,
+        "type": "IfcOwnerHistory",
+        "attributes": [
+          {
+            "ref": 23
+          },
+          {
+            "ref": 26
+          },
+          "READWRITE",
+          "MODIFIED",
+          1788839962,
+          {
+            "ref": 23
+          },
+          {
+            "ref": 26
+          },
+          1788839962
+        ]
+      },
+      {
+        "id": 97,
+        "type": "IfcAnnotation",
+        "attributes": [
+          "26Aqyzik9DGwBCj3QLgi5r",
+          {
+            "ref": 98
+          },
+          "Falper Sorgente WFB official native DWG / front",
+          null,
+          "LINEWORK",
+          {
+            "ref": 30
+          },
+          null
+        ]
+      },
+      {
+        "id": 98,
+        "type": "IfcOwnerHistory",
+        "attributes": [
+          {
+            "ref": 23
+          },
+          {
+            "ref": 26
+          },
+          "READWRITE",
+          "MODIFIED",
+          1788839963,
+          {
+            "ref": 23
+          },
+          {
+            "ref": 26
+          },
+          1788839963
+        ]
+      },
+      {
+        "id": 99,
+        "type": "IfcAnnotation",
+        "attributes": [
+          "3v_JGo4_vEaxFLMWs6nTEg",
+          {
+            "ref": 100
+          },
+          "FALPER-WFB-SCENE-SIDE",
+          "Falper Sorgente WFB scene review candidate; product linework approved, scene pending user acceptance",
+          "DRAWING",
+          {
+            "ref": 101
+          },
+          {
+            "ref": 106
+          }
+        ]
+      },
+      {
+        "id": 100,
+        "type": "IfcOwnerHistory",
+        "attributes": [
+          {
+            "ref": 23
+          },
+          {
+            "ref": 26
+          },
+          "READWRITE",
+          "MODIFIED",
+          1788839963,
+          {
+            "ref": 23
+          },
+          {
+            "ref": 26
+          },
+          1788839963
+        ]
+      },
+      {
+        "id": 101,
+        "type": "IfcLocalPlacement",
+        "attributes": [
+          null,
+          {
+            "ref": 102
+          }
+        ]
+      },
+      {
+        "id": 102,
+        "type": "IfcAxis2Placement3D",
+        "attributes": [
+          {
+            "ref": 103
+          },
+          {
+            "ref": 104
+          },
+          {
+            "ref": 105
+          }
+        ]
+      },
+      {
+        "id": 103,
+        "type": "IfcCartesianPoint",
+        "attributes": [
+          [
+            899.9999761581421,
+            349.9999940395355,
+            1200.0000476837158
+          ]
+        ]
+      },
+      {
+        "id": 104,
+        "type": "IfcDirection",
+        "attributes": [
+          [
+            0.999999999999998,
+            4.371138828673784e-08,
+            -4.371138828673784e-08
+          ]
+        ]
+      },
+      {
+        "id": 105,
+        "type": "IfcDirection",
+        "attributes": [
+          [
+            -4.371138828673789e-08,
+            0.9999999999999991,
+            0.0
+          ]
+        ]
+      },
+      {
+        "id": 106,
+        "type": "IfcProductDefinitionShape",
+        "attributes": [
+          null,
+          null,
+          [
+            {
+              "ref": 107
+            }
+          ]
+        ]
+      },
+      {
+        "id": 107,
+        "type": "IfcShapeRepresentation",
+        "attributes": [
+          {
+            "ref": 73
+          },
+          "Body",
+          "CSG",
+          [
+            {
+              "ref": 108
+            }
+          ]
+        ]
+      },
+      {
+        "id": 108,
+        "type": "IfcCsgSolid",
+        "attributes": [
+          {
+            "ref": 109
+          }
+        ]
+      },
+      {
+        "id": 109,
+        "type": "IfcBlock",
+        "attributes": [
+          {
+            "ref": 110
+          },
+          2799.529337602503,
+          3599.9999046325684,
+          3000.0
+        ]
+      },
+      {
+        "id": 110,
+        "type": "IfcAxis2Placement3D",
+        "attributes": [
+          {
+            "ref": 111
+          },
+          null,
+          null
+        ]
+      },
+      {
+        "id": 111,
+        "type": "IfcCartesianPoint",
+        "attributes": [
+          [
+            -1399.7646688012514,
+            -1799.9999523162842,
+            -3000.0
+          ]
+        ]
+      },
+      {
+        "id": 112,
+        "type": "IfcGroup",
+        "attributes": [
+          "0q7zrO7j97QgSD9DDsA4fV",
+          {
+            "ref": 113
+          },
+          "FALPER-WFB-SCENE-SIDE",
+          null,
+          "DRAWING"
+        ]
+      },
+      {
+        "id": 113,
+        "type": "IfcOwnerHistory",
+        "attributes": [
+          {
+            "ref": 23
+          },
+          {
+            "ref": 26
+          },
+          "READWRITE",
+          "MODIFIED",
+          1788839963,
+          {
+            "ref": 23
+          },
+          {
+            "ref": 26
+          },
+          1788839963
+        ]
+      },
+      {
+        "id": 114,
+        "type": "IfcAnnotation",
+        "attributes": [
+          "1XnHq4wyb3c9Bckdqr98Tx",
+          {
+            "ref": 115
+          },
+          "Falper Sorgente WFB official native DWG / side",
+          null,
+          "LINEWORK",
+          {
+            "ref": 30
+          },
+          null
+        ]
+      },
+      {
+        "id": 115,
+        "type": "IfcOwnerHistory",
+        "attributes": [
+          {
+            "ref": 23
+          },
+          {
+            "ref": 26
+          },
+          "READWRITE",
+          "MODIFIED",
+          1788839963,
+          {
+            "ref": 23
+          },
+          {
+            "ref": 26
+          },
+          1788839963
+        ]
+      },
+      {
+        "id": 116,
+        "type": "IfcGeometricRepresentationSubContext",
+        "attributes": [
+          "Annotation",
+          "Plan",
+          null,
+          null,
+          null,
+          null,
+          {
+            "ref": 8
+          },
+          null,
+          "PLAN_VIEW",
+          null
+        ]
+      },
+      {
+        "id": 117,
+        "type": "IfcGeometricRepresentationSubContext",
+        "attributes": [
+          "Annotation",
+          "Model",
+          null,
+          null,
+          null,
+          null,
+          {
+            "ref": 3
+          },
+          null,
+          "ELEVATION_VIEW",
+          null
+        ]
+      },
+      {
+        "id": 118,
+        "type": "IfcRelAggregates",
+        "attributes": [
+          "3o2jdCFO19HwFGYYwXfCZs",
+          {
+            "ref": 119
+          },
+          null,
+          null,
+          {
+            "ref": 2
+          },
+          [
+            {
+              "ref": 56
+            }
+          ]
+        ]
+      },
+      {
+        "id": 119,
+        "type": "IfcOwnerHistory",
+        "attributes": [
+          {
+            "ref": 23
+          },
+          {
+            "ref": 22
+          },
+          "READWRITE",
+          "MODIFIED",
+          1786125332,
+          {
+            "ref": 23
+          },
+          {
+            "ref": 22
+          },
+          1759683330
+        ]
+      },
+      {
+        "id": 120,
+        "type": "IfcRelAssociatesDocument",
+        "attributes": [
+          "2MVII3MC1EyxSXHWPr1FTB",
+          {
+            "ref": 121
+          },
+          null,
+          null,
+          [
+            {
+              "ref": 2
+            }
+          ],
+          {
+            "ref": 122
+          }
+        ]
+      },
+      {
+        "id": 121,
+        "type": "IfcOwnerHistory",
+        "attributes": [
+          {
+            "ref": 23
+          },
+          {
+            "ref": 26
+          },
+          "READWRITE",
+          "ADDED",
+          1788839963,
+          {
+            "ref": 23
+          },
+          {
+            "ref": 26
+          },
+          1788839963
+        ]
+      },
+      {
+        "id": 122,
+        "type": "IfcDocumentInformation",
+        "attributes": [
+          "X",
+          "FALPER-WFB-SCENE-SIDE",
+          null,
+          null,
+          null,
+          null,
+          "DRAWING",
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null
+        ]
+      },
+      {
+        "id": 123,
+        "type": "IfcRelAssociatesDocument",
+        "attributes": [
+          "1miESKoJv2BPDg_tpAajmO",
+          {
+            "ref": 124
+          },
+          null,
+          null,
+          [
+            {
+              "ref": 2
+            }
+          ],
+          {
+            "ref": 125
+          }
+        ]
+      },
+      {
+        "id": 124,
+        "type": "IfcOwnerHistory",
+        "attributes": [
+          {
+            "ref": 23
+          },
+          {
+            "ref": 26
+          },
+          "READWRITE",
+          "ADDED",
+          1788839962,
+          {
+            "ref": 23
+          },
+          {
+            "ref": 26
+          },
+          1788839962
+        ]
+      },
+      {
+        "id": 125,
+        "type": "IfcDocumentInformation",
+        "attributes": [
+          "X",
+          "FALPER-WFB-SCENE-FRONT",
+          null,
+          null,
+          null,
+          null,
+          "DRAWING",
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null
+        ]
+      },
+      {
+        "id": 126,
+        "type": "IfcRelAssociatesDocument",
+        "attributes": [
+          "2hImL4Dt113R8QA14cLFiF",
+          {
+            "ref": 127
+          },
+          null,
+          null,
+          [
+            {
+              "ref": 2
+            }
+          ],
+          {
+            "ref": 128
+          }
+        ]
+      },
+      {
+        "id": 127,
+        "type": "IfcOwnerHistory",
+        "attributes": [
+          {
+            "ref": 23
+          },
+          {
+            "ref": 26
+          },
+          "READWRITE",
+          "ADDED",
+          1788839962,
+          {
+            "ref": 23
+          },
+          {
+            "ref": 26
+          },
+          1788839962
+        ]
+      },
+      {
+        "id": 1,
+        "type": "IfcRelAssignsToGroup",
+        "attributes": [
+          "3Bga9JLiv8WxsniwODVkQH",
+          {
+            "ref": 129
+          },
+          null,
+          null,
+          [
+            {
+              "ref": 97
+            },
+            {
+              "ref": 82
+            }
+          ],
+          null,
+          {
+            "ref": 95
+          }
+        ]
+      },
+      {
+        "id": 2,
+        "type": "IfcProject",
+        "attributes": [
+          "3hFmn2ED14Ofwsj$DzZ0HC",
+          null,
+          "My Project",
+          null,
+          null,
+          null,
+          null,
+          [
+            {
+              "ref": 3
+            },
+            {
+              "ref": 8
+            }
+          ],
+          {
+            "ref": 9
+          }
+        ]
+      },
+      {
+        "id": 3,
+        "type": "IfcGeometricRepresentationContext",
+        "attributes": [
+          null,
+          "Model",
+          3,
+          1e-05,
+          {
+            "ref": 4
+          },
+          null
+        ]
+      },
+      {
+        "id": 4,
+        "type": "IfcAxis2Placement3D",
+        "attributes": [
+          {
+            "ref": 5
+          },
+          {
+            "ref": 6
+          },
+          {
+            "ref": 7
+          }
+        ]
+      },
+      {
+        "id": 5,
+        "type": "IfcCartesianPoint",
+        "attributes": [
+          [
+            0.0,
+            0.0,
+            0.0
+          ]
+        ]
+      },
+      {
+        "id": 6,
+        "type": "IfcDirection",
+        "attributes": [
+          [
+            0.0,
+            0.0,
+            1.0
+          ]
+        ]
+      },
+      {
+        "id": 7,
+        "type": "IfcDirection",
+        "attributes": [
+          [
+            1.0,
+            0.0,
+            0.0
+          ]
+        ]
+      },
+      {
+        "id": 8,
+        "type": "IfcGeometricRepresentationContext",
+        "attributes": [
+          null,
+          "Plan",
+          2,
+          1e-05,
+          null,
+          null
+        ]
+      },
+      {
+        "id": 9,
+        "type": "IfcUnitAssignment",
+        "attributes": [
+          [
+            {
+              "ref": 10
+            },
+            {
+              "ref": 11
+            },
+            {
+              "ref": 12
+            },
+            {
+              "ref": 16
+            }
+          ]
+        ]
+      },
+      {
+        "id": 10,
+        "type": "IfcSIUnit",
+        "attributes": [
+          null,
+          "VOLUMEUNIT",
+          null,
+          "CUBIC_METRE"
+        ]
+      },
+      {
+        "id": 11,
+        "type": "IfcSIUnit",
+        "attributes": [
+          null,
+          "LENGTHUNIT",
+          "MILLI",
+          "METRE"
+        ]
+      },
+      {
+        "id": 12,
+        "type": "IfcConversionBasedUnit",
+        "attributes": [
+          {
+            "ref": 13
+          },
+          "PLANEANGLEUNIT",
+          "degree",
+          {
+            "ref": 14
+          }
+        ]
+      },
+      {
+        "id": 13,
+        "type": "IfcDimensionalExponents",
+        "attributes": [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ]
+      },
+      {
+        "id": 14,
+        "type": "IfcMeasureWithUnit",
+        "attributes": [
+          {
+            "inline": "IfcReal",
+            "values": [
+              0.0174532925199433
+            ]
+          },
+          {
+            "ref": 15
+          }
+        ]
+      },
+      {
+        "id": 15,
+        "type": "IfcSIUnit",
+        "attributes": [
+          null,
+          "PLANEANGLEUNIT",
+          null,
+          "RADIAN"
+        ]
+      },
+      {
+        "id": 16,
+        "type": "IfcSIUnit",
+        "attributes": [
+          null,
+          "AREAUNIT",
+          null,
+          "SQUARE_METRE"
+        ]
+      },
+      {
+        "id": 17,
+        "type": "IfcSanitaryTerminal",
+        "attributes": [
+          "350tdaubr8QP3Cu2YMQZIN",
+          {
+            "ref": 18
+          },
+          "SanitaryTerminal",
+          null,
+          null,
+          {
+            "ref": 30
+          },
+          null,
+          null,
+          null
+        ]
+      },
+      {
+        "id": 18,
+        "type": "IfcOwnerHistory",
+        "attributes": [
+          {
+            "ref": 19
+          },
+          {
+            "ref": 22
+          },
+          "READWRITE",
+          "MODIFIED",
+          1787421356,
+          {
+            "ref": 23
+          },
+          {
+            "ref": 26
+          },
+          1762359167
+        ]
+      },
+      {
+        "id": 19,
+        "type": "IfcPersonAndOrganization",
+        "attributes": [
+          {
+            "ref": 20
+          },
+          {
+            "ref": 21
+          },
+          null
+        ]
+      },
+      {
+        "id": 20,
+        "type": "IfcPerson",
+        "attributes": [
+          null,
+          "",
+          "ryan@openingdesign.com",
+          null,
+          null,
+          null,
+          null,
+          null
+        ]
+      },
+      {
+        "id": 21,
+        "type": "IfcOrganization",
+        "attributes": [
+          null,
+          "",
+          "",
+          null,
+          null
+        ]
+      },
+      {
+        "id": 22,
+        "type": "IfcApplication",
+        "attributes": [
+          null,
+          "0.8.3",
+          "Bonsai",
+          "Bonsai-0.8.3"
+        ]
+      },
+      {
+        "id": 23,
+        "type": "IfcPersonAndOrganization",
+        "attributes": [
+          {
+            "ref": 24
+          },
+          {
+            "ref": 25
+          },
+          null
+        ]
+      },
+      {
+        "id": 24,
+        "type": "IfcPerson",
+        "attributes": [
+          null,
+          "",
+          "ryan@openingdesign.com",
+          null,
+          null,
+          null,
+          null,
+          null
+        ]
+      },
+      {
+        "id": 25,
+        "type": "IfcOrganization",
+        "attributes": [
+          null,
+          "",
+          "",
+          null,
+          null
+        ]
+      },
+      {
+        "id": 26,
+        "type": "IfcApplication",
+        "attributes": [
+          {
+            "ref": 27
+          },
+          "0.8.4",
+          "Bonsai",
+          "Bonsai-0.8.4"
+        ]
+      },
+      {
+        "id": 27,
+        "type": "IfcOrganization",
+        "attributes": [
+          "IfcOpenShell",
+          "IfcOpenShell",
+          "IfcOpenShell is an open source software library that helps users and software developers to work with IFC data.",
+          [
+            {
+              "ref": 28
+            }
+          ],
+          [
+            {
+              "ref": 29
+            }
+          ]
+        ]
+      },
+      {
+        "id": 28,
+        "type": "IfcActorRole",
+        "attributes": [
+          "USERDEFINED",
+          "CONTRIBUTOR",
+          null
+        ]
+      },
+      {
+        "id": 29,
+        "type": "IfcTelecomAddress",
+        "attributes": [
+          "USERDEFINED",
+          null,
+          "WEBPAGE",
+          null,
+          null,
+          null,
+          null,
+          "https://ifcopenshell.org",
+          null
+        ]
+      },
+      {
+        "id": 30,
+        "type": "IfcLocalPlacement",
+        "attributes": [
+          null,
+          {
+            "ref": 31
+          }
+        ]
+      },
+      {
+        "id": 31,
+        "type": "IfcAxis2Placement3D",
+        "attributes": [
+          {
+            "ref": 32
+          },
+          {
+            "ref": 33
+          },
+          {
+            "ref": 34
+          }
+        ]
+      },
+      {
+        "id": 32,
+        "type": "IfcCartesianPoint",
+        "attributes": [
+          [
+            -549.821317195892,
+            350.0,
+            18.0767327547073
+          ]
+        ]
+      },
+      {
+        "id": 33,
+        "type": "IfcDirection",
+        "attributes": [
+          [
+            0.0,
+            0.0,
+            1.0
+          ]
+        ]
+      },
+      {
+        "id": 34,
+        "type": "IfcDirection",
+        "attributes": [
+          [
+            1.0,
+            0.0,
+            0.0
+          ]
+        ]
+      },
+      {
+        "id": 35,
+        "type": "IfcBuildingStorey",
+        "attributes": [
+          "1nWDSMPFnE6ReuI_BVi9KH",
+          {
+            "ref": 36
+          },
+          "BATHG",
+          null,
+          null,
+          {
+            "ref": 37
+          },
+          null,
+          null,
+          null,
+          null
+        ]
+      },
+      {
+        "id": 36,
+        "type": "IfcOwnerHistory",
+        "attributes": [
+          {
+            "ref": 19
+          },
+          {
+            "ref": 22
+          },
+          "READWRITE",
+          "MODIFIED",
+          1787421356,
+          {
+            "ref": 23
+          },
+          {
+            "ref": 26
+          },
+          1762414105
+        ]
+      },
+      {
+        "id": 37,
+        "type": "IfcLocalPlacement",
+        "attributes": [
+          null,
+          {
+            "ref": 38
+          }
+        ]
+      },
+      {
+        "id": 38,
+        "type": "IfcAxis2Placement3D",
+        "attributes": [
+          {
+            "ref": 39
+          },
+          {
+            "ref": 40
+          },
+          {
+            "ref": 41
+          }
+        ]
+      },
+      {
+        "id": 39,
+        "type": "IfcCartesianPoint",
+        "attributes": [
+          [
+            0.0,
+            0.0,
+            0.0
+          ]
+        ]
+      },
+      {
+        "id": 40,
+        "type": "IfcDirection",
+        "attributes": [
+          [
+            0.0,
+            0.0,
+            1.0
+          ]
+        ]
+      },
+      {
+        "id": 41,
+        "type": "IfcDirection",
+        "attributes": [
+          [
+            1.0,
+            0.0,
+            0.0
+          ]
+        ]
+      },
+      {
+        "id": 42,
+        "type": "IfcBuildingStorey",
+        "attributes": [
+          "1VjEk5I8XFmfiAYaLk_F_7",
+          {
+            "ref": 43
+          },
+          "FUR",
+          null,
+          null,
+          {
+            "ref": 44
+          },
+          null,
+          null,
+          null,
+          null
+        ]
+      },
+      {
+        "id": 43,
+        "type": "IfcOwnerHistory",
+        "attributes": [
+          {
+            "ref": 19
+          },
+          {
+            "ref": 22
+          },
+          "READWRITE",
+          "MODIFIED",
+          1787421356,
+          {
+            "ref": 23
+          },
+          {
+            "ref": 26
+          },
+          1761750327
+        ]
+      },
+      {
+        "id": 44,
+        "type": "IfcLocalPlacement",
+        "attributes": [
+          null,
+          {
+            "ref": 45
+          }
+        ]
+      },
+      {
+        "id": 45,
+        "type": "IfcAxis2Placement3D",
+        "attributes": [
+          {
+            "ref": 46
+          },
+          {
+            "ref": 47
+          },
+          {
+            "ref": 48
+          }
+        ]
+      },
+      {
+        "id": 46,
+        "type": "IfcCartesianPoint",
+        "attributes": [
+          [
+            0.0,
+            0.0,
+            0.0
+          ]
+        ]
+      },
+      {
+        "id": 47,
+        "type": "IfcDirection",
+        "attributes": [
+          [
+            0.0,
+            0.0,
+            1.0
+          ]
+        ]
+      },
+      {
+        "id": 48,
+        "type": "IfcDirection",
+        "attributes": [
+          [
+            1.0,
+            0.0,
+            0.0
+          ]
+        ]
+      },
+      {
+        "id": 49,
+        "type": "IfcBuilding",
+        "attributes": [
+          "0aVVbcf_9A9x07_Nod0gAP",
+          {
+            "ref": 50
+          },
+          "My Building",
+          null,
+          null,
+          {
+            "ref": 51
+          },
+          null,
+          null,
+          null,
+          null,
+          null,
+          null
+        ]
+      },
+      {
+        "id": 50,
+        "type": "IfcOwnerHistory",
+        "attributes": [
+          {
+            "ref": 19
+          },
+          {
+            "ref": 22
+          },
+          "READWRITE",
+          "MODIFIED",
+          1787421356,
+          {
+            "ref": 23
+          },
+          {
+            "ref": 26
+          },
+          1759986564
+        ]
+      },
+      {
+        "id": 51,
+        "type": "IfcLocalPlacement",
+        "attributes": [
+          null,
+          {
+            "ref": 52
+          }
+        ]
+      },
+      {
+        "id": 52,
+        "type": "IfcAxis2Placement3D",
+        "attributes": [
+          {
+            "ref": 53
+          },
+          {
+            "ref": 54
+          },
+          {
+            "ref": 55
+          }
+        ]
+      },
+      {
+        "id": 53,
+        "type": "IfcCartesianPoint",
+        "attributes": [
+          [
+            0.0,
+            0.0,
+            0.0
+          ]
+        ]
+      },
+      {
+        "id": 54,
+        "type": "IfcDirection",
+        "attributes": [
+          [
+            0.0,
+            0.0,
+            1.0
+          ]
+        ]
+      },
+      {
+        "id": 55,
+        "type": "IfcDirection",
+        "attributes": [
+          [
+            1.0,
+            0.0,
+            0.0
+          ]
+        ]
+      },
+      {
+        "id": 56,
+        "type": "IfcSite",
+        "attributes": [
+          "3iWnpcHW54tQCcUMk_yOsj",
+          {
+            "ref": 57
+          },
+          "My Site",
+          null,
+          null,
+          {
+            "ref": 58
+          },
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null
+        ]
+      },
+      {
+        "id": 57,
+        "type": "IfcOwnerHistory",
+        "attributes": [
+          {
+            "ref": 23
+          },
+          {
+            "ref": 26
+          },
+          "READWRITE",
+          "ADDED",
+          1787421356,
+          {
+            "ref": 23
+          },
+          {
+            "ref": 26
+          },
+          1787421356
+        ]
+      },
+      {
+        "id": 58,
+        "type": "IfcLocalPlacement",
+        "attributes": [
+          null,
+          {
+            "ref": 59
+          }
+        ]
+      },
+      {
+        "id": 59,
+        "type": "IfcAxis2Placement3D",
+        "attributes": [
+          {
+            "ref": 60
+          },
+          {
+            "ref": 61
+          },
+          {
+            "ref": 62
+          }
+        ]
+      },
+      {
+        "id": 60,
+        "type": "IfcCartesianPoint",
+        "attributes": [
+          [
+            0.0,
+            0.0,
+            0.0
+          ]
+        ]
+      },
+      {
+        "id": 61,
+        "type": "IfcDirection",
+        "attributes": [
+          [
+            0.0,
+            0.0,
+            1.0
+          ]
+        ]
+      },
+      {
+        "id": 62,
+        "type": "IfcDirection",
+        "attributes": [
+          [
+            1.0,
+            0.0,
+            0.0
+          ]
+        ]
+      },
+      {
+        "id": 63,
+        "type": "IfcAnnotation",
+        "attributes": [
+          "2pT8ZtU_L10vZ2GQbSWXLD",
+          {
+            "ref": 64
+          },
+          "FALPER-WFB-SCENE-PLAN",
+          "Falper Sorgente WFB scene review candidate; product linework approved, scene pending user acceptance",
+          "DRAWING",
+          {
+            "ref": 66
+          },
+          {
+            "ref": 71
+          }
+        ]
+      },
+      {
+        "id": 192,
+        "type": "IfcRelDefinesByProperties",
+        "attributes": [
+          "1YH8$0y3jFlxc_pf3o60wI",
+          {
+            "ref": 193
+          },
+          null,
+          null,
+          [
+            {
+              "ref": 82
+            }
+          ],
+          {
+            "ref": 194
+          }
+        ]
+      },
+      {
+        "id": 193,
+        "type": "IfcOwnerHistory",
+        "attributes": [
+          {
+            "ref": 23
+          },
+          {
+            "ref": 26
+          },
+          "READWRITE",
+          "ADDED",
+          1788839962,
+          {
+            "ref": 23
+          },
+          {
+            "ref": 26
+          },
+          1788839962
+        ]
+      },
+      {
+        "id": 194,
+        "type": "IfcPropertySet",
+        "attributes": [
+          "0mAN3ZBf9FWvUb0EurD7kI",
+          {
+            "ref": 195
+          },
+          "EPset_Drawing",
+          null,
+          [
+            {
+              "ref": 196
+            },
+            {
+              "ref": 197
+            },
+            {
+              "ref": 198
+            },
+            {
+              "ref": 199
+            },
+            {
+              "ref": 200
+            },
+            {
+              "ref": 201
+            },
+            {
+              "ref": 202
+            },
+            {
+              "ref": 203
+            },
+            {
+              "ref": 204
+            },
+            {
+              "ref": 205
+            },
+            {
+              "ref": 206
+            },
+            {
+              "ref": 207
+            },
+            {
+              "ref": 208
+            },
+            {
+              "ref": 209
+            },
+            {
+              "ref": 210
+            },
+            {
+              "ref": 211
+            },
+            {
+              "ref": 212
+            },
+            {
+              "ref": 213
+            },
+            {
+              "ref": 214
+            }
+          ]
+        ]
+      },
+      {
+        "id": 195,
+        "type": "IfcOwnerHistory",
+        "attributes": [
+          {
+            "ref": 23
+          },
+          {
+            "ref": 26
+          },
+          "READWRITE",
+          "ADDED",
+          1788839962,
+          {
+            "ref": 23
+          },
+          {
+            "ref": 26
+          },
+          1788839962
+        ]
+      },
+      {
+        "id": 196,
+        "type": "IfcPropertySingleValue",
+        "attributes": [
+          "TargetView",
+          null,
+          {
+            "inline": "IfcLabel",
+            "values": [
+              "ELEVATION_VIEW"
+            ]
+          },
+          null
+        ]
+      },
+      {
+        "id": 197,
+        "type": "IfcPropertySingleValue",
+        "attributes": [
+          "Scale",
+          null,
+          {
+            "inline": "IfcLabel",
+            "values": [
+              "1/25"
+            ]
+          },
+          null
+        ]
+      },
+      {
+        "id": 198,
+        "type": "IfcPropertySingleValue",
+        "attributes": [
+          "HumanScale",
+          null,
+          {
+            "inline": "IfcLabel",
+            "values": [
+              "1:25"
+            ]
+          },
+          null
+        ]
+      },
+      {
+        "id": 199,
+        "type": "IfcPropertySingleValue",
+        "attributes": [
+          "HasUnderlay",
+          null,
+          {
+            "inline": "IfcBoolean",
+            "values": [
+              false
+            ]
+          },
+          null
+        ]
+      },
+      {
+        "id": 200,
+        "type": "IfcPropertySingleValue",
+        "attributes": [
+          "HasLinework",
+          null,
+          {
+            "inline": "IfcBoolean",
+            "values": [
+              true
+            ]
+          },
+          null
+        ]
+      },
+      {
+        "id": 201,
+        "type": "IfcPropertySingleValue",
+        "attributes": [
+          "HasAnnotation",
+          null,
+          {
+            "inline": "IfcBoolean",
+            "values": [
+              true
+            ]
+          },
+          null
+        ]
+      },
+      {
+        "id": 202,
+        "type": "IfcPropertySingleValue",
+        "attributes": [
+          "GlobalReferencing",
+          null,
+          {
+            "inline": "IfcBoolean",
+            "values": [
+              false
+            ]
+          },
+          null
+        ]
+      },
+      {
+        "id": 203,
+        "type": "IfcPropertySingleValue",
+        "attributes": [
+          "Stylesheet",
+          null,
+          {
+            "inline": "IfcText",
+            "values": [
+              "drawings/assets/default.css"
+            ]
+          },
+          null
+        ]
+      },
+      {
+        "id": 204,
+        "type": "IfcPropertySingleValue",
+        "attributes": [
+          "Markers",
+          null,
+          {
+            "inline": "IfcText",
+            "values": [
+              "drawings/assets/markers.svg"
+            ]
+          },
+          null
+        ]
+      },
+      {
+        "id": 205,
+        "type": "IfcPropertySingleValue",
+        "attributes": [
+          "Symbols",
+          null,
+          {
+            "inline": "IfcText",
+            "values": [
+              "drawings/assets/symbols.svg"
+            ]
+          },
+          null
+        ]
+      },
+      {
+        "id": 206,
+        "type": "IfcPropertySingleValue",
+        "attributes": [
+          "Patterns",
+          null,
+          {
+            "inline": "IfcText",
+            "values": [
+              "drawings/assets/patterns.svg"
+            ]
+          },
+          null
+        ]
+      },
+      {
+        "id": 207,
+        "type": "IfcPropertySingleValue",
+        "attributes": [
+          "ShadingStyles",
+          null,
+          {
+            "inline": "IfcText",
+            "values": [
+              "drawings/assets/shading_styles.json"
+            ]
+          },
+          null
+        ]
+      },
+      {
+        "id": 208,
+        "type": "IfcPropertySingleValue",
+        "attributes": [
+          "CurrentShadingStyle",
+          null,
+          {
+            "inline": "IfcLabel",
+            "values": [
+              "Blender Default"
+            ]
+          },
+          null
+        ]
+      },
+      {
+        "id": 209,
+        "type": "IfcPropertySingleValue",
+        "attributes": [
+          "DPI",
+          null,
+          {
+            "inline": "IfcInteger",
+            "values": [
+              300
+            ]
+          },
+          null
+        ]
+      },
+      {
+        "id": 210,
+        "type": "IfcPropertySingleValue",
+        "attributes": [
+          "LineworkMode",
+          null,
+          {
+            "inline": "IfcLabel",
+            "values": [
+              "OPENCASCADE"
+            ]
+          },
+          null
+        ]
+      },
+      {
+        "id": 211,
+        "type": "IfcPropertySingleValue",
+        "attributes": [
+          "FillMode",
+          null,
+          {
+            "inline": "IfcLabel",
+            "values": [
+              "NONE"
+            ]
+          },
+          null
+        ]
+      },
+      {
+        "id": 212,
+        "type": "IfcPropertySingleValue",
+        "attributes": [
+          "CutMode",
+          null,
+          {
+            "inline": "IfcLabel",
+            "values": [
+              "BISECT"
+            ]
+          },
+          null
+        ]
+      },
+      {
+        "id": 213,
+        "type": "IfcPropertySingleValue",
+        "attributes": [
+          "Include",
+          null,
+          {
+            "inline": "IfcText",
+            "values": [
+              "3DNT0yqe1EMRpVglm_yCZ4,0WdsBKMo545Ryicomy6Mqg,1Yr_JdSGn8XOs804Vwoetk,2VVDWezmbEmQh$5mczGb4m,30YXVJrQjBEgTfH5xSTneR,2UhljZvyHBM9jCYFR8xcyl,1QkVJsQDf6keIyddhN5Dmc,2jK2g2$tb18Qu3jsAzqyh_,06wFwLoDD6ie5iCTnc_yad,3mlT3vP4P1MwwtT7Mb20tc,3oxgGk27D4pRhha6_X05df,1cudaM$BT1GAKD9EEg4nqS,0rwOcjvjn5WBdoq4bxiHSk,02JiVqnyTDXQ1GpfLPCpMl,11c$NwzxL9hASgCgwDxM$w,1Lj_LXp3z7tQDMYUGoTsFc,3L$xQZHiz7b8ws7de1jiZN,2uYGzJR3f1QO6LmO9Nq3Mf,0AN5MRpZ16dRCAg1l5TOyz,1To6gRjrf2nBU5GQuuD8FV,3xKBbA2CT9mfby2$MODnzM,3ARl_CqPrCWQrA6_$W073W,1UixnpnQb97wuNAGrTmMJd,3qo2s5gKPA$8hNQznuTTCf,0MVn0S2GP0IuDnXI2x_0wg,1Yf7cK9MTAoBRvfK3BluSI,3ZKyTiBc1ECxQi0UR8K1Ke,1mI2ClWgr6xwhxkjkIkFbV,0IlFpdzSbD_9sqRVW8SpPi,2vTSinfYHC$8prkGP7LD7X,0s2tcnZmP23Qpz4zXZ$Vd0,0mnFDiYfj6fxQBaWFizjUS,2_vcnNErPCixD2MSQiqhdi,2MZOWmnIX7KA3Wfnp2HxoF,0wbKH$_Qr2_A4hpKs0PLXw,1fAJA2jj59uhEyVVcR7EM7,1cmuG50mj3cggtIH5tZHic,02eX$Z5WrDuuxw1IlnwVss,2T92129$LE0Pve_Pv6F9Sx,0G_rbqpMHE28Txkf09jW3_,3ty1lUpQfD3fY1yf0Dxo53,05LSYayab3n9CDi01pw9K$,1yuWIPQdP3uuPJnZhwUAcx,1vyfckSCz8Fww8vTAKGqom,24AqfsAbz9a9uOPQhRX75e,3Iwtjib290RgoxOZXiXjY_,18eimQPoDDKg_QKo2uX5el,3IOZ8Z$$5DH9cGih34wZt$,0nNkP2k99BqQJilK0$E7fQ,1oa6zGXK1CeuV$1tRZM9Ob,3wW32FPxv45Ac3yhuS2W5U,0jLabLY_9C18Pu7tVszuIs,21rLg3DBL3dupCGoi2RsUf,1aQiUP$CH5uhQBoEX8NjwK,2amSzxJIb9ceddTJOslmHk,0$9uFhN9v7tw5pryslitkb,3VgMpCodXEA9ViTVPIQmcR,0hKdvAZkn1TejLgJhK_vDp,1AxFP7vkD30Q3ZdxDr_l4l,2NAJrrSQb2twKjQ2V6lQI6,322GWgwy5EpfjZYxs3LRoD,28l5JUTGT3r8kMzEzzSngn,0a6glteMX7_x6fU36rB7Xa,3uxUxvIOTAHOul$htmNuGA,3W8L7rd6vBx9Y_wSLIYlqb,3pq6QdkHHDZR3RR1nYivCC,21vcsFmEvC2xpOEhH31C0E,2Hzb2UxozCF9TjOK5nW1XC,1q9EfwGKLByPI32Mi7AhWS,3NM8wlQfDDFB3rAZF1Mq_N,1kB9zQpv94vO1NObylFPcP,3KxJ$jTjT69vr2qwa3swbL,34MraFd1nFsep2QMO2kY48,2IZwo0dYv0p8B0RhP1oOtT,0qZZv8B9b9SQk3mAPTXSfP,3s$BGbHSj8hxQSeUdUDGfx,3gksf1Sxz5TRfXh5l$12xr,3TV2zkQdH3QRCAFhe47WOL,3JyOUPuivAwvLvV8DSz6CD,0vMU_9TZXEV8GPr46AYxhu,122leYIbHFFBi0YE3uzZDV,3hKNxGFpT1NPjsqhFgHhOQ,24TAYXjcD4EQjzT1RbeRjW,0LbcMYbS508RMhWL3dk51Z,2KjLxctsH7ShdaODr66Wg0,2QL0HI22bBP9QJHhfY1YLK,0WeXy0Nt55NxHgOrArxZd8,3kCjg_sZ1EF85Nip_y67gy,1YQyOdKDnFiOaH$X4tK5dp,2QGNuB0B16IeBRoltmvWce,2D8TYZqFD9ou0OP0wZWxih,1qTZAO3FXD8uU5_b8nP56O,37ZsdMPsnFCwBzj_WFlAfy,3Ks3Ov9p5EJ93H8eLBmiyy,2XslZd4419P8dGGPeAflZX,3qz3zPw_r7nf0mYn_Jv805,26tBNOs75EH9eZKZJlkRH3,1haxNPS0P1FxP1VZiCTIFV,2WAa5VUzT7ROWsWFxg38yH,1AEziWa0DAR8TEFYF8unFF,1ZVH2UdTP3dRvnG0LRbYIR,1Jfv0e_IDCLRJN$vloEl97,3DDP4nbdn6AApndIK6kkR4,15OpJLVNT1KBzxIDjBV7yp,1NPW7kpY90ofCA3b1oDHTr,0ekISWRMjETQVsONKhC0oM,0rj$xpoALDGQ3T1Tw9NAOA,3q92bI3TT78eG2hJbura4B,1KEHQ8njvClveqqoC3Ygq$,2cAQkZskLDv8hZ_cW77VS1,0jhVMe5nn9b8xNJphVwucj,3I1CMx2brDHRAqSOCI6eq6,3tvnsnioX7PQZ7u8kENvQd,26z2GfGaTA$RfZRO_HdeCI,2OyR0O$o90F9hKvgkw30Em,27xkga6Qr2v8HW65geRw7i,2h_R7XgCnEihwQ9xO2qxEJ,1W_SysTb9CJQGS7TZtcqax,1GT_8LA1P1AQ20xisLLbMN,23tK4hWyjBMvcAx0XfRa09,2TMU7718r0mAuJUNlb2SYn,18Qhf59crDCAy$scVOCK92,3OVQygdDn17huGOgJJFTOY,3jha5L04zBjh0$pMl_tHLy,04rs0EDjn2EvxytEQSxWRB,2nUpG$tzj0vR6tg5N9FJJ_,2Ca2tGerPBj8kvUTjlUtDl,3pAfMJYxPBlwR30CstZ4kK,0nlHIdaVrV7xIKsYXraYCa,37DwA_fpXSARFOa60IfK8k,28axnJOc1KaeA2jTdv5tk4,1s0ElI6BnG6xHZgQ37OOHr,0LGnQmHPDT5P1L4FD30GWT,11VsxE48XUhxS_l7yPUfeN,3Q5pOfhDvQsfsYufTtPS8u,1zX6DiGXjV2PeHHkTz230u,04rQahsKnVWAQm005VLUaQ,18mq2JXA1GaOLupE0pkNjZ,12lp8aIu9LTeewHdYAmHs2,1fwAQpF8TIaxJWoTVaZPyU,3gUd_KnZLPiQfFIw6FQwN8,10Wm8ivdX7dAVfz4cV8l5Q,0YgqsahOH4FvZ_nLwl_Tlf,06GpMzzWj1XQobAhD35cgU,0WP_ZkBqnB2P0aAfYeeBF9,3Itc2u2Yz5d9C0mXWYxzY$,1v_uB54DzEbARv3GX9zvoY,2wueiwazb6xBf0SUqSVhTB,19lEsYZcTBBR2TBnN2QWv6,1cgYaMV$HEIQTGmbjnIe3j,2S3yKtNmb9ShDjnra4juRS,0xmmL9dVP4rhlwSfwPEU0D,0GVPxjL8j96u92n6m17Gnb,36ZX3QPyD7SvlXsDKMP8rY,245NU$zZL0d9tYTVwwBdk$,3jT4sCgpHC98VSIUdGUNYH,1YxMx6s0r3ZPPohkRKXWbl,1PrWPEGF52deATqDqovfvh,22JsDd6sHC$PPQKBNQOW0y,2XVxPKYhfB79rI5US7KTf3,1yCfq0IHT57uClZRdyfIiK,2TnJnAuDb3cOoTeFLK4HdD,0GVA0pu6f1gh1ddVc58IqT,1QViGm50D1TP6oyZyAwSTP,2qk0nafof6XRl4CYcn5yQ2,0SCRXea81EcvS5088$VF9k,1XMusZjHr3ox9YBUbJg9rv,2KrNi9gT90MupPWHCfJwcn,3Hu_Yj575AZ9mo4zIVCeEV,0lLJUrXuv0NvoVpmTH07ON,29N1WkcE1DMgvzDDD4hCtn,3$SiLlObL89vfb3X4Vct$_,2pNehS5uj5IhnlCwSOPYW6,0ZXn49sxb5x82rCoYqoXKq,3qgu$TepT0J8Yat7ZQ90Mf,2oHWzdjkr8X8Yt0Gd2e3RQ,1JVGu2xtb1ZhGElhvSmyd$,3k2aFe_p5Ah8HJEqWUBB7F,3ERXx822H9jOPo6CetKX9r,0DOeKdT3DE9f2LMR_x$G7q,2NKrigWuPDpupK6upmd9Dz,0_Z2u7PpD6YBNKxya8tJEG,0V0NtkKUf6e8cPnz9if4Rv,3XQ9jj4jfDG9Rg2EDD46a6,0S8zkx4QD5pOrOIATVrtId,2wRzC7tFj8ifz6bI$YLdEX,1_EX1UWfL8ShcGm5BI1UPc,04F4qmHTP7TOvbpiQ7gZBJ,3qtF1s43PBgeiIIRR7DBba,0faD6FNAT40OGcq7Rvm_OW,3EVE8lqaz1jeLbHne5O4Sa,1MkgtBdKX3UvuzU7PXlhDC,3C5$uQhr52FBB2yYZovxCU,1MhvaabjjDYvl9DUE8AD7q,1Rn79Gplf7gwfEamngx4os,1gSxUUTXL7y87dIHf$ZbJi,0BF_v4sJzAd82iwqnjr39d,2ALgYzh_f8HPzZ9WJEBwoT,0ai2GGtAb858ZQ8rgk5Moi,2FQeCPllj1lQSKesOcZ6gb,1VtlgAcvv5tgFQq214xt1X,1LvkybbzX3ogJudDFQ2PEr,2O2esK8Ez5u906$714eyPh,0WhqLsotv7M9F0Aiia8dj1,3Kii7FN5H7deUEEvpV01lO,3X5VY_8un1ru2RXNTTD2Th,032u35G4b48gGJPZSrsaqp,1aUqD0p_P2GhhQhY7m5ILX,0Rh0$eFG57rw9zS8mjpCdK,1WPOiANMXEufdVxm0kIswl,33IuE0PNf6wwF_s16J4MvV,3AzpGQNhr4FhCAFXPEkaJn,0_eLd9WVfFLvk6I8goe8it,2LCZDONiLBShgK9CpOImZJ,2iD0$qLLb7cu7T$dATAC4E,0mchShss58$fvULZmouuUH,2KV8sWa1DC9RDyHYIRPBOP,1QPmeve6fEIhNrBYMdD2sJ,2Zjq0wICPAYAr4RNJLeesH,3vRIKiKbL9nAvF_CZkYkxA,2qhynM3rf33AQqbI129k2v,1JMXCthV161Ay1zyyjMeYY,3EaO22qXv38wM47SaLX1Yk,3DC1GDi6j01O$a9IjXU81p,03OxzOyN12ff3jkuUtjJPD,0tM_AFFsLCsfwouf4rVzw9,0pXVcnUbz8VQurx0yCzZMi,26Aqyzik9DGwBCj3QLgi5r"
+            ]
+          },
+          null
+        ]
+      },
+      {
+        "id": 214,
+        "type": "IfcPropertySingleValue",
+        "attributes": [
+          "Exclude",
+          null,
+          {
+            "inline": "IfcText",
+            "values": [
+              "0$K8jHNgXCwB5w4R8Gk5s4,00fJpxqFXCHe6Hqg5jU2IN,00x5IPbTv8f86KJxthh6Wl,02ceDLwADB5eZJ$wQIxNrD,03QGD3YVL4kQ09hpfX6ZB3,06CNkFHQn2ZhnxkCmzCNEi,07Gvgx_qf93Rbat_7x96LT,0BFQIQV7r7TxZNvErJFvyS,0BcDHTdFX4x8rHz20JxY4K,0CVJWEQNL5hPA2CDa3nrrw,0ENjo6cXv34Q3ur_oFu35d,0HiMVAajv8xAARS233qDTe,0HivM5I5XF7gD1n35ZuIFX,0Lthi11x5Ad8PA$d0R8PP7,0QTOS1qur0sQgio4sft44Q,0RNLjTmq157vODPbbBPPj0,0Rk1e0rPv6K9tDw37_qRWJ,0W2JVDjsPF3g$bFV_K2lFX,0XBXxNg5D8eAsEaPGygVFr,0XNKzLs5rCQhc47u0Npwq4,0XVURVLHv8UwMVYO0fgWkp,0YsJnmXX59_B8tiYcGO6ur,0ZA8eHv6P4jRRHUwx7la69,0ZMLkgM6j2bu5yvjEea8cP,0ZPCn_n4L9tO3vVMztEYYQ,0ZTeZ96XHFbuYRjGQjSKle,0ZVZUf$Ar7KgkCHO7fOQyg,0_l8b5Don2XOwxWtKkMXED,0bZn1sv7f8teLPUxWd_9xq,0dBCR02kz1kv$SR1bv3i3d,0dhICpxE15MBdFZJaWQ8Gt,0eGA2q7S5E6gOybJoqsyqg,0eUhGmkAH1U9eyz6ahSAm2,0em0Y5w3f0GvFb4ggcWBUb,0iqzEyNlXE$B8lvi7jmv9b,0jqXyyymfC5RZy6sAieyib,0oPr0vjjv8nR5O$jMJYuhC,0qOCIS1pX4Pes5vDHTi8wi,0tiugLvJXE4evJI9A$YMHe,0tm3JB9ZX29goig6yMpVHK,0ttglzazrFaw93fN_TwPJh,0yOlQl0CjDjOOprL2qRrX7,0ziO7ioAr3FAqmmXwLygbB,1$S0gYW3T3bRxyHsEYiLLv,100$Wnni5CGQ$OnnEISN1a,11LVvWMRnExQ0AbmdKFx3U,134HkfoFnAyBBK_lE0xYWM,13fBgujbLFJhNnTCxZKHel,140pwjdu51i8Bf4yRy3ifH,14rvDJ$4L9o9QVZ86vPmyT,14z9GECtbB19M6LB7rXDyS,1674ghmCn3GuBPOuxW40DL,17BA8nGTf1ueSk4xKrrvOV,18A07EJ7f7sAlNVM4wwwos,18R00kaKPCYQBsM2o5$r_r,199f3DSOz98uT8DXSlPZ3d,1B6UIPB457fwl7F13v5gGr,1BrGjXSab4JxWxYY9WDR2z,1Dp$Shc49EShzNPw2QB1jk,1EQEiX03DDhRlXykY_vfhJ,1F3S2ug3z83feJFCf1GSqt,1FEgJp2P970u77zbD3EQfh,1G7HSMnFrC_R5KMRIob5CU,1H_RJx9c52EhHhFTPKxSdm,1JumS0L$H2Q9Aae3NsDpRY,1M$IaBZfn0NvLQezp1Z5Oc,1MawEiIGH91QofmcT4ZEao,1OV2qusT90seCMCM1v7_tt,1T7IU6d8LF1Rh628EK1ZwS,1U05xDYEb3NepRzadH7KHL,1UfJddtEz0EBL849tmnhql,1VjEk5I8XFmfiAYaLk_F_7,1XjInkM197Bvgkc5lJRGH1,1ZWtG4whH9g8EAbjhIwRpj,1_3CJIIjP1ZwKCnx4iGKe6,1aQKwMe794DAiMrTxaMy7L,1aZJKmg8nAawXlQwf$FCNr,1c3VjP7Cj8XOzrglchrWX5,1c4RgOFwTCm8eCTmMik2BS,1cWTMdxLbERA7F2YEXDAZK,1dqgr1kSH4hu3gzVVwMlyu,1gwq89bFnFggGKelj8ZT8O,1iam6gpU12vgtQfG9jg9Hr,1jQDhkWW5FRBlJrlZmpLxg,1m0njCsJ1AYxew6gmE9ZbA,1mGB1N1mn4oganvsO0AXgj,1mjQbi35n6EBYo0RbPW7wt,1nWDSMPFnE6ReuI_BVi9KH,1oGNnndgv2383eKPDwXXi4,1oMNZMf558VO30UD0XcC49,1ovw6V8Dj5fQ9Mwyed8Lcb,1p_7lJye11wRy_iyycu_YM,1qthKed514feGwPgnQ5$hM,1tDjl2kdz8qeW4KZ_ts8Na,1vr1cNQS1FHAMclohsylLc,1wKP6R9bH1vPPFnnBgUuuJ,1ww$Mih0zD$B2AYBjdbv7S,1xmkyH9FXBIeT4epDPpYVW,1yKX71KsT4RhSDJXHmXD8s,22gEUDaWX8QeiRrujWcOqw,22zTIYgzr47fDMM4$n34hF,2388Qqwur0_u5otzVLpqMj,23FycdHjT1APpzQJhfhEqO,23btfSBvv9zf3TZ$dTgs3p,28$lzZA4H7wgR6dKi$6V6S,2CPOqhIKXBm9RhVDp3GaZj,2CXDIlIQvDqfbPRP0P1VcF,2DeTXIPkX13x2AkFF36WYk,2EGrx1BlPAued7yJAAkuEO,2FpzAV1dvA08wmzuLKKsR7,2KbVwoYuvBSO4yEoqrC9L1,2McjTI7EDETwgF3eIc4IlF,2OwqJkIz19I9ZhNWKLuJrB,2T69JK$gv7Af1$wLBOtIOe,2TOGvyUyHEqPUwZaef5XH2,2V$yYS0$v3NwU2Ur2NT6lZ,2Wh17_pjfEwOzX3eVQOmzb,2XBI4$$6vB0hRZLUrNIdVk,2YQSsE9UP96BNq9hDLK_Mp,2ZNpmy8bXF8wzsTRljO7FD,2aKroOGMz1_8t0CIa$SOgw,2b6HVSPyr0mAMRQop1IzX6,2c$YEd3qLApB4oWyLJByjc,2cEbxy0wf4Gwj52oGOzYzy,2cqdvVEC5Co9JmR54Jvh0A,2gLJe_Rhj6YuSq4PwFqvLd,2gfQbHnE14dvjEuEJEwG2z,2jEqmgzVz55woyrQvKATHE,2jX5YDw6PE5AnmEG96_lLw,2lYlzigkD38PY7Fy73YztG,2nTVMu7HD5XvermD7Aqx4V,2nYCStdQv3hB3yYDYHAaRo,2oi6uwN8b9fBkFgSXHjf_M,2pT8ZtU_L10vZ2GQbSWXLD,2p_Xahspr6v8g2baYorMph,2rzDmZp5LAcPvLz$YkA9b5,2sRevbEuvCRuIloEuqrtX7,2smGc8ISL57P7Jll7ujr4d,2xsKoHFRP8wQFciZCS2W8A,2ydY16y357O9sTgJwOjZsn,31xhpapQXCKfYIK9OURdgh,33aMRH9An36RQi37lCJkbO,33eWFtzoP21ffkl7wZ6sk3,350tdaubr8QP3Cu2YMQZIN,35BA7sjaD4fvhV3D5r3pW6,36w81K$mPEme72vB7VvWkj,38QjJs3c114Bb_uwQgEj6e,38xKgADYD27OsQbaDCPZI4,39rhw6iKX5wg1gKfdI1hLW,3BYMmagU5FUBE4FGLHok0W,3Bmzgitm5CshAE2r7vERnd,3CWU3S86XCSwX9D$Z1ICqS,3EblOhuRj8Vv41BKSFk8Ao,3FBOyAMij3zhSOyrBw8rSj,3FY5hyX4v1Ihq0MQ1Bp7MX,3GVpAeYA54NBh_ynAitlmD,3GpGnsvVn2$9qYNIdbFTIO,3L8etFg5n3fBdIyR_I$nFj,3N4ef7jp56Ju8sF93P6z0u,3NOxsoddP8fOL0NOMD_P$z,3OXJQjZ0rAEwUl2EKO$DsV,3OyyR1Gpj5OvJoD00uGq1r,3RE70TsVHC99$UTfipGwhE,3RMlw3zQT1cRxXDsVQ5vHE,3RZqEkOqj6c8Qa6ZsBK_Tc,3UE275G6zBMvNzTHs_8eAW,3URAugTD9B5wkP6_IHBNbJ,3Ul6Ug1c55QfpEslH7VB5T,3XJ3VZbUf1lO$ppwkWdKh6,3XwwBWAb1Fuegrn8PB7q4l,3Zn5IzS3H3yBjk1CBCPdYB,3_Q5JzG0j2Zu0bu7_tiMUB,3aK4Kd0EX1cPWTcl11cMac,3aLUH7qar3mhe_7HiqSSN3,3aZThguef5fuAHoNz7FKel,3bThBrFFf1keu1sDh5NfYq,3cfFsLRWHE$PStLsb5HPUp,3h0rGEgGTBoQELVXpaHHK1,3hkH$I7T17fuiQoTo4npUp,3hwm9XXPv0r8BBLUaYS7r3,3ijRmuUZn0d8bxfnuZgnQm,3jyN1JyPj6HQ6W9w_nBgb4,3ldIQ947TBsQfmeoWCkAxk,3lkinA9Gn7NBffLkDk22pC,3mpRvDPDH2jAhA93UmR6ud,3mtEdbDYn1d9iNK0Iw113w,3nvIdBaTzBMvbeUzA64Gn4,3oQZvKp$DBYQZCNExowkE1,3qtykWCp592PRp2pF6lY2M,3uIyebbR996uX5ZQicuwnL,3v_JGo4_vEaxFLMWs6nTEg,3vkj1wUgb2BuHeaXL4z7k_,3ys4uZnZv0Ph4ODUWRj83U,IfcSpace"
+            ]
+          },
+          null
+        ]
+      }
+    ]
+  },
+  "reference_filter_policy": "Explicitly exclude historical Drawing, Annotation, Grid and Storey references; retain target LINEWORK and physical context."
+}

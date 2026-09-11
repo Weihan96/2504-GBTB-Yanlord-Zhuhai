@@ -16,18 +16,19 @@
       "candidate_view": "plan",
       "source": "drawings/Furniture Plan.svg",
       "output": "output/review/highpoly-types/bst02/project-context-furniture-plan.svg",
-      "output_sha256": "daa1025bf813f27759a4b6cce2abaab93dc3f0ef40bf3b66eeedad6b4aa53c87",
+      "output_sha256": "1bf9f239049927623a7a536151478d4b6fdc22acc0c1e15cf68b5d70b70162a0",
       "review_crop": "output/review/highpoly-types/bst02/project-context-furniture-plan-review.svg",
-      "review_crop_sha256": "3b53a9525446bf1b78dd710573ab1d3df61bc8b49cce2808344799a11a7872c0",
+      "review_crop_sha256": "c43f799bff305b52e5c761da1fa57577e94fd160ea5670162608f52d47b23a92",
       "review_preview": "output/review/highpoly-types/bst02/project-context-furniture-plan-review-preview.png",
-      "review_preview_sha256": "47a586a3693b810404ea70ba8ecd867df417da16ce13fd7215242ea9b604fcf2",
+      "review_preview_sha256": "3fa69df445b360781083f7c9c3646081f727318ac6861200ac695953681c1f3d",
       "overlay": {
         "ifc_guid": "3hA0vKpcn44u4Tsx4tqiUz",
         "source_kind": "geometry_derived_simplified_proxy",
         "source_label_zh": "基于原始高模几何生成的简化图纸表达",
         "official_cad_used": false,
         "third_party_cad_used": false,
-        "path_count": 6,
+        "source_dwg_sha256": null,
+        "path_count": 2,
         "fit": {
           "rotate_quarter_turns": 1,
           "alignment_mode": "centre",
@@ -45,17 +46,17 @@
           ],
           "proxy_bbox": [
             [
-              72.763844,
-              277.310355
+              72.760471,
+              277.30361
             ],
             [
-              84.314883,
-              288.496864
+              84.318256,
+              288.50361
             ]
           ],
           "bbox_absolute_delta_svg_units": [
-            0.00896,
-            0.186509
+            0.002215,
+            0.2
           ],
           "bbox_tolerance_svg_units": 0.21,
           "uniform_scale_preserved": true,
@@ -69,18 +70,19 @@
       "candidate_view": "side",
       "source": "drawings/elevations/native/EL-05-16-R09-NY.svg",
       "output": "output/review/highpoly-types/bst02/project-context-side-elevation.svg",
-      "output_sha256": "adff575c1e99cc14475395ed744398a58f7835b57d967a98062f858a983e7fbe",
+      "output_sha256": "1b265b74f6dbf89112baf8a347bf6cd6ebd202bf3087350b7fec2d0079a58840",
       "review_crop": "output/review/highpoly-types/bst02/project-context-side-elevation-review.svg",
-      "review_crop_sha256": "4ae918d20affa1be0e36ddf0994884b8f3b1a2e479c11d24d2a103f00e0c9a8a",
+      "review_crop_sha256": "982c72b0fd59e6c06e17e1352a18d3efad6fb2003b0f2a0d568cb63973f3b7ea",
       "review_preview": "output/review/highpoly-types/bst02/project-context-side-elevation-review-preview.png",
-      "review_preview_sha256": "e5149a4ba146e8f5489f9f82334c4775cf4d4f7f281ad766070e74f7082cb2aa",
+      "review_preview_sha256": "886e1c421d1bb538beba1cfce73777ccf90f6d3059a58a00ef336e8d1445dcb7",
       "overlay": {
         "ifc_guid": "3hA0vKpcn44u4Tsx4tqiUz",
         "source_kind": "geometry_derived_simplified_proxy",
         "source_label_zh": "基于原始高模几何生成的简化图纸表达",
         "official_cad_used": false,
         "third_party_cad_used": false,
-        "path_count": 1,
+        "source_dwg_sha256": null,
+        "path_count": 4,
         "fit": {
           "rotate_quarter_turns": 0,
           "alignment_mode": "centre",
@@ -138,6 +140,10 @@
       "rotate_quarter_turns": 0,
       "project_direction": "-X"
     }
+  },
+  "review_frame_mapping": {
+    "review_rotation_z_degrees": -7.031244116545077,
+    "context_projection": "Original IFC product-local vertices; review-camera rotation is not applied to project placement."
   },
   "context_view_scope": {
     "included": [

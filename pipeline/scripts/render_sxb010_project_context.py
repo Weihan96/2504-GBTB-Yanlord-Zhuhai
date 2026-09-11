@@ -20,6 +20,7 @@ FRONT_SOURCE = ROOT / "drawings/elevations/native/EL-04-10-R07-PY.svg"
 SIDE_SOURCE = ROOT / "drawings/elevations/native/EL-04-11-R07-PX.svg"
 shared.BBOX_TOLERANCE_SVG_UNITS = 0.18
 shared.ALIGNMENT_MODE = "centre"
+shared.CLOSE_PATHS = False
 shared.CONTEXT_VIEWS = (
     ("plan", "plan", shared.PLAN_SOURCE, "project-context-ffl-plan.svg", (8.0, 8.0), 0),
     ("front", "front", FRONT_SOURCE, "project-context-r07-front-elevation.svg", (6.0, 6.0), 0),

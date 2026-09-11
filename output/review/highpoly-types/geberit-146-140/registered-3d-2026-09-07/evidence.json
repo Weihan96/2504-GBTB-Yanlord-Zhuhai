@@ -1,0 +1,1181 @@
+{
+  "task": "AquaClean true-world Plan Front Side registration",
+  "versions": {
+    "blender": "4.5.3 LTS",
+    "ifcopenshell": "0.8.4",
+    "bridge": [
+      1,
+      1,
+      0
+    ]
+  },
+  "courseEvidence": {
+    "mode": "embedded-course-index",
+    "lesson": "085000",
+    "timestamps": [
+      "01:03",
+      "01:59",
+      "02:13"
+    ]
+  },
+  "preState": {
+    "ifc": {
+      "path": "/Users/jiaxinchen/.codex/worktrees/3a80/2504 GBTB Yanlord Zhuhai/output/review/highpoly-types/geberit-146-140/Geberit-146-140-derived-drawing.ifc",
+      "sha256": "cd27c202de27d739e17065f238cd8b8adb106f7ef39493fa9845114c30aa8cdd",
+      "bytes": 89314609
+    },
+    "front_camera_m": [
+      [
+        0.0,
+        0.0,
+        1.0,
+        1.1432349681854248
+      ],
+      [
+        1.0,
+        0.0,
+        0.0,
+        2.7680001258850098
+      ],
+      [
+        0.0,
+        1.0,
+        0.0,
+        1.2000000476837158
+      ],
+      [
+        0.0,
+        0.0,
+        0.0,
+        1.0
+      ]
+    ]
+  },
+  "execution": {
+    "removed_duplicate_drawings_from_legacy_import": [
+      {
+        "global_id": "09$e6bVsv17wXfRpeKWam6",
+        "name": "GEBERIT-146-140-WC-PLAN"
+      },
+      {
+        "global_id": "1CkUPO3EXEUOcvVaMFhkMo",
+        "name": "Geberit 146.140.11.1 approved official linework / plan"
+      },
+      {
+        "global_id": "0ATi_fOaXEtAE7STgFFhmD",
+        "name": "GEBERIT-146-140-WC-FRONT"
+      },
+      {
+        "global_id": "30Wi1BzUb4Sg8dfavpmS7y",
+        "name": "Geberit 146.140.11.1 approved official linework / front"
+      },
+      {
+        "global_id": "28XZ7uqQj8nwE5eBDXwOUc",
+        "name": "GEBERIT-146-140-WC-SIDE"
+      },
+      {
+        "global_id": "1ivbWVYvz0ThwIkchePWcz",
+        "name": "GEBERIT-146-140-WC-SIDE"
+      },
+      {
+        "global_id": "2IKTyWaSj25A_rzPq$O7OM",
+        "name": "GEBERIT-146-140-WC-SIDE"
+      },
+      {
+        "global_id": "3kB6Wfjun2rQzUTcDA0KxY",
+        "name": "Geberit 146.140.11.1 approved official linework / side"
+      }
+    ],
+    "create_drawing": [
+      "FINISHED"
+    ],
+    "adapter": "isolated short-lived Bonsai worker; installed public bridge save handler",
+    "render": "Cycles actual 3D curves read from reloaded IFC; no per-view centering"
+  },
+  "persistence": {
+    "saved": true,
+    "output_path": "/Users/jiaxinchen/.codex/worktrees/3a80/2504 GBTB Yanlord Zhuhai/output/review/highpoly-types/geberit-146-140/Geberit-146-140-derived-drawing.ifc",
+    "in_place": false,
+    "method": "bonsai.bim.export_ifc.IfcExporter",
+    "reloaded": true
+  },
+  "postState": {
+    "ifc": {
+      "path": "/Users/jiaxinchen/.codex/worktrees/3a80/2504 GBTB Yanlord Zhuhai/output/review/highpoly-types/geberit-146-140/Geberit-146-140-derived-drawing.ifc",
+      "sha256": "e0932b4c342705546ff6896a95fd416778eed8e72bf3e7f175aae4e38f021b78",
+      "bytes": 88735209
+    },
+    "front_camera_m": [
+      [
+        0.0,
+        0.0,
+        -1.0,
+        -2.606765031814575
+      ],
+      [
+        -1.0,
+        0.0,
+        0.0,
+        2.7680001258850098
+      ],
+      [
+        0.0,
+        1.0,
+        0.0,
+        1.2000000476837158
+      ],
+      [
+        0.0,
+        0.0,
+        0.0,
+        1.0
+      ]
+    ],
+    "front_looks_world": [
+      1,
+      0,
+      0
+    ],
+    "product_placement_mm": [
+      [
+        0.0,
+        1.0,
+        0.0,
+        -565.0
+      ],
+      [
+        -1.0,
+        0.0,
+        0.0,
+        2768.0
+      ],
+      [
+        0.0,
+        0.0,
+        1.0,
+        337.0
+      ],
+      [
+        0.0,
+        0.0,
+        0.0,
+        1.0
+      ]
+    ]
+  },
+  "registered_planes": [
+    {
+      "view": "plan",
+      "annotation": "2Jj07UMoHB9QdjEcw3_zoe",
+      "path_count": 50,
+      "local_plane_axis": 2,
+      "local_plane_coordinate_mm": 0.0,
+      "local_plane_spread_mm": 0.0,
+      "placement_max_delta_mm": 0.0,
+      "local_min_mm": [
+        -192.857589,
+        -530.657145,
+        0.0
+      ],
+      "local_max_mm": [
+        192.856703,
+        47.112014,
+        0.0
+      ],
+      "world_matrix_mm": [
+        [
+          0.0,
+          1.0,
+          0.0,
+          -565.0
+        ],
+        [
+          -1.0,
+          0.0,
+          0.0,
+          2768.0
+        ],
+        [
+          0.0,
+          0.0,
+          1.0,
+          337.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "world_bounds_mm": [
+        [
+          -1095.6571450000001,
+          2575.143297,
+          337.0
+        ],
+        [
+          -517.887986,
+          2960.857589,
+          337.0
+        ]
+      ],
+      "projected_bbox_size_minus_body_mm": [
+        2.8083983465876372e-05,
+        0.015130679688013515
+      ],
+      "projected_bbox_min_minus_body_mm": [
+        -1.4537113457890882e-05,
+        -0.015130973358623123
+      ],
+      "projected_bbox_max_minus_body_mm": [
+        1.354687000798549e-05,
+        -2.936706522405075e-07
+      ]
+    },
+    {
+      "view": "front",
+      "annotation": "0n9ldIxH1Dxw6sWsa6Zaa6",
+      "path_count": 82,
+      "local_plane_axis": 1,
+      "local_plane_coordinate_mm": 0.0,
+      "local_plane_spread_mm": 0.0,
+      "placement_max_delta_mm": 0.0,
+      "local_min_mm": [
+        -192.857589,
+        0.0,
+        -265.452902
+      ],
+      "local_max_mm": [
+        192.856703,
+        0.0,
+        178.782043
+      ],
+      "world_matrix_mm": [
+        [
+          0.0,
+          1.0,
+          0.0,
+          -565.0
+        ],
+        [
+          -1.0,
+          0.0,
+          0.0,
+          2768.0
+        ],
+        [
+          0.0,
+          0.0,
+          1.0,
+          337.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "world_bounds_mm": [
+        [
+          -565.0,
+          2575.143297,
+          71.547098
+        ],
+        [
+          -565.0,
+          2960.857589,
+          515.7820429999999
+        ]
+      ],
+      "projected_bbox_size_minus_body_mm": [
+        2.8083983465876372e-05,
+        5.424805010534328e-06
+      ],
+      "projected_bbox_min_minus_body_mm": [
+        -1.4537113457890882e-05,
+        -5.881836045773525e-06
+      ],
+      "projected_bbox_max_minus_body_mm": [
+        1.354687000798549e-05,
+        -4.570310352391971e-07
+      ]
+    },
+    {
+      "view": "side",
+      "annotation": "0WJ8Mg0NvDFPMCFI8FfqYn",
+      "path_count": 65,
+      "local_plane_axis": 0,
+      "local_plane_coordinate_mm": 0.0,
+      "local_plane_spread_mm": 0.0,
+      "placement_max_delta_mm": 0.0,
+      "local_min_mm": [
+        0.0,
+        -530.657145,
+        -265.452902
+      ],
+      "local_max_mm": [
+        0.0,
+        47.112014,
+        178.782043
+      ],
+      "world_matrix_mm": [
+        [
+          0.0,
+          1.0,
+          0.0,
+          -565.0
+        ],
+        [
+          -1.0,
+          0.0,
+          0.0,
+          2768.0
+        ],
+        [
+          0.0,
+          0.0,
+          1.0,
+          337.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "world_bounds_mm": [
+        [
+          -1095.6571450000001,
+          2768.0,
+          71.547098
+        ],
+        [
+          -517.887986,
+          2768.0,
+          515.7820429999999
+        ]
+      ],
+      "projected_bbox_size_minus_body_mm": [
+        0.015130679688013515,
+        5.424805010534328e-06
+      ],
+      "projected_bbox_min_minus_body_mm": [
+        -0.015130973358623123,
+        -5.881836045773525e-06
+      ],
+      "projected_bbox_max_minus_body_mm": [
+        -2.936706522405075e-07,
+        -4.570310352391971e-07
+      ]
+    }
+  ],
+  "body_bbox_m": [
+    [
+      -1.09564208984375,
+      2.5751430988311768,
+      0.07154712080955505
+    ],
+    [
+      -0.5178879499435425,
+      2.960857391357422,
+      0.5157820582389832
+    ]
+  ],
+  "native_shared_insertion_world_mm": [
+    -517.8879857063293,
+    2768.000442504878,
+    364.99988245703105
+  ],
+  "nearby_installation_candidates": [
+    {
+      "global_id": "0$9uFhN9v7tw5pryslitkb",
+      "class": "IfcWall",
+      "name": "Wall",
+      "bbox_m": [
+        [
+          0.0,
+          3.200000047683716,
+          0.0
+        ],
+        [
+          3.200000047683716,
+          3.40000057220459,
+          3.0
+        ]
+      ]
+    },
+    {
+      "global_id": "004_$7IRPA9QbtyBuuiKWA",
+      "class": "IfcCovering",
+      "name": "Covering",
+      "bbox_m": [
+        [
+          -1.798876404762268,
+          1.3725974559783936,
+          0.0
+        ],
+        [
+          -1.7788724899291992,
+          3.200000047683716,
+          2.4000000953674316
+        ]
+      ]
+    },
+    {
+      "global_id": "01yasJOHDC6vunuQzfSKru",
+      "class": "IfcPipeSegment",
+      "name": "PipeSegment",
+      "bbox_m": [
+        [
+          -0.3947142958641052,
+          2.7598845958709717,
+          -0.25700050592422485
+        ],
+        [
+          -0.18295273184776306,
+          2.953831672668457,
+          -3.5762786865234375e-07
+        ]
+      ]
+    },
+    {
+      "global_id": "02eX$Z5WrDuuxw1IlnwVss",
+      "class": "IfcSlab",
+      "name": "Slab",
+      "bbox_m": [
+        [
+          -4.899898529052734,
+          0.20016241073608398,
+          -0.18000000715255737
+        ],
+        [
+          -1.7998296022415161,
+          3.4001622200012207,
+          0.0
+        ]
+      ]
+    },
+    {
+      "global_id": "0AN5MRpZ16dRCAg1l5TOyz",
+      "class": "IfcCovering",
+      "name": "Covering",
+      "bbox_m": [
+        [
+          -0.997899055480957,
+          2.1887872219085693,
+          -0.030001524835824966
+        ],
+        [
+          -0.1978989541530609,
+          2.889448642730713,
+          -0.00266724219545722
+        ]
+      ]
+    },
+    {
+      "global_id": "0WeXy0Nt55NxHgOrArxZd8",
+      "class": "IfcWall",
+      "name": "Wall",
+      "bbox_m": [
+        [
+          -1.899999976158142,
+          3.200000047683716,
+          0.5799999833106995
+        ],
+        [
+          -1.6999999284744263,
+          4.0,
+          2.4800000190734863
+        ]
+      ]
+    },
+    {
+      "global_id": "0YgqsahOH4FvZ_nLwl_Tlf",
+      "class": "IfcPipeSegment",
+      "name": "PipeSegment",
+      "bbox_m": [
+        [
+          -0.8303978443145752,
+          2.0520920753479004,
+          -0.21799999475479126
+        ],
+        [
+          -0.6693975925445557,
+          2.263467788696289,
+          -0.06300000101327896
+        ]
+      ]
+    },
+    {
+      "global_id": "0a6glteMX7_x6fU36rB7Xa",
+      "class": "IfcWall",
+      "name": "Wall",
+      "bbox_m": [
+        [
+          -1.899999976158142,
+          0.20000004768371582,
+          0.0
+        ],
+        [
+          -1.799999713897705,
+          3.200000047683716,
+          2.5999999046325684
+        ]
+      ]
+    },
+    {
+      "global_id": "0mlC75yJb4VvKi2oo2qbR2",
+      "class": "IfcPipeSegment",
+      "name": "PipeSegment",
+      "bbox_m": [
+        [
+          -0.4645841717720032,
+          2.707188129425049,
+          -0.06559248268604279
+        ],
+        [
+          -0.3199252486228943,
+          2.8463408946990967,
+          0.09977990388870239
+        ]
+      ]
+    },
+    {
+      "global_id": "0moBrr1cf5WgtBzqXWKtqn",
+      "class": "IfcCovering",
+      "name": "Covering",
+      "bbox_m": [
+        [
+          -1.4806336164474487,
+          3.179739236831665,
+          0.5800246000289917
+        ],
+        [
+          -0.6706336140632629,
+          3.799739360809326,
+          0.6000260710716248
+        ]
+      ]
+    },
+    {
+      "global_id": "11c$NwzxL9hASgCgwDxM$w",
+      "class": "IfcCovering",
+      "name": "Plane",
+      "bbox_m": [
+        [
+          -2.5999889373779297,
+          -5.199838638305664,
+          0.0
+        ],
+        [
+          6.500101089477539,
+          3.1999542713165283,
+          0.0
+        ]
+      ]
+    },
+    {
+      "global_id": "13bntpeVvD48VefEcWQ_CL",
+      "class": "IfcCovering",
+      "name": "Covering",
+      "bbox_m": [
+        [
+          -1.799898624420166,
+          2.891238212585449,
+          -0.022645194083452225
+        ],
+        [
+          -0.9998986721038818,
+          3.691403865814209,
+          0.005731133744120598
+        ]
+      ]
+    },
+    {
+      "global_id": "15OpJLVNT1KBzxIDjBV7yp",
+      "class": "IfcWall",
+      "name": "Wall",
+      "bbox_m": [
+        [
+          -1.700000524520874,
+          3.200000047683716,
+          0.5799999833106995
+        ],
+        [
+          -1.5,
+          3.40000057220459,
+          2.4800000190734863
+        ]
+      ]
+    },
+    {
+      "global_id": "1AEziWa0DAR8TEFYF8unFF",
+      "class": "IfcWall",
+      "name": "Wall",
+      "bbox_m": [
+        [
+          -1.899999976158142,
+          3.200000047683716,
+          2.4800000190734863
+        ],
+        [
+          -0.6499999761581421,
+          3.999958038330078,
+          3.0
+        ]
+      ]
+    },
+    {
+      "global_id": "1CcaP1Bo53phkUAss7qLPT",
+      "class": "IfcCovering",
+      "name": "Covering",
+      "bbox_m": [
+        [
+          -0.9978989362716675,
+          2.074493408203125,
+          -0.02983487769961357
+        ],
+        [
+          -0.19789889454841614,
+          2.174187421798706,
+          -0.00879413727670908
+        ]
+      ]
+    },
+    {
+      "global_id": "1KEHQ8njvClveqqoC3Ygq$",
+      "class": "IfcWall",
+      "name": "Wall",
+      "bbox_m": [
+        [
+          -0.6499999761581421,
+          3.4000000953674316,
+          0.0
+        ],
+        [
+          -0.44999992847442627,
+          4.0,
+          3.0
+        ]
+      ]
+    },
+    {
+      "global_id": "1QkVJsQDf6keIyddhN5Dmc",
+      "class": "IfcCovering",
+      "name": "Covering",
+      "bbox_m": [
+        [
+          0.0001787138608051464,
+          -0.020000027492642403,
+          0.10000014305114746
+        ],
+        [
+          0.020183151587843895,
+          3.1799609661102295,
+          2.6700000762939453
+        ]
+      ]
+    },
+    {
+      "global_id": "1aQiUP$CH5uhQBoEX8NjwK",
+      "class": "IfcWall",
+      "name": "Wall",
+      "bbox_m": [
+        [
+          -0.44999998807907104,
+          3.200000047683716,
+          0.0
+        ],
+        [
+          6.039832101123466e-08,
+          4.0,
+          3.0
+        ]
+      ]
+    },
+    {
+      "global_id": "1cmuG50mj3cggtIH5tZHic",
+      "class": "IfcSlab",
+      "name": "Slab",
+      "bbox_m": [
+        [
+          0.00016880035400390625,
+          -1.6001369953155518,
+          -0.23000000417232513
+        ],
+        [
+          6.699941635131836,
+          3.400155544281006,
+          0.0
+        ]
+      ]
+    },
+    {
+      "global_id": "1fAJA2jj59uhEyVVcR7EM7",
+      "class": "IfcSlab",
+      "name": "Slab",
+      "bbox_m": [
+        [
+          -0.20020592212677002,
+          3.200039863586426,
+          -0.20000000298023224
+        ],
+        [
+          4.000182628631592,
+          4.899880886077881,
+          0.0
+        ]
+      ]
+    },
+    {
+      "global_id": "1iSuERIwrCfeGCQ54yF0Kx",
+      "class": "IfcCovering",
+      "name": "Covering",
+      "bbox_m": [
+        [
+          -1.4998996257781982,
+          3.179739236831665,
+          0.5800238847732544
+        ],
+        [
+          -1.47989821434021,
+          3.7797393798828125,
+          2.4000000953674316
+        ]
+      ]
+    },
+    {
+      "global_id": "1jk9p3i1v2xhSPmLARzMx6",
+      "class": "IfcCovering",
+      "name": "Covering",
+      "bbox_m": [
+        [
+          0.00010061263310490176,
+          3.179953098297119,
+          0.10000014305114746
+        ],
+        [
+          6.500101089477539,
+          3.199954032897949,
+          2.6700000762939453
+        ]
+      ]
+    },
+    {
+      "global_id": "1mI2ClWgr6xwhxkjkIkFbV",
+      "class": "IfcSlab",
+      "name": "Slab",
+      "bbox_m": [
+        [
+          0.00010263919830322266,
+          -1.4001359939575195,
+          2.7699999809265137
+        ],
+        [
+          6.500100135803223,
+          3.199861526489258,
+          3.0
+        ]
+      ]
+    },
+    {
+      "global_id": "1xL$8my_jFu9Ab0a91HUA2",
+      "class": "IfcCovering",
+      "name": "Covering",
+      "bbox_m": [
+        [
+          -0.6708533763885498,
+          3.180000066757202,
+          0.5800238847732544
+        ],
+        [
+          -0.6508519053459167,
+          3.7997398376464844,
+          2.4000000953674316
+        ]
+      ]
+    },
+    {
+      "global_id": "2EYl9Bo4j7oAgy4jRg5sol",
+      "class": "IfcCovering",
+      "name": "Covering",
+      "bbox_m": [
+        [
+          -1.7788724899291992,
+          3.180000066757202,
+          0.0
+        ],
+        [
+          -0.19982242584228516,
+          3.2000033855438232,
+          2.4000000953674316
+        ]
+      ]
+    },
+    {
+      "global_id": "2HZmG1IRrDHhHQ82V6_LtA",
+      "class": "IfcPipeSegment",
+      "name": "PipeSegment",
+      "bbox_m": [
+        [
+          -0.4166078269481659,
+          2.7442736625671387,
+          -0.1211005449295044
+        ],
+        [
+          -0.2752313017845154,
+          2.882131576538086,
+          0.02032078057527542
+        ]
+      ]
+    },
+    {
+      "global_id": "2cAQkZskLDv8hZ_cW77VS1",
+      "class": "IfcWall",
+      "name": "Wall",
+      "bbox_m": [
+        [
+          -0.6499999761581421,
+          3.1999995708465576,
+          0.0
+        ],
+        [
+          -0.44999951124191284,
+          3.4000000953674316,
+          3.0
+        ]
+      ]
+    },
+    {
+      "global_id": "2uYGzJR3f1QO6LmO9Nq3Mf",
+      "class": "IfcCovering",
+      "name": "Covering",
+      "bbox_m": [
+        [
+          -0.9978985786437988,
+          1.2725363969802856,
+          -0.028772080317139626
+        ],
+        [
+          -0.19789853692054749,
+          2.072701930999756,
+          -0.00039574969559907913
+        ]
+      ]
+    },
+    {
+      "global_id": "2vTSinfYHC$8prkGP7LD7X",
+      "class": "IfcSlab",
+      "name": "Slab",
+      "bbox_m": [
+        [
+          -1.799829125404358,
+          2.4000000953674316,
+          -0.5500000715255737
+        ],
+        [
+          0.00017087161540985107,
+          3.200000047683716,
+          0.0
+        ]
+      ]
+    },
+    {
+      "global_id": "38mTGSlgvAK8S$ghNqax$m",
+      "class": "IfcCovering",
+      "name": "Covering",
+      "bbox_m": [
+        [
+          -1.7998989820480347,
+          2.074493408203125,
+          -0.02983487769961357
+        ],
+        [
+          -0.9998989105224609,
+          2.174187421798706,
+          -0.00879413727670908
+        ]
+      ]
+    },
+    {
+      "global_id": "3ARl_CqPrCWQrA6_$W073W",
+      "class": "IfcSlab",
+      "name": "Slab",
+      "bbox_m": [
+        [
+          -1.799839735031128,
+          0.20012564957141876,
+          -0.5536726713180542
+        ],
+        [
+          0.00016021728515625,
+          2.400125741958618,
+          -0.0036724901292473078
+        ]
+      ]
+    },
+    {
+      "global_id": "3DDP4nbdn6AApndIK6kkR4",
+      "class": "IfcWall",
+      "name": "Wall",
+      "bbox_m": [
+        [
+          -1.7000000476837158,
+          3.4000000953674316,
+          0.5799999833106995
+        ],
+        [
+          -1.5,
+          3.8000001907348633,
+          2.4800000190734863
+        ]
+      ]
+    },
+    {
+      "global_id": "3EeaetpRj9bw3iIk_f4eUG",
+      "class": "IfcCovering",
+      "name": "Covering",
+      "bbox_m": [
+        [
+          -0.2198224812746048,
+          1.372591495513916,
+          0.0
+        ],
+        [
+          -0.19981825351715088,
+          3.179997205734253,
+          2.4000000953674316
+        ]
+      ]
+    },
+    {
+      "global_id": "3Iwtjib290RgoxOZXiXjY_",
+      "class": "IfcWall",
+      "name": "Wall",
+      "bbox_m": [
+        [
+          -0.20000000298023224,
+          -1.5099580252808664e-08,
+          0.0
+        ],
+        [
+          2.4159328404493863e-07,
+          3.200000047683716,
+          3.0
+        ]
+      ]
+    },
+    {
+      "global_id": "3L$xQZHiz7b8ws7de1jiZN",
+      "class": "IfcCovering",
+      "name": "Covering",
+      "bbox_m": [
+        [
+          -1.799898624420166,
+          1.2725363969802856,
+          -0.028772080317139626
+        ],
+        [
+          -0.9998986721038818,
+          2.072701930999756,
+          -0.00039574969559907913
+        ]
+      ]
+    },
+    {
+      "global_id": "3f3Nxv_PXFthglBpRUg0hI",
+      "class": "IfcCovering",
+      "name": "Baseboard.002",
+      "bbox_m": [
+        [
+          0.0001778550213202834,
+          3.1799533367156982,
+          -2.841208583959087e-07
+        ],
+        [
+          6.500099182128906,
+          3.199953556060791,
+          0.10000000149011612
+        ]
+      ]
+    },
+    {
+      "global_id": "3hKNxGFpT1NPjsqhFgHhOQ",
+      "class": "IfcWall",
+      "name": "Wall",
+      "bbox_m": [
+        [
+          -1.899999976158142,
+          3.200000047683716,
+          -5.905292255192762e-07
+        ],
+        [
+          -0.6499999761581421,
+          4.050020694732666,
+          0.6800000071525574
+        ]
+      ]
+    },
+    {
+      "global_id": "3k9cT8nxj3o8yzLjoQc_Yt",
+      "class": "IfcCovering",
+      "name": "Covering",
+      "bbox_m": [
+        [
+          -1.7998991012573242,
+          2.1887872219085693,
+          -0.030001524835824966
+        ],
+        [
+          -0.9998989701271057,
+          2.889448642730713,
+          -0.00266724219545722
+        ]
+      ]
+    },
+    {
+      "global_id": "3oxgGk27D4pRhha6_X05df",
+      "class": "IfcCovering",
+      "name": "Baseboard",
+      "bbox_m": [
+        [
+          0.00017774105072021484,
+          -0.01995600014925003,
+          -1.62471479825399e-07
+        ],
+        [
+          0.02017774060368538,
+          3.200000047683716,
+          0.10000008344650269
+        ]
+      ]
+    },
+    {
+      "global_id": "3qo2s5gKPA$8hNQznuTTCf",
+      "class": "IfcSlab",
+      "name": "Slab",
+      "bbox_m": [
+        [
+          -1.7009490728378296,
+          0.2000240832567215,
+          2.450000047683716
+        ],
+        [
+          -0.2009490728378296,
+          3.200024127960205,
+          3.000000238418579
+        ]
+      ]
+    },
+    {
+      "global_id": "3wm6Ng2YT52BiRfqPP7E4N",
+      "class": "IfcCovering",
+      "name": "Covering",
+      "bbox_m": [
+        [
+          -0.9978985786437988,
+          2.891238212585449,
+          -0.022645194083452225
+        ],
+        [
+          -0.19789853692054749,
+          3.691403865814209,
+          0.005731133744120598
+        ]
+      ]
+    }
+  ],
+  "installation_semantics": {
+    "wall_hung_verified": "Official archived Geberit product page title says wall-hung WC",
+    "reference_floor": {
+      "global_id": "11c$NwzxL9hASgCgwDxM$w",
+      "z_mm": 0,
+      "role": "IfcCovering Plane; reference datum, not a verified tile contact elevation"
+    },
+    "body_bottom_above_reference_floor_mm": 71.54710388183602,
+    "pipe_wall": {
+      "global_id": "2UhljZvyHBM9jCYFR8xcyl",
+      "name": "Public Bathroom Pipe Wall",
+      "room_facing_mesh_plane_x_mm": -549.827499389601,
+      "body_rear_x_mm": -517.8879857063293,
+      "rear_envelope_inside_pipe_wall_mm": 31.93951368327175,
+      "interpretation": "Measured mesh relation, not assumed finished-wall contact. Distinguishing concealed rear construction from the physical seating face still requires a connector/contact-face definition."
+    },
+    "waste_connector": {
+      "status": "unknown",
+      "IfcDistributionPort_count": 0,
+      "reason": "No semantic connection port in this IFC; pipe Body presence alone does not establish toilet outlet center."
+    }
+  },
+  "outputs": {
+    "renders": [
+      {
+        "path": "/Users/jiaxinchen/.codex/worktrees/3a80/2504 GBTB Yanlord Zhuhai/output/review/highpoly-types/geberit-146-140/registered-3d-2026-09-07/registered-front-left.png",
+        "sha256": "b260727a186fe6a052f10674256cbee9bbb66d303274f3f3fe7e6d83073482b7",
+        "bytes": 3022825
+      },
+      {
+        "path": "/Users/jiaxinchen/.codex/worktrees/3a80/2504 GBTB Yanlord Zhuhai/output/review/highpoly-types/geberit-146-140/registered-3d-2026-09-07/registered-rear-right.png",
+        "sha256": "2838198ba86681b922b66f0fdb3bbf0ae88c5fa8ab110c0d8c8ad24520e73b34",
+        "bytes": 3018451
+      },
+      {
+        "path": "/Users/jiaxinchen/.codex/worktrees/3a80/2504 GBTB Yanlord Zhuhai/output/review/highpoly-types/geberit-146-140/registered-3d-2026-09-07/registered-planes-only.png",
+        "sha256": "7c262992afd235256e227cb2a0e82becaccdeb81045515fa44fd7e8ded88d8e8",
+        "bytes": 2903521
+      }
+    ],
+    "front_svg": {
+      "path": "/Users/jiaxinchen/.codex/worktrees/3a80/2504 GBTB Yanlord Zhuhai/output/review/highpoly-types/geberit-146-140/bonsai-drawings/wc/GEBERIT-146-140-WC-FRONT.svg",
+      "sha256": "620acb19b046b5a1e09b4d5be7c97540e468d852aa9584cd6dbff56ebbc775d6",
+      "bytes": 2315232,
+      "root_tag": "svg",
+      "data_scale": "1:25",
+      "width": "151.99999809265137mm",
+      "height": "143.95542994847204mm",
+      "view_box": "0 0 151.99999809265137 143.95542994847204",
+      "geometry_element_count": 10160,
+      "projection_group_count": 33,
+      "representative_body_present": false,
+      "sibling_product_present": false,
+      "official_annotation_present": true,
+      "no_body_annotation_or_instance_duplicate": true,
+      "external_reference_count": 0,
+      "bonsai_generated_sha256_before_review_style": "968f0bf4c462042515c511e070f59d93e5788df3b4e31c2538df0de0a4adcaf4",
+      "blue_official_geometry_count": 3903,
+      "grey_context_geometry_count": 6257,
+      "post_style_only": true
+    },
+    "blend": {
+      "path": "/Users/jiaxinchen/.codex/worktrees/3a80/2504 GBTB Yanlord Zhuhai/output/review/highpoly-types/geberit-146-140/registered-3d-2026-09-07/AquaClean-three-registered-planes.blend",
+      "sha256": "70f178931dad5b1be150c70d01c79cbd0760ae8fe8206cb39679129205260ae3",
+      "bytes": 527953179
+    }
+  },
+  "formal_ifc_sha256": "7a50b87e8f48a7c2bfbaa9f1dabdfca7155fa684b2325c66aa1ae15c8ab0a25c",
+  "verdict": "PASS three-view mutual registration and corrected Front; installation contact semantics remain unresolved",
+  "independent_validation": {
+    "drawings": [
+      {
+        "view": "plan",
+        "one_named_drawing": true,
+        "paths": 50
+      },
+      {
+        "view": "front",
+        "one_named_drawing": true,
+        "paths": 82
+      },
+      {
+        "view": "side",
+        "one_named_drawing": true,
+        "paths": 65
+      }
+    ],
+    "formal_ifc_sha256": "7a50b87e8f48a7c2bfbaa9f1dabdfca7155fa684b2325c66aa1ae15c8ab0a25c",
+    "no_per_view_recenter": true
+  }
+}

@@ -1,0 +1,139 @@
+{
+  "schema_version": 1,
+  "generated_at": "2026-08-29T11:02:05.535408+00:00",
+  "generator": "pipeline/scripts/gessi316_54145_review.py",
+  "profile_key": "gessi316-54145",
+  "source_kind": "native_dwg_review_simplification",
+  "source_label_zh": "基于官方54145 G000原生DWG轮廓的简化蓝线审核表达",
+  "source_dwg_sha256": "9978b68468a61875acb0736aab45a62a98efadfd6be61d347e7ecaa94e08fd09",
+  "classification": "sub_8mm_paths_in_lower_10_25mm_spray_face_band",
+  "side_orientation": {
+    "source_axes_swapped": true,
+    "vertical_reflection_applied": true,
+    "scale": 1.0,
+    "wall_arm_above_downward_spray_face": true,
+    "front_side_vertical_order_cross_check": "pass"
+  },
+  "original": {
+    "path_count": 1290,
+    "node_count": 14113,
+    "segment_count": 12823
+  },
+  "review": {
+    "path_count": 243,
+    "node_count": 5351,
+    "segment_count": 5108
+  },
+  "reduction": {
+    "path_count": 1047,
+    "path_percent": 81.163,
+    "node_count": 8762,
+    "node_percent": 62.085,
+    "segment_count": 7715,
+    "segment_percent": 60.165
+  },
+  "per_view": {
+    "plan": {
+      "mode": "official_54145_outline_based_fine_spray_detail_simplification",
+      "classification": "sub_8mm_paths_in_lower_10_25mm_spray_face_band",
+      "original_path_count": 22,
+      "original_node_count": 505,
+      "original_segment_count": 483,
+      "removed_fine_spray_nozzle_detail_path_count": 0,
+      "removed_fine_spray_nozzle_detail_node_count": 0,
+      "replacement_overall_spray_tip_datum_path_count": 0,
+      "review_path_count": 22,
+      "review_node_count": 505,
+      "review_segment_count": 483,
+      "review_texture_detail_path_count": 0,
+      "envelope_delta_mm": [
+        0.0,
+        0.0
+      ],
+      "centre_delta_mm": [
+        0.0,
+        0.0
+      ],
+      "installation_axis_preserved": true,
+      "wall_anchor_preserved": true,
+      "arm_reach_600mm_preserved": true,
+      "ball_joint_preserved": true,
+      "spray_face_diameter_endpoints_preserved": true,
+      "overall_spray_tip_datum_preserved": true,
+      "scale_applied": false,
+      "unaltered_official_dwg": false,
+      "pass": true
+    },
+    "front": {
+      "mode": "official_54145_outline_based_fine_spray_detail_simplification",
+      "classification": "sub_8mm_paths_in_lower_10_25mm_spray_face_band",
+      "original_path_count": 615,
+      "original_node_count": 6334,
+      "original_segment_count": 5719,
+      "removed_fine_spray_nozzle_detail_path_count": 504,
+      "removed_fine_spray_nozzle_detail_node_count": 4164,
+      "replacement_overall_spray_tip_datum_path_count": 1,
+      "review_path_count": 112,
+      "review_node_count": 2172,
+      "review_segment_count": 2060,
+      "review_texture_detail_path_count": 0,
+      "envelope_delta_mm": [
+        0.0,
+        0.0
+      ],
+      "centre_delta_mm": [
+        0.0,
+        0.0
+      ],
+      "installation_axis_preserved": true,
+      "wall_anchor_preserved": true,
+      "arm_reach_600mm_preserved": true,
+      "ball_joint_preserved": true,
+      "spray_face_diameter_endpoints_preserved": true,
+      "overall_spray_tip_datum_preserved": true,
+      "scale_applied": false,
+      "unaltered_official_dwg": false,
+      "pass": true
+    },
+    "side": {
+      "mode": "official_54145_outline_based_fine_spray_detail_simplification",
+      "classification": "sub_8mm_paths_in_lower_10_25mm_spray_face_band",
+      "original_path_count": 653,
+      "original_node_count": 7274,
+      "original_segment_count": 6621,
+      "removed_fine_spray_nozzle_detail_path_count": 545,
+      "removed_fine_spray_nozzle_detail_node_count": 4602,
+      "replacement_overall_spray_tip_datum_path_count": 1,
+      "review_path_count": 109,
+      "review_node_count": 2674,
+      "review_segment_count": 2565,
+      "review_texture_detail_path_count": 0,
+      "envelope_delta_mm": [
+        0.0,
+        0.0
+      ],
+      "centre_delta_mm": [
+        0.0,
+        0.0
+      ],
+      "installation_axis_preserved": true,
+      "wall_anchor_preserved": true,
+      "arm_reach_600mm_preserved": true,
+      "ball_joint_preserved": true,
+      "spray_face_diameter_endpoints_preserved": true,
+      "overall_spray_tip_datum_preserved": true,
+      "scale_applied": false,
+      "unaltered_official_dwg": false,
+      "pass": true
+    }
+  },
+  "gates": {
+    "original_official_dwg_preserved_separately": true,
+    "all_envelopes_unchanged": true,
+    "all_centres_unchanged": true,
+    "wall_anchor_preserved": true,
+    "arm_reach_600mm_preserved": true,
+    "formal_ifc_modified": false
+  },
+  "pass": true
+}

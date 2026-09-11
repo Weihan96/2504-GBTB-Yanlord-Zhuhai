@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Overlay exact Gessi316 54145 G000 native-DWG views on project drawings."""
+"""Overlay the simplified Gessi316 54145 review line on project drawings."""
 
 import xml.etree.ElementTree as ET
 
@@ -12,11 +12,11 @@ shared.CANDIDATE = shared.PRODUCT_DIR / "candidate-representations.json"
 shared.GLOBAL_ID = "3jT4sCgpHC98VSIUdGUNYH"
 shared.OVERLAY_ID_PREFIX = "gessi316-54145"
 shared.GENERATOR = "pipeline/scripts/render_gessi316_54145_project_context.py"
-shared.SOURCE_KIND = "native_dwg"
-shared.SOURCE_LABEL_ZH = "Gessi 官方精确型号 54145 G000 原生 DWG 图纸表达"
+shared.SOURCE_KIND = "native_dwg_review_simplification"
+shared.SOURCE_LABEL_ZH = "基于官方54145 G000原生DWG轮廓的简化蓝线审核表达"
 shared.SOURCE_DWG_SHA256 = "9978b68468a61875acb0736aab45a62a98efadfd6be61d347e7ecaa94e08fd09"
 shared.OFFICIAL_CAD_USED = True
-shared.PATH_KEY = "official_native_dwg_paths_mm"
+shared.PATH_KEY = "review_simplified_official_outline_paths_mm"
 shared.CLOSE_PATHS = False
 shared.BLUE = "#1677c8"
 shared.REVIEW_HIDDEN_CSS = "#noninteger-highlights{display:none}"
@@ -76,6 +76,30 @@ def group_points(source):
 
 
 shared.group_points = group_points
+
+
+original_add_overlay = shared.add_overlay
+
+
+def add_overlay(source, target, view, path, overlay_bbox):
+    original_add_overlay(source, target, view, path, overlay_bbox)
+    content = target.read_text(encoding="utf-8")
+    content = content.replace(
+        'class="official-reference native-dwg project-context-overlay"',
+        'class="review-simplified-reference official-outline-derived project-context-overlay"',
+    )
+    content = content.replace(
+        'class="official-reference native-dwg"',
+        'class="review-simplified-reference official-outline-derived"',
+    )
+    content = content.replace(
+        'data-official-cad-used="true"',
+        'data-official-cad-used="true" data-unaltered-official-dwg="false"',
+    )
+    target.write_text(content, encoding="utf-8")
+
+
+shared.add_overlay = add_overlay
 
 
 if __name__ == "__main__":

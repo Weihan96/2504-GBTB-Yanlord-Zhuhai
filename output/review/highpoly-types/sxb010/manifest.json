@@ -1,6 +1,6 @@
 {
-  "schema_version": 1,
-  "generated_at": "2026-08-22T23:05:19.954995+00:00",
+  "schema_version": 2,
+  "generated_at": "2026-08-24T14:23:57.159941+00:00",
   "generator": "pipeline/scripts/sxb010_review.py",
   "formal_ifc": "2504 GBTB Yanlord Zhuhai.ifc",
   "formal_ifc_sha256": "7a50b87e8f48a7c2bfbaa9f1dabdfca7155fa684b2325c66aa1ae15c8ab0a25c",
@@ -105,7 +105,9 @@
   "official_source_access_record": "output/review/highpoly-types/sxb010/official-source/source-access-record.json",
   "official_source_access_record_sha256": "8db5b2d5514062417d7cca06f65bc9b61357f153a134d6ada11ef1f88ce281a2",
   "candidate_representations": "output/review/highpoly-types/sxb010/candidate-representations.json",
-  "candidate_representations_sha256": "4547c023a7f981778d2262e7dd3b84c51a9323aa39f8c03c7f8a60b00f13eafd",
+  "candidate_representations_sha256": "84bcefe9acb41271795eee7ae73e5d33486a08a8c50ea06c5da8c3d58848d432",
+  "line_simplification_audit": "output/review/highpoly-types/sxb010/line-simplification-audit.json",
+  "line_simplification_audit_sha256": "d16cb22d8a7baa09b60d123cc17578cc64d64db4bb93e747a92b3d34034e81dc",
   "review_status": "visual_review_pending",
   "approved_for_drawing_ifc": false,
   "derived_ifc_write_allowed": false,
@@ -114,56 +116,245 @@
     {
       "view": "plan",
       "svg": "output/review/highpoly-types/sxb010/plan.svg",
-      "svg_sha256": "02642fcf1ca81781020bf119aee984388571d0a3e041fe4feb02436238fddbd0",
+      "svg_sha256": "fc092e5c21e1aacf545b39fabb7e351498a58055a057531443627ed02a1ca59f",
       "projection_axes": [
         0,
         2
       ],
       "raw_edge_count": 75098,
-      "displayed_raw_edge_count": 989,
-      "silhouette_path_count": 8,
+      "displayed_raw_edge_count": 400,
+      "silhouette_path_count": 5,
+      "silhouette_segment_count": 8,
       "drawing_line_source_kind": "geometry_derived_simplified_proxy",
       "drawing_line_source_label_zh": "基于原始高模几何生成的简化图纸表达",
       "official_cad_path_count": 0,
-      "blue_line_present": false
+      "blue_line_present": false,
+      "line_simplification": {
+        "view": "plan",
+        "merge_threshold_mm": 22.0,
+        "final_svg_scale_px_per_mm": 0.47442,
+        "merge_threshold_at_final_svg_scale_px": 10.437244,
+        "before_path_count": 8,
+        "after_path_count": 5,
+        "before_segment_count": 63,
+        "after_segment_count": 8,
+        "before_bounds_mm": {
+          "minimum": [
+            -2366.578613,
+            2857.247559
+          ],
+          "maximum": [
+            -554.579163,
+            2920.640869
+          ],
+          "size": [
+            1811.999451,
+            63.393311
+          ]
+        },
+        "after_bounds_mm": {
+          "minimum": [
+            -2366.578613,
+            2857.247559
+          ],
+          "maximum": [
+            -554.579163,
+            2920.640869
+          ],
+          "size": [
+            1811.99945,
+            63.39331
+          ]
+        },
+        "outer_envelope_delta_mm": [
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        "slat_count_before": 45,
+        "slat_centerline_count_after": 45,
+        "slat_projected_thickness_front_mm": {
+          "minimum": 20.726807,
+          "maximum": 20.734375
+        },
+        "slat_center_pitch_after_mm": {
+          "minimum": 30.248871,
+          "maximum": 33.883423
+        },
+        "headrail_count_preserved": 1,
+        "bottom_rail_count_preserved": 1,
+        "guide_and_cord_component_count_before": 7,
+        "guide_and_cord_axis_count_after": 3,
+        "control_component_count_preserved": 9,
+        "outer_envelope_preserved": true,
+        "slat_rhythm_preserved": true,
+        "pass": true
+      }
     },
     {
       "view": "front",
       "svg": "output/review/highpoly-types/sxb010/front.svg",
-      "svg_sha256": "914f38314b8ad3ab31a5b8a2421b571652d769652a13f4a259d4e4375f716d23",
+      "svg_sha256": "df2a0926c497258fc034898a3b9eeb5a051bace278d3302507ca4db29d827e97",
       "projection_axes": [
         0,
         1
       ],
       "raw_edge_count": 75098,
-      "displayed_raw_edge_count": 989,
-      "silhouette_path_count": 241,
+      "displayed_raw_edge_count": 400,
+      "silhouette_path_count": 51,
+      "silhouette_segment_count": 60,
       "drawing_line_source_kind": "geometry_derived_simplified_proxy",
       "drawing_line_source_label_zh": "基于原始高模几何生成的简化图纸表达",
       "official_cad_path_count": 0,
-      "blue_line_present": false
+      "blue_line_present": false,
+      "line_simplification": {
+        "view": "front",
+        "merge_threshold_mm": 22.0,
+        "final_svg_scale_px_per_mm": 0.405548,
+        "merge_threshold_at_final_svg_scale_px": 8.922049,
+        "before_path_count": 241,
+        "after_path_count": 51,
+        "before_segment_count": 1444,
+        "after_segment_count": 60,
+        "before_bounds_mm": {
+          "minimum": [
+            -2366.262695,
+            803.773987
+          ],
+          "maximum": [
+            -554.895142,
+            2399.533447
+          ],
+          "size": [
+            1811.367554,
+            1595.75946
+          ]
+        },
+        "after_bounds_mm": {
+          "minimum": [
+            -2366.262695,
+            803.773987
+          ],
+          "maximum": [
+            -554.895142,
+            2399.533447
+          ],
+          "size": [
+            1811.367553,
+            1595.75946
+          ]
+        },
+        "outer_envelope_delta_mm": [
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        "slat_count_before": 45,
+        "slat_centerline_count_after": 45,
+        "slat_projected_thickness_front_mm": {
+          "minimum": 20.726807,
+          "maximum": 20.734375
+        },
+        "slat_center_pitch_after_mm": {
+          "minimum": 30.248871,
+          "maximum": 33.883423
+        },
+        "headrail_count_preserved": 1,
+        "bottom_rail_count_preserved": 1,
+        "guide_and_cord_component_count_before": 7,
+        "guide_and_cord_axis_count_after": 3,
+        "control_component_count_preserved": 9,
+        "outer_envelope_preserved": true,
+        "slat_rhythm_preserved": true,
+        "pass": true
+      }
     },
     {
       "view": "side",
       "svg": "output/review/highpoly-types/sxb010/side.svg",
-      "svg_sha256": "f9a35664d9fa1c5e42ca95067e2c9b9f1ed0a674b680ef0983f5bb5b041ffad1",
+      "svg_sha256": "281be79d1589482d61b5aed0b8ff1f1ad4bde3da0c9d4bb119990d475f1d0401",
       "projection_axes": [
         2,
         1
       ],
       "raw_edge_count": 75098,
-      "displayed_raw_edge_count": 989,
-      "silhouette_path_count": 84,
+      "displayed_raw_edge_count": 400,
+      "silhouette_path_count": 55,
+      "silhouette_segment_count": 58,
       "drawing_line_source_kind": "geometry_derived_simplified_proxy",
       "drawing_line_source_label_zh": "基于原始高模几何生成的简化图纸表达",
       "official_cad_path_count": 0,
-      "blue_line_present": false
+      "blue_line_present": false,
+      "line_simplification": {
+        "view": "side",
+        "merge_threshold_mm": 22.0,
+        "final_svg_scale_px_per_mm": 0.412195,
+        "merge_threshold_at_final_svg_scale_px": 9.068295,
+        "before_path_count": 84,
+        "after_path_count": 55,
+        "before_segment_count": 696,
+        "after_segment_count": 58,
+        "before_bounds_mm": {
+          "minimum": [
+            2857.247559,
+            803.773987
+          ],
+          "maximum": [
+            2920.640869,
+            2399.849609
+          ],
+          "size": [
+            63.393311,
+            1596.075623
+          ]
+        },
+        "after_bounds_mm": {
+          "minimum": [
+            2857.247559,
+            803.773987
+          ],
+          "maximum": [
+            2920.640869,
+            2399.849609
+          ],
+          "size": [
+            63.39331,
+            1596.075622
+          ]
+        },
+        "outer_envelope_delta_mm": [
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        "slat_count_before": 45,
+        "slat_centerline_count_after": 45,
+        "slat_projected_thickness_front_mm": {
+          "minimum": 20.726807,
+          "maximum": 20.734375
+        },
+        "slat_center_pitch_after_mm": {
+          "minimum": 30.248871,
+          "maximum": 33.883423
+        },
+        "headrail_count_preserved": 1,
+        "bottom_rail_count_preserved": 1,
+        "guide_and_cord_component_count_before": 7,
+        "guide_and_cord_axis_count_after": 3,
+        "control_component_count_preserved": 9,
+        "outer_envelope_preserved": true,
+        "slat_rhythm_preserved": true,
+        "pass": true
+      }
     }
   ],
   "pass": true,
   "project_context": {
     "manifest": "output/review/highpoly-types/sxb010/project-context-manifest.json",
-    "manifest_sha256": "29ee07cffc4648d41a422ca69583b9f6a3dba375bf398104210c448f1c9f9b9b",
+    "manifest_sha256": "826a72dcc79ece2b1e7356bfb53452429fc3716e52427878d81f957ea5dcad89",
     "walls_and_surrounding_project_elements_retained": true,
     "overlay_top_layer_with_white_mask": true,
     "pass": true
